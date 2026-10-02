@@ -1,0 +1,51 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c183-reference-sea-squirt",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "aa0fb17b4b70922507cca7aa9516f62783d0eb7d0444513d11f1ea86a9760566",
+    "pngSha256": "85a6a30f296da774f0b9a29368e579907799e0d65d0ecc6478032bc928361d79"
+  },
+  "parts": [
+    {
+      "name": "aperture.png",
+      "sha256": "e4f863e708ac68ea5d4e6b925f6947c5ceb941c3861055334bfb7a53c0f9bb5d"
+    },
+    {
+      "name": "base.png",
+      "sha256": "7728fc794e3a683d935bcc94d53bb02c7f70080cc14d1ccf57c72c115f724dc0"
+    },
+    {
+      "name": "body.png",
+      "sha256": "bd34f4f9d8aabfb809f9e7e16cf49248da14fdd746acc23cd820265262863615"
+    },
+    {
+      "name": "crown.png",
+      "sha256": "814724fdf2610b3999c47aa452ea1d7751859dd7570c84466b5a1341a60ee1a1"
+    },
+    {
+      "name": "root.png",
+      "sha256": "55377ba2df4649a8aae74c7089bf96981d8707906a9eb6b6f782abeced23f290"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

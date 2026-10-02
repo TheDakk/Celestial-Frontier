@@ -1,0 +1,14 @@
+{
+  "id": "15-sheep",
+  "name": "Sheep",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-bd60cefe-1917-4443-a0d6-d80f9561bf5b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee",
+  "bytes": 1618478,
+  "promptSha256": "e26092fe5307cc26fac71cdc310469e3f0eae31aef720de89e8e7666d5f29a59",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

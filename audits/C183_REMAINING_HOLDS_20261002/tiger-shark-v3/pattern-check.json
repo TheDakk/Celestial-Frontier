@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tiger Shark",
+  "masterSha256": "faccdfad0a5dce5e98105719b630bc0322e6749839cd8a2034a14e50e47c4065",
+  "required": [
+    "dark vertical tiger stripes on the flank"
+  ],
+  "source": "explicit full-size visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark vertical tiger stripes on the flank",
+      "status": "PRESENT",
+      "observed": "Repeated dark vertical bars extend down the grey flank and tail stalk. This pattern observation does not clear the tail anatomy hold."
+    }
+  ]
+}

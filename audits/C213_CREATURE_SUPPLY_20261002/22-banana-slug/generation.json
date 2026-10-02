@@ -1,0 +1,14 @@
+{
+  "id": "22-banana-slug",
+  "name": "Banana Slug",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0eb04dae-deb0-4ecc-8646-6ab34f0f8824.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+  "bytes": 1183717,
+  "promptSha256": "fcda133e68fbb3f41364d17e7965b2d838f2675868681334db7d679e08ff05bc",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

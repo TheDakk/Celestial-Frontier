@@ -1,0 +1,28 @@
+{
+  "name": "Dromedary Camel",
+  "masterSha256": "c9fb75ce38aa66c3e3877b57cabdff6f9ced807d3e75e98d0eabecbf003fa303",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original inspected: one hump, long neck, two visible ear tips, four separate feet with paired toes, visible leg callosities and a continuous tufted tail clear of the hind feet. Foreleg roots still partly overlap the chest, so four complete independently observable chains are not assumed. Some dark round callosity placements and limb proportions require species review. Muzzle is close to right edge; unchanged observer decides framing.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 131,
+      "y0": 212,
+      "x1": 1167,
+      "y1": 1025
+    },
+    "margins": {
+      "left": 131,
+      "right": 86,
+      "top": 212,
+      "bottom": 228
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "intake",
+  "id": "20-hornbill",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/intake.mjs",
+    "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate",
+    "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01"
+  ],
+  "helperSha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/intake.log",
+  "logSha256": "b592159010a8ecf9829493d76e93afe8ad253538a4f728c74a6e42a7de804349",
+  "nativeRuns": 0
+}

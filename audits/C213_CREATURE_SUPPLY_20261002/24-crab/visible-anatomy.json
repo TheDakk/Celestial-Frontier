@@ -1,0 +1,97 @@
+{
+  "id": "24-crab",
+  "name": "Crab",
+  "family": "brachyuran",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "d11ee0494e3d445f8100a87394857a104f893f6a9d631303ceaa7ea1a72ea699",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 32448,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 152,
+      "y0": 125,
+      "x1": 289,
+      "y1": 211
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.3306,
+        "pixels": 10727,
+        "box": {
+          "x0": 40,
+          "y0": 114,
+          "x1": 192,
+          "y1": 271
+        },
+        "attach": {
+          "x": 154.9,
+          "y": 170.8,
+          "relX": 0.02,
+          "relY": 0.53
+        },
+        "dir": {
+          "x": -0.87,
+          "y": 0.5
+        },
+        "class": "rear",
+        "length": 152.4
+      },
+      {
+        "k": 1,
+        "frac": 0.3355,
+        "pixels": 10887,
+        "box": {
+          "x0": 215,
+          "y0": 138,
+          "x1": 385,
+          "y1": 304
+        },
+        "attach": {
+          "x": 279.6,
+          "y": 193,
+          "relX": 0.93,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": 0.68,
+          "y": 0.74
+        },
+        "class": "limb-down",
+        "length": 153.1
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 222,
+        "x1": 257,
+        "cx": 237.3
+      },
+      {
+        "x0": 324,
+        "x1": 339,
+        "cx": 331.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

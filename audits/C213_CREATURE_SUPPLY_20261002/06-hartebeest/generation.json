@@ -1,0 +1,14 @@
+{
+  "id": "06-hartebeest",
+  "name": "Hartebeest",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0d6f3f94-d43d-4917-969a-a4932046dc94.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "560d0a77af97c399fe0fc34abce499c15f3947b34f1ab5419b188e8d68e318e1",
+  "bytes": 1479857,
+  "promptSha256": "12974d6d749c1062a92f44ca7ce10189e744316dfe9993d70a6fe79f1c3839ba",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

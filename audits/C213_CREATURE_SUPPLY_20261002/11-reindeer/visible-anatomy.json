@@ -1,0 +1,200 @@
+{
+  "id": "11-reindeer",
+  "name": "Reindeer",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "287f646975b919937cb1a89654b6341b69e440ba47024e84513654fafdc4fdae",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 39321,
+    "coreRadius": 29,
+    "bodyBox": {
+      "x0": 81,
+      "y0": 99,
+      "x1": 401,
+      "y1": 251
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1829,
+        "pixels": 7190,
+        "box": {
+          "x0": 262,
+          "y0": 35,
+          "x1": 390,
+          "y1": 214
+        },
+        "attach": {
+          "x": 334.6,
+          "y": 162.9,
+          "relX": 0.79,
+          "relY": 0.42
+        },
+        "dir": {
+          "x": -0.02,
+          "y": -1
+        },
+        "class": "top",
+        "length": 147.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0057,
+        "pixels": 223,
+        "box": {
+          "x0": 217,
+          "y0": 150,
+          "x1": 266,
+          "y1": 156
+        },
+        "attach": {
+          "x": 241.5,
+          "y": 156,
+          "relX": 0.5,
+          "relY": 0.38
+        },
+        "dir": {
+          "x": -0.17,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 25.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0153,
+        "pixels": 603,
+        "box": {
+          "x0": 60,
+          "y0": 175,
+          "x1": 80,
+          "y1": 231
+        },
+        "attach": {
+          "x": 80,
+          "y": 203,
+          "relX": 0,
+          "relY": 0.68
+        },
+        "dir": {
+          "x": -0.75,
+          "y": -0.66
+        },
+        "class": "rear",
+        "length": 34.4
+      },
+      {
+        "k": 3,
+        "frac": 0.1239,
+        "pixels": 4873,
+        "box": {
+          "x0": 39,
+          "y0": 233,
+          "x1": 145,
+          "y1": 352
+        },
+        "attach": {
+          "x": 103.8,
+          "y": 244.7,
+          "relX": 0.07,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.26,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 125.3
+      },
+      {
+        "k": 4,
+        "frac": 0.0056,
+        "pixels": 220,
+        "box": {
+          "x0": 277,
+          "y0": 246,
+          "x1": 307,
+          "y1": 259
+        },
+        "attach": {
+          "x": 292,
+          "y": 246,
+          "relX": 0.66,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": -0.37,
+          "y": 0.93
+        },
+        "class": "limb-down",
+        "length": 19.8
+      },
+      {
+        "k": 5,
+        "frac": 0.0999,
+        "pixels": 3930,
+        "box": {
+          "x0": 197,
+          "y0": 252,
+          "x1": 293,
+          "y1": 352
+        },
+        "attach": {
+          "x": 236.5,
+          "y": 252,
+          "relX": 0.49,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 114.9
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 41,
+        "x1": 74,
+        "cx": 57.5
+      },
+      {
+        "x0": 104,
+        "x1": 145,
+        "cx": 123.9
+      },
+      {
+        "x0": 197,
+        "x1": 233,
+        "cx": 215.1
+      },
+      {
+        "x0": 253,
+        "x1": 293,
+        "cx": 272
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

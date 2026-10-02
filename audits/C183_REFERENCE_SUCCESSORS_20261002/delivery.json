@@ -1,0 +1,618 @@
+{
+  "schema": "cf.c183-audit-delivery/v1",
+  "status": "FROZEN_REVIEW_HELD",
+  "base": "audits/C183_REFERENCE_SUCCESSORS_20261002",
+  "files": 121,
+  "totalBytes": 20483949,
+  "sha256Scope": "Every pre-manifest file; manifest excludes itself.",
+  "inputs": [
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/authoring-receipt.json",
+      "bytes": 1472,
+      "sha256": "b9e16f4ef390b8ca8f22f9c288d3c0c00c5f5e5eb14d1a1e69250138fa90d926"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/authoring.json",
+      "bytes": 5575,
+      "sha256": "3de20615d0af6089119c6b4f730bad0d40ab08cdeb3e7623dc13386a252fe400"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/conservation-01.json",
+      "bytes": 1154,
+      "sha256": "6ccaa50257e0bd56f4b52c106d357b98e50a38583729ba1d97ba39f2676de70c"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/conservation-01.log",
+      "bytes": 128,
+      "sha256": "f0f09140f56099ac5ff0e0bb29c9ef67e4b19a201fc4ecc4ffa38bbf5767b619"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/conservation-execution-01.json",
+      "bytes": 640,
+      "sha256": "6f180b20a95f31172da76b68ae4464b9d363b73490161b63ea0204a4a48c6ca7"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/binding.json",
+      "bytes": 1443385,
+      "sha256": "8a65394a13d6daeabecde77184a92346bdae79d036bb9616280b443f37da51bf"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/declaration.json",
+      "bytes": 5024,
+      "sha256": "adc989a87f5a65b86b7cf716d5b3858dd06de57730fac5a096afa558bb657f1a"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/intake-provenance.json",
+      "bytes": 2997,
+      "sha256": "4ad5a187ce98b23356609443ddb002071f3f7141b18997c7fb94daca0e9ba466"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/atlas/c183-reference-leech.json",
+      "bytes": 5358,
+      "sha256": "58b51ee12eb218c36f4962d9928fadd367294bbebfb151335adee0ad34918cfa"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/atlas/c183-reference-leech.png",
+      "bytes": 485596,
+      "sha256": "634f9be6d957934026a8cd223480129154ceeeeb5f0665169034f03d83f4b01f"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/atlas/receipt.json",
+      "bytes": 2403,
+      "sha256": "eeb81764696ac34c0d34c30748c5864e0b081da60cbf5a75c19f4bca3c746aa7"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/binding.json",
+      "bytes": 4494,
+      "sha256": "925ccd7b3899cf510a36357787404d97ea86c19e1226e445a0f6c68ff235d8a7"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/keyed.png",
+      "bytes": 1543398,
+      "sha256": "b142b18e4e0aebe3b45aa2f76e7813c2f15f3b3c2e489cac92c7042d3bb0a2f2"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/manifest.json",
+      "bytes": 2162,
+      "sha256": "0902e86d072641c09a871805abed2c39b01c7af2ddf7da2d9bb0986b32ba6138"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/ownership.png",
+      "bytes": 15888,
+      "sha256": "f6a978588971f7b5200009a3ab266f355e925ffaabef727e9b79904bda6e5f35"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/root.png",
+      "bytes": 331,
+      "sha256": "7f26ce5c322ee977e06cfc15d75707041de541e3ac8328df3a02f09fadd74cf2"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment0.png",
+      "bytes": 16653,
+      "sha256": "a6a620415a90f9aaa9d97bef58030dfe37ef09bda996dec7b5461316e5baaf78"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment1.png",
+      "bytes": 24125,
+      "sha256": "441a44a1b5e95ac8bf7d9d25b3ea05df1a983fc2e54b0b14a2b00e5634942db8"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment10.png",
+      "bytes": 54484,
+      "sha256": "8dc0a3749602f47492b1546597c1a86f3dd9ad6b04398c26c0dc4e2a7a58ba4a"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment11.png",
+      "bytes": 56913,
+      "sha256": "3c27331f2cee34417ea3fcedf3428061792023459d20284e0046981837b1b6d6"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment2.png",
+      "bytes": 35773,
+      "sha256": "8c0812393d66725798913cc058fd9e83dab7316c7bf8cf5cea2c4c6f0ab418b6"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment3.png",
+      "bytes": 49788,
+      "sha256": "9b918eb8a84b90099544bea029891366d31db7c227cff1a375bc075083ab9bdb"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment4.png",
+      "bytes": 49342,
+      "sha256": "24c178329463be0732946b323ac5a590b27e73eb34cfdb73a5e0f63ad7be8b08"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment5.png",
+      "bytes": 47392,
+      "sha256": "040847925ea3a23c09f50638f20fa8cf5a659746546257d73d9e87e090bb69df"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment6.png",
+      "bytes": 54241,
+      "sha256": "1900ec02e1c53df23df8f0b3caafcb3ad79e8e501f2e18b9e23cf47b0c42ea10"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment7.png",
+      "bytes": 59831,
+      "sha256": "22c08b3eb3e9d376fd3fae526cf81ab43835f63e2f578096fbbee79c8fa2ffe6"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment8.png",
+      "bytes": 66771,
+      "sha256": "e046ba2602395fb0a1f200faa6d8841956a12a9de3d4be662c3cf898c89d6a43"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/parts/segment9.png",
+      "bytes": 59089,
+      "sha256": "2927702a1f0ba29fa48a49d03827ac703a289351fe53beff6957ccc6c277ee29"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/parts/receipt.json",
+      "bytes": 3700,
+      "sha256": "34e08443e816d6f4a570575dee5e1d0e7641ae8625ba5b4d8c98b1ef9fd8e13e"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/pre-split-binding.json",
+      "bytes": 865150,
+      "sha256": "4264da385073d43cca7e3eac651d571028f70ec293218a87262e5c1634b36a2b"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/receipt.json",
+      "bytes": 2051,
+      "sha256": "b6f089678dede95f1e77118be5b4be6d570c65c51d9971c9c2153f1a14e93d87"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01/record.json",
+      "bytes": 5128,
+      "sha256": "08ed21b5766bce55396f9406dda89d524c8dec6324600f41f2df1994314ddfd5"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/intake-01.log",
+      "bytes": 310,
+      "sha256": "42c045c6e3336293ca236efe546a2c3a056ef210537af983d1c1631722dd0d98"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/intake-execution-01.json",
+      "bytes": 605,
+      "sha256": "d43dd6ab34c98750e171aaaf11f709819c87c3e0fa76f9266387247bc226c345"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/joint-preview-01.png",
+      "bytes": 592247,
+      "sha256": "d59b9b3e03f7c3af2005f9a6a4859dd0dad8b0235db25723f3392515aaa3edb6"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/master.png",
+      "bytes": 1273278,
+      "sha256": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/observation.json",
+      "bytes": 1181,
+      "sha256": "bf62802f1090bd8f76fd2b76b3cc91fed589e06338be2e3a12e507348b482e15"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/ownership-preview-01.png",
+      "bytes": 568448,
+      "sha256": "3be11835519474e91d2f998a97fd084c24d8085fe914399cd814fe6e39c1852e"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/source-evidence/generation.json",
+      "bytes": 609,
+      "sha256": "d754fce415e333d1d7b8dd7bd8d7bd454b720a421a048e4afeddb29fe1ce45cb"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/source-evidence/prompt.txt",
+      "bytes": 8855,
+      "sha256": "4b8eb2abb853e1b1332f149b97ab8533dabde543a8e19cba48dca8e8a63a8295"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/source-evidence/request.json",
+      "bytes": 1639,
+      "sha256": "5cddd0606f22dad2f28861abb46d96836a9bc561e572e83abba1dbd7b0a82131"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/static-01.json",
+      "bytes": 6216,
+      "sha256": "a5dba3881132e076f0f259fcba02ea21d28f540a09683630a0db6c02d1f37cfb"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/static-01.json.sources.json",
+      "bytes": 15780,
+      "sha256": "5a28a3dec26dfc8d145733fc9d39e58ae9c8e06200373cbd7f55c9509b112c51"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/static-01.log",
+      "bytes": 1453,
+      "sha256": "51250cd103aaa5eb4ea605b8cd4abb09f058fe18b811c1d41dbcd67787afea5f"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/static-execution-01.json",
+      "bytes": 624,
+      "sha256": "e445685f972929a06b8aa45d6b396490c175cef17bc47d8c18584aef9cd9adf5"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/subject-source.json",
+      "bytes": 2187,
+      "sha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/authoring-receipt.json",
+      "bytes": 1492,
+      "sha256": "bf295c17447b175e9edeea5e7ba586776ea269e429f9b9b41e8a0ae9276071d5"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/authoring.json",
+      "bytes": 3734,
+      "sha256": "f516bedde1816b69ad00f54ebda433f7ab911b70022bce1fed31dfb0edb90c8c"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/conservation-01.json",
+      "bytes": 1155,
+      "sha256": "957e461e58c018b7e67173d087c51ec00a231f23f6a5e37ae8a7773424e03a53"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/conservation-01.log",
+      "bytes": 128,
+      "sha256": "c6138a1d2e2f6260a83bb5fdb07200c3c2863207043a0d5835b27188080f79bc"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/conservation-execution-01.json",
+      "bytes": 655,
+      "sha256": "cd26ef9a14fbb1a65c61b1f547acce30aa9509bbcc013b026697f37bb292fcf2"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/binding.json",
+      "bytes": 944430,
+      "sha256": "30bf3a73ccde711cb01c168522cc1b7ce24401de3b114792f76951bbca429e69"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/declaration.json",
+      "bytes": 3808,
+      "sha256": "7b133e743e8e1983448580f5c7d4544586967c2a44adb0b82a921cfe43e0f4ea"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/intake-provenance.json",
+      "bytes": 2896,
+      "sha256": "b2ba59729cb5dd60c790cd263057c1b95ab72a851fa6408f7b6cdae55d6cc222"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/atlas/c183-reference-sea-squirt.json",
+      "bytes": 2163,
+      "sha256": "aa0fb17b4b70922507cca7aa9516f62783d0eb7d0444513d11f1ea86a9760566"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/atlas/c183-reference-sea-squirt.png",
+      "bytes": 768933,
+      "sha256": "85a6a30f296da774f0b9a29368e579907799e0d65d0ecc6478032bc928361d79"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/atlas/receipt.json",
+      "bytes": 1387,
+      "sha256": "76f048fa1458014ec9f98ac4872556f99f7ef9960efff034ea9d6b482590a505"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/binding.json",
+      "bytes": 1933,
+      "sha256": "0c0ef51fd2b46af6a0e0a820a776c7b9c469416c6b64252c46f0a24c1ac3a967"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/keyed.png",
+      "bytes": 1959143,
+      "sha256": "5681b5b5825da8cd61b052f2bd9ce348645efe8123f2ccbd2687e05c9c295690"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/manifest.json",
+      "bytes": 845,
+      "sha256": "0abf1f134939662884e7b8b88373ea529b7a22f00940f10398041f67cd9b92cb"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/ownership.png",
+      "bytes": 17593,
+      "sha256": "6a23b40ab2163c96d862c60b48506133c32dbfcd3b1990c944cf0660aea8cb37"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/parts/aperture.png",
+      "bytes": 57182,
+      "sha256": "e4f863e708ac68ea5d4e6b925f6947c5ceb941c3861055334bfb7a53c0f9bb5d"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/parts/base.png",
+      "bytes": 144557,
+      "sha256": "7728fc794e3a683d935bcc94d53bb02c7f70080cc14d1ccf57c72c115f724dc0"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/parts/body.png",
+      "bytes": 637873,
+      "sha256": "bd34f4f9d8aabfb809f9e7e16cf49248da14fdd746acc23cd820265262863615"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/parts/crown.png",
+      "bytes": 167327,
+      "sha256": "814724fdf2610b3999c47aa452ea1d7751859dd7570c84466b5a1341a60ee1a1"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/parts/root.png",
+      "bytes": 307,
+      "sha256": "55377ba2df4649a8aae74c7089bf96981d8707906a9eb6b6f782abeced23f290"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/parts/receipt.json",
+      "bytes": 1810,
+      "sha256": "4f3808f8e2e5013ccc817443b7c4eaeadcfc90fbaa1cae344d61b713f5113d40"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/pre-split-binding.json",
+      "bytes": 730028,
+      "sha256": "a5158be594a9fb70a8f18b820963724250f0a42cc4f4a71888af838bb45c07d2"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/receipt.json",
+      "bytes": 2053,
+      "sha256": "c6c009e5bcca7462d03cef7b1f0580eff31526022412d2e2d591633c2534367e"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01/record.json",
+      "bytes": 4381,
+      "sha256": "a886e9932288d310a7e51434f31316c2cf15ca960e950b6411b3700c198061b8"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/intake-01.log",
+      "bytes": 314,
+      "sha256": "86c4870f7d23da5ff57205bc604cc9b09cce4ef5a0813e0ae0a33fb4e0a6c017"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/intake-execution-01.json",
+      "bytes": 620,
+      "sha256": "21dbf2b4e1605db89b814fae582cd862361d1705c01950adf2fee9f94592e855"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/joint-preview-01.png",
+      "bytes": 1032601,
+      "sha256": "c39a1c686402884e3dcecf7e9ba0bb906ca687e2884e6c3ddc04855a620ce9d8"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/master.png",
+      "bytes": 1493937,
+      "sha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/observation.json",
+      "bytes": 1316,
+      "sha256": "d535210a50f8c2df7c43681bde65c99afbd7c8dea53a7bfeada7274fa895f854"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/ownership-preview-01.png",
+      "bytes": 910444,
+      "sha256": "7a8580d8bbc7a008fc3fdc4a6184b107fb3b630087db6dd0db34884093de29ef"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/source-evidence/generation.json",
+      "bytes": 619,
+      "sha256": "578cad59d61b4ae027bd1a21a4f41afc8ef0e7b836cd0f4dfa4f6426f9e8ae78"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/source-evidence/prompt.txt",
+      "bytes": 9081,
+      "sha256": "933ffe68172e5a819954ca94dfd9f3ea5a4b56e059a9cb195b9313047d2cbe02"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/source-evidence/request.json",
+      "bytes": 1669,
+      "sha256": "be54fd1d33e6829697b0f08d6a5cdcdccc98859789ec94efc5398c317871c809"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/static-01.json",
+      "bytes": 6272,
+      "sha256": "386038ddf82b5859703559c12336fc90cd6ab35c34e0ff1a97299924c8ca5e64"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/static-01.json.sources.json",
+      "bytes": 15780,
+      "sha256": "e8f4f89e686339bfd95f0adbe4e4a2dd028aadf2219042f79075816e824ae5cd"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/static-01.log",
+      "bytes": 1459,
+      "sha256": "f2cc6e0231b3ac554eb1c4ff52c86883292c8ed75af658a5f031ef912eebac3f"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/static-execution-01.json",
+      "bytes": 639,
+      "sha256": "614e79eb49c23d817a9a46b5de320545dd39bf0b47c6bc619c13967c39731ac3"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/subject-source.json",
+      "bytes": 2230,
+      "sha256": "5ed04dcf712b75a98c55baa71fc0837443746b0d1935d1a8f093e5ea7c97d257"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/03-banana-slug-hold/generation.json",
+      "bytes": 621,
+      "sha256": "f4c990d100df23801798fb6e674713b29af468bf6779c29aa2acdb8a4434d6bf"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/03-banana-slug-hold/master.png",
+      "bytes": 1183717,
+      "sha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/03-banana-slug-hold/observation.json",
+      "bytes": 1453,
+      "sha256": "6f7795cb7106b5c74c597312e69afe8812cc7cf45caa2fd6971d5a996d2d2078"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/03-banana-slug-hold/prompt.txt",
+      "bytes": 9085,
+      "sha256": "fcda133e68fbb3f41364d17e7965b2d838f2675868681334db7d679e08ff05bc"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/03-banana-slug-hold/request.json",
+      "bytes": 1696,
+      "sha256": "8246eec510f7dcf9c77ddfe1b4bf61d2b908c07706a8f6509c78d91afb7708db"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/03-banana-slug-hold/retention-receipt.json",
+      "bytes": 1079,
+      "sha256": "f33c38fe89ccd2a81f1137fac028eeefffaafdd4c10176a8caa45f8cb44b609f"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/03-banana-slug-hold/subject-source.json",
+      "bytes": 2176,
+      "sha256": "c0347d6f37f33ce12ae1b322602e0250c5b365f1be1501f997c5bc4ab601af57"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/04-prawn-hold/generation.json",
+      "bytes": 609,
+      "sha256": "c6e5e4cb3a938cd5aa917e6612114cb73a23e7a0b87304a2494dbcc45ad1eb93"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/04-prawn-hold/master.png",
+      "bytes": 1342040,
+      "sha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/04-prawn-hold/observation.json",
+      "bytes": 1438,
+      "sha256": "28346f912552373e80c1b5de2b122d1e967cda1b9efaa439c6bdf102aabb1d28"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/04-prawn-hold/prompt.txt",
+      "bytes": 9306,
+      "sha256": "78f93a60d61eb576b187dbd57c7127c99e2dbf50d53fe0a8ae4f42290d5bf363"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/04-prawn-hold/request.json",
+      "bytes": 1715,
+      "sha256": "c22705fb7ee2c94714afd9ebd143fc16ad241fc2a1de1e6fefd3ca99e5af72ba"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/04-prawn-hold/retention-receipt.json",
+      "bytes": 1073,
+      "sha256": "07ffa8f036c5609cdb78f6b9a90cf1b405cb3d6df74ab192a50c7ea92f4077c8"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/04-prawn-hold/subject-source.json",
+      "bytes": 2392,
+      "sha256": "adc6d9af35d82d61dbbfb6592f3a0b4ea8e1bccdb946f2e483be4c36ebc6ed72"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/05-crab-hold/generation.json",
+      "bytes": 607,
+      "sha256": "386d7bc93ffd13c6811a470b17ff8af0298e2438f8cdf77253eaecbeca6aa988"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/05-crab-hold/master.png",
+      "bytes": 1491188,
+      "sha256": "d11ee0494e3d445f8100a87394857a104f893f6a9d631303ceaa7ea1a72ea699"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/05-crab-hold/observation.json",
+      "bytes": 1412,
+      "sha256": "cd852cc57ac38610384f7a6f38a18e1ff8f569f6db2025d749f4d30b0216625a"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/05-crab-hold/prompt.txt",
+      "bytes": 9241,
+      "sha256": "a78bda2dd4d2435e1796e9bfeb74607fadc10fbc8946945b7eeffdc7036dd21b"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/05-crab-hold/request.json",
+      "bytes": 1661,
+      "sha256": "b2b980c79d2182c04cd59488805780b97185226335ca56ae9d2f6a1b028a8387"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/05-crab-hold/retention-receipt.json",
+      "bytes": 1072,
+      "sha256": "3bc97e08b2308a61aa0596ac36535f7b5d9013e6596197d0ed60ed23f6346336"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/05-crab-hold/subject-source.json",
+      "bytes": 2187,
+      "sha256": "7fa25dfe639eb7e582a33a044f052e32028d6422d58c03a391611250787fad02"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/author-first-two.mjs",
+      "bytes": 4468,
+      "sha256": "6299fdbd7c2188168459cc7cf43daa22914ef0119d91160d63df827c780d6719"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/BIVALVE_MATERIAL_DECISION.md",
+      "bytes": 2274,
+      "sha256": "6681cb04f684072c3eee2a2427ff55e2113bffb7464525e23a42f93f3c9b6ed1"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/finalize-deliveries.mjs",
+      "bytes": 3877,
+      "sha256": "24008c0699e20b34ede70691279d80298f8107420f7e614d36c3130f4403b9dc"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/helper-derivation.json",
+      "bytes": 1395,
+      "sha256": "be304d97fe2e6000feed7f58ebaac53b8a066fa1a6edf15a41cca2c87feffc3e"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/material-controls.json",
+      "bytes": 3159,
+      "sha256": "983a33cffaa02f0468e3f082a8cf5a064e931e031d9ca52d452fccd223e6a6ba"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/material-controls.mjs",
+      "bytes": 2322,
+      "sha256": "4d551e90be846ab7db5b18d83924fd07df70e47394672c3a2b3ba33ca5bcb91e"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/README.md",
+      "bytes": 3359,
+      "sha256": "375d3ba04b279d0e3ea4ded5fffb818c9ccc1808a34341b237fcbc3646d8e4ee"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/REMAINING_HOLDS.md",
+      "bytes": 3008,
+      "sha256": "b8e34e38f00f7907d01486960a203461467afcc6c2ff3862f9a8e81933835b4b"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/retain-observation-holds.mjs",
+      "bytes": 3903,
+      "sha256": "3b39333bef198137782db555bb518f9bffbfa99280a01906ffd9df6ab658779b"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/review-summary.json",
+      "bytes": 1216,
+      "sha256": "34d4b2bca7abb79a13a950478a02c4c73705abe4aa7fe4d9fc05e7c325343d50"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/run-stage.mjs",
+      "bytes": 1566,
+      "sha256": "5c2b7a49c00f0855e1af329ffaa9d426bb7910910bd1d087521fdd34dc58e4a7"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/SOURCE_REVIEW.md",
+      "bytes": 2923,
+      "sha256": "711be97274a08edfb40ddfa8c6e39ab28978a7c79fe8c4b6fe2861892a9c251a"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/verify-and-preview.mjs",
+      "bytes": 5442,
+      "sha256": "a0b74974c174c1935cfb6fa095d30b9188d0bf75d2175f3a50dd106e99928cf9"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/write-observed-packet.mjs",
+      "bytes": 2429,
+      "sha256": "a4783e5c5d2ff99f9ccde8aba8428a73f8519c6bfb8ae21ff2b408c25acd738a"
+    }
+  ],
+  "nativeRuns": 0,
+  "productChanges": 0,
+  "qualityAccepted": false
+}

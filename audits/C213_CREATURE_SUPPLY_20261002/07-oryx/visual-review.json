@@ -1,0 +1,28 @@
+{
+  "name": "Oryx",
+  "masterSha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: unshortened swept-back straight horns, black face mask, dark leg markings, both visible ear tips, full natural tail and four separated hoof endpoints are visible. Near ear blade is readable beside the horn base. Top horn margin is tight; far ear root and upper limb attachments remain partly occluded. No inferred hidden anatomy.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 140,
+      "y0": 95,
+      "x1": 1124,
+      "y1": 1059
+    },
+    "margins": {
+      "left": 140,
+      "right": 129,
+      "top": 95,
+      "bottom": 194
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

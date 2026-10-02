@@ -1,0 +1,30 @@
+{
+  "schema": "cf.c173-source-authoring/v1",
+  "writer": "audits/C183_REFERENCE_SUCCESSORS_20261002/author-first-two.mjs",
+  "writerSha256": "6299fdbd7c2188168459cc7cf43daa22914ef0119d91160d63df827c780d6719",
+  "retentionHelperSha256": "a4783e5c5d2ff99f9ccde8aba8428a73f8519c6bfb8ae21ff2b408c25acd738a",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt",
+  "masterSha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+  "authoringSha256": "f516bedde1816b69ad00f54ebda433f7ab911b70022bce1fed31dfb0edb90c8c",
+  "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+  "subjectSourceSha256": "5ed04dcf712b75a98c55baa71fc0837443746b0d1935d1a8f093e5ea7c97d257",
+  "sourceEvidence": [
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/source-evidence/generation.json",
+      "sha256": "578cad59d61b4ae027bd1a21a4f41afc8ef0e7b836cd0f4dfa4f6426f9e8ae78"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/source-evidence/request.json",
+      "sha256": "be54fd1d33e6829697b0f08d6a5cdcdccc98859789ec94efc5398c317871c809"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/source-evidence/prompt.txt",
+      "sha256": "933ffe68172e5a819954ca94dfd9f3ea5a4b56e059a9cb195b9313047d2cbe02"
+    }
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

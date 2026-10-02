@@ -1,0 +1,14 @@
+{
+  "id": "23-prawn",
+  "name": "Prawn",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-844f3a84-2b6d-4029-b543-aff418a9542f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b",
+  "bytes": 1342040,
+  "promptSha256": "78f93a60d61eb576b187dbd57c7127c99e2dbf50d53fe0a8ae4f42290d5bf363",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

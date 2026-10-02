@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "conservation",
+  "id": "20-hornbill",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/prove-contours.mjs",
+    "20-hornbill"
+  ],
+  "helperSha256": "84b7756870b1ba8bced0424048e5e92833d32cfe166117e5dbf2918f51e748eb",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/conservation.log",
+  "logSha256": "00b7c91c3136b45fe7ad5117db01c69cc7d36bec5a52dbbb8efd643377a20e3d",
+  "nativeRuns": 0
+}

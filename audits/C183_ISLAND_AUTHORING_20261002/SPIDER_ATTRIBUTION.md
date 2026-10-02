@@ -1,0 +1,9 @@
+# Spider: the structural component is a real pedipalp
+
+The automatic C207m fit's **21.9% front-appendage** refusal and the independent C173 manual fit's **9.1% remainder island** concern different authorings. Both are retained. `04-spider/original-diagnosis.json` binds the latter to its exact source, authoring, record, binding and published ownership.
+
+The manual refusal is **1,938 pixels**, source bounds **[535,664,574,741]** on the1254square painting. Full-size review of the source and isolated remainder identifies the left short mouth-adjacent **pedipalp**, not a walking leg or an expendable fur sliver. Its visible paint touches `leg1farknee` along18 four-connected boundary edges because that walking leg crosses the palp's proximal attachment. The symmetric other short palp is retained in the main cephalothorax component. The remaining components are smaller limb/chelicera contour edges.
+
+The existing arachnid graph has no dedicated palp joint. The original authoring explicitly retained both palps with the cephalothorax rather than miscounting them as walking legs. Reassigning the disconnected palp to the nearest walking knee would be anatomically wrong; declaring its paint absent, deleting it or increasing5% would also be wrong. Therefore the exact manual fit remains **HELD**, with no automatic island move applied.
+
+The authorized single source-painting successor in `spider-source-successor` asks the generator to separate the existing front walking leg and palp in projection so the palp's attachment remains continuously visible. It retains two short palps, eight walking legs and both chelicerae; it is a new painting for later independent authoring, not a pixel-preserving correction to this old fit. The original and all refusals remain immutable. No runtime/template/cap change and no native test are part of this delivery.

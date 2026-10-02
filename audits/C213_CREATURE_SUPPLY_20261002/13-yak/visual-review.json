@@ -1,0 +1,28 @@
+{
+  "name": "Yak",
+  "masterSha256": "27de0750acf13570f3a6dd14eec24dad687e9e23f881449c4bf46a8497bffd35",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original inspected: four exposed hoof endpoints, long natural shaggy coat, shoulder hump, upcurved horns, long fully haired tail and visible near ear. The coat still hides much of the knee/ankle/root anatomy; no cleared coat or inferred limb chains are claimed. Far ear is not independently legible. Horn and tail approach side margins; unchanged framing observer decides. Tail coat and pale shoulder coloration require species/style review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 77,
+      "y0": 304,
+      "x1": 1185,
+      "y1": 961
+    },
+    "margins": {
+      "left": 77,
+      "right": 68,
+      "top": 304,
+      "bottom": 292
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

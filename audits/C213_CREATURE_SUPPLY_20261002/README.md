@@ -1,0 +1,21 @@
+# C213 creature source supply — 2026-10-02
+
+Twenty-four separate imagegen originals are retained at their native 1254 × 1254 dimensions, without resizing, cropping, local repainting or replacement. These are source candidates with recorded refusals, not accepted creatures or reference-pool entries. Dakk authorized the batch; parent owns signing and delivery.
+
+The roster contains 18 targeted source repaints of refused C110 ungulates and six first supplied canonical identities: Gibbon, Leech, Sea Squirt, Banana Slug, Prawn and Crab. `selection.json` binds the coverage-210 exclusion list, previous refusal evidence and exact correction reasons. Previous originals remain intact.
+
+Nineteen requests use the unchanged production canonical compiler. The five specialized source identities use an explicit audit-only compiler extension for their named family layouts. `transform-receipt.json` records every exact transformation; 26 controls pass, including mixed-route and wrong-name refusal, unchanged existing layouts, exact source replay and continued production refusal of unsupported specialized routes. This is not a claim that the entire batch used an unchanged compiler. Prawn replaces biologically incompatible Krill; real extra swimmerets, two Sea Squirt siphons and the shellless Banana Slug remain explicit.
+
+Every packet preserves `prompt.canonical.txt`, the final exact `prompt.txt`, canonical subject inputs, request, generator receipt, untouched master, visible-anatomy observation, full-size visual review and master-bound pattern check. `pipeline-proof.json` verifies the canonical-to-final prompt composition, exact compiler/ART_KIT/DiscoveryAtlas hashes and the 18-repair/six-new split. The final prompt adds recorded source visibility and composition instructions around the preserved canonical prompt. Those instructions are requests, not measured anatomical presence.
+
+The unchanged source observer completed in 5.21 seconds during the allocated offline slot after the parent I5/develop terminal notice. All originals are native 1254². Twelve pass the existing 8% clear-margin test; twelve refuse against the same 101-pixel margin: Kudu, Impala, Oryx, Gaur, Antelope, Reindeer, Yak, Takin, Sheep, Dromedary Camel, Banana Slug and Prawn. All refused masters are retained unchanged. `observations.json` records the exact bounds, including Antelope's top margin of 100 pixels: no rounding exception was made.
+
+Five pattern observations pass (Zebra, Kudu, Impala, Gazelle and Antelope); the other 19 have no requirement under the unchanged canonical pattern owner. Pattern PASS is restricted to those markings. Impala has a clearly painted fifth leg/third foreleg and is explicitly **REFUSE_EXTRA_FORELEG**, regardless of its pattern result. No anatomy count was relabelled to make it fit.
+
+Other full-size holds remain in each `visual-review.json` and the pipeline proof. They include natural coat/overlap concealing far roots, hidden far ears, stylized Reindeer/Caribou antlers, Sheep's still-long woolly tail, Gibbon's raised hand and uneven contacts, Leech's cylindrical/deep-fluted terminal rendering, Sea Squirt's root-like base/internal lattice and one-aperture template limitation, Banana Slug's ambiguous mouth, and incomplete independently visible Prawn/Crab walking chains. No absent/hidden anatomy declaration, rig, static motion, native film or biological acceptance was manufactured from these paintings.
+
+The six first-source masters were sent to the reference author early. That independent authoring work belongs to its separate audit and cannot retroactively change these source observations. The review sheet is a convenience thumbnail sheet; full-size original inspection supplied the recorded visual findings.
+
+The sibling read-only mailbox was checked again at batch end through C183, whose native window is terminal/released. Parent C213/C216 coordination governs local reservations. This packet ran no native epoch and made no product, registered-pack, mailbox, ROADMAP or Git changes. No further generation or corrective loop is included.
+
+`delivery.json` is the frozen inventory. `freeze.mjs` verifies exact original-generator byte equality, prompt/style binding, native dimensions and normalized paths before writing it. Saved records use repository-relative or ~/ paths and the owner name Dakk only.

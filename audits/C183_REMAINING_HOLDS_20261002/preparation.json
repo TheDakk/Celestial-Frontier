@@ -1,0 +1,7 @@
+{
+  "firstPreparation": "REFUSED: selected fit is ignored and absent locally; no candidate was produced",
+  "recovery": "Read-only exact sibling fit copied; native source hashes will be checked before publication",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/flounder/fit",
+  "recordSha256": "1c6d430cd74712a1ba61e294c2b87a9868396f5b2b377ab02c3266c579c483cc",
+  "bindingSha256": "5dad3ae6bb51b7ac32f1969f7e6dd67bb0436588deeae973147d5ad8b729ca91"
+}

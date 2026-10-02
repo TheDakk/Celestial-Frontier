@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gibbon",
+  "masterSha256": "9acfc1f229b16105161d00a71fd88d3e762ad7f799e3d33b701ea68acfbb94b7",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

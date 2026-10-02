@@ -1,0 +1,8 @@
+{
+  "id": "freshwater-lake-v2",
+  "medium": "water",
+  "recipe": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-delivery-recipe.json",
+  "far": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.webp",
+  "mid": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-mid.webp",
+  "near": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.webp"
+}

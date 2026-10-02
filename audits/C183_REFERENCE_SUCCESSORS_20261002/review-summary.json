@@ -1,0 +1,44 @@
+{
+  "schema": "cf.c183-reference-review/v1",
+  "rows": [
+    {
+      "id": "01-leech",
+      "status": "REVIEW_CANDIDATE_HELD",
+      "fit": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01",
+      "recordRecipeHash": "f7ad928963cae5d32fdcf592c06515ae7c252c43b4ea27a17e132684191dc096",
+      "staticRows": 10,
+      "actionSamples": 1210,
+      "sourcePixelChanges": 0,
+      "controls": 7,
+      "islandCap": 0.05,
+      "remainingMovableIslands": 0,
+      "nativeRuns": 0,
+      "qualityAccepted": false
+    },
+    {
+      "id": "02-sea-squirt",
+      "status": "REVIEW_CANDIDATE_HELD",
+      "fit": "audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/fit01",
+      "recordRecipeHash": "df82f8b7961d53568646e2537787f5fb256e498d2cf9f1f40e6048214c43ebd3",
+      "staticRows": 10,
+      "actionSamples": 1210,
+      "sourcePixelChanges": 0,
+      "controls": 7,
+      "islandCap": 0.05,
+      "remainingMovableIslands": 0,
+      "nativeRuns": 0,
+      "qualityAccepted": false
+    }
+  ],
+  "sourceHolds": [
+    "03-banana-slug-hold",
+    "04-prawn-hold",
+    "05-crab-hold"
+  ],
+  "fullSizeInspected": [
+    "master",
+    "ownership-preview-01",
+    "joint-preview-01"
+  ],
+  "qualityAccepted": false
+}

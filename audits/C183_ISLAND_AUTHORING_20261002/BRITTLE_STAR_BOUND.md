@@ -1,0 +1,7 @@
+# Brittle Star: ownership and geometry are separate refusals
+
+Full-size source inspection confirms five complete long, narrow, curved arms attached to a small visible disc. The C207m automatic transfer from other radial references misses four large appendages, including the reported 14.9% top component. Its `score.json` also records rear 15.5%, front 18.6% and downward 18.2% unassigned appendages. This is not an isolated top-pixel repair.
+
+The existing independent manual authoring at `audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/authoring.json` already assigns all five visible arm chains. Its source-bound intake refused before masks at the unchanged radial arm/disc proportion contract. The independently tabulated arm/disc ratios are **8.025, 9.656, 8.768, 8.363 and 8.860**, above the existing **8×** maximum (`radial-bound-observation.json`). The centre is the observed disc centre and the legacy `bell` landmark is the observed disc rim. No invented jellyfish anatomy is implied.
+
+Reassigning the automatic top arm cannot make this complete manual geometry admissible. Moving the centre, inflating the disc, shortening an arm or weakening the bound would falsify the source or exceed this audit's authority. No repeat intake is useful on unchanged geometry. The exact painting and earlier manual authoring remain retained, with a **geometry-contract hold** and no fit or global reference claim. A separately authorized radial scale decision appropriate to a disc animal is the concrete next dependency; this audit changes no runtime or threshold.

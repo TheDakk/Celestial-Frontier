@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Zebra",
+  "masterSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+  "required": [
+    "bold black-and-white stripes continuing onto the legs and belly"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "bold black-and-white stripes continuing onto the legs and belly",
+      "status": "PRESENT",
+      "observed": "Full-size original: bold black-white stripes continue over body, belly and all four visible legs; upright brush mane, both ears, bare upper tail shaft and full dark tail tuft are retained. Four hooves are separated, but far upper limb roots remain partially behind the near limbs/body. Tail is continuous and clear of the hind feet. No authoring or motion claim."
+    }
+  ]
+}

@@ -1,0 +1,2278 @@
+{
+  "schema": "cf.c183-audit-delivery/v1",
+  "status": "FROZEN_REVIEW_HELD",
+  "base": "audits/C183_ISLAND_AUTHORING_20261002",
+  "files": 453,
+  "totalBytes": 78966302,
+  "sha256Scope": "Every pre-manifest file; manifest excludes itself.",
+  "inputs": [
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/auto-transfer-refusal.json",
+      "bytes": 581,
+      "sha256": "3c5eaf726c53849721d1de034a749cea744211852e5b61cf7b4a9438ce2287b7"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/binding.json",
+      "bytes": 1449782,
+      "sha256": "8f82492016c1c51f83e86132554c7cd9301d78b96ed860d4d959cc53dd541c94"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/declaration.json",
+      "bytes": 20195,
+      "sha256": "27627efd0f6b30a5a7527787d58babcd65ac1bb50f0201998951dc064196dfa5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/atlas/c173-specialized-spider-part-ids.json",
+      "bytes": 8664,
+      "sha256": "b9ed8952e0e66c62482243cf7243b47b71cbb1b40a42a1f2af13aa108b6a67a2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/atlas/c173-specialized-spider-part-ids.png",
+      "bytes": 453136,
+      "sha256": "e35d365ef668f767501cd8cca10aff718ac86c287471a15fc78cc7e89734788a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/atlas/receipt.json",
+      "bytes": 3490,
+      "sha256": "7f27f92ee5d5075844cccff9ed8c40bb7602d12ac20758667d21835f4fc4722c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/binding.json",
+      "bytes": 7185,
+      "sha256": "233840de5e481b427355a33ee2292abb8ef07d9322a46020036ef8a10bb8b942"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/keyed.png",
+      "bytes": 1630468,
+      "sha256": "816d782bdcbfab54d6949e0b1700a2d4a993863daf444e8d0d427c738f61de89"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/manifest.json",
+      "bytes": 3604,
+      "sha256": "5b58f2166ac9e86a966a9a4dcd4a577dfac3ef4d3221ae11bdebd22b74fd5229"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/ownership.png",
+      "bytes": 19705,
+      "sha256": "44dcf1a6341c14290c84f1333866192063a6f62a1a0c4c2c91e9a7361e0645f8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/abdomen.png",
+      "bytes": 181874,
+      "sha256": "25b27be663dfc21989d9ab8e96f088e62dcffd45fa291d5b0ecc5bcfc631c6e4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/cephalothorax.png",
+      "bytes": 75728,
+      "sha256": "3d8580b16a8ebc298380f456ce55380add2c16854ba94d962daf14d98a047560"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/chelicerafar.png",
+      "bytes": 6705,
+      "sha256": "e857bcd738ecd78f2c17447b7792cfe5dd78e8cf83d1c9c76071fec128a3e8ef"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/cheliceranear.png",
+      "bytes": 7616,
+      "sha256": "5e0d7b02aa7477892631f303647dcb55b5b2671347ed7d211e4a532a701cf535"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1farfoot.png",
+      "bytes": 5411,
+      "sha256": "6fd64c8570fbbb7b1a986851081f48e2499b886d6c75fca6af26add02e090791"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1farknee.png",
+      "bytes": 6601,
+      "sha256": "888cda7dfa7a0c9d4bbdcef296891e53980f1fe320c5d41f47ac867a8044187e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1nearfoot.png",
+      "bytes": 6070,
+      "sha256": "c572eaff55441fee4913ebcf318451f4e7fecbbb77d376c5dfea0177c624a164"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1nearknee.png",
+      "bytes": 6667,
+      "sha256": "e603c1c592ff79644bfcf58f2f7a4b261be54d75434497a2a3aece87eeba0a6f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2farfoot.png",
+      "bytes": 30998,
+      "sha256": "e40ea03bbf6e9f600272d30c5544881bfd8b89c306d4d073e364858aa8f2083e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2farknee.png",
+      "bytes": 10641,
+      "sha256": "cc0e0a080046f83f25da1b64a0af08a5723ad9a5e6a2560606f3c511b7680404"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2nearfoot.png",
+      "bytes": 27213,
+      "sha256": "f3d04daa00cb3fb4bd092b35f7ba3fc2b88805d46d266cb1ed5b2fd8b42e9c79"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2nearknee.png",
+      "bytes": 9653,
+      "sha256": "960854750ee58e8965ef991584f5965591f8fff05e7a30002e0236bab51dd860"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3farfoot.png",
+      "bytes": 24443,
+      "sha256": "d60f7aca59c5d7d61fa7f54db6f92d41eaab5c78feca5418c7ea135d3c934d72"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3farknee.png",
+      "bytes": 13889,
+      "sha256": "caab9afd897c2803720a00ede2d7018e59fc3f5050e8b1b6fad9453fa9829a0b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3nearfoot.png",
+      "bytes": 23752,
+      "sha256": "3dff1aa4ed15843dfd233f7b1a9ed5328289aec7de1ba609f2b828e05bb23d07"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3nearknee.png",
+      "bytes": 16735,
+      "sha256": "3f213d077889e2fa865446c368cab462f4212171ec3b097320138860cb1a6641"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4farfoot.png",
+      "bytes": 12071,
+      "sha256": "96ee371960a0b476a32f3cbbff99cb469ab8f1491c453beaa4b8073d4d4782a4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4farknee.png",
+      "bytes": 15913,
+      "sha256": "fe1b8ab64dab5e88a5416c1a18c06f2ec340bde0e39f9a3abdeb487dabb43b99"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4nearfoot.png",
+      "bytes": 14595,
+      "sha256": "bbe23311eb7302e1464e5ddf28a2cda8bef06a2dfb87459ea8628846cf0df2fe"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4nearknee.png",
+      "bytes": 9301,
+      "sha256": "d5a66281180604f7beb20cbf2c85099ac86cd30e29b1e4e0da334245963c5c46"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/root.png",
+      "bytes": 328,
+      "sha256": "e5ef3dc3fb51c20eec1b8bf3314dae648b6a4ae199b8f459647ee6c9e7db4af3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/receipt.json",
+      "bytes": 5687,
+      "sha256": "68d498fd5dfb0dc9de58c8d3f457b42b5e20a549622388dff9f4a50841dd30e2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/pre-split-binding.json",
+      "bytes": 963186,
+      "sha256": "99629d969080569db2ee73ebc510e7ccad44e748dc387c7b0870642fedf0c6fd"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/record.json",
+      "bytes": 7366,
+      "sha256": "5ca1e333e777719e214ffd2ce6699925898779fa22b9b94bef0775cf0a9058e1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original-conservation.json",
+      "bytes": 1187,
+      "sha256": "163b8b0f0a36baf259cb1a26a1e3a07305889fdc3fe713546518b166e5cdf8c9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original-diagnosis.json",
+      "bytes": 23321,
+      "sha256": "816d1380f6781a2cd66490ca37d57da29f4219fd6bd57da6a06aa50577a2f389"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original-remainder-islands.png",
+      "bytes": 21316,
+      "sha256": "66eb5418c9741922ff811ac2fd70ca6021b2928d3eae909452d950f1cdd1855f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/authoring.json",
+      "bytes": 16173,
+      "sha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/master.png",
+      "bytes": 1339094,
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/presence.json",
+      "bytes": 104,
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/subject-source.json",
+      "bytes": 2221,
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/binding.json",
+      "bytes": 1270649,
+      "sha256": "e16ea49b44009a1daa98ef9e4e468f1c2793abf7ecd470739286e9eced8ac9b2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/declaration.json",
+      "bytes": 10087,
+      "sha256": "5353d66e32842b4f2fcaa33d596abe48f805c7b993041e83c70b7508c0e80c20"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/atlas/10-grouse.json",
+      "bytes": 6994,
+      "sha256": "3d0a0817dde36480fb60ab6d03d087f4d20e102a971c103bc5c74ebc84655a6b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/atlas/10-grouse.png",
+      "bytes": 497310,
+      "sha256": "2ad6154e5a0b12017ad4f3ef87b912cd570a66bbbb7f2c5851fc4b18f794a0fd"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/atlas/receipt.json",
+      "bytes": 2914,
+      "sha256": "23ee8087737d5834783c626e24ba45e80c49dfd41c6e3d5199b506ef3bd00908"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/binding.json",
+      "bytes": 5811,
+      "sha256": "8b694df593b27d5724e96bca47bd9867945b627587feb5a9813433f49aa5c23e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/keyed.png",
+      "bytes": 1561584,
+      "sha256": "396762b27e2f328ab1439276b8a0d6fe5d7504317fbe94866d182fa4167f51b3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/manifest.json",
+      "bytes": 2835,
+      "sha256": "ac6b570d6b38d1426f374c81498c8ad9c83177817e77cc6ee64e1a8c87c71ba1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/ownership.png",
+      "bytes": 15315,
+      "sha256": "82af21188156889f36232409e972c017f4619feec5aef45dceaab1f0ab982812"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/beak.png",
+      "bytes": 5326,
+      "sha256": "bcec63e2b35a6ecdb43b999dc6d7efff1495efc68035696aa7a8feb414bd9ebf"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/body.png",
+      "bytes": 61974,
+      "sha256": "2a147094a2b0309f3902c5931566d571a4c157f1242e66ec7582484b4f37a831"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/chest.png",
+      "bytes": 20575,
+      "sha256": "5548918e7c5c6edf30f3cffb78de6b72a9ea20369be8781464aa0db4e098b115"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-foot.png",
+      "bytes": 14085,
+      "sha256": "45225cb2215fbb27d1be211d53537f6fb89797d35eeaa586f188b12e93c18d86"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-shin.png",
+      "bytes": 7338,
+      "sha256": "ca6f6194e57ca80caff96fb3f222c0a93d12b5ea0f5fb2c8dfbe4da0e28310ab"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-thigh.png",
+      "bytes": 12941,
+      "sha256": "aba92f99bf185d2f535539fb7847128af78f7edc8dbd105389fd70d24d296872"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-wing-flight.png",
+      "bytes": 32769,
+      "sha256": "33291deeafb7db151fb80e9f5c8b6b1de470ec8db6668729d56cbf9851b532b7"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-wing-root.png",
+      "bytes": 19445,
+      "sha256": "859f1a13e76e13abbaec9634d8fa856d1207b29433e0048be48ae1f2a6665bb3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/head.png",
+      "bytes": 28848,
+      "sha256": "b0665ed7e238ab57f378d407f4601bc09641a5b84e8d060d66fbe4565bc84790"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-foot.png",
+      "bytes": 14351,
+      "sha256": "56f9bdedc9bf62bed85eb4d1e66367c4dd63892f0fbf213eb247a95df0d5d106"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-shin.png",
+      "bytes": 5318,
+      "sha256": "54db8251a5359aa9948589fc5fb030528c7ca47cc310d6877a176720d9587b52"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-thigh.png",
+      "bytes": 23860,
+      "sha256": "a5717ca99da3a82da5749e404b6d2ed3bf15e0d3e7df9f9bff4b4d58cc6fc9cf"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-wing-flight.png",
+      "bytes": 168816,
+      "sha256": "a0766ff3dfbc679c19c32fde9a9a922551e943d733194fc833923ee50468fcd4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-wing-root.png",
+      "bytes": 48122,
+      "sha256": "a2193dbb1fce6661b1dad52ad0a600f6632cb50729d3b05aaff6afe4b71c1b6b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/neck-lower.png",
+      "bytes": 25703,
+      "sha256": "40e026bb4d37d18fc2017c829f43e7802b482bdf08726b7b134b7da8b3b3496e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/neck-upper.png",
+      "bytes": 10502,
+      "sha256": "fca044dd0551cc5237e6c5c05e60515e7a77d93f5a13213a23c1dd7993fd7c84"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/tail.png",
+      "bytes": 67721,
+      "sha256": "72f41d645d17c42ac1c0ffd01da7d38455b6cebd0874a142dee49452994758cb"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/receipt.json",
+      "bytes": 4656,
+      "sha256": "af0824d78d9778861b7a20c6f806b645ab26ff471402ab3e9d23549976a5dc30"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/pre-split-binding.json",
+      "bytes": 860747,
+      "sha256": "0d7585cb59f87c3348233c3d24c7c1e4c9e5e013c76c8a2d4333923b5fbda904"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/record.json",
+      "bytes": 5961,
+      "sha256": "391ca4a6e7c37925e221ae8d2964f495abdcab51788660bc68d4556594437a73"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate-held-faint-left.png",
+      "bytes": 481156,
+      "sha256": "599826f0e36b94d53d95536ada9b05d172b3bf91c826e48616a196db01830d4c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate-held-faint-right.png",
+      "bytes": 479632,
+      "sha256": "472702b4364ad495fb98a4be3c14498f2a8b1fbbd0abdfb84f23669e995846a8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate-initial-idle-left.png",
+      "bytes": 489390,
+      "sha256": "2d78e222a4503426fd01fa03c2aa30d1a38fd3e7fbcd0f2027bfd6343c29b3b3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate-initial-idle-right.png",
+      "bytes": 488568,
+      "sha256": "4f82fa4342d9ab94445583494ecc5c944ec66dd5ced92d917219112a04c35f8f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate-mid-faint-left.png",
+      "bytes": 420041,
+      "sha256": "57317e93f82294505bdf2f83b37a5431174e244bd115625cb84dd88d41551534"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate-mid-faint-right.png",
+      "bytes": 417182,
+      "sha256": "583d8b7e2bb0a1fd6114231be0a09fbd9e62ebf8a9240f9f5a46891afe342ae2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate/authoring.json",
+      "bytes": 9924,
+      "sha256": "a4b814ffc412fd7d8cfc2760fec3ed0d84746bc68b26db15d25cf5df19e80790"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate/master.png",
+      "bytes": 1297661,
+      "sha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate/subject-source.json",
+      "bytes": 2321,
+      "sha256": "e1b26b13b59c5e092027e45ee52588a62068a038c8dc0e0ebf4796e93b71612b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/comparison.json",
+      "bytes": 41760,
+      "sha256": "edbdea4582f5c7dfd957321ec83a085bb844813f68fd6b02d19476daa651de47"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/conservation-execution.json",
+      "bytes": 528,
+      "sha256": "0867f8dd272c842ce806bf9b964af35f689ed1787b42d7d1fb37244e1c6f8ac9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/conservation.json",
+      "bytes": 2432,
+      "sha256": "e10ea121c5fda3915fd68d71b1281b6388f564116b02005da734dbd5e08ef699"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/conservation.log",
+      "bytes": 656,
+      "sha256": "a270747992b1afd7bfc54fe19c9f4e49bb8e56d3e50c8ca14419ecae8d4d5ac2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/contour-delta.json",
+      "bytes": 2171,
+      "sha256": "39b5156856391abfb3c8fdb1ba12ad419f793fb39b921709ea175f489aa341be"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/binding.json",
+      "bytes": 1276952,
+      "sha256": "729e1788639ee1bede8cd542364ac586cfaee2ddcaf6e16769bebd5a16643680"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/declaration.json",
+      "bytes": 2009,
+      "sha256": "468ab1d4ddbaba655058ebe03594d23c01dc547f5dfb053f3de87602c093190e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/intake-provenance.json",
+      "bytes": 3210,
+      "sha256": "42f4537cc641a2d6ab5f950b8742e61c3e27d9d3e49ea783623e4445d6f2d77c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/label-authoring-receipt.json",
+      "bytes": 2664,
+      "sha256": "5903b0baa442557902f829a8893b3b7206cea6945bdc7642659b80ea2f8a312c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/labels.png",
+      "bytes": 40493,
+      "sha256": "a30f7b190cdec9506d1f9925efe8f0bd52b0a77cc566f91ebd8351d8f1608c6c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/atlas/10-grouse.json",
+      "bytes": 6986,
+      "sha256": "d62069db32c66397ef9068ee9c5bfe175080f0a0956e5e63879c5b967ea1756a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/atlas/10-grouse.png",
+      "bytes": 496869,
+      "sha256": "a1a1575c11b91f53dd37a3296a1800e7ea6e0b7cadfea9ddf30a84d29eccba40"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/atlas/receipt.json",
+      "bytes": 2914,
+      "sha256": "ab36c83c978bb6eae048064d7d67e1d4094ce55f4fa1aca6b5a73e65de043d7b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/binding.json",
+      "bytes": 5802,
+      "sha256": "b64272dac9e505e19feb5720c49c42d9b96a69dddc7963f3f36e44c740153287"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/keyed.png",
+      "bytes": 1561584,
+      "sha256": "396762b27e2f328ab1439276b8a0d6fe5d7504317fbe94866d182fa4167f51b3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/manifest.json",
+      "bytes": 2835,
+      "sha256": "238db9af85824d39a8f79ace185e976b14da44b3ca4312e2b65da47cc37213cf"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/ownership.png",
+      "bytes": 15241,
+      "sha256": "57a520985f2c6892fd1a892aab70252cc4476500e7430e85f75bebe73aa57404"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/beak.png",
+      "bytes": 5326,
+      "sha256": "bcec63e2b35a6ecdb43b999dc6d7efff1495efc68035696aa7a8feb414bd9ebf"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/body.png",
+      "bytes": 53350,
+      "sha256": "145e3f5ecc78191d1a38acd8d6b01340b6694fdb2442519dc2ef7e9fb6900726"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/chest.png",
+      "bytes": 20575,
+      "sha256": "5548918e7c5c6edf30f3cffb78de6b72a9ea20369be8781464aa0db4e098b115"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/far-foot.png",
+      "bytes": 14085,
+      "sha256": "45225cb2215fbb27d1be211d53537f6fb89797d35eeaa586f188b12e93c18d86"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/far-shin.png",
+      "bytes": 7338,
+      "sha256": "ca6f6194e57ca80caff96fb3f222c0a93d12b5ea0f5fb2c8dfbe4da0e28310ab"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/far-thigh.png",
+      "bytes": 12941,
+      "sha256": "aba92f99bf185d2f535539fb7847128af78f7edc8dbd105389fd70d24d296872"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/far-wing-flight.png",
+      "bytes": 32769,
+      "sha256": "33291deeafb7db151fb80e9f5c8b6b1de470ec8db6668729d56cbf9851b532b7"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/far-wing-root.png",
+      "bytes": 19445,
+      "sha256": "859f1a13e76e13abbaec9634d8fa856d1207b29433e0048be48ae1f2a6665bb3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/head.png",
+      "bytes": 32225,
+      "sha256": "0380c674511de1e8e2c6edd238ba84c1c1cb79c46632c1c8234a3a888355b365"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/near-foot.png",
+      "bytes": 14351,
+      "sha256": "56f9bdedc9bf62bed85eb4d1e66367c4dd63892f0fbf213eb247a95df0d5d106"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/near-shin.png",
+      "bytes": 5318,
+      "sha256": "54db8251a5359aa9948589fc5fb030528c7ca47cc310d6877a176720d9587b52"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/near-thigh.png",
+      "bytes": 23860,
+      "sha256": "a5717ca99da3a82da5749e404b6d2ed3bf15e0d3e7df9f9bff4b4d58cc6fc9cf"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/near-wing-flight.png",
+      "bytes": 168816,
+      "sha256": "a0766ff3dfbc679c19c32fde9a9a922551e943d733194fc833923ee50468fcd4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/near-wing-root.png",
+      "bytes": 48122,
+      "sha256": "a2193dbb1fce6661b1dad52ad0a600f6632cb50729d3b05aaff6afe4b71c1b6b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/neck-lower.png",
+      "bytes": 25703,
+      "sha256": "40e026bb4d37d18fc2017c829f43e7802b482bdf08726b7b134b7da8b3b3496e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/neck-upper.png",
+      "bytes": 14652,
+      "sha256": "750dd9618333529a10acf6029a4c9b230179e97d2109080270f34e7c59785c37"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/parts/tail.png",
+      "bytes": 67721,
+      "sha256": "72f41d645d17c42ac1c0ffd01da7d38455b6cebd0874a142dee49452994758cb"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/parts/receipt.json",
+      "bytes": 4836,
+      "sha256": "e2fd3fbc700c752f443e94f599607b81b82be13f2389259c5b952165c3fe9d6e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/pre-split-binding.json",
+      "bytes": 860250,
+      "sha256": "4266280ef6343e6aaaffe8c4c93d6970fd61b90a8cbcd8b9654d84928673bbfc"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/receipt.json",
+      "bytes": 2447,
+      "sha256": "b4b59e3ee5befe27e39c7325028f9efcfe73c02285c9edaeea9015c5f388b8d4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01/record.json",
+      "bytes": 6041,
+      "sha256": "1a9ecd5c8e1b872cf4c07feb1928dbb8729fa85dac3f783450351957157d470d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/intake-execution.json",
+      "bytes": 617,
+      "sha256": "6c82834fe2727d69c8df71410db6bae19b43c86a525da5e06709626edc58da93"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/intake.log",
+      "bytes": 307,
+      "sha256": "96e1497ed7d0779d0ce34678842ebf549ab15eb39f566aac4eedc51f75a78e84"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-diagnosis.json",
+      "bytes": 16537,
+      "sha256": "7b7e5ebaad3889051da1cce387bb38c1307e6f45c6d29effe25551697fa73933"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-held-faint-left.png",
+      "bytes": 481919,
+      "sha256": "967ae883335d737e8f380bdd2b618fad9cdf1ae35cca92cc33be65b49e1ef81b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-held-faint-right.png",
+      "bytes": 480492,
+      "sha256": "7d2277489859caf989e3b4292fd04a1cd13f46cfc691199d9a5a7203c9fd09c8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-initial-idle-left.png",
+      "bytes": 486111,
+      "sha256": "2e4e120aa85b62f5907666de397f7a324289791acd2c1ceaf867a70eb2650b36"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-initial-idle-right.png",
+      "bytes": 487852,
+      "sha256": "95d10fc92b1aea7e89990b93e02c5cb50a30bbeee6f327a905998c659f8b1976"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-mid-faint-left.png",
+      "bytes": 420390,
+      "sha256": "7196b1a82a47113c7eb46e2bfd9eb781d4a0fe7278cf618f9e686ab8a60b43f7"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-mid-faint-right.png",
+      "bytes": 417894,
+      "sha256": "1aa03eecf36eae2b2303283a971fdaf47b79bd24b238d6fb147c582037ed5d4e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-native.json",
+      "bytes": 363975,
+      "sha256": "3ce1b886758ace11ff5ec45f5e818aa27396596d2aa4ce9ffe21fa01f20717ca"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-native.png",
+      "bytes": 1531227,
+      "sha256": "764bea36d652d402a6a765c5e5a874cd76d1003dc73334f03f66f94e02dfafe8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-remainder-islands.png",
+      "bytes": 16018,
+      "sha256": "8b2e797411b5ff8e3c0cbe5735546eb4faef87393c9ea83ad2b461c1aa3ef7f4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/authoring.json",
+      "bytes": 8900,
+      "sha256": "7725cdaea0b76b3938dd57bf042d3e32cfea64f5dd34ca5dc22d532fea0ce176"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/master.png",
+      "bytes": 1297661,
+      "sha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/subject-source.json",
+      "bytes": 2321,
+      "sha256": "e1b26b13b59c5e092027e45ee52588a62068a038c8dc0e0ebf4796e93b71612b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/static-execution.json",
+      "bytes": 626,
+      "sha256": "f9477df40f75cf8bb2b9b4f02e4e95827ba93f1b4e56159ec84f077da9167cb7"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/static.json",
+      "bytes": 8225,
+      "sha256": "1df7495c95522a14169be0e86163052b97b6021cc2000d63505aa6f272e44292"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/static.json.sources.json",
+      "bytes": 15780,
+      "sha256": "1f85bf9631b6251bf96eb055db2bbf174d245e5d57d5eea1a44cd0e921ba7283"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/static.log",
+      "bytes": 2174,
+      "sha256": "782efcb2d123a8cc460e6cc9a969b19ab2808a869f4e550b234401ce9d5a9dc5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/binding.json",
+      "bytes": 1277224,
+      "sha256": "59187cc42c787f301605cc2e3a1c13066f17cdc35182bffae901e48a8802ef70"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/declaration.json",
+      "bytes": 9367,
+      "sha256": "1505af19c86b7cc8768018df3372a4f0bcf07b49a5f17c637a5d0f3dea1d0987"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/atlas/20-hornbill.json",
+      "bytes": 7006,
+      "sha256": "2faac2a9c571453d83bd9cd316dabfd2c8b7ed74a5c085337f0b388b213c8d68"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/atlas/20-hornbill.png",
+      "bytes": 437942,
+      "sha256": "464f1be8cf916555705bc245f4f562162b4d2c61b0b4cb4e43b6448045138483"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/atlas/receipt.json",
+      "bytes": 2916,
+      "sha256": "557cf5f9258ef59a61da70df94d8ddb55612472696a7a055e68d55bf465a8a06"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/binding.json",
+      "bytes": 5821,
+      "sha256": "1446db8098c002f0c6da445ee527cff761b6a4661b8f2a54f13cf2cc2bd1561d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/keyed.png",
+      "bytes": 1511510,
+      "sha256": "95d002cedff4729681b82ba42295fef0858746952a7d8225f55dc1da46eed550"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/manifest.json",
+      "bytes": 2837,
+      "sha256": "7851f9eca5f9c5926cd857ebf60b2154326d188bad4c14d3f50870315fc894d5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/ownership.png",
+      "bytes": 16062,
+      "sha256": "c2124a0d88a311ea625da036bf32f41a129a8d86d5281bd41d0a84c98fd461bb"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/beak.png",
+      "bytes": 16443,
+      "sha256": "313e629c60265f8058b576167cb66c3f67a43284b723248de6923b2de16d8af2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/body.png",
+      "bytes": 92942,
+      "sha256": "1c772e95ccfb40cb917dfee85d75560fa5f3ad296d78268c727505a4a29f9448"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/chest.png",
+      "bytes": 52730,
+      "sha256": "fff902589dd41b9232113472a530dffa6c4ee68a610ffafcc9e2d2480a249d95"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-foot.png",
+      "bytes": 7167,
+      "sha256": "921a815c7e6c48c35b72f42ea92c374980df65c56e31e096a44e4ae43b571888"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-shin.png",
+      "bytes": 8030,
+      "sha256": "a41f0f70d7d810c8e8c928fb3a246c16bd33a47efa106f000ec705677e0c8c02"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-thigh.png",
+      "bytes": 6471,
+      "sha256": "0a33e36e0b7f8de39f9283fd5426762d3c7314e604b41da0e065d6a5c318c8a1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-wing-flight.png",
+      "bytes": 13839,
+      "sha256": "7fc8e07f8a56712d1db28ccbf8a5b478cfc7dc5e51c4652990a247aac6e21a7e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-wing-root.png",
+      "bytes": 6248,
+      "sha256": "d670e380de45f5f7aaa5f8b0808cc3ca25848db6e9e7654f04c83fdcd5d830dc"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/head.png",
+      "bytes": 83246,
+      "sha256": "04ad86ba1e6af35209e4d3a9b568b00cf2d4cf749d06c99907931cc387ee4d69"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-foot.png",
+      "bytes": 8700,
+      "sha256": "4d7fbd015dd203b8d09ffcdb229ef3125b664327b852ab41047fd9d37f09d86d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-shin.png",
+      "bytes": 2123,
+      "sha256": "0af232a78abacf0d958c44c8f4c8722d148c466e8bcc43f7651a9df98ea96e96"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-thigh.png",
+      "bytes": 6959,
+      "sha256": "267d5cfebd4cc6675d65849b146426ae18be39d1eefa329988a06d588acaf447"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-wing-flight.png",
+      "bytes": 60821,
+      "sha256": "b5c18704a8cefe58f4012ec577048b8b7c81aef81edb2ebc01f0d8c2440fe861"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-wing-root.png",
+      "bytes": 15597,
+      "sha256": "4e14dd8c55e515e327ca092bba0b75887ba7305687b92eef6fe45f6c915f9053"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/neck-lower.png",
+      "bytes": 11424,
+      "sha256": "c1f8f5565738227bb8ae95585c21fcdc42e25ba36ad7140ffc3080dd08fea1b4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/neck-upper.png",
+      "bytes": 7932,
+      "sha256": "33aed50b31fa3c8d78d3acef4d880d703d5b3eed2a75ca160c2cfd565091a626"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/tail.png",
+      "bytes": 95864,
+      "sha256": "3958401995bf8c2eb98c443aca705db57624bbe218ad3bfb3cbdf1a3816ab977"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/receipt.json",
+      "bytes": 4657,
+      "sha256": "a52f284346e54372fac334147148d440493441656590140c55d27828cc63f4c8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/pre-split-binding.json",
+      "bytes": 867516,
+      "sha256": "ed5df32bcf179b4257a462317fd84f8f698d53ffbc416a72884dd41e6c15bcc5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/record.json",
+      "bytes": 5949,
+      "sha256": "3debdc485933e3297e04ade4b2a2439072f18165874310e0bc540180b0ae4711"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate-held-faint-left.png",
+      "bytes": 414341,
+      "sha256": "e3b3badaadf4dec61ddc428a80cdf806a01b93bcfef2ef2779a1ab64df75cd69"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate-held-faint-right.png",
+      "bytes": 412496,
+      "sha256": "0243573bef502a2c233347e31616a2d5ef8808cec2da9fd39f36ab1584797e63"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate-initial-idle-left.png",
+      "bytes": 427034,
+      "sha256": "5ca46469b8bcb94a3ecf77b2745eb64e5eab40827a7c6e0d92cc0932eeb4a367"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate-initial-idle-right.png",
+      "bytes": 425539,
+      "sha256": "00dd1937a07fd8d7282e09516d0a9d27d75acacc16f8685da5b74a0e2096f834"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate-mid-faint-left.png",
+      "bytes": 375145,
+      "sha256": "1757d24c75fb20eb447429e85dc54b88d531764362d0f04a70932c256e17494f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate-mid-faint-right.png",
+      "bytes": 371311,
+      "sha256": "a5b0514b90203cbebda73ed02acdc00feea5a7f3014ae24f9d0690a52316bf3c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate/authoring.json",
+      "bytes": 9778,
+      "sha256": "a295c5dd3fe7fdf0a1ae0a6fc5b27da6512dab807c73badc2348fb557b4279a6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate/master.png",
+      "bytes": 1267023,
+      "sha256": "cc44d4c6f8fcb34ffe1f40b66685895948f2705558ed8af78622f0ca016c1020"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate/subject-source.json",
+      "bytes": 2712,
+      "sha256": "6ccd8b776aeccbe859e1c2983faac37cdbe59af0d5d470c6341bb97a7ef8c11c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/comparison.json",
+      "bytes": 41858,
+      "sha256": "c0df35f9c4fd594771176f2afdf971e8610cea68c94917ecf9bb0baf0810ff5e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/conservation-execution.json",
+      "bytes": 534,
+      "sha256": "917c7faa3cd52998dc743da94650e54060522ff19083df9d5bda855747e914c7"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/conservation.json",
+      "bytes": 2294,
+      "sha256": "55ca94bd79fc08ea4cfc374f4dc702da5c712a77bca8185c5b135a382c454ebd"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/conservation.log",
+      "bytes": 615,
+      "sha256": "00b7c91c3136b45fe7ad5117db01c69cc7d36bec5a52dbbb8efd643377a20e3d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/contour-delta.json",
+      "bytes": 2567,
+      "sha256": "f58afb0690e4bc897363cc0d39bad01e57d216992c95e1504c44affe61c2fcb9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/binding.json",
+      "bytes": 1225502,
+      "sha256": "13ae0af3a5cbb05bbcda11f990bc451543a734b70f7cc9b86b753ef2ce172f66"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/declaration.json",
+      "bytes": 2009,
+      "sha256": "7f8e666a49be4225441fd75106f2055b915e7e105ae81984f837fd53f5a7dfca"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/intake-provenance.json",
+      "bytes": 3226,
+      "sha256": "2cce0bd3e7d45c997e22b797b79a72d4c43c72cd55225c22db47e8846cb6c244"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/label-authoring-receipt.json",
+      "bytes": 2755,
+      "sha256": "e6fcfbcc021d5b3fdb9382debd3d202876ab6d84e7af65db00e983301d5e0093"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/labels.png",
+      "bytes": 41265,
+      "sha256": "044133a39dfbf4bc89f6cb7e6e98d7226739f09de8a0745a745c7d5648f4622d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/atlas/20-hornbill.json",
+      "bytes": 6995,
+      "sha256": "d4d45bdb05dcd5d9f01eff73df162368f3bf98e87333693ce303f4b5ec300c6a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/atlas/20-hornbill.png",
+      "bytes": 433398,
+      "sha256": "d1e77c71bd472858dedd00722c8edf19fb18a4819443ade8e5c9de9a101717d8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/atlas/receipt.json",
+      "bytes": 2916,
+      "sha256": "d13ed37b1500221eabb4957538d89e9d8afbc93015ddefb65c7f22a4289f6b34"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/binding.json",
+      "bytes": 5810,
+      "sha256": "c9f0c3ac9b87c447487ef66460e3762314115766d0993f72c415b1184aa78ed9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/keyed.png",
+      "bytes": 1511510,
+      "sha256": "95d002cedff4729681b82ba42295fef0858746952a7d8225f55dc1da46eed550"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/manifest.json",
+      "bytes": 2837,
+      "sha256": "ad132aff8e1085fc6b6ab60033756e1150f0d53466b8a64d1c99ede9b190b33b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/ownership.png",
+      "bytes": 15861,
+      "sha256": "1f66631626748d7511ec3a1469494855b50caaf8c8146aa8605847939958aed6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/beak.png",
+      "bytes": 19218,
+      "sha256": "1e153cd24a9d9d1beb026f687a8d2ed7827596dd70751a3e692ba462dcdd6d25"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/body.png",
+      "bytes": 67074,
+      "sha256": "85deaaf5fdc191ee5f5f193beb1c50a43ca6c0ce41c0411afc3a1ced45142ff2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/chest.png",
+      "bytes": 52730,
+      "sha256": "fff902589dd41b9232113472a530dffa6c4ee68a610ffafcc9e2d2480a249d95"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/far-foot.png",
+      "bytes": 7167,
+      "sha256": "921a815c7e6c48c35b72f42ea92c374980df65c56e31e096a44e4ae43b571888"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/far-shin.png",
+      "bytes": 8030,
+      "sha256": "a41f0f70d7d810c8e8c928fb3a246c16bd33a47efa106f000ec705677e0c8c02"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/far-thigh.png",
+      "bytes": 6471,
+      "sha256": "0a33e36e0b7f8de39f9283fd5426762d3c7314e604b41da0e065d6a5c318c8a1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/far-wing-flight.png",
+      "bytes": 13839,
+      "sha256": "7fc8e07f8a56712d1db28ccbf8a5b478cfc7dc5e51c4652990a247aac6e21a7e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/far-wing-root.png",
+      "bytes": 6248,
+      "sha256": "d670e380de45f5f7aaa5f8b0808cc3ca25848db6e9e7654f04c83fdcd5d830dc"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/head.png",
+      "bytes": 85592,
+      "sha256": "55be38d14ca6ae2746f6778d35e38b7acf5255f66643e7b2d32550f6c7babeb5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/near-foot.png",
+      "bytes": 8700,
+      "sha256": "4d7fbd015dd203b8d09ffcdb229ef3125b664327b852ab41047fd9d37f09d86d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/near-shin.png",
+      "bytes": 2123,
+      "sha256": "0af232a78abacf0d958c44c8f4c8722d148c466e8bcc43f7651a9df98ea96e96"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/near-thigh.png",
+      "bytes": 6959,
+      "sha256": "267d5cfebd4cc6675d65849b146426ae18be39d1eefa329988a06d588acaf447"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/near-wing-flight.png",
+      "bytes": 60821,
+      "sha256": "b5c18704a8cefe58f4012ec577048b8b7c81aef81edb2ebc01f0d8c2440fe861"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/near-wing-root.png",
+      "bytes": 15597,
+      "sha256": "4e14dd8c55e515e327ca092bba0b75887ba7305687b92eef6fe45f6c915f9053"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/neck-lower.png",
+      "bytes": 11424,
+      "sha256": "c1f8f5565738227bb8ae95585c21fcdc42e25ba36ad7140ffc3080dd08fea1b4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/neck-upper.png",
+      "bytes": 13239,
+      "sha256": "97b7c420c074450348542b70e8e46ce34d662767e7e313e5177d93ae87adc6ba"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/parts/tail.png",
+      "bytes": 106355,
+      "sha256": "f27e295eafc4ddd6fe44d9f03ca3c7e7542a729566fbe97741e67513899e1e71"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/parts/receipt.json",
+      "bytes": 4836,
+      "sha256": "b1c353399e25c0e71942bc8e314fd9b0bf95f1b91b43bac0f84914b942f16d19"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/pre-split-binding.json",
+      "bytes": 840395,
+      "sha256": "c0241cb6b02fe5a65993b3177e43c5597648302f5d526a1f1fe76c91d409864e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/receipt.json",
+      "bytes": 2453,
+      "sha256": "633def5b9ba448c24af24fed0ff8ada50d5920b644ecf76ce39ee20acda8ed21"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01/record.json",
+      "bytes": 6018,
+      "sha256": "139ed5d2fd25f44869c6460bf15de6a46c63de4c51290796a298921f68db4592"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/intake-execution.json",
+      "bytes": 625,
+      "sha256": "36a544d446e597306170303b3ee64ce182b48cf90c33c09cc66aea7668ab6b95"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/intake.log",
+      "bytes": 309,
+      "sha256": "b592159010a8ecf9829493d76e93afe8ad253538a4f728c74a6e42a7de804349"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-diagnosis.json",
+      "bytes": 17510,
+      "sha256": "dd5c032a9ad0c9804af5731071bb07e6a160422663ee6ca298105ed1c52ead0d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-held-faint-left.png",
+      "bytes": 414757,
+      "sha256": "fcc206e109c163dc305f45ca011682c5a5287d3adee7b051fddb10be64ecabc0"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-held-faint-right.png",
+      "bytes": 412705,
+      "sha256": "1ade111b0f4825bec20979797b362d1b8d4cdc2661a690d29203e2e557c1cebb"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-initial-idle-left.png",
+      "bytes": 423508,
+      "sha256": "9a21c47c06a25db41d20a0eada9b40e20b3d504da7c8e469d6ac610172c7fe58"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-initial-idle-right.png",
+      "bytes": 419137,
+      "sha256": "f5ff984c86be83d968283d43bc5b0e96be57257a2734a311e04d1468df7688af"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-mid-faint-left.png",
+      "bytes": 385103,
+      "sha256": "be3659244d119453897c8643f340185fa88fd5f9c2c6b63608fd51176fbb0c71"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-mid-faint-right.png",
+      "bytes": 383317,
+      "sha256": "acdd32050c6ebf86b838bdbb059e883540891462d9c35e72e1fda3f40347191b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-native.json",
+      "bytes": 360399,
+      "sha256": "25870b5c0ab213d1f105306679d389db8da3d906064585c65ea83e0b0953dc22"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-native.png",
+      "bytes": 1515440,
+      "sha256": "80a6bf57c9b1811030a3fab9dc67dc5db098bf584d550687945b6879828422e6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-remainder-islands.png",
+      "bytes": 30308,
+      "sha256": "e6b6d47726263bd454e43e0993e252d14bbbcaa6b48f25f5b664ec8b1a491aa4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/authoring.json",
+      "bytes": 8430,
+      "sha256": "abd3995abd4f15b954ad802f307041b0273d24b68b5743d4056f30b0c5e6409f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/master.png",
+      "bytes": 1267023,
+      "sha256": "cc44d4c6f8fcb34ffe1f40b66685895948f2705558ed8af78622f0ca016c1020"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/subject-source.json",
+      "bytes": 2712,
+      "sha256": "6ccd8b776aeccbe859e1c2983faac37cdbe59af0d5d470c6341bb97a7ef8c11c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/static-execution.json",
+      "bytes": 634,
+      "sha256": "9f1725cff9739ba9fd9c40406ceb67e29bed7d56812e63f6591347ae292e1221"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/static.json",
+      "bytes": 8258,
+      "sha256": "a228e3c1471b11fc281f31fdb1e9c1f70b17b66f394a16c68ecf597820a5e8ca"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/static.json.sources.json",
+      "bytes": 15780,
+      "sha256": "694e93b647276c2fb76837f445b02416b0a179200e71717719d7452957cfd6ec"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/static.log",
+      "bytes": 2174,
+      "sha256": "625c64b476b1a3e25160f467627d45f790604041aef3daa82c59ea268a07a2e9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/binding.json",
+      "bytes": 1166133,
+      "sha256": "719c046dd1a83fbf2c994d754804694c43f4ccc8274890fea535388c165b04cd"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/declaration.json",
+      "bytes": 9363,
+      "sha256": "6b88e23131489d267195fc05eeefc9289f1e8d7e2b49bc403947920f04cd3b23"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/atlas/21-parrot.json",
+      "bytes": 6990,
+      "sha256": "3fa2629c44139134822f1b26af426d32e6345ba9b1989b6e4c5e8125f250e6b6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/atlas/21-parrot.png",
+      "bytes": 377196,
+      "sha256": "ef5fc2defc1b7bb24e9c9215e4603e6aafa20e23ef43f096fa2d66d25da9c96a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/atlas/receipt.json",
+      "bytes": 2914,
+      "sha256": "297bc512a1d77f4b9601f5bf904d12a86008c7dcab9424d76317c543afa940cb"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/binding.json",
+      "bytes": 5808,
+      "sha256": "3f5e00f3e8e18b3acbfd742a721de5a967ef3a7b7ed8ecbecd6db4c03e8d8389"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/keyed.png",
+      "bytes": 1442259,
+      "sha256": "e47fb7254c91cf6acaa7fe2a07a959d92445c586653904d0b6a23297d2cbd4ae"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/manifest.json",
+      "bytes": 2835,
+      "sha256": "78d6470914afb754c8be74198d2e1b73aaa2e7d6ee5791cf61b8b4eecf6ef3ca"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/ownership.png",
+      "bytes": 14724,
+      "sha256": "0113a1148d70f956a45899de09e7fa4942dc774a13cb47393ae586aba1dc5480"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/beak.png",
+      "bytes": 7935,
+      "sha256": "55ee14f3ca9296199e5910a028d215195c6128e23c36848614ba0835ca23d214"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/body.png",
+      "bytes": 91446,
+      "sha256": "757aeae347a937b343a0309a984c7a03ac3af32f1a282b6f05609aef1f3cae5a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/chest.png",
+      "bytes": 39216,
+      "sha256": "c04e247ed234a8dfc2a4a86fdf23877be5310a263951adc909b99a233ab2ca6b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-foot.png",
+      "bytes": 9177,
+      "sha256": "c1db4978743bd3ef2e45a3110892bc8bbac1dfc4087ae7d5945b65208e3be99d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-shin.png",
+      "bytes": 3521,
+      "sha256": "98db68793e53510edb0b0fd9833f488d8cce6a4ddd041b26f2aa11136694ecc9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-thigh.png",
+      "bytes": 7098,
+      "sha256": "277d223c8a20800e40c02ffd6bfd68fee944c4e8915ac00d69701bb0d88e9086"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-wing-flight.png",
+      "bytes": 13141,
+      "sha256": "2da3499495c3bc849801c4dc5365a3385f7e6eecca0eafca69306e61acf2a975"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-wing-root.png",
+      "bytes": 14231,
+      "sha256": "a6b1d2f0e868a1f1b5536e558fbf995a587af7a011b2ace905f61e87e12df823"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/head.png",
+      "bytes": 70322,
+      "sha256": "87a87be7818ad5ad16339e8bb121e38e011b1d9e6a081a5acf4f42b6260e0722"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-foot.png",
+      "bytes": 11532,
+      "sha256": "71061e7b0ce02c1c71a465af40b23816a0f521d4b0526b66ab8ce2829f16f4aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-shin.png",
+      "bytes": 5771,
+      "sha256": "fbdf5c745710b79271c5c9fab393bec11ab315a2823ff927e7b4c10a2d103c08"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-thigh.png",
+      "bytes": 7215,
+      "sha256": "f1964adf257ec59efa939c3eee4186a1588029c17b126c03ec098a6ec9cabcab"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-wing-flight.png",
+      "bytes": 73162,
+      "sha256": "b398ea3ddb0d6be306158a6be1b3436ae015790741d0177b966d830454ce783d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-wing-root.png",
+      "bytes": 28016,
+      "sha256": "c2fa3d36c77b2488ce1c25c2599373452b89fe4d9450371db539d156c8b8282c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/neck-lower.png",
+      "bytes": 10252,
+      "sha256": "0e7570777f96ec51b28258763b26fe3b1b1488f870ada4b05ee0a247dafa5033"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/neck-upper.png",
+      "bytes": 13950,
+      "sha256": "4b0b17bb3fb244bc0fa66e2317818c2e40756f0d31a44819dde2ada64a280027"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/tail.png",
+      "bytes": 53570,
+      "sha256": "09bbfcb1a7ce93d165607603a9db286a7a3e0d4c5adf3548a6eba4799b6b7a27"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/receipt.json",
+      "bytes": 4655,
+      "sha256": "531e0bdf18c9300b52f43a47eb457ef122b456c56fc851456d01eb2ae823b24e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/pre-split-binding.json",
+      "bytes": 790058,
+      "sha256": "c43cd23a49cb879fbd971d88fc41b125535fbaaa456a9920d8e41a2fbf031071"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/record.json",
+      "bytes": 5952,
+      "sha256": "e95eef3571e9866f79901ec54faead7657342002a1eab62e5bcf5e8e91fc2a23"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate-held-faint-left.png",
+      "bytes": 357449,
+      "sha256": "36a53ef07a3ac07e7a872f4ab48dadbe93c47c28897e10ff7162ecebbb37bf56"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate-held-faint-right.png",
+      "bytes": 358100,
+      "sha256": "e28302590d5cd7bfcd2b21fe1642e857a6018b90bc093fe3398f6a86a5f36b7e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate-initial-idle-left.png",
+      "bytes": 367349,
+      "sha256": "f2cfc0beb8b2eeb73ce008ac441865d984a1b882abc4a0efa0d128a38e72e339"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate-initial-idle-right.png",
+      "bytes": 363146,
+      "sha256": "12fbced6645da24360d0fd9b20a734e33cd03a6a4ece554527f016e2c4768936"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate-mid-faint-left.png",
+      "bytes": 331740,
+      "sha256": "ec0442749ef362a8ce9093bd2090e9225f79af2630943dfac95e488516783103"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate-mid-faint-right.png",
+      "bytes": 330132,
+      "sha256": "739e98b8761e751edc5d56b477037e992d132f231622e3d55028899256f53579"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate/authoring.json",
+      "bytes": 9702,
+      "sha256": "00fd9b903f09fdfe91ef8f5054a8a0d6d729eedd86ba279b16ae73cce2c4ce84"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate/master.png",
+      "bytes": 1195735,
+      "sha256": "27a1f78647d3a7a20e2b203129838b235c1d2b9eebac54875e4a26d11f7d004b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate/subject-source.json",
+      "bytes": 2788,
+      "sha256": "2cf03c69e6713b46c37b1389c93946e811449aa91f4d99524598285d70c0e3d1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/comparison.json",
+      "bytes": 41766,
+      "sha256": "d74b37b3bdfb687e8a65de25491a2416fb25b5024b52c724c539457f19818a25"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/conservation-execution.json",
+      "bytes": 528,
+      "sha256": "ef0e44a04c26c66ad69d53f7762e6382ab38dfdbabab5e92cba71f8a21a931a2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/conservation.json",
+      "bytes": 2773,
+      "sha256": "293fc7e66c02cbd143310709e63c0c81982dc72927c48a3c10d86148e9c1921b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/conservation.log",
+      "bytes": 787,
+      "sha256": "d4fef7efea6ff9a22d1ef7e804cd501465133d8731ec95c86b82d8cd5b43b779"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/contour-delta.json",
+      "bytes": 2476,
+      "sha256": "59d9ee765286f4e04c5b6179143f48e3f80ecd5cf59827cea9c6aecb06cc9dca"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/binding.json",
+      "bytes": 1166525,
+      "sha256": "99a9d8915c822c96d36c365ed04e32a925db7edacb6ec2fa59ac5fcb1689ee07"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/declaration.json",
+      "bytes": 2009,
+      "sha256": "b1fccd6902ec740b17c5ec821570709eeb619bf0fea2cbfbf72ee5733709a118"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/intake-provenance.json",
+      "bytes": 3210,
+      "sha256": "b5b4fd24f4428a59e5b91836cb924aa9c7a581be5e2bafa83fb369f3c9d57d6e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/label-authoring-receipt.json",
+      "bytes": 2751,
+      "sha256": "f4b7f11906169b3493d50b36f59ab2dba2857ce893587005f7db157307e34e62"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/labels.png",
+      "bytes": 40434,
+      "sha256": "12e9766bda8959e0a60353f0fc8027a13b871c05e598d646bd90e09e84605368"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/atlas/21-parrot.json",
+      "bytes": 6992,
+      "sha256": "59c9e6f52b9a011bbf7f8a240eabd189620610378bd79380921141bc4ce23a75"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/atlas/21-parrot.png",
+      "bytes": 374112,
+      "sha256": "416fdad7f1f678be554f52975284d2fc1478275e98c2c9b74ced969ffce622b4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/atlas/receipt.json",
+      "bytes": 2914,
+      "sha256": "0fd82c3db192c2b725688fd8790497701858ea23fb88f3cbef07649109797322"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/binding.json",
+      "bytes": 5809,
+      "sha256": "a1fecc77c75121c4eee76ff769ba8ca4e4953661215360f695d92f3da682d734"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/keyed.png",
+      "bytes": 1442259,
+      "sha256": "e47fb7254c91cf6acaa7fe2a07a959d92445c586653904d0b6a23297d2cbd4ae"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/manifest.json",
+      "bytes": 2835,
+      "sha256": "523a0220621129643d9637947f9ca7e461774a91e468d2195af3f98d9aac241f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/ownership.png",
+      "bytes": 14614,
+      "sha256": "73bbfa76a6d63b71293b297972b422c414fe9f2d68770acb18ff44097e456e56"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/beak.png",
+      "bytes": 11040,
+      "sha256": "ee2b5940ec51bea6777b321fef4618fa8570d45c4454a4c67f2f29a0b6ff6aff"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/body.png",
+      "bytes": 78352,
+      "sha256": "ae556244f36794431981dad5dc6cfe2afc3ced9af56e467b86a4676cb3bd2dd8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/chest.png",
+      "bytes": 39216,
+      "sha256": "c04e247ed234a8dfc2a4a86fdf23877be5310a263951adc909b99a233ab2ca6b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/far-foot.png",
+      "bytes": 9177,
+      "sha256": "c1db4978743bd3ef2e45a3110892bc8bbac1dfc4087ae7d5945b65208e3be99d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/far-shin.png",
+      "bytes": 3521,
+      "sha256": "98db68793e53510edb0b0fd9833f488d8cce6a4ddd041b26f2aa11136694ecc9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/far-thigh.png",
+      "bytes": 7098,
+      "sha256": "277d223c8a20800e40c02ffd6bfd68fee944c4e8915ac00d69701bb0d88e9086"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/far-wing-flight.png",
+      "bytes": 13141,
+      "sha256": "2da3499495c3bc849801c4dc5365a3385f7e6eecca0eafca69306e61acf2a975"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/far-wing-root.png",
+      "bytes": 14231,
+      "sha256": "a6b1d2f0e868a1f1b5536e558fbf995a587af7a011b2ace905f61e87e12df823"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/head.png",
+      "bytes": 72804,
+      "sha256": "a4f6955a1ef549445a12f9b8c8c682b5a9332c3d443f29fba37b592f3d2b5073"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/near-foot.png",
+      "bytes": 11532,
+      "sha256": "71061e7b0ce02c1c71a465af40b23816a0f521d4b0526b66ab8ce2829f16f4aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/near-shin.png",
+      "bytes": 5771,
+      "sha256": "fbdf5c745710b79271c5c9fab393bec11ab315a2823ff927e7b4c10a2d103c08"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/near-thigh.png",
+      "bytes": 7215,
+      "sha256": "f1964adf257ec59efa939c3eee4186a1588029c17b126c03ec098a6ec9cabcab"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/near-wing-flight.png",
+      "bytes": 73162,
+      "sha256": "b398ea3ddb0d6be306158a6be1b3436ae015790741d0177b966d830454ce783d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/near-wing-root.png",
+      "bytes": 28016,
+      "sha256": "c2fa3d36c77b2488ce1c25c2599373452b89fe4d9450371db539d156c8b8282c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/neck-lower.png",
+      "bytes": 10252,
+      "sha256": "0e7570777f96ec51b28258763b26fe3b1b1488f870ada4b05ee0a247dafa5033"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/neck-upper.png",
+      "bytes": 19747,
+      "sha256": "fdcb8acd150932fbf1404caaa51402ca3ac5bd497029391d19f08fc444e58628"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/parts/tail.png",
+      "bytes": 53570,
+      "sha256": "09bbfcb1a7ce93d165607603a9db286a7a3e0d4c5adf3548a6eba4799b6b7a27"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/parts/receipt.json",
+      "bytes": 4835,
+      "sha256": "b84ebc8cc21422d0fa26a5519495a79c2887dadf2ea08a16dcf78654b0276d38"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/pre-split-binding.json",
+      "bytes": 780590,
+      "sha256": "2719204fd8a3fd7cb9cf44f19128bd8b20d862003e206d42943580f848133ac5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/receipt.json",
+      "bytes": 2448,
+      "sha256": "6a08a97dcaf093662a0a8f43893350dbee41e881292cf00f6b3f921303df6268"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01/record.json",
+      "bytes": 6021,
+      "sha256": "f916585765cedad340b70829b8d92004ca28624f2e5c2d1d88ef9385e5d4bc9d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/intake-execution.json",
+      "bytes": 617,
+      "sha256": "e08e7f2498767b53eb3368ef996b698795318ed432e91f439019b0cc16390553"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/intake.log",
+      "bytes": 307,
+      "sha256": "d8520ba19b43fbb35ecb6c3c4ca7bfc0ff649118b574b092421859f2ff5e4a36"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-diagnosis.json",
+      "bytes": 17741,
+      "sha256": "3831ccb2a108b35380ea899c7ccc36bf69f2bf44f17ab8684d56d692e0deccf9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-held-faint-left.png",
+      "bytes": 355577,
+      "sha256": "cbaa6b55d1bff08c0d76375a9949641dbfddd4dc030ed5994eed3f93a434e34a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-held-faint-right.png",
+      "bytes": 356612,
+      "sha256": "4a85def2b3a1d394eb943ef49140d6351a7bf82f81e9d787faca745684af2107"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-initial-idle-left.png",
+      "bytes": 365703,
+      "sha256": "99badf78a4fba34b5199fe51862d7eafa5a92ab443a2bc125120d816ce5ed64f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-initial-idle-right.png",
+      "bytes": 363042,
+      "sha256": "9e43954788a2caff365f9bd5943c310338e5d1d000377e94227ca1afec0fabdb"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-mid-faint-left.png",
+      "bytes": 328728,
+      "sha256": "ed85509ea32ccf2c919bd3e05a172541bf1314b27b9a03760314b9eb5f43afab"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-mid-faint-right.png",
+      "bytes": 328702,
+      "sha256": "a6a078e9f6b5999531a95fd91636ef8386335427276d7fd6ae812f323da2647a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-native.json",
+      "bytes": 362858,
+      "sha256": "dfdfa0bf5f0cdce97fa63fa0e0794a2abf5fff23e26a56c22c7e786dec62a37a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-native.png",
+      "bytes": 1511549,
+      "sha256": "56f362b61a797534e6cf91fc7d73abdd432a013cad99ddbc29817dc68c93692b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-remainder-islands.png",
+      "bytes": 21499,
+      "sha256": "537e7b12a43535f4f2ec8654be42770f5f8c64c46cc9a0c16810685e417712be"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/authoring.json",
+      "bytes": 8410,
+      "sha256": "8013fe48088e5bd0fd59a505f0a85789ba04ca019469ef846ab9845b2638b110"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/master.png",
+      "bytes": 1195735,
+      "sha256": "27a1f78647d3a7a20e2b203129838b235c1d2b9eebac54875e4a26d11f7d004b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/subject-source.json",
+      "bytes": 2788,
+      "sha256": "2cf03c69e6713b46c37b1389c93946e811449aa91f4d99524598285d70c0e3d1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/static-execution.json",
+      "bytes": 626,
+      "sha256": "b54949152cbaf96ab7d3a2c360874fca8def57df30d24829a4bda428e3f8abdf"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/static.json",
+      "bytes": 8253,
+      "sha256": "0ecc913594d6d650a730425f628979e4fd028526060a0a5cadfd534d7c6c06f2"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/static.json.sources.json",
+      "bytes": 15780,
+      "sha256": "5678d4827bf5811f17b4394f867fa2ac0eab476137e1763d66e4f130b34ca829"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/static.log",
+      "bytes": 2183,
+      "sha256": "5ae345a39a37800d49072ab7f972f8e85d72a1cbf624aa8a7c2b102853fc945c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/binding.json",
+      "bytes": 1059000,
+      "sha256": "09e397793028036ec1fc1e74086bcc7a45ec4909d86f1057bd482ec2da8f3d0e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/declaration.json",
+      "bytes": 9350,
+      "sha256": "f3a8e04c001586db1b2ac1729344e616bdf96125459415f892fa1c66dcd87960"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/atlas/24-weaverbird.json",
+      "bytes": 6988,
+      "sha256": "e329652e9676016f998254ece0ff996186aa8267233ba14fda66b2e7b645dc0e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/atlas/24-weaverbird.png",
+      "bytes": 292384,
+      "sha256": "bea3a53c89af1764eaf54100bb26fb4d299bfbefaaabc0df3b8e91446e552ab4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "250f14feb75bd84b4f5a51344120124b77e841975dbdd0f4f6632d7b1cf512b5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/binding.json",
+      "bytes": 5804,
+      "sha256": "730791a1b4848cf54a08981e710b1c28b49794f0dad6e601fbbce9b4fa261ec4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/keyed.png",
+      "bytes": 1368625,
+      "sha256": "e7d650fbf82d7897ff573641aa4217c41d2045f09a53c72a9d769a1f1e6ec9a9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/manifest.json",
+      "bytes": 2839,
+      "sha256": "142904998a553ed2782cbad974d76bb048e195c91223076833dc2e1b10d32fff"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/ownership.png",
+      "bytes": 13384,
+      "sha256": "36d0100aa641eaa8697028038f8edd8183089e3f09c74543f686b363d6d62a0e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/beak.png",
+      "bytes": 6988,
+      "sha256": "f26b921b87bf5bd94d9ab2093c13c75d88e0a08b0a49939668f79b5ccc450f08"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/body.png",
+      "bytes": 65610,
+      "sha256": "eaace47b1752c324c89a8747aea9b573d46e4595538111cc73edac2582baf948"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/chest.png",
+      "bytes": 36424,
+      "sha256": "bfd7585ee5422ea8c9145140535eb0c4294f97841b15fb33807178242d23db17"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-foot.png",
+      "bytes": 6237,
+      "sha256": "ae7e9cb522edd88ebf13609fb08967aa89a6d93f626d78a5ffc28b10b98fa932"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-shin.png",
+      "bytes": 4696,
+      "sha256": "cdd96242ae566bf0485717c5f368367d7f99802656f3f5f19920b61b44615b15"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-thigh.png",
+      "bytes": 4409,
+      "sha256": "cb98d808d3d1146712734691f4aad06659b3bd6740997d47442e0e197cf9bf80"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-wing-flight.png",
+      "bytes": 11178,
+      "sha256": "c69ed20822e997d79b1c908fce2eeef4636d414f0a1a25e1ebc63c9836690d55"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-wing-root.png",
+      "bytes": 12803,
+      "sha256": "9aa65a2fb6b9499d62ec350637bb8e0f5cb76a20d9ec4bc331bb730a13e7262e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/head.png",
+      "bytes": 35822,
+      "sha256": "78971415b8a27204532b1ba987d984b1b365aa3162ca75cafe148ea67cf8f3b9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-foot.png",
+      "bytes": 6837,
+      "sha256": "1adb1971c8fe5a1376d82bfe572e2f7458b9ac04896c30b9106a00ba311d5d0b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-shin.png",
+      "bytes": 2448,
+      "sha256": "07c11f826f079ceb7eda95dc03bb029ece4ea8baa3daf141e4709b3cbba8f617"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-thigh.png",
+      "bytes": 4000,
+      "sha256": "afd9fa0726d1de3738f55c3f9babbdcd91a67c8974de8839332b5de021f7b7c9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-wing-flight.png",
+      "bytes": 58489,
+      "sha256": "68456ce215c5c2a476b8743b68a453203d3afa60fac17e24428c379502f344e8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-wing-root.png",
+      "bytes": 27232,
+      "sha256": "0c812281b9c8a60f20c72940cd891f4a7c4d6c45860281590df0c6d4abd178d9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/neck-lower.png",
+      "bytes": 13304,
+      "sha256": "f6c3cb849ebb95b43e65d82aa591611214019cfdb755d768a9b4bf70867806b9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/neck-upper.png",
+      "bytes": 14632,
+      "sha256": "277b2e88a30c9143f6c060912fccba9c5fb47b52d2017e80e5ff758e4465c06a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/tail.png",
+      "bytes": 39682,
+      "sha256": "1a6d632e51ff06e9f36b438da0b15f6beaef588294caaf7e67aff7f3c1d0eb0d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/receipt.json",
+      "bytes": 4653,
+      "sha256": "f7d78fd073885aef364889dd68113a4805555b28503b8eee031e6555fddfca1a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/pre-split-binding.json",
+      "bytes": 700330,
+      "sha256": "0d0e9bddd260d1c91c29319ba35dc6e39ce1440edb5d924a96af45f2143304a1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/record.json",
+      "bytes": 5963,
+      "sha256": "a1dfad5a8aeeed82ffcb06b140cce2bd99c9e04ef4bb9635ab7a202406d0aee3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate-held-faint-left.png",
+      "bytes": 277446,
+      "sha256": "bd67f19ecaf89d690bb9a73d6411f4d1add3d9f081c72358553137d57a37fafe"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate-held-faint-right.png",
+      "bytes": 277793,
+      "sha256": "56a3b40dd88c5ec87527757a7a0f48e2b28bcaa86b250e605062448543de06fe"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate-initial-idle-left.png",
+      "bytes": 288883,
+      "sha256": "6114ac12c2a38d0655513f6cbd8644917d9b7aff3b4c68d7c7312c19535614b3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate-initial-idle-right.png",
+      "bytes": 284805,
+      "sha256": "d8cd9e3d5056c0cdc74bfedd045e57ad2a4b90e8f05f87b5dad53c1bef1e57e6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate-mid-faint-left.png",
+      "bytes": 254423,
+      "sha256": "a16446f008c1a9154fbde1dcd2bc1f8718c5ec66a6f077f3c558e697dda69415"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate-mid-faint-right.png",
+      "bytes": 252354,
+      "sha256": "4046ec85741bb30fc458e7616620ad753cb12dc612c83092b535cc87e1cbd620"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/authoring.json",
+      "bytes": 9058,
+      "sha256": "5eed48bec70ed7a1151ffc3e89d4bcb17e222887d86755f6910c696a5b205561"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/master.png",
+      "bytes": 1153215,
+      "sha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/subject-source.json",
+      "bytes": 2848,
+      "sha256": "df04aff66efa4af463f4f67d83a0b355468cd1c63ad731a4e8c9448a36a25203"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/comparison.json",
+      "bytes": 41962,
+      "sha256": "a4df257c9d0e1733cddfa57f322af4b14daf4df38bf76e88bafeedd1cc154a08"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/conservation-execution.json",
+      "bytes": 540,
+      "sha256": "d79bbd3190dc59aa8c3d551d6afb06c27f93fce6700c3a34a305dad5f5c4d0a6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/conservation.json",
+      "bytes": 3055,
+      "sha256": "f2089f022072a7d696e80bb4d64896345271894b99548e92e1a530a93ff19b00"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/conservation.log",
+      "bytes": 898,
+      "sha256": "b9469b60bd122955328e1b7e2875ba04fbfb383ac3394463d2ceb3afd36f2fa9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/contour-delta.json",
+      "bytes": 1700,
+      "sha256": "091679497d92b05009884ed63e42dafc7214e8fb878157698f81bee374ae5964"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/binding.json",
+      "bytes": 1062398,
+      "sha256": "a308c058a156f6fe4e0862c179fe7958f1ff60379d5924d9fc10d57f62c6bab4"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/declaration.json",
+      "bytes": 2009,
+      "sha256": "bcdb039035166021164ebfb936d6092ec61aae4617356a23b5c6249b7466bb43"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/intake-provenance.json",
+      "bytes": 3242,
+      "sha256": "bf84693e32ba9d50be216068366d043f67d38d9df91db220a17b20ead59f3ac7"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/label-authoring-receipt.json",
+      "bytes": 2559,
+      "sha256": "3695b91f0231183db9fd28e474c6e8395d0d290738ce60a96618f84064d441e8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/labels.png",
+      "bytes": 39694,
+      "sha256": "2e583aaea6cad8cdb32fed4c75fc2a71f6647764d5b552f05c93680c94386200"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/atlas/24-weaverbird.json",
+      "bytes": 6991,
+      "sha256": "572594de9b780958ac12839b62721522b1304abcc416ad055e30cb578229527b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/atlas/24-weaverbird.png",
+      "bytes": 291787,
+      "sha256": "e695a19e65b2ccc9b4e009dc7d9c7bd6240457fbce8ffbb5691b7cab11e494da"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "9be57aa6feb5b4b7111cc3c7a716ece5cc8b9951e337840c99927471487b00c1"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/binding.json",
+      "bytes": 5807,
+      "sha256": "36eb10b2c1766e0e4d878dae7f664cf2f1dea7877315a0717d8fba1c3c91c871"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/keyed.png",
+      "bytes": 1368625,
+      "sha256": "e7d650fbf82d7897ff573641aa4217c41d2045f09a53c72a9d769a1f1e6ec9a9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/manifest.json",
+      "bytes": 2839,
+      "sha256": "a51c7c7bbec9e5a89044a44309990eb9bfa9a4ea9ccf5746df42ef0d6c5f3092"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/ownership.png",
+      "bytes": 13340,
+      "sha256": "50b4d3cbb1a03fb54d7ebb859d8bcdb01b7afcf6f7cf7adfe1d3321ef5a7a963"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/beak.png",
+      "bytes": 6988,
+      "sha256": "f26b921b87bf5bd94d9ab2093c13c75d88e0a08b0a49939668f79b5ccc450f08"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/body.png",
+      "bytes": 58790,
+      "sha256": "51d136c2c030b2735e2bececfd32d74304bbbe3cda993c692afb0d3e35e7babc"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/chest.png",
+      "bytes": 36424,
+      "sha256": "bfd7585ee5422ea8c9145140535eb0c4294f97841b15fb33807178242d23db17"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/far-foot.png",
+      "bytes": 6237,
+      "sha256": "ae7e9cb522edd88ebf13609fb08967aa89a6d93f626d78a5ffc28b10b98fa932"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/far-shin.png",
+      "bytes": 4696,
+      "sha256": "cdd96242ae566bf0485717c5f368367d7f99802656f3f5f19920b61b44615b15"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/far-thigh.png",
+      "bytes": 4409,
+      "sha256": "cb98d808d3d1146712734691f4aad06659b3bd6740997d47442e0e197cf9bf80"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/far-wing-flight.png",
+      "bytes": 11178,
+      "sha256": "c69ed20822e997d79b1c908fce2eeef4636d414f0a1a25e1ebc63c9836690d55"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/far-wing-root.png",
+      "bytes": 12803,
+      "sha256": "9aa65a2fb6b9499d62ec350637bb8e0f5cb76a20d9ec4bc331bb730a13e7262e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/head.png",
+      "bytes": 38096,
+      "sha256": "05d2055533479c0c91efa59044c70de9f4f96b2eaa450936ab3c7a941536811d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/near-foot.png",
+      "bytes": 6837,
+      "sha256": "1adb1971c8fe5a1376d82bfe572e2f7458b9ac04896c30b9106a00ba311d5d0b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/near-shin.png",
+      "bytes": 2448,
+      "sha256": "07c11f826f079ceb7eda95dc03bb029ece4ea8baa3daf141e4709b3cbba8f617"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/near-thigh.png",
+      "bytes": 4000,
+      "sha256": "afd9fa0726d1de3738f55c3f9babbdcd91a67c8974de8839332b5de021f7b7c9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/near-wing-flight.png",
+      "bytes": 58489,
+      "sha256": "68456ce215c5c2a476b8743b68a453203d3afa60fac17e24428c379502f344e8"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/near-wing-root.png",
+      "bytes": 27232,
+      "sha256": "0c812281b9c8a60f20c72940cd891f4a7c4d6c45860281590df0c6d4abd178d9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/neck-lower.png",
+      "bytes": 13304,
+      "sha256": "f6c3cb849ebb95b43e65d82aa591611214019cfdb755d768a9b4bf70867806b9"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/neck-upper.png",
+      "bytes": 19626,
+      "sha256": "d3e48d454b6ac540d7fb54e5fea21de69ca5143e9b3070128909299c9b05d654"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/parts/tail.png",
+      "bytes": 39682,
+      "sha256": "1a6d632e51ff06e9f36b438da0b15f6beaef588294caaf7e67aff7f3c1d0eb0d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/parts/receipt.json",
+      "bytes": 4832,
+      "sha256": "2aaaa9d8ada27e8f1eace20c40e372bf55e4ededeb2be8e2d93396d9ae40e43d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/pre-split-binding.json",
+      "bytes": 695219,
+      "sha256": "00d042f91f4d2a0b412c782961931103ec7c744088fe6503264edb4be589cc11"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/receipt.json",
+      "bytes": 2450,
+      "sha256": "c148257149cf3253e3540b5d27aefec6b270f463019f15aabb34f0a34a0bafe0"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01/record.json",
+      "bytes": 6043,
+      "sha256": "a8eccf524270f7c33272c70713c2a0794e1c0d28187f8d6ddfb26ad92226709e"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/intake-execution.json",
+      "bytes": 633,
+      "sha256": "a72ee17451f4f57289c6d25cff69a1e1a907a6da446b8e39babc150f0df543b3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/intake.log",
+      "bytes": 311,
+      "sha256": "c81d175b5cd6fe8552b1b7d950b44948fdfb7776e80452cc80b7fa20cc796040"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-diagnosis.json",
+      "bytes": 18119,
+      "sha256": "eb6c9c2c82e87d88aacd75958e1be34ca1c2686bbb1547cf1f579182ff0ab46b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-held-faint-left.png",
+      "bytes": 278262,
+      "sha256": "8df22a4658d470b60c6597ab41a8f6c828a3654bad48b0c651db207e1c623e4a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-held-faint-right.png",
+      "bytes": 278568,
+      "sha256": "8cce88fe39622d84c7d091a65c8bc824da809109e8a35510ab3bd627494da4ba"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-initial-idle-left.png",
+      "bytes": 286210,
+      "sha256": "e997aa20b38d5a5126e5895fb53e530e5d20e098557a45c2f89a07fde109f0df"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-initial-idle-right.png",
+      "bytes": 283779,
+      "sha256": "50a3cb3622581cc4fbaaaf9e103394946aacbfc852ff6609f28dcea87dd1f173"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-mid-faint-left.png",
+      "bytes": 254526,
+      "sha256": "550eae233b81b0aedbbf7d95a268abf30a2bcce32464d795d99cc0d2faa93084"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-mid-faint-right.png",
+      "bytes": 252626,
+      "sha256": "e80a5fbb0e3cca2603f113c387f19b88973c2ee3bc9fd92e898798b488d58f36"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-native.json",
+      "bytes": 362811,
+      "sha256": "4eb1f4ebbcaf96c07384ff8c664b4892f4b9b074c58daa0962daa2fb31d1559a"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-native.png",
+      "bytes": 1513617,
+      "sha256": "307f44d9292e431c8799176d2a848d404fec6a1f5d2649fc09ac8a5bef2e77ab"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-remainder-islands.png",
+      "bytes": 14813,
+      "sha256": "dc15109a06b42b1cbb57b67a026543b6f243f3dd87acb79b74b6edd650abb587"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/authoring.json",
+      "bytes": 8408,
+      "sha256": "b06773512d417d504ecc9632977fd83d5b17ee4d873612dc273484293e590737"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/master.png",
+      "bytes": 1153215,
+      "sha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/subject-source.json",
+      "bytes": 2848,
+      "sha256": "df04aff66efa4af463f4f67d83a0b355468cd1c63ad731a4e8c9448a36a25203"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/static-execution.json",
+      "bytes": 642,
+      "sha256": "c6532be01092de69bea33e7f4098219b443ca77f3204722fe320a4adc3172565"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/static.json",
+      "bytes": 8283,
+      "sha256": "85ee9e0012d26fa6271db04be934c717ec345d9617c50779e848e80c897850df"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/static.json.sources.json",
+      "bytes": 15780,
+      "sha256": "3681387feddd0b35e34d3b3c64177feb8ff3235afcad2ac219a7cecc650854dc"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/static.log",
+      "bytes": 2203,
+      "sha256": "be79b27344f2e45df1683264fdefabae631a6d5605e22fd73d1c7dcd485871ae"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/author-birds.mjs",
+      "bytes": 3543,
+      "sha256": "154ff72fc16f1be67703270ed8500cd4f0e92813cad2cb6872ee9c6150e5952b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/bird-candidates.json",
+      "bytes": 1532,
+      "sha256": "b11f1c0c4b5e92f4067c4e88e05815462aebfc20c5609292f4713a8e738de603"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/bird-contours.mjs",
+      "bytes": 2647,
+      "sha256": "c3886c366c9894a3e3baaade8cf674527ef34df9af91d409bfcf287c4151793b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/bird-inputs.json",
+      "bytes": 77478,
+      "sha256": "590e9b11fc458f6bc3f693b1ee6e87842ecb9465c167ab30b1665878735a11cc"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/BRITTLE_STAR_BOUND.md",
+      "bytes": 1575,
+      "sha256": "9aaf75ec24b8e21d6cb20b9e3f6a482fb49b2bd1d2d3d6dbc67581e357419f6f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/compare-bird.mjs",
+      "bytes": 5835,
+      "sha256": "71e11a2f72a0578aaea580c0bef2ff0f0af360880d2ef87fdb8f4efbd80732c5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/diagnose-spider.mjs",
+      "bytes": 3882,
+      "sha256": "d088fd96242ddd67c0eb3765c8efaf813a3d26cb7482f3636ceee6e0753a4532"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/intake-derivation.json",
+      "bytes": 852,
+      "sha256": "09cf102d3372b3aa3b7421e462311cfb62429c3f3b4f702f6d095b767d15c5d6"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/intake.mjs",
+      "bytes": 12611,
+      "sha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/prepare-birds-v2.mjs",
+      "bytes": 5208,
+      "sha256": "e43feb2a4fa26f8a20c2321b018ca8dcdbaee84dd1af87f61c92762ae04229e3"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/prepare-birds.mjs",
+      "bytes": 4753,
+      "sha256": "beb3178d8c975a7b3ff5049648730844b79e2948118320cb405a889c1e7328ff"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/prepare-spider-edit.mjs",
+      "bytes": 2959,
+      "sha256": "d42076fb556c41efa8b5c3affd4beab30eb5899e5d567fcc18e30224a51dce2d"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/prove-contours.mjs",
+      "bytes": 5653,
+      "sha256": "84b7756870b1ba8bced0424048e5e92833d32cfe166117e5dbf2918f51e748eb"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/README.md",
+      "bytes": 4237,
+      "sha256": "4f99dee035e63185ff2ae17cecb26cf0050973173fef4329c7bc35a73552130c"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/retain-spider-edit.mjs",
+      "bytes": 2749,
+      "sha256": "70a4eed6a00ee54c7fd5d03816fbe5afc555a39c23b68b290b04dbd975712176"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/retention-refusal.json",
+      "bytes": 705,
+      "sha256": "130bd7ab6af17c1f4e7734c5a53c956cdf4d8dfa531a7d2295644ed5da7f2ce5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/review-summary.json",
+      "bytes": 11086,
+      "sha256": "6ba24b14afed8267175eb28652683003f58e6f4cbcdcbebb93de6702f96b299f"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/run-stage.mjs",
+      "bytes": 1476,
+      "sha256": "ac466a65f615cdf10d750bd9e7b9f03a7bb769a56adbd533b2147a3665092f39"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/SPIDER_ATTRIBUTION.md",
+      "bytes": 1857,
+      "sha256": "8835e0e63acd0112f03bdc657d67c7b64a1f4b7c547f791900fbd12559ccd57b"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/spider-source-successor/generation.json",
+      "bytes": 1001,
+      "sha256": "5b578d94ecca06ef9e7fcceb2b5f9fe6af005fed6e0013a14f8ba3a7083fc5e0"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/spider-source-successor/master.png",
+      "bytes": 1324493,
+      "sha256": "e14cd994b5b6b9cf9a72702b433343d009d0be8c1bfd291696e6917dac8a74ad"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/spider-source-successor/prompt.txt",
+      "bytes": 10325,
+      "sha256": "79271131e446e3448355cda2eb14c2e9684df51c319f18c9d109f667d97da300"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/spider-source-successor/request.json",
+      "bytes": 1139,
+      "sha256": "99191c5411703a236a77b5a687a0b8e6531499092eac8884b8c266f9524371e5"
+    },
+    {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/spider-source-successor/visual-review.json",
+      "bytes": 1017,
+      "sha256": "ea720774232cb16cd1974810439bbdc9ee0e19e862a62d0db2afbece65d3fefd"
+    }
+  ],
+  "nativeRuns": 0,
+  "productChanges": 0,
+  "qualityAccepted": false
+}

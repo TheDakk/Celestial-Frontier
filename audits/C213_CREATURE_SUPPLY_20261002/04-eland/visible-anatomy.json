@@ -1,0 +1,176 @@
+{
+  "id": "04-eland",
+  "name": "Eland",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "fe9c8c355ae1c5b28da96643e77550bb676f97c4ee92f18916a252a6bc2cf187",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 38212,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 89,
+      "y0": 133,
+      "x1": 325,
+      "y1": 251
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1173,
+        "pixels": 4483,
+        "box": {
+          "x0": 264,
+          "y0": 50,
+          "x1": 379,
+          "y1": 197
+        },
+        "attach": {
+          "x": 313.2,
+          "y": 150.3,
+          "relX": 0.95,
+          "relY": 0.15
+        },
+        "dir": {
+          "x": 0.6,
+          "y": -0.8
+        },
+        "class": "top",
+        "length": 120
+      },
+      {
+        "k": 1,
+        "frac": 0.0195,
+        "pixels": 745,
+        "box": {
+          "x0": 207,
+          "y0": 115,
+          "x1": 269,
+          "y1": 132
+        },
+        "attach": {
+          "x": 238,
+          "y": 132,
+          "relX": 0.63,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.01,
+          "y": -1
+        },
+        "class": "top",
+        "length": 35.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0394,
+        "pixels": 1506,
+        "box": {
+          "x0": 46,
+          "y0": 153,
+          "x1": 88,
+          "y1": 267
+        },
+        "attach": {
+          "x": 88,
+          "y": 184,
+          "relX": 0,
+          "relY": 0.43
+        },
+        "dir": {
+          "x": -0.58,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 93
+      },
+      {
+        "k": 3,
+        "frac": 0.1122,
+        "pixels": 4286,
+        "box": {
+          "x0": 71,
+          "y0": 231,
+          "x1": 165,
+          "y1": 342
+        },
+        "attach": {
+          "x": 122,
+          "y": 231,
+          "relX": 0.14,
+          "relY": 0.83
+        },
+        "dir": {
+          "x": -0.2,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 122.2
+      },
+      {
+        "k": 4,
+        "frac": 0.075,
+        "pixels": 2864,
+        "box": {
+          "x0": 214,
+          "y0": 248,
+          "x1": 286,
+          "y1": 343
+        },
+        "attach": {
+          "x": 252.1,
+          "y": 251.9,
+          "relX": 0.69,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.21,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 98.8
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 71,
+        "x1": 96,
+        "cx": 82.7
+      },
+      {
+        "x0": 138,
+        "x1": 165,
+        "cx": 151.8
+      },
+      {
+        "x0": 214,
+        "x1": 237,
+        "cx": 225.8
+      },
+      {
+        "x0": 251,
+        "x1": 278,
+        "cx": 263.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Hartebeest",
+  "masterSha256": "560d0a77af97c399fe0fc34abce499c15f3947b34f1ab5419b188e8d68e318e1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: long narrow face, high shoulders and rearward-sloping back, ringed bracket-like horns, both ear blades, full tufted tail and four hoof endpoints are visible. The exact bony horn pedestal and skull proportions remain an identity review hold. Upper foreleg roots partly overlap; no inferred hidden structures.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 197,
+      "y0": 145,
+      "x1": 1128,
+      "y1": 1050
+    },
+    "margins": {
+      "left": 197,
+      "right": 125,
+      "top": 145,
+      "bottom": 203
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

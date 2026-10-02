@@ -1,0 +1,30 @@
+{
+  "schema": "cf.c173-source-authoring/v1",
+  "writer": "audits/C183_REFERENCE_SUCCESSORS_20261002/author-first-two.mjs",
+  "writerSha256": "6299fdbd7c2188168459cc7cf43daa22914ef0119d91160d63df827c780d6719",
+  "retentionHelperSha256": "a4783e5c5d2ff99f9ccde8aba8428a73f8519c6bfb8ae21ff2b408c25acd738a",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/20-leech",
+  "masterSha256": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1",
+  "authoringSha256": "3de20615d0af6089119c6b4f730bad0d40ab08cdeb3e7623dc13386a252fe400",
+  "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+  "subjectSourceSha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d",
+  "sourceEvidence": [
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/source-evidence/generation.json",
+      "sha256": "d754fce415e333d1d7b8dd7bd8d7bd454b720a421a048e4afeddb29fe1ce45cb"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/source-evidence/request.json",
+      "sha256": "5cddd0606f22dad2f28861abb46d96836a9bc561e572e83abba1dbd7b0a82131"
+    },
+    {
+      "path": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/source-evidence/prompt.txt",
+      "sha256": "4b8eb2abb853e1b1332f149b97ab8533dabde543a8e19cba48dca8e8a63a8295"
+    }
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

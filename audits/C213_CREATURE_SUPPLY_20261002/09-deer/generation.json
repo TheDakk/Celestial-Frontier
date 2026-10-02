@@ -1,0 +1,14 @@
+{
+  "id": "09-deer",
+  "name": "Deer",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-1ef795f0-6f92-4aaf-b22d-f81073b1577c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "bytes": 1475491,
+  "promptSha256": "60e1fdef41cba56dd52c752ee839e9332515f1fe85fbc22c1082552e8d410441",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

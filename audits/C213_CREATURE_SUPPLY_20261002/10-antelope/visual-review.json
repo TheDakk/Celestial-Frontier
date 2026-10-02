@@ -1,0 +1,28 @@
+{
+  "name": "Antelope",
+  "masterSha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: unbranched ringed horns, tan flank and white belly, short complete flicking tail, both ear tips and four separate hoof endpoints are visible. Near/far foreleg shafts overlap for part of their length below the chest, so full independent root-to-foot proof remains held. The generic impala/gazelle-type identity is retained, not asserted as a specific unseen subspecies.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 215,
+      "y0": 100,
+      "x1": 1104,
+      "y1": 1088
+    },
+    "margins": {
+      "left": 215,
+      "right": 149,
+      "top": 100,
+      "bottom": 165
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

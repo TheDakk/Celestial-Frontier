@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Oryx",
+  "masterSha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

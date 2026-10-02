@@ -1,0 +1,70 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "f4a751eeaaebb55dfc7b386e727acb5ba01ed5a6",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/master.png",
+      "sha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/authoring.json",
+      "sha256": "f516bedde1816b69ad00f54ebda433f7ab911b70022bce1fed31dfb0edb90c8c"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/subject-source.json",
+      "sha256": "5ed04dcf712b75a98c55baa71fc0837443746b0d1935d1a8f093e5ea7c97d257"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "df82f8b7961d53568646e2537787f5fb256e498d2cf9f1f40e6048214c43ebd3",
+  "bindingHash": "3ed915fab51407605154d18d68417b1784fc504b478d1dd3b916522b636afe8b",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "aperture",
+    "crown",
+    "base",
+    "body"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/master.png",
+      "sha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/authoring.json",
+      "sha256": "f516bedde1816b69ad00f54ebda433f7ab911b70022bce1fed31dfb0edb90c8c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/subject-source.json",
+      "sha256": "5ed04dcf712b75a98c55baa71fc0837443746b0d1935d1a8f093e5ea7c97d257",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_REFERENCE_SUCCESSORS_20261002/02-sea-squirt/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

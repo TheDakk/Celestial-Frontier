@@ -1,0 +1,177 @@
+{
+  "id": "09-deer",
+  "name": "Deer",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 27655,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 111,
+      "y0": 171,
+      "x1": 289,
+      "y1": 261
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2186,
+        "pixels": 6045,
+        "box": {
+          "x0": 248,
+          "y0": 41,
+          "x1": 355,
+          "y1": 218
+        },
+        "attach": {
+          "x": 285.3,
+          "y": 185.7,
+          "relX": 0.98,
+          "relY": 0.16
+        },
+        "dir": {
+          "x": 0.3,
+          "y": -0.95
+        },
+        "class": "top",
+        "length": 160.6
+      },
+      {
+        "k": 1,
+        "frac": 0.0359,
+        "pixels": 994,
+        "box": {
+          "x0": 85,
+          "y0": 185,
+          "x1": 110,
+          "y1": 240
+        },
+        "attach": {
+          "x": 110,
+          "y": 208,
+          "relX": -0.01,
+          "relY": 0.41
+        },
+        "dir": {
+          "x": -0.92,
+          "y": 0.39
+        },
+        "class": "rear",
+        "length": 40.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0624,
+        "pixels": 1727,
+        "box": {
+          "x0": 74,
+          "y0": 250,
+          "x1": 138,
+          "y1": 362
+        },
+        "attach": {
+          "x": 121.6,
+          "y": 259.9,
+          "relX": 0.06,
+          "relY": 0.99
+        },
+        "dir": {
+          "x": -0.52,
+          "y": 0.86
+        },
+        "class": "limb-down",
+        "length": 112.6
+      },
+      {
+        "k": 3,
+        "frac": 0.1048,
+        "pixels": 2897,
+        "box": {
+          "x0": 225,
+          "y0": 253,
+          "x1": 296,
+          "y1": 361
+        },
+        "attach": {
+          "x": 246,
+          "y": 253,
+          "relX": 0.76,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": 0.15,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 119
+      },
+      {
+        "k": 4,
+        "frac": 0.0574,
+        "pixels": 1588,
+        "box": {
+          "x0": 128,
+          "y0": 262,
+          "x1": 175,
+          "y1": 360
+        },
+        "attach": {
+          "x": 153,
+          "y": 262,
+          "relX": 0.24,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.11,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 101.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 74,
+        "x1": 95,
+        "cx": 84.6
+      },
+      {
+        "x0": 151,
+        "x1": 175,
+        "cx": 162.2
+      },
+      {
+        "x0": 227,
+        "x1": 248,
+        "cx": 236.6
+      },
+      {
+        "x0": 272,
+        "x1": 296,
+        "cx": 283.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

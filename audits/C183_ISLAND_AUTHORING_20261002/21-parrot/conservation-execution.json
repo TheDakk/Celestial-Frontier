@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "conservation",
+  "id": "21-parrot",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/prove-contours.mjs",
+    "21-parrot"
+  ],
+  "helperSha256": "84b7756870b1ba8bced0424048e5e92833d32cfe166117e5dbf2918f51e748eb",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/conservation.log",
+  "logSha256": "d4fef7efea6ff9a22d1ef7e804cd501465133d8731ec95c86b82d8cd5b43b779",
+  "nativeRuns": 0
+}
