@@ -13,3 +13,9 @@ The authorized invocation ran once on 62900f601 after the fresh I5 and replaceme
 The retained first-pair JSON/log files are byte-exact copies of the ignored native evidence; `native-inventory.json` binds the complete local output including films and screenshots. The 982-frame capture has zero rig refusals and diagnostic CPU p95 3.6ms. The launch validation failure prevents qualifying it as a pair result.
 
 The parent verified no native browser or ffmpeg process remained and posted C219, explicitly terminating/releasing C213. Offline anchor diagnosis follows separately; no original instrument or evidence is modified to make this attempt pass.
+
+## Additive successor validation after C185 release
+
+The frozen instrument-v2 delivery records its earlier unrun state. After Claude's C185 terminal notice, `actual-stage-control.mjs` passed on two loaded Crab rigs through real BattleStage, and a targeted bundle/new manifest was prepared without a browser. Retained additive invocation/log/control receipts record these later results; the earlier frozen inventory remains unchanged. The new manifest is `prepared-65af716c/manifest.json`, SHA c925ac15bd9a2ca25a635f6221f0ca9d611466d63d39fe61944a29235efd6d6f. All 1,329 sources match; old/missing-helper/stale-entry controls refuse, and all 1,444 pair scripts/fits/arenas/attacks match the previous preparation.
+
+This is offline validation only. No native retry has occurred, and the stopped matrix is still unqualified. A new explicit authorization and reservation are required before using the successor supervisor on a fresh output directory under the shared toolchain lock.
