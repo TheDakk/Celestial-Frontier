@@ -1,0 +1,70 @@
+{
+  "name": "Alligator",
+  "family": "quadruped",
+  "species": {
+    "name": "Alligator",
+    "aspect": 5,
+    "headFrac": 0.28,
+    "eyes": "normal",
+    "posture": "sprawling",
+    "mustRead": [
+      "broad rounded U-shaped snout with teeth hidden when the mouth shuts",
+      "armoured ridged scute rows down the back",
+      "thick tail longer than the body"
+    ],
+    "note": "Snout is wide and blunt; a crocodile's is narrow and V-shaped with the fourth tooth exposed."
+  },
+  "genome": {
+    "seed": 3725400397,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 15,
+    "body": 4,
+    "loco": 11,
+    "trait": 10,
+    "size": 0,
+    "diet": 5,
+    "head": 5,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 2,
+    "accent": 14,
+    "temper": 7,
+    "sense": 5,
+    "repro": 2,
+    "life": 0,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Alligator"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Alligator\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3725400397\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 182,
+  "profile": {
+    "id": "crocodilian",
+    "names": [
+      "Caiman",
+      "Crocodile",
+      "Alligator",
+      "Gharial"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "tail"
+    ],
+    "notes": "Low sprawling legs and tail; no fur/ears from a mammal template."
+  }
+}
