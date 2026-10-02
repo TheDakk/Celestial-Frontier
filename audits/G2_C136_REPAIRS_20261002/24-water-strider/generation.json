@@ -1,0 +1,14 @@
+{
+  "id": "24-water-strider",
+  "name": "Water Strider",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-35c0e838-9604-4a55-a112-7500feca5300.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6",
+  "bytes": 1002087,
+  "promptSha256": "75ec6191bf16981d573f758081eb1325c9b2e0ddc29345de57b93f2f9d6b8f05",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "03-olm",
+  "name": "Olm",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-10f4cdef-fc42-4225-833c-d8ca3eb2cab4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "bc4e40dba81d9aeed829804bf983606a23ffa00705b437bd264f8bb56b1c3627",
+  "bytes": 961457,
+  "promptSha256": "e3f3c0f9623fff732eb9b4d4289a7beb7bc50fae4c1432e80297ba2685fc29d3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

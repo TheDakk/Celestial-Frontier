@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Newt",
+  "family": "quadruped",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc",
+  "subjectSha256": "76955feb104067a31e264b7a124cbe44b4b092ab0140f5df8a21bf1fcc50a1db",
+  "promptSha256": "38e91d6feda0764940a13cbf864ad8e66b18d29b13d68ca65e3dfc4c70b64814",
+  "profileId": "salamander",
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: smooth dark amphibian skin, bright orange spotted belly, laterally flattened continuous tail and four short visible limbs. No scales, external ears or larval gills. Near toe counts look reduced/merged and require anatomical review; tail taper is fairly abrupt but connected. Broad margins. Never an all-visible anatomy admission.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/24-newt/visual-review.json",
+    "sha256": "6617baa3ccf84db2854537c2f666569b62dccd10e9ce750e4d6a6ea18bbde8f1"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

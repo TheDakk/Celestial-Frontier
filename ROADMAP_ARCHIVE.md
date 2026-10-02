@@ -1,5 +1,40 @@
 # Codex I5 continuation superseded 2026-09-27
 
+## Archived Codex handoff — 2026-10-02, superseded by C132 measured results
+
+## Current Codex sprint handoff — 2026-10-01, C132 development RESUMED
+
+Dakk resumed the full C132 art program. Its exact program is `audits/MAILBOX/C132_ART_PROGRAM_20261001.md`.
+Read Claude's absolute read-only mailbox at `~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md`
+at run start and batch end. Signed G merge `4cad826c9` includes Claude through `d0059f822`; his handoff above is preserved.
+
+**Program order:** 43 biome-family FAR/MID/NEAR sets (dedicated lake and reef first); ten remaining painted ability-theme
+sequences; anatomical full-stage attacks per family; C12 60 fps at 4× CPU; continuing 24-original quadruped batches and
+reference/template repairs; ~1 GB Mac finisher evaluation and physical-iPhone probe prep; recorded sound cues.
+Claude owns scoring, full-size/native review, finisher/rebinding, gallery/coverage, and battle2 wiring. Dakk makes one final
+visual pass. Claude C136 now reports 181/631 accepted (19 held); Iguana and repaired Horned Lizard passed from this batch. Alligator needs a no-dip idle; the other reptile failures need a sprawling/no-external-ear reference.
+
+**Current batch:** three agents own independent audit-only packets `audits/C132_ARENAS_20261001`,
+`audits/C132_EFFECTS_20261001`, and `audits/G2_C132_QUADRUPEDS_20261001`. Root owns C12, phone finisher,
+recorded sound, shared docs, signing and sequential native epochs. Delivery rows follow in `audits/MAILBOX/TO_CLAUDE.md`.
+24 immutable reptile/amphibian originals are delivered for scoring (`G2_C132_QUADRUPEDS_20261001/pilot.json`): 21 framing PASS, 3 held; every anatomical hold remains. Arena/effect candidates and reference packets continue. The 20-probe C12 SIMD candidate passes exact numerical parity, but current native baseline fails a Centipede refusal/missing phase; no successor measurement or 60 fps claim. 49 recorded-file cues are technically prepared; listening and layered impacts remain open. Startup passed all seven capability checks.
+Receipts and cleanup measurement: `audits/C132_PROGRAM_20261001/`. Own cleanup recovered 1.14 GiB; Claude reports removing three completed build worktrees (~57 GB) and 111 GiB free. Identity backups remain preserved.
+
+**Gates:** native/performance reservation is posted before every native epoch and released at its terminal result.
+No heavy concurrent work during those measurements. Browser commands run outside the sandbox. I5 stays unchanged;
+`tools/local-image-generation/node_modules` is temporarily renamed aside for develop and restored afterward.
+Any source/asset change invalidating current producer authority remains blocked pending an authorized new I5 measurement;
+never re-bind historical evidence. Score/calibrate home-path fixes and the precise service-worker local-AI exclusion are now implemented with focused controls in `C132_I5_PREP_20261002`; a new combined product measurement is still required.
+Use Dakk/TheDakk and `~/` paths. Signed G commits on openai/mac only, hooks enabled, no new branches. Budget UNFROZEN;
+own normal pushes require green local battery and fresh workflow/visibility checks. No PR, label, hosted run,
+develop/main merge, release, version bump or deploy is authorized. Native notices and next deliveries are in the own-lane mailbox.
+Codex continues C132 in order; Claude reviews delivered packets and wires admitted assets. No app switch or relay needed.
+
+**Latest C132 deliveries (C138–C142):** eight arena triplets held at native 1672×941 against required 2560×1440; ten effect themes pass exact delivery checks but still need films/review; four manual mammal reference candidates and four missing painting-template families; 49 recorded cue candidates with 11 layered impacts, listening pending. Small finisher source is prepared against the same five C121 subjects (639 MB image model weights plus fixed embedding), native/visual/phone acceptance pending. The source and evidence are audit-only except the explicitly queued I5 producer fixes.
+
+**Native reservation:** C143 reserves the smaller-finisher Mac comparison only. Its five-source input and runtime hashes are pinned; a terminal mailbox notice releases the reservation. No iPhone qualification follows from a Mac conservation result. New v2 evidence serialization uses `~/` without changing numerical samples or historical evidence.
+
+
 ## Current Codex sprint handoff — 2026-09-27, development paused; I5 proof passed
 
 **Housekeeping — 2026-10-01:** Development remains PAUSED by Dakk. Starting post-rewrite head is

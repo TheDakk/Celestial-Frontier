@@ -1,0 +1,23 @@
+[
+  {
+    "id": "05-monitor-lizard",
+    "parts": 27,
+    "painted": 34067,
+    "minimumPixels": 256,
+    "empty": []
+  },
+  {
+    "id": "15-iguana",
+    "parts": 27,
+    "painted": 42753,
+    "minimumPixels": 234,
+    "empty": []
+  },
+  {
+    "id": "24-newt",
+    "parts": 27,
+    "painted": 28927,
+    "minimumPixels": 151,
+    "empty": []
+  }
+]

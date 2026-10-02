@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Olm",
+  "masterSha256": "bc4e40dba81d9aeed829804bf983606a23ffa00705b437bd264f8bb56b1c3627",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

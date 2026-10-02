@@ -1,0 +1,28 @@
+{
+  "name": "Alpine Salamander",
+  "masterSha256": "5558d9b412c372da88815ec8722603260740d8e6ef05eda7261d738507917977",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: uniformly dark glossy salamander with four visibly separated feet, low wrinkled body and complete curled tail. Eyes and head look disproportionately large and the smooth highlights approach a toy-like finish; art/identity hold for review. Toe counts remain unresolved; no external pinnae or gills.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 303,
+      "y0": 522,
+      "x1": 963,
+      "y1": 737
+    },
+    "margins": {
+      "left": 303,
+      "right": 290,
+      "top": 522,
+      "bottom": 516
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

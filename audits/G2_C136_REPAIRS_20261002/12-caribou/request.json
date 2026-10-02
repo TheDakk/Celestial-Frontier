@@ -1,0 +1,31 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Caribou",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "d767e9c9ff22213ccbd40648ff644d5a414dd94c0577bdc58b3f4c3b3d716407",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-horned",
+  "authoringCreated": false,
+  "sourceHead": "0f6cb891c9f0f760c454a31d64246c4f41efcd16",
+  "basePromptSha256": "1e403296dfaf3bb216be58cc3eded91f1405f61ad3e063bcdd13103d04113746",
+  "layoutCompilerSha256": "0b99fa20704a875163bd68d867bd7134406da45719ff53931b3d9e1d5e19063c",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 oversized palmated antler fans resemble moose.",
+  "anatomyAmendment": "Real CARIBOU antlers: tall branching beams with fine narrow tines and limited natural brow palmation. No oversized broad moose paddles. Preserve the natural white neck, dark body and broad cloven hooves.",
+  "compositionCheck": "FINAL COMPOSITION CHECK: the 1254 by 1254 canvas is mostly empty pure magenta. Zoom the complete specimen OUT. Every antler, bill, toe, antenna, tail and other part must fit within the central rectangle x=314 through x=940, y=314 through y=940. The rectangle is only an invisible placement guide: DO NOT paint a frame, line, ruler, label or grid. Make the entire animal smaller, never shorten its natural appendages to fit. Preserve detailed painted surfaces.",
+  "admission": "GENERATED_CANDIDATE_ONLY; new salamander references are unmeasured, repair attempts do not replace prior originals or acceptance.",
+  "preCompositionPromptSha256": "642a4de3724b6c1ab14a982e14a0c9523095146d632dbbf11c57a04177eb55e4",
+  "prependCompositionCheck": "ZOOMED-OUT COMPOSITION FIRST: a TINY complete specimen in a large mostly empty pure magenta square. The WHOLE animal including all appendages occupies only HALF the canvas width and no more than HALF the height. The entire silhouette must fit inside x=314 through x=940 and y=314 through y=940 on the 1254-square canvas. Keep at least 250 pixels of empty background on every side. Do not shorten any appendage; make the whole specimen smaller. Do not paint any placement guide, border or grid.",
+  "compositionCompilerSha256": "ea0ee1c8971e60f762cd32a460088dbbeadadc6e57e609cbc671ebd9ce3ddcdb"
+}

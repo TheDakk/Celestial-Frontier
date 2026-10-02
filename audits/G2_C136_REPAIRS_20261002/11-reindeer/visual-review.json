@@ -1,0 +1,28 @@
+{
+  "name": "Reindeer",
+  "masterSha256": "640c13419702a65c12e5346f3f8cbbb6f564d323403c1e27573197db6aacb9a4",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: branching narrow antler beams/tines with limited brow shovel, white neck and four hoof endpoints. Earlier giant moose-paddle antlers are visibly reduced. Far ear remains hidden and antler crown ownership/proportions need review. Tail is short and attached, not artificially lengthened.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 334,
+      "y0": 327,
+      "x1": 939,
+      "y1": 900
+    },
+    "margins": {
+      "left": 334,
+      "right": 314,
+      "top": 327,
+      "bottom": 353
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

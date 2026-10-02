@@ -1,0 +1,28 @@
+{
+  "name": "Caribou",
+  "masterSha256": "567cc852c8bc1748be9b5f2f58e6051479e9085bcf4e554bb2e687d3c87f31bd",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: narrower branched antlers rather than broad moose fans, pale neck and rump, four hoof endpoints and short tail. Far ear is hidden. Natural antler/body scale, broad hoof proportions and overlapped proximal forelegs remain review points; no acceptance claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 374,
+      "y0": 367,
+      "x1": 895,
+      "y1": 888
+    },
+    "margins": {
+      "left": 374,
+      "right": 358,
+      "top": 367,
+      "bottom": 365
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

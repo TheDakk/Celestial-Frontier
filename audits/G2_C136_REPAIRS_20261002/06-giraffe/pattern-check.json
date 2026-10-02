@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Giraffe",
+  "masterSha256": "9ac84c0f0d1dda6ec7fc530968824f6f1aabc06a0417ed3ba30722cfae1d0bca",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

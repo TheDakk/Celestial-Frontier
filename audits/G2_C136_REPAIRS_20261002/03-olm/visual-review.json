@@ -1,0 +1,28 @@
+{
+  "name": "Olm",
+  "masterSha256": "bc4e40dba81d9aeed829804bf983606a23ffa00705b437bd264f8bb56b1c3627",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: elongated pale body, reduced eyes, red attached external gills and continuous fin-edged tail. Only TWO limb endpoints are clearly visible, one fore and one hind; far limbs are unresolved. The exposed hindfoot appears to have too many toes for the requested two. HOLD, not four-limb evidence. Pink/red gill-key conservation required.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 229,
+      "y0": 546,
+      "x1": 1025,
+      "y1": 715
+    },
+    "margins": {
+      "left": 229,
+      "right": 228,
+      "top": 546,
+      "bottom": 538
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

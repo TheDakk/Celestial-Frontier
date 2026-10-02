@@ -4,7 +4,7 @@ const delivery=JSON.parse(fs.readFileSync(path.join(base,'delivery.json'))).rows
 for(const fit of[left,right])assert(!path.isAbsolute(fit)&&!fit.startsWith('..'),'Use repository-relative fit paths');
 const records=[left,right].map(f=>JSON.parse(fs.readFileSync(path.join(root,f,'record.json')))),[an,dn]=records.map(r=>r.identity.earthName);assert(an&&dn);
 const out=path.join(base,theme,'native-input');assert(!fs.existsSync(out),'New native-input directory required');fs.mkdirSync(out);
-const script={readyMs:600,commandMs:300,themes:{A:theme,B:theme},rows:[{side:'A',an,dn,dmg:9,crit:false,hpA:30,hpB:21},{side:'B',an:dn,dn:an,dmg:6,crit:false,hpA:24,hpB:21},{an,dn,dodge:true},{side:'A',an,dn,dmg:21,crit:true,hpA:24,hpB:0}]};
+const script={readyMs:600,commandMs:300,supports:'observed',themes:{A:theme,B:theme},rows:[{side:'A',an,dn,dmg:9,crit:false,hpA:30,hpB:21},{side:'B',an:dn,dn:an,dmg:6,crit:false,hpA:24,hpB:21},{an,dn,dodge:true},{side:'A',an,dn,dmg:21,crit:true,hpA:24,hpB:0}]};
 fs.writeFileSync(path.join(out,'script.json'),JSON.stringify(script,null,2)+'\n');
 const sha=b=>createHash('sha256').update(b).digest('hex');
 fs.writeFileSync(path.join(out,'inputs.json'),JSON.stringify({theme,left,right,effectAnchors:'audits/C132_EFFECTS_20261001/'+delivery.anchors,effectAnchorsSha256:delivery.anchorsSha256,scriptSha256:sha(fs.readFileSync(path.join(out,'script.json'))),recordSha256:[left,right].map(f=>({fit:f,sha256:sha(fs.readFileSync(path.join(root,f,'record.json')))})),nativeRun:false},null,2)+'\n');

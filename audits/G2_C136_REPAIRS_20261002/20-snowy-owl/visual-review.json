@@ -1,0 +1,28 @@
+{
+  "name": "Snowy Owl",
+  "masterSha256": "e2ce15115fe4ac6735e9f5cf03d46f71f13e9712b487151f2f758d6f28a7fa60",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: rounded tuft-free crown, yellow eye, attached hooked bill, black barred white plumage, full tail and two distinct feathered feet. Crown/face are visually connected. Far wing is occluded; long feather fringes around feet require ownership/conservation review. Native crown-island outcome is unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 325,
+      "y0": 356,
+      "x1": 910,
+      "y1": 858
+    },
+    "margins": {
+      "left": 325,
+      "right": 343,
+      "top": 356,
+      "bottom": 395
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

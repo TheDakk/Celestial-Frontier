@@ -1,0 +1,14 @@
+{
+  "id": "09-banteng",
+  "name": "Banteng",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-b1d70e16-a9b7-4563-92a2-380d80235090.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "77104268838f9507fa23a637d5f548730e3fae6fdde38fe837859673fd27187e",
+  "bytes": 1146582,
+  "promptSha256": "f017384ddbb6724ff9bd8019dbfd2f84972bd153ced3d72ada0e580c19777040",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Blind Salamander",
+  "masterSha256": "e9b6b1c67854e873ac998afb711e829a61413e450cfcb0ba3afd632980d24c3a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: pale eyeless head, attached red external gill stalks, low trunk, flattened continuous tail and four separated limbs. Toe counts are small and unclear, and gill fringes need source-pixel key conservation. Far proximal attachments remain body-occluded. No external pinnae; no native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 269,
+      "y0": 502,
+      "x1": 984,
+      "y1": 752
+    },
+    "margins": {
+      "left": 269,
+      "right": 269,
+      "top": 502,
+      "bottom": 501
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

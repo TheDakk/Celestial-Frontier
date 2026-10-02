@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Gecko",
+  "family": "quadruped",
+  "masterSha256": "fbb7425e044bd453d5503155288f7cbde2c97deb315c526ff9bcf2dc957f8a85",
+  "subjectSha256": "064e3c418bbbd3301893670ff58aa7fd66d33f1e7b3be30f5fcff6802f30e47d",
+  "promptSha256": "a8b094bfe8107d2afef85b12bf4eb32b8e1e2e7070dbae52305687ea4e9f3d24",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: large lidless eye with vertical slit pupil, granular spotted skin, plump ringed tail and four visible padded feet. Some toes merge within pad clusters and the far limb roots are partly occluded; exact toe count remains unconfirmed. No invented mammalian ears. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/07-gecko/visual-review.json",
+    "sha256": "3565a0989d975a9ef0953e138d9501a13407156b5cbbdf7942c2932f8d588e36"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

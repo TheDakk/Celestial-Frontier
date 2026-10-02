@@ -1,0 +1,28 @@
+{
+  "name": "Carrion Beetle",
+  "masterSha256": "52ab03a1d448e18b7d45026f78ca59e2620ab5eab3655d64ade59a57ce5751df",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: orange-black short elytra, exposed segmented abdomen and two clubbed antennae. Only FIVE distinct leg endpoints are clearly resolved; one far leg remains missing/merged. Six-leg repair unresolved. Head mouthpart and wing-cover ownership need exact anatomical review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 320,
+      "y0": 481,
+      "x1": 959,
+      "y1": 802
+    },
+    "margins": {
+      "left": 320,
+      "right": 294,
+      "top": 481,
+      "bottom": 451
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

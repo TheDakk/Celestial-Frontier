@@ -91,7 +91,7 @@ unsigned cf_orientation_active(double *p, const unsigned *d,
                       + ((mask & 2) ? bx * bx + by * by : 0)
                       + ((mask & 4) ? cx * cx + cy * cy : 0);
     if (norm < 1e-20) { remove_triangle(heap, location, priority, state, t); continue; }
-    const double scale = -constraint * sign / norm;
+    const double scale = -constraint * sign / norm * (state[2] > count ? .5 : 1);
     int changed = 0;
     if (mask & 1) {
       const double x = p[a], y = p[a + 1];

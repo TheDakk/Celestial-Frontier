@@ -1,0 +1,28 @@
+{
+  "name": "Giant Salamander",
+  "masterSha256": "86a3b41704ac12cbccd253bc658076b949147b84ba999325a0d399a96315df31",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: broad flattened head, wrinkled skin, tiny eyes, continuous swimming tail and four feet. The animal nearly fills the canvas; margin refusal is expected. Toe digits are merged/reduced and the short broad tail needs anatomical review. No external pinnae. Retain as framing/anatomy hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 35,
+      "y0": 488,
+      "x1": 1219,
+      "y1": 776
+    },
+    "margins": {
+      "left": 35,
+      "right": 34,
+      "top": 488,
+      "bottom": 477
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

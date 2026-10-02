@@ -79,34 +79,58 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 - A green number is not visual acceptance. The static runner needs its fit and output under `audits/`.
 - Codex reservations: when Codex posts "native/performance reservation active", run no native, gate or heavy CPU until its terminal notice.
 
-## Current Codex sprint handoff — 2026-10-01, C132 development RESUMED
+## Current Codex sprint handoff — 2026-10-02, C132 development RESUMED
 
-Dakk resumed the full C132 art program. Its exact program is `audits/MAILBOX/C132_ART_PROGRAM_20261001.md`.
-Read Claude's absolute read-only mailbox at `~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md`
-at run start and batch end. Signed G merge `4cad826c9` includes Claude through `d0059f822`; his handoff above is preserved.
+Dakk resumed the full program in `audits/MAILBOX/C132_ART_PROGRAM_20261001.md`. Read Claude's absolute read-only
+mailbox at `~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md` at run start and batch end;
+write only this lane's `audits/MAILBOX/TO_CLAUDE.md`. Signed G merges `4cad826c9` and `062d85b2a` include Claude
+through `4c6698fea`; newer signed Claude work through `1d8af1843` awaits the next clean merge. His handoff above is preserved.
 
-**Program order:** 43 biome-family FAR/MID/NEAR sets (dedicated lake and reef first); ten remaining painted ability-theme
-sequences; anatomical full-stage attacks per family; C12 60 fps at 4× CPU; continuing 24-original quadruped batches and
-reference/template repairs; ~1 GB Mac finisher evaluation and physical-iPhone probe prep; recorded sound cues.
-Claude owns scoring, full-size/native review, finisher/rebinding, gallery/coverage, and battle2 wiring. Dakk makes one final
-visual pass. Claude C136 now reports 181/631 accepted (19 held); Iguana and repaired Horned Lizard passed from this batch. Alligator needs a no-dip idle; the other reptile failures need a sprawling/no-external-ear reference.
+**Program and ownership:** 43 biome-family FAR/MID/NEAR sets; ten remaining painted ability-theme sequences;
+anatomical full-stage attacks; Centipede C12 and all-pair 60 fps at 4× CPU; continuing 24-original batches and
+reference/template gaps; ~1 GB finisher Mac comparison and text-encoder-free iPhone preparation; recorded C3 cues.
+Claude scores, repairs islands, runs accepted finishes/finished-rig films, updates coverage and wires accepted deliveries.
+Latest C136 coverage is 181/631 accepted, 19 held. Dakk's final visual pass and physical-phone gates remain open.
 
-**Current batch:** three agents own independent audit-only packets `audits/C132_ARENAS_20261001`,
-`audits/C132_EFFECTS_20261001`, and `audits/G2_C132_QUADRUPEDS_20261001`. Root owns C12, phone finisher,
-recorded sound, shared docs, signing and sequential native epochs. Delivery rows follow in `audits/MAILBOX/TO_CLAUDE.md`.
-24 immutable reptile/amphibian originals are delivered for scoring (`G2_C132_QUADRUPEDS_20261001/pilot.json`): 21 framing PASS, 3 held; every anatomical hold remains. Arena/effect candidates and reference packets continue. The 20-probe C12 SIMD candidate passes exact numerical parity, but current native baseline fails a Centipede refusal/missing phase; no successor measurement or 60 fps claim. 49 recorded-file cues are technically prepared; listening and layered impacts remain open. Startup passed all seven capability checks.
-Receipts and cleanup measurement: `audits/C132_PROGRAM_20261001/`. Own cleanup recovered 1.14 GiB; Claude reports removing three completed build worktrees (~57 GB) and 111 GiB free. Identity backups remain preserved.
+**Delivered and measured:**
+- `C132_ARENAS_20261001`: eight painted triplets, all HELD. Available generation returned native 1672×941,
+  below the new-plate 2560×1440 contract; no upscale or inherited temperate exception is acceptance. Further same-route
+  arena generation waits for a compliant output route. Routing recipes/prompts cover all 43 families.
+- `C132_EFFECTS_20261001`: ten themes / 30 phase assets pass exact delivery controls; native films and visual acceptance
+  remain open. Audit runner supports exact theme anchors, arena manifest and hash-bound source overrides.
+- `G2_C132_QUADRUPEDS_20261001`: 24 immutable originals scored by Claude; Iguana and repaired Horned Lizard accepted.
+  `C136_SPRAWLER_REFERENCES_20261002`: Monitor Lizard, Iguana and Newt manual references remain UNMEASURED;
+  24 exact-original reviewed external-pinna absence declarations are ready for C136 re-scoring.
+- `C136_COMPILER_PRESENCE_20261002`: production reviewed-presence adapter admits only the separate hash-bound ear schema;
+  four additional painting-template families cover 32 canonical names. Prior compiler outcomes and five old layouts remain
+  covered; 101 focused tests and root validation pass. This is authoring support, not runtime rig or visual admission.
+- `C132_C12_REPAIR_20261002`: reproduced the exact 543.7 ms Centipede fold stall, then a bounded correction candidate
+  completed the same full native film at 4× CPU on signed `615e755c8`: 789 live frames, zero refusals, CPU p95 9.0 ms.
+  Five frames still exceed 16.667 ms (maximum 23.5); all 18 stills equal baseline, including an existing Chimpanzee victory
+  deformation. Source promotion passes 34 leaf controls and the 9-test library owner (38 archetypes, 114 scale cases); strict all-pair performance and visual acceptance are not claimed.
+- `C132_PHONE_FINISH_20261001`: 639 MB image-model candidate compared against the same five C121 subjects on signed
+  `779912d5f`; 5/5 conservation PASS, zero protected-pixel changes, 4.683 s total. All five outputs are visually REJECTED.
+  Separate phone probe binds a 728 MB transport payload and precomputed embedding, with no text-encoder/tokenizer routes;
+  three HTTP/route controls pass. No physical device run, resident/GPU-memory qualification or product admission.
+- `C132_SOUND_20261001`: 49 recorded-file cue candidates, including 11 separately layered impacts. Technical checks pass;
+  listening, loudness/mass extremes, battle timing and runtime admission remain open.
 
-**Gates:** native/performance reservation is posted before every native epoch and released at its terminal result.
-No heavy concurrent work during those measurements. Browser commands run outside the sandbox. I5 stays unchanged;
-`tools/local-image-generation/node_modules` is temporarily renamed aside for develop and restored afterward.
-Any source/asset change invalidating current producer authority remains blocked pending an authorized new I5 measurement;
-never re-bind historical evidence. Score/calibrate home-path fixes and the precise service-worker local-AI exclusion are now implemented with focused controls in `C132_I5_PREP_20261002`; a new combined product measurement is still required.
-Use Dakk/TheDakk and `~/` paths. Signed G commits on openai/mac only, hooks enabled, no new branches. Budget UNFROZEN;
-own normal pushes require green local battery and fresh workflow/visibility checks. No PR, label, hosted run,
-develop/main merge, release, version bump or deploy is authorized. Native notices and next deliveries are in the own-lane mailbox.
-Codex continues C132 in order; Claude reviews delivered packets and wires admitted assets. No app switch or relay needed.
+**Active repair:** C136 Alligator's reported late `idle` still actually holds final FAINT with zero underlying idle.
+The captured source hashes agree; a no-dip idle change cannot fix it. Exact inputs are retained in
+`C132_FAINT_GROUND_20261002`; geometry-aware head/jaw ground clearance is being investigated without moving the floor,
+foot targets, timing or guards. The next 24-original repair/new-subject batch is delivered in `G2_C136_REPAIRS_20261002`: 23 framing PASS, one refused, all visual/anatomy holds retained.
 
-**Latest C132 deliveries (C138–C142):** eight arena triplets held at native 1672×941 against required 2560×1440; ten effect themes pass exact delivery checks but still need films/review; four manual mammal reference candidates and four missing painting-template families; 49 recorded cue candidates with 11 layered impacts, listening pending. Small finisher source is prepared against the same five C121 subjects (639 MB image model weights plus fixed embedding), native/visual/phone acceptance pending. The source and evidence are audit-only except the explicitly queued I5 producer fixes.
+**Gates and next steps:** C152 reserves the ten-theme native effect epoch (Civet/Wolf, observed supports, accepted temperate control arena; stop at first red). Post the exact reservation before every
+native/performance epoch and release it afterward; no concurrent heavy work. Browser commands require outside-sandbox
+execution. Score/calibrate home resolution and exact service-worker `__local_ai/` exclusion are implemented with focused
+controls in `C132_I5_PREP_20261002`; new v2 evidence serialization aliases home paths without changing samples or old evidence.
+Finish the combined signed product, merge newer signed Claude work, run the required battery and perform one fresh I5
+3+1 measurement. Never re-bind the historical certificate. For develop, rename
+`tools/local-image-generation/node_modules` aside and always restore it afterward.
 
-**Native reservation:** C143 reserves the smaller-finisher Mac comparison only. Its five-source input and runtime hashes are pinned; a terminal mailbox notice releases the reservation. No iPhone qualification follows from a Mac conservation result. New v2 evidence serialization uses `~/` without changing numerical samples or historical evidence.
+**Operations:** OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac` only. Signed G commits,
+hooks/pre-push guard retained, no new branches. Startup receipt reused from `C132_PROGRAM_20261001`; 1.14 GiB measured
+own cleanup plus Claude's approximately 57 GB completed-worktree cleanup. Current free space approximately 151 GiB;
+identity backups remain preserved. Budget UNFROZEN; normal own-branch push requires green local battery and current
+visibility/workflow checks. No resumed-turn push yet. No PR, label, hosted attempt, develop/main merge, release or deploy.
+Codex continues the active repairs and evidence; Claude can consume signed mailbox deliveries directly. No app switch or Dakk relay needed.

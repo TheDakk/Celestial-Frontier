@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Chough",
+  "masterSha256": "f0169a110876a1f3abeac0a968c33a7da10a09cbca0ea61ea862f16023a0dfb3",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

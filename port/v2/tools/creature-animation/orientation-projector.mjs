@@ -76,7 +76,7 @@ export function projectOrientations(s){
   const ax=p[b+1]-p[c+1],ay=p[c]-p[b],bx=p[c+1]-p[a+1],by=p[a]-p[c],cx=p[a+1]-p[b+1],cy=p[b]-p[a];
   const norm=(mask&1?ax*ax+ay*ay:0)+(mask&2?bx*bx+by*by:0)+(mask&4?cx*cx+cy*cy:0);
   if(norm<1e-20){remove(q,t);continue;}
-  const scale=-constraint*sign/norm;let changed=false;
+  const scale=-constraint*sign/norm*(q.visits>count?.5:1);let changed=false;
   if(mask&1){const x=p[a],y=p[a+1];p[a]+=scale*ax;p[a+1]+=scale*ay;changed||=!Object.is(x,p[a])||!Object.is(y,p[a+1]);}
   if(mask&2){const x=p[b],y=p[b+1];p[b]+=scale*bx;p[b+1]+=scale*by;changed||=!Object.is(x,p[b])||!Object.is(y,p[b+1]);}
   if(mask&4){const x=p[c],y=p[c+1];p[c]+=scale*cx;p[c+1]+=scale*cy;changed||=!Object.is(x,p[c])||!Object.is(y,p[c+1]);}

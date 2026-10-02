@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Alligator",
+  "family": "quadruped",
+  "masterSha256": "64f9dc3207fa10afccd71456fe950a37c2caf9d1fcf5864602553ab59bb32140",
+  "subjectSha256": "4a76ef29331f1e358d629709426c84dc4c7c52618b18715cfcab28c37e71ea23",
+  "promptSha256": "c15e56b4d857b6949b10b4daeea4774edb4db2ae7e87daafdc19d13ad9a20284",
+  "profileId": "crocodilian",
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: broad closed snout, teeth mostly hidden, heavily scuted back, thick continuous tail and four visible feet. Far upper limbs are occluded. Tail looks shorter than the canonical longer-than-body requirement; retain identity hold. Side margins visibly below 8 percent; framing hold.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/03-alligator/visual-review.json",
+    "sha256": "5d6b374b8ff5601a1166c404c2c0339363dfdfea51aba9b2f325defc14ccc596"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

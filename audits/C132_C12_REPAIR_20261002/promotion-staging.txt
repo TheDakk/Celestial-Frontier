@@ -1,0 +1,16 @@
+port/v2/tools/creature-animation/orientation-projector.mjs
+port/v2/tools/creature-animation/orientation-active-reference.mjs
+port/v2/tools/creature-animation/orientation-active.c
+port/v2/tools/creature-animation/orientation-active.wasm
+port/v2/tools/creature-animation/orientation-active-bytes.mjs
+port/v2/tools/creature-animation/orientation-active-build.json
+port/v2/tools/creature-animation/centipede-approach-orientation.test.mjs
+port/v2/tools/creature-animation/test-fixtures/centipede-approach-orientation.json
+audits/C132_C12_REPAIR_20261002/README.md
+audits/C132_C12_REPAIR_20261002/PROMOTION.md
+audits/C132_C12_REPAIR_20261002/promotion-receipt.json
+audits/C132_C12_REPAIR_20261002/native-review.json
+audits/C132_C12_REPAIR_20261002/ALLIGATOR_FAINT_DIAGNOSIS.md
+audits/C132_C12_REPAIR_20261002/alligator-faint-diagnosis.json
+audits/C132_C12_REPAIR_20261002/promotion-staging.txt
+CREATURE_ANIMATION.md

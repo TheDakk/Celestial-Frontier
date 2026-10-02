@@ -1,0 +1,14 @@
+{
+  "id": "21-bee",
+  "name": "Bee",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d03c4d16-bce3-4a00-9a1f-ea91fee74cb3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "240299d6a6d01d759c7cd50b5a3673aa1755e5994bc6a389c13598cf38335056",
+  "bytes": 1172295,
+  "promptSha256": "59a59a7a2476e13e09362f7bdaf6334cc4a8c9ef6acd479dcd161bb4f8d82cd5",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "18-hawk",
+  "name": "Hawk",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-10e83d3f-d528-4f6d-b105-064195e3545e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+  "bytes": 1138608,
+  "promptSha256": "773b525181fc823467eee4dd9ba4a91e7499eeeaf06724ae934d9a34f7a3969b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

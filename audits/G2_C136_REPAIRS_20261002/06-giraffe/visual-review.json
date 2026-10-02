@@ -1,0 +1,28 @@
+{
+  "name": "Giraffe",
+  "masterSha256": "9ac84c0f0d1dda6ec7fc530968824f6f1aabc06a0417ed3ba30722cfae1d0bca",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: natural long neck, reticulated patches, two ossicones, complete tufted tail and four separated hoof endpoints. Only the near ear is clearly readable; the far ear remains hidden at the crown. Repair purpose is NOT resolved. Upper foreleg attachment and far hind root remain overlapped by body.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 410,
+      "y0": 268,
+      "x1": 891,
+      "y1": 968
+    },
+    "margins": {
+      "left": 410,
+      "right": 362,
+      "top": 268,
+      "bottom": 285
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

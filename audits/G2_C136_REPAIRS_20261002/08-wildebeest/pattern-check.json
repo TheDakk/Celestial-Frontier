@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wildebeest",
+  "masterSha256": "dac2c58325e8872ee177848a872e6183ddba7ee27cd72ab844b9d1244acffbdc",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Alpine Salamander",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "266cba2aba8301129ca0ffa86e52ffe4a86722b9e82cd460006757c6cc7a9c5f",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "salamander",
+  "authoringCreated": false,
+  "sourceHead": "0f6cb891c9f0f760c454a31d64246c4f41efcd16",
+  "basePromptSha256": "de336dd6c59b521901e0aa263de0ad5baa62d19d4261e6ba9d91bad1263af0ef",
+  "layoutCompilerSha256": "0b99fa20704a875163bd68d867bd7134406da45719ff53931b3d9e1d5e19063c",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": "Untouched salamander candidate; smooth-skin sprawler reference remains unmeasured.",
+  "anatomyAmendment": "Adult uniformly black Alpine salamander, with naturally smooth moist skin and four short sprawling limbs; no yellow fire-salamander patches, external gills, ears, scales or claws.",
+  "compositionCheck": "FINAL COMPOSITION CHECK: the 1254 by 1254 canvas is mostly empty pure magenta. Zoom the complete specimen OUT. Every antler, bill, toe, antenna, tail and other part must fit within the central rectangle x=314 through x=940, y=314 through y=940. The rectangle is only an invisible placement guide: DO NOT paint a frame, line, ruler, label or grid. Make the entire animal smaller, never shorten its natural appendages to fit. Preserve detailed painted surfaces.",
+  "admission": "GENERATED_CANDIDATE_ONLY; new salamander references are unmeasured, repair attempts do not replace prior originals or acceptance.",
+  "preCompositionPromptSha256": "c27e8b479d892de37355f97c8dff4946d42e1675af7f62b4d7efb5d50ea63437",
+  "prependCompositionCheck": "ZOOMED-OUT COMPOSITION FIRST: a TINY complete specimen in a large mostly empty pure magenta square. The WHOLE animal including all appendages occupies only HALF the canvas width and no more than HALF the height. The entire silhouette must fit inside x=314 through x=940 and y=314 through y=940 on the 1254-square canvas. Keep at least 250 pixels of empty background on every side. Do not shorten any appendage; make the whole specimen smaller. Do not paint any placement guide, border or grid.",
+  "compositionCompilerSha256": "ea0ee1c8971e60f762cd32a460088dbbeadadc6e57e609cbc671ebd9ce3ddcdb"
+}
