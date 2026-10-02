@@ -1735,7 +1735,7 @@
   "family": "quadruped",
   "name": "Alligator",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator",
-  "note": "HELD: head-down late idle drives the snout below the ground line with a fragment beneath it; crocodilians need a no-dip idle (motion, Codex)",
+  "note": "SUPERSEDED by the g2c136s sprawler-profile pass (snout no longer crosses the ground)",
   "batch": "audits/G2_C132_QUADRUPEDS_20261001",
   "tag": "g2c136"
  },
@@ -1794,5 +1794,85 @@
   "note": "whole in reaction and late idle (sprawler pool + reviewed ear absence)",
   "batch": "audits/G2_C132_QUADRUPEDS_20261001",
   "tag": "g2c136ra"
+ },
+ {
+  "family": "quadruped",
+  "name": "Alligator",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/03-alligator",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip); the earlier snout-through-ground hold is resolved",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gharial",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/04-gharial",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip); the snout-tip ghara stays attached",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gecko",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/07-gecko",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Alligator Lizard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/09-alligator-lizard",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tegu",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/11-tegu",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Land Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/16-land-iguana",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Coastal Lizard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/17-coastal-lizard",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Komodo Dragon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/18-komodo-dragon",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horned Lizard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/22-horned-lizard",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Newt",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/24-newt",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
  }
 ]

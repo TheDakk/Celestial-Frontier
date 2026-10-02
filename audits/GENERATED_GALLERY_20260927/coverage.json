@@ -1,10 +1,9 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 184,
- "pct": 29.2,
+ "covered": 192,
+ "pct": 30.4,
  "heldNotCounted": [
-  "Alligator",
   "Basking Shark",
   "Chough",
   "Crow",
@@ -29,8 +28,8 @@
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 52,
-   "pct": 25.4,
+   "covered": 60,
+   "pct": 29.3,
    "names": [
     "Leopard",
     "Tiger",
@@ -81,9 +80,17 @@
     "Cattle",
     "Bongo",
     "Donkey",
+    "Alligator",
+    "Gharial",
+    "Gecko",
+    "Alligator Lizard",
+    "Tegu",
     "Iguana",
     "Land Iguana",
-    "Horned Lizard"
+    "Coastal Lizard",
+    "Komodo Dragon",
+    "Horned Lizard",
+    "Newt"
    ]
   },
   {

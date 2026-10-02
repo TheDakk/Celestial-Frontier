@@ -1,0 +1,82 @@
+{
+  "name": "Gecko",
+  "family": "quadruped",
+  "species": {
+    "name": "Gecko",
+    "aspect": 3,
+    "headFrac": 0.24,
+    "eyes": "prominent",
+    "posture": "sprawling",
+    "mustRead": [
+      "huge lidless eyes with vertical pupils",
+      "broad splayed toes with lamellae pads",
+      "soft granular bumpy skin and a plump tail"
+    ],
+    "note": "most geckos cannot blink - the eyes are covered by a fixed clear scale and licked clean"
+  },
+  "genome": {
+    "seed": 567295194,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 8,
+    "body": 3,
+    "loco": 12,
+    "trait": 13,
+    "size": 4,
+    "diet": 5,
+    "head": 7,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 2,
+    "habitat": 5,
+    "detail": 5,
+    "accent": 15,
+    "temper": 0,
+    "sense": 8,
+    "repro": 0,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Gecko"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gecko\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"567295194\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 101,
+  "profile": {
+    "id": "lizard",
+    "names": [
+      "Monitor Lizard",
+      "Anole",
+      "Gecko",
+      "Skink",
+      "Alligator Lizard",
+      "Mountain Lizard",
+      "Tegu",
+      "Wall Lizard",
+      "Lizard",
+      "Whiptail",
+      "Agama",
+      "Iguana",
+      "Land Iguana",
+      "Coastal Lizard",
+      "Komodo Dragon",
+      "Gila Monster",
+      "Frilled Lizard"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "tail"
+    ],
+    "notes": "Reptile-specific absence and skin declarations required."
+  }
+}
