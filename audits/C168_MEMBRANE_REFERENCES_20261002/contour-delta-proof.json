@@ -1,0 +1,60 @@
+{
+  "schema": "cf.c168-contour-delta/v1",
+  "status": "PASS",
+  "predecessor": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat",
+  "successor": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours",
+  "masterSha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "previousPriorityRegionsChanged": false,
+  "priorAnatomyOwnersChanged": 0,
+  "movedFromRemainder": [
+    {
+      "joint": "earNearTip",
+      "pixels": 160
+    },
+    {
+      "joint": "earFarTip",
+      "pixels": 280
+    },
+    {
+      "joint": "wingFarWrist",
+      "pixels": 1297
+    },
+    {
+      "joint": "wingFarElbow",
+      "pixels": 2642
+    },
+    {
+      "joint": "wingNearTip",
+      "pixels": 2387
+    },
+    {
+      "joint": "wingNearWrist",
+      "pixels": 606
+    },
+    {
+      "joint": "wingNearElbow",
+      "pixels": 949
+    },
+    {
+      "joint": "neck",
+      "pixels": 618
+    },
+    {
+      "joint": "pelvis",
+      "pixels": 265
+    }
+  ],
+  "controls": [
+    "master byte identity",
+    "landmark identity",
+    "unchanged previous priority polygons",
+    "independent published ownership delta",
+    "exact keyed RGBA identity",
+    "prior anatomy theft rejected",
+    "paint deletion rejected"
+  ],
+  "qualityAccepted": false,
+  "nativeRun": false
+}

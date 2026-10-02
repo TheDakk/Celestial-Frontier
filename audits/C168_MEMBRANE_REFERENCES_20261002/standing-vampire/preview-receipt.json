@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c168-observation-preview/v1",
+  "masterSha256": "e3fb8cd445248ab4f31f8b0ca43e558d86c4933dd8f92f90b3cc146853bb44ae",
+  "observationsSha256": "5177835d5774b7ddf3e00957fd4deb271a09c1baafae462387eb9313275b4aad",
+  "previewSha256": "298aa39d82286e20a902d95fa25a4e04b99d031a817a5dfef89ac426f1ff65c1",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "scope": "Full-size source with independent diagnostic annotations. Master bytes unchanged. Colored membrane polygons are observations, not fitted ownership or acceptance.",
+  "sourceMasterUnchanged": true,
+  "qualityAccepted": false
+}

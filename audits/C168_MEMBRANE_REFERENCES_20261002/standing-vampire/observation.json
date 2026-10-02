@@ -1,0 +1,267 @@
+{
+  "schema": "cf.c168-source-observation/v1",
+  "masterSha256": "e3fb8cd445248ab4f31f8b0ca43e558d86c4933dd8f92f90b3cc146853bb44ae",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "inspection": "Full native-size generated source reviewed before any fit authoring",
+  "status": "ANATOMICAL_HOLD",
+  "pose": "folded standing",
+  "observedPoints": {
+    "nearEarTip": [
+      812,
+      297
+    ],
+    "farEarTip": [
+      1004,
+      313
+    ],
+    "nosePad": [
+      1040,
+      546
+    ],
+    "nearHindKnee": [
+      301,
+      787
+    ],
+    "nearHindFoot": [
+      295,
+      872
+    ],
+    "farHindKnee": [
+      502,
+      797
+    ],
+    "farHindFoot": [
+      544,
+      864
+    ],
+    "nearWingElbow": [
+      472,
+      568
+    ],
+    "nearWingWrist": [
+      695,
+      787
+    ],
+    "nearForeSupport": [
+      706,
+      898
+    ],
+    "farForeSupport": [
+      915,
+      870
+    ]
+  },
+  "supportObservations": [
+    {
+      "point": [
+        295,
+        872
+      ],
+      "kind": "visible hind-foot toe line"
+    },
+    {
+      "point": [
+        544,
+        864
+      ],
+      "kind": "visible second hind-foot toe line"
+    },
+    {
+      "point": [
+        706,
+        898
+      ],
+      "kind": "forelimb termination with multiple claws; not admitted as a true single bat thumb"
+    },
+    {
+      "point": [
+        915,
+        870
+      ],
+      "kind": "second forelimb termination with multiple claws; not admitted as a true single bat thumb"
+    }
+  ],
+  "membraneBoundaries": [
+    {
+      "id": "near-folded-fan",
+      "polygonPx": [
+        [
+          462,
+          554
+        ],
+        [
+          490,
+          567
+        ],
+        [
+          558,
+          618
+        ],
+        [
+          617,
+          691
+        ],
+        [
+          696,
+          773
+        ],
+        [
+          715,
+          794
+        ],
+        [
+          683,
+          823
+        ],
+        [
+          627,
+          887
+        ],
+        [
+          617,
+          875
+        ],
+        [
+          608,
+          842
+        ],
+        [
+          563,
+          802
+        ],
+        [
+          521,
+          786
+        ],
+        [
+          483,
+          770
+        ],
+        [
+          443,
+          785
+        ],
+        [
+          427,
+          764
+        ],
+        [
+          433,
+          692
+        ]
+      ]
+    },
+    {
+      "id": "rear-overlap-fold",
+      "polygonPx": [
+        [
+          308,
+          565
+        ],
+        [
+          337,
+          559
+        ],
+        [
+          381,
+          606
+        ],
+        [
+          430,
+          682
+        ],
+        [
+          429,
+          714
+        ],
+        [
+          414,
+          711
+        ],
+        [
+          366,
+          744
+        ],
+        [
+          301,
+          789
+        ],
+        [
+          288,
+          783
+        ],
+        [
+          305,
+          735
+        ],
+        [
+          319,
+          680
+        ],
+        [
+          302,
+          602
+        ]
+      ]
+    },
+    {
+      "id": "far-folded-fan",
+      "polygonPx": [
+        [
+          767,
+          696
+        ],
+        [
+          808,
+          674
+        ],
+        [
+          851,
+          672
+        ],
+        [
+          872,
+          728
+        ],
+        [
+          900,
+          799
+        ],
+        [
+          898,
+          817
+        ],
+        [
+          870,
+          845
+        ],
+        [
+          841,
+          841
+        ],
+        [
+          825,
+          793
+        ],
+        [
+          797,
+          748
+        ]
+      ]
+    }
+  ],
+  "holdReasons": [
+    "Forelimb support tips have several clawed digits, visually resembling extra paws. They cannot be relabelled as the requested real single free thumb.",
+    "Far wing root and folded long-finger chain are not independently traceable through the torso overlap; mapping a complete second membrane chain would invent hidden ownership.",
+    "Support extremities have unequal vertical extents. No common grounded four-point stance is asserted from this painting.",
+    "The nose pad is stylized and raised; exact Vampire Bat species anatomy remains a visual review hold."
+  ],
+  "authoringComplete": false,
+  "fitAttempted": false,
+  "qualityAccepted": false,
+  "nativeAcceptance": false,
+  "nextPaintingRequest": "One bounded future correction should give each folded forelimb one anatomically correct long free thumb and a visible wrist connection, separate the actual far folded arm root/long-finger chain, and retain both real hind feet. Do not add extra front paws or warp contacts by authoring."
+}
