@@ -1,0 +1,14 @@
+{
+  "id": "20-monkey",
+  "name": "Monkey",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e1c0bd95-348d-41b8-bc1d-538f8e33a3fe.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d",
+  "bytes": 1286916,
+  "promptSha256": "304714b826e28f1cfad04e76dc889676ac6299832b8d2082444ffdf6fefe30a0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

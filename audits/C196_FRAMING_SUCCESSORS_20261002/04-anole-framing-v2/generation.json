@@ -1,0 +1,17 @@
+{
+  "id": "04-anole-framing-v2",
+  "name": "Anole",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-73d9943f-6ede-4603-9eff-1094cabea15f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9824c6e1b1da6dc6253d6d6c4419c247ef09137834ff9a0c2379a1bca72d41e9",
+  "bytes": 1012064,
+  "promptSha256": "8abe47000c781dde711b0448cd2478742ea2dd4932ddb87532edb438ab6dbacb",
+  "intent": "edit",
+  "editTarget": "audits/C196_QUADRUPED_ORIGINALS_20261002/04-anole/master.png",
+  "editTargetSha256": "9fe6a683ade808227189855f4761b4374270b5be7a9310e8abbbcbe798047e4b",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

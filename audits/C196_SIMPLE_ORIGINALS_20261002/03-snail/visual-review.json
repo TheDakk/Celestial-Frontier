@@ -1,0 +1,28 @@
+{
+  "name": "Snail",
+  "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete coiled brown shell, continuous wide muscular foot, two separate long eye-bearing tentacles and two lower feelers. The mouth below the head is not unambiguously separable from the foot/head fold at this view; retain mouth-ownership hold rather than inventing a joint. Surface is very glossy and needs painted-style review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 174,
+      "y0": 384,
+      "x1": 1109,
+      "y1": 861
+    },
+    "margins": {
+      "left": 174,
+      "right": 144,
+      "top": 384,
+      "bottom": 392
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

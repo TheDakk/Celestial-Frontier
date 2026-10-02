@@ -1,0 +1,167 @@
+{
+  "kind": "annelid",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Earthworm\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2416079038\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"9\"]]]]",
+    "seed": 2416079038,
+    "ownerId": "authored:archetype-sprint/c173-reference-earthworm",
+    "earthName": "Earthworm"
+  },
+  "template": {
+    "id": "annelid",
+    "version": 1
+  },
+  "clipSetId": "annelid-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2416079038,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 9,
+    "body": 7,
+    "loco": 15,
+    "trait": 9,
+    "size": 5,
+    "diet": 1,
+    "head": 5,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 3,
+    "detail": 6,
+    "accent": 6,
+    "temper": 8,
+    "sense": 1,
+    "repro": 5,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Earthworm"
+  },
+  "geometry": {
+    "cutoutAssetHash": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5964912280701754,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4704944178628389,
+      0.5550239234449761
+    ],
+    "segment0": [
+      0.8811802232854864,
+      0.4960127591706539
+    ],
+    "segment1": [
+      0.8221690590111643,
+      0.4688995215311005
+    ],
+    "segment2": [
+      0.7567783094098883,
+      0.45933014354066987
+    ],
+    "segment3": [
+      0.682615629984051,
+      0.47527910685805425
+    ],
+    "segment4": [
+      0.6124401913875598,
+      0.5119617224880383
+    ],
+    "segment5": [
+      0.55103668261563,
+      0.5406698564593302
+    ],
+    "segment6": [
+      0.4784688995215311,
+      0.5629984051036683
+    ],
+    "segment7": [
+      0.40669856459330145,
+      0.5454545454545454
+    ],
+    "segment8": [
+      0.3373205741626794,
+      0.5103668261562998
+    ],
+    "segment9": [
+      0.2679425837320574,
+      0.49122807017543857
+    ],
+    "segment10": [
+      0.19856459330143542,
+      0.49920255183413076
+    ],
+    "segment11": [
+      0.11961722488038277,
+      0.45773524720893144
+    ]
+  },
+  "materials": {
+    "surface": "skin"
+  },
+  "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/master.png",
+  "coverage": {
+    "scope": "Independent annelid reference from a complete noncrossing Earthworm original",
+    "limitations": [
+      "The 12 shared deforming segments sample the observed centreline; they are control regions, not a claim that the animal has only 12 biological annuli.",
+      "Both terminal ends and the clitellum are visible. No eyes, feet, mandibles or unpainted head structures are invented.",
+      "The curved body has no individually observed foot contacts. groundLineY is the painted lower envelope, not a claim that the whole tube lies on one plane.",
+      "Wet highlights and body thickness remain visual/style review questions; no native movement or quality acceptance."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "c4eb7edc199fec264aa6e7c0e25502a3a30a816f27750034ac0b72400da92ef1",
+    "subjectSourceSha256": "5f716b02343653a3a95d12543aa1b0c602cf25fc7b7cd2d9905ddbf71918d4a6",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "segment0": 0.4149037819599379,
+      "segment1": 0.06494185987720033,
+      "segment2": 0.06608723877225099,
+      "segment3": 0.07585823917359792,
+      "segment4": 0.07918463532571872,
+      "segment5": 0.06778309409888357,
+      "segment6": 0.07592527397220741,
+      "segment7": 0.07388347573780205,
+      "segment8": 0.07774608415697835,
+      "segment9": 0.07196942084445607,
+      "segment10": 0.06983479014013214,
+      "segment11": 0.08917524507108739
+    },
+    "measures": {
+      "body": 0.7625243395864499,
+      "bone-min": 0.06494185987720033,
+      "bone-max": 0.4149037819599379
+    }
+  },
+  "recipeHash": "e2531cbc625d6da605109b65b4b46eefc78c796e3c240d508d6ec602111ef523"
+}

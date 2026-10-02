@@ -1,0 +1,26 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/axial-faint.test.ts (7 tests | 1 failed) 545ms
+   × does not trade the primate upper nape spike for an increased throat/arm gap 150ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > does not trade the primate upper nape spike for an increased throat/arm gap
+AssertionError: expected 'PASS' to be 'pass' // Object.is equality
+
+Expected: "pass"
+Received: "PASS"
+
+ ❯ measure apps/game/src/motion/axial-faint.test.ts:53:110
+
+ ❯ apps/game/src/motion/axial-faint.test.ts:56:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 16 passed (17)
+   Start at  13:51:10
+   Duration  857ms (transform 254ms, setup 0ms, import 339ms, tests 920ms, environment 0ms)
+

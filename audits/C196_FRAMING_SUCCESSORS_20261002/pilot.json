@@ -1,0 +1,56 @@
+[
+  {
+    "id": "01-caiman-framing-v2",
+    "name": "Caiman",
+    "family": "quadruped",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2",
+    "master": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/master.png",
+    "purpose": "FRAMING_ONLY_SUCCESSOR",
+    "originalMaster": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman/master.png"
+  },
+  {
+    "id": "02-crocodile-framing-v2",
+    "name": "Crocodile",
+    "family": "quadruped",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2",
+    "master": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/master.png",
+    "purpose": "FRAMING_ONLY_SUCCESSOR",
+    "originalMaster": "audits/C196_QUADRUPED_ORIGINALS_20261002/02-crocodile/master.png"
+  },
+  {
+    "id": "03-monitor-lizard-framing-v2",
+    "name": "Monitor Lizard",
+    "family": "quadruped",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2",
+    "master": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/master.png",
+    "purpose": "FRAMING_ONLY_SUCCESSOR",
+    "originalMaster": "audits/C196_QUADRUPED_ORIGINALS_20261002/03-monitor-lizard/master.png"
+  },
+  {
+    "id": "04-anole-framing-v2",
+    "name": "Anole",
+    "family": "quadruped",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2",
+    "master": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/master.png",
+    "purpose": "FRAMING_ONLY_SUCCESSOR",
+    "originalMaster": "audits/C196_QUADRUPED_ORIGINALS_20261002/04-anole/master.png"
+  },
+  {
+    "id": "05-skink-framing-v2",
+    "name": "Skink",
+    "family": "quadruped",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2",
+    "master": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/master.png",
+    "purpose": "FRAMING_ONLY_SUCCESSOR",
+    "originalMaster": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink/master.png"
+  },
+  {
+    "id": "08-whiptail-framing-v2",
+    "name": "Whiptail",
+    "family": "quadruped",
+    "packet": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2",
+    "master": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/master.png",
+    "purpose": "FRAMING_ONLY_SUCCESSOR",
+    "originalMaster": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail/master.png"
+  }
+]

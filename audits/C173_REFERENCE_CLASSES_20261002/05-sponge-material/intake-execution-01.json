@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "intake",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material",
+    "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/intake-01.log",
+  "logSha256": "e1b78e09b7b4894205beea04769c831e1e4779e9bfde0a9db0886678a608bc16",
+  "nativeRuns": 0
+}

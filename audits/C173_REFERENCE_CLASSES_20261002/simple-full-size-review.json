@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c173-simple-full-size-review/v1",
+  "inspectedFullSize": [
+    "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/master.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/master.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/master.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/master.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/ownership-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/joint-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/ownership-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/joint-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/observation-preview.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/observation-preview.png"
+  ],
+  "findings": [
+    "Earthworm follows a continuous source-observed centreline; 12 control segments do not assert the biological annulus count. Wet highlight/thickness remains an art-review question.",
+    "Sponge ownership keeps opening/rim/body/basal tissue distinct, with no feet or reconstructed hidden cavity. The source looks photographic and awaits painting-quality review.",
+    "Snail eye stalks and foot are clear but mouth remains an ambiguous anterior fold; no complete fit.",
+    "Mussel valve junction/foot are observed without claiming full hinge axis or a hidden siphon. Large tongue-like foot, wide gape and incomplete siphonal anatomy remain holds."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

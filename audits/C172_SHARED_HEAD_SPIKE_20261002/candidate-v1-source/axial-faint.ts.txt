@@ -1,0 +1,27 @@
+import type {MotionAction} from './actions.js';
+import type {BodyCard} from './body-card.js';
+
+/** A split painted nape can span several axial owners. Independent local
+ * rotations accumulate along the head chain: preserved interior paint then
+ * protrudes as a rigid spike, even with valid triangles and foot contacts.
+ * Canonical grounded bird/primate faint keeps this continuous painted region
+ * in the root frame for the whole curve. Root slump and all appendage tracks
+ * remain authored; idle, other actions and explicit editor curves are untouched.
+ * This deliberately trades independent faint head/neck curl for continuity.
+ * It changes no skin, source ownership, joint limit or publication guard. */
+export function axialFaintAction(card:BodyCard,action:MotionAction):MotionAction {
+  if(action.id!=='faint'||action.family!=='faint'||!card.paintedContactSupports
+    ||!['biped-bird','primate'].includes(card.template.id)
+    ||!['land','amphibious'].includes(card.realm))return action;
+  const byJoint=new Map(card.parts.map(p=>[p.joint,p])),chain:string[]=[];
+  let joint='head';
+  while(joint!=='root'){
+    const part=byJoint.get(joint);
+    // An incomplete or cyclic anatomy must never silently author a partial
+    // chain. Ordinary card compilation already rejects these malformed graphs.
+    if(!part||chain.includes(joint))throw Error('motion: invalid faint axial chain');
+    chain.push(joint);joint=part.parent;
+  }
+  if(!action.poses.some(p=>chain.some(j=>(p.joints[j]??0)!==0)))return action;
+  return {...action,poses:action.poses.map(p=>({...p,joints:{...p.joints,...Object.fromEntries(chain.map(j=>[j,0]))}}))};
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-framing-edit/v1",
+  "id": "01-caiman-framing-v2",
+  "name": "Caiman",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "promptSha256": "2a206989f961d0b63c06377dbbe6652a1b63b822bfc59e6f31be41f08a907ae2",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "reference": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman/master.png",
+  "referenceSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "actualInputRole": "sole edit target; original master",
+  "originalRequest": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman/request.json",
+  "originalRequestSha256": "95f0b85e666b49442b7085766a321430efd57991f09be8c59e8853b1ffd07fec",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "priorFraming": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 85,
+      "y0": 507,
+      "x1": 1168,
+      "y1": 763
+    },
+    "margins": {
+      "left": 85,
+      "right": 85,
+      "top": 507,
+      "bottom": 490
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "scope": "One authorized framing-only edit; unchanged prior originals. All existing anatomy and contact holds remain pending independent review."
+}

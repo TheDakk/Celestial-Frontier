@@ -1,0 +1,415 @@
+{
+  "schema": "cf.c173-anatomical-observation/v1",
+  "status": "ANATOMICAL_HOLD",
+  "family": "bivalve",
+  "source": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel",
+  "masterSha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "observedSourcePoints": {
+    "observedValveJunction": [
+      321,
+      621
+    ],
+    "valveFar": [
+      704,
+      489
+    ],
+    "valveNear": [
+      641,
+      730
+    ],
+    "mantle": [
+      722,
+      660
+    ],
+    "visibleFoot": [
+      929,
+      747
+    ],
+    "byssalOrigin": [
+      341,
+      650
+    ]
+  },
+  "visibleRegions": [
+    {
+      "id": "upper-valve",
+      "points": [
+        [
+          294,
+          604
+        ],
+        [
+          324,
+          567
+        ],
+        [
+          373,
+          523
+        ],
+        [
+          445,
+          475
+        ],
+        [
+          527,
+          427
+        ],
+        [
+          607,
+          394
+        ],
+        [
+          691,
+          369
+        ],
+        [
+          775,
+          358
+        ],
+        [
+          849,
+          360
+        ],
+        [
+          919,
+          378
+        ],
+        [
+          964,
+          408
+        ],
+        [
+          984,
+          438
+        ],
+        [
+          978,
+          474
+        ],
+        [
+          956,
+          506
+        ],
+        [
+          914,
+          538
+        ],
+        [
+          858,
+          566
+        ],
+        [
+          787,
+          590
+        ],
+        [
+          704,
+          611
+        ],
+        [
+          618,
+          626
+        ],
+        [
+          522,
+          636
+        ],
+        [
+          426,
+          639
+        ],
+        [
+          345,
+          635
+        ],
+        [
+          299,
+          623
+        ]
+      ]
+    },
+    {
+      "id": "lower-valve",
+      "points": [
+        [
+          326,
+          635
+        ],
+        [
+          417,
+          648
+        ],
+        [
+          523,
+          665
+        ],
+        [
+          629,
+          683
+        ],
+        [
+          740,
+          707
+        ],
+        [
+          836,
+          733
+        ],
+        [
+          921,
+          749
+        ],
+        [
+          973,
+          723
+        ],
+        [
+          985,
+          686
+        ],
+        [
+          972,
+          651
+        ],
+        [
+          941,
+          620
+        ],
+        [
+          899,
+          594
+        ],
+        [
+          852,
+          574
+        ],
+        [
+          828,
+          577
+        ],
+        [
+          858,
+          598
+        ],
+        [
+          903,
+          632
+        ],
+        [
+          932,
+          666
+        ],
+        [
+          923,
+          701
+        ],
+        [
+          891,
+          728
+        ],
+        [
+          844,
+          758
+        ],
+        [
+          781,
+          786
+        ],
+        [
+          710,
+          802
+        ],
+        [
+          639,
+          806
+        ],
+        [
+          566,
+          795
+        ],
+        [
+          495,
+          775
+        ],
+        [
+          425,
+          744
+        ],
+        [
+          368,
+          703
+        ],
+        [
+          337,
+          672
+        ]
+      ]
+    },
+    {
+      "id": "mantle-visible",
+      "points": [
+        [
+          394,
+          637
+        ],
+        [
+          476,
+          631
+        ],
+        [
+          575,
+          618
+        ],
+        [
+          674,
+          600
+        ],
+        [
+          752,
+          595
+        ],
+        [
+          812,
+          604
+        ],
+        [
+          858,
+          626
+        ],
+        [
+          883,
+          654
+        ],
+        [
+          884,
+          691
+        ],
+        [
+          863,
+          718
+        ],
+        [
+          811,
+          726
+        ],
+        [
+          752,
+          712
+        ],
+        [
+          670,
+          693
+        ],
+        [
+          576,
+          674
+        ],
+        [
+          481,
+          655
+        ]
+      ]
+    },
+    {
+      "id": "protruding-soft-foot",
+      "points": [
+        [
+          776,
+          654
+        ],
+        [
+          807,
+          643
+        ],
+        [
+          844,
+          652
+        ],
+        [
+          875,
+          679
+        ],
+        [
+          900,
+          704
+        ],
+        [
+          924,
+          733
+        ],
+        [
+          949,
+          752
+        ],
+        [
+          978,
+          768
+        ],
+        [
+          1002,
+          769
+        ],
+        [
+          1009,
+          783
+        ],
+        [
+          997,
+          793
+        ],
+        [
+          972,
+          792
+        ],
+        [
+          944,
+          784
+        ],
+        [
+          915,
+          770
+        ],
+        [
+          891,
+          750
+        ],
+        [
+          867,
+          729
+        ],
+        [
+          833,
+          706
+        ],
+        [
+          796,
+          692
+        ]
+      ]
+    }
+  ],
+  "unresolved": [
+    "siphon",
+    "exact hinge-axis identity"
+  ],
+  "declaredBiologicallyAbsent": [],
+  "reasons": [
+    "Two valves, a pale protruding soft foot and byssal threads are visible. The foot is unusually large/tongue-like and the shell gape is wide; biological identity needs review.",
+    "The visible narrow valve junction is recorded without claiming the hidden full hinge axis.",
+    "No distinct siphonal structure can be located. Generic Mussel identity does not prove biological absence, and the current hidden-chain contract does not represent this optional bivalve structure. No siphon absence is fabricated merely to pass inventory.",
+    "Byssal threads remain anchoring tissue/thread evidence, not extra feet; no complete fit is attempted."
+  ],
+  "completeAuthoring": false,
+  "fitAttempted": false,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "sourceBytesPreserved": true,
+  "previewIsDiagnosticOverlay": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

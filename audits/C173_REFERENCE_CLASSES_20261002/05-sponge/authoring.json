@@ -1,0 +1,291 @@
+{
+  "id": "c173-reference-sponge",
+  "family": "sessile-filter",
+  "landmarksPx": {
+    "root": [
+      630,
+      985
+    ],
+    "base": [
+      629,
+      942
+    ],
+    "body": [
+      623,
+      643
+    ],
+    "crown": [
+      632,
+      410
+    ],
+    "aperture": [
+      638,
+      321
+    ]
+  },
+  "groundLineY": 0.8157894736842105,
+  "materials": {
+    "surface": "porous"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          625,
+          980
+        ],
+        [
+          635,
+          980
+        ],
+        [
+          635,
+          991
+        ],
+        [
+          625,
+          991
+        ]
+      ]
+    },
+    {
+      "id": "aperture",
+      "joint": "aperture",
+      "layer": "near",
+      "polygonPx": [
+        [
+          494,
+          298
+        ],
+        [
+          523,
+          277
+        ],
+        [
+          563,
+          260
+        ],
+        [
+          591,
+          248
+        ],
+        [
+          627,
+          248
+        ],
+        [
+          654,
+          251
+        ],
+        [
+          685,
+          274
+        ],
+        [
+          719,
+          282
+        ],
+        [
+          751,
+          282
+        ],
+        [
+          775,
+          300
+        ],
+        [
+          780,
+          323
+        ],
+        [
+          764,
+          346
+        ],
+        [
+          747,
+          367
+        ],
+        [
+          731,
+          390
+        ],
+        [
+          700,
+          405
+        ],
+        [
+          667,
+          414
+        ],
+        [
+          637,
+          410
+        ],
+        [
+          615,
+          390
+        ],
+        [
+          588,
+          384
+        ],
+        [
+          561,
+          366
+        ],
+        [
+          544,
+          349
+        ],
+        [
+          522,
+          343
+        ],
+        [
+          505,
+          322
+        ]
+      ]
+    },
+    {
+      "id": "crown",
+      "joint": "crown",
+      "layer": "near",
+      "polygonPx": [
+        [
+          449,
+          216
+        ],
+        [
+          810,
+          216
+        ],
+        [
+          842,
+          370
+        ],
+        [
+          837,
+          430
+        ],
+        [
+          804,
+          467
+        ],
+        [
+          757,
+          469
+        ],
+        [
+          703,
+          479
+        ],
+        [
+          650,
+          477
+        ],
+        [
+          592,
+          469
+        ],
+        [
+          526,
+          454
+        ],
+        [
+          471,
+          426
+        ],
+        [
+          448,
+          369
+        ]
+      ]
+    },
+    {
+      "id": "base",
+      "joint": "base",
+      "layer": "near",
+      "polygonPx": [
+        [
+          490,
+          897
+        ],
+        [
+          551,
+          902
+        ],
+        [
+          595,
+          909
+        ],
+        [
+          644,
+          908
+        ],
+        [
+          688,
+          903
+        ],
+        [
+          747,
+          878
+        ],
+        [
+          812,
+          893
+        ],
+        [
+          819,
+          1040
+        ],
+        [
+          479,
+          1040
+        ],
+        [
+          469,
+          947
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "body",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independent anchored sessile-filter reference; source-visible basal tissue, porous body, rim and opening only",
+    "limitations": [
+      "Single observed porous vase has a visible osculum and irregular basal tissue; basal projections are not feet or independent limbs.",
+      "Only the outer surface and visible opening are authored. The full hidden interior cavity and internal filtering channels are not reconstructed.",
+      "Root and base remain anchored by the specialized sessile template. This source does not authorize locomotor legs or translating attacks.",
+      "The surface reads photographic with dense pores rather than the preferred painted finish; art scoring and native movement remain held."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  }
+}

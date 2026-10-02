@@ -1,0 +1,70 @@
+import fs from 'node:fs';
+import {createRequire} from 'node:module';
+// @ts-expect-error Existing audit instrument has no TypeScript declaration.
+import {createSourceJoinProbe,assessSourceJoinContinuity} from '../../../../tools/quadruped-proof/source-join-continuity.mjs';
+import {it,expect} from 'vitest';
+import {axialFaintAction} from './axial-faint.js';
+import {compileBodyCard} from './body-card.js';
+import {withPaintedContactSupports} from './painted-supports.js';
+import {actionsFor} from './family-actions.js';
+import {buildTimeline,buildActionTimeline,sampleTimeline} from './timeline.js';
+// @ts-expect-error Existing audit-only runtime publication helper is JavaScript.
+import {createPaintPublication} from '../../../../../../audits/C132_FAINT_GROUND_20261002/paint-publication.mjs';
+const root=new URL('../../../../../../',import.meta.url),base='audits/C172_SHARED_HEAD_SPIKE_20261002/';
+const read=(p:string)=>JSON.parse(fs.readFileSync(new URL(p,root),'utf8'));
+const rows=read(base+'inputs.json').rows as {id:string;fit:string}[];
+const measured=read(base+'measurement.json').rows;
+function fixture(row:typeof rows[number]){const record=read(row.fit+'/record.json'),binding=read(row.fit+'/binding.json'),card=withPaintedContactSupports(compileBodyCard(record,record.genome),record,binding);return{record,binding,card};}
+// Independently interpolate the exact positive-alpha source pixel attributed to
+// the native defect. Positions come from the real contact/skin/ARAP publication.
+function point(binding:any,positions:any,pixel:any):number[]{
+ const part=binding.paintSkin.parts.find((p:any)=>p.id===pixel.part),ids=part.indices.slice(pixel.face*3,pixel.face*3+3);
+ const v=ids.map((id:number)=>part.vertices[id].triangle.reduce((p:number[],n:number,k:number)=>[p[0]!+binding.paintSkin.vertices[n].x*part.vertices[id].barycentric[k],p[1]!+binding.paintSkin.vertices[n].y*part.vertices[id].barycentric[k]],[0,0]));
+ const[a,b,c]=v,d=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1]),x=pixel.source[0]+.5,y=pixel.source[1]+.5,u=((b[1]-c[1])*(x-c[0])+(c[0]-b[0])*(y-c[1]))/d,z=((c[1]-a[1])*(x-c[0])+(a[0]-c[0])*(y-c[1]))/d;
+ return ids.reduce((p:number[],id:number,k:number)=>[p[0]!+positions[part.id][2*id]*[u,z,1-u-z][k]!,p[1]!+positions[part.id][2*id+1]*[u,z,1-u-z][k]!],[0,0]);
+}
+it.each(rows)('removes the reproduced $id nape/skull paint separation without changing its fit',row=>{
+ const{record,binding,card}=fixture(row),before=read(base+'baseline/'+row.id+'.json').timelines.faint,after=buildTimeline(card,'faint',card.identity.seed),measure=measured.find((r:any)=>r.id===row.id).original,pub=createPaintPublication(record,binding,card.realm);
+ const ratio=(tl:any)=>{const p=sampleTimeline(tl,tl.durationMs),frame=pub.publish({...Object.fromEntries(Object.entries(p.joints).map(([j,rotation])=>[j,{rotation}])),root:{rotation:p.root.rotation,dx:p.root.dx,dy:p.root.dy}},{actionId:'faint',elapsedMs:tl.durationMs,durationMs:tl.durationMs,weight:1}),a=point(binding,frame.positions,measure.tip),b=point(binding,frame.positions,measure.head);return Math.hypot((a[0]!-b[0]!)*record.geometry.width,(a[1]!-b[1]!)*record.geometry.height)/measure.restSourcePx;};
+ expect(ratio(before)).toBeGreaterThan(1.08); // Reproduced defect fails the same continuity bound.
+ expect(ratio(after)).toBeLessThan(1.02);
+ expect(after.phases).toEqual(before.phases);expect(after.durationMs).toBe(before.durationMs);expect(after.limitsRad).toEqual(before.limitsRad);expect(after.secondary).toEqual(before.secondary);
+ for(const part of card.parts.filter(p=>['legs','wings','tail','ears'].includes(p.group)||(p.group==='arms'&&!card.parts.some(q=>q.group==='arms'&&q.parent===p.joint))))expect(after.tracks[part.joint]).toEqual(before.tracks[part.joint]);
+});
+it('preserves every captured non-faint canonical action and every explicit editor timeline',()=>{
+ for(const row of rows){const{card}=fixture(row),prior=read(base+'baseline/'+row.id+'.json').timelines,actions=actionsFor(card.template.id,card.anatomy)!;
+  for(const[id,old]of Object.entries(prior)){if(id!=='faint')expect(JSON.stringify(buildTimeline(card,id,card.identity.seed))).toBe(JSON.stringify(old));const a=actions[id]!,snapshot=structuredClone(a),explicit=buildActionTimeline(card,a,card.identity.seed);axialFaintAction(card,a);expect(a).toEqual(snapshot);expect(buildActionTimeline(card,a,card.identity.seed)).toEqual(explicit);}
+ }
+});
+it('is deterministic, anatomy-derived, and leaves unsupported or already coherent curves by identity',()=>{
+ const{card}=fixture(rows[0]!),a=actionsFor(card.template.id,card.anatomy)!.faint!,out=axialFaintAction(card,a);
+ expect(axialFaintAction({...card,identity:{...card.identity,earthName:'Uncatalogued painted bird',seed:47}},a)).toEqual(out);
+ expect(axialFaintAction(JSON.parse(JSON.stringify(card)),a)).toEqual(out);
+ expect(axialFaintAction(card,out)).toBe(out);
+ const{paintedContactSupports:_ignored,...unbound}=card;expect(axialFaintAction(unbound,a)).toBe(a);
+ expect(axialFaintAction({...card,realm:'aquatic'},a)).toBe(a);
+ expect(axialFaintAction({...card,template:{...card.template,id:'quadruped'}},a)).toBe(a);
+ expect(axialFaintAction(card,{...a,id:'feed'})).toEqual({...a,id:'feed'});
+ expect(()=>axialFaintAction({...card,parts:card.parts.filter(p=>p.joint!=='head')},a)).toThrow('invalid faint axial chain');
+});
+
+it('does not trade the primate upper nape spike for an increased throat/arm gap',()=>{
+ const row=rows.find(r=>r.id==='capuchin')!,{record,binding,card}=fixture(row),before=read(base+'baseline/capuchin.json').timelines.faint,after=buildTimeline(card,'faint',card.identity.seed),require=createRequire(import.meta.url),{PNG}=require('pngjs'),atlas=PNG.sync.read(fs.readFileSync(new URL(row.fit+'/parts/atlas/'+fs.readdirSync(new URL(row.fit+'/parts/atlas',root)).find(p=>p.endsWith('.png')),root))),probe=createSourceJoinProbe({record,binding,atlas:{width:atlas.width,height:atlas.height,rgba:atlas.data}}),pub=createPaintPublication(record,binding,card.realm);
+ const pose=(tl:any):Record<string,{rotation:number;dx?:number;dy?:number}>=>{const p=sampleTimeline(tl,tl.durationMs);return{...Object.fromEntries(Object.entries(p.joints).map(([j,rotation])=>[j,{rotation}])),root:{rotation:p.root.rotation,dx:p.root.dx,dy:p.root.dy}};};
+ const publish=(p:any)=>pub.publish(p,{actionId:'faint',elapsedMs:after.durationMs,durationMs:after.durationMs,weight:1});
+ const measure=(p:any)=>{const f=publish(p),j=assessSourceJoinContinuity(probe,f.positions);expect(j.status).toBe('PASS');return j.excluded.find((j:any)=>j.parts.includes('neck')&&j.parts.includes('arm-far-elbow')).maxGapPx;};
+ const original=pose(before),candidate=pose(after),mutant=structuredClone(candidate);
+ for(const p of card.parts)if(p.group==='arms'&&card.parts.some(q=>q.group==='arms'&&q.parent===p.joint))mutant[p.joint]=original[p.joint]!;
+ expect(measure(candidate)).toBeLessThan(measure(original));
+ expect(measure(mutant)).toBeGreaterThan(measure(original)); // First axial-only fix reproduced the beard regression.
+ const bounds=(p:any)=>{const f=publish(p);return binding.parts.filter((x:any)=>x.joint?.endsWith('Hand')).map((x:any)=>Math.max(...f.positions[x.id].filter((_:number,i:number)=>i%2===1)));};
+ const old=bounds(original);bounds(candidate).forEach((y:number,i:number)=>expect(y).toBeLessThanOrEqual(old[i]!));
+});
+it.each(rows.filter(r=>r.id!=='capuchin'))('preserves $id wing/tail geometry during the faint transition',row=>{
+ const{record,binding,card}=fixture(row),before=read(base+'baseline/'+row.id+'.json').timelines.faint,after=buildTimeline(card,'faint',card.identity.seed),require=createRequire(import.meta.url),{PNG}=require('pngjs'),file=fs.readdirSync(new URL(row.fit+'/parts/atlas',root)).find(p=>p.endsWith('.png')),atlas=PNG.sync.read(fs.readFileSync(new URL(row.fit+'/parts/atlas/'+file,root))),probe=createSourceJoinProbe({record,binding,atlas:{width:atlas.width,height:atlas.height,rgba:atlas.data}}),pub=createPaintPublication(record,binding,card.realm),ms=after.durationMs/2;
+ for(const joint of ['root','pelvis','spine','chest'])expect(after.tracks[joint]).toEqual(before.tracks[joint]);
+ const gap=(tl:any)=>{const p=sampleTimeline(tl,ms),frame=pub.publish({...Object.fromEntries(Object.entries(p.joints).map(([j,rotation])=>[j,{rotation}])),root:{rotation:p.root.rotation,dx:p.root.dx,dy:p.root.dy}},{actionId:'faint',elapsedMs:ms,durationMs:tl.durationMs,weight:1}),j=assessSourceJoinContinuity(probe,frame.positions);return j.excluded.find((x:any)=>x.parts.includes('near-wing-flight')&&x.parts.includes('tail')).maxGapPx;};
+ const mutant={...after,tracks:Object.fromEntries(Object.entries(after.tracks).map(([j,keys])=>[j,keys.map(k=>({...k,value:['spine','chest','pelvis'].includes(j)?0:k.value}))]))};
+ expect(Math.abs(gap(after)-gap(before))).toBeLessThan(.001);
+ expect(gap(mutant)-gap(before)).toBeGreaterThan(10); // Whole-root neutralization caused the measured transient regression.
+});

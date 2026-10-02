@@ -101,56 +101,14 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 
 ## Current Codex sprint handoff — 2026-10-02, C173 ACTIVE
 
-Dakk authorizes the C132 sprint on OpenAI/Codex, macOS,
-`~/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, with disjoint
-parallel agents and large signed batches. Claude's handoff above stays unchanged.
-Start and latest boundary read Claude's mailbox through C173; no newer signed
-anthropic/mac commits existed at either read. Budget UNFROZEN; signing G and the
-pre-push guard remain mandatory. No PR/label/hosted/develop/main/release/deploy.
+Dakk authorizes the C132 sprint on `openai/mac`, macOS, with disjoint parallel agents and large signed batches. Claude's handoff above remains unchanged. Latest sibling mailbox through C178: coverage 198/631 after Giraffe/Banteng; Claude has re-opened native isolation for nine C197 repaint scoring. No Codex native/gate/heavy CPU until its terminal notice. All new sibling commits through c34851edd are signed and queued for the next --no-ff merge. No PR/label/hosted/develop/main/release/deploy.
 
-Accepted baseline remains 196/631, 45 WebP arenas/43 families at 1672×941 and 11 painted
-themes. The selected historical I5 certifies product 20e80c912; the latest completed
-develop gate has 5,976 passes. Neither certificate nor accepted coverage is extended
-by the new source candidates. Prior complete handoff is moved verbatim to the archive.
+**Product checkpoint C201:** Shared canonical held-faint repair is frozen in `C172_SHARED_HEAD_SPIKE_20261002/delivery-v2.json`. Bird upper neck/head coherency preserves original anticipation and torso; primate shoulders/elbows share its upper-body frame. Four reported spikes disappear in full-size software stills. 55 checks, full typecheck, 1,984 publications/zero refusals and 80 loaded-rig byte comparisons pass. Pre-existing wing/tail/leg gaps and hand penetration remain held. Exact four unchanged fits/scripts are ready for native re-film. Guide release digest is synchronized at unchanged120 bullets. No limits, skin or source ownership changed. The old I5 product20e80c912 remains historical only; this changed source needs a fresh combined3+1 epoch, never a rebind.
 
-**Current product work, not yet ready for native:** C172 shared faint-pose repair
-uses unchanged C181 Hawk/Crow/Snowy Owl and C192 Capuchin fits. The reported
-idle-90 defects are held faint. Birds' distal nape follows accumulated neck
-rotations; Capuchin's shoulder fragment follows root while neighboring chest/neck
-paint descends. Dense review refused two intermediate candidates despite green
-static checks. Minimal source changes/tests/docs remain in progress in
-`C172_SHARED_HEAD_SPIKE_20261002`; do not call them accepted or reuse I5 on them.
-A final changed-product checkpoint precedes a fresh combined epoch and native films.
+**Signed source deliveries C196–C203:** 24 originals (17 quadrupeds/seven first primates), nine selected held-source repaints, all source refusals retained. C200 supplies all nine missing pattern observations (twoPASS/sevenNOT_REQUIRED). Six separate focused framing successors pass unchanged margins. Four specialized originals (Earthworm/Sponge/Snail/Mussel) use a documented audit-only compiler extension with23 controls; production compiler unchanged. C202 independently authors Caiman/Giraffe/Earthworm/Sponge technical reference candidates:58 action rows/four full presentations, exact conservation/D28PASS; Monkey static/island, Snail mouth and Mussel hidden anatomy remain explicit holds. No global pool promotion or invented anatomy.
 
-**C196–C199 delivered:** 24 originals (17 quadruped source repairs + 7 first primates),
-18 framing PASS/6 retained refusals; separate focused framing successors and four
-simple-family originals continue. Nine selected held-source repaints in
-`C173_HOLD_SOURCE_REPAINTS_20261002/pilot-v2.json` all pass the unchanged 8% margin
-rule; 13 attempts retained, no local rescale/crop. Rhea far wing remains occluded.
-`C173_SOUND_REVIEW_20261002` measures all 49 C141 cues: 32 pass/17 quietness refusals,
-seven exact PCM duplicate groups; audition page and real-owner admission plan are
-ready, headphones/phone listening NOT performed and nothing admitted.
+**Sound C198:** All49C141 cues measured by actual loudness owner;32 pass/17quietness refusals, seven identical PCM groups. Exact audition page and runtime admission plan are delivered; headphone/phone listening has not been performed, no recordings admitted.
 
-**Reference queue:** C173_REFERENCE_CLASSES contains independently authored
-Caiman/Giraffe technical successors with unchanged D28/static PASS; Monkey keeps
-walk/faint/contact and remainder-cap refusals. Original 24 is frozen; references
-and later simple-family sources are separate. No global pool promotion or invented
-anatomy. Equid ear/mane/limb work follows the head-source freeze as audit-only work.
+**Performance C199:** Additive `C173_ALL_PAIRS_20261002` supervisor covers the requested1,444 ordered pairs. Same1000/60ms limit/native runner/entry; complete valid CPU-only REDs are retained and collection continues, every slow sample reported. Instrument/source/anatomy/transport/resource failure still stops; no retries,60GiB floor.40synthetic/12path controls pass. Prepare a fresh manifest on the final signed product; no native matrix run yet. Old C163 preparation/C12 kernel proofs remain unchanged. CPU PASS alone is not display/phone60fps qualification.
 
-**Performance:** `C173_ALL_PAIRS_20261002` is an additive complete-sweep supervisor
-for Dakk's now-explicit 1,444 ordered-pair run. It records every CPU-only RED while
-retaining the exact 1000/60 ms limit, runner/entry and capture controls; no retries.
-40 synthetic and 12 path/inventory controls pass. Final source preparation/native
-runs remain pending. The earlier C163 first-red preparation and C12 unpromoted
-kernel remain untouched. A native reservation is required before any epoch;
-none is active at this checkpoint. All-pair 60 fps is UNMEASURED.
-
-Reuse this uninterrupted session's startup receipt in C163_SPRAWLER_MOTION_20261002.
-Disk has about 146 GiB free at this boundary; no cleanup/recovery is claimed by this
-batch. Future develop gates rename optional local-AI node_modules aside and restore
-it in a finalizer. Codex completes source tests/docs, freezes product and reserves
-native isolation; Claude reviews delivered source/reference packets after that
-window. Dakk need not relay messages or switch apps. Write only TO_CLAUDE here,
-read the sibling mailbox at every batch end, and preserve old proofs/limits.
-
-C200 adds the missing nine C197 pattern records (two PASS, seven NOT_REQUIRED). Claude C175 owns the native scoring window; Codex defers native/gate/heavy CPU until its terminal notice.
+Next: finish source checkpoint, merge signed sibling preserving Claude's block, wait for C178 terminal, reserve isolation, run one fresh combined I5 and exact re-films then the prepared full sweep. Keep product frozen throughout. Independent remote art/manual reference and equid work can continue. Develop gates rename optional local-AI node_modules aside and restore in a finalizer. Reuse this uninterrupted session's C163_SPRAWLER startup receipt. Disk about142GiB free; no cleanup/recovery claimed. Normal own-branch push only after required local green and intact guard. Read sibling mailbox at every batch boundary; write only TO_CLAUDE here. Dakk need not relay or switch apps.

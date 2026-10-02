@@ -1,0 +1,112 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C196_QUADRUPED_ORIGINALS_20261002/20-monkey",
+  "masterSha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d",
+  "sourceBytesUnchanged": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "fullSizeInspected": true,
+  "landmarksPx": {
+    "root": [
+      641,
+      562
+    ],
+    "pelvis": [
+      539,
+      586
+    ],
+    "spine": [
+      641,
+      526
+    ],
+    "chest": [
+      777,
+      573
+    ],
+    "neck": [
+      800,
+      522
+    ],
+    "head": [
+      865,
+      502
+    ],
+    "jaw": [
+      887,
+      557
+    ],
+    "armNearShoulder": [
+      766,
+      622
+    ],
+    "armNearElbow": [
+      744,
+      745
+    ],
+    "armNearHand": [
+      806,
+      884
+    ],
+    "armFarShoulder": [
+      846,
+      644
+    ],
+    "armFarElbow": [
+      873,
+      751
+    ],
+    "armFarHand": [
+      946,
+      852
+    ],
+    "legNearHip": [
+      530,
+      630
+    ],
+    "legNearKnee": [
+      510,
+      724
+    ],
+    "legNearFoot": [
+      389,
+      862
+    ],
+    "legFarHip": [
+      622,
+      654
+    ],
+    "legFarKnee": [
+      645,
+      710
+    ],
+    "legFarFoot": [
+      655,
+      851
+    ],
+    "tail0": [
+      506,
+      589
+    ],
+    "tail1": [
+      292,
+      535
+    ],
+    "tail2": [
+      405,
+      414
+    ]
+  },
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "physicalCoplanarGroundClaim": false,
+  "limitations": [
+    "Four visible hand/foot termini and bends are mapped independently; far proximal attachments are surface-emergence estimates where overlying fur conceals the internal joint.",
+    "Source uses a generic Monkey identity and a slight three-quarter face. Specific species anatomy and digit counts remain visual review questions.",
+    "Tail is visibly curled and continuous but only three shared tail joints are available; no additional unseen joint or tail pixels are invented.",
+    "Contact endpoints preserve their observed differing heights. This is a source reference candidate, not proof of grounded walking, climbing or prehensile gripping.",
+    "No native or quality acceptance."
+  ],
+  "qualityAccepted": false
+}

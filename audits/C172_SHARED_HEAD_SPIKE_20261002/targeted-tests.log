@@ -1,0 +1,39 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/axial-faint.test.ts (6 tests | 1 failed) 352ms
+   × preserves every captured non-faint canonical action and every explicit editor timeline 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > preserves every captured non-faint canonical action and every explicit editor timeline
+AssertionError: expected { kind: 'motion-timeline', …(19) } to deeply equal { kind: 'motion-timeline', …(19) }
+
+- Expected
++ Received
+
+@@ -127,11 +127,11 @@
+        },
+        {
+          "ease": "sine-in-out",
+          "ms": 315,
+          "t": 0.75,
+-         "value": 0,
++         "value": -0,
+        },
+        {
+          "ease": "sine-in-out",
+          "ms": 420,
+          "t": 1,
+
+ ❯ apps/game/src/motion/axial-faint.test.ts:32:112
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 15 passed (16)
+   Start at  13:42:29
+   Duration  786ms (transform 267ms, setup 0ms, import 359ms, tests 844ms, environment 0ms)
+

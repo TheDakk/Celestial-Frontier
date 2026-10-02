@@ -1,0 +1,385 @@
+{
+  "schema": "cf.c173-caiman-review/v1",
+  "selectedPacket": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour",
+  "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman",
+  "inspectedFullSize": [
+    "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/master.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/ownership-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/ownership-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/joint-preview-01.png"
+  ],
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "status": "TECHNICAL_REFERENCE_WITH_VISUAL_HOLDS",
+  "parts": 27,
+  "static": {
+    "status": "PASS_STATIC",
+    "actionRows": 19,
+    "actionSamples": 2299,
+    "presentationSamples": 1490,
+    "sourcePixelChanges": 0
+  },
+  "d28": {
+    "status": "PASS",
+    "remainderPixels": 27834,
+    "movablePixels": 2338,
+    "islands": [
+      {
+        "pixels": 189,
+        "to": 19,
+        "border": {
+          "19": 106
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 19,
+        "border": {
+          "19": 3
+        }
+      },
+      {
+        "pixels": 122,
+        "to": 20,
+        "border": {
+          "19": 9,
+          "20": 25
+        }
+      },
+      {
+        "pixels": 29,
+        "to": 20,
+        "border": {
+          "20": 16
+        }
+      },
+      {
+        "pixels": 32,
+        "to": 18,
+        "border": {
+          "18": 15,
+          "20": 15
+        }
+      },
+      {
+        "pixels": 16,
+        "to": 22,
+        "border": {
+          "22": 9
+        }
+      },
+      {
+        "pixels": 19,
+        "to": 17,
+        "border": {
+          "17": 9,
+          "20": 8,
+          "26": 9
+        }
+      },
+      {
+        "pixels": 37,
+        "to": 21,
+        "border": {
+          "21": 12
+        }
+      },
+      {
+        "pixels": 9,
+        "to": 24,
+        "border": {
+          "4": 2,
+          "24": 8
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 24,
+        "border": {
+          "24": 3
+        }
+      },
+      {
+        "pixels": 19,
+        "to": 17,
+        "border": {
+          "17": 9,
+          "20": 6
+        }
+      },
+      {
+        "pixels": 27,
+        "to": 21,
+        "border": {
+          "21": 11
+        }
+      },
+      {
+        "pixels": 109,
+        "to": 4,
+        "border": {
+          "4": 44
+        }
+      },
+      {
+        "pixels": 176,
+        "to": 13,
+        "border": {
+          "12": 5,
+          "13": 36,
+          "26": 17
+        }
+      },
+      {
+        "pixels": 366,
+        "to": 16,
+        "border": {
+          "14": 9,
+          "15": 22,
+          "16": 44,
+          "17": 14
+        }
+      },
+      {
+        "pixels": 19,
+        "to": 21,
+        "border": {
+          "21": 11
+        }
+      },
+      {
+        "pixels": 260,
+        "to": 16,
+        "border": {
+          "16": 37,
+          "17": 34,
+          "26": 11
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 21,
+        "border": {
+          "21": 5
+        }
+      },
+      {
+        "pixels": 75,
+        "to": 4,
+        "border": {
+          "3": 12,
+          "4": 21
+        }
+      },
+      {
+        "pixels": 87,
+        "to": 11,
+        "border": {
+          "11": 18,
+          "12": 16
+        }
+      },
+      {
+        "pixels": 48,
+        "to": 8,
+        "border": {
+          "7": 8,
+          "8": 13
+        }
+      },
+      {
+        "pixels": 61,
+        "to": 4,
+        "border": {
+          "4": 44
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 3,
+        "border": {
+          "3": 4
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 3,
+        "border": {
+          "3": 4
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 16,
+        "border": {
+          "16": 4
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 16,
+        "border": {
+          "16": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 21,
+        "border": {
+          "21": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 21,
+        "border": {
+          "21": 4
+        }
+      },
+      {
+        "pixels": 204,
+        "to": 7,
+        "border": {
+          "6": 29,
+          "7": 52
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 21,
+        "border": {
+          "21": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 21,
+        "border": {
+          "21": 3
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 21,
+        "border": {
+          "21": 4
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 21,
+        "border": {
+          "21": 8
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 6,
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 21,
+        "border": {
+          "21": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 6,
+        "border": {
+          "6": 5
+        }
+      },
+      {
+        "pixels": 350,
+        "to": 2,
+        "border": {
+          "2": 41,
+          "3": 37
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 14,
+        "border": {
+          "14": 9
+        }
+      },
+      {
+        "pixels": 20,
+        "to": 14,
+        "border": {
+          "14": 16,
+          "15": 8
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 10,
+        "border": {
+          "10": 1,
+          "11": 1
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 2,
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 2,
+        "border": {
+          "2": 1
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 10,
+        "border": {
+          "10": 3
+        }
+      },
+      {
+        "pixels": 11,
+        "to": 10,
+        "border": {
+          "10": 8
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 2,
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 10,
+        "border": {
+          "10": 1
+        }
+      }
+    ]
+  },
+  "cap": 0.05,
+  "sourceAndLandmarksPreserved": true,
+  "priorAnatomyOwnersChanged": 0,
+  "automaticPlacementApplied": false,
+  "findings": [
+    "Observed ventral tail edge follows existing tail owners after one additive contour correction.",
+    "Four distal feet/bends are distinct; far proximal attachment centres are not proven beyond the visible emergence boundary.",
+    "Unequal perspective foot levels remain unchanged; no coplanar physical contact claim.",
+    "Lateral margins are approximately 6.3\u20136.4%, below requested 8%; no crop/rescale.",
+    "Closed-snout light tooth-like marks remain a Caiman identity hold.",
+    "Small remainder fringes remain; static geometry and source conservation are not moving-paint or native visual acceptance."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "performanceClaim": null
+}

@@ -1,0 +1,96 @@
+COMPOSITION PRIORITY: the whole animal occupies only HALF the canvas width AND no more than HALF its height, centered on native 1254 x 1254 pure magenta. About 300 pixels clear margin on every side. Preserve the full natural anatomy; no crop, guides or scenery.
+
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Dakk at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Sponge; real named anatomy and natural materials take priority over raw procedural genes. Isolated library master, not an Earth landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+Species identity features FIRST: irregular porous vase, tube or lumpy encrusting mass; large osculum holes on the surface; no limbs, mouth or symmetry of any kind. One Earth Sponge. These identifying pigment patterns and structures override conflicting generic colour or procedural-genome suggestions.
+Genomic identity (Earth anatomy takes priority): {"seed":1852297885,"kingdom":"fauna","color":6,"form":13,"body":14,"loco":13,"trait":12,"size":4,"diet":3,"head":2,"limbs":4,"skin":5,"tail":1,"pattern":2,"eyes":5,"behavior":6,"habitat":10,"detail":4,"accent":8,"temper":0,"sense":4,"repro":0,"life":1,"metab":5,"lumin":false,"gen":0,"heat":1,"_earthName":"Sponge"}
+One whole anatomically accurate adult in the approved painted hand on flat pure magenta. The entire natural specimen, every appendage and complete body edge fit in the middle HALF of a native 1254 by 1254 canvas with about 300 pixels of empty magenta on all sides. No scenery, floor, shadow, labels, artificial ground, arrows, detached body parts or props. Biological identity takes priority over generic procedural body vocabulary. One natural irregular tubular vase-shaped sea sponge upright with its own basal attachment tissue visible and a clear real osculum at the top. Preserve uneven porous living walls and asymmetric outline. The osculum is a water outlet, not a mouth. No eyes, tentacles, limbs, extra tubes, rock, seabed or invented support prop.
+
+ACCURACY
+One anatomically accurate Sponge, one head; one irregular porous sponge with attached basal tissue and a real osculum; no animal head, jaws, limbs or eyes; no duplicate subject. Required counts are requests, not measured evidence. No added anatomy, equipment or fantasy growth.
+
+LAYOUT
+One whole anatomically accurate adult in the approved painted hand on flat pure magenta. The entire natural specimen, every appendage and complete body edge fit in the middle HALF of a native 1254 by 1254 canvas with about 300 pixels of empty magenta on all sides. No scenery, floor, shadow, labels, artificial ground, arrows, detached body parts or props. Biological identity takes priority over generic procedural body vocabulary. One natural irregular tubular vase-shaped sea sponge upright with its own basal attachment tissue visible and a clear real osculum at the top. Preserve uneven porous living walls and asymmetric outline. The osculum is a water outlet, not a mouth. No eyes, tentacles, limbs, extra tubes, rock, seabed or invented support prop.
+
+TECHNICAL OUTPUT
+  Create a square 1254 x 1254 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+
+COMPOSITION PRIORITY: the whole animal occupies only HALF the canvas width AND no more than HALF its height, centered on native 1254 x 1254 pure magenta. About 300 pixels clear margin on every side. Preserve the full natural anatomy; no crop, guides or scenery.

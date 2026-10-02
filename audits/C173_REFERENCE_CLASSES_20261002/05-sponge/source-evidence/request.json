@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Sponge",
+  "family": "sessile-filter",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "84dcf06950f9fe6bb91d077c9ba3e4c44edf4ffe7b07d9937b4b738d2dadb9bd",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9bab0cd545bec2c4eb21632290ae4891efe99e7a7fcfeeaab6ccf52d26780a6e",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "one irregular porous sponge with attached basal tissue and a real osculum; no animal head, jaws, limbs or eyes",
+  "profileId": "sponge",
+  "authoringCreated": false,
+  "sourceHead": "de255a6de69c4f03f68cdd0643246190e24987ee",
+  "basePromptSha256": "b1f785575ee0a71f1cb55bc73506ea1ada1177734c02ade015ccde91ea63fd70",
+  "auditCompilerExtension": true,
+  "purpose": "NEW_SPECIALIZED_SOURCE",
+  "templateStatus": "Existing canonical family; audit-only painting vocabulary. No measured semantic presence or admission."
+}

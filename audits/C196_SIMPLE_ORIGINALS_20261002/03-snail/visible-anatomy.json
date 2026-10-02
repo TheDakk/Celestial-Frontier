@@ -1,0 +1,139 @@
+{
+  "id": "03-snail",
+  "name": "Snail",
+  "family": "gastropod",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 27841,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 96,
+      "y0": 135,
+      "x1": 260,
+      "y1": 284
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0106,
+        "pixels": 294,
+        "box": {
+          "x0": 140,
+          "y0": 128,
+          "x1": 202,
+          "y1": 134
+        },
+        "attach": {
+          "x": 171,
+          "y": 134,
+          "relX": 0.46,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.04,
+          "y": -1
+        },
+        "class": "top",
+        "length": 31.6
+      },
+      {
+        "k": 1,
+        "frac": 0.1578,
+        "pixels": 4393,
+        "box": {
+          "x0": 199,
+          "y0": 162,
+          "x1": 371,
+          "y1": 288
+        },
+        "attach": {
+          "x": 244.7,
+          "y": 271.2,
+          "relX": 0.91,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": 0.86,
+          "y": -0.51
+        },
+        "class": "front",
+        "length": 167
+      },
+      {
+        "k": 2,
+        "frac": 0.0138,
+        "pixels": 384,
+        "box": {
+          "x0": 87,
+          "y0": 175,
+          "x1": 95,
+          "y1": 236
+        },
+        "attach": {
+          "x": 95,
+          "y": 205.5,
+          "relX": -0.01,
+          "relY": 0.47
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.09
+        },
+        "class": "rear",
+        "length": 31.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0327,
+        "pixels": 910,
+        "box": {
+          "x0": 58,
+          "y0": 247,
+          "x1": 102,
+          "y1": 279
+        },
+        "attach": {
+          "x": 102,
+          "y": 263,
+          "relX": 0.04,
+          "relY": 0.86
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.16
+        },
+        "class": "rear",
+        "length": 46.8
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 2
+    },
+    "ground": [
+      {
+        "x0": 82,
+        "x1": 288,
+        "cx": 211.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

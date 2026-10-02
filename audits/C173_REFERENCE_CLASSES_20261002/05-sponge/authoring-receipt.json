@@ -1,0 +1,30 @@
+{
+  "schema": "cf.c173-source-authoring/v1",
+  "writer": "audits/C173_REFERENCE_CLASSES_20261002/author-simple-first-two.mjs",
+  "writerSha256": "368087a02c79611bb1bd9c43ee41e03a7ad69c0a87b96fc46b224854a21c7220",
+  "retentionHelperSha256": "dde445e4aecc33840681f06f79a3c976594f88fee3fe0f92fedd27ef1e116e6d",
+  "source": "audits/C196_SIMPLE_ORIGINALS_20261002/02-sponge",
+  "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+  "authoringSha256": "8bd38c4a40fe416a519e92093becc6e7fb0a373128f47444c6869f89c037bf33",
+  "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+  "subjectSourceSha256": "0b6dc1abb8bd45945961981cc11128e07e7b183425701a77792fc226445438c7",
+  "sourceEvidence": [
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/source-evidence/generation.json",
+      "sha256": "9c5a3acd51cc76d78069fcaa87386dae73974f1d0b630298afa0d7cfbce1039e"
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/source-evidence/request.json",
+      "sha256": "ef6059edd03c06b0e8d3709db0ebc32137f87e80d8700523d21a079fb138594e"
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/source-evidence/prompt.txt",
+      "sha256": "84dcf06950f9fe6bb91d077c9ba3e4c44edf4ffe7b07d9937b4b738d2dadb9bd"
+    }
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

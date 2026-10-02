@@ -1,0 +1,30 @@
+{
+  "creatureId": "c173-reference-sponge",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "5b4cc6fd26f97b5a6ea1feb8d5616f3fecd98e5cb483d768a9cb8e64b995bad5"
+    },
+    {
+      "name": "aperture.png",
+      "path": "parts/aperture.png",
+      "sha256": "e629df2e5a1707f9cba261b146e73f1a0bb8dbe0475a3db9a951e35302b24711"
+    },
+    {
+      "name": "crown.png",
+      "path": "parts/crown.png",
+      "sha256": "7ea0a9dde971c6b001fcc6ed72d85ab3a8853da4a181d2ce7e03841f11da7c9a"
+    },
+    {
+      "name": "base.png",
+      "path": "parts/base.png",
+      "sha256": "0b62895ed9ee448a15425717aef8ff74357ca81f5b2a34c8c282a20c890f221c"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "100e09e782c8939b56b43b88733335f5cc80a62d365d27b3b1950a63e1e601ad"
+    }
+  ]
+}

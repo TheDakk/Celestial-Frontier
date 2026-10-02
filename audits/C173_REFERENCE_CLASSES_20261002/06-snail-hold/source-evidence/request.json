@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Snail",
+  "family": "gastropod",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "41d59a2b310a4f49cd4ddc47e51555cc874501621a5177e4632af078927e7418",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9bab0cd545bec2c4eb21632290ae4891efe99e7a7fcfeeaab6ccf52d26780a6e",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "one coiled shell, one continuous muscular foot and head, two eye-bearing long tentacles and two short feelers, real mouth",
+  "profileId": "land-gastropod",
+  "authoringCreated": false,
+  "sourceHead": "de255a6de69c4f03f68cdd0643246190e24987ee",
+  "basePromptSha256": "1fe64f2d655a84a07d51b29311ffc60bf3b8969fbd69d06ae4cf6ffdb40504d0",
+  "auditCompilerExtension": true,
+  "purpose": "NEW_SPECIALIZED_SOURCE",
+  "templateStatus": "Existing canonical family; audit-only painting vocabulary. No measured semantic presence or admission."
+}

@@ -1,0 +1,92 @@
+{
+  "id": "01-earthworm",
+  "name": "Earthworm",
+  "family": "annelid",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8985,
+    "coreRadius": 10,
+    "bodyBox": {
+      "x0": 161,
+      "y0": 178,
+      "x1": 356,
+      "y1": 248
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2864,
+        "pixels": 2573,
+        "box": {
+          "x0": 46,
+          "y0": 182,
+          "x1": 179,
+          "y1": 239
+        },
+        "attach": {
+          "x": 164.8,
+          "y": 224.3,
+          "relX": 0.02,
+          "relY": 0.66
+        },
+        "dir": {
+          "x": -0.96,
+          "y": -0.28
+        },
+        "class": "rear",
+        "length": 126
+      },
+      {
+        "k": 1,
+        "frac": 0.0404,
+        "pixels": 363,
+        "box": {
+          "x0": 338,
+          "y0": 189,
+          "x1": 373,
+          "y1": 214
+        },
+        "attach": {
+          "x": 352.3,
+          "y": 203.8,
+          "relX": 0.98,
+          "relY": 0.37
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.1
+        },
+        "class": "front",
+        "length": 25.5
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "front": 1
+    },
+    "ground": [
+      {
+        "x0": 172,
+        "x1": 224,
+        "cx": 198.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

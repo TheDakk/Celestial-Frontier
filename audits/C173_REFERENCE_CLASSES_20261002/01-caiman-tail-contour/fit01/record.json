@@ -1,0 +1,248 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caiman\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3804786974\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"17\"]]]]",
+    "seed": 3804786974,
+    "ownerId": "authored:archetype-sprint/c173-reference-caiman-tail-contour",
+    "earthName": "Caiman"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3804786974,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 7,
+    "body": 12,
+    "loco": 6,
+    "trait": 17,
+    "size": 1,
+    "diet": 1,
+    "head": 9,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 4,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 1,
+    "habitat": 2,
+    "detail": 6,
+    "accent": 12,
+    "temper": 0,
+    "sense": 8,
+    "repro": 4,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Caiman"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6124401913875598,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5717703349282297,
+      0.4880382775119617
+    ],
+    "pelvis": [
+      0.48165869218500795,
+      0.4864433811802233
+    ],
+    "spine": [
+      0.5717703349282297,
+      0.47208931419457734
+    ],
+    "chest": [
+      0.6738437001594896,
+      0.4864433811802233
+    ],
+    "neck": [
+      0.7535885167464115,
+      0.46331738437001596
+    ],
+    "head": [
+      0.8349282296650717,
+      0.43859649122807015
+    ],
+    "jaw": [
+      0.8460925039872408,
+      0.46411483253588515
+    ],
+    "hindNearRoot": [
+      0.4696969696969697,
+      0.47527910685805425
+    ],
+    "hindNearKnee": [
+      0.47129186602870815,
+      0.5247208931419458
+    ],
+    "hindNearAnkle": [
+      0.41706539074960125,
+      0.5717703349282297
+    ],
+    "hindNearPaw": [
+      0.44019138755980863,
+      0.5980861244019139
+    ],
+    "hindFarRoot": [
+      0.518341307814992,
+      0.5311004784688995
+    ],
+    "hindFarKnee": [
+      0.5095693779904307,
+      0.5598086124401914
+    ],
+    "hindFarAnkle": [
+      0.5303030303030303,
+      0.5749601275917066
+    ],
+    "hindFarPaw": [
+      0.5566188197767146,
+      0.5821371610845295
+    ],
+    "foreNearRoot": [
+      0.6778309409888357,
+      0.5007974481658692
+    ],
+    "foreNearKnee": [
+      0.6467304625199362,
+      0.5374800637958532
+    ],
+    "foreNearAnkle": [
+      0.6610845295055822,
+      0.5741626794258373
+    ],
+    "foreNearPaw": [
+      0.6770334928229665,
+      0.5980861244019139
+    ],
+    "foreFarRoot": [
+      0.7304625199362041,
+      0.532695374800638
+    ],
+    "foreFarKnee": [
+      0.7535885167464115,
+      0.5606060606060606
+    ],
+    "foreFarAnkle": [
+      0.7695374800637959,
+      0.5765550239234449
+    ],
+    "foreFarPaw": [
+      0.7934609250398724,
+      0.5845295055821371
+    ],
+    "tail0": [
+      0.44258373205741625,
+      0.4880382775119617
+    ],
+    "tail1": [
+      0.34290271132376393,
+      0.5135566188197768
+    ],
+    "tail2": [
+      0.22886762360446572,
+      0.5382775119617225
+    ],
+    "tail3": [
+      0.08133971291866028,
+      0.580542264752791
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/master.png",
+  "coverage": {
+    "scope": "Independent source-specific reference candidate for a low sprawling reptile with four distinct visible distal limbs",
+    "declarations": "Full-size new C196 painting inspected before hand authoring; existing reference coordinates and labels were not transferred.",
+    "limitations": [
+      "Far limb roots are placed at the visible emergence boundary beneath the torso, not at invented hidden proximal segments. Internal skeletal attachment location is not proven by the surface painting.",
+      "Four terminal feet are distinct; far toes reach approximately y739/744 and near toes y763/768. These perspective heights are preserved and do not assert four coplanar ground contacts.",
+      "Left and right painted margins are approximately 6.3% and 6.4%, below the requested 8% intake framing; no crop or rescale was applied.",
+      "Closed snout retains small light tooth-like marks along the seam; exact Caiman closed-mouth species anatomy awaits scoring.",
+      "No moving-paint, native performance, or quality acceptance."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false,
+    "contourSuccessor": "Only the observed ventral tail fringe at x179–488/y663–710, formerly disconnected body remainder, is assigned to existing adjacent tail owners. All pre-existing priority polygons, landmarks, source pixels and contact heights remain unchanged."
+  },
+  "provenance": {
+    "authoringSha256": "f206f2358d4e96a66550c87799f4889c168e2168899dab5b96f82ee622cadd50",
+    "subjectSourceSha256": "d52aab22e476a592f304a7ec6fa7bfdd25d491e2b8e02ae2dac46be3e8068494",
+    "presenceSha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09012575576488123,
+      "spine": 0.0912477254341742,
+      "chest": 0.10307769462237008,
+      "neck": 0.08303040106459521,
+      "head": 0.08501336045249341,
+      "jaw": 0.02785366698018019,
+      "hindFarRoot": 0.05779161381816087,
+      "hindFarKnee": 0.030018389513108007,
+      "hindFarAnkle": 0.025679812102240154,
+      "hindFarPaw": 0.027276924045433994,
+      "foreFarRoot": 0.07310908060406018,
+      "foreFarKnee": 0.036246628954907455,
+      "foreFarAnkle": 0.02255524022923598,
+      "foreFarPaw": 0.025217525200704794,
+      "hindNearRoot": 0.016362268364181125,
+      "hindNearKnee": 0.04946750372973151,
+      "hindNearAnkle": 0.07179248284880882,
+      "hindNearPaw": 0.035033305640333016,
+      "foreNearRoot": 0.014897561158109593,
+      "foreNearKnee": 0.04809214125459198,
+      "foreNearAnkle": 0.039391033605194546,
+      "foreNearPaw": 0.028752402515661815,
+      "tail0": 0.03910749548720647,
+      "tail1": 0.1028955375009284,
+      "tail2": 0.11668386258983517,
+      "tail3": 0.15346267871964547
+    },
+    "measures": {
+      "torso": 0.19218500797448163,
+      "head": 0.08501336045249341,
+      "head/torso": 0.4423516763793641,
+      "bone-min": 0.014897561158109593,
+      "bone-max": 0.15346267871964547,
+      "leg/torso:hindFar": 0.4317460895378458,
+      "leg/torso:foreFar": 0.4371797533551855,
+      "leg/torso:hindNear": 0.813243935445922,
+      "leg/torso:foreNear": 0.6048108465925819
+    }
+  },
+  "recipeHash": "c6bd211c432a33a155ee7de476e31f2ba2eb2f93332a397db8ce9b1b92cb76c0"
+}

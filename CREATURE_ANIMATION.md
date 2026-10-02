@@ -872,6 +872,28 @@ Upper-body diagnostic (2026-09-27): audits/QUAD_UPPER_C73_20260927 retains Marmo
 
 The canonical bird author probes BodyCard.paintedContactSupports when present. The static owners, observed-mode native owners and shared arena fixture attach the same source-bound data as the stage. C75 fixes seven non-faint actions. C77 additionally authors faint only for cards with these observed supports and only when the original whole curve refuses: one root/pelvis/spine/chest rotation plus root-translation gain, 129 probe samples, 12 bisection steps and 10% reserve. Limbs/head/wings/tail, timing, easing and all runtime limits remain unchanged; passing curves and unobserved faint cards keep their exact old timelines. Pigeon/Vulture/Dove/Hawk pass native contact/publication with zero refusals, but neck/feather/tail ownership fragments remain visually open. Quail faint folds and Raven victory folds remain. Evidence and actual disabled-author negatives: audits/BIRD_SUPPORT_C75_20260927 and audits/BIRD_FAINT_C77_20260927.
 
+### Continuous painted upper-body faint — matches code 2026-10-02
+
+`motion/axial-faint.ts` authors canonical faint for land/amphibious bird and primate
+cards carrying exact painted contact supports. It follows the actual head ancestry
+back to the bird torso or primate root. Birds preserve the original small anticipation
+nod, then ease into a coherent held head/neck pose; their torso tracks remain exact to
+avoid changing wing motion. Primates keep the complete upper-body curve coherent; primate
+nonterminal arm joints join that frame because upper-arm paint borders the throat.
+This deliberately reduces independent neck/head and upper-arm curl during faint.
+Root slump, hands, legs, wings, tails, phases, easing, duration and all limits remain;
+the existing grounded author runs afterwards. Other actions, unsupported/unobserved
+cards and explicit editor timelines retain their previous behavior. No painting,
+fit, ownership, binding, skin solver or publication guard changes.
+
+C172 reproduces the original native spikes on unchanged C181 Hawk/Crow/Snowy Owl
+and C192 Capuchin fits. A first axial-only candidate exposed a larger primate
+throat/arm gap and is retained as a negative control. The complete upper-body curve
+removes that regression. Full-size software review still records pre-existing limb
+openings, bird ground flecks and primate hand penetration; static publication does
+not establish native performance or full visual admission. Evidence:
+`audits/C172_SHARED_HEAD_SPIKE_20261002`.
+
 ### Exact keyed label intake — matches code 2026-09-27
 
 `buildAuthoredParts` accepts `cf.keyed-part-intake/v1` for opaque originals with exact derived ownership labels. It preserves original PNG/recipe binding and runs the existing authored keyer unchanged; `keyedRgbaSha256` must match every decoded keyed channel. Native painter and priority-polygon routes are unchanged, and texture substitution remains native-painter-only. `cutKeyedParts` reuses the exact label identity/coverage/hidden-owner/conservation checks through an internal schema adapter; receipts explicitly identify keyed labels, not painter draw stages. C78 proves original Sculpin parts byte-identical, rejects changed keyed colour in a disabled-guard control, and supplies three static/native fish candidates. Grayling and prior Carp folds prevent default seam adoption. See audits/FISH_SEAMS_C78_20260927.

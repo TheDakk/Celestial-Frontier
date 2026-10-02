@@ -1,0 +1,12 @@
+EDIT TARGET: the attached Skink painting. Make a fresh 1254 x 1254 PNG version with a much SMALLER whole specimen centered on pure #FF00FF magenta. Preserve the species, exact natural anatomy, painted detail, complete unshortened tail and every leg, toe and other appendage. Change only composition scale and surrounding empty space. The animal must now occupy only HALF of the canvas width. Make the empty margin on each left and right side about 300 pixels. Do not simply regenerate the same close framing. Do not crop, shorten, remove or invent anatomy. No text, guides, border, scenery or cast shadow. Every pixel outside the animal is flat pure magenta. Preserve the native 1254-square output size. This is only a framing correction; do not silently change the pose or claim to fix existing anatomy/contact holds.
+
+APPROVED ART_KIT PARAGRAPH (unchanged):
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.

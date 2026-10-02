@@ -1,0 +1,28 @@
+{
+  "name": "Mussel",
+  "masterSha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two dark blue-black growth-lined wedge valves open at a narrow left hinge area, mantle tissue and fine byssal threads. A large pale tongue-like foot protrudes to the right; its scale/shape and hinge placement need biological review rather than automatic acceptance. No eyes or paired siphon tubes. Open valve pose is wider than the requested slight opening.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 244,
+      "y0": 358,
+      "x1": 1005,
+      "y1": 892
+    },
+    "margins": {
+      "left": 244,
+      "right": 248,
+      "top": 358,
+      "bottom": 361
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

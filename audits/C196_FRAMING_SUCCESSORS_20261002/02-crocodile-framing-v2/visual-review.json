@@ -1,0 +1,28 @@
+{
+  "name": "Crocodile",
+  "masterSha256": "0dae1e031d97a14fdc912797eb19846994cfa8edf4bd13208b001c9cfaef5131",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Smaller centered crocodile retains long snout/lower tooth, scuted body, four visible feet and complete curved tail. Generous margins now visible. Fine scales and toes are repainted, so no exact semantic identity proof is inferred. Unequal contact levels and hidden far roots remain source holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 231,
+      "y0": 558,
+      "x1": 1009,
+      "y1": 725
+    },
+    "margins": {
+      "left": 231,
+      "right": 244,
+      "top": 558,
+      "bottom": 528
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

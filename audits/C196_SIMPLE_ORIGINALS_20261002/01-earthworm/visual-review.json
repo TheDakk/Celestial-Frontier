@@ -1,0 +1,28 @@
+{
+  "name": "Earthworm",
+  "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+  "method": "Full original visual inspection by Codex",
+  "observation": "One continuous segmented pink-brown tube in a gentle noncrossing curve, clitellum near the broad right anterior end and narrow left posterior. No limbs, eyes or invented head features. Both ends complete; glossy surface needs painted-style review and body-to-ground contact remains authoring-specific.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 138,
+      "y0": 530,
+      "x1": 1115,
+      "y1": 744
+    },
+    "margins": {
+      "left": 138,
+      "right": 138,
+      "top": 530,
+      "bottom": 509
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

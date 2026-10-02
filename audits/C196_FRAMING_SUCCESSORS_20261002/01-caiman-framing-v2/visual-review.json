@@ -1,0 +1,28 @@
+{
+  "name": "Caiman",
+  "masterSha256": "f608f2a1c58310cc8c35038ccdd5c4430694c805ecc084298d02a8c25191c461",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Smaller centered caiman retains broad blunt muzzle, scuted body, four visible distal feet and complete tapered tail. Generous side margins now visible. Fine scales are repainted by the generator rather than a byte-scaled original; exact anatomy/pose preservation is a requested intent, not pixel equality. Far proximal roots remain partly obscured and contacts uneven.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 292,
+      "y0": 553,
+      "x1": 960,
+      "y1": 708
+    },
+    "margins": {
+      "left": 292,
+      "right": 293,
+      "top": 553,
+      "bottom": 545
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

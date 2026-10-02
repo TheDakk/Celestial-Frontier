@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "conservation",
+  "command": [
+    "node",
+    "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01",
+    "01"
+  ],
+  "helperSha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/conservation-01.log",
+  "logSha256": "6678ec9aba6380f57cb1e8f7e432a92cf578a5d145cea43f16cf8fc0a2014c84",
+  "nativeRuns": 0
+}
