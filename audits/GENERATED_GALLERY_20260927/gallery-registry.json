@@ -1874,5 +1874,13 @@
   "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
   "batch": "audits/G2_C132_QUADRUPEDS_20261001",
   "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mara",
+  "nativeDir": "audits/ISLANDS_C178_20261002/01-mara/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated an ear-tip sliver over the lowered head)",
+  "batch": "audits/G2_C163_FAMILY_ORIGINALS_20261002",
+  "tag": "g2c178"
  }
 ]

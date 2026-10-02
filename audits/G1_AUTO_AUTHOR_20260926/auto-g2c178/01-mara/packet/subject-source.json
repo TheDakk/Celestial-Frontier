@@ -1,0 +1,74 @@
+{
+  "name": "Mara",
+  "family": "quadruped",
+  "species": {
+    "name": "Mara",
+    "aspect": 1.5,
+    "headFrac": 0.27,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "long slim deer-like legs on a rodent body",
+      "tall rabbit-like ears",
+      "almost no tail"
+    ],
+    "note": "Reads as a hare crossed with a small antelope; do not draw it as a squat guinea-pig shape."
+  },
+  "genome": {
+    "seed": 1190357698,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 15,
+    "body": 1,
+    "loco": 12,
+    "trait": 23,
+    "size": 1,
+    "diet": 1,
+    "head": 4,
+    "limbs": 3,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 13,
+    "detail": 4,
+    "accent": 1,
+    "temper": 0,
+    "sense": 4,
+    "repro": 1,
+    "life": 2,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mara"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mara\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1190357698\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "index": 242,
+  "profile": {
+    "id": "rabbit-hopper",
+    "names": [
+      "Pika",
+      "Rabbit",
+      "Hare",
+      "Snowshoe Hare",
+      "Jackrabbit",
+      "Jerboa",
+      "Arctic Hare",
+      "Mara"
+    ],
+    "candidateTemplates": [
+      "hopper",
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

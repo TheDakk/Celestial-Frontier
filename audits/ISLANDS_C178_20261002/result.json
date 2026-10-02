@@ -1,0 +1,8 @@
+{
+ "01-mara": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c178/01-mara/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ }
+}

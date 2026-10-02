@@ -1,0 +1,363 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches cephalopod better (0.0464 < 0.0580)",
+  "wrong-family: insect matches clearly better (0.0377 < 0.0580)",
+  "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a front appendage of 6.9% paint that no reference appendage lands on",
+  "missing-anatomy: part near-eye (eyeNear) covers 32% paint (reference 100%)",
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 30% paint (reference 92%)",
+  "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [
+  {
+   "id": "arm4-middle",
+   "repairs": 1
+  },
+  {
+   "id": "arm0-tip",
+   "repairs": 2
+  },
+  {
+   "id": "arm7-tip",
+   "repairs": 1
+  },
+  {
+   "id": "arm7-base",
+   "repairs": 2
+  },
+  {
+   "id": "arm1-base",
+   "repairs": 2
+  },
+  {
+   "id": "mantle",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a front appendage of 6.9% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "arm7-base",
+     "arm4-middle"
+    ],
+    "names": [
+     "tentacle"
+    ],
+    "refFrac": 0.312,
+    "target": 5,
+    "overlap": 0.34
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1283,
+     "class": "rear",
+     "attach": {
+      "x": 122.8,
+      "y": 177.3,
+      "relX": 0.01,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0323,
+     "class": "top",
+     "attach": {
+      "x": 235,
+      "y": 190,
+      "relX": 0.8,
+      "relY": 0.3
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0692,
+     "class": "front",
+     "attach": {
+      "x": 261,
+      "y": 203,
+      "relX": 0.99,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0212,
+     "class": "top",
+     "attach": {
+      "x": 253.6,
+      "y": 192.9,
+      "relX": 0.93,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0479,
+     "class": "front",
+     "attach": {
+      "x": 264,
+      "y": 217.5,
+      "relX": 1.01,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.1105,
+     "class": "front",
+     "attach": {
+      "x": 255.1,
+      "y": 236.1,
+      "relX": 0.94,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0456,
+     "class": "limb-down",
+     "attach": {
+      "x": 226.5,
+      "y": 233,
+      "relX": 0.74,
+      "relY": 0.95
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "top": 2,
+    "front": 3,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "octopus",
+   "byClass": {
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0708,
+  "ref": 0.0375
+ },
+ "bestReference": "octopus",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "octopus",
+   "cost": 0.05798
+  }
+ ],
+ "mirrorBest": 0.04642,
+ "otherFamilyBest": {
+  "family": "insect",
+  "cost": 0.03775
+ },
+ "coverage": [
+  {
+   "id": "near-eye",
+   "joint": "eyeNear",
+   "paint": 0.32105263157894737,
+   "area": 3033.810000000004
+  },
+  {
+   "id": "far-eye-rim",
+   "joint": "eyeFar",
+   "paint": 0.3076923076923077,
+   "area": 194.86999999999898
+  },
+  {
+   "id": "siphon",
+   "joint": "siphon",
+   "paint": 0.7318435754189944,
+   "area": 2902.7749999999924
+  },
+  {
+   "id": "arm4-tip",
+   "joint": "arm4Seg2",
+   "paint": 0.8255813953488372,
+   "area": 1378.6549999999952
+  },
+  {
+   "id": "arm4-middle",
+   "joint": "arm4Seg1",
+   "paint": 0.582089552238806,
+   "area": 2127.5350000000108
+  },
+  {
+   "id": "arm4-base",
+   "joint": "arm4Seg0",
+   "paint": 0.9491525423728814,
+   "area": 8474.095000000008
+  },
+  {
+   "id": "arm2-tip",
+   "joint": "arm2Seg2",
+   "paint": 0.3979591836734694,
+   "area": 4769.540000000015
+  },
+  {
+   "id": "arm2-middle",
+   "joint": "arm2Seg1",
+   "paint": 0.29891304347826086,
+   "area": 2825.669999999991
+  },
+  {
+   "id": "arm2-base",
+   "joint": "arm2Seg0",
+   "paint": 0.7811764705882352,
+   "area": 6734.629999999999
+  },
+  {
+   "id": "arm6-tip",
+   "joint": "arm6Seg2",
+   "paint": 0.5555555555555556,
+   "area": 850.2249999999985
+  },
+  {
+   "id": "arm6-middle",
+   "joint": "arm6Seg1",
+   "paint": 0.55,
+   "area": 1268.4450000000052
+  },
+  {
+   "id": "arm6-base",
+   "joint": "arm6Seg0",
+   "paint": 0.65,
+   "area": 2223.4799999999905
+  },
+  {
+   "id": "arm0-tip",
+   "joint": "arm0Seg2",
+   "paint": 0.9182692307692307,
+   "area": 3338.350000000003
+  },
+  {
+   "id": "arm0-middle",
+   "joint": "arm0Seg1",
+   "paint": 0.9922680412371134,
+   "area": 6220.995
+  },
+  {
+   "id": "arm0-base",
+   "joint": "arm0Seg0",
+   "paint": 1,
+   "area": 14750.545000000002
+  },
+  {
+   "id": "arm7-tip",
+   "joint": "arm7Seg2",
+   "paint": 0.26582278481012656,
+   "area": 2566.0100000000093
+  },
+  {
+   "id": "arm7-middle",
+   "joint": "arm7Seg1",
+   "paint": 0.35135135135135137,
+   "area": 2965.9999999999927
+  },
+  {
+   "id": "arm7-base",
+   "joint": "arm7Seg0",
+   "paint": 0.6974789915966386,
+   "area": 2005.3849999999948
+  },
+  {
+   "id": "arm1-tip",
+   "joint": "arm1Seg2",
+   "paint": 0.5427350427350427,
+   "area": 3749.780000000002
+  },
+  {
+   "id": "arm1-middle",
+   "joint": "arm1Seg1",
+   "paint": 0.9565217391304348,
+   "area": 3698.475000000006
+  },
+  {
+   "id": "arm1-base",
+   "joint": "arm1Seg0",
+   "paint": 0.9921259842519685,
+   "area": 2060.6849999999977
+  },
+  {
+   "id": "arm3-tip",
+   "joint": "arm3Seg2",
+   "paint": 0.43333333333333335,
+   "area": 1001.2450000000008
+  },
+  {
+   "id": "arm3-middle",
+   "joint": "arm3Seg1",
+   "paint": 0.6041666666666666,
+   "area": 768.0699999999997
+  },
+  {
+   "id": "arm3-base",
+   "joint": "arm3Seg0",
+   "paint": 0.8192771084337349,
+   "area": 1343.1200000000044
+  },
+  {
+   "id": "arm5-tip",
+   "joint": "arm5Seg2",
+   "paint": 0.7083333333333334,
+   "area": 4603.965000000004
+  },
+  {
+   "id": "arm5-middle",
+   "joint": "arm5Seg1",
+   "paint": 0.43956043956043955,
+   "area": 4396.590000000003
+  },
+  {
+   "id": "arm5-base",
+   "joint": "arm5Seg0",
+   "paint": 0.7361111111111112,
+   "area": 1168.8399999999983
+  },
+  {
+   "id": "mantle",
+   "joint": "mantle",
+   "paint": 0.8267148014440433,
+   "area": 4454.954999999998
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.715647339158062,
+   "area": 20087.180000000004
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.1216
+}

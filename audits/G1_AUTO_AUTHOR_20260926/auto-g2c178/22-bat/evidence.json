@@ -1,0 +1,345 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part leg-near-upper (legNearKnee) covers 16% paint (reference 64%)",
+  "unexplained-anatomy: 21.5% of the paint lies away from the body and in no part (reference 8.0%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [
+  {
+   "chain": "legFar",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0013
+   }
+  },
+  {
+   "chain": "legNear",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0025
+   }
+  }
+ ],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [
+  {
+   "id": "wing-near-distal",
+   "repairs": 1
+  },
+  {
+   "id": "wing-near-elbow",
+   "repairs": 1
+  },
+  {
+   "id": "leg-far-upper",
+   "repairs": 1
+  },
+  {
+   "id": "wing-far-distal",
+   "repairs": 1
+  },
+  {
+   "id": "wing-far-elbow",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "wing-far-wrist",
+     "wing-far-elbow"
+    ],
+    "names": [
+     "wing"
+    ],
+    "refFrac": 0.0093,
+    "target": 0,
+    "overlap": 0.059
+   },
+   {
+    "owners": [
+     "wing-far-distal"
+    ],
+    "names": [
+     "wing"
+    ],
+    "refFrac": 0.048,
+    "target": 0,
+    "overlap": 0.388
+   },
+   {
+    "owners": [
+     "ear-near",
+     "head"
+    ],
+    "names": [
+     "head-appendage",
+     "head"
+    ],
+    "refFrac": 0.0837,
+    "target": 1,
+    "overlap": 0.709
+   },
+   {
+    "owners": [
+     "wing-near-distal"
+    ],
+    "names": [
+     "wing"
+    ],
+    "refFrac": 0.0406,
+    "target": 3,
+    "overlap": 0.052
+   },
+   {
+    "owners": [
+     "wing-near-wrist",
+     "leg-far-upper",
+     "leg-far-foot"
+    ],
+    "names": [
+     "wing",
+     "leg"
+    ],
+    "refFrac": 0.0211,
+    "target": 5,
+    "overlap": 0.015
+   },
+   {
+    "owners": [
+     "leg-near-upper",
+     "leg-near-foot"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0145,
+    "target": 2,
+    "overlap": 0.164
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.082,
+     "class": "top",
+     "attach": {
+      "x": 130,
+      "y": 133.5,
+      "relX": 0.07,
+      "relY": 0.05
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0651,
+     "class": "other",
+     "attach": {
+      "x": 235.2,
+      "y": 210.3,
+      "relX": 0.94,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2152,
+     "class": "front",
+     "attach": {
+      "x": 242.3,
+      "y": 250.8,
+      "relX": 1,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0057,
+     "class": "limb-down",
+     "attach": {
+      "x": 155,
+      "y": 247,
+      "relX": 0.28,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0051,
+     "class": "limb-down",
+     "attach": {
+      "x": 174,
+      "y": 271,
+      "relX": 0.44,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0048,
+     "class": "limb-down",
+     "attach": {
+      "x": 198.5,
+      "y": 271,
+      "relX": 0.64,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "fruit-bat",
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0458,
+  "ref": 0.0875
+ },
+ "bestReference": "fruit-bat",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "fruit-bat",
+   "cost": 0.03678
+  }
+ ],
+ "mirrorBest": 0.03669,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.0293
+ },
+ "coverage": [
+  {
+   "id": "ear-near",
+   "joint": "earNearTip",
+   "paint": 0.8129496402877698,
+   "area": 4454.7699999999895
+  },
+  {
+   "id": "ear-far",
+   "joint": "earFarTip",
+   "paint": 0.5815602836879432,
+   "area": 2287.615000000007
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.5573770491803278,
+   "area": 995.4100000000035
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.8005181347150259,
+   "area": 6172.124999999996
+  },
+  {
+   "id": "wing-near-distal",
+   "joint": "wingNearTip",
+   "paint": 0.6443349753694582,
+   "area": 16222.92500000002
+  },
+  {
+   "id": "wing-near-wrist",
+   "joint": "wingNearWrist",
+   "paint": 0.9522768670309654,
+   "area": 44045.374999999985
+  },
+  {
+   "id": "wing-near-elbow",
+   "joint": "wingNearElbow",
+   "paint": 0.9285714285714286,
+   "area": 4250.5799999999745
+  },
+  {
+   "id": "wing-near-base",
+   "joint": "wingNearRoot",
+   "paint": 0.9336283185840708,
+   "area": 10828.999999999993
+  },
+  {
+   "id": "leg-near-foot",
+   "joint": "legNearFoot",
+   "paint": 0.15436241610738255,
+   "area": 2519.3899999999953
+  },
+  {
+   "id": "leg-near-upper",
+   "joint": "legNearKnee",
+   "paint": 0.1619047619047619,
+   "area": 3362.095000000003
+  },
+  {
+   "id": "leg-far-foot",
+   "joint": "legFarFoot",
+   "paint": 0.26153846153846155,
+   "area": 1030.3300000000017
+  },
+  {
+   "id": "leg-far-upper",
+   "joint": "legFarKnee",
+   "paint": 0.26,
+   "area": 796.909999999998
+  },
+  {
+   "id": "wing-far-distal",
+   "joint": "wingFarTip",
+   "paint": 0.6051032806804374,
+   "area": 13221.874999999998
+  },
+  {
+   "id": "wing-far-wrist",
+   "joint": "wingFarWrist",
+   "paint": 0.9619220308250227,
+   "area": 52976.66999999996
+  },
+  {
+   "id": "wing-far-elbow",
+   "joint": "wingFarElbow",
+   "paint": 1,
+   "area": 5710.479999999996
+  },
+  {
+   "id": "wing-far-base",
+   "joint": "wingFarRoot",
+   "paint": 0.7810650887573964,
+   "area": 2748.629999999998
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.2153
+}

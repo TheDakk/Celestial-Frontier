@@ -1,0 +1,197 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c178/01-mara/fit",
+  "sourceMasterSha256": "74cb1fcf52069a8acdbf085e9a4b7500d0a44118ecee1db3b99fab791449f40d",
+  "keyedRgbaSha256": "cd16fd801683a92a52a785eabc87509736212a55331ec6ccd26173cd9aacbb44",
+  "remainder": "spine",
+  "remainderPixels": 30700,
+  "movedPixels": 2379,
+  "islands": [
+    {
+      "pixels": 181,
+      "to": "ear-near-tip",
+      "border": {
+        "ear-near-tip": 53,
+        "ear-far-tip": 15,
+        "ear-far-root": 23
+      }
+    },
+    {
+      "pixels": 355,
+      "to": "ear-near-root",
+      "border": {
+        "ear-near-tip": 37,
+        "ear-near-root": 47
+      }
+    },
+    {
+      "pixels": 222,
+      "to": "neck",
+      "border": {
+        "ear-near-root": 8,
+        "neck": 34,
+        "chest": 25
+      }
+    },
+    {
+      "pixels": 1204,
+      "to": "tail1",
+      "border": {
+        "hind-near-root": 13,
+        "tail1": 66,
+        "tail0": 39
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "neck",
+      "border": {
+        "neck": 5
+      }
+    },
+    {
+      "pixels": 92,
+      "to": "chest",
+      "border": {
+        "neck": 10,
+        "chest": 21
+      }
+    },
+    {
+      "pixels": 32,
+      "to": "tail2",
+      "border": {
+        "tail3": 4,
+        "tail2": 25
+      }
+    },
+    {
+      "pixels": 25,
+      "to": "fore-far-knee",
+      "border": {
+        "fore-far-knee": 12,
+        "chest": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail2",
+      "border": {
+        "hind-near-knee": 1,
+        "tail2": 2,
+        "tail1": 1
+      }
+    },
+    {
+      "pixels": 130,
+      "to": "tail2",
+      "border": {
+        "hind-near-ankle": 14,
+        "hind-near-knee": 54,
+        "tail3": 4,
+        "tail2": 60
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-ankle": 1,
+        "fore-far-knee": 1
+      }
+    },
+    {
+      "pixels": 12,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-paw": 2,
+        "hind-near-ankle": 9
+      }
+    },
+    {
+      "pixels": 34,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 10,
+        "hind-near-ankle": 6
+      }
+    },
+    {
+      "pixels": 85,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 39
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "01-mara",
+    "parts": 31,
+    "atlasSize": {
+      "width": 656,
+      "height": 2047
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 27,
+        "distancePx": 6.040695324215678,
+        "supports": [
+          498
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 29,
+        "distancePx": 7.653757247260961,
+        "supports": [
+          835
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 14,
+        "distancePx": 1.2206555615734245,
+        "supports": [
+          163
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 39,
+        "distancePx": 8.015609770940648,
+        "supports": [
+          618
+        ]
+      }
+    ],
+    "sourceBindingHash": "93334361261e51e946ab7250ab2e45bb0975ceb035a311b544614dc1b512190b",
+    "sourceVertices": 1188,
+    "vertices": 1337,
+    "sharedSupports": 448,
+    "pins": 42,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 38,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

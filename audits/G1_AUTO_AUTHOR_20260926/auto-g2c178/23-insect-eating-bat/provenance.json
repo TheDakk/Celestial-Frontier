@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "23-insect-eating-bat",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0702ec0f8f93d155fe061bd97b4e82d6d629e72a8c045da19fda1c3eaacaf9b6",
+ "subjectSourceSha256": "8757fb8e8f2ef1e2b264a288997391c4d06eb3d5fd9cbb46f9ddbb67b262c872",
+ "identity": {
+  "name": "Insect-Eating Bat",
+  "family": "flyer-membrane",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Insect-Eating Bat\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"614949885\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "seed": 614949885,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "fruit-bat",
+  "authoringSha256": "3d619e738f1411ce37ea22ca58576e2f827a1918ee74c7f19abc8ac58727345b",
+  "masterSha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7"
+ },
+ "habitat": {
+  "profileId": "bat",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "73b11c32439c6ba0ac45a25134945deba6c31bc9ebd32bade5a3d88489c8320b",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group bat (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0475,
+     "class": "rear",
+     "attach": {
+      "x": 115.8,
+      "y": 123.3,
+      "relX": 0.06,
+      "relY": 0.06
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0627,
+     "class": "other",
+     "attach": {
+      "x": 248.6,
+      "y": 206.4,
+      "relX": 0.96,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2012,
+     "class": "front",
+     "attach": {
+      "x": 246.3,
+      "y": 250.3,
+      "relX": 0.94,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0054,
+     "class": "limb-down",
+     "attach": {
+      "x": 161,
+      "y": 243,
+      "relX": 0.36,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0251,
+     "class": "limb-down",
+     "attach": {
+      "x": 187.5,
+      "y": 263,
+      "relX": 0.54,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "other": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "fruit-bat",
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

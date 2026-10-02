@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "08-howler-monkey",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4968de4ee55f14737fb831247c001764ab1246175aea9c877dfe2e87be48efc1",
+ "subjectSourceSha256": "170f1e431f9ba944b3fbb331af7cb57c9449c1e62e7bc0d0bbd6593fa834289a",
+ "identity": {
+  "name": "Howler Monkey",
+  "family": "primate",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Howler Monkey\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1503017354\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "seed": 1503017354,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "chimpanzee",
+  "authoringSha256": "3618a00115f3decd733fcd9e3380b184914098c12b90447e893c944e6cc7dbd9",
+  "masterSha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+ },
+ "habitat": {
+  "profileId": "primate",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "d77f7bd5e1f75556cf1b6bc0349a2762d94011e87ddf7513239b65619b9fe881",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group primate (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1644,
+     "class": "other",
+     "attach": {
+      "x": 153,
+      "y": 215,
+      "relX": -0.01,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0073,
+     "class": "front",
+     "attach": {
+      "x": 302,
+      "y": 215,
+      "relX": 1.01,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0829,
+     "class": "limb-down",
+     "attach": {
+      "x": 276,
+      "y": 239,
+      "relX": 0.83,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0761,
+     "class": "limb-down",
+     "attach": {
+      "x": 222,
+      "y": 240,
+      "relX": 0.46,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0625,
+     "class": "limb-down",
+     "attach": {
+      "x": 165,
+      "y": 248.5,
+      "relX": 0.07,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0659,
+     "class": "limb-down",
+     "attach": {
+      "x": 193,
+      "y": 249,
+      "relX": 0.27,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "other": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "chimpanzee",
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
