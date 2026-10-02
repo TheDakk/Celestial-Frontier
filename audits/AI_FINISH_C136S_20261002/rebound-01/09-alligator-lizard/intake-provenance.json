@@ -1,0 +1,97 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "da0bd9d88a12df1c02e359bc63515773c7ba741c",
+  "helperSha256": "3c5e92d42a8d2ea3bb59476c76c5f58cff32c8167343d74289fe71603930140b",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/master.png",
+      "sha256": "bd3d7db69693b6c8cec7ad746c58e0936d345a24f71acfbdce2b55cb8c700598"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/authoring.json",
+      "sha256": "cd967969b4471643128c456770a50ef164ec4b3f2690256e40a3a12e061121e5"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/subject-source.json",
+      "sha256": "c677cfb939b65289675d3005e42f196dd4145980a1ed149a269a95ece0e0d973"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "65bf1a8dbfb206b82ac9ac84e6979f7fec1396ec898369394e93b280f77425b2",
+  "bindingHash": "2b681f6d58fd555c0d10db339cd59f55604f351d774b25c9600f14426ed8fd24",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearAnkle",
+    "hindNearPaw",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearAnkle",
+    "foreNearPaw",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarAnkle",
+    "hindFarPaw",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarAnkle",
+    "foreFarPaw",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "spine",
+    "pelvis",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/master.png",
+      "sha256": "bd3d7db69693b6c8cec7ad746c58e0936d345a24f71acfbdce2b55cb8c700598",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/authoring.json",
+      "sha256": "cd967969b4471643128c456770a50ef164ec4b3f2690256e40a3a12e061121e5",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/subject-source.json",
+      "sha256": "c677cfb939b65289675d3005e42f196dd4145980a1ed149a269a95ece0e0d973",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/packet/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "unchanged": true
+    }
+  ]
+}

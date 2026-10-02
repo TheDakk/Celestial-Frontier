@@ -1,0 +1,97 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "da0bd9d88a12df1c02e359bc63515773c7ba741c",
+  "helperSha256": "3c5e92d42a8d2ea3bb59476c76c5f58cff32c8167343d74289fe71603930140b",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/master.png",
+      "sha256": "dbceeda92d83273fca2fd898b1554162b218e25b896f4bd71f6bb59bbe1af8d1"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/authoring.json",
+      "sha256": "97defebcf2fd6ae1cbf822d2c4cf4f3fe7c9bc675303e67db80ec0edd3c4160d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/subject-source.json",
+      "sha256": "1a1a87cad12fea98c939d889c24d24a211b6bede424ff5f867ef93acc434f2ea"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "da8a4547660b4837218ab4c64b8accd797dd7196d22cb7b72edacca4034ced23",
+  "bindingHash": "ae1d681f5895b6b6c1e0dfc9cab2e60a86a355ed8e4a6bfd6f2d1db73866fd57",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "pelvis",
+    "chest",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/master.png",
+      "sha256": "dbceeda92d83273fca2fd898b1554162b218e25b896f4bd71f6bb59bbe1af8d1",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/authoring.json",
+      "sha256": "97defebcf2fd6ae1cbf822d2c4cf4f3fe7c9bc675303e67db80ec0edd3c4160d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/subject-source.json",
+      "sha256": "1a1a87cad12fea98c939d889c24d24a211b6bede424ff5f867ef93acc434f2ea",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/packet/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "unchanged": true
+    }
+  ]
+}
