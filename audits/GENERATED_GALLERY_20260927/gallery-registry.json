@@ -1930,5 +1930,13 @@
   "note": "HELD: C181 head repair still floats a small fleck beside the lowered head in the late idle",
   "batch": "audits/C163_REFERENCE_REPAIR_20261002",
   "tag": "c181heads"
+ },
+ {
+  "family": "flyer-membrane",
+  "name": "Bat",
+  "nativeDir": "audits/BAT_C190_20261002/bat",
+  "note": "HELD: native PASS, but the aerial placement puts the bat mostly above the top edge of the frame (staging fix pending)",
+  "batch": "audits/C168_MEMBRANE_REFERENCES_20261002",
+  "tag": "c190bat"
  }
 ]
