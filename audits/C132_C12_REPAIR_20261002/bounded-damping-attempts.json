@@ -1,0 +1,47 @@
+[
+  {
+    "mode": "half",
+    "error": null,
+    "ms": 11.840834000000001,
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 7.8755069149208055,
+      "rmsTargetErrorPx": 0.5532793028304236,
+      "maximumProjectionPx": 6.778719932865005,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.0600804028524027,
+      "orientationPasses": 65
+    },
+    "visits": 6563
+  },
+  {
+    "mode": "three-quarter",
+    "error": null,
+    "ms": 19.074250000000006,
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 8.322964637408626,
+      "rmsTargetErrorPx": 0.5565842294767486,
+      "maximumProjectionPx": 7.225022536261957,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.060317194181328235,
+      "orientationPasses": 67
+    },
+    "visits": 18791
+  },
+  {
+    "mode": "over",
+    "error": null,
+    "ms": 7.7961659999999995,
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 13.714557730712363,
+      "rmsTargetErrorPx": 0.5966697842285601,
+      "maximumProjectionPx": 12.627482658382812,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.06017561794777165,
+      "orientationPasses": 65
+    },
+    "visits": 1901
+  }
+]

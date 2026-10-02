@@ -1,0 +1,62 @@
+{
+  "schema": "cf.c132-centipede-candidate/v1",
+  "status": "DETERMINISTIC_PASS_NATIVE_PENDING",
+  "scope": "Current captured approach and nearby unsampled poses; Node timing is diagnostic only. Final native and complete library battery remain required.",
+  "change": "Half-step active projection after one topology-sized sweep; original floors, guards, visit budget and source choreography unchanged.",
+  "rows": 56,
+  "captured": 46,
+  "neighbors": 10,
+  "exactBaselineOutputParity": 48,
+  "paintChecks": 1792,
+  "pinChecks": 326151,
+  "controls": [
+    "contradictory all-pinned fold refuses in both owners without output publication",
+    "nonfinite input refuses in both owners",
+    "reflected actual published part fails unchanged paint fold guard",
+    "WASM/JS output + full solver/queue byte parity on every target",
+    "all original hard pins remain exact",
+    "no input target mutation"
+  ],
+  "measurements": [
+    {
+      "deformationDelta": null,
+      "kind": "captured",
+      "ms": 4949.7,
+      "localMs": 1653.0333333333333,
+      "targetSha256": "325d57820f8ac96aa8a8b70f4dee3a1e1ccbce5ae81a82a3d869fd1d3407098f",
+      "baseline": {
+        "error": "ARAP skin: unresolved folded triangles: 1",
+        "ms": 113.75441599999999,
+        "visits": 598592,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.568229850815678,
+          "rmsTargetErrorPx": 0.5761304382634271,
+          "maximumProjectionPx": 12.439204532092381,
+          "flippedTriangles": 1,
+          "minimumAreaRatio": -0.0004970841538493014,
+          "orientationPasses": 128
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.292167000000063,
+        "visits": 9897,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.089236158231193,
+          "rmsTargetErrorPx": 0.5510307473450773,
+          "maximumProjectionPx": 6.993710939649119,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060454167134894356,
+          "orientationPasses": 66
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.060453809547300355,
+        "maxRatio": 2.8501552645765855
+      }
+    }
+  ]
+}
