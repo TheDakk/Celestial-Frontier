@@ -6,9 +6,10 @@ import { installCaptureHooks } from '@cf/domain-descriptors';
 import { BIOME_PROFILE_KEYS_V1, type BiomeProfileKeyV1 } from '@cf/domain-biome-profile';
 import { biomeFor } from '@cf/domain-strays';
 import { systemFor } from '@cf/domain-worldgen';
-import { ARENA_BIOME_WORLD_TYPE, ARENA_FALLBACK_ASSETS, ARENA_FALLBACK_SET_ID, ARENA_SETS, selectArena, type ArenaSetRow } from './battle2/arena-registry.js';
+import { ARENA_BIOME_WORLD_TYPE, ARENA_FALLBACK_ASSETS, ARENA_FALLBACK_SET_ID, ARENA_SETS, parseArenaSets, selectArena, type ArenaSetRow } from './battle2/arena-registry.js';
 import { compileHabitatBattle } from './battle-habitat.js';
-import { defaultArenaWorld } from './battle2/habitat-arena.js';
+import { defaultArenaWorld, habitatFightMedium } from './battle2/habitat-arena.js';
+import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
 import { surfaceWater, type PlanetType } from './biome-vista-surface.js';
 import { earthDuelWorld, liveArenaWorld, liveBattleArena, liveSettlementEncounter, liveWorldSnapshot, type LiveWorldSnapshotV1 } from './battle2-live-worlds.js';
 import { fnv1a32, liveArenaInput } from './battle2-wiring.js';
@@ -21,7 +22,10 @@ const DEEP = { galaxy: { seed: 2775120088, x: -15585.946043489894, y: -13862.482
 const SOL_OTHERS = systemFor(SOL.star.seed).planets.map((p) => ({ ...SOL, planet: { seed: (p.P as { seed: number }).seed } })).filter((a) => a.planet.seed !== 133);
 const snap = (biome: BiomeProfileKeyV1 | null, planetType = biome ? ARENA_BIOME_WORLD_TYPE[biome] : 'rocky', climateBand = 'temperate', key = `w|test|${biome}`): LiveWorldSnapshotV1 =>
   ({ key, address: { galaxy: { seed: 1, x: 0, y: 0 }, star: { seed: 2, x: 0, y: 0 }, planet: { seed: 3, ordinal: 0 } }, source: { planetSeed: 3, planetType, climateBand, biomeKey: biome } });
-const route = (battleId: string, live: ReturnType<typeof liveBattleArena>, sets: readonly ArenaSetRow[] = ARENA_SETS) =>
+/* the routing mechanism is tested against the temperate-only registry (the state these invariants describe); the shipped registry is
+ * pinned separately below (six C132 sets accepted by Dakk 2026-10-02) */
+const TEMPERATE_ONLY = ARENA_SETS.filter((s) => s.id === ARENA_FALLBACK_SET_ID);
+const route = (battleId: string, live: ReturnType<typeof liveBattleArena>, sets: readonly ArenaSetRow[] = TEMPERATE_ONLY) =>
   selectArena({ contextId: battleId, ...live.arenaContext, worlds: live.worlds, ...(live.worldPreset === 'earth' ? { earth: true } : {}) }, sets);
 
 describe('live battle worlds from the encounter (battle2-live-worlds.ts)', () => {
@@ -70,7 +74,7 @@ describe('live battle worlds from the encounter (battle2-live-worlds.ts)', () =>
   it('a synthetic second registered set is chosen for its own biome (and as kin for its world type); the others stay on temperate', () => {
     const temperate = ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!;
     const canyon: ArenaSetRow = Object.freeze({ ...temperate, id: 'canyon-test-v1', biome: 'canyon', recipe: 'audits/CANYON_TEST/arena-recipe.json', far: 'audits/CANYON_TEST/arena-far.png', mid: 'audits/CANYON_TEST/keyed/arena-mid.png', near: 'audits/CANYON_TEST/keyed/arena-near.png' });
-    const sets = [...ARENA_SETS, canyon];
+    const sets = [...TEMPERATE_ONLY, canyon];
     const at = (b: BiomeProfileKeyV1) => route('battle-y', liveBattleArena('battle-y', liveSettlementEncounter('fauna', snap(b))), sets);
     expect(at('canyon')).toMatchObject({ match: 'biome', set: { id: 'canyon-test-v1' } });
     expect(at('canyon').assets).toEqual({ recipe: '../CANYON_TEST/arena-recipe.json', far: '../CANYON_TEST/arena-far.png', mid: '../CANYON_TEST/keyed/arena-mid.png', near: '../CANYON_TEST/keyed/arena-near.png' });
@@ -108,3 +112,43 @@ describe('live battle worlds from the encounter (battle2-live-worlds.ts)', () =>
   });
 });
 const PH = Object.freeze({ realm: 'land' as const, preferred: 'ground' as const, allowed: Object.freeze(['ground'] as const), source: 'test', liquid: null });
+
+describe('the shipped arena registry (C132 arenas, Dakk 2026-10-02)', () => {
+  it('registers the temperate set, the six accepted ground arenas and the two accepted WATER arenas; a ground fight on each ground biome draws its own set', () => {
+    expect(ARENA_SETS.map((s) => s.id)).toEqual([ARENA_FALLBACK_SET_ID, 'karst-cave', 'jungle-v2', 'marsh', 'savanna-v2', 'dunesea', 'tundra', 'freshwater-lake-v2', 'coral']);
+    expect(ARENA_SETS.filter((s) => s.medium === 'water').map((s) => [s.id, s.biome])).toEqual([['freshwater-lake-v2', 'temperate'], ['coral', 'coral']]);
+    for (const row of ARENA_SETS.filter((s) => s.medium === 'ground').slice(1)) {
+      const live = liveBattleArena('b-' + row.id, liveSettlementEncounter('fauna', snap(row.biome as BiomeProfileKeyV1)));
+      expect(route('b-' + row.id, live, ARENA_SETS).set.id, row.biome).toBe(row.id);
+    }
+  });
+  // the fight's medium from the habitat compiler on the live world, exactly as the wiring computes it
+  const land = civetRecord(), swimmer = { ...civetRecord(), habitat: { realm: 'aquatic' as const, source: 'test: declared swimmer' } };
+  const fightOn = (biome: BiomeProfileKeyV1, left: typeof land, right: typeof land, sets: readonly ArenaSetRow[] = ARENA_SETS) => {
+    const live = liveBattleArena('b-' + biome, liveSettlementEncounter('fauna', snap(biome)));
+    const m = habitatFightMedium({ contextId: 'b-' + biome, seed: live.arenaContext.seed, world: live.worlds!.home, groundLineY: 0.78, left: { record: left, genome: null }, right: { record: right, genome: null } });
+    return { m, r: selectArena({ contextId: 'b-' + biome, ...live.arenaContext, worlds: live.worlds, medium: m.medium }, sets), world: live.worlds!.home };
+  };
+  it('a LAND fight on a temperate or coral world never draws a water set; a SWIMMER fight there draws its painted water set', () => {
+    for (const [biome, wet] of [['temperate', 'freshwater-lake-v2'], ['coral', 'coral']] as const) {
+      const dry = fightOn(biome, land, land);
+      expect(dry.m.medium, dry.m.reason).toBe('ground'); expect(dry.r.set.medium).toBe('ground'); expect(dry.r.set.id).not.toBe(wet);
+      const mixed = fightOn(biome, swimmer, land); // a swimmer facing a land fighter: the land fighter keeps its floor (half lake), never underwater
+      expect(mixed.r.set.medium, `${biome}: ${mixed.m.reason}`).toBe('ground');
+      const fish = fightOn(biome, swimmer, swimmer);
+      expect(fish.world.liquid).toBe('water'); expect(fish.m.medium, fish.m.reason).toBe('water');
+      expect(fish.r.set.id).toBe(wet); expect(fish.r.match).toBe('biome'); expect(fish.r.reason).toMatch(/water fight/);
+    }
+    // the temperate land fight keeps the accepted temperate plates; the coral land fight falls back (no ocean ground set) and names the water set it skipped
+    expect(fightOn('temperate', land, land).r.set.id).toBe(ARENA_FALLBACK_SET_ID);
+    expect(fightOn('coral', land, land).r.reason).toMatch(/not a water fight: the water set coral is drawn only when both combatants are in water/);
+  });
+  it('negative control: a medium-blind registry (the water rows relabelled ground) puts the land fighters underwater — the check sees it', () => {
+    const blind = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: ARENA_SETS.map((s) => ({ ...s, medium: 'ground' })) });
+    expect(fightOn('coral', land, land, blind).r.set.id).toBe('coral');
+    expect(fightOn('temperate', land, land, blind).r.set.id).toBeOneOf([ARENA_FALLBACK_SET_ID, 'freshwater-lake-v2']);
+    // and without a water set for its biome or world type, a swimmer fight keeps today's ground route with the procedural water, labelled
+    const noWater = ARENA_SETS.filter((s) => s.medium === 'ground'), fish = fightOn('coral', swimmer, swimmer, noWater);
+    expect(fish.m.medium).toBe('water'); expect(fish.r.set.id).toBe(ARENA_FALLBACK_SET_ID); expect(fish.r.reason).toMatch(/procedural wet arena draws the water/);
+  });
+});

@@ -4,7 +4,7 @@
  * (no pixi.js import; the wiring binds real classes). The clock is injected; dispose is total.
  * The combat outcome adapter at the bottom maps a @cf/domain-combatcore transcript log entry to a
  * TurnPlanInput; nothing here imports main.ts state. */
-import type { EffectPhaseName, EffectSequenceAnchors } from '../effects/anchors.js';
+import type { EffectPhaseName, EffectSequenceAnchors, NormalizedPoint } from '../effects/anchors.js';
 import { EMITTER_PRESETS, type EmitterConfig } from '../effects/emitter.js';
 import { EffectSequencePlayer, type EffectPixiHost, type EffectTextureLike } from '../effects/pixi-adapter.js';
 import type { EffectDelivery } from '../effects/sequencer.js';
@@ -100,6 +100,9 @@ export interface BattleStageOptions {
    * fraction — the habitat's surface) to the frame bottom BEHIND the combatants (above the mid plate, moving with it) and hides
    * the dry near plate, so a swimmer is no longer drawn over the forest floor. Depth-banded, no texture, deterministic. */
   readonly water?: Readonly<{ surfaceY: number; /** a swimmer facing a GROUND fighter: the lake fills only this side (to the midline) and the dry foreground stays, so the ground fighter keeps its floor (review 2026-09-24). Absent = the whole frame. */ side?: Side }>;
+  /** The physical medium the PLATES show (the arena set's `medium`, 2026-10-02). 'water' = a painted water set: the plates ARE the water, so
+   * the procedural wet arena (`water`) is not drawn on top of them and the near plate stays. Absent = 'ground' (the procedural water as before). */
+  readonly plateMedium?: 'ground' | 'water';
 }
 export interface StageFrame { readonly sample: StageSample; readonly done: boolean; readonly label: string; readonly cuesFired: number; }
 /** One frame of a guardian set piece (opt-in guardian choreography). */
@@ -130,7 +133,7 @@ export class BattleStage {
     const plate = (id: PlateId): StageSpriteLike => { const p = L.plates.find((x) => x.id === id)!, s = f.sprite(o.plates[id]); s.anchor.set(0, 0); s.scale.set(p.scale, p.scale); s.x = p.x; s.y = p.y; return s; };
     this.#plates = { far: plate('far'), mid: plate('mid'), near: plate('near') };
     this.root.addChild(this.#plates.far); this.root.addChild(this.#plates.mid);
-    if (o.water) {
+    if (o.water && o.plateMedium !== 'water') {
       if (!(o.water.surfaceY > 0 && o.water.surfaceY < 1)) throw new TypeError('battle2 stage: water surfaceY must lie inside the frame');
       const g = f.graphics(), H = L.frame.height, top = o.water.surfaceY * H, bands = WATER_BANDS.length;
       // three frames wide so the parallax run-up never uncovers an edge; banded depth from the lit surface to the dark floor
@@ -162,6 +165,8 @@ export class BattleStage {
   }
 
   get plan(): TurnPlan | null { return this.#plan; }
+  /** Whether the procedural wet arena is drawn (false on a painted water set, whose plates are the water). */
+  get proceduralWater(): boolean { return this.#water !== null; }
   /** The current turn's cue plan (null without a sink or before the first turn). */
   get cuePlan(): TurnCuePlan | null { return this.#cues?.plan ?? null; }
   cuesFired(): number { return this.#cues?.fired.length ?? 0; }
@@ -189,8 +194,7 @@ export class BattleStage {
   /** Start a turn now (per the injected clock). Accepts a built plan or its input. */
   play(turn: TurnPlan | TurnPlanInput): TurnPlan {
     this.#assertLive();
-    const plan = (turn as TurnPlan).kind === 'turn-plan' ? (turn as TurnPlan) : buildTurnPlan({ ...(turn as TurnPlanInput), attacker: this.#withCadence((turn as TurnPlanInput).attacker), reducedMotion: (turn as TurnPlanInput).reducedMotion === true || this.#o.reducedMotion === true,
-      arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths(), centresX: (turn as TurnPlanInput).arena.centresX ?? this.centresX(), bodies: (turn as TurnPlanInput).arena.bodies ?? this.bodies() } });
+    const plan = (turn as TurnPlan).kind === 'turn-plan' ? (turn as TurnPlan) : this.#anchoredPlan(turn as TurnPlanInput);
     this.#clearEffect();
     this.#plan = plan; this.#startMs = this.#o.clock();
     // Reduced motion (E1 §1.6): both rigs take the rest pose once per turn here and are never updated per tick.
@@ -210,6 +214,39 @@ export class BattleStage {
     }
     this.tick();
     return plan;
+  }
+
+  /** C156 (2026-10-02): the turn plan with its effect anchored on the bodies. Pass 1 builds the plan with the contact joint unknown (the beats,
+   * the attacker's displacement and pose at the launch beat do not depend on where the effect is drawn); the attacker's rig is posed at the launch
+   * beat (`beats.actionStart`, the effect's ms 0) exactly as `tick` would pose it, its `attack.contactJoint` is read in frame space, and pass 2
+   * builds the same plan with that launch point. Timing is unchanged (pinned by test). Without an effect, an anatomy attack or a rig that reports
+   * joints, the plan keeps the legacy launch point and says why (`plan.effect.anchoring.reason`). The next `tick` re-poses the rig. */
+  #anchoredPlan(input: TurnPlanInput): TurnPlan {
+    const reducedMotion = input.reducedMotion === true || this.#o.reducedMotion === true;
+    const arena = { ...input.arena, halfWidths: input.arena.halfWidths ?? this.halfWidths(), centresX: input.arena.centresX ?? this.centresX(), bodies: input.arena.bodies ?? this.bodies() };
+    const base: TurnPlanInput = { ...input, attacker: this.#withCadence(input.attacker), reducedMotion, arena };
+    if (input.arena.effectLaunch) return buildTurnPlan(base);
+    const pending = !input.attack || !input.attacker.card ? 'the turn has no anatomy attack (no contact joint)' : reducedMotion ? 'reduced motion: no effect is drawn' : 'contact joint not probed';
+    const first = buildTurnPlan({ ...base, arena: { ...arena, effectLaunch: { point: null, reason: pending } } });
+    if (!first.effect || first.reducedMotion || !first.attack) return first;
+    const probe = this.#contactJointAt(first, first.attack.contactJoint);
+    return probe.point ? buildTurnPlan({ ...base, arena: { ...arena, effectLaunch: probe } })
+      : buildTurnPlan({ ...base, arena: { ...arena, effectLaunch: { point: null, reason: probe.reason } } });
+  }
+  /** The attacker's `joint` in frame-normalized space at the plan's launch beat, from the posed rig (null + reason when it cannot be read). */
+  #contactJointAt(plan: TurnPlan, joint: string): Readonly<{ point: NormalizedPoint | null; reason: string }> {
+    const side = plan.attacker.side, rig = this.#o.rigs[side];
+    if (!rig.jointPosition) return { point: null, reason: `the ${rig.kind} rig reports no joint positions` };
+    const at = plan.beats.actionStart, s = sampleTurn(plan, at).attacker;
+    rig.applyPose(s.pose, s.context);
+    const j = rig.jointPosition(joint);
+    if (!j) return { point: null, reason: `the rig has no ${joint} landmark` };
+    // exactly `#place` + the holder's child offset: holder at (stand + displacement) × frame, scaled (facing × k, k); root at −foot × cut-out
+    const L = this.#o.layout, st = L.stands[side], k = this.#scales[side];
+    const x = st.x + s.displacementX + (s.facing * k * (j.x - rig.foot.x * rig.cutout.width)) / L.frame.width;
+    const y = st.y + (k * (j.y - rig.foot.y * rig.cutout.height)) / L.frame.height;
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return { point: null, reason: `the ${joint} joint position is not finite` };
+    return { point: Object.freeze({ x, y }), reason: `posed rig at the launch beat, ${at.toFixed(1)} ms` };
   }
 
   /** Guardian choreography (opt-in): start a set piece now, between turns. The turn plan stays as it was (its clock is untouched); the

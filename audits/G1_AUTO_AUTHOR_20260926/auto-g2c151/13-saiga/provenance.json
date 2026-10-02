@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "13-saiga",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b",
+ "subjectSourceSha256": "603ad2df7148c994024dcd2664cfbce91bd1a0b2e475ce11dbe67503bd5eb25e",
+ "identity": {
+  "name": "Saiga",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Saiga\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"35627238\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 35627238,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "impala",
+  "authoringSha256": "0cda43f0ef31cfafbf4f4d63f73cb48c271c703172d7b715477e303b465c647a",
+  "masterSha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1765,
+     "class": "top",
+     "attach": {
+      "x": 268.4,
+      "y": 180.6,
+      "relX": 0.98,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0056,
+     "class": "top",
+     "attach": {
+      "x": 228,
+      "y": 168,
+      "relX": 0.67,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0349,
+     "class": "limb-down",
+     "attach": {
+      "x": 139,
+      "y": 196.5,
+      "relX": -0.01,
+      "relY": 0.48
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1077,
+     "class": "limb-down",
+     "attach": {
+      "x": 156.3,
+      "y": 226.7,
+      "relX": 0.12,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0929,
+     "class": "limb-down",
+     "attach": {
+      "x": 232,
+      "y": 224,
+      "relX": 0.7,
+      "relY": 0.96
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "impala",
+   "byClass": {
+    "other": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "limb-down": 3
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "hindNear+hindFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

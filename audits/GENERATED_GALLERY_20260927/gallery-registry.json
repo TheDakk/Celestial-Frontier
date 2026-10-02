@@ -1754,5 +1754,45 @@
   "note": "whole after the remainder-island repair (unrepaired late idle floated an orange fleck over the lowered head)",
   "batch": "audits/G2_C132_QUADRUPEDS_20261001",
   "tag": "g2c136"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wildebeest",
+  "nativeDir": "audits/ISLANDS_C151_20261002/08-wildebeest/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "quadruped",
+  "name": "Saiga",
+  "nativeDir": "audits/ISLANDS_C151_20261002/13-saiga/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Lark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/16-lark",
+  "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (6.8% > 5%, D28)",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hawk",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/18-hawk",
+  "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (36.0% > 5%, D28)",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "quadruped",
+  "name": "Land Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136ra/16-land-iguana",
+  "note": "whole in reaction and late idle (sprawler pool + reviewed ear absence)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136ra"
  }
 ]

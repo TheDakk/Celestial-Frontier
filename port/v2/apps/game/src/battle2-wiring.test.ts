@@ -13,7 +13,7 @@ import { installCaptureHooks } from '@cf/domain-descriptors';
 import { systemFor } from '@cf/domain-worldgen';
 import { liveBattleArena, liveSettlementEncounter } from './battle2-live-worlds.js';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { FIXTURE_RIG_LABEL, PORTRAIT_RIG_LABEL, type FixturePartCut } from './battle2/index.js';
+import { ARENA_FALLBACK_SET_ID, ARENA_SETS, FIXTURE_RIG_LABEL, parseArenaSets, PORTRAIT_RIG_LABEL, type FixturePartCut } from './battle2/index.js';
 import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv1a32, liveArenaInput, genomeMass, genomeSeed, genomeTheme, matchRecord, mountBattle2Study, mountBattle2StudyIfEnabled,
   type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
 import type { ResolvedAnatomyRecord } from './motion/body-card.js';
@@ -159,6 +159,8 @@ function harness(over: Partial<Battle2StudyInput> = {}) {
     /* the fake assets serve the Wild files only: pin the Wild-only manifest so these fixtures keep testing the procedural fallback
      * (the shipped manifest's painted rows are validated from their delivered files in tests/effects-theme-delivery.test.ts) */
     paintedThemes: { schema: 'cf.painted-theme-manifest/v1', rows: [{ theme: 'wild', anchors: 'wild-anchors.json', contract: 'v4.2-grandfathered', required: true }] },
+    // likewise the fake assets serve the temperate plates only: pin the temperate-only arena registry (the shipped one is pinned in battle2-live-worlds.test.ts)
+    arenaSets: ARENA_SETS.filter((s) => s.id === ARENA_FALLBACK_SET_ID),
     settlement: { battleId: 'battle-1', champion: { kind: 'owned-fauna', name: 'Civet', genome }, encounter: { defender: { battleGenome: { seed: 424242, size: 2, kingdom: 'fauna' } } }, transcript: { log: LOG } },
     chronicle: { championName: 'Civet', defenderName: 'Platypus' },
     portrait: async () => image(132, 132, [20, 30, 90, 96], 'thumb'),
@@ -539,7 +541,7 @@ describe('battle2 wiring: live home-ground worlds (2026-10-02, main.ts liveArena
     const frames: string[][] = [];
     if (app && ready.phase === 'playing') for (let t = 0; t <= 12000; t += 250) { h.setNow(t); h.ticker.step(); frames.push(scene(app)); }
     const end = handle.status(); handle.dispose('test');
-    return { ready, end, frames, calls: h.calls, plates: h.calls.filter((c) => c.endsWith('.png') && /arena-(far|mid|near)/.test(c)) };
+    return { ready, end, frames, calls: h.calls, plates: h.calls.filter((c) => /\.(png|webp)$/.test(c) && /arena-(far|mid|near)/.test(c)) }; // D30: the arena plates are WebP runtime copies
   }
   it('today\'s encounters: Earth and every generated world draw the same plates and the same scene, frame for frame; only the route label changes', async () => {
     const base = await film({});
@@ -576,6 +578,30 @@ describe('battle2 wiring: live home-ground worlds (2026-10-02, main.ts liveArena
     expect(earth.plates).toEqual(base.plates);
     const sea = await film({ worlds: ocean.worlds, arenaContext: ocean.arenaContext }, swimmer);
     expect(sea.ready.phase).toBe('playing'); expect(sea.ready.arena).toMatch(/^w\|ocean · left Civet: water/);
+  });
+  it('a painted WATER set (2026-10-02): two swimmers fight inside it with NO procedural water on top; a swimmer facing a land fighter keeps the ground set and its procedural half lake', async () => {
+    // a water row on the temperate set's own files (the fake assets serve only those), registered beside the temperate set
+    const T = ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!, withLake = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [T, { ...T, id: 'test-lake', medium: 'water' }] });
+    const swim = (h: ReturnType<typeof harness>, both: boolean) => ({ records: [{ ...h.input.records![0]!, habitat: { realm: 'aquatic' as const, source: 'test: declared swimmer' } }] as NonNullable<Battle2StudyInput['records']>,
+      ...liveArenaInput(settlementWith(h, EARTH, 'fauna')),
+      // the defender is the same painted body (so it is a swimmer too) only when `both`
+      ...(both ? { settlement: { ...h.input.settlement, encounter: { ...h.input.settlement.encounter, defender: { ...h.input.settlement.encounter.defender, battleGenome: h.genome } } } } : {}) });
+    const graphics = (f: { frames: string[][] }) => f.frames[0]!.filter((l) => /:Graphics:/.test(l)).length;
+    const painted = await film({ arenaSets: withLake }, (h) => swim(h, true));
+    expect(painted.ready.phase, painted.ready.reason ?? '').toBe('playing');
+    expect(painted.ready.arena).toMatch(/left Civet: water .* right Platypus: water/);
+    expect(painted.ready.arenaRoute).toMatch(/water fight \(both combatants in water\): painted water set test-lake/);
+    // control: the same two swimmers with only the ground set registered → the ground plates plus the procedural lake (one more Graphics)
+    const procedural = await film({}, (h) => swim(h, true));
+    expect(procedural.ready.phase).toBe('playing'); expect(procedural.ready.arenaRoute).not.toMatch(/test-lake/);
+    expect(graphics(procedural) - graphics(painted)).toBe(1); // no double water: the painted set draws no procedural bands
+    // a swimmer facing a land fighter is NOT a water fight: the ground set (the land fighter keeps its floor) and the half lake, with the water set registered
+    const mixed = await film({ arenaSets: withLake }, (h) => swim(h, false));
+    expect(mixed.ready.phase).toBe('playing'); expect(mixed.ready.arena).toMatch(/left Civet: water .* right Platypus: ground/);
+    expect(mixed.ready.arenaRoute).not.toMatch(/test-lake/); expect(graphics(mixed)).toBe(graphics(procedural));
+    // and a land fight with the water set registered: the scene of today, frame for frame
+    const base = await film({}), land = await film({ arenaSets: withLake });
+    expect(land.frames).toEqual(base.frames); expect(land.end.arenaRoute).toBe(base.end.arenaRoute);
   });
   it('main.ts spreads liveArenaInput(settlement) into the one gated study call (the settled encounter carries its world identity)', () => {
     const line = mainSource.split('\n').find((l) => l.includes(`if (${GATE_CALL})`) && l.includes("import('./battle2-wiring.js')"))!;

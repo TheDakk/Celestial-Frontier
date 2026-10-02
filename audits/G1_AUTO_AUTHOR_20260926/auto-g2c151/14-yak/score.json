@@ -1,0 +1,11 @@
+{
+ "id": "14-yak",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 22% paint (reference 70%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)",
+  "missing-anatomy: part head (head) covers 19% paint (reference 61%)"
+ ],
+ "semanticPresence": null
+}

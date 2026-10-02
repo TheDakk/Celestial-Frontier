@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "10-mountain-lizard",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f6a578011c5c7b497b55fffbc8516630d129cc8cce6cf2d85356aedc46246661",
+ "subjectSourceSha256": "aba2c8bc1c658e1dda87a4267171a810fd6b59105901b3f63680b606f8707950",
+ "identity": {
+  "name": "Mountain Lizard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mountain Lizard\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3082086362\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 3082086362,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-15-iguana",
+  "authoringSha256": "e2b68e4fdb9ff464e8ea1b8292d3a8edac5188108c1ecf41fe2f0f06c3d3de27",
+  "masterSha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.138,
+     "class": "front",
+     "attach": {
+      "x": 301.3,
+      "y": 201.3,
+      "relX": 0.98,
+      "relY": 0.09
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2328,
+     "class": "rear",
+     "attach": {
+      "x": 231,
+      "y": 216.5,
+      "relX": -0.01,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0408,
+     "class": "limb-down",
+     "attach": {
+      "x": 298,
+      "y": 220,
+      "relX": 0.93,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0466,
+     "class": "limb-down",
+     "attach": {
+      "x": 281.5,
+      "y": 223,
+      "relX": 0.7,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0598,
+     "class": "limb-down",
+     "attach": {
+      "x": 236.1,
+      "y": 224.9,
+      "relX": 0.06,
+      "relY": 1.04
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "c136-sprawler-15-iguana",
+   "byClass": {
+    "top": 2,
+    "front": 2,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

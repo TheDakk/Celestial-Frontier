@@ -42,6 +42,17 @@ export interface TurnArena {
    * stand on the ground line (a flyer, a swimmer) takes the impact and the damage number at its BODY, not on the dry ground line (review
    * 2026-09-24: a Fruit Bat's hit burst landed on the ground under it). Absent, or a grounded target → the ground line as before. */
   readonly bodies?: Readonly<{ left: Readonly<{ centreY: number; topY: number }>; right: Readonly<{ centreY: number; topY: number }> }>;
+  /** Effects land on the body (C156, 2026-10-02): the attacker's CONTACT JOINT at the launch beat (the action start), read from the posed rig by
+   * the stage (`BattleStage.play` always fills this), or null with the reason it is unavailable. Present → the anchored contract: the effect
+   * launches at this point (or, when null, at the legacy attacker point, labelled) and its impact lands on the TARGET'S BODY CENTRE (box centre
+   * x from `centresX`, `bodies` centre y; without `bodies`, the legacy ground/stand point, labelled); travel runs between them; timing is
+   * unchanged. Absent (a direct caller) → the legacy stand/ground placement, byte-identical to before. */
+  readonly effectLaunch?: Readonly<{ point: NormalizedPoint | null; reason: string }>;
+}
+/** Where a plan's effect was anchored and why (only on plans built with `arena.effectLaunch`). */
+export interface EffectAnchoring {
+  readonly launch: 'contact-joint' | 'fallback'; readonly impact: 'target-body' | 'fallback';
+  readonly launchPoint: NormalizedPoint; readonly impactPoint: NormalizedPoint; readonly reason: string;
 }
 /** An anatomy attack selected for the turn (E1 §1.2): its motion replaces the delivery clip and its contact instant is the
  * impact beat. Built by `compileAnatomyAttack` in the wiring; the plan never selects verbs. */
@@ -81,7 +92,7 @@ export interface TurnPlan {
   readonly cadence: TurnCadence | null;
   readonly hitstopMs: number; readonly runUp: number; readonly arena: TurnArena;
   readonly clips: Readonly<{ attacker: Readonly<{ idle: TurnClip; approach: TurnClip; action: TurnClip; after: TurnClip }>; target: Readonly<{ idle: TurnClip; reaction: TurnClip | null }> }>;
-  readonly effect: Readonly<{ anchors: EffectSequenceAnchors; schedule: EffectSchedule; placement: SequencePlacement; startMs: number }> | null;
+  readonly effect: Readonly<{ anchors: EffectSequenceAnchors; schedule: EffectSchedule; placement: SequencePlacement; startMs: number; /** present only with `arena.effectLaunch` */ anchoring?: EffectAnchoring }> | null;
   readonly number: Readonly<{ text: string; x: number; y: number }>;
   readonly reducedMotion: boolean;
   /** The anatomy attack the action clip came from, or null (delivery clip). */
@@ -189,12 +200,29 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const stop = hit ? (gs ? gs.hitstopMs : hitstopMs(massA)) : 0;
   let effect: TurnPlan['effect'] = null, impactLocal = attack ? attack.contactMs : impactOffset(input.delivery, massA);
   if (input.effect) {
-    const raw = placeEffectSequence(input.effect, { attacker: { x: standA.x + runUp, y: bodyPoint(A.side, standA).y }, target: bodyPoint(T.side, standT) }, { groundLineY: impactY });
+    // legacy (no `effectLaunch`): the attacker's run-up point and the target's stand/body point, contact on `impactY` — exactly as before
+    const legacyLaunch: NormalizedPoint = { x: standA.x + runUp, y: bodyPoint(A.side, standA).y }, legacyTarget = bodyPoint(T.side, standT), legacyImpact: NormalizedPoint = { x: legacyTarget.x, y: impactY };
+    let anchoring: EffectAnchoring | undefined, launchPt = legacyLaunch, impactPt = legacyImpact;
+    const el = input.arena.effectLaunch;
+    if (el) {
+      const clampPt = (p: NormalizedPoint): NormalizedPoint => ({ x: clamp01(p.x), y: clamp01(p.y) });
+      const joint = el.point && Number.isFinite(el.point.x) && Number.isFinite(el.point.y) ? clampPt(el.point) : null;
+      const cxT = input.arena.centresX?.[T.side] ?? standT.x;
+      const body = targetBody ? { x: clamp01(cxT), y: Math.min(0.98, Math.max(0.02, targetBody.centreY)) } : null;
+      launchPt = joint ?? legacyLaunch; impactPt = body ?? legacyImpact;
+      const coincide = Math.hypot(impactPt.x - launchPt.x, impactPt.y - launchPt.y) < 1e-6;
+      if (coincide) { launchPt = legacyLaunch; impactPt = legacyImpact; }
+      const why = coincide ? 'fallback: the contact joint and the target body coincide; legacy stand/ground points' : [joint ? `launch at the ${attack?.contactJoint ?? 'contact'} joint (${el.reason})` : `launch fallback: ${el.reason}; legacy attacker stand point`,
+        body ? 'impact at the target body centre' : 'impact fallback: no target body box; legacy ground/stand point'].join(' · ');
+      anchoring = Object.freeze({ launch: joint && launchPt === joint ? 'contact-joint' as const : 'fallback' as const, impact: body && impactPt === body ? 'target-body' as const : 'fallback' as const, launchPoint: Object.freeze(launchPt), impactPoint: Object.freeze(impactPt), reason: why });
+    }
+    const raw = anchoring ? placeEffectSequence(input.effect, { attacker: launchPt, target: impactPt }, { groundLineY: impactPt.y })
+      : placeEffectSequence(input.effect, { attacker: legacyLaunch, target: legacyTarget }, { groundLineY: impactY });
     // Melee themes hold the sweep across both stands (revealed by alpha in sampleTurn); cast themes slide origin→contact.
     const placement: SequencePlacement = input.delivery === 'melee' ? { ...raw, travel: raw.travel.map((p) => ({ ...p, from: raw.launch.from, to: raw.launch.from })) } : raw;
     const schedule = buildEffectSchedule(input.effect, { delivery: input.delivery, attackerMassClass: massA, ...(attack ? { impactAtMs: attack.contactMs } : {}) }, placement);
     if (Math.abs(schedule.impactAt - impactLocal) > 1e-6) throw new Error(`turn plan: effect impact ${schedule.impactAt} disagrees with motion strike ${impactLocal}`);
-    impactLocal = schedule.impactAt; effect = { anchors: input.effect, schedule, placement, startMs: actionStart };
+    impactLocal = schedule.impactAt; effect = { anchors: input.effect, schedule, placement, startMs: actionStart, ...(anchoring ? { anchoring } : {}) };
   }
   const impactAt = actionStart + impactLocal, hitstopEnd = impactAt + stop;
   const flashEnd = hit ? impactAt + FLASH.whiteFrames * SMEAR_FRAME_MS + FLASH.fadeMs : impactAt;

@@ -3,7 +3,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { readBattle2AssetPins, verifyBattle2AssetFiles, BATTLE2_ASSET_SCHEMA } from '../apps/game/pwa-battle2-assets.js';
-import { sha256Hex, pwaBuildIdV1, celestialFrontierPwaPlugin } from '../apps/game/pwa-build.js';
+import { sha256Hex, pwaBuildIdV1, celestialFrontierPwaPlugin, shippedPackByteInputsV1, __pwaBuildTestOnly } from '../apps/game/pwa-build.js';
+import { readFileSync } from 'node:fs';
 
 describe('pinned battle2 public-file inventory', () => {
   it('the build plugin includes public pins with a nested base and rechecks emitted files', () => {
@@ -66,5 +67,39 @@ describe('pinned battle2 public-file inventory', () => {
     expect(pwaBuildIdV1([index,{path:file.path,sha256:file.sha256}])).not.toBe(id);
     expect(()=>pwaBuildIdV1([index,{...file,path:'/foreign/atlas.png'}])).toThrow();
     expect(()=>pwaBuildIdV1([index,{...file,path:'/battle2/../atlas.png'}])).toThrow();
+  });
+});
+
+/** D30 (Dakk, 2026-10-02): every painted arena ships as WebP runtime copies inside the 128 MiB offline pack (the cap is unchanged). The
+ * pinned battle2 files are read from the producer's manifest; the runtime bundle is a fixed allowance ABOVE the measured vite build
+ * (25,199,306 bytes on 2026-10-02, see audits/ARENA_WEBP_D30_20261002/README.md), so a pass here does not depend on a build in the test. */
+describe('D30 arena pack: WebP arenas fit the unchanged 128 MiB cap, today and with all 45 sets registered', () => {
+  const game = new URL('../apps/game/', import.meta.url), repo = new URL('../../../', import.meta.url);
+  const pins = (JSON.parse(readFileSync(new URL('battle2-assets.json', game), 'utf8')) as { files: { path: string; bytes: number }[] }).files;
+  const sets = (JSON.parse(readFileSync(new URL('src/battle2/arena-sets.generated.json', game), 'utf8')) as { sets: { id: string; far: string; mid: string; near: string }[] }).sets;
+  const receipt = JSON.parse(readFileSync(new URL('audits/ARENA_WEBP_D30_20261002/receipt.json', repo), 'utf8')) as { sets: { id: string; plates: Record<string, { source: string; sourceBytes: number; webp: string; bytes: number }> }[] };
+  const RUNTIME_ALLOWANCE = 32 * 1048576, WORKER_ALLOWANCE = 1048576, CAP = 134_217_728, TARGET = 115 * 1048576;
+  const plates = sets.flatMap((s) => [s.far, s.mid, s.near]), pinOf = (rel: string) => pins.find((p) => p.path === 'battle2/' + rel);
+  const arenaPin = (p: { path: string }) => /(^|\/)arena-(far|mid|near)(-despilled)?\.(png|webp)$/.test(p.path) && !p.path.includes('/keyed/wild-');
+  const nonArena = pins.filter((p) => !plates.includes(p.path.slice('battle2/'.length))).map((p) => p.bytes), sum = (xs: number[]) => xs.reduce((n, b) => n + b, 0);
+  it('every registered set ships exactly its three WebP plates (no PNG arena plate in the pack); the pack is under the cap and the 115 MiB target', () => {
+    for (const rel of plates) { expect(rel, rel).toMatch(/\.webp$/); expect(pinOf(rel), rel).toBeDefined(); }
+    expect(pins.filter(arenaPin).map((p) => p.path).filter((p) => p.endsWith('.png')), 'no PNG arena plate ships').toEqual([]);
+    const total = __pwaBuildTestOnly.assertShippedPackBytes(shippedPackByteInputsV1({ runtime: [RUNTIME_ALLOWANCE], battle2: pins.map((p) => p.bytes), library: 0 }), WORKER_ALLOWANCE);
+    expect(total).toBeLessThanOrEqual(TARGET);
+  });
+  it('synthetic: registering ALL 45 sets (every receipted WebP triplet, from the actual file sizes) stays under the cap and the target', () => {
+    expect(receipt.sets).toHaveLength(45);
+    const webp = receipt.sets.flatMap((s) => Object.values(s.plates).map((p) => readFileSync(new URL(p.webp, repo)).byteLength));
+    expect(webp).toEqual(receipt.sets.flatMap((s) => Object.values(s.plates).map((p) => p.bytes)));
+    const total = __pwaBuildTestOnly.assertShippedPackBytes([RUNTIME_ALLOWANCE, ...nonArena, ...webp], WORKER_ALLOWANCE);
+    expect(total).toBeLessThanOrEqual(TARGET);
+  });
+  it('negative controls: the 45 sets at their PNG runtime size bust the cap; one byte past the remaining headroom is caught', () => {
+    const png = receipt.sets.flatMap((s) => Object.values(s.plates).map((p) => readFileSync(new URL(p.source, repo)).byteLength));
+    expect(() => __pwaBuildTestOnly.assertShippedPackBytes([RUNTIME_ALLOWANCE, ...nonArena, ...png], WORKER_ALLOWANCE)).toThrow(/exceeds 128 MiB/u);
+    const webp = receipt.sets.flatMap((s) => Object.values(s.plates).map((p) => p.bytes)), headroom = CAP - (RUNTIME_ALLOWANCE + WORKER_ALLOWANCE + sum(nonArena) + sum(webp));
+    expect(headroom).toBeGreaterThan(0);
+    expect(() => __pwaBuildTestOnly.assertShippedPackBytes([RUNTIME_ALLOWANCE, ...nonArena, ...webp, headroom + 1], WORKER_ALLOWANCE)).toThrow(/exceeds 128 MiB/u);
   });
 });

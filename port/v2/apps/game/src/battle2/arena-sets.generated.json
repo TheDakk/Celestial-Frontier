@@ -5,16 +5,721 @@
   {
    "id": "earth-temperate-v1",
    "biome": "temperate",
+   "medium": "ground",
    "delivery": "audits/ARENA_ROUTING_20261001/earth-temperate-v1.delivery.json",
    "recipe": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
    "acceptance": "audits/ARENA_V1_ACCEPTANCE_20260912/acceptance.json",
-   "far": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
-   "mid": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
-   "near": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
+   "far": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.webp",
+   "mid": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp",
+   "near": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.webp",
    "masters": {
     "far": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
     "mid": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-mid.png",
     "near": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-near.png"
+   }
+  },
+  {
+   "id": "karst-cave",
+   "biome": "karst",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/karst-cave/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/karst-cave/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/karst-cave/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/karst-cave/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/karst-cave/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/karst-cave/arena-near.png"
+   }
+  },
+  {
+   "id": "jungle-v2",
+   "biome": "jungle",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/jungle-v2/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/jungle-v2/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/jungle-v2/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/jungle-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/jungle-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "marsh",
+   "biome": "marsh",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/marsh/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/marsh/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/marsh/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/marsh/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/marsh/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/marsh/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/marsh/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/marsh/arena-near.png"
+   }
+  },
+  {
+   "id": "savanna-v2",
+   "biome": "savanna",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/savanna-v2/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/savanna-v2/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/savanna-v2/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "dunesea",
+   "biome": "dunesea",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/dunesea/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/dunesea/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/dunesea/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/dunesea/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/dunesea/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/dunesea/arena-near.png"
+   }
+  },
+  {
+   "id": "tundra",
+   "biome": "tundra",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/tundra/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/tundra/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/tundra/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/tundra/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/tundra/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/tundra/arena-near.png"
+   }
+  },
+  {
+   "id": "freshwater-lake-v2",
+   "biome": "temperate",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/freshwater-lake-v2/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/freshwater-lake-v2/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "coral",
+   "biome": "coral",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/coral/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/coral/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/coral/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/coral/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/coral/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/coral/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/coral/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/coral/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/coral/arena-near.png"
+   }
+  },
+  {
+   "id": "abyssal",
+   "biome": "abyssal",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/abyssal/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/abyssal/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/abyssal/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/abyssal/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/abyssal/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/abyssal/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/abyssal/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/abyssal/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/abyssal/arena-near.png"
+   }
+  },
+  {
+   "id": "abyssgreen",
+   "biome": "abyssgreen",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/abyssgreen/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/abyssgreen/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/abyssgreen/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/abyssgreen/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/abyssgreen/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/abyssgreen/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/abyssgreen/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/abyssgreen/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/abyssgreen/arena-near.png"
+   }
+  },
+  {
+   "id": "acidhaze",
+   "biome": "acidhaze",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/acidhaze/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/acidhaze/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/acidhaze/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/acidhaze/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/acidhaze/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/acidhaze/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/acidhaze/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/acidhaze/arena-near.png"
+   }
+  },
+  {
+   "id": "ammonia-v2",
+   "biome": "ammonia",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/ammonia-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/ammonia-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/ammonia-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/ammonia-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "archipelago-v2",
+   "biome": "archipelago",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/archipelago-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/archipelago-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/archipelago-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/archipelago-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "ashwaste",
+   "biome": "ashwaste",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/ashwaste/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/ashwaste/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/ashwaste/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/ashwaste/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/ashwaste/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/ashwaste/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/ashwaste/arena-near.png"
+   }
+  },
+  {
+   "id": "banded-v2",
+   "biome": "banded",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/banded-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/banded-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/banded-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/banded-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/banded-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/banded-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/banded-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "blueice",
+   "biome": "blueice",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/blueice/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/blueice/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/blueice/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/blueice/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/blueice/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/blueice/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/blueice/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/blueice/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/blueice/arena-near.png"
+   }
+  },
+  {
+   "id": "boulder-v3",
+   "biome": "boulder",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/boulder-v3/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/boulder-v3/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/boulder-v3/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/boulder-v3/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/boulder-v3/arena-near.png"
+   }
+  },
+  {
+   "id": "canyon",
+   "biome": "canyon",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/canyon/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/canyon/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/canyon/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/canyon/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/canyon/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/canyon/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/canyon/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/canyon/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/canyon/arena-near.png"
+   }
+  },
+  {
+   "id": "carbon",
+   "biome": "carbon",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/carbon/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/carbon/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/carbon/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/carbon/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/carbon/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/carbon/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/carbon/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/carbon/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/carbon/arena-near.png"
+   }
+  },
+  {
+   "id": "cratered-v2",
+   "biome": "cratered",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/cratered-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/cratered-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/cratered-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/cratered-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "cryogeyser-v2",
+   "biome": "cryogeyser",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "crystalsteppe-v2",
+   "biome": "crystalsteppe",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "emberfield",
+   "biome": "emberfield",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/emberfield/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/emberfield/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/emberfield/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/emberfield/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/emberfield/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/emberfield/arena-near.png"
+   }
+  },
+  {
+   "id": "fungal",
+   "biome": "fungal",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/fungal/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/fungal/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/fungal/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/fungal/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/fungal/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/fungal/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/fungal/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/fungal/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/fungal/arena-near.png"
+   }
+  },
+  {
+   "id": "geode",
+   "biome": "geode",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/geode/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/geode/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/geode/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/geode/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/geode/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/geode/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/geode/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/geode/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/geode/arena-near.png"
+   }
+  },
+  {
+   "id": "glacier",
+   "biome": "glacier",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/glacier/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/glacier/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/glacier/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/glacier/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/glacier/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/glacier/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/glacier/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/glacier/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/glacier/arena-near.png"
+   }
+  },
+  {
+   "id": "glass-v3",
+   "biome": "glass",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/glass-v3/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/glass-v3/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/glass-v3/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/glass-v3/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/glass-v3/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/glass-v3/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/glass-v3/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/glass-v3/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/glass-v3/arena-near.png"
+   }
+  },
+  {
+   "id": "graben",
+   "biome": "graben",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/graben/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/graben/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/graben/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/graben/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/graben/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/graben/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/graben/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/graben/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/graben/arena-near.png"
+   }
+  },
+  {
+   "id": "hotglow",
+   "biome": "hotglow",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/hotglow/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/hotglow/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/hotglow/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/hotglow/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/hotglow/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/hotglow/arena-near.png"
+   }
+  },
+  {
+   "id": "karst",
+   "biome": "karst",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/karst/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/karst/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/karst/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/karst/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/karst/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/karst/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/karst/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/karst/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/karst/arena-near.png"
+   }
+  },
+  {
+   "id": "magmasea-v2",
+   "biome": "magmasea",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/magmasea-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/magmasea-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/magmasea-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/magmasea-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "mangrove-v2",
+   "biome": "mangrove",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/mangrove-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/mangrove-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/mangrove-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/mangrove-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "milksea-v2",
+   "biome": "milksea",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/milksea-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/milksea-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/milksea-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/milksea-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "obsidian",
+   "biome": "obsidian",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/obsidian/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/obsidian/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/obsidian/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/obsidian/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/obsidian/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/obsidian/arena-near.png"
+   }
+  },
+  {
+   "id": "opensea",
+   "biome": "opensea",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/opensea/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/opensea/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/opensea/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/opensea/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/opensea/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/opensea/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/opensea/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/opensea/arena-near.png"
+   }
+  },
+  {
+   "id": "oxide-v2",
+   "biome": "oxide",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/oxide-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/oxide-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/oxide-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/oxide-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/oxide-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/oxide-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/oxide-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "packice-v2",
+   "biome": "packice",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/packice-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/packice-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/packice-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/packice-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/packice-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/packice-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/packice-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/packice-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/packice-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "saltflat",
+   "biome": "saltflat",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/saltflat/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/saltflat/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/saltflat/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/saltflat/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/saltflat/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/saltflat/arena-near.png"
+   }
+  },
+  {
+   "id": "saltpan-r2",
+   "biome": "saltpan",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/saltpan-r2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/saltpan-r2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/saltpan-r2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/saltpan-r2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/saltpan-r2/arena-near.png"
+   }
+  },
+  {
+   "id": "stormeye",
+   "biome": "stormeye",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/stormeye/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/stormeye/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/stormeye/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/stormeye/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/stormeye/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/stormeye/arena-near.png"
+   }
+  },
+  {
+   "id": "stormsea-v2",
+   "biome": "stormsea",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/stormsea-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/stormsea-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/stormsea-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/stormsea-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/stormsea-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/stormsea-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/stormsea-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "sulfurdeck",
+   "biome": "sulfurdeck",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/sulfurdeck/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/sulfurdeck/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/sulfurdeck/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.png"
+   }
+  },
+  {
+   "id": "swamp-v2",
+   "biome": "swamp",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/swamp-v2/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/swamp-v2/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/swamp-v2/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/swamp-v2/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/swamp-v2/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/swamp-v2/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/swamp-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/swamp-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/swamp-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "volcisle",
+   "biome": "volcisle",
+   "medium": "ground",
+   "delivery": "audits/C132_ARENAS_20261001/volcisle/d29/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/volcisle/d29/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/volcisle/d29/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/volcisle/arena-far.webp",
+   "mid": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-mid.webp",
+   "near": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-near.webp",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/volcisle/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/volcisle/arena-near.png"
    }
   }
  ]

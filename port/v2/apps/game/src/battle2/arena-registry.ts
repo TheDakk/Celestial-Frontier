@@ -12,7 +12,12 @@
  * - Set choice: the world's own biome (`match: 'biome'`), else a set painted for another biome of the same world type
  *   (`'kin'`), else the accepted Earth temperate set (`'fallback'`; on a world with liquid the stage's procedural wet arena
  *   draws the water, as before). Among several sets the pick is seeded by the WORLD (key + seed), so a world always shows the
- *   same home ground, battle after battle. No Math.random, no clock. */
+ *   same home ground, battle after battle. No Math.random, no clock.
+ * - Medium (2026-10-02): every set has a physical `medium` read from its recipe ('ground' default; the freshwater lake and coral sets are
+ *   'water' — painted from inside the water). The fight's medium (`ArenaSelectionContext.medium`, from the habitat compiler: 'water' only when
+ *   BOTH combatants are placed in water, `habitat-arena.ts` `habitatFightMedium`) filters the candidates: a water set is never drawn for a
+ *   ground fight (not even as kin); a water fight takes a water set of its biome, else of its world type, and only then falls back to the
+ *   ground route (biome → kin → fallback, the stage's procedural wet arena drawing the water) with the reason saying so. */
 import { mulberry32 } from '@cf/domain-rand';
 import { BIOME_SETS } from '@cf/domain-strays';
 import { BIOME_PROFILE_KEYS_V1, type BiomeProfileKeyV1 } from '@cf/domain-biome-profile';
@@ -24,6 +29,9 @@ export const ARENA_PROOF_DIR = 'audits/ARENA_EFFECTS_V42_PROOF_20260912/' as con
 export const ARENA_FALLBACK_SET_ID = 'earth-temperate-v1' as const;
 export const ARENA_WORLD_TYPES = Object.freeze(['terran', 'ocean', 'ice', 'desert', 'rocky', 'venus', 'lava', 'gas'] as const);
 export type ArenaWorldType = typeof ARENA_WORLD_TYPES[number];
+/** The physical medium a painted set shows, and the medium a fight is fought in. */
+export const ARENA_MEDIA = Object.freeze(['ground', 'water'] as const);
+export type ArenaMedium = typeof ARENA_MEDIA[number];
 
 /** Live biome → its world type, read from the generator's own table (never retyped). Throws at load on any drift. */
 export const ARENA_BIOME_WORLD_TYPE: Readonly<Record<BiomeProfileKeyV1, ArenaWorldType>> = (() => {
@@ -38,6 +46,8 @@ export const ARENA_BIOME_WORLD_TYPE: Readonly<Record<BiomeProfileKeyV1, ArenaWor
 /** One registered set, as generated from its delivery manifest. Every path is repo-relative under audits/. */
 export interface ArenaSetRow {
   readonly id: string; readonly biome: BiomeProfileKeyV1;
+  /** The physical medium the plates show (the recipe's `medium`; 'ground' when absent). A 'water' set is drawn only for a water fight. */
+  readonly medium: ArenaMedium;
   /** The delivery manifest (cf.arena-delivery/v1) this row was generated from. */
   readonly delivery: string;
   /** Runtime files: the recipe, the opaque FAR and the keyed (alpha) MID/NEAR the stage draws. */
@@ -55,7 +65,8 @@ function checkRow(r: unknown, i: number): ArenaSetRow {
   const id = o.id; if (typeof id !== 'string' || !/^[a-z0-9-]+$/.test(id)) throw new TypeError(`${at}: id must be kebab-case`);
   const biome = o.biome; if (typeof biome !== 'string' || !Object.hasOwn(ARENA_BIOME_WORLD_TYPE, biome)) throw new TypeError(`${at}: biome "${String(biome)}" is not one of the 43 live biomes`);
   const m = (o.masters ?? {}) as Record<string, unknown>;
-  return Object.freeze({ id, biome: biome as BiomeProfileKeyV1, delivery: p(o.delivery, 'delivery'), recipe: p(o.recipe, 'recipe'), far: p(o.far, 'far'), mid: p(o.mid, 'mid'), near: p(o.near, 'near'),
+  const medium = o.medium === undefined ? 'ground' : o.medium; if (!(ARENA_MEDIA as readonly unknown[]).includes(medium)) throw new TypeError(`${at}: medium "${String(medium)}" is not one of ${ARENA_MEDIA.join(', ')}`);
+  return Object.freeze({ id, biome: biome as BiomeProfileKeyV1, medium: medium as ArenaMedium, delivery: p(o.delivery, 'delivery'), recipe: p(o.recipe, 'recipe'), far: p(o.far, 'far'), mid: p(o.mid, 'mid'), near: p(o.near, 'near'),
     masters: Object.freeze({ far: p(m.far, 'masters.far'), mid: p(m.mid, 'masters.mid'), near: p(m.near, 'masters.near') }), acceptance: p(o.acceptance, 'acceptance') });
 }
 /** Parse and freeze the generated sets (exported for the tests' mutants). */
@@ -65,6 +76,7 @@ export function parseArenaSets(json: unknown): readonly ArenaSetRow[] {
   const rows = j.sets.map(checkRow), ids = new Set<string>();
   for (const r of rows) { if (ids.has(r.id)) throw new TypeError(`arena sets: duplicate id ${r.id}`); ids.add(r.id); }
   if (!ids.has(ARENA_FALLBACK_SET_ID)) throw new TypeError(`arena sets: the fallback set ${ARENA_FALLBACK_SET_ID} must stay registered`);
+  if (rows.find((r) => r.id === ARENA_FALLBACK_SET_ID)!.medium !== 'ground') throw new TypeError(`arena sets: the fallback set ${ARENA_FALLBACK_SET_ID} must be a ground set`);
   return Object.freeze(rows);
 }
 export const ARENA_SETS: readonly ArenaSetRow[] = parseArenaSets(ARENA_SETS_JSON);
@@ -100,6 +112,9 @@ export interface ArenaSelectionContext {
   /** The fight is on Earth (seed 133), which has no generator biome (`biomeFor` returns null): with `worlds` null it stays on the
    * accepted temperate set, as before, and the reason names Earth instead of a missing world context (battle2-live-worlds.ts). */
   readonly earth?: boolean;
+  /** The fight's medium (2026-10-02): 'water' only when the habitat compiler places BOTH combatants in water (`habitatFightMedium`). Absent =
+   * 'ground': water sets are never candidates. */
+  readonly medium?: ArenaMedium;
 }
 export type ArenaOwner = 'wild-world' | 'lair' | 'host' | 'visitor' | 'default';
 export interface ArenaSelection {
@@ -108,6 +123,9 @@ export interface ArenaSelection {
   readonly world: ArenaWorld | null;
   readonly owner: ArenaOwner; readonly biome: BiomeProfileKeyV1; readonly worldType: ArenaWorldType;
   readonly match: 'biome' | 'kin' | 'fallback' | 'default';
+  /** The fight's medium this selection was made for. The drawn set's own medium is `set.medium`: a water fight on a ground set (no painted
+   * water set for its biome or kin) keeps the stage's procedural wet arena; a water set draws its own water. */
+  readonly medium: ArenaMedium;
   readonly reason: string;
 }
 
@@ -125,23 +143,41 @@ export function selectArena(context: ArenaSelectionContext, sets: readonly Arena
   if (typeof context.contextId !== 'string' || !context.contextId) throw new TypeError('arena selection: contextId required');
   if (!Number.isSafeInteger(context.seed)) throw new TypeError('arena selection: seed must be a safe integer');
   if (!Number.isInteger(context.round) || context.round < 0) throw new TypeError('arena selection: round must be a non-negative integer');
+  const medium: ArenaMedium = context.medium ?? 'ground';
+  if (!(ARENA_MEDIA as readonly string[]).includes(medium)) throw new TypeError(`arena selection: unknown fight medium ${String(medium)}`);
   const fallback = sets.find((s) => s.id === ARENA_FALLBACK_SET_ID); if (!fallback) throw new TypeError(`arena selection: fallback set ${ARENA_FALLBACK_SET_ID} missing`);
+  if (fallback.medium !== 'ground') throw new TypeError(`arena selection: fallback set ${ARENA_FALLBACK_SET_ID} must be a ground set`);
   const done = (set: ArenaSetRow, world: ArenaWorld | null, owner: ArenaOwner, biome: BiomeProfileKeyV1, match: ArenaSelection['match'], reason: string): ArenaSelection =>
-    Object.freeze({ set, assets: arenaSetAssets(set), world, owner, biome, worldType: ARENA_BIOME_WORLD_TYPE[biome], match, reason });
+    Object.freeze({ set, assets: arenaSetAssets(set), world, owner, biome, worldType: ARENA_BIOME_WORLD_TYPE[biome], match, medium, reason });
+  const ground = sets.filter((s) => s.medium === 'ground'), water = sets.filter((s) => s.medium === 'water');
   if (!context.worlds) {
+    // without a world the fight is on the accepted temperate ground; a water fight there (Earth's open water, the picker's lake) takes a
+    // painted water set of that same biome when one is registered
+    const wet = medium === 'water' ? water.filter((s) => s.biome === fallback.biome) : [];
+    const where = context.earth === true ? `${context.kind === 'wild' ? "the wild creature's world" : context.kind === 'guardian' ? "the guardian's lair" : 'the duel world'} is Earth (home world, no generator biome)` : 'no world context';
+    if (wet.length) return done(wet[0]!, null, 'default', fallback.biome, 'default', `${where}; water fight (both combatants in water): painted water set ${wet[0]!.id}`);
     if (context.earth !== true) return done(fallback, null, 'default', fallback.biome, 'default', `no world context: accepted ${fallback.id} plates`);
-    const where = context.kind === 'wild' ? "the wild creature's world" : context.kind === 'guardian' ? "the guardian's lair" : 'the duel world';
-    return done(fallback, null, 'default', fallback.biome, 'default', `${where} is Earth (home world, no generator biome): accepted ${fallback.id} plates`);
+    return done(fallback, null, 'default', fallback.biome, 'default', `${where}: accepted ${fallback.id} plates`);
   }
   const side = fightWorld(context.kind, context.contextId, context.seed, context.round), world = context.worlds[side];
   if (!world || !Object.hasOwn(ARENA_BIOME_WORLD_TYPE, world.biome)) throw new TypeError('arena selection: the fight world needs a live biome');
   const owner: ArenaOwner = context.kind === 'wild' ? 'wild-world' : context.kind === 'guardian' ? 'lair' : side === 'home' ? 'host' : 'visitor';
   const whose = context.kind === 'wild' ? "the wild creature's world" : context.kind === 'guardian' ? "the guardian's lair" : `duel round ${context.round}: the ${side === 'home' ? 'host' : 'visitor'}'s world (seeded first host, then alternating)`;
   const biome = world.biome, type = ARENA_BIOME_WORLD_TYPE[biome];
-  const own = sets.filter((s) => s.biome === biome);
-  if (own.length) { const set = pickSeeded(own, world); return done(set, world, owner, biome, 'biome', `${whose} ${world.key} (${biome}, ${type}): painted set ${set.id}`); }
-  const kin = sets.filter((s) => ARENA_BIOME_WORLD_TYPE[s.biome] === type);
-  if (kin.length) { const set = pickSeeded(kin, world); return done(set, world, owner, biome, 'kin', `${whose} ${world.key} (${biome}, ${type}): no ${biome} set yet; nearest kin ${set.id} (${set.biome}, same world type)`); }
+  if (medium === 'water') {
+    const ownWet = water.filter((s) => s.biome === biome);
+    if (ownWet.length) { const set = pickSeeded(ownWet, world); return done(set, world, owner, biome, 'biome', `${whose} ${world.key} (${biome}, ${type}): water fight (both combatants in water): painted water set ${set.id}`); }
+    const kinWet = water.filter((s) => ARENA_BIOME_WORLD_TYPE[s.biome] === type);
+    if (kinWet.length) { const set = pickSeeded(kinWet, world); return done(set, world, owner, biome, 'kin', `${whose} ${world.key} (${biome}, ${type}): water fight (both combatants in water): no ${biome} water set yet; nearest kin ${set.id} (${set.biome}, same world type)`); }
+  }
+  const dryWater = medium === 'ground' ? water.filter((s) => ARENA_BIOME_WORLD_TYPE[s.biome] === type).map((s) => s.id) : [];
+  const wetNote = medium === 'water' ? ` (water fight: no painted ${biome} or ${type} water set yet; the stage's procedural wet arena draws the water)`
+    : dryWater.length ? ` (not a water fight: the water set${dryWater.length > 1 ? 's' : ''} ${dryWater.join(', ')} ${dryWater.length > 1 ? 'are' : 'is'} drawn only when both combatants are in water)` : '';
+  const pick = (rows: readonly ArenaSetRow[], match: ArenaSelection['match'], reason: (set: ArenaSetRow) => string): ArenaSelection => { const set = pickSeeded(rows, world); return done(set, world, owner, biome, match, reason(set) + wetNote); };
+  const own = ground.filter((s) => s.biome === biome);
+  if (own.length) return pick(own, 'biome', (set) => `${whose} ${world.key} (${biome}, ${type}): painted set ${set.id}`);
+  const kin = ground.filter((s) => ARENA_BIOME_WORLD_TYPE[s.biome] === type);
+  if (kin.length) return pick(kin, 'kin', (set) => `${whose} ${world.key} (${biome}, ${type}): no ${biome} set yet; nearest kin ${set.id} (${set.biome}, same world type)`);
   const wet = world.liquid ? `; world liquid ${world.liquid}: the stage's procedural wet arena draws it for a side in ${world.liquid}` : '';
-  return done(fallback, world, owner, biome, 'fallback', `${whose} ${world.key} (${biome}, ${type}): no painted ${type} set yet; fallback accepted ${fallback.id} plates${wet}`);
+  return done(fallback, world, owner, biome, 'fallback', `${whose} ${world.key} (${biome}, ${type}): no painted ${type} set yet; fallback accepted ${fallback.id} plates${wet}${wetNote}`);
 }

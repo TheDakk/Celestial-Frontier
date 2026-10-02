@@ -1,0 +1,12 @@
+{
+ "id": "05-axolotl",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 18% paint (reference 53%)",
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 15% paint (reference 66%)",
+  "missing-anatomy: part ear-near-root (earNearRoot) covers 33% paint (reference 100%)"
+ ],
+ "semanticPresence": null
+}

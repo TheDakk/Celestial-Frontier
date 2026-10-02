@@ -13,12 +13,15 @@ import { ARENA_KIT_CANVAS, validateArenaDelivery, type ArenaDeliveryInput, type 
 import { PORTRAIT_GROUND_HABITAT } from './habitat-arena.js';
 import MANIFEST from './arena-sets.generated.json';
 import { arenaSetsSource, checkArenaDelivery } from '../../../../tools/morph/arena-sets.mjs';
+import { decodeRgba } from '../../../../tools/morph/arena-webp.mjs';
 
 const REPO = new URL('../../../../../../', import.meta.url), REPO_PATH = decodeURIComponent(REPO.pathname);
 const bytes = (rel: string): Uint8Array => new Uint8Array(readFileSync(new URL(rel, REPO)));
 const json = (rel: string): unknown => JSON.parse(readFileSync(new URL(rel, REPO), 'utf8'));
 const sha = (b: Uint8Array): string => createHash('sha256').update(b).digest('hex');
 const png = async (rel: string): Promise<ArenaPlateImage> => decodePng(bytes(rel));
+/** A runtime or master plate, decoded by format: PNG with the game's decoder, a D30 WebP runtime copy with sharp (straight RGBA). */
+const plate = async (rel: string): Promise<ArenaPlateImage> => (rel.endsWith('.webp') ? decodeRgba(bytes(rel)) : png(rel));
 const LIQUID: ReadonlySet<string> = new Set(['opensea', 'archipelago', 'coral', 'stormsea', 'volcisle', 'abyssal', 'milksea']);
 const world = (biome: BiomeProfileKeyV1, seed = 7, key = `w:${biome}:${seed}`): ArenaWorld => Object.freeze({ key, biome, seed, solid: true, atmosphere: true, liquid: LIQUID.has(biome) ? 'water' : null, surfaceWater: LIQUID.has(biome), signature: biome, cardHash: 'c-' + key });
 const ctx = (kind: ArenaKind, home: ArenaWorld | null, visitor: ArenaWorld | null = home, extra: Partial<ArenaSelectionContext> = {}): ArenaSelectionContext => ({ kind, contextId: 'battle-1', seed: 42, round: 0, worlds: home && visitor ? { home, visitor } : null, ...extra });
@@ -45,7 +48,7 @@ describe('registered plate sets pass the delivery contract from their real files
     const recipe = json(row.recipe) as { battleContext: { biomeFamily: string }; plates: { image: string; sha256: string }[] }, acceptance = json(row.acceptance);
     expect(recipe.battleContext.biomeFamily, 'row biome = recipe biomeFamily').toBe(row.biome);
     // the runtime set (FAR opaque, MID/NEAR keyed to alpha) and the painted masters (MID/NEAR on magenta) both pass
-    const runtime = validateArenaDelivery({ recipe, acceptance, plates: { far: await png(row.far), mid: await png(row.mid), near: await png(row.near) } });
+    const runtime = validateArenaDelivery({ recipe, acceptance, plates: { far: await plate(row.far), mid: await plate(row.mid), near: await plate(row.near) } });
     expect(runtime.failures).toEqual([]);
     const masters = validateArenaDelivery({ recipe, acceptance, plates: { far: await png(row.masters.far), mid: await png(row.masters.mid), near: await png(row.masters.near) } });
     expect(masters.failures).toEqual([]);
@@ -57,7 +60,8 @@ describe('registered plate sets pass the delivery contract from their real files
   it('the temperate set: the wiring fetches its delivery manifest\'s runtime paths (recipe/FAR/NEAR as always; MID = the approved despilled copy)', () => {
     expect(arenaSetAssets(ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!)).toEqual(ARENA_FALLBACK_ASSETS);
     expect({ recipe: BATTLE2_ASSETS.recipe, far: BATTLE2_ASSETS.far, mid: BATTLE2_ASSETS.mid, near: BATTLE2_ASSETS.near }).toEqual(ARENA_FALLBACK_ASSETS);
-    expect(ARENA_FALLBACK_ASSETS).toEqual({ recipe: 'arena-recipe.json', far: 'arena-far.png', mid: '../ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png', near: 'keyed/arena-near.png' });
+    // D30 (2026-10-02): the runtime copies are the WebP encodes of the same PNG runtimes (the MID one from the despilled PNG)
+    expect(ARENA_FALLBACK_ASSETS).toEqual({ recipe: 'arena-recipe.json', far: 'arena-far.webp', mid: '../ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp', near: 'keyed/arena-near.webp' });
   });
   it('the despilled MID is the old keyed MID with the same alpha and at most the 190 approved RGB edge pixels changed (the only pixel change to today\'s battles)', async () => {
     const before = await png('audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-mid.png'), after = await png('audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png');
@@ -67,8 +71,8 @@ describe('registered plate sets pass the delivery contract from their real files
   }, 30_000);
   it('a delivery manifest is refused by name: wrong runtime hash, missing plate, a path outside audits/', () => {
     const d = json('audits/ARENA_ROUTING_20261001/earth-temperate-v1.delivery.json') as { plates: Record<string, Record<string, string>> };
-    expect(checkArenaDelivery(REPO_PATH, 'control', d).mid).toBe('audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png');
-    expect(() => checkArenaDelivery(REPO_PATH, 'x', { ...d, plates: { ...d.plates, mid: { ...d.plates.mid, runtimeSha256: 'f'.repeat(64) } } })).toThrow(/plates\.mid\.runtime .* hashes d9a3690dceb7…, the manifest says ffffffffffff…/);
+    expect(checkArenaDelivery(REPO_PATH, 'control', d).mid).toBe('audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp');
+    expect(() => checkArenaDelivery(REPO_PATH, 'x', { ...d, plates: { ...d.plates, mid: { ...d.plates.mid, runtimeSha256: 'f'.repeat(64) } } })).toThrow(new RegExp(`plates\\.mid\\.runtime .* hashes ${d.plates.mid!.runtimeSha256!.slice(0, 12)}…, the manifest says ffffffffffff…`));
     expect(() => checkArenaDelivery(REPO_PATH, 'x', { ...d, plates: { far: d.plates.far, mid: d.plates.mid } })).toThrow(/plates\.near missing/);
     expect(() => checkArenaDelivery(REPO_PATH, 'x', { ...d, recipe: '/etc/arena-recipe.json' })).toThrow(/recipe must be repo-relative under audits/);
     expect(() => checkArenaDelivery(REPO_PATH, 'x', { ...d, plates: { ...d.plates, far: { ...d.plates.far, runtime: 'audits/NOPE/arena-far.png' } } })).toThrow(/runtime audits\/NOPE\/arena-far\.png is missing/);
@@ -140,7 +144,10 @@ describe('selectArena: home ground by fight kind', () => {
   it('fallback reasons for all 43 biomes: own set → biome, same world type → kin, otherwise fallback (named)', () => {
     for (const b of BIOME_PROFILE_KEYS_V1) {
       const s = selectArena(ctx('wild', world(b))), type = ARENA_BIOME_WORLD_TYPE[b];
-      const expected = ARENA_SETS.some((r) => r.biome === b) ? 'biome' : ARENA_SETS.some((r) => ARENA_BIOME_WORLD_TYPE[r.biome] === type) ? 'kin' : 'fallback';
+      // a ground fight (no medium) routes over the GROUND sets only (2026-10-02: water sets are for water fights)
+      const GROUND = ARENA_SETS.filter((r) => r.medium === 'ground');
+      const expected = GROUND.some((r) => r.biome === b) ? 'biome' : GROUND.some((r) => ARENA_BIOME_WORLD_TYPE[r.biome] === type) ? 'kin' : 'fallback';
+      expect(s.set.medium, b).toBe('ground');
       expect(s.match, b).toBe(expected);
       if (expected === 'fallback') { expect(s.set.id).toBe(ARENA_FALLBACK_SET_ID); expect(s.reason).toContain(`no painted ${type} set yet`); expect(s.reason.includes('wet arena')).toBe(LIQUID.has(b)); }
       if (expected === 'kin') expect(s.reason).toMatch(new RegExp(`no ${b} set yet; nearest kin`));
@@ -169,10 +176,72 @@ describe('selectArena: home ground by fight kind', () => {
   });
 });
 
+describe('medium-aware routing (2026-10-02): water sets only for water fights', () => {
+  const base = (MANIFEST as { sets: Record<string, unknown>[] }).sets[0]!;
+  it('every row carries its recipe\'s medium; the recipe without one (the accepted temperate set) is ground', () => {
+    // a recipe's "air" (a gas-giant cloud deck) registers as ground: the fighters stand on the cloud layer (Dakk, 2026-10-02)
+    for (const row of ARENA_SETS) { const rm = (json(row.recipe) as { medium?: string }).medium ?? 'ground'; expect(row.medium, row.id).toBe(rm === 'air' ? 'ground' : rm); }
+    expect(ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!.medium).toBe('ground');
+  });
+  it('the 43 biomes × both media: a ground fight never draws a water set; a water fight draws a water set of its biome, else its world type, else the ground route with the procedural water named', () => {
+    for (const b of BIOME_PROFILE_KEYS_V1) {
+      const type = ARENA_BIOME_WORLD_TYPE[b], dry = selectArena(ctx('wild', world(b))), wet = selectArena(ctx('wild', world(b), world(b), { medium: 'water' }));
+      expect(dry.set.medium, b).toBe('ground'); expect(dry.medium).toBe('ground');
+      const own = ARENA_SETS.filter((r) => r.medium === 'water' && r.biome === b), kin = ARENA_SETS.filter((r) => r.medium === 'water' && ARENA_BIOME_WORLD_TYPE[r.biome] === type);
+      expect(wet.medium).toBe('water');
+      if (own.length) { expect(wet.set.medium, b).toBe('water'); expect(wet.match).toBe('biome'); expect(own.map((r) => r.id)).toContain(wet.set.id); }
+      else if (kin.length) { expect(wet.set.medium, b).toBe('water'); expect(wet.match).toBe('kin'); expect(kin.map((r) => r.id)).toContain(wet.set.id); }
+      else { expect(wet.set.medium, b).toBe('ground'); expect(wet.set.id).toBe(dry.set.id); expect(wet.reason).toMatch(/water fight: no painted .* water set yet; the stage's procedural wet arena draws the water/); }
+    }
+    // the two shipped water sets: temperate → the lake, coral → the reef, an ocean kin (opensea) → the reef, a terran kin (jungle) → the lake
+    const wetOn = (b: BiomeProfileKeyV1) => selectArena(ctx('wild', world(b), world(b), { medium: 'water' })).set.id;
+    expect([wetOn('temperate'), wetOn('coral'), wetOn('opensea'), wetOn('jungle')]).toEqual(['freshwater-lake-v2', 'coral', 'coral', 'freshwater-lake-v2']);
+    // a water fight without world context (Earth's open water, the picker's lake): the temperate water set; a ground one keeps the fallback
+    expect(selectArena({ ...ctx('wild', null), medium: 'water' }).set.id).toBe('freshwater-lake-v2');
+    expect(selectArena({ ...ctx('wild', null), earth: true, medium: 'water' }).reason).toMatch(/Earth .*water fight .*painted water set freshwater-lake-v2/);
+    expect(selectArena(ctx('wild', null)).set.id).toBe(ARENA_FALLBACK_SET_ID);
+  });
+  it('a ground set is never chosen for a water fight when a water set exists for that biome or kin (even with several ground sets of the biome)', () => {
+    const sets = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [base, { ...base, id: 'reef-dry', biome: 'coral' }, { ...base, id: 'reef-wet', biome: 'coral', medium: 'water' }, { ...base, id: 'sea-wet', biome: 'opensea', medium: 'water' }] });
+    for (let seed = 0; seed < 50; seed++) {
+      expect(selectArena(ctx('wild', world('coral', seed), world('coral', seed), { medium: 'water' }), sets).set.id).toBe('reef-wet');
+      expect(selectArena(ctx('wild', world('coral', seed)), sets).set.id).toBe('reef-dry');
+      expect(selectArena(ctx('wild', world('archipelago', seed), world('archipelago', seed), { medium: 'water' }), sets).set.medium).toBe('water');
+      expect(selectArena(ctx('wild', world('archipelago', seed)), sets).set.id).toBe('reef-dry'); // ground kin, never the wet kin, for a land fight
+    }
+  });
+  it('negative controls: an unknown medium is refused by name; a water fallback set is refused; a medium-blind route would draw the reef for a land fight', () => {
+    expect(() => parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [base, { ...base, id: 'x', medium: 'lava' }] })).toThrow(/medium "lava" is not one of ground, water/);
+    expect(() => parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [{ ...base, medium: 'water' }] })).toThrow(/must be a ground set/);
+    expect(() => selectArena({ ...ctx('wild', world('coral')), medium: 'air' as never })).toThrow(/unknown fight medium/);
+    const blind = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: ARENA_SETS.map((r) => ({ ...r, medium: 'ground' })) });
+    expect(selectArena(ctx('wild', world('coral')), blind).set.id).toBe('coral'); // what the medium field prevents
+    expect(selectArena(ctx('wild', world('coral'))).set.id).not.toBe('coral');
+  });
+  it('a gas-giant cloud deck (recipe medium "air") is read as a GROUND set only with the manifest\'s explicit note; it then routes as its biome\'s own ground set', () => {
+    // the four pending D29 cloud decks (not registered: acceptance is Dakk's) through the generator's own check, then the router
+    const rows = ['ammonia-v2', 'banded-v2', 'hotglow', 'stormeye'].map((id) => { const rel = `audits/C132_ARENAS_20261001/${id}/d29/delivery.webp.pending.json`, m = json(rel) as { recipe: string };
+      expect((json(m.recipe) as { medium?: string }).medium, id).toBe('air'); return checkArenaDelivery(REPO_PATH, rel, m); });
+    const sets = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [...(MANIFEST as { sets: object[] }).sets, ...rows] });
+    for (const row of rows) { expect(row.medium, row.id).toBe('ground');
+      const s = selectArena(ctx('wild', world(row.biome as BiomeProfileKeyV1)), sets); expect([s.set.id, s.match], row.id).toEqual([row.id, 'biome']);
+      expect(selectArena(ctx('wild', world(row.biome as BiomeProfileKeyV1), world(row.biome as BiomeProfileKeyV1), { medium: 'water' }), sets).set.medium, row.id).toBe('ground'); }
+    const rel = 'audits/C132_ARENAS_20261001/hotglow/d29/delivery.webp.pending.json', m = json(rel) as Record<string, unknown>, { mediumNote: _note, ...noNote } = m;
+    expect(() => checkArenaDelivery(REPO_PATH, rel, noNote)).toThrow(/medium "air" \(a cloud deck\) registers only as a ground set/);
+    expect(() => checkArenaDelivery(REPO_PATH, rel, { ...m, medium: 'water' })).toThrow(/registers only as a ground set/);
+  });
+  it('the generator reads the recipe medium and refuses a manifest that disagrees with it', () => {
+    const rel = 'audits/C132_ARENAS_20261001/coral/delivery.json', m = json(rel) as Record<string, unknown>;
+    expect(checkArenaDelivery(REPO_PATH, rel, m).medium).toBe('water');
+    expect(() => checkArenaDelivery(REPO_PATH, rel, { ...m, medium: 'ground' })).toThrow(/medium "ground" disagrees with its recipe's "water"/);
+    const t = 'audits/ARENA_ROUTING_20261001/earth-temperate-v1.delivery.json'; expect(checkArenaDelivery(REPO_PATH, t, json(t)).medium).toBe('ground');
+  });
+});
+
 describe('the delivery check rejects every way a delivery can be wrong (mutants of the accepted set)', () => {
   const T = ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!;
   const load = async (): Promise<ArenaDeliveryInput & { recipe: Record<string, unknown>; plates: Record<'far' | 'mid' | 'near', ArenaPlateImage> }> =>
-    ({ recipe: json(T.recipe) as Record<string, unknown>, acceptance: json(T.acceptance), plates: { far: await png(T.far), mid: await png(T.mid), near: await png(T.near) } });
+    ({ recipe: json(T.recipe) as Record<string, unknown>, acceptance: json(T.acceptance), plates: { far: await plate(T.far), mid: await plate(T.mid), near: await plate(T.near) } });
   const fails = (input: ArenaDeliveryInput, pattern: RegExp): void => { const v = validateArenaDelivery(input); expect(v.ok, 'mutant must fail').toBe(false); expect(v.failures.join('\n')).toMatch(pattern); };
   const crop = (p: ArenaPlateImage, h: number): ArenaPlateImage => ({ width: p.width, height: h, rgba: p.rgba.slice(0, p.width * h * 4) });
   const shiftDown = (p: ArenaPlateImage, dy: number): ArenaPlateImage => { const out = new Uint8Array(p.rgba.length), row = p.width * 4; out.set(p.rgba.subarray(0, (p.height - dy) * row), dy * row); return { ...p, rgba: out }; };

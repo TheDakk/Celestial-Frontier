@@ -1,0 +1,39 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "stormeye",
+  "biome": "stormeye",
+  "medium": "ground",
+  "mediumNote": "Recipe medium \"air\" (a gas-giant cloud deck): to be registered as a GROUND set, the fighters standing on the cloud layer. There is no air routing medium. Pending Dakk's acceptance.",
+  "recipe": "audits/C132_ARENAS_20261001/stormeye/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/stormeye/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/stormeye/arena-far.webp",
+      "runtimeSha256": "184f27524098214d8e3faf5d89186ec9aeb33511714f780bd133fdb7fc25b5d7",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+        "sha256": "78d588d167503fe15b06033f1906bcf8f32fd1b8511eabc33934c1e76be5ae97"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-mid.webp",
+      "runtimeSha256": "e09945b2458e562c0ed5218dc989f5ed999ff26ae98aa9a2e8a0ac8d9292142e",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-mid.png",
+        "sha256": "67507ec83fd958ecfb70443fd24d45b6c93822a3aefaf23ecb018e509804c2ec"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-near.webp",
+      "runtimeSha256": "1a982eb05433fd136b962caf2c70e0ec8f829df9eee7dd6b8aece4e8eef52de0",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-near.png",
+        "sha256": "06bc165010281fd8e7afdb7216b2c1896c0242d752f7625474874cf9e1099e02"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

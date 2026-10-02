@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 181,
- "pct": 28.7,
+ "covered": 184,
+ "pct": 29.2,
  "heldNotCounted": [
   "Alligator",
   "Basking Shark",
@@ -29,8 +29,8 @@
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 49,
-   "pct": 23.9,
+   "covered": 52,
+   "pct": 25.4,
    "names": [
     "Leopard",
     "Tiger",
@@ -76,10 +76,13 @@
     "Sugar Glider",
     "Koala",
     "Mountain Goat",
+    "Wildebeest",
+    "Saiga",
     "Cattle",
     "Bongo",
     "Donkey",
     "Iguana",
+    "Land Iguana",
     "Horned Lizard"
    ]
   },

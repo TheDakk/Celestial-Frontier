@@ -1,0 +1,20 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.2496884084636651,"gap":0.00008176672093815061,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"RED","samples":27,"drift":0.00006705509291001164,"gap":0.00007639986221134823,"exactRest":true,"firstRefusal":{"ms":121.5,"sampleNumber":28,"error":"Error: Contact: alert@121.5 exceeds scale compression bound"}}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.002716655505513038,"gap":0.0000877915968277962,"exactRest":true,"firstRefusal":null}
+{"id":"approach:trot","status":"PASS","samples":121,"drift":0.04683664259113683,"gap":0.00009683250140411014,"exactRest":true,"firstRefusal":null}
+{"id":"approach:gallop","status":"PASS","samples":121,"drift":0.03345189876885076,"gap":0.00007988983880950117,"exactRest":true,"firstRefusal":null}
+{"id":"approach:hop","status":"PASS","samples":121,"drift":0,"gap":0.00007934701027442629,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.005185031926461742,"gap":0.00008049123807214603,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.005185031926461742,"gap":0.00008306710216610557,"exactRest":true,"firstRefusal":null}
+{"id":"melee:gore","status":"PASS","samples":121,"drift":0.005185031926461742,"gap":0.0000854219709026438,"exactRest":true,"firstRefusal":null}
+{"id":"melee:tail","status":"PASS","samples":121,"drift":0.027405385627959834,"gap":0.0000765079658249584,"exactRest":true,"firstRefusal":null}
+{"id":"melee:headbutt","status":"PASS","samples":121,"drift":0.005185031926461742,"gap":0.00008117896689425231,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.027405385627959834,"gap":0.00008302854324276896,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":38,"drift":0.0029511937925019408,"gap":0.00007773516675424006,"exactRest":true,"firstRefusal":{"ms":243.83333333333334,"sampleNumber":39,"error":"Error: Contact: hit@243.83333333333334 exceeds scale compression bound"}}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00008834181690390628,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.24616179723961534,"gap":0.00009140550035129036,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.027427676148598527,"gap":0.00008094670328408098,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.1330309742551795,"gap":0.00007778456619632726,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.21710484763269555,"gap":0.00008484923736443174,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.0000816365414853954,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":19,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

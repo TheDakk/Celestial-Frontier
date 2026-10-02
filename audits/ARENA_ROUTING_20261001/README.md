@@ -1,6 +1,6 @@
 # Arena routing: every creature on its home ground (Claude, 2026-10-01)
 
-Matches code as of 2026-10-02 (live encounter-world wiring and D29 delivery canvases). This is Claude's side of C132 program item 1. Codex
+Matches code as of 2026-10-02 (live encounter-world wiring, D29 delivery canvases, medium-aware routing with the two water sets registered, and D30 WebP runtime plates). This is Claude's side of C132 program item 1. Codex
 paints FAR/MID/NEAR plate sets per biome family. Each accepted set is registered with one line, and battles route to it with no code change.
 
 ## What was built
@@ -29,6 +29,11 @@ paints FAR/MID/NEAR plate sets per biome family. Each accepted set is registered
   4. With no world context the result is `'default'`. Since October 2, `main.ts` passes the encounter's world facts through
      `battle2-live-worlds.ts`; generated worlds route by their own biome. Canonical Earth retains the accepted temperate preset
      and the existing lake habitat for swimmers. Unknown or unresolvable world facts retain the explicit fallback.
+- **Medium (2026-10-02).** Every set has a `medium` ('ground' or 'water'), read from its recipe's `medium` field ('ground' when the
+  recipe has none). The fight's medium comes from the habitat compiler (`habitat-arena.ts` `habitatFightMedium`, the same call
+  `placeCombatants` makes): 'water' only when it places **both** combatants in water. A water set is never a candidate for a ground
+  fight, not even as kin. A water fight tries a water set of its biome, then one of its world type, and only then the ground route
+  above, where the stage's procedural wet arena draws the water (the reason says so). See "Water sets" below.
 - When a biome has several sets, the choice is seeded by the **world** (`key#seed`). A world always shows the same home ground, battle
   after battle.
 - With only the temperate set registered, the 43 biomes resolve to 1 `biome`, 10 `kin` (terran) and 32 `fallback`.
@@ -57,7 +62,8 @@ Deliver, under `audits/<YOUR_FOLDER>/`:
    - **FAR**: full-bleed opaque scene. Every alpha is 255, and at most 0.5 % of pixels are key magenta.
    - **MID** and **NEAR**: key-painted terrain on flat #FF00FF.
 2. **Keyed runtime copies of MID and NEAR** (alpha 0 in the key field), from intake like `ARENA_EFFECTS_V42_PROOF_20260912/intake.mjs`,
-   plus any approved intake correction such as a despill copy.
+   plus any approved intake correction such as a despill copy. Since D30 (2026-10-02) the files that SHIP are WebP copies of these PNG
+   runtimes, written by `port/v2/tools/morph/arena-webp.mjs` (see "WebP runtime plates (D30)" below); deliver the PNGs as before.
 3. **`arena-recipe.json`** in the accepted shape (`cf.arena.authoring-proof/v1`):
    - `battleContext.biomeFamily`: one of the 43 live biome keys (for example `archipelago`, `packice`, `canyon`).
    - `seed`: uint32.
@@ -88,8 +94,12 @@ Deliver, under `audits/<YOUR_FOLDER>/`:
                  "mid":  { "master": "audits/<F>/arena-mid.png",  "runtime": "audits/<F>/keyed/arena-mid.png",  "runtimeSha256": "…" },
                  "near": { "master": "audits/<F>/arena-near.png", "runtime": "audits/<F>/keyed/arena-near.png", "runtimeSha256": "…" } } }
    ```
-   Every path is repo-relative under `audits/`. The `runtime` entries are the files the stage draws (an approved despilled MID goes
-   here). `runtimeSha256` must equal their bytes.
+   Every path is repo-relative under `audits/`. A manifest may restate the recipe's `medium` (`"medium": "water"`); the generator
+   refuses it when it disagrees with the recipe. The `runtime` entries are the files the stage draws (an approved despilled MID goes
+   here). `runtimeSha256` must equal their bytes. A runtime may be `.png` or `.webp`; the bytes must be that format. A `.webp` runtime
+   also names `"runtimeSource": {"path": "<the PNG runtime>", "sha256": "…"}`, and the generator checks that PNG against its hash.
+   A recipe `medium` of `"air"` (a gas-giant cloud deck) is admitted only as a ground set: the manifest states `"medium": "ground"` and a
+   `mediumNote` (the fighters stand on the cloud layer). There is no air routing medium.
 
 ### How a manifest row is consumed
 1. Add the manifest's path as **one line** in `port/v2/tools/morph/arena-deliveries.json`.
@@ -171,7 +181,7 @@ By world type (distinct species living in any of its biomes):
 This matches the C132 program's order (water first, then desert, snow, forest, grassland, wetland, cave), translated to live biome keys.
 
 ## Tests and controls (numbers)
-- `apps/game/src/battle2/arena-registry.test.ts`: **25/25 PASS**. It covers:
+- `apps/game/src/battle2/arena-registry.test.ts`: **39/39 PASS** (2026-10-02, with D30; was 25/25 on 2026-10-01). It covers:
   - the vocabulary;
   - the drift gate;
   - each registered set validated from its real files;
@@ -246,6 +256,47 @@ This matches the C132 program's order (water first, then desert, snow, forest, g
 The native film harnesses now take their plates from `arena-sets.generated.json` (`tools/battle2-proof/arena-plates.mjs`). See
 `audits/GUARDIAN_CHOREOGRAPHY_20261001/FILM.md`.
 
+## Water sets (2026-10-02, branch `anthropic/overnight-fx-water`)
+Dakk accepted all eight C132 arenas on 2026-10-02. The two painted from inside the water, `freshwater-lake-v2` (biome temperate) and
+`coral` (biome coral), have recipes with `medium: "water"`. They were held back because biome-only routing would have put land
+fighters underwater. They are now registered:
+- `audits/C132_ARENAS_20261001/{freshwater-lake-v2,coral}/delivery.json`, written from each `delivery.pending.json` with `medium:
+  "water"` and `acceptance` pointing at the existing `acceptance.json`. (The acceptance records' `status` line still says
+  "registration deferred"; they are left byte-unchanged as the acceptance evidence.) Two lines were added to `arena-deliveries.json`.
+- `build-shipped-battle2.mjs` shipped them. The pinned first-use battle2 files grew from 79.7 to 93.3 MiB (builder: 181 files,
+  116.5 MiB public mirror); the PWA build's 128 MiB pack assertion passes. (Superseded by D30 below: 40.6 MiB pinned.)
+
+Routing outcomes (`battle2-live-worlds.test.ts`, `arena-registry.test.ts`, `battle2-wiring.test.ts`):
+- A land fight on a temperate or coral world never draws a water set. A swimmer facing a land fighter is not a water fight: the land
+  fighter keeps its floor and the stage keeps the procedural half lake on the swimmer's side.
+- Two swimmers on a temperate world draw `freshwater-lake-v2`; on a coral world, `coral`. Kin: an ocean world takes `coral`, another
+  terran world takes the lake. Earth (no world) and the picker's lake world take the lake for two swimmers.
+- **No double water.** `BattleStage` takes `plateMedium` (the set's medium). On a water set it draws no procedural `WATER_BANDS` and
+  keeps the near plate, because the plates are the water. The wiring test counts exactly one fewer Graphics node than the same two
+  swimmers on the ground set with the procedural lake.
+- Negative controls: a medium-blind registry (water rows relabelled ground) puts land fighters on the coral plates, and the tests
+  catch it; an unknown medium, a water fallback set and a manifest that disagrees with its recipe are each refused by name.
+
+## WebP runtime plates (D30, 2026-10-02)
+Dakk's D30 (`audits/MAILBOX/DECISIONS.md`): arenas ship as high-quality WebP runtime copies inside the offline pack, at the native
+1672 × 941, so every biome works offline from install. The PNG masters and PNG runtimes stay in the repo untouched; the 128 MiB cap
+is unchanged.
+- **Encoder.** `port/v2/tools/morph/arena-webp.mjs` writes `<name>.webp` next to each PNG runtime.
+  - FAR: lossy RGB, quality 88, effort 6, sharp-YUV. Every source alpha must be 255.
+  - MID/NEAR: lossy RGB with lossless alpha (alphaQuality 100). The decoded alpha must equal the PNG's byte for byte, or the encode is
+    refused. The magenta under alpha 0 is first replaced by a 24-pixel bleed of the visible edge colours. Visible pixels are untouched.
+  - Each plate is encoded twice per run; the bytes must be identical.
+- **Switch.** The 9 registered manifests (the temperate fallback set and the 8 C132 sets) now name the WebP runtimes, each with its
+  `runtimeSource` PNG. The temperate MID is encoded from the despilled PNG. The builder ships only the WebP plates.
+  Script: `audits/ARENA_WEBP_D30_20261002/switch-runtimes.mjs`.
+- **Pending candidates.** Each of the 36 unregistered C132 candidates has a sibling `d29/delivery.webp.pending.json` naming its WebP
+  runtimes, with its acceptance still the pending record. They pass the generator's check and `validateArenaDelivery` on the decoded
+  WebP (`arena-webp.test.ts`). Registering one is still one line in `arena-deliveries.json`, after its acceptance is recorded.
+- **Numbers.** 45 sets: 274.2 MiB of PNG runtimes become 25.8 MiB of WebP. The pinned battle2 files went from 93.3 to 40.6 MiB. The
+  vite build's shipped pack went from 117.4 to 64.7 MiB. With all 45 sets registered the projection is 84.3 MiB, inside the 115 MiB
+  target. Receipt: `audits/ARENA_WEBP_D30_20261002/`.
+
 ## Not done / open
-- A painted ocean set will show water in its plates while the stage still draws its procedural `WATER_BANDS` over a swimmer's side. A
-  per-set "paints its own water" flag is a decision for Dakk and Codex once the first wet set exists. It is not added here.
+- The lake set's painted surface is near the top of the frame, while the habitat compiler's water band starts at y 0.57. Swimmers
+  are inside the painted water either way, but a surface-breaching move would read against the procedural surface value (0.52),
+  not the painted one. A per-set surface line would need Codex's habitat owner.

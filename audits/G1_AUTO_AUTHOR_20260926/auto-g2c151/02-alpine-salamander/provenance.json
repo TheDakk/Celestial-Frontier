@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-alpine-salamander",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5558d9b412c372da88815ec8722603260740d8e6ef05eda7261d738507917977",
+ "subjectSourceSha256": "9aa6d8419c155d16c8b0c5859973b95e361a0165e3a5d0d84cbc8feab0e16866",
+ "identity": {
+  "name": "Alpine Salamander",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Alpine Salamander\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"686828774\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "seed": 686828774,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "river-otter",
+  "authoringSha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7",
+  "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+ },
+ "habitat": {
+  "profileId": "salamander",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group salamander (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0144,
+     "class": "front",
+     "attach": {
+      "x": 315,
+      "y": 188,
+      "relX": 1.01,
+      "relY": 0.23
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1483,
+     "class": "rear",
+     "attach": {
+      "x": 158,
+      "y": 209.5,
+      "relX": -0.01,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0319,
+     "class": "limb-down",
+     "attach": {
+      "x": 278.6,
+      "y": 219.1,
+      "relX": 0.77,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0459,
+     "class": "limb-down",
+     "attach": {
+      "x": 175.5,
+      "y": 223,
+      "relX": 0.11,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0182,
+     "class": "limb-down",
+     "attach": {
+      "x": 198.5,
+      "y": 223,
+      "relX": 0.25,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0402,
+     "class": "limb-down",
+     "attach": {
+      "x": 253,
+      "y": 225,
+      "relX": 0.61,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "river-otter",
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

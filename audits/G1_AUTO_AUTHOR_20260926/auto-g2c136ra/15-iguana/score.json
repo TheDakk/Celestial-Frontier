@@ -1,0 +1,9 @@
+{
+ "id": "15-iguana",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.6%)"
+ ],
+ "semanticPresence": null
+}
