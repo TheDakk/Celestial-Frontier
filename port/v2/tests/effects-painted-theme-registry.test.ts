@@ -40,8 +40,11 @@ describe('painted-theme manifest and theme keys', () => {
     expect([...EFFECT_THEMES].sort()).toEqual(Object.keys(domain).sort());
     for (const t of EFFECT_THEMES) expect(`#${THEME_MATERIALS[t].accent.toString(16).padStart(6, '0')}`).toBe(domain[t]!.col);
   });
-  it('the shipped manifest registers exactly the grandfathered Wild row', () => {
-    expect(parsePaintedThemeManifest(SHIPPED)).toEqual([WILD_ROW]);
+  it('the shipped manifest registers the grandfathered Wild row plus exactly the ten C132 v4.3 deliveries (Claude full-size review 2026-10-02)', () => {
+    const rows = parsePaintedThemeManifest(SHIPPED);
+    expect(rows[0]).toEqual(WILD_ROW);
+    expect(rows.slice(1).map((r) => r.theme)).toEqual(['fire', 'frost', 'storm', 'tide', 'stone', 'venom', 'void', 'sand', 'chem', 'psionic']);
+    for (const r of rows.slice(1)) expect(r).toMatchObject({ contract: 'v4.3', required: false, anchors: expect.stringMatching(/^\.\.\/C132_EFFECTS_20261001\//) });
   });
   it('refuses a malformed manifest by name (it is committed data: a refusal is a test failure, never a silent fallback)', () => {
     const bad = (rows: unknown[], over: Record<string, unknown> = {}) => () => parsePaintedThemeManifest({ ...manifest(rows), ...over });

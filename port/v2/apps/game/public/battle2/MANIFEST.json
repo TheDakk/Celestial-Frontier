@@ -649,6 +649,206 @@
    "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
   },
   {
+   "path": "audits/C132_EFFECTS_20261001/chem/anchors.json",
+   "bytes": 1987,
+   "sha256": "bde174def1affb9cf35520d456cc076c3c14de3431b7209bfb6755506dbc79e4"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/chem/registered/impact.png",
+   "bytes": 129012,
+   "sha256": "52ed2bd4cab580905c296368a65e09258f9b7b1470d5855f4262be644fda6f64"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/chem/registered/launch.png",
+   "bytes": 110354,
+   "sha256": "333ecfa8f9fc749430f83744e127314aa7e8722d2ee8926f354b5722f9ee45db"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/chem/registered/travel.png",
+   "bytes": 264555,
+   "sha256": "0167b8d4d433da139b9f1819815e2a880e9a2255b50ad003bf1e7289f197a985"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/fire/anchors.json",
+   "bytes": 1990,
+   "sha256": "926cb96634725cfdeb3016238d61f9f8ac3c82d48b3491c92ce5832bf3367dca"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/fire/registered/impact.png",
+   "bytes": 168689,
+   "sha256": "a1554e337d526342f3848a88fdf6ac5eabab0d98ae3441f34706fc5ecb93d114"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/fire/registered/launch.png",
+   "bytes": 89179,
+   "sha256": "7fa9ef9c4f24c0d4151d320ce3a60a4182854736e9de962ae6685ecb317df8ba"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/fire/registered/travel.png",
+   "bytes": 226698,
+   "sha256": "dca5ec29ee67985a7516307fd9d3a82c9b9f37ef6c8330093cb2c4b3d626f007"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/frost/anchors.json",
+   "bytes": 1994,
+   "sha256": "31001930b095dfbef13591fd78b36285a04d4f85d421d25964ba6a18c59d87a8"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/frost/registered/impact.png",
+   "bytes": 127813,
+   "sha256": "52b2f3630353c66165367c0ac4307ba898b0fec1cfe883b4f154206366accb5c"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/frost/registered/launch.png",
+   "bytes": 79040,
+   "sha256": "5917619501737c9318931369c59d8523b1980270b1c0b90f30b275927c3a441e"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/frost/registered/travel.png",
+   "bytes": 220122,
+   "sha256": "b00756664bf2c4a7781562d1395022f2bfdc0407ffece134fb1d2b1f73f37011"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/psionic/final/anchors.json",
+   "bytes": 1995,
+   "sha256": "377a235f92becbe6ba2e887dbb2f2fdd9a6a165a1d0bdafca2a9847aba18a5bb"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/psionic/final/registered/impact.png",
+   "bytes": 119359,
+   "sha256": "9d3b74bb6bcfb48264416d36c7b7dfa6b7384a471cbb13a141958ad24219335a"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/psionic/final/registered/launch.png",
+   "bytes": 81548,
+   "sha256": "993e9adaa07f0ed351018c88ea8dcee203392413c618f72072643ecc1e42f6e5"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/psionic/final/registered/travel.png",
+   "bytes": 227477,
+   "sha256": "27233e950914e65f7c62937d7ea649f512b7474b3806ba44de2809ef68f7bee5"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+   "bytes": 1988,
+   "sha256": "2930258125c1e99bd2882ee1d0e886eba8b8c0e5a35c54e1b523a68a7348395f"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/sand/final/registered/impact.png",
+   "bytes": 145804,
+   "sha256": "75d5ad014f93b494d8b377fe12fc99af10d7e482906e10565c81a4b4f9771ff6"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/sand/final/registered/launch.png",
+   "bytes": 102596,
+   "sha256": "258a217973f61a36065885c8bca3543fe66211a8c98101aeb6b634833a2baf2d"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/sand/final/registered/travel.png",
+   "bytes": 314401,
+   "sha256": "24c2c55ca543e43a9677a318d973a856bc40fd2081f8b7f054b0c74fda55bdb9"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+   "bytes": 1994,
+   "sha256": "35dee9b691316117ad134d2de90c331b0abd780cf71ffdff676b1fff353505e2"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/stone/shards/registered/impact.png",
+   "bytes": 191855,
+   "sha256": "7d752451427474c4a952cecbfe906b1767ca4f3333de0bcbd28b2a88c560dd39"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/stone/shards/registered/launch.png",
+   "bytes": 91272,
+   "sha256": "c2fe80c792ee44c4f89bb3945a91175ef03e31d40b660d1ef1ec927159ecf141"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/stone/shards/registered/travel.png",
+   "bytes": 310900,
+   "sha256": "47e15ed079e9dbd322272e7ef36c64720d5ccc285a0f952f249281aa26b6b606"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+   "bytes": 1995,
+   "sha256": "4a40b1579f0b341e178deea305b87395fb01839490f82dbf5eb1d22d260c3409"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/storm/final/registered/impact.png",
+   "bytes": 122331,
+   "sha256": "3cdfa440d457cbb7b4fe4cf740c0e7cf76b8931fe1ff40d16daa8eda3afe0634"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/storm/final/registered/launch.png",
+   "bytes": 89256,
+   "sha256": "cf1e1ddc66b11df2391400ebca3295c5a916143ed8cee45f125a3c847682431e"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/storm/final/registered/travel.png",
+   "bytes": 174769,
+   "sha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/tide/anchors.json",
+   "bytes": 1983,
+   "sha256": "b76d893f6aa706d1846a68918ee9a3f33b9b0940a507b46f22eeae6838ef2e20"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/tide/registered/impact.png",
+   "bytes": 156712,
+   "sha256": "cb311ab37ceab4b0197fdeaecd0843c48a31197d6ee8397c1ace3dd53acd066c"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/tide/registered/launch.png",
+   "bytes": 92753,
+   "sha256": "84f5c13703ccb3b5929e66086a7822df4616852de13dbb13f4b79e275bc73d57"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/tide/registered/travel.png",
+   "bytes": 349941,
+   "sha256": "465cbbdf0adf1244502e7086a580358ed44d991713ce4aadf31550b22a186fd6"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+   "bytes": 1991,
+   "sha256": "66bd85cb4dcbf393f41a06251cd4a9634fe396f8ff99d03fb706b2854b500ab7"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/venom/registered/impact.png",
+   "bytes": 116812,
+   "sha256": "72de039576963f53c2ebcdff9c7ed012b7e6f04292263326a1d4f2159e1d5234"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/venom/registered/launch.png",
+   "bytes": 73890,
+   "sha256": "df5ed04a970f775995eb27a67ecc2ebf21ce38ddfcdb47935336366bdc9d93d9"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/venom/registered/travel.png",
+   "bytes": 184764,
+   "sha256": "f126eb3df3a998699c2e993cf74b1cc32c817a38c1d53d3e7164b17bfb1ac392"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/void/final/anchors.json",
+   "bytes": 1992,
+   "sha256": "cb8e04be607a3b416b1a21489482ab29c474f43cec75565844cca8617ff62e24"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/void/final/registered/impact.png",
+   "bytes": 130645,
+   "sha256": "46e7b1a5fe12bc454e3e4e22f6d55fe28ae648ce8b3e407cc25f88e5040da288"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/void/final/registered/launch.png",
+   "bytes": 79866,
+   "sha256": "985b298205226f55c3f5f24fdeaf073453fe80692d79f67a34f2abfe788fffc9"
+  },
+  {
+   "path": "audits/C132_EFFECTS_20261001/void/final/registered/travel.png",
+   "bytes": 209149,
+   "sha256": "2fd346d7688b50d0111d9cb94a4bde26667a248f2d995afadf201911afa62e17"
+  },
+  {
    "path": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
    "bytes": 4720,
    "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"

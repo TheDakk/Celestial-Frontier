@@ -156,6 +156,9 @@ function harness(over: Partial<Battle2StudyInput> = {}) {
   const genome = genomeFromVisualKey(civetRecord().identity.speciesVisualKey);
   const input: Battle2StudyInput = {
     mount, generation: 7, ticker, clock, reducedMotion: false, deviceTier: 'medium', pixi, artLoader: null, assets, keyer, raster, records: [civetRecord()], win,
+    /* the fake assets serve the Wild files only: pin the Wild-only manifest so these fixtures keep testing the procedural fallback
+     * (the shipped manifest's painted rows are validated from their delivered files in tests/effects-theme-delivery.test.ts) */
+    paintedThemes: { schema: 'cf.painted-theme-manifest/v1', rows: [{ theme: 'wild', anchors: 'wild-anchors.json', contract: 'v4.2-grandfathered', required: true }] },
     settlement: { battleId: 'battle-1', champion: { kind: 'owned-fauna', name: 'Civet', genome }, encounter: { defender: { battleGenome: { seed: 424242, size: 2, kingdom: 'fauna' } } }, transcript: { log: LOG } },
     chronicle: { championName: 'Civet', defenderName: 'Platypus' },
     portrait: async () => image(132, 132, [20, 30, 90, 96], 'thumb'),
