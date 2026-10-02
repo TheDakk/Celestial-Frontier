@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Lemur",
+  "masterSha256": "78242efe8627c31a162c0f1333648411a290ac386e533bc1582b0f08ae402b22",
+  "required": [
+    "black-and-white ringed tail longer than the body"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black-and-white ringed tail longer than the body",
+      "status": "PRESENT",
+      "observed": "Long complete black-and-white ringed tail, facial mask, orange eyes, pale ventral coat and pointed muzzle read as ring-tailed lemur. Four distal limbs are present, with one hand raised and uneven foot heights. Tail is tall and separated from the body except at its proper root. Proximal limb ownership, all digit counts and ground fit remain unverified."
+    }
+  ]
+}

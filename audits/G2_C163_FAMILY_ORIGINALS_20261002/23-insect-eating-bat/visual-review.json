@@ -1,0 +1,28 @@
+{
+  "name": "Insect-Eating Bat",
+  "masterSha256": "0702ec0f8f93d155fe061bd97b4e82d6d629e72a8c045da19fda1c3eaacaf9b6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Large upright ears, small open toothed muzzle, furred trunk, two membrane wings and two hind feet are visible. Wing roots and thumb claws are painted continuously; no feathers or extra arms. Hindfoot digits are very sparse at this view and need review rather than an assumed five-toe declaration. Tail/interfemoral membrane extent and wing-finger counts remain unresolved; heavy fine vein pattern persists.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 240,
+      "y0": 309,
+      "x1": 997,
+      "y1": 938
+    },
+    "margins": {
+      "left": 240,
+      "right": 256,
+      "top": 309,
+      "bottom": 315
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "id": "11-baboon",
+  "name": "Baboon",
+  "family": "primate",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "a621f543375ec39d1e0db545026406afcfbb2a8f1583004105a06bb08b6dc5e9",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22681,
+    "coreRadius": 26,
+    "bodyBox": {
+      "x0": 145,
+      "y0": 132,
+      "x1": 297,
+      "y1": 227
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0536,
+        "pixels": 1216,
+        "box": {
+          "x0": 246,
+          "y0": 120,
+          "x1": 320,
+          "y1": 182
+        },
+        "attach": {
+          "x": 284.1,
+          "y": 141.9,
+          "relX": 0.92,
+          "relY": 0.1
+        },
+        "dir": {
+          "x": 0.91,
+          "y": 0.42
+        },
+        "class": "front",
+        "length": 55.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0675,
+        "pixels": 1530,
+        "box": {
+          "x0": 108,
+          "y0": 138,
+          "x1": 160,
+          "y1": 229
+        },
+        "attach": {
+          "x": 150.8,
+          "y": 163.3,
+          "relX": 0.04,
+          "relY": 0.33
+        },
+        "dir": {
+          "x": -0.88,
+          "y": 0.47
+        },
+        "class": "rear",
+        "length": 78.4
+      },
+      {
+        "k": 2,
+        "frac": 0.1918,
+        "pixels": 4350,
+        "box": {
+          "x0": 105,
+          "y0": 173,
+          "x1": 213,
+          "y1": 302
+        },
+        "attach": {
+          "x": 154,
+          "y": 207.5,
+          "relX": 0.06,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": 0.06,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 111.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0752,
+        "pixels": 1706,
+        "box": {
+          "x0": 262,
+          "y0": 226,
+          "x1": 326,
+          "y1": 304
+        },
+        "attach": {
+          "x": 277,
+          "y": 226,
+          "relX": 0.87,
+          "relY": 0.99
+        },
+        "dir": {
+          "x": 0.44,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 92.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0698,
+        "pixels": 1584,
+        "box": {
+          "x0": 199,
+          "y0": 228,
+          "x1": 253,
+          "y1": 303
+        },
+        "attach": {
+          "x": 224,
+          "y": 228,
+          "relX": 0.52,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.16,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 80.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 112,
+        "x1": 136,
+        "cx": 124.2
+      },
+      {
+        "x0": 171,
+        "x1": 213,
+        "cx": 193.2
+      },
+      {
+        "x0": 224,
+        "x1": 253,
+        "cx": 237.9
+      },
+      {
+        "x0": 310,
+        "x1": 326,
+        "cx": 318.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Salamander",
+  "masterSha256": "02031f9202dd2f2164f169f6a42e9e45d1ebbec57cee586740b93f8660d603c8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Black and bright yellow patches, broad rounded head, smooth wet skin and a complete curved tail are visible. Four feet are painted, but the far hindleg is largely occluded and both far feet sit above the near ground line. The glossy rounded rendering reads more toy-like than the approved brushwork. Toe counts and true four-limb attachment require review; no external pinnae or gills are visible.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 143,
+      "y0": 473,
+      "x1": 1099,
+      "y1": 794
+    },
+    "margins": {
+      "left": 143,
+      "right": 154,
+      "top": 473,
+      "bottom": 459
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

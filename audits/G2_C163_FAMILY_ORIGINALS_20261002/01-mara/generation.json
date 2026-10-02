@@ -1,0 +1,14 @@
+{
+  "id": "01-mara",
+  "name": "Mara",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a8635cf8-4181-42b8-8027-4a81ee4b78a1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "74cb1fcf52069a8acdbf085e9a4b7500d0a44118ecee1db3b99fab791449f40d",
+  "bytes": 1323202,
+  "promptSha256": "8eba4af06e145863fbe9ca457027f137a9ef87037567d884393eaea6acbd655a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

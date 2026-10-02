@@ -1,0 +1,28 @@
+{
+  "name": "Spider Monkey",
+  "masterSha256": "7bb96d0314e2c6214f4a92f768ef4c2404d2b2320ed3e81cc2cbb23aa2e615b8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Very long slender arms, long legs and extremely long connected curled tail, with dark face and paler abdomen, distinguish the subject. All four distal limbs are visible but hands hang and the feet have unequal heights. Tail terminal underside and reduced-thumb hand anatomy are not resolved confidently; they remain explicit semantic holds. No crop or prop.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 344,
+      "y0": 211,
+      "x1": 943,
+      "y1": 1020
+    },
+    "margins": {
+      "left": 344,
+      "right": 310,
+      "top": 211,
+      "bottom": 233
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

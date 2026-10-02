@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gorilla",
+  "masterSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "04-gorilla",
+  "name": "Gorilla",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8fc7bbac-5c44-49cc-b9dc-22e97c8be956.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+  "bytes": 1378105,
+  "promptSha256": "932a7a6101b130da931b2ac29ab015d6cae368a35641c3c8d48103067047c22a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -112,9 +112,9 @@ Original compression/fold evidence and initial candidate transition failures are
 
 **Art candidates delivered:** C176/C177 bind four stronger effect phases and three arena successors in `C163_EFFECTS_POLISH_20261002` and `C132_ARENAS_20261001/effects-agent-repaint-c163.json`. Sixty-four effect controls, all D29 and nine D30 checks PASS; remaining seams/fringes and Sand theme-identity hold stay explicit. No replacement registry/acceptance inferred.
 
-**In progress:** next 24 originals include first primate/myriapod/cephalopod/flyer-membrane
-paintings; source-polygon repairs and refusal-class references; four weak effect phases
-and marsh/dunesea/lake repaints. Each agent owns separate audits only. Root owns motion,
+**Originals delivered (C178):** `G2_C163_FAMILY_ORIGINALS_20261002/pilot.json` contains 24 new native originals (3 quadrupeds, 9 primates, 3 myriapods, 5 cephalopods, 4 membrane flyers), 30,168,687 bytes. Framing24/24PASS; anatomical/ground-contact holds stay explicit, no admission claim.
+
+**In progress:** source-polygon repairs and refusal-class references, native effect-anchor film and remaining performance work. Each agent owns separate audits only. Root owns motion,
 remaining three Centipede slow frames, sequential native films/all-pair 4× sweep, then
 ONE fresh combined I5 3+1 on the complete signed product after Claude posts C165+.
 Never reuse or re-bind the prior I5 proof after product changes.

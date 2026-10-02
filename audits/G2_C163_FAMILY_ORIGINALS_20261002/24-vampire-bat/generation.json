@@ -1,0 +1,14 @@
+{
+  "id": "24-vampire-bat",
+  "name": "Vampire Bat",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-05d74e1c-ee4e-435f-a790-7fa049e7cb60.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "be754b4a8842ec0b42e04d73dc2db005f0ad9bdb048a3ee2479969097389229f",
+  "bytes": 1240022,
+  "promptSha256": "aebffe16f54e58b8fce00d8270b7833916549881f12624a9141ec50da11c5ad9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Mara",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Salamander",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Wall Lizard",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Gorilla",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Chimpanzee",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Orangutan",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Capuchin",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Howler Monkey",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Spider Monkey",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Macaque",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Baboon",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Lemur",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Centipede",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Giant Centipede",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Millipede",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Octopus",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Squid",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Cuttlefish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Giant Octopus",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Deep-Sea Octopus",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Fruit Bat",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Bat",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Insect-Eating Bat",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Vampire Bat",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  }
+]

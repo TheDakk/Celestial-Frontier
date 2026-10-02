@@ -1,0 +1,28 @@
+{
+  "name": "Macaque",
+  "masterSha256": "56995df1a7e64468a934dcd3c118880bc46c8f3b6baaf8c18f4695310a898376",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Brown-grey coat, pink bare face, cheek whiskers and a short connected tail read clearly. Four distal limbs are visible, with natural fingers/toes rather than paws. The far hand and rear foot lift away from the near ground line; proximal limbs overlap and the face turns slightly toward the viewer. Ear count, digit anatomy and canonical tail-length interpretation remain review holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 339,
+      "y0": 353,
+      "x1": 949,
+      "y1": 898
+    },
+    "margins": {
+      "left": 339,
+      "right": 304,
+      "top": 353,
+      "bottom": 355
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

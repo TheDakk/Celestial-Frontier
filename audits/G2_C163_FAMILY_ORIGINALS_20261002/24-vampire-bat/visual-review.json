@@ -1,0 +1,28 @@
+{
+  "name": "Vampire Bat",
+  "masterSha256": "be754b4a8842ec0b42e04d73dc2db005f0ad9bdb048a3ee2479969097389229f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two wings with connected thumb claws, two hind feet, brown fur and large ears are visible. ANATOMY HOLD: nose projects as a conspicuous upright ornamental leaf/disc rather than an unambiguously correct short vampire-bat nasal structure; the short broad muzzle and specialized incisors need review. Tail membrane is reduced but wing fingers and hindfoot digits are unresolved. Heavy crackle-like membrane texture persists.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 271,
+      "y0": 295,
+      "x1": 981,
+      "y1": 957
+    },
+    "margins": {
+      "left": 271,
+      "right": 272,
+      "top": 295,
+      "bottom": 296
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

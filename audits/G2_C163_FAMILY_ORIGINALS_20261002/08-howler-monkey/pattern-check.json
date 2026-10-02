@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Howler Monkey",
+  "masterSha256": "4968de4ee55f14737fb831247c001764ab1246175aea9c877dfe2e87be48efc1",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
