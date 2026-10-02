@@ -150,7 +150,7 @@ describe('the painted library in the arena', () => {
       if (declaration && k === 1) expect(() => compileAnatomyAttack(card, medium, 0, undefined, { ...declaration, recordHash: 'wrong-record-hash' }), `${a.earthName}: mismatched declaration must refuse`).toThrow(/no admitted move|conditional|not declared/);
       let now = 0; const stage = new BattleStage({ factory, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: mass, right: 0.85 }, presentationScales: { left: base * k, right: combatantPresentation(portraitRig(), 0.85, FRAME, layout.stands.right.y).scale } });
       const bout = [{ side: 'A', an: a.earthName, dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, { side: 'B', an: 'Platypus', dn: a.earthName, dmg: 4, crit: true, hpA: 26, hpB: 20 }, { an: a.earthName, dn: 'Platypus', dodge: true }, { side: 'A', an: a.earthName, dn: 'Platypus', dmg: 20, crit: true, hpA: 26, hpB: 0 }];
-      const holder = (stage.root as unknown as Node).children.find((n) => n.children.includes(rig.root as object))!;
+      const holder = ((stage.root as unknown as Node).children as Node[]).find((n) => n.children.includes(rig.root as object))!;
       expect(holder, a.earthName + ' painted rig holder').toBeDefined();
       let attacks = 0, returns = 0;
       for (const [i, r] of bout.entries()) {

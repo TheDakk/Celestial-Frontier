@@ -32,3 +32,5 @@ Alligator's reported late dip is a held **faint**, with idle weight zero. `audit
 
 No further source, art or native work was performed for this read-only gap audit. Parent owns current reference updates, signing and mailbox delivery.
 
+
+The full profile on signed `85fb78b2b` passed all 5,812 tests but stopped at game TypeScript: the fake root children were typed as `object[]`. The subsequent correction narrows that test-only container array to the existing `Node[]` factory type. Game TypeScript now passes; no emitted game code, assertion or threshold changes. `type-correction.json` binds both source hashes and the retained red profile. A full profile on the corrected signed source follows.

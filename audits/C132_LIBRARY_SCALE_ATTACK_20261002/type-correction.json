@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-scale-owner-type-correction/v1",
+  "trigger": "Final profile tests all passed, then the game TypeScript owner rejected object[] children access in the fake container.",
+  "scope": "Narrow the test factory container children to Node[], matching the existing fake factory. Type assertion only; no emitted runtime, production, assertions or thresholds change.",
+  "source": "port/v2/apps/game/src/battle2/library-arena.test.ts",
+  "beforeSha256": "1e74d781f23ba68f747a2d23adddfa4cc59df8dbfa8ad6cd2350a87400f5be68",
+  "afterSha256": "24b2f0e78d8708560ec2848c4ce64f0aa4c43770495ede5db02894ebf90ba89f",
+  "priorStoppedProfile": "final-develop-profile.json",
+  "negativeControlScope": "Earlier null-attack refusal and exact restoration evidence remain unchanged; this subsequent source change is a TypeScript annotation only."
+}
