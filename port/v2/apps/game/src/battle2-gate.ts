@@ -13,3 +13,13 @@ export function battle2On(search: string): boolean {
   const v = new URLSearchParams(search).get(BATTLE2_FLAG);
   return v === '1' ? true : v === '0' ? false : BATTLE2_DEFAULT;
 }
+
+/** Guardian choreography (audits/GUARDIAN_CHOREOGRAPHY_20261001/DESIGN.md): the boss entrance, phase-change, heavy-strike and fall/triumph
+ * set pieces on the painted stage. A STUDY flag, opt-in and default OFF: `?guardianChoreo=1` turns it on for a Guardian or Titan fight;
+ * anything else (or `0`) keeps today's stage byte-identical. Presentation only — never an outcome, a reward or an RNG draw. */
+export const GUARDIAN_CHOREO_DEFAULT = false;
+export const GUARDIAN_CHOREO_FLAG = 'guardianChoreo' as const;
+export function guardianChoreoOn(search: string): boolean {
+  const v = new URLSearchParams(search).get(GUARDIAN_CHOREO_FLAG);
+  return v === '1' ? true : v === '0' ? false : GUARDIAN_CHOREO_DEFAULT;
+}

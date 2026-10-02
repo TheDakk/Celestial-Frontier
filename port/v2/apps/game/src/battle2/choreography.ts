@@ -6,7 +6,7 @@
  * No clock, no randomness: seeds only reach the idle period through the motion timing table. */
 import type { BodyCard } from '../motion/body-card.js';
 import { buildTimeline, EASE_FN, sampleTimeline, type MotionTimeline } from '../motion/timeline.js';
-import { ACTION_PHASES, DAMAGE_NUMBER, FLASH, SHAKE, SMEAR_FRAME_MS, TIMING_BAR, hitstopMs, scaleMs } from '../motion/timing.js';
+import { ACTION_PHASES, DAMAGE_NUMBER, FLASH, HITSTOP, SHAKE, SMEAR_FRAME_MS, TIMING_BAR, hitstopMs, scaleMs } from '../motion/timing.js';
 import { placeEffectSequence, type EffectSequenceAnchors, type NormalizedPoint, type SequencePlacement } from '../effects/anchors.js';
 import { buildEffectSchedule, sampleSchedule, type EffectDelivery, type EffectSample, type EffectSchedule } from '../effects/sequencer.js';
 import { portraitClip, samplePortraitClip, type PortraitAction, type PortraitClip } from './fallback.js';
@@ -58,7 +58,13 @@ export interface TurnPlanInput {
   readonly reducedMotion?: boolean;
   /** Present only for a rigged attacker; ignored (with the family delivery clip used) for a portrait. */
   readonly attack?: TurnAttack | null;
+  /** Guardian choreography (opt-in, `?guardianChoreo=1`; audits/GUARDIAN_CHOREOGRAPHY_20261001/DESIGN.md §4): a Guardian's HIT lands as a heavy
+   * strike — this hitstop (≤ HITSTOP.capMs) and this shake mass replace the attacker-mass rule. Presentation only; absent = the plan is
+   * byte-identical to the plan without the field (the flag-off law). Built by `guardianStrikeV1`. */
+  readonly guardianStrike?: GuardianStrikeV1 | null;
 }
+/** A Guardian's heavy-strike presentation (hitstop and shake mass only; never an outcome). */
+export interface GuardianStrikeV1 { readonly hitstopMs: number; readonly shakeMass: number; }
 export type TurnClip = Readonly<{ source: 'timeline'; timeline: MotionTimeline }> | Readonly<{ source: 'portrait'; clip: PortraitClip }>;
 export interface TurnBeats {
   readonly readyEnd: number; readonly commandEnd: number; readonly actionStart: number; readonly impactAt: number; readonly hitstopEnd: number;
@@ -80,6 +86,8 @@ export interface TurnPlan {
   readonly reducedMotion: boolean;
   /** The anatomy attack the action clip came from, or null (delivery clip). */
   readonly attack: TurnAttack | null;
+  /** Present only when the input carried a Guardian heavy strike (opt-in guardian choreography). */
+  readonly guardianStrike?: GuardianStrikeV1;
 }
 export interface CombatantSample { readonly pose: RigPose; readonly displacementX: number; readonly facing: 1 | -1; readonly context: RigPoseContext; }
 export interface NumberSample { readonly text: string; readonly x: number; readonly y: number; readonly scale: number; readonly alpha: number; readonly visible: boolean; }
@@ -101,8 +109,10 @@ const clipId = (c: TurnClip): string => (c.source === 'timeline' ? c.timeline.ac
 /** Stationary clips plant every foot (quadruped compatibility solver); gaits, lunges and the victory rear-up free them
  * (E1.5 finding: the quadruped victory clip's root loading exceeds the 8 % planted compression bound — it is a lift, not a stance). */
 export const plantedFor = (actionId: string): boolean => /^(idle|alert|hit|faint|tame|feed|cast|sway|disturb|harvest|grow)$/.test(actionId);
-const contextOf = (c: TurnClip, elapsedMs: number, weight = 1): RigPoseContext => { const actionId = clipId(c); return Object.freeze({ actionId, elapsedMs: Math.max(0, elapsedMs), durationMs: clipMs(c), weight, planted: plantedFor(actionId), travel: 'stage' as const }); };
-function makeClip(c: CombatantPlanInput, action: PortraitAction, seed: number): TurnClip {
+/** The rig context of a clip at a time (exported for the guardian set pieces, so both share ONE rule). */
+export const contextOf = (c: TurnClip, elapsedMs: number, weight = 1): RigPoseContext => { const actionId = clipId(c); return Object.freeze({ actionId, elapsedMs: Math.max(0, elapsedMs), durationMs: clipMs(c), weight, planted: plantedFor(actionId), travel: 'stage' as const }); };
+/** A combatant's clip for an action: its card's timeline, or the whole-portrait root clip (exported for the guardian set pieces). */
+export function makeClip(c: CombatantPlanInput, action: PortraitAction, seed: number): TurnClip {
   if (c.card) return { source: 'timeline', timeline: buildTimeline(c.card, action, seed) };
   return { source: 'portrait', clip: portraitClip(action, c.mass, seed) };
 }
@@ -174,7 +184,9 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
     cadence = Object.freeze({ cycles, gaitMs, perCycle: (walkedLength / (cycles * bodyLength)) * facing, walked: walkedLength * facing, bodyLength });
   }
   const actionStart = commandEnd + (cadence ? cadence.cycles * cadence.gaitMs : Math.min(APPROACH_CAP_MS, scaleMs(420, massA)));
-  const stop = hit ? hitstopMs(massA) : 0;
+  const gs = input.guardianStrike ?? null;
+  if (gs && (!(gs.hitstopMs > 0) || gs.hitstopMs > HITSTOP.capMs || !(gs.shakeMass > 0) || !Number.isFinite(gs.shakeMass))) throw new TypeError(`turn plan: a guardian strike's hitstop must lie in (0, ${HITSTOP.capMs}] ms and its shake mass be positive`);
+  const stop = hit ? (gs ? gs.hitstopMs : hitstopMs(massA)) : 0;
   let effect: TurnPlan['effect'] = null, impactLocal = attack ? attack.contactMs : impactOffset(input.delivery, massA);
   if (input.effect) {
     const raw = placeEffectSequence(input.effect, { attacker: { x: standA.x + runUp, y: bodyPoint(A.side, standA).y }, target: bodyPoint(T.side, standT) }, { groundLineY: impactY });
@@ -203,7 +215,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
     kind: 'turn-plan', seed: input.seed,
     attacker: { side: A.side, facing, mass: massA, label: A.label, rigged: A.card !== null }, target: { side: T.side, facing: facingOf(T.side), mass: massT, label: T.label, rigged: T.card !== null },
     delivery: input.delivery, theme: input.theme, outcome: input.outcome, targetFaints, beats, phases: Object.freeze(phases), hitstopMs: stop, runUp, cadence, arena: input.arena, clips, effect,
-    number: { text, x: standT.x, y: numberY }, reducedMotion: input.reducedMotion === true, attack,
+    number: { text, x: standT.x, y: numberY }, reducedMotion: input.reducedMotion === true, attack, ...(gs ? { guardianStrike: gs } : {}),
   });
 }
 
@@ -285,7 +297,7 @@ export function sampleTurn(plan: TurnPlan, ms: number): StageSample {
   const white = FLASH.whiteFrames * SMEAR_FRAME_MS;
   const flash = hit && since >= 0 && ms < b.flashEnd ? (since < white ? 1 : 1 - (since - white) / FLASH.fadeMs) : 0;
   let shake = { x: 0, y: 0 };
-  if (hit && since >= 0 && ms < b.shakeEnd) { const decay = (1 - since / SHAKE.ms) ** 2, amp = SHAKE.amplitudePx * plan.attacker.mass * decay; shake = { x: amp * Math.sin((since / 40) * Math.PI * 2), y: amp * 0.5 * Math.cos((since / 27) * Math.PI * 2) }; }
+  if (hit && since >= 0 && ms < b.shakeEnd) shake = shakeOffset(since, SHAKE.amplitudePx * (plan.guardianStrike?.shakeMass ?? plan.attacker.mass));
   const numbers: NumberSample[] = [];
   if (since >= 0 && ms < b.numbersEnd) {
     const pop = since < DAMAGE_NUMBER.popMs ? EASE_FN['back-out'](since / DAMAGE_NUMBER.popMs) : 1, rise = EASE_FN['ease-out'](clamp01(since / DAMAGE_NUMBER.riseMs));
@@ -303,5 +315,11 @@ export function sampleTurn(plan: TurnPlan, ms: number): StageSample {
   }
   return Object.freeze({ ms, phase, timingBar, cursor, attacker: { pose: aPose, displacementX: disp, facing: plan.attacker.facing, context: aCtx }, target: { pose: tPose, displacementX: 0, facing: plan.target.facing, context: tCtx },
     effect, camera: { shake, flash: clamp01(flash) }, numbers: Object.freeze(numbers), runUpX: disp });
+}
+/** Camera shake `since` ms after its start: `amplitudePx` decaying quadratically over SHAKE.ms (kit §5). ONE rule for the turn's impact and
+ * the guardian set pieces. */
+export function shakeOffset(since: number, amplitudePx: number): Readonly<{ x: number; y: number }> {
+  const amp = amplitudePx * (1 - since / SHAKE.ms) ** 2;
+  return { x: amp * Math.sin((since / 40) * Math.PI * 2), y: amp * 0.5 * Math.cos((since / 27) * Math.PI * 2) };
 }
 const input01 = (ms: number, s: number, e: number): number => (e <= s ? 1 : clamp01((ms - s) / (e - s)));

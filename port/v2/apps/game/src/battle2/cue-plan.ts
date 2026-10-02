@@ -57,7 +57,12 @@ export function buildTurnCuePlan(plan: TurnPlan, options: MixOptions = {}): Turn
     else cue('creature:hurt', b.reactionStart, T, 'reaction');
   } else if (plan.outcome === 'dodge') cue('battle:dodge-swish', b.reactionStart, 'battle', 'reaction');
   else cue('battle:miss-whiff', b.impactAt, 'battle', 'impact');
-  // Stable order: by beat time, then insertion; admission per beat.
+  const { cues, dropped } = admitCues(raw, options);
+  return Object.freeze({ kind: 'turn-cue-plan', theme: plan.theme, reducedMotion: reduced, cues: Object.freeze(cues), dropped: Object.freeze(dropped), endMs: b.end });
+}
+
+/** Stable order (by beat time, then insertion) and kit §5 admission per beat — ONE rule for a turn's cues and a guardian set piece's. */
+export function admitCues(raw: readonly TurnCue[], options: MixOptions = {}): { cues: TurnCue[]; dropped: DroppedCue[] } {
   const ordered = raw.map((c, i) => ({ c, i })).sort((l, r) => l.c.atMs - r.c.atMs || l.i - r.i).map((x) => x.c);
   const cues: TurnCue[] = [], dropped: DroppedCue[] = [];
   for (let i = 0; i < ordered.length;) {
@@ -67,7 +72,7 @@ export function buildTurnCuePlan(plan: TurnPlan, options: MixOptions = {}): Turn
     for (const c of beat) { if (admitted.has(c.cueId)) cues.push(c); else dropped.push(Object.freeze({ ...c, reason: reasons.get(c.cueId) ?? 'not admitted' })); }
     i = j;
   }
-  return Object.freeze({ kind: 'turn-cue-plan', theme: plan.theme, reducedMotion: reduced, cues: Object.freeze(cues), dropped: Object.freeze(dropped), endMs: b.end });
+  return { cues, dropped };
 }
 
 export interface CueSink { play(cue: TurnCue, lateMs: number): void; }

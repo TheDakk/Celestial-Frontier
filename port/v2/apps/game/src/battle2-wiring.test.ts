@@ -50,7 +50,7 @@ describe('main.ts battle2 gate (source text)', () => {
     // the gate module main.ts imports statically is dependency-free (boot pays nothing for the stage)
     const gate = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8');
     expect(gate.split('\n').filter((l) => /^\s*import\b/.test(l))).toEqual([]);
-    expect(mainSource).toMatch(/^import \{ battle2On \} from '\.\/battle2-gate\.js';$/m);
+    expect(mainSource).toMatch(/^import \{ battle2On, guardianChoreoOn \} from '\.\/battle2-gate\.js';$/m);   // the stage gate + the opt-in guardian choreography study flag
   });
   it('A4: the painted stage is the DEFAULT; ?battle2=0 opts out, ?battle2=1 forces on; the matchup picker stays opt-in', () => {
     expect(BATTLE2_DEFAULT).toBe(true);
@@ -64,7 +64,7 @@ describe('main.ts battle2 gate (source text)', () => {
     // mutation control: the same gate module with the default flipped off makes this test's default assertion fail
     const gateSrc = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8').replace('export const BATTLE2_DEFAULT = true;', 'export const BATTLE2_DEFAULT = false;');
     expect(gateSrc).toContain('BATTLE2_DEFAULT = false');
-    const js = gateSrc.replace(/^export /gm, '').replace(/ as const/g, '').replace(/\(search: string\): boolean/, '(search)');
+    const js = gateSrc.replace(/^export /gm, '').replace(/ as const/g, '').replace(/\(search: string\): boolean/g, '(search)');
     const offOn = new Function(`${js}; return battle2On;`)() as (search: string) => boolean;
     expect(offOn('')).toBe(false); expect(offOn('?battle2=1')).toBe(true);
   });
@@ -266,6 +266,29 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     expect(loneHandle.status().turnIndex).toBe(0); expect(loneHandle.status().beats).toMatchObject({ count: 0 });
     expect(FakeApp.made[FakeApp.made.length - 1]!.stage.children).toHaveLength(1);
     loneHandle.dispose('test');
+  });
+
+  it('GUARDIAN CHOREOGRAPHY (opt-in): a Guardian fight plays entrance → turn 0 → the phase beat after the turn that took it to half → turn 1; flag off or a non-guardian keeps today\'s path', async () => {
+    const guardianSettlement = (kind: string) => ({ ...harness().input.settlement, encounter: { defender: { battleGenome: { seed: 424242, size: 2, kingdom: 'fauna' }, kind } }, transcript: { log: LOG, maxB: 36 } }) as unknown as Battle2StudyInput['settlement'];
+    const walk = async (over: Partial<Battle2StudyInput>) => {
+      const h = harness(over), handle = mountBattle2Study(h.input); await handle.ready;
+      const trail: string[] = []; let last = '';
+      for (let t = 10; t < 60_000 && handle.status().phase === 'playing'; t += 50) {
+        h.setNow(t); h.ticker.step(); const s = handle.status();
+        const at = `${s.guardian?.piece ?? '-'}/${s.turnIndex}`; if (at !== last) { trail.push(at); last = at; }
+      }
+      const out = { trail, status: handle.status(), app: FakeApp.made[FakeApp.made.length - 1]! }; handle.dispose('test'); return out;
+    };
+    const on = await walk({ settlement: guardianSettlement('guardian'), guardianChoreo: true });
+    expect(on.trail).toEqual(['guardian-entrance/-1', '-/0', 'guardian-phase/0', '-/1']);
+    expect(on.status.phase).toBe('finished');
+    expect(on.status.guardian).toEqual({ piece: null, played: ['guardian-entrance', 'guardian-phase'], phase: 'row 0 took the guardian to half health' });
+    expect(on.app.stage.children, 'the stage root plus the guardian caption').toHaveLength(2);
+    // controls: the flag off (absent or false), and a non-guardian defender with the flag on, play today's path with no caption
+    for (const over of [{ settlement: guardianSettlement('guardian') }, { settlement: guardianSettlement('guardian'), guardianChoreo: false }, { settlement: guardianSettlement('wild'), guardianChoreo: true }]) {
+      const off = await walk(over);
+      expect(off.trail).toEqual(['-/0', '-/1']); expect('guardian' in off.status).toBe(false); expect(off.app.stage.children).toHaveLength(1);
+    }
   });
 
   it('a throw inside the stage tick fails the STUDY (labelled) and never escapes into the game\'s shared ticker (a throw there stops Pixi\'s ticker and freezes the game, 2026-09-24)', async () => {

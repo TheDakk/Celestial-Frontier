@@ -228,6 +228,15 @@ sits just above the target's painted top, clamped inside the frame.
 - **Per-archetype fields**: `BATTLE2_PARTS_FITS` entries may carry `weaponDeclaration` (hash-bound, proven before play) and `contactSupports: 'observed'`.
 - **Held rows**: `tools/morph/budget-held-archetypes.json`. Evidence: `audits/C15_WIRING_20260925/`.
 
+### Guardian choreography — opt-in study (matches code as of 2026-10-01)
+`?guardianChoreo=1` (`battle2-gate.ts`, `GUARDIAN_CHOREO_DEFAULT = false`): a Guardian or Titan fight plays boss set pieces between
+turns: an entrance (arena reveal, the guardian rises into its stand, it rears and roars under its name card), the phase-change
+beat after the turn that took it to ½ HP (hitstop at the 140 cap, flash, roar, shake, caption), heavy strikes (titanic hitstop,
+the cap on a critical or once phased), and a fall or triumph finale. `guardian-choreo.ts` is pure and presentation only.
+`stage.playSetPiece/tickSetPiece` render it; `TurnPlanInput.guardianStrike` is its only hook into a turn. With the flag off,
+every plan and stage frame is byte-identical to the pre-change code (pinned fingerprints in `guardian-choreo.test.ts`). Design,
+every number's source and Dakk's open choices: `audits/GUARDIAN_CHOREOGRAPHY_20261001/DESIGN.md`.
+
 ### Known limits
 - The Centipede's ARAP skin folds a triangle at 0.85× its default presentation scale (Codex's anatomy chain). The
   `SCALE SWEEP` in `library-arena.test.ts` pins it by its reason (`Centipede ×0.85` → `ARAP skin: unresolved folded
