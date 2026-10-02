@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "milksea-v2",
+  "biome": "milksea",
+  "recipe": "audits/C132_ARENAS_20261001/milksea-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/milksea-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.png",
+      "runtimeSha256": "f25d207982fcb55dd221df56c642911031efcd3f7c024cdfaaae9fdbb586b5af"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/milksea-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-mid.png",
+      "runtimeSha256": "1ba94e16ccc0b0acdcea5c35d81d4c6ff4252a4bb503448039afc9a89540972b"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-near.png",
+      "runtimeSha256": "ef2b089d7f86be2cb03fe968382362d9b5c0fbda5578d11eb1486dc38e9e418e"
+    }
+  }
+}

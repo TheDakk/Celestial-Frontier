@@ -1,0 +1,17 @@
+{
+  "reason": "Bounded explicit forbidden-element/framing repair; no source-pixel editing",
+  "amendments": [
+    {
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-far.prompt.txt",
+        "sha256": "994b5946289e9bf9e5bbda14bd44b4271e3a806b6e910ee0e5009d1153599d5f"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.prompt.txt",
+        "sha256": "3551519c9545c570fd1619268118752be9c3ba063438790b4c26790d3236bf42"
+      },
+      "exactSentPromptVerified": true
+    }
+  ]
+}

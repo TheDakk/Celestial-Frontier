@@ -1,0 +1,197 @@
+{
+  "schema": "cf.c132-centipede-native-review/v1",
+  "sourceHead": "615e755c8a38e61eeeef0400b02310bdb96cf684",
+  "report": "audits/C132_C12_REPAIR_20261002/native-4x-01/report.json",
+  "reportSha256": "16556fa6a2c6c23d3cc82807ff05de105db5a1aea571a72b7512d819790afdcf",
+  "reviewMode": "All18 retained1024x576 stills inspected at full size; file-byte comparison with baseline. No new browser/native run.",
+  "stills": [
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn0-hit-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn0-hit-approach-50.png",
+      "baselineSha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn0-hit-impact.png",
+      "sha256": "40b24a8f7f083b4adb9ddcc87eb63b040dc749c3942867777247cdf4f730cfcf",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn0-hit-impact.png",
+      "baselineSha256": "40b24a8f7f083b4adb9ddcc87eb63b040dc749c3942867777247cdf4f730cfcf",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn0-hit-reaction-50.png",
+      "sha256": "eab33e4e0fb2dd8913c8e426b94cc9f9d31a739a103829167db053499a2bced5",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn0-hit-reaction-50.png",
+      "baselineSha256": "eab33e4e0fb2dd8913c8e426b94cc9f9d31a739a103829167db053499a2bced5",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn0-hit-return-end.png",
+      "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn0-hit-return-end.png",
+      "baselineSha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn1-hit-approach-50.png",
+      "sha256": "2419ff55e60bd0713f0857321d22d8f83b7d4099b9b2ac3350bab683fa780028",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn1-hit-approach-50.png",
+      "baselineSha256": "2419ff55e60bd0713f0857321d22d8f83b7d4099b9b2ac3350bab683fa780028",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn1-hit-impact.png",
+      "sha256": "8e3048e3ecad709d1fd86d97042f85a9f60e8b91f75ad343d038013f3f195132",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn1-hit-impact.png",
+      "baselineSha256": "8e3048e3ecad709d1fd86d97042f85a9f60e8b91f75ad343d038013f3f195132",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn1-hit-reaction-50.png",
+      "sha256": "ef2d7f6676c115f8d9aa00069eea98507b5916eeedad6f4abf7ab3718ff7cb12",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn1-hit-reaction-50.png",
+      "baselineSha256": "ef2d7f6676c115f8d9aa00069eea98507b5916eeedad6f4abf7ab3718ff7cb12",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn1-hit-return-end.png",
+      "sha256": "68073fe050af3413f5fbf2052e65e7e9b20d25f95ee6816cd45a5db77edc47d0",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn1-hit-return-end.png",
+      "baselineSha256": "68073fe050af3413f5fbf2052e65e7e9b20d25f95ee6816cd45a5db77edc47d0",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn2-dodge-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn2-dodge-approach-50.png",
+      "baselineSha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn2-dodge-impact.png",
+      "sha256": "276ccacb440757205fbb771a0ee94d3d4cc8792f007a0d9393cd1596f7bf6764",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn2-dodge-impact.png",
+      "baselineSha256": "276ccacb440757205fbb771a0ee94d3d4cc8792f007a0d9393cd1596f7bf6764",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn2-dodge-reaction-50.png",
+      "sha256": "d53e29b5f17427dae84f9c9833b73cd066e392a1c32d74fd0e2762004e96565a",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn2-dodge-reaction-50.png",
+      "baselineSha256": "d53e29b5f17427dae84f9c9833b73cd066e392a1c32d74fd0e2762004e96565a",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn2-dodge-return-end.png",
+      "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn2-dodge-return-end.png",
+      "baselineSha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn3-hit-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn3-hit-approach-50.png",
+      "baselineSha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn3-hit-idle-50.png",
+      "sha256": "f98eb5515e8d1395d2820bb45f4d22f5bc627267208d4a7b8a43709ba661c3f0",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn3-hit-idle-50.png",
+      "baselineSha256": "f98eb5515e8d1395d2820bb45f4d22f5bc627267208d4a7b8a43709ba661c3f0",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn3-hit-idle-90.png",
+      "sha256": "08ef15bbcf0545f335c4bdb5ebf643c694b22b7f21a7f755893b95f8a43fdbd7",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn3-hit-idle-90.png",
+      "baselineSha256": "08ef15bbcf0545f335c4bdb5ebf643c694b22b7f21a7f755893b95f8a43fdbd7",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn3-hit-impact.png",
+      "sha256": "6f2f8383d0af925bde1c46682cfda3ecca7614d6b54a6b22780e5ef9148c0714",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn3-hit-impact.png",
+      "baselineSha256": "6f2f8383d0af925bde1c46682cfda3ecca7614d6b54a6b22780e5ef9148c0714",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn3-hit-reaction-50.png",
+      "sha256": "3fbe84d0ba63eef5b9b419e49e9d7b5603e4fbbfc93d7443e281b982c6ccfe79",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn3-hit-reaction-50.png",
+      "baselineSha256": "3fbe84d0ba63eef5b9b419e49e9d7b5603e4fbbfc93d7443e281b982c6ccfe79",
+      "byteIdentical": true
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/native-4x-01/turn3-hit-return-end.png",
+      "sha256": "6f030f458fc4cb8da4a59efa2f61f66f4afc8eacc45c9b352569f9a5836c6c9d",
+      "baselinePath": "audits/C132_C12_20261001/native-baseline-correct-fit-02/turn3-hit-return-end.png",
+      "baselineSha256": "6f030f458fc4cb8da4a59efa2f61f66f4afc8eacc45c9b352569f9a5836c6c9d",
+      "byteIdentical": true
+    }
+  ],
+  "slowSamples": [
+    {
+      "ms": 4316.5,
+      "turn": 1,
+      "localMs": 1019.8333333333335,
+      "phase": "approach",
+      "cpuMs": 23.5,
+      "refusals": 0,
+      "previousIntervalMs": 16.700000000000728,
+      "nextIntervalMs": 16.600000000000364
+    },
+    {
+      "ms": 4499.799999999999,
+      "turn": 1,
+      "localMs": 1203.1333333333328,
+      "phase": "approach",
+      "cpuMs": 19.300000000745058,
+      "refusals": 0,
+      "previousIntervalMs": 16.69999999999891,
+      "nextIntervalMs": 16.600000000000364
+    },
+    {
+      "ms": 4683.1,
+      "turn": 1,
+      "localMs": 1386.4333333333338,
+      "phase": "approach",
+      "cpuMs": 21.199999999254942,
+      "refusals": 0,
+      "previousIntervalMs": 16.600000000000364,
+      "nextIntervalMs": 16.69999999999891
+    },
+    {
+      "ms": 4949.799999999999,
+      "turn": 1,
+      "localMs": 1653.1333333333328,
+      "phase": "approach",
+      "cpuMs": 18.40000000037253,
+      "refusals": 0,
+      "previousIntervalMs": 16.69999999999891,
+      "nextIntervalMs": 16.600000000000364
+    },
+    {
+      "ms": 5033.199999999999,
+      "turn": 1,
+      "localMs": 1736.5333333333324,
+      "phase": "approach",
+      "cpuMs": 20,
+      "refusals": 0,
+      "previousIntervalMs": 16.799999999999272,
+      "nextIntervalMs": 16.5
+    }
+  ],
+  "maxIntervalMs": 16.80000000000109,
+  "visualAcceptance": false,
+  "leafPromotionSupported": true,
+  "limitations": [
+    "All18 named stills are byte-identical to baseline; they do not sample every modified approach target.",
+    "Existing Chimpanzee victory paint stretches and a lower fragment separates in turn3-hit-idle-50; baseline image is byte-identical. Full pair visual acceptance remains held.",
+    "The5 slow samples are all turn1 Centipede approach. Capture CPU includes both rigs and stage work; no kernel-only attribution is made.",
+    "CPU p95=9ms, interval p95=16.8ms, max CPU=23.5ms, 5 frames above16.667ms: strict60fps requirement remains open.",
+    "No all-library-pair or iPhone performance claim. I5 unchanged."
+  ]
+}

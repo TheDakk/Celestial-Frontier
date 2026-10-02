@@ -1,0 +1,14 @@
+{
+  "id": "13-saiga",
+  "name": "Saiga",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-93a3cc50-f4f3-4350-867f-ff93b8320d61.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b",
+  "bytes": 1129790,
+  "promptSha256": "00b73854bb94477ddc1a98aea707204544beccfa3eca1f8c0b0f034900ef20d9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

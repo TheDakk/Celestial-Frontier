@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Giant Salamander",
+  "masterSha256": "6afcc8b7e6306ca7a0da1d7300a6620906bb9538a81a26cd0ff22a542cdac25d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Hawk",
+  "masterSha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: connected crown, hooked bill, full tail and two separated talon feet at nearly the same ground level. Original unequal-foot-height repair appears improved. Upper shanks partly hidden by feather trousers and folded wing overlaps tail root; no claim that crown islands remain absent in authored motion.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 352,
+      "y0": 408,
+      "x1": 870,
+      "y1": 852
+    },
+    "margins": {
+      "left": 352,
+      "right": 383,
+      "top": 408,
+      "bottom": 401
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

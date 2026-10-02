@@ -1,0 +1,14 @@
+{
+  "id": "19-crow",
+  "name": "Crow",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e583fb9f-d5fa-4720-a98d-fedeb9f32fbf.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f",
+  "bytes": 1103846,
+  "promptSha256": "19e9e7fb99a125d3bea46552a03c25388f72d852b7347182d2476ecea062422a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

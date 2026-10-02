@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c132-arena-targeted-edit/v1",
+  "reason": "Original contains prohibited baked schools of fish and isolated swimming silhouettes.",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/stormsea/arena-far.prompt.txt",
+    "sha256": "484f8fa948c3652c7b2dcd07f5f743e87e0fb002bc3ad206cdea09dc6b0cdbb0"
+  },
+  "editPrompt": {
+    "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.prompt.txt",
+    "sha256": "0e75d10a99ecf619fedb019c1c51985a23f418fe1d3f4e88b4c418604cadbc19"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/stormsea/arena-far.png",
+      "sha256": "8f178a5e3fe84001bf871d2972bd70579411f410a7438cba3f7a202752f37d01"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the original arena master; the actual sole image input was the original painting named above."
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ecc410eb-9e5f-4578-81b9-5b3d3079e40e.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "The edited generator output is retained byte-for-byte; the source painting is unchanged in its own original directory.",
+  "qualityAccepted": false
+}

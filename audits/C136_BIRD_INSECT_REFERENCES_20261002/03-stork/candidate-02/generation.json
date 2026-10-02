@@ -1,0 +1,14 @@
+{
+  "id": "03-stork",
+  "name": "Stork",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-80271b09-fd18-4969-99d1-25df7fb5ada0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d3d9d6ceaa29855600d1d140d972d73c04006481b89bb03def2f0a67ac04ac3b",
+  "bytes": 1123874,
+  "promptSha256": "91699eeaae3d86309fe643e13cf67be1d94ed0ff276f648c7cf42eb632543744",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

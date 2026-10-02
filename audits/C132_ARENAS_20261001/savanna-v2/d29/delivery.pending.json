@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "savanna-v2",
+  "biome": "savanna",
+  "recipe": "audits/C132_ARENAS_20261001/savanna-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/savanna-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+      "runtimeSha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.png",
+      "runtimeSha256": "8fdfe56558971dbdbab565c6ff5b3546653e70e989dff2101ea2619f96fb814a"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.png",
+      "runtimeSha256": "57d3737dcbce4b246d3377d8b92bf5052ca731346b882b99b983c8dda26214f6"
+    }
+  }
+}

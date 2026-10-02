@@ -1,0 +1,63 @@
+{
+  "schema": "cf.c132-faint-rig-parity/v1",
+  "status": "PASS",
+  "scope": "Node-loaded actual CreatureRigV1 published positions, custom decoded texture; no browser, GPU or native visual acceptance",
+  "rows": [
+    {
+      "name": "original",
+      "elapsedMs": 0,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    },
+    {
+      "name": "original",
+      "elapsedMs": 420,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    },
+    {
+      "name": "original",
+      "elapsedMs": 840,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    },
+    {
+      "name": "original",
+      "elapsedMs": 1500,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    },
+    {
+      "name": "candidate",
+      "elapsedMs": 0,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    },
+    {
+      "name": "candidate",
+      "elapsedMs": 420,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    },
+    {
+      "name": "candidate",
+      "elapsedMs": 840,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    },
+    {
+      "name": "candidate",
+      "elapsedMs": 1500,
+      "parts": 31,
+      "coordinates": 4684,
+      "byteParity": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "16-lark",
+  "name": "Lark",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-aa6d5850-61b5-4ba6-9281-922e5620c475.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ed62d06bbddbfbe101a6ed6a43003e90904a218c0a3b764281633f114e39b335",
+  "bytes": 1075059,
+  "promptSha256": "7b3e6586dd266045eb68e50e76ceeab9aa2b84790375f58990757cac0b55993d",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

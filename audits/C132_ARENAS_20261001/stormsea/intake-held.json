@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-arena-intake-held/v1",
+  "id": "stormsea",
+  "status": "REFUSED",
+  "stage": "existing intake.mjs",
+  "reason": "NEAR covers fighting path",
+  "exitCode": 1,
+  "masters": [
+    {
+      "role": "far",
+      "path": "audits/C132_ARENAS_20261001/stormsea/arena-far.png",
+      "sha256": "8f178a5e3fe84001bf871d2972bd70579411f410a7438cba3f7a202752f37d01"
+    },
+    {
+      "role": "mid",
+      "path": "audits/C132_ARENAS_20261001/stormsea/arena-mid.png",
+      "sha256": "9ff0f002c1f4e1fe838b9ef064a3aac5132cb97323083dc6751c97a5a717227d"
+    },
+    {
+      "role": "near",
+      "path": "audits/C132_ARENAS_20261001/stormsea/arena-near.png",
+      "sha256": "635a1f953e6f0cb1f499250104cd34b738418d4ad1f5918aebccc557e0f681ac"
+    }
+  ],
+  "partialKeyedCopiesRetained": true,
+  "finalizationRun": false,
+  "qualityAccepted": false,
+  "successor": "stormsea-v2"
+}

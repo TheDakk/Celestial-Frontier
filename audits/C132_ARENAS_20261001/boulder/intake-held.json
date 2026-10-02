@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c132-arena-intake-held/v1",
+  "id": "boulder",
+  "status": "REFUSED",
+  "stage": "existing intake.mjs",
+  "reason": "Master dimensions differ",
+  "exitCode": 1,
+  "masters": [
+    {
+      "role": "far",
+      "path": "audits/C132_ARENAS_20261001/boulder/arena-far.png",
+      "sha256": "8b0056f03afa7b553c35591fc4d5bf0235e07552a26b6d75e3ab06af3bc609eb",
+      "width": 1983,
+      "height": 793
+    },
+    {
+      "role": "mid",
+      "path": "audits/C132_ARENAS_20261001/boulder/arena-mid.png",
+      "sha256": "699897d745f8d0e12acf4473a8ec46cb1856ffd33d79a8f5d7663071b51551f9",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "near",
+      "path": "audits/C132_ARENAS_20261001/boulder/arena-near.png",
+      "sha256": "77c48b1e243a54786529f0e88df47a21dbf0768f7b7b58c0fd0eac33e4946f54",
+      "width": 1983,
+      "height": 793
+    }
+  ],
+  "partialKeyedCopiesRetained": true,
+  "finalizationRun": false,
+  "qualityAccepted": false,
+  "successor": "boulder-v2"
+}

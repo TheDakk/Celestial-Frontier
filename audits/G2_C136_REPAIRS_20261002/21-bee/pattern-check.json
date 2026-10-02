@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bee",
+  "masterSha256": "240299d6a6d01d759c7cd50b5a3673aa1755e5994bc6a389c13598cf38335056",
+  "required": [
+    "furry thorax with banded amber-and-black abdomen"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "furry thorax with banded amber-and-black abdomen",
+      "status": "PRESENT",
+      "observed": "Full original: golden fur, striped abdomen, two antennae, pollen basket and folded overlapping wings. Only FOUR distal leg endpoints are clearly resolved; additional far legs are hidden or merged. The six-leg repair is NOT resolved. Wing-tip overlaps and pollen-basket attachment need source review; no grounded-six-leg admission."
+    }
+  ]
+}

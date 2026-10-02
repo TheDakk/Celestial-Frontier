@@ -1,0 +1,28 @@
+{
+  "name": "Yak",
+  "masterSha256": "c23b7769f1c9846a978d3ca54a98d18d575f924464bd5fcca756078f654f2932",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: long shaggy hanging coat, complete plumed tail, horns and four hoof endpoints. Far ear is still obscured. Upper legs remain hidden by the natural coat, so the planned upper-leg readability repair is unresolved. Shoulder hump appears exaggerated; fur-fringe ownership needs review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 287,
+      "y0": 419,
+      "x1": 966,
+      "y1": 834
+    },
+    "margins": {
+      "left": 287,
+      "right": 287,
+      "top": 419,
+      "bottom": 419
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

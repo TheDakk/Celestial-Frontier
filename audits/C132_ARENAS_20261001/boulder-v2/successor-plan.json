@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-successor/v1",
+  "id": "boulder-v2",
+  "sourceId": "boulder",
+  "sourceOriginalsRetained": true,
+  "roles": [
+    {
+      "role": "far",
+      "reason": "Original FAR is native 1983×793 and invents two unbound moons; generate a native 16:9 successor without celestial bodies."
+    },
+    {
+      "role": "near",
+      "reason": "Original NEAR is native 1983×793 and does not match the other plates. Generate a native 16:9 lower-edge-only successor."
+    }
+  ],
+  "qualityAccepted": false
+}

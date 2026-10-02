@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c132-release-copy-oracle-repair/v1",
+  "trigger": "Full develop profile stopped with 5811 passed and one release-copy authority mismatch after the approved Centipede draft release text changed.",
+  "oldDraftSha256": "aa5bc1c4583f685f6fe7caff9ed37636b565e290be351011dec0855fc85ef6f0",
+  "newDraftSha256": "da3387a9a5cbbe0144e890a23f6ac0dec848c39cf6990ebbc8e7883e8cff1d06",
+  "bulletCount": 120,
+  "scope": "Synchronize the explicit ordered rendered draft-copy hash to the current 120 bullets. No outcome, count, limit, test assertion, product or I5 evidence change. The existing exact-copy and mutation controls verify the new pin.",
+  "file": "port/v2/tools/slicesmoke.mjs",
+  "beforeSha256": "5cfd8e2b776f961caef26c0a79394c1ea58560cacb4a46bb74563709e4f5ace0",
+  "afterSha256": "6f22ac600f511b0a12a8d75f6dfda2e7af14eee3cee2a6d47be35ac3b98392a3"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-4ae16a57-f124-4537-9ceb-c927ab61741a.png",
+  "sourceSha256": "090d2c8bbeb60fb3b2023ffcc4a4172a1ceec1aac17e09dd010d516306d422d1",
+  "retainedMaster": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.png",
+  "retainedSha256": "090d2c8bbeb60fb3b2023ffcc4a4172a1ceec1aac17e09dd010d516306d422d1",
+  "bytes": 2247358,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.prompt.txt",
+    "sha256": "a48e4819285030f26a4c3b11bcc993dbc73d334b1f70b2891deb74dd9f60d5b8"
+  },
+  "status": "VISUAL_HOLD_INVENTED_CELESTIAL_BODIES",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

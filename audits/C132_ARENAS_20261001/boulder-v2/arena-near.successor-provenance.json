@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-arena-fresh-successor/v1",
+  "reason": "Original NEAR is native 1983×793 and does not match the other plates. Generate a native 16:9 lower-edge-only successor.",
+  "mode": "fresh-generation-from-locked-style",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/boulder/arena-near.prompt.txt",
+    "sha256": "e43cff514d155c131f75b553f41ad7f8e7b4e3dcbc1233c2f4e22704b4614ecd"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-near.prompt.txt",
+    "sha256": "e2c571b182d40029ecad51dd4b852a54eafd0d196fcb500d0cd1a5c622fbac21"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    }
+  ],
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d554fd98-aa0b-401e-a59c-28e1c35dd401.png",
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/boulder/arena-near.png",
+    "sha256": "77c48b1e243a54786529f0e88df47a21dbf0768f7b7b58c0fd0eac33e4946f54"
+  },
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "The new generator output is retained byte-for-byte. Refused predecessor is unchanged. No upscale or crop was used.",
+  "qualityAccepted": false
+}

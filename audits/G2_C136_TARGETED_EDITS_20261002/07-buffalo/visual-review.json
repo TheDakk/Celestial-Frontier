@@ -1,0 +1,28 @@
+{
+  "name": "Buffalo",
+  "masterSha256": "fab8454d46248d7f4a297e312dab16497bd9726d4b0c2606f10f98b53916217e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full 1254-square successor inspected: the near broad fringed pinna and the far outward pinna below the far horn are both visible, with exactly two horns and the broad boss retained. Four hoof tips, complete tail tuft and dark stocky body remain. The head is partly turned toward the viewer, far ear root remains partly hidden, and shaggy shoulder/upper-leg overlaps require unchanged anatomy and skin checks.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 274,
+      "y0": 412,
+      "x1": 1022,
+      "y1": 840
+    },
+    "margins": {
+      "left": 274,
+      "right": 231,
+      "top": 412,
+      "bottom": 413
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

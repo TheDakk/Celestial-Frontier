@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c132-arena-successor/v1",
+  "id": "ammonia-v2",
+  "sourceId": "ammonia",
+  "sourceOriginalsRetained": true,
+  "roles": [
+    {
+      "role": "far",
+      "reason": "Original FAR invents celestial bodies and solid icy spires although the source medium is air.",
+      "mode": "targeted-edit"
+    },
+    {
+      "role": "mid",
+      "reason": "Original MID side formations read as solid ice spires instead of cloud air.",
+      "mode": "targeted-edit"
+    }
+  ],
+  "qualityAccepted": false
+}

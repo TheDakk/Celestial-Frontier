@@ -1,0 +1,191 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "acidhaze",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 5566,
+        "despilledPixels": 1,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1004039,
+      "visiblePixels": 569313,
+      "firstPaintedY": 423,
+      "firstPaintedYNormalized": 0.4495217853347503,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 3945,
+        "despilledPixels": 0,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1386458,
+      "visiblePixels": 186894,
+      "firstPaintedY": 794,
+      "firstPaintedYNormalized": 0.8437832093517534,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "fb86ca4a500b98ca2bca833a7004eb1d0fedb5d36cb216f4decab8348bae5fd2",
+    "seed": 3091273886,
+    "systemCardSourceSha256": "ba67b33741881a3b3e30dc5e466e6d520d2d8bc95503002c0a070b26aa9b2a02",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "516a7fa8367a615660478b442d1d3ee3b7d5c56fa8e3e4ce19c481fd732cc1ea",
+          "bytes": 2196323,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "516a7fa8367a615660478b442d1d3ee3b7d5c56fa8e3e4ce19c481fd732cc1ea",
+          "bytes": 2196323,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "7386934271c2a9d690d411a759329cad065a84d801a88242a1ad45d9a9e5b72b",
+          "bytes": 1806629,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "9876dd590cd4592484bb2c07de9900f30cd59f5f0ae4c255a4abd6a07c4ef6eb",
+          "bytes": 2514134,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1004039,
+        "visiblePixels": 569313,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "3bab37471cf95e79143ad9a0c0ce9e2b03a49e04ffc1c332335b4ada6a0e95fa",
+          "bytes": 1199387,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "8130593dce060dd92855dd4a10ef79f67b9e61d33e9f02fc814438fcb884db66",
+          "bytes": 1425457,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1386458,
+        "visiblePixels": 186894,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/acidhaze/arena-manifest.json",
+    "sha256": "bc0291544a01ef398f6b4e88ccf2f05a76b01b7c9184bbc8fd5d6842e59fc5a3"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

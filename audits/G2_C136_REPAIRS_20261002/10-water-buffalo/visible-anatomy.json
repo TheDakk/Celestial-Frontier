@@ -1,0 +1,177 @@
+{
+  "id": "10-water-buffalo",
+  "name": "Water Buffalo",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "9ee61714939202265479c4603a29802ddc690812ff4ae059b7b45713e59868d8",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16331,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 125,
+      "y0": 158,
+      "x1": 286,
+      "y1": 231
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0108,
+        "pixels": 177,
+        "box": {
+          "x0": 212,
+          "y0": 140,
+          "x1": 255,
+          "y1": 157
+        },
+        "attach": {
+          "x": 234.5,
+          "y": 157,
+          "relX": 0.68,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.86,
+          "y": -0.51
+        },
+        "class": "top",
+        "length": 28.2
+      },
+      {
+        "k": 1,
+        "frac": 0.123,
+        "pixels": 2008,
+        "box": {
+          "x0": 275,
+          "y0": 147,
+          "x1": 333,
+          "y1": 222
+        },
+        "attach": {
+          "x": 287,
+          "y": 190.5,
+          "relX": 1.01,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.09
+        },
+        "class": "front",
+        "length": 63.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0394,
+        "pixels": 643,
+        "box": {
+          "x0": 89,
+          "y0": 177,
+          "x1": 124,
+          "y1": 252
+        },
+        "attach": {
+          "x": 124,
+          "y": 192.5,
+          "relX": -0.01,
+          "relY": 0.47
+        },
+        "dir": {
+          "x": -0.56,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 69
+      },
+      {
+        "k": 3,
+        "frac": 0.0918,
+        "pixels": 1500,
+        "box": {
+          "x0": 110,
+          "y0": 224,
+          "x1": 174,
+          "y1": 278
+        },
+        "attach": {
+          "x": 143,
+          "y": 225,
+          "relX": 0.11,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -0.18,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 62.5
+      },
+      {
+        "k": 4,
+        "frac": 0.0778,
+        "pixels": 1271,
+        "box": {
+          "x0": 210,
+          "y0": 232,
+          "x1": 276,
+          "y1": 279
+        },
+        "attach": {
+          "x": 238.5,
+          "y": 232,
+          "relX": 0.7,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 60.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 113,
+        "x1": 129,
+        "cx": 120.9
+      },
+      {
+        "x0": 158,
+        "x1": 174,
+        "cx": 166.2
+      },
+      {
+        "x0": 212,
+        "x1": 229,
+        "cx": 220.4
+      },
+      {
+        "x0": 259,
+        "x1": 276,
+        "cx": 267.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

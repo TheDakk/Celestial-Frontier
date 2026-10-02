@@ -1,0 +1,100 @@
+{
+  "schema": "cf.arena.authoring-proof/v1",
+  "battleContext": {
+    "schema": "cf.arena.proof-context/v1",
+    "encounterKind": "wild",
+    "worldKey": "template:glacier",
+    "combatants": [
+      "left-review-stand",
+      "right-review-stand"
+    ],
+    "round": 0,
+    "biomeFamily": "glacier"
+  },
+  "seed": 947427970,
+  "seedDerivation": "first4bytes big-endian SHA256 of sorted compact battleContext JSON; no clock",
+  "groundLineNormalized": 0.78,
+  "horizonBandNormalized": 0.66,
+  "standsNormalizedX": [
+    0.3333333333333333,
+    0.6666666666666666
+  ],
+  "systemCard": "SYSTEM CARD - reusable biome-family template glacier; canonical profile glacier\n  Template scope: source-derived profile plus explicit authored stage interpretation; no live planet address or runtime world snapshot is claimed.\n  Star: not bound at template-authoring time; runtime system light remains source-owned.\n  Light: one soft diffuse near-neutral authoring light from upper left; preserve the same direction on all three plates; no visible star or extra light source.\n  Mineral palette: canonical signature #cfe0ea; named material flat packed ice with restrained snow texture.\n  Atmosphere: canonical weather wind-cold; authored medium ground; white-blue glacier walls and distant ice ridges, no crevasses across the fighting path.\n  Flora pigment: source profile glacier; permitted forms moss; restrained natural pigment interpreted in the named materials.\n  Fauna adaptation: source families marine, bird, mammal; no fauna are painted into these arena layers.\n  One signature: cold; signature stays behind the combatant stands, never breaks the continuous fighting path.\n  Authoring variant: canonical biome-family template; source BIOME_ATLAS.md#1--live-biomes-43-in-the-game-now--colored-first-in-phase-4.",
+  "systemCardSource": "audits/C132_ARENAS_20261001/glacier/arena-far.prompt.txt",
+  "systemCardSourceSha256": "59cd9e643ad78f17981ed0b03bed574245a1fd576d8f4353d5bf136d0791361d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "extractedMasks": false,
+  "qualityAccepted": false,
+  "scope": "source-derived reusable template authoring; no live world, game wiring, physical-medium admission or visual acceptance claimed",
+  "requestedCanvasSize": {
+    "width": 2560,
+    "height": 1440
+  },
+  "profileKey": "glacier",
+  "habitatVariant": null,
+  "medium": "ground",
+  "canonicalProfile": {
+    "sig": "#cfe0ea",
+    "fauna": [
+      "marine",
+      "bird",
+      "mammal"
+    ],
+    "flora": [
+      "moss"
+    ],
+    "hazard": "cold",
+    "weather": "wind-cold"
+  },
+  "sourceInputs": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "a669109aded91bfbf2c385607c27719a9ef927e93bc7ac95f3cec4ef55b5dc60"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/MAILBOX/C132_ART_PROGRAM_20261001.md",
+      "sha256": "92d9ad1066656ababe245f9ef07b70857636763a3b6301d502a819a3b6ac6b15"
+    }
+  ],
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+  },
+  "plates": [
+    {
+      "image": "arena-far.png",
+      "sha256": "144835a0e43be1d7b07ca61097b1219a44b58f55f5e70f53285c5572a2f40506",
+      "kind": "scene",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-mid.png",
+      "sha256": "b46d3df0f038b5cb68949910fdce385e71ae6a1c590a22fbeb198a82874a57e1",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-near.png",
+      "sha256": "550eecb1256cb00922eee013f2fdbaca0fe3f191fa4840e08d2904aeabeb3c0a",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    }
+  ],
+  "canvasSize": {
+    "width": 1672,
+    "height": 941
+  },
+  "layers": {
+    "far": "opaque scene",
+    "mid": "magenta-keyed terrain",
+    "near": "magenta-keyed terrain"
+  }
+}

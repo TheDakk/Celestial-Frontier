@@ -1,0 +1,94 @@
+{
+  "schema": "cf.c136-faint-diagnosis/v1",
+  "sourceHead": "c3e9d8b36e927458ff8bc82b8cc2862801f2720c",
+  "captureReport": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator/report.json",
+  "captureReportSha256": "5c445c99b48f2006b2585dd4d44d3c6837d2c35e6fe0fc8cafaea1766b6295aa",
+  "stills": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator/turn3-hit-idle-90.png",
+      "sha256": "c416157e7b77d83a76e0478ae2f1f1bb126374c32ac4aa62bcc7a9a09cc4c2b1",
+      "review": "full-size 1024x576"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator/turn0-hit-return-end.png",
+      "sha256": "0a5e11d63933b05aeda1630caa433828986c58853e82dc51d2a8311b68a8d26f",
+      "review": "full-size 1024x576"
+    }
+  ],
+  "time": {
+    "globalMs": 13936.666666666666,
+    "turn": 3,
+    "localMs": 3456.666666666666,
+    "phase": "idle",
+    "reactionStartMs": 1956.6666666666667,
+    "reactionEndMs": 2796.666666666667,
+    "reactionDurationMs": 840.0000000000002,
+    "rightFaintElapsedMs": 1499.9999999999993,
+    "rightHeldBeyondEndMs": 659.9999999999991,
+    "rightIdleGain": 0,
+    "leftVictoryElapsedMs": 539.9999999999995,
+    "idleClockMs": 3386.666666666666
+  },
+  "finalTranscriptRow": {
+    "side": "A",
+    "an": "Alligator",
+    "dn": "Alligator",
+    "dmg": 21,
+    "crit": true,
+    "hpA": 24,
+    "hpB": 0
+  },
+  "groundLineY": 0.78,
+  "groundLinePixels": 449.28000000000003,
+  "sourceComparison": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "capturedSha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+      "currentSha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+      "same": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "capturedSha256": "b8bb2996172c4fec8e947ce73e69216052cdd1518ad10181d39711dc8e0d4c5c",
+      "currentSha256": "b8bb2996172c4fec8e947ce73e69216052cdd1518ad10181d39711dc8e0d4c5c",
+      "same": true
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "capturedSha256": "573ec7f5d433515169992ffee8c4d53855fd1c945bbe1175ce8f80307d113f0e",
+      "currentSha256": "573ec7f5d433515169992ffee8c4d53855fd1c945bbe1175ce8f80307d113f0e",
+      "same": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "capturedSha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201",
+      "currentSha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201",
+      "same": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/contact-envelope.ts",
+      "capturedSha256": "017a37dd320a2f0150949dba04f279a1009b3b1f9fd36740cae0671b10ae9942",
+      "currentSha256": "017a37dd320a2f0150949dba04f279a1009b3b1f9fd36740cae0671b10ae9942",
+      "same": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/actions.ts",
+      "capturedSha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9",
+      "currentSha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9",
+      "same": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "capturedSha256": "04a69912932c6eb854e6e9597b640472c556d2495edd15ce3d977570bb92dd8f",
+      "currentSha256": "04a69912932c6eb854e6e9597b640472c556d2495edd15ce3d977570bb92dd8f",
+      "same": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/stance-envelope.ts",
+      "capturedSha256": "029320a695cf279b68c4a73a5b7b09150a53ae527b257c84d0cdcfa6f6890f1d",
+      "currentSha256": "029320a695cf279b68c4a73a5b7b09150a53ae527b257c84d0cdcfa6f6890f1d",
+      "same": true
+    }
+  ],
+  "conclusion": "Held final faint drives the right head below ground; screenshot is not evidence of an idle dip. Neck/head ground-clearance is outside the existing planted-leg envelope. Detached fragment source is unestablished."
+}

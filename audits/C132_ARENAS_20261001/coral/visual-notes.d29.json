@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "coral",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/coral/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full native-size composition inspected: turquoise underwater depth and reef columns distinguish this family; the central sand runway remains open in the static view.",
+    "Pink/mauve edges remain around side reef/plant detail; repeated shoreline-like contours and abrupt mid-to-near texture changes are visible.",
+    "Independent scoring, moving combatant occlusion and native battle appearance remain untested; this is a candidate with visual holds."
+  ]
+}

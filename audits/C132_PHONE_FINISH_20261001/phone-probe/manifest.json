@@ -1,0 +1,221 @@
+{
+  "schema": "cf.c132-phone-probe/v1",
+  "mode": "phone",
+  "visualVerdict": "REJECTED",
+  "qualityAccepted": false,
+  "deviceQualified": false,
+  "productAdmission": false,
+  "subjectIds": [
+    "01-finch",
+    "12-sandpiper",
+    "18-wasp",
+    "06-ptarmigan",
+    "08-vulture"
+  ],
+  "embedding": {
+    "sha256": "ea59bdd82829989d6c2063aca7833fc54c319f320867b328d55ef822c6c3d7a1",
+    "promptSha256": "2292956f5140c54aee4e9eb18e9517fc5e2b74d82fa0f18a76269a5a26d96f08",
+    "bytes": 236544,
+    "dims": [
+      1,
+      77,
+      768
+    ]
+  },
+  "provenance": {
+    "macHead": "779912d5fb840a3a65a9c7215758ff4469cbc15e",
+    "result": {
+      "file": "audits/C132_PHONE_FINISH_20261001/native-mac-01/result.json",
+      "sha256": "0037ff5e9c805e21d2d2ac74ce2c36ef8d807f9ac30ca5a7bf84c11df7d44c8a",
+      "bytes": 61868
+    },
+    "preparedManifest": {
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared-manifest.json",
+      "sha256": "0e4dc1049d851ee30436edec60435ca55b1b186e353308c1d3cd89d70e010032",
+      "bytes": 25018
+    }
+  },
+  "sources": [
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/prepare-phone.mjs",
+      "sha256": "87ea065da51825541c1c21f426ba7993d9742d38b27e8aa71875e3ba8e680243",
+      "bytes": 4484
+    },
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/serve-phone.mjs",
+      "sha256": "1d9222b39fa7fbb75b863fc247cfbef8a8368b61173152fde5153edfa1e201e7",
+      "bytes": 8726
+    },
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/phone-route-contract.mjs",
+      "sha256": "f7d3860aa0f9a9930073dbae98cd4dc02fb5dc477fe62300f9e714fc8bb57bb2",
+      "bytes": 3002
+    },
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/phone-bootstrap.mjs",
+      "sha256": "2224d39e4a9de71827ac6e56d590f3b72296dd250a1f532f3cb420590f999305",
+      "bytes": 809
+    },
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/phone-index.html",
+      "sha256": "4e812a5c5b9de65a0e78cc43e30ff0fb15f610e0254f20730f1353a940433c28",
+      "bytes": 510
+    },
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/proof-contract.mjs",
+      "sha256": "3ddf76680684cf020d1eab86952b11ea7caad212b9d74672f53733eff3a17f72",
+      "bytes": 1158
+    },
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/verify-pins.mjs",
+      "sha256": "7b07cb304998b8d82c513ae9110f15d01312cca28a7269b12fc2bc61e18c8b2f",
+      "bytes": 1109
+    },
+    {
+      "file": "audits/C132_PHONE_FINISH_20261001/VISUAL_REVIEW.md",
+      "sha256": "4ac9e9fcbc92b99327ef0062796154caef4f093e176293a31630691acddfd5a6",
+      "bytes": 3281
+    },
+    {
+      "file": "port/v2/tools/painted-creature/finish-conservation.mjs",
+      "sha256": "f028f152a15a432fe6bc6d00100e3eca4022ff9fc62641764f313fde6944caac",
+      "bytes": 2865
+    },
+    {
+      "file": "tools/local-image-generation/creature-finish-math.mjs",
+      "sha256": "c9ada08d9a5413e1f76dbfbdf10de4367d399ca66890f30401abb2ca2187ee87",
+      "bytes": 6324
+    }
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "file": "audits/C132_PHONE_FINISH_20261001/phone-index.html",
+      "sha256": "4e812a5c5b9de65a0e78cc43e30ff0fb15f610e0254f20730f1353a940433c28",
+      "bytes": 510
+    },
+    {
+      "route": "/client.mjs",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/client.mjs",
+      "sha256": "a69c4c5ccc4b7205089b33fc4584281e69097ac243172e24b08ff513685ac0dc",
+      "bytes": 200772
+    },
+    {
+      "route": "/embedding.f32",
+      "file": "audits/C132_PHONE_FINISH_20261001/phone-probe/embedding.f32",
+      "sha256": "ea59bdd82829989d6c2063aca7833fc54c319f320867b328d55ef822c6c3d7a1",
+      "bytes": 236544
+    },
+    {
+      "route": "/inputs.json",
+      "file": "audits/C132_PHONE_FINISH_20261001/phone-probe/inputs.json",
+      "sha256": "6d3b2a5f6eb82fb81f12a01afa3e1dc4eb09c4edaade30ae89ab0d05e9a96fae",
+      "bytes": 5137
+    },
+    {
+      "route": "/inputs/01-finch-labels.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/01-finch-labels.rgba",
+      "sha256": "07bd2f0e924ce79a6a8a4026bf77d8c450ffb22067d122ec1c05729bd6c15f76",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/01-finch-master.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/01-finch-master.rgba",
+      "sha256": "6790eaf807fd3a8020f758c36d665a76a5bcaf5b887f62f6272da4e41cb4a39c",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/06-ptarmigan-labels.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/06-ptarmigan-labels.rgba",
+      "sha256": "5ec70f47ad3b2495b8c594f3c93b5cdbfcd7c4eb215392344db6febf6197ae24",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/06-ptarmigan-master.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/06-ptarmigan-master.rgba",
+      "sha256": "114d5cfd7688f6174ff586ae81016d09164f9ef9bcbacd4fd97fdde40d3a28ee",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/08-vulture-labels.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/08-vulture-labels.rgba",
+      "sha256": "e5feb2ec9aa238b375fa50240b3a28a83f8fff74833f915584e5be75155430c4",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/08-vulture-master.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/08-vulture-master.rgba",
+      "sha256": "a7fc908f3a6f46c4750e67f0d981a5d0253a849bce9a253d06194d0fdf570714",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/12-sandpiper-labels.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/12-sandpiper-labels.rgba",
+      "sha256": "37b4185f952c1dbc059374caf18e2cb8cd6e29b6912214ff20b3fce2b849764d",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/12-sandpiper-master.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/12-sandpiper-master.rgba",
+      "sha256": "8e647f84200e24e8d300589ff35948ed0b6db85125bd19616492f2de918f9389",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/18-wasp-labels.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/18-wasp-labels.rgba",
+      "sha256": "a298bca73b640e6cf7f4091091e8a3bbe442663ea84fb75179771b4c1e750c8c",
+      "bytes": 6290064
+    },
+    {
+      "route": "/inputs/18-wasp-master.rgba",
+      "file": "audits/C132_PHONE_FINISH_20261001/prepared/18-wasp-master.rgba",
+      "sha256": "913063ea66558128593bb3a288f0a7cb6c6904c569a6d5185674fd73b78de3a8",
+      "bytes": 6290064
+    },
+    {
+      "route": "/models/encoder.onnx",
+      "file": "audits/C132_PHONE_FINISH_20261001/model-cache/taesd/encoder.onnx",
+      "sha256": "bd6fb129ea4c75935c2263b931b569e29111ade644207145e65134d189bb92a8",
+      "bytes": 4896003
+    },
+    {
+      "route": "/models/unet.onnx",
+      "file": "audits/C132_PHONE_FINISH_20261001/model-cache/sdxs/unet.onnx",
+      "sha256": "f81dc16670944fead5561851a06038a21c23779760065249274801f47896ece7",
+      "bytes": 631766742
+    },
+    {
+      "route": "/models/vae_decoder.onnx",
+      "file": "audits/C132_PHONE_FINISH_20261001/model-cache/sdxs/vae_decoder.onnx",
+      "sha256": "75c5e431703b1d87bcc44f5610b49f6b73594b09857a2263958123afe0be7190",
+      "bytes": 2467568
+    },
+    {
+      "route": "/ort/ort-wasm-simd-threaded.asyncify.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e",
+      "bytes": 51407
+    },
+    {
+      "route": "/ort/ort-wasm-simd-threaded.asyncify.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549",
+      "bytes": 25749873
+    },
+    {
+      "route": "/probe.mjs",
+      "file": "audits/C132_PHONE_FINISH_20261001/phone-bootstrap.mjs",
+      "sha256": "2224d39e4a9de71827ac6e56d590f3b72296dd250a1f532f3cb420590f999305",
+      "bytes": 809
+    }
+  ],
+  "budget": {
+    "limitBytes": 1000000000,
+    "servedBytes": 728276005,
+    "modelBytes": 639130313,
+    "embeddingBytes": 236544,
+    "deviceResidentBytes": null,
+    "devicePeakGpuBytes": null
+  },
+  "refusal": "Text encoder and tokenizer have no GET routes; all unknown/encoded/query/range paths and unlisted writes are refused. This is a rejected-candidate experiment, not game delivery."
+}

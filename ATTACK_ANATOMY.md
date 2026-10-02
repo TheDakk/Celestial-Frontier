@@ -33,8 +33,11 @@ Sand Thorns does not turn a creature's physical strike into a thorn-shaped body 
 
 ## Anatomy table
 
+Matches code as of October 2, 2026: 33 melee rows across 13 animal families; the two plant families remain explicitly unsupported for melee.
+
 | Family | Existing physical moves | Required observed parts |
 | --- | --- | --- |
+| Brachyuran crab | Pincer pinch | Observed near palm, fixed tip, dactyl root and dactyl tip; ground or water, with contact at the dactyl tip |
 | Quadruped | Bite, foreclaw rake, horn thrust, headbutt, tail lash, hoof kick | Jaw, forepaw chain, head/neck, or complete tail chain as appropriate |
 | Hopper | Hind-leg kick, leaping bite | Hind-leg chain or jaw |
 | Bird | Beak strike, talon strike, grounded foot kick | Beak/neck, wing/foot chain, or grounded leg/foot |
@@ -50,7 +53,7 @@ Sand Thorns does not turn a creature's physical strike into a thorn-shaped body 
 | Woody plant | No melee clip in current library | Explicit unsupported result |
 | Herbaceous plant | No melee clip in current library | Explicit unsupported result |
 
-All32 physical melee rows have an explicit action, weapon capability, required joint set,
+All 33 physical melee rows have an explicit action, weapon capability, required joint set,
 contact joint and compatible physical medium. Required parts must exist in the admitted
 body card. Missing claws, wings, jaws or tails cannot silently fall back to a different move.
 Current family skeleton templates are not evidence that every Earth/procedural species has
@@ -117,7 +120,7 @@ order gate rejects the reproduced old follow-through. This is not full collision
 
 ## Qualification and next work
 
-The14-family/32-row matrix is contract-tested. The actual bird card produces an airborne
+The 33 melee rows across 13 animal families are contract-tested; the two plant families retain explicit unsupported results. The actual bird card produces an airborne
 wing/foot strike, and the fish card admits swimming bite and refuses air. Those tests do not
 qualify new painted aerial contact visually. The live `/anatomy-battle/` proof measures only
 three existing painted quadrupeds, using foreclaw/bite/foreclaw. Effects remain the labelled

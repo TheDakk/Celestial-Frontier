@@ -1,0 +1,14 @@
+{
+  "id": "08-wildebeest",
+  "name": "Wildebeest",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-34e907e9-edb1-4360-a4ff-90ad18fae22f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "dac2c58325e8872ee177848a872e6183ddba7ee27cd72ab844b9d1244acffbdc",
+  "bytes": 1190528,
+  "promptSha256": "862b2f659783b0f164c10f43ee810d69f9d5109ee2e3de675240cc4757a47aff",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

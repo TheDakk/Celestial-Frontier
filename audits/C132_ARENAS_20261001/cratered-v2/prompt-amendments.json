@@ -1,0 +1,29 @@
+{
+  "reason": "Bounded explicit forbidden-element/framing repair; no source-pixel editing",
+  "amendments": [
+    {
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/cratered/arena-far.prompt.txt",
+        "sha256": "a65d96f88d3aefdcecc7a049df40be0729f6d3f667abb6193e796de687295de6"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.prompt.txt",
+        "sha256": "83fedd503ce66922ed587615aef4173057cb553ed4dd383419f9f561eedf4a6b"
+      },
+      "exactSentPromptVerified": true
+    },
+    {
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/cratered/arena-near.prompt.txt",
+        "sha256": "a8c810a4dbdf3e634af901be0e5e147c4f0d969a8f4913821e8de90edf3b22c8"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.prompt.txt",
+        "sha256": "7688b8003f7f1f66af6ca722cb1a9d8ddaf774a1deb50086ce3bb532ea8f22e4"
+      },
+      "exactSentPromptVerified": true
+    }
+  ]
+}

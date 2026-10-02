@@ -1,0 +1,176 @@
+{
+  "masters": 24,
+  "totalBytes": 27048172,
+  "outputModified": false,
+  "scope": "Original byte and prompt retention only; no anatomy or native admission.",
+  "verified": [
+    {
+      "id": "01-giant-salamander",
+      "masterSha256": "86a3b41704ac12cbccd253bc658076b949147b84ba999325a0d399a96315df31",
+      "promptSha256": "d6ba7eec688404300fb6b6a915f57577eb1618d5e198b771b5c0c378b43ef423",
+      "bytes": 1295831,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "02-alpine-salamander",
+      "masterSha256": "5558d9b412c372da88815ec8722603260740d8e6ef05eda7261d738507917977",
+      "promptSha256": "266cba2aba8301129ca0ffa86e52ffe4a86722b9e82cd460006757c6cc7a9c5f",
+      "bytes": 1033841,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "03-olm",
+      "masterSha256": "bc4e40dba81d9aeed829804bf983606a23ffa00705b437bd264f8bb56b1c3627",
+      "promptSha256": "e3f3c0f9623fff732eb9b4d4289a7beb7bc50fae4c1432e80297ba2685fc29d3",
+      "bytes": 961457,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "04-blind-salamander",
+      "masterSha256": "e9b6b1c67854e873ac998afb711e829a61413e450cfcb0ba3afd632980d24c3a",
+      "promptSha256": "8ffbc8f36245e17117e05adaa20ada4d8dc2d060bdc5a378e95a2649ed27499b",
+      "bytes": 1002376,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "05-axolotl",
+      "masterSha256": "d29c7652d97db8efaa9e555b35be7b04f89543d4724ecd2d5abdea1875137d5e",
+      "promptSha256": "9082f73ab1232fe84abe6485bb37347217ec5742ece39486309fffaa6c01bae3",
+      "bytes": 1114057,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "06-giraffe",
+      "masterSha256": "9ac84c0f0d1dda6ec7fc530968824f6f1aabc06a0417ed3ba30722cfae1d0bca",
+      "promptSha256": "a7c62985d27dcb0f10ede8d20f4e4f355bd1ff11eb824387e44172dd044f3c43",
+      "bytes": 1098311,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "07-buffalo",
+      "masterSha256": "5e66328d99c1ac8bd959cdd5ee9f394e5fe3bc6a36f25f7ff53931e15018ad0b",
+      "promptSha256": "761dedaacd52427544ce5f722c9032c144a2f099c8a7e934a9e2e86e37787b94",
+      "bytes": 1219893,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "08-wildebeest",
+      "masterSha256": "dac2c58325e8872ee177848a872e6183ddba7ee27cd72ab844b9d1244acffbdc",
+      "promptSha256": "862b2f659783b0f164c10f43ee810d69f9d5109ee2e3de675240cc4757a47aff",
+      "bytes": 1190528,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "09-banteng",
+      "masterSha256": "77104268838f9507fa23a637d5f548730e3fae6fdde38fe837859673fd27187e",
+      "promptSha256": "f017384ddbb6724ff9bd8019dbfd2f84972bd153ced3d72ada0e580c19777040",
+      "bytes": 1146582,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "10-water-buffalo",
+      "masterSha256": "9ee61714939202265479c4603a29802ddc690812ff4ae059b7b45713e59868d8",
+      "promptSha256": "47d931d6693a25751a625f72d5067c8f4c05ea2cc6df3742867861188672c532",
+      "bytes": 1201975,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "11-reindeer",
+      "masterSha256": "640c13419702a65c12e5346f3f8cbbb6f564d323403c1e27573197db6aacb9a4",
+      "promptSha256": "2d9e01a154595f7fec5e334b3c42211d1e1dce95cc9dac5a1b634c3fe278b54b",
+      "bytes": 1164816,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "12-caribou",
+      "masterSha256": "567cc852c8bc1748be9b5f2f58e6051479e9085bcf4e554bb2e687d3c87f31bd",
+      "promptSha256": "d767e9c9ff22213ccbd40648ff644d5a414dd94c0577bdc58b3f4c3b3d716407",
+      "bytes": 1098460,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "13-saiga",
+      "masterSha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b",
+      "promptSha256": "00b73854bb94477ddc1a98aea707204544beccfa3eca1f8c0b0f034900ef20d9",
+      "bytes": 1129790,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "14-yak",
+      "masterSha256": "c23b7769f1c9846a978d3ca54a98d18d575f924464bd5fcca756078f654f2932",
+      "promptSha256": "2c6ed993d3512a27793070015a071e4c4a3bc78cf30c38b42bf74e9022b39ea0",
+      "bytes": 1207494,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "15-wild-sheep",
+      "masterSha256": "87ec5c3fbb53dabaea831ba2a1e9c66b248ea3f5f802d8d0af7a77d835d2511d",
+      "promptSha256": "1baa12054f1dd52769295b19316c1c34a6d6f54334c3edaf5e4ca360e855b0a5",
+      "bytes": 1170317,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "16-lark",
+      "masterSha256": "ed62d06bbddbfbe101a6ed6a43003e90904a218c0a3b764281633f114e39b335",
+      "promptSha256": "7b3e6586dd266045eb68e50e76ceeab9aa2b84790375f58990757cac0b55993d",
+      "bytes": 1075059,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "17-chough",
+      "masterSha256": "f0169a110876a1f3abeac0a968c33a7da10a09cbca0ea61ea862f16023a0dfb3",
+      "promptSha256": "cb6eea909c17bf00814e3ddcbab50104cd8d7459fa325d3c95ad7da2e514c850",
+      "bytes": 1095816,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "18-hawk",
+      "masterSha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+      "promptSha256": "773b525181fc823467eee4dd9ba4a91e7499eeeaf06724ae934d9a34f7a3969b",
+      "bytes": 1138608,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "19-crow",
+      "masterSha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f",
+      "promptSha256": "19e9e7fb99a125d3bea46552a03c25388f72d852b7347182d2476ecea062422a",
+      "bytes": 1103846,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "20-snowy-owl",
+      "masterSha256": "e2ce15115fe4ac6735e9f5cf03d46f71f13e9712b487151f2f758d6f28a7fa60",
+      "promptSha256": "93aeb946f7f519683814753ee0cb60bed361a5d06ce12052439567ecf44858bb",
+      "bytes": 1194786,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "21-bee",
+      "masterSha256": "240299d6a6d01d759c7cd50b5a3673aa1755e5994bc6a389c13598cf38335056",
+      "promptSha256": "59a59a7a2476e13e09362f7bdaf6334cc4a8c9ef6acd479dcd161bb4f8d82cd5",
+      "bytes": 1172295,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "22-giant-water-bug",
+      "masterSha256": "9be93dedacfc64fe89a6c8af14cecd28601601c3d159214b2afe60f7e837bb3c",
+      "promptSha256": "09a6425b14842fbddbb42af4bc67e99fc78c5731228b769555b3dd9ae2ac43fc",
+      "bytes": 1126176,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "23-carrion-beetle",
+      "masterSha256": "52ab03a1d448e18b7d45026f78ca59e2620ab5eab3655d64ade59a57ce5751df",
+      "promptSha256": "5f86c28ba59829635896228e1ab3f8146c44a568035229eb1b8966a342c2be35",
+      "bytes": 1103771,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "24-water-strider",
+      "masterSha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6",
+      "promptSha256": "75ec6191bf16981d573f758081eb1325c9b2e0ddc29345de57b93f2f9d6b8f05",
+      "bytes": 1002087,
+      "byteIdenticalToGenerator": true
+    }
+  ]
+}

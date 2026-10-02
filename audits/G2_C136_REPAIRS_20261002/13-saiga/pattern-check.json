@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Saiga",
+  "masterSha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b",
+  "required": [
+    "translucent ringed horns rising straight up"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "translucent ringed horns rising straight up",
+      "status": "PRESENT",
+      "observed": "Full original: bulbous drooping nose is shorter than the prior trunk, slim ringed horns and four slim hoofed legs. Nose still appears heavily elongated/wrinkled and requires species judgment. Only near ear is clear. Near/far upper forelegs overlap; broad margins and full tail."
+    }
+  ]
+}

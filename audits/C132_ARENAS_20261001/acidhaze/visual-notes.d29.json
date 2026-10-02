@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "acidhaze",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/acidhaze/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/acidhaze/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/acidhaze/arena-far.png",
+    "audits/C132_ARENAS_20261001/acidhaze/arena-mid.png",
+    "audits/C132_ARENAS_20261001/acidhaze/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Yellow-gray crust, eroded rock and sulfur haze form a coherent stage with an open central runway.",
+    "MID duplicates side geological contours over FAR and produces a hard keyed horizon. NEAR changes the ground to a darker, more granular texture across the lower edge. The whole image is more saturated yellow than the muted material card; scene contrast and light require independent scoring.",
+    "Selected FAR contains no visible star/disk, and selected NEAR has full-frame native proportions. The visible-star FAR and ultra-wide NEAR predecessors remain retained. No native motion, hazard/medium admission or visual acceptance is claimed."
+  ]
+}

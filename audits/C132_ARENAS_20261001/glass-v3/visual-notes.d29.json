@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "glass-v3",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/glass-v3/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/glass-v3/arena-far.png",
+    "audits/C132_ARENAS_20261001/glass-v3/arena-mid.png",
+    "audits/C132_ARENAS_20261001/glass-v3/arena-near.png"
+  ],
+  "findings": [
+    "Full-size source and composition inspection: selected FAR, MID and the single new NEAR are each native 1672 by 941. The predecessor canvas refusal is resolved without crop, resize, padding or upscale.",
+    "The selected FAR has an empty clouded blue sky without the predecessor celestial bodies. Large glass formations stay to the sides or behind the quiet fighting floor; no animals, lettering or labels are visible.",
+    "The actual Boulder reference preserves a low NEAR contour and clear fighting line. The Glass successor adds restrained amber mineral chips, but its foreground still reads primarily as granular rocky sand. Independent scoring must judge whether its Glass material identity is sufficiently distinct.",
+    "A conspicuous nearly horizontal NEAR boundary remains around y=0.87, with different grain scale and warm brightness across the MID-to-NEAR join. This is a visual hold despite mechanically clear stands.",
+    "Some thin MID ridge contours retain green-tinted edge traces near the left-of-center horizon and side glass edges. Key/despill metrics do not establish that these are visually acceptable.",
+    "MID includes its own distant low ridge band in front of the FAR landscape. The combined geometry and detailed floor still require independent full-size review, fighter readability and live parallax proof.",
+    "Only static full-size paintings were inspected. No native film, performance, device qualification, runtime registration, acceptance or product delivery is claimed."
+  ]
+}

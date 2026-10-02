@@ -1,0 +1,557 @@
+{
+  "schema": "cf.c132-complete-arena-candidate-inventory/v1",
+  "date": "2026-10-02",
+  "canonicalBiomeCount": 43,
+  "candidateTriplets": 44,
+  "selectedPaintings": 132,
+  "mechanicalCandidatePasses": 88,
+  "registrationCorrectlyRefused": 44,
+  "sourceAndInputHashesChecked": 879,
+  "canonicalSourceSha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874",
+  "coverage": {
+    "temperate": [
+      "freshwater-lake-v2"
+    ],
+    "savanna": [
+      "savanna-v2"
+    ],
+    "jungle": [
+      "jungle-v2"
+    ],
+    "marsh": [
+      "marsh"
+    ],
+    "swamp": [
+      "swamp-v2"
+    ],
+    "mangrove": [
+      "mangrove-v2"
+    ],
+    "tundra": [
+      "tundra"
+    ],
+    "karst": [
+      "karst",
+      "karst-cave"
+    ],
+    "saltflat": [
+      "saltflat"
+    ],
+    "fungal": [
+      "fungal"
+    ],
+    "crystalsteppe": [
+      "crystalsteppe-v2"
+    ],
+    "opensea": [
+      "opensea"
+    ],
+    "archipelago": [
+      "archipelago-v2"
+    ],
+    "coral": [
+      "coral"
+    ],
+    "stormsea": [
+      "stormsea-v2"
+    ],
+    "volcisle": [
+      "volcisle"
+    ],
+    "abyssal": [
+      "abyssal"
+    ],
+    "milksea": [
+      "milksea-v2"
+    ],
+    "glacier": [
+      "glacier"
+    ],
+    "packice": [
+      "packice-v2"
+    ],
+    "cryogeyser": [
+      "cryogeyser-v2"
+    ],
+    "blueice": [
+      "blueice"
+    ],
+    "dunesea": [
+      "dunesea"
+    ],
+    "canyon": [
+      "canyon"
+    ],
+    "saltpan": [
+      "saltpan-r2"
+    ],
+    "oxide": [
+      "oxide-v2"
+    ],
+    "glass": [
+      "glass-v3"
+    ],
+    "cratered": [
+      "cratered-v2"
+    ],
+    "boulder": [
+      "boulder-v3"
+    ],
+    "graben": [
+      "graben"
+    ],
+    "geode": [
+      "geode"
+    ],
+    "carbon": [
+      "carbon"
+    ],
+    "sulfurdeck": [
+      "sulfurdeck"
+    ],
+    "acidhaze": [
+      "acidhaze"
+    ],
+    "abyssgreen": [
+      "abyssgreen"
+    ],
+    "ashwaste": [
+      "ashwaste"
+    ],
+    "emberfield": [
+      "emberfield"
+    ],
+    "obsidian": [
+      "obsidian"
+    ],
+    "magmasea": [
+      "magmasea-v2"
+    ],
+    "banded": [
+      "banded-v2"
+    ],
+    "ammonia": [
+      "ammonia-v2"
+    ],
+    "stormeye": [
+      "stormeye"
+    ],
+    "hotglow": [
+      "hotglow"
+    ]
+  },
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeRun": false,
+  "candidateRuntimeBytes": 280356509,
+  "currentShippedPackBytes": 68325367,
+  "combinedLowerBoundBytes": 348681876,
+  "unchangedCapBytes": 134217728,
+  "overCapLowerBoundBytes": 214464148,
+  "rows": [
+    {
+      "id": "abyssal",
+      "biome": "abyssal",
+      "manifest": "audits/C132_ARENAS_20261001/abyssal/d29/delivery.pending.json",
+      "manifestSha256": "3d28c9a85ee5e022fb5bbfd7d40ee8ae0d19a732d93251b27697bb64cba84a46",
+      "reviewSha256": "5f28e910e56b773ad7b4b888d2493602622318cea4cb20d3d84869dc9766d670",
+      "runtimeBytes": 5582746,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "abyssgreen",
+      "biome": "abyssgreen",
+      "manifest": "audits/C132_ARENAS_20261001/abyssgreen/d29/delivery.pending.json",
+      "manifestSha256": "1785f39a6e3c5dc02aad5ee183420b691db01ff8bf26222a07b36387a84d2bf9",
+      "reviewSha256": "5f50d32a6bdd7b83d0d122fa0d8fe76efcca1bc6e2aebda7ed2bc11f5cc52d72",
+      "runtimeBytes": 5279678,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "acidhaze",
+      "biome": "acidhaze",
+      "manifest": "audits/C132_ARENAS_20261001/acidhaze/d29/delivery.pending.json",
+      "manifestSha256": "df8fc2f02500342dffc22edc4dd19c58b89909d73ff65031fb0f74572f5e4aec",
+      "reviewSha256": "ffa862557f511c84e916dc784c11052896eaaf8efaec9c27812227a4e05c9cdb",
+      "runtimeBytes": 6135914,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "ammonia-v2",
+      "biome": "ammonia",
+      "manifest": "audits/C132_ARENAS_20261001/ammonia-v2/d29/delivery.pending.json",
+      "manifestSha256": "f557c6fd91de600ee865731da5d51888729f83ddc76b9e42b398982700386f87",
+      "reviewSha256": "86a3f370cb6949f3c4718812f37fe38f5e19f5e428be4407e7f226834f50d096",
+      "runtimeBytes": 5258711,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "archipelago-v2",
+      "biome": "archipelago",
+      "manifest": "audits/C132_ARENAS_20261001/archipelago-v2/d29/delivery.pending.json",
+      "manifestSha256": "49868fe9c4345cca3cb516b00908fbde195306d64eed5c575c9ff2fb2bbc4632",
+      "reviewSha256": "0dc4587e150008a5eaadb740ba3fc34666567afe72bbec9237dd1b9cf15d63a3",
+      "runtimeBytes": 6503800,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "ashwaste",
+      "biome": "ashwaste",
+      "manifest": "audits/C132_ARENAS_20261001/ashwaste/d29/delivery.pending.json",
+      "manifestSha256": "beaf28f6d2c9be4d7bce9ea011cd15c1b2885d0820f45c2d164067820966f767",
+      "reviewSha256": "04c8198718fd435c32749f789b1a8e043dab60ec25f8d5b4aaa56551260a8830",
+      "runtimeBytes": 6188536,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "banded-v2",
+      "biome": "banded",
+      "manifest": "audits/C132_ARENAS_20261001/banded-v2/d29/delivery.pending.json",
+      "manifestSha256": "f2b1a4346872a948db842a08d0ffec5aae4abdff7971b86d4b5ac4afdbd97a43",
+      "reviewSha256": "a845ecf17f61c2bc99a40857469c2c2d90589be27181b277b68a63e0cc6dd5ae",
+      "runtimeBytes": 5477015,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "blueice",
+      "biome": "blueice",
+      "manifest": "audits/C132_ARENAS_20261001/blueice/d29/delivery.pending.json",
+      "manifestSha256": "cfc4a923320766e3b3e61fda5d0bfbaa3a25dd69022009acecbc3f16f36fc3e9",
+      "reviewSha256": "7ac96935ca000b4a63babd3e6528e19a767a7d9df6cf7572a8659c63b34794ac",
+      "runtimeBytes": 6153445,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "boulder-v3",
+      "biome": "boulder",
+      "manifest": "audits/C132_ARENAS_20261001/boulder-v3/d29/delivery.pending.json",
+      "manifestSha256": "0d3f4ce8450d132fb15ad89841c21ac50183a661c2e81676c1480ca40dca0a07",
+      "reviewSha256": "c80be8125e117af93ae098b217f9f5654869e76109ceef1692f70e598d73cbac",
+      "runtimeBytes": 6934804,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "canyon",
+      "biome": "canyon",
+      "manifest": "audits/C132_ARENAS_20261001/canyon/d29/delivery.pending.json",
+      "manifestSha256": "2815f83c3d6c5a6a3c37032cae61b24a265235ab9091fb0e19b6667a77f0ae68",
+      "reviewSha256": "dc420f0ba37a5debd0b979b47bc9d265ca3e116ff8e4cb3366a2c9d6030aa5c9",
+      "runtimeBytes": 6579919,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "carbon",
+      "biome": "carbon",
+      "manifest": "audits/C132_ARENAS_20261001/carbon/d29/delivery.pending.json",
+      "manifestSha256": "59a6b75e8cd450105ccd2313c8e1a3f26e5965a4bf0fd085f61a13d28af241eb",
+      "reviewSha256": "3e08bf41c8cb2f98df6ed3e8957ecaf5583c76c91b6b832abdbf9dea6e6d5536",
+      "runtimeBytes": 5922251,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "coral",
+      "biome": "coral",
+      "manifest": "audits/C132_ARENAS_20261001/coral/d29/delivery.pending.json",
+      "manifestSha256": "f7dabcea04b92a9c85563286d3c39e9cb8b871916ba77c2779596205581e2b0a",
+      "reviewSha256": "cafd742d17ff798200064a283468612b9bfe64613dfaba79f6510d637c73f245",
+      "runtimeBytes": 7179509,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "cratered-v2",
+      "biome": "cratered",
+      "manifest": "audits/C132_ARENAS_20261001/cratered-v2/d29/delivery.pending.json",
+      "manifestSha256": "3c528ea737998aff71a0c8c8071cc0a1fe7ac9f1c99836901ee940aa28841c17",
+      "reviewSha256": "ba83726fccde504dd352c8a9f870d7cfc3054b108937ab5be6afafd126e98a2f",
+      "runtimeBytes": 6312564,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "cryogeyser-v2",
+      "biome": "cryogeyser",
+      "manifest": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/delivery.pending.json",
+      "manifestSha256": "567be6aeadd4f51435cae1ebf04237ffa141fecafab066ea6d395be7c43fb820",
+      "reviewSha256": "4878e0785fff240a4dedd071196e5d6c9da54842517bc7319a63089ca03c0d0d",
+      "runtimeBytes": 6247989,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "crystalsteppe-v2",
+      "biome": "crystalsteppe",
+      "manifest": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/delivery.pending.json",
+      "manifestSha256": "0f9a204a95f8042d5b12c3b2dd05aa20f1982e0d79eafec5915388070ab064cf",
+      "reviewSha256": "78f0bd75ad070446453469cd6e1fa7a0cd666ba58b5323149e3cdbfdd7c1b1be",
+      "runtimeBytes": 6497977,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "dunesea",
+      "biome": "dunesea",
+      "manifest": "audits/C132_ARENAS_20261001/dunesea/d29/delivery.pending.json",
+      "manifestSha256": "9fc16b2d71abc35ff8ffa4645657e92460970ccfaa33983a12b79c4900083086",
+      "reviewSha256": "bb33dda5130f845e2c25fc53a40417de0e6c8c02b87b9c5ab96ce1b8ad3e5631",
+      "runtimeBytes": 6148041,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "emberfield",
+      "biome": "emberfield",
+      "manifest": "audits/C132_ARENAS_20261001/emberfield/d29/delivery.pending.json",
+      "manifestSha256": "9a8b95fca3cc5708b1e4e71ddef8e30bb9ba2a0d7d3972eae5052d7f27537697",
+      "reviewSha256": "79161f7b9b3bc6dc8f2e36a7d7ced31dfcb1272ccc0c4dc6566edd3f5359e2b0",
+      "runtimeBytes": 6215959,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "freshwater-lake-v2",
+      "biome": "temperate",
+      "manifest": "audits/C132_ARENAS_20261001/freshwater-lake-v2/d29/delivery.pending.json",
+      "manifestSha256": "e6bc0adcd261bd930d3760a2e29c4a38fed62e02c3b92df7ff2ca5e7444fece9",
+      "reviewSha256": "72dbd9c315661a1f47d895be06742fc88f6e2c8b25b51ace3b6ec46147d6a5ac",
+      "runtimeBytes": 7048714,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "fungal",
+      "biome": "fungal",
+      "manifest": "audits/C132_ARENAS_20261001/fungal/d29/delivery.pending.json",
+      "manifestSha256": "a0bc5a627822ff9f430a37c54cfc5e2bf78fa01256b4346c711eeced17857357",
+      "reviewSha256": "34c2a8ea8042ca059dee436f7cf1005bc86fb3c7ba66bd1682cba4c3d5f2b24a",
+      "runtimeBytes": 7127666,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "geode",
+      "biome": "geode",
+      "manifest": "audits/C132_ARENAS_20261001/geode/d29/delivery.pending.json",
+      "manifestSha256": "9d9efe8ef891e44d39b20511877a8901931eb295280e0ac47058a3d015dfe586",
+      "reviewSha256": "1f19d1a35fd1f6462e16017894057d6fbcaa766ee16f20a0f0356902dddcbb81",
+      "runtimeBytes": 7066383,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "glacier",
+      "biome": "glacier",
+      "manifest": "audits/C132_ARENAS_20261001/glacier/d29/delivery.pending.json",
+      "manifestSha256": "b65a79c5a8ad75a11b51321a22b413824ae80d686495da3aa2c5aa0ae321aa32",
+      "reviewSha256": "c3f49e9a811957e846aca17a76ac0f2a884cf33b48ed2370bb3970df38c77e2a",
+      "runtimeBytes": 6441548,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "glass-v3",
+      "biome": "glass",
+      "manifest": "audits/C132_ARENAS_20261001/glass-v3/d29/delivery.pending.json",
+      "manifestSha256": "72b44e0638e630e8bccfc51eb9299f42286eeab66744a0add47cfaea17ef50d2",
+      "reviewSha256": "4dce4c66bc863b222be37adef3736ef151d63de99a70f6e37d65522577251ef5",
+      "runtimeBytes": 6448950,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "graben",
+      "biome": "graben",
+      "manifest": "audits/C132_ARENAS_20261001/graben/d29/delivery.pending.json",
+      "manifestSha256": "5985f807b7300bed5719b998b2a1f2a2af993b9067f0a6d7d4ffe2e3e1854e90",
+      "reviewSha256": "6b029a24aca3f485934e60e7f345b9307acb7058a30d7a61f003ab7559d0bbb7",
+      "runtimeBytes": 6931106,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "hotglow",
+      "biome": "hotglow",
+      "manifest": "audits/C132_ARENAS_20261001/hotglow/d29/delivery.pending.json",
+      "manifestSha256": "00d60c5fec32ed390d0d116984a46a1988602674c9a43183c4ebf8d86e86bc2a",
+      "reviewSha256": "676b2b7ee0b2028c7ac00dd97fe7cf298325fc4119c109c00ba2a2a8b8f37795",
+      "runtimeBytes": 5326821,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "jungle-v2",
+      "biome": "jungle",
+      "manifest": "audits/C132_ARENAS_20261001/jungle-v2/d29/delivery.pending.json",
+      "manifestSha256": "30f110d0204cd50ab9654189880543aff5518e000c6c1bcaa529ffc477c71da7",
+      "reviewSha256": "6341f0752a702bbf10616346c6ec82519b2d3f4a93209bacc9bb5345044b4bf9",
+      "runtimeBytes": 7278167,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "karst",
+      "biome": "karst",
+      "manifest": "audits/C132_ARENAS_20261001/karst/d29/delivery.pending.json",
+      "manifestSha256": "501c6a37bd3d9f14b495ff9ffe3c13d8a81631c8ed753e97ae9fc7cf9dc21174",
+      "reviewSha256": "5557a09c91a7fbf282a99712328a68029828fe198865afe21c02eca7a2a99076",
+      "runtimeBytes": 7017665,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "karst-cave",
+      "biome": "karst",
+      "manifest": "audits/C132_ARENAS_20261001/karst-cave/d29/delivery.pending.json",
+      "manifestSha256": "99745e88939346cfb9916ff0404027a4897f37dd282d3da54dc171c249e8b634",
+      "reviewSha256": "c16042ce922add09192a9561e9f91ab47c4a966a9eafdac567b68c1bb9806a76",
+      "runtimeBytes": 6677737,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "magmasea-v2",
+      "biome": "magmasea",
+      "manifest": "audits/C132_ARENAS_20261001/magmasea-v2/d29/delivery.pending.json",
+      "manifestSha256": "500d120a9fc7c2da0aea3f486186a721fc1a5dba0133a14fca9665bd4d74f35a",
+      "reviewSha256": "9476e6443ade9e73294587402090120d37b117c956b81b85c397e0bb1c3eea38",
+      "runtimeBytes": 6005340,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "mangrove-v2",
+      "biome": "mangrove",
+      "manifest": "audits/C132_ARENAS_20261001/mangrove-v2/d29/delivery.pending.json",
+      "manifestSha256": "7186e9da7bfcf26f7bf156dad3e3d75c455187a61dd5ca01241b1546fa5e3675",
+      "reviewSha256": "3aabb87c3e89fd75e9abfe6606acf86cfcf7747ec53794e053d3bbf0e5f42fab",
+      "runtimeBytes": 7203714,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "marsh",
+      "biome": "marsh",
+      "manifest": "audits/C132_ARENAS_20261001/marsh/d29/delivery.pending.json",
+      "manifestSha256": "3856e181129b5ccf11f5d359071fad016c6aba8d373e83502c46cac5e98308f8",
+      "reviewSha256": "de44d627dfb69aed96670671efd90e6cf9fcdd53c5e4a4005939ec59242ea85c",
+      "runtimeBytes": 6822031,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "milksea-v2",
+      "biome": "milksea",
+      "manifest": "audits/C132_ARENAS_20261001/milksea-v2/d29/delivery.pending.json",
+      "manifestSha256": "ebbc4bb7c543a2d8e658db9b2c896b4e79c369181b49d031ee199d49eec09d3f",
+      "reviewSha256": "a8dbedb1db4b84b9d30f13230dd71e5dd2c857c1e653f7d1bb0e133590a67e1d",
+      "runtimeBytes": 5970165,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "obsidian",
+      "biome": "obsidian",
+      "manifest": "audits/C132_ARENAS_20261001/obsidian/d29/delivery.pending.json",
+      "manifestSha256": "dd4d51f6d5aebf1d774ccc86c07d690ca1150441d9fe9819f2176fe0afbfc1f6",
+      "reviewSha256": "0584d551ad47493e8b50ac8adf7e6b5dc656c0e4249a791a3dc59b1aa1ab729f",
+      "runtimeBytes": 5660819,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "opensea",
+      "biome": "opensea",
+      "manifest": "audits/C132_ARENAS_20261001/opensea/d29/delivery.pending.json",
+      "manifestSha256": "263195d596e9de3837ae6dee4920e216f76db78f4472086c726f22e7fbb36fe4",
+      "reviewSha256": "29f24348003accc692e729934ee3aa666504183379362218a673948c544c1560",
+      "runtimeBytes": 6236370,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "oxide-v2",
+      "biome": "oxide",
+      "manifest": "audits/C132_ARENAS_20261001/oxide-v2/d29/delivery.pending.json",
+      "manifestSha256": "dded45a5d5340d4ca6555b440ec2d45ef97eafbcc735a192a717eebab950cdd4",
+      "reviewSha256": "28991fa5b31ff0cdd4c2ef8b016ac22c0adf8795bcff9ad080ba06548db0f6df",
+      "runtimeBytes": 6589166,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "packice-v2",
+      "biome": "packice",
+      "manifest": "audits/C132_ARENAS_20261001/packice-v2/d29/delivery.pending.json",
+      "manifestSha256": "7915e7e304d141e5d8187536556e171d46e9fcd8f353f51399499a8c289ef1bf",
+      "reviewSha256": "dd3ecab09dd3425702c0950631ce4fbffa7bdc9ab7a883b7a3a3e75b12e7f806",
+      "runtimeBytes": 5887172,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "saltflat",
+      "biome": "saltflat",
+      "manifest": "audits/C132_ARENAS_20261001/saltflat/d29/delivery.pending.json",
+      "manifestSha256": "62dcc722d600912734e09b115cd57253f1e41d0691c34e1801959eb36e36b106",
+      "reviewSha256": "89ddc88bf5b70561dc3de4a53832a602a6f79122c9dc02bea00fd7c4b919249b",
+      "runtimeBytes": 6459211,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "saltpan-r2",
+      "biome": "saltpan",
+      "manifest": "audits/C132_ARENAS_20261001/saltpan-r2/d29/delivery.pending.json",
+      "manifestSha256": "ad9f33a949d4978ea562afca8f40a743adcbe4bf1510dcd3fc3b968870719b20",
+      "reviewSha256": "d1038a826ffc583f0098583c9cfce1a18e3fe920cf51ea246b9e7c9277261ba6",
+      "runtimeBytes": 6197430,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "savanna-v2",
+      "biome": "savanna",
+      "manifest": "audits/C132_ARENAS_20261001/savanna-v2/d29/delivery.pending.json",
+      "manifestSha256": "cacc3b5fe08d04a2429356145b8fa3ea1708bcde4799c67642c9e9accf79fb96",
+      "reviewSha256": "3a1743c0aa30e54c16b263592fd3a8dfaf568a0c623b7c405a63f5be7e108a2e",
+      "runtimeBytes": 6548740,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "stormeye",
+      "biome": "stormeye",
+      "manifest": "audits/C132_ARENAS_20261001/stormeye/d29/delivery.pending.json",
+      "manifestSha256": "2ef73e53ca9be80aa63fb35b993416f361a177df374ba481663051f28c417dca",
+      "reviewSha256": "87e89eca846108571b69dfe25d1e9c82c0cdcf8a0d809dd60fde84add013e51c",
+      "runtimeBytes": 5586716,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "stormsea-v2",
+      "biome": "stormsea",
+      "manifest": "audits/C132_ARENAS_20261001/stormsea-v2/d29/delivery.pending.json",
+      "manifestSha256": "5610d38e475e34224bd7faf9da62b9d44378ff71370515762e65c9428abbfb71",
+      "reviewSha256": "e4b7bcd244038411a83c5e14a679f0221965f73094cfbc487dcfc36ddf8c01eb",
+      "runtimeBytes": 6446338,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "sulfurdeck",
+      "biome": "sulfurdeck",
+      "manifest": "audits/C132_ARENAS_20261001/sulfurdeck/d29/delivery.pending.json",
+      "manifestSha256": "0112f71ff0642ebca1779efdf625f9abfb27138309e219c53307c1b785a31e18",
+      "reviewSha256": "4cc5174841b2484d714e331a711f5a9fc59559676274c533e42677354949a636",
+      "runtimeBytes": 5900798,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "swamp-v2",
+      "biome": "swamp",
+      "manifest": "audits/C132_ARENAS_20261001/swamp-v2/d29/delivery.pending.json",
+      "manifestSha256": "2fba856b81d117e1e9bec1e910376819f674b52cff3cb0eb0ee0fe6508821e90",
+      "reviewSha256": "28ccd5ad4759ad43fbd790bd62af8d61e1ac08f2bc1a22b99e8b565e415ee0b9",
+      "runtimeBytes": 6988774,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "tundra",
+      "biome": "tundra",
+      "manifest": "audits/C132_ARENAS_20261001/tundra/d29/delivery.pending.json",
+      "manifestSha256": "45e61756b13b32e38f30be5b2b52f61b4d71e4b463142c11ae76b4cb1f499c96",
+      "reviewSha256": "809558a0b1567fa628d95cb0d09be3edc48328f4c63adb515530eace175a7ad0",
+      "runtimeBytes": 6964889,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    },
+    {
+      "id": "volcisle",
+      "biome": "volcisle",
+      "manifest": "audits/C132_ARENAS_20261001/volcisle/d29/delivery.pending.json",
+      "manifestSha256": "0b4d6f056b71312a9f65d7177c7da791eedc9c08e009cb5f2ca668523ed3e726",
+      "reviewSha256": "a8e714bda1df1ed02250a4ac9ce3d901238f15b2e8f1ce0578202ce851c8564e",
+      "runtimeBytes": 6905221,
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD"
+    }
+  ],
+  "remaining": [
+    "Independent full-size scoring and recorded visual/material/seam/fringe repair",
+    "Runtime delivery within unchanged pack budget",
+    "Claude home-world and physical-medium routing",
+    "Native moving-body/effect contact and occlusion evidence",
+    "Dakk acceptance and physical-phone gate"
+  ],
+  "scope": "All 43 canonical biome families have native-size separately painted FAR/MID/NEAR candidates; extra habitat variant included. Completeness of candidate coverage is not acceptance or game integration."
+}

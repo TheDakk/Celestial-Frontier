@@ -1,0 +1,17 @@
+# C132 Centipede SIMD promotion — 2026-10-02
+
+The four exact measured sweep artifacts are promoted. `promotion.json` binds source, binary, embedded bytes and build receipt. Seventeen leaf controls, the nine-test library owner (38 archetypes, 114 scale cases) and root validation pass. The v3 captured-target verifier retains the prior production kernel explicitly under `baseline/`, so it continues to compare two different kernels after promotion; the v2 verifier is preserved as text with its earlier evidence.
+
+The one native run on signed `bf3c3f045` has 789 live frames, zero refusals, CPU p95 8.7 ms and frame-interval p95 16.7 ms. Three frames exceed 16.667 ms (maximum 23.3 ms). All 18 retained stills equal the preceding correction's film byte-for-byte; its Chimpanzee victory deformation is unchanged. One run per candidate is not an isolated microbenchmark or proof of a universal speed improvement. Strict all-pair 60 fps and physical-device qualification remain open. C159 released the reservation.
+
+## Retained candidate plan before the native epoch
+
+This audit combines the already-promoted bounded orientation correction with the separately retained October 1 SIMD rotation/RHS candidate. Production sweep bytes remain unchanged. It moves independent x/y arithmetic into SIMD lanes, preserving each neighbor's addition order, IEEE operations, robust fallback, solver iterations, hard pins and orientation/paint guards. No relaxed arithmetic, extra solver work, cached prior pose or threshold change is introduced.
+
+`captured-parity-v2.json` binds the current verifier and checks the same 46 captured Centipede approach targets plus ten adjacent targets used for the orientation repair. Each reconstructed target hash equals the retained repair report. Both kernels complete all 56 targets with byte-identical output, position/rotation/RHS/target scratch, orientation queue arrays and metadata. All 1,792 published-part shape checks and 218,736 hard-pin comparisons pass. Contradictory pinned folds refuse atomically; nonfinite targets refuse. Independent controls distinguish signed zero and a one-bit mutation.
+
+The first `captured-parity.json` and log remain as initial evidence. The v2 successor additionally binds its verifier hash, compares scalar queue metadata and separates the one-bit control from the signed-zero mutation. It preserves the first result rather than overwriting it.
+
+The candidate C source is copied byte-for-byte from the previous audit. The unchanged production `build-arap-sweep.mjs` rebuilds a byte-identical 1,894-byte module with SHA-256 `a48d554ba386ae1fc9f186a02f25984b307e6ec4bfe8bfc782dc6d79b67efd78`; the current production module is 1,909 bytes. `arap-sweep-build.json` retains compiler/flags, and `source-overrides.json` points only to the audit module for a future controlled film.
+
+**Status: exact captured-target parity, native performance pending.** This is not a speed result, production promotion, all-pair proof or visual acceptance. Run no native epoch until the parent signs the inputs, posts its reservation and serializes the shared toolchain. The full recorded Centipede/Chimpanzee script must retain all phases and pass the existing 4× CPU capture with unchanged rigs, art and guard limits. Stop on a red result without retry. Then inspect actual film/stills and report residual slow frames without rounding them into a 60 fps claim.

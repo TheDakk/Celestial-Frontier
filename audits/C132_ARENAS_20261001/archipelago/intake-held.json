@@ -1,0 +1,22 @@
+{
+  "status": "HELD_MIXED_NATIVE_DIMENSIONS",
+  "qualityAccepted": false,
+  "failure": "Master dimensions differ",
+  "actual": {
+    "far": [
+      1672,
+      941
+    ],
+    "mid": [
+      1672,
+      941
+    ],
+    "near": [
+      1984,
+      793
+    ]
+  },
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "successor": "archipelago-v2"
+}

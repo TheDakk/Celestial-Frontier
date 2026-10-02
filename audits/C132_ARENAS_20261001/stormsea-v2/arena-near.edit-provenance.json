@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c132-arena-targeted-edit/v1",
+  "reason": "Existing intake refused NEAR covers fighting path: remove high side vegetation and mounds at the painting source.",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/stormsea/arena-near.prompt.txt",
+    "sha256": "94f6febfbe787d6681b89291ca229c3b2a2ecb029a13d708b9a579ce0c477797"
+  },
+  "editPrompt": {
+    "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-near.prompt.txt",
+    "sha256": "7f7dfc9e89d66f13b0bae03dd25094427490986662a3f219fd8ac1fcee861e3e"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/stormsea/arena-near.png",
+      "sha256": "635a1f953e6f0cb1f499250104cd34b738418d4ad1f5918aebccc557e0f681ac"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the original arena master; the actual sole image input was the original painting named above."
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-506612f1-a739-4bee-bba4-0a92f9b717fd.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "The edited generator output is retained byte-for-byte; the source painting is unchanged in its own original directory.",
+  "qualityAccepted": false
+}

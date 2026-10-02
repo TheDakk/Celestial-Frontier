@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Mountain Lizard",
+  "family": "quadruped",
+  "masterSha256": "f6a578011c5c7b497b55fffbc8516630d129cc8cce6cf2d85356aedc46246661",
+  "subjectSha256": "aba2c8bc1c658e1dda87a4267171a810fd6b59105901b3f63680b606f8707950",
+  "promptSha256": "f3fb66e21b971d2656836c9ec68f73004f7a139fc63e5393259d32d83fb9e921",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: granular-scaled slender body, long banded tail exceeding head-and-body length, bent sprawling near limbs and long clawed toes. Three feet are independently readable; fourth/far hindlimb remains unresolved behind the near thigh. HOLD for missing independent fourth-limb visibility. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/10-mountain-lizard/visual-review.json",
+    "sha256": "a755fb814a45bca6ea1c2a038c1b3679867548ef54e42d7c4964762de84644a9"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

@@ -1,6 +1,8 @@
 # C132 — captured Centipede fold candidate
 
-Audit-only candidate. Production ARAP, contact, choreography and acceptance code remain untouched. `receipt.json` pins the exact source inputs and candidate artifacts; `source-overrides.json` is ready for the parent's reserved 4× CPU native run. No native run was made by this packet.
+Current status: the bounded leaf was promoted after the parent's signed 4× native diagnostic. See `PROMOTION.md`, `promotion-receipt.json` and `native-review.json` for the exact six production artifacts, 34 focused passing tests and remaining visual/performance limits. I5 is unchanged.
+
+The remainder below preserves the original audit-only candidate record. Its receipts and reconstruction outputs are pre-promotion evidence; do not rerun their historical baseline-writing commands against the promoted owner.
 
 ## Reproduction and cause
 

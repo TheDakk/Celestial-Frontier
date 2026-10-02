@@ -1,0 +1,10 @@
+{
+  "status": "HELD_SUPERSEDED_FIRST_ATTEMPT",
+  "qualityAccepted": false,
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "findings": [
+    "FAR invents planet/moon imagery absent from unbound system card"
+  ],
+  "successor": "crystalsteppe-v2"
+}

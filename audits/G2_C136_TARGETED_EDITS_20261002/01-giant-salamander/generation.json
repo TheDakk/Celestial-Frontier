@@ -1,0 +1,14 @@
+{
+  "id": "01-giant-salamander",
+  "name": "Giant Salamander",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2211384f-28bc-4064-acee-4ccbaa632083.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6afcc8b7e6306ca7a0da1d7300a6620906bb9538a81a26cd0ff22a542cdac25d",
+  "bytes": 1095281,
+  "promptSha256": "5cddf31fd78fb05a85dbd0dd743cbf00de25d0bf35586c4ccfef5bd8b5987edd",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

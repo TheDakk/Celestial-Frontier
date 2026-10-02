@@ -1,0 +1,164 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "coral",
+  "biome": "coral",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "coral"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "coral"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "coral"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-far.generation.json",
+      "sha256": "1afb9be80ea12137d6b2ae1d969444772b697873607aa31118ecd66fc718a0d0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-mid.generation.json",
+      "sha256": "0932b3822a10845a8a113d4e02c5b6addaa376038b4b2336bd784a2eb622b51f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-near.generation.json",
+      "sha256": "88d01d50d54f93f1a569aef03332520259fdd85fe5df9c08a92d34e018fff1e5"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-composed-review.png",
+      "sha256": "a495decdc33784ff316c46caaa3797400b9f7f0eb5d3302390845532d865560a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/visual-notes.d29.json",
+      "sha256": "228937962dc430c0e2eeff04998247c92ee09746dc7da7dea0d1f8e532620d71"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-manifest.json",
+      "sha256": "9c1c23027928d1b6348bf859a25a74ff7be7e23b0d42f6c4c5d2c156f5cfb09e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-recipe.json",
+      "sha256": "eff1594b06a0597539ed1eddd4890e94431276a87a2ed745f39c68c0a67701bb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-far.generation.json",
+      "sha256": "1afb9be80ea12137d6b2ae1d969444772b697873607aa31118ecd66fc718a0d0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-far.prompt.txt",
+      "sha256": "fe07f0161d18e1375a83ab63e0b6bc02a5bafd3b0a09cad07da5fc4b7eb2c518"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-far.png",
+      "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-mid.generation.json",
+      "sha256": "0932b3822a10845a8a113d4e02c5b6addaa376038b4b2336bd784a2eb622b51f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-mid.prompt.txt",
+      "sha256": "5f543f8789b58d6d5ec9a7a664a833d986f1657af833a63fea537c6603efffdc"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-mid.png",
+      "sha256": "c3b27fef2839d7c7d4fa977a5454a7d6260e6ff173573dcac08600f7bfd19e35"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-mid.png",
+      "sha256": "1c40747146a50da140a511710e659d957644720e11d5fbcda9cdff88ed0802d2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-near.generation.json",
+      "sha256": "88d01d50d54f93f1a569aef03332520259fdd85fe5df9c08a92d34e018fff1e5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-near.prompt.txt",
+      "sha256": "dbba11ca97e830efd322272b997c13c2125357c8458c562eff0e0bd083d48546"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-near.png",
+      "sha256": "e3030926df94f572ea0789a2e1b7703ccb01ac1666c86d19b0d38ac9c6125e4d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-near.png",
+      "sha256": "89cdfbebb5ffc62006f71b815f9613af950c84f6c784effb8e3492fca2b02651"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/coral/visual-notes.d29.json",
+    "findings": [
+      "Full native-size composition inspected: turquoise underwater depth and reef columns distinguish this family; the central sand runway remains open in the static view.",
+      "Pink/mauve edges remain around side reef/plant detail; repeated shoreline-like contours and abrupt mid-to-near texture changes are visible.",
+      "Independent scoring, moving combatant occlusion and native battle appearance remain untested; this is a candidate with visual holds."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

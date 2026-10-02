@@ -1,0 +1,31 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "5f86c28ba59829635896228e1ab3f8146c44a568035229eb1b8966a342c2be35",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "0f6cb891c9f0f760c454a31d64246c4f41efcd16",
+  "basePromptSha256": "55c1d173e21b7880a36e832bfa7d322f2058d711b0b3ca7c862e85011e5aa8fd",
+  "layoutCompilerSha256": "0b99fa20704a875163bd68d867bd7134406da45719ff53931b3d9e1d5e19063c",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C121 only five leg endpoints resolved.",
+  "anatomyAmendment": "Exactly SIX natural legs attach to the thorax, every tarsal end separately visible through offset near/far stance. Two clubbed antennae must remain distinct from legs. Preserve canonical orange-black short elytra and the visible segmented abdomen tip; no added vertebrate tail.",
+  "compositionCheck": "FINAL COMPOSITION CHECK: the 1254 by 1254 canvas is mostly empty pure magenta. Zoom the complete specimen OUT. Every antler, bill, toe, antenna, tail and other part must fit within the central rectangle x=314 through x=940, y=314 through y=940. The rectangle is only an invisible placement guide: DO NOT paint a frame, line, ruler, label or grid. Make the entire animal smaller, never shorten its natural appendages to fit. Preserve detailed painted surfaces.",
+  "admission": "GENERATED_CANDIDATE_ONLY; new salamander references are unmeasured, repair attempts do not replace prior originals or acceptance.",
+  "preCompositionPromptSha256": "e8e63b0538f08fe7a1095e4aac64d83f421da03391aac4f38ef3132b3b943c6f",
+  "prependCompositionCheck": "ZOOMED-OUT COMPOSITION FIRST: a TINY complete specimen in a large mostly empty pure magenta square. The WHOLE animal including all appendages occupies only HALF the canvas width and no more than HALF the height. The entire silhouette must fit inside x=314 through x=940 and y=314 through y=940 on the 1254-square canvas. Keep at least 250 pixels of empty background on every side. Do not shorten any appendage; make the whole specimen smaller. Do not paint any placement guide, border or grid.",
+  "compositionCompilerSha256": "ea0ee1c8971e60f762cd32a460088dbbeadadc6e57e609cbc671ebd9ce3ddcdb"
+}

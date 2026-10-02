@@ -1,0 +1,28 @@
+{
+  "name": "Saiga",
+  "masterSha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: bulbous drooping nose is shorter than the prior trunk, slim ringed horns and four slim hoofed legs. Nose still appears heavily elongated/wrinkled and requires species judgment. Only near ear is clear. Near/far upper forelegs overlap; broad margins and full tail.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 349,
+      "y0": 330,
+      "x1": 931,
+      "y1": 866
+    },
+    "margins": {
+      "left": 349,
+      "right": 322,
+      "top": 330,
+      "bottom": 387
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

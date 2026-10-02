@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "emberfield",
+  "biome": "emberfield",
+  "recipe": "audits/C132_ARENAS_20261001/emberfield/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/emberfield/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+      "runtimeSha256": "2b7eaa74341d46d895a46ab77942919fd53df3bfc70f9d08c4c592638c41b883"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-mid.png",
+      "runtimeSha256": "4cb93b2fd53cd16a0f9447f6d6a3585d2adacb4d5578c33fb9e89ec421c2d8b5"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/emberfield/keyed/arena-near.png",
+      "runtimeSha256": "64fdcafb8570f4a6da990281b7c1cdb081385adf2d52169e9cf1f095019b87b3"
+    }
+  }
+}

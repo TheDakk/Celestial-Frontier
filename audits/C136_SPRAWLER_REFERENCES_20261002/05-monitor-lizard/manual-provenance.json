@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "a3b0609ee1433e396e13f0e3d2ec6a559a827478f720d14c708d4620defae18d",
+  "authoringSha256": "da484396b617d4bea8823731e9d52a2498c027f0683f0df206a04485f0638b2e",
+  "observationSource": "audits/C136_SPRAWLER_REFERENCES_20261002/manual-observations.mjs",
+  "observationSha256": "730000f6486bdadebd2004e0052463b277121903661b7a31fd15c2078b291b8f",
+  "sourcePacket": "audits/G2_C132_QUADRUPEDS_20261001/05-monitor-lizard",
+  "origin": "Independent manual observations on the existing original; no coordinates read from any other authoring or fit.",
+  "limitations": "Long continuous striped tail, low horizontal trunk, four separately readable feet and bent sprawling limbs are visible. No external pinnae: small ear opening remains head-owned. Far proximal joints are torso-occluded authoring interpretations; feet are at two image heights in side perspective. Tongue forks are explicitly jaw-owned. This manual partition does not establish correct joint centres, exact toe counts, ground compliance or native acceptance.",
+  "admission": "UNMEASURED. Existing original acceptance or refusal does not transfer to this new partition."
+}

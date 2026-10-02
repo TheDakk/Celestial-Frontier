@@ -1,0 +1,19 @@
+{
+  "theme": "venom",
+  "left": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01",
+  "right": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03",
+  "effectAnchors": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+  "effectAnchorsSha256": "66bd85cb4dcbf393f41a06251cd4a9634fe396f8ff99d03fb706b2854b500ab7",
+  "scriptSha256": "9c52a3cb9bfbaea5af2267ebe4b01e222779f3eb15e7dee3513a18fb7a96ffe4",
+  "recordSha256": [
+    {
+      "fit": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03",
+      "sha256": "0e103601830999fe1c7d3857b7c0a1d9e0fc3c0261df9e060e2fa70bf75078c0"
+    }
+  ],
+  "nativeRun": false
+}

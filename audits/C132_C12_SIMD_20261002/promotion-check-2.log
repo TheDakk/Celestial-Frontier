@@ -1,0 +1,25 @@
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (3.8715ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (1.075417ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (1.269542ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.370083ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.305125ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.187875ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.282459ms)
+✔ captured Centipede approach publishes intact paint with exact WASM/JS parity inside the original budget (111.316375ms)
+✔ removing delayed damping reproduces the actual fold and exhausted budget; prior safe pose remains unchanged (415.459ms)
+✔ contradictory pinned folds and nonfinite input still refuse without publishing output (0.6015ms)
+✔ real admitted Wasm leaf matches the current JS solver exactly and shares fixed scratch memory (4.383791ms)
+✔ absent Wasm and denied memory use the actual JS fallback with exact outputs (3.577083ms)
+✔ a real add-to-subtract binary mutant is rejected by admission and the runtime falls back (0.70175ms)
+✔ leaf snapshots all invariants and refuses malformed rows instead of silently accepting them (0.269208ms)
+✔ normal-range refusal precedes every position and RHS write, then robust JS preserves exact results (0.583625ms)
+✔ strict artifact admission rejects relocation/global/data/table/function-import controls (1.268834ms)
+✔ a late disconnected-component norm refusal cannot publish an earlier component update (0.216541ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 677.134333

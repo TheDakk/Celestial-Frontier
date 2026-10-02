@@ -1,0 +1,277 @@
+{
+  "schema": "cf.c132-effect-recorded-frame-extraction/v1",
+  "source": "recorded native videos only; no browser launch",
+  "mapping": "Video end PTS minus final capture clock estimates recorder offset. Selected phase-center frames avoid boundaries; timestamps do not claim exact seek still equivalence.",
+  "rows": [
+    {
+      "theme": "fire",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.10320000000000107,
+      "frameIndex": 114,
+      "actualVideoPtsSeconds": 1.923,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/fire/launch.png"
+    },
+    {
+      "theme": "fire",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.10320000000000107,
+      "frameIndex": 122,
+      "actualVideoPtsSeconds": 2.055,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/fire/travel.png"
+    },
+    {
+      "theme": "fire",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.10320000000000107,
+      "frameIndex": 139,
+      "actualVideoPtsSeconds": 2.338,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/fire/impact.png"
+    },
+    {
+      "theme": "frost",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.07130000000000081,
+      "frameIndex": 112,
+      "actualVideoPtsSeconds": 1.892,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/frost/launch.png"
+    },
+    {
+      "theme": "frost",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.07130000000000081,
+      "frameIndex": 119,
+      "actualVideoPtsSeconds": 2.009,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/frost/travel.png"
+    },
+    {
+      "theme": "frost",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.07130000000000081,
+      "frameIndex": 137,
+      "actualVideoPtsSeconds": 2.307,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/frost/impact.png"
+    },
+    {
+      "theme": "storm",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.07729999999999926,
+      "frameIndex": 113,
+      "actualVideoPtsSeconds": 1.895,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/storm/launch.png"
+    },
+    {
+      "theme": "storm",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.07729999999999926,
+      "frameIndex": 121,
+      "actualVideoPtsSeconds": 2.028,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/storm/travel.png"
+    },
+    {
+      "theme": "storm",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.07729999999999926,
+      "frameIndex": 138,
+      "actualVideoPtsSeconds": 2.312,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/storm/impact.png"
+    },
+    {
+      "theme": "tide",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.08740000000000059,
+      "frameIndex": 113,
+      "actualVideoPtsSeconds": 1.907,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/tide/launch.png"
+    },
+    {
+      "theme": "tide",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.08740000000000059,
+      "frameIndex": 121,
+      "actualVideoPtsSeconds": 2.038,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/tide/travel.png"
+    },
+    {
+      "theme": "tide",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.08740000000000059,
+      "frameIndex": 138,
+      "actualVideoPtsSeconds": 2.323,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/tide/impact.png"
+    },
+    {
+      "theme": "stone",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.07910000000000039,
+      "frameIndex": 113,
+      "actualVideoPtsSeconds": 1.899,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/stone/launch.png"
+    },
+    {
+      "theme": "stone",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.07910000000000039,
+      "frameIndex": 121,
+      "actualVideoPtsSeconds": 2.032,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/stone/travel.png"
+    },
+    {
+      "theme": "stone",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.07910000000000039,
+      "frameIndex": 138,
+      "actualVideoPtsSeconds": 2.313,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/stone/impact.png"
+    },
+    {
+      "theme": "venom",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.08340000000000103,
+      "frameIndex": 113,
+      "actualVideoPtsSeconds": 1.904,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/venom/launch.png"
+    },
+    {
+      "theme": "venom",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.08340000000000103,
+      "frameIndex": 120,
+      "actualVideoPtsSeconds": 2.02,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/venom/travel.png"
+    },
+    {
+      "theme": "venom",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.08340000000000103,
+      "frameIndex": 138,
+      "actualVideoPtsSeconds": 2.32,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/venom/impact.png"
+    },
+    {
+      "theme": "void",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.08020000000000138,
+      "frameIndex": 113,
+      "actualVideoPtsSeconds": 1.899,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/void/launch.png"
+    },
+    {
+      "theme": "void",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.08020000000000138,
+      "frameIndex": 121,
+      "actualVideoPtsSeconds": 2.034,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/void/travel.png"
+    },
+    {
+      "theme": "void",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.08020000000000138,
+      "frameIndex": 138,
+      "actualVideoPtsSeconds": 2.317,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/void/impact.png"
+    },
+    {
+      "theme": "sand",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.07820000000000071,
+      "frameIndex": 113,
+      "actualVideoPtsSeconds": 1.901,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/sand/launch.png"
+    },
+    {
+      "theme": "sand",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.07820000000000071,
+      "frameIndex": 120,
+      "actualVideoPtsSeconds": 2.015,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/sand/travel.png"
+    },
+    {
+      "theme": "sand",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.07820000000000071,
+      "frameIndex": 138,
+      "actualVideoPtsSeconds": 2.316,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/sand/impact.png"
+    },
+    {
+      "theme": "chem",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.07029999999999959,
+      "frameIndex": 112,
+      "actualVideoPtsSeconds": 1.89,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/chem/launch.png"
+    },
+    {
+      "theme": "chem",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.07029999999999959,
+      "frameIndex": 120,
+      "actualVideoPtsSeconds": 2.022,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/chem/travel.png"
+    },
+    {
+      "theme": "chem",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.07029999999999959,
+      "frameIndex": 137,
+      "actualVideoPtsSeconds": 2.306,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/chem/impact.png"
+    },
+    {
+      "theme": "psionic",
+      "phase": "launch",
+      "desiredScriptMs": 1819,
+      "estimatedRecorderOffsetSeconds": 0.07719999999999949,
+      "frameIndex": 113,
+      "actualVideoPtsSeconds": 1.897,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/psionic/launch.png"
+    },
+    {
+      "theme": "psionic",
+      "phase": "travel",
+      "desiredScriptMs": 1945,
+      "estimatedRecorderOffsetSeconds": 0.07719999999999949,
+      "frameIndex": 121,
+      "actualVideoPtsSeconds": 2.029,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/psionic/travel.png"
+    },
+    {
+      "theme": "psionic",
+      "phase": "impact",
+      "desiredScriptMs": 2230,
+      "estimatedRecorderOffsetSeconds": 0.07719999999999949,
+      "frameIndex": 138,
+      "actualVideoPtsSeconds": 2.311,
+      "path": "audits/C132_EFFECTS_20261001/native-review-01/psionic/impact.png"
+    }
+  ]
+}

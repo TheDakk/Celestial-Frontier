@@ -1,0 +1,32 @@
+[
+  {
+    "id": "05-monitor-lizard",
+    "name": "Monitor Lizard",
+    "family": "quadruped",
+    "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard",
+    "master": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard/master.png",
+    "sourcePacket": "audits/G2_C132_QUADRUPEDS_20261001/05-monitor-lizard",
+    "masterSha256": "a3b0609ee1433e396e13f0e3d2ec6a559a827478f720d14c708d4620defae18d",
+    "origin": "Byte-identical existing generated original; new independent manual observations only. No new species or generation."
+  },
+  {
+    "id": "15-iguana",
+    "name": "Iguana",
+    "family": "quadruped",
+    "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana",
+    "master": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana/master.png",
+    "sourcePacket": "audits/G2_C132_QUADRUPEDS_20261001/15-iguana",
+    "masterSha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3",
+    "origin": "Byte-identical existing generated original; new independent manual observations only. No new species or generation."
+  },
+  {
+    "id": "24-newt",
+    "name": "Newt",
+    "family": "quadruped",
+    "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt",
+    "master": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt/master.png",
+    "sourcePacket": "audits/G2_C132_QUADRUPEDS_20261001/24-newt",
+    "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc",
+    "origin": "Byte-identical existing generated original; new independent manual observations only. No new species or generation."
+  }
+]

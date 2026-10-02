@@ -145,13 +145,35 @@ describe('the painted library in the arena', () => {
     for (const a of CARD_ARCHETYPES) for (const k of [0.85, 1, 1.15]) {
       const { rig, card } = await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports), mass = card.massClass.multiplier, medium = resolvePhysicalHabitat((await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports)).record as never).preferred;
       const base = combatantPresentation(rig, mass, FRAME, layout.stands.left.y).scale;
-      const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => { if (side !== 'A') return null; try { const r = compileAnatomyAttack(card, medium, ordinal); return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; } catch { return null; } };
+      const declaration = declarationOf(a.earthName);
+      const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => { if (side !== 'A') return null; const r = compileAnatomyAttack(card, medium, ordinal, undefined, declaration); return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; };
+      if (declaration && k === 1) expect(() => compileAnatomyAttack(card, medium, 0, undefined, { ...declaration, recordHash: 'wrong-record-hash' }), `${a.earthName}: mismatched declaration must refuse`).toThrow(/no admitted move|conditional|not declared/);
       let now = 0; const stage = new BattleStage({ factory, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: mass, right: 0.85 }, presentationScales: { left: base * k, right: combatantPresentation(portraitRig(), 0.85, FRAME, layout.stands.right.y).scale } });
       const bout = [{ side: 'A', an: a.earthName, dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, { side: 'B', an: 'Platypus', dn: a.earthName, dmg: 4, crit: true, hpA: 26, hpB: 20 }, { an: a.earthName, dn: 'Platypus', dodge: true }, { side: 'A', an: a.earthName, dn: 'Platypus', dmg: 20, crit: true, hpA: 26, hpB: 0 }];
-      for (const [i, r] of bout.entries()) { now = 0; const plan = stage.play(turn(ctx('A', a.earthName, mass, card, attackFor, (0xC33 + i * 7919) >>> 0), r, i)); for (let ms = 0; ms < plan.beats.end; ms += 1000 / 30) { now = ms; stage.tick(); } now = plan.beats.end; if (!stage.tick()?.done) throw new Error('turn never reached its end'); }
-      const n = rig.refusals(); if (n) found.push(`${a.earthName} ×${k}: ${n} (${(rig.lastRefusal() ?? '').slice(0, 90)})`); lines.push(`${a.earthName} ×${k}: ${n}`); stage.dispose();
+      const holder = ((stage.root as unknown as Node).children as Node[]).find((n) => n.children.includes(rig.root as object))!;
+      expect(holder, a.earthName + ' painted rig holder').toBeDefined();
+      let attacks = 0, returns = 0;
+      for (const [i, r] of bout.entries()) {
+        now = 0;
+        const input = turn(ctx('A', a.earthName, mass, card, attackFor, (0xC33 + i * 7919) >>> 0), r, i), ownAttack = input.attacker.side === 'left', label = `${a.earthName} ×${k} turn ${i}`;
+        if (ownAttack) expect(input.attack, label + ' anatomical attack must not fall back').not.toBeNull();
+        const plan = stage.play(input), homeX = holder.x;
+        if (ownAttack) { expect(plan.attack, label + ' staged attack').toBe(input.attack); expect(plan.clips.attacker.action.source).toBe('timeline'); attacks++; }
+        let approached = false;
+        for (let ms = 0; ms < plan.beats.end; ms += 1000 / 30) {
+          now = ms; const frame = stage.tick(); expect(frame, label + ' frame').not.toBeNull();
+          if (ownAttack && frame!.sample.attacker.context.actionId === 'melee:' + input.attack!.verb) {
+            expect(holder.x, label + ' attack reaches forward').toBeGreaterThan(homeX); approached = true;
+          }
+          if (ownAttack && ms >= plan.beats.returnEnd) expect(holder.x, label + ' return home').toBeCloseTo(homeX, 9);
+        }
+        now = plan.beats.end; if (!stage.tick()?.done) throw new Error('turn never reached its end');
+        if (ownAttack) { expect(approached, label + ' anatomy action observed on stage').toBe(true); expect(holder.x, label + ' terminal home').toBeCloseTo(homeX, 9); returns++; }
+      }
+      expect(attacks, a.earthName + ' staged anatomy attacks').toBe(3); expect(returns, a.earthName + ' completed returns').toBe(3);
+      const n = rig.refusals(); if (n) found.push(`${a.earthName} ×${k}: ${n} (${(rig.lastRefusal() ?? '').slice(0, 90)})`); lines.push(`${a.earthName} ×${k}: refusals ${n}, anatomy attacks ${attacks}, returns ${returns}`); stage.dispose();
     }
-    console.log('\nSWEEP\n' + found.join('\n'));
+    console.log('\nSWEEP\n' + lines.join('\n'));
     expect(found).toEqual([]);
     expect(lines.length).toBe(CARD_ARCHETYPES.length * 3); // every archetype at every scale was run
   }, 900_000);

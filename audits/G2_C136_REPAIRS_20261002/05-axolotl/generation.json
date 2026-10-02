@@ -1,0 +1,14 @@
+{
+  "id": "05-axolotl",
+  "name": "Axolotl",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-1adb7f4a-2c53-4043-9dd9-cefeabdba5a2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d29c7652d97db8efaa9e555b35be7b04f89543d4724ecd2d5abdea1875137d5e",
+  "bytes": 1114057,
+  "promptSha256": "9082f73ab1232fe84abe6485bb37347217ec5742ece39486309fffaa6c01bae3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

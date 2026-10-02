@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "sulfurdeck",
+  "biome": "sulfurdeck",
+  "recipe": "audits/C132_ARENAS_20261001/sulfurdeck/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/sulfurdeck/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+      "runtimeSha256": "e6d234ccb0e9e8c3d4caec3cd0cfc88618f719afffb0d7ba6bf72076a016d5ee"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-mid.png",
+      "runtimeSha256": "dcb6b948ef8c54c216b71292c85ab96d04e45c4d553334110e1abf9691e8b507"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-near.png",
+      "runtimeSha256": "7bbeb8deecfc2990f734411b554921053fc7e103040bac2bef7ebd01d92d9c15"
+    }
+  }
+}

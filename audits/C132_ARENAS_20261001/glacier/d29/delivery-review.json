@@ -1,0 +1,165 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "glacier",
+  "biome": "glacier",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "glacier"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "glacier"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "glacier"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-far.generation.json",
+      "sha256": "77587ea521753fba4cb448ba7ea65d038d976291472d5a12320c913b834cdac5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.generation.json",
+      "sha256": "40b7d5d5d2913aae61c4d30a29b3054f5fad5755b0f1da6d396d94b92c0b85ef"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-near.generation.json",
+      "sha256": "c8a3eaf58bc462b3848aee1f56ef5006c01cf06478f71e1659a3ee919bdc667f"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-composed-review.png",
+      "sha256": "13d514a5a3ccb26aaf9082816f14885f5dad3c4f82c87b78747b676997385b68"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/visual-notes.d29.json",
+      "sha256": "8c590f6bad9b2f2710e92562224fa2edb9fafea7461646b063b8a953a31041ec"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-manifest.json",
+      "sha256": "38c67228302990c3cae5952eaa861d0345d27d3f2c447ad27ecf6d2ce6d67823"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-recipe.json",
+      "sha256": "4dab7dbeacdc4018b6036f4ab5542ae4e7cfbe62edca36f10a749cdcf93977b1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-far.generation.json",
+      "sha256": "77587ea521753fba4cb448ba7ea65d038d976291472d5a12320c913b834cdac5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-far.prompt.txt",
+      "sha256": "59cd9e643ad78f17981ed0b03bed574245a1fd576d8f4353d5bf136d0791361d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-far.png",
+      "sha256": "144835a0e43be1d7b07ca61097b1219a44b58f55f5e70f53285c5572a2f40506"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.generation.json",
+      "sha256": "40b7d5d5d2913aae61c4d30a29b3054f5fad5755b0f1da6d396d94b92c0b85ef"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.prompt.txt",
+      "sha256": "f71349737585f69bdaabd1e312f8cb55e828ad9295baab54c04130b0217972bf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-mid.png",
+      "sha256": "b46d3df0f038b5cb68949910fdce385e71ae6a1c590a22fbeb198a82874a57e1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/keyed/arena-mid.png",
+      "sha256": "45525a1465d42afb24df8549f67356cde8bc845b5f5463262e3433612f71179e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-near.generation.json",
+      "sha256": "c8a3eaf58bc462b3848aee1f56ef5006c01cf06478f71e1659a3ee919bdc667f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-near.prompt.txt",
+      "sha256": "72fe2a5c42bf61f66b2600ecd15d2617769e25892472de50680b3d5ea097ab00"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/arena-near.png",
+      "sha256": "550eecb1256cb00922eee013f2fdbaca0fe3f191fa4840e08d2904aeabeb3c0a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glacier/keyed/arena-near.png",
+      "sha256": "5db4b92598fbfe6941f18904d39aa6f5c907b34acf3ac59563c2a041068a5072"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/glacier/visual-notes.d29.json",
+    "findings": [
+      "Full-size 1672×941 composite inspected. Blue ice cliffs and a broad snow/ice fighting band carry the glacier identity under consistent upper-left illumination.",
+      "The original triplet passes existing intake at native resolution without a replacement painting. No fauna, labels or celestial objects are visible.",
+      "The MID adds another small ridge across the lower center, visibly repeating the FAR mountain/ice horizon. A horizontal NEAR snow-texture transition remains near the bottom; hard keyed edges are visible at the side ice faces. Seam continuity under parallax remains a visual hold.",
+      "Mechanical pixel coverage does not demonstrate grounded movement, foot-contact shadows, player silhouette contrast or native performance. No quality acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

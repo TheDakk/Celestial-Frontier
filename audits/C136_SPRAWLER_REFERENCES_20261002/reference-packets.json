@@ -1,0 +1,17 @@
+[
+  {
+    "id": "c136-sprawler-05-monitor-lizard",
+    "family": "quadruped",
+    "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard"
+  },
+  {
+    "id": "c136-sprawler-15-iguana",
+    "family": "quadruped",
+    "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana"
+  },
+  {
+    "id": "c136-sprawler-24-newt",
+    "family": "quadruped",
+    "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt"
+  }
+]

@@ -1,0 +1,825 @@
+{
+  "schema": "cf.c132-library-scale-outcomes/v1",
+  "status": "PASS",
+  "testsPassed": 9,
+  "archetypes": 38,
+  "scaleCases": 114,
+  "totalAnatomicalAttacks": 342,
+  "totalReturns": 342,
+  "rigRefusals": 0,
+  "retries": 0,
+  "log": {
+    "path": "audits/C132_LIBRARY_SCALE_ATTACK_20261002/library-owner.log",
+    "sha256": "4a8232178fe731f9d41fd0a756d0e083782280e296a4dc339be6ce09d0efa642"
+  },
+  "source": {
+    "path": "port/v2/apps/game/src/battle2/library-arena.test.ts",
+    "sha256": "1e74d781f23ba68f747a2d23adddfa4cc59df8dbfa8ad6cd2350a87400f5be68"
+  },
+  "rows": [
+    {
+      "name": "Crab",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Crab",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Crab",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Coconut Crab",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Coconut Crab",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Coconut Crab",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Freshwater Crab",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Freshwater Crab",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Freshwater Crab",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Mud Crab",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Mud Crab",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Mud Crab",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Vent Crab",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Vent Crab",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Vent Crab",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Civet",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Civet",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Civet",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Salmon",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Salmon",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Salmon",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Eagle",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Eagle",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Eagle",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Beetle",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Beetle",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Beetle",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Python",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Python",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Python",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tree Frog",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tree Frog",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tree Frog",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Chimpanzee",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Chimpanzee",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Chimpanzee",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Starfish",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Starfish",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Starfish",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tarantula",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tarantula",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tarantula",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Octopus",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Octopus",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Octopus",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Fruit Bat",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Fruit Bat",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Fruit Bat",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Centipede",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Centipede",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Centipede",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Bass",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Bass",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Bass",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tang",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tang",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Tang",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Dragonfly",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Dragonfly",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Dragonfly",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Sturgeon",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Sturgeon",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Sturgeon",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Wolf",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Wolf",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Wolf",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Impala",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Impala",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Impala",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "River Otter",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "River Otter",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "River Otter",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Heron",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Heron",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Heron",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Marmot",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Marmot",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Marmot",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Wall Lizard",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Wall Lizard",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Wall Lizard",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Cougar",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Cougar",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Cougar",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Ibex",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Ibex",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Ibex",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Pike",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Pike",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Pike",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Goose",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Goose",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Goose",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Gull",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Gull",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Gull",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Racer",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Racer",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Racer",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Eel",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Eel",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Eel",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Salamander",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Salamander",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Salamander",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Rat",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Rat",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Rat",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Reef Shark",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Reef Shark",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Reef Shark",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Jellyfish",
+      "scale": 0.85,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Jellyfish",
+      "scale": 1,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    },
+    {
+      "name": "Jellyfish",
+      "scale": 1.15,
+      "refusals": 0,
+      "anatomyAttacks": 3,
+      "returns": 3
+    }
+  ],
+  "limitations": [
+    "Deterministic 30 Hz stage owner with portrait opponents; not native timing",
+    "Selected scripted ordinals; not every admitted verb or every real-rig pairing",
+    "Forward holder movement and exact return are observed; this does not establish published head/jaw ground clearance or visual acceptance",
+    "Production motion and measured I5 inputs unchanged"
+  ]
+}

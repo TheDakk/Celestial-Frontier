@@ -1,5 +1,7 @@
 # C132 small finisher candidate — 2026-10-02
 
+**Current verdict: visually REJECTED, 5/5 subjects.** The source-pinned Mac run on `779912d5f` passed the unchanged conservation instrument for all five inputs with no protected-pixel changes, but every finished interior loses creature identity. Full-size findings and exact image hashes are in `VISUAL_REVIEW.md` / `visual-review.json`; the native receipt is preserved unchanged. The separate `phone-probe/` packet is prepared with a precomputed embedding and no text-encoder/tokenizer routes. It has not run on a device and grants no product admission.
+
 Audit-only Mac evaluation and phone probe preparation. No game wiring, quality acceptance, physical iPhone qualification, model redistribution or production change is claimed.
 
 The pinned SDXS-512-DreamShaper ONNX UNet and TAESD decoder plus a pinned TAESD encoder export total **639,130,313 bytes**. A fixed CLIP embedding adds 236,544 bytes. This is the weight payload, not measured resident or peak GPU memory. The Mac precomputes that embedding once and releases its 246 MB text encoder before the three inference sessions. The phone package must contain only the three image graphs and the precomputed embedding; no tokenizer or text encoder is served to it.

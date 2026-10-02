@@ -1,0 +1,172 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "jungle-v2",
+  "biome": "jungle",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "jungle"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "jungle"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "jungle"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.generation.json",
+      "sha256": "58c5118598e3a5bbd3b78ca16f211879591e719680a9539f3900365d00664d2d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-mid.generation.json",
+      "sha256": "8ca323bfe473a342ea8dc84c87eb9af8783d55127f896de31a261353c80cd9ac"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-near.generation.json",
+      "sha256": "17091f164238a945ccdde255e8c5feb6ae1df773f70e1b53d5fd84c4af759121"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-composed-review.png",
+      "sha256": "91f6a04b908042b7166cd714f49b52114a5cf24d8f064d255bd2f538b3531d9e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/visual-notes.d29.json",
+      "sha256": "67297cc407fe4b83a3fab10339d5567c11b04c0b7cca1135074add8e2f301675"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-manifest.json",
+      "sha256": "caf908eeede069cff3c3b331cbe6c862ab33bbea644886078f62c750d7509c8a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-recipe.json",
+      "sha256": "ac7f27d1575a0c47531fafcbe8dccf25255c63cc8f23bf2fed9d8ab4b00a6042"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.generation.json",
+      "sha256": "58c5118598e3a5bbd3b78ca16f211879591e719680a9539f3900365d00664d2d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-far.prompt.txt",
+      "sha256": "ff3edef185a260e78fbd937ebd02f1862c625baa70bc31f25954925544959679"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-far.png",
+      "sha256": "21cc4f65b78eb183fb3dadff062b6eec8cc29193142ee1b648644fdb23bdc12f"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
+      "sha256": "21cc4f65b78eb183fb3dadff062b6eec8cc29193142ee1b648644fdb23bdc12f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-mid.generation.json",
+      "sha256": "8ca323bfe473a342ea8dc84c87eb9af8783d55127f896de31a261353c80cd9ac"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-mid-repair.prompt.txt",
+      "sha256": "b7ee61983d3e19aab4b49cf09c58dfa65829e7371bee77219363d70b3e714b12"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-mid.png",
+      "sha256": "5d2fdea51e8d64a4be904435724877e9577307908d48a13aec048b4f49b71e36"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.png",
+      "sha256": "463d61e9766b3bb6b86808844a1533e8249b020b32551ce1ed2dfaaa8d597111"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-near.generation.json",
+      "sha256": "17091f164238a945ccdde255e8c5feb6ae1df773f70e1b53d5fd84c4af759121"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-near.prompt.txt",
+      "sha256": "c66ed1ff08b86ce62def3c59231f2b8c294dfe3d4267291239fb98f39a322a77"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-near.png",
+      "sha256": "3fb249dc019d7e1102eea1befdaba7e6987b5d54969214f1fa10e704dba3d197"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-near.png",
+      "sha256": "3fb249dc019d7e1102eea1befdaba7e6987b5d54969214f1fa10e704dba3d197"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.png",
+      "sha256": "6be8202a01b5b8fccd3cdee6a074c8aa952e3dd3eee582893ea05a76db109661"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/jungle-v2/visual-notes.d29.json",
+    "findings": [
+      "Full-size existing 1672×941 composite re-inspected under D29. The selected MID avoids the earlier chopped trunk and preserves a broad earthen fighting band.",
+      "Bright/magenta remnants remain on side foliage and leaves; the dense forest, cliffs and waterfall compete for silhouette attention behind the battle. The lower NEAR band has a distinct texture/depth transition.",
+      "D29 removes only the native-size rejection. Unchanged masters, intake and earlier refusal evidence are preserved. Parallax, occlusion, native performance and quality acceptance remain unproven."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

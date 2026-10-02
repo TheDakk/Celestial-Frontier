@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c132-library-scale-owner-repair/v1",
+  "headBefore": "7203ca5af519ad90e1e7839ca75791d69c995ac3",
+  "file": "port/v2/apps/game/src/battle2/library-arena.test.ts",
+  "beforeSha256": "90f4df89390c62bd186a8ebf5482a303d1eba1dd677698753154d1f1f5ea2ced",
+  "afterSha256": "1e74d781f23ba68f747a2d23adddfa4cc59df8dbfa8ad6cd2350a87400f5be68",
+  "changes": 3,
+  "protectedInputs": [
+    {
+      "path": "port/v2/apps/game/src/anatomy-attacks.ts",
+      "sha256": "9858e2f688a328d9be02cc4b565885ffbf5a4875276c787c91015030d96889b3"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/stage.ts",
+      "sha256": "b945a7af33e112cfc84b4042667125020b01659ff926927ff9fa7b26d3e39522"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "sha256": "573ec7f5d433515169992ffee8c4d53855fd1c945bbe1175ce8f80307d113f0e"
+    },
+    {
+      "path": "port/v2/apps/game/src/morph/card-archetypes.ts",
+      "sha256": "d821ca6cc157f80e49ab7032055fb287d905c744bd01f46e399f83662495c315"
+    }
+  ],
+  "productionChanged": false,
+  "scope": "Only the scale-sweep owner test changes; preserve all prior checks. Actual declaration is passed; compiler errors propagate; each scripted anatomy action must be observed moving its holder forward and returning home. Mismatched record declaration remains a refusal."
+}

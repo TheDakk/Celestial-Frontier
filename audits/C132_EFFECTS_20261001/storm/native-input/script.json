@@ -1,0 +1,43 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "supports": "observed",
+  "themes": {
+    "A": "storm",
+    "B": "storm"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Civet",
+      "dn": "Wolf",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Wolf",
+      "dn": "Civet",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Civet",
+      "dn": "Wolf",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Civet",
+      "dn": "Wolf",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}

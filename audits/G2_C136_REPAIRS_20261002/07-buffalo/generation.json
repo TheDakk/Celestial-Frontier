@@ -1,0 +1,14 @@
+{
+  "id": "07-buffalo",
+  "name": "Buffalo",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-9a51fab7-e444-41a8-9223-2f8ed1f8ae57.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5e66328d99c1ac8bd959cdd5ee9f394e5fe3bc6a36f25f7ff53931e15018ad0b",
+  "bytes": 1219893,
+  "promptSha256": "761dedaacd52427544ce5f722c9032c144a2f099c8a7e934a9e2e86e37787b94",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

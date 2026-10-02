@@ -1,0 +1,92 @@
+{
+  "schema": "cf.arena.authoring-proof/v1",
+  "battleContext": {
+    "schema": "cf.arena.proof-context/v1",
+    "encounterKind": "wild",
+    "worldKey": "template:glass",
+    "combatants": [
+      "left-review-stand",
+      "right-review-stand"
+    ],
+    "round": 0,
+    "biomeFamily": "glass"
+  },
+  "seed": 3569878136,
+  "seedDerivation": "first4bytes big-endian SHA256 of sorted compact battleContext JSON; no clock",
+  "groundLineNormalized": 0.78,
+  "horizonBandNormalized": 0.66,
+  "standsNormalizedX": [
+    0.3333333333333333,
+    0.6666666666666666
+  ],
+  "systemCard": "SYSTEM CARD - reusable biome-family template glass; canonical profile glass\n  Template scope: source-derived profile plus explicit authored stage interpretation; no live planet address or runtime world snapshot is claimed.\n  Star: not bound at template-authoring time; runtime system light remains source-owned.\n  Light: one soft diffuse near-neutral authoring light from upper left; preserve the same direction on all three plates; no visible star or extra light source.\n  Mineral palette: canonical signature #c8b0a0; named material flat amber-gray mineral sand.\n  Atmosphere: canonical weather dry-heat; authored medium ground; distant weathered glassy ridges, sharp shards kept far behind the stands.\n  Flora pigment: source profile glass; permitted forms none; restrained natural pigment interpreted in the named materials.\n  Fauna adaptation: source families arachnid, insect; no fauna are painted into these arena layers.\n  One signature: glass-shard; signature stays behind the combatant stands, never breaks the continuous fighting path.\n  Authoring variant: canonical biome-family template; source BIOME_ATLAS.md#1--live-biomes-43-in-the-game-now--colored-first-in-phase-4.",
+  "systemCardSource": "audits/C132_ARENAS_20261001/glass/arena-far.prompt.txt",
+  "systemCardSourceSha256": "6fdae785315dc48dafa2583c7394acc06d683facb391119d0923a36779a3a966",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "extractedMasks": false,
+  "qualityAccepted": false,
+  "scope": "source-derived reusable template authoring; no live world, game wiring, physical-medium admission or visual acceptance claimed",
+  "requestedCanvasSize": {
+    "width": 2560,
+    "height": 1440
+  },
+  "profileKey": "glass",
+  "habitatVariant": null,
+  "medium": "ground",
+  "canonicalProfile": {
+    "sig": "#c8b0a0",
+    "fauna": [
+      "arachnid",
+      "insect"
+    ],
+    "flora": [],
+    "hazard": "glass-shard",
+    "weather": "dry-heat"
+  },
+  "sourceInputs": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "a669109aded91bfbf2c385607c27719a9ef927e93bc7ac95f3cec4ef55b5dc60"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/MAILBOX/C132_ART_PROGRAM_20261001.md",
+      "sha256": "92d9ad1066656ababe245f9ef07b70857636763a3b6301d502a819a3b6ac6b15"
+    }
+  ],
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+  },
+  "plates": [
+    {
+      "image": "arena-far.png",
+      "sha256": "b6bd686b1b198470fca53f27804640f1b928a868c3dab114805b8f71af388d07",
+      "kind": "scene",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-mid.png",
+      "sha256": "15de877b6c21a1da04678350c954c2fe268f4d318396a93f95b85d7ccb66d046",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-near.png",
+      "sha256": "1aa29aee05fb5374e9166d781537f0b8acb636a47212a47bde48024356014b00",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    }
+  ],
+  "canvasSize": {
+    "width": 1672,
+    "height": 941
+  }
+}

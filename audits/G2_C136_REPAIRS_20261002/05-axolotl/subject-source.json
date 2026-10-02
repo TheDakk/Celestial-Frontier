@@ -1,0 +1,72 @@
+{
+  "name": "Axolotl",
+  "family": "quadruped",
+  "species": {
+    "name": "Axolotl",
+    "aspect": 3.5,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "three pairs of feathery external gill stalks",
+      "wide flat head with an upcurved smiling mouth",
+      "fin crest running along tail and back"
+    ],
+    "note": "Stays larval for life - it keeps four small legs plus the gills; never draw it as a metamorphosed salamander."
+  },
+  "genome": {
+    "seed": 2567017132,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 7,
+    "body": 14,
+    "loco": 16,
+    "trait": 13,
+    "size": 4,
+    "diet": 5,
+    "head": 7,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 17,
+    "detail": 7,
+    "accent": 14,
+    "temper": 0,
+    "sense": 7,
+    "repro": 4,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Axolotl"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Axolotl\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2567017132\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 575,
+  "profile": {
+    "id": "salamander",
+    "names": [
+      "Salamander",
+      "Newt",
+      "Giant Salamander",
+      "Alpine Salamander",
+      "Olm",
+      "Blind Salamander",
+      "Axolotl"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Preserve tail and optional external gills; no mammalian ears."
+  }
+}

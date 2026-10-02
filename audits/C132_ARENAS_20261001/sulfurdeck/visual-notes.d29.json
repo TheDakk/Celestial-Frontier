@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "sulfurdeck",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/sulfurdeck/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+    "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.png",
+    "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.png"
+  ],
+  "findings": [
+    "All originals and native1672\u00d7941 composition inspected. Gold-green mineral crust and storm atmosphere produce a distinct family, with open static stands and no painted flora or celestial bodies observed.",
+    "The NEAR strip shifts toward a cooler gray-green tone and introduces a visible lower-frame boundary. MID side formations are more saturated than distant material; fine chroma remnants remain at some ridge edges.",
+    "Independent full-size scoring, combatant readability under the yellow atmosphere and native battle appearance remain untested. No visual acceptance is claimed."
+  ]
+}

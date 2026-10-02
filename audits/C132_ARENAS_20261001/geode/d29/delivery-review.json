@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "geode",
+  "biome": "geode",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "geode"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "geode"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "geode"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-far.generation.json",
+      "sha256": "ecbaccb4e335b90eeccf736e052507b8509a320e5cbe1993a54e7230a7fd9ad9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-mid.generation.json",
+      "sha256": "b2ff0fbf7ff02a2598d64f25b18efd0e109a37c466f88f6551a875e85140b50c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-near.generation.json",
+      "sha256": "32e2e5d5e3c9fd4e7c02228ff4b2e163f14f8403ebcd021a4391d391ad7afcca"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-composed-review.png",
+      "sha256": "56747d2c747e9187652fdf129ab852303476ac840204ffff54ba23c4b1686623"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-plates-review.png",
+      "sha256": "fb0c82322cb83059351333af6c71f6697eba5909746ddac506a8ba15f5a07b73"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-far.png",
+      "sha256": "91fda9e39bce736f279ce7139c3e00e5d993f85c97d23fcd116a933e5ba7dd71"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-mid.png",
+      "sha256": "d11278b2f1ea19a89f38c9f9edf60ca8ce671cc13a634d2099c6abdc8d156a4b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-near.png",
+      "sha256": "9f476f217a389934de3759dfc60834bc32aa2705d2f6138deddf4aa63eac8ddd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/visual-notes.d29.json",
+      "sha256": "4890b523266fffe178438c6831f823284c2bd2b6cdecd086d7634c7593158e85"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-manifest.json",
+      "sha256": "1200a9ea425ca6c3170ff1999e26018ca86bc2504efe22236886b42c0ed8df7f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-recipe.json",
+      "sha256": "46be226ed88c1dce942d8d8f1a64e00e15c19a64e6bb2ebf4e7671e6bc3af37c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-far.generation.json",
+      "sha256": "ecbaccb4e335b90eeccf736e052507b8509a320e5cbe1993a54e7230a7fd9ad9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-far.prompt.txt",
+      "sha256": "358f88a21d7e5ddc90e4ae5cbc4a1808db5ffc0c1d34bb6bd88c778234f7ece9"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-mid.generation.json",
+      "sha256": "b2ff0fbf7ff02a2598d64f25b18efd0e109a37c466f88f6551a875e85140b50c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-mid.prompt.txt",
+      "sha256": "3849649e37bff22aafecb868b6acc84d574e00dd4424ef6a972a2c662bc38c13"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/keyed/arena-mid.png",
+      "sha256": "04b9e11a384536bd8ebb5eede20b55312bbae9b3f50140f71646fde9ad2ff729"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-near.generation.json",
+      "sha256": "32e2e5d5e3c9fd4e7c02228ff4b2e163f14f8403ebcd021a4391d391ad7afcca"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/arena-near.prompt.txt",
+      "sha256": "01cb44f1dd91d704d9cf139bfd32c99d0340f6940d4687fbfcca77ab8df72ecf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/geode/keyed/arena-near.png",
+      "sha256": "7bf04f80a2340518446cfd1e0d243f629626eb21943279ef9ecef5337172969d"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/geode/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Amethyst clusters, cavern depth and broad pale-purple rock runway read coherently, with clear stand locations.",
+      "Fine crystal and rock boundaries contain small cutout notches and pink remnants. NEAR adds a lower shelf and another crack pattern, creating a visible horizontal change in scale. The large bridge-like natural arch and high-contrast crystals may compete with creature silhouettes.",
+      "Ground-line checks pass, but seam/fringe cleanup, independent style scoring and native parallax/creature proof remain outstanding. No acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}
