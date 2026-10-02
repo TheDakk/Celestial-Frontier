@@ -4,7 +4,7 @@
   {
    "path": "battle2/MANIFEST.json",
    "bytes": 27175,
-   "sha256": "7c959ac9333bf89f5058f3904fbc5e99bb1f767d10e196765222a8c6af98d546"
+   "sha256": "be64ec60dc22b0ceabe216150abc4a4c2a80c0b044a0caf76a563676f2cb41c5"
   },
   {
    "path": "battle2/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json.gz",
@@ -422,11 +422,6 @@
    "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
   },
   {
-   "path": "battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-mid.png",
-   "bytes": 2865724,
-   "sha256": "f60de65e6f4592a4b7d8890e92d986930be8521e1c7d768d8b39548d4c5fa377"
-  },
-  {
    "path": "battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
    "bytes": 1686808,
    "sha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2"
@@ -450,6 +445,11 @@
    "path": "battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",
    "bytes": 2800,
    "sha256": "efe2405f0168299d429debc35ed72ee0dbbca7f602ee03f957a8bec3f49e26c2"
+  },
+  {
+   "path": "battle2/audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
+   "bytes": 2865228,
+   "sha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e"
   },
   {
    "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/binding.json.gz",

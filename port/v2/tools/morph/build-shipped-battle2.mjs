@@ -12,6 +12,7 @@ import { alphaOnlyPng, writeBattle2MasterPins } from './battle2-master-pins.mjs'
 import { artTierOf } from './art-library-tiers.mjs';
 import { writeArtLibraryManifest } from './art-library-manifest.mjs';
 import { writeFinishSources } from './build-finish-sources.mjs';
+import { arenaRuntimeFiles, writeArenaSets } from './arena-sets.mjs';
 const R = path.resolve(import.meta.dirname, '../../../..'), OUT = path.join(R, 'port/v2/apps/game/public/battle2');
 // G3: a LIBRARY archetype's arena files are served on demand from `public/library/battle2/…` (same relative layout, outside the pack);
 // the CORE archetypes and the shared arena files stay under `public/battle2/…` (pinned first-use pack files, as before).
@@ -29,7 +30,10 @@ const alphaOnly = new Set();
 const gzipped = new Set();
 // alphaOnlyPng lives in battle2-master-pins.mjs: ONE copy, so the pinned alpha bytes are exactly the served ones (C13)
 const FITS = CARD_ARCHETYPES.map((a) => a.dir), MARKINGS = CARD_ARCHETYPES.map((a) => a.markings ?? a.dir);
-const files = new Set([ARENA + 'arena-recipe.json', ARENA + 'wild-anchors.json', ARENA + 'arena-far.png', ARENA + 'keyed/arena-mid.png', ARENA + 'keyed/arena-near.png', 'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json', 'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png']);
+// Arena plate sets (2026-10-01): every registered delivery manifest's runtime recipe + plates (tools/morph/arena-sets.mjs, which also
+// regenerates apps/game/src/battle2/arena-sets.generated.json). The proof directory's recipe stays: the wiring resolves every path against it.
+const arenaSets = writeArenaSets(R);
+const files = new Set([ARENA + 'arena-recipe.json', ARENA + 'wild-anchors.json', ...arenaRuntimeFiles(arenaSets), 'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json', 'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png']);
 const anchors = JSON.parse(fs.readFileSync(path.join(R, ARENA, 'wild-anchors.json'), 'utf8')); for (const p of anchors.phases ?? []) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) files.add(ARENA + p.keyedImage);
 for (const dir of FITS) { const record = JSON.parse(fs.readFileSync(path.join(R, dir, 'record.json'), 'utf8')), manifest = JSON.parse(fs.readFileSync(path.join(R, dir, 'parts/manifest.json'), 'utf8'));
   for (const f of ['record.json', 'parts/manifest.json', 'parts/atlas/' + manifest.creatureId + '.png']) files.add(dir + f);

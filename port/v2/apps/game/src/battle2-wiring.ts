@@ -35,7 +35,7 @@ import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-c
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectHabitatArena, turnPlanInputFromTranscriptEvent,
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectArena, selectHabitatArena, ARENA_FALLBACK_ASSETS, turnPlanInputFromTranscriptEvent, type ArenaKind,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -86,8 +86,9 @@ export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
  * build-shipped-battle2.mjs), `parts/manifest.json` and `parts/atlas/<id>.png`;
  * the painter master is `record.source` (repo-relative). */
 export const BATTLE2_ASSETS = Object.freeze({
-  recipe: 'arena-recipe.json', anchors: 'wild-anchors.json',
-  far: 'arena-far.png', mid: 'keyed/arena-mid.png', near: 'keyed/arena-near.png',
+  // the accepted Earth temperate set's runtime files, from its delivery manifest (battle2/arena-registry.ts; MID = the approved despilled copy)
+  recipe: ARENA_FALLBACK_ASSETS.recipe, anchors: 'wild-anchors.json',
+  far: ARENA_FALLBACK_ASSETS.far, mid: ARENA_FALLBACK_ASSETS.mid, near: ARENA_FALLBACK_ASSETS.near,
   civetRecord: '../CIVET_2D_PROOF_20260912/civet.landmarks.json', civetMaster: '../ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',
   // every painted archetype (GENERATED from the card builder's list — one source for the card, the arena and the shipped assets)
   partsFits: BATTLE2_PARTS_FITS,
@@ -169,6 +170,10 @@ export interface Battle2StudyInput {
   readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
   /** A named world built on the study's own ground line (the matchup picker): `lake` = liquid water with a surface. Ignored when `worlds` is given. */
   readonly worldPreset?: 'lake';
+  /** The arena route (battle2/arena-registry.ts, 2026-10-01): the encounter kind and duel round pick the fight world from `worlds`
+   * (home-versus-visitor), and that world's biome picks the painted plate set. Defaults: 'wild', round 0, seed = fnv1a32(battleId).
+   * Without `worlds` the accepted Earth temperate set is used, exactly as before. */
+  readonly arenaContext?: Readonly<{ kind?: ArenaKind; round?: number; seed?: number }>;
 }
 export type Battle2Phase = 'loading' | 'playing' | 'finished' | 'failed' | 'disposed';
 export interface Battle2Status {
@@ -187,6 +192,8 @@ export interface Battle2Status {
   readonly beats?: Readonly<{ count: number; index: number; text: string | null }>;
   /** E1: the habitat arena selection (world, medium per side, source), or null before it ran / when it refused. */
   readonly arena: string | null;
+  /** 2026-10-01: which painted set the battle uses and why (`selectArena` reason: biome / kin / fallback / default). */
+  readonly arenaRoute?: string | null;
   /** E1: per side, the anatomy attack in play (`verb (contactJoint)`) or why the family delivery clip is used. */
   readonly attacks: Readonly<{ left: string | null; right: string | null }>;
   /** E1: per side, poses the parts rig refused so far (null for fixture/portrait rigs, which never refuse). */
@@ -301,13 +308,13 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   let phase: Battle2Phase = 'loading', reason: string | null = null, label: string | null = null, ticks = 0, turnIndex = -1;
   const skipped: string[] = []; const finishedSides = { left: false, right: false }; /* G5: which sides drew an admitted finished atlas */ let turns: TurnPlanInput[] = []; const turnRows: number[] = []; let turnStart = 0, impactAt = Infinity, releasedTurn = -1;
   const releaseThrough = (turn: number): void => { if (turn <= releasedTurn) return; releasedTurn = turn; input.pacer?.release(turnRows[turn]!); }; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
-  const attackLabels = { left: null as string | null, right: null as string | null }; let arenaLabel: string | null = null; let refusalsOf: () => Readonly<{ left: number | null; right: number | null }> = () => Object.freeze({ left: null, right: null });
+  const attackLabels = { left: null as string | null, right: null as string | null }; let arenaLabel: string | null = null, arenaRoute: string | null = null; let refusalsOf: () => Readonly<{ left: number | null; right: number | null }> = () => Object.freeze({ left: null, right: null });
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
   const audioSummary = (): string => (cueSink ? `${cueSink.log.length} cues: ${cueSink.log.map((e) => `${e.cueId}=${e.result}`).join(', ')}` : 'none');
   let voices: CreatureVoiceHook | null = null;
   let beats: readonly Battle2SwapBeatV1[] = [], beatIndex = -1, beatStart = 0, beatCaption: StageTextLike | null = null;
   const beatMs = input.reducedMotion ? BATTLE2_SWAP_BEAT_REDUCED_MS_V1 : BATTLE2_SWAP_BEAT_MS_V1;
-  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
+  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, arenaRoute, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tickUnguarded = (): void => {
     if (disposed || !stage || !app) return;
@@ -359,7 +366,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   const build = async (): Promise<Battle2Status> => {
     const assets = input.assets ?? devAssetSource();
     const keyer: Battle2Keyer = input.keyer ?? ((rgba, w, h) => keyAndDespill(rgba, w, h));
-    const [recipeRaw, anchorsRaw, far, mid, near] = await Promise.all([assets.json(BATTLE2_ASSETS.recipe), assets.json(BATTLE2_ASSETS.anchors), assets.image(BATTLE2_ASSETS.far), assets.image(BATTLE2_ASSETS.mid), assets.image(BATTLE2_ASSETS.near)]);
+    // Home ground (2026-10-01): the fight world's biome picks the painted set; without `worlds` this is the accepted temperate set at its
+    // delivery manifest's runtime paths, the ones BATTLE2_ASSETS names (arena-registry.test.ts pins that).
+    const route = selectArena({ kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null });
+    arenaRoute = route.reason;
+    const [recipeRaw, anchorsRaw, far, mid, near] = await Promise.all([assets.json(route.assets.recipe), assets.json(BATTLE2_ASSETS.anchors), assets.image(route.assets.far), assets.image(route.assets.mid), assets.image(route.assets.near)]);
     const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };
     if (typeof recipe.groundLineNormalized !== 'number' || typeof recipe.seed !== 'number' || typeof recipe.systemCard !== 'string') throw new Error('battle2 arena recipe lacks groundLineNormalized/seed/systemCard');
     const parsed = parseEffectSequenceAnchors(anchorsRaw); if (!parsed.ok) throw new Error(`battle2 anchors refused: ${parsed.reason}`);
@@ -462,7 +473,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     refusalsOf = () => Object.freeze({ left: left.rig.refusals?.() ?? null, right: right.rig.refusals?.() ?? null });
     // E1 §1.4 + 2026-09-24: ONE placement pipeline (battle2/placement.ts — the film harness and the tests use the same): size, habitat, band
     // fit, drawn scale, each painted box centred on its stand, the wet arena. UNSUPPORTED keeps the Chronicle path with its reason.
-    const placed = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: input.worlds ?? (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null),
+    const placed = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: route.world ? { home: route.world, visitor: route.world } /* the plates' world, so medium and painting agree */ : (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null),
       left: { rig: left.rig, mass: left.mass, record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName },
       right: { rig: right.rig, mass: right.mass, record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName } });
     const habitat = placed.habitat; arenaLabel = habitat.label;

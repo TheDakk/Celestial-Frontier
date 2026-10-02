@@ -1,0 +1,21 @@
+{
+ "schema": "cf.arena-sets/v1",
+ "generatedBy": "port/v2/tools/morph/arena-sets.mjs from port/v2/tools/morph/arena-deliveries.json",
+ "sets": [
+  {
+   "id": "earth-temperate-v1",
+   "biome": "temperate",
+   "delivery": "audits/ARENA_ROUTING_20261001/earth-temperate-v1.delivery.json",
+   "recipe": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+   "acceptance": "audits/ARENA_V1_ACCEPTANCE_20260912/acceptance.json",
+   "far": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
+   "mid": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
+   "near": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
+    "mid": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-mid.png",
+    "near": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-near.png"
+   }
+  }
+ ]
+}

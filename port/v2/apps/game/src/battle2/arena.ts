@@ -1,9 +1,8 @@
 /** @module battle2/arena [domain] — arena composition (MOTION_KIT §7 ARENA). Pure, clock-free.
  * Three plates (far/mid/near) parallax at .10/.50/1.20 of the run-up displacement; stands at
  * x = 1/3 and 2/3 on the shared ground line; combatants at 1/3..1/2 of frame height by mass.
- * Arena selection follows the home-versus-visitor rule with a seeded pick (mulberry32) among
- * the candidates a world offers; nothing here reads a clock or Math.random. */
-import { mulberry32 } from '@cf/domain-rand';
+ * Which painted arena a battle uses (home-versus-visitor rule, biome → plate set) lives in
+ * `arena-registry.ts` since 2026-10-01; nothing here reads a clock or Math.random. */
 import { MASS_CLASS } from '../motion/timing.js';
 
 export const PARALLAX_RATES = Object.freeze({ far: 0.10, mid: 0.50, near: 1.20 });
@@ -103,31 +102,4 @@ export function combatantScale(bounds: Readonly<{ height: number }>, cutoutHeigh
   if (!(options.tallestHeight >= bounds.height)) throw new TypeError('combatant scale: tallestHeight must be at least bounds.height');
   const scale = heightPx / (options.tallestHeight * cutoutHeightPx);
   return Object.freeze({ scale, heightFraction, heightPx: scale * bounds.height * cutoutHeightPx });
-}
-
-/* ---------- seeded arena selection (stub: recipe ids only) ---------- */
-export type ArenaSelectionContext =
-  | Readonly<{ kind: 'wild'; seed: number; wildWorldArenas: readonly string[] }>
-  | Readonly<{ kind: 'guardian'; seed: number; lairArenas: readonly string[] }>
-  | Readonly<{ kind: 'duel'; seed: number; hostArenas: readonly string[]; visitorArenas: readonly string[]; duelIndex: number }>;
-export interface ArenaSelection { readonly recipeId: string; readonly owner: 'wild-world' | 'lair' | 'host' | 'visitor'; readonly reason: string; }
-
-const pick = (seed: number, list: readonly string[], what: string): string => {
-  if (!Array.isArray(list) || list.length === 0 || !list.every((s) => typeof s === 'string' && s)) throw new TypeError(`arena selection: ${what} must list at least one recipe id`);
-  if (!Number.isInteger(seed)) throw new TypeError('arena selection: seed must be an integer');
-  return list[Math.floor(mulberry32(seed >>> 0)() * list.length)] as string;
-};
-/** Home-versus-visitor rule: wild → the wild creature's world; guardian → its lair; duel → the host first, then alternate. */
-export function selectArena(context: ArenaSelectionContext): ArenaSelection {
-  switch (context.kind) {
-    case 'wild': return Object.freeze({ recipeId: pick(context.seed, context.wildWorldArenas, 'wildWorldArenas'), owner: 'wild-world', reason: 'wild encounter is fought on the wild creature\'s world' });
-    case 'guardian': return Object.freeze({ recipeId: pick(context.seed, context.lairArenas, 'lairArenas'), owner: 'lair', reason: 'guardian is fought in its lair' });
-    case 'duel': {
-      if (!Number.isInteger(context.duelIndex) || context.duelIndex < 0) throw new TypeError('arena selection: duelIndex must be a non-negative integer');
-      const host = context.duelIndex % 2 === 0;
-      return Object.freeze({ recipeId: pick(context.seed + context.duelIndex, host ? context.hostArenas : context.visitorArenas, host ? 'hostArenas' : 'visitorArenas'),
-        owner: host ? 'host' : 'visitor', reason: `duel ${context.duelIndex}: ${host ? 'host' : 'visitor'} arena (host first, then alternating)` });
-    }
-    default: throw new TypeError('arena selection: unknown encounter kind');
-  }
 }

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.arena-deliveries/v1",
+ "note": "Registration of painted arena plate sets: ONE line per accepted delivery manifest (cf.arena-delivery/v1, repo-relative). tools/morph/arena-sets.mjs turns this list into apps/game/src/battle2/arena-sets.generated.json; build-shipped-battle2.mjs ships each set's runtime files. Contract: audits/ARENA_ROUTING_20261001/README.md.",
+ "deliveries": [
+  "audits/ARENA_ROUTING_20261001/earth-temperate-v1.delivery.json"
+ ]
+}

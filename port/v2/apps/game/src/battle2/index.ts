@@ -8,3 +8,4 @@ export * from './choreography.js';
 export * from './cue-plan.js';
 export * from './stage.js';
 export * from './habitat-arena.js';
+export * from './arena-registry.js';

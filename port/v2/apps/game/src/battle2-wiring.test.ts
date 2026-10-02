@@ -446,3 +446,23 @@ describe('battle2 wiring: one voice per creature (D15 Stage 0)', { timeout: 60_0
     expect(legacy.ok && legacy.card.seed).not.toBe((row.voice as { seed: number }).seed);
   });
 });
+
+describe('battle2 wiring: home-ground arena route (2026-10-01)', () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  const world = (key: string, biome: 'temperate' | 'canyon' | 'packice', seed: number) => Object.freeze({ key, biome, seed, solid: true, atmosphere: true, liquid: null, surfaceWater: false, signature: key, cardHash: 'c-' + key });
+  it('no worlds: the default temperate set, labelled; a guardian lair on an unpainted world: its world, named fallback; a duel: the routed world is the habitat world', async () => {
+    const plain = harness(), ready = await mountBattle2Study(plain.input).ready;
+    expect(ready.phase).toBe('playing'); expect(ready.arenaRoute).toMatch(/^no world context: accepted earth-temperate-v1 plates$/);
+    const lair = harness({ worlds: { home: world('lair-canyon', 'canyon', 3), visitor: world('visitor-temperate', 'temperate', 4) }, arenaContext: { kind: 'guardian' } });
+    const r = await mountBattle2Study(lair.input).ready;
+    expect(r.phase).toBe('playing'); expect(r.arenaRoute).toMatch(/guardian's lair lair-canyon \(canyon, desert\): no painted desert set yet; fallback accepted earth-temperate-v1 plates$/);
+    expect(r.arena).toMatch(/^lair-canyon/); // the habitat compiler placed both fighters on the routed (lair) world
+    expect(lair.calls).toEqual(expect.arrayContaining([BATTLE2_ASSETS.recipe, BATTLE2_ASSETS.far, BATTLE2_ASSETS.mid, BATTLE2_ASSETS.near]));
+    // a duel over two rounds: host and visitor alternate, and the plates' world is the habitat world every time (one rule)
+    const worlds = { home: world('host-temperate', 'temperate', 5), visitor: world('visitor-packice', 'packice', 6) };
+    const both: [boolean, boolean][] = [];
+    for (const round of [0, 1]) { const d = harness({ worlds, arenaContext: { kind: 'duel', round, seed: 77 } }); const s = await mountBattle2Study(d.input).ready; both.push([s.arenaRoute!.includes('visitor-packice'), s.arena!.startsWith('visitor-packice')]); }
+    for (const [routeOnVisitor, habitatOnVisitor] of both) expect(habitatOnVisitor).toBe(routeOnVisitor);
+    expect(both.map(([v]) => v).sort()).toEqual([false, true]);
+  });
+});
