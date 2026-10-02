@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 231,
+ "total": 232,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -1618,6 +1618,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/18-wasp",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle; six legs, both wing pairs and antennae intact"
+  },
+  {
+   "family": "flyer-membrane",
+   "name": "Bat",
+   "nativeDir": "audits/BAT_C190_20261002/bat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: native PASS, but the aerial placement puts the bat mostly above the top edge of the frame (staging fix pending)"
   }
  ]
 }
