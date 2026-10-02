@@ -1,0 +1,52 @@
+{
+  "schema": "cf.c196-presence-controls/v1",
+  "controls": [
+    {
+      "id": "12-chameleon",
+      "mutation": "masterSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact master hash"
+    },
+    {
+      "id": "12-chameleon",
+      "mutation": "promptSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact prompt hash"
+    },
+    {
+      "id": "12-chameleon",
+      "mutation": "name",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: canonical named subject"
+    },
+    {
+      "id": "12-chameleon",
+      "positive": "four pinna joints only",
+      "status": "PASS"
+    },
+    {
+      "id": "13-marine-iguana",
+      "mutation": "masterSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact master hash"
+    },
+    {
+      "id": "13-marine-iguana",
+      "mutation": "promptSha256",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: exact prompt hash"
+    },
+    {
+      "id": "13-marine-iguana",
+      "mutation": "name",
+      "status": "REFUSED",
+      "reason": "Reviewed presence: canonical named subject"
+    },
+    {
+      "id": "13-marine-iguana",
+      "positive": "four pinna joints only",
+      "status": "PASS"
+    }
+  ],
+  "qualityAccepted": false
+}

@@ -1,0 +1,3 @@
+# C196 exact-source external-pinna reviews
+
+C177 requests reviews for the new Chameleon and Marine Iguana packet identities. Full-size observation supports only absence of mammalian external pinnae. The existing independent canonical profile owner admits exactly the four optional ear joints, rejecting stale master, prompt and name controls. Source pixels, landmarks, contact checks and anatomy elsewhere are unchanged. Chameleon digit structure and Marine Iguana tail shape remain source holds. No visual admission, fit patch, native run or runtime edit. Use reviewed-presence.json for a new author/intake; old sealed fits remain immutable.
