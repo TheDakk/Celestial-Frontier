@@ -1,0 +1,87 @@
+{
+  "schema": "cf.c168-cephalopod-reference-source-review/v1",
+  "date": "2026-10-02",
+  "subjects": [
+    {
+      "name": "Giant Octopus",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus/master.png",
+      "sha256": "ed746451e5751a2189ccb630bb5d8d37fdc3ff6145d3df24b89d88ef36afccc2",
+      "bytes": 1438350,
+      "sourceUnchanged": true,
+      "observationMode": "Full-size manual visual inspection, not automatic semantic inference",
+      "observedArmTipCoordinatesApproxPx": [
+        [
+          334,
+          371
+        ],
+        [
+          290,
+          523
+        ],
+        [
+          252,
+          670
+        ],
+        [
+          254,
+          839
+        ],
+        [
+          436,
+          895
+        ],
+        [
+          653,
+          862
+        ],
+        [
+          934,
+          925
+        ],
+        [
+          1023,
+          784
+        ]
+      ],
+      "armTipCountObserved": 8,
+      "eyeObservation": "One clear near eye. The far eye cannot be located confidently from this painted view; no far-eye coordinate or pixel owner is invented.",
+      "referenceStatus": "HELD_SOURCE_VISIBILITY"
+    },
+    {
+      "name": "Cuttlefish",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish/master.png",
+      "sha256": "32558a20501498deb6e00bdc0d71fe97def50b76177a55a1edb9b22ce6f018a6",
+      "bytes": 1269722,
+      "sourceUnchanged": true,
+      "observationMode": "Full-size manual visual inspection, not automatic semantic inference",
+      "armTipCountObserved": null,
+      "eyeObservation": "One clear eye; far eye is not confidently visible.",
+      "appendageObservation": "Two long club-ended feeding tentacles are distinct. Short arm roots/tips overlap; this observation does not assert a complete count or invent endpoints.",
+      "referenceStatus": "HELD_SOURCE_VISIBILITY"
+    }
+  ],
+  "contractInputs": [
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684"
+    }
+  ],
+  "contractFinding": "The cephalopod graph requires eyeFar and eyeNear unless the complete eyes group is explicitly absent. Hidden presence currently supports only brachyuran leg3 chains. A hidden far eye cannot honestly be represented as absent eyes or as a fabricated painted landmark.",
+  "decision": "Do not hand-author a false reference from these views. Future source repaint should expose both eyes and a traceable full appendage inventory; runtime hidden-eye support, if separately implemented, would change product bytes and require later evidence.",
+  "productChanged": false,
+  "referenceAdded": false,
+  "sourcePixelsChanged": false,
+  "nativeRuns": 0
+}

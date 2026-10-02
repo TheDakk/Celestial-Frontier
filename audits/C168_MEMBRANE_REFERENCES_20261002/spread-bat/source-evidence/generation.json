@@ -1,0 +1,14 @@
+{
+  "id": "22-bat",
+  "name": "Bat",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-9296316d-b5b7-49ac-a84b-5623889e1b43.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+  "bytes": 1230591,
+  "promptSha256": "fa88277b850e61aac73d1134e382b82ad0060deccba600a4c9cf2981d1a7c947",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

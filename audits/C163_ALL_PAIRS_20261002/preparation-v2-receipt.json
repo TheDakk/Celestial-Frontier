@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c163-all-pairs-preparation/v2",
+  "status": "PASS",
+  "sourceHead": "08ddca65fe9ad360cc2ee6192bb2e4e67b04d3fb",
+  "fits": 38,
+  "orderedPairs": 1444,
+  "mirrorPairs": 38,
+  "sharedSourceFiles": 1321,
+  "nativeMatrixRuns": 0,
+  "preparedOnly": true,
+  "manifestSha256": "55e24b4d44aff12125cec9c0c3a28992cb5cae450f544e3eb8035457e7f28164",
+  "nativeBundleSha256": "efef3bde2c81703ba977db267e8985f2f32229428dd97f36b277553970f018d3",
+  "controls": {
+    "currentBoundaryAndInventory": 12,
+    "priorSynthetic": 36,
+    "allPassed": true
+  },
+  "rejectedHistory": {
+    "manifest": "audits/C163_ALL_PAIRS_20261002/prepared/manifest.json",
+    "reason": "Trailing-slash directory mismatch and null per-pair input records; no native run; all predecessor bytes retained."
+  },
+  "currentDriver": "audits/C163_ALL_PAIRS_20261002/run-sweep-v2.mjs",
+  "currentValidator": "audits/C163_ALL_PAIRS_20261002/validate-v2.mjs",
+  "overall60fpsQualification": "UNMEASURED",
+  "performanceClaim": null
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c168-anatomical-hold/v1",
+  "status": "ANATOMICAL_HOLD",
+  "masterSha256": "e3fb8cd445248ab4f31f8b0ca43e558d86c4933dd8f92f90b3cc146853bb44ae",
+  "observation": "observation.json",
+  "reasons": [
+    "Forelimb support tips have several clawed digits, visually resembling extra paws. They cannot be relabelled as the requested real single free thumb.",
+    "Far wing root and folded long-finger chain are not independently traceable through the torso overlap; mapping a complete second membrane chain would invent hidden ownership.",
+    "Support extremities have unequal vertical extents. No common grounded four-point stance is asserted from this painting.",
+    "The nose pad is stylized and raised; exact Vampire Bat species anatomy remains a visual review hold."
+  ],
+  "noFitAttempt": true,
+  "sourceBytesPreserved": true,
+  "negativeOutcomeRetained": true
+}

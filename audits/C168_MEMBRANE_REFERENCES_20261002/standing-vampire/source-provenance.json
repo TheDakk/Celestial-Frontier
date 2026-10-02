@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c168-membrane-source/v1",
+  "sourcePacket": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat",
+  "mode": "new built-in imagegen original pending; same canonical species card",
+  "copied": [
+    {
+      "file": "subject-source.json",
+      "sha256": "43f0bb8561212252001302d97050d2777b1647d68b8dc0400dcf2d1c8d970426"
+    }
+  ],
+  "promptSha256": "219300a65b7e88042a80a8381225f3cf90940085fa82a5dae842c45834db16a9",
+  "priorPromptSha256": "aebffe16f54e58b8fce00d8270b7833916549881f12624a9141ec50da11c5ad9",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "qualityAccepted": false,
+  "nativeAcceptance": false
+}
