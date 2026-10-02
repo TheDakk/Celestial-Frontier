@@ -1,0 +1,533 @@
+{
+  "context": {
+    "actionId": "approach:crawl",
+    "elapsedMs": 333.0333333333333,
+    "durationMs": 420,
+    "weight": 1,
+    "planted": false,
+    "travel": "stage",
+    "stageDisplacement": 0.05870172991071427
+  },
+  "pose": {
+    "head": {
+      "rotation": -0.016840226333670383,
+      "dx": 0,
+      "dy": 0
+    },
+    "mandible": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "antennaFar": {
+      "rotation": 0.027099538059324316,
+      "dx": 0,
+      "dy": 0
+    },
+    "antennaNear": {
+      "rotation": 0.027099538059324316,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg0FarKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg0FarFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg0NearKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg0NearFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1FarKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1FarFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1NearKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1NearFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2FarKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2FarFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2NearKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2NearFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3FarKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3FarFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3NearKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3NearFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4FarKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4FarFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4NearKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4NearFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg5FarKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg5FarFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg5NearKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg5NearFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg6FarKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg6FarFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg6NearKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg6NearFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg7FarKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg7FarFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg7NearKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg7NearFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg8FarKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg8FarFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg8NearKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg8NearFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg9FarKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg9FarFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg9NearKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg9NearFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg10FarKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg10FarFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg10NearKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg10NearFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg11FarKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg11FarFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg11NearKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg11NearFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg12FarKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg12FarFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg12NearKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg12NearFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg13FarKnee": {
+      "rotation": -0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg13FarFoot": {
+      "rotation": -0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg13NearKnee": {
+      "rotation": 0.35669826598206006,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg13NearFoot": {
+      "rotation": 0.19456269053566916,
+      "dx": 0,
+      "dy": 0
+    },
+    "ultimateFar": {
+      "rotation": 0.018066358706216208,
+      "dx": 0,
+      "dy": 0
+    },
+    "ultimateNear": {
+      "rotation": -0.018066358706216208,
+      "dx": 0,
+      "dy": 0
+    },
+    "root": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": -0.0014824369474821905
+    }
+  },
+  "resolved": {
+    "head": {
+      "rotation": -0.016840226333670383,
+      "dx": 0,
+      "dy": 0
+    },
+    "mandible": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "antennaFar": {
+      "rotation": 0.027099538059324316,
+      "dx": 0,
+      "dy": 0
+    },
+    "antennaNear": {
+      "rotation": 0.027099538059324316,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg0FarKnee": {
+      "rotation": -0.3946731654926332
+    },
+    "leg0FarFoot": {
+      "rotation": 0.49274002889789226
+    },
+    "leg0NearKnee": {
+      "rotation": 0.2534798822821285
+    },
+    "leg0NearFoot": {
+      "rotation": -0.07397111708477078
+    },
+    "leg1FarKnee": {
+      "rotation": -0.3928952430438669
+    },
+    "leg1FarFoot": {
+      "rotation": 0.1351614133680365
+    },
+    "leg1NearKnee": {
+      "rotation": 0.2425515750534648
+    },
+    "leg1NearFoot": {
+      "rotation": -0.044247044524151215
+    },
+    "leg2FarKnee": {
+      "rotation": -0.3736048737651907
+    },
+    "leg2FarFoot": {
+      "rotation": 0.13315182945518977
+    },
+    "leg2NearKnee": {
+      "rotation": -0.03836297785148102
+    },
+    "leg2NearFoot": {
+      "rotation": 0.15380700537254388
+    },
+    "leg3FarKnee": {
+      "rotation": -0.30696012541921625
+    },
+    "leg3FarFoot": {
+      "rotation": 0.05708298360870565
+    },
+    "leg3NearKnee": {
+      "rotation": -0.02534057991334504
+    },
+    "leg3NearFoot": {
+      "rotation": 0.028895311475174656
+    },
+    "leg4FarKnee": {
+      "rotation": -0.017572628578077287
+    },
+    "leg4FarFoot": {
+      "rotation": 0.028066264024450338
+    },
+    "leg4NearKnee": {
+      "rotation": 0.317472991461655
+    },
+    "leg4NearFoot": {
+      "rotation": -0.18283219346371254
+    },
+    "leg5FarKnee": {
+      "rotation": -0.3012032120166753
+    },
+    "leg5FarFoot": {
+      "rotation": 0.37339201455838494
+    },
+    "leg5NearKnee": {
+      "rotation": 0.3034013565325999
+    },
+    "leg5NearFoot": {
+      "rotation": -0.17378343408589772
+    },
+    "leg6FarKnee": {
+      "rotation": -0.30878441293677966
+    },
+    "leg6FarFoot": {
+      "rotation": 0.06269733112242017
+    },
+    "leg6NearKnee": {
+      "rotation": 0.23491814540656963
+    },
+    "leg6NearFoot": {
+      "rotation": -0.04417123016829439
+    },
+    "leg7FarKnee": {
+      "rotation": -0.30642562556053893
+    },
+    "leg7FarFoot": {
+      "rotation": 0.059923451298665366
+    },
+    "leg7NearKnee": {
+      "rotation": -0.04481661698191208
+    },
+    "leg7NearFoot": {
+      "rotation": 0.16020898125771577
+    },
+    "leg8FarKnee": {
+      "rotation": -0.31444202494096946
+    },
+    "leg8FarFoot": {
+      "rotation": 0.09195122631963433
+    },
+    "leg8NearKnee": {
+      "rotation": -0.027101570849297762
+    },
+    "leg8NearFoot": {
+      "rotation": 0.028890749384518636
+    },
+    "leg9FarKnee": {
+      "rotation": -0.0161635937705924
+    },
+    "leg9FarFoot": {
+      "rotation": 0.026064769983247915
+    },
+    "leg9NearKnee": {
+      "rotation": 0.3047790934970558
+    },
+    "leg9NearFoot": {
+      "rotation": -0.1640566923509081
+    },
+    "leg10FarKnee": {
+      "rotation": -0.27272642311011497
+    },
+    "leg10FarFoot": {
+      "rotation": 0.3496456131127871
+    },
+    "leg10NearKnee": {
+      "rotation": 0.3834814548565581
+    },
+    "leg10NearFoot": {
+      "rotation": -0.2924469928312223
+    },
+    "leg11FarKnee": {
+      "rotation": -0.3514054880449642
+    },
+    "leg11FarFoot": {
+      "rotation": 0.11614328631003235
+    },
+    "leg11NearKnee": {
+      "rotation": 0.444021425052619
+    },
+    "leg11NearFoot": {
+      "rotation": -0.380869296410743
+    },
+    "leg12FarKnee": {
+      "rotation": -0.37714200582951385
+    },
+    "leg12FarFoot": {
+      "rotation": 0.1529166792737202
+    },
+    "leg12NearKnee": {
+      "rotation": -0.20067634156143077
+    },
+    "leg12NearFoot": {
+      "rotation": 0.24854215555017634
+    },
+    "leg13FarKnee": {
+      "rotation": -0.3528969267553112
+    },
+    "leg13FarFoot": {
+      "rotation": 0.1150334000655095
+    },
+    "leg13NearKnee": {
+      "rotation": -0.03830553441496809
+    },
+    "leg13NearFoot": {
+      "rotation": 0.046324156809661066
+    },
+    "ultimateFar": {
+      "rotation": 0.018066358706216208,
+      "dx": 0,
+      "dy": 0
+    },
+    "ultimateNear": {
+      "rotation": -0.018066358706216208,
+      "dx": 0,
+      "dy": 0
+    },
+    "root": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": -0.0014824369474821905
+    }
+  }
+}

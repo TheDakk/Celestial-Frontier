@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "tundra",
+  "biome": "tundra",
+  "recipe": "audits/C132_ARENAS_20261001/tundra/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/tundra/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+      "runtimeSha256": "59d0945ea50363751af1c412c9eb0cab3306cf2e5e0810b04b9066ed9c0c331f"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/tundra/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.png",
+      "runtimeSha256": "19ae7de43a382d8c9c67134511b0a9a8069e80b9d29cfab6dc195f41afa5d846"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/tundra/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.png",
+      "runtimeSha256": "99aa984c719ea4b36151b654604eb275491040400bc2dfa9b2d43d8c22c93dce"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/tokenizer.json",
+  "revision": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+  "sha256": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+  "exactSdxsVocabMatch": true,
+  "exactSdxsMergesMatch": true,
+  "mergeCount": 48894
+}

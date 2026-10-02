@@ -1,0 +1,144 @@
+{
+  "schema": "cf.c132-effects-delivery/v1",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "qualityAccepted": false,
+  "nativeProof": "NOT_RUN_FOR_THESE_EFFECTS",
+  "themes": 10,
+  "phases": 30,
+  "generatedMastersRetained": 36,
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "kitVersion": "4.3",
+  "rows": [
+    {
+      "theme": "fire",
+      "delivery": "fire/delivery.json",
+      "anchors": "fire/anchors.json",
+      "anchorsSha256": "926cb96634725cfdeb3016238d61f9f8ac3c82d48b3491c92ce5832bf3367dca",
+      "reviewSheet": "fire/review-sheet.png",
+      "manifestRow": {
+        "theme": "fire",
+        "anchors": "../C132_EFFECTS_20261001/fire/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "frost",
+      "delivery": "frost/delivery.json",
+      "anchors": "frost/anchors.json",
+      "anchorsSha256": "31001930b095dfbef13591fd78b36285a04d4f85d421d25964ba6a18c59d87a8",
+      "reviewSheet": "frost/review-sheet.png",
+      "manifestRow": {
+        "theme": "frost",
+        "anchors": "../C132_EFFECTS_20261001/frost/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "storm",
+      "delivery": "storm/delivery.json",
+      "anchors": "storm/final/anchors.json",
+      "anchorsSha256": "4a40b1579f0b341e178deea305b87395fb01839490f82dbf5eb1d22d260c3409",
+      "reviewSheet": "storm/final/review-sheet.png",
+      "manifestRow": {
+        "theme": "storm",
+        "anchors": "../C132_EFFECTS_20261001/storm/final/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "tide",
+      "delivery": "tide/delivery.json",
+      "anchors": "tide/anchors.json",
+      "anchorsSha256": "b76d893f6aa706d1846a68918ee9a3f33b9b0940a507b46f22eeae6838ef2e20",
+      "reviewSheet": "tide/review-sheet.png",
+      "manifestRow": {
+        "theme": "tide",
+        "anchors": "../C132_EFFECTS_20261001/tide/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "stone",
+      "delivery": "stone/delivery.json",
+      "anchors": "stone/shards/anchors.json",
+      "anchorsSha256": "35dee9b691316117ad134d2de90c331b0abd780cf71ffdff676b1fff353505e2",
+      "reviewSheet": "stone/shards/review-sheet.png",
+      "manifestRow": {
+        "theme": "stone",
+        "anchors": "../C132_EFFECTS_20261001/stone/shards/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "venom",
+      "delivery": "venom/delivery.json",
+      "anchors": "venom/anchors.json",
+      "anchorsSha256": "66bd85cb4dcbf393f41a06251cd4a9634fe396f8ff99d03fb706b2854b500ab7",
+      "reviewSheet": "venom/review-sheet.png",
+      "manifestRow": {
+        "theme": "venom",
+        "anchors": "../C132_EFFECTS_20261001/venom/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "void",
+      "delivery": "void/delivery.json",
+      "anchors": "void/final/anchors.json",
+      "anchorsSha256": "cb8e04be607a3b416b1a21489482ab29c474f43cec75565844cca8617ff62e24",
+      "reviewSheet": "void/final/review-sheet.png",
+      "manifestRow": {
+        "theme": "void",
+        "anchors": "../C132_EFFECTS_20261001/void/final/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "sand",
+      "delivery": "sand/delivery.json",
+      "anchors": "sand/final/anchors.json",
+      "anchorsSha256": "2930258125c1e99bd2882ee1d0e886eba8b8c0e5a35c54e1b523a68a7348395f",
+      "reviewSheet": "sand/final/review-sheet.png",
+      "manifestRow": {
+        "theme": "sand",
+        "anchors": "../C132_EFFECTS_20261001/sand/final/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "chem",
+      "delivery": "chem/delivery.json",
+      "anchors": "chem/anchors.json",
+      "anchorsSha256": "bde174def1affb9cf35520d456cc076c3c14de3431b7209bfb6755506dbc79e4",
+      "reviewSheet": "chem/review-sheet.png",
+      "manifestRow": {
+        "theme": "chem",
+        "anchors": "../C132_EFFECTS_20261001/chem/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "theme": "psionic",
+      "delivery": "psionic/delivery.json",
+      "anchors": "psionic/final/anchors.json",
+      "anchorsSha256": "377a235f92becbe6ba2e887dbb2f2fdd9a6a165a1d0bdafca2a9847aba18a5bb",
+      "reviewSheet": "psionic/final/review-sheet.png",
+      "manifestRow": {
+        "theme": "psionic",
+        "anchors": "../C132_EFFECTS_20261001/psionic/final/anchors.json",
+        "contract": "v4.3"
+      },
+      "status": "MECHANICAL_PASS_REVIEW_REQUIRED"
+    }
+  ]
+}

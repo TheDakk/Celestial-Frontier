@@ -1,0 +1,74 @@
+{
+  "id": "coral",
+  "biome": "coral",
+  "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+  "qualityAccepted": false,
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/coral/delivery.pending.json",
+    "sha256": "7ba77cd78952917d1c867b961defedafa4c4a0b07e95b3562fed641ea5c66541"
+  },
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "requiredCanvas": {
+    "width": 2560,
+    "height": 1440
+  },
+  "masterCandidate": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "coral"
+  },
+  "runtimeCandidate": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "coral"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "coral"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "review": {
+    "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+    "image": {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-composed-review.png",
+      "sha256": "a495decdc33784ff316c46caaa3797400b9f7f0eb5d3302390845532d865560a"
+    },
+    "findings": [
+      "Distinct underwater reef depth; no visible background fish in the selected FAR.",
+      "Some pink/mauve edge content and doubled terrain contours remain in the full composition."
+    ]
+  },
+  "remaining": [
+    "Native 2560×1440 separately generated masters",
+    "Visual repair and independent full-size scoring",
+    "Dakk acceptance",
+    "Claude route/wiring review and native battle proof"
+  ]
+}

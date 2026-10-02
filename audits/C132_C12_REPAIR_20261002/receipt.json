@@ -1,0 +1,182 @@
+{
+  "schema": "cf.c132-centipede-repair-receipt/v1",
+  "status": "AUDIT_CANDIDATE_NATIVE_PENDING",
+  "productionCodeEditedByThisPacket": false,
+  "nativeRun": false,
+  "change": "One topology-sized active sweep retains the original step; subsequent visits use half steps inside the unchanged total budget.",
+  "sourceOverrides": "audits/C132_C12_REPAIR_20261002/source-overrides.json",
+  "originalCapturedSource": "852c7b2b021652146d0b86a34cb2f095a9a97037",
+  "sources": [
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "capturedSha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399",
+      "currentSha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399",
+      "unchangedFromCapturedSource": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-projector.mjs",
+      "capturedSha256": "ddb2b35c467bd4332460da853cdfbc6f33693d3417e2e04fe0d797defb45ba31",
+      "currentSha256": "ddb2b35c467bd4332460da853cdfbc6f33693d3417e2e04fe0d797defb45ba31",
+      "unchangedFromCapturedSource": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+      "capturedSha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2",
+      "currentSha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2",
+      "unchangedFromCapturedSource": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "capturedSha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8",
+      "currentSha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8",
+      "unchangedFromCapturedSource": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/rigid-parent-frame.mjs",
+      "capturedSha256": "a2b4d700e8ee7cf76af602814e5820b50acb67355e735dce921f7a16030ff56c",
+      "currentSha256": "a2b4d700e8ee7cf76af602814e5820b50acb67355e735dce921f7a16030ff56c",
+      "unchangedFromCapturedSource": true
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "capturedSha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+      "currentSha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+      "unchangedFromCapturedSource": true
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "capturedSha256": "c4138aede7b6d51c9e85f9c97fe6b1b88fa5a3290cd0eed49258b693a3b22536",
+      "currentSha256": "573ec7f5d433515169992ffee8c4d53855fd1c945bbe1175ce8f80307d113f0e",
+      "unchangedFromCapturedSource": false,
+      "usedFunctionBodies": [
+        {
+          "name": "makeClip",
+          "sha256": "99db11318c89909075dc28d7f27f6b6b4682778ada3ba10ac823ec8fb3d97368",
+          "unchanged": true
+        },
+        {
+          "name": "sampleClip",
+          "sha256": "e99e7cbb8302a935cc1e7400660773b8c92bfdca0bfe9f356bc2d76f6b6a5e14",
+          "unchanged": true
+        },
+        {
+          "name": "addPose",
+          "sha256": "bcd7a496d416510dc44eb4707ff389f0d152adfdb9daf087eddd614a9b87aad1",
+          "unchanged": true
+        }
+      ],
+      "driftNote": "Claude guardian extension merged after capture; the three functions used by this reconstruction retain identical bodies."
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "capturedSha256": "9f8ab0acfbde47490f50ea72db760b510bc0e9fc032190d8d6720659cfd6686d",
+      "currentSha256": "9f8ab0acfbde47490f50ea72db760b510bc0e9fc032190d8d6720659cfd6686d",
+      "unchangedFromCapturedSource": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/arap-candidate.mjs",
+      "sha256": "17f4443e2058d783c5c993e03c65abe512fee1626e6fd70f36aa6de50bf747c4"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/orientation-projector.mjs",
+      "sha256": "bf84208615f7f9f29d1f3d51c6431166f408e4c399036966b1cae29a844bb6ad"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/wasm-orientation-active.mjs",
+      "sha256": "0c702aed88d6c9f15fbafeba774be4fa6f797054e433c21c2cea53b73a74373b"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/orientation-active-reference.mjs",
+      "sha256": "1274932542fcef86d150e7fd645ff641d4daaaaf401b0aba0830c926323d5081"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/orientation-active-bytes.mjs",
+      "sha256": "7824324f2b3343f9df805cdecda7cbd874a721351163b13e631ccf58f569053a"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/orientation-active.c",
+      "sha256": "5ef877836c58140ce32d9607c58e9c0068e00c6787887789ac6a52f299b2906b"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/orientation-active.wasm",
+      "sha256": "5df772043f97422cbdbd02505e156ee0fafb1ddbf2c791ca00ee41518420dd7c"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/orientation-active-build.json",
+      "sha256": "a98c24e204e0b334b28d944f8956e372d16845e8d24a8371aad5038710ecde3b"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/source-overrides.json",
+      "sha256": "df6ebbdd4b506abeb14b5691f42164a7e24cf7f4cf9a8ded4f3d7325e329d0c5"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/reproduce.mjs",
+      "sha256": "4cb68805715aa75757f5508ea97ca56e3d97316fd6955f04f5c8459e4560bf75"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/check-candidate.mjs",
+      "sha256": "5c81c8a5038fb854825bdbce00cb7f8eb5a2d79b8daf9ca9af3e9ecdb238df33"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/reproduction.json",
+      "sha256": "d1e1673cbe35446af576f8e35bd7232c740a2644385025b984573b8548af6553"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/candidate-check.json",
+      "sha256": "e815e170c333b1ee6f6b577198dab5ef1c57b0eb1619d141ba426df13cfb6ac5"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/inherited-tests.log",
+      "sha256": "5749c57802993e03782c34a015bcfbd68a6b1851f66eb9b9edf9e61e01833d02"
+    },
+    {
+      "path": "audits/C132_C12_REPAIR_20261002/inherited-test-provenance.json",
+      "sha256": "4076b8c26a29e1cd7653224640c904840c31b7aee2f4b90967ceb0dcd676e657"
+    }
+  ],
+  "guards": {
+    "arapIterations": 4,
+    "globalIterations": 4,
+    "orientationIterations": 64,
+    "activeVisitCeiling": 598592,
+    "minimumAreaTarget": 0.12,
+    "activeStoppingHalfFloor": 0.5,
+    "pinsUnchanged": true,
+    "skinSignedFoldRefusalUnchanged": true,
+    "publishedFloat32PaintFoldRefusalUnchanged": true,
+    "sourceJointLimitsUnchanged": true,
+    "contactSolverUnchanged": true,
+    "fullStageChoreographyUnchangedByCandidate": true,
+    "clockAndCaptureAcceptorsUnchanged": true,
+    "noPreviousPoseWarmStart": true,
+    "noSecondPoseRetry": true
+  },
+  "evidence": {
+    "capturedTargets": 46,
+    "neighborTargets": 10,
+    "baselineByteIdentical": 48,
+    "candidateRefusals": 0,
+    "publishedPartChecks": 1792,
+    "hardPinChecks": 326151,
+    "maximumChangeAmongPreviouslyPassingTargetsPx": 8.664186877116094,
+    "publishedMinSignedAreaRatio": 0.05363821921456122,
+    "publishedMaxSignedAreaRatio": 5.373683812997444,
+    "focusedTests": 31,
+    "controls": [
+      "contradictory all-pinned fold refuses in both owners without output publication",
+      "nonfinite input refuses in both owners",
+      "reflected actual published part fails unchanged paint fold guard",
+      "WASM/JS output + full solver/queue byte parity on every target",
+      "all original hard pins remain exact",
+      "no input target mutation"
+    ]
+  },
+  "knownLimits": [
+    "Node timing is not a 4x native performance result.",
+    "Seven previously passing neighboring targets change within the original orientation constraints; 48 outputs remain byte-identical and one originally refused target is repaired.",
+    "Complete library-pair native coverage and visual review are pending.",
+    "The unchanged assertPaintPartShape checks signed orientation, not an additional scalar strain ceiling. This packet reports area/deformation metrics and does not claim a separate strain certificate."
+  ]
+}

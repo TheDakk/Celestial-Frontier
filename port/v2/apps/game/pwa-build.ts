@@ -724,7 +724,10 @@ export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: P
     generateBundle(_options, bundle) {
       if (!resolved) throw new Error('Celestial Frontier PWA plugin was not configured');
       runtimeFileNames = Object.keys(bundle)
-        .filter((fileName) => fileName !== CF_PWA_SERVICE_WORKER && !fileName.endsWith('.map'))
+        .filter((fileName) => fileName !== CF_PWA_SERVICE_WORKER && !fileName.endsWith('.map')
+          // Optional authoring runtime is outside the installed game pack. Local dependency
+          // presence/versions must not change its identity or trigger eager install caching.
+          && !fileName.startsWith('__local_ai/'))
         .sort();
       assertSealedWorkerGraphs(runtimeFileNames.map((fileName) => {
         const output = bundle[fileName];

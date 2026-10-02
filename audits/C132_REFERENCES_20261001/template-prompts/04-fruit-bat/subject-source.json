@@ -1,0 +1,70 @@
+{
+  "name": "Fruit Bat",
+  "family": "flyer-membrane",
+  "species": {
+    "name": "Fruit Bat",
+    "aspect": 2.6,
+    "headFrac": 0.28,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "broad membranous wings with visible finger bones",
+      "fox-like face with a long muzzle and big eyes",
+      "clawed thumb at the bend of the wing"
+    ],
+    "note": "no leaf-nose and no huge ears - fruit bats look like winged foxes, not the crinkle-faced insect bats"
+  },
+  "genome": {
+    "seed": 3695426012,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 2,
+    "body": 2,
+    "loco": 6,
+    "trait": 14,
+    "size": 3,
+    "diet": 4,
+    "head": 3,
+    "limbs": 0,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 18,
+    "detail": 7,
+    "accent": 1,
+    "temper": 6,
+    "sense": 5,
+    "repro": 0,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fruit Bat"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fruit Bat\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3695426012\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 23,
+  "profile": {
+    "id": "bat",
+    "names": [
+      "Fruit Bat",
+      "Bat",
+      "Insect-Eating Bat",
+      "Vampire Bat"
+    ],
+    "candidateTemplates": [
+      "flyer-membrane"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

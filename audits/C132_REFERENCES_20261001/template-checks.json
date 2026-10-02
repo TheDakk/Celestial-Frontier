@@ -1,0 +1,120 @@
+{
+  "schema": "cf.c132-controlled-template-check/v1",
+  "status": "PASS_REQUEST_VOCABULARY_ONLY",
+  "extendedNames": 32,
+  "families": [
+    {
+      "family": "primate",
+      "names": [
+        "Gorilla",
+        "Chimpanzee",
+        "Orangutan",
+        "Capuchin",
+        "Howler Monkey",
+        "Spider Monkey",
+        "Tamarin",
+        "Macaque",
+        "Langur",
+        "Baboon",
+        "Monkey",
+        "Lemur",
+        "Gibbon",
+        "Mandrill",
+        "Marmoset",
+        "Aye-Aye",
+        "Proboscis Monkey"
+      ]
+    },
+    {
+      "family": "myriapod",
+      "names": [
+        "Centipede",
+        "Giant Centipede",
+        "Millipede"
+      ]
+    },
+    {
+      "family": "cephalopod",
+      "names": [
+        "Squid",
+        "Octopus",
+        "Cuttlefish",
+        "Giant Octopus",
+        "Giant Squid",
+        "Vampire Squid",
+        "Deep-Sea Octopus",
+        "Nautilus"
+      ]
+    },
+    {
+      "family": "flyer-membrane",
+      "names": [
+        "Fruit Bat",
+        "Bat",
+        "Insect-Eating Bat",
+        "Vampire Bat"
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "name": "Cat",
+      "family": "quadruped",
+      "status": "EXACT_LAYOUT_PRESERVED"
+    },
+    {
+      "name": "Robin",
+      "family": "biped-bird",
+      "status": "EXACT_LAYOUT_PRESERVED"
+    },
+    {
+      "name": "Salmon",
+      "family": "fish",
+      "status": "EXACT_LAYOUT_PRESERVED"
+    },
+    {
+      "name": "Python",
+      "family": "serpent",
+      "status": "EXACT_LAYOUT_PRESERVED"
+    },
+    {
+      "name": "Ant",
+      "family": "insect",
+      "status": "EXACT_LAYOUT_PRESERVED"
+    }
+  ],
+  "controls": [
+    "Old controlled compiler refuses Chimpanzee; extension supplies primate instead of a quadruped fallback.",
+    "Ambiguous extended routing refuses.",
+    "Unknown family refuses.",
+    "Squid, octopus, nautilus and finned deep-sea octopus retain distinct appendage requests.",
+    "Millipede diplosegments are not painted as centipede leg rows."
+  ],
+  "compiledExamples": [
+    {
+      "name": "Chimpanzee",
+      "family": "primate",
+      "packet": "audits/C132_REFERENCES_20261001/template-prompts/01-chimpanzee",
+      "status": "PROMPT_ONLY_NOT_GENERATED"
+    },
+    {
+      "name": "Centipede",
+      "family": "myriapod",
+      "packet": "audits/C132_REFERENCES_20261001/template-prompts/02-centipede",
+      "status": "PROMPT_ONLY_NOT_GENERATED"
+    },
+    {
+      "name": "Octopus",
+      "family": "cephalopod",
+      "packet": "audits/C132_REFERENCES_20261001/template-prompts/03-octopus",
+      "status": "PROMPT_ONLY_NOT_GENERATED"
+    },
+    {
+      "name": "Fruit Bat",
+      "family": "flyer-membrane",
+      "packet": "audits/C132_REFERENCES_20261001/template-prompts/04-fruit-bat",
+      "status": "PROMPT_ONLY_NOT_GENERATED"
+    }
+  ],
+  "scope": "Painting request dispatch and canonical source/kit preservation only. No source image, anatomical topology, rig or motion acceptance."
+}

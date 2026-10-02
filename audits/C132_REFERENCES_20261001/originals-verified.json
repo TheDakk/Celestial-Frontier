@@ -1,0 +1,58 @@
+[
+  {
+    "packet": "audits/C132_REFERENCES_20261001/01-gazelle",
+    "masterSha256": "cd8835643e1737164b9bc649def257b47dc50dc80b01ef3fb3ee9567b00d5f36",
+    "bytes": 1543410,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-5052ad6f-e088-44d9-b87f-adbdba46ddc9.png"
+  },
+  {
+    "packet": "audits/C132_REFERENCES_20261001/02-gaur",
+    "masterSha256": "f3b8e582453d8fce41dc3808f737a58e92622c841f217d310df58bf40d8c7092",
+    "bytes": 1672728,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a3ea663c-6e77-47e4-a072-07eb0ba8a570.png"
+  },
+  {
+    "packet": "audits/C132_REFERENCES_20261001/03-dog",
+    "masterSha256": "6ddb7124bb11a2df6d4e2dc88d2443eddc6450e1ec4db0b42605d68360351184",
+    "bytes": 1696091,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c8d7093c-1d56-440e-91eb-d9ea78596932.png"
+  },
+  {
+    "packet": "audits/C132_REFERENCES_20261001/04-cat",
+    "masterSha256": "c0dcd7ade43299c134d20b909d6a92afcda0fffe1110d9163cb0d02643fee219",
+    "bytes": 1523825,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-9a7080fe-9b44-47f5-b002-bd2779f81918.png"
+  },
+  {
+    "packet": "audits/C132_REFERENCES_20261001/01-gazelle/candidate-02",
+    "masterSha256": "a9843c0dfff014482e6aa6ef1939ad8cf7e05ddb93ed8c87c7e9c34ba1719032",
+    "bytes": 1174678,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8ec6584e-47c7-474f-8b8d-1fc939b3f546.png"
+  },
+  {
+    "packet": "audits/C132_REFERENCES_20261001/02-gaur/candidate-02",
+    "masterSha256": "0731c9c4dd33b652ccf2e03bf6135993ce9ed0caae42831e74a266d5eb651edd",
+    "bytes": 1201140,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-b15b4509-b871-42f4-8947-f57084249ab2.png"
+  },
+  {
+    "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02",
+    "masterSha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4",
+    "bytes": 1237655,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f4086d54-8d79-4c5a-a31f-24658dc4312f.png"
+  },
+  {
+    "packet": "audits/C132_REFERENCES_20261001/04-cat/candidate-02",
+    "masterSha256": "67167440b376f60187ebeb6e98fee6344421ac297db66f2d34abe5811435def8",
+    "bytes": 1133748,
+    "byteIdentical": true,
+    "sourceOriginal": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-852ae2b6-3d9d-41c8-bf64-75992c16334c.png"
+  }
+]

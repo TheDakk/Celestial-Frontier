@@ -1,0 +1,74 @@
+{
+  "id": "savanna-v2",
+  "biome": "savanna",
+  "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+  "qualityAccepted": false,
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/savanna-v2/delivery.pending.json",
+    "sha256": "fc5a5796c5baaf3286b466471f9a3ffa08faffea416fb0fa1b71e780d20cf9f0"
+  },
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "requiredCanvas": {
+    "width": 2560,
+    "height": 1440
+  },
+  "masterCandidate": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "savanna"
+  },
+  "runtimeCandidate": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "savanna"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "savanna"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "review": {
+    "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+    "image": {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-composed-review.png",
+      "sha256": "70995ff80c37967b20daa4adb92b0992060ea2c59820c74963d1be73108d84c1"
+    },
+    "findings": [
+      "Replacement MID removes the baked mauve distant mountains and chopped canopy from the first version.",
+      "NEAR still creates a strong horizontal foreground texture boundary; magenta fringe is visible around small side details."
+    ]
+  },
+  "remaining": [
+    "Native 2560×1440 separately generated masters",
+    "Visual repair and independent full-size scoring",
+    "Dakk acceptance",
+    "Claude route/wiring review and native battle proof"
+  ]
+}

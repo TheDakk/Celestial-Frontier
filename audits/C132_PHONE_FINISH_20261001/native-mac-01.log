@@ -1,0 +1,7 @@
+{"status":"running","stage":"ready","rows":0}
+{"status":"running","stage":"precompute embedding","rows":0}
+{"status":"running","stage":"load /models/unet.onnx","rows":0}
+{"status":"running","stage":"infer 12-sandpiper","rows":1}
+{"status":"running","stage":"infer 06-ptarmigan","rows":3}
+{"status":"complete","stage":"terminal","rows":5}
+{"status":"CONSERVATION_PASS","rows":5,"qualityAccepted":false}

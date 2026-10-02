@@ -1,0 +1,144 @@
+[
+  {
+    "id": "01-gazelle",
+    "name": "Gazelle",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "a9843c0dfff014482e6aa6ef1939ad8cf7e05ddb93ed8c87c7e9c34ba1719032",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 295,
+        "y0": 277,
+        "x1": 990,
+        "y1": 936
+      },
+      "margins": {
+        "left": 295,
+        "right": 263,
+        "top": 277,
+        "bottom": 317
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "02-gaur",
+    "name": "Gaur",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "0731c9c4dd33b652ccf2e03bf6135993ce9ed0caae42831e74a266d5eb651edd",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 282,
+        "y0": 377,
+        "x1": 990,
+        "y1": 876
+      },
+      "margins": {
+        "left": 282,
+        "right": 263,
+        "top": 377,
+        "bottom": 377
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-dog",
+    "name": "Dog",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 278,
+        "y0": 357,
+        "x1": 979,
+        "y1": 880
+      },
+      "margins": {
+        "left": 278,
+        "right": 274,
+        "top": 357,
+        "bottom": 373
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "04-cat",
+    "name": "Cat",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "67167440b376f60187ebeb6e98fee6344421ac297db66f2d34abe5811435def8",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 283,
+        "y0": 424,
+        "x1": 942,
+        "y1": 808
+      },
+      "margins": {
+        "left": 283,
+        "right": 311,
+        "top": 424,
+        "bottom": 445
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  }
+]

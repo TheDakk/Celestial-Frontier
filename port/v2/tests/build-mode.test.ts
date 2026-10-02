@@ -55,9 +55,9 @@ interface PluginHarness {
   writeBundle: { handler(options: { dir: string }): void };
 }
 
-function configuredPlugin(mode: string): PluginHarness {
+function configuredPlugin(mode: string, base = '/'): PluginHarness {
   const plugin = celestialFrontierPwaPlugin() as unknown as PluginHarness;
-  plugin.configResolved({ root: '/virtual/cf-build-mode', mode, base: '/', build: { outDir: 'dist' } } as ResolvedConfig);
+  plugin.configResolved({ root: '/virtual/cf-build-mode', mode, base, build: { outDir: 'dist' } } as ResolvedConfig);
   return plugin;
 }
 
@@ -139,6 +139,51 @@ describe('read-only built-mode admission', () => {
 });
 
 describe('mode identity through the exact-byte PWA lifecycle', () => {
+  it.each(['/', '/game/'])('optional local-AI assets cannot change either worker identity at base %s; ordinary assets still do', (base) => {
+    const build = (local: Record<string, string>, ordinary = 'ordinary-game-bytes') => {
+      const plugin = configuredPlugin('evidence', base);
+      const outputs: Record<string, string> = {
+        'index.html': transformedHtml(plugin),
+        'assets/species-art.worker-sealed.js': 'self.onmessage = () => {};',
+        'assets/biome-vista.worker-sealed.js': 'self.onmessage = () => {};',
+        'assets/earth-resident.worker-sealed.js': 'self.onmessage = () => {};',
+        'assets/main.js': ordinary,
+        // Similar names outside the exact optional prefix must retain normal ownership.
+        '__local_ai-shadow/runtime.mjs': ordinary,
+        'assets/__local_ai/runtime.mjs': ordinary,
+      };
+      const bundle = Object.fromEntries(Object.entries({ ...outputs, ...local }).map(([fileName, source]) => [
+        fileName, { type: 'asset' as const, fileName, source },
+      ]));
+      const emitted: { fileName: string; source: string }[] = [];
+      plugin.generateBundle.call({ emitFile: (asset) => { emitted.push(asset); } }, {}, bundle);
+      expect(emitted).toHaveLength(1);
+      files.clear();
+      // Optional files are deliberately absent at the final-byte boundary. A hidden read,
+      // eager-pack count or identity dependency must fail here instead of being masked.
+      for (const [fileName, source] of Object.entries(outputs)) files.set(`${distDir}/${fileName}`, source);
+      plugin.writeBundle.handler({ dir: distDir });
+      const final = writes.get(`${distDir}/service-worker.js`)!;
+      for (const worker of [emitted[0]!.source, final]) {
+        expect(worker).not.toContain(`"path":"${base}__local_ai/`);
+        expect(worker).toContain(`${base}__local_ai-shadow/runtime.mjs`);
+        expect(worker).toContain(`${base}assets/__local_ai/runtime.mjs`);
+      }
+      return { generated: emitted[0]!.source, final };
+    };
+    const absent = build({});
+    const missing = build({ '__local_ai/MISSING.json': '{"missing":["runtime"]}' });
+    const installed = build({ '__local_ai/MISSING.json': '{"missing":[]}', '__local_ai/runtime.mjs': 'runtime-v1', '__local_ai/node_modules/runtime.wasm': 'wasm-v1' });
+    const upgraded = build({ '__local_ai/MISSING.json': '{"missing":[]}', '__local_ai/runtime.mjs': 'runtime-v2', '__local_ai/node_modules/new-name.wasm': 'wasm-v2' });
+    expect(missing).toEqual(absent);
+    expect(installed).toEqual(absent);
+    expect(upgraded).toEqual(absent);
+    const changedGame = build({}, 'changed-game-bytes');
+    expect(changedGame.generated).not.toBe(absent.generated);
+    expect(changedGame.final).not.toBe(absent.final);
+    expect(build({})).toEqual(absent);
+  });
+
   it('hashes each final index marker without changing the sealed worker template or graph', () => {
     const serviceWorkers: string[] = [];
     const revision = pwaWorkerRevisionV1();

@@ -1,0 +1,181 @@
+{
+  "model": "IDKiro/sdxs-512-dreamshaper",
+  "revision": "76f720262bb051da75666b22c902a78c8e16c763",
+  "sourceUrl": "https://huggingface.co/api/models/IDKiro/sdxs-512-dreamshaper",
+  "tree": [
+    {
+      "type": "directory",
+      "oid": "aa536c4ea18073388b5b0bc791057a7296a00398",
+      "size": 0,
+      "path": "feature_extractor"
+    },
+    {
+      "type": "directory",
+      "oid": "384d56889be976795ac986f4f01be51e14bb5529",
+      "size": 0,
+      "path": "scheduler"
+    },
+    {
+      "type": "directory",
+      "oid": "50cbc7c6f7928e3477c898ca7fa7d62aa419823b",
+      "size": 0,
+      "path": "text_encoder"
+    },
+    {
+      "type": "directory",
+      "oid": "ac353610e671b97fdae68cfa09a2b0bf2067b812",
+      "size": 0,
+      "path": "tokenizer"
+    },
+    {
+      "type": "directory",
+      "oid": "186f449bd119cf24705b2a77741e1eb7ccaceea3",
+      "size": 0,
+      "path": "unet"
+    },
+    {
+      "type": "directory",
+      "oid": "8a8072d6347b3f14a947b7886d909fe575581155",
+      "size": 0,
+      "path": "vae"
+    },
+    {
+      "type": "directory",
+      "oid": "9e7f63dabf0c417bf3b63749d20572d40893a7bd",
+      "size": 0,
+      "path": "vae_large"
+    },
+    {
+      "type": "file",
+      "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519,
+      "path": ".gitattributes"
+    },
+    {
+      "type": "file",
+      "oid": "f3e74a4ca7aedd5ac9eda55b8a134851fca3a131",
+      "size": 2224,
+      "path": "README.md"
+    },
+    {
+      "type": "file",
+      "oid": "e0675735fd0052745f2f7b7291e4aa7859389998",
+      "size": 520,
+      "path": "feature_extractor/preprocessor_config.json"
+    },
+    {
+      "type": "file",
+      "oid": "b72ddb6de23374c84bc36eb574fc347dc70b0ec3",
+      "size": 523,
+      "path": "model_index.json"
+    },
+    {
+      "type": "file",
+      "oid": "e1f6911fb6c22b52b5513669d9f90010b6b60960",
+      "size": 448194,
+      "path": "output.png"
+    },
+    {
+      "type": "file",
+      "oid": "7a311bc7598bcb840f57022b47948238afeb4f46",
+      "size": 480,
+      "path": "scheduler/scheduler_config.json"
+    },
+    {
+      "type": "file",
+      "oid": "8500de75f41891f1ebdf7c9e55aca67f39f6ddfe",
+      "size": 724,
+      "path": "text_encoder/config.json"
+    },
+    {
+      "type": "file",
+      "oid": "71b3ef9e272aa3c58bd1f30b5e6e39b345580688",
+      "size": 492265168,
+      "lfs": {
+        "oid": "5cd76eb3ed326974cfd66795384e890742dfdb5a80f5f4e4cb1547d51ec75d86",
+        "size": 492265168,
+        "pointerSize": 134
+      },
+      "xetHash": "d6eea1a5502c7044cf7c14a2bfc85bbf2af2534dec45ee7064f8926eaf2b36b7",
+      "path": "text_encoder/model.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "76e821f1b6f0a9709293c3b6b51ed90980b3166b",
+      "size": 524619,
+      "path": "tokenizer/merges.txt"
+    },
+    {
+      "type": "file",
+      "oid": "2c2130b544c0c5a72d5d00da071ba130a9800fb2",
+      "size": 472,
+      "path": "tokenizer/special_tokens_map.json"
+    },
+    {
+      "type": "file",
+      "oid": "2e8612a429492973fe60635b3f44a28b065cfac0",
+      "size": 737,
+      "path": "tokenizer/tokenizer_config.json"
+    },
+    {
+      "type": "file",
+      "oid": "469be27c5c010538f845f518c4f5e8574c78f7c8",
+      "size": 1059962,
+      "path": "tokenizer/vocab.json"
+    },
+    {
+      "type": "file",
+      "oid": "0c04f7c3c07424ce02630f123984474cf25f268a",
+      "size": 1725,
+      "path": "unet/config.json"
+    },
+    {
+      "type": "file",
+      "oid": "43d53609e1882330ea431990e37aa6fc90523f9d",
+      "size": 1263018648,
+      "lfs": {
+        "oid": "a9cb7932239b22d318f20d80c0062be5f06c9e96b620d3719db49b31f23927cf",
+        "size": 1263018648,
+        "pointerSize": 135
+      },
+      "xetHash": "9c33ed27c3c2612ffeddad6de539fe301486211a85d95f154847678d0cfc41d2",
+      "path": "unet/diffusion_pytorch_model.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "f305d3653e6bbed9dbb18e7a0ae04cb9e58e3158",
+      "size": 635,
+      "path": "vae/config.json"
+    },
+    {
+      "type": "file",
+      "oid": "3773b9478ae402f40f47874c107ed323a885492a",
+      "size": 9793292,
+      "lfs": {
+        "oid": "d7956d561b1efbd861ad9b03fd8f01510f9e87eddc07bdfd20837009433f6ee5",
+        "size": 9793292,
+        "pointerSize": 132
+      },
+      "xetHash": "4b9c7f620714fe8458a470bcf04b6f46a9f2896d7e66c1b9106501f6f1a99261",
+      "path": "vae/diffusion_pytorch_model.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "9421ac5a7caf02657fa559cffe7c73a47572cd64",
+      "size": 553,
+      "path": "vae_large/config.json"
+    },
+    {
+      "type": "file",
+      "oid": "90464d67ac7303d0ee4696334df13da130a948ea",
+      "size": 334643276,
+      "lfs": {
+        "oid": "a1d993488569e928462932c8c38a0760b874d166399b14414135bd9c42df5815",
+        "size": 334643276,
+        "pointerSize": 134
+      },
+      "xetHash": "6fe1cd5fdd5657635d647ca4b836e30f25c0e2c9931a0cf5562f78510ab4aa76",
+      "path": "vae_large/diffusion_pytorch_model.safetensors"
+    }
+  ]
+}

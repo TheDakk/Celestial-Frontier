@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Octopus",
+  "family": "cephalopod",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "e5c2a1090734d57de2eca9636ee7996f3e359c7e26f5b8ba2fc41d7cd86b3ee5",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "88d86961e85f2744877f1ba4573563698e6206b717603f7ce9a7ac6d8cea593a",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "eight tapering sucker-bearing arms, one mantle above/behind the eyes, no added feeding tentacles or invented fins",
+  "profileId": "cephalopod",
+  "authoringCreated": false,
+  "sourceHead": "852c7b2b021652146d0b86a34cb2f095a9a97037"
+}

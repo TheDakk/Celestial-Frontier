@@ -28,7 +28,8 @@ export function kitRuntimeAssets(): Plugin {
     },
     // An exact-commit snapshot (the preview producer archives tracked files only) carries the tracked kit modules but never
     // the tool folder's node_modules: the local-AI runtime files are emitted when installed, otherwise listed in
-    // __local_ai/MISSING.json and warned — the build stays exact and the local AI reports itself unavailable at runtime.
+    // __local_ai/MISSING.json and warned. pwa-build.ts excludes this optional subtree from game identity
+    // and eager installation; the exact-build worker continues to refuse undeclared local-AI requests.
     generateBundle() {
       const missing: string[] = [];
       for (const name of names) { const file = path.join(tools, name); if (!fs.existsSync(file)) { missing.push(name); continue; } this.emitFile({ type: 'asset', fileName: '__local_ai/' + name, source: fs.readFileSync(file) }); }

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-template-acceptance/v1",
+  "qualityAccepted": false,
+  "acceptanceAuthority": "pending Dakk visual acceptance",
+  "groundLineNormalized": 0.78,
+  "plates": [
+    {
+      "name": "arena-far",
+      "masterSha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56",
+      "qualityAccepted": false
+    },
+    {
+      "name": "arena-mid",
+      "masterSha256": "08fe51e0c52717928b7f667dcbb42e39906a5336e56546035f48682240acf189",
+      "qualityAccepted": false
+    },
+    {
+      "name": "arena-near",
+      "masterSha256": "1e5961612a6b04388bd584521ea7cc49012bffc9a0f40b0dcdaa7c405f0e4956",
+      "qualityAccepted": false
+    }
+  ],
+  "status": "PENDING; resolution and visual holds remain. This record is not acceptance."
+}

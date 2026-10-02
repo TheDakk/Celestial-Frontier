@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01-gazelle",
+    "parts": 31,
+    "painted": 123885,
+    "minimumPixels": 324,
+    "empty": []
+  },
+  {
+    "id": "02-gaur",
+    "parts": 31,
+    "painted": 172772,
+    "minimumPixels": 324,
+    "empty": []
+  },
+  {
+    "id": "03-dog",
+    "parts": 31,
+    "painted": 157180,
+    "minimumPixels": 324,
+    "empty": []
+  },
+  {
+    "id": "04-cat",
+    "parts": 31,
+    "painted": 105022,
+    "minimumPixels": 324,
+    "empty": []
+  }
+]

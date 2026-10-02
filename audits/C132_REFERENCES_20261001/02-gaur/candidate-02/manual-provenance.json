@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "0731c9c4dd33b652ccf2e03bf6135993ce9ed0caae42831e74a266d5eb651edd",
+  "authoringSha256": "9310f3e80381889e7563853b3ff5efbdbf1cc79cc918a9a602d65fc9417f74ac",
+  "observationSource": "audits/C132_REFERENCES_20261001/manual-observations.mjs",
+  "observationSha256": "8caa2201e67bd3077cc90466ddbc3f44fea8e19683c12db65ec044678ea25478",
+  "origin": "Independent manual observations on this exact edited painting; no reference-coordinate transfer.",
+  "limitations": "Four stockinged legs, cloven-hoof silhouettes, tail tuft and both ears are visible after the edit. The far limb roots remain partially occluded. The high shoulder ridge is exaggerated and bison-like; this painting is a diagnostic geometry reference candidate, not species/art acceptance. Horns remain head-owned; no independent attack attachment is declared.",
+  "admission": "UNMEASURED; unchanged intake/static/native and positive/mutation reference controls required before pool addition."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "02-gaur",
+  "name": "Gaur",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a3ea663c-6e77-47e4-a072-07eb0ba8a570.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f3b8e582453d8fce41dc3808f737a58e92622c841f217d310df58bf40d8c7092",
+  "bytes": 1672728,
+  "promptSha256": "8e84f5ba1c1e344362e1c20314086da4a3b8385cb614f8906468c033a5a74091",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
