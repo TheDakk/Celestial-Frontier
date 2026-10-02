@@ -1,0 +1,143 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "whale-shark-framing-v2",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "d426cbcae3dd5e3749af7aa43e823eb892e97d1908c1db7f3fa7f07d01748c2c",
+ "subjectSourceSha256": "1d65d07115c7902fefb6a45e56b340ba5e7cbe3db1edee1d64cb6f624a6fe8c5",
+ "identity": {
+  "name": "Whale Shark",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Whale Shark\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"200558640\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "seed": 200558640,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "reef-shark",
+  "authoringSha256": "695c3b98022fcb2ae7f7292bfb2ac15aad6b4d6f7b35c6b95bb3b474acb81798",
+  "masterSha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46"
+ },
+ "habitat": {
+  "profileId": "filter-shark",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "46374d33e5555fbd878716404ac1054972d9d369675f6bf84e3c5210324d0cc4",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group filter-shark (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0358,
+     "class": "top",
+     "attach": {
+      "x": 208.5,
+      "y": 180,
+      "relX": 0.24,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2233,
+     "class": "rear",
+     "attach": {
+      "x": 174,
+      "y": 207,
+      "relX": -0.01,
+      "relY": 0.49
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0507,
+     "class": "front",
+     "attach": {
+      "x": 314,
+      "y": 206.5,
+      "relX": 1.01,
+      "relY": 0.48
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0075,
+     "class": "limb-down",
+     "attach": {
+      "x": 178.6,
+      "y": 225.4,
+      "relX": 0.03,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0533,
+     "class": "limb-down",
+     "attach": {
+      "x": 245,
+      "y": 235,
+      "relX": 0.51,
+      "relY": 1.02
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0079,
+     "class": "limb-down",
+     "attach": {
+      "x": 268.5,
+      "y": 235,
+      "relX": 0.68,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "reef-shark",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 1,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

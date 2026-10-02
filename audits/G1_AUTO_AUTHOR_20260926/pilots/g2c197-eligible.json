@@ -1,0 +1,56 @@
+[
+ {
+  "id": "basking-shark",
+  "name": "Basking Shark",
+  "family": "fish",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark"
+ },
+ {
+  "id": "flounder",
+  "name": "Flounder",
+  "family": "fish",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder"
+ },
+ {
+  "id": "great-white-shark-framing-v2",
+  "name": "Great White Shark",
+  "family": "fish",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2"
+ },
+ {
+  "id": "mako-shark-framing-v2",
+  "name": "Mako Shark",
+  "family": "fish",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2"
+ },
+ {
+  "id": "rhea",
+  "name": "Rhea",
+  "family": "biped-bird",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea"
+ },
+ {
+  "id": "snailfish",
+  "name": "Snailfish",
+  "family": "fish",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish"
+ },
+ {
+  "id": "snow-petrel",
+  "name": "Snow Petrel",
+  "family": "biped-bird",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel"
+ },
+ {
+  "id": "tiger-shark-framing-v2",
+  "name": "Tiger Shark",
+  "family": "fish",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2"
+ },
+ {
+  "id": "whale-shark-framing-v2",
+  "name": "Whale Shark",
+  "family": "fish",
+  "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2"
+ }
+]

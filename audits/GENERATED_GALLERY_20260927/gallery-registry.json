@@ -1962,5 +1962,69 @@
   "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)",
   "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
   "tag": "g2c196"
+ },
+ {
+  "family": "fish",
+  "name": "Basking Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/basking-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/flounder",
+  "note": "HELD: body/tail cracks remain in the late idle on both the plain and the seams fit",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Great White Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/great-white-shark-framing-v2/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Mako Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/mako-shark-framing-v2/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Snailfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/snow-petrel",
+  "note": "HELD: a seam line at the near shoulder remains in the late idle",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Tiger Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/tiger-shark-framing-v2",
+  "note": "HELD: native whole, but Codex keeps an explicit anatomy review hold on its tail proportions",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Whale Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
  }
 ]
