@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c173-sprint-preflight/v1",
+  "owner": "OpenAI/Codex",
+  "os": "Darwin",
+  "workspace": "~/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "upstream": "origin/openai/mac",
+  "initialHead": "de255a6de69c4f03f68cdd0643246190e24987ee",
+  "mailboxReadThrough": "C173",
+  "newerSignedLaneCommits": 0,
+  "budgetMode": "UNFROZEN",
+  "hostedAuthority": false,
+  "startupReceiptReused": "audits/C163_SPRAWLER_MOTION_20261002/toolchain-check.log",
+  "freeGiB": 146.1029052734375,
+  "prePushGuardSha256": "2cd8490b72e028e2bec0339a83575f3f0591691e3f853fed20b3df24f849e918"
+}

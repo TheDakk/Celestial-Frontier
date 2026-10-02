@@ -1,0 +1,28 @@
+{
+  "name": "Langur",
+  "masterSha256": "2bb01355edf9b9172dcd479fc048cf78f1b1e292161f67163fd1e96023fcded9",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Pale grey slender long-limbed monkey with black face/hands, crown crest and a complete tail longer than trunk. Two hands and two feet are visible; far forelimb is stretched forward, and all contacts are not level. Far ear/upper roots partly hidden by fur/head; no hidden anatomy claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 168,
+      "y0": 364,
+      "x1": 1072,
+      "y1": 886
+    },
+    "margins": {
+      "left": 168,
+      "right": 181,
+      "top": 364,
+      "bottom": 367
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

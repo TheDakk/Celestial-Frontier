@@ -1,0 +1,28 @@
+{
+  "name": "Mandrill",
+  "masterSha256": "e2087e3743058a783937edab9dcfaba4c21e1b3e47b8439cbe9e510c38b162ea",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Red nose stripe, ridged blue cheeks, olive-gold mane, high shoulders and short upright stump tail are readable. Two hands and two feet are visible with close but unequal contact levels. Heavy mane obscures far shoulder; one ear hidden. Face turns toward viewer rather than strict side; preserve actual visible ownership only.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 263,
+      "y0": 287,
+      "x1": 966,
+      "y1": 967
+    },
+    "margins": {
+      "left": 263,
+      "right": 287,
+      "top": 287,
+      "bottom": 286
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

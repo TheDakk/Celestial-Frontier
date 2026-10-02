@@ -1,0 +1,121 @@
+{
+  "id": "snow-petrel",
+  "name": "Snow Petrel",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14382,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 165,
+      "y0": 159,
+      "x1": 295,
+      "y1": 246
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1373,
+        "pixels": 1975,
+        "box": {
+          "x0": 250,
+          "y0": 123,
+          "x1": 324,
+          "y1": 203
+        },
+        "attach": {
+          "x": 284.3,
+          "y": 169.3,
+          "relX": 0.92,
+          "relY": 0.12
+        },
+        "dir": {
+          "x": 0.18,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 61
+      },
+      {
+        "k": 1,
+        "frac": 0.1304,
+        "pixels": 1875,
+        "box": {
+          "x0": 97,
+          "y0": 193,
+          "x1": 164,
+          "y1": 244
+        },
+        "attach": {
+          "x": 164,
+          "y": 215.5,
+          "relX": -0.01,
+          "relY": 0.65
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.25
+        },
+        "class": "rear",
+        "length": 72.8
+      },
+      {
+        "k": 2,
+        "frac": 0.0716,
+        "pixels": 1030,
+        "box": {
+          "x0": 193,
+          "y0": 247,
+          "x1": 285,
+          "y1": 297
+        },
+        "attach": {
+          "x": 227.5,
+          "y": 247,
+          "relX": 0.48,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.07,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 76.2
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 197,
+        "x1": 231,
+        "cx": 212.2
+      },
+      {
+        "x0": 256,
+        "x1": 271,
+        "cx": 264.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

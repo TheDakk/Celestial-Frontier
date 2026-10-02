@@ -1,0 +1,28 @@
+{
+  "name": "Marine Iguana",
+  "masterSha256": "9200fbcb9b42baa95175a0d23e2358332aef0fe19a4e5d5ba7d5fbebcb36116f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Dark scaly body with red mottling, blunt salt-encrusted snout and dorsal spines; four clawed feet readable. Tail terminates in a fan-like paddle with ray-like ridges rather than an unambiguously natural tapered iguana tail: anatomical source hold. Far proximal limbs obscured and contacts uneven.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 120,
+      "y0": 458,
+      "x1": 1137,
+      "y1": 788
+    },
+    "margins": {
+      "left": 120,
+      "right": 116,
+      "top": 458,
+      "bottom": 465
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

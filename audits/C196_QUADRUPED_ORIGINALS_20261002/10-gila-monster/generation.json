@@ -1,0 +1,14 @@
+{
+  "id": "10-gila-monster",
+  "name": "Gila Monster",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-112f2192-81e9-41f3-a407-5984dbd674a8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d5b52d51feebbe4c3f4b35311e7abc225f4b8b9703196b4d02c881a3252d263f",
+  "bytes": 1204215,
+  "promptSha256": "c78a581b59c5c1b169001c200d1390cda23fcba3c56471115b0580a1519d561c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

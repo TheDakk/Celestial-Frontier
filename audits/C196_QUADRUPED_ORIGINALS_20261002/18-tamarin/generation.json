@@ -1,0 +1,14 @@
+{
+  "id": "18-tamarin",
+  "name": "Tamarin",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ba1f7883-fd32-4cde-a5a9-c37d303eb010.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "68ea5985a80094d046798941237a2f662a1aeb573522d97e4f5df53565977742",
+  "bytes": 1254759,
+  "promptSha256": "83ef2b0e3df04d90db0c7fcb79f8b32f0e483064c9723273b9f7429f1f9ac590",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

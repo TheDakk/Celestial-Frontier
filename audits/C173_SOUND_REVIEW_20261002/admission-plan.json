@@ -1,0 +1,542 @@
+{
+  "schema": "cf.c173-recorded-admission-plan/v1",
+  "runtimeAdmitted": false,
+  "listeningAccepted": false,
+  "cueCount": 49,
+  "currentOpusBytes": 422141,
+  "exactPcmDuplicateGroups": [
+    [
+      "ability:frost:launch",
+      "ability:psionic:launch"
+    ],
+    [
+      "ability:frost:travel",
+      "ability:psionic:travel"
+    ],
+    [
+      "ability:frost:impact",
+      "ability:psionic:impact"
+    ],
+    [
+      "ability:venom:launch",
+      "ability:chem:launch"
+    ],
+    [
+      "ability:venom:travel",
+      "ability:chem:travel"
+    ],
+    [
+      "ability:venom:impact",
+      "ability:chem:impact"
+    ],
+    [
+      "battle:approach-start",
+      "battle:hitstop-thump",
+      "battle:flash-sting",
+      "battle:shake-rumble",
+      "battle:dodge-swish"
+    ]
+  ],
+  "stages": [
+    "Correct source selection, level and source-cause mismatches in new authoring candidates; preserve all 49 original masters.",
+    "Review exact master and 64 kb/s mono Opus on headphones and phone speaker; biological recording must not be claimed for designed sources.",
+    "Predecode admitted immutable assets before battle via existing pack owner; bind cue IDs, recipe/source/license hashes and missing/invalid asset refusal.",
+    "Inject ready buffers through existing createTurnCueSink synthesize boundary; no fetch/decode/filtering in play(cue), no oscillator/noise fallback for accepted recorded IDs.",
+    "Replace synthetic material tail for recorded impact path only after independently reviewed target-material stems and deterministic tiny/titanic mass derivations exist.",
+    "Keep runtime decorative owner, visibility/mute/audio unlock, priority/concurrency and 25/90 ms ducking. Queue excess is dropped, never delayed.",
+    "Outcome tests exercise real turn cue plan: visible trigger, single correct beat, miss/dodge omit contact impact, faint/victory result, material/mass branches, unavailable buffer and mute/visibility/disposal.",
+    "Measure actual stage audio onset, dropped requests and decode memory on phone before claim; batch runtime changes with next changed-product I5."
+  ],
+  "perCue": [
+    {
+      "id": "ability:fire:launch",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:fire:travel",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:fire:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:frost:launch",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:frost:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:frost:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:storm:launch",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:storm:travel",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:storm:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:tide:launch",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:tide:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:tide:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:stone:launch",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:stone:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:stone:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:venom:launch",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:venom:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:venom:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:void:launch",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:void:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:void:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:sand:launch",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:sand:travel",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:sand:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:chem:launch",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:chem:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:chem:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:psionic:launch",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:psionic:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:psionic:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "ability:wild:launch",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:wild:travel",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "ability:wild:impact",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_RENDERED"
+    },
+    {
+      "id": "battle:turn-ready",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:cursor",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:confirm",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:cancel",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:approach-start",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:hitstop-thump",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:flash-sting",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:shake-rumble",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:damage-tick",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:miss-whiff",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:dodge-swish",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:faint-fall",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:victory-sting",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:defeat-sting",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:battle-start",
+      "action": "source/level authoring correction required",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    },
+    {
+      "id": "battle:battle-end",
+      "action": "listening review pending; no promotion",
+      "measurementRef": "measurement.json",
+      "listening": {
+        "headphones": "NOT_RUN",
+        "phoneSpeaker": "NOT_RUN"
+      },
+      "tinyTitanic": "NOT_APPLICABLE"
+    }
+  ]
+}

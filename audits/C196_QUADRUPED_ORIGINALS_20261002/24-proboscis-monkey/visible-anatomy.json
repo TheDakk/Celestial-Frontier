@@ -1,0 +1,166 @@
+{
+  "id": "24-proboscis-monkey",
+  "name": "Proboscis Monkey",
+  "family": "primate",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "cdd39cb9749eb0880b3db4f448309cf861b7a57bf7a3c334ad30b12acbaae38b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22994,
+    "coreRadius": 28,
+    "bodyBox": {
+      "x0": 167,
+      "y0": 130,
+      "x1": 299,
+      "y1": 232
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0741,
+        "pixels": 1704,
+        "box": {
+          "x0": 244,
+          "y0": 112,
+          "x1": 325,
+          "y1": 183
+        },
+        "attach": {
+          "x": 285.6,
+          "y": 142.4,
+          "relX": 0.9,
+          "relY": 0.12
+        },
+        "dir": {
+          "x": 0.95,
+          "y": -0.32
+        },
+        "class": "front",
+        "length": 58.2
+      },
+      {
+        "k": 1,
+        "frac": 0.1134,
+        "pixels": 2608,
+        "box": {
+          "x0": 74,
+          "y0": 164,
+          "x1": 166,
+          "y1": 288
+        },
+        "attach": {
+          "x": 166,
+          "y": 191,
+          "relX": -0.01,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": -0.72,
+          "y": 0.69
+        },
+        "class": "limb-down",
+        "length": 133.7
+      },
+      {
+        "k": 2,
+        "frac": 0.1309,
+        "pixels": 3009,
+        "box": {
+          "x0": 252,
+          "y0": 214,
+          "x1": 335,
+          "y1": 308
+        },
+        "attach": {
+          "x": 278.6,
+          "y": 224.6,
+          "relX": 0.85,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": 0.29,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 100.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0775,
+        "pixels": 1783,
+        "box": {
+          "x0": 142,
+          "y0": 230,
+          "x1": 197,
+          "y1": 295
+        },
+        "attach": {
+          "x": 181.7,
+          "y": 232.8,
+          "relX": 0.11,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.48,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 73.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0679,
+        "pixels": 1561,
+        "box": {
+          "x0": 201,
+          "y0": 233,
+          "x1": 257,
+          "y1": 291
+        },
+        "attach": {
+          "x": 218,
+          "y": 233,
+          "relX": 0.39,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.2,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 69.9
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 279,
+        "x1": 296,
+        "cx": 286.7
+      },
+      {
+        "x0": 303,
+        "x1": 335,
+        "cx": 321.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Banteng",
+  "masterSha256": "9d514e5beed5d4b51f58a9db9a94191324b866763ad0baf8a13635d40f426720",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Brown bovine with white stockings and rump patch, upward-curved horns, both ears and full tufted tail. Four hoof endpoints and separated lower legs readable; far proximal foreleg remains partly behind trunk. Slight three-quarter head with one visible eye. Retain exact source, no semantic presence inferred.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 230,
+      "y0": 310,
+      "x1": 1033,
+      "y1": 924
+    },
+    "margins": {
+      "left": 230,
+      "right": 220,
+      "top": 310,
+      "bottom": 329
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

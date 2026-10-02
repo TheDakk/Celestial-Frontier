@@ -1,0 +1,14 @@
+{
+  "id": "23-aye-aye",
+  "name": "Aye-Aye",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e0e56038-8913-48fd-adbb-dffbaa2c6d21.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4c28ca14c18609dc3250747ae7ff413ecf9fb57a25b0f998b8488616e6505709",
+  "bytes": 1362832,
+  "promptSha256": "94cbed6d0e41afa37e92883b1427ded0ef8b567c18f4f7af5837186aa45e9b2f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

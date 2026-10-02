@@ -1,0 +1,28 @@
+{
+  "name": "Monitor Lizard",
+  "masterSha256": "362bd96ae11513863de2744848c8f1de583a100579f30143798f2c4e242f0e61",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Dark spotted monitor with complete banded tail, long neck, forked tongue and four clawed feet. Head is raised naturally above feet, but forelimbs are relatively pillar-like, far roots remain obscured and near/far feet differ in height. Tail and tongue approach the border; no framing admission inferred.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 62,
+      "y0": 494,
+      "x1": 1171,
+      "y1": 771
+    },
+    "margins": {
+      "left": 62,
+      "right": 82,
+      "top": 494,
+      "bottom": 482
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

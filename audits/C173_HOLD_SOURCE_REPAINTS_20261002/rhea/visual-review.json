@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Rhea",
+  "masterSha256": "1e1a1a15c937a0646cba6ad93b89f62bddebdbc036f58840f428700add32a216",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 335,
+      "y0": 265,
+      "x1": 938,
+      "y1": 988
+    },
+    "margins": {
+      "left": 335,
+      "right": 315,
+      "top": 265,
+      "bottom": 265
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Two separate long legs and three-toed feet are readable; thighs emerge beneath feathering at different depths. Only near folded wing surface is independently distinguishable; no far wing/root/tip landmark is asserted. Existing template hidden-wing support remains a reference blocker.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}
