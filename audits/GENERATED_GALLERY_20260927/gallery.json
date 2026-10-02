@@ -1624,7 +1624,7 @@
    "name": "Bat",
    "nativeDir": "audits/BAT_C190_20261002/bat",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: native PASS, but the aerial placement puts the bat mostly above the top edge of the frame (staging fix pending)"
+   "note": "whole in reaction and late idle, flying fully inside the frame (the earlier staging hold was a review-crop error: the crop sheet shows only the ground band)"
   },
   {
    "family": "primate",

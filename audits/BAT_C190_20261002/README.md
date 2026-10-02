@@ -15,3 +15,5 @@ the same placement (stand y 0.4106, fit 0.6964) through the real stage, every pu
 four turns (751 samples at 60 Hz) spans y 0.097–0.507, x 0.230–0.784 of the frame — top 56 px, clear of the bar (20 px) and a
 4% margin. Pinned by `port/v2/apps/game/src/battle2/aerial-frame.test.ts`; its control (the foot at the air band's centre,
 the body not fitted) puts the wings at y −0.044, above the frame, and the check fails. No placement change was needed.
+
+**Released 2026-10-02:** the hold was a review error — the crop sheet (`native-g2c54/crops.mjs`) shows a fixed band around the ground, cutting off aerial fighters. Full frames show both bats wholly inside the frame (wingtips y≈78–95 px, below the timing bar); a regression test (`battle2/aerial-frame.test.ts`) pins it. **Bat accepted.**

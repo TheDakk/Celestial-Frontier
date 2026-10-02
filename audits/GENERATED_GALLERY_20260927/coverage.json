@@ -1,11 +1,10 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 195,
- "pct": 30.9,
+ "covered": 196,
+ "pct": 31.1,
  "heldNotCounted": [
   "Basking Shark",
-  "Bat",
   "Capuchin",
   "Chough",
   "Crow",
@@ -334,9 +333,11 @@
   {
    "family": "flyer-membrane",
    "species": 4,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 25,
+   "names": [
+    "Bat"
+   ]
   },
   {
    "family": "crustacean-clawed",
