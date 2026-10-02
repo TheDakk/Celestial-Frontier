@@ -1,0 +1,67 @@
+{
+  "schema": "cf.c132-theme-candidate-tests/v1",
+  "command": "node node_modules/vitest/vitest.mjs run tests/effects-theme-delivery.test.ts",
+  "workingDirectory": "port/v2",
+  "rows": [
+    {
+      "theme": "fire",
+      "anchors": "audits/C132_EFFECTS_20261001/fire/anchors.json",
+      "exitCode": 0,
+      "log": "tests/fire.txt"
+    },
+    {
+      "theme": "frost",
+      "anchors": "audits/C132_EFFECTS_20261001/frost/anchors.json",
+      "exitCode": 0,
+      "log": "tests/frost.txt"
+    },
+    {
+      "theme": "storm",
+      "anchors": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+      "exitCode": 0,
+      "log": "tests/storm.txt"
+    },
+    {
+      "theme": "tide",
+      "anchors": "audits/C132_EFFECTS_20261001/tide/anchors.json",
+      "exitCode": 0,
+      "log": "tests/tide.txt"
+    },
+    {
+      "theme": "stone",
+      "anchors": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+      "exitCode": 0,
+      "log": "tests/stone.txt"
+    },
+    {
+      "theme": "venom",
+      "anchors": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+      "exitCode": 0,
+      "log": "tests/venom.txt"
+    },
+    {
+      "theme": "void",
+      "anchors": "audits/C132_EFFECTS_20261001/void/final/anchors.json",
+      "exitCode": 0,
+      "log": "tests/void.txt"
+    },
+    {
+      "theme": "sand",
+      "anchors": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+      "exitCode": 0,
+      "log": "tests/sand.txt"
+    },
+    {
+      "theme": "chem",
+      "anchors": "audits/C132_EFFECTS_20261001/chem/anchors.json",
+      "exitCode": 0,
+      "log": "tests/chem.txt"
+    },
+    {
+      "theme": "psionic",
+      "anchors": "audits/C132_EFFECTS_20261001/psionic/final/anchors.json",
+      "exitCode": 0,
+      "log": "tests/psionic.txt"
+    }
+  ]
+}

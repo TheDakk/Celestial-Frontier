@@ -3,8 +3,8 @@
  * each against the hand-authored record landmarks — comparison truth only, never an input. Prints, per subject:
  * visible foot positions within `tol` master px of ANY pool candidate, named slots within `tol` px of the landmark
  * of that name, and hidden-set equality with the record's declaration. Usage: node score.mjs [tol] [json]. Not a gate. */
-import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/',codex='/Users/dakk/Projects/celestial-frontier-openai-mac/';
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {homedir} from 'node:os';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/',codex=path.join(homedir(),'Projects','celestial-frontier-openai-mac')+'/';
 const {readPng}=await import('./png.mjs');
 const {assignLegs,TEMPLATES}=await import('./assign.mjs');
 export const SUBJECTS=[

@@ -3,6 +3,13 @@
 Status 2026-09-20 early hours: **design, with three calibration slices that are NOT a verifier.** Nothing here admits
 or refuses a creature in the game. Owner: Claude (anthropic lane). Program: `audits/VISION_PROGRAM_20260920/PROGRAM.md`.
 
+Runner portability matches code as of 2026-10-02: `score.mjs` and `calibrate.mjs` resolve the
+Codex lane as `path.join(os.homedir(), 'Projects', 'celestial-frontier-openai-mac')`. Subject
+masters, records and presence files keep their existing relative names. Importing the calibration
+table no longer runs calibration; direct command execution is unchanged. `subject-paths.test.mjs`
+imports both actual tables under two alternate home fixtures, including spaces, without running
+the detector or touching another lane. These path repairs do not re-score or accept any creature.
+
 ## Why a verifier, and what "trust" means
 Runtime generation of new anatomy by the local model is admitted only when (1) an automatic verifier reports the
 template's counts on every known-good master and refuses every mutant, both directions; (2) a human-labelled battery

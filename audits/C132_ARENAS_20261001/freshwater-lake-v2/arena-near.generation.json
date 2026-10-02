@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-5d22ebcc-4412-494c-804a-032e6d0a8e6a.png",
+  "sourceSha256": "f378db79c9ec3d8cf9164e192531ba6846ca4cecf030050a416e120c7c53ad73",
+  "retainedMaster": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.png",
+  "retainedSha256": "f378db79c9ec3d8cf9164e192531ba6846ca4cecf030050a416e120c7c53ad73",
+  "bytes": 1238294,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-near-repair.prompt.txt",
+    "sha256": "4f001b409579fa95787809a235200658a8f5e12e07435de610e2cdeecf546d95"
+  },
+  "status": "REVIEW_PENDING",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

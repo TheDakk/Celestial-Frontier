@@ -1,0 +1,52 @@
+[
+  {
+    "theme": "fire",
+    "anchors": "../C132_EFFECTS_20261001/fire/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "frost",
+    "anchors": "../C132_EFFECTS_20261001/frost/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "storm",
+    "anchors": "../C132_EFFECTS_20261001/storm/final/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "tide",
+    "anchors": "../C132_EFFECTS_20261001/tide/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "stone",
+    "anchors": "../C132_EFFECTS_20261001/stone/shards/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "venom",
+    "anchors": "../C132_EFFECTS_20261001/venom/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "void",
+    "anchors": "../C132_EFFECTS_20261001/void/final/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "sand",
+    "anchors": "../C132_EFFECTS_20261001/sand/final/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "chem",
+    "anchors": "../C132_EFFECTS_20261001/chem/anchors.json",
+    "contract": "v4.3"
+  },
+  {
+    "theme": "psionic",
+    "anchors": "../C132_EFFECTS_20261001/psionic/final/anchors.json",
+    "contract": "v4.3"
+  }
+]

@@ -1,0 +1,15 @@
+Use case: identity-preserve. The attached image is the edit target: one Earth Gaur. Preserve this exact creature identity, painted style, natural body proportions, coat pattern, colours, head, horns if present, complete tail and four-limb stance.
+
+Zoom the ENTIRE EXISTING ANIMAL OUT to 60 percent of its current size and centre it in the SAME 1254 by 1254 square. This means the whole animal becomes smaller together; never shorten the tail or legs. Keep every painted pixel including horns, ears, whiskers and tail tips inside x=250..1004 and y=250..1004, leaving generous empty magenta on all sides. Do not paint a rectangle or any labels. Also reveal the existing far ear in a natural slight offset: exactly TWO natural ears total, each complete from its attachment to its tip and separately visible, with no third ear, no new horn, and no invented anatomy. Keep the near ear unchanged; expose the actual far ear on the other side of the head.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+Background: every non-subject pixel is perfectly flat pure magenta #FF00FF. No scene, floor, cast shadow, transparency, border, text or new decoration. Preserve four distinct natural legs and complete connected tail. This is a new immutable edited candidate; prior painting remains retained.

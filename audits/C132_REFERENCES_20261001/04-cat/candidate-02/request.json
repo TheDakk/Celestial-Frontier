@@ -1,0 +1,28 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Cat",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "6e63e302f13d8f834e60f8d453f482d49f6a06dd88afaba23a197538dc5e9745",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "88d86961e85f2744877f1ba4573563698e6206b717603f7ce9a7ac6d8cea593a",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "felid",
+  "authoringCreated": false,
+  "sourceHead": "852c7b2b021652146d0b86a34cb2f095a9a97037",
+  "basePromptSha256": "dab57c4c9278880af51356e460fd7596f7d81329706509e12cfc0c3243266c89",
+  "referenceLayout": "REFERENCE PAINTING: one natural domestic cat in strict side profile, two upright triangular ears with BOTH complete tips independently readable, short muzzle, slit pupil and whiskers. The cat walks in a quiet planted stride: FOUR separate legs, two fore and two hind, each readable continuously from the body to its paw, with visible magenta gaps along the shafts. Naturally offset near/far legs front-to-back, no crossing or merged upper limbs. Long natural tail extends behind the haunch horizontally with a gentle low curve, completely separated from feet and belly. Keep all paws on one horizontal level and all anatomy connected.",
+  "referenceCompilerSha256": "d49434e42bb630ceb77b5aadf70424041be89cdb23a7364389092e0cc14683a4",
+  "purpose": "Single targeted framing edit; Gazelle/Gaur additionally expose the natural far ear. Earlier original retained.",
+  "editTarget": "audits/C132_REFERENCES_20261001/04-cat/master.png",
+  "editTargetSha256": "c0dcd7ade43299c134d20b909d6a92afcda0fffe1110d9163cb0d02643fee219",
+  "editCompilerSha256": "935a543aa85fadebb5348c042ffb0616f4a83f3bf0f579f5fc218ef23530344d"
+}

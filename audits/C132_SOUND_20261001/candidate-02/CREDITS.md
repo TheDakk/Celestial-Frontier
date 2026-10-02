@@ -1,0 +1,51 @@
+# C132 recorded cue candidates — credits
+
+- `ability:fire:launch` — rubberduck; CC0-1.0; https://opengameart.org/content/80-cc0-rpg-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:fire:travel` — rubberduck; CC0-1.0; https://opengameart.org/content/80-cc0-rpg-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:fire:impact` — rubberduck; CC0-1.0; https://opengameart.org/content/80-cc0-rpg-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:frost:launch` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:frost:travel` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:frost:impact` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:storm:launch` — See item Credit / Author in preserved metadata; Public-domain-NPS-statement; None. Trim, mono resample, fades and bounded gain.
+- `ability:storm:travel` — See item Credit / Author in preserved metadata; Public-domain-NPS-statement; None. Trim, mono resample, fades and bounded gain.
+- `ability:storm:impact` — See item Credit / Author in preserved metadata; Public-domain-NPS-statement; None. Trim, mono resample, fades and bounded gain.
+- `ability:tide:launch` — rubberduck; CC0-1.0; https://opengameart.org/content/40-cc0-water-splash-slime-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:tide:travel` — rubberduck; CC0-1.0; https://opengameart.org/content/40-cc0-water-splash-slime-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:tide:impact` — rubberduck; CC0-1.0; https://opengameart.org/content/40-cc0-water-splash-slime-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:stone:launch` — rubberduck; CC0-1.0; https://opengameart.org/content/80-cc0-rpg-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:stone:travel` — rubberduck; CC0-1.0; https://opengameart.org/content/80-cc0-rpg-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:stone:impact` — rubberduck; CC0-1.0; https://opengameart.org/content/80-cc0-rpg-sfx. Trim, mono resample, fades and bounded gain.
+- `ability:venom:launch` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:venom:travel` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:venom:impact` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:void:launch` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:void:travel` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:void:impact` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:sand:launch` — See item Credit / Author in preserved metadata; Public-domain-NPS-statement; None. Trim, mono resample, fades and bounded gain.
+- `ability:sand:travel` — See item Credit / Author in preserved metadata; Public-domain-NPS-statement; None. Trim, mono resample, fades and bounded gain.
+- `ability:sand:impact` — See item Credit / Author in preserved metadata; Public-domain-NPS-statement; None. Trim, mono resample, fades and bounded gain.
+- `ability:chem:launch` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:chem:travel` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:chem:impact` — Kenney; CC0-1.0; https://kenney.nl/assets/sci-fi-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:psionic:launch` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:psionic:travel` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:psionic:impact` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `ability:wild:launch` — Kenney; CC0-1.0; https://kenney.nl/assets/rpg-audio. Trim, mono resample, fades and bounded gain.
+- `ability:wild:travel` — Kenney; CC0-1.0; https://kenney.nl/assets/rpg-audio. Trim, mono resample, fades and bounded gain.
+- `ability:wild:impact` — Kenney; CC0-1.0; https://kenney.nl/assets/rpg-audio. Trim, mono resample, fades and bounded gain.
+- `battle:turn-ready` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:cursor` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:confirm` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:cancel` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:approach-start` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:hitstop-thump` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:flash-sting` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:shake-rumble` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:damage-tick` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:miss-whiff` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:dodge-swish` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:faint-fall` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:victory-sting` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:defeat-sting` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:battle-start` — Kenney; CC0-1.0; https://kenney.nl/assets/impact-sounds. Trim, mono resample, fades and bounded gain.
+- `battle:battle-end` — Kenney; CC0-1.0; https://kenney.nl/assets/interface-sounds. Trim, mono resample, fades and bounded gain.

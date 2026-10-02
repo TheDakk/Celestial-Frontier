@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Gazelle",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "82f3495fcce7d1adb1b39e8fc2b80ad44166a2127d43b2daac1393053e4f4a07",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "88d86961e85f2744877f1ba4573563698e6206b717603f7ce9a7ac6d8cea593a",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-horned",
+  "authoringCreated": false,
+  "sourceHead": "852c7b2b021652146d0b86a34cb2f095a9a97037",
+  "basePromptSha256": "8abdd079a777562022a86c14c71b2ea9aa916abc99aa80aacdd599d55f35a641",
+  "referenceLayout": "REFERENCE PAINTING: graceful side-on natural gazelle, fine delicate legs and real small hooves. Quiet walking stride with all FOUR legs visibly separated from their distinct body roots through ankles to hooves. Place the far foreleg slightly forward and far hindleg slightly forward of the near limbs with clear magenta gaps along their whole shafts. Two natural ears are both separately readable, with distinct tips. Preserve two natural slender lyre-shaped ringed horns, dark flank stripe and naturally short tail; do not lengthen the tail. The short tail hangs clear behind the haunch without touching either leg. All four hooves meet one horizontal level.",
+  "referenceCompilerSha256": "d49434e42bb630ceb77b5aadf70424041be89cdb23a7364389092e0cc14683a4",
+  "purpose": "New manually observed reference candidate; not novel species coverage; existing originals retained."
+}

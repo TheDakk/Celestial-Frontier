@@ -1,0 +1,97 @@
+{
+  "schema": "cf.arena.authoring-proof/v1",
+  "battleContext": {
+    "schema": "cf.arena.proof-context/v1",
+    "encounterKind": "wild",
+    "worldKey": "template:coral",
+    "combatants": [
+      "left-review-stand",
+      "right-review-stand"
+    ],
+    "round": 0,
+    "biomeFamily": "coral"
+  },
+  "seed": 491577885,
+  "seedDerivation": "first4bytes big-endian SHA256 of sorted compact battleContext JSON; no clock",
+  "groundLineNormalized": 0.78,
+  "horizonBandNormalized": 0.66,
+  "standsNormalizedX": [
+    0.3333333333333333,
+    0.6666666666666666
+  ],
+  "systemCard": "SYSTEM CARD - reusable biome-family template coral; canonical profile coral\n  Template scope: source-derived profile plus explicit authored stage interpretation; no live planet address or runtime world snapshot is claimed.\n  Star: not bound at template-authoring time; runtime system light remains source-owned.\n  Light: one soft diffuse near-neutral authoring light from upper left; preserve the same direction on all three plates; no visible star or extra light source.\n  Mineral palette: canonical signature #40c0b0; named material flat pale carbonate sand on a shallow submerged shelf.\n  Atmosphere: canonical weather calm; authored medium water; turquoise underwater depth, distant grouped reef heads at the far edges, clear central water.\n  Flora pigment: source profile coral; permitted forms seaweed; restrained natural pigment interpreted in the named materials.\n  Fauna adaptation: source families fish, sessile, crust, ceph, gastropod; no fauna are painted into these arena layers.\n  One signature: no biome hazard in source; signature stays behind the combatant stands, never breaks the continuous fighting path.\n  Authoring variant: canonical biome-family template; source BIOME_ATLAS.md#1--live-biomes-43-in-the-game-now--colored-first-in-phase-4.",
+  "systemCardSource": "audits/C132_ARENAS_20261001/coral/arena-far.prompt.txt",
+  "systemCardSourceSha256": "fe07f0161d18e1375a83ab63e0b6bc02a5bafd3b0a09cad07da5fc4b7eb2c518",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "extractedMasks": false,
+  "qualityAccepted": false,
+  "scope": "source-derived reusable template authoring; no live world, game wiring, physical-medium admission or visual acceptance claimed",
+  "requestedCanvasSize": {
+    "width": 2560,
+    "height": 1440
+  },
+  "profileKey": "coral",
+  "habitatVariant": null,
+  "medium": "water",
+  "canonicalProfile": {
+    "sig": "#40c0b0",
+    "fauna": [
+      "fish",
+      "sessile",
+      "crust",
+      "ceph",
+      "gastropod"
+    ],
+    "flora": [
+      "seaweed"
+    ],
+    "hazard": null,
+    "weather": "calm"
+  },
+  "sourceInputs": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "a669109aded91bfbf2c385607c27719a9ef927e93bc7ac95f3cec4ef55b5dc60"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/MAILBOX/C132_ART_PROGRAM_20261001.md",
+      "sha256": "92d9ad1066656ababe245f9ef07b70857636763a3b6301d502a819a3b6ac6b15"
+    }
+  ],
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+  },
+  "plates": [
+    {
+      "image": "arena-far.png",
+      "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b",
+      "kind": "scene",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-mid.png",
+      "sha256": "c3b27fef2839d7c7d4fa977a5454a7d6260e6ff173573dcac08600f7bfd19e35",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-near.png",
+      "sha256": "e3030926df94f572ea0789a2e1b7703ccb01ac1666c86d19b0d38ac9c6125e4d",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    }
+  ],
+  "canvasSize": {
+    "width": 1672,
+    "height": 941
+  }
+}

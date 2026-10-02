@@ -1909,9 +1909,13 @@ named verifiers. Copy-ready commands are under **Strict current browser evidence
 
 The production build is now same-origin installable without adding a runtime dependency or an
 external resource. `pwa-build.ts` emits the manifest, SVG icons and a generated classic service
-worker from the final written Vite output. Every non-map runtime file has one path-sorted SHA-256
-entry, and an automatically derived SHA-256 worker-template revision joins that table in the build
-identity so worker-logic-only changes cannot reuse an older cache id. Post-`generateBundle`
+worker from the final written Vite output. Every non-map game runtime file has one path-sorted SHA-256
+entry. As of 2026-10-02, the optional `__local_ai/` authoring-runtime subtree is excluded from both
+identity and eager installed-pack accounting: installing or upgrading local authoring dependencies
+cannot change the game service worker. Other assets, including similarly named directories, remain
+exactly bound. The worker's undeclared-resource refusal stays in place; this exclusion does not
+admit local-AI files through a controlled PWA. An automatically derived SHA-256 worker-template
+revision joins the asset table so worker-logic-only changes cannot reuse an older cache id. Post-`generateBundle`
 finalization is accounted for by re-reading the actual output bytes in post-ordered `writeBundle`.
 Install deletes any same-id candidate first, fetches and verifies every exact response, writes the
 complete marker last and deletes the partial cache on any failure.

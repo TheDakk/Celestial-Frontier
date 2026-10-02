@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Centipede",
+  "family": "myriapod",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "8804c0b7637e2a6b46c4e7070ee10d8287af6bfa76603198f091aa607e61d45a",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "88d86961e85f2744877f1ba4573563698e6206b717603f7ce9a7ac6d8cea593a",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": null,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "one head, two antennae, a continuous segmented body and the named species leg-pair pattern; no universal leg count inferred",
+  "profileId": "centipede",
+  "authoringCreated": false,
+  "sourceHead": "852c7b2b021652146d0b86a34cb2f095a9a97037"
+}

@@ -1,0 +1,109 @@
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Dakk at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - reusable biome-family template oxide; canonical profile oxide
+  Template scope: source-derived profile plus explicit authored stage interpretation; no live planet address or runtime world snapshot is claimed.
+  Star: not bound at template-authoring time; runtime system light remains source-owned.
+  Light: one soft diffuse near-neutral authoring light from upper left; preserve the same direction on all three plates; no visible star or extra light source.
+  Mineral palette: canonical signature #b0603a; named material flat rust-red mineral dust and fine grit.
+  Atmosphere: canonical weather dry; authored medium ground; low oxidized ridges and dry rust-brown atmosphere.
+  Flora pigment: source profile oxide; permitted forms cactus; restrained natural pigment interpreted in the named materials.
+  Fauna adaptation: source families arachnid, insect, reptile; no fauna are painted into these arena layers.
+  One signature: dust-devil; signature stays behind the combatant stands, never breaks the continuous fighting path.
+  Authoring variant: canonical biome-family template; source BIOME_ATLAS.md#1--live-biomes-43-in-the-game-now--colored-first-in-phase-4.
+
+SUBJECT
+Rust oxide plain, MID terrain layer only. flat rust-red mineral dust and fine grit. One broad continuous level terrain band begins near y=0.66 and fills the entire canvas width through the bottom. Both fighting stands at x=1/3 and x=2/3 register exactly to y=0.78. Clear horizontal runway across x=0.08 to0.92, no path that recedes into the distance, no tall growth or rocks across it. Only very restrained biome landmarks behind the stands near the outermost edges. Everything above/outside terrain is pure flat #FF00FF. No background environment or sky in the key. 
+
+ACCURACY
+  Must include: one continuous terrain layer, the shared ground registration
+  and the flat key field above its content; clear stands and fighting path.
+  Must exclude: sky painted into the key, creatures, props across the path,
+  detached terrain tiles, checkerboards and imitation transparency.
+
+LAYOUT
+  A wide, side-view painted fighting stage at low eye level, with a flat,
+  continuous fighting-ground band and clear combatant stands at the left
+  and right thirds. Compose for two opposing creatures, each one third to
+  one half of frame height. Keep their silhouettes and run-up path clear.
+  Put atmospheric depth behind the fight, with no competing foreground.
+  Use one shared horizon, ground registration and system-card light direction
+  across all three plates. Every shadow agrees with that light.
+  Fighting-ground line: y = 0.78 in normalized full-frame coordinates,
+  measured down from the top; record it in the arena recipe for all layers.
+  Stands, paws, contact shadows and impact anchors register to this line.
+  FAR: distant landforms, sky and atmosphere behind the combatants.
+  MID: the fighting ground, horizon band and restrained biome landmarks
+  behind the stands; flat magenta key above and outside this terrain content.
+  NEAR: a quiet ground edge that supports parallax without covering the stands,
+  paws, effects or fighting path; flat magenta key above its content.
+  Parallax must not reveal gaps between plates.
+
+TECHNICAL OUTPUT
+  Create a 2560 x 1440 PNG terrain layer. Paint the named ground/horizon
+  content with a crisp fully opaque edge; every pixel above or outside it
+  is flat uniform pure magenta (#FF00FF), with no gradient, texture, noise,
+  checkerboard, transparency pattern, frame or halo. No painted sky in the
+  key field and no magenta/pink in the terrain. Key at intake like a cut-out;
+  do not extract masks from an opaque scene. Preserve full-frame registration
+  at fighting-ground y = 0.78; do not crop or recenter the layer.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No painted sky or scenery outside the specified terrain layer; no
+  characters, detached display base, white background, checkered background,
+  baked transparency pattern or soft fringe bleeding into the key. The field
+  above/outside the terrain must be flat uniform magenta. Ground, horizon
+  band and terrain shadows are intentional content, not forbidden scenery.
+  No characters, resident creatures, scale figures, baked-in attack effects,
+  UI, timing bar, labels, steep or broken fighting ground, competing foreground,
+  obstacles on the fighting path, inconsistent perspective or mismatched light.

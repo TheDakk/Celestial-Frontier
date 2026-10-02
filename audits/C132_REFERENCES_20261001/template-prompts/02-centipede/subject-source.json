@@ -1,0 +1,66 @@
+{
+  "name": "Centipede",
+  "family": "myriapod",
+  "species": {
+    "name": "Centipede",
+    "aspect": 8,
+    "headFrac": 0.05,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "long flattened body of many identical segments",
+      "one pair of legs per segment fanned along both sides",
+      "long antennae and a pair of rear trailing legs"
+    ],
+    "note": "Generic name read as a representative scolopendrid centipede. One leg pair per segment (a millipede has two) and the body is flat, not tubular."
+  },
+  "genome": {
+    "seed": 3894424807,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 0,
+    "body": 0,
+    "loco": 0,
+    "trait": 18,
+    "size": 0,
+    "diet": 1,
+    "head": 2,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 18,
+    "detail": 6,
+    "accent": 10,
+    "temper": 9,
+    "sense": 6,
+    "repro": 1,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Centipede"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Centipede\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3894424807\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 283,
+  "profile": {
+    "id": "centipede",
+    "names": [
+      "Centipede",
+      "Giant Centipede"
+    ],
+    "candidateTemplates": [
+      "myriapod"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Venom claws are at the head; no rear stinger."
+  }
+}

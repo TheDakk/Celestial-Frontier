@@ -1,0 +1,57 @@
+{
+  "schema": "cf.c132-i5-producer-prep/v1",
+  "date": "2026-10-02",
+  "scope": "Portable anatomy reference paths and optional local-AI asset exclusion from the exact game PWA identity; next I5 measurement preparation only",
+  "checks": [
+    {
+      "command": "node --test tools/anatomy-verify/subject-paths.test.mjs",
+      "cwd": "~/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "tests": 2,
+      "result": "Both real subject tables followed two alternate home fixtures; one contains spaces; calibration import performed no detector run"
+    },
+    {
+      "command": "npx vitest run tests/build-mode.test.ts tests/pwa-offline.test.ts tests/kit-runtime-assets.test.ts tests/pwa-battle2-assets.test.ts",
+      "cwd": "~/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "tests": 78,
+      "output": "\n RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2\n\n\n Test Files  4 passed (4)\n      Tests  78 passed (78)\n   Start at  00:16:52\n   Duration  600ms (transform 165ms, setup 0ms, import 498ms, tests 544ms, environment 0ms)\n\n"
+    },
+    {
+      "command": "npm run typecheck",
+      "cwd": "~/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "programs": 3,
+      "output": "\n> cf-v2@0.0.0 typecheck\n> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json\n\n"
+    },
+    {
+      "check": "Default subject-file existence",
+      "paths": 21,
+      "missing": 0,
+      "exitCode": 0
+    },
+    {
+      "check": "git diff --check for scoped tracked changes",
+      "exitCode": 0
+    }
+  ],
+  "retainedInstrumentFailure": {
+    "stage": "first focused unit run",
+    "testsPassed": 77,
+    "testsFailed": 1,
+    "cause": "Test's broad string assertion matched the intentionally retained assets/__local_ai/runtime.mjs control at root base",
+    "repair": "Assert the exact JSON path prefix, including the start of the path field; root and nested bases now pass",
+    "productWeakening": false
+  },
+  "controls": [
+    "Optional assets absent, MISSING-only, installed and upgraded produce byte-identical generateBundle and writeBundle worker outputs",
+    "Final optional files absent at writeBundle boundary prove no hidden read or eager pack accounting dependency",
+    "Similarly named __local_ai-shadow and assets/__local_ai entries stay in exact game inventory",
+    "Changing ordinary game bytes changes both generated and final worker outputs",
+    "Restoring ordinary bytes restores the original outputs"
+  ],
+  "certificateFilesChanged": false,
+  "nativeEpochRun": false,
+  "certificationClaim": false,
+  "next": "Parent signs checkpoint; next measured I5 epoch must name changed producer without rebinding an old certificate"
+}

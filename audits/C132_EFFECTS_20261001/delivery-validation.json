@@ -1,0 +1,579 @@
+{
+  "schema": "cf.c132-effect-deliveries/v1",
+  "validator": "port/v2/apps/game/src/effects/theme-delivery.ts",
+  "validatorSha256": "2eb51c932f93b5e8783d61f4687b1b522fe62baf7609d98369f8c69220bc4fd6",
+  "visualAcceptance": false,
+  "nativeProof": "NOT_RUN",
+  "rows": [
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/fire/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "fire",
+      "sequenceId": "fire-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 23762,
+          "edge": 8119,
+          "fringe": 14,
+          "fringeRatio": 0.0017243502894445128,
+          "accentShare": 0.01565181217825386,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 177,
+            "y": 408,
+            "width": 233,
+            "height": 230
+          }
+        },
+        "travel": {
+          "painted": 67589,
+          "edge": 16016,
+          "fringe": 28,
+          "fringeRatio": 0.0017482517482517483,
+          "accentShare": 0.004190086867654573,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 161,
+            "y": 436,
+            "width": 663,
+            "height": 244
+          }
+        },
+        "impact": {
+          "painted": 47189,
+          "edge": 13562,
+          "fringe": 10,
+          "fringeRatio": 0.000737354372511429,
+          "accentShare": 0.020985378418646936,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 520,
+            "y": 390,
+            "width": 347,
+            "height": 313
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/frost/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "frost",
+      "sequenceId": "frost-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 20998,
+          "edge": 9797,
+          "fringe": 16,
+          "fringeRatio": 0.0016331530060222517,
+          "accentShare": 0.2031001842322597,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 107,
+            "y": 406,
+            "width": 190,
+            "height": 246
+          }
+        },
+        "travel": {
+          "painted": 65793,
+          "edge": 13677,
+          "fringe": 24,
+          "fringeRatio": 0.001754770783066462,
+          "accentShare": 0.07742067974124653,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 145,
+            "y": 432,
+            "width": 675,
+            "height": 270
+          }
+        },
+        "impact": {
+          "painted": 36233,
+          "edge": 13402,
+          "fringe": 28,
+          "fringeRatio": 0.002089240411878824,
+          "accentShare": 0.06746870991228374,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 519,
+            "y": 388,
+            "width": 314,
+            "height": 321
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "storm",
+      "sequenceId": "storm-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 23506,
+          "edge": 7932,
+          "fringe": 28,
+          "fringeRatio": 0.0035300050428643467,
+          "accentShare": 0.013144536468073738,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 141,
+            "y": 464,
+            "width": 256,
+            "height": 214
+          }
+        },
+        "travel": {
+          "painted": 50000,
+          "edge": 16567,
+          "fringe": 59,
+          "fringeRatio": 0.003561296553389268,
+          "accentShare": 0.00533109558950564,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 107,
+            "y": 455,
+            "width": 688,
+            "height": 280
+          }
+        },
+        "impact": {
+          "painted": 33540,
+          "edge": 11750,
+          "fringe": 4,
+          "fringeRatio": 0.00034042553191489364,
+          "accentShare": 0.012455516014234875,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 459,
+            "y": 430,
+            "width": 446,
+            "height": 243
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/tide/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "tide",
+      "sequenceId": "tide-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 24555,
+          "edge": 6111,
+          "fringe": 13,
+          "fringeRatio": 0.002127311405661921,
+          "accentShare": 0.05332888528809036,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 154,
+            "y": 411,
+            "width": 254,
+            "height": 231
+          }
+        },
+        "travel": {
+          "painted": 100471,
+          "edge": 14803,
+          "fringe": 33,
+          "fringeRatio": 0.002229277849084645,
+          "accentShare": 0.03817034357654164,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 137,
+            "y": 432,
+            "width": 707,
+            "height": 261
+          }
+        },
+        "impact": {
+          "painted": 42681,
+          "edge": 13000,
+          "fringe": 17,
+          "fringeRatio": 0.0013076923076923077,
+          "accentShare": 0.05141637010676157,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 588,
+            "y": 334,
+            "width": 283,
+            "height": 358
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "stone",
+      "sequenceId": "stone-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 23951,
+          "edge": 7943,
+          "fringe": 13,
+          "fringeRatio": 0.0016366612111292963,
+          "accentShare": 0.1354014598540146,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 119,
+            "y": 438,
+            "width": 268,
+            "height": 198
+          }
+        },
+        "travel": {
+          "painted": 89590,
+          "edge": 20553,
+          "fringe": 45,
+          "fringeRatio": 0.0021894613924974458,
+          "accentShare": 0.05110645474523432,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 153,
+            "y": 408,
+            "width": 681,
+            "height": 314
+          }
+        },
+        "impact": {
+          "painted": 52182,
+          "edge": 14974,
+          "fringe": 45,
+          "fringeRatio": 0.0030052090289835716,
+          "accentShare": 0.18443645687859153,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 515,
+            "y": 374,
+            "width": 348,
+            "height": 305
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "venom",
+      "sequenceId": "venom-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 190,
+      "phases": {
+        "launch": {
+          "painted": 19467,
+          "edge": 6016,
+          "fringe": 8,
+          "fringeRatio": 0.0013297872340425532,
+          "accentShare": 0,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 47,
+            "y": 469,
+            "width": 224,
+            "height": 181
+          }
+        },
+        "travel": {
+          "painted": 52030,
+          "edge": 15911,
+          "fringe": 9,
+          "fringeRatio": 0.0005656464081453083,
+          "accentShare": 0.00534820996334632,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 119,
+            "y": 423,
+            "width": 706,
+            "height": 275
+          }
+        },
+        "impact": {
+          "painted": 30826,
+          "edge": 14040,
+          "fringe": 24,
+          "fringeRatio": 0.0017094017094017094,
+          "accentShare": 0.0001312163758037003,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 524,
+            "y": 406,
+            "width": 367,
+            "height": 308
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/void/final/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "void",
+      "sequenceId": "void-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 22410,
+          "edge": 8674,
+          "fringe": 31,
+          "fringeRatio": 0.0035738990085312427,
+          "accentShare": 0.004425287356321839,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 121,
+            "y": 440,
+            "width": 212,
+            "height": 242
+          }
+        },
+        "travel": {
+          "painted": 65324,
+          "edge": 18045,
+          "fringe": 0,
+          "fringeRatio": 0,
+          "accentShare": 0.006307494894363015,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 110,
+            "y": 430,
+            "width": 705,
+            "height": 256
+          }
+        },
+        "impact": {
+          "painted": 37525,
+          "edge": 15859,
+          "fringe": 39,
+          "fringeRatio": 0.0024591714483889276,
+          "accentShare": 0.001470124960621653,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 580,
+            "y": 392,
+            "width": 287,
+            "height": 333
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "sand",
+      "sequenceId": "sand-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 26461,
+          "edge": 8310,
+          "fringe": 0,
+          "fringeRatio": 0,
+          "accentShare": 0.24275008145975888,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 111,
+            "y": 344,
+            "width": 220,
+            "height": 234
+          }
+        },
+        "travel": {
+          "painted": 88005,
+          "edge": 21402,
+          "fringe": 10,
+          "fringeRatio": 0.00046724605177086255,
+          "accentShare": 0.19096052719163947,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 115,
+            "y": 408,
+            "width": 690,
+            "height": 311
+          }
+        },
+        "impact": {
+          "painted": 38587,
+          "edge": 11585,
+          "fringe": 0,
+          "fringeRatio": 0,
+          "accentShare": 0.12305015029267521,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 543,
+            "y": 410,
+            "width": 340,
+            "height": 281
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/chem/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "chem",
+      "sequenceId": "chem-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 200,
+      "phases": {
+        "launch": {
+          "painted": 29494,
+          "edge": 9895,
+          "fringe": 13,
+          "fringeRatio": 0.0013137948458817584,
+          "accentShare": 0.021699061662198392,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 139,
+            "y": 446,
+            "width": 317,
+            "height": 211
+          }
+        },
+        "travel": {
+          "painted": 75046,
+          "edge": 20552,
+          "fringe": 60,
+          "fringeRatio": 0.0029194239003503307,
+          "accentShare": 0.008362291934434553,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 151,
+            "y": 425,
+            "width": 682,
+            "height": 267
+          }
+        },
+        "impact": {
+          "painted": 33866,
+          "edge": 12562,
+          "fringe": 34,
+          "fringeRatio": 0.0027065753860850182,
+          "accentShare": 0.004255799939740886,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 568,
+            "y": 420,
+            "width": 329,
+            "height": 285
+          }
+        }
+      }
+    },
+    {
+      "anchors": "audits/C132_EFFECTS_20261001/psionic/final/anchors.json",
+      "schema": "cf.theme-delivery-report/v1",
+      "ok": true,
+      "theme": "psionic",
+      "sequenceId": "psionic-c132-v43",
+      "findings": [],
+      "textures": 3,
+      "particles": 160,
+      "phases": {
+        "launch": {
+          "painted": 21739,
+          "edge": 10052,
+          "fringe": 0,
+          "fringeRatio": 0,
+          "accentShare": 0.0009496074955684983,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 146,
+            "y": 440,
+            "width": 257,
+            "height": 245
+          }
+        },
+        "travel": {
+          "painted": 67562,
+          "edge": 20652,
+          "fringe": 63,
+          "fringeRatio": 0.00305055200464846,
+          "accentShare": 0.00017663163472577938,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 119,
+            "y": 400,
+            "width": 679,
+            "height": 318
+          }
+        },
+        "impact": {
+          "painted": 32767,
+          "edge": 13784,
+          "fringe": 46,
+          "fringeRatio": 0.003337202553685432,
+          "accentShare": 0,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 574,
+            "y": 406,
+            "width": 325,
+            "height": 311
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {libraryFamily,controlledLibraryLayout} from './compile-controlled-master.mjs';
+import {libraryFamily as canonicalFamily,controlledLibraryLayout as canonicalLayout} from '../../port/v2/tools/painted-creature/compile-library-master.mjs';
+import {earthFaunaProfile,EARTH_FAUNA_PROFILES} from '../../port/v2/apps/game/src/earth-fauna-profiles.ts';
+const fauna=JSON.parse(fs.readFileSync('port/v2/reference/fauna.json')),byName=new Map(fauna.map(s=>[s.name,s])),families=['primate','myriapod','cephalopod','flyer-membrane'],rows=[];
+for(const p of EARTH_FAUNA_PROFILES)if(p.candidateTemplates.some(f=>families.includes(f)))for(const name of p.names){const f=libraryFamily(p,byName.get(name));assert.equal(f,p.candidateTemplates[0]);const layout=controlledLibraryLayout(f,name);assert.ok(layout.layout.includes(name));assert.ok(layout.accuracy);rows.push({name,family:f});}
+const preserved=[];
+for(const name of ['Cat','Robin','Salmon','Python','Ant']){const p=earthFaunaProfile(name),species=byName.get(name),f=canonicalFamily(p,species);assert.equal(libraryFamily(p,species),f);assert.deepEqual(controlledLibraryLayout(f,name),canonicalLayout(f));preserved.push({name,family:f,status:'EXACT_LAYOUT_PRESERVED'});}
+const controls=[];
+assert.throws(()=>canonicalFamily(earthFaunaProfile('Chimpanzee'),byName.get('Chimpanzee')),/Unsupported/);controls.push('Old controlled compiler refuses Chimpanzee; extension supplies primate instead of a quadruped fallback.');
+assert.throws(()=>libraryFamily({candidateTemplates:['primate','cephalopod']},byName.get('Chimpanzee')),/Ambiguous/);controls.push('Ambiguous extended routing refuses.');
+assert.throws(()=>libraryFamily({candidateTemplates:['unknown']},byName.get('Chimpanzee')),/Unsupported/);controls.push('Unknown family refuses.');
+assert.match(controlledLibraryLayout('cephalopod','Squid').accuracy,/eight.*two longer/);assert.match(controlledLibraryLayout('cephalopod','Octopus').accuracy,/no added feeding/);assert.match(controlledLibraryLayout('cephalopod','Nautilus').accuracy,/numerous unsuckered/);assert.match(controlledLibraryLayout('cephalopod','Deep-Sea Octopus').accuracy,/two ear-like fins/);controls.push('Squid, octopus, nautilus and finned deep-sea octopus retain distinct appendage requests.');
+assert.match(controlledLibraryLayout('myriapod','Millipede').layout,/two pairs of short legs/);assert.match(controlledLibraryLayout('myriapod','Centipede').layout,/One pair of walking legs/);controls.push('Millipede diplosegments are not painted as centipede leg rows.');
+const templates=JSON.parse(fs.readFileSync(new URL('template-prompts.json',import.meta.url)));for(const t of templates){const source=JSON.parse(fs.readFileSync(t.packet+'/subject-source.json')),request=JSON.parse(fs.readFileSync(t.packet+'/request.json')),prompt=fs.readFileSync(t.packet+'/prompt.txt','utf8');assert.equal(source.family,t.family);assert.equal(request.family,t.family);assert.equal(createHash('sha256').update(prompt).digest('hex'),request.promptSha256);for(const feature of source.species.mustRead)assert.ok(prompt.includes(feature));}
+const result={schema:'cf.c132-controlled-template-check/v1',status:'PASS_REQUEST_VOCABULARY_ONLY',extendedNames:rows.length,families:families.map(f=>({family:f,names:rows.filter(r=>r.family===f).map(r=>r.name)})),preserved,controls,compiledExamples:templates,scope:'Painting request dispatch and canonical source/kit preservation only. No source image, anatomical topology, rig or motion acceptance.'};
+fs.writeFileSync(new URL('template-checks.json',import.meta.url),JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({status:result.status,extendedNames:rows.length,preserved:preserved.length,controls:controls.length}));

@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+const out=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(out,'../..');
+const [id,role,input,prompt,status='REVIEW_PENDING']=process.argv.slice(2);
+if(!id||!/^[-a-z0-9]+$/.test(id)||!/^arena-(far|mid|near)(-attempt-[0-9]+)?$/.test(role)||!input||!prompt)throw Error('Usage: adopt.mjs ID arena-ROLE SOURCE_PNG PROMPT STATUS');
+const source=path.resolve(input),target=path.join(out,id,role+'.png'),promptPath=path.resolve(prompt);
+if(!source.startsWith(path.join(os.homedir(),'.codex','generated_images')+path.sep)||!promptPath.startsWith(out+path.sep))throw Error('Unexpected source or prompt');
+const bytes=fs.readFileSync(source);fs.writeFileSync(target,bytes,{flag:'wx'});
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const receipt={schema:'cf.c132-generation-original/v1',generator:'built-in image_gen',inputReference:'audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png',sourceToolOutput:'~/'+path.relative(os.homedir(),source),sourceSha256:sha(bytes),retainedMaster:path.relative(root,target),retainedSha256:sha(fs.readFileSync(target)),bytes:bytes.length,prompt:{path:path.relative(root,promptPath),sha256:sha(fs.readFileSync(promptPath))},status,qualityAccepted:false,originalPixelsModified:false};
+fs.writeFileSync(path.join(out,id,role+'.generation.json'),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({retained:receipt.retainedMaster,bytes:bytes.length,status}));

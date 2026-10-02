@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-reference-visual-review/v1",
+  "name": "Gazelle",
+  "masterSha256": "a9843c0dfff014482e6aa6ef1939ad8cf7e05ddb93ed8c87c7e9c34ba1719032",
+  "method": "Full original visual inspection of the exact candidate-02 painting",
+  "observation": "Tan and white coat with dark continuous flank band; two complete ringed horns and two separate ears; natural short tail; four complete slender lower legs and cloven hooves. The two far upper attachments remain partly occluded. No gore effector has been authored. Four thin hoofed lower limbs and both ear tips are separately visible. Far upper attachments are partly torso-occluded; their centres are manual authoring interpretations, not visible internal joints. Horns remain head-owned, with no independent gore effector. The short continuous tail is not stretched to imitate long-tail references. Post-edit ear visibility and framing improved; head/horn profile and native motion still need review.",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 295,
+      "y0": 277,
+      "x1": 990,
+      "y1": 936
+    },
+    "margins": {
+      "left": 295,
+      "right": 263,
+      "top": 277,
+      "bottom": 317
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "status": "CANDIDATE_UNMEASURED",
+  "scope": "Manual authoring reference only; no intake/static/native/default-pool/Dakk acceptance."
+}

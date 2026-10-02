@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-audit-template-extension/v1",
+  "source": "port/v2/tools/painted-creature/compile-library-master.mjs",
+  "sourceSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "auditCompiler": "audits/C132_REFERENCES_20261001/compile-controlled-master.mjs",
+  "auditCompilerSha256": "88d86961e85f2744877f1ba4573563698e6206b717603f7ce9a7ac6d8cea593a",
+  "layoutSource": "audits/C132_REFERENCES_20261001/layout-extensions.mjs",
+  "layoutSha256": "54eae46dde6cd7e3bd48dbb564c59d84f184076fb97b53a5a9bf24436c623d49",
+  "scope": "Audit-only controlled painting requests. Existing canonical compiler identity/kit/style/provenance code retained; production source unchanged. No anatomy, rig, motion or admission claim."
+}

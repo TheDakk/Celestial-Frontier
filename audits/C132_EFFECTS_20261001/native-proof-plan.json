@@ -1,0 +1,99 @@
+{
+  "schema": "cf.c132-effects-native-proof-plan/v1",
+  "status": "DEFERRED",
+  "reason": "C12 current-source baseline failed capture integrity and Centipede pose refusal; no successor native epoch was run.",
+  "harness": "audits/C132_EFFECTS_20261001/native-runner.mjs",
+  "harnessSha256": "ebea324f81f73d6e8530ee02c59a61f4dd686dd4ec8490a491848b3e3a7e0628",
+  "gateChanges": 0,
+  "acceptorChanges": 0,
+  "reservationRequired": "Post native/performance reservation active before any native epoch; serialize all proof work; post terminal notice afterwards.",
+  "arenaManifestContract": {
+    "recipe": "repo-relative recipe JSON",
+    "far": "repo-relative opaque FAR PNG",
+    "mid": "repo-relative keyed MID PNG",
+    "near": "repo-relative keyed NEAR PNG"
+  },
+  "sourceOverrideContract": "CF_PROOF_SOURCE_OVERRIDES names a repo-relative JSON mapping cf-proof specifiers or repo-relative source files to exact audit-local substitutes.",
+  "rows": [
+    {
+      "theme": "fire",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/fire/anchors.json",
+      "effectAnchorsSha256": "926cb96634725cfdeb3016238d61f9f8ac3c82d48b3491c92ce5832bf3367dca",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "frost",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/frost/anchors.json",
+      "effectAnchorsSha256": "31001930b095dfbef13591fd78b36285a04d4f85d421d25964ba6a18c59d87a8",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "storm",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+      "effectAnchorsSha256": "4a40b1579f0b341e178deea305b87395fb01839490f82dbf5eb1d22d260c3409",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "tide",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/tide/anchors.json",
+      "effectAnchorsSha256": "b76d893f6aa706d1846a68918ee9a3f33b9b0940a507b46f22eeae6838ef2e20",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "stone",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+      "effectAnchorsSha256": "35dee9b691316117ad134d2de90c331b0abd780cf71ffdff676b1fff353505e2",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "venom",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+      "effectAnchorsSha256": "66bd85cb4dcbf393f41a06251cd4a9634fe396f8ff99d03fb706b2854b500ab7",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "void",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/void/final/anchors.json",
+      "effectAnchorsSha256": "cb8e04be607a3b416b1a21489482ab29c474f43cec75565844cca8617ff62e24",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "sand",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+      "effectAnchorsSha256": "2930258125c1e99bd2882ee1d0e886eba8b8c0e5a35c54e1b523a68a7348395f",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "chem",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/chem/anchors.json",
+      "effectAnchorsSha256": "bde174def1affb9cf35520d456cc076c3c14de3431b7209bfb6755506dbc79e4",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    },
+    {
+      "theme": "psionic",
+      "effectAnchors": "audits/C132_EFFECTS_20261001/psionic/final/anchors.json",
+      "effectAnchorsSha256": "377a235f92becbe6ba2e887dbb2f2fdd9a6a165a1d0bdafca2a9847aba18a5bb",
+      "arenaManifest": "REQUIRED_FROM_MATCHING_BIOME_DELIVERY",
+      "fits": "REQUIRED_REAL_ACCEPTED_LIBRARY_PAIR",
+      "status": "NOT_RUN"
+    }
+  ]
+}

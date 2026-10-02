@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01-gazelle",
+    "name": "Gazelle",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/01-gazelle",
+    "master": "audits/C132_REFERENCES_20261001/01-gazelle/master.png"
+  },
+  {
+    "id": "02-gaur",
+    "name": "Gaur",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/02-gaur",
+    "master": "audits/C132_REFERENCES_20261001/02-gaur/master.png"
+  },
+  {
+    "id": "03-dog",
+    "name": "Dog",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/03-dog",
+    "master": "audits/C132_REFERENCES_20261001/03-dog/master.png"
+  },
+  {
+    "id": "04-cat",
+    "name": "Cat",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/04-cat",
+    "master": "audits/C132_REFERENCES_20261001/04-cat/master.png"
+  }
+]
