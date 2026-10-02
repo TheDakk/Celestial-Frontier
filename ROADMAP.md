@@ -118,11 +118,10 @@ Original compression/fold evidence and initial candidate transition failures are
 
 **Performance hold:** C179 candidate is byte-exact across56targets and18 current-source stills, but one unprofiled4× film has4CPU frames over1000/60ms (max55.1ms; p958.3ms). Candidate remains unpromoted; strict all-pair60fps not qualified. Full1444ordered-pair instrument is being prepared with no timing allowance change.
 
-**Native/I5 complete:** current Civet/Wolf jaw film897frames/zero refusals/p955.3ms at4×; mouth placement visible, larger Storm footprint and0.704px Wolf/4.513px claw discrepancies retained. ONE fresh combined I5 on clean signed `20e80c912` certified3+1 plus4rawverifiers in267.263s/zero retries; fresh selector replayPASS, historical proof unchanged. Optional AI absent in source checkout. Full develop gate next with the local optional folder set aside/restored.
+**Native/I5 complete:** current Civet/Wolf jaw film897frames/zero refusals/p955.3ms at4×; mouth placement visible, larger Storm footprint and0.704px Wolf/4.513px claw discrepancies retained. ONE fresh combined I5 on clean signed `20e80c912` certified3+1 plus4rawverifiers in267.263s/zero retries; fresh selector replayPASS, historical proof unchanged. Optional AI absent in source checkout. Full develop gate on signed activation `08ddca65f` PASS: 5,975 tests, all three TypeScript projects and art/override/spec owners green in 195.25 s; optional runtime set aside and restored. Actions policy 81/81 PASS.
 
 **In progress:** C169 nape recuts for Hawk/Crow/SnowyOwl and small WildPony fleck, exact-source attribution first. Claude C169 accepts Lark/Hummingbird: coverage195/631. The captured spikes are heldFAINT despite the file name idle-90. Frozen C181 candidates/reds remain intact. Each agent owns separate audits only. Root owns motion,
-remaining three Centipede slow frames, sequential native films/all-pair 4× sweep, then
-ONE fresh combined I5 3+1 on the complete signed product after Claude posts C165+.
+remaining C12 performance diagnosis and all-pair instrument preparation. The ONE requested combined I5 epoch is complete; no further epoch or re-bind is implied.
 Never reuse or re-bind the prior I5 proof after product changes.
 
 **Operations:** startup check current in `C163_SPRAWLER_MOTION_20261002`; REAPER suffix
