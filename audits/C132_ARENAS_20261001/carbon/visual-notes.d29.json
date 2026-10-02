@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "carbon",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/carbon/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/carbon/arena-far.png",
+    "audits/C132_ARENAS_20261001/carbon/arena-mid.png",
+    "audits/C132_ARENAS_20261001/carbon/arena-near.png"
+  ],
+  "findings": [
+    "All originals and native1672\u00d7941 composition inspected. Distinct matte graphite terrain, neutral cloudy sky and open static fighting band; no copied celestial bodies or lettering observed.",
+    "The NEAR edge introduces a coarse gray texture boundary at the bottom and cuts some larger MID rocks. Small green/mauve edge traces remain along side rock silhouettes.",
+    "FAR remains densely detailed through the lower scene, and the dark palette needs moving-creature readability review. These visual holds remain despite mechanical clearance."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-push-readiness/v1",
+  "repository": {
+    "nameWithOwner": "TheDakk/Celestial-Frontier",
+    "visibility": "PUBLIC"
+  },
+  "workflowHashes": {
+    ".github/workflows/test.yml": "3f204ff54f3ab735525838ce49ea9fb771f7fb7adfa5cdb64d3320174a258dde",
+    ".github/workflows/branch-flow-guard.yml": "72770b57a4d4439c239813b7dcd279e63aba813c5cac97989b4fbdd5d65e73b6",
+    ".github/workflows/dev-preview-package.yml": "2b392ea1acf65a8b08e7a5eb368fa9f9cd456cc4869bdf7de958b77d416550f1",
+    ".github/workflows/publish-branch-sites.yml": "beea847251257299b63325b733d302b9e158cb954503d8dc09b89b42583be34c",
+    ".github/workflows/sync-agent-branches.yml": "98139432d61c4644983976b201cb15b06975487cb378ff8ad46fa05f91541278"
+  },
+  "intendedWrite": "normal push origin openai/mac only",
+  "hostedAttemptAuthorized": false
+}

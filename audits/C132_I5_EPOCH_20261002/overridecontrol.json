@@ -1,0 +1,10 @@
+{
+  "command": [
+    "npm",
+    "run",
+    "overridecontrol"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 88.549,
+  "logSha256": "a690e68fd52b2f98c261ce9b0decdf5f408217f4ed49b00b5bb7f01fa6f7101f"
+}

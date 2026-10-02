@@ -1,0 +1,427 @@
+{
+  "schema": "cf.c132-arena-lossless-feasibility/v1",
+  "date": "2026-10-02",
+  "sourceHead": "06d821a9d3761dabedec152fbbe816d6d92b6588",
+  "scope": "Nine representative runtime layers only: detailed foliage/rock, smooth ice, and amber clouds. Exact-source copies; no original, registry, loader, package, cap or acceptance changes.",
+  "nativeRun": false,
+  "qualityAccepted": false,
+  "sourcePixelsModified": false,
+  "versions": {
+    "node": "v26.10.0",
+    "sharp": "0.35.4",
+    "vips": "8.18.6",
+    "cwebp": "1.6.0\nlibsharpyuv: 0.4.2"
+  },
+  "commands": {
+    "webp": "cwebp -lossless -exact -q 100 -m 6 -quiet SOURCE.png -o COPY.webp",
+    "png": "sharp(source).png({compressionLevel:9,adaptiveFiltering:true})"
+  },
+  "controls": {
+    "equalRgbaPass": true,
+    "changedHiddenRgbRefused": true,
+    "changedAlphaRefused": true
+  },
+  "rows": [
+    {
+      "id": "karst",
+      "role": "far",
+      "source": "audits/C132_ARENAS_20261001/karst/arena-far.png",
+      "sourceSha256": "b716d4f597e05f395b70f2aa3e34719a3bbec75ce58580339c07bd52301c03d8",
+      "sourceBytes": 2694966,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "967dc2e5c2cd44477e6a4fec844c259fe1f5cd5433192005481e6a4292c7bee2",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/karst-far.png",
+          "sha256": "ac2313f3de7efb2f4f85f02c9e5bcd7e5b5e343adada8586712b92a38abfe45e",
+          "bytes": 2637581,
+          "ratio": 0.9787065959273697,
+          "savedBytes": 57385,
+          "decodedSha256": "967dc2e5c2cd44477e6a4fec844c259fe1f5cd5433192005481e6a4292c7bee2",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/karst-far.webp",
+          "sha256": "73c2ed278f699ec0fd96a97a41fdf89376e1bdf307b071dd73e62241f34b53e3",
+          "bytes": 1944556,
+          "ratio": 0.7215512180858682,
+          "savedBytes": 750410,
+          "decodedSha256": "967dc2e5c2cd44477e6a4fec844c259fe1f5cd5433192005481e6a4292c7bee2",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "karst",
+      "role": "mid",
+      "source": "audits/C132_ARENAS_20261001/karst/keyed/arena-mid.png",
+      "sourceSha256": "85f5db68a2ebcb46352ae492478036958b3cf4f9e3a877f47e57025f162668c3",
+      "sourceBytes": 2821442,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "263eaf6d1c8ad3d753777d583a3ba933a53ce25b9d1bdccc913b617aebffb745",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/karst-mid.png",
+          "sha256": "3b17285b2cfdcf1a65e553ab952e10593bfcaef77fee5da0760520cb69ea2551",
+          "bytes": 2276051,
+          "ratio": 0.8066977807801826,
+          "savedBytes": 545391,
+          "decodedSha256": "263eaf6d1c8ad3d753777d583a3ba933a53ce25b9d1bdccc913b617aebffb745",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/karst-mid.webp",
+          "sha256": "c188259252eebfb4176080f551b84377c649c619144bcdd8cf0dd0409a57fcce",
+          "bytes": 1568334,
+          "ratio": 0.5558625695654917,
+          "savedBytes": 1253108,
+          "decodedSha256": "263eaf6d1c8ad3d753777d583a3ba933a53ce25b9d1bdccc913b617aebffb745",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "karst",
+      "role": "near",
+      "source": "audits/C132_ARENAS_20261001/karst/keyed/arena-near.png",
+      "sourceSha256": "00ab071fec577c069887b95294f131f7c077e47836cdbb40c917febc73116593",
+      "sourceBytes": 1501257,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "505f44b33d1cccd9bb8531213d3eca88ce258e87893e9d8e37902cadc29c732d",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/karst-near.png",
+          "sha256": "b3a2a7701aca0fb164761c2ac269d6b53ab849d4c1b1c3b96be8dc7c3e2305da",
+          "bytes": 1293651,
+          "ratio": 0.8617118854400013,
+          "savedBytes": 207606,
+          "decodedSha256": "505f44b33d1cccd9bb8531213d3eca88ce258e87893e9d8e37902cadc29c732d",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/karst-near.webp",
+          "sha256": "8bce3e36b5cae5ab666e7d06c3ce6920d37ba117a79960ea87174c0dbea63310",
+          "bytes": 940192,
+          "ratio": 0.6262698525302464,
+          "savedBytes": 561065,
+          "decodedSha256": "505f44b33d1cccd9bb8531213d3eca88ce258e87893e9d8e37902cadc29c732d",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "blueice",
+      "role": "far",
+      "source": "audits/C132_ARENAS_20261001/blueice/arena-far.png",
+      "sourceSha256": "088edd7634b8c7f7501bf50f855c95c01006365a9c421a8fceb01ec064b16283",
+      "sourceBytes": 2200613,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "977b09d6e0a69288e7419fe6ab9b2c8d7574cb26377809756d97fc3857e55f48",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/blueice-far.png",
+          "sha256": "760b09ef5f7c4e788b7228b13d3b514e15b929294888178d26eb3dc8fec82e7a",
+          "bytes": 2149057,
+          "ratio": 0.9765719824430739,
+          "savedBytes": 51556,
+          "decodedSha256": "977b09d6e0a69288e7419fe6ab9b2c8d7574cb26377809756d97fc3857e55f48",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/blueice-far.webp",
+          "sha256": "90d4943bf6fd796cb983b2a1ea2531ed56c54d625d52cf7ac7aa441fc9893497",
+          "bytes": 1653178,
+          "ratio": 0.7512352240034935,
+          "savedBytes": 547435,
+          "decodedSha256": "977b09d6e0a69288e7419fe6ab9b2c8d7574cb26377809756d97fc3857e55f48",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "blueice",
+      "role": "mid",
+      "source": "audits/C132_ARENAS_20261001/blueice/keyed/arena-mid.png",
+      "sourceSha256": "b7a4bc74e2c642145be4514ebc1a6aa89737d3ce653b615089f909b2db59b575",
+      "sourceBytes": 2550089,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "73857f42756d8086fc910f2ce2f55d6e54f0bc6e4570f9c1e5a0dde3cf7ee6c9",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/blueice-mid.png",
+          "sha256": "b19df7533b86e21844bf67f0f3a13d25ed7b90e383d6e6228ddb265ec0b76901",
+          "bytes": 1980603,
+          "ratio": 0.7766799511703317,
+          "savedBytes": 569486,
+          "decodedSha256": "73857f42756d8086fc910f2ce2f55d6e54f0bc6e4570f9c1e5a0dde3cf7ee6c9",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/blueice-mid.webp",
+          "sha256": "9c04624f6bc655a6ec352bf5f71db2260ecfb70dafad810fb296c5a7cdfa1f87",
+          "bytes": 1412240,
+          "ratio": 0.5538002791275128,
+          "savedBytes": 1137849,
+          "decodedSha256": "73857f42756d8086fc910f2ce2f55d6e54f0bc6e4570f9c1e5a0dde3cf7ee6c9",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "blueice",
+      "role": "near",
+      "source": "audits/C132_ARENAS_20261001/blueice/keyed/arena-near.png",
+      "sourceSha256": "05105616731ffd05b61291f0c6315bb64b5ecc9493bc1b0432033bd5437ab5eb",
+      "sourceBytes": 1402743,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "bdcbb2dba5494468fd5be6985189e3832d18c6a3611115b97d516d89d5323adf",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/blueice-near.png",
+          "sha256": "4f5e39c32cf1296c62dc985a6d88ae411fbc861d51b1d0cd0de26773b43aa381",
+          "bytes": 1166415,
+          "ratio": 0.8315243775944703,
+          "savedBytes": 236328,
+          "decodedSha256": "bdcbb2dba5494468fd5be6985189e3832d18c6a3611115b97d516d89d5323adf",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/blueice-near.webp",
+          "sha256": "43cc915b42337622738708d451c381803fc563bfd4a51ad2a679b5472528ffc3",
+          "bytes": 872648,
+          "ratio": 0.6221011261506919,
+          "savedBytes": 530095,
+          "decodedSha256": "bdcbb2dba5494468fd5be6985189e3832d18c6a3611115b97d516d89d5323adf",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "hotglow",
+      "role": "far",
+      "source": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+      "sourceSha256": "afc7e7f12daf0e6e0f3176963b734bf9a13dff3dd82b033ef107eb6ff9db5540",
+      "sourceBytes": 1823529,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "eff80cf16c9dda7dbf7a9df046ecfdba39cee75d0a8cf80461dd9255061f9928",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/hotglow-far.png",
+          "sha256": "78b592da02984cb70a650535dd5a4661afd0f5975e93eb1e23a4d182c385e19d",
+          "bytes": 1744052,
+          "ratio": 0.9564158288680904,
+          "savedBytes": 79477,
+          "decodedSha256": "eff80cf16c9dda7dbf7a9df046ecfdba39cee75d0a8cf80461dd9255061f9928",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/hotglow-far.webp",
+          "sha256": "27146474ab500c3f7b476a5fc6acebf432e256dfc309a2ead33a66305e300d6d",
+          "bytes": 1392002,
+          "ratio": 0.763356107854605,
+          "savedBytes": 431527,
+          "decodedSha256": "eff80cf16c9dda7dbf7a9df046ecfdba39cee75d0a8cf80461dd9255061f9928",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "hotglow",
+      "role": "mid",
+      "source": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.png",
+      "sourceSha256": "530a0c1663875f59be735228bc938603596da8274be7a6949183e21b37ace0e6",
+      "sourceBytes": 2146707,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "fc3744cc472612e60bcc4bd69cdf7cbce35b140d9cb643a08762a93d69d1ea0c",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/hotglow-mid.png",
+          "sha256": "423a1e7291b720454b5bb2885d8f52c7ff0467a641c9339bca34c9b25a1ff38c",
+          "bytes": 1528140,
+          "ratio": 0.7118530847479418,
+          "savedBytes": 618567,
+          "decodedSha256": "fc3744cc472612e60bcc4bd69cdf7cbce35b140d9cb643a08762a93d69d1ea0c",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/hotglow-mid.webp",
+          "sha256": "796a498d08b941c69aa43fb31bd2a11af3b6b767d6ca7f13c7483240496a0796",
+          "bytes": 1130656,
+          "ratio": 0.5266932096462162,
+          "savedBytes": 1016051,
+          "decodedSha256": "fc3744cc472612e60bcc4bd69cdf7cbce35b140d9cb643a08762a93d69d1ea0c",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "hotglow",
+      "role": "near",
+      "source": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.png",
+      "sourceSha256": "9ef3436ef78096a29eaa50519e062863cd12359fa7f2a176736da4c854f3a27f",
+      "sourceBytes": 1356585,
+      "width": 1672,
+      "height": 941,
+      "channels": 4,
+      "decodedSha256": "730b825a0df45eb9b9474d269fa664bfe23f0532116d610897bfc5cdd2d4b8e2",
+      "encodings": [
+        {
+          "codec": "PNG deflate9 adaptive",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/hotglow-near.png",
+          "sha256": "caecfb0d506576354bd60dc30f617da080800a60fe9fe24586f0d59dcab79d49",
+          "bytes": 1087491,
+          "ratio": 0.8016386735810878,
+          "savedBytes": 269094,
+          "decodedSha256": "730b825a0df45eb9b9474d269fa664bfe23f0532116d610897bfc5cdd2d4b8e2",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        },
+        {
+          "codec": "WebP lossless exact q100 m6",
+          "path": "audits/C132_ARENAS_20261001/effects-agent-encoding-01/hotglow-near.webp",
+          "sha256": "82159baeb1dfbb1f03e1bc19aecf17fb12c0298c561cc02f1a91757203ef720a",
+          "bytes": 826728,
+          "ratio": 0.6094185030794237,
+          "savedBytes": 529857,
+          "decodedSha256": "730b825a0df45eb9b9474d269fa664bfe23f0532116d610897bfc5cdd2d4b8e2",
+          "differences": {
+            "bytes": 0,
+            "rgb": 0,
+            "alpha": 0
+          }
+        }
+      ]
+    }
+  ],
+  "sample": {
+    "layers": 9,
+    "sourceBytes": 18497931,
+    "pngBytes": 15863041,
+    "webpBytes": 11740534,
+    "pngRatio": 0.8575575830615867,
+    "webpRatio": 0.6346944423135755,
+    "pngRatioRange": [
+      0.7118530847479418,
+      0.9787065959273697
+    ],
+    "webpRatioRange": [
+      0.5266932096462162,
+      0.763356107854605
+    ],
+    "allDecodedRgbaBytesIncludingAlphaIdentical": true
+  },
+  "conditionalBudgetIllustration": {
+    "pending20SourceBytes": 131844864,
+    "currentShippedBytes": 68325367,
+    "unchangedCapBytes": 134217728,
+    "pendingAllowance": 65892361,
+    "requiredPendingRatio": 0.4997719213393098,
+    "atWorstObservedWebpSampleRatio": 168969950,
+    "notAnAllAssetPrediction": true,
+    "explanation": "Only a conditional illustration for the earlier 20-set count. Other pending sets increase the requirement. Actual admission requires encoding and exact pixel verification of every selected asset plus checking the full unchanged pack budget."
+  },
+  "limitations": [
+    "Sample savings cannot establish every-layer compression or pack admission.",
+    "Encoded copies have not been integrated or decoded in a native browser/iPhone epoch; no decode-time, memory or device compatibility proof.",
+    "Semantic arena holds remain unchanged; exact pixel compression preserves visible defects too."
+  ]
+}

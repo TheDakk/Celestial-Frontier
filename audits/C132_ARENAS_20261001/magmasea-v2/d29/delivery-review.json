@@ -1,0 +1,169 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "magmasea-v2",
+  "biome": "magmasea",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "magmasea"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "magmasea"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "magmasea"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.generation.json",
+      "sha256": "f3e8eebcaad6abec9942c8af0c36519caac2191afa3411f729de932ddef51c93"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-mid.generation.json",
+      "sha256": "09d0a28c0d8ed40c7be868e541ded2f2e0749aaf2754ebcffd9922709b65dd49"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.generation.json",
+      "sha256": "ce9d256037d83a2b98163a34921af4bd42443fdc156319519ead779ec5bd6523"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-composed-review.png",
+      "sha256": "ddc9f8a07587f731381e6ddae097a19fdc23fbb84a761e637863f21b07abccf7"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/visual-notes.d29.json",
+      "sha256": "27ed8acc756197199839e1d9c4a3c5df649d7d54d35d3b74b904b9eb14ed3e13"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-manifest.json",
+      "sha256": "d86d0df85f867e7692c6b4586d4b99c52575be22b96f7e224639b71e73470942"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-recipe.json",
+      "sha256": "c9edaeed46b862104d8cedb9ef53f672e86efa18f0a34f8069dc992e91d07e75"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.generation.json",
+      "sha256": "f3e8eebcaad6abec9942c8af0c36519caac2191afa3411f729de932ddef51c93"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.prompt.txt",
+      "sha256": "242eda7e72d67f88a1b156686db95b209929950adef443f63ee88902ba471c91"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.png",
+      "sha256": "259bb7d86ca0a3f761542c908f132eb45da5349558569915baa18749622b1129"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-mid.generation.json",
+      "sha256": "09d0a28c0d8ed40c7be868e541ded2f2e0749aaf2754ebcffd9922709b65dd49"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea/arena-mid.prompt.txt",
+      "sha256": "39979956d0aeba885fa8fc8dfff9f4b69d07c42444a6d0f13375967c1c3aa2d3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea/arena-mid.png",
+      "sha256": "692c3a0fecf585d47282dac521091de8719d17c022933af14badb342613df6d5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-mid.png",
+      "sha256": "692c3a0fecf585d47282dac521091de8719d17c022933af14badb342613df6d5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-mid.png",
+      "sha256": "591f80012e1b2e283622b699589b3cd062498bb2f4d0907704e7b35dd7bb09b0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.generation.json",
+      "sha256": "ce9d256037d83a2b98163a34921af4bd42443fdc156319519ead779ec5bd6523"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.prompt.txt",
+      "sha256": "6600723f17d69d1f3a6d728663aab7bae087839aa59004d49ac587993499b657"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.png",
+      "sha256": "87fbc7ef55d2aff2e33c4e2c53818974a00b848fbbdbc278e44322d22d798759"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-near.png",
+      "sha256": "2d9c0b7caab2b9db91961d8b258e2ef337e9af295556c22d23ce205311e9c4c2"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/magmasea-v2/visual-notes.d29.json",
+    "findings": [
+      "Native 1672×941 composite inspected full size. The sun disk is removed from FAR; the cooled dark fighting shelf remains continuous and the lower NEAR no longer covers the fighting path.",
+      "The MID repeats an orange lava horizon across the central FAR lava sea; its hard contour is visible. Green/pink key-edge remnants remain on some side rock edges.",
+      "The NEAR makes a bright warm lower seam and a distinct change of ground texture. Some orange crack-like highlights remain in the cooled floor; staging review must confirm they read as harmless surface lighting rather than hazards across the runway.",
+      "The vivid molten background and warm lighting need full-size readability and actual creature contact review. Mechanics are green, while visual acceptance, physical-medium admission, parallax and native proof remain held."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

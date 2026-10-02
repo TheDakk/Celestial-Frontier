@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Remove the unbound planet and moon visible in the original FAR.",
+  "mode": "targeted-edit",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/glass/arena-far.prompt.txt",
+    "sha256": "6fdae785315dc48dafa2583c7394acc06d683facb391119d0923a36779a3a966"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.prompt.txt",
+    "sha256": "380db829fde0e53696ab17c6a8a5ff8364cffc9c0513aae4a646f547a6efdefc"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/glass/arena-far.png",
+      "sha256": "322408547856877f07f1d9067e1a8045fb7a9a530c424309b4ed7dd5f6660e7b"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the unchanged predecessor; actual sole image input is the predecessor named above."
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/glass/arena-far.png",
+    "sha256": "322408547856877f07f1d9067e1a8045fb7a9a530c424309b4ed7dd5f6660e7b"
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d2f7df9b-492b-4164-8bef-2d7b2391699d.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. The predecessor is unchanged. No post-generation resizing, padding, cropping or upscaling.",
+  "qualityAccepted": false
+}

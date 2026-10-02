@@ -21,3 +21,5 @@ approximately 101 GB cleanup. This is local I5 evidence, not a hosted or release
 claim. Full develop verification is recorded separately after activation.
 
 The first develop profile stopped after 5,811 passing tests and one stale release-copy checksum. The exact 120-bullet draft hash in `slicesmoke.mjs` was synchronized to the already-approved release text; all 29 Guide-copy controls and all 21 certificate controls pass. `release-copy-oracle-repair.json` binds that one-pin correction. No test assertion, outcome count, threshold or product byte changed. The red log is retained; a full corrected-instrument profile follows.
+
+Corrected profile on signed `8d69e67bf` is GREEN in 138.445 seconds: 577 passing test files, one skipped; 5,812 passing tests, two expected failures and three skipped; all three TypeScript programs, artaudit, overridecheck and speccheck PASS. Optional local-AI dependencies were restored. The 81-control Actions policy selftest also passes; fresh repository visibility is PUBLIC. See `develop-corrected-profile.json` and its exact retained log.

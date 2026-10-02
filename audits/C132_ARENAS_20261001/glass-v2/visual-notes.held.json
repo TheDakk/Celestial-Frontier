@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "glass-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/glass-v2/arena-far.png",
+    "audits/C132_ARENAS_20261001/glass/arena-mid.png",
+    "audits/C132_ARENAS_20261001/glass-v2/arena-near.png"
+  ],
+  "findings": [
+    "Each original and successor was viewed at its native size. Edited FAR removes the visible planet and moon and retains the broad empty glass-desert floor.",
+    "The original MID contains prominent amber glass shards on both sides; the new NEAR is a low quiet sand lip with small glass fragments.",
+    "NEAR successor is 1983×793, whereas FAR and MID are 1672×941. Intake refuses dimension mismatch; no composed review or D29 finalization exists. No resizing or threshold change was attempted.",
+    "Family remains a mechanical and visual hold. A future native 1672×941 NEAR painting is needed before a complete triplet can be reviewed."
+  ]
+}

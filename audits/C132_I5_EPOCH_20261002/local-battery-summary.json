@@ -1,0 +1,58 @@
+{
+  "schema": "cf.c132-local-battery-summary/v1",
+  "testedHead": "8d69e67bfe7c45a2f8cffc9a5c4ec7f4fafe4af0",
+  "testedHeadSignature": "G",
+  "develop": {
+    "schema": "cf.c132-develop-gate/v1",
+    "head": "8d69e67bfe7c45a2f8cffc9a5c4ec7f4fafe4af0",
+    "command": [
+      "node",
+      "port/v2/tools/check-profile.mjs",
+      "--profile=develop"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 138.445,
+    "optionalLocalAiRuntimeRenamedAside": true,
+    "optionalLocalAiRuntimeRestored": true,
+    "logSha256": "3b362dfc228946b524d3b84a9aaa02537b922cc76f8bcc9c882047d4a1f5c77f",
+    "supersedesRedBySpecificRepair": "release-copy-oracle-repair.json"
+  },
+  "tests": {
+    "passedFiles": 577,
+    "skippedFiles": 1,
+    "passed": 5812,
+    "expectedFailures": 2,
+    "skipped": 3
+  },
+  "staticOwners": [
+    "root tsc --noEmit --noUnusedLocals",
+    "game TypeScript",
+    "worker TypeScript",
+    "artaudit",
+    "overridecheck",
+    "speccheck"
+  ],
+  "overridecontrol": {
+    "command": [
+      "npm",
+      "run",
+      "overridecontrol"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 88.549,
+    "logSha256": "a690e68fd52b2f98c261ce9b0decdf5f408217f4ed49b00b5bb7f01fa6f7101f"
+  },
+  "actionsPolicyControls": 81,
+  "i5": {
+    "epoch": "i5-v2-06e0b0f6072c",
+    "calibrations": 3,
+    "certifications": 1,
+    "rawVerifiersPassed": 4,
+    "automaticRetries": 0,
+    "unchangedLimits": true
+  },
+  "optionalLocalAiRuntimeRestored": true,
+  "prePushGuardPreserved": true,
+  "hostedRuns": 0,
+  "scope": "Required local profile green; I5 clean-source proof separately retained. Subsequent audit-only asset deliveries do not change the measured product. No physical-phone, universal pair-performance or visual acceptance claim."
+}

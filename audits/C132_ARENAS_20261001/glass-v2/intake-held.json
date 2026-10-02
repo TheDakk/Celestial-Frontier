@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c132-arena-intake-held/v1",
+  "id": "glass-v2",
+  "status": "REFUSED",
+  "stage": "existing intake.mjs",
+  "reason": "Master dimensions differ",
+  "exitCode": 1,
+  "masters": [
+    {
+      "role": "far",
+      "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.png",
+      "sha256": "b6bd686b1b198470fca53f27804640f1b928a868c3dab114805b8f71af388d07",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "mid",
+      "path": "audits/C132_ARENAS_20261001/glass-v2/arena-mid.png",
+      "sha256": "15de877b6c21a1da04678350c954c2fe268f4d318396a93f95b85d7ccb66d046",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "near",
+      "path": "audits/C132_ARENAS_20261001/glass-v2/arena-near.png",
+      "sha256": "4dd04701cbc5071640ca6633e02a88a7b23c1a5ee30c7eb156f6b42006093da7",
+      "width": 1983,
+      "height": 793
+    }
+  ],
+  "partialKeyedCopiesRetained": true,
+  "finalizationRun": false,
+  "qualityAccepted": false,
+  "remaining": "NEAR successor remains 1983×793 after the one bounded correction. No resize, crop, padding, upscaling or gate relaxation. Further generation stopped this batch."
+}

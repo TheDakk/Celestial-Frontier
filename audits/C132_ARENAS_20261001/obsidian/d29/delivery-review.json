@@ -1,0 +1,164 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "obsidian",
+  "biome": "obsidian",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "obsidian"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "obsidian"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "obsidian"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.generation.json",
+      "sha256": "c59569a0c8a90a70f0c386cc213adc1d2ee78ea482873c63e341cbb56a402113"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-mid.generation.json",
+      "sha256": "046fe6bc0010d620f43b19ca9caa3b386490ad91ae1b1e17c2da748a307db690"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-near.generation.json",
+      "sha256": "abfa3e601f227189e42aa3a84436c5256e257fb9a75e547ae0eb2121e046c31b"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-composed-review.png",
+      "sha256": "b66c0b6a94d7a80f6a335f3438d65ba9ab9523a6af3f3ba7ae398f4651b4a054"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+      "sha256": "c28b96232ea566178b8ad6a57fab20b3f66e7ddd0663641a1feca3183e81a817"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-mid.png",
+      "sha256": "b473f17016471025f259142a4c930a0996834a46155e061af9b41e4e1d512761"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-near.png",
+      "sha256": "ab21b88fb8f821526c12caa272065f61e802f51c4bdebe19fff86cf007fdd440"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/visual-notes.d29.json",
+      "sha256": "c938c5bcd4e490f178fe8687d029a43a3d15d1529ef9b1c828ea50725c69f0a3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-manifest.json",
+      "sha256": "ed3e13d090d5f36ebc51bfa5a53b90efc6cf24b9d44b7673251a5ffc78f86c64"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-recipe.json",
+      "sha256": "0fadc7a027b3615896c9a009b0199dcac0bf138f0b0ba9a70343194af7e38dfb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.generation.json",
+      "sha256": "c59569a0c8a90a70f0c386cc213adc1d2ee78ea482873c63e341cbb56a402113"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/authoring-prompts/arena-far.prompt.txt",
+      "sha256": "974b14d98feeb10a1d4fcc4bfc7d37972006cb80bc0d63611d2058514b4ca944"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-mid.generation.json",
+      "sha256": "046fe6bc0010d620f43b19ca9caa3b386490ad91ae1b1e17c2da748a307db690"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/authoring-prompts/arena-mid.prompt.txt",
+      "sha256": "e1b04dbcc4d9d50af6b0739a58e2398324a2fc09359b51ee5342b236574e9e7a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-mid.png",
+      "sha256": "cb6f82922c8ab007a118f8c53d1009600e1613c00b73cabb62c5fdbd22a7a00c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/arena-near.generation.json",
+      "sha256": "abfa3e601f227189e42aa3a84436c5256e257fb9a75e547ae0eb2121e046c31b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/authoring-prompts/arena-near.prompt.txt",
+      "sha256": "0023747cbdc33ee31cc08db72c2359632436e9c083d0a5e7616447342543a195"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-near.png",
+      "sha256": "4c31ca8bbe64da14507535aa83af6b9da4fabc452e5b1f762aec3fda62d3fee5"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/obsidian/visual-notes.d29.json",
+    "findings": [
+      "All originals and native1672×941 composition inspected. Dark fractured glass and open fighting band are readable as a distinct volcanic material; no invented celestial bodies or lettering observed.",
+      "The sky and highlights use stronger warm golden illumination than the near-neutral diffuse system card asks for. NEAR introduces a cooler foreground color band and texture discontinuity.",
+      "Fine green edge traces remain on side glass silhouettes, and dark-body/effect readability is untested. Independent scoring and native battle proof remain pending."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}
