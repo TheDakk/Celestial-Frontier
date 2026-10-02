@@ -1,0 +1,28 @@
+{
+  "name": "Gaur",
+  "masterSha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: dark muscular body, tall shoulder ridge, white stockings on all four separate legs, pale grey forehead, upcurving horns, both ear edges and complete tufted tail are visible. Body/forehead are turned somewhat toward the viewer; far upper leg roots remain occluded. Muzzle approaches the right edge, with framing held for measurement; shoulder/horn proportions still require anatomical review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 109,
+      "y0": 208,
+      "x1": 1178,
+      "y1": 999
+    },
+    "margins": {
+      "left": 109,
+      "right": 75,
+      "top": 208,
+      "bottom": 254
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

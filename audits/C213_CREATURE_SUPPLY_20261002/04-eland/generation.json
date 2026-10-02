@@ -1,0 +1,14 @@
+{
+  "id": "04-eland",
+  "name": "Eland",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-cf7bdcdd-e4b1-4640-8a24-ce4cc2f69920.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "fe9c8c355ae1c5b28da96643e77550bb676f97c4ee92f18916a252a6bc2cf187",
+  "bytes": 1527307,
+  "promptSha256": "0d2f8dc66d02476a70c4568ee599b287d77985d37761219f3b472da6a15f33f5",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

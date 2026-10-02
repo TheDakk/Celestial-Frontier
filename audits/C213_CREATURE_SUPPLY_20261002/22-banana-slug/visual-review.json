@@ -1,0 +1,28 @@
+{
+  "name": "Banana Slug",
+  "masterSha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: bright yellow shellless body, mantle saddle with breathing hole, broad continuous foot/sole, two upper eye-bearing stalks and two shorter lower tentacles are visible. Mouth fold is only a small shaded crease below the head, not a fully separable mouth aperture. Right ocular stalk approaches the margin. No shell or extra limbs invented; biological shell absence is not a production reviewed-presence declaration.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 107,
+      "y0": 407,
+      "x1": 1167,
+      "y1": 822
+    },
+    "margins": {
+      "left": 107,
+      "right": 86,
+      "top": 407,
+      "bottom": 431
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

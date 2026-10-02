@@ -1,0 +1,103 @@
+{
+  "schema": "cf.c183-contour-conservation/v1",
+  "id": "20-hornbill",
+  "masterSha256": "cc44d4c6f8fcb34ffe1f40b66685895948f2705558ed8af78622f0ca016c1020",
+  "originalAuthoringSha256": "abd3995abd4f15b954ad802f307041b0273d24b68b5743d4056f30b0c5e6409f",
+  "candidateAuthoringSha256": "a295c5dd3fe7fdf0a1ae0a6fc5b27da6512dab807c73badc2348fb557b4279a6",
+  "sourceRgbaChangedChannels": 0,
+  "sourcePaintAdded": 0,
+  "sourcePaintDeleted": 0,
+  "priorAnatomicalOwnersChanged": 0,
+  "landmarksChanged": false,
+  "presenceChanged": false,
+  "groundChanged": false,
+  "movedFromRemainderByJoint": {
+    "head": 774,
+    "beak": 854,
+    "neck1": 1923,
+    "tailFan": 3337
+  },
+  "originalCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 2687 px is 9.6% of the remainder (> 5%): structural, not a sliver"
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "remainderPixels": 21030,
+    "moved": 573,
+    "islands": [
+      {
+        "pixels": 134,
+        "to": 8,
+        "border": {
+          "8": 52
+        }
+      },
+      {
+        "pixels": 365,
+        "to": 9,
+        "border": {
+          "9": 89,
+          "10": 75
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 12,
+        "border": {
+          "12": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 12,
+        "border": {
+          "12": 2
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 4,
+        "border": {
+          "2": 2,
+          "4": 7
+        }
+      },
+      {
+        "pixels": 61,
+        "to": 2,
+        "border": {
+          "2": 8
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 2,
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 2,
+        "border": {
+          "2": 2
+        }
+      }
+    ]
+  },
+  "unchangedCap": 0.05,
+  "automaticIslandTransferApplied": false,
+  "controls": [
+    "original independent replay equals published labels",
+    "candidate independent replay equals published labels",
+    "deterministic replay",
+    "source key and RGBA conservation",
+    "prior anatomical ownership theft rejected",
+    "paint deletion rejected",
+    "source channel mutation rejected",
+    "structural island rejected at unchanged5%"
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

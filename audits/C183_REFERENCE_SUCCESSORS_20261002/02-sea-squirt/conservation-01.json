@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-reference-conservation/v1",
+  "masterSha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+  "authoringSha256": "f516bedde1816b69ad00f54ebda433f7ab911b70022bce1fed31dfb0edb90c8c",
+  "recordRecipeHash": "df82f8b7961d53568646e2537787f5fb256e498d2cf9f1f40e6048214c43ebd3",
+  "keyedRgbaSha256": "7716129ee68ab3226734445617e94eec44174ec1fbc00ca99d4302ac9c3c5e54",
+  "ownershipSha256": "6052af6c47af544247ad587de37f64e1178daa4aad9f508604dbe92e57537114",
+  "sourcePixelChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "ownershipReplayMismatch": 0,
+  "controls": [
+    "independent ownership replay equals published raster",
+    "deterministic replay",
+    "unchanged established keyed RGBA",
+    "changed source channel rejected",
+    "paint deletion rejected",
+    "different anatomical owner rejected",
+    "structural remainder control rejected at unchanged 5% cap"
+  ],
+  "islandCap": 0.05,
+  "islandOutcome": {
+    "status": "PASS",
+    "remainderPixels": 198601,
+    "movablePixels": 0,
+    "islands": []
+  },
+  "automaticIslandTransferApplied": false,
+  "qualityAccepted": false,
+  "nativeRun": false
+}

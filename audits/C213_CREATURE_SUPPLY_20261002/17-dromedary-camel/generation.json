@@ -1,0 +1,14 @@
+{
+  "id": "17-dromedary-camel",
+  "name": "Dromedary Camel",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a55e7a54-0019-4587-9f49-93a14e6b5f3e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c9fb75ce38aa66c3e3877b57cabdff6f9ced807d3e75e98d0eabecbf003fa303",
+  "bytes": 1612544,
+  "promptSha256": "2f1a285a3b60dea4e5f3bb00b56b75a089122e344c75f518cd3228fcb8375d2b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

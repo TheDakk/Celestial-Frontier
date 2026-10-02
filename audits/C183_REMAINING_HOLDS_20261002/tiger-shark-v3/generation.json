@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-5d9a4b4f-e4d3-48db-9c95-e0882bb2e041.png",
+  "masterSha256": "faccdfad0a5dce5e98105719b630bc0322e6749839cd8a2034a14e50e47c4065",
+  "bytes": 1146809,
+  "promptSha256": "1e7fe6729b12871ee1453f9d30fcb3e668fe313646d31a00bca41a757f1a4a27",
+  "input": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/master.png",
+  "inputSha256": "16983f593fe1b3e24b939e988931e266234424f782c0227bce7be3cc6ee4b9a5",
+  "outputModified": false,
+  "originalRetained": true
+}

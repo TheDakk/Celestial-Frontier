@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Impala",
+  "masterSha256": "f1d5c74e0ef6e7a6dd87402affc1a20913065e6e2a94938b864fac279a38d9ab",
+  "required": [
+    "lyre-shaped ringed horns curving out then up",
+    "vertical black stripes down each side of the white rump"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "lyre-shaped ringed horns curving out then up",
+      "status": "PRESENT",
+      "observed": "Full-size original: ringed lyre horns, black rump stripes, white belly and real black hind-hoof tufts are visible. ANATOMY REFUSAL: five full leg/hoof endpoints are painted, including three foreleg-like shafts below the chest, despite the four-leg request. Do not remove or relabel the extra leg locally or admit this source. Horn tips also approach the top margin. The failed one-attempt original is retained unchanged."
+    },
+    {
+      "requirement": "vertical black stripes down each side of the white rump",
+      "status": "PRESENT",
+      "observed": "Full-size original: ringed lyre horns, black rump stripes, white belly and real black hind-hoof tufts are visible. ANATOMY REFUSAL: five full leg/hoof endpoints are painted, including three foreleg-like shafts below the chest, despite the four-leg request. Do not remove or relabel the extra leg locally or admit this source. Horn tips also approach the top margin. The failed one-attempt original is retained unchanged."
+    }
+  ]
+}

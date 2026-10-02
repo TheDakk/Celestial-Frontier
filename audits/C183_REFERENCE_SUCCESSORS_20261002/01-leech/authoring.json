@@ -1,0 +1,375 @@
+{
+  "id": "c183-reference-leech",
+  "family": "annelid",
+  "landmarksPx": {
+    "root": [
+      641,
+      510
+    ],
+    "segment0": [
+      1093,
+      735
+    ],
+    "segment1": [
+      1009,
+      718
+    ],
+    "segment2": [
+      927,
+      686
+    ],
+    "segment3": [
+      847,
+      625
+    ],
+    "segment4": [
+      774,
+      544
+    ],
+    "segment5": [
+      698,
+      492
+    ],
+    "segment6": [
+      615,
+      493
+    ],
+    "segment7": [
+      543,
+      532
+    ],
+    "segment8": [
+      475,
+      618
+    ],
+    "segment9": [
+      394,
+      683
+    ],
+    "segment10": [
+      302,
+      723
+    ],
+    "segment11": [
+      211,
+      736
+    ]
+  },
+  "groundLineY": 0.6674641148325359,
+  "materials": {
+    "surface": "slick"
+  },
+  "remainderPart": "segment6",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          637,
+          506
+        ],
+        [
+          645,
+          506
+        ],
+        [
+          645,
+          514
+        ],
+        [
+          637,
+          514
+        ]
+      ]
+    },
+    {
+      "id": "segment0",
+      "joint": "segment0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1050,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          1050,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment1",
+      "joint": "segment1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          968,
+          0
+        ],
+        [
+          1050,
+          0
+        ],
+        [
+          1050,
+          1254
+        ],
+        [
+          968,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment2",
+      "joint": "segment2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          886,
+          0
+        ],
+        [
+          968,
+          0
+        ],
+        [
+          968,
+          1254
+        ],
+        [
+          886,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment3",
+      "joint": "segment3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          810,
+          0
+        ],
+        [
+          886,
+          0
+        ],
+        [
+          886,
+          1254
+        ],
+        [
+          810,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment4",
+      "joint": "segment4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          738,
+          0
+        ],
+        [
+          810,
+          0
+        ],
+        [
+          810,
+          1254
+        ],
+        [
+          738,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment5",
+      "joint": "segment5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          658,
+          0
+        ],
+        [
+          738,
+          0
+        ],
+        [
+          738,
+          1254
+        ],
+        [
+          658,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment7",
+      "joint": "segment7",
+      "layer": "near",
+      "polygonPx": [
+        [
+          510,
+          0
+        ],
+        [
+          578,
+          0
+        ],
+        [
+          578,
+          1254
+        ],
+        [
+          510,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment8",
+      "joint": "segment8",
+      "layer": "near",
+      "polygonPx": [
+        [
+          435,
+          0
+        ],
+        [
+          510,
+          0
+        ],
+        [
+          510,
+          1254
+        ],
+        [
+          435,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment9",
+      "joint": "segment9",
+      "layer": "near",
+      "polygonPx": [
+        [
+          349,
+          0
+        ],
+        [
+          435,
+          0
+        ],
+        [
+          435,
+          1254
+        ],
+        [
+          349,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment10",
+      "joint": "segment10",
+      "layer": "near",
+      "polygonPx": [
+        [
+          259,
+          0
+        ],
+        [
+          349,
+          0
+        ],
+        [
+          349,
+          1254
+        ],
+        [
+          259,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment11",
+      "joint": "segment11",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          259,
+          0
+        ],
+        [
+          259,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment6",
+      "joint": "segment6",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independent Leech curve authoring from the complete source-visible body",
+    "limitations": [
+      "Twelve controls sample the visible centreline; they do not claim twelve biological annuli.",
+      "Both terminal sucker rims are visible. The large deep funnel cavities and cylindrical shiny body remain biological/style review holds; no hidden mouth apparatus, eyes or legs are authored.",
+      "The arched body is not claimed to make continuous planar ground contact.",
+      "This is a genuinely different canonical subject from Earthworm, but not a global reference or quality acceptance."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  }
+}

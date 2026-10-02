@@ -1,0 +1,14 @@
+{
+  "id": "16-wild-sheep",
+  "name": "Wild Sheep",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-7029db15-f875-4232-b026-20a8b055b411.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "01d9bce04da55e4a9b5e9d40a69a0be47bb8d5a6e4877d9ecfbc60cbd93a7216",
+  "bytes": 1649000,
+  "promptSha256": "0c138be2a0c7fd16316cd2d5515d82d27a1f93529478d5b8c918e57d81b72913",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

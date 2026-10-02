@@ -1,0 +1,28 @@
+{
+  "name": "Wild Sheep",
+  "masterSha256": "01d9bce04da55e4a9b5e9d40a69a0be47bb8d5a6e4877d9ecfbc60cbd93a7216",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original inspected: brown/cream coarse coat, white rump, very short dark tail, large curled horns and four exposed hoof endpoints. Near ear is visible inside horn curve; far ear is hidden. The far foreleg emerges from body/near shoulder overlap, so complete independent roots remain an authoring hold. Horn proportions and species identity require review. Visible dewclaws are retained as actual source pixels rather than extra walking legs.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 133,
+      "y0": 171,
+      "x1": 1151,
+      "y1": 1073
+    },
+    "margins": {
+      "left": 133,
+      "right": 102,
+      "top": 171,
+      "bottom": 180
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

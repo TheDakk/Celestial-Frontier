@@ -1,0 +1,30 @@
+{
+  "creatureId": "c183-reference-sea-squirt",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "55377ba2df4649a8aae74c7089bf96981d8707906a9eb6b6f782abeced23f290"
+    },
+    {
+      "name": "aperture.png",
+      "path": "parts/aperture.png",
+      "sha256": "e4f863e708ac68ea5d4e6b925f6947c5ceb941c3861055334bfb7a53c0f9bb5d"
+    },
+    {
+      "name": "crown.png",
+      "path": "parts/crown.png",
+      "sha256": "814724fdf2610b3999c47aa452ea1d7751859dd7570c84466b5a1341a60ee1a1"
+    },
+    {
+      "name": "base.png",
+      "path": "parts/base.png",
+      "sha256": "7728fc794e3a683d935bcc94d53bb02c7f70080cc14d1ccf57c72c115f724dc0"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "bd34f4f9d8aabfb809f9e7e16cf49248da14fdd746acc23cd820265262863615"
+    }
+  ]
+}

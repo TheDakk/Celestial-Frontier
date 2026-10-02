@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const base=import.meta.dirname,source='port/v2/tools/painted-creature/compile-library-master.mjs',original=fs.readFileSync(source,'utf8'),sha=s=>createHash('sha256').update(s).digest('hex');
+const transforms=[];let s=original;const once=(before,after)=>{if(s.split(before).length!==2)throw Error('Unique transform required');transforms.push({before,after});s=s.replace(before,after);};
+once("from 'rolldown'","from '../../port/v2/node_modules/rolldown/dist/index.mjs'");
+once("from '../creature-animation/family-contracts.mjs'","from '../../port/v2/tools/creature-animation/family-contracts.mjs'");
+once("from './pattern-observation.mjs'","from '../../port/v2/tools/painted-creature/pattern-observation.mjs'");
+once("path.resolve(import.meta.dirname,'../../../..')","path.resolve(import.meta.dirname,'../..')");
+once(" const candidates=profile?.candidateTemplates??[];"," const candidates=profile?.candidateTemplates??[];\n if(SIMPLE[species.name]){const family=SIMPLE[species.name].family;if(candidates.length!==1||candidates[0]!==family)throw Error('Specialized source canonical family mismatch');return family;}");
+once("export function controlledLibraryLayout(family,name){","export function controlledLibraryLayout(family,name){\n if(Object.values(SIMPLE).some(r=>r.family===family)){const row=SIMPLE[name];if(!row||row.family!==family)throw Error('Exact specialized source species required');return {legs:row.legs,accuracy:row.accuracy,layout:row.layout};}");
+const common='One whole anatomically accurate adult in the approved painted hand, isolated on pure magenta. Entire natural specimen and all appendages stay inside the central half of native 1254 by 1254 canvas, with roughly 300 pixels empty magenta on every side. No floor, scenery, shadow, frame, guides, text or props. Real biological anatomy takes priority over a coarse template; requests are not measured presence. ';
+const simple=JSON.parse(fs.readFileSync(base+'/specialized-layouts.json'));for(const r of Object.values(simple))r.layout=common+r.layout;
+const appended='\n/** Audit-only five-source vocabulary; no production support or measured anatomical admission. */\nconst SIMPLE=Object.freeze('+JSON.stringify(simple)+');\n';s+=appended;
+fs.writeFileSync(base+'/compiler.audit.mjs',s,{flag:'wx'});
+fs.writeFileSync(base+'/transform-receipt.json',JSON.stringify({schema:'cf.audit-compiler-transform/v1',source,sourceSha256:sha(original),output:'audits/C213_CREATURE_SUPPLY_20261002/compiler.audit.mjs',outputSha256:sha(s),transforms,appended,scope:'Only local import resolution and five exact named canonical family routes/painting layouts. Canonical identities, kit export, materials/style, requested dimensions and provenance retained. Production compiler unchanged.'},null,2)+'\n',{flag:'wx'});

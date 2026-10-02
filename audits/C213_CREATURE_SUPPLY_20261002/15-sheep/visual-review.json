@@ -1,0 +1,28 @@
+{
+  "name": "Sheep",
+  "masterSha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original inspected: white wool coat, two visible ear tips and four separate hoof endpoints. The wool-covered tail still hangs well down from the rump, so the canonical short-tail correction is not claimed resolved. Wool obscures proximal limb boundaries and tail root. No clipped coat, hidden leg inference or absent-horn interpretation is used. Right muzzle margin appears tight; observer pending.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 155,
+      "y0": 213,
+      "x1": 1159,
+      "y1": 1012
+    },
+    "margins": {
+      "left": 155,
+      "right": 94,
+      "top": 213,
+      "bottom": 241
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

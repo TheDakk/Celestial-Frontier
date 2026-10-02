@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bactrian Camel",
+  "masterSha256": "d0f39b9dac474204c18d6ce431158be51a50e7c1bd8767d48e94480cfd1ba372",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

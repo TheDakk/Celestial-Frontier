@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "conservation",
+  "command": [
+    "node",
+    "audits/C183_REFERENCE_SUCCESSORS_20261002/verify-and-preview.mjs",
+    "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech",
+    "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/fit01",
+    "01"
+  ],
+  "helperSha256": "a0b74974c174c1935cfb6fa095d30b9188d0bf75d2175f3a50dd106e99928cf9",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/conservation-01.log",
+  "logSha256": "f0f09140f56099ac5ff0e0bb29c9ef67e4b19a201fc4ecc4ffa38bbf5767b619",
+  "nativeRuns": 0
+}

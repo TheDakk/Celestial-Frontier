@@ -1,0 +1,53 @@
+{
+  "schema": "cf.c183-independent-source-hold/v1",
+  "id": "04-prawn-hold",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn",
+  "family": "crustacean-small",
+  "masterSha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b",
+  "distinctFrom": "Shrimp",
+  "visible": [
+    "abdomen and tail fan",
+    "rostrum and both eyes",
+    "long antennae and shorter antennules",
+    "ventral swimmerets",
+    "several genuine walking legs"
+  ],
+  "unproved": [
+    "ten complete thoracic root/knee/foot chains",
+    "identity of overlapping far roots"
+  ],
+  "sourceCorrection": "Separate all five genuine walking-leg pairs at their roots and along each complete chain; retain all swimmerets and head appendages. Preserve margins around antenna tips.",
+  "observedRegions": [
+    {
+      "id": "thoracic-overlap",
+      "bounds": [
+        777,
+        499,
+        1023,
+        769
+      ]
+    },
+    {
+      "id": "ventral-swimmerets",
+      "bounds": [
+        477,
+        608,
+        834,
+        887
+      ]
+    }
+  ],
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "coordinatesAre": "approximate source-coordinate diagnostic bounds, not authored ownership or joint landmarks",
+  "status": "HELD_ANATOMICAL_OBSERVATION",
+  "authoringCreated": false,
+  "presenceInvented": false,
+  "fitAttempted": false,
+  "sourcePixelsChanged": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

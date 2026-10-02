@@ -1,0 +1,136 @@
+{
+  "schema": "cf.c183-contour-conservation/v1",
+  "id": "21-parrot",
+  "masterSha256": "27a1f78647d3a7a20e2b203129838b235c1d2b9eebac54875e4a26d11f7d004b",
+  "originalAuthoringSha256": "8013fe48088e5bd0fd59a505f0a85789ba04ca019469ef846ab9845b2638b110",
+  "candidateAuthoringSha256": "00fd9b903f09fdfe91ef8f5054a8a0d6d729eedd86ba279b16ae73cce2c4ce84",
+  "sourceRgbaChangedChannels": 0,
+  "sourcePaintAdded": 0,
+  "sourcePaintDeleted": 0,
+  "priorAnatomicalOwnersChanged": 0,
+  "landmarksChanged": false,
+  "presenceChanged": false,
+  "groundChanged": false,
+  "movedFromRemainderByJoint": {
+    "head": 719,
+    "beak": 889,
+    "neck1": 1759
+  },
+  "originalCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 2291 px is 8.3% of the remainder (> 5%): structural, not a sliver"
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "remainderPixels": 24233,
+    "moved": 852,
+    "islands": [
+      {
+        "pixels": 1,
+        "to": 6,
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 3,
+        "border": {
+          "3": 4
+        }
+      },
+      {
+        "pixels": 282,
+        "to": 15,
+        "border": {
+          "15": 47
+        }
+      },
+      {
+        "pixels": 7,
+        "to": 6,
+        "border": {
+          "6": 4
+        }
+      },
+      {
+        "pixels": 241,
+        "to": 4,
+        "border": {
+          "2": 10,
+          "4": 80
+        }
+      },
+      {
+        "pixels": 170,
+        "to": 15,
+        "border": {
+          "15": 23
+        }
+      },
+      {
+        "pixels": 40,
+        "to": 15,
+        "border": {
+          "15": 14
+        }
+      },
+      {
+        "pixels": 16,
+        "to": 2,
+        "border": {
+          "2": 11
+        }
+      },
+      {
+        "pixels": 42,
+        "to": 2,
+        "border": {
+          "2": 6
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 1,
+        "border": {
+          "1": 10
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 2,
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 39,
+        "to": 2,
+        "border": {
+          "2": 5
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 1,
+        "border": {
+          "1": 1
+        }
+      }
+    ]
+  },
+  "unchangedCap": 0.05,
+  "automaticIslandTransferApplied": false,
+  "controls": [
+    "original independent replay equals published labels",
+    "candidate independent replay equals published labels",
+    "deterministic replay",
+    "source key and RGBA conservation",
+    "prior anatomical ownership theft rejected",
+    "paint deletion rejected",
+    "source channel mutation rejected",
+    "structural island rejected at unchanged5%"
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

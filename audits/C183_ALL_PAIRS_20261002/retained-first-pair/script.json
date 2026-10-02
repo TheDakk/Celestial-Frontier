@@ -1,0 +1,71 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "contextId": "c163-0001-crab--crab",
+  "labels": {
+    "A": "Crab [A]",
+    "B": "Crab [B]"
+  },
+  "supportsBySide": {
+    "left": "default",
+    "right": "default"
+  },
+  "themes": {
+    "A": "wild",
+    "B": "wild"
+  },
+  "world": {
+    "key": "c163-representative-lake",
+    "biome": "temperate",
+    "seed": 133,
+    "solid": true,
+    "atmosphere": true,
+    "liquid": "water",
+    "surfaceWater": true,
+    "signature": "Explicit audit representative lake world; not a live encounter or every habitat",
+    "cardHash": "6efe78d92b7ab88ed01c2dd7e2e611e3622a233916d7966f157c4c5b252561eb",
+    "groundLineY": 0.78
+  },
+  "weaponDeclarations": {},
+  "rows": [
+    {
+      "side": "A",
+      "an": "Crab [A]",
+      "dn": "Crab [B]",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Crab [B]",
+      "dn": "Crab [A]",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "side": "A",
+      "an": "Crab [A]",
+      "dn": "Crab [B]",
+      "dodge": true
+    },
+    {
+      "side": "B",
+      "an": "Crab [B]",
+      "dn": "Crab [A]",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Crab [A]",
+      "dn": "Crab [B]",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}

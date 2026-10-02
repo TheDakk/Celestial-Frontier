@@ -1,0 +1,1333 @@
+{
+  "schema": "cf.g2-source-delivery/v1",
+  "scope": "24 originals only; source candidates with explicit holds, no rig/native/gallery admission",
+  "originals": 24,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "framingPass": 12,
+  "framingRefused": [
+    "Kudu",
+    "Impala",
+    "Oryx",
+    "Gaur",
+    "Antelope",
+    "Reindeer",
+    "Yak",
+    "Takin",
+    "Sheep",
+    "Dromedary Camel",
+    "Banana Slug",
+    "Prawn"
+  ],
+  "masterBytes": 36487595,
+  "files": [
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/generation.json",
+      "sha256": "d083934e99d6f20784ac532bc79a3ccdceedf29429f00b1a360afd3ca81aba74",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/master.png",
+      "sha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+      "bytes": 1525128
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/pattern-check.json",
+      "sha256": "54fec45b3401e0e3310e7901b00aab0fde4f0e94c49bdaba046054acc941c374",
+      "bytes": 877
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/prompt.canonical.txt",
+      "sha256": "a68a8c6fbcbcea3411745c933b0b2f6f84416a23d8ac307e913950aeb4b14c04",
+      "bytes": 9010
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/prompt.txt",
+      "sha256": "9375b5b19e87866f6564b3faac65e7a9c9c7e67783141fa75ca7a93b04cff10f",
+      "bytes": 11347
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/request.json",
+      "sha256": "729164fe2474b524463ae890bfbbb06d7c6c674d2deb44e1c1159a41f347d72d",
+      "bytes": 3375
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/subject-source.json",
+      "sha256": "c8699f2a5bfb035c8242616126a2b6e0998bb85ad7f94427f24d6aa0f3ed867f",
+      "bytes": 2394
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/visible-anatomy.json",
+      "sha256": "41be2544db874f8c71df7c2af77f5bfbd44589d5704988e1442421f0149ee01b",
+      "bytes": 3388
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/visual-review.json",
+      "sha256": "0f43da6b11f36aae43d175f52959d70f80f73db3a52b3b5c60b581719b849568",
+      "bytes": 1063
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/generation.json",
+      "sha256": "cd120e0d1533fe2a7a83b2617b20c2efe57b98f09a5ba4860b412400ef03f6fd",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/master.png",
+      "sha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867",
+      "bytes": 1589871
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/pattern-check.json",
+      "sha256": "b37396760a17f29877b89aaa045447e16577a0d11cde45343f54f8a301f64655",
+      "bytes": 897
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/prompt.canonical.txt",
+      "sha256": "ca947438b9c649571eba8d12d4e572334fa5b45cb11d7000a56ac991f68cc298",
+      "bytes": 8969
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/prompt.txt",
+      "sha256": "8920d7b31ffcec7c47c058111ea04782c24acecac98757211a4a7ca351fd81e9",
+      "bytes": 11250
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/request.json",
+      "sha256": "6a915c548b896e3dcd8226cf1862574237c969e1be33312f53e6ae3cce847000",
+      "bytes": 3341
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/subject-source.json",
+      "sha256": "bcfd3c97c4b4bbc0e82d574e6262c7685e82aa8fcdbf38c53312836148f91cb2",
+      "bytes": 2872
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/visible-anatomy.json",
+      "sha256": "90d0f27a01f80df4bf2db69cc919c340848d981098f07efb63a82a8ef28e1805",
+      "bytes": 3800
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/02-kudu/visual-review.json",
+      "sha256": "4f999702f6ed4e05c9af9885ebd114e4892882073ef9e74a1a38aafb171485ce",
+      "bytes": 1107
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/generation.json",
+      "sha256": "bd901d7472b565ca0b2f48aa07ef14c2b376363a704b3ef0ea48a40e99f2ef20",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+      "sha256": "f1d5c74e0ef6e7a6dd87402affc1a20913065e6e2a94938b864fac279a38d9ab",
+      "bytes": 1466341
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/pattern-check.json",
+      "sha256": "8c34f7c052a80ad9a6cdbfe6551247c432542806fdcd84de55e87e0bce991652",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/prompt.canonical.txt",
+      "sha256": "b1e12938e9151e998ffd7058c835c8990b8cb2e9a66704c634e593673a87c853",
+      "bytes": 8920
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/prompt.txt",
+      "sha256": "12cba85679d7e0fe1265c31299b2fe8af76fb704d7a5b2518c3f424a139c12f6",
+      "bytes": 11137
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/request.json",
+      "sha256": "f682845ea3e90655c330efe266cfd4028d4318e775205550d29aadcbe33c6c6b",
+      "bytes": 3466
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/subject-source.json",
+      "sha256": "2a183d583872fcc6ffc5a22cd0afe2def061e1326fe61b6a92ec203edae1043f",
+      "bytes": 2833
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/visible-anatomy.json",
+      "sha256": "c47f5696c8d8e9cb8f3da194405b5d22413b6ddd958c39f4f069bee534ed01c6",
+      "bytes": 3032
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/visual-review.json",
+      "sha256": "f067da3d31d7c538eac426442d64bc95066a7cb3ff54f87427930115a924e43e",
+      "bytes": 1110
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/generation.json",
+      "sha256": "a195b049db1f6c6079342b77a3339a4306b5c7d7ab90afbb6752a01a4c8ffb6a",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/master.png",
+      "sha256": "fe9c8c355ae1c5b28da96643e77550bb676f97c4ee92f18916a252a6bc2cf187",
+      "bytes": 1527307
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/pattern-check.json",
+      "sha256": "77f274439e0ae98a1dbf6a09a2da43d14698c1c7f98aa0820c38152027c6d9cd",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/prompt.canonical.txt",
+      "sha256": "7b4c549a5fe07b92157a487dd4068bc0ec4595b7d6558a43beb693c5037f5aa5",
+      "bytes": 8880
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/prompt.txt",
+      "sha256": "0d2f8dc66d02476a70c4568ee599b287d77985d37761219f3b472da6a15f33f5",
+      "bytes": 11107
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/request.json",
+      "sha256": "7997569ce659194139d57af587387b20f45ed13cb7823bb1907c1e8bf79df728",
+      "bytes": 3363
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/subject-source.json",
+      "sha256": "34ec61a3fd69b3edea407d88bdf5ebc77715903f7e2f09b4fd385bc1fa651176",
+      "bytes": 2795
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/visible-anatomy.json",
+      "sha256": "baf4a387e08f7173b7ab2017705ae9437ab54d957648b99315bd000a3a8284be",
+      "bytes": 3370
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/04-eland/visual-review.json",
+      "sha256": "0c846a5be5737a74dfba4bd65ed06dbd2518d6442a02523fc07f13bb4dd557a3",
+      "bytes": 1051
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/generation.json",
+      "sha256": "0efacf2acafd5b9b0fd109abe80459a6dcb5c600e3ee75cb71e71c2845974b46",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/master.png",
+      "sha256": "56349e0398ad3d60adbdf584cd2b394f7fc925d79c09fe6246ee4686f0ab21ed",
+      "bytes": 1418088
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/pattern-check.json",
+      "sha256": "708113ef241aa8f7cb7f24e77b5347497471ffbcfa6e4d6b06a22ed147404c80",
+      "bytes": 1325
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/prompt.canonical.txt",
+      "sha256": "8abdd079a777562022a86c14c71b2ea9aa916abc99aa80aacdd599d55f35a641",
+      "bytes": 8880
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/prompt.txt",
+      "sha256": "80542fa6e33a4a19d1e189903e4c2ea0b6ca2c3dc8c104edf70e2e56c4cb49b7",
+      "bytes": 11127
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/request.json",
+      "sha256": "37e64fa7d7fcfbb4a533520411fe234567f33825ea704c5068c900047a32a0d1",
+      "bytes": 3425
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/subject-source.json",
+      "sha256": "17de34d7fd2c9d334485c4dc0f7bbc629a1f53bff145d0f2a0e853c383f1765e",
+      "bytes": 2798
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/visible-anatomy.json",
+      "sha256": "b9658b71a0a260ba8ef61c64bc33ad75c31b73280487de0ece08a92478218614",
+      "bytes": 3392
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/05-gazelle/visual-review.json",
+      "sha256": "8b88f501c19997b16faa37e67072f7d251efaf73b9159bb9037cf0da5ad07e1b",
+      "bytes": 1045
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/generation.json",
+      "sha256": "4cba7516b9bd35c89fccd249eb17c330957cbff15904204bbeddc907453825b1",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/master.png",
+      "sha256": "560d0a77af97c399fe0fc34abce499c15f3947b34f1ab5419b188e8d68e318e1",
+      "bytes": 1479857
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/pattern-check.json",
+      "sha256": "e2fa0c76f54453a15c140e70d0c81322b589adf9c4360b8232e52b553054f90b",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/prompt.canonical.txt",
+      "sha256": "667c471c02860e8394495f90e9f426ddd8067d369cc2746a01153d636c69601d",
+      "bytes": 8910
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/prompt.txt",
+      "sha256": "12974d6d749c1062a92f44ca7ce10189e744316dfe9993d70a6fe79f1c3839ba",
+      "bytes": 11177
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/request.json",
+      "sha256": "34060050b5cabb6616a5fb1492c689871ea9263fc433f1870383ea79d5c36c61",
+      "bytes": 3347
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/subject-source.json",
+      "sha256": "83c8b6ff814653f8c00fc4bca529234c2f064937460a037cda6a6a727d3bbd0b",
+      "bytes": 2825
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/visible-anatomy.json",
+      "sha256": "571fe144ce8d9719bdbf45578fe4968a9df7da52e195f2f9dd192af54249d4ea",
+      "bytes": 3385
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/06-hartebeest/visual-review.json",
+      "sha256": "f756eff73b29789b7e9962c164820b08d48ceeecf098442be8fcdc8948b29595",
+      "bytes": 1034
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/generation.json",
+      "sha256": "46db9edbbe43b3f9337b7228618c834694940d1d4ffae159ff42dc92e79ce6fa",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/master.png",
+      "sha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4",
+      "bytes": 1475379
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/pattern-check.json",
+      "sha256": "ba78640c0bd0b052ad18d239d65f99f98f97b647d3523cab43d7f39c6449162b",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/prompt.canonical.txt",
+      "sha256": "96d6a3ef232b2d33d6909035ae64a326d6a40a2f9810a7bc81abd25661e2dbfd",
+      "bytes": 8870
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/prompt.txt",
+      "sha256": "d05201fb48593a10e312ef4c57caf2bf1a52794b7a8e13492724d1ba59ddafc7",
+      "bytes": 11037
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/request.json",
+      "sha256": "4fdf78cfaf318485608f7f12c282865d18b008de196964f492d93b9c5e49fa57",
+      "bytes": 3183
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/subject-source.json",
+      "sha256": "736c61e9aab2fb55d49bc4980c7907280a3e1d43453b068b1e0644a030babe61",
+      "bytes": 2786
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/visible-anatomy.json",
+      "sha256": "95adcdb425e3d29228c04f9c8c817336b9499d7653cdca25132866c166dbb89d",
+      "bytes": 3388
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/07-oryx/visual-review.json",
+      "sha256": "4cd0eef30293dda0f41ff30d7152e3905130a5a09d75fbc8d268a30eb84be107",
+      "bytes": 1037
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/generation.json",
+      "sha256": "ee1970aef9adcf9ea31d3b75e46424da2a7061987c2d956d2fd93f2255811b16",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/master.png",
+      "sha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+      "bytes": 1619827
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/pattern-check.json",
+      "sha256": "97131682589df24c0d88fff6be9a47efab20fe28a90e8534415e8a5bacb4177a",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/prompt.canonical.txt",
+      "sha256": "b9f530d630ab572e0eefb2d4dfdb833dfdf418f481b8863fbc078124cc6633db",
+      "bytes": 8883
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/prompt.txt",
+      "sha256": "5c04fa7dc693faa99c25efb6329a969c286cd38fa9fbc06364d750cdfc366cd5",
+      "bytes": 11138
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/request.json",
+      "sha256": "99291577eb1d374dcb92e4bf696619ec2ed6edf295beb61631e7a1bc50aabb29",
+      "bytes": 3475
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/subject-source.json",
+      "sha256": "f83aa57e0f9c66db556351626c5b5396b1f1403471b54e8b1be81ea1c0bb0230",
+      "bytes": 2796
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/visible-anatomy.json",
+      "sha256": "6867d7b6d2f3e2a1f115820680dbb7eda7babaae652346831668a1fc4436dccf",
+      "bytes": 5945
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/visual-review.json",
+      "sha256": "de0a7619f97651bae3d18034abf25586b87125db0b060e42203f58904bde9782",
+      "bytes": 1099
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/generation.json",
+      "sha256": "e8cde28695a780993278bf4324f814cfa457da2c2e3f8141f5351dc8068d85ce",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/master.png",
+      "sha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+      "bytes": 1475491
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/pattern-check.json",
+      "sha256": "137935221362456738f649f7f9a35cf581dfe79120e196480d10ddcf7c86a00c",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/prompt.canonical.txt",
+      "sha256": "bde8aaaf1c427f22ffa0e43f54368c526ed6b8541e272069e00b852a5666ac1f",
+      "bytes": 8984
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/prompt.txt",
+      "sha256": "60e1fdef41cba56dd52c752ee839e9332515f1fe85fbc22c1082552e8d410441",
+      "bytes": 11211
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/request.json",
+      "sha256": "a6b66294f4e3153767a71c7eed707f04334210d7e02a8b5d11c22c35e0b979ea",
+      "bytes": 3211
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/subject-source.json",
+      "sha256": "33195eaa660d7b6e875f577e3711d731a994dcd65e085ca689bacdebc1e0ce18",
+      "bytes": 2884
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/visible-anatomy.json",
+      "sha256": "d19bf470a8d140993da81e350785fbd623f72ed64cf7d10aa31053270599b064",
+      "bytes": 3400
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/visual-review.json",
+      "sha256": "bde1e7b1a413e36daff2dbadc2833c4f5442747ab4c11353e28cd0cbf57bd515",
+      "bytes": 1052
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/generation.json",
+      "sha256": "324dc4344339481ffc5790433ff1f179ea431edd1fd6b560bfb85ba16b34f06a",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/master.png",
+      "sha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+      "bytes": 1444705
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/pattern-check.json",
+      "sha256": "51354f9dafea6e2f3e22fd5aa2e713c6a90e56f915f394dea8fcfbab1322e1f0",
+      "bytes": 878
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/prompt.canonical.txt",
+      "sha256": "a929ecf0ca05227f940e39f49b2f956522a2a6c5ece326d7400ca11a2c583481",
+      "bytes": 9037
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/prompt.txt",
+      "sha256": "e078da81652313de64d2daf1e222ce1d0fd2c49efee3989009d2ba7216ac75df",
+      "bytes": 11276
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/request.json",
+      "sha256": "f60f1da60f75374e0023998213df8b9cbd21a13ba50ceedc8a8c406e93707639",
+      "bytes": 3473
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/subject-source.json",
+      "sha256": "313c74bbcbd578b3120d0e5d29a5ed8b66ec54ec50a4a81d43024304f5b84533",
+      "bytes": 2941
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/visible-anatomy.json",
+      "sha256": "b364b23295a27949d35048cc5d70d722004a6b95e01591424b88c10796e6a27e",
+      "bytes": 2960
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/visual-review.json",
+      "sha256": "1737591d2e890a7a03d84bd17a86446fe0f5f8ead4fdcc45e5b1ed21a1f3abb8",
+      "bytes": 1082
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/generation.json",
+      "sha256": "f8f9a1e5cf72a314eeccc9c0c3b52934f79d75c638b6b7fb0438b49cc56d274f",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/master.png",
+      "sha256": "287f646975b919937cb1a89654b6341b69e440ba47024e84513654fafdc4fdae",
+      "bytes": 1635113
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/pattern-check.json",
+      "sha256": "429dc8f0c899dfde3fd387994e61b157c48037a5efd25ddf21e99836cf875a9f",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/prompt.canonical.txt",
+      "sha256": "8b4f40e46c6c82ea24bfd6a8ad9b47c4e0f40173b94029316c87e52cb0f6d3ae",
+      "bytes": 8941
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/prompt.txt",
+      "sha256": "77c1cfe76befb8ad4f33611ac7a846cbd25432ca492419cd287c0066cca6e6da",
+      "bytes": 11254
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/request.json",
+      "sha256": "005030785b470c153ac21136aa5409c603e3e3ab626f156916b1223846bb092b",
+      "bytes": 3496
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/subject-source.json",
+      "sha256": "862326214df663144fbc23963aa2a61c55db5dd50f352b3ccd245fb779323a5f",
+      "bytes": 2847
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/visible-anatomy.json",
+      "sha256": "b6c8ca83851b668fd0f666d89349ca961204d9818acee012fdaee0241b99c396",
+      "bytes": 3825
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/11-reindeer/visual-review.json",
+      "sha256": "45bd42e97ccad7fc6d28e2c9d9f8e127eafff85e6baaad0368965e7af3dea808",
+      "bytes": 1252
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/generation.json",
+      "sha256": "362c6374b9156dd00babeafc4399e92517d8ada7a0b76edd05e4aa77ff229dbd",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/master.png",
+      "sha256": "505a4b14ad2d4e59bc8b25b95cb77ffb2e05b35411fb539f68dccb00f402ecd5",
+      "bytes": 1544701
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/pattern-check.json",
+      "sha256": "29ca4613f7605cfa592b867686dbe5131dbeccc01a62c53dcd4e611f6fa59f74",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/prompt.canonical.txt",
+      "sha256": "1e403296dfaf3bb216be58cc3eded91f1405f61ad3e063bcdd13103d04113746",
+      "bytes": 8967
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/prompt.txt",
+      "sha256": "398f2cb9717769cffbefa4b03733f22984cb4b649e5b31d355ee51b9321d4d64",
+      "bytes": 11288
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/request.json",
+      "sha256": "cf95ee8b7f54fab5330d1ffaaa84a7d1f30830b65f50a49ef4a1802e1392f200",
+      "bytes": 3425
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/subject-source.json",
+      "sha256": "288038c032007bdbb74de5fdd76cd928ede640bb5162acf1d8ee44e8d294b9fe",
+      "bytes": 2871
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/visible-anatomy.json",
+      "sha256": "07de30b7f955d5ea4a1d8993d8a494faf5ad8d5608e190a920d180fee411dcef",
+      "bytes": 4240
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/visual-review.json",
+      "sha256": "27ce09636a0011d2747006f81b29e41bb574dfbaa77b59416408ae5203e10e55",
+      "bytes": 1191
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/generation.json",
+      "sha256": "d79a57281013868062e5b74a1bba2b8bdb55f33cfa13163197de560ee484f587",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/master.png",
+      "sha256": "27de0750acf13570f3a6dd14eec24dad687e9e23f881449c4bf46a8497bffd35",
+      "bytes": 1686066
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/pattern-check.json",
+      "sha256": "8a2b0b1c2096f2f5399d030af8a1f37538d36425b36bd772525495212e30066d",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/prompt.canonical.txt",
+      "sha256": "4c50541e4183a9a38e8f67a762121885aa46ea956baedbc39127cea8ac0f74d1",
+      "bytes": 8876
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/prompt.txt",
+      "sha256": "90464d5c973ce633c91ed97905dc1667b0db9eeb6bc4b80b1688baba1c685b55",
+      "bytes": 11189
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/request.json",
+      "sha256": "8d7909ba7c348378faaa32d5f9c712bf8e9264ab1a6165ade6dbc9af4b73e2ad",
+      "bytes": 3553
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/subject-source.json",
+      "sha256": "da52e87e3385ed3f925b0d171632addbffc37d7ba99d1f44d5dd3a384c7822ad",
+      "bytes": 2790
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/visible-anatomy.json",
+      "sha256": "af9919fb6522b3a2e4867f96aed3cc2047839d5ff5c1dba30c9ad7e564743efa",
+      "bytes": 5554
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/visual-review.json",
+      "sha256": "60fc6e5296702e6579f7b9fb013e13c7ab0b8b4c9adafc01e15e9c99406151e0",
+      "bytes": 1143
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/generation.json",
+      "sha256": "711ab1e6f4bc0da6e1abc1605e875c2abbb42f0bb665ab9ddf96dcad633617d8",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/master.png",
+      "sha256": "dca8074553c08211b7b13d133286c1798d15bfc0b7b8834256bdacbd7f7c249e",
+      "bytes": 1727277
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/pattern-check.json",
+      "sha256": "6a281b45d7f6ddf363181d6288264b8c8d51cdadb99009de7c66696aabbe0174",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/prompt.canonical.txt",
+      "sha256": "fe57561ed4edc5f17b514a09a72bcea6b1021b3fd5ef7d18144d9d9a37e522b3",
+      "bytes": 9003
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/prompt.txt",
+      "sha256": "8375f74573f01b4bea65a69c3b77492553d832735cfc9d50c38f848f59762a89",
+      "bytes": 11312
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/request.json",
+      "sha256": "e7fdc88db17fbe7a3ef0c50765ebfbc6a7dd1f402393307f1aecd851b0112746",
+      "bytes": 3349
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/subject-source.json",
+      "sha256": "86cee258f713fe3290c5d00ef1a7e8846ce0e1cb47c51865edc1ca0afeae8185",
+      "bytes": 2909
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/visible-anatomy.json",
+      "sha256": "610c44643c221017d0f01980f8c7a95001353abcceea119a12c9a3daacfdc291",
+      "bytes": 5551
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/visual-review.json",
+      "sha256": "24e6c4e0f08502e825cfc2c04f263ad535288d8b797b6a7458df9c3ea8f7b07f",
+      "bytes": 1158
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/generation.json",
+      "sha256": "b2b6d168defb57c813a15cb82e43b16170515a00a521efac635f6d65d41b26c8",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/master.png",
+      "sha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee",
+      "bytes": 1618478
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/pattern-check.json",
+      "sha256": "f63f01e4cca77e54e43459ba95a109ee85ffd1637722800b0dfc04c44648ee91",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/prompt.canonical.txt",
+      "sha256": "36018a61a75c9c76c7d3a990db1605bd1dea26ca6f1145f5d2fb8ac468c56a0b",
+      "bytes": 8876
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/prompt.txt",
+      "sha256": "e26092fe5307cc26fac71cdc310469e3f0eae31aef720de89e8e7666d5f29a59",
+      "bytes": 11165
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/request.json",
+      "sha256": "462fc97114a41f29846dc2696b1b5355322b078f74d8633134b9c8ce68f8872c",
+      "bytes": 3307
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/subject-source.json",
+      "sha256": "43a99a4a48c0347ad78d6834463101dd8abc029f632383efcd6c0bc4dcfcfff2",
+      "bytes": 2790
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/visible-anatomy.json",
+      "sha256": "7857c8bcfc26386d4bbf513c2611544ba4e52390fadb314f21b4cec3cd53efb5",
+      "bytes": 4230
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/visual-review.json",
+      "sha256": "524e092d3c26269394687e5a7f6e0f1a17d01c6b74af2130f4a3729b469e7839",
+      "bytes": 1105
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/generation.json",
+      "sha256": "60ed96550af8f4348c27fb1fb28b2be51f887982bc7836440b647c902ec848d9",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/master.png",
+      "sha256": "01d9bce04da55e4a9b5e9d40a69a0be47bb8d5a6e4877d9ecfbc60cbd93a7216",
+      "bytes": 1649000
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/pattern-check.json",
+      "sha256": "81e3edcde86934175b7d07265d8daf9a0c27ce0f36bce79228e73465742c57fe",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/prompt.canonical.txt",
+      "sha256": "1015a27b6e2328d2529294df0ca3193c802d244bbba8b56c4eec2cbbbfc98901",
+      "bytes": 9053
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/prompt.txt",
+      "sha256": "0c138be2a0c7fd16316cd2d5515d82d27a1f93529478d5b8c918e57d81b72913",
+      "bytes": 11328
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/request.json",
+      "sha256": "98b89410a743228964939db2728dc1b05b0815ad0c33cca7608f589bea5936fb",
+      "bytes": 3363
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/subject-source.json",
+      "sha256": "c3948cfb886a20473cc6bd27055fe36b40f3c2056212bdbef68bf5f3c991db11",
+      "bytes": 2960
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/visible-anatomy.json",
+      "sha256": "b2569b9e8657a259bbcdd337b02c2cbc962880c2ef961e6ca210627d056c0a6d",
+      "bytes": 3403
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/16-wild-sheep/visual-review.json",
+      "sha256": "8e4b1b4e6bc19308e3687462e13ec23d80b4241db8158b5a8c3385a796e9fc04",
+      "bytes": 1165
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/generation.json",
+      "sha256": "f18d22edb04431a7f803e53bc37bf3a64b1d395d014adaff2f3d330ba3a2d765",
+      "bytes": 629
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/master.png",
+      "sha256": "c9fb75ce38aa66c3e3877b57cabdff6f9ced807d3e75e98d0eabecbf003fa303",
+      "bytes": 1612544
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/pattern-check.json",
+      "sha256": "17daa7e4c4548c05fb00f89aa1a5930d07f1b05ca63a7b572cbeab45ba4c353f",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/prompt.canonical.txt",
+      "sha256": "d380eb7a03f1fa059e4aea4f6096d17294b6b527b4a8fe027470ef0e80614366",
+      "bytes": 8913
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/prompt.txt",
+      "sha256": "2f1a285a3b60dea4e5f3bb00b56b75a089122e344c75f518cd3228fcb8375d2b",
+      "bytes": 11218
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/request.json",
+      "sha256": "63035f16964795d86691c57da65f4b4f3a48328238e3815adedc4799bf382ce5",
+      "bytes": 3357
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/subject-source.json",
+      "sha256": "1db4a6c6eda55224f6fe7c43512245df57ae7f42c8e54d9b055b4c56d56f658c",
+      "bytes": 2311
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/visible-anatomy.json",
+      "sha256": "4ef544b033fe2a52eae3ec5630ee1046013a51c11f67fe9f27e935f2f6dd87fc",
+      "bytes": 2983
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/visual-review.json",
+      "sha256": "94f729b9ec86c6f332720f43ea2dd6b5f3b1a27f091f79710cd38c8691c8a5b4",
+      "bytes": 1154
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/generation.json",
+      "sha256": "d42b229fdad85d56dcdd4b9af5823131573d0d832febbfe340bd7bb32d884901",
+      "bytes": 627
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/master.png",
+      "sha256": "d0f39b9dac474204c18d6ce431158be51a50e7c1bd8767d48e94480cfd1ba372",
+      "bytes": 1634685
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/pattern-check.json",
+      "sha256": "8a6a01be2ace51dd926cd8ebe00b9c53c9bf0f34378495114969af7474f8a669",
+      "bytes": 290
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/prompt.canonical.txt",
+      "sha256": "ed6764ead441851b6b4451e31c644fc4b7ce171a9de596e4ff7009638a5fe3c1",
+      "bytes": 8900
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/prompt.txt",
+      "sha256": "95e918f28340baa1055a8ded897edad49a6129cc5dfe8aba6703e2e4c4bd5704",
+      "bytes": 11175
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/request.json",
+      "sha256": "837d4ac5db0e51fccd8cd07e3c0080df922404b486f576f0df979ff02c5917e8",
+      "bytes": 3324
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/subject-source.json",
+      "sha256": "09ec9c2b574e2c52cb8ef2e379d5225936b65519ad50ebbbda285e4261a98811",
+      "bytes": 2298
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/visible-anatomy.json",
+      "sha256": "f0d1d15cf962b7e5aca6aecfa37a54b8f2276dada854624fb93eeec0b9fbf231",
+      "bytes": 3827
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/visual-review.json",
+      "sha256": "4ec6e20238c73532cf2041949c01f5c4c3555aa065708a71df6085a5944b855c",
+      "bytes": 1129
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/generation.json",
+      "sha256": "74f8ac3b62ec5ce95833779fe0d072a796cb5079ae9e59491ffc37fee4a1cf48",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/master.png",
+      "sha256": "9acfc1f229b16105161d00a71fd88d3e762ad7f799e3d33b701ea68acfbb94b7",
+      "bytes": 1573577
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/pattern-check.json",
+      "sha256": "fd16e17202f806d0992f7927e8b46db2c664490859b707e2c8299582c7662e29",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/prompt.canonical.txt",
+      "sha256": "9a6487c173d6ebfdf7746dd1980915620e6ab09a9e3cf1572bce7d4245173eda",
+      "bytes": 8775
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/prompt.txt",
+      "sha256": "cb647a42dc5edab23ed3975e6cde60d9c1c83acf59e54bc4278067190311fd8a",
+      "bytes": 10148
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/request.json",
+      "sha256": "9c9843afb88c2ea78bb3d12e460e81d1c24da40e376ffe0fd902f0d6fdf913a6",
+      "bytes": 2034
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/subject-source.json",
+      "sha256": "979b1a159c3c3ec6f3b99c7214829a35844bded6e9b5105af08922b8f4b4aba1",
+      "bytes": 2386
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/visible-anatomy.json",
+      "sha256": "620089d6e6df77f3b5d954e1a04fb6a2f10191d0c4b8ce5d7f1b79d78dcdd8ef",
+      "bytes": 2902
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/visual-review.json",
+      "sha256": "18b0af00a81d53c4cc93e07cd8daef6f56ff290b78ac85563ce6e3a5a372aa73",
+      "bytes": 1139
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/generation.json",
+      "sha256": "d754fce415e333d1d7b8dd7bd8d7bd454b720a421a048e4afeddb29fe1ce45cb",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/master.png",
+      "sha256": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1",
+      "bytes": 1273278
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/pattern-check.json",
+      "sha256": "b636701d7960666df50765e2ff3fb0409e379abefe91784580e94370ffad6d89",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/prompt.canonical.txt",
+      "sha256": "29e410faf8915238f0232fe8df9aebf3cc70aafc55db1a4bce18a73afb598ec6",
+      "bytes": 8318
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/prompt.txt",
+      "sha256": "4b8eb2abb853e1b1332f149b97ab8533dabde543a8e19cba48dca8e8a63a8295",
+      "bytes": 8855
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/request.json",
+      "sha256": "5cddd0606f22dad2f28861abb46d96836a9bc561e572e83abba1dbd7b0a82131",
+      "bytes": 1639
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/subject-source.json",
+      "sha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d",
+      "bytes": 2187
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/visible-anatomy.json",
+      "sha256": "ac29084ca1fb7e4090502f7bfe472d00a6416b5678a4cbf1a18b1f6d09b8137c",
+      "bytes": 2289
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/visual-review.json",
+      "sha256": "6636bc28b5dfd39950f4802fc1012fe5e232a62527f6d8a1a018d55d40b67719",
+      "bytes": 1082
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/generation.json",
+      "sha256": "578cad59d61b4ae027bd1a21a4f41afc8ef0e7b836cd0f4dfa4f6426f9e8ae78",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/master.png",
+      "sha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+      "bytes": 1493937
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/pattern-check.json",
+      "sha256": "e2888105a07161e0dd8e159a13a378e8832c047b18fcc24f09443684074d77aa",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/prompt.canonical.txt",
+      "sha256": "f501b7a0edc94343061c07dcce9e231281d514ad5ece17dd4e9b5a3592583562",
+      "bytes": 8544
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/prompt.txt",
+      "sha256": "933ffe68172e5a819954ca94dfd9f3ea5a4b56e059a9cb195b9313047d2cbe02",
+      "bytes": 9081
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/request.json",
+      "sha256": "be54fd1d33e6829697b0f08d6a5cdcdccc98859789ec94efc5398c317871c809",
+      "bytes": 1669
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/subject-source.json",
+      "sha256": "5ed04dcf712b75a98c55baa71fc0837443746b0d1935d1a8f093e5ea7c97d257",
+      "bytes": 2230
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/visible-anatomy.json",
+      "sha256": "2876fdd75c33dd99edc41925a04e627d6eecdec9f079dd57cfb99adaa8bb525b",
+      "bytes": 3267
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/visual-review.json",
+      "sha256": "fc8c5c8eff2e7501995a6e9b3477cae1cc82980510949562916e2dcd86c4176a",
+      "bytes": 1080
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/generation.json",
+      "sha256": "f4c990d100df23801798fb6e674713b29af468bf6779c29aa2acdb8a4434d6bf",
+      "bytes": 621
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/master.png",
+      "sha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+      "bytes": 1183717
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/pattern-check.json",
+      "sha256": "a3b5a3de2ef8c99059b6830ad67c5970c4eeb6124a65210a28fddd3c802e049c",
+      "bytes": 287
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/prompt.canonical.txt",
+      "sha256": "c0988a202a3675a6825fbe5b1d308a32b2052848054e9150110bda0d150ae254",
+      "bytes": 8548
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/prompt.txt",
+      "sha256": "fcda133e68fbb3f41364d17e7965b2d838f2675868681334db7d679e08ff05bc",
+      "bytes": 9085
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/request.json",
+      "sha256": "8246eec510f7dcf9c77ddfe1b4bf61d2b908c07706a8f6509c78d91afb7708db",
+      "bytes": 1696
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/subject-source.json",
+      "sha256": "c0347d6f37f33ce12ae1b322602e0250c5b365f1be1501f997c5bc4ab601af57",
+      "bytes": 2176
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/visible-anatomy.json",
+      "sha256": "11043a9252cf8c262a06e8abb9eb0c28817b72d1064987353d58b4ffa3fe90ff",
+      "bytes": 1867
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/visual-review.json",
+      "sha256": "dcccc482ee4635e4fa88c0da7ca608e5d83357bd82640bd525c3616721a218ad",
+      "bytes": 1128
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/generation.json",
+      "sha256": "c6e5e4cb3a938cd5aa917e6612114cb73a23e7a0b87304a2494dbcc45ad1eb93",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+      "sha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b",
+      "bytes": 1342040
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/pattern-check.json",
+      "sha256": "4c6e0a676555dcfb8b14533c12f8277351ecfca2e72ba2bf4dd7b05ac1dd11d4",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/prompt.canonical.txt",
+      "sha256": "c4d164de5b814e5dbf940b072f60ac3fd25f3bb46fdb7805f2a7e5d48ee6b5e5",
+      "bytes": 8769
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/prompt.txt",
+      "sha256": "78f93a60d61eb576b187dbd57c7127c99e2dbf50d53fe0a8ae4f42290d5bf363",
+      "bytes": 9306
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/request.json",
+      "sha256": "c22705fb7ee2c94714afd9ebd143fc16ad241fc2a1de1e6fefd3ca99e5af72ba",
+      "bytes": 1715
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/subject-source.json",
+      "sha256": "adc6d9af35d82d61dbbfb6592f3a0b4ea8e1bccdb946f2e483be4c36ebc6ed72",
+      "bytes": 2392
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/visible-anatomy.json",
+      "sha256": "79c7a6a13be8189a511b0b0250bf0bd4b73b52c7023ddb277b709c4db95584c5",
+      "bytes": 3683
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/visual-review.json",
+      "sha256": "966c47367131be3a3d61054b6fdc5161626365116fe58d295d3b5a1dfa0cc010",
+      "bytes": 1143
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/generation.json",
+      "sha256": "386d7bc93ffd13c6811a470b17ff8af0298e2438f8cdf77253eaecbeca6aa988",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/master.png",
+      "sha256": "d11ee0494e3d445f8100a87394857a104f893f6a9d631303ceaa7ea1a72ea699",
+      "bytes": 1491188
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/pattern-check.json",
+      "sha256": "0f9c4adffb9279d69b901397cfa724ae8a5c1d685a0ce56a95568588e463deb2",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/prompt.canonical.txt",
+      "sha256": "b6839f50768e25089b4e717b83617ece713e41066c26866ed6c835ea560c9d81",
+      "bytes": 8704
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/prompt.txt",
+      "sha256": "a78bda2dd4d2435e1796e9bfeb74607fadc10fbc8946945b7eeffdc7036dd21b",
+      "bytes": 9241
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/request.json",
+      "sha256": "b2b980c79d2182c04cd59488805780b97185226335ca56ae9d2f6a1b028a8387",
+      "bytes": 1661
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/subject-source.json",
+      "sha256": "7fa25dfe639eb7e582a33a044f052e32028d6422d58c03a391611250787fad02",
+      "bytes": 2187
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/visible-anatomy.json",
+      "sha256": "76c83fb25f9458570abd55ff70914db3a1f65fb01f9cd4d957edc5928b5b16a4",
+      "bytes": 1947
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/visual-review.json",
+      "sha256": "d8efd861c123c01e20c8f12c73c8825c24b770e164662133786fa864667707f8",
+      "bytes": 1123
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/compile.mjs",
+      "sha256": "6bd18d0ed83c86c1dfbf8251c56b98c9636e569835d891dacfdc16d0deb8f8fb",
+      "bytes": 10503
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/compiler.audit.mjs",
+      "sha256": "e51d43ac341245bfb15b92895a9dddc7583b94ee78c8b55317d641ebc34c6a1a",
+      "bytes": 25166
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/controls.json",
+      "sha256": "f007bb58fc59be4083b7520ef36105135d7772e5af5d819129062db730b4bb22",
+      "bytes": 2806
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/controls.mjs",
+      "sha256": "fb386ccf99c24d78933af7a1303c60dc490da9f3710d93c81ef942184ecc3d72",
+      "bytes": 2965
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "bytes": 963
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/freeze.mjs",
+      "sha256": "fef11c6a3620cb4050a8f0a3a800cadd18b1bfbeec8989cdbca7c00a74ea1b76",
+      "bytes": 2406
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/materialize.mjs",
+      "sha256": "6bd9f7cfca964a19a613ce60084558d5cbcbaa4c95985fbc387f85886d359848",
+      "bytes": 2841
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/observations.json",
+      "sha256": "efb224d11f2b748da7d41b149003fa2353e2ff59fd6de89ce2e5ef322277ec39",
+      "bytes": 18413
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "bytes": 2547
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/pattern-summary.json",
+      "sha256": "bfbac3d3b802b5cca43dbf794fbec6c31a9a6aac2ad09fb78b59e606ae3a3a57",
+      "bytes": 2156
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+      "sha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817",
+      "bytes": 22822
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/pipeline-proof.json",
+      "sha256": "6126edf7318e6ee55a5de004a99df3edd0fbe70406808d8a3710d3becdc2b9ee",
+      "bytes": 25046
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/provenance.mjs",
+      "sha256": "65eb47a2fd973c440502e0a296074946fb96fc946d2444fc5d4e0cd29eac40fe",
+      "bytes": 3987
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/README.md",
+      "sha256": "687a9315c29e652c4c5db56be81bfb5d03646bd83c5878b2c9d4c72116571ce9",
+      "bytes": 4351
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "bytes": 1279
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/review-sheet.png",
+      "sha256": "c71c2bf0dada3f8440a6609dcb2e785f100f1e25482624c9c8c318b3bbf302ac",
+      "bytes": 3137125
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/review.mjs",
+      "sha256": "8f84e1feae646897995d16e4c25427ef5287ba7231aa431344366a8ccc27f637",
+      "bytes": 1985
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/selection.json",
+      "sha256": "08963dc2c770604489ff4f3d2f52c3f17d220e30da5d9041a076cda29ed0aaa7",
+      "bytes": 24941
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/specialized-layouts.json",
+      "sha256": "188af571423b379323a6bcbd1674d933211b7fddec682ab26a0315f3d585984d",
+      "bytes": 4166
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/transform-receipt.json",
+      "sha256": "39ffcc32211c17834840639753ed71966722d1f97766d471768cc4d6db64c477",
+      "bytes": 8198
+    },
+    {
+      "path": "audits/C213_CREATURE_SUPPLY_20261002/visual-notes.json",
+      "sha256": "b5ab696a4341eadd6cc239d9bc8fb58b6e15c14cd6e2aa17eeb79c9f638fd848",
+      "bytes": 10343
+    }
+  ],
+  "bytes": 40924439
+}

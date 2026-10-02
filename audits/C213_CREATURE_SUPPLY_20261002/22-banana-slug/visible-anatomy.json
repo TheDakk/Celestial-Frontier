@@ -1,0 +1,92 @@
+{
+  "id": "22-banana-slug",
+  "name": "Banana Slug",
+  "family": "gastropod",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 18691,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 106,
+      "y0": 181,
+      "x1": 323,
+      "y1": 274
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1122,
+        "pixels": 2098,
+        "box": {
+          "x0": 316,
+          "y0": 136,
+          "x1": 391,
+          "y1": 233
+        },
+        "attach": {
+          "x": 323.3,
+          "y": 204.7,
+          "relX": 1,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": 0.87,
+          "y": -0.5
+        },
+        "class": "front",
+        "length": 96.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0958,
+        "pixels": 1790,
+        "box": {
+          "x0": 36,
+          "y0": 227,
+          "x1": 105,
+          "y1": 270
+        },
+        "attach": {
+          "x": 105,
+          "y": 248.5,
+          "relX": 0,
+          "relY": 0.73
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.23
+        },
+        "class": "rear",
+        "length": 72.3
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 51,
+        "x1": 228,
+        "cx": 148.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

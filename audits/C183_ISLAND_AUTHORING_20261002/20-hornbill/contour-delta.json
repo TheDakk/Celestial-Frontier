@@ -1,0 +1,113 @@
+{
+  "schema": "cf.c183-bird-contour-delta/v1",
+  "id": "20-hornbill",
+  "originalAuthoringSha256": "abd3995abd4f15b954ad802f307041b0273d24b68b5743d4056f30b0c5e6409f",
+  "candidateAuthoringSha256": "a295c5dd3fe7fdf0a1ae0a6fc5b27da6512dab807c73badc2348fb557b4279a6",
+  "sourcePlanSha256": "c3886c366c9894a3e3baaade8cf674527ef34df9af91d409bfcf287c4151793b",
+  "regions": [
+    {
+      "id": "reviewed-posterior-crown",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          720,
+          346
+        ],
+        [
+          824,
+          345
+        ],
+        [
+          826,
+          435
+        ],
+        [
+          724,
+          439
+        ]
+      ],
+      "reason": "Black posterior skull feather contour above the long nape."
+    },
+    {
+      "id": "reviewed-upper-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          724,
+          433
+        ],
+        [
+          826,
+          432
+        ],
+        [
+          831,
+          508
+        ],
+        [
+          718,
+          517
+        ]
+      ],
+      "reason": "Black feathered nape down to the visible shoulder emergence."
+    },
+    {
+      "id": "reviewed-bill-edge",
+      "joint": "beak",
+      "layer": "near",
+      "polygonPx": [
+        [
+          998,
+          388
+        ],
+        [
+          1040,
+          406
+        ],
+        [
+          1077,
+          472
+        ],
+        [
+          1075,
+          522
+        ],
+        [
+          998,
+          473
+        ]
+      ],
+      "reason": "The hard yellow bill edge omitted by the transferred bill polygon."
+    },
+    {
+      "id": "reviewed-tail-edge",
+      "joint": "tailFan",
+      "layer": "near",
+      "polygonPx": [
+        [
+          170,
+          824
+        ],
+        [
+          359,
+          824
+        ],
+        [
+          374,
+          908
+        ],
+        [
+          168,
+          908
+        ]
+      ],
+      "reason": "The continuous white feather tips at the bottom of the painted tail fan."
+    }
+  ],
+  "scope": "Manual source-contour additions after all original anatomical owners and before the original remainder. Only previously remainder-owned paint may move; old landmarks, ground, presence, materials, part regions and prior anatomical ownership remain unchanged.",
+  "originalOrigin": "Automatic same-family reference transfer retained; only the additive contours are manually source-reviewed. This is not an independent family reference.",
+  "sourcePaintChanged": false,
+  "nativeAcceptance": false
+}

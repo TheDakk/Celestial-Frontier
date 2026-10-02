@@ -1,0 +1,28 @@
+{
+  "name": "Zebra",
+  "masterSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: bold black-white stripes continue over body, belly and all four visible legs; upright brush mane, both ears, bare upper tail shaft and full dark tail tuft are retained. Four hooves are separated, but far upper limb roots remain partially behind the near limbs/body. Tail is continuous and clear of the hind feet. No authoring or motion claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 174,
+      "y0": 208,
+      "x1": 1118,
+      "y1": 988
+    },
+    "margins": {
+      "left": 174,
+      "right": 135,
+      "top": 208,
+      "bottom": 265
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

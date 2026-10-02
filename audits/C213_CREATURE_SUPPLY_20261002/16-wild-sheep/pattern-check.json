@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wild Sheep",
+  "masterSha256": "01d9bce04da55e4a9b5e9d40a69a0be47bb8d5a6e4877d9ecfbc60cbd93a7216",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

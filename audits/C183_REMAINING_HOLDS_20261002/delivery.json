@@ -1,0 +1,404 @@
+{
+  "schema": "cf.c183-remaining-holds-delivery/v1",
+  "status": "FROZEN_AUDIT_ONLY",
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "runtimeChanges": false,
+  "localCpuStatus": "TERMINAL",
+  "rows": [
+    {
+      "name": "Flounder",
+      "fit": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01",
+      "status": "PASS_STATIC; five source joins corrected; native and remaining anatomy holds retained"
+    },
+    {
+      "name": "Tiger Shark",
+      "source": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/master.png",
+      "status": "New exact painting; framing and pattern PASS; tail notch HELD"
+    },
+    {
+      "name": "Hawk",
+      "status": "Belly opening HELD; selected ownership observations retained"
+    },
+    {
+      "name": "Snowy Owl",
+      "status": "Neck/shoulder seam HELD; measured small wing/neck boundary gaps, no unsupported weld"
+    },
+    {
+      "name": "Capuchin",
+      "status": "Neck line HELD; near-zero body/head gap does not establish ownership cause"
+    },
+    {
+      "name": "Snow Petrel",
+      "status": "Wing seam HELD; transferred Duck polygons require observed source authoring"
+    }
+  ],
+  "files": [
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/README.md",
+      "sha256": "1e4d05e8f03bced538e827235894e81d15e536bcca5e03371d042531362d8107",
+      "bytes": 6461
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/compile-flounder.mjs",
+      "sha256": "0a81f4e67c087ea98afb1180f856a8b7726d32a335b7d35a0d8736e27e8da6b1",
+      "bytes": 3779
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/authoring-receipt.json",
+      "sha256": "22f831dddb2c9fcf24e82bb80865da668d0f5444fc372a851b957cc98e86d6a4",
+      "bytes": 2816
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/before-held-right.png",
+      "sha256": "89e906384e3dc2e5baa74e758ac8ec740f973de2a4c24e50917ab59449c6907d",
+      "bytes": 617338
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/candidate-held-right.png",
+      "sha256": "cfc2a9efdc81fcce8fdbd6e1047f1382dc2e53a99f051aef9a2b6734a7d99229",
+      "bytes": 625601
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/controls.json",
+      "sha256": "f5a5afe51535f0f13387d84f201faf69d56f9598ecb6f9f9e09f175f4cadb2b1",
+      "bytes": 1824
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/binding.json",
+      "sha256": "faa0b62bec1f0d25563da957fbd9c1446cd13722460b9698bb63e492d9e3bbf2",
+      "bytes": 1782628
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/declaration.json",
+      "sha256": "f101ca48fa7809194b05c9c4c1c5772e6ec63992cce60ba95f7d3d7e5c07235a",
+      "bytes": 1604
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/labels.png",
+      "sha256": "9f0403700028790c852c91cccf111be639dc12d16573e95224953c98eb85172d",
+      "bytes": 42415
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/atlas/flounder.json",
+      "sha256": "b41a0d4c5601e6290a5087b00b12e04ee70db3efd248b2f391aab1cf231475ef",
+      "bytes": 5377
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/atlas/flounder.png",
+      "sha256": "3d0178ac055fe2a9a2a0bea7d49b485556d8fb22c94ff5898f97b3fbab058420",
+      "bytes": 644880
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/atlas/receipt.json",
+      "sha256": "fca367043a63be0ca9e27edde32b46a7de284931bdc406b152d5f6eacaba0d1b",
+      "bytes": 2373
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/binding.json",
+      "sha256": "6a7cd9c404f5c5e32c481a568f68f0f5175db4c1428e8747f39f6dc3dbe50441",
+      "bytes": 4492
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/keyed.png",
+      "sha256": "9fb2c9f13aa651779ff7c2b071d3d0205007dfd55f9c0c094e93e8107c2e18da",
+      "bytes": 1657669
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/manifest.json",
+      "sha256": "0a6866da9cf880d55ad0343afa09a10ef928ba5b0d5383fbb4ae9bfe303349fd",
+      "bytes": 2114
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/ownership.png",
+      "sha256": "7b81b65c3adf4119c814a4312291676295086fcacacf5b500dd9dd79414dc146",
+      "bytes": 17925
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/body-0.png",
+      "sha256": "e8c48a07d3d2ae586946a08e08097f24ed5888e87081d83f9b3a3926036ea7d6",
+      "bytes": 55189
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/body-1.png",
+      "sha256": "f6ab012a3f339721e38d65034a5c53a138f4528c1ffd11e6156553e8094ab3c5",
+      "bytes": 49931
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/body-2.png",
+      "sha256": "c0b58488441a1cca6d30d24d025794578d0e5bfd6a3dcf20fcd4016066238ca3",
+      "bytes": 85287
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/body-3.png",
+      "sha256": "332375e29d0cb8913807b6a45a70edf039e315ad7154743a696ab8d733d5aef4",
+      "bytes": 96457
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/body-4.png",
+      "sha256": "ca6dfdcc7562038dde12267cddd408d54b8d98fb9426654a859366f38fb1769c",
+      "bytes": 61846
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/body-5.png",
+      "sha256": "ff01a54565bf384abd00b564b75b1b9598edba4a910f234267ac735fd3dd73ee",
+      "bytes": 59742
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/body.png",
+      "sha256": "563948d2ce694f65fc482fe99258650e0c51dff5caaa526489127d7d3b0cc86b",
+      "bytes": 18437
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/caudal.png",
+      "sha256": "5a05ade4d70c52ed60cbb14095fc336fb24fbdfe4ddf9d90ce61d056d6fd07fa",
+      "bytes": 73197
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/dorsal.png",
+      "sha256": "84239979ce1f8b333a008650d233c83f21a0183d00046e76a0a381a8af4061d6",
+      "bytes": 83711
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/far-pectoral.png",
+      "sha256": "24b8736f2c6bec429839d9f99b59b80bd65afbffe28a1cca6653b2eec8d6db6e",
+      "bytes": 9389
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/head.png",
+      "sha256": "7a11b9ce22fe8185965f3b38d4747d7d14c0f198f4b2673111f4e48c9b844ef8",
+      "bytes": 73449
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/jaw.png",
+      "sha256": "1d6ec7e6584e62aa47aac5f63c5753cd5b0d9628e49930b6a67c34dde5315b13",
+      "bytes": 10975
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/parts/near-pectoral.png",
+      "sha256": "de95ab164fdac06fb5041db32ba20870f615ab632592aa236575a57b7464785b",
+      "bytes": 75283
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/parts/receipt.json",
+      "sha256": "4d1dfb77c9e3248f6c14e1a73671e41ee0ed3a6e9d201fd9e431e56b4fb97234",
+      "bytes": 3853
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/pre-split-binding.json",
+      "sha256": "2edf13b2a132bf077bd5d2b27720f3b751efd6802e8663c12e4bea15cbe5bf4c",
+      "bytes": 1082723
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01/record.json",
+      "sha256": "1c6d430cd74712a1ba61e294c2b87a9868396f5b2b377ab02c3266c579c483cc",
+      "bytes": 5131
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/measurement.json",
+      "sha256": "01be9357d12c8a83a4288ec47fd56c728c1549b242f31edf3a768b898d58ded5",
+      "bytes": 49789
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/static.json",
+      "sha256": "c81c178b4f9f969172c9225f2ff5ccb441a9d40924b7080803c3cd902bcabbbb",
+      "bytes": 7296
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/static.json.sources.json",
+      "sha256": "ab1e3e4c0ee7a5f21bf342bd63307f38af0fb64bf403a5692c3833e2336e596c",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder/static.log",
+      "sha256": "ff5d9a9d6ac9fdf2f19f637b1710227beb83b9375cdefddcbd5d981bacc76f44",
+      "bytes": 1829
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/binding.json",
+      "sha256": "5dad3ae6bb51b7ac32f1969f7e6dd67bb0436588deeae973147d5ad8b729ca91",
+      "bytes": 1837281
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/declaration.json",
+      "sha256": "f101ca48fa7809194b05c9c4c1c5772e6ec63992cce60ba95f7d3d7e5c07235a",
+      "bytes": 1604
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/labels.png",
+      "sha256": "9f0403700028790c852c91cccf111be639dc12d16573e95224953c98eb85172d",
+      "bytes": 42415
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/atlas/flounder.json",
+      "sha256": "b41a0d4c5601e6290a5087b00b12e04ee70db3efd248b2f391aab1cf231475ef",
+      "bytes": 5377
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/atlas/flounder.png",
+      "sha256": "3d0178ac055fe2a9a2a0bea7d49b485556d8fb22c94ff5898f97b3fbab058420",
+      "bytes": 644880
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/atlas/receipt.json",
+      "sha256": "fca367043a63be0ca9e27edde32b46a7de284931bdc406b152d5f6eacaba0d1b",
+      "bytes": 2373
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/binding.json",
+      "sha256": "6a7cd9c404f5c5e32c481a568f68f0f5175db4c1428e8747f39f6dc3dbe50441",
+      "bytes": 4492
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/keyed.png",
+      "sha256": "9fb2c9f13aa651779ff7c2b071d3d0205007dfd55f9c0c094e93e8107c2e18da",
+      "bytes": 1657669
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/manifest.json",
+      "sha256": "0a6866da9cf880d55ad0343afa09a10ef928ba5b0d5383fbb4ae9bfe303349fd",
+      "bytes": 2114
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/ownership.png",
+      "sha256": "7b81b65c3adf4119c814a4312291676295086fcacacf5b500dd9dd79414dc146",
+      "bytes": 17925
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/body-0.png",
+      "sha256": "e8c48a07d3d2ae586946a08e08097f24ed5888e87081d83f9b3a3926036ea7d6",
+      "bytes": 55189
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/body-1.png",
+      "sha256": "f6ab012a3f339721e38d65034a5c53a138f4528c1ffd11e6156553e8094ab3c5",
+      "bytes": 49931
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/body-2.png",
+      "sha256": "c0b58488441a1cca6d30d24d025794578d0e5bfd6a3dcf20fcd4016066238ca3",
+      "bytes": 85287
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/body-3.png",
+      "sha256": "332375e29d0cb8913807b6a45a70edf039e315ad7154743a696ab8d733d5aef4",
+      "bytes": 96457
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/body-4.png",
+      "sha256": "ca6dfdcc7562038dde12267cddd408d54b8d98fb9426654a859366f38fb1769c",
+      "bytes": 61846
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/body-5.png",
+      "sha256": "ff01a54565bf384abd00b564b75b1b9598edba4a910f234267ac735fd3dd73ee",
+      "bytes": 59742
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/body.png",
+      "sha256": "563948d2ce694f65fc482fe99258650e0c51dff5caaa526489127d7d3b0cc86b",
+      "bytes": 18437
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/caudal.png",
+      "sha256": "5a05ade4d70c52ed60cbb14095fc336fb24fbdfe4ddf9d90ce61d056d6fd07fa",
+      "bytes": 73197
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/dorsal.png",
+      "sha256": "84239979ce1f8b333a008650d233c83f21a0183d00046e76a0a381a8af4061d6",
+      "bytes": 83711
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/far-pectoral.png",
+      "sha256": "24b8736f2c6bec429839d9f99b59b80bd65afbffe28a1cca6653b2eec8d6db6e",
+      "bytes": 9389
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/head.png",
+      "sha256": "7a11b9ce22fe8185965f3b38d4747d7d14c0f198f4b2673111f4e48c9b844ef8",
+      "bytes": 73449
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/jaw.png",
+      "sha256": "1d6ec7e6584e62aa47aac5f63c5753cd5b0d9628e49930b6a67c34dde5315b13",
+      "bytes": 10975
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/parts/near-pectoral.png",
+      "sha256": "de95ab164fdac06fb5041db32ba20870f615ab632592aa236575a57b7464785b",
+      "bytes": 75283
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/parts/receipt.json",
+      "sha256": "4d1dfb77c9e3248f6c14e1a73671e41ee0ed3a6e9d201fd9e431e56b4fb97234",
+      "bytes": 3853
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/pre-split-binding.json",
+      "sha256": "2edf13b2a132bf077bd5d2b27720f3b751efd6802e8663c12e4bea15cbe5bf4c",
+      "bytes": 1082723
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/flounder-input/record.json",
+      "sha256": "1c6d430cd74712a1ba61e294c2b87a9868396f5b2b377ab02c3266c579c483cc",
+      "bytes": 5131
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/inspect-other-holds.mjs",
+      "sha256": "6564222ce6725f2244b0d41801c9b16828de4c2c8a42e9b5764b07990b3c4875",
+      "bytes": 1926
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/measure-flounder.mjs",
+      "sha256": "4e3beea1ebc60639666c3b38c31dace006172ed55db327dd3851c0c36b6eb413",
+      "bytes": 2822
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/observe-tiger.mjs",
+      "sha256": "f45a9eeea2cf87fb74bf34bd52a3aa204aaaed5a162e8016467f807634f2f685",
+      "bytes": 2113
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/other-holds-measurement.json",
+      "sha256": "753e805b4f0faddd7bfdce6e5e2cb7dfe630210d23901b23f26be5c918457906",
+      "bytes": 144999
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/preparation.json",
+      "sha256": "c3371bf2af2c8955e3d940858854107729ac03dcb3ce1c13821fef15c5b32f62",
+      "bytes": 516
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/generation.json",
+      "sha256": "650a1c180993d241d5d236dbf454412af816e658e3f3eebb7d261b966fe199b9",
+      "bytes": 585
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/master.png",
+      "sha256": "faccdfad0a5dce5e98105719b630bc0322e6749839cd8a2034a14e50e47c4065",
+      "bytes": 1146809
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/pattern-check.json",
+      "sha256": "3cf89483fdfae7173fe680dc5755d78cc9d4ff46504eb247d6a136dfeeab244d",
+      "bytes": 618
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/prompt.txt",
+      "sha256": "1e7fe6729b12871ee1453f9d30fcb3e668fe313646d31a00bca41a757f1a4a27",
+      "bytes": 1077
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/source-observation.json",
+      "sha256": "bd9e7d118b653eec402ac2a1440522215758f8bae02e5a26aee28b8a0d5187c1",
+      "bytes": 1099
+    },
+    {
+      "path": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/subject-source.json",
+      "sha256": "e3db084f45d3e7175088d1849e94370e003fa3cfd2587ae8e1bb9b50ebd35dbd",
+      "bytes": 2149
+    }
+  ],
+  "totalBytes": 14704033
+}

@@ -1,0 +1,14 @@
+{
+  "id": "07-oryx",
+  "name": "Oryx",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c24130a6-73cb-4cb7-a8cb-5442f4e72635.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4",
+  "bytes": 1475379,
+  "promptSha256": "d05201fb48593a10e312ef4c57caf2bf1a52794b7a8e13492724d1ba59ddafc7",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

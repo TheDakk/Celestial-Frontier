@@ -1,0 +1,28 @@
+{
+  "name": "Crab",
+  "masterSha256": "d11ee0494e3d445f8100a87394857a104f893f6a9d631303ceaa7ea1a72ea699",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: broad chitin carapace, two stalked eyes, mouthparts and two open claws with palms/fixed fingers/dactyls are visible. Several walking limbs are distinct on each side, but rear chains are partly hidden behind the carapace and other legs. Eight complete independent walking paths are not confidently visible; no concealed last-pair inference. One bounded original remains held for anatomy/reference review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 119,
+      "y0": 342,
+      "x1": 1149,
+      "y1": 908
+    },
+    "margins": {
+      "left": 119,
+      "right": 104,
+      "top": 342,
+      "bottom": 345
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

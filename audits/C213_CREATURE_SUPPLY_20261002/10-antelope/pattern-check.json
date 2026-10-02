@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Antelope",
+  "masterSha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+  "required": [
+    "unbranched ringed horns swept back or lyre-shaped"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "unbranched ringed horns swept back or lyre-shaped",
+      "status": "PRESENT",
+      "observed": "Full-size original: unbranched ringed horns, tan flank and white belly, short complete flicking tail, both ear tips and four separate hoof endpoints are visible. Near/far foreleg shafts overlap for part of their length below the chest, so full independent root-to-foot proof remains held. The generic impala/gazelle-type identity is retained, not asserted as a specific unseen subspecies."
+    }
+  ]
+}

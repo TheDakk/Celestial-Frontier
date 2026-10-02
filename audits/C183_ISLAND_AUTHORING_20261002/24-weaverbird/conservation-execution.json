@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "conservation",
+  "id": "24-weaverbird",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/prove-contours.mjs",
+    "24-weaverbird"
+  ],
+  "helperSha256": "84b7756870b1ba8bced0424048e5e92833d32cfe166117e5dbf2918f51e748eb",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/conservation.log",
+  "logSha256": "b9469b60bd122955328e1b7e2875ba04fbfb383ac3394463d2ceb3afd36f2fa9",
+  "nativeRuns": 0
+}

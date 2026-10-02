@@ -1,0 +1,60 @@
+{
+  "schema": "cf.c183-independent-source-hold/v1",
+  "id": "03-banana-slug-hold",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug",
+  "family": "gastropod",
+  "masterSha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+  "distinctFrom": "Snail",
+  "visible": [
+    "continuous foot and mantle",
+    "pneumostome",
+    "two ocular tentacles",
+    "two shorter sensory tentacles"
+  ],
+  "unproved": [
+    "mandatory mouth landmark: only an ambiguous small crease is visible"
+  ],
+  "sourceCorrection": "Expose the actual mouth independently from the two short sensory tentacles without adding invented anatomy.",
+  "observedRegions": [
+    {
+      "id": "mantle-and-pneumostome",
+      "bounds": [
+        632,
+        530,
+        1004,
+        698
+      ]
+    },
+    {
+      "id": "ocular-tentacles",
+      "bounds": [
+        968,
+        401,
+        1174,
+        612
+      ]
+    },
+    {
+      "id": "short-sensory-tentacles",
+      "bounds": [
+        1010,
+        624,
+        1113,
+        702
+      ]
+    }
+  ],
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "coordinatesAre": "approximate source-coordinate diagnostic bounds, not authored ownership or joint landmarks",
+  "status": "HELD_ANATOMICAL_OBSERVATION",
+  "authoringCreated": false,
+  "presenceInvented": false,
+  "fitAttempted": false,
+  "sourcePixelsChanged": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

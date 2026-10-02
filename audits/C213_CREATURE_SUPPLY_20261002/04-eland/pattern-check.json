@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Eland",
+  "masterSha256": "fe9c8c355ae1c5b28da96643e77550bb676f97c4ee92f18916a252a6bc2cf187",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Leech",
+  "masterSha256": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: one continuous ringed arch with a larger left posterior sucker rim and smaller right anterior rim, no limbs or visible facial eyes. Both ends are visible, but the body is rather cylindrical and the sucker cavities are deep/fluted rather than a plainly flattened leech; this anatomy/proportion hold remains. No claim that a tube lumen extends through the animal.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 141,
+      "y0": 401,
+      "x1": 1112,
+      "y1": 833
+    },
+    "margins": {
+      "left": 141,
+      "right": 141,
+      "top": 401,
+      "bottom": 420
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

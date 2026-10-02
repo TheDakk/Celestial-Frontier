@@ -1,0 +1,28 @@
+{
+  "name": "Gazelle",
+  "masterSha256": "56349e0398ad3d60adbdf584cd2b394f7fc925d79c09fe6246ee4686f0ab21ed",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: tan upper body, dark flank band above white belly, ringed slender horns, both actual ear blades, short complete dark-tipped tail and four separate hooves are visible. Far ear base is partly behind the horn, and upper far leg emergence remains naturally occluded; no false full-chain proof. All pigment bands are retained.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 216,
+      "y0": 110,
+      "x1": 1101,
+      "y1": 1086
+    },
+    "margins": {
+      "left": 216,
+      "right": 152,
+      "top": 110,
+      "bottom": 167
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

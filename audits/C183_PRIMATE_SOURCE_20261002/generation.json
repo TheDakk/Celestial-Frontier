@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "attempt": 1,
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-d1a1b607-ac35-4b9e-8dde-176453023fdb.png",
+  "masterSha256": "8b3f621162fb9527b42e7015fc5abb13359728c562484b7dfad09b8d2c7519f6",
+  "bytes": 1432533,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "exactGeneratorBytes": true,
+  "resized": false,
+  "promptSha256": "5730aa76fbc55264f4d9683102031fc0f99729e35c13807d932a9eac12d89b0c"
+}

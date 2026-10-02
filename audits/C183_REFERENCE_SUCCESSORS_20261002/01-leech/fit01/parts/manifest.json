@@ -1,0 +1,70 @@
+{
+  "creatureId": "c183-reference-leech",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "7f26ce5c322ee977e06cfc15d75707041de541e3ac8328df3a02f09fadd74cf2"
+    },
+    {
+      "name": "segment0.png",
+      "path": "parts/segment0.png",
+      "sha256": "a6a620415a90f9aaa9d97bef58030dfe37ef09bda996dec7b5461316e5baaf78"
+    },
+    {
+      "name": "segment1.png",
+      "path": "parts/segment1.png",
+      "sha256": "441a44a1b5e95ac8bf7d9d25b3ea05df1a983fc2e54b0b14a2b00e5634942db8"
+    },
+    {
+      "name": "segment2.png",
+      "path": "parts/segment2.png",
+      "sha256": "8c0812393d66725798913cc058fd9e83dab7316c7bf8cf5cea2c4c6f0ab418b6"
+    },
+    {
+      "name": "segment3.png",
+      "path": "parts/segment3.png",
+      "sha256": "9b918eb8a84b90099544bea029891366d31db7c227cff1a375bc075083ab9bdb"
+    },
+    {
+      "name": "segment4.png",
+      "path": "parts/segment4.png",
+      "sha256": "24c178329463be0732946b323ac5a590b27e73eb34cfdb73a5e0f63ad7be8b08"
+    },
+    {
+      "name": "segment5.png",
+      "path": "parts/segment5.png",
+      "sha256": "040847925ea3a23c09f50638f20fa8cf5a659746546257d73d9e87e090bb69df"
+    },
+    {
+      "name": "segment7.png",
+      "path": "parts/segment7.png",
+      "sha256": "22c08b3eb3e9d376fd3fae526cf81ab43835f63e2f578096fbbee79c8fa2ffe6"
+    },
+    {
+      "name": "segment8.png",
+      "path": "parts/segment8.png",
+      "sha256": "e046ba2602395fb0a1f200faa6d8841956a12a9de3d4be662c3cf898c89d6a43"
+    },
+    {
+      "name": "segment9.png",
+      "path": "parts/segment9.png",
+      "sha256": "2927702a1f0ba29fa48a49d03827ac703a289351fe53beff6957ccc6c277ee29"
+    },
+    {
+      "name": "segment10.png",
+      "path": "parts/segment10.png",
+      "sha256": "8dc0a3749602f47492b1546597c1a86f3dd9ad6b04398c26c0dc4e2a7a58ba4a"
+    },
+    {
+      "name": "segment11.png",
+      "path": "parts/segment11.png",
+      "sha256": "3c27331f2cee34417ea3fcedf3428061792023459d20284e0046981837b1b6d6"
+    },
+    {
+      "name": "segment6.png",
+      "path": "parts/segment6.png",
+      "sha256": "1900ec02e1c53df23df8f0b3caafcb3ad79e8e501f2e18b9e23cf47b0c42ea10"
+    }
+  ]
+}

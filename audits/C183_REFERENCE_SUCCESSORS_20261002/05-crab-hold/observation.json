@@ -1,0 +1,52 @@
+{
+  "schema": "cf.c183-independent-source-hold/v1",
+  "id": "05-crab-hold",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/24-crab",
+  "family": "brachyuran",
+  "masterSha256": "d11ee0494e3d445f8100a87394857a104f893f6a9d631303ceaa7ea1a72ea699",
+  "distinctFrom": "Fiddler Crab",
+  "visible": [
+    "both eye stalks",
+    "both claws with fixed and moving fingers",
+    "carapace",
+    "several complete walking chains"
+  ],
+  "unproved": [
+    "eight independent walking root/knee/foot chains",
+    "posterior hidden attachments and chain identities"
+  ],
+  "sourceCorrection": "Expose and separate all four genuine walking-leg pairs while retaining both complete claws and eye stalks; do not invent a pair behind the carapace.",
+  "observedRegions": [
+    {
+      "id": "posterior-left-occlusion",
+      "bounds": [
+        307,
+        338,
+        512,
+        507
+      ]
+    },
+    {
+      "id": "posterior-right-occlusion",
+      "bounds": [
+        847,
+        407,
+        1042,
+        552
+      ]
+    }
+  ],
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "coordinatesAre": "approximate source-coordinate diagnostic bounds, not authored ownership or joint landmarks",
+  "status": "HELD_ANATOMICAL_OBSERVATION",
+  "authoringCreated": false,
+  "presenceInvented": false,
+  "fitAttempted": false,
+  "sourcePixelsChanged": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

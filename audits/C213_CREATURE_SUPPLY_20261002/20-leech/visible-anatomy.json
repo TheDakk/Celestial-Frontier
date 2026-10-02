@@ -1,0 +1,115 @@
+{
+  "id": "20-leech",
+  "name": "Leech",
+  "family": "annelid",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 21152,
+    "coreRadius": 20,
+    "bodyBox": {
+      "x0": 55,
+      "y0": 136,
+      "x1": 290,
+      "y1": 268
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1808,
+        "pixels": 3824,
+        "box": {
+          "x0": 251,
+          "y0": 177,
+          "x1": 372,
+          "y1": 261
+        },
+        "attach": {
+          "x": 280.8,
+          "y": 206.3,
+          "relX": 0.96,
+          "relY": 0.53
+        },
+        "dir": {
+          "x": 0.82,
+          "y": 0.57
+        },
+        "class": "limb-down",
+        "length": 106.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0104,
+        "pixels": 219,
+        "box": {
+          "x0": 47,
+          "y0": 222,
+          "x1": 54,
+          "y1": 260
+        },
+        "attach": {
+          "x": 54,
+          "y": 241,
+          "relX": 0,
+          "relY": 0.8
+        },
+        "dir": {
+          "x": -0.93,
+          "y": -0.38
+        },
+        "class": "rear",
+        "length": 20.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0143,
+        "pixels": 303,
+        "box": {
+          "x0": 62,
+          "y0": 269,
+          "x1": 101,
+          "y1": 279
+        },
+        "attach": {
+          "x": 81.5,
+          "y": 269,
+          "relX": 0.11,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.24,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 21.9
+      }
+    ],
+    "byClass": {
+      "limb-down": 2,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 63,
+        "x1": 100,
+        "cx": 82.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
