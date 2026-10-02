@@ -1,0 +1,349 @@
+{
+  "frames": {
+    "arm-far-elbow.png": {
+      "frame": {
+        "h": 201,
+        "w": 133,
+        "x": 167,
+        "y": 858
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 201,
+        "w": 133
+      },
+      "spriteSourceSize": {
+        "h": 201,
+        "w": 133,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "arm-far-hand.png": {
+      "frame": {
+        "h": 253,
+        "w": 144,
+        "x": 5,
+        "y": 1124
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 253,
+        "w": 144
+      },
+      "spriteSourceSize": {
+        "h": 253,
+        "w": 144,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "arm-near-elbow.png": {
+      "frame": {
+        "h": 280,
+        "w": 174,
+        "x": 5,
+        "y": 568
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 280,
+        "w": 174
+      },
+      "spriteSourceSize": {
+        "h": 280,
+        "w": 174,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "arm-near-hand.png": {
+      "frame": {
+        "h": 256,
+        "w": 152,
+        "x": 5,
+        "y": 858
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 256,
+        "w": 152
+      },
+      "spriteSourceSize": {
+        "h": 256,
+        "w": 152,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body.png": {
+      "frame": {
+        "h": 553,
+        "w": 600,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 553,
+        "w": 600
+      },
+      "spriteSourceSize": {
+        "h": 553,
+        "w": 600,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "chest.png": {
+      "frame": {
+        "h": 173,
+        "w": 85,
+        "x": 189,
+        "y": 568
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 173,
+        "w": 85
+      },
+      "spriteSourceSize": {
+        "h": 173,
+        "w": 85,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 167,
+        "w": 164,
+        "x": 5,
+        "y": 1825
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 167,
+        "w": 164
+      },
+      "spriteSourceSize": {
+        "h": 167,
+        "w": 164,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "jaw.png": {
+      "frame": {
+        "h": 67,
+        "w": 100,
+        "x": 189,
+        "y": 766
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 67,
+        "w": 100
+      },
+      "spriteSourceSize": {
+        "h": 67,
+        "w": 100,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "leg-far-foot.png": {
+      "frame": {
+        "h": 165,
+        "w": 139,
+        "x": 179,
+        "y": 1825
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 165,
+        "w": 139
+      },
+      "spriteSourceSize": {
+        "h": 165,
+        "w": 139,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "leg-far-knee.png": {
+      "frame": {
+        "h": 107,
+        "w": 99,
+        "x": 184,
+        "y": 1352
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 107,
+        "w": 99
+      },
+      "spriteSourceSize": {
+        "h": 107,
+        "w": 99,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "leg-near-foot.png": {
+      "frame": {
+        "h": 187,
+        "w": 191,
+        "x": 5,
+        "y": 1628
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 187,
+        "w": 191
+      },
+      "spriteSourceSize": {
+        "h": 187,
+        "w": 191,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "leg-near-knee.png": {
+      "frame": {
+        "h": 231,
+        "w": 169,
+        "x": 5,
+        "y": 1387
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 231,
+        "w": 169
+      },
+      "spriteSourceSize": {
+        "h": 231,
+        "w": 169,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "neck.png": {
+      "frame": {
+        "h": 218,
+        "w": 124,
+        "x": 159,
+        "y": 1124
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 218,
+        "w": 124
+      },
+      "spriteSourceSize": {
+        "h": 218,
+        "w": 124,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "pelvis.png": {
+      "frame": {
+        "h": 188,
+        "w": 79,
+        "x": 293,
+        "y": 568
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 188,
+        "w": 79
+      },
+      "spriteSourceSize": {
+        "h": 188,
+        "w": 79,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c168-reference-gorilla-repaint.png",
+    "scale": "1",
+    "size": {
+      "h": 1997,
+      "w": 610
+    }
+  }
+}

@@ -1,0 +1,988 @@
+{
+  "schema": "cf.c168-primate-reference-delivery/v1",
+  "status": "HELD_REFERENCE_CANDIDATES",
+  "independentSpecies": 2,
+  "firstAuthorings": 2,
+  "sourceSuccessorGenerations": 2,
+  "successorAuthorings": 2,
+  "generationTool": "image_gen.imagegen",
+  "runtimeEdited": false,
+  "globalPoolChanged": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false,
+  "rows": [
+    {
+      "id": "gorilla",
+      "masterSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+      "staticStatus": "RED",
+      "actionRows": 13,
+      "presentation": "RED",
+      "islands": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2094 px is 9.5% of the remainder (> 5%): structural, not a sliver",
+        "applied": false
+      },
+      "conservation": "PASS",
+      "refusalControls": 6
+    },
+    {
+      "id": "capuchin",
+      "masterSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+      "staticStatus": "RED",
+      "actionRows": 13,
+      "presentation": "RED",
+      "islands": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1006 px is 5.2% of the remainder (> 5%): structural, not a sliver",
+        "applied": false
+      },
+      "conservation": "PASS",
+      "refusalControls": 6
+    },
+    {
+      "id": "gorilla-repaint",
+      "masterSha256": "9b32d6750423bf8b570d539a808acacd305f1b5366d5c27b82b06996a63f52bc",
+      "staticStatus": "RED",
+      "actionRows": 13,
+      "presentation": "RED",
+      "islands": {
+        "status": "REFUSED",
+        "reason": "remainder island of 5762 px is 42.2% of the remainder (> 5%): structural, not a sliver",
+        "applied": false
+      },
+      "conservation": "PASS",
+      "refusalControls": 6
+    },
+    {
+      "id": "capuchin-repaint",
+      "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+      "staticStatus": "PASS_STATIC",
+      "actionRows": 13,
+      "presentation": "PASS",
+      "islands": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1430 px is 5.8% of the remainder (> 5%): structural, not a sliver",
+        "applied": false
+      },
+      "conservation": "PASS",
+      "refusalControls": 6
+    }
+  ],
+  "files": [
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/README.md",
+      "bytes": 3964,
+      "sha256": "54f40643ae0b64970ee5190507d337814e862cb34e832d9e1df486ba25234175"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/author-repaints.mjs",
+      "bytes": 2166,
+      "sha256": "ec053ce07d686fad1baa4dd2be3ce897e0a2dbdafd003bd21957cfd69f3d487e"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/authoring.json",
+      "bytes": 14117,
+      "sha256": "be3e5664ae3793c7aaeed6ba976c0421a7b502de443b24a32d78ca93bd46af43"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/binding.json",
+      "bytes": 1524529,
+      "sha256": "117e89ccac894299d86bfe6ee2b9f196a1437fc25bcf6ed5488deac22cb0757c"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/declaration.json",
+      "bytes": 16893,
+      "sha256": "474b52cb4e8ddbf80215515413c8cb3e42fe1c1872a8c5cde6ac32d524df78a8"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/intake-provenance.json",
+      "bytes": 3141,
+      "sha256": "3d4e727b868a8f1df6faed9a736d8d57ba886bba923f7d48ae9ceb259949e5cc"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/atlas/c168-reference-capuchin-repaint.json",
+      "bytes": 7033,
+      "sha256": "ef16294694e4b55475a9109ad90cffebf134e5ea8c5143d45785c70eb1df9810"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/atlas/c168-reference-capuchin-repaint.png",
+      "bytes": 462583,
+      "sha256": "41709783e2ea4d11b8768f06f4ca537b597d57182475f4c114951bce24a09e0c"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/atlas/receipt.json",
+      "bytes": 2927,
+      "sha256": "9ec8a8d33b59e6386ed71aba79ea300237b46083b41986738f813967909539d9"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/binding.json",
+      "bytes": 5805,
+      "sha256": "4b95511f6cb645f681a1a2ac265a03221275503920a245eb63310547eba73512"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/keyed.png",
+      "bytes": 1605216,
+      "sha256": "c1d61389b86cab59695794c77ad0142e3ad2579ff20aafb2ce2a9955858c4863"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/manifest.json",
+      "bytes": 2839,
+      "sha256": "32b09c06badf242bbc13f4077acd8c7adeccc8f3db67613353ed37fe4a8956d7"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/ownership.png",
+      "bytes": 19316,
+      "sha256": "d756229dd3d827252224a898f296c570b08f2ba50f2a4ec8bfb5e4e37f7431ce"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/arm-far-elbow.png",
+      "bytes": 23481,
+      "sha256": "a102b470ced268a54231f44195be48fb97fdb786f680e5e1b0bcb4499cac373b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/arm-far-hand.png",
+      "bytes": 28155,
+      "sha256": "75072b0d79d0433a9a800eb2196b2234e65bc80a6b4dda8d960c2fe451372239"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/arm-near-elbow.png",
+      "bytes": 42195,
+      "sha256": "3ebe41417e0e8076b6fb03b2f0863cdb1127287331de3e5541c958ffb4579c06"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/arm-near-hand.png",
+      "bytes": 33089,
+      "sha256": "6e040eb42dd8a0f4339caa7c6c05d2496b76e08d2934979d9bb0822fe7186a65"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/body.png",
+      "bytes": 81382,
+      "sha256": "d563045e6900a88e1c83212710c92f62e057940cd186b6af3f3c3bccc96aed38"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/chest.png",
+      "bytes": 18975,
+      "sha256": "f5e6c6296027c6ed7d981af8c9c4aeeced03da2e524bc33a9eb63a5c06f1602d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/head.png",
+      "bytes": 43575,
+      "sha256": "361e95de0a1572364e5f1e27dd4b177289f03de207eb6744966decd54296cd6b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/jaw.png",
+      "bytes": 5775,
+      "sha256": "68b47482abfd642896b4ac56b269bd215931f5996566703295e59b1d38460fa1"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/leg-far-foot.png",
+      "bytes": 35984,
+      "sha256": "6d77dbde1cdec0cc440855c91a15079f430ef5779316b319c1169eb576df3ed3"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/leg-far-knee.png",
+      "bytes": 16793,
+      "sha256": "02acf74035f558b1220dcabcfc42ba95e2c384258c08348a16a2974223a7e9bb"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/leg-near-foot.png",
+      "bytes": 40911,
+      "sha256": "c92df263b6f90e9712cd4ceb38de9374a9413ca0f2b12110200e5a07daa6bb81"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/leg-near-knee.png",
+      "bytes": 42967,
+      "sha256": "d942de490414b122f67d88054e34fae28d1b14086ce364902b4e37250b2f44ff"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/neck.png",
+      "bytes": 15041,
+      "sha256": "f045e0bf3e93faf282e449b7fbb7a59e74de9484375d0ee684c1ddc2267a628c"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/pelvis.png",
+      "bytes": 6616,
+      "sha256": "f0a82428fee13c024edf35f100718eb0e63451e7e3a6e016817174322a459417"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/tail0.png",
+      "bytes": 7017,
+      "sha256": "b90c3638b4035ab574f1b02f331fb2fabed6368ec07e3a648a88c298cae2f6a2"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/tail1.png",
+      "bytes": 61926,
+      "sha256": "f14279936e7f578c6cac0cf0b6ace2746d837f5ca49ce3d6bf9a7757253c055b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/parts/tail2.png",
+      "bytes": 48188,
+      "sha256": "fa00438e60b022aaf9a2b1d5578f543f1fcb20c608ad7e6d78e81b7145c6f786"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/parts/receipt.json",
+      "bytes": 4646,
+      "sha256": "15a6cf1d8d1ce22dde288e53162fa797e02077d5cf324bbd6cff8f26496dad64"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/pre-split-binding.json",
+      "bytes": 1053681,
+      "sha256": "b1b783d99bed67ee9a65793e943c63ee3c53ae4aa90268dc949e7c9f9aaab24a"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/receipt.json",
+      "bytes": 2452,
+      "sha256": "03600c481c413190618d2a51cc6a92388a491c9e164a1b723c0135114ad78159"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/fit01/record.json",
+      "bytes": 7477,
+      "sha256": "d89f0e47eb57b2a513c5363bbb0cd216396a3bb3c126adf272ede9f3806f9de4"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/generation.json",
+      "bytes": 746,
+      "sha256": "b284b9b2334210e33b4a2333955364dd9848e8e09db61718f2c4972a37f933d2"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/intake01.log",
+      "bytes": 316,
+      "sha256": "6d099019686926946aa13548d628b45b2ba90dd4835d3b9926ef42c002b67f75"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/manual-provenance.json",
+      "bytes": 1530,
+      "sha256": "a83ac420d545a3b9ff2b0edd4782d084c9328c2bd28eef26404d6b5a3c261de8"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/master.png",
+      "bytes": 1275823,
+      "sha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/prompt.txt",
+      "bytes": 11115,
+      "sha256": "78cba8bd2d16feccdae723b6cf68671a39b6f2af36a0f895623f1974576e22ef"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/request.json",
+      "bytes": 904,
+      "sha256": "434013aafbed6f84c04f952b722b510f129ba703fd2ca81573230de0a5d47e7d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/static01.json",
+      "bytes": 7898,
+      "sha256": "c0bec8a3dcc9d561028b91774ef4a0586d48a15f6eafe761db75c3bd57e0a2be"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/static01.json.sources.json",
+      "bytes": 15567,
+      "sha256": "aff746f9d1e105b3500d3684b023c078de6125cb39a176b2e2047b333a909b39"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/static01.log",
+      "bytes": 2050,
+      "sha256": "9d7139882ae1b1e1c4ccafc205e60871eec70a9ad95eb78e754500717d4ac9cb"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/subject-source.json",
+      "bytes": 2319,
+      "sha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/visible-anatomy.json",
+      "bytes": 4123,
+      "sha256": "4ca8cfef703560dba6d26a8f5244b476159c1797b36f6cc704dca082bbe46daf"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint/visual-review.json",
+      "bytes": 1004,
+      "sha256": "67f89489f444b71b127897e64bc1a12f39e2503a3a2852c263ffb7e1f836ecb2"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/authoring.json",
+      "bytes": 14507,
+      "sha256": "48654c55f7d4698b10739aee1484092c0139619a3c3a54c290ef7ff438c38c6a"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/binding.json",
+      "bytes": 1391383,
+      "sha256": "bf47090a22353938cc2dcdc637ef024d528e7d37540be4b2f25394a0c3dbd692"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/declaration.json",
+      "bytes": 17138,
+      "sha256": "0a78ecf8e8d601118a29a14db449dba93e4c71872b5c629d3d169fb698845b78"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/intake-provenance.json",
+      "bytes": 3077,
+      "sha256": "b9befbfcad177709875c8e7ea42b795b2bbb1e5b60bafc8308715d5b795cff6d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/atlas/c168-reference-capuchin.json",
+      "bytes": 7015,
+      "sha256": "3f455bb3a0807ab9e7b58cfa54fcc76a8bc4d89edc226f016e561a2f949b3486"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/atlas/c168-reference-capuchin.png",
+      "bytes": 400097,
+      "sha256": "54cb7f7beb1543da636161f1cf5d7432c775ccf85b30991db4b87b8756b30eba"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/atlas/receipt.json",
+      "bytes": 2919,
+      "sha256": "866e146bdb38d0c81593c29e3049d185caedf213ef47c595fc2fe5d26234a24e"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/binding.json",
+      "bytes": 5797,
+      "sha256": "6dbb40228d6890e51f418e21816b60356b0b30123dc305981607ef55878d149a"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/keyed.png",
+      "bytes": 1480993,
+      "sha256": "ced69a8e3c3597f2cf7d32f9df5a6325f12732943187d89f68ae993bf92d22dd"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/manifest.json",
+      "bytes": 2831,
+      "sha256": "55451aeefe1a35e7e29c5aeef9e753cb7a4210ab47edd207c8bb0bf629d35893"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/ownership.png",
+      "bytes": 17992,
+      "sha256": "41f1ab39532de2d8113a40d21b6e9daabf3ed197a086349b93daa62e41f07d48"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/arm-far-elbow.png",
+      "bytes": 23978,
+      "sha256": "752cf7e99ce92e9a6ab1718ba83c3c8509c0fde03f556e71fb2fe0b143f83f3c"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/arm-far-hand.png",
+      "bytes": 23861,
+      "sha256": "a5acc694d5ef9e88636d7b464a2439d819860a8a8502001c0414310d557ff1df"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/arm-near-elbow.png",
+      "bytes": 38923,
+      "sha256": "3bdb6938a18c9b31a7b5b3a72b43b00f3d942839dc11a2ac68263eb2cba75dc7"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/arm-near-hand.png",
+      "bytes": 25227,
+      "sha256": "0771ff3ff32b4d978fc45d2310977c597e1f107856f2b3b0b6d1760246e4a795"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/body.png",
+      "bytes": 64492,
+      "sha256": "d99a89588f7b5a4dcff26b8491cb9aeb077cd9c65438a3f580c678271ced8eb9"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/chest.png",
+      "bytes": 16299,
+      "sha256": "546760468b3d6ced60bda3956dfec2bce1990926ed51ea76001413c78d771e94"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/head.png",
+      "bytes": 36026,
+      "sha256": "97a6f3572efc5a00d3e67bc59231c151471cd1acc69fc7e7b3c615742fd2d288"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/jaw.png",
+      "bytes": 6228,
+      "sha256": "5c30fd6a5aaf9652ec06b4c1f952e1663425e8578c4217934338d8d221fec5af"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/leg-far-foot.png",
+      "bytes": 22721,
+      "sha256": "0814b8e2034d5f8f3267a93e6446407ecb63f7e22055091a76d7df7f77fa75ac"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/leg-far-knee.png",
+      "bytes": 11772,
+      "sha256": "2955f0110c737793006ec374078e168f97a64157e018e870504e827dd4e6d083"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/leg-near-foot.png",
+      "bytes": 34355,
+      "sha256": "1e153f7351fcfb52a61c73ff57351a320c1b6be12457b40a341345818891006a"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/leg-near-knee.png",
+      "bytes": 35482,
+      "sha256": "81e445b5dccbb97fd82470bc13ea854e7f5944ebecbb947e79f3b3b5267a9562"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/neck.png",
+      "bytes": 13098,
+      "sha256": "b1e28d5a9643a06459374938f1d779584d2b9102a83fce7c4a8e8e8552658202"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/pelvis.png",
+      "bytes": 5978,
+      "sha256": "2ea0b45b07d9a2fa4e95bca5bf262f27cf31012368c5dfa07531eb24d1e72146"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/tail0.png",
+      "bytes": 8559,
+      "sha256": "5f5aa5453262c881d4f1cd7fd420f5e3563cd4d54fe206cc11dc7cbbe4708a6e"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/tail1.png",
+      "bytes": 45714,
+      "sha256": "6cbb4de24ce03a45768aa9950c9b25bc3fa602a104c0d09de72ab87d074d08f2"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/parts/tail2.png",
+      "bytes": 47611,
+      "sha256": "7705d085b9775b8052dc5df5b893fd010d011421cfa8889c51e02f25d3a424a8"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/parts/receipt.json",
+      "bytes": 4642,
+      "sha256": "05e9b49465c1c4730c4a02d2459c0bcdcb0767e92a97ff17cd112606111c4dfd"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/pre-split-binding.json",
+      "bytes": 947367,
+      "sha256": "9eff0280d685a6f45996cd486457ef43a9b330a0ff3e5b8161852200bbb233dd"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/receipt.json",
+      "bytes": 2445,
+      "sha256": "4c09c3082c7039fcb277c606955741879e0f9d4afa0e9ca7c0d11305886f703e"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/fit01/record.json",
+      "bytes": 7710,
+      "sha256": "d0f1463c9318cc9185ea5e56791252e27b68ee06ce290240232913103560b025"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/intake01.log",
+      "bytes": 308,
+      "sha256": "094f145d4bac17985dd1e0e4eb6323542b6ac62a40f142a7aa3a241504cedc73"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/manual-provenance.json",
+      "bytes": 1591,
+      "sha256": "4e79ec45f411f05e92948ea6990912c499a69eed672cf7e9277bf041516589f9"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/master.png",
+      "bytes": 1227360,
+      "sha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/prompt.txt",
+      "bytes": 9919,
+      "sha256": "43ab60c469cd5dbf61a34ab63be73653d035535692803ef6c8c70875afcdec81"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/static01.json",
+      "bytes": 15446,
+      "sha256": "d0e92179c2ef41b55f60f349b89bfa2bb9e621df830e45c6e85a081df34809ec"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/static01.json.sources.json",
+      "bytes": 15567,
+      "sha256": "c829bf79b5eaf0a7a66c7b8ad005bc4b7887f34fca69fa05052aa28c0a1180e9"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/static01.log",
+      "bytes": 2121,
+      "sha256": "427c260494e6987b57b175dee62609e140f20cd9347084e6b6dd9765d46f7f06"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/subject-source.json",
+      "bytes": 2319,
+      "sha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/visible-anatomy.json",
+      "bytes": 3895,
+      "sha256": "679614b3bacc6a654a0d631f069e4cfbd201140f17efa521bc7f118055d70d8f"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/visual-review.json",
+      "bytes": 1025,
+      "sha256": "e57266ecdc18e998533ab1cecabeef44285d180d649a966e70a9180df535b916"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/authoring.json",
+      "bytes": 10987,
+      "sha256": "f37be282ed0f819024e54eec560a492af343f0995205c994cb71b4acd6cf0211"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/binding.json",
+      "bytes": 1513508,
+      "sha256": "3cab4e75dc572b58080ea0638440d8770e047b5924186808a09dd5b6756e08f1"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/declaration.json",
+      "bytes": 12387,
+      "sha256": "1ea4a8db8af74ac1b1c2ebe14b172a1261137a5ce361e91e645ce5011297b556"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/intake-provenance.json",
+      "bytes": 3094,
+      "sha256": "c4e7f22d3767c457a5c484250a3795d5c64a107b0cda771fd9c859c8fadd1de2"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/atlas/c168-reference-gorilla-repaint.json",
+      "bytes": 5836,
+      "sha256": "eb75963443d128190d0d5ff6260e65cf1839378ac0401e5c3f7c7ea07c2b82cf"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/atlas/c168-reference-gorilla-repaint.png",
+      "bytes": 591198,
+      "sha256": "1d2b07b0b437245674c52c02ba82858c71bd8d5aaaa74f241b6d99e5c4f05a4b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/atlas/receipt.json",
+      "bytes": 2557,
+      "sha256": "245ffcd81e5f9bf6894d35b726f47caf882aa37e082494b0c0eac22061ca20be"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/binding.json",
+      "bytes": 4864,
+      "sha256": "64ce5b3ea54184eda482fa170f9273884daa1f7a9d6e80e43db968220f304f7d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/keyed.png",
+      "bytes": 1672664,
+      "sha256": "99e6550828347c12ff0c35ca99b91c151b2c7ae54ef5e446ecdad233a4c73a55"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/manifest.json",
+      "bytes": 2370,
+      "sha256": "33eb82cd4d59eb20d113e86774ccf31c96708800994d39c9e5381a6f29102d23"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/ownership.png",
+      "bytes": 19063,
+      "sha256": "c3b31951df91c724028a148a6c2651e86a5029f219195c92faf9c2e6896efcf6"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/arm-far-elbow.png",
+      "bytes": 40552,
+      "sha256": "9d4b020d34d98f5413ae2d9f664ce5d50f43a1319dcd91cfec44fb43e9025a55"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/arm-far-hand.png",
+      "bytes": 65106,
+      "sha256": "6be6e58757d1d9ea75037a4dbfa14e5eabd654e1e559d83dbfe41c284908005c"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/arm-near-elbow.png",
+      "bytes": 90653,
+      "sha256": "b45d1e927919e3550b942087a3b1c56f1378495f27b65118b6a1e1c3cd5c8496"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/arm-near-hand.png",
+      "bytes": 69968,
+      "sha256": "c4edac0b464a70ea0d8ea75508d0ba3e2ee9b753ecea2f8f2223f8aa1c8b8489"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/body.png",
+      "bytes": 49065,
+      "sha256": "9fe156ffca7a74253e4c9dfb0fdf40883e6d9463d1ec6407f37637d7b5b5d5db"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/chest.png",
+      "bytes": 25261,
+      "sha256": "14118b34b7eb792adce09a3fd3ed81c4f229f0ce3fa36b64bdb610b44c59124b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/head.png",
+      "bytes": 55446,
+      "sha256": "4d96469c57a6d414fea02c56bc91b67745b7eec5ca7ec6bb556e14148d395a98"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/jaw.png",
+      "bytes": 15201,
+      "sha256": "5e0358453727664e9a2c78cfc3cbb0b1e25f48f2f34b2fcc3321cf74390923b5"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/leg-far-foot.png",
+      "bytes": 38655,
+      "sha256": "b3911da3964aaa6727f900c7719900aefd90ac9994b39d2c69d31eaeb42dd16d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/leg-far-knee.png",
+      "bytes": 19598,
+      "sha256": "f910bee5026e8de008ffe78a195c51c0cb1fb676c7d15b45b3655be641c619c9"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/leg-near-foot.png",
+      "bytes": 55970,
+      "sha256": "22f137580ebba8cbd4c16fd18ef8bdda6c9c9dbfff198e596f5ed72b2834f201"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/leg-near-knee.png",
+      "bytes": 92490,
+      "sha256": "2cba0cd319e06727242fefaf6cb5a646626e4bd24ff89d549e0c59a53c9567c8"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/neck.png",
+      "bytes": 40754,
+      "sha256": "303e981e80be1db9df48c10edb43a18f2d3ac0fc4cc678f339a839786f8a9782"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/parts/pelvis.png",
+      "bytes": 14166,
+      "sha256": "06a7a1848e51925ae68f8d6caeee2fac44d610acfaf831b93db5c1437064f376"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/parts/receipt.json",
+      "bytes": 3965,
+      "sha256": "59ad470add2a89f14057e045bf329ff7dffbc699dc1ee04e50ef6d6f6fe21c25"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/pre-split-binding.json",
+      "bytes": 1002566,
+      "sha256": "40c04196b9223f3704f04aad8a7a19983050aaebda6e504c9192b5ae6c9a66f6"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/receipt.json",
+      "bytes": 2451,
+      "sha256": "17d01cd7b0efba9619ccced10a5d649a78294834e431132af78a6c67228987f8"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/fit01/record.json",
+      "bytes": 7094,
+      "sha256": "ad6f5efb680e85b22195045ea64587d9944aa646954434be335ebc64cf6fc73b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/generation.json",
+      "bytes": 744,
+      "sha256": "cf2cad8f8dad758a9ca285b5c4e42160922c4e95841cebf2401d4ff1f6c58fe4"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/intake01.log",
+      "bytes": 315,
+      "sha256": "581275198a0725fd2b739664a41ecb3887d629b2ce0d3ffa0806e723e12cf212"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/manual-provenance.json",
+      "bytes": 1492,
+      "sha256": "cac4519820007d37266bc3fd8c53e0b204810b3edab7ff26864264f1149028bd"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/master.png",
+      "bytes": 1348838,
+      "sha256": "9b32d6750423bf8b570d539a808acacd305f1b5366d5c27b82b06996a63f52bc"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/presence.json",
+      "bytes": 103,
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/prompt.txt",
+      "bytes": 11283,
+      "sha256": "93e884c43490e9359c38aa5ffc4d4e3b0c5344cba8d1edaaa0a7979dba88c983"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/request.json",
+      "bytes": 901,
+      "sha256": "7436fdcb4eb071731a2adc562e5778b5cbc3a069fe915141c3929d963318fd44"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/static01.json",
+      "bytes": 18633,
+      "sha256": "93467d26b23355eb688898343ef18cfb477eb8b04a079bd8376fff05457feb84"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/static01.json.sources.json",
+      "bytes": 15567,
+      "sha256": "00d697d4aa3a14e36c22790cbbde49a893202a528fdab3709c23e953399fbdf1"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/static01.log",
+      "bytes": 2257,
+      "sha256": "0b0435da7a3f388841f3b7ebdf1e11efdf89a647247d67ae02f1acc461dc1782"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/subject-source.json",
+      "bytes": 2413,
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/visible-anatomy.json",
+      "bytes": 3695,
+      "sha256": "6b8b646f89d56868beefeb93ea6236c337b031c564a381875ffd438b73748dfa"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/visual-review.json",
+      "bytes": 970,
+      "sha256": "6b62498e8bb15f0340bf941ac864bfefb4958e3931358c18c54642e18af2bca0"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/authoring.json",
+      "bytes": 11144,
+      "sha256": "a9178f8cc6be74b4df0752135292f494f43f6fb07b38fa67063c5be8798613a6"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/binding.json",
+      "bytes": 1648961,
+      "sha256": "51ec3d24dec8162dc07f0e4a44171bde7b841e187612e85387f2657c6be2e638"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/declaration.json",
+      "bytes": 11983,
+      "sha256": "90d24342cd673b5c2e2c998a9482bb36ffee89163ff7d933cf4165cb00ce3819"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/intake-provenance.json",
+      "bytes": 3030,
+      "sha256": "b547b665171db9d7484dfc747e7ed2e8f69697bc8aef3ab670b464463168bc14"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/atlas/c168-reference-gorilla.json",
+      "bytes": 5830,
+      "sha256": "41c5b150d52c2a5eae001df2b8185d1aec7853a04f29df83621b76d474601ba3"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/atlas/c168-reference-gorilla.png",
+      "bytes": 649147,
+      "sha256": "d0b0a44fb2900d3d229ddc850fc9f82c5b42b3d4b3eb56b93601f2061d9094f0"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/atlas/receipt.json",
+      "bytes": 2549,
+      "sha256": "8a7986d62c214b86c2e97f293275bdc7312da4af8374ad1c6410bbe80c39fdc3"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/binding.json",
+      "bytes": 4867,
+      "sha256": "85667b2762b1ecf4e734b23a572677fa2c04d624ef80bc96872130dac51581a7"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/keyed.png",
+      "bytes": 1663011,
+      "sha256": "ca6ed82eb1eac01818c4a3975a651348920adcc5c4a868f4e851a52b7bcca365"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/manifest.json",
+      "bytes": 2362,
+      "sha256": "1c96904615d129e57b05f927dfe1aa9802ffd377e1e1930226bf436e360089ca"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/ownership.png",
+      "bytes": 20078,
+      "sha256": "abaf2aa7ed3908e26a5f48ac767c18d8017e4187c062269b64d5144c0cc49bb3"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/arm-far-elbow.png",
+      "bytes": 39921,
+      "sha256": "547ab8a136f3dd37ef9200f6c44f95a172bbd7681661142a015374c0bbefa16b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/arm-far-hand.png",
+      "bytes": 61938,
+      "sha256": "976e5371df0ed703e2a21227f43ea00799cf300cb4f846c5c511a9feec523121"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/arm-near-elbow.png",
+      "bytes": 97346,
+      "sha256": "2eb935f4e00133924304f72cabbacde521c81a00275c309f28bf1baf787605cd"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/arm-near-hand.png",
+      "bytes": 70980,
+      "sha256": "05db9d477a48a0e8e96cc9a2ba23c4c8281f4c5111bc96ab7363276bfe68b2a0"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/body.png",
+      "bytes": 73974,
+      "sha256": "82f4713a1da76c52ae7be0e3adb75d0ef50ad41ea239abd837557611111225cf"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/chest.png",
+      "bytes": 36065,
+      "sha256": "da6a6c1b8618a6a44dd68be3bd5e617ada4ff0d3687e877e94535406ec98b828"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/head.png",
+      "bytes": 60671,
+      "sha256": "d806b49c3a0e47312c3c630c05954a33bdc59dc6fd262724c323dc431cc40d7a"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/jaw.png",
+      "bytes": 16028,
+      "sha256": "e5e1da9b307bd90df23a3d8c906fabdb0537a95c66bf17609220e4a5a5ffede1"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/leg-far-foot.png",
+      "bytes": 21962,
+      "sha256": "29b5aaaf5991238e211b8c63d7bee5cc07583adb36b90dde5c8c41aeb474d940"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/leg-far-knee.png",
+      "bytes": 14295,
+      "sha256": "b9df01655b9414686853072195348d277acc6393bd00353b6c80327a64a15d9b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/leg-near-foot.png",
+      "bytes": 48127,
+      "sha256": "c9540836af74ac3deceab7b3afcb71975caac1d0dbc09c40d45842349d1cca4b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/leg-near-knee.png",
+      "bytes": 100639,
+      "sha256": "758266a57dcd338c4d3a54c26092af2c87c6a3dfee000269ae676c53cbb7296d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/neck.png",
+      "bytes": 45370,
+      "sha256": "66399497afa493dd4e4f8405b6f5f63888a0c9c39a8f850f2f5232fdb6e1f52b"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/parts/pelvis.png",
+      "bytes": 15041,
+      "sha256": "f5ef9f633d2f5339e5e83da0c05214e8f319dcd2a955b376ca1b059d26c5f70a"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/parts/receipt.json",
+      "bytes": 3966,
+      "sha256": "2d0cb489b6db99fb8cc2fcd5f974f277b6572fb76a961e4be0e75a98c61bae5c"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/pre-split-binding.json",
+      "bytes": 1094959,
+      "sha256": "01d018978a5c2adabc05cfab8daefd696abf314e718a92e817c9a0edbd8fc7d9"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/receipt.json",
+      "bytes": 2444,
+      "sha256": "d49f63d483f290f4d173539dab8e51f2914cbeb8c7114aaeea10c3cbc8f6e827"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/fit01/record.json",
+      "bytes": 7499,
+      "sha256": "f1c827cd72f9c8692a00400fe4054c6ff9fd9417665d45fa818887f7f4d4da1d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/intake01.log",
+      "bytes": 307,
+      "sha256": "7e07f48147afab0523167705050834dfcb6994d6a7fab5026231b936e2850a4c"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/manual-provenance.json",
+      "bytes": 1634,
+      "sha256": "be19435f97de2f8d9ab32c1330b42e427fe4e659a317500f8723287616980366"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/master.png",
+      "bytes": 1378105,
+      "sha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/presence.json",
+      "bytes": 103,
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/prompt.txt",
+      "bytes": 10029,
+      "sha256": "932a7a6101b130da931b2ac29ab015d6cae368a35641c3c8d48103067047c22a"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/static01.json",
+      "bytes": 22182,
+      "sha256": "8630be6c4431f47d0feb82786380482a495ae243f575d693984317927fcc0bc1"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/static01.json.sources.json",
+      "bytes": 15567,
+      "sha256": "4f255998cfdb42aec05a716d7f33395c69ece062fb82ed2d917cabbf060dbe60"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/static01.log",
+      "bytes": 2340,
+      "sha256": "26254de6285f37f6ddf027011f380f49fb2c04a0e4c15d5985f054086fcfd07d"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/subject-source.json",
+      "bytes": 2413,
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/visible-anatomy.json",
+      "bytes": 3313,
+      "sha256": "d633dfe2368ae43b8a8f2fa4eda03f541bcbb6d03f07d32aa9e32a1cf786ff11"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla/visual-review.json",
+      "bytes": 1060,
+      "sha256": "542fa21d22dbc3dd76254431bc733d462fd19daa618d2e779d11a1e2e8a7c817"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/observations.mjs",
+      "bytes": 6674,
+      "sha256": "65421dca1ea995ca583b117c66597f3c169e542b7a6866aabe3203bee2db0248"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/ownership-review.json",
+      "bytes": 2555,
+      "sha256": "db64f3c98900f86764b8dae4bca9c29bc4e7c87e6db202b043ce39156fe004fb"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/packets.json",
+      "bytes": 3306,
+      "sha256": "b52557e8eb960141ee43ac867eb4e7211ab3c24d6cbd527ca9b4e307901939ca"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/proof-repaints.json",
+      "bytes": 4563,
+      "sha256": "48140e7b92b2c80f6952a0caa3ebaccd8dc74f783631d405b4a0561264cf26b6"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/proof.json",
+      "bytes": 4987,
+      "sha256": "3193aa0638803b198e650cbc258422a14f6f489c091c97121df2e9be0c9045c2"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/repaint-observations.mjs",
+      "bytes": 6287,
+      "sha256": "8f97561886b065e3d2b7665ee41b3d30320d013b5075fe94d85eb1c2cfb4cfe8"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/repaint-packets.json",
+      "bytes": 3099,
+      "sha256": "1ed5c2de35012c37eb4bd76cc9bfb25ff1c67ba15df64eb75574ca879dc63d36"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/repaint-proof-derivation.json",
+      "bytes": 1078,
+      "sha256": "0045668c8dde8424627b844f722c57d48b011b066b582adc7748837dffc320d3"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/verify-repaints.mjs",
+      "bytes": 6050,
+      "sha256": "478fb8b58a28314b4eef2e3595280fc3b242ffb728229a5e5fa1a1f90dcd68e1"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/verify.mjs",
+      "bytes": 5954,
+      "sha256": "501bd73839dda1d08c5c9e41e86b36133864620cdc8d2f1d28c12aa460df5fb7"
+    },
+    {
+      "path": "audits/C168_PRIMATE_REFERENCES_20261002/write.mjs",
+      "bytes": 2143,
+      "sha256": "2a9d09c31fcbee8a87580c7e2fac292ea158cb0bed87795310c171f89c341a7c"
+    }
+  ]
+}

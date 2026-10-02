@@ -1,0 +1,28 @@
+{
+  "name": "Capuchin",
+  "masterSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Dark cap, pale facial surround and shoulder mantle, brown body and long connected curled tail are clear. Two hands and two feet are separated distally, but at four different heights; the far arm/leg roots overlap the body. Tail curl is continuous and well inside the frame. Digit counts and grounded fit remain unverified.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 279,
+      "y0": 313,
+      "x1": 972,
+      "y1": 927
+    },
+    "margins": {
+      "left": 279,
+      "right": 281,
+      "top": 313,
+      "bottom": 326
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

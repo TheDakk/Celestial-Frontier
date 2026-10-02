@@ -1,0 +1,19 @@
+{
+  "id": "capuchin",
+  "name": "Capuchin",
+  "packet": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin",
+  "source": "audits/G2_C163_FAMILY_ORIGINALS_20261002/07-capuchin",
+  "masterSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+  "authoringSha256": "48654c55f7d4698b10739aee1484092c0139619a3c3a54c290ef7ff438c38c6a",
+  "observationSha256": "65421dca1ea995ca583b117c66597f3c169e542b7a6866aabe3203bee2db0248",
+  "method": "Independent manual source-pixel landmarks and explicit polygons. No donor authoring coordinates, labels, source pixels or reference-self transfer.",
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "limitations": [
+    "Four limbs and their terminal hands/feet are visibly separate. The forward right hand is curled and raised; hind feet are higher than the nearer hand. This is an arboreal stepping pose, not four proven common-plane supports.",
+    "The complete long curled tail is partitioned into the existing tail0/tail1/tail2 chain. The distal loop is one rigid skin owner because this contract has only three tail joints; no extra joint or straightened/repainted tail is invented.",
+    "Far shoulder and far hip attachments are partially hidden by torso fur. Their points are transparent authoring hypotheses; terminal tips and exterior bends are independently visible.",
+    "The unchanged observer labels the 22.23% tail appendage as top and returns five ground fragments, partly split fingers. This hand packet does not rewrite those measurements or claim improved automatic admission."
+  ]
+}

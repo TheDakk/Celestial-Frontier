@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c168-generated-successor/v1",
+  "id": "gorilla",
+  "name": "Gorilla",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-dc2d43be-5bb5-4d12-ac42-79452b2dba27.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "9b32d6750423bf8b570d539a808acacd305f1b5366d5c27b82b06996a63f52bc",
+  "bytes": 1348838,
+  "promptSha256": "93e884c43490e9359c38aa5ffc4d4e3b0c5344cba8d1edaaa0a7979dba88c983",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "editTargetSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+  "transparentBackground": false,
+  "outputModified": false,
+  "generationAttempts": 1,
+  "predecessorRetained": true
+}
