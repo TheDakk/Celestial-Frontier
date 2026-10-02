@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 213,
+ "total": 214,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -428,6 +428,13 @@
    "nativeDir": "audits/ISLANDS_C151_20261002/13-saiga/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Land Iguana",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136ra/16-land-iguana",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (sprawler pool + reviewed ear absence)"
   },
   {
    "family": "Snakes (serpent strip author)",

@@ -1,0 +1,102 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "22-horned-lizard",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "436fa9c4674658a73ae49046439dfcf747c8640f894c24dee43ddf9c0388875e",
+ "subjectSourceSha256": "0cb14f95cfad32e809d650ae54f6425c1c78b3363bbf4dd6a71d15fb65b3b0af",
+ "identity": {
+  "name": "Horned Lizard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Horned Lizard\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3589418879\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 3589418879,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "special-lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "029802099bca9d725755be2995dc309c4322fff995bb2c9cb0a125868f319b4e",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group special-lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1452,
+     "class": "front",
+     "attach": {
+      "x": 256,
+      "y": 196.5,
+      "relX": 0.96,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1449,
+     "class": "limb-down",
+     "attach": {
+      "x": 172.9,
+      "y": 214.6,
+      "relX": 0,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0681,
+     "class": "limb-down",
+     "attach": {
+      "x": 241,
+      "y": 229,
+      "relX": 0.79,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0274,
+     "class": "limb-down",
+     "attach": {
+      "x": 195.1,
+      "y": 231.9,
+      "relX": 0.26,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "id": "09-alligator-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 46%)",
+  "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 0% paint (reference 86%)",
+  "missing-anatomy: part hind-far-knee (hindFarKnee) covers 0% paint (reference 83%)"
+ ],
+ "semanticPresence": null
+}

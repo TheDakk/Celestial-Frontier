@@ -1,0 +1,10 @@
+{
+ "id": "23-marine-iguana",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 46%)",
+  "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 17% paint (reference 86%)"
+ ],
+ "semanticPresence": null
+}
