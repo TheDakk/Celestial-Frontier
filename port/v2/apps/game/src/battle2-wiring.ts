@@ -35,7 +35,7 @@ import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-c
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectArena, selectHabitatArena, ARENA_FALLBACK_ASSETS, turnPlanInputFromTranscriptEvent, type ArenaKind,
+import { ARENA_SETS, type ArenaSetRow, BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectArena, selectHabitatArena, ARENA_FALLBACK_ASSETS, turnPlanInputFromTranscriptEvent, type ArenaKind,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -176,6 +176,8 @@ export interface Battle2StudyInput {
   readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
   /** The painted-theme manifest (`cf.painted-theme-manifest/v1`); absent = the shipped `effects/painted-themes.json`. */
   readonly paintedThemes?: unknown;
+  /** The registered arena plate sets (`battle2/arena-registry.ts`); absent = the shipped registry. Tests pin a set list here. */
+  readonly arenaSets?: readonly ArenaSetRow[];
   /** A named world built on the study's own ground line. `lake` (the matchup picker) = liquid water with a surface. `earth` (a live Earth
    * fight, battle2-live-worlds.ts) = the accepted temperate world exactly as without context, and the lake world only when a side lives in
    * water and the dry plates would refuse it. Ignored when `worlds` is given. */
@@ -412,7 +414,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const themeRows = input.paintedThemes === undefined ? BATTLE2_ASSETS.paintedThemes : parsePaintedThemeManifest(input.paintedThemes);
     // Home ground (2026-10-01): the fight world's biome picks the painted set; without `worlds` this is the accepted temperate set at its
     // delivery manifest's runtime paths, the ones BATTLE2_ASSETS names (arena-registry.test.ts pins that).
-    const route = selectArena({ kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null, ...(input.worldPreset === 'earth' && !input.worlds ? { earth: true } : {}) });
+    const route = selectArena({ kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null, ...(input.worldPreset === 'earth' && !input.worlds ? { earth: true } : {}) }, input.arenaSets ?? ARENA_SETS);
     arenaRoute = route.reason;
     const [recipeRaw, anchorsFetched, far, mid, near] = await Promise.all([assets.json(route.assets.recipe), fetchPaintedThemeAnchors(themeRows, (p) => assets.json(p)), assets.image(route.assets.far), assets.image(route.assets.mid), assets.image(route.assets.near)]);
     const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };

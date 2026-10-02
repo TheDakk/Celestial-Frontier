@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "karst-cave",
+  "biome": "karst",
+  "recipe": "audits/C132_ARENAS_20261001/karst-cave/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/karst-cave/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
+      "runtimeSha256": "bf535a0cb58e4f7bf912735c5824cd36b890dee14dadbd0b000de3197e0b2ab7"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/karst-cave/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-mid.png",
+      "runtimeSha256": "fdb40ac68bd486ee74ad2402471a5f4a23969e8131888a8ac5e8b0aedd233ca4"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/karst-cave/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-near.png",
+      "runtimeSha256": "965fdd1a6a884a801464d788fc1580d9378d01c1d3501618f7a06b160400d373"
+    }
+  }
+}

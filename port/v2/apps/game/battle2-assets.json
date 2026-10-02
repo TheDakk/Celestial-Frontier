@@ -3,8 +3,8 @@
  "files": [
   {
    "path": "battle2/MANIFEST.json",
-   "bytes": 34369,
-   "sha256": "63ce380538812362e84260abb134c9c00a6b1851f276245c07cab546d4e2a1e8"
+   "bytes": 38703,
+   "sha256": "d13b253392e4ea78541aacb30d8dd6a2c9a7452e13cf1d59ac66fae5e8888661"
   },
   {
    "path": "battle2/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json.gz",
@@ -520,6 +520,126 @@
    "path": "battle2/audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
    "bytes": 1931944,
    "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/dunesea/arena-delivery-recipe.json",
+   "bytes": 4267,
+   "sha256": "37072eea11c1847c9c6197c0911f1e88b0727d89af72b0d29ebc9ad378dfa259"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+   "bytes": 2485454,
+   "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.png",
+   "bytes": 2180838,
+   "sha256": "d7d5f56bc6000b030291ea114fd03a805ac72e55a5be4c0d17d3e20216d8d426"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
+   "bytes": 1481749,
+   "sha256": "b1b4e3d34688e9606076232f9ca2df3058367e9dd17299fb8239e1539d9a539d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/jungle-v2/arena-delivery-recipe.json",
+   "bytes": 4319,
+   "sha256": "4c8af3a17479d1c5cec6c0f54cf36310e702aac606e1c96a0ef32f92dac6a5c4"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
+   "bytes": 2940458,
+   "sha256": "21cc4f65b78eb183fb3dadff062b6eec8cc29193142ee1b648644fdb23bdc12f"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.png",
+   "bytes": 2707400,
+   "sha256": "463d61e9766b3bb6b86808844a1533e8249b020b32551ce1ed2dfaaa8d597111"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.png",
+   "bytes": 1630309,
+   "sha256": "6be8202a01b5b8fccd3cdee6a074c8aa952e3dd3eee582893ea05a76db109661"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst-cave/arena-delivery-recipe.json",
+   "bytes": 4217,
+   "sha256": "6ede2eaef9955a210f1ee67602e20dbb197e9d8fd84e1682bf27b8fb6787f19b"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
+   "bytes": 2754357,
+   "sha256": "bf535a0cb58e4f7bf912735c5824cd36b890dee14dadbd0b000de3197e0b2ab7"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst-cave/keyed/arena-mid.png",
+   "bytes": 2391245,
+   "sha256": "fdb40ac68bd486ee74ad2402471a5f4a23969e8131888a8ac5e8b0aedd233ca4"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst-cave/keyed/arena-near.png",
+   "bytes": 1532135,
+   "sha256": "965fdd1a6a884a801464d788fc1580d9378d01c1d3501618f7a06b160400d373"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/marsh/arena-delivery-recipe.json",
+   "bytes": 4220,
+   "sha256": "8bb29cb695c45c5ac57f10ae88c30406cda7a597cd3598d79726b4036129406d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/marsh/arena-far.png",
+   "bytes": 2464395,
+   "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/marsh/keyed/arena-mid.png",
+   "bytes": 2701989,
+   "sha256": "7d3867f851cf51e0d1bdd1120d70547c05a995f5dd14b208f3c549687c938a1c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/marsh/keyed/arena-near.png",
+   "bytes": 1655647,
+   "sha256": "227d65592e25bbd4e275e68429387489b806911ce6c641590daf3bbbd07fe648"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/savanna-v2/arena-delivery-recipe.json",
+   "bytes": 4219,
+   "sha256": "3c9e7be2ca29344c18eec45d2cd64d1a14dc79cadbf41730cc8ab85f5d79546a"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+   "bytes": 2732021,
+   "sha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.png",
+   "bytes": 2411202,
+   "sha256": "8fdfe56558971dbdbab565c6ff5b3546653e70e989dff2101ea2619f96fb814a"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.png",
+   "bytes": 1405517,
+   "sha256": "57d3737dcbce4b246d3377d8b92bf5052ca731346b882b99b983c8dda26214f6"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/tundra/arena-delivery-recipe.json",
+   "bytes": 4200,
+   "sha256": "3cf42283f7946a64924225014f29b70ff56f071da7b70b87a45c03a32c810435"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/tundra/arena-far.png",
+   "bytes": 2795842,
+   "sha256": "59d0945ea50363751af1c412c9eb0cab3306cf2e5e0810b04b9066ed9c0c331f"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.png",
+   "bytes": 2612223,
+   "sha256": "19ae7de43a382d8c9c67134511b0a9a8069e80b9d29cfab6dc195f41afa5d846"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/tundra/keyed/arena-near.png",
+   "bytes": 1556824,
+   "sha256": "99aa984c719ea4b36151b654604eb275491040400bc2dfa9b2d43d8c22c93dce"
   },
   {
    "path": "battle2/audits/C132_EFFECTS_20261001/chem/anchors.json",

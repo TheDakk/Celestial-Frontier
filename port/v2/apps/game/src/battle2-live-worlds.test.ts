@@ -21,7 +21,10 @@ const DEEP = { galaxy: { seed: 2775120088, x: -15585.946043489894, y: -13862.482
 const SOL_OTHERS = systemFor(SOL.star.seed).planets.map((p) => ({ ...SOL, planet: { seed: (p.P as { seed: number }).seed } })).filter((a) => a.planet.seed !== 133);
 const snap = (biome: BiomeProfileKeyV1 | null, planetType = biome ? ARENA_BIOME_WORLD_TYPE[biome] : 'rocky', climateBand = 'temperate', key = `w|test|${biome}`): LiveWorldSnapshotV1 =>
   ({ key, address: { galaxy: { seed: 1, x: 0, y: 0 }, star: { seed: 2, x: 0, y: 0 }, planet: { seed: 3, ordinal: 0 } }, source: { planetSeed: 3, planetType, climateBand, biomeKey: biome } });
-const route = (battleId: string, live: ReturnType<typeof liveBattleArena>, sets: readonly ArenaSetRow[] = ARENA_SETS) =>
+/* the routing mechanism is tested against the temperate-only registry (the state these invariants describe); the shipped registry is
+ * pinned separately below (six C132 sets accepted by Dakk 2026-10-02) */
+const TEMPERATE_ONLY = ARENA_SETS.filter((s) => s.id === ARENA_FALLBACK_SET_ID);
+const route = (battleId: string, live: ReturnType<typeof liveBattleArena>, sets: readonly ArenaSetRow[] = TEMPERATE_ONLY) =>
   selectArena({ contextId: battleId, ...live.arenaContext, worlds: live.worlds, ...(live.worldPreset === 'earth' ? { earth: true } : {}) }, sets);
 
 describe('live battle worlds from the encounter (battle2-live-worlds.ts)', () => {
@@ -70,7 +73,7 @@ describe('live battle worlds from the encounter (battle2-live-worlds.ts)', () =>
   it('a synthetic second registered set is chosen for its own biome (and as kin for its world type); the others stay on temperate', () => {
     const temperate = ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!;
     const canyon: ArenaSetRow = Object.freeze({ ...temperate, id: 'canyon-test-v1', biome: 'canyon', recipe: 'audits/CANYON_TEST/arena-recipe.json', far: 'audits/CANYON_TEST/arena-far.png', mid: 'audits/CANYON_TEST/keyed/arena-mid.png', near: 'audits/CANYON_TEST/keyed/arena-near.png' });
-    const sets = [...ARENA_SETS, canyon];
+    const sets = [...TEMPERATE_ONLY, canyon];
     const at = (b: BiomeProfileKeyV1) => route('battle-y', liveBattleArena('battle-y', liveSettlementEncounter('fauna', snap(b))), sets);
     expect(at('canyon')).toMatchObject({ match: 'biome', set: { id: 'canyon-test-v1' } });
     expect(at('canyon').assets).toEqual({ recipe: '../CANYON_TEST/arena-recipe.json', far: '../CANYON_TEST/arena-far.png', mid: '../CANYON_TEST/keyed/arena-mid.png', near: '../CANYON_TEST/keyed/arena-near.png' });
@@ -108,3 +111,13 @@ describe('live battle worlds from the encounter (battle2-live-worlds.ts)', () =>
   });
 });
 const PH = Object.freeze({ realm: 'land' as const, preferred: 'ground' as const, allowed: Object.freeze(['ground'] as const), source: 'test', liquid: null });
+
+describe('the shipped arena registry (C132 arenas, Dakk 2026-10-02)', () => {
+  it('registers the temperate set plus exactly the six accepted ground arenas; a world of each painted biome draws its own set', () => {
+    expect(ARENA_SETS.map((s) => s.id)).toEqual([ARENA_FALLBACK_SET_ID, 'karst-cave', 'jungle-v2', 'marsh', 'savanna-v2', 'dunesea', 'tundra']);
+    for (const row of ARENA_SETS.slice(1)) {
+      const live = liveBattleArena('b-' + row.id, liveSettlementEncounter('fauna', snap(row.biome as BiomeProfileKeyV1)));
+      expect(route('b-' + row.id, live, ARENA_SETS).set.id, row.biome).toBe(row.id);
+    }
+  });
+});

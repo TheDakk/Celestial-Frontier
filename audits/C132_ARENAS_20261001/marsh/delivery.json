@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "marsh",
+  "biome": "marsh",
+  "recipe": "audits/C132_ARENAS_20261001/marsh/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/marsh/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
+      "runtimeSha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/marsh/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/marsh/keyed/arena-mid.png",
+      "runtimeSha256": "7d3867f851cf51e0d1bdd1120d70547c05a995f5dd14b208f3c549687c938a1c"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/marsh/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/marsh/keyed/arena-near.png",
+      "runtimeSha256": "227d65592e25bbd4e275e68429387489b806911ce6c641590daf3bbbd07fe648"
+    }
+  }
+}

@@ -13,7 +13,7 @@ import { installCaptureHooks } from '@cf/domain-descriptors';
 import { systemFor } from '@cf/domain-worldgen';
 import { liveBattleArena, liveSettlementEncounter } from './battle2-live-worlds.js';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { FIXTURE_RIG_LABEL, PORTRAIT_RIG_LABEL, type FixturePartCut } from './battle2/index.js';
+import { ARENA_FALLBACK_SET_ID, ARENA_SETS, FIXTURE_RIG_LABEL, PORTRAIT_RIG_LABEL, type FixturePartCut } from './battle2/index.js';
 import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv1a32, liveArenaInput, genomeMass, genomeSeed, genomeTheme, matchRecord, mountBattle2Study, mountBattle2StudyIfEnabled,
   type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
 import type { ResolvedAnatomyRecord } from './motion/body-card.js';
@@ -159,6 +159,8 @@ function harness(over: Partial<Battle2StudyInput> = {}) {
     /* the fake assets serve the Wild files only: pin the Wild-only manifest so these fixtures keep testing the procedural fallback
      * (the shipped manifest's painted rows are validated from their delivered files in tests/effects-theme-delivery.test.ts) */
     paintedThemes: { schema: 'cf.painted-theme-manifest/v1', rows: [{ theme: 'wild', anchors: 'wild-anchors.json', contract: 'v4.2-grandfathered', required: true }] },
+    // likewise the fake assets serve the temperate plates only: pin the temperate-only arena registry (the shipped one is pinned in battle2-live-worlds.test.ts)
+    arenaSets: ARENA_SETS.filter((s) => s.id === ARENA_FALLBACK_SET_ID),
     settlement: { battleId: 'battle-1', champion: { kind: 'owned-fauna', name: 'Civet', genome }, encounter: { defender: { battleGenome: { seed: 424242, size: 2, kingdom: 'fauna' } } }, transcript: { log: LOG } },
     chronicle: { championName: 'Civet', defenderName: 'Platypus' },
     portrait: async () => image(132, 132, [20, 30, 90, 96], 'thumb'),

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-template-acceptance/v1",
+  "qualityAccepted": true,
+  "acceptanceAuthority": "Dakk, 2026-10-02 (accepted all eight C132 arenas from the full composed review sheet in the Claude session; Codex visual holds stay noted for a repaint)",
+  "groundLineNormalized": 0.78,
+  "plates": [
+    {
+      "name": "arena-far",
+      "masterSha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b",
+      "qualityAccepted": true
+    },
+    {
+      "name": "arena-mid",
+      "masterSha256": "c3b27fef2839d7c7d4fa977a5454a7d6260e6ff173573dcac08600f7bfd19e35",
+      "qualityAccepted": true
+    },
+    {
+      "name": "arena-near",
+      "masterSha256": "e3030926df94f572ea0789a2e1b7703ccb01ac1666c86d19b0d38ac9c6125e4d",
+      "qualityAccepted": true
+    }
+  ],
+  "status": "ACCEPTED; registration deferred: water-medium arena, routing must pick it only for water fights (Claude 2026-10-02)"
+}

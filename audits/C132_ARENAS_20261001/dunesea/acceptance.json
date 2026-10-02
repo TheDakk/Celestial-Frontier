@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-template-acceptance/v1",
+  "qualityAccepted": true,
+  "acceptanceAuthority": "Dakk, 2026-10-02 (accepted all eight C132 arenas from the full composed review sheet in the Claude session; Codex visual holds stay noted for a repaint)",
+  "groundLineNormalized": 0.78,
+  "plates": [
+    {
+      "name": "arena-far",
+      "masterSha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418",
+      "qualityAccepted": true
+    },
+    {
+      "name": "arena-mid",
+      "masterSha256": "97c84060c150881327008a751881733fd4a33a6111032ff057cd5f9e993b9355",
+      "qualityAccepted": true
+    },
+    {
+      "name": "arena-near",
+      "masterSha256": "bc1b1b7fd0ef21d4c04a1e8cd379c026806f13cc966d5789b08a323b19418422",
+      "qualityAccepted": true
+    }
+  ],
+  "status": "ACCEPTED"
+}

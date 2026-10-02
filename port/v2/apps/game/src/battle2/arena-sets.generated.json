@@ -16,6 +16,96 @@
     "mid": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-mid.png",
     "near": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-near.png"
    }
+  },
+  {
+   "id": "karst-cave",
+   "biome": "karst",
+   "delivery": "audits/C132_ARENAS_20261001/karst-cave/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/karst-cave/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/karst-cave/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/karst-cave/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/karst-cave/arena-near.png"
+   }
+  },
+  {
+   "id": "jungle-v2",
+   "biome": "jungle",
+   "delivery": "audits/C132_ARENAS_20261001/jungle-v2/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/jungle-v2/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/jungle-v2/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/jungle-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/jungle-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "marsh",
+   "biome": "marsh",
+   "delivery": "audits/C132_ARENAS_20261001/marsh/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/marsh/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/marsh/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/marsh/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/marsh/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/marsh/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/marsh/arena-near.png"
+   }
+  },
+  {
+   "id": "savanna-v2",
+   "biome": "savanna",
+   "delivery": "audits/C132_ARENAS_20261001/savanna-v2/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/savanna-v2/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/savanna-v2/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "dunesea",
+   "biome": "dunesea",
+   "delivery": "audits/C132_ARENAS_20261001/dunesea/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/dunesea/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/dunesea/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/dunesea/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/dunesea/arena-near.png"
+   }
+  },
+  {
+   "id": "tundra",
+   "biome": "tundra",
+   "delivery": "audits/C132_ARENAS_20261001/tundra/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/tundra/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/tundra/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/tundra/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/tundra/arena-near.png"
+   }
   }
  ]
 }
