@@ -1,0 +1,210 @@
+{
+  "id": "wild-pony",
+  "motionChanged": false,
+  "results": [
+    {
+      "mode": "original",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/fit01",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0023879345062919966,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5168,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "spine",
+            "joint": "spine",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 162,
+            "vertices": [
+              119,
+              104,
+              103
+            ],
+            "published": [
+              0.7401473177106757,
+              0.40052332689887593
+            ],
+            "stage": [
+              434.01005537684784,
+              287.84593690983024
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0009371143778363424,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5168,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "spine",
+            "joint": "spine",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 162,
+            "vertices": [
+              119,
+              104,
+              103
+            ],
+            "published": [
+              0.7401473177106757,
+              0.40052332689887593
+            ],
+            "stage": [
+              589.9899446231522,
+              287.84593690983024
+            ]
+          },
+          "distanceToObservedOriginalTip": 0.15439088819035532
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "mode": "candidate",
+      "fit": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit-v2",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0023879345062919966,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5188,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5188,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5188,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "reviewed-contiguous-near-ear-tip",
+            "joint": "earNearTip",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 24,
+            "vertices": [
+              23,
+              3,
+              16
+            ],
+            "published": [
+              0.8184809527899088,
+              0.5389882796689083
+            ],
+            "stage": [
+              473.3724968065729,
+              357.42420412501986
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0009371143778363424,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5188,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5188,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5188,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "reviewed-contiguous-near-ear-tip",
+            "joint": "earNearTip",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 24,
+            "vertices": [
+              23,
+              3,
+              16
+            ],
+            "published": [
+              0.8184809527899088,
+              0.5389882796689083
+            ],
+            "stage": [
+              550.6275031934272,
+              357.42420412501986
+            ]
+          },
+          "distanceToObservedOriginalTip": 79.81173863020409
+        }
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "nativeRun": false,
+  "qualityAccepted": false
+}

@@ -1,0 +1,7 @@
+{
+  "schema": "cf.c169-owner-normalization/v1",
+  "predecessor": "conservation-v2.mjs",
+  "refusal": "Wild Pony raw compiled owner-part arrays differ after the authorized contiguous ear polygons become the first declaration for the same ear joints.",
+  "correction": "conservation-v3 independently verifies each author replay against its own compiled raster, checks identical anatomical joint/layer inventory and exact non-ear part identities, then maps owner indices by joint before comparing source-pixel ownership. All paint/cap/non-ear bounds checks remain. Candidate geometry/authoring unchanged.",
+  "qualityAccepted": false
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c168-full-size-source-review/v1",
+  "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "inspectedSize": [
+    1254,
+    1254
+  ],
+  "qualityAccepted": false,
+  "findings": [
+    "Both new hands are opened onto visible finger tips and the far hind leg is exposed. The unchanged observer now measures four limb-down appendages and four ground clusters. Hind feet remain somewhat higher than hand tips; common-plane motion remains a fit constraint, not a measured source guarantee.",
+    "The real long tail is connected and now has an open curl, separated from the limbs. Its painted curve uses only the existing tail0/tail1/tail2 chain; no extra tail joint or prehensility claim.",
+    "Far shoulder and hip centres remain partly hidden. Their landmark coordinates are source-specific fit hypotheses. The ears stay head-owned because this primate contract has no separate ear slots. No source pixels, anatomy or contact counts are manufactured."
+  ]
+}

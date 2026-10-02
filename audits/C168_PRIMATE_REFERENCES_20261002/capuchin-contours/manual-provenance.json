@@ -1,0 +1,102 @@
+{
+  "schema": "cf.c168-targeted-contour/v1",
+  "predecessor": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint",
+  "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "predecessorAuthoringSha256": "be3e5664ae3793c7aaeed6ba976c0421a7b502de443b24a32d78ca93bd46af43",
+  "authoringSha256": "19c091d58e706cec1314cc1dfc1074a26ce28a827005dfa332eb5827cb551d3d",
+  "diagnosis": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contour-diagnosis.json",
+  "observedComponentPixels": 1430,
+  "observedComponentBox": {
+    "x0": 840,
+    "y0": 703,
+    "x1": 941,
+    "y1": 868
+  },
+  "attribution": "Visible inner contour of the far arm; proximal section belongs to elbow-driven upper arm and distal section to hand-driven forearm.",
+  "additions": [
+    {
+      "id": "far-arm-inner-upper-contour",
+      "joint": "armFarElbow",
+      "layer": "far",
+      "polygonPx": [
+        [
+          835,
+          698
+        ],
+        [
+          857,
+          698
+        ],
+        [
+          885,
+          786
+        ],
+        [
+          875,
+          809
+        ],
+        [
+          859,
+          779
+        ],
+        [
+          851,
+          749
+        ],
+        [
+          841,
+          731
+        ]
+      ]
+    },
+    {
+      "id": "far-arm-inner-lower-contour",
+      "joint": "armFarHand",
+      "layer": "far",
+      "polygonPx": [
+        [
+          867,
+          781
+        ],
+        [
+          889,
+          795
+        ],
+        [
+          946,
+          865
+        ],
+        [
+          945,
+          875
+        ],
+        [
+          927,
+          862
+        ],
+        [
+          909,
+          842
+        ],
+        [
+          892,
+          825
+        ],
+        [
+          878,
+          820
+        ],
+        [
+          869,
+          802
+        ]
+      ]
+    }
+  ],
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "priorNonBodyOwnersMayChange": false,
+  "automaticIslandPlacement": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

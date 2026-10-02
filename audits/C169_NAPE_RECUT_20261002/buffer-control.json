@@ -1,0 +1,7 @@
+{
+  "schema": "cf.c169-buffer-control/v1",
+  "correctCaller": "PASS: Uint8Array copy keeps input SHA exact and guard replay identical",
+  "negativeControl": "PASS: shared Buffer slice reproduces overlapping base ink refusal",
+  "guardTexels": 3030,
+  "runtimeGuardChanged": false
+}

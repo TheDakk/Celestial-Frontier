@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c168-proof-derivation/v1",
+  "source": "audits/C168_PRIMATE_REFERENCES_20261002/verify.mjs",
+  "sourceSha256": "501bd73839dda1d08c5c9e41e86b36133864620cdc8d2f1d28c12aa460df5fb7",
+  "output": "audits/C168_PRIMATE_REFERENCES_20261002/verify-repaints.mjs",
+  "outputSha256": "478fb8b58a28314b4eef2e3595280fc3b242ffb728229a5e5fa1a1f90dcd68e1",
+  "changes": [
+    {
+      "from": "import fs from'node:fs';",
+      "to": "import fs from'node:fs';import os from'node:os';"
+    },
+    {
+      "from": "json(base+'/packets.json')",
+      "to": "json(base+'/repaint-packets.json')"
+    },
+    {
+      "from": "source=fs.readFileSync(p.source+'/master.png')",
+      "to": "source=fs.readFileSync(json(p.packet+'/generation.json').sourcePath.replace(/^~(?=\\/)/,os.homedir()))"
+    },
+    {
+      "from": "base+'/proof.json'",
+      "to": "base+'/proof-repaints.json'"
+    }
+  ],
+  "checksChanged": false,
+  "reason": "Same conservation/refusal checks applied to the two successor packets, comparing actual retained generator bytes instead of the old project original."
+}

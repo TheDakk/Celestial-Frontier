@@ -1,0 +1,53 @@
+{
+  "schema": "cf.c169-full-size-review/v1",
+  "status": "HELD_SOURCE_JOIN_COVERAGE",
+  "qualityAccepted": false,
+  "productionAdmission": false,
+  "reviewSurface": "1254-square nearest-sampled software diagnostic of runtime-equivalent published meshes; compared against retained original native frames. Software pixels are not native-film screen pixels.",
+  "reviewedFacings": [
+    "left",
+    "right"
+  ],
+  "rootIndependentAgreement": {
+    "scope": [
+      "hawk/candidate-held-v3-right.png",
+      "wild-pony/candidate-held-v3-right.png",
+      "hawk/original-native.png"
+    ],
+    "verdict": "Root independently observed conspicuous shoulder/wing gaps on Hawk and a large mane/shoulder gap plus detached fragments on Pony. No visual acceptance."
+  },
+  "rows": [
+    {
+      "id": "hawk",
+      "first": "Original upright nape spike becomes a stretched dorsal bridge over a neck/wing opening.",
+      "successor": "Whole posterior patch follows chest; the pointed head spike is removed but a new open chest/head notch replaces it.",
+      "preExisting": "Near-wing/tail gap 27.516965 posed source-coordinate px and body/near-wing gap 19.133520 are exactly unchanged in both attempts; original neck/far-wing gap was 118.692700.",
+      "introduced": "Successor chest/head gap 120.301629 at original source edge [715,454], an excluded skipped-chain adjacency."
+    },
+    {
+      "id": "crow",
+      "first": "Original pointed spike becomes an elongated dorsal bridge.",
+      "successor": "Chest-owned patch leaves a conspicuous new head/shoulder notch.",
+      "preExisting": "Near-wing/tail gap 36.812940 and body/near-wing gap 26.127604 are exactly unchanged; original neck/far-wing maximum 117.419237.",
+      "introduced": "Successor chest/head gap 126.941676 at source [731,422]."
+    },
+    {
+      "id": "snowy-owl",
+      "first": "A thin extended nape strip remains; head/neck-lower skipped adjacency opens.",
+      "successor": "Whole-chest assignment replaces the strip with a broad head/shoulder opening.",
+      "preExisting": "Near-wing/tail gap 43.350534 and body/near-wing gap 34.676695 are exactly unchanged; original neck/far-wing maximum 182.975489.",
+      "introduced": "Successor chest/head gap 204.768119 at source [731,383]."
+    },
+    {
+      "id": "wild-pony",
+      "first": "Attributed floating source tip moves with earNearTip but remains detached from surrounding neck-owned paint.",
+      "successor": "The contiguous near-ear is more recognizable and follows the ear chain; an adjacent detached fleck and notch remain. Not accepted.",
+      "preExisting": "Large mane/shoulder opening exists in original and both attempts: original neck/spine maximum 116.012646, first 96.775254, successor 96.707843 posed source-coordinate px. Hoof/spine fragments persist with unchanged measured gaps (fore-ankle 124.305892; fore-paw 122.946655).",
+      "introducedOrRemaining": "Ear/neck gap originally 84.080259 for tip and 74.155690 for root; successor 84.499018 and 77.737987. Tiny retained spine-owned edge beside near-ear tip at [882,341] has 213.805502 separation. Do not delete the fragment or enlarge the cap."
+    }
+  ],
+  "units": "All gap distances above are posed source-coordinate pixels at the 1254-source scale, independently interpolated along source-adjacent mesh edges. They are NOT measurements of screen pixels or a new native film.",
+  "preciseLimitation": "The source image has contiguous paint across surfaces assigned to non-nearest ancestors or sibling wing/neck parts. The existing source-join contract observes those adjacencies but does not weld them. First-candidate neck bands preserve some attachment continuity by stretching visible paint; whole-chest ownership removes that stretch but introduces a direct chest/head gap. Pony ear contours still border neck/spine owners that skip the head joint, and old ear landmarks do not follow the visible near-ear tip closely. Neither static PASS nor the 5% remainder cap measures these excluded visual gaps.",
+  "nextScope": "Requires a deliberate complete source-specific head/neck/shoulder ownership and ear-landmark review, with true-skin adjacency distinguished from intentional wing overlap. A change to source-join runtime behavior would be a separate design task; no generic welding, paint deletion, invented anatomy or new painting is asserted as necessary by this bounded packet.",
+  "stop": "Both ownership candidates retained as rejected/held audit evidence. No third authoring attempt, runtime edit, browser/native job, gate change or registration."
+}

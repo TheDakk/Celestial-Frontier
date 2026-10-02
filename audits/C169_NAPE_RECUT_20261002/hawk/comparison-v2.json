@@ -1,0 +1,210 @@
+{
+  "id": "hawk",
+  "motionChanged": false,
+  "results": [
+    {
+      "mode": "original",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/fit02",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.17718706531272996,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 2620,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 2620,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 2620,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "neck-upper",
+            "joint": "neck1",
+            "source": [
+              651,
+              496
+            ],
+            "alpha": 255,
+            "face": 19,
+            "vertices": [
+              18,
+              15,
+              13
+            ],
+            "published": [
+              0.6518947005271912,
+              0.40401000082492833
+            ],
+            "stage": [
+              433.85755909951894,
+              275.8871093943169
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.07510203582812314,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 2620,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 2620,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 2620,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "neck-upper",
+            "joint": "neck1",
+            "source": [
+              651,
+              496
+            ],
+            "alpha": 255,
+            "face": 19,
+            "vertices": [
+              18,
+              15,
+              13
+            ],
+            "published": [
+              0.6518947005271912,
+              0.40401000082492833
+            ],
+            "stage": [
+              590.1424409004811,
+              275.8871093943169
+            ]
+          },
+          "distanceToObservedOriginalTip": 0.18175175097195254
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "mode": "candidate",
+      "fit": "audits/C169_NAPE_RECUT_20261002/hawk/fit",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.17718706531272996,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 2646,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 2646,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 2646,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "chest",
+            "joint": "chest",
+            "source": [
+              651,
+              496
+            ],
+            "alpha": 255,
+            "face": 7,
+            "vertices": [
+              6,
+              3,
+              1
+            ],
+            "published": [
+              0.5762292802333832,
+              0.43174190670251844
+            ],
+            "stage": [
+              386.0955053942391,
+              293.39223621092714
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.07510203582812314,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 2646,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 2646,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 2646,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "chest",
+            "joint": "chest",
+            "source": [
+              651,
+              496
+            ],
+            "alpha": 255,
+            "face": 7,
+            "vertices": [
+              6,
+              3,
+              1
+            ],
+            "published": [
+              0.5762292802333832,
+              0.43174190670251844
+            ],
+            "stage": [
+              637.9044946057609,
+              293.39223621092714
+            ]
+          },
+          "distanceToObservedOriginalTip": 50.96401165381369
+        }
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "nativeRun": false,
+  "qualityAccepted": false
+}

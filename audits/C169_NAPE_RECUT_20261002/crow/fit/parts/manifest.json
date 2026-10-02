@@ -1,0 +1,90 @@
+{
+  "creatureId": "10-crow",
+  "parts": [
+    {
+      "name": "near-foot.png",
+      "path": "parts/near-foot.png",
+      "sha256": "0df3540b0acd52f49e6b7acb8d4c8f108e12bc7d802621eb3c1938bacc04c5d9"
+    },
+    {
+      "name": "far-foot.png",
+      "path": "parts/far-foot.png",
+      "sha256": "89dc90ff958a9ff37c40e55e9f9e23e24222a693de4a248b653b273a2b6c52cd"
+    },
+    {
+      "name": "near-shin.png",
+      "path": "parts/near-shin.png",
+      "sha256": "755c6c8b3a7d588ab2220170ab9a684e1ddd4c81863d8b47e22d33f8b86c0f7e"
+    },
+    {
+      "name": "far-shin.png",
+      "path": "parts/far-shin.png",
+      "sha256": "02cfac3b9624b76c3f857e419534a35003aeb9988f41a9cb5dcfd65f766ca393"
+    },
+    {
+      "name": "near-thigh.png",
+      "path": "parts/near-thigh.png",
+      "sha256": "c3f378c9b6dc3b8974df99075f65448375c8d98a6b2afff7f79c8018c61b70b4"
+    },
+    {
+      "name": "far-thigh.png",
+      "path": "parts/far-thigh.png",
+      "sha256": "38febeb03156bea0657fdb3afff67e9ba65ef436fdfed08ce4251aa19d49fa9b"
+    },
+    {
+      "name": "beak.png",
+      "path": "parts/beak.png",
+      "sha256": "08b65ef902fa8da48203960327383dc305e9e66ca9f7452e9644983f28f37bb7"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "a7459662bce98ec208508d71bdc3960fb3051f50d5a15171cb80df67661cdf6d"
+    },
+    {
+      "name": "neck-upper.png",
+      "path": "parts/neck-upper.png",
+      "sha256": "e17f388b2ecb2a9159ff1cf3b86d1359cce82bde41cd0c9fb47922073cfbcd2b"
+    },
+    {
+      "name": "neck-lower.png",
+      "path": "parts/neck-lower.png",
+      "sha256": "208c05e0a5b2dfca2d4ce7e6de2e36de280a746aaba8cb555d049a8bc4a74a3f"
+    },
+    {
+      "name": "far-wing-root.png",
+      "path": "parts/far-wing-root.png",
+      "sha256": "0899b4e8b042e420422c0549ac0dc576d58a5ae104d0d632666b96753bfb69a3"
+    },
+    {
+      "name": "far-wing-flight.png",
+      "path": "parts/far-wing-flight.png",
+      "sha256": "589f71574a23f8016c473c0f77134cb5bc83b6191c6e1232fd3636ed3374f888"
+    },
+    {
+      "name": "near-wing-root.png",
+      "path": "parts/near-wing-root.png",
+      "sha256": "d8ae37f1f11bd0b2fa6fc54990ab77ef5e4790061b8f1ced97d72b74155b294d"
+    },
+    {
+      "name": "near-wing-flight.png",
+      "path": "parts/near-wing-flight.png",
+      "sha256": "ad3e5fd54b536a93a569ba117920a7e32106fea6027484428b48a159f6020b7a"
+    },
+    {
+      "name": "tail.png",
+      "path": "parts/tail.png",
+      "sha256": "21559ec76a864d7c9918701765ccedf9aa39f71aebad167873480236ca1fc34b"
+    },
+    {
+      "name": "chest.png",
+      "path": "parts/chest.png",
+      "sha256": "8e76db8de665e95fa6301fc1fd4354c796df0a32b58c14d11d3e9380ed960319"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "b9295ffd16a4a7fe2da42b2fb5588ca5b129588b240a9b9b1e22b691549e60e4"
+    }
+  ]
+}

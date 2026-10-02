@@ -1,0 +1,18 @@
+{
+  "id": "capuchin-repaint",
+  "name": "Capuchin",
+  "packet": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint",
+  "source": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint",
+  "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "generationSha256": "b284b9b2334210e33b4a2333955364dd9848e8e09db61718f2c4972a37f933d2",
+  "authoringSha256": "be3e5664ae3793c7aaeed6ba976c0421a7b502de443b24a32d78ca93bd46af43",
+  "observationSha256": "8f97561886b065e3d2b7665ee41b3d30320d013b5075fe94d85eb1c2cfb4cfe8",
+  "method": "One independent source-specific hand authoring of this generated successor; no predecessor coordinate or label transfer",
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "limitations": [
+    "Both new hands are opened onto visible finger tips and the far hind leg is exposed. The unchanged observer now measures four limb-down appendages and four ground clusters. Hind feet remain somewhat higher than hand tips; common-plane motion remains a fit constraint, not a measured source guarantee.",
+    "The real long tail is connected and now has an open curl, separated from the limbs. Its painted curve uses only the existing tail0/tail1/tail2 chain; no extra tail joint or prehensility claim.",
+    "Far shoulder and hip centres remain partly hidden. Their landmark coordinates are source-specific fit hypotheses. The ears stay head-owned because this primate contract has no separate ear slots. No source pixels, anatomy or contact counts are manufactured."
+  ]
+}

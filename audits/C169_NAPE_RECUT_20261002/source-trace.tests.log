@@ -1,0 +1,10 @@
+✔ positive source ink is interpolated exactly; transparent overlapping geometry contributes nothing (0.737584ms)
+✔ actual motion and a single-alpha source alter output in the expected directions (0.346666ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.901959

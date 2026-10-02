@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c169-source-specific-recut/v2",
+  "id": "crow",
+  "predecessor": "candidate",
+  "scope": {
+    "kind": "posterior-patch-to-chest",
+    "originalRegion": {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          660,
+          420
+        ],
+        [
+          754,
+          420
+        ],
+        [
+          754,
+          477
+        ],
+        [
+          660,
+          477
+        ]
+      ]
+    }
+  },
+  "sourcePixelsChanged": false,
+  "landmarksChanged": false,
+  "motionChanged": false,
+  "qualityAccepted": false
+}

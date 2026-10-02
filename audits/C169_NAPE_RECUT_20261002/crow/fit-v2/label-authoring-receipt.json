@@ -1,0 +1,131 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "near-foot",
+      "joint": "legNearFoot",
+      "owner": "near-foot"
+    },
+    {
+      "region": "far-foot",
+      "joint": "legFarFoot",
+      "owner": "far-foot"
+    },
+    {
+      "region": "near-shin",
+      "joint": "legNearAnkle",
+      "owner": "near-shin"
+    },
+    {
+      "region": "far-shin",
+      "joint": "legFarAnkle",
+      "owner": "far-shin"
+    },
+    {
+      "region": "near-thigh",
+      "joint": "legNearKnee",
+      "owner": "near-thigh"
+    },
+    {
+      "region": "far-thigh",
+      "joint": "legFarKnee",
+      "owner": "far-thigh"
+    },
+    {
+      "region": "beak",
+      "joint": "beak",
+      "owner": "beak"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck-upper",
+      "joint": "neck1",
+      "owner": "neck-upper"
+    },
+    {
+      "region": "neck-lower",
+      "joint": "neck0",
+      "owner": "neck-lower"
+    },
+    {
+      "region": "far-wing-root",
+      "joint": "wingFarRoot",
+      "owner": "far-wing-root"
+    },
+    {
+      "region": "far-wing-flight",
+      "joint": "wingFarTip",
+      "owner": "far-wing-flight"
+    },
+    {
+      "region": "near-wing-root",
+      "joint": "wingNearRoot",
+      "owner": "near-wing-root"
+    },
+    {
+      "region": "near-wing-flight",
+      "joint": "wingNearTip",
+      "owner": "near-wing-flight"
+    },
+    {
+      "region": "tail",
+      "joint": "tailFan",
+      "owner": "tail"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "reviewed-nape-shoulder-complete",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "reviewed-bill",
+      "joint": "beak",
+      "owner": "beak"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    1868,
+    1894,
+    1438,
+    1299,
+    1426,
+    980,
+    2867,
+    8931,
+    3278,
+    3411,
+    3223,
+    4064,
+    6393,
+    18641,
+    15541,
+    11085,
+    15552
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "17ca3b7b9f789fb5cb78db85370d2624413872c30a91c86cafc36edc3968d53d",
+  "intake": {
+    "erodedPixels": 3724,
+    "despilledPixels": 494,
+    "unresolvedEdgePixels": 13
+  },
+  "remainderPart": "body"
+}

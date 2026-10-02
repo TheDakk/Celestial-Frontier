@@ -1,0 +1,1236 @@
+{
+  "schema": "cf.c169-frozen-first-candidate/v1",
+  "verdict": "HELD: measured source-preserving recut; residual stretched napes/detached ear paint remain.",
+  "files": [
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/attribute.mjs",
+      "sha256": "48aec36bbe0b28c1c9f61d1d4fb2f37498ceb7e633321c2f6c06893652049783",
+      "bytes": 2628
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/attribution.json",
+      "sha256": "7e045203f3e1be5a2a5a356927893db6a74f295b01a7f6860260572d251847bf",
+      "bytes": 55396
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/compare-v2.log",
+      "sha256": "2c7f50ec6c70176c589a225be4b43ee27c4a3181eb5d6b5afd677be13a2b3d34",
+      "bytes": 2500
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/compare-v2.mjs",
+      "sha256": "a1079a8b61ece18dc70eac8deecd30d6924953554cbe5d3d92e6cfea61fd4617",
+      "bytes": 6498
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/compare.mjs",
+      "sha256": "d3e54e04bea11d871f2f9f2f99e7acdf79f985be92a7eb93f9f07cd9b38166c0",
+      "bytes": 6341
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/comparison-refusal.json",
+      "sha256": "43ad6f574604631db85250290aa60c5cc922adcf07bf8e4e0276937fcb73f5ac",
+      "bytes": 926
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/comparison-v2.json",
+      "sha256": "80029614ebd49f914148d3446522db8b4cf934b6ac45694b8f680a4486b196a2",
+      "bytes": 61905
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/conservation.json",
+      "sha256": "00cedfc8c764f2a78a9c9ea51a624956af67b241340d06e399ffd643e78b7d2a",
+      "bytes": 11461
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/conservation.mjs",
+      "sha256": "7d7c87017a9d76bd61fc437a428442ac5f6878fe6065390b6749cbfca305a6c2",
+      "bytes": 4737
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/attribution.json",
+      "sha256": "469040e79ffe650b25549f63e513e5e5903f32eb67cfbc34a80a9c93d3454f1a",
+      "bytes": 12426
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/candidate/authoring.json",
+      "sha256": "2994472b186e8fb62d31bcd7c7b53d9053abd354b12a56275c70d7b781deca8f",
+      "bytes": 10482
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/candidate/master.png",
+      "sha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387",
+      "bytes": 1117204
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/candidate/subject-source.json",
+      "sha256": "9f56be332d6bf379d0d8e8334a763e5133190058f0b57204dd02dbc2e39b410c",
+      "bytes": 2667
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/candidate-held-v2-left.png",
+      "sha256": "c5f59e75763379b3c4c9a4ac03fa43f3927d868c07bb173b0019149aa22ab4de",
+      "bytes": 263329
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/candidate-held-v2-right.png",
+      "sha256": "90845b4eb615639119165e04c0162b4fbf68488c37ed9ba0d8d4d8c568167676",
+      "bytes": 263887
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/comparison-v2.json",
+      "sha256": "47fc0d476d7cb6a59d93e91a4286a788a1f3de6e24e2bc6822bbc7ad1d527dbc",
+      "bytes": 5272
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/conservation.json",
+      "sha256": "ed034f71eca55301a207327dc774e3258b2684e38b7230a7720265a3cfc8c12e",
+      "bytes": 1385
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/binding.json",
+      "sha256": "bc32c50d02e68218ee70cedeee6b2890ca064db87f041436b3d64eecdf98f4fa",
+      "bytes": 991248
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/declaration.json",
+      "sha256": "7acc88cab8aad1dea66025b89a408b2e2ba6e8f1e4dac005c2458182b3564112",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/intake-provenance.json",
+      "sha256": "ad07c452445f8ff396fa077fe31cdeb629b766673bbcf3c8306d5af5b23fa745",
+      "bytes": 3123
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/label-authoring-receipt.json",
+      "sha256": "1207d44dad9ed80d77c4639330475eb3bdee69b63ac9dea3382604b87f2d1f8f",
+      "bytes": 2754
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/labels.png",
+      "sha256": "5a3421c97dd7f6f7cf72a9925d0717dd044c815e298957f27de8922616386305",
+      "bytes": 39019
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/atlas/10-crow.json",
+      "sha256": "f8aa72b85c28f4988a35023da0baccf1730254079412d6881944b4e46e6916f4",
+      "bytes": 6979
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/atlas/10-crow.png",
+      "sha256": "cef1140e2f8daa189143d32973ab52fc91b01dc4aa6596ccdc1d275f08fca823",
+      "bytes": 267364
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/atlas/receipt.json",
+      "sha256": "a0deb8a2e4e9f74997a7d41528ac8b5a0f6bebacff51f72bc2890b1ace2dff31",
+      "bytes": 2912
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/binding.json",
+      "sha256": "ab2611039255bd2455999c7a3704e04dda04c76e8290e50e9ab0ea40b9d54c14",
+      "bytes": 5799
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/keyed.png",
+      "sha256": "75f8218b3e388fb39132b095d1d45409179bdb1596c4874a61824c7241416afa",
+      "bytes": 1271905
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/manifest.json",
+      "sha256": "4f9a3e316ea17e14b60ab75596696eb998d11d86143b3d5937173ba1e0ba9b28",
+      "bytes": 2833
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/ownership.png",
+      "sha256": "7812ad4d2f177c24f0327fe41a9dafce53cb61eea2edf135ccb23503c5b1adf0",
+      "bytes": 12949
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/beak.png",
+      "sha256": "08b65ef902fa8da48203960327383dc305e9e66ca9f7452e9644983f28f37bb7",
+      "bytes": 9395
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/body.png",
+      "sha256": "b9295ffd16a4a7fe2da42b2fb5588ca5b129588b240a9b9b1e22b691549e60e4",
+      "bytes": 39114
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/chest.png",
+      "sha256": "8e76db8de665e95fa6301fc1fd4354c796df0a32b58c14d11d3e9380ed960319",
+      "bytes": 26405
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/far-foot.png",
+      "sha256": "89dc90ff958a9ff37c40e55e9f9e23e24222a693de4a248b653b273a2b6c52cd",
+      "bytes": 6114
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/far-shin.png",
+      "sha256": "02cfac3b9624b76c3f857e419534a35003aeb9988f41a9cb5dcfd65f766ca393",
+      "bytes": 4306
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/far-thigh.png",
+      "sha256": "38febeb03156bea0657fdb3afff67e9ba65ef436fdfed08ce4251aa19d49fa9b",
+      "bytes": 2546
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/far-wing-flight.png",
+      "sha256": "589f71574a23f8016c473c0f77134cb5bc83b6191c6e1232fd3636ed3374f888",
+      "bytes": 12030
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/far-wing-root.png",
+      "sha256": "0899b4e8b042e420422c0549ac0dc576d58a5ae104d0d632666b96753bfb69a3",
+      "bytes": 10105
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/head.png",
+      "sha256": "a7459662bce98ec208508d71bdc3960fb3051f50d5a15171cb80df67661cdf6d",
+      "bytes": 24572
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/near-foot.png",
+      "sha256": "0df3540b0acd52f49e6b7acb8d4c8f108e12bc7d802621eb3c1938bacc04c5d9",
+      "bytes": 6065
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/near-shin.png",
+      "sha256": "755c6c8b3a7d588ab2220170ab9a684e1ddd4c81863d8b47e22d33f8b86c0f7e",
+      "bytes": 4390
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/near-thigh.png",
+      "sha256": "c3f378c9b6dc3b8974df99075f65448375c8d98a6b2afff7f79c8018c61b70b4",
+      "bytes": 3756
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/near-wing-flight.png",
+      "sha256": "ad3e5fd54b536a93a569ba117920a7e32106fea6027484428b48a159f6020b7a",
+      "bytes": 50597
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/near-wing-root.png",
+      "sha256": "d8ae37f1f11bd0b2fa6fc54990ab77ef5e4790061b8f1ced97d72b74155b294d",
+      "bytes": 20082
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/neck-lower.png",
+      "sha256": "208c05e0a5b2dfca2d4ce7e6de2e36de280a746aaba8cb555d049a8bc4a74a3f",
+      "bytes": 12752
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/neck-upper.png",
+      "sha256": "e17f388b2ecb2a9159ff1cf3b86d1359cce82bde41cd0c9fb47922073cfbcd2b",
+      "bytes": 11332
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/parts/tail.png",
+      "sha256": "21559ec76a864d7c9918701765ccedf9aa39f71aebad167873480236ca1fc34b",
+      "bytes": 41957
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/parts/receipt.json",
+      "sha256": "cb3ca309605dcb1aacc8428656bf35e72c4c1cda1e2857199d330727cbd81ef1",
+      "bytes": 4833
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/pre-split-binding.json",
+      "sha256": "a2c29eb15d43e1411c3179b92c81bff5a8fdea5c315aee8d717b287d8886c6f8",
+      "bytes": 655403
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/receipt.json",
+      "sha256": "2b24a8a659ec365257e6662e621836c3105455ca750acabbd2479954b92e3cbb",
+      "bytes": 2459
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/fit/record.json",
+      "sha256": "1805699d9f47e10974dac45a500053450186083aa49519787ae3edec22d7d5da",
+      "bytes": 6682
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/intake.log",
+      "sha256": "9d9092891ba068d65dddbae00d0abd3a4244e5383bafe34e546b6b7fdfe64c89",
+      "bytes": 294
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/original/authoring.json",
+      "sha256": "d3cd9d981c1ce7543c955d842ec07d67c544f5a1d50927c123922e1ca910f74f",
+      "bytes": 9448
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/original/master.png",
+      "sha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387",
+      "bytes": 1117204
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/original/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/original/subject-source.json",
+      "sha256": "9f56be332d6bf379d0d8e8334a763e5133190058f0b57204dd02dbc2e39b410c",
+      "bytes": 2667
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/original-held-left.png",
+      "sha256": "4fc9e72750d78538ce1d80cb58af2a243e7453b46223e52c13019953753e5a3d",
+      "bytes": 260984
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/original-held-right.png",
+      "sha256": "4e4ac126061448816f2471bad36e3af1451ab6a5f81a8c6666d15596f2319d3b",
+      "bytes": 261734
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/original-native.png",
+      "sha256": "5ce25c3fa711566d866e26fc43b4c49ad9dfcd7abfb2ddbad53b56fb13d47207",
+      "bytes": 1510891
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/recut.json",
+      "sha256": "5b306880f5a8237012e0d125fc0b7d3a3cbe38ff96ca6c0b789da47f58fa96eb",
+      "bytes": 2787
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/static.json",
+      "sha256": "280d9a0cb83ec3cafa00f17f3f3484cfac743084c5a7daf7e7bbadf691051299",
+      "bytes": 8149
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/static.json.sources.json",
+      "sha256": "2d6871f4441a62c49c3119af5e921b59cde8bb28894e8b55f4b36171afcba6bf",
+      "bytes": 15567
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/static.log",
+      "sha256": "6e6c37b99732a0230c24f76c53e43e6de24b704fbf85dbc59c7b59d24626b09e",
+      "bytes": 2183
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/attribution.json",
+      "sha256": "b7ab1f8d8dabf74c2bf153cf264fe799d7f843ae21e36a5f06fe3154f28e442a",
+      "bytes": 11370
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/candidate/authoring.json",
+      "sha256": "115bf7dacf9accdbf16d879648219a345d7fe4df310e7622fea106623b2332cb",
+      "bytes": 10809
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/candidate/master.png",
+      "sha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+      "bytes": 1138608
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/candidate/subject-source.json",
+      "sha256": "87c4c9113ec33cb9421c04800eb08dc511fd67c3f1cea70599270491e99b4568",
+      "bytes": 2294
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/candidate-held-left.png",
+      "sha256": "7966b4121704c9cae12a80e33b639397afbc4b0c6ed0d9a84b1c67901ee8a777",
+      "bytes": 273083
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/candidate-held-v2-left.png",
+      "sha256": "7966b4121704c9cae12a80e33b639397afbc4b0c6ed0d9a84b1c67901ee8a777",
+      "bytes": 273083
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/candidate-held-v2-right.png",
+      "sha256": "24c25f136af87f92f9cf055ba8cff2cc94bda60dd2171b77e57a8bed5872266d",
+      "bytes": 275769
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/comparison-v2.json",
+      "sha256": "c0c935af73702fc7c64bf4366a40eb51202cf436d5762056760f34139143979f",
+      "bytes": 5273
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/conservation.json",
+      "sha256": "a1aa61e18afc03b1933146bfc70a54d57567419dedaf26d247f733692f6b4a6a",
+      "bytes": 1685
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/binding.json",
+      "sha256": "b538365a4c557d0a3a7f5ca6523a9a88dff9ce4eb9efa7d4aaf54b6fc1f44eae",
+      "bytes": 933845
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/declaration.json",
+      "sha256": "0e4903341c23008d3efd8b267be5086add69b74cbfb55b5fb9bb5b2249da0024",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/intake-provenance.json",
+      "sha256": "6c740bc9afa8ca6adeb0c5bbdcd4c37e9bc6a6573e160e8eedd345a227ca9e4d",
+      "bytes": 3123
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/label-authoring-receipt.json",
+      "sha256": "b9ac065348c14accde07237f341dc7b9479b9e170f29ccfa13abe743ca85b705",
+      "bytes": 2854
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/labels.png",
+      "sha256": "2569d20c8c04a4b4d19f713b41290c50dcd3560028f0407f5c4e5ec08f305e79",
+      "bytes": 39109
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/atlas/18-hawk.json",
+      "sha256": "5290a4216d4d70263d3e358ad7fc8980589338fbde3e6ebc5048f36befffece6",
+      "bytes": 6969
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/atlas/18-hawk.png",
+      "sha256": "04b44b13b7705c24ec1f4125f3968eeb0cd2d8208095ea806a4578943d63c465",
+      "bytes": 277907
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/atlas/receipt.json",
+      "sha256": "af1b35926e7e4802123235a14e6a8132c6b19d8c3b3d15fe87513fce24f9481f",
+      "bytes": 2912
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/binding.json",
+      "sha256": "a49307ac562bac2c495c5ed28a2b1a94f4af036d5105a9e723c0fe0535c06be8",
+      "bytes": 5791
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/keyed.png",
+      "sha256": "d619da92f18a8d71ed8bc406a4fd17109601422b221f7b26d105b2cd0dfb1a85",
+      "bytes": 1343030
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/manifest.json",
+      "sha256": "783769d5349238c320ff33ab0cfc702ed2ae4e12f82028622ca5b56c3c9fc6bc",
+      "bytes": 2833
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/ownership.png",
+      "sha256": "903a97175916678d79975fa36cde732dc64aa3e091303eec965118230368f3fd",
+      "bytes": 12873
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/beak.png",
+      "sha256": "e802caec4bf86a1d9e0fa8e2346aecd3769fb2582ed227c9b38d707fb75a2788",
+      "bytes": 5228
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/body.png",
+      "sha256": "f91d02324c5ef1205131d03f416d3d36cefe399471e7239a80cb2a16efeb4043",
+      "bytes": 51387
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/chest.png",
+      "sha256": "23c465d6e785cec614f61e3c4f33bc40c9468ce48f2324598494eda266b589a4",
+      "bytes": 28514
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/far-foot.png",
+      "sha256": "f9313bf2dcebabab398a73e52f5dd90359c4ede572159575acdb97594bf98977",
+      "bytes": 5669
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/far-shin.png",
+      "sha256": "9bb0cd77baf2407c63f0cb3dc6d558bb062123f9a4b644a5b5b8e12c745a86e0",
+      "bytes": 1991
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/far-thigh.png",
+      "sha256": "4329d9bafba210e42ba646a313dce78c0372ea0216ca19672fc9e2e7345a89e2",
+      "bytes": 2673
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/far-wing-flight.png",
+      "sha256": "1d847f38e1c03260a4ae444608a194573e8f94e93388495355ba5f76caa59b60",
+      "bytes": 12784
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/far-wing-root.png",
+      "sha256": "73b045e73a985067ecbfd10ff3a5e924efc47d24446f7d5ff4d6ab22d6013c4d",
+      "bytes": 11454
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/head.png",
+      "sha256": "1b0b601024a55a9d9605fb88dd2a77fc3cd859d9db89b8dc823b0e494fd703ca",
+      "bytes": 27114
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/near-foot.png",
+      "sha256": "da3bf4ba6a702c988ac421972426a3d40ec8502c4964753e99654b6ff318e3d0",
+      "bytes": 6656
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/near-shin.png",
+      "sha256": "96b6fb49d0ad2d27a8688583278a11180f0d9b4e98f738d541e09dd44cebf4cb",
+      "bytes": 4154
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/near-thigh.png",
+      "sha256": "dd99029459754d74c7e62a3b95cf24bf15f72c32872f6cad260f806ed8f35f9e",
+      "bytes": 4939
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/near-wing-flight.png",
+      "sha256": "d01a9864e2c6e2713cb5c1dbd1b12dbcd3ceb4160d4e28e14eb6d6110895907e",
+      "bytes": 61182
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/near-wing-root.png",
+      "sha256": "2bd196ba1ba5a8eb03be946b5b702e9689cc3c252c84f14af43ccb4281633d58",
+      "bytes": 21639
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/neck-lower.png",
+      "sha256": "77faa3ed4154b5b4dfdeeb32ba4ddfba5738a9efcf93043532f188c47da7d750",
+      "bytes": 13709
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/neck-upper.png",
+      "sha256": "dc00ce49fdae85ca1f363be78de2d5022ee8166694cdd151ae75e8300ccfd484",
+      "bytes": 12356
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/parts/tail.png",
+      "sha256": "defac9c8b75ea500547fb3721b61f8a4ffe08e180d96cd0e5295b152c03c225e",
+      "bytes": 51558
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/parts/receipt.json",
+      "sha256": "ff18afb503864632b4a3fd7d23d8c5014db5ee6cf8905bb4c093f6c5d653f689",
+      "bytes": 4828
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/pre-split-binding.json",
+      "sha256": "a7aeec346a922c5dd220d7e458332b0b2d7a04abc1831d4cbb683b664d27ec4f",
+      "bytes": 604539
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/receipt.json",
+      "sha256": "06cf8ab6d42f83a25f1d201d4e63bc1f53ddc90cc3a6b3c0ca69837f624ee6c9",
+      "bytes": 2446
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/fit/record.json",
+      "sha256": "305f2718ade9861c2604a7dcc9b7be7b5a93fddc4570bce6fc5a4e7975fc0eb8",
+      "bytes": 6675
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/intake.log",
+      "sha256": "72808220bc137f44ae495bee0b48f7d2d9fa0ba29c6909fbba8b553fcc2d0cc5",
+      "bytes": 294
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/original/authoring.json",
+      "sha256": "d4c06907faba4ad0041e7a234ecbd563446947aedcda311f228f745077571e05",
+      "bytes": 9775
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/original/master.png",
+      "sha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+      "bytes": 1138608
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/original/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/original/subject-source.json",
+      "sha256": "87c4c9113ec33cb9421c04800eb08dc511fd67c3f1cea70599270491e99b4568",
+      "bytes": 2294
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/original-held-left.png",
+      "sha256": "f32c29433a30d687fa8d761d94d1e1419de1e0c112d86deb95c21d0a672d0429",
+      "bytes": 269578
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/original-held-right.png",
+      "sha256": "a1c7025b3832fca94fbb95d45ec0c4eebb0003ce37a9ebf9c4b7715f3452b8fb",
+      "bytes": 272936
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/original-native.png",
+      "sha256": "f55864e72280799567c11182447ebcf91394f4a978faaa6c797bfec1ed5fc228",
+      "bytes": 1519519
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/recut.json",
+      "sha256": "db2aecb9420249d6f77999b4b8c79fe3398848878b3d0f1280e9d76f6c4290c0",
+      "bytes": 2792
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/static.json",
+      "sha256": "a0a74188932eb84085c57c9c4f822fbc9e257fb6c31c1a089357a98e5e698acf",
+      "bytes": 8177
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/static.json.sources.json",
+      "sha256": "5a55f34bca31b380dbc80ddf06c3818df16198980aff4d91168ebf7f4879601d",
+      "bytes": 15567
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/static.log",
+      "sha256": "994ab7c92ac31e1654c0356e24c02cd187456de3ee8e9012ccf75f92476e25a5",
+      "bytes": 2175
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/inputs.json",
+      "sha256": "ef588ea43659e5aad1c55d81d1ba13d78c74d7dda8a5c247414acce960c40cbb",
+      "bytes": 16287
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/prepare.mjs",
+      "sha256": "6646290e714cc6d2bd6e16f987d812f86acef31acb6e51ec0a2ecf54f09937ef",
+      "bytes": 2626
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/publication.mjs",
+      "sha256": "9723a6ff39ad110d667859525941446c7879fbced9d97679306b9f95c228ea1b",
+      "bytes": 2919
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/recut.mjs",
+      "sha256": "f9c24e26d9c024e4e5f2bddd31b283c10f5bea9a688a6915183a409fc425df99",
+      "bytes": 3244
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/attribution.json",
+      "sha256": "153b3e1576a23db5304bca92f225bb21c63c791dbb5b56181a275422269c3966",
+      "bytes": 10956
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate/authoring.json",
+      "sha256": "112b5f6aec227b60bef3ff01b202146f42f6e20182b8a3cba5f2a94effe481cf",
+      "bytes": 10500
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate/master.png",
+      "sha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+      "bytes": 1310895
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate/subject-source.json",
+      "sha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8",
+      "bytes": 2296
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-held-v2-left.png",
+      "sha256": "13d1dda11c0282f0780f968b0a7c139fbd3ad175f171977181ae95701c759d6b",
+      "bytes": 499909
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-held-v2-right.png",
+      "sha256": "1064314be6709277f1804809aab0807450635d83769edce2d9b15fedfdd2f135",
+      "bytes": 499407
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/comparison-v2.json",
+      "sha256": "fbbcb7aff5278e5b609897ff9f509727b72560c6c41dee8316ce7ca660ffb9d4",
+      "bytes": 5300
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/conservation.json",
+      "sha256": "c72b7ef9abd9630a842bf9731ad260913126c1ea2a2ca0a0e5e7e8d562419124",
+      "bytes": 1843
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/binding.json",
+      "sha256": "7157d760365b216ab2b57f53d060b7f79039c738b5f02ed7d63a8c81afa2f457",
+      "bytes": 1468791
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/declaration.json",
+      "sha256": "bc8ddce2530ce2a52f6fbd9d9d3cdfe0b9fa4f77461254c7d93acf9562a39982",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/intake-provenance.json",
+      "sha256": "3926a2e3bbd0111b6ceb80e3d814c194cdebe9e296434ff7b7431a604cb12b06",
+      "bytes": 3163
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/label-authoring-receipt.json",
+      "sha256": "c32982d743aa07305f81afc2820221884876ab4a1888532a3d39ea902ea2861d",
+      "bytes": 2759
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/labels.png",
+      "sha256": "ba1892b088c494279f75c6c7dcfc287229f5853d3a56055dfd308f038698e1d3",
+      "bytes": 41333
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/atlas/14-snowy-owl.json",
+      "sha256": "8bfbbe88577f3241be721178fbc887f9df39c6c3800037666643ecc203fb85ea",
+      "bytes": 6995
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/atlas/14-snowy-owl.png",
+      "sha256": "5e4da2d05fec7cfdf63282c343761b15fe2a5ceb6c79519b31acdb566ccacd8d",
+      "bytes": 525047
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/atlas/receipt.json",
+      "sha256": "3e9fb0f3a34dd3d165b03a6e3c39f3da25bec0b914e70005061b6ebace768e22",
+      "bytes": 2917
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/binding.json",
+      "sha256": "e0ca85ea141cc49f923be2bfe0c5fa1ba3dd22d854011d8f7614a917b8634285",
+      "bytes": 5807
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/keyed.png",
+      "sha256": "69e3a138b86b152c0f50f45174cad99b299d5e0e661127ad29a4f6cb4ad96a0f",
+      "bytes": 1570908
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/manifest.json",
+      "sha256": "06fb593b7a88150195244dd014a6d56555d3499b2f03344c0bf14d9ca99deb0c",
+      "bytes": 2838
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/ownership.png",
+      "sha256": "bd9e091e9e6b096618f377c2ddca9818d11cc25f5920e82004081c49c556a6c9",
+      "bytes": 16294
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/beak.png",
+      "sha256": "32a0dbc259080ed24068498a345b73228a874252d41ce42f12e3518588b1ed0c",
+      "bytes": 11348
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/body.png",
+      "sha256": "c9b15f59233d3dbd27f6694c548444e6b9ade3d0af581e12015e06267ed10532",
+      "bytes": 97142
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/chest.png",
+      "sha256": "a47c4d56209c759a3d1d85bf28ab2783ad807838cc6ec235b669bd172d04d1cf",
+      "bytes": 55059
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/far-foot.png",
+      "sha256": "46a4f56fcd0165f293499ecd8ecc347d9e10679ccaf5f3a31803c67be4fd6183",
+      "bytes": 17444
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/far-shin.png",
+      "sha256": "a7cbae33d6622eba46471f366ee30908de5ad612e8f0a9f11cf3bf3c4906f8d6",
+      "bytes": 6283
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/far-thigh.png",
+      "sha256": "f05e51c6ebae1e7ac1f1d823d04a238ae8ee4fe1df8e65a9eb6fe8a67da6bc11",
+      "bytes": 5139
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/far-wing-flight.png",
+      "sha256": "36a227104083cfa800d1f9568f71b0b5b09d1babf7463e881f22201973ade34b",
+      "bytes": 19304
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/far-wing-root.png",
+      "sha256": "32ea9ee996b7539b86ac0aa67de9740b6651a60b44afc09538a99c270e5cd2f9",
+      "bytes": 22645
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/head.png",
+      "sha256": "5029edcf15c2feb15337d9e15c0181ad9bf1d5cb3b354200fa74d79e78d40a01",
+      "bytes": 46637
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/near-foot.png",
+      "sha256": "14f68302950f6705f56318f2b096abf51ad400d49d383f223b001477f7282af5",
+      "bytes": 19782
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/near-shin.png",
+      "sha256": "8853fb9d1848ee68d21cf0b098390e9e2713e920a5aa975b737664e0f73bf064",
+      "bytes": 8653
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/near-thigh.png",
+      "sha256": "a07a762023b67ca01ffb82e2e1f2df00342828f33ac4107ce8354fb4a9fad3e2",
+      "bytes": 7746
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/near-wing-flight.png",
+      "sha256": "2dc04e4119513593783265c89d1aed8b13652d2db764ca9fe5a131c062fe3757",
+      "bytes": 96195
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/near-wing-root.png",
+      "sha256": "4496785ed447dc2bf2516fab4cffd4101d258261c125183fa3cdbc2539c21355",
+      "bytes": 44083
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/neck-lower.png",
+      "sha256": "82351f117591b5fe11c1fbce817bdea15dee4ac3b6ba27f6922397d20e964e07",
+      "bytes": 23465
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/neck-upper.png",
+      "sha256": "37215e65f1424b9091e7dd32582c77d0f54af09a917999d2a6ff9339cfea1ae2",
+      "bytes": 13843
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/parts/tail.png",
+      "sha256": "ceb5cb74306737615a3a068c16c2e29b6bbc176b6fb52984c44b517104055138",
+      "bytes": 87361
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/parts/receipt.json",
+      "sha256": "826ae3e43239d6471d560b1f7f410dd07c1f65addabe4ad735243d5b51d77ffd",
+      "bytes": 4840
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/pre-split-binding.json",
+      "sha256": "05642ccecb8e828329331797ee3566837b1a7c39123056d2a635c613648f4600",
+      "bytes": 940174
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/receipt.json",
+      "sha256": "12879c47861eea13986e20c2497cd450b6c7c0a4d03c6101be967ee6df634cdd",
+      "bytes": 2439
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit/record.json",
+      "sha256": "e72e50120df5bf97edb50e463d04f4a9306570a8a592a803697a3d11c71963c8",
+      "bytes": 6692
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/intake.log",
+      "sha256": "b0f6491853456cf710be59bc1f2204f7b16089be594d729d238eb9a370a8d627",
+      "bytes": 299
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/authoring.json",
+      "sha256": "7915d259b21efcaf64821a2ba5a3e12dedc2670cadf71519c476d04c9fd475f0",
+      "bytes": 9466
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/master.png",
+      "sha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+      "bytes": 1310895
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/subject-source.json",
+      "sha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8",
+      "bytes": 2296
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original-held-left.png",
+      "sha256": "3fda87f46a1df0cdd23530975fc63017ed3c45c2f903cfe275c8e18f68fb9c77",
+      "bytes": 496055
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original-held-right.png",
+      "sha256": "019bed9537aec460f0b034c71a565ae4af0cd205726ad0ec0d961fd0bfd56e62",
+      "bytes": 495773
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original-native.png",
+      "sha256": "567218e43002d5766b77b9323eb192cbf22e1428b8cddc7fe704b459ffcda4c0",
+      "bytes": 1519147
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/recut.json",
+      "sha256": "84d2763d7750dd5f77e4bf6ac28de702b90e29d98d0ba199e0426f6e274c0589",
+      "bytes": 2796
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/static.json",
+      "sha256": "1eafa54442ca712796afe031b6a645de4469202b29cdd287500e0fae555d83cf",
+      "bytes": 8240
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/static.json.sources.json",
+      "sha256": "3802c7b44c53f537425eb79786d8ef0e49e8f80cdafb4f95451c33cdf1175b4f",
+      "bytes": 15567
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/static.log",
+      "sha256": "90617d35cf3ae3eaea50efa0c9fc7de5cb9fd8596cd55d93d47dce449aafc77d",
+      "bytes": 2201
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/source-trace.mjs",
+      "sha256": "90accc25bbd9d021794fa434bb090ae3d1b488a54b04ea52bab7602da6d08077",
+      "bytes": 1693
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/source-trace.test.mjs",
+      "sha256": "bc2dab540428c39fd7557066759bcff229a4d8bf4c4cd33aaf9609d1f14f4ffb",
+      "bytes": 1721
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/attribution.json",
+      "sha256": "9c51de6a0fb4c802c1f06a5c521b7a7d4eed2450ed121df1461debeba55fab64",
+      "bytes": 10956
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/candidate/authoring.json",
+      "sha256": "24505dd92868407f61f911b97bc067a4a7a078eb3e2e8de03dc8845e80dbf88a",
+      "bytes": 19121
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/candidate/master.png",
+      "sha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+      "bytes": 1323422
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/candidate/subject-source.json",
+      "sha256": "92c79718751a2ea2197881462ab2359b5b02e5ee5aa1e058ba2990691ab21245",
+      "bytes": 2421
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/candidate-held-v2-left.png",
+      "sha256": "66ac988b5ed1332476165908f9fedbf3748b366d621417df80742df270e2a46e",
+      "bytes": 512089
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/candidate-held-v2-right.png",
+      "sha256": "eb71eb0ece4797d1dfa2c9707f7263c9cc3f64d06956439509b0ce8d08cb86a4",
+      "bytes": 513628
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/comparison-v2.json",
+      "sha256": "2b3fdef0b5655f56b3e5bb5c8abafc2ca04c06f4610da4124732997d94d552b6",
+      "bytes": 5329
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/conservation.json",
+      "sha256": "98e8a7ebf0f30f9d6bed8244b2866ef4e63f7ef4ea54c0a53ee12b44f6184dba",
+      "bytes": 4218
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/binding.json",
+      "sha256": "cfa62fdecfb15b2864767a2b9227da4467decd8dae580779039fda6de584cb76",
+      "bytes": 2014667
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/declaration.json",
+      "sha256": "dce53de51e9e857336dea17a3c470c085876f63d1c9456cb8a7cb4074604ff69",
+      "bytes": 3279
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/intake-provenance.json",
+      "sha256": "fe030f40a80eba5f82b21eb60807a775f8b1da564970f75e3e1fbca5afb28cac",
+      "bytes": 3450
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/label-authoring-receipt.json",
+      "sha256": "09cbe265669c52cad4bcbb5615cd3f2f15574aa21d1abf28eea0089cfdebdc59",
+      "bytes": 4258
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/labels.png",
+      "sha256": "b6198660fdf8b667d6a61a9e0b6d936af977818aee5e17036669ed7dbc0e5a6f",
+      "bytes": 45097
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/atlas/23-wild-pony.json",
+      "sha256": "d5acccf190344f94b2c509aeff5b061419993bdcb6356fa2feb1a54f5e2a4bda",
+      "bytes": 12634
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/atlas/23-wild-pony.png",
+      "sha256": "4e8e1bf24ab9ee29b8b6da18db4e61e689261ff634dbf52f0fde7e6a07b70a28",
+      "bytes": 544882
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/atlas/receipt.json",
+      "sha256": "5532c158e373a2242ef1f21a7843b0e673b9011871d7409ded8fa193837a53ec",
+      "bytes": 4732
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/binding.json",
+      "sha256": "09972c6e44a3608536341a589cfa34de72eecae5fed3242224d4eed7675540cd",
+      "bytes": 10326
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/keyed.png",
+      "sha256": "378ee97db996267d902b017ae8d74e1c8d161e93219eb4bc5fc23b47c3b06ff3",
+      "bytes": 1637194
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/manifest.json",
+      "sha256": "b285bb60bf703de61195c7cc0db18daa7c9c4b8293eefa0bef97b756174a7cdf",
+      "bytes": 5208
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/ownership.png",
+      "sha256": "1002fc00dd742cbf03beaa983ad4974d389b4e24e9dc7608e0e749a993801edb",
+      "bytes": 20092
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/chest.png",
+      "sha256": "1809415dc9c647705897a8fc79bbc94fa120fa18e96fcce009ba9f246ce7756d",
+      "bytes": 24352
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/ear-far-root.png",
+      "sha256": "8f917395dc29612f78ea7d6347c1fbdd9ea550b813461aba0de14795fdd69427",
+      "bytes": 1377
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/ear-far-tip.png",
+      "sha256": "4494a0c197d487b6affe8cdc5ec4421493b51779a094890dff222bfd18b20430",
+      "bytes": 924
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/ear-near-root.png",
+      "sha256": "4fd9bd6a8a6229ceae3a8cd08bdf47e44d726230540bc35d9e5b455627e5765f",
+      "bytes": 4654
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/ear-near-tip.png",
+      "sha256": "a406a1bd2e221fbad674f383231f5b30b4e15b02c3b878e6cee530a32550f4c7",
+      "bytes": 4514
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-far-ankle.png",
+      "sha256": "d16a5a86c064e34c2de4d32b2858d746eac2605ae21b4e5f783b516a8eb97f22",
+      "bytes": 13146
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-far-knee.png",
+      "sha256": "c9605d99e0623fe0bcd32216680b065b869315567e3c8465c4ee3ef779148748",
+      "bytes": 9878
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-far-paw.png",
+      "sha256": "69cd16399fa6db7b0ba6030fc6876718760690a96a76d22ab0e0f8c2746c1a88",
+      "bytes": 6856
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-far-root.png",
+      "sha256": "24413e0d1a603b81a503f507a0d1f76836660273deb7581360345c5aa28d9861",
+      "bytes": 18354
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-near-ankle.png",
+      "sha256": "3e656b6758b622a93692c3d5e2b0841296f57beeab15023380e92b8765758bb5",
+      "bytes": 12854
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-near-knee.png",
+      "sha256": "e1596812ec4ed922fc0d92a6ac01f50ac71e420e74f9133499adaa636f9bd129",
+      "bytes": 8640
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-near-paw.png",
+      "sha256": "d2ea551ec97430086a31199440683d0342297fdb27106ce6ea903c12b66fa492",
+      "bytes": 3743
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/fore-near-root.png",
+      "sha256": "19ae5708cc9e6a1044124c88fbb8e0f76520fb6864ed5f54ce1e49770f94bfe8",
+      "bytes": 40702
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/head.png",
+      "sha256": "a53cca41bfd11c52a9870519ddc0d62b890cd56341c3e28d3fcabb61e26dadf5",
+      "bytes": 41565
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-far-ankle.png",
+      "sha256": "a4c4020f3f28b4e11ed7296cdedaa6f9081689dde5df3e70d28f76d196e080fa",
+      "bytes": 13213
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-far-knee.png",
+      "sha256": "c0106bc121adc2bff571d82c650ca7e3aed638a086fec41d50ea47f3b3004827",
+      "bytes": 6726
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-far-paw.png",
+      "sha256": "6e1b50de9fc96c9f3b33fa9847c6bb9e61ad5b2b556f147013e73b672cc08395",
+      "bytes": 4611
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-far-root.png",
+      "sha256": "7ec122360ebcad303c8f82b1e4cf4466bfb9f4dfba4400375dbd837fa3ab5f1b",
+      "bytes": 12417
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-near-ankle.png",
+      "sha256": "cb910ddf458032ba062bdb286b2879dca4028cadcbd8bf549564aecbb998d9e2",
+      "bytes": 13771
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-near-knee.png",
+      "sha256": "2b9250d6f6b4b3dc785925b8651022c55f076a476fd58cc1e298af68ef3f961e",
+      "bytes": 7807
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-near-paw.png",
+      "sha256": "aae06e45df5a380966584d623968e32996af6eac6897e08d2dceb4f92cd4f371",
+      "bytes": 4716
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/hind-near-root.png",
+      "sha256": "9587ad8a40db0df3c202276cd32b37065ae70b9ca3ec07c8f7230fa216c51247",
+      "bytes": 73263
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/jaw.png",
+      "sha256": "a1f5aa06bc9ad9c20383a69e24559b4338be082468457dfaca71bf19065cb952",
+      "bytes": 17073
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/neck.png",
+      "sha256": "99de2873f34958415bd0c3a50efef273d6f61a216ee43534668482b899af2499",
+      "bytes": 118213
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/pelvis.png",
+      "sha256": "1c9966fee9e14c0ba08c550fbc9a5d9c214ca6d734432207eaa06960f54b4d89",
+      "bytes": 28549
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/root.png",
+      "sha256": "b893d26bb787faeceb2e5d0a3be0b27e893d24096f71c49f379e9d00f06b2a84",
+      "bytes": 471
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/spine.png",
+      "sha256": "30091b2bfa9e3f2c4136078e9dfeee30f411fc5b6b22773e6d0408d6f56f91a4",
+      "bytes": 97269
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/tail0.png",
+      "sha256": "fbfba58c9fe015a3884f9fdf597486296e1b34d8e257a33db5f17ca28ab23f69",
+      "bytes": 13846
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/tail1.png",
+      "sha256": "637ca9341fb5e87b936a0ff25b7b78e8f953f362db8a8a122b6b4b9f2a54ad62",
+      "bytes": 19006
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/tail2.png",
+      "sha256": "e70cc39b334b963f7a7618cc0c3f7c7f029d975adf0e8fb7fd26ab0f3c5aea52",
+      "bytes": 12469
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/parts/tail3.png",
+      "sha256": "9a0b0cfe4a72485493f9b43a2fc612d522b916750470403bd47d0fb4435fd19a",
+      "bytes": 3074
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/parts/receipt.json",
+      "sha256": "27501f533efc12142ef2d9a36819c8f9184f5622430d53963fd3ab508fc7d178",
+      "bytes": 8150
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/pre-split-binding.json",
+      "sha256": "29db19d67ab8ed818df0a6fb9abe0d0d1f31dd709a9d2d856c510f3a26e3a32a",
+      "bytes": 1173741
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/receipt.json",
+      "sha256": "dc8d2a670fe1e5796d9a93fd956385e3f4268c54aa2284399cecb0ea36a18298",
+      "bytes": 2829
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit/record.json",
+      "sha256": "26ce72ddaaaea545544db8bd025318649fadc1b660145c06b82e456cec8b5ebe",
+      "bytes": 8158
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/intake.log",
+      "sha256": "1c0e1af6e857c9541ef270c8fe69f144396f5e567fad2e05770c00696441cf1f",
+      "bytes": 299
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/authoring.json",
+      "sha256": "6600e471495ca21c0e76b6ae3c5730c8db96bf0854acbdfcefa27d70b866d0a3",
+      "bytes": 18181
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/master.png",
+      "sha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+      "bytes": 1323422
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/subject-source.json",
+      "sha256": "92c79718751a2ea2197881462ab2359b5b02e5ee5aa1e058ba2990691ab21245",
+      "bytes": 2421
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/original-held-left.png",
+      "sha256": "c065e6fa5334d38d064d8a9d1e65012066c029acc6865a610e88c65c4d463944",
+      "bytes": 512279
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/original-held-right.png",
+      "sha256": "e21a9e1eb2884781bb27e4cb542a2a61a25e6cbc45cd6566ae32206267bd9d33",
+      "bytes": 513752
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/original-native.png",
+      "sha256": "35d6d926f6f93c10b885beb331f85b38e8a0ab226e233c0cc7036a34d00bedde",
+      "bytes": 1506422
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/recut.json",
+      "sha256": "ff9f93bcbfd4234b03faa848ada9e2a840e5076585317d157890150acf5334af",
+      "bytes": 2022
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/static.json",
+      "sha256": "416cc0fa4a23e2a58882dff470e4306681f7f08c72da2ef3681b3430ddf4430a",
+      "bytes": 10336
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/static.json.sources.json",
+      "sha256": "3a1907ea1120a0da2274f19ab6ba348a2a0d9530c9580b392fda549f97751606",
+      "bytes": 15567
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/static.log",
+      "sha256": "47c384f9803817cb3d7f470db9569b25ad823873b606913a42ded75497c992cd",
+      "bytes": 2896
+    }
+  ]
+}

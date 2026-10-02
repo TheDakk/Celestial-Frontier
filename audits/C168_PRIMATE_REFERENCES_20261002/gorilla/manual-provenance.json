@@ -1,0 +1,19 @@
+{
+  "id": "gorilla",
+  "name": "Gorilla",
+  "packet": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla",
+  "source": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla",
+  "masterSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+  "authoringSha256": "a9178f8cc6be74b4df0752135292f494f43f6fb07b38fa67063c5be8798613a6",
+  "observationSha256": "65421dca1ea995ca583b117c66597f3c169e542b7a6866aabe3203bee2db0248",
+  "method": "Independent manual source-pixel landmarks and explicit polygons. No donor authoring coordinates, labels, source pixels or reference-self transfer.",
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "limitations": [
+    "Two long arms and two bent hind legs are painted. The far foot is a small horizontal patch behind the near forearm, with its proximal chain partly occluded; its hip/knee coordinates are fit hypotheses, not directly visible internal joints.",
+    "The unchanged automatic silhouette observer counts only three ground clusters because the far foot and near hand share a connected lower silhouette. This packet does not override that measurement or assert four independently separated ground contacts.",
+    "The right arm ends in partly open curled fingers, not a clean flat knuckle pad. Terminal heights differ by roughly 25–40 pixels; grounded movement and finger/hand skin quality remain unmeasured.",
+    "No tail is painted and the named Gorilla is an ape. The existing primate absent-tail contract is used; no tail or independently articulated ear is invented. Head, beard and nape boundaries need moving-paint review."
+  ]
+}

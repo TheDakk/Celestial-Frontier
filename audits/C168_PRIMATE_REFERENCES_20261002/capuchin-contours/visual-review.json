@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c168-full-size-contour-review/v1",
+  "inspectedSize": [1254, 1254],
+  "source": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/master.png",
+  "ownership": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01/parts/ownership.png",
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "findings": [
+    "The exact 1430-pixel structural remainder was the inner far-arm contour. The two manual additions place 1395 of those pixels with the existing elbow and hand joints; the source silhouette is unchanged.",
+    "The broad body-owned inner forearm strip is gone. Tiny residual pixels remain there; separate small blue body-owned fringes persist along the far shin, upper far arm/neck, near arm and tiny tail/crown edges.",
+    "Static actions and full presentation pass, and the unchanged 5% remainder cap now passes. No automatic island placement was applied, so native skin and late-idle visual quality remain unmeasured.",
+    "Four terminal limbs and the actual connected tail remain visible. Hind feet are higher than hand tips in the painting; buried hip/shoulder centres and physical support interpretation remain declared hypotheses."
+  ]
+}
