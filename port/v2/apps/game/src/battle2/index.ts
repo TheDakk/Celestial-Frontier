@@ -9,3 +9,4 @@ export * from './cue-plan.js';
 export * from './guardian-choreo.js';
 export * from './stage.js';
 export * from './habitat-arena.js';
+export * from './arena-registry.js';

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { COMBATANT_HEIGHT_FRACTION, PARALLAX_RATES, RUN_UP_FRACTION, STAND_X, combatantScale, composeArena, parallaxOffset, selectArena } from '../apps/game/src/battle2/arena.js';
+import { COMBATANT_HEIGHT_FRACTION, PARALLAX_RATES, RUN_UP_FRACTION, STAND_X, combatantScale, composeArena, parallaxOffset } from '../apps/game/src/battle2/arena.js';
 
 const RECIPE = { id: 'earth-temperate-proof', groundLineNormalized: 0.78, plates: { far: { width: 1672, height: 941 }, mid: { width: 1672, height: 941 }, near: { width: 1672, height: 941 } } };
 const FRAME = { width: 1024, height: 576 };
@@ -40,24 +40,15 @@ describe('arena composition (kit §7 ARENA)', () => {
     expect(combatantScale(bounds, 1254, 9, 576).heightFraction).toBe(COMBATANT_HEIGHT_FRACTION.max);
     expect(() => combatantScale({ height: 0 }, 1254, 1, 576)).toThrow('bounds.height');
   });
-  it('home-versus-visitor: wild → wild world, guardian → lair, duel → host first then alternating; deterministic', () => {
-    const wild = selectArena({ kind: 'wild', seed: 593405465, wildWorldArenas: ['w-a', 'w-b', 'w-c'] });
-    expect(wild.owner).toBe('wild-world'); expect(['w-a', 'w-b', 'w-c']).toContain(wild.recipeId);
-    expect(selectArena({ kind: 'wild', seed: 593405465, wildWorldArenas: ['w-a', 'w-b', 'w-c'] })).toEqual(wild);
-    expect(selectArena({ kind: 'guardian', seed: 7, lairArenas: ['lair'] })).toMatchObject({ recipeId: 'lair', owner: 'lair' });
-    const duel = (i: number) => selectArena({ kind: 'duel', seed: 11, hostArenas: ['host-1', 'host-2'], visitorArenas: ['visitor-1'], duelIndex: i });
-    expect(duel(0).owner).toBe('host'); expect(duel(1)).toMatchObject({ owner: 'visitor', recipeId: 'visitor-1' }); expect(duel(2).owner).toBe('host'); expect(duel(3).owner).toBe('visitor');
-    expect(duel(0).recipeId.startsWith('host')).toBe(true); expect(duel(2)).toEqual(duel(2));
-    expect(() => selectArena({ kind: 'guardian', seed: 1, lairArenas: [] })).toThrow('lairArenas');
-    expect(() => duel(-1)).toThrow('duelIndex');
-  });
+  // Arena SELECTION (home-versus-visitor, biome → painted set) moved to apps/game/src/battle2/arena-registry.ts on 2026-10-01; its
+  // outcome tests (kinds, the habitat compiler's seeded duel rule, determinism with Date.now/Math.random trapped, fallback reasons)
+  // live beside it in arena-registry.test.ts, under the app tsconfig that can import the generated sets JSON.
   it('never reads a clock or Math.random', () => {
     const now = vi.spyOn(Date, 'now').mockImplementation(() => { throw new Error('clock read'); });
     const perf = vi.spyOn(performance, 'now').mockImplementation(() => { throw new Error('clock read'); });
     const rnd = vi.spyOn(Math, 'random').mockImplementation(() => { throw new Error('random read'); });
     expect(() => Date.now()).toThrow('clock read');
     composeArena(RECIPE, FRAME); parallaxOffset(50); combatantScale({ height: 0.5 }, 1254, 1, 576);
-    selectArena({ kind: 'duel', seed: 3, hostArenas: ['h'], visitorArenas: ['v'], duelIndex: 5 });
     expect(now).toHaveBeenCalledTimes(1); expect(perf).not.toHaveBeenCalled(); expect(rnd).not.toHaveBeenCalled();
   });
 });

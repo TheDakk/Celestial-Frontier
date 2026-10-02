@@ -12,6 +12,7 @@ import { alphaOnlyPng, writeBattle2MasterPins } from './battle2-master-pins.mjs'
 import { artTierOf } from './art-library-tiers.mjs';
 import { writeArtLibraryManifest } from './art-library-manifest.mjs';
 import { writeFinishSources } from './build-finish-sources.mjs';
+import { arenaRuntimeFiles, writeArenaSets } from './arena-sets.mjs';
 const R = path.resolve(import.meta.dirname, '../../../..'), OUT = path.join(R, 'port/v2/apps/game/public/battle2');
 // G3: a LIBRARY archetype's arena files are served on demand from `public/library/battle2/…` (same relative layout, outside the pack);
 // the CORE archetypes and the shared arena files stay under `public/battle2/…` (pinned first-use pack files, as before).
@@ -29,7 +30,10 @@ const alphaOnly = new Set();
 const gzipped = new Set();
 // alphaOnlyPng lives in battle2-master-pins.mjs: ONE copy, so the pinned alpha bytes are exactly the served ones (C13)
 const FITS = CARD_ARCHETYPES.map((a) => a.dir), MARKINGS = CARD_ARCHETYPES.map((a) => a.markings ?? a.dir);
-const files = new Set([ARENA + 'arena-recipe.json', ARENA + 'arena-far.png', ARENA + 'keyed/arena-mid.png', ARENA + 'keyed/arena-near.png', 'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json', 'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png']);
+// Arena plate sets (2026-10-01): every registered delivery manifest's runtime recipe + plates (tools/morph/arena-sets.mjs, which also
+// regenerates apps/game/src/battle2/arena-sets.generated.json). The proof directory's recipe stays: the wiring resolves every path against it.
+const arenaSets = writeArenaSets(R);
+const files = new Set([ARENA + 'arena-recipe.json', ...arenaRuntimeFiles(arenaSets), 'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json', 'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png']);
 // every painted ability-theme sequence registered in the game's manifest (2026-10-01; Wild's row is `wild-anchors.json`, so its files are
 // unchanged): the anchors JSON (relative to the arena directory) and its keyed phase images (relative to that JSON's own directory)
 const themeManifest = JSON.parse(fs.readFileSync(path.join(R, 'port/v2/apps/game/src/effects/painted-themes.json'), 'utf8'));
