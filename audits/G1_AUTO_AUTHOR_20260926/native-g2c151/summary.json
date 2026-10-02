@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C136_REPAIRS_20261002",
+ "tag": "g2c151",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "08-wildebeest",
+  "13-saiga",
+  "16-lark",
+  "18-hawk"
+ ],
+ "refused": [
+  {
+   "id": "01-giant-salamander",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "02-alpine-salamander",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "03-olm",
+   "reason": "wrong-family: biped-bird matches clearly better (0.0168 < 0.0243)"
+  },
+  {
+   "id": "04-blind-salamander",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)"
+  },
+  {
+   "id": "05-axolotl",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "06-giraffe",
+   "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "07-buffalo",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)"
+  },
+  {
+   "id": "09-banteng",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 13% paint (reference 70%)"
+  },
+  {
+   "id": "10-water-buffalo",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 84%)"
+  },
+  {
+   "id": "11-reindeer",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+  },
+  {
+   "id": "12-caribou",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 6%)"
+  },
+  {
+   "id": "14-yak",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 22% paint (reference 70%)"
+  },
+  {
+   "id": "15-wild-sheep",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "17-chough",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 24% paint (reference 72%)"
+  },
+  {
+   "id": "19-crow",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 19% paint (reference 88%)"
+  },
+  {
+   "id": "21-bee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)"
+  },
+  {
+   "id": "22-giant-water-bug",
+   "reason": "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 29% paint (reference 88%)"
+  },
+  {
+   "id": "23-carrion-beetle",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "24-water-strider",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "20-snowy-owl",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "08-wildebeest",
+   "name": "Wildebeest",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-saiga",
+   "name": "Saiga",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-lark",
+   "name": "Lark",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-hawk",
+   "name": "Hawk",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

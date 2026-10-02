@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 209,
+ "total": 213,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -414,6 +414,20 @@
    "nativeDir": "audits/QUAD_ISLANDS_C136_20261002/22-horned-lizard/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole after the remainder-island repair (unrepaired late idle floated an orange fleck over the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wildebeest",
+   "nativeDir": "audits/ISLANDS_C151_20261002/08-wildebeest/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Saiga",
+   "nativeDir": "audits/ISLANDS_C151_20261002/13-saiga/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -876,6 +890,20 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/14-snowy-owl",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 41.6% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Lark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/16-lark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (6.8% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/18-hawk",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (36.0% > 5%, D28)"
   },
   {
    "family": "Fish",
