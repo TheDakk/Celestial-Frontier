@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-02T15:52:12.450813+00:00",
+  "gateHead": "cfb68309295cb42e0be6416588c1ff58ef55ea16",
+  "gate": "PASS",
+  "passedTests": 5976,
+  "expectedFailures": 2,
+  "skippedTests": 3,
+  "optionalRuntimeRestored": true,
+  "reservation": "TERMINAL_RELEASED",
+  "nativeEpochsRepeated": 0,
+  "i5EpochsRepeated": 0,
+  "acceptedEarthSpecies": 196,
+  "totalEarthSpecies": 631,
+  "latestClaudeMailboxRead": "C173",
+  "runtimeChangedSinceI5": false,
+  "nextGitAction": "Normal openai/mac push with retained pre-push guard; final result verified separately."
+}

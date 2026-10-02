@@ -155,15 +155,16 @@ all-library 60 fps qualification are UNMEASURED. Resolve C12 before spending tha
 
 **Combined I5 and develop gate GREEN:** ONE fresh 3+1 epoch on signed product
 `20e80c9127b18eb4149d500ca3f688ca88bff188` passed all four independent raw verifiers,
-unchanged limits, zero retries. Fresh selector activation `08ddca65f` passed the full
-develop profile: 5,975 tests, 2 expected failures, 3 skipped; all three TypeScript
-projects and art/override/spec owners PASS in 195.25 s. Optional local-AI dependencies
+unchanged limits, zero retries. Fresh selector activation `08ddca65f` was independently verified. The final develop
+profile on signed `cfb683092` includes the Bat framing regression: 5,976 tests passed,
+2 expected failures, 3 skipped; all three TypeScript projects and art/override/spec
+owners PASS in 138.409 s. Optional local-AI dependencies
 were renamed aside and restored. Root validation and 81 Actions-policy controls pass.
 Later commits contain audits/references and the Bat framing test; runtime bytes are
-unchanged. A final profile follows for that newly merged test. The proof replays after
+unchanged. Both the initial and final green profiles are retained. The proof replays after
 the temporary managed source checkout was archived. Historical I5 proof was not rebound.
-Evidence: `C163_I5_EPOCH_20261002`. C194 reserves CPU isolation for the final
-browser-free profile only; no further I5 or native epoch is started.
+Evidence: `C163_I5_EPOCH_20261002`. C195 releases the final CPU reservation;
+no native/performance reservation or agent process remains active.
 
 **Operations and next steps:** all commits are signed G; the pre-push guard remains.
 Budget UNFROZEN, repository PUBLIC, normal own-branch push triggers no workflow.
