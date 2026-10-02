@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 196,
- "pct": 31.1,
+ "covered": 198,
+ "pct": 31.4,
  "heldNotCounted": [
   "Basking Shark",
   "Capuchin",
@@ -27,8 +27,8 @@
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 60,
-   "pct": 29.3,
+   "covered": 62,
+   "pct": 30.2,
    "names": [
     "Leopard",
     "Tiger",
@@ -73,7 +73,9 @@
     "Wombat",
     "Sugar Glider",
     "Koala",
+    "Banteng",
     "Mountain Goat",
+    "Giraffe",
     "Wildebeest",
     "Saiga",
     "Cattle",

@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "01-caiman",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+ "subjectSourceSha256": "d52aab22e476a592f304a7ec6fa7bfdd25d491e2b8e02ae2dac46be3e8068494",
+ "identity": {
+  "name": "Caiman",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caiman\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3804786974\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 3804786974,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-24-newt",
+  "authoringSha256": "6186efefde5a9bfbe92ed442a3e5d7c716a97f808acb23b83d7eebb48d0af2a3",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc"
+ },
+ "habitat": {
+  "profileId": "crocodilian",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group crocodilian (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1354,
+     "class": "front",
+     "attach": {
+      "x": 315.4,
+      "y": 191.1,
+      "relX": 0.97,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2511,
+     "class": "rear",
+     "attach": {
+      "x": 169,
+      "y": 207.5,
+      "relX": 0.01,
+      "relY": 0.65
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0551,
+     "class": "limb-down",
+     "attach": {
+      "x": 195.5,
+      "y": 221,
+      "relX": 0.18,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0275,
+     "class": "limb-down",
+     "attach": {
+      "x": 216.5,
+      "y": 226.5,
+      "relX": 0.32,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0278,
+     "class": "limb-down",
+     "attach": {
+      "x": 306.3,
+      "y": 224.8,
+      "relX": 0.91,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0315,
+     "class": "limb-down",
+     "attach": {
+      "x": 268.5,
+      "y": 228,
+      "relX": 0.66,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "c136-sprawler-24-newt",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

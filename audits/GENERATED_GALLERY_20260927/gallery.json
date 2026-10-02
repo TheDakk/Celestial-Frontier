@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 233,
+ "total": 235,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -519,6 +519,20 @@
    "nativeDir": "audits/HEADS_C181_20261002/wild-pony",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: C181 head repair still floats a small fleck beside the lowered head in the late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Giraffe",
+   "nativeDir": "audits/ISLANDS_C196_20261002/14-giraffe/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Banteng",
+   "nativeDir": "audits/ISLANDS_C196_20261002/16-banteng/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)"
   },
   {
    "family": "Snakes (serpent strip author)",

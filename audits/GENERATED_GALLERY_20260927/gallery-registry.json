@@ -1946,5 +1946,21 @@
   "note": "HELD: reaction whole and excellent; in the head-down late idle the shoulder/back fur pulls into a pointed spike (nape-spike class)",
   "batch": "audits/C168_PRIMATE_REFERENCES_20261002",
   "tag": "c192capuchin"
+ },
+ {
+  "family": "quadruped",
+  "name": "Giraffe",
+  "nativeDir": "audits/ISLANDS_C196_20261002/14-giraffe/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196"
+ },
+ {
+  "family": "quadruped",
+  "name": "Banteng",
+  "nativeDir": "audits/ISLANDS_C196_20261002/16-banteng/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196"
  }
 ]

@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "09-agama",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4bf1e5d2fc7d1931395c7aa2171fcd4d7bb11baaca71dc53ac61b32a9c203e26",
+ "subjectSourceSha256": "8b219d428b241085d1d93becabcf881b77413ccca5ff47abe06a91a5a4a07028",
+ "identity": {
+  "name": "Agama",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Agama\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2906047757\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 2906047757,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-15-iguana",
+  "authoringSha256": "e2b68e4fdb9ff464e8ea1b8292d3a8edac5188108c1ecf41fe2f0f06c3d3de27",
+  "masterSha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0572,
+     "class": "front",
+     "attach": {
+      "x": 310.8,
+      "y": 167.8,
+      "relX": 0.96,
+      "relY": 0.09
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2553,
+     "class": "rear",
+     "attach": {
+      "x": 198.6,
+      "y": 214.4,
+      "relX": 0.01,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0069,
+     "class": "limb-down",
+     "attach": {
+      "x": 301.5,
+      "y": 209,
+      "relX": 0.88,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0398,
+     "class": "limb-down",
+     "attach": {
+      "x": 282,
+      "y": 220,
+      "relX": 0.71,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0496,
+     "class": "limb-down",
+     "attach": {
+      "x": 266,
+      "y": 222,
+      "relX": 0.58,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0338,
+     "class": "limb-down",
+     "attach": {
+      "x": 227.5,
+      "y": 226,
+      "relX": 0.26,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "c136-sprawler-15-iguana",
+   "byClass": {
+    "top": 2,
+    "front": 2,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

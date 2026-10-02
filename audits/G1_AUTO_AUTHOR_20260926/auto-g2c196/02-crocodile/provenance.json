@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-crocodile",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "04fc849ab1b661c93162a602e1bad26fb07919ea36853e0ebdf326bbece9e8d0",
+ "subjectSourceSha256": "63843429a938b2d8e5c207c09a0347d7ee615036be26b0d48e952697b7e693c3",
+ "identity": {
+  "name": "Crocodile",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Crocodile\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2924685975\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 2924685975,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-24-newt",
+  "authoringSha256": "6186efefde5a9bfbe92ed442a3e5d7c716a97f808acb23b83d7eebb48d0af2a3",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc"
+ },
+ "habitat": {
+  "profileId": "crocodilian",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group crocodilian (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1057,
+     "class": "front",
+     "attach": {
+      "x": 317.1,
+      "y": 189.9,
+      "relX": 0.96,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.3357,
+     "class": "rear",
+     "attach": {
+      "x": 178.9,
+      "y": 214.4,
+      "relX": 0.06,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0233,
+     "class": "limb-down",
+     "attach": {
+      "x": 295.8,
+      "y": 225.8,
+      "relX": 0.82,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0209,
+     "class": "limb-down",
+     "attach": {
+      "x": 220.8,
+      "y": 228.7,
+      "relX": 0.34,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0325,
+     "class": "limb-down",
+     "attach": {
+      "x": 267,
+      "y": 230,
+      "relX": 0.64,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "c136-sprawler-24-newt",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
