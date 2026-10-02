@@ -2071,7 +2071,7 @@
   "family": "biped-bird",
   "name": "Bittern",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern",
-  "note": "whole in reaction and late idle (C211 source repaint)",
+  "note": "HELD: Codex reproduced a texture-independent walk fold (ARAP folded triangles) on this geometry; the earlier painter-texture native pass did not hit it",
   "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
   "tag": "g2c211"
  },

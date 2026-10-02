@@ -1,9 +1,10 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 219,
- "pct": 34.7,
+ "covered": 218,
+ "pct": 34.5,
  "heldNotCounted": [
+  "Bittern",
   "Capuchin",
   "Chough",
   "Hawk",
@@ -182,8 +183,8 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 48,
-   "pct": 47.1,
+   "covered": 47,
+   "pct": 46.1,
    "names": [
     "Kestrel",
     "Desert Owl",
@@ -201,7 +202,6 @@
     "Curlew",
     "Sandpiper",
     "Rail",
-    "Bittern",
     "Oystercatcher",
     "Guineafowl",
     "Turkey",
