@@ -16,3 +16,11 @@ rebinds each finished texture onto its unchanged rig and films it with the same 
 - Geometry guards are unchanged: the binding parts/paint skin must be byte-identical before and after.
 
 No admission, routing or phone publication. Visual acceptance stays with Dakk's end-of-pass review.
+
+## Result (2026-10-01)
+- `finish-01/`: 5/5 PASS (Finch, Sandpiper, Wasp, Ptarmigan, Vulture). Conservation PASS, 0 alpha / protected changes, 51k–153k
+  RGB pixels changed, ~44 s per subject (Mac, one model construction), phone tier 0 model constructions.
+- `rebound-01/`: 5/5 PASS, binding parts and paint skin byte-identical; every changed pixel landed inside the keyed creature.
+- `native-01/`: 5/5 DIAGNOSTIC_PASS with each subject's own battle script; full-size late idle whole, no new fringe.
+- `painter-vs-finished.jpg`: on these G2 originals the change is subtle (slightly smoother fur and feather), anatomy, pattern and
+  colour unchanged. The finisher's larger value is likely the procedural painter's creatures; scope is Dakk's call.
