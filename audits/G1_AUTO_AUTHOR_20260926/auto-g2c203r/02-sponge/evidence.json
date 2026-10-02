@@ -1,0 +1,194 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "aperture",
+     "crown"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0897,
+    "target": 0,
+    "overlap": 0.062
+   },
+   {
+    "owners": [
+     "crown"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0235,
+    "target": 0,
+    "overlap": 0.015
+   },
+   {
+    "owners": [
+     "base"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0105,
+    "target": 4,
+    "overlap": 0.081
+   },
+   {
+    "owners": [
+     "base"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0251,
+    "target": 4,
+    "overlap": 0.081
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0144,
+     "class": "top",
+     "attach": {
+      "x": 208.5,
+      "y": 89,
+      "relX": 0.49,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0094,
+     "class": "top",
+     "attach": {
+      "x": 283,
+      "y": 189,
+      "relX": 1.01,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0111,
+     "class": "limb-down",
+     "attach": {
+      "x": 137,
+      "y": 190.5,
+      "relX": -0.01,
+      "relY": 0.42
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0084,
+     "class": "front",
+     "attach": {
+      "x": 251,
+      "y": 313.5,
+      "relX": 0.78,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0207,
+     "class": "rear",
+     "attach": {
+      "x": 201.9,
+      "y": 328.1,
+      "relX": 0.44,
+      "relY": 0.99
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 1,
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "codex-ref-02-sea-squirt",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0208,
+  "ref": 0.0292
+ },
+ "bestReference": "codex-ref-02-sea-squirt",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "codex-ref-02-sea-squirt",
+   "cost": 0.01155
+  }
+ ],
+ "mirrorBest": 0.01308,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.01437
+ },
+ "coverage": [
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 1,
+   "area": 56.919999999999845
+  },
+  {
+   "id": "aperture",
+   "joint": "aperture",
+   "paint": 0.6712328767123288,
+   "area": 16316.905000000006
+  },
+  {
+   "id": "crown",
+   "joint": "crown",
+   "paint": 0.8249921309411394,
+   "area": 50851.565
+  },
+  {
+   "id": "base",
+   "joint": "base",
+   "paint": 0.5767012687427913,
+   "area": 69327.13500000001
+  },
+  {
+   "id": "body",
+   "joint": "body",
+   "paint": 0.1705140167958132,
+   "area": 1572516
+  }
+ ],
+ "unclaimedFrac": 0.3272
+}

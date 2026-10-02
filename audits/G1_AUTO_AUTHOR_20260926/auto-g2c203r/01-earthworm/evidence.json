@@ -1,0 +1,200 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: serpent matches clearly better (0.0134 < 0.0415)",
+  "extra-anatomy (unassigned): a rear appendage of 28.6% paint that no reference appendage lands on",
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+  "unexplained-anatomy: 33.9% of the paint lies away from the body and in no part (reference 3.9%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 28.6% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "segment3",
+     "segment2",
+     "segment1",
+     "segment0"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.1808,
+    "target": -1,
+    "overlap": 0
+   },
+   {
+    "owners": [
+     "segment11"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0104,
+    "target": -1,
+    "overlap": 0
+   },
+   {
+    "owners": [
+     "segment11",
+     "segment10"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0143,
+    "target": -1,
+    "overlap": 0
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2864,
+     "class": "rear",
+     "attach": {
+      "x": 164.8,
+      "y": 224.3,
+      "relX": 0.02,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0404,
+     "class": "front",
+     "attach": {
+      "x": 352.3,
+      "y": 203.8,
+      "relX": 0.98,
+      "relY": 0.37
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "front": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "codex-ref-01-leech",
+   "byClass": {
+    "limb-down": 2,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.2417,
+  "ref": 0.1542
+ },
+ "bestReference": "codex-ref-01-leech",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "codex-ref-01-leech",
+   "cost": 0.04146
+  }
+ ],
+ "mirrorBest": 0.04544,
+ "otherFamilyBest": {
+  "family": "serpent",
+  "cost": 0.01339
+ },
+ "coverage": [
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 0,
+   "area": 10.585000000000093
+  },
+  {
+   "id": "segment0",
+   "joint": "segment0",
+   "paint": 0.1467680608365019,
+   "area": 20992.594999999856
+  },
+  {
+   "id": "segment1",
+   "joint": "segment1",
+   "paint": 0.15701219512195122,
+   "area": 10528.934999999965
+  },
+  {
+   "id": "segment2",
+   "joint": "segment2",
+   "paint": 0.17066666666666666,
+   "area": 12016.545000000147
+  },
+  {
+   "id": "segment3",
+   "joint": "segment3",
+   "paint": 0.17945383615084526,
+   "area": 12309.04499999994
+  },
+  {
+   "id": "segment4",
+   "joint": "segment4",
+   "paint": 0.20050761421319796,
+   "area": 12635.984999999986
+  },
+  {
+   "id": "segment5",
+   "joint": "segment5",
+   "paint": 0.21808510638297873,
+   "area": 15062.50999999994
+  },
+  {
+   "id": "segment7",
+   "joint": "segment7",
+   "paint": 0.21556256572029442,
+   "area": 15238.150000000054
+  },
+  {
+   "id": "segment8",
+   "joint": "segment8",
+   "paint": 0.19947275922671354,
+   "area": 18230.639999999963
+  },
+  {
+   "id": "segment9",
+   "joint": "segment9",
+   "paint": 0.18483754512635378,
+   "area": 22148.51000000008
+  },
+  {
+   "id": "segment10",
+   "joint": "segment10",
+   "paint": 0.1567314132618888,
+   "area": 23338.31999999995
+  },
+  {
+   "id": "segment11",
+   "joint": "segment11",
+   "paint": 0.14148877941981391,
+   "area": 58582.26
+  },
+  {
+   "id": "segment6",
+   "joint": "segment6",
+   "paint": 0.04891679175625786,
+   "area": 1572516
+  }
+ ],
+ "unclaimedFrac": 0.3388
+}

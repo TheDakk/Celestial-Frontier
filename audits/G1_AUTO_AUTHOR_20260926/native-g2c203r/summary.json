@@ -1,0 +1,30 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C196_SIMPLE_ORIGINALS_20261002",
+ "tag": "g2c203r",
+ "pilot": 4,
+ "patternSkipped": [],
+ "scored": 4,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "01-earthworm",
+   "reason": "wrong-family: serpent matches clearly better (0.0134 < 0.0415)"
+  },
+  {
+   "id": "02-sponge",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "03-snail",
+   "reason": "no-reference: no other hand-authored subject of family gastropod"
+  },
+  {
+   "id": "04-mussel",
+   "reason": "materials-unknown: no species-group material for profile bivalve; the motion kit refuses an unclassified surface"
+  }
+ ],
+ "staticRed": [],
+ "native": [],
+ "runnerExit": 0
+}
