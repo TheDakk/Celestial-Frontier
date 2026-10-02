@@ -1,0 +1,230 @@
+{
+  "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/snailfish/fallback-1/fit",
+  "sourceRecordSha256": "0a8fd850ebb10e25d02d3abac38799fa5d8390a49b23c9296becfcf31e40c986",
+  "sourceLabelsSha256": "e41a1c54f6651f009e9ea04710e2151a56d23dacfb9e2518401629eeaef07bf0",
+  "newLabelsSha256": "31b6d7c0d56a2bba2b4f8d680c73526f200f63b5a1a413b488d3569aa5f4f659",
+  "newDecodedLabelsSha256": "3e33086f57e877ae6f169e2f6a821eab09ff013590aeb50422baa71f63368b5d",
+  "sourceMasterSha256": "45f66b5e3cfe9530be6693c67ceb22f705f23ae67bb435c61fda4f72431f76d8",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "tail-peduncle",
+    "tailOwner": 6,
+    "stalkOwner": 8,
+    "sharedEdges": 46
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 4872,
+    "phases": [
+      {
+        "phase": "tail",
+        "schema": "cf.remainder-gap-labels/v1",
+        "tail": 6,
+        "stalk": 8,
+        "remainder": 13,
+        "maxDistance": 14,
+        "components": [
+          34,
+          5,
+          4,
+          3,
+          3
+        ],
+        "changedPixels": 252,
+        "requestedRetained": 252,
+        "otherOwnersChanged": 0,
+        "unowned": 0,
+        "sourceRgbaChanges": 0,
+        "contourProjection": false
+      },
+      {
+        "phase": "axial",
+        "moved": 4620,
+        "counts": {
+          "8": 7,
+          "12": 4613
+        },
+        "separateRootOwner": 7,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.6515151515151515,
+            0.48397129186602866
+          ],
+          [
+            0.6232057416267942,
+            0.47320574162679424
+          ],
+          [
+            0.5618819776714514,
+            0.4725677830940989
+          ],
+          [
+            0.4482456140350877,
+            0.4798245614035088
+          ],
+          [
+            0.39019138755980864,
+            0.4891547049441786
+          ],
+          [
+            0.35645933014354064,
+            0.4917862838915471
+          ],
+          [
+            0.3086921850079745,
+            0.4953748006379586
+          ]
+        ],
+        "scope": "First-spine placement diagnostic; original root and all foreign ownership protected"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "74b08e42c110fda2f84c22e275bc34c8953258cd97e953e6eee6ace42c8c68b5",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "snailfish",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1046,
+      "height": 618
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "3e9255f11e2f33242c705e94b608d972cb9ce158b1f09ed06a1782facbd283e5",
+    "sourceVertices": 666,
+    "vertices": 732,
+    "sharedSupports": 305,
+    "pins": 144,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 4,
+    "independentExcludedBoundaries": 5,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "far-pectoral"
+      ],
+      [
+        "body",
+        "near-pectoral"
+      ],
+      [
+        "dorsal",
+        "mid-body"
+      ],
+      [
+        "dorsal",
+        "pelvic-body"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "27fc9159b1b1e0924ad96a71ece5ec848df6a7746d55c79df644ecc06a090cb9"
+  },
+  "joins": [
+    {
+      "name": "body--front-body",
+      "sourceEdges": 231
+    },
+    {
+      "name": "front-body--dorsal",
+      "sourceEdges": 154
+    },
+    {
+      "name": "front-body--mid-body",
+      "sourceEdges": 193
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 193
+    },
+    {
+      "name": "mid-body--pelvic-body",
+      "sourceEdges": 217
+    },
+    {
+      "name": "pelvic-body--rear-body",
+      "sourceEdges": 180
+    },
+    {
+      "name": "rear-body--tail-peduncle",
+      "sourceEdges": 124
+    },
+    {
+      "name": "root--body",
+      "sourceEdges": 276
+    },
+    {
+      "name": "root--far-pectoral",
+      "sourceEdges": 57
+    },
+    {
+      "name": "root--head",
+      "sourceEdges": 116
+    },
+    {
+      "name": "root--near-pectoral",
+      "sourceEdges": 197
+    },
+    {
+      "name": "tail-peduncle--caudal",
+      "sourceEdges": 87
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|caudal",
+      "sourceEdges": 18
+    },
+    {
+      "name": "body|far-pectoral",
+      "sourceEdges": 64
+    },
+    {
+      "name": "body|head",
+      "sourceEdges": 38
+    },
+    {
+      "name": "body|near-pectoral",
+      "sourceEdges": 81
+    },
+    {
+      "name": "dorsal|mid-body",
+      "sourceEdges": 99
+    },
+    {
+      "name": "dorsal|pelvic-body",
+      "sourceEdges": 38
+    },
+    {
+      "name": "far-pectoral|head",
+      "sourceEdges": 34
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 109
+    },
+    {
+      "name": "head|near-pectoral",
+      "sourceEdges": 35
+    }
+  ]
+}

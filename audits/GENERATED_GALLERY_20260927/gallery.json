@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 235,
+ "total": 247,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -1046,6 +1046,34 @@
    "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle"
   },
   {
+   "family": "Birds",
+   "name": "Snow Petrel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/snow-petrel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: a seam line at the near shoulder remains in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Crow",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/crow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the C181 head contours + Codex C201 shared faint fix (spike gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/hawk",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a small pink opening shows at the belly between the legs in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Snowy Owl",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/snowy-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a grey seam line shows around the neck/shoulder in the late idle"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -1592,6 +1620,55 @@
    "note": "whole on the fish-seams fit (this C118 painting; the C106 Halibut stays held)"
   },
   {
+   "family": "Fish",
+   "name": "Basking Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/basking-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/flounder",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: body/tail cracks remain in the late idle on both the plain and the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Great White Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/great-white-shark-framing-v2/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mako Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/mako-shark-framing-v2/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Snailfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Tiger Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/tiger-shark-framing-v2",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: native whole, but Codex keeps an explicit anatomy review hold on its tail proportions"
+  },
+  {
+   "family": "Fish",
+   "name": "Whale Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
    "family": "Insects",
    "name": "Beetle",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/beetle",
@@ -1646,6 +1723,13 @@
    "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: reaction whole and excellent; in the head-down late idle the shoulder/back fur pulls into a pointed spike (nape-spike class)"
+  },
+  {
+   "family": "primate",
+   "name": "Capuchin",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a thin dark seam line shows at the neck of one capuchin in the late idle"
   }
  ]
 }

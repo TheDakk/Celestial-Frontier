@@ -1,24 +1,18 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 198,
- "pct": 31.4,
+ "covered": 204,
+ "pct": 32.3,
  "heldNotCounted": [
-  "Basking Shark",
   "Capuchin",
   "Chough",
-  "Crow",
   "Flounder",
-  "Great White Shark",
   "Hawk",
   "Horse",
-  "Mako Shark",
   "Rhea",
-  "Snailfish",
   "Snow Petrel",
   "Snowy Owl",
   "Tiger Shark",
-  "Whale Shark",
   "Wild Ass",
   "Wild Pony"
  ],
@@ -97,8 +91,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 72,
-   "pct": 54.5,
+   "covered": 77,
+   "pct": 58.3,
    "names": [
     "Salmon",
     "Trout",
@@ -160,6 +154,7 @@
     "Viperfish",
     "Barreleye",
     "Blobfish",
+    "Snailfish",
     "Monkfish",
     "Coelacanth",
     "Ocean Sunfish",
@@ -171,14 +166,18 @@
     "Juvenile Shark",
     "Shark",
     "Reef Shark",
-    "Hammerhead Shark"
+    "Hammerhead Shark",
+    "Great White Shark",
+    "Mako Shark",
+    "Whale Shark",
+    "Basking Shark"
    ]
   },
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 38,
-   "pct": 37.3,
+   "covered": 39,
+   "pct": 38.2,
    "names": [
     "Kestrel",
     "Desert Owl",
@@ -207,6 +206,7 @@
     "Vulture",
     "Tanager",
     "Woodpecker",
+    "Crow",
     "Raven",
     "Robin",
     "Lark",

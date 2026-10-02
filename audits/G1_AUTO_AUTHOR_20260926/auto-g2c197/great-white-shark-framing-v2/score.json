@@ -1,0 +1,10 @@
+{
+ "id": "great-white-shark-framing-v2",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}
