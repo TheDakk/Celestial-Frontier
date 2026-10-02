@@ -23,6 +23,8 @@ import { EffectThemeLibrary, isProceduralImage } from 'cf-proof/effects/theme-li
 import { compileBodyCard } from 'cf-proof/motion/body-card.ts';
 import { withPaintedContactSupports } from 'cf-proof/motion/painted-supports.ts';
 import { primeRecorder } from '../quadruped-proof/capture-contract.mjs';
+import { planGuardianProgramV1 } from 'cf-proof/battle2/guardian-choreo.ts';
+import { filmTimeline, parseGuardianScript, segmentAt } from './guardian-script.mjs';
 
 const FRAME = { width: 1024, height: 576 };
 const get = (n) => fetch(n).then((r) => { if (!r.ok) throw Error(n); return r; });
@@ -82,13 +84,33 @@ try {
   const attackFor = (side, ordinal) => { const s = side === 'A' ? left : right, key = side === 'A' ? 'left' : 'right'; try { const r = compileAnatomyAttack(s.card, mediums[side], ordinal, undefined, script.weaponDeclarations?.[side]); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; } catch (e) { if(script.weaponDeclarations?.[side])throw e; attackLabels[key] ??= 'family delivery clip (' + (e?.message ?? e) + ')'; return null; } };
   const ctx = { A: { side: 'A', name: left.name, mass: masses.left, card: left.card, theme: script.themes?.A ?? 'wild', seed: 1 }, B: { side: 'B', name: right.name, mass: masses.right, card: right.card, theme: script.themes?.B ?? 'stone', seed: 2 },
     arena: { groundLineY: layout.groundLineY, stands: stagedLayout.stands, halfWidths: stage.halfWidths() }, seed: recipe.seed, anchorsForTheme: (t) => themes.anchorsFor(t), readyMs: script.readyMs ?? 600, commandMs: script.commandMs ?? 300, attackFor };
-  const ordinals = { A: 0, B: 0 }, turns = [], skipped = [];
-  for (const row of script.rows) { const side = row.side === 'B' || (row.dodge === true && row.an === right.name) ? 'B' : 'A'; const t = turnPlanInputFromTranscriptEvent(row, ctx, ordinals[side]); if (t.kind === 'turn') { turns.push(t.input); ordinals[side]++; } else skipped.push(t.reason); }
+  const ordinals = { A: 0, B: 0 }, skipped = [], turnRows = []; let turns = [];
+  for (const [rowIndex, row] of script.rows.entries()) { const side = row.side === 'B' || (row.dodge === true && row.an === right.name) ? 'B' : 'A'; const t = turnPlanInputFromTranscriptEvent(row, ctx, ordinals[side]); if (t.kind === 'turn') { turns.push(t.input); turnRows.push(rowIndex); ordinals[side]++; } else skipped.push(t.reason); }
   if (!turns.length) throw Error('script has no stageable turn');
-  // Turn offsets on one global clock: each turn starts where the previous plan ended.
-  const plans = [], offsets = []; let at = 0; for (const input of turns) { clockMs = at; const plan = stage.play(input); plans.push(plan); offsets.push(at); at += plan.beats.end; }
-  const totalMs = at; let current = -1;
-  const stageAt = (g) => { let i = 0; while (i + 1 < plans.length && g >= offsets[i + 1]) i++; if (current !== i) { clockMs = offsets[i]; stage.play(turns[i]); current = i; } clockMs = Math.min(g, offsets[i] + plans[i].beats.end - 1e-6); const frame = stage.tick(); app.renderer.render(app.stage); return frame; };
+  // Guardian choreography (script.guardianChoreo, guardian-script.mjs): the game's program, planned exactly as battle2-wiring.ts plans it for
+  // a settled Guardian/Titan fight (the guardian is the defender, B, on the right). Absent = today's film.
+  const guardianOpt = parseGuardianScript(script, { leftName: left.name, rightName: right.name, guardianRigs: { left: Boolean(left.rig.guardian), right: Boolean(right.rig.guardian) } });
+  const program = guardianOpt ? planGuardianProgramV1({ defender: { name: right.name, kind: guardianOpt.kind }, guardianSide: 'right', seed: ctx.seed, reducedMotion: guardianOpt.reducedMotion,
+    guardian: { side: 'right', mass: masses.right, card: right.card, seed: ctx.B.seed, label: right.name }, opponent: { side: 'left', mass: masses.left, card: left.card, seed: ctx.A.seed, label: left.name },
+    log: script.rows, maxB: guardianOpt.maxB, startHpB: guardianOpt.startHpB, turns, turnRows, riseFromDy: Math.max(0, 1 - stage.bodies().right.topY) }) : null;
+  if (guardianOpt && !program) throw Error('guardian script: no program for kind ' + guardianOpt.kind);
+  if (program) turns = [...program.turns];
+  const caption = program ? new Text({ text: '', style: { ...style, fontSize: 28 }, anchor: 0.5 }) : null;
+  if (caption) { caption.x = FRAME.width / 2; caption.y = 56; caption.visible = false; app.stage.addChild(caption); }
+  // Turn plans, then ONE global clock of set pieces and turns (each starts where the previous one ended; without a program, turns only).
+  const plans = []; for (const input of turns) { clockMs = 0; plans.push(stage.play(input)); }
+  const timeline = filmTimeline(plans.map((p) => p.beats.end), program), totalMs = timeline.totalMs;
+  const offsets = timeline.segments.filter((s) => s.kind === 'turn').map((s) => s.offsetMs);
+  let current = -1, currentSegment = -1, pieceActive = null;
+  const endPiece = () => { if (pieceActive) { clockMs = pieceActive.offsetMs + pieceActive.durationMs; stage.tickSetPiece(); pieceActive = null; } if (caption) caption.visible = false; };
+  const stageAt = (g) => {
+    const k = segmentAt(timeline, g), seg = timeline.segments[k];
+    if (currentSegment !== k) { clockMs = seg.offsetMs; if (seg.kind === 'piece') { stage.playSetPiece(seg.piece); pieceActive = seg; current = null; } else { endPiece(); stage.play(turns[seg.turn]); current = seg.turn; } currentSegment = k; }
+    clockMs = Math.min(g, seg.offsetMs + seg.durationMs - 1e-6);
+    let frame;
+    if (seg.kind === 'piece') { const f = stage.tickSetPiece(); if (caption && f) { caption.text = f.sample.caption.text; caption.alpha = f.sample.caption.alpha; caption.visible = f.sample.caption.visible; } frame = f ? { piece: seg.name, sample: { ms: f.sample.ms, phase: f.sample.beat } } : null; }
+    else frame = stage.tick();
+    app.renderer.render(app.stage); return frame; };
   const holderX = (side) => { const rig = side === 'left' ? left.rig : right.rig; return stage.root.children.find((n) => n.children?.includes(rig.root)); };
   const contactWorld = (side, joint) => { const s = side === 'left' ? left : right, h = holderX(side), j = s.rig.jointPosition(joint); if (!h || !j) return null; return { x: h.x + h.scale.x * (j.x - s.rig.foot.x * s.rig.cutout.width), y: h.y + h.scale.y * (j.y - s.rig.foot.y * s.rig.cutout.height) }; };
   const gates = () => {
@@ -97,7 +119,10 @@ try {
       if (plan.attack) { stageAt(o + b.impactAt); const c = contactWorld(side, plan.attack.contactJoint), targetStand = stagedLayout.stands[plan.target.side]; row.contactAtImpact = c ? { x: c.x / FRAME.width, y: c.y / FRAME.height, targetStandX: targetStand.x, gapToTargetStand: Math.abs(targetStand.x - c.x / FRAME.width) } : null; }
       return row; });
     stageAt(0);
-    return { status: 'DIAGNOSTIC', frame: FRAME, rigs: { left: left.rig.label, right: right.rig.label }, names: { left: left.name, right: right.name }, habitat: habitat.label, fit: { left: habitat.stands.left.fit, right: habitat.stands.right.fit }, widthCapped: { left: paintedL.capped, right: paintedR.capped }, mediums: { left: habitat.stands.left.medium, right: habitat.stands.right.medium }, stands: stagedLayout.stands, restFill: (() => { const b = stage.bodies(); return { left: stagedLayout.stands.left.y - b.left.topY, right: stagedLayout.stands.right.y - b.right.topY }; })(), guardianStandY: standY, attacks: { ...attackLabels }, turns: rows, skipped, totalMs, refusals: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() } };
+    const guardian = program ? { kind: guardianOpt.kind, maxB: guardianOpt.maxB, startHpB: guardianOpt.startHpB, reducedMotion: guardianOpt.reducedMotion, phaseReason: program.phaseReason, phaseAfterTurn: program.phase?.afterTurn ?? null,
+      heavyStrikes: turns.map((t, i) => (t.guardianStrike ? { turn: i, ...t.guardianStrike } : null)).filter(Boolean),
+      segments: timeline.segments.map((s) => (s.kind === 'piece' ? { kind: 'piece', name: s.name, offsetMs: s.offsetMs, durationMs: s.durationMs, beats: s.piece.beats.map((b) => ({ ...b })) } : { kind: 'turn', turn: s.turn, offsetMs: s.offsetMs, durationMs: s.durationMs })) } : null;
+    return { status: 'DIAGNOSTIC', frame: FRAME, ...(guardian ? { guardian } : {}), rigs: { left: left.rig.label, right: right.rig.label }, names: { left: left.name, right: right.name }, habitat: habitat.label, fit: { left: habitat.stands.left.fit, right: habitat.stands.right.fit }, widthCapped: { left: paintedL.capped, right: paintedR.capped }, mediums: { left: habitat.stands.left.medium, right: habitat.stands.right.medium }, stands: stagedLayout.stands, restFill: (() => { const b = stage.bodies(); return { left: stagedLayout.stands.left.y - b.left.topY, right: stagedLayout.stands.right.y - b.right.topY }; })(), guardianStandY: standY, attacks: { ...attackLabels }, turns: rows, skipped, totalMs, refusals: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() } };
   };
   const still = (g) => { stageAt(g); return app.canvas.toDataURL('image/png').split(',')[1]; };
   async function capture() {
@@ -107,7 +132,7 @@ try {
     stageAt(0); recorder.start();
     await primeRecorder({ started: () => started, paint: () => stageAt(0), requestFrame: () => track.requestFrame(), schedule: requestAnimationFrame, now: () => performance.now() });
     const plannedDurationMs=battleCaptureDuration(totalMs),frames = [], refusalLog = []; let start;
-    await new Promise((resolve) => { const step = (t) => { start ??= t; const elapsed = t - start; const cpu = performance.now(); const before = { left: left.rig.refusals(), right: right.rig.refusals() }; const frame = stageAt(Math.min(elapsed, totalMs)); for (const side of ['left', 'right']) { const s = side === 'left' ? left : right; if (s.rig.refusals() !== before[side]) refusalLog.push({ side, turn: current, ms: elapsed, phase: frame?.sample.phase ?? null, context: frame ? (plans[current].attacker.side === side ? frame.sample.attacker.context : frame.sample.target.context) : null, error: s.rig.lastRefusal() }); } frames.push({ ms: elapsed, turn:current, localMs:frame?.sample.ms ?? null, phase:frame?.sample.phase ?? null, cpuMs: performance.now() - cpu, refusals: left.rig.refusals() + right.rig.refusals() }); track.requestFrame(); if (elapsed >= plannedDurationMs) resolve(); else requestAnimationFrame(step); }; requestAnimationFrame(step); });
+    await new Promise((resolve) => { const step = (t) => { start ??= t; const elapsed = t - start; const cpu = performance.now(); const before = { left: left.rig.refusals(), right: right.rig.refusals() }; const frame = stageAt(Math.min(elapsed, totalMs)); for (const side of ['left', 'right']) { const s = side === 'left' ? left : right; if (s.rig.refusals() !== before[side]) refusalLog.push({ side, turn: current, ms: elapsed, phase: frame?.sample.phase ?? null, context: frame && current !== null && !frame.piece ? (plans[current].attacker.side === side ? frame.sample.attacker.context : frame.sample.target.context) : null, error: s.rig.lastRefusal() }); } frames.push({ ms: elapsed, turn:current, ...(frame?.piece ? { piece: frame.piece, segment: currentSegment } : {}), localMs:frame?.sample.ms ?? null, phase:frame?.sample.phase ?? null, cpuMs: performance.now() - cpu, refusals: left.rig.refusals() + right.rig.refusals() }); track.requestFrame(); if (elapsed >= plannedDurationMs) resolve(); else requestAnimationFrame(step); }; requestAnimationFrame(step); });
     recorder.stop(); await stopped; if (recordError) throw recordError;
     const blob = new Blob(chunks, { type: 'video/webm' }), buffer = new Uint8Array(await blob.arrayBuffer()); let s = ''; for (let i = 0; i < buffer.length; i += 8192) s += String.fromCharCode(...buffer.subarray(i, i + 8192));
     const cpu = frames.map((f) => f.cpuMs).sort((a, b) => a - b), deltas = frames.slice(1).map((f, i) => f.ms - frames[i].ms).sort((a, b) => a - b);

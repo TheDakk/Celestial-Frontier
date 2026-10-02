@@ -214,14 +214,34 @@ This matches the C132 program's order (water first, then desert, snow, forest, g
 - `tests/battle2-arena.test.ts`: the old stub's two `selectArena` cases moved to the new suite. They asserted "host first", which
   contradicted the habitat compiler's seeded rule. The composition, parallax, scale and no-clock cases stay (4/4).
 
+## Live worlds (2026-10-02, branch `anthropic/overnight-live-worlds`)
+`main.ts` now passes the encounter's world to the stage: `...m.liveArenaInput(settlement)` in the one gated call.
+- **Builder.** The builder is `apps/game/src/battle2-live-worlds.ts`. It is pure and deterministic, and the arena seed is
+  fnv1a32(battle id).
+- **Where the world comes from.**
+  - The settled encounter's own CF1 address (`encounter.identity.world`).
+  - That address is resolved by replaying the generator (`resolveCF1WorldAddress`) and projected with `projectWorldOpportunity`.
+  - The biome is the generator's own `biomeFor` result.
+  - Open water uses the biome vista's rule (`biome-vista-surface.ts` `surfaceWater`, now exported): liquid gives water with a
+    surface; frozen or none gives no liquid.
+- **Encounter kind.**
+  - A `fauna` defender is a wild fight on its world.
+  - A Guardian or Titan fights in its lair, which is the encounter's world.
+  - Duels take host and visitor worlds plus a round (`liveBattleArena`). No live duel reaches the stage yet.
+- **Earth.** Earth stays on the accepted temperate set with `worlds` null, so placement is byte for byte as before. It uses the
+  `earth` preset: a side that lives in water is staged on the lake world instead of being refused. The route reason names Earth.
+- **What a battle shows today.** With only the temperate set registered, every live battle draws the same plates and the same scene.
+  Only `status().arenaRoute` and the habitat label's world name change.
+  - `battle2-wiring.test.ts` proves it frame by frame over 12 s of play, for Earth, a deep-galaxy world and every other Sol planet, as
+    wild and as guardian fights.
+  - `battle2-live-worlds.test.ts` proves that a synthetic second registered set (canyon) is chosen for canyon worlds and as kin for
+    desert worlds.
+- **Physical facts not applied (decision for Dakk).** Every generated world is given solid ground and air. The stage always paints
+  both. Applying "a gas giant has no ground" or "an airless rock has no air" would refuse fights that play today.
+
+The native film harnesses now take their plates from `arena-sets.generated.json` (`tools/battle2-proof/arena-plates.mjs`). See
+`audits/GUARDIAN_CHOREOGRAPHY_20261001/FILM.md`.
+
 ## Not done / open
-- **`main.ts` does not pass `worlds` yet.** Building an `ArenaWorld` for the encounter means the planet's biome (`biomeFor`) plus its
-  physical facts (solid, atmosphere, liquid, surface water), and the guardian's lair world. That is a separate, game-visible change, and
-  until it is made every battle stays on the default temperate set. Earth (seed 133) has no `biomeFor` biome, so it needs an explicit
-  choice. Recommendation: keep temperate, with the lake world for swimmers, as today.
-- The native film harnesses (`tools/battle2-proof/native-runner.mjs`, `archetype-native-runner.mjs`, `build.mjs`) still hard-code the
-  proof directory's keyed MID. They read `audits/` directly, so they still run. They should take their plates from
-  `arena-sets.generated.json` the next time they are touched. Codex's `biome-encounter` and `parts-motion` runners already use the
-  despilled MID.
 - A painted ocean set will show water in its plates while the stage still draws its procedural `WATER_BANDS` over a swimmer's side. A
   per-set "paints its own water" flag is a decision for Dakk and Codex once the first wet set exists. It is not added here.

@@ -97,6 +97,9 @@ export interface ArenaSelectionContext {
   /** The battle's worlds: wild → the wild creature's world, guardian → its lair, duel → host (`home`) and visitor. Null = no
    * world context (today's game): the accepted Earth temperate set, labelled as the default. */
   readonly worlds: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
+  /** The fight is on Earth (seed 133), which has no generator biome (`biomeFor` returns null): with `worlds` null it stays on the
+   * accepted temperate set, as before, and the reason names Earth instead of a missing world context (battle2-live-worlds.ts). */
+  readonly earth?: boolean;
 }
 export type ArenaOwner = 'wild-world' | 'lair' | 'host' | 'visitor' | 'default';
 export interface ArenaSelection {
@@ -125,7 +128,11 @@ export function selectArena(context: ArenaSelectionContext, sets: readonly Arena
   const fallback = sets.find((s) => s.id === ARENA_FALLBACK_SET_ID); if (!fallback) throw new TypeError(`arena selection: fallback set ${ARENA_FALLBACK_SET_ID} missing`);
   const done = (set: ArenaSetRow, world: ArenaWorld | null, owner: ArenaOwner, biome: BiomeProfileKeyV1, match: ArenaSelection['match'], reason: string): ArenaSelection =>
     Object.freeze({ set, assets: arenaSetAssets(set), world, owner, biome, worldType: ARENA_BIOME_WORLD_TYPE[biome], match, reason });
-  if (!context.worlds) return done(fallback, null, 'default', fallback.biome, 'default', `no world context: accepted ${fallback.id} plates`);
+  if (!context.worlds) {
+    if (context.earth !== true) return done(fallback, null, 'default', fallback.biome, 'default', `no world context: accepted ${fallback.id} plates`);
+    const where = context.kind === 'wild' ? "the wild creature's world" : context.kind === 'guardian' ? "the guardian's lair" : 'the duel world';
+    return done(fallback, null, 'default', fallback.biome, 'default', `${where} is Earth (home world, no generator biome): accepted ${fallback.id} plates`);
+  }
   const side = fightWorld(context.kind, context.contextId, context.seed, context.round), world = context.worlds[side];
   if (!world || !Object.hasOwn(ARENA_BIOME_WORLD_TYPE, world.biome)) throw new TypeError('arena selection: the fight world needs a live biome');
   const owner: ArenaOwner = context.kind === 'wild' ? 'wild-world' : context.kind === 'guardian' ? 'lair' : side === 'home' ? 'host' : 'visitor';
