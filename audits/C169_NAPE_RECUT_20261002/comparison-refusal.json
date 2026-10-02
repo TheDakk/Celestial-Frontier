@@ -1,0 +1,12 @@
+{
+  "schema": "cf.c169-audit-instrument-correction/v1",
+  "failedScript": "audits/C169_NAPE_RECUT_20261002/compare.mjs",
+  "sha256": "d3e54e04bea11d871f2f9f2f99e7acdf79f985be92a7eb93f9f07cd9b38166c0",
+  "exitCode": 1,
+  "refusal": "Source join continuity: overlapping base ink",
+  "location": "compare.mjs candidate right-facing raster guard after first-facing raster",
+  "cause": "Node Buffer.slice() shares memory. The audit raster caller passed PNG Buffer data into applyOpaqueSeamSamplingGuard; the first raster altered the in-memory original atlas before the second seam-owner enumeration. Source files are unchanged. Runtime decoder is not modified.",
+  "successor": "compare-v2.mjs uses explicit Uint8Array.from(original PNG data), guards original-atlas SHA before/after, retains the exact existing guard and runtime contracts.",
+  "preservedPartialOutput": "hawk/candidate-held-left.png",
+  "qualityAccepted": false
+}

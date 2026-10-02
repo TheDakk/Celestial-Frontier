@@ -1,0 +1,108 @@
+{
+  "id": "snowy-owl",
+  "sourceMasterSha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+  "sourceRgbaChangedChannels": 0,
+  "paintPixelsRemoved": 0,
+  "paintPixelsAdded": 0,
+  "landmarksChanged": false,
+  "priorNonPatchOwnersChanged": 0,
+  "crownAndBillCorrectionsUnchanged": true,
+  "independentReplay": true,
+  "compiledLabelsEqual": true,
+  "moved": {
+    "neck1->chest": 3389
+  },
+  "originalCap": "PASS",
+  "candidateCap": "PASS",
+  "unchangedCap": 0.05,
+  "remainingMinorIslands": [
+    {
+      "pixels": 8,
+      "to": 4,
+      "border": {
+        "4": 5
+      }
+    },
+    {
+      "pixels": 104,
+      "to": 3,
+      "border": {
+        "1": 14,
+        "3": 37
+      }
+    },
+    {
+      "pixels": 25,
+      "to": 15,
+      "border": {
+        "15": 12
+      }
+    },
+    {
+      "pixels": 11,
+      "to": 15,
+      "border": {
+        "15": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": 15,
+      "border": {
+        "15": 1
+      }
+    },
+    {
+      "pixels": 25,
+      "to": 4,
+      "border": {
+        "4": 6
+      }
+    },
+    {
+      "pixels": 58,
+      "to": 4,
+      "border": {
+        "2": 4,
+        "4": 15
+      }
+    },
+    {
+      "pixels": 6,
+      "to": 2,
+      "border": {
+        "2": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": 1,
+      "border": {
+        "1": 1
+      }
+    },
+    {
+      "pixels": 2,
+      "to": 1,
+      "border": {
+        "1": 1
+      }
+    },
+    {
+      "pixels": 8,
+      "to": 1,
+      "border": {
+        "1": 2
+      }
+    }
+  ],
+  "controls": [
+    "frozen original replay equals compiled labels",
+    "candidate replay equals compiled labels",
+    "deterministic replay",
+    "exact keyed RGBA equality",
+    "unreviewed ownership theft refused",
+    "paint deletion refused"
+  ],
+  "qualityAccepted": false
+}

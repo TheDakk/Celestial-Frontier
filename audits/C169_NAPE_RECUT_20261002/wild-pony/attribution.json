@@ -1,0 +1,571 @@
+{
+  "id": "wild-pony",
+  "elapsedMs": 1691.9999999999995,
+  "phase": {
+    "actionId": "faint",
+    "elapsedMs": 1691.9999999999995,
+    "durationMs": 1032,
+    "weight": 1,
+    "planted": true,
+    "travel": "stage"
+  },
+  "observedTip": [
+    590,
+    288
+  ],
+  "closestPositiveAlpha": [
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        871,
+        353
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7401473177106757,
+        0.40052332689887593
+      ],
+      "stage": [
+        589.9899446231522,
+        287.84593690983024
+      ],
+      "distance": 0.15439088819035532
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        871,
+        354
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7399332742942006,
+        0.4012915131292845
+      ],
+      "stage": [
+        590.0975008655746,
+        288.2319484292879
+      ],
+      "distance": 0.2516078151348359
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        872,
+        353
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7409155023725409,
+        0.40073737188389424
+      ],
+      "stage": [
+        589.6039338918832,
+        287.9534939404415
+      ],
+      "distance": 0.3987871306529645
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        872,
+        354
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.740701458956066,
+        0.4015055581143028
+      ],
+      "stage": [
+        589.7114901343057,
+        288.33950545989916
+      ],
+      "distance": 0.4455355203620636
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        870,
+        353
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7393791330488104,
+        0.40030928191385773
+      ],
+      "stage": [
+        590.375955354421,
+        287.738379879219
+      ],
+      "distance": 0.45802567189543153
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        870,
+        354
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7391650896323354,
+        0.40107746814426626
+      ],
+      "stage": [
+        590.4835115968435,
+        288.12439139867666
+      ],
+      "distance": 0.4992561310058342
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        871,
+        352
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7403613611271507,
+        0.3997551406684675
+      ],
+      "stage": [
+        589.8823883807297,
+        287.45992539037263
+      ],
+      "distance": 0.5527323737140188
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        871,
+        355
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7397192308777256,
+        0.402059699359693
+      ],
+      "stage": [
+        590.2050571079972,
+        288.6179599487456
+      ],
+      "distance": 0.6510936305891795
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        872,
+        352
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7411295457890159,
+        0.3999691856534857
+      ],
+      "stage": [
+        589.4963776494608,
+        287.5674824209839
+      ],
+      "distance": 0.6638576113298791
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        870,
+        352
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7395931764652854,
+        0.3995410956834492
+      ],
+      "stage": [
+        590.2683991119985,
+        287.35236835976133
+      ],
+      "distance": 0.7010455226016538
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        872,
+        355
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7404874155395909,
+        0.4022737443447113
+      ],
+      "stage": [
+        589.8190463767282,
+        288.7255169793568
+      ],
+      "distance": 0.7477426703821519
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        870,
+        355
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7389510462158604,
+        0.40184565437467473
+      ],
+      "stage": [
+        590.591067839266,
+        288.51040291813433
+      ],
+      "distance": 0.7809432306221687
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        873,
+        353
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7416836870344061,
+        0.40095141686891256
+      ],
+      "stage": [
+        589.2179231606144,
+        288.0610509710528
+      ],
+      "distance": 0.7844561197223396
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        873,
+        354
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7414696436179312,
+        0.4017196030993211
+      ],
+      "stage": [
+        589.3254794030369,
+        288.44706249051046
+      ],
+      "distance": 0.8092236440866761
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        869,
+        353
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7386109483869452,
+        0.4000952369288394
+      ],
+      "stage": [
+        590.7619660856899,
+        287.63082284860775
+      ],
+      "distance": 0.8466900760323531
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        869,
+        354
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7383969049704703,
+        0.40086342315924794
+      ],
+      "stage": [
+        590.8695223281123,
+        288.01683436806536
+      ],
+      "distance": 0.8696852735524858
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        873,
+        352
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7418977304508811,
+        0.40018323063850403
+      ],
+      "stage": [
+        589.110366918192,
+        287.6750394515951
+      ],
+      "distance": 0.9471253234217989
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        871,
+        351
+      ],
+      "alpha": 255,
+      "face": 146,
+      "vertices": [
+        99,
+        103,
+        104
+      ],
+      "published": [
+        0.7405754059553146,
+        0.39898695596738865
+      ],
+      "stage": [
+        589.7748314289373,
+        287.073914639399
+      ],
+      "distance": 0.9530660945149124
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        869,
+        352
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7388249918034202,
+        0.39932705069843094
+      ],
+      "stage": [
+        590.6544098432674,
+        287.2448113291501
+      ],
+      "distance": 0.9992808271679126
+    },
+    {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        873,
+        355
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7412556002014561,
+        0.4024877893297295
+      ],
+      "stage": [
+        589.4330356454593,
+        288.8330740099681
+      ],
+      "distance": 1.007700791606329
+    }
+  ],
+  "nearestFaceField": [
+    {
+      "source": [
+        870.5,
+        361.5
+      ],
+      "weights": [
+        [
+          "spine",
+          1
+        ]
+      ],
+      "locked": true
+    },
+    {
+      "source": [
+        861,
+        352
+      ],
+      "weights": [
+        [
+          "spine",
+          1
+        ]
+      ],
+      "locked": true
+    },
+    {
+      "source": [
+        880,
+        352
+      ],
+      "weights": [
+        [
+          "spine",
+          1
+        ]
+      ],
+      "locked": true
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/candidate/master.png",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/master.png",
+      "sha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/candidate/authoring.json",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/authoring.json",
+      "sha256": "6600e471495ca21c0e76b6ae3c5730c8db96bf0854acbdfcefa27d70b866d0a3"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/candidate/subject-source.json",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/subject-source.json",
+      "sha256": "92c79718751a2ea2197881462ab2359b5b02e5ee5aa1e058ba2990691ab21245"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/candidate/presence.json",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/wild-pony/original/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/fit01/record.json",
+      "sha256": "61aa124b559f63fbacb5c540deaaf2aedac39cc78cecf6d10fe27345df5f0ede"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/fit01/binding.json",
+      "sha256": "ef2439064612c491405b250d996acbb56bde028f569ac0f7932a39e6d39d9544"
+    }
+  ],
+  "conclusion": "Source attribution only; any successor still requires exact conservation, unchanged-cap/static and full-size publication review.",
+  "qualityAccepted": false
+}

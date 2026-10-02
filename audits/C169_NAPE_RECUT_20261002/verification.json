@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c169-final-verification/v1",
+  "firstCandidateFrozenFiles": 246,
+  "firstCandidateUnchanged": true,
+  "C163FrozenDeliveryUnchanged": true,
+  "allOriginalInputHashesUnchanged": true,
+  "bothComparisonSourcePinsUnchanged": true,
+  "completePublicationComparisons": 2,
+  "samplesPerComparison": 1984,
+  "loadedRigByteComparisonsPerComparison": 48,
+  "allEightStaticReportsPass": true,
+  "homePathAndEmailPrivacyScan": "PASS",
+  "visualVerdict": "HELD_SOURCE_JOIN_COVERAGE",
+  "qualityAccepted": false
+}

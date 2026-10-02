@@ -1,0 +1,120 @@
+{
+  "schema": "cf.c169-source-specific-recut/v2",
+  "id": "wild-pony",
+  "predecessor": "candidate",
+  "scope": {
+    "kind": "named-contiguous-ear-polygon-correction",
+    "regions": [
+      {
+        "id": "reviewed-contiguous-near-ear-tip",
+        "joint": "earNearTip",
+        "layer": "near",
+        "polygonPx": [
+          [
+            882,
+            339
+          ],
+          [
+            887,
+            369
+          ],
+          [
+            885,
+            383
+          ],
+          [
+            850,
+            383
+          ],
+          [
+            853,
+            368
+          ],
+          [
+            866,
+            348
+          ]
+        ]
+      },
+      {
+        "id": "reviewed-contiguous-near-ear-root",
+        "joint": "earNearRoot",
+        "layer": "near",
+        "polygonPx": [
+          [
+            850,
+            381
+          ],
+          [
+            885,
+            381
+          ],
+          [
+            896,
+            407
+          ],
+          [
+            890,
+            424
+          ],
+          [
+            858,
+            428
+          ],
+          [
+            845,
+            410
+          ],
+          [
+            846,
+            393
+          ]
+        ]
+      },
+      {
+        "id": "reviewed-contiguous-far-ear-tip",
+        "joint": "earFarTip",
+        "layer": "far",
+        "polygonPx": [
+          [
+            938,
+            347
+          ],
+          [
+            939,
+            375
+          ],
+          [
+            929,
+            388
+          ],
+          [
+            909,
+            381
+          ],
+          [
+            913,
+            365
+          ],
+          [
+            925,
+            354
+          ]
+        ]
+      }
+    ],
+    "permittedPriorJoints": [
+      "neck",
+      "spine",
+      "earNearRoot",
+      "earNearTip",
+      "earFarRoot",
+      "earFarTip"
+    ],
+    "reason": "Original visible near-ear paint is split between neck, earNearRoot and a spine-owned tip. A lone tip transfer leaves a detached fragment. Expand only source ear contours through their adjacent neck-owned paint; preserve all non-ear source pixels."
+  },
+  "sourcePixelsChanged": false,
+  "landmarksChanged": false,
+  "motionChanged": false,
+  "qualityAccepted": false
+}

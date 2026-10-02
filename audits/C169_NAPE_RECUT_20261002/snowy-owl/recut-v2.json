@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c169-source-specific-recut/v2",
+  "id": "snowy-owl",
+  "predecessor": "candidate",
+  "scope": {
+    "kind": "posterior-patch-to-chest",
+    "originalRegion": {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          637,
+          381
+        ],
+        [
+          776,
+          381
+        ],
+        [
+          776,
+          472
+        ],
+        [
+          637,
+          472
+        ]
+      ]
+    }
+  },
+  "sourcePixelsChanged": false,
+  "landmarksChanged": false,
+  "motionChanged": false,
+  "qualityAccepted": false
+}

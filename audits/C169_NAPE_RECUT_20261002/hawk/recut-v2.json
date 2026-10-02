@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c169-source-specific-recut/v2",
+  "id": "hawk",
+  "predecessor": "candidate",
+  "scope": {
+    "kind": "posterior-patch-to-chest",
+    "originalRegion": {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          639,
+          452
+        ],
+        [
+          735,
+          452
+        ],
+        [
+          735,
+          504
+        ],
+        [
+          639,
+          504
+        ]
+      ]
+    }
+  },
+  "sourcePixelsChanged": false,
+  "landmarksChanged": false,
+  "motionChanged": false,
+  "qualityAccepted": false
+}

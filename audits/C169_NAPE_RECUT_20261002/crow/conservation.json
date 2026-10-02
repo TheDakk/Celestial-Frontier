@@ -1,0 +1,73 @@
+{
+  "id": "crow",
+  "sourceMasterSha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387",
+  "sourceRgbaChangedChannels": 0,
+  "paintPixelsRemoved": 0,
+  "paintPixelsAdded": 0,
+  "landmarksChanged": false,
+  "priorNonPatchOwnersChanged": 0,
+  "crownAndBillCorrectionsUnchanged": true,
+  "independentReplay": true,
+  "compiledLabelsEqual": true,
+  "moved": {
+    "neck1->neck0": 811,
+    "neck1->chest": 188
+  },
+  "originalCap": "PASS",
+  "candidateCap": "PASS",
+  "unchangedCap": 0.05,
+  "remainingMinorIslands": [
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 9,
+      "to": 4,
+      "border": {
+        "4": 14
+      }
+    },
+    {
+      "pixels": 26,
+      "to": 2,
+      "border": {
+        "2": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 11,
+      "to": 1,
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 12,
+      "to": 1,
+      "border": {
+        "1": 14
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    }
+  ],
+  "controls": [
+    "frozen original replay equals compiled labels",
+    "candidate replay equals compiled labels",
+    "deterministic replay",
+    "exact keyed RGBA equality",
+    "unreviewed ownership theft refused",
+    "paint deletion refused"
+  ],
+  "qualityAccepted": false
+}
