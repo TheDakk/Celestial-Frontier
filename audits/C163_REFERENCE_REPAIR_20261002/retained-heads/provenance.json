@@ -1,0 +1,69 @@
+{
+  "schema": "cf.c163-retained-authoring-replay/v1",
+  "rows": [
+    {
+      "name": "Hummingbird",
+      "id": "hummingbird",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/hummingbird/original",
+      "sourceMaster": {
+        "path": "audits/G2_C118_20260927/24-hummingbird/master.png",
+        "sha256": "6753771f152fc12283425a4c350c5f2d3419da7f3266102d8e403cbffe4f8f3d"
+      },
+      "sourceAuthoring": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c118/24-hummingbird/fallback-1/packet/authoring.json",
+        "sha256": "02ffb6b613b6c5de480859d0963c52fc22ea57c877fd38699fccd23b7801d72e"
+      },
+      "provenance": "The native report binds this exact master. Its historical fit directory is unavailable. The selected fallback authoring is retained in Git, but is not directly hash-bound by that native report. Any compiled result here is a NEW current-source fit, not a recreation or attestation of the historical fit.",
+      "historicalRecordSha256": "0e18075772703cf00c1ca3e5ecdeac0825d8e98913b66eca38ec8e752791fe18",
+      "nativeAcceptance": false
+    },
+    {
+      "name": "Horse",
+      "id": "horse",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/original",
+      "sourceMaster": {
+        "path": "audits/G2_C114_20260927/13-horse/master.png",
+        "sha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41"
+      },
+      "sourceAuthoring": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/13-horse/fallback-1/packet/authoring.json",
+        "sha256": "1fde2d2dd677dedc77ca27b2630e56ee160ad29b6960c16737ef019aa5659119"
+      },
+      "provenance": "The native report binds this exact master. Its historical fit directory is unavailable. The selected fallback authoring is retained in Git, but is not directly hash-bound by that native report. Any compiled result here is a NEW current-source fit, not a recreation or attestation of the historical fit.",
+      "historicalRecordSha256": "f80b0e39ebf39fe24f3ceb16e40a19a2273a9393abc45471c2e1abd1874c7821",
+      "nativeAcceptance": false
+    },
+    {
+      "name": "Wild Ass",
+      "id": "wild-ass",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/original",
+      "sourceMaster": {
+        "path": "audits/G2_C107_20260927/24-wild-ass/master.png",
+        "sha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916"
+      },
+      "sourceAuthoring": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/24-wild-ass/fallback-1/packet/authoring.json",
+        "sha256": "ee221b7227f05e4fe274c5842c4f4e0f452dc76ea1104296219b8403d49e39a5"
+      },
+      "provenance": "The native report binds this exact master. Its historical fit directory is unavailable. The selected fallback authoring is retained in Git, but is not directly hash-bound by that native report. Any compiled result here is a NEW current-source fit, not a recreation or attestation of the historical fit.",
+      "historicalRecordSha256": "0a07a5b1a0cb04caee22a28e53cc51f4c7276f58810ecf08efd22394d8e06c8a",
+      "nativeAcceptance": false
+    },
+    {
+      "name": "Wild Pony",
+      "id": "wild-pony",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/original",
+      "sourceMaster": {
+        "path": "audits/G2_C107_20260927/23-wild-pony/master.png",
+        "sha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485"
+      },
+      "sourceAuthoring": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/23-wild-pony/packet/authoring.json",
+        "sha256": "bcd9522c773ca5c066f585e5529cbb56980d7aa1a29282e2157c31fabad1ea98"
+      },
+      "provenance": "The native report binds this exact master. Its historical fit directory is unavailable. The selected fallback authoring is retained in Git, but is not directly hash-bound by that native report. Any compiled result here is a NEW current-source fit, not a recreation or attestation of the historical fit.",
+      "historicalRecordSha256": "773f5c11c8aebaaff800150c5bab18600f7dcf33b0a4f1696d26ce0e58813a2f",
+      "nativeAcceptance": false
+    }
+  ]
+}

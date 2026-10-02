@@ -1,0 +1,66 @@
+{
+  "schema": "cf.c163-reviewed-authoring-regions/v1",
+  "id": "chough",
+  "sourceAuthoring": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/chough/original/authoring.json",
+    "sha256": "d0fb9ccdd4e214bf9e53f3881e2d630677ebbcaa655cd1fd800f65c121f05689"
+  },
+  "candidateAuthoringSha256": "726ff89a08ac7f8e7e4996e8c55f9fbc679fbb06131c319b61e19492d0658b02",
+  "sourceMasterSha256": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+  "additions": [
+    {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          658,
+          390
+        ],
+        [
+          758,
+          390
+        ],
+        [
+          758,
+          455
+        ],
+        [
+          658,
+          455
+        ]
+      ],
+      "reason": "Dorsal neck feather contour between original head and wing ownership; only body-owned pixels transfer."
+    },
+    {
+      "id": "reviewed-bill",
+      "joint": "beak",
+      "layer": "near",
+      "polygonPx": [
+        [
+          911,
+          388
+        ],
+        [
+          992,
+          388
+        ],
+        [
+          992,
+          448
+        ],
+        [
+          911,
+          448
+        ]
+      ],
+      "reason": "Visible upper curved red bill outside its transferred polygon; retain prior head/beak owners."
+    }
+  ],
+  "landmarksChanged": false,
+  "existingPolygonsChanged": false,
+  "sourcePixelsChanged": false,
+  "repairCapUnchanged": 0.05,
+  "qualityAccepted": false,
+  "remaining": "Exact ownership conservation, deterministic replay, unchanged intake/static and actual moving-paint/native review still required."
+}

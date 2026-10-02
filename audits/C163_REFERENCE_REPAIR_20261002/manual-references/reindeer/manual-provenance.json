@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c163-manual-reference/v1",
+  "sourcePacket": "audits/C163_REFERENCE_REPAIR_20261002/new-references/reindeer",
+  "masterSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+  "authoringSha256": "e725f36f81b6791061a57f0a5d239af250ad406583d373f65940551aff7b06da",
+  "observationSource": "audits/C163_REFERENCE_REPAIR_20261002/reference-observations.mjs",
+  "observationSha256": "b2e93b52b88a069df68e9c79c7602edf5a2ec1b1fbe89aa342f2eb5d62502970",
+  "writerSha256": "4420dad85c2906ebdc4c7eb73b62c5b7aa2891307c9d1740d83cb024a2e273c4",
+  "method": "Independent source-pixel landmarks and core contours; explicit radii generate lower-limb/tail capsule regions. No source pixels altered and no donor authoring transferred.",
+  "limitations": [
+    "One edited original exposes two natural ears while retaining the antlers and genuinely short tail. The four tail joints are confined to the observed approximately 44-pixel tail; no long tail is invented.",
+    "Antlers remain head-owned. Far proximal limb attachments and ear bases have partly occluded depth and remain interpretation holds.",
+    "The four hoof tips differ in image height. Their observed support and all motion checks remain necessary; this is not a contact admission."
+  ],
+  "qualityAccepted": false
+}

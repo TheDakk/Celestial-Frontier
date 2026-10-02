@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "c39a2371991eb955753c550b6aafba7014d3d1c6",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/master.png",
+      "sha256": "74f0027c221d38a3b6d70e8068c77b4a97f04ba47d16c6f12c731cf50c00fc35"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/authoring.json",
+      "sha256": "0c384a3bc412741cdc4b7c7ff66eb2e46dca31ead91e70da9ea7522c9e4fd316"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/subject-source.json",
+      "sha256": "d170dec63e28797f6d120e712cb7c47fb9f8c7103bcffd4adf1cf55b3e321298"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "aaadad1310d0957be76035ff90e7438d09e6c366ddfae291fbc07aaa4aa84980",
+  "bindingHash": "efb6073a1cfaba2d2161cdfbf99e637680154245eb7f71563d571cf98a713550",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/master.png",
+      "sha256": "74f0027c221d38a3b6d70e8068c77b4a97f04ba47d16c6f12c731cf50c00fc35",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/authoring.json",
+      "sha256": "0c384a3bc412741cdc4b7c7ff66eb2e46dca31ead91e70da9ea7522c9e4fd316",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/subject-source.json",
+      "sha256": "d170dec63e28797f6d120e712cb7c47fb9f8c7103bcffd4adf1cf55b3e321298",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

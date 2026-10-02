@@ -1,0 +1,87 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "1ced0a1fdcecc620779465d1edb434bff201ebee",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png",
+      "sha256": "fbcde72daf7c15afec6898e839b893bd6e757eeddb7edc938fa28ce5a756f0b1"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/authoring.json",
+      "sha256": "129c3a206d2fc995b57a6ea771b2ce4fd273c4da6af921a20fda22fe2ef635b6"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/subject-source.json",
+      "sha256": "3d46d822247a2e1f6578bbbbd3152436f582afcdcb98817c075c82e00c1be4d3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "b05cda70cbea121e5a8b66c5b9b2b7eed732aad2effa350556f3bb0b60816474",
+  "bindingHash": "a79fd0538cccf9440a9f2ee3ce6a4b63c46a5cbfb27a4672710dcbeb22013357",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legFarFoot",
+    "legFarAnkle",
+    "legFarKnee",
+    "legNearFoot",
+    "legNearAnkle",
+    "legNearKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarTip",
+    "wingFarRoot",
+    "wingNearTip",
+    "wingNearRoot",
+    "tailFan",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png",
+      "sha256": "fbcde72daf7c15afec6898e839b893bd6e757eeddb7edc938fa28ce5a756f0b1",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/authoring.json",
+      "sha256": "129c3a206d2fc995b57a6ea771b2ce4fd273c4da6af921a20fda22fe2ef635b6",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/subject-source.json",
+      "sha256": "3d46d822247a2e1f6578bbbbd3152436f582afcdcb98817c075c82e00c1be4d3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

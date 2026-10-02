@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c163-jaw-anchor-inputs/v1",
+  "left": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01",
+  "right": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03",
+  "effectAnchors": "audits/C163_EFFECTS_POLISH_20261002/storm/anchors.json",
+  "effectAnchorsSha256": "7e99d6930027a8c1e898b9fc6a7cb212c5938852c7cdcff7203da8d91d3caa55",
+  "script": "audits/C163_JAW_ANCHOR_20261002/script.json",
+  "scriptSha256": "b972e7f3462255096583f28a56d733529d3b07cd23d49c4f742533f56ae71993",
+  "recordSha256": [
+    {
+      "fit": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03",
+      "sha256": "0e103601830999fe1c7d3857b7c0a1d9e0fc3c0261df9e060e2fa70bf75078c0"
+    }
+  ],
+  "sourcePolicy": "Current production with C165 body/contact anchoring; no C12 candidate override. Storm replacement candidate, quality acceptance pending.",
+  "scope": "One Civet/Wolf jaw/contact anchoring film on accepted temperate control arena at4x; not all-pair performance or repaint acceptance.",
+  "priorC132ScriptSha256": "2ca679a702a9126770a490abd6bc51af36e06b6500242222b5f89f1014584b5f",
+  "supportCorrection": "Use registered Civet/Wolf default contact supports per side; prior C132 diagnostic forced both observed. All four transcript rows, theme and timing values unchanged."
+}

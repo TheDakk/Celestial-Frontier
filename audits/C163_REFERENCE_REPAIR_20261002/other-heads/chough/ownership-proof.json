@@ -1,0 +1,207 @@
+{
+  "id": "chough",
+  "masterSha256": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+  "originalAuthoringSha256": "d0fb9ccdd4e214bf9e53f3881e2d630677ebbcaa655cd1fd800f65c121f05689",
+  "candidateAuthoringSha256": "726ff89a08ac7f8e7e4996e8c55f9fbc679fbb06131c319b61e19492d0658b02",
+  "sourceRgbaChanges": 0,
+  "paintPixelsRemoved": 0,
+  "paintPixelsAdded": 0,
+  "priorNonRemainderOwnersChanged": 0,
+  "movedPixels": [
+    {
+      "to": "beak",
+      "joint": "beak",
+      "pixels": 828
+    },
+    {
+      "to": "neck-upper",
+      "joint": "neck1",
+      "pixels": 1355
+    }
+  ],
+  "deterministicReplay": true,
+  "compiledLabelsEqual": true,
+  "compiledKeyedSourceEqual": true,
+  "unchangedCap": 0.05,
+  "remainingCapOutcome": "PASS",
+  "remainingMinorIslands": [
+    {
+      "pixels": 67,
+      "to": 6,
+      "border": {
+        "6": 27
+      }
+    },
+    {
+      "pixels": 12,
+      "to": 15,
+      "border": {
+        "15": 7
+      }
+    },
+    {
+      "pixels": 50,
+      "to": 15,
+      "border": {
+        "15": 15
+      }
+    },
+    {
+      "pixels": 29,
+      "to": 15,
+      "border": {
+        "15": 12
+      }
+    },
+    {
+      "pixels": 8,
+      "to": 1,
+      "border": {
+        "1": 1
+      }
+    },
+    {
+      "pixels": 16,
+      "to": 2,
+      "border": {
+        "2": 8
+      }
+    },
+    {
+      "pixels": 4,
+      "to": 2,
+      "border": {
+        "2": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    }
+  ],
+  "remainingRemainderComponents": [
+    {
+      "pixels": 20608,
+      "bounds": [
+        473,
+        550,
+        736,
+        776
+      ],
+      "border": {
+        "near-wing-flight": 253,
+        "chest": 235,
+        "tail": 152,
+        "near-thigh": 134,
+        "far-thigh": 129,
+        "near-wing-root": 94,
+        "far-shin": 12
+      }
+    },
+    {
+      "pixels": 67,
+      "bounds": [
+        653,
+        743,
+        658,
+        766
+      ],
+      "border": {
+        "far-thigh": 27
+      }
+    },
+    {
+      "pixels": 50,
+      "bounds": [
+        307,
+        746,
+        322,
+        750
+      ],
+      "border": {
+        "tail": 15
+      }
+    },
+    {
+      "pixels": 29,
+      "bounds": [
+        333,
+        748,
+        343,
+        751
+      ],
+      "border": {
+        "tail": 12
+      }
+    },
+    {
+      "pixels": 16,
+      "bounds": [
+        672,
+        877,
+        678,
+        887
+      ],
+      "border": {
+        "far-foot": 8
+      }
+    },
+    {
+      "pixels": 12,
+      "bounds": [
+        289,
+        745,
+        296,
+        746
+      ],
+      "border": {
+        "tail": 7
+      }
+    },
+    {
+      "pixels": 8,
+      "bounds": [
+        449,
+        861,
+        451,
+        866
+      ],
+      "border": {
+        "near-foot": 1
+      }
+    },
+    {
+      "pixels": 4,
+      "bounds": [
+        828,
+        881,
+        830,
+        884
+      ],
+      "border": {
+        "far-foot": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        831,
+        886,
+        831,
+        886
+      ],
+      "border": {}
+    }
+  ],
+  "controls": [
+    "original cap refusal reproduced",
+    "remove correction restores refusal",
+    "non-remainder theft refused",
+    "paint deletion refused",
+    "independent label replay equals compiled label",
+    "exact keyed RGBA equality"
+  ],
+  "qualityAccepted": false,
+  "nativeRun": false
+}

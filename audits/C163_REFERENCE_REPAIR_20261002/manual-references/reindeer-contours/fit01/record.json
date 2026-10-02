@@ -1,0 +1,264 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Reindeer\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3670895316\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"18\"]]]]",
+    "seed": 3670895316,
+    "ownerId": "authored:archetype-sprint/c163-reference-reindeer",
+    "earthName": "Reindeer"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3670895316,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 6,
+    "body": 10,
+    "loco": 2,
+    "trait": 18,
+    "size": 4,
+    "diet": 3,
+    "head": 0,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 4,
+    "pattern": 6,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 13,
+    "detail": 7,
+    "accent": 16,
+    "temper": 4,
+    "sense": 0,
+    "repro": 1,
+    "life": 4,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Reindeer"
+  },
+  "geometry": {
+    "cutoutAssetHash": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7177033492822966,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.45933014354066987,
+      0.5374800637958532
+    ],
+    "pelvis": [
+      0.36762360446570974,
+      0.5135566188197768
+    ],
+    "spine": [
+      0.46570972886762363,
+      0.5007974481658692
+    ],
+    "chest": [
+      0.5590111642743222,
+      0.518341307814992
+    ],
+    "neck": [
+      0.613237639553429,
+      0.48724082934609253
+    ],
+    "head": [
+      0.6562998405103668,
+      0.45534290271132377
+    ],
+    "jaw": [
+      0.6850079744816587,
+      0.49521531100478466
+    ],
+    "hindNearRoot": [
+      0.34609250398724084,
+      0.543859649122807
+    ],
+    "hindNearKnee": [
+      0.3078149920255183,
+      0.6012759170653907
+    ],
+    "hindNearAnkle": [
+      0.2838915470494418,
+      0.6786283891547049
+    ],
+    "hindNearPaw": [
+      0.2974481658692185,
+      0.70414673046252
+    ],
+    "hindFarRoot": [
+      0.41148325358851673,
+      0.5550239234449761
+    ],
+    "hindFarKnee": [
+      0.3748006379585327,
+      0.6212121212121212
+    ],
+    "hindFarAnkle": [
+      0.41148325358851673,
+      0.6834130781499203
+    ],
+    "hindFarPaw": [
+      0.4298245614035088,
+      0.7017543859649122
+    ],
+    "foreNearRoot": [
+      0.5534290271132376,
+      0.5645933014354066
+    ],
+    "foreNearKnee": [
+      0.5765550239234449,
+      0.6220095693779905
+    ],
+    "foreNearAnkle": [
+      0.6116427432216905,
+      0.689792663476874
+    ],
+    "foreNearPaw": [
+      0.6267942583732058,
+      0.7097288676236044
+    ],
+    "foreFarRoot": [
+      0.5311004784688995,
+      0.5566188197767146
+    ],
+    "foreFarKnee": [
+      0.5127591706539075,
+      0.6052631578947368
+    ],
+    "foreFarAnkle": [
+      0.5023923444976076,
+      0.6842105263157895
+    ],
+    "foreFarPaw": [
+      0.5159489633173844,
+      0.7065390749601276
+    ],
+    "earNearRoot": [
+      0.638755980861244,
+      0.4449760765550239
+    ],
+    "earNearTip": [
+      0.6212121212121212,
+      0.42503987240829344
+    ],
+    "earFarRoot": [
+      0.6794258373205742,
+      0.44976076555023925
+    ],
+    "earFarTip": [
+      0.6993620414673046,
+      0.4370015948963317
+    ],
+    "tail0": [
+      0.33253588516746413,
+      0.47926634768740034
+    ],
+    "tail1": [
+      0.31738437001594894,
+      0.4840510366826156
+    ],
+    "tail2": [
+      0.3062200956937799,
+      0.4944178628389155
+    ],
+    "tail3": [
+      0.2974481658692185,
+      0.5031897926634769
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Source-specific point and contour observations with explicit local capsule partitions. No reference-coordinate transfer. Occluded attachment centres are interpretations, not all-visible assertions.",
+    "limitations": [
+      "One edited original exposes two natural ears while retaining the antlers and genuinely short tail. The four tail joints are confined to the observed approximately 44-pixel tail; no long tail is invented.",
+      "Antlers remain head-owned. Far proximal limb attachments and ear bases have partly occluded depth and remain interpretation holds.",
+      "The four hoof tips differ in image height. Their observed support and all motion checks remain necessary; this is not a contact admission."
+    ],
+    "nativeAcceptance": false,
+    "visualAcceptance": "CANDIDATE_UNMEASURED",
+    "contourIteration": "One bounded source-specific completion after full-size ownership review found body-owned outer hoof/fetlock strips, tail fringes and a horn rim. Prior anatomy polygons have priority; no source paint changes."
+  },
+  "provenance": {
+    "authoringSha256": "63b3097ab0ea1776156afc64073e064d04a96cace379ae01a08634749243a399",
+    "subjectSourceSha256": "862326214df663144fbc23963aa2a61c55db5dd50f352b3ccd245fb779323a5f",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09477563256782065,
+      "spine": 0.0989125079854073,
+      "chest": 0.09493653069466179,
+      "neck": 0.0625120019051547,
+      "head": 0.053589466081057247,
+      "jaw": 0.04913212695613832,
+      "hindFarRoot": 0.06035897757628786,
+      "hindFarKnee": 0.07567358728856367,
+      "hindFarAnkle": 0.07221200269647061,
+      "hindFarPaw": 0.025938526263621354,
+      "foreFarRoot": 0.04737271687489369,
+      "foreFarKnee": 0.05198726000959043,
+      "foreFarAnkle": 0.0796251095143006,
+      "foreFarPaw": 0.02612175335591579,
+      "hindNearRoot": 0.03717340357514086,
+      "hindNearKnee": 0.0690057660375883,
+      "hindNearAnkle": 0.08096750062742143,
+      "hindNearPaw": 0.028895806909080498,
+      "foreNearRoot": 0.046587628928161165,
+      "foreNearKnee": 0.06189862319082951,
+      "foreNearAnkle": 0.07632624641085511,
+      "foreNearPaw": 0.025040380331910087,
+      "tail0": 0.04906088808699212,
+      "tail1": 0.015889042141284938,
+      "tail2": 0.015235225817019778,
+      "tail3": 0.012405382126079742,
+      "earFarRoot": 0.02379016569406107,
+      "earFarTip": 0.023669572694825912,
+      "earNearRoot": 0.020377882518629462,
+      "earNearTip": 0.02655634099736315
+    },
+    "measures": {
+      "torso": 0.1914473590788761,
+      "head": 0.053589466081057247,
+      "head/torso": 0.27991749971843927,
+      "bone-min": 0.012405382126079742,
+      "bone-max": 0.0989125079854073,
+      "leg/torso:hindFar": 0.9079473181818105,
+      "leg/torso:foreFar": 0.8239033624633106,
+      "leg/torso:hindNear": 0.9342989865971271,
+      "leg/torso:foreNear": 0.8527944742571747
+    }
+  },
+  "recipeHash": "1c0641c11dc2da399e0153174247870a04f537454c71959f690e00e714807230"
+}

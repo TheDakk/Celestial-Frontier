@@ -1,0 +1,97 @@
+{
+  "schema": "cf.c163-fixed-rotations-verification/v1",
+  "status": "PASS_NATIVE_PENDING",
+  "nativeRun": false,
+  "tests": 22,
+  "command": [
+    "node",
+    "--import",
+    "./audits/C163_C12_FIXED_ROTATIONS_20261002/import-hook.mjs",
+    "--test",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/fixed-rotations.test.mjs",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-arap-sweep.test.mjs",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-skin.test.mjs",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-kernel-numerics.test.mjs"
+  ],
+  "log": {
+    "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/validation.log",
+    "sha256": "2bd545c492dabb7a0a930d9b4819dbce8a4f05f05f4697872b0b2b405f4d525d"
+  },
+  "repeatBuildIdentical": true,
+  "browserBundle": {
+    "resolved": true,
+    "bytes": 88531,
+    "sha256": "a95fee91a2c35fdda1a49c95c8506e7884b66725a9e437104ef3a4d35d9d40bf",
+    "sourceOverrides": {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/source-overrides.json",
+      "sha256": "cc1ef0a4e4c3117cba4694a23d9dfb68f664a7fa2a86fe635956203602c09aec"
+    }
+  },
+  "sourceBindings": [
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.c",
+      "sha256": "87002ac565a72f94e4239faa618f689f7cd197db7973cbf9b511139193def285"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.wasm",
+      "sha256": "a48d554ba386ae1fc9f186a02f25984b307e6ec4bfe8bfc782dc6d79b67efd78"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "44d181aedd47321a459ba6ee23fb269064d9d6f9e0cc5f311bcfc3329b6b79a0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-build.json",
+      "sha256": "0cbd0509f4d19ed3bfbb92cd9bc016c0782c85117cb15400a75b0b992e14bc85"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-arap-sweep.mjs",
+      "sha256": "af04958347fcd50f743c0c7c6cff30c357311febc9f3483e48744a882d27f356"
+    }
+  ],
+  "candidateBindings": [
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-skin.mjs",
+      "sha256": "1c8ec08dbfc840480b61a4548a04c9272a10ec00c6c29a7f05453f9a37b5cc2b",
+      "bytes": 12830
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep-build.json",
+      "sha256": "819d4accd112b9f8c770e13eb6241188b738b040b86c241744983859454a42e3",
+      "bytes": 1004
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep-bytes.mjs",
+      "sha256": "7bcc54b594a03b611429b834512a3b01c528c544f03b11f0e6933631c0c3560c",
+      "bytes": 5692
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep.c",
+      "sha256": "19f9313e2c4d1feea8fe2b030ce42ad9142a2dffa8a147d23e3402361197b8a1",
+      "bytes": 4947
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep.wasm",
+      "sha256": "8dc3b57219c486d8e6db654284a3d6c9987233695d1c116d5559df2e235cd2be",
+      "bytes": 1933
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/build-arap-sweep.mjs",
+      "sha256": "18b41f6a05fa5bd147b024d1a58735ac791213949801a48a161879165063e97b",
+      "bytes": 4705
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-arap-sweep.mjs",
+      "sha256": "808770c8160b8cd9f68684674fb4aeea4226831176c9c68e056a3e7505149b8c",
+      "bytes": 8830
+    }
+  ]
+}

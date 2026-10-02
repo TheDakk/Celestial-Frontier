@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c163-manual-reference/v1",
+  "sourcePacket": "audits/G2_C136_REPAIRS_20261002/09-banteng",
+  "masterSha256": "77104268838f9507fa23a637d5f548730e3fae6fdde38fe837859673fd27187e",
+  "authoringSha256": "aab19ce8c4da85f4444507ac2f5ceed78fd931c5631ef8cf30f70f65c30cd130",
+  "observationSource": "audits/C163_REFERENCE_REPAIR_20261002/reference-observations.mjs",
+  "observationSha256": "b2e93b52b88a069df68e9c79c7602edf5a2ec1b1fbe89aa342f2eb5d62502970",
+  "writerSha256": "4420dad85c2906ebdc4c7eb73b62c5b7aa2891307c9d1740d83cb024a2e273c4",
+  "method": "Independent source-pixel landmarks and core contours; explicit radii generate lower-limb/tail capsule regions. No source pixels altered and no donor authoring transferred.",
+  "limitations": [
+    "Existing C151 original retained byte-for-byte. Both ears and both horns are visible, four natural legs are separated and the full tufted tail is connected.",
+    "Hoof and fetlock landmarks are observed directly on the source; the old cattle/horse transfer is not a coordinate donor. Far upper-limb depth and buried shoulder attachments remain interpretations.",
+    "The earlier Gaur-derived Banteng candidate failed melee:tail compression. That separate red is retained; this new manual packet neither lengthens the tail nor alters motion limits."
+  ],
+  "qualityAccepted": false
+}

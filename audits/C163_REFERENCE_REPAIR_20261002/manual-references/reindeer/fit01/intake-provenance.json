@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "c39a2371991eb955753c550b6aafba7014d3d1c6",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/master.png",
+      "sha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/authoring.json",
+      "sha256": "e725f36f81b6791061a57f0a5d239af250ad406583d373f65940551aff7b06da"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/subject-source.json",
+      "sha256": "862326214df663144fbc23963aa2a61c55db5dd50f352b3ccd245fb779323a5f"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "797d7672fa0b14b7db321fb0ec3dd273043daddf764c46e5ab5c04c47a95479c",
+  "bindingHash": "510942989a28ad5729b378f0dd6bd4411d4ba5935aa7679c4ca4ede180b0a464",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/master.png",
+      "sha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/authoring.json",
+      "sha256": "e725f36f81b6791061a57f0a5d239af250ad406583d373f65940551aff7b06da",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/subject-source.json",
+      "sha256": "862326214df663144fbc23963aa2a61c55db5dd50f352b3ccd245fb779323a5f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

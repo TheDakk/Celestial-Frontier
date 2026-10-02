@@ -1,0 +1,87 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "1ced0a1fdcecc620779465d1edb434bff201ebee",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/master.png",
+      "sha256": "f0169a110876a1f3abeac0a968c33a7da10a09cbca0ea61ea862f16023a0dfb3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/authoring.json",
+      "sha256": "8cbe66a0d648f5fdadddf53a9c6beba529357ecf1835d5f6bae880e136301ba5"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/subject-source.json",
+      "sha256": "40bfee796060ee4e3592abd7bccf2ebac68786d7475ebe3dae88959ba0aeb999"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "e0594a4e6b89cfc4618072d7c67082a77f59e4bd0f44fef7d43519cc38a7f5d3",
+  "bindingHash": "3a12692f5ffb1edb2199c757709faaa95e585e203fd3ae3decc37fba72a50012",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legFarFoot",
+    "legFarAnkle",
+    "legFarKnee",
+    "legNearFoot",
+    "legNearAnkle",
+    "legNearKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarTip",
+    "wingFarRoot",
+    "wingNearTip",
+    "wingNearRoot",
+    "tailFan",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/master.png",
+      "sha256": "f0169a110876a1f3abeac0a968c33a7da10a09cbca0ea61ea862f16023a0dfb3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/authoring.json",
+      "sha256": "8cbe66a0d648f5fdadddf53a9c6beba529357ecf1835d5f6bae880e136301ba5",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/subject-source.json",
+      "sha256": "40bfee796060ee4e3592abd7bccf2ebac68786d7475ebe3dae88959ba0aeb999",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

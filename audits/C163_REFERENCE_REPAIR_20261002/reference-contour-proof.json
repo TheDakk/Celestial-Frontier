@@ -1,0 +1,389 @@
+{
+  "schema": "cf.c163-reference-contour-proof/v1",
+  "rows": [
+    {
+      "id": "reindeer",
+      "original": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer",
+      "candidate": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours",
+      "originalAuthoringSha256": "e725f36f81b6791061a57f0a5d239af250ad406583d373f65940551aff7b06da",
+      "candidateAuthoringSha256": "63b3097ab0ea1776156afc64073e064d04a96cace379ae01a08634749243a399",
+      "masterSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+      "sourceRgbaChanges": 0,
+      "paintDeleted": 0,
+      "paintAdded": 0,
+      "priorAnatomyOwnersChanged": 0,
+      "landmarksChanged": false,
+      "moved": [
+        {
+          "joint": "hindNearPaw",
+          "pixels": 459
+        },
+        {
+          "joint": "hindNearAnkle",
+          "pixels": 154
+        },
+        {
+          "joint": "hindNearKnee",
+          "pixels": 809
+        },
+        {
+          "joint": "foreNearPaw",
+          "pixels": 503
+        },
+        {
+          "joint": "foreNearAnkle",
+          "pixels": 169
+        },
+        {
+          "joint": "foreNearKnee",
+          "pixels": 238
+        },
+        {
+          "joint": "foreNearRoot",
+          "pixels": 114
+        },
+        {
+          "joint": "hindFarPaw",
+          "pixels": 486
+        },
+        {
+          "joint": "hindFarAnkle",
+          "pixels": 67
+        },
+        {
+          "joint": "hindFarKnee",
+          "pixels": 689
+        },
+        {
+          "joint": "hindFarRoot",
+          "pixels": 212
+        },
+        {
+          "joint": "foreFarPaw",
+          "pixels": 491
+        },
+        {
+          "joint": "foreFarAnkle",
+          "pixels": 43
+        },
+        {
+          "joint": "foreFarKnee",
+          "pixels": 668
+        },
+        {
+          "joint": "foreFarRoot",
+          "pixels": 244
+        },
+        {
+          "joint": "tail3",
+          "pixels": 25
+        },
+        {
+          "joint": "tail2",
+          "pixels": 23
+        },
+        {
+          "joint": "tail1",
+          "pixels": 66
+        },
+        {
+          "joint": "neck",
+          "pixels": 805
+        }
+      ],
+      "unchangedCap": 0.05,
+      "originalCap": {
+        "status": "PASS",
+        "moved": 5626
+      },
+      "candidateCap": {
+        "status": "PASS",
+        "moved": 609
+      },
+      "controls": [
+        "independent original replay equals published ownership",
+        "independent candidate replay equals published ownership",
+        "deterministic repeat",
+        "exact keyed RGBA preserved",
+        "non-remainder theft rejected",
+        "paint deletion rejected"
+      ],
+      "qualityAccepted": false,
+      "nativeRun": false
+    },
+    {
+      "id": "water-buffalo",
+      "original": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo",
+      "candidate": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo-contours",
+      "originalAuthoringSha256": "0c384a3bc412741cdc4b7c7ff66eb2e46dca31ead91e70da9ea7522c9e4fd316",
+      "candidateAuthoringSha256": "37f7c2ff45131c8a87670ab9ffbc2643a76f5b63e1222b0072d7d3eb3ed22c8e",
+      "masterSha256": "74f0027c221d38a3b6d70e8068c77b4a97f04ba47d16c6f12c731cf50c00fc35",
+      "sourceRgbaChanges": 0,
+      "paintDeleted": 0,
+      "paintAdded": 0,
+      "priorAnatomyOwnersChanged": 0,
+      "landmarksChanged": false,
+      "moved": [
+        {
+          "joint": "hindNearPaw",
+          "pixels": 500
+        },
+        {
+          "joint": "hindNearAnkle",
+          "pixels": 289
+        },
+        {
+          "joint": "hindNearKnee",
+          "pixels": 704
+        },
+        {
+          "joint": "hindNearRoot",
+          "pixels": 51
+        },
+        {
+          "joint": "foreNearPaw",
+          "pixels": 543
+        },
+        {
+          "joint": "foreNearAnkle",
+          "pixels": 95
+        },
+        {
+          "joint": "foreNearKnee",
+          "pixels": 594
+        },
+        {
+          "joint": "foreNearRoot",
+          "pixels": 48
+        },
+        {
+          "joint": "hindFarPaw",
+          "pixels": 565
+        },
+        {
+          "joint": "hindFarAnkle",
+          "pixels": 218
+        },
+        {
+          "joint": "hindFarKnee",
+          "pixels": 578
+        },
+        {
+          "joint": "hindFarRoot",
+          "pixels": 39
+        },
+        {
+          "joint": "foreFarPaw",
+          "pixels": 557
+        },
+        {
+          "joint": "foreFarAnkle",
+          "pixels": 297
+        },
+        {
+          "joint": "foreFarKnee",
+          "pixels": 707
+        },
+        {
+          "joint": "foreFarRoot",
+          "pixels": 3
+        },
+        {
+          "joint": "tail3",
+          "pixels": 75
+        },
+        {
+          "joint": "tail2",
+          "pixels": 263
+        },
+        {
+          "joint": "tail0",
+          "pixels": 39
+        },
+        {
+          "joint": "neck",
+          "pixels": 1256
+        }
+      ],
+      "unchangedCap": 0.05,
+      "originalCap": {
+        "status": "PASS",
+        "moved": 8571
+      },
+      "candidateCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1846 px is 5.0% of the remainder (> 5%): structural, not a sliver"
+      },
+      "controls": [
+        "independent original replay equals published ownership",
+        "independent candidate replay equals published ownership",
+        "deterministic repeat",
+        "exact keyed RGBA preserved",
+        "non-remainder theft rejected",
+        "paint deletion rejected"
+      ],
+      "qualityAccepted": false,
+      "nativeRun": false
+    },
+    {
+      "id": "banteng",
+      "original": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/banteng",
+      "candidate": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/banteng-contours",
+      "originalAuthoringSha256": "aab19ce8c4da85f4444507ac2f5ceed78fd931c5631ef8cf30f70f65c30cd130",
+      "candidateAuthoringSha256": "e45b328a7510a07748f4b6d312d780b40447bf3df477d008274bcf21e7bf8656",
+      "masterSha256": "77104268838f9507fa23a637d5f548730e3fae6fdde38fe837859673fd27187e",
+      "sourceRgbaChanges": 0,
+      "paintDeleted": 0,
+      "paintAdded": 0,
+      "priorAnatomyOwnersChanged": 0,
+      "landmarksChanged": false,
+      "moved": [
+        {
+          "joint": "hindNearPaw",
+          "pixels": 383
+        },
+        {
+          "joint": "hindNearAnkle",
+          "pixels": 180
+        },
+        {
+          "joint": "hindNearKnee",
+          "pixels": 1244
+        },
+        {
+          "joint": "hindNearRoot",
+          "pixels": 11
+        },
+        {
+          "joint": "foreNearPaw",
+          "pixels": 330
+        },
+        {
+          "joint": "foreNearAnkle",
+          "pixels": 73
+        },
+        {
+          "joint": "foreNearKnee",
+          "pixels": 1022
+        },
+        {
+          "joint": "foreNearRoot",
+          "pixels": 2
+        },
+        {
+          "joint": "hindFarPaw",
+          "pixels": 352
+        },
+        {
+          "joint": "hindFarAnkle",
+          "pixels": 10
+        },
+        {
+          "joint": "hindFarKnee",
+          "pixels": 413
+        },
+        {
+          "joint": "hindFarRoot",
+          "pixels": 137
+        },
+        {
+          "joint": "foreFarPaw",
+          "pixels": 345
+        },
+        {
+          "joint": "foreFarAnkle",
+          "pixels": 212
+        },
+        {
+          "joint": "foreFarKnee",
+          "pixels": 790
+        },
+        {
+          "joint": "foreFarRoot",
+          "pixels": 17
+        },
+        {
+          "joint": "tail3",
+          "pixels": 28
+        },
+        {
+          "joint": "tail2",
+          "pixels": 220
+        },
+        {
+          "joint": "tail1",
+          "pixels": 24
+        },
+        {
+          "joint": "tail0",
+          "pixels": 64
+        },
+        {
+          "joint": "head",
+          "pixels": 416
+        },
+        {
+          "joint": "neck",
+          "pixels": 729
+        }
+      ],
+      "unchangedCap": 0.05,
+      "originalCap": {
+        "status": "PASS",
+        "moved": 7078
+      },
+      "candidateCap": {
+        "status": "PASS",
+        "moved": 950
+      },
+      "controls": [
+        "independent original replay equals published ownership",
+        "independent candidate replay equals published ownership",
+        "deterministic repeat",
+        "exact keyed RGBA preserved",
+        "non-remainder theft rejected",
+        "paint deletion rejected"
+      ],
+      "qualityAccepted": false,
+      "nativeRun": false
+    },
+    {
+      "id": "crow-thigh",
+      "original": "audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/original",
+      "candidate": "audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate",
+      "originalAuthoringSha256": "d4b9a56a35e4062e51a5dd8b2e0b9199438afb26e9247d66769ccf638ff3f053",
+      "candidateAuthoringSha256": "85d6c77fb44a9a59c2cd4c0275190a45f0d598969aa098d031d5da441a7232dd",
+      "masterSha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f",
+      "sourceRgbaChanges": 0,
+      "paintDeleted": 0,
+      "paintAdded": 0,
+      "priorAnatomyOwnersChanged": 0,
+      "landmarksChanged": false,
+      "moved": [
+        {
+          "joint": "legFarKnee",
+          "pixels": 2747
+        }
+      ],
+      "unchangedCap": 0.05,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 3584 px is 38.9% of the remainder (> 5%): structural, not a sliver"
+      },
+      "candidateCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2539 px is 39.2% of the remainder (> 5%): structural, not a sliver"
+      },
+      "controls": [
+        "independent original replay equals published ownership",
+        "independent candidate replay equals published ownership",
+        "deterministic repeat",
+        "exact keyed RGBA preserved",
+        "non-remainder theft rejected",
+        "paint deletion rejected"
+      ],
+      "qualityAccepted": false,
+      "nativeRun": false
+    }
+  ]
+}

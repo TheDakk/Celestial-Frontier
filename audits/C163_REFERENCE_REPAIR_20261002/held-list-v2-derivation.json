@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c163-audit-harness-derivation/v1",
+  "source": "audits/C163_REFERENCE_REPAIR_20261002/diagnose-held-list.mjs",
+  "sourceSha256": "3cc0acf9e4b26ee2a96d0e8389e6fdffdca9fcf1d6250e4f01b32d5799a0b129",
+  "target": "audits/C163_REFERENCE_REPAIR_20261002/diagnose-held-list-v2.mjs",
+  "targetSha256": "762e8f7015956464a2ef9845f2e7f3745ccfa173967bd3953ac4b96310888cac",
+  "reason": "Original diagnostic stopped on a missing historical native fit. Retain completed rows, explicitly record missing exact input, and continue independent rows. No fit substitution.",
+  "changes": [
+    {
+      "before": "const entry=gallery.filter(e=>e.name===name).at(-1),reportPath=entry.nativeDir+'/report.json'",
+      "after": "const prior=base+'/other-heads/'+name.toLowerCase().replaceAll(' ','-')+'/original/diagnosis.json';if(fs.existsSync(prior)){rows.push(json(prior));continue;}\n const entry=gallery.filter(e=>e.name===name).at(-1),reportPath=entry.nativeDir+'/report.json'"
+    },
+    {
+      "before": "const recordSource=rs[0],fit=path.dirname(expand(recordSource.path)),record=json(fit+'/record.json')",
+      "after": "const recordSource=rs[0],fit=path.dirname(expand(recordSource.path));if(!fs.existsSync(fit+'/record.json')){rows.push({name,status:'EXACT_NATIVE_INPUT_MISSING',nativeReport:{path:reportPath,sha256:sha(read(reportPath))},actualNativeFit:alias(fit),missing:recordSource.path,expectedRecordSha256:recordSource.sha256,originalHold:entry.note,qualityAccepted:false});console.log(JSON.stringify(rows.at(-1)));continue;}\n const record=json(fit+'/record.json')"
+    }
+  ]
+}

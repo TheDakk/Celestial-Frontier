@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c163-audit-instrument-corrections/v1",
+  "failures": [
+    {
+      "source": "verify-other-heads.mjs",
+      "failure": "Snowy Owl non-remainder ownership mismatch; old raw-pixel replay versus compiler normalized point/polygon comparison disagreed at a floating-point edge. No proof written for Snowy Owl by that failed run.",
+      "correction": "verify-snowy-normalized.mjs uses independent normalized-coordinate polygon classification, matching the declared coordinate domain. Ownership theft/deletion controls remain unchanged."
+    },
+    {
+      "source": "diagnose-retained-heads.mjs",
+      "failure": "Ordinary single-owner intake writes color ownership, not labels.png. Failed before producing diagnosis.",
+      "correction": "diagnose-retained-heads-v2.mjs decodes existing deterministic ownership colors with the declaration inventory."
+    }
+  ],
+  "gatesChanged": false
+}

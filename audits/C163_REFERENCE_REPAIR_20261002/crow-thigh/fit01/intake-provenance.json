@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "f12b7f7fe9d7c05b057c761c153a342a14bf1d4c",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/master.png",
+      "sha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/authoring.json",
+      "sha256": "85d6c77fb44a9a59c2cd4c0275190a45f0d598969aa098d031d5da441a7232dd"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/subject-source.json",
+      "sha256": "9f56be332d6bf379d0d8e8334a763e5133190058f0b57204dd02dbc2e39b410c"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "305facc14b3c103ffe88d1553e8d6efe8ed4eb9883b6b931688d2ba37d28f016",
+  "bindingHash": "be4354d757bdea9234e3e4109b023dd45a8cc12ed2acbb1998dc9b7077756ab8",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarRoot",
+    "wingFarTip",
+    "wingNearRoot",
+    "wingNearTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/master.png",
+      "sha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/authoring.json",
+      "sha256": "85d6c77fb44a9a59c2cd4c0275190a45f0d598969aa098d031d5da441a7232dd",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/subject-source.json",
+      "sha256": "9f56be332d6bf379d0d8e8334a763e5133190058f0b57204dd02dbc2e39b410c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

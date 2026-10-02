@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c163-manual-reference/v1",
+  "sourcePacket": "audits/C163_REFERENCE_REPAIR_20261002/new-references/water-buffalo",
+  "masterSha256": "74f0027c221d38a3b6d70e8068c77b4a97f04ba47d16c6f12c731cf50c00fc35",
+  "authoringSha256": "0c384a3bc412741cdc4b7c7ff66eb2e46dca31ead91e70da9ea7522c9e4fd316",
+  "observationSource": "audits/C163_REFERENCE_REPAIR_20261002/reference-observations.mjs",
+  "observationSha256": "b2e93b52b88a069df68e9c79c7602edf5a2ec1b1fbe89aa342f2eb5d62502970",
+  "writerSha256": "4420dad85c2906ebdc4c7eb73b62c5b7aa2891307c9d1740d83cb024a2e273c4",
+  "method": "Independent source-pixel landmarks and core contours; explicit radii generate lower-limb/tail capsule regions. No source pixels altered and no donor authoring transferred.",
+  "limitations": [
+    "The single edited painting exposes the previously hidden far ear while retaining both large swept horns, all four legs and the full tufted tail. No ear is mapped onto a horn.",
+    "Horns remain head-owned; the far horn/head/ear junction is partly occluded. Both pinna tips are visibly distinct, while exact buried attachment centres remain interpretations.",
+    "Natural low hocks and heavy hooves are partitioned from this source, not transferred from a horse. Common-ground contact and native skin quality remain unmeasured."
+  ],
+  "qualityAccepted": false
+}

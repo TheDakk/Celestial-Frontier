@@ -1,0 +1,248 @@
+{
+  "id": "18-hawk",
+  "masterSha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+  "originalAuthoringSha256": "7960e8a73bd670b7e0005dd663980ad8b75a7c3d82354cf93e768a216275c63d",
+  "candidateAuthoringSha256": "d4c06907faba4ad0041e7a234ecbd563446947aedcda311f228f745077571e05",
+  "sourceRgbaChanges": 0,
+  "paintPixelsRemoved": 0,
+  "paintPixelsAdded": 0,
+  "priorNonRemainderOwnersChanged": 0,
+  "movedPixels": [
+    {
+      "to": "head",
+      "joint": "head",
+      "pixels": 198
+    },
+    {
+      "to": "neck-upper",
+      "joint": "neck1",
+      "pixels": 1595
+    },
+    {
+      "to": "tail",
+      "joint": "tailFan",
+      "pixels": 1461
+    }
+  ],
+  "deterministicReplay": true,
+  "compiledLabelsEqual": true,
+  "compiledKeyedSourceEqual": true,
+  "unchangedCap": 0.05,
+  "remainingCapOutcome": "PASS",
+  "remainingMinorIslands": [
+    {
+      "pixels": 1,
+      "to": 15,
+      "border": {
+        "15": 2
+      }
+    },
+    {
+      "pixels": 12,
+      "to": 3,
+      "border": {
+        "3": 7,
+        "5": 4
+      }
+    },
+    {
+      "pixels": 2,
+      "to": 4,
+      "border": {
+        "4": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": 1,
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 20,
+      "to": 2,
+      "border": {
+        "2": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": 1,
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": 1,
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 21,
+      "to": 1,
+      "border": {
+        "1": 14
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    }
+  ],
+  "remainingRemainderComponents": [
+    {
+      "pixels": 15145,
+      "bounds": [
+        494,
+        597,
+        726,
+        796
+      ],
+      "border": {
+        "near-wing-flight": 228,
+        "chest": 221,
+        "tail": 164,
+        "near-thigh": 94,
+        "far-thigh": 91,
+        "near-wing-root": 88,
+        "far-shin": 57
+      }
+    },
+    {
+      "pixels": 21,
+      "bounds": [
+        649,
+        828,
+        658,
+        836
+      ],
+      "border": {
+        "near-foot": 14
+      }
+    },
+    {
+      "pixels": 20,
+      "bounds": [
+        673,
+        821,
+        680,
+        832
+      ],
+      "border": {
+        "far-foot": 5
+      }
+    },
+    {
+      "pixels": 12,
+      "bounds": [
+        625,
+        754,
+        629,
+        759
+      ],
+      "border": {
+        "near-shin": 7,
+        "near-thigh": 4
+      }
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        722,
+        798,
+        723,
+        799
+      ],
+      "border": {
+        "far-shin": 4
+      }
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        792,
+        835,
+        792,
+        836
+      ],
+      "border": {}
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        659,
+        839,
+        659,
+        840
+      ],
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        518,
+        754,
+        518,
+        754
+      ],
+      "border": {
+        "tail": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        549,
+        821,
+        549,
+        821
+      ],
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        547,
+        822,
+        547,
+        822
+      ],
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        545,
+        823,
+        545,
+        823
+      ],
+      "border": {
+        "near-foot": 2
+      }
+    }
+  ],
+  "controls": [
+    "original cap refusal reproduced",
+    "remove correction restores refusal",
+    "non-remainder theft refused",
+    "paint deletion refused",
+    "independent label replay equals compiled label",
+    "exact keyed RGBA equality"
+  ],
+  "qualityAccepted": false,
+  "nativeRun": false
+}
