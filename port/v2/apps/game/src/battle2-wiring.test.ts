@@ -50,7 +50,7 @@ describe('main.ts battle2 gate (source text)', () => {
     // the gate module main.ts imports statically is dependency-free (boot pays nothing for the stage)
     const gate = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8');
     expect(gate.split('\n').filter((l) => /^\s*import\b/.test(l))).toEqual([]);
-    expect(mainSource).toMatch(/^import \{ battle2On \} from '\.\/battle2-gate\.js';$/m);
+    expect(mainSource).toMatch(/^import \{ battle2On, guardianChoreoOn \} from '\.\/battle2-gate\.js';$/m);   // the stage gate + the opt-in guardian choreography study flag
   });
   it('A4: the painted stage is the DEFAULT; ?battle2=0 opts out, ?battle2=1 forces on; the matchup picker stays opt-in', () => {
     expect(BATTLE2_DEFAULT).toBe(true);
@@ -64,7 +64,7 @@ describe('main.ts battle2 gate (source text)', () => {
     // mutation control: the same gate module with the default flipped off makes this test's default assertion fail
     const gateSrc = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8').replace('export const BATTLE2_DEFAULT = true;', 'export const BATTLE2_DEFAULT = false;');
     expect(gateSrc).toContain('BATTLE2_DEFAULT = false');
-    const js = gateSrc.replace(/^export /gm, '').replace(/ as const/g, '').replace(/\(search: string\): boolean/, '(search)');
+    const js = gateSrc.replace(/^export /gm, '').replace(/ as const/g, '').replace(/\(search: string\): boolean/g, '(search)');
     const offOn = new Function(`${js}; return battle2On;`)() as (search: string) => boolean;
     expect(offOn('')).toBe(false); expect(offOn('?battle2=1')).toBe(true);
   });
@@ -268,6 +268,29 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     loneHandle.dispose('test');
   });
 
+  it('GUARDIAN CHOREOGRAPHY (opt-in): a Guardian fight plays entrance → turn 0 → the phase beat after the turn that took it to half → turn 1; flag off or a non-guardian keeps today\'s path', async () => {
+    const guardianSettlement = (kind: string) => ({ ...harness().input.settlement, encounter: { defender: { battleGenome: { seed: 424242, size: 2, kingdom: 'fauna' }, kind } }, transcript: { log: LOG, maxB: 36 } }) as unknown as Battle2StudyInput['settlement'];
+    const walk = async (over: Partial<Battle2StudyInput>) => {
+      const h = harness(over), handle = mountBattle2Study(h.input); await handle.ready;
+      const trail: string[] = []; let last = '';
+      for (let t = 10; t < 60_000 && handle.status().phase === 'playing'; t += 50) {
+        h.setNow(t); h.ticker.step(); const s = handle.status();
+        const at = `${s.guardian?.piece ?? '-'}/${s.turnIndex}`; if (at !== last) { trail.push(at); last = at; }
+      }
+      const out = { trail, status: handle.status(), app: FakeApp.made[FakeApp.made.length - 1]! }; handle.dispose('test'); return out;
+    };
+    const on = await walk({ settlement: guardianSettlement('guardian'), guardianChoreo: true });
+    expect(on.trail).toEqual(['guardian-entrance/-1', '-/0', 'guardian-phase/0', '-/1']);
+    expect(on.status.phase).toBe('finished');
+    expect(on.status.guardian).toEqual({ piece: null, played: ['guardian-entrance', 'guardian-phase'], phase: 'row 0 took the guardian to half health' });
+    expect(on.app.stage.children, 'the stage root plus the guardian caption').toHaveLength(2);
+    // controls: the flag off (absent or false), and a non-guardian defender with the flag on, play today's path with no caption
+    for (const over of [{ settlement: guardianSettlement('guardian') }, { settlement: guardianSettlement('guardian'), guardianChoreo: false }, { settlement: guardianSettlement('wild'), guardianChoreo: true }]) {
+      const off = await walk(over);
+      expect(off.trail).toEqual(['-/0', '-/1']); expect('guardian' in off.status).toBe(false); expect(off.app.stage.children).toHaveLength(1);
+    }
+  });
+
   it('a throw inside the stage tick fails the STUDY (labelled) and never escapes into the game\'s shared ticker (a throw there stops Pixi\'s ticker and freezes the game, 2026-09-24)', async () => {
     let boom = false; const h = harness(); const clock = h.input.clock; const input = { ...h.input, clock: () => { if (boom) throw new Error('boom from the clock'); return clock(); } };
     const handle = mountBattle2Study(input); expect((await handle.ready).phase).toBe('playing');
@@ -285,6 +308,32 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     // The storm turn (B) plays with no phase sprite: only the particle container joins the effect layer, and the far plate is never used as a phase texture.
     const spritesBefore = h.counts.sprite; h.setNow(20_000); h.ticker.step(); expect(handle.status().turnIndex).toBe(1); expect(h.counts.sprite).toBe(spritesBefore);
     handle.dispose();
+  });
+
+  it('a theme registered by ONE painted-themes row plays painted with its own phase images; a refused row plays procedural and names why', async () => {
+    const V43 = new URL('../../../../../audits/WILD_V43_PROOF_20260913/', import.meta.url);
+    const storm = { ...(JSON.parse(readFileSync(new URL('wild-anchors.json', V43), 'utf8')) as Record<string, unknown>), theme: 'storm', sequenceId: 'storm-delivery-test-v1' };
+    const manifest = { schema: 'cf.painted-theme-manifest/v1', rows: [{ theme: 'wild', anchors: 'wild-anchors.json', contract: 'v4.2-grandfathered', required: true }, { theme: 'storm', anchors: '../STORM_TEST/storm-anchors.json', contract: 'v4.3' }] };
+    const settlement = { battleId: 'battle-3', champion: { kind: 'player', name: 'Explorer' }, encounter: { defender: { battleGenome: { _earthName: 'Civet', seed: 9, size: 1, loco: 3 } } }, transcript: { log: [{ side: 'A', an: 'Explorer', dn: 'Civet', dmg: 3, hpA: 10, hpB: 5 }, { side: 'B', an: 'Civet', dn: 'Explorer', dmg: 2, hpA: 8, hpB: 5 }] } };
+    const run = async (stormSize: number) => {
+      const h = harness(), extra: string[] = [];
+      const assets: Battle2AssetSource = { json: async (p) => { if (p === '../STORM_TEST/storm-anchors.json') { extra.push(p); return storm; } return h.assets.json(p); },
+        image: async (p) => { if (p.startsWith('../STORM_TEST/')) { extra.push(p); return image(stormSize, stormSize, null, p); } return h.assets.image(p); } };
+      const input = { ...h.input, assets, paintedThemes: manifest, settlement, chronicle: { championName: 'Explorer', defenderName: 'Civet' } } as Battle2StudyInput;
+      const handle = mountBattle2Study(input); const s = await handle.ready; return { h, handle, s, extra };
+    };
+    const ok = await run(1024);
+    expect(ok.s.phase).toBe('playing'); expect(ok.s.effects).toEqual({ left: 'wild: painted sequence', right: 'storm: painted sequence' });
+    expect(ok.extra).toEqual(['../STORM_TEST/storm-anchors.json', '../STORM_TEST/registered/wild-launch.png', '../STORM_TEST/second-pass/registered/wild-travel.png', '../STORM_TEST/targeted-pass/registered/wild-impact.png']);
+    expect(ok.h.calls).toEqual(expect.arrayContaining(['keyed/wild-launch.png', 'keyed/wild-travel.png', 'keyed/wild-impact.png'])); // Wild still loads its own images
+    // the storm turn (B) now creates its painted phase sprites (the procedural control in the test above creates none)
+    const before = ok.h.counts.sprite; ok.h.setNow(20_000); ok.h.ticker.step(); expect(ok.handle.status().turnIndex).toBe(1); expect(ok.h.counts.sprite).toBe(before + 3);
+    ok.handle.dispose();
+    const refused = await run(1254);
+    expect(refused.s.phase).toBe('playing'); expect(refused.s.effects.left).toBe('wild: painted sequence');
+    expect(refused.s.effects.right).toBe('storm: procedural emitter effect (labelled; no painted sequence for this theme yet) (phase image ../STORM_TEST/registered/wild-launch.png is 1254x1254, its anchors say 1024x1024)');
+    expect(refused.s.skipped).toEqual(expect.arrayContaining([expect.stringMatching(/^storm effect: phase image .* is 1254x1254.*; procedural emitter$/)]));
+    refused.handle.dispose();
   });
 
   it('reduced motion builds without an effects host; a transcript with no stageable row fails closed with a reason', async () => {
@@ -444,5 +493,25 @@ describe('battle2 wiring: one voice per creature (D15 Stage 0)', { timeout: 60_0
     const { compileVoiceCard } = await import('./soundkit/voice-card.js');
     const legacy = compileVoiceCard({ template: { id: (row.voice as { archetype: string }).archetype }, identity: {} }, f.genome as never);
     expect(legacy.ok && legacy.card.seed).not.toBe((row.voice as { seed: number }).seed);
+  });
+});
+
+describe('battle2 wiring: home-ground arena route (2026-10-01)', () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  const world = (key: string, biome: 'temperate' | 'canyon' | 'packice', seed: number) => Object.freeze({ key, biome, seed, solid: true, atmosphere: true, liquid: null, surfaceWater: false, signature: key, cardHash: 'c-' + key });
+  it('no worlds: the default temperate set, labelled; a guardian lair on an unpainted world: its world, named fallback; a duel: the routed world is the habitat world', async () => {
+    const plain = harness(), ready = await mountBattle2Study(plain.input).ready;
+    expect(ready.phase).toBe('playing'); expect(ready.arenaRoute).toMatch(/^no world context: accepted earth-temperate-v1 plates$/);
+    const lair = harness({ worlds: { home: world('lair-canyon', 'canyon', 3), visitor: world('visitor-temperate', 'temperate', 4) }, arenaContext: { kind: 'guardian' } });
+    const r = await mountBattle2Study(lair.input).ready;
+    expect(r.phase).toBe('playing'); expect(r.arenaRoute).toMatch(/guardian's lair lair-canyon \(canyon, desert\): no painted desert set yet; fallback accepted earth-temperate-v1 plates$/);
+    expect(r.arena).toMatch(/^lair-canyon/); // the habitat compiler placed both fighters on the routed (lair) world
+    expect(lair.calls).toEqual(expect.arrayContaining([BATTLE2_ASSETS.recipe, BATTLE2_ASSETS.far, BATTLE2_ASSETS.mid, BATTLE2_ASSETS.near]));
+    // a duel over two rounds: host and visitor alternate, and the plates' world is the habitat world every time (one rule)
+    const worlds = { home: world('host-temperate', 'temperate', 5), visitor: world('visitor-packice', 'packice', 6) };
+    const both: [boolean, boolean][] = [];
+    for (const round of [0, 1]) { const d = harness({ worlds, arenaContext: { kind: 'duel', round, seed: 77 } }); const s = await mountBattle2Study(d.input).ready; both.push([s.arenaRoute!.includes('visitor-packice'), s.arena!.startsWith('visitor-packice')]); }
+    for (const [routeOnVisitor, habitatOnVisitor] of both) expect(habitatOnVisitor).toBe(routeOnVisitor);
+    expect(both.map(([v]) => v).sort()).toEqual([false, true]);
   });
 });

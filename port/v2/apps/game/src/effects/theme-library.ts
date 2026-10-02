@@ -16,6 +16,8 @@ export const isEffectTheme = (v: unknown): v is EffectTheme => typeof v === 'str
 export const PROCEDURAL_SEQUENCE_PREFIX = 'procedural-' as const;
 export const PROCEDURAL_EFFECT_LABEL = 'procedural emitter effect (labelled; no painted sequence for this theme yet)' as const;
 export const PAINTED_EFFECT_LABEL = 'painted sequence' as const;
+/** Why a theme plays procedural when nothing more specific is known (painted-theme-registry.ts supplies the specific reasons). */
+export const NO_PAINTED_ROW_REASON = 'no painted sequence registered (no painted-themes.json row)' as const;
 
 /** Art Kit §4K: material carries the identity (body tint of the particles); the game hex is an accent only. */
 export interface ThemeMaterial { readonly tint: number; readonly accent: number; readonly vocabulary: string; }
@@ -82,24 +84,35 @@ export interface ThemeEffect {
   readonly emitters: Phases;
   readonly material: ThemeMaterial;
   readonly label: typeof PAINTED_EFFECT_LABEL | typeof PROCEDURAL_EFFECT_LABEL;
+  /** Why this theme plays procedural (null when painted): no manifest row, or the row's named refusal. */
+  readonly reason: string | null;
 }
 
-/** Painted sequences by theme (at most one per theme, theme must be a kit key); everything else is procedural. */
+/** Painted sequences by theme (at most one per theme, theme must be a kit key); everything else is procedural, with a reason
+ * (`fallbackReasons` from the painted-theme registry; absent = NO_PAINTED_ROW_REASON). */
 export class EffectThemeLibrary {
   readonly #painted = new Map<EffectTheme, EffectSequenceAnchors>();
-  constructor(painted: Iterable<EffectSequenceAnchors> = []) {
+  readonly #reasons = new Map<EffectTheme, string>();
+  constructor(painted: Iterable<EffectSequenceAnchors> = [], fallbackReasons: Iterable<readonly [EffectTheme, string]> = []) {
     for (const a of painted) {
       if (!isEffectTheme(a.theme)) throw new TypeError(`theme library: "${a.theme}" is not a kit theme (${EFFECT_THEMES.join(', ')})`);
       if (isProceduralSequence(a)) throw new TypeError(`theme library: "${a.sequenceId}" is a procedural record, not a painted sequence`);
       if (this.#painted.has(a.theme)) throw new TypeError(`theme library: theme "${a.theme}" already has a painted sequence (${this.#painted.get(a.theme)!.sequenceId})`);
       this.#painted.set(a.theme, a);
     }
+    for (const [t, why] of fallbackReasons) {
+      if (!isEffectTheme(t)) throw new TypeError(`theme library: fallback reason for "${String(t)}", which is not a kit theme`);
+      if (this.#painted.has(t)) throw new TypeError(`theme library: theme "${t}" is painted and cannot also carry a fallback reason`);
+      if (typeof why !== 'string' || why.length === 0) throw new TypeError(`theme library: fallback reason for "${t}" must be a non-empty string`);
+      this.#reasons.set(t, why);
+    }
   }
   paintedThemes(): readonly EffectTheme[] { return Object.freeze([...this.#painted.keys()]); }
   resolve(theme: string): ThemeEffect {
     if (!isEffectTheme(theme)) throw new TypeError(`theme library: unknown theme "${String(theme)}"`);
     const painted = this.#painted.get(theme) ?? null;
-    return Object.freeze({ theme, painted, anchors: painted ?? proceduralAnchorsFor(theme), emitters: THEME_EMITTERS[theme], material: THEME_MATERIALS[theme], label: painted ? PAINTED_EFFECT_LABEL : PROCEDURAL_EFFECT_LABEL });
+    return Object.freeze({ theme, painted, anchors: painted ?? proceduralAnchorsFor(theme), emitters: THEME_EMITTERS[theme], material: THEME_MATERIALS[theme], label: painted ? PAINTED_EFFECT_LABEL : PROCEDURAL_EFFECT_LABEL,
+      reason: painted ? null : this.#reasons.get(theme) ?? NO_PAINTED_ROW_REASON });
   }
   anchorsFor(theme: string): EffectSequenceAnchors { return this.resolve(theme).anchors; }
   /** Phase emitters for the theme; the phone tier runs the same shapes at half the particle budget (kit §8). */

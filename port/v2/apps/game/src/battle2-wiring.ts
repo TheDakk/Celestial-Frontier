@@ -7,7 +7,7 @@
  * What it does: builds the structural `BattleStageFactory` from the pixi.js classes main.ts already
  * holds (Container / Sprite / Text / Graphics, plus Particle / ParticleContainer through
  * `createPixiEffectHost`), the world-life factory of CONTRACTS §3, resolves the accepted arena plates
- * and the Wild anchors by their audit paths, builds a `BattleRigV1` per combatant (`createFixtureRig`
+ * and every painted ability-theme sequence (`effects/painted-themes.json`; Wild today) by their audit paths, builds a `BattleRigV1` per combatant (`createFixtureRig`
  * from a landmark record + keyed alpha when the record exists, `createPortraitRig` otherwise), and
  * feeds the settled transcript log through `turnPlanInputFromTranscriptEvent` → `stage.play` →
  * `stage.tick` on the injected ticker with the injected clock (main.ts passes `performance.now`).
@@ -20,8 +20,8 @@
  * replaced was one). Everything pixi/DOM/asset-shaped is injectable so the tests drive the module with fakes.
  *
  * The stage never changes HP or rewards; the Chronicle log stays the accessible owner of the outcome.
- * Batch 2: each combatant stages its own ability theme (Wild painted, the other ten as the labelled
- * procedural emitter in the theme's material colour) and the turn cues ride the beats when an `audio`
+ * Batch 2: each combatant stages its own ability theme (painted when its painted-themes.json row is admitted — Wild
+ * today — else the labelled procedural emitter in the theme's material colour, with the reason) and the turn cues ride the beats when an `audio`
  * runtime port is supplied (main.ts passes the accessible audio owner's `decorativeVoicePort()`, which
  * admits decorative requests only while the owner is live, visible and answerable). E1 (2026-09-19): registered source
  * paint-skin fits (Civet + five crabs) stage as parts rigs through Codex's owner and contact solver; the habitat picks each
@@ -35,7 +35,7 @@ import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-c
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectHabitatArena, turnPlanInputFromTranscriptEvent,
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectArena, selectHabitatArena, ARENA_FALLBACK_ASSETS, turnPlanInputFromTranscriptEvent, type ArenaKind,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -52,8 +52,9 @@ import { paintedArtV2 } from './morph/painted-variants.js';
 import type { CombatChroniclePacerGateV1 } from './combat-chronicle.js';
 import { decodeMorphedAtlas, loadPinnedCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
-import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
 import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/theme-library.js';
+import { admitPaintedThemeAnchors, fetchPaintedThemeAnchors, loadPaintedThemeTextures, parsePaintedThemeManifest } from './effects/painted-theme-registry.js';
+import PAINTED_THEMES_MANIFEST from './effects/painted-themes.json';
 import { PARTICLE_DISC_SIZE, particleDiscRgba } from './effects/particle-texture.js';
 import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, type EffectTextureLike } from './effects/pixi-adapter.js';
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
@@ -67,6 +68,8 @@ import { originalSourceLibraryV1 } from './soundkit/original-voices.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { artLibraryEntryV1, fetchArtLibraryBytesV1, libraryPathOfArenaUrl, type ArtLibraryOptionsV1 } from './art-library.js';
 import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
+import { guardianDecisiveStartHpV1, planGuardianProgramV1, type GuardianProgramV1, type GuardianSetPieceV1 } from './battle2/guardian-choreo.js';
+import type { SetPieceFrame } from './battle2/stage.js';
 import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
 import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
 import { Battle2PinRefusal, gunzipTransportBytes, preflightBattle2PinnedBytesV1, type Battle2PinnedBytesV1 } from './battle2-master-pin-admission.js';
@@ -86,8 +89,11 @@ export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
  * build-shipped-battle2.mjs), `parts/manifest.json` and `parts/atlas/<id>.png`;
  * the painter master is `record.source` (repo-relative). */
 export const BATTLE2_ASSETS = Object.freeze({
-  recipe: 'arena-recipe.json', anchors: 'wild-anchors.json',
-  far: 'arena-far.png', mid: 'keyed/arena-mid.png', near: 'keyed/arena-near.png',
+  // the accepted Earth temperate set's runtime files, from its delivery manifest (battle2/arena-registry.ts; MID = the approved despilled copy)
+  recipe: ARENA_FALLBACK_ASSETS.recipe, anchors: 'wild-anchors.json',
+  // every painted ability-theme sequence (effects/painted-themes.json; the Wild row is `anchors` above): one manifest row registers a theme
+  paintedThemes: parsePaintedThemeManifest(PAINTED_THEMES_MANIFEST),
+  far: ARENA_FALLBACK_ASSETS.far, mid: ARENA_FALLBACK_ASSETS.mid, near: ARENA_FALLBACK_ASSETS.near,
   civetRecord: '../CIVET_2D_PROOF_20260912/civet.landmarks.json', civetMaster: '../ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',
   // every painted archetype (GENERATED from the card builder's list — one source for the card, the arena and the shipped assets)
   partsFits: BATTLE2_PARTS_FITS,
@@ -131,7 +137,7 @@ export interface Battle2SettlementLike {
   readonly battleId: string;
   readonly champion: Battle2Champion;
   readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>>; readonly kind?: string } };
-  readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[] };
+  readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[]; /** the decisive leg's defender max HP (the guardian phase beat needs it) */ readonly maxB?: number };
   /** §20 Guardian party: the settled plan's party block; the stage plays one relay beat per earlier fighter first. */
   readonly party?: CombatSettlementPlanV1['party'];
 }
@@ -167,8 +173,17 @@ export interface Battle2StudyInput {
   readonly audio?: TurnAudioRuntime | null;
   /** The battle's home and visitor worlds for habitat arena selection (E1 §1.4). Absent = the accepted Earth-temperate plates, labelled as the default. */
   readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
+  /** The painted-theme manifest (`cf.painted-theme-manifest/v1`); absent = the shipped `effects/painted-themes.json`. */
+  readonly paintedThemes?: unknown;
   /** A named world built on the study's own ground line (the matchup picker): `lake` = liquid water with a surface. Ignored when `worlds` is given. */
   readonly worldPreset?: 'lake';
+  /** Guardian choreography (opt-in study, `?guardianChoreo=1` — battle2-gate.ts; audits/GUARDIAN_CHOREOGRAPHY_20261001/DESIGN.md): a Guardian or
+   * Titan fight plays the boss entrance, the phase-change beat, heavy strikes and the fall/triumph set pieces. Absent/false = today's stage. */
+  readonly guardianChoreo?: boolean;
+  /** The arena route (battle2/arena-registry.ts, 2026-10-01): the encounter kind and duel round pick the fight world from `worlds`
+   * (home-versus-visitor), and that world's biome picks the painted plate set. Defaults: 'wild', round 0, seed = fnv1a32(battleId).
+   * Without `worlds` the accepted Earth temperate set is used, exactly as before. */
+  readonly arenaContext?: Readonly<{ kind?: ArenaKind; round?: number; seed?: number }>;
 }
 export type Battle2Phase = 'loading' | 'playing' | 'finished' | 'failed' | 'disposed';
 export interface Battle2Status {
@@ -187,10 +202,14 @@ export interface Battle2Status {
   readonly beats?: Readonly<{ count: number; index: number; text: string | null }>;
   /** E1: the habitat arena selection (world, medium per side, source), or null before it ran / when it refused. */
   readonly arena: string | null;
+  /** 2026-10-01: which painted set the battle uses and why (`selectArena` reason: biome / kin / fallback / default). */
+  readonly arenaRoute?: string | null;
   /** E1: per side, the anatomy attack in play (`verb (contactJoint)`) or why the family delivery clip is used. */
   readonly attacks: Readonly<{ left: string | null; right: string | null }>;
   /** E1: per side, poses the parts rig refused so far (null for fixture/portrait rigs, which never refuse). */
   readonly refusals: Readonly<{ left: number | null; right: number | null }>;
+  /** Guardian choreography (present only when the opt-in program runs): the set piece showing, those played so far, and where the phase beat sits. */
+  readonly guardian?: Readonly<{ piece: string | null; played: readonly string[]; phase: string }>;
 }
 export interface Battle2StudyHandle { readonly ready: Promise<Battle2Status>; status(): Battle2Status; dispose(reason?: string): void; }
 
@@ -301,19 +320,30 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   let phase: Battle2Phase = 'loading', reason: string | null = null, label: string | null = null, ticks = 0, turnIndex = -1;
   const skipped: string[] = []; const finishedSides = { left: false, right: false }; /* G5: which sides drew an admitted finished atlas */ let turns: TurnPlanInput[] = []; const turnRows: number[] = []; let turnStart = 0, impactAt = Infinity, releasedTurn = -1;
   const releaseThrough = (turn: number): void => { if (turn <= releasedTurn) return; releasedTurn = turn; input.pacer?.release(turnRows[turn]!); }; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
-  const attackLabels = { left: null as string | null, right: null as string | null }; let arenaLabel: string | null = null; let refusalsOf: () => Readonly<{ left: number | null; right: number | null }> = () => Object.freeze({ left: null, right: null });
+  const attackLabels = { left: null as string | null, right: null as string | null }; let arenaLabel: string | null = null, arenaRoute: string | null = null; let refusalsOf: () => Readonly<{ left: number | null; right: number | null }> = () => Object.freeze({ left: null, right: null });
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
   const audioSummary = (): string => (cueSink ? `${cueSink.log.length} cues: ${cueSink.log.map((e) => `${e.cueId}=${e.result}`).join(', ')}` : 'none');
   let voices: CreatureVoiceHook | null = null;
   let beats: readonly Battle2SwapBeatV1[] = [], beatIndex = -1, beatStart = 0, beatCaption: StageTextLike | null = null;
   const beatMs = input.reducedMotion ? BATTLE2_SWAP_BEAT_REDUCED_MS_V1 : BATTLE2_SWAP_BEAT_MS_V1;
-  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
+  // guardian choreography (opt-in): the program, the set piece showing, and which ones have played
+  let program: GuardianProgramV1 | null = null, pieceName: string | null = null, entranceDone = false, phaseDone = false, finaleDone = false; const piecesPlayed: string[] = [];
+  const status = (): Battle2Status => Object.freeze({ ...(program ? { guardian: Object.freeze({ piece: pieceName, played: Object.freeze([...piecesPlayed]), phase: program.phaseReason }) } : {}), beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, arenaRoute, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tickUnguarded = (): void => {
     if (disposed || !stage || !app) return;
     if (!input.mount.isConnected || section.parentElement !== input.mount) { dispose('mount left the document'); return; }
     ticks++;
     const play = (i: number): void => { turnStart = input.clock(); impactAt = stage!.play(turns[i]!).beats.impactAt; section.dataset.battle2Turn = String(i); };
+    // guardian choreography: a set piece owns the stage (and the caption) until it is done, then the turn path resumes where it was
+    const showPiece = (f: SetPieceFrame | null): void => { if (beatCaption && f) { beatCaption.text = f.sample.caption.text; beatCaption.alpha = f.sample.caption.alpha; beatCaption.visible = f.sample.caption.visible; } };
+    const startPiece = (p: GuardianSetPieceV1): void => { stage!.playSetPiece(p); pieceName = p.piece; piecesPlayed.push(p.piece); section.dataset.battle2Guardian = p.piece; showPiece(stage!.tickSetPiece()); app!.renderer.render(app!.stage); };
+    if (pieceName !== null) {
+      const f = stage.tickSetPiece(); showPiece(f);
+      if (f && !f.done) { app.renderer.render(app.stage); return; }
+      pieceName = null; if (beatCaption) { beatCaption.visible = false; beatCaption.alpha = 1; }
+    }
+    if (program && !entranceDone) { entranceDone = true; startPiece(program.entrance); return; }
     // §20 relay beats: each earlier party fighter's exit holds a captioned beat before the decisive leg's first turn
     if (turnIndex < 0 && beatIndex < beats.length) {
       if (beatIndex < 0 || input.clock() - beatStart >= beatMs) {
@@ -323,14 +353,21 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       if (beatIndex < beats.length) { stage.tick(); app.renderer.render(app.stage); return; }
       if (beatCaption) beatCaption.visible = false;
     }
-    if (turnIndex < 0) { turnIndex = 0; play(0); }
+    if (turnIndex < 0) {
+      if (program?.phase?.afterTurn === -1 && !phaseDone) { phaseDone = true; startPiece(program.phase.piece); return; }   // the phase changed in an earlier leg
+      turnIndex = 0; play(0);
+    }
     const frame = stage.tick();
     if (ticks % 30 === 0) section.dataset.battle2Ticks = String(ticks); // smoke diagnostics (cheap)
     if (input.clock() - turnStart >= impactAt) releaseThrough(turnIndex); // this turn's Chronicle row appears at its impact
     if (frame?.done) {
       releaseThrough(turnIndex);
+      if (program?.phase?.afterTurn === turnIndex && !phaseDone) { phaseDone = true; startPiece(program.phase.piece); return; }
       if (turnIndex + 1 < turns.length) { turnIndex++; play(turnIndex); }
-      else if (phase === 'playing') { setPhase('finished'); stopTicking(); input.pacer?.releaseAll(); }
+      else if (phase === 'playing') {
+        if (program?.finale && !finaleDone) { finaleDone = true; startPiece(program.finale); return; }
+        setPhase('finished'); stopTicking(); input.pacer?.releaseAll();
+      }
     }
     app.renderer.render(app.stage);
   };
@@ -359,13 +396,17 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   const build = async (): Promise<Battle2Status> => {
     const assets = input.assets ?? devAssetSource();
     const keyer: Battle2Keyer = input.keyer ?? ((rgba, w, h) => keyAndDespill(rgba, w, h));
-    const [recipeRaw, anchorsRaw, far, mid, near] = await Promise.all([assets.json(BATTLE2_ASSETS.recipe), assets.json(BATTLE2_ASSETS.anchors), assets.image(BATTLE2_ASSETS.far), assets.image(BATTLE2_ASSETS.mid), assets.image(BATTLE2_ASSETS.near)]);
+    const themeRows = input.paintedThemes === undefined ? BATTLE2_ASSETS.paintedThemes : parsePaintedThemeManifest(input.paintedThemes);
+    // Home ground (2026-10-01): the fight world's biome picks the painted set; without `worlds` this is the accepted temperate set at its
+    // delivery manifest's runtime paths, the ones BATTLE2_ASSETS names (arena-registry.test.ts pins that).
+    const route = selectArena({ kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null });
+    arenaRoute = route.reason;
+    const [recipeRaw, anchorsFetched, far, mid, near] = await Promise.all([assets.json(route.assets.recipe), fetchPaintedThemeAnchors(themeRows, (p) => assets.json(p)), assets.image(route.assets.far), assets.image(route.assets.mid), assets.image(route.assets.near)]);
     const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };
     if (typeof recipe.groundLineNormalized !== 'number' || typeof recipe.seed !== 'number' || typeof recipe.systemCard !== 'string') throw new Error('battle2 arena recipe lacks groundLineNormalized/seed/systemCard');
-    const parsed = parseEffectSequenceAnchors(anchorsRaw); if (!parsed.ok) throw new Error(`battle2 anchors refused: ${parsed.reason}`);
-    const anchors: EffectSequenceAnchors = parsed.anchors;
-    // One painted sequence (Wild) today; every other theme plays the labelled procedural emitter with its §4K material colour.
-    const themes = new EffectThemeLibrary([anchors]);
+    // Every manifest row's anchors are admitted here (a required row — Wild — fails the study exactly as before; any other row
+    // falls back to its theme's labelled procedural emitter with the reason). The theme library is built once the phase images load.
+    const paintedAnchors = admitPaintedThemeAnchors(themeRows, anchorsFetched);
     // Default records: the Civet landmark record (as before) plus every registered source paint-skin fit's record; a missing
     // fit is skipped with its reason, and one body is never listed twice (the Civet fit carries the same record bytes).
     const loadRecords = async (): Promise<ResolvedAnatomyRecord[]> => {
@@ -462,7 +503,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     refusalsOf = () => Object.freeze({ left: left.rig.refusals?.() ?? null, right: right.rig.refusals?.() ?? null });
     // E1 §1.4 + 2026-09-24: ONE placement pipeline (battle2/placement.ts — the film harness and the tests use the same): size, habitat, band
     // fit, drawn scale, each painted box centred on its stand, the wet arena. UNSUPPORTED keeps the Chronicle path with its reason.
-    const placed = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: input.worlds ?? (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null),
+    const placed = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: route.world ? { home: route.world, visitor: route.world } /* the plates' world, so medium and painting agree */ : (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null),
       left: { rig: left.rig, mass: left.mass, record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName },
       right: { rig: right.rig, mass: right.mass, record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName } });
     const habitat = placed.habitat; arenaLabel = habitat.label;
@@ -481,10 +522,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       try { const r = compileAnatomyAttack(card, mediums[side], ordinal, undefined, (side === 'A' ? left : right).declaration); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
       catch (error) { attackLabels[key] ??= `family delivery clip (no admitted anatomy move: ${error instanceof Error ? error.message : String(error)})`; return null; }
     };
-    const phaseTextures = new Map<string, Promise<EffectTextureLike>>();
-    for (const p of anchors.phases) phaseTextures.set(p.keyedImage, assets.image(p.keyedImage).then(texture));
-    const resolvedPhaseTextures = new Map<string, EffectTextureLike>();
-    for (const [k, v] of phaseTextures) resolvedPhaseTextures.set(k, await v);
+    // Painted phase images of every admitted theme (paths resolved against each anchors JSON's directory; Wild: `keyed/wild-*.png`).
+    // Every theme without an admitted, fully loaded sequence plays the labelled procedural emitter in its §4K material colour.
+    const paintedThemes = await loadPaintedThemeTextures(paintedAnchors, (p) => assets.image(p).then(texture));
+    for (const [t, why] of paintedThemes.fallbackReasons) if (paintedAnchors.rows.some((r) => r.theme === t)) skipped.push(`${t} effect: ${why}; procedural emitter`);
+    const themes = new EffectThemeLibrary(paintedThemes.painted, paintedThemes.fallbackReasons);
     const dot = particleDiscRgba(PARTICLE_DISC_SIZE);
     const worldLife = new WorldLifePixiAdapter({ spec: compileWorldLife(recipe.systemCard, recipe.seed, 'arena', { tier: input.deviceTier === 'low' ? 'phone' : 'desktop' }),
       factory: { container: () => new pixi.Container(), graphics: () => new pixi.Graphics() }, clock: input.clock, width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, reducedMotion: input.reducedMotion });
@@ -505,10 +547,12 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}),
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
-        phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),
+        phaseTextures: (a) => { const loaded = paintedThemes.textures.get(a.sequenceId); return a.phases.map((p, i) => { if (isProceduralImage(p.keyedImage)) return null; const t = loaded?.[i]; if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }); },
         emittersForTheme: (t) => themes.emittersFor(t, input.deviceTier === 'low' ? 'phone' : 'desktop'), tintForTheme: (t) => themes.tintFor(t) } });
     const themeA = genomeTheme(championGenome), themeB = genomeTheme(input.settlement.encounter.defender.battleGenome);
-    effectLabels.left = `${themeA}: ${themes.resolve(themeA).label}`; effectLabels.right = `${themeB}: ${themes.resolve(themeB).label}`;
+    // a theme whose registered row was refused names the refusal; an unregistered theme keeps the plain procedural label
+    const effectLabel = (t: string): string => { const e = themes.resolve(t), refused = e.reason !== null && themeRows.some((r) => r.theme === t); return `${t}: ${e.label}${refused ? ` (${e.reason})` : ''}`; };
+    effectLabels.left = effectLabel(themeA); effectLabels.right = effectLabel(themeB);
     const ctx: TurnOutcomeContext = {
       A: { side: 'A', name: input.chronicle.championName, mass: left.mass, card: left.card, theme: themeA, seed: left.seed },
       B: { side: 'B', name: input.chronicle.defenderName, mass: right.mass, card: right.card, theme: themeB, seed: right.seed },
@@ -523,7 +567,18 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     application.canvas.style.cssText = 'display:block;width:100%;height:100%'; section.append(application.canvas);
     application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label; if (input.finish) section.dataset.battle2Finished = `left:${finishedSides.left} right:${finishedSides.right}`;
     beats = battle2SwapBeatsV1(input.settlement.party, { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome, kind: input.settlement.encounter.defender.kind });
-    if (beats.length > 0) {
+    if (input.guardianChoreo === true) {
+      // presentation only: read from the settled transcript and the turns already built from it; the guardian is the defender (B, right)
+      const defender = { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome, kind: input.settlement.encounter.defender.kind };
+      const start = guardianDecisiveStartHpV1(input.settlement.party, defender), maxB = input.settlement.transcript.maxB;
+      program = planGuardianProgramV1({ defender, guardianSide: 'right', seed: ctx.seed, reducedMotion: input.reducedMotion,
+        guardian: { side: 'right', mass: right.mass, card: right.card, seed: right.seed, label: input.chronicle.defenderName },
+        opponent: { side: 'left', mass: left.mass, card: left.card, seed: left.seed, label: input.chronicle.championName },
+        log: input.settlement.transcript.log, maxB: start?.maxB ?? (typeof maxB === 'number' ? maxB : null), startHpB: start?.startHpB ?? null,
+        turns, turnRows, riseFromDy: Math.max(0, 1 - built.bodies().right.topY) });
+      if (program) turns = [...program.turns];
+    }
+    if (beats.length > 0 || program) {
       beatCaption = new pixi.Text({ text: '', style: { ...style, fontSize: 28 }, anchor: 0.5 });
       beatCaption.x = BATTLE2_FRAME.width / 2; beatCaption.y = 56; application.stage.addChild(beatCaption as unknown as object);
     }

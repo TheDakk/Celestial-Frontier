@@ -14,9 +14,17 @@ export {
   type EffectDelivery, type EffectSample, type EffectSchedule, type EffectTiming, type EffectTransform, type PhaseTrack, type TrackSample,
 } from './sequencer.js';
 export {
-  EFFECT_THEMES, EffectThemeLibrary, PAINTED_EFFECT_LABEL, PROCEDURAL_EFFECT_LABEL, PROCEDURAL_SEQUENCE_PREFIX, THEME_EMITTERS, THEME_MATERIALS,
+  EFFECT_THEMES, EffectThemeLibrary, NO_PAINTED_ROW_REASON, PAINTED_EFFECT_LABEL, PROCEDURAL_EFFECT_LABEL, PROCEDURAL_SEQUENCE_PREFIX, THEME_EMITTERS, THEME_MATERIALS,
   isEffectTheme, isProceduralImage, isProceduralSequence, proceduralAnchorsFor, type EffectTheme, type EffectTier, type ThemeEffect, type ThemeMaterial,
 } from './theme-library.js';
+export {
+  GRANDFATHERED_THEME, PAINTED_PHASE_CANVAS, PAINTED_THEME_CONTRACTS, PAINTED_THEME_MANIFEST_SCHEMA, admitPaintedThemeAnchors, admitRowAnchors, fetchPaintedThemeAnchors, loadPaintedThemeAnchors, loadPaintedThemeTextures,
+  paintedAssetPath, parsePaintedThemeManifest, type PaintedThemeAnchorsStage, type PaintedThemeContract, type PaintedThemeRow, type PaintedThemesLoaded,
+} from './painted-theme-registry.js';
+export {
+  DELIVERY_RULES, THEME_DELIVERY_REPORT_SCHEMA, isKeyTinted, measurePhaseImage, validateThemeDelivery,
+  type DeliveryCheck, type DeliveryFinding, type DeliveryImage, type PhaseMeasurement, type ThemeDeliveryInput, type ThemeDeliveryReport,
+} from './theme-delivery.js';
 export { PARTICLE_DISC_SIZE, PARTICLE_RIM, particleDiscRgba } from './particle-texture.js';
 export {
   EFFECT_FIXED_STEP_MS, EffectSequencePlayer, createPixiEffectHost, mirrorDirection,

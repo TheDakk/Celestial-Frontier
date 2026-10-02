@@ -53,6 +53,7 @@ export function combatantPresentation(rig: Pick<BattleRigV1, 'bounds' | 'cutout'
 }
 import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnAttack, type TurnPlan, type TurnPlanInput } from './choreography.js';
 import { TurnCuePlayer, buildTurnCuePlan, type CueSink, type TurnCuePlan } from './cue-plan.js';
+import { buildGuardianCuePlan, sampleGuardianSetPiece, type GuardianSetPieceSampleV1, type GuardianSetPieceV1 } from './guardian-choreo.js';
 import type { BattleRigV1, RigNodeLike } from './fixture-rig.js';
 
 export interface StageNodeLike extends RigNodeLike { alpha: number; readonly scale: { set(x: number, y: number): unknown }; }
@@ -101,6 +102,8 @@ export interface BattleStageOptions {
   readonly water?: Readonly<{ surfaceY: number; /** a swimmer facing a GROUND fighter: the lake fills only this side (to the midline) and the dry foreground stays, so the ground fighter keeps its floor (review 2026-09-24). Absent = the whole frame. */ side?: Side }>;
 }
 export interface StageFrame { readonly sample: StageSample; readonly done: boolean; readonly label: string; readonly cuesFired: number; }
+/** One frame of a guardian set piece (opt-in guardian choreography). */
+export interface SetPieceFrame { readonly sample: GuardianSetPieceSampleV1; readonly done: boolean; readonly piece: GuardianSetPieceV1['piece']; readonly cuesFired: number; }
 export const HUD = Object.freeze({ barX: 16, barY: 12, barH: 8, cursorH: 14 });
 
 export class BattleStage {
@@ -113,6 +116,7 @@ export class BattleStage {
   readonly #fx: StageContainerLike; readonly #flash: StageGraphicsLike; readonly #bar: StageGraphicsLike; readonly #cursor: StageGraphicsLike; readonly #number: StageTextLike;
   #plan: TurnPlan | null = null; #startMs = 0; #player: EffectSequencePlayer | null = null; #fxNodes: object[] = []; #disposed = false;
   #cues: TurnCuePlayer | null = null;
+  #piece: GuardianSetPieceV1 | null = null; #pieceStartMs = 0;
   readonly #water: StageGraphicsLike | null = null;
 
   constructor(o: BattleStageOptions) {
@@ -208,6 +212,39 @@ export class BattleStage {
     return plan;
   }
 
+  /** Guardian choreography (opt-in): start a set piece now, between turns. The turn plan stays as it was (its clock is untouched); the
+   * piece owns the camera, the guardian's rise/dissolve and both poses until it is done, then `tick` resumes the turn path. */
+  playSetPiece(piece: GuardianSetPieceV1): GuardianSetPieceV1 {
+    this.#assertLive();
+    if (!piece || piece.kind !== 'guardian-set-piece') throw new TypeError('battle2 stage: expected a guardian set piece');
+    this.#clearEffect();
+    this.#piece = piece; this.#pieceStartMs = this.#o.clock();
+    if (piece.reducedMotion || this.#o.reducedMotion === true) this.#applyRest();
+    const cues = this.#o.cues;
+    if (cues) this.#cues = new TurnCuePlayer(buildGuardianCuePlan(piece, cues.phone !== undefined ? { phone: cues.phone } : {}), cues.sink, () => this.#o.clock() - this.#pieceStartMs);
+    this.tickSetPiece();
+    return piece;
+  }
+  /** Advance the current set piece to the injected clock; null when none is playing. When it is done the stage returns to rest framing
+   * (root alpha 1, no shake/flash), keeping only a dissolved side hidden. */
+  tickSetPiece(): SetPieceFrame | null {
+    this.#assertLive();
+    const piece = this.#piece;
+    if (!piece) return null;
+    const ms = this.#o.clock() - this.#pieceStartMs, s = sampleGuardianSetPiece(piece, ms), L = this.#o.layout, g = piece.guardianSide, o: Side = g === 'left' ? 'right' : 'left';
+    this.root.x = s.camera.shake.x; this.root.y = s.camera.shake.y; this.root.alpha = s.stageAlpha;
+    for (const id of PLATE_ORDER) this.#plates[id].x = L.plates.find((p) => p.id === id)!.x;
+    if (this.#water) this.#water.x = 0;
+    this.#place(g, 0, g === 'left' ? 1 : -1, s.guardian.dy); this.#place(o, 0, o === 'left' ? 1 : -1);
+    this.#holders[g].alpha = s.guardian.alpha; this.#holders[o].alpha = s.opponent.alpha;
+    if (!piece.reducedMotion && this.#o.reducedMotion !== true) { this.#o.rigs[g].applyPose(s.guardian.pose, s.guardian.context); this.#o.rigs[o].applyPose(s.opponent.pose, s.opponent.context); }
+    this.#flash.alpha = s.camera.flash * 0.85; this.#number.visible = false; this.#cursor.visible = false;
+    this.#o.worldLife?.update();
+    const cues = this.#cues?.tick();
+    if (s.done) { this.root.x = 0; this.root.y = 0; this.root.alpha = 1; this.#flash.alpha = 0; this.#piece = null; }
+    return Object.freeze({ sample: s, done: s.done, piece: piece.piece, cuesFired: cues?.fired ?? 0 });
+  }
+
   /** Advance to the injected clock and render; idempotent per clock value. */
   tick(): StageFrame | null {
     this.#assertLive();
@@ -273,9 +310,9 @@ export class BattleStage {
     if (reach === undefined || !(reach > 0) || a.cadence) return a;
     return { ...a, cadence: Object.freeze({ bodyLength: rig.bodyLength * this.#scales[a.side] / this.#o.layout.frame.width, stanceReach: reach }) };
   }
-  #place(side: Side, displacementX: number, facing: 1 | -1): void {
+  #place(side: Side, displacementX: number, facing: 1 | -1, displacementY = 0): void {
     const L = this.#o.layout, st = L.stands[side], h = this.#holders[side], k = this.#scales[side];
-    h.x = (st.x + displacementX) * L.frame.width; h.y = st.y * L.frame.height; h.scale.set(facing * k, k);
+    h.x = (st.x + displacementX) * L.frame.width; h.y = (st.y + displacementY) * L.frame.height; h.scale.set(facing * k, k);
   }
   #applyRest(): void {
     const timing = this.#o.timing;
