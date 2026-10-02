@@ -1,0 +1,154 @@
+{
+  "schema": "cf.c163-instrument-controls/v1",
+  "status": "PASS",
+  "controls": 36,
+  "passed": 36,
+  "nativeRuns": 0,
+  "syntheticOnly": true,
+  "results": [
+    {
+      "name": "nonvacuous positive: 601 live frames, all five turns/phases, both target dodges, final faint",
+      "status": "PASS"
+    },
+    {
+      "name": "one overbudget CPU frame refuses even with low p95",
+      "status": "PASS"
+    },
+    {
+      "name": "omitting a slow frame and adjusting count cannot pass",
+      "status": "PASS"
+    },
+    {
+      "name": "omitted frame with adjusted terminal count still exposes sequence hole",
+      "status": "PASS"
+    },
+    {
+      "name": "rig refusal at capture end refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "transient per-frame refusal refuses even with zero endpoint counts",
+      "status": "PASS"
+    },
+    {
+      "name": "altered script refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "missing phase sample refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "null anatomical attack refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "family clip cannot masquerade as anatomical timeline",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong contact joint refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "anatomical action on another turn cannot cover an idle-only turn",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong-role dodge cannot cover missing exact target dodge",
+      "status": "PASS"
+    },
+    {
+      "name": "earlier faint cannot cover absent final faint",
+      "status": "PASS"
+    },
+    {
+      "name": "contact anchoring mismatch refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "support mode mismatch refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "asset path mismatch refuses despite matching remembered sources",
+      "status": "PASS"
+    },
+    {
+      "name": "stale source hash refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "missing launch still refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong CPU throttle refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "truncated encoded media refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "complete 38×38 positive contains same-species and reverse pairs",
+      "status": "PASS"
+    },
+    {
+      "name": "missing ordered pair refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "hash-consistent all-hit script refuses prescribed coverage",
+      "status": "PASS"
+    },
+    {
+      "name": "same-species unqualified duplicate label refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "missing report cannot become all-pairs success",
+      "status": "PASS"
+    },
+    {
+      "name": "bare PASS labels cannot become measured all-pairs success",
+      "status": "PASS"
+    },
+    {
+      "name": "claimed PASS without frame observations refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "claimed PASS without verified capture hashes refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "claimed PASS with a different script identity refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "complete synthetic aggregation metadata remains CPU-only, 60fps unmeasured",
+      "status": "PASS"
+    },
+    {
+      "name": "replay positive verifies immutable report/sample/media/still ledger",
+      "status": "PASS"
+    },
+    {
+      "name": "changed actual bytes refuse: battle-full.webm",
+      "status": "PASS"
+    },
+    {
+      "name": "changed actual bytes refuse: turn0-launch.png",
+      "status": "PASS"
+    },
+    {
+      "name": "report with deleted live frame refuses immutable replay ledger",
+      "status": "PASS"
+    },
+    {
+      "name": "missing actual report refuses",
+      "status": "PASS"
+    }
+  ]
+}
