@@ -529,9 +529,9 @@
    "sha256": "e36778f8072f7e8ab69247d1fcb5762b4b6024ea5a9e7354380c283ba5e8610e"
   },
   {
-   "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
-   "bytes": 2560302,
-   "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+   "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.webp",
+   "bytes": 306596,
+   "sha256": "8dd54cdcdf840ad1e419e637728f467a530ba9e92717e9b1872fdebf92d4046c"
   },
   {
    "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
@@ -539,9 +539,9 @@
    "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
   },
   {
-   "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
-   "bytes": 1686808,
-   "sha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2"
+   "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.webp",
+   "bytes": 115812,
+   "sha256": "7e3e215a81bd56cfa156ab2842d5ea1f3518447e86eb56338b684ef4e1d2814d"
   },
   {
    "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/wild-impact.png",
@@ -564,9 +564,9 @@
    "sha256": "efe2405f0168299d429debc35ed72ee0dbbca7f602ee03f957a8bec3f49e26c2"
   },
   {
-   "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
-   "bytes": 2865228,
-   "sha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e"
+   "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp",
+   "bytes": 303916,
+   "sha256": "375f7286fdb0f507bf8037a3ee1de778602cdfa29702a3bac06390ba3d5813a7"
   },
   {
    "path": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/binding.json.gz",
@@ -654,19 +654,19 @@
    "sha256": "80c379e5ae6461652e76198566210e162a0094010bbffccaaf9387de9a4c11a0"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/coral/arena-far.png",
-   "bytes": 2791460,
-   "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b"
+   "path": "audits/C132_ARENAS_20261001/coral/arena-far.webp",
+   "bytes": 417132,
+   "sha256": "acfcc015058e3539679f88905183c13f8595bb7d3221de9605980cf393b1de5a"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-mid.png",
-   "bytes": 2746067,
-   "sha256": "1c40747146a50da140a511710e659d957644720e11d5fbcda9cdff88ed0802d2"
+   "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-mid.webp",
+   "bytes": 242280,
+   "sha256": "b4404816394b8436bb43ff4868bf861a1997b10f31f5a6f127f199aad757b4b7"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-near.png",
-   "bytes": 1641982,
-   "sha256": "89cdfbebb5ffc62006f71b815f9613af950c84f6c784effb8e3492fca2b02651"
+   "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-near.webp",
+   "bytes": 115586,
+   "sha256": "5357c7dfa38e1f23e2785c8824ff2e08d6568e7adb9b7a5bc3e92ce750a38342"
   },
   {
    "path": "audits/C132_ARENAS_20261001/dunesea/arena-delivery-recipe.json",
@@ -674,19 +674,19 @@
    "sha256": "37072eea11c1847c9c6197c0911f1e88b0727d89af72b0d29ebc9ad378dfa259"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
-   "bytes": 2485454,
-   "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+   "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.webp",
+   "bytes": 332238,
+   "sha256": "699ffa48023c0bbf9291406772fe3b4315e75c1bf33c48f5181b8c0e74559741"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.png",
-   "bytes": 2180838,
-   "sha256": "d7d5f56bc6000b030291ea114fd03a805ac72e55a5be4c0d17d3e20216d8d426"
+   "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.webp",
+   "bytes": 168228,
+   "sha256": "cbb5e46900febfae4d6f063ed54094b204abb482d0486c79576d76ae87fceffe"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
-   "bytes": 1481749,
-   "sha256": "b1b4e3d34688e9606076232f9ca2df3058367e9dd17299fb8239e1539d9a539d"
+   "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.webp",
+   "bytes": 82242,
+   "sha256": "c768254e0999a229d9e5510ca18c65479bbfab65e3f6f6feb0dd4ea9cfc34d0b"
   },
   {
    "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-delivery-recipe.json",
@@ -694,19 +694,19 @@
    "sha256": "32673cb908dacc92f8df15a556d6d31a4b056256ca5de911189637695cbffb0d"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.png",
-   "bytes": 2874963,
-   "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38"
+   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.webp",
+   "bytes": 431454,
+   "sha256": "49c4e63ba0f728788baa0bd3095734277b21938d694c4ce0de5bd8f82b1b57c3"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-mid.png",
-   "bytes": 2619819,
-   "sha256": "7172142d0763d33a55731aaeea0827461e342ea7b955e5ad5cbaaf66445b2b3a"
+   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-mid.webp",
+   "bytes": 243884,
+   "sha256": "0113f9426370f5d135498e0a1de56e58179441cb6340cddfd9bf5f49b58ad84e"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.png",
-   "bytes": 1553932,
-   "sha256": "45b531f6d60b3b6dffc5c7fc4dbe9a938c481ae4f28b25dd32d2f3e6f86afd78"
+   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.webp",
+   "bytes": 71780,
+   "sha256": "3a7fe729a7d8e6f6b0a3cd9b98e6cf7d76c1f2ca0bddf145518bc6c25f7040ab"
   },
   {
    "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-delivery-recipe.json",
@@ -714,19 +714,19 @@
    "sha256": "4c8af3a17479d1c5cec6c0f54cf36310e702aac606e1c96a0ef32f92dac6a5c4"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
-   "bytes": 2940458,
-   "sha256": "21cc4f65b78eb183fb3dadff062b6eec8cc29193142ee1b648644fdb23bdc12f"
+   "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.webp",
+   "bytes": 462280,
+   "sha256": "dccc68c3c75c3ee506a30d3261fafa15a10f4850b28f30fbd96689aa96780e73"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.png",
-   "bytes": 2707400,
-   "sha256": "463d61e9766b3bb6b86808844a1533e8249b020b32551ce1ed2dfaaa8d597111"
+   "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.webp",
+   "bytes": 229074,
+   "sha256": "67baeb9e80c7c5263df2d2953edcad3e53f7ed0a71c55c2154e3ef72cfa35bfd"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.png",
-   "bytes": 1630309,
-   "sha256": "6be8202a01b5b8fccd3cdee6a074c8aa952e3dd3eee582893ea05a76db109661"
+   "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.webp",
+   "bytes": 120174,
+   "sha256": "2e505c8422730251b93e0cd2b53d12f01e8b099769c6b95131999a1d2322ac27"
   },
   {
    "path": "audits/C132_ARENAS_20261001/karst-cave/arena-delivery-recipe.json",
@@ -734,19 +734,19 @@
    "sha256": "6ede2eaef9955a210f1ee67602e20dbb197e9d8fd84e1682bf27b8fb6787f19b"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
-   "bytes": 2754357,
-   "sha256": "bf535a0cb58e4f7bf912735c5824cd36b890dee14dadbd0b000de3197e0b2ab7"
+   "path": "audits/C132_ARENAS_20261001/karst-cave/arena-far.webp",
+   "bytes": 357018,
+   "sha256": "82cb73d00c1dcbf55724edf1f6ef51f1a7af92461cecd070875d93cbea6591e8"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-mid.png",
-   "bytes": 2391245,
-   "sha256": "fdb40ac68bd486ee74ad2402471a5f4a23969e8131888a8ac5e8b0aedd233ca4"
+   "path": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-mid.webp",
+   "bytes": 226672,
+   "sha256": "26d8d836cb57c5d89282b797ce90d6cebe2a6448e3e7240aa11de583d6e6f6a8"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-near.png",
-   "bytes": 1532135,
-   "sha256": "965fdd1a6a884a801464d788fc1580d9378d01c1d3501618f7a06b160400d373"
+   "path": "audits/C132_ARENAS_20261001/karst-cave/keyed/arena-near.webp",
+   "bytes": 99656,
+   "sha256": "ee3e959d4cfa428e9ce16e8aabe5f1ce8acceacc930569c723e1494a65399e4c"
   },
   {
    "path": "audits/C132_ARENAS_20261001/marsh/arena-delivery-recipe.json",
@@ -754,19 +754,19 @@
    "sha256": "8bb29cb695c45c5ac57f10ae88c30406cda7a597cd3598d79726b4036129406d"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
-   "bytes": 2464395,
-   "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989"
+   "path": "audits/C132_ARENAS_20261001/marsh/arena-far.webp",
+   "bytes": 308618,
+   "sha256": "40ac702c61cb4482dbd1a95aad4dd0b0de96788f2a684ab404d2cdbc3a9196ce"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/marsh/keyed/arena-mid.png",
-   "bytes": 2701989,
-   "sha256": "7d3867f851cf51e0d1bdd1120d70547c05a995f5dd14b208f3c549687c938a1c"
+   "path": "audits/C132_ARENAS_20261001/marsh/keyed/arena-mid.webp",
+   "bytes": 279474,
+   "sha256": "64120e3c2caa32102ccf96a0f3e52172395e1828121860725063e6e5b02ec213"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/marsh/keyed/arena-near.png",
-   "bytes": 1655647,
-   "sha256": "227d65592e25bbd4e275e68429387489b806911ce6c641590daf3bbbd07fe648"
+   "path": "audits/C132_ARENAS_20261001/marsh/keyed/arena-near.webp",
+   "bytes": 126690,
+   "sha256": "eb7d8c104b5468691360deea4ffe77607d6fd3a05729495b9b4141f7088212a2"
   },
   {
    "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-delivery-recipe.json",
@@ -774,19 +774,19 @@
    "sha256": "3c9e7be2ca29344c18eec45d2cd64d1a14dc79cadbf41730cc8ab85f5d79546a"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
-   "bytes": 2732021,
-   "sha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+   "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.webp",
+   "bytes": 413252,
+   "sha256": "1b6392edde37a25ffd11e47b14c5ead770a8ce2d54a787fb6bd81b8e8715a058"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.png",
-   "bytes": 2411202,
-   "sha256": "8fdfe56558971dbdbab565c6ff5b3546653e70e989dff2101ea2619f96fb814a"
+   "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.webp",
+   "bytes": 183710,
+   "sha256": "f1892d87c8b3cc1c9df1e9a40f483eec420a61c72cbbd5b2b43b8674899ae3da"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.png",
-   "bytes": 1405517,
-   "sha256": "57d3737dcbce4b246d3377d8b92bf5052ca731346b882b99b983c8dda26214f6"
+   "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.webp",
+   "bytes": 95164,
+   "sha256": "837722d78e627e24635a4b960d022c3507b78c7eb7e0e157c698671d1d6bfcb1"
   },
   {
    "path": "audits/C132_ARENAS_20261001/tundra/arena-delivery-recipe.json",
@@ -794,19 +794,19 @@
    "sha256": "3cf42283f7946a64924225014f29b70ff56f071da7b70b87a45c03a32c810435"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
-   "bytes": 2795842,
-   "sha256": "59d0945ea50363751af1c412c9eb0cab3306cf2e5e0810b04b9066ed9c0c331f"
+   "path": "audits/C132_ARENAS_20261001/tundra/arena-far.webp",
+   "bytes": 410122,
+   "sha256": "f69db62cb5f43d7caaf834540be88f0fcc75379421a3b21bdd12855750a6f752"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.png",
-   "bytes": 2612223,
-   "sha256": "19ae7de43a382d8c9c67134511b0a9a8069e80b9d29cfab6dc195f41afa5d846"
+   "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.webp",
+   "bytes": 288220,
+   "sha256": "08661d2c791c738bbd58b8e612cd60be1cf3c568ad70ceeaf10ffd8240296554"
   },
   {
-   "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.png",
-   "bytes": 1556824,
-   "sha256": "99aa984c719ea4b36151b654604eb275491040400bc2dfa9b2d43d8c22c93dce"
+   "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.webp",
+   "bytes": 106842,
+   "sha256": "a5728e589d0191376816d487a3c8686b32c52cc859e5ad307fad185d2e3658d8"
   },
   {
    "path": "audits/C132_EFFECTS_20261001/chem/anchors.json",

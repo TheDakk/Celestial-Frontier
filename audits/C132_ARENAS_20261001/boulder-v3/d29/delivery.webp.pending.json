@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "boulder-v3",
+  "biome": "boulder",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/boulder-v3/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/boulder-v3/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.webp",
+      "runtimeSha256": "3a9fde76fedec6cf66ac0aa233efe529a3deaf7475e37c31f009d5fc58fa6909",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.png",
+        "sha256": "87767bc1a569b3acc75e42767e9a92788a178b9fa153607fcec7c5b4e0b46750"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/boulder-v3/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-mid.webp",
+      "runtimeSha256": "ca1814d2f67bc622e68fbf07fb3c643bc3f681fc3b1fa5da8b0c2c54260be4ff",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-mid.png",
+        "sha256": "5318cd358b78ad7d08bf25a9b9f6cd290eeae408c7ba69e296ffb9f4191fc1db"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/boulder-v3/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-near.webp",
+      "runtimeSha256": "028ec25193d2bd69656b5c67ac559ac62691920dd3e0fd3d2567acee672b9c13",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-near.png",
+        "sha256": "74d91e106f3563138c05f2a32d1217c1e80f81c574b695d23da0837c1b54958f"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

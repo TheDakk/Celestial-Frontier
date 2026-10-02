@@ -95,7 +95,7 @@ painter master, painted masks) exists at its served path.
 
 ### Shipped files and record sources
 `tools/morph/build-shipped-battle2.mjs` (run from `port/v2`) copies, deterministically, into
-`apps/game/public/battle2/audits/…`: the arena proof (recipe, Wild anchors, the keyed phase images), every registered plate set's runtime recipe and plates from its delivery manifest (2026-10-01: `arena-sets.mjs`; the temperate MID is now the approved despilled copy `ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png`), the
+`apps/game/public/battle2/audits/…`: the arena proof (recipe, Wild anchors, the keyed phase images), every registered plate set's runtime recipe and plates from its delivery manifest (2026-10-01: `arena-sets.mjs`; the temperate MID is now the approved despilled copy `ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png`; since D30, 2026-10-02, every plate ships as its WebP copy, see "Arena plates ship as WebP"), the
 Civet landmark record and master, and for every archetype its `record.json`, `binding.json`, `parts/keyed.png`,
 `parts/manifest.json`, atlas, painter master (`record.source`) and painted masks. It keeps the proof folders' relative
 layout and writes `MANIFEST.json` (path, bytes and sha256 per file). The wiring resolves every path against
@@ -268,6 +268,20 @@ Codex's actual-film review (`audits/C132_EFFECTS_20261001/native-review-01/`) fo
   surface line and keeps the near plate, because the plates are the water. A swimmer facing a land fighter is a ground fight: ground
   plates plus the half lake, as before.
 - Registered: `freshwater-lake-v2` (temperate) and `coral` (coral). Contract and numbers: `audits/ARENA_ROUTING_20261001/README.md`.
+
+### Arena plates ship as WebP, D30 (matches code as of 2026-10-02)
+- Dakk's D30: every registered set's runtime plates are high-quality WebP copies of its PNG runtimes at the native 1672 × 941, written by
+  `tools/morph/arena-webp.mjs` next to each PNG (`<name>.webp`). FAR is lossy RGB (q 88, effort 6, sharp-YUV); MID/NEAR are lossy RGB with
+  LOSSLESS alpha (alphaQuality 100). The decoded alpha equals the PNG runtime's byte for byte, or the encoder refuses. The invisible key
+  colour under alpha 0 is replaced by a 24-pixel bleed of the visible edge first, so no magenta reaches the edge through chroma.
+- Delivery manifests name the `.webp` runtime with a `runtimeSource` (the PNG and its SHA-256). `arena-sets.mjs` checks the hash, that
+  the bytes are WebP (so the host serves `image/webp`), and that the source PNG matches its pin. The PNG masters and PNG runtimes stay in
+  the repo; only the WebP copies ship. The wiring is unchanged: `assets.image` decodes WebP through `createImageBitmap`.
+- Measured: pinned battle2 files 93.3 → 40.6 MiB; the vite build's shipped pack 117.4 → 64.7 MiB. All 45 sets (the 9 registered plus
+  the 36 pending C132 candidates) project to 84.3 MiB. Receipt and per-plate SSIM/PSNR: `audits/ARENA_WEBP_D30_20261002/`.
+- Tests: `arena-webp.test.ts` (WebP bytes, source binding, alpha byte identity, FAR opacity, fidelity as receipted, the 36 pending WebP
+  manifests through the delivery contract, and the lossy-alpha and FAR-transparency negative controls), `tests/pwa-battle2-assets.test.ts`
+  (pack under the cap and the 115 MiB target today and with all 45 sets; the PNG-size and one-byte-over controls).
 
 ### Current measured limits (2026-10-02)
 - The bounded Centipede orientation correction is promoted. The library owner now requires zero refusals for all

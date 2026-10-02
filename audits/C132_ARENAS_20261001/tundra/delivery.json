@@ -7,18 +7,31 @@
   "plates": {
     "far": {
       "master": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
-      "runtime": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
-      "runtimeSha256": "59d0945ea50363751af1c412c9eb0cab3306cf2e5e0810b04b9066ed9c0c331f"
+      "runtime": "audits/C132_ARENAS_20261001/tundra/arena-far.webp",
+      "runtimeSha256": "f69db62cb5f43d7caaf834540be88f0fcc75379421a3b21bdd12855750a6f752",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+        "sha256": "59d0945ea50363751af1c412c9eb0cab3306cf2e5e0810b04b9066ed9c0c331f"
+      }
     },
     "mid": {
       "master": "audits/C132_ARENAS_20261001/tundra/arena-mid.png",
-      "runtime": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.png",
-      "runtimeSha256": "19ae7de43a382d8c9c67134511b0a9a8069e80b9d29cfab6dc195f41afa5d846"
+      "runtime": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.webp",
+      "runtimeSha256": "08661d2c791c738bbd58b8e612cd60be1cf3c568ad70ceeaf10ffd8240296554",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.png",
+        "sha256": "19ae7de43a382d8c9c67134511b0a9a8069e80b9d29cfab6dc195f41afa5d846"
+      }
     },
     "near": {
       "master": "audits/C132_ARENAS_20261001/tundra/arena-near.png",
-      "runtime": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.png",
-      "runtimeSha256": "99aa984c719ea4b36151b654604eb275491040400bc2dfa9b2d43d8c22c93dce"
+      "runtime": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.webp",
+      "runtimeSha256": "a5728e589d0191376816d487a3c8686b32c52cc859e5ad307fad185d2e3658d8",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.png",
+        "sha256": "99aa984c719ea4b36151b654604eb275491040400bc2dfa9b2d43d8c22c93dce"
+      }
     }
-  }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
 }

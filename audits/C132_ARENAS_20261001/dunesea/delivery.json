@@ -7,18 +7,31 @@
   "plates": {
     "far": {
       "master": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
-      "runtime": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
-      "runtimeSha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+      "runtime": "audits/C132_ARENAS_20261001/dunesea/arena-far.webp",
+      "runtimeSha256": "699ffa48023c0bbf9291406772fe3b4315e75c1bf33c48f5181b8c0e74559741",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+        "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+      }
     },
     "mid": {
       "master": "audits/C132_ARENAS_20261001/dunesea/arena-mid.png",
-      "runtime": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.png",
-      "runtimeSha256": "d7d5f56bc6000b030291ea114fd03a805ac72e55a5be4c0d17d3e20216d8d426"
+      "runtime": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.webp",
+      "runtimeSha256": "cbb5e46900febfae4d6f063ed54094b204abb482d0486c79576d76ae87fceffe",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.png",
+        "sha256": "d7d5f56bc6000b030291ea114fd03a805ac72e55a5be4c0d17d3e20216d8d426"
+      }
     },
     "near": {
       "master": "audits/C132_ARENAS_20261001/dunesea/arena-near.png",
-      "runtime": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
-      "runtimeSha256": "b1b4e3d34688e9606076232f9ca2df3058367e9dd17299fb8239e1539d9a539d"
+      "runtime": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.webp",
+      "runtimeSha256": "c768254e0999a229d9e5510ca18c65479bbfab65e3f6f6feb0dd4ea9cfc34d0b",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
+        "sha256": "b1b4e3d34688e9606076232f9ca2df3058367e9dd17299fb8239e1539d9a539d"
+      }
     }
-  }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
 }

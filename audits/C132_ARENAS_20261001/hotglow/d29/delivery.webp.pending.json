@@ -1,0 +1,39 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "hotglow",
+  "biome": "hotglow",
+  "medium": "ground",
+  "mediumNote": "Recipe medium \"air\" (a gas-giant cloud deck): to be registered as a GROUND set, the fighters standing on the cloud layer. There is no air routing medium. Pending Dakk's acceptance.",
+  "recipe": "audits/C132_ARENAS_20261001/hotglow/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/hotglow/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/hotglow/arena-far.webp",
+      "runtimeSha256": "aa10a325c4eb752e1e0e853426be84689ffebb36675257978a77dd987c7269ea",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+        "sha256": "afc7e7f12daf0e6e0f3176963b734bf9a13dff3dd82b033ef107eb6ff9db5540"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.webp",
+      "runtimeSha256": "6b4a5f33c26c240b6275f2527c7039c62f09eace7710c6b0461946b0153c0626",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.png",
+        "sha256": "530a0c1663875f59be735228bc938603596da8274be7a6949183e21b37ace0e6"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.webp",
+      "runtimeSha256": "6564ec6c2823bf9cf6d3f96b06c64ac0e44f8c5740cb8dc6a78fb1639fe970ff",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.png",
+        "sha256": "9ef3436ef78096a29eaa50519e062863cd12359fa7f2a176736da4c854f3a27f"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}
