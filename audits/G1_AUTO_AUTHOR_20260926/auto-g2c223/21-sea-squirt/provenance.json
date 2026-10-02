@@ -1,0 +1,36 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "21-sea-squirt",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+ "subjectSourceSha256": "5ed04dcf712b75a98c55baa71fc0837443746b0d1935d1a8f093e5ea7c97d257",
+ "identity": {
+  "name": "Sea Squirt",
+  "family": "sessile-filter",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sea Squirt\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3057975812\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "seed": 3057975812,
+  "checks": [
+   "materials-unknown: no species-group material for profile sessile-tunicate; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "sessile-tunicate",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "155c72f5e831363f759564a3700271b6da56743e97af3c4c86bf3ce29ba760ae",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group sessile-tunicate (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

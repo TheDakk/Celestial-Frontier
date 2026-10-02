@@ -50,9 +50,9 @@ const SPECIES_MATERIAL = Object.freeze({
   fur: ['felid', 'canid', 'hyena', 'bear', 'small-clawed-mammal', 'aquatic-pawed-mammal', 'gliding-mammal', 'aardvark', 'rabbit-hopper', 'marsupial-hopper', 'koala', 'primate', 'hoofed-horned', 'hoofed-unhorned', 'tapir', 'suid', 'bat'],
   scales: ['constricting-snake', 'snake', 'lizard', 'special-lizard', 'marine-iguana', 'crocodilian', 'fish', 'predatory-shark', 'filter-shark', 'tube-snouted-fish'],
   feathers: ['raptor', 'flightless-bird', 'penguin', 'swimming-bird', 'wading-bird', 'ground-foraging-bird', 'bird', 'pheasant'],
-  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede', 'springtail', 'small-crustacean', 'fiddler-crab'],
-  'smooth skin': ['frog', 'salamander', 'caecilian', 'eel', 'jawless-fish', 'cephalopod', 'mudskipper', 'annelid-land', 'land-gastropod'],
-  warty: ['echinoderm', 'sponge'], translucent: ['cnidarian', 'comb-jelly'],
+  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede', 'springtail', 'small-crustacean', 'fiddler-crab', 'observed-crab'],
+  'smooth skin': ['frog', 'salamander', 'caecilian', 'eel', 'jawless-fish', 'cephalopod', 'mudskipper', 'annelid-land', 'land-gastropod', 'annelid-water'],
+  warty: ['echinoderm', 'sponge'], translucent: ['cnidarian', 'comb-jelly', 'sessile-tunicate'],
 });
 const materialForProfile = (profileId) => Object.entries(SPECIES_MATERIAL).find(([, ids]) => ids.includes(profileId))?.[0] ?? null;
 // habitat = biological capability from the pinned Earth fauna profile (id, media and its hash retained in the provenance envelope);
