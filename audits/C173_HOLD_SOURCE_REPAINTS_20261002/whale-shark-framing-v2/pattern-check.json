@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Whale Shark",
+  "masterSha256": "d426cbcae3dd5e3749af7aa43e823eb892e97d1908c1db7f3fa7f07d01748c2c",
+  "required": [
+    "checkerboard of white spots and lines"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "checkerboard of white spots and lines",
+      "status": "PRESENT",
+      "observed": "At full native size, many discrete white spots lie in rows between pale intersecting linear markings over the blue-grey back and visible flank; spots continue onto dorsal, pectoral and caudal fins. This is a source-bound pigment observation, not anatomy admission."
+    }
+  ]
+}
