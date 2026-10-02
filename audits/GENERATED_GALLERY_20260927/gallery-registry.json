@@ -1938,5 +1938,13 @@
   "note": "HELD: native PASS, but the aerial placement puts the bat mostly above the top edge of the frame (staging fix pending)",
   "batch": "audits/C168_MEMBRANE_REFERENCES_20261002",
   "tag": "c190bat"
+ },
+ {
+  "family": "primate",
+  "name": "Capuchin",
+  "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
+  "note": "HELD: reaction whole and excellent; in the head-down late idle the shoulder/back fur pulls into a pointed spike (nape-spike class)",
+  "batch": "audits/C168_PRIMATE_REFERENCES_20261002",
+  "tag": "c192capuchin"
  }
 ]

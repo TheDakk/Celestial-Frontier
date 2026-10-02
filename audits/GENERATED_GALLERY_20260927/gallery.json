@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 232,
+ "total": 233,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -1625,6 +1625,13 @@
    "nativeDir": "audits/BAT_C190_20261002/bat",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: native PASS, but the aerial placement puts the bat mostly above the top edge of the frame (staging fix pending)"
+  },
+  {
+   "family": "primate",
+   "name": "Capuchin",
+   "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: reaction whole and excellent; in the head-down late idle the shoulder/back fur pulls into a pointed spike (nape-spike class)"
   }
  ]
 }
