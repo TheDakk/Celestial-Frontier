@@ -1,0 +1,24 @@
+{
+  "schema": "cf.c163-jaw-native-run/v1",
+  "head": "851b3b177409e04eb395ad9189691f1ffa2f94c6",
+  "endHead": "851b3b177409e04eb395ad9189691f1ffa2f94c6",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C182 current jaw anchor film",
+    "--",
+    "node",
+    "audits/C163_ALL_PAIRS_20261002/native-runner.mjs",
+    "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01",
+    "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03",
+    "audits/C163_JAW_ANCHOR_20261002/native-4x-01",
+    "audits/C163_JAW_ANCHOR_20261002/script.json"
+  ],
+  "env": {
+    "CF_CPU_THROTTLE": "4",
+    "CF_EFFECT_ANCHORS": "audits/C163_EFFECTS_POLISH_20261002/storm/anchors.json"
+  },
+  "exitCode": 0,
+  "durationSeconds": 24.24
+}
