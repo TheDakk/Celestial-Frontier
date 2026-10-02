@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c163-i5-prestart-hold/v1",
+  "status": "NOT_STARTED",
+  "reason": "Existing finish-batch.mjs process detected by isolation precheck. No epoch directory or invocation receipt created; wait for terminal before one actual epoch.",
+  "observedPid": 51521,
+  "samplesCollected": 0,
+  "automaticRetries": 0
+}
