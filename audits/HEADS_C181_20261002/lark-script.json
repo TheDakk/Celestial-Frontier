@@ -1,0 +1,43 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "wild",
+  "B": "stone"
+ },
+ "rows": [
+  {
+   "side": "A",
+   "an": "Lark",
+   "dn": "Lark",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "side": "B",
+   "an": "Lark",
+   "dn": "Lark",
+   "dmg": 6,
+   "crit": false,
+   "hpA": 24,
+   "hpB": 21
+  },
+  {
+   "an": "Lark",
+   "dn": "Lark",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Lark",
+   "dn": "Lark",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 24,
+   "hpB": 0
+  }
+ ],
+ "supports": "observed"
+}

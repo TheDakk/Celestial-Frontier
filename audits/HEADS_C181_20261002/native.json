@@ -1,0 +1,26 @@
+{
+ "lark": {
+  "fit": "audits/C163_REFERENCE_REPAIR_20261002/16-lark/fit02",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "hawk": {
+  "fit": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/fit02",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "crow": {
+  "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "snowy-owl": {
+  "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "hummingbird": {
+  "fit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/hummingbird/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "wild-pony": {
+  "fit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ }
+}

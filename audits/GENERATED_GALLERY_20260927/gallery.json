@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 225,
+ "total": 231,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -514,6 +514,13 @@
    "note": "whole after the remainder-island repair (unrepaired late idle floated an ear-tip sliver over the lowered head)"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Wild Pony",
+   "nativeDir": "audits/HEADS_C181_20261002/wild-pony",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair still floats a small fleck beside the lowered head in the late idle"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -988,6 +995,41 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/18-hawk",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (36.0% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Lark",
+   "nativeDir": "audits/HEADS_C181_20261002/lark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C181 head-contour repair (crest attached; earlier fits floated a crown sliver)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hummingbird",
+   "nativeDir": "audits/HEADS_C181_20261002/hummingbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C181 head-contour repair (the crown island held since C101 is gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/HEADS_C181_20261002/hawk",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Crow",
+   "nativeDir": "audits/HEADS_C181_20261002/crow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Snowy Owl",
+   "nativeDir": "audits/HEADS_C181_20261002/snowy-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle"
   },
   {
    "family": "Fish",
