@@ -67,6 +67,8 @@ import { originalSourceLibraryV1 } from './soundkit/original-voices.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { artLibraryEntryV1, fetchArtLibraryBytesV1, libraryPathOfArenaUrl, type ArtLibraryOptionsV1 } from './art-library.js';
 import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
+import { guardianDecisiveStartHpV1, planGuardianProgramV1, type GuardianProgramV1, type GuardianSetPieceV1 } from './battle2/guardian-choreo.js';
+import type { SetPieceFrame } from './battle2/stage.js';
 import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
 import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
 import { Battle2PinRefusal, gunzipTransportBytes, preflightBattle2PinnedBytesV1, type Battle2PinnedBytesV1 } from './battle2-master-pin-admission.js';
@@ -131,7 +133,7 @@ export interface Battle2SettlementLike {
   readonly battleId: string;
   readonly champion: Battle2Champion;
   readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>>; readonly kind?: string } };
-  readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[] };
+  readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[]; /** the decisive leg's defender max HP (the guardian phase beat needs it) */ readonly maxB?: number };
   /** §20 Guardian party: the settled plan's party block; the stage plays one relay beat per earlier fighter first. */
   readonly party?: CombatSettlementPlanV1['party'];
 }
@@ -169,6 +171,9 @@ export interface Battle2StudyInput {
   readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
   /** A named world built on the study's own ground line (the matchup picker): `lake` = liquid water with a surface. Ignored when `worlds` is given. */
   readonly worldPreset?: 'lake';
+  /** Guardian choreography (opt-in study, `?guardianChoreo=1` — battle2-gate.ts; audits/GUARDIAN_CHOREOGRAPHY_20261001/DESIGN.md): a Guardian or
+   * Titan fight plays the boss entrance, the phase-change beat, heavy strikes and the fall/triumph set pieces. Absent/false = today's stage. */
+  readonly guardianChoreo?: boolean;
 }
 export type Battle2Phase = 'loading' | 'playing' | 'finished' | 'failed' | 'disposed';
 export interface Battle2Status {
@@ -191,6 +196,8 @@ export interface Battle2Status {
   readonly attacks: Readonly<{ left: string | null; right: string | null }>;
   /** E1: per side, poses the parts rig refused so far (null for fixture/portrait rigs, which never refuse). */
   readonly refusals: Readonly<{ left: number | null; right: number | null }>;
+  /** Guardian choreography (present only when the opt-in program runs): the set piece showing, those played so far, and where the phase beat sits. */
+  readonly guardian?: Readonly<{ piece: string | null; played: readonly string[]; phase: string }>;
 }
 export interface Battle2StudyHandle { readonly ready: Promise<Battle2Status>; status(): Battle2Status; dispose(reason?: string): void; }
 
@@ -307,13 +314,24 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   let voices: CreatureVoiceHook | null = null;
   let beats: readonly Battle2SwapBeatV1[] = [], beatIndex = -1, beatStart = 0, beatCaption: StageTextLike | null = null;
   const beatMs = input.reducedMotion ? BATTLE2_SWAP_BEAT_REDUCED_MS_V1 : BATTLE2_SWAP_BEAT_MS_V1;
-  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
+  // guardian choreography (opt-in): the program, the set piece showing, and which ones have played
+  let program: GuardianProgramV1 | null = null, pieceName: string | null = null, entranceDone = false, phaseDone = false, finaleDone = false; const piecesPlayed: string[] = [];
+  const status = (): Battle2Status => Object.freeze({ ...(program ? { guardian: Object.freeze({ piece: pieceName, played: Object.freeze([...piecesPlayed]), phase: program.phaseReason }) } : {}), beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tickUnguarded = (): void => {
     if (disposed || !stage || !app) return;
     if (!input.mount.isConnected || section.parentElement !== input.mount) { dispose('mount left the document'); return; }
     ticks++;
     const play = (i: number): void => { turnStart = input.clock(); impactAt = stage!.play(turns[i]!).beats.impactAt; section.dataset.battle2Turn = String(i); };
+    // guardian choreography: a set piece owns the stage (and the caption) until it is done, then the turn path resumes where it was
+    const showPiece = (f: SetPieceFrame | null): void => { if (beatCaption && f) { beatCaption.text = f.sample.caption.text; beatCaption.alpha = f.sample.caption.alpha; beatCaption.visible = f.sample.caption.visible; } };
+    const startPiece = (p: GuardianSetPieceV1): void => { stage!.playSetPiece(p); pieceName = p.piece; piecesPlayed.push(p.piece); section.dataset.battle2Guardian = p.piece; showPiece(stage!.tickSetPiece()); app!.renderer.render(app!.stage); };
+    if (pieceName !== null) {
+      const f = stage.tickSetPiece(); showPiece(f);
+      if (f && !f.done) { app.renderer.render(app.stage); return; }
+      pieceName = null; if (beatCaption) { beatCaption.visible = false; beatCaption.alpha = 1; }
+    }
+    if (program && !entranceDone) { entranceDone = true; startPiece(program.entrance); return; }
     // §20 relay beats: each earlier party fighter's exit holds a captioned beat before the decisive leg's first turn
     if (turnIndex < 0 && beatIndex < beats.length) {
       if (beatIndex < 0 || input.clock() - beatStart >= beatMs) {
@@ -323,14 +341,21 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       if (beatIndex < beats.length) { stage.tick(); app.renderer.render(app.stage); return; }
       if (beatCaption) beatCaption.visible = false;
     }
-    if (turnIndex < 0) { turnIndex = 0; play(0); }
+    if (turnIndex < 0) {
+      if (program?.phase?.afterTurn === -1 && !phaseDone) { phaseDone = true; startPiece(program.phase.piece); return; }   // the phase changed in an earlier leg
+      turnIndex = 0; play(0);
+    }
     const frame = stage.tick();
     if (ticks % 30 === 0) section.dataset.battle2Ticks = String(ticks); // smoke diagnostics (cheap)
     if (input.clock() - turnStart >= impactAt) releaseThrough(turnIndex); // this turn's Chronicle row appears at its impact
     if (frame?.done) {
       releaseThrough(turnIndex);
+      if (program?.phase?.afterTurn === turnIndex && !phaseDone) { phaseDone = true; startPiece(program.phase.piece); return; }
       if (turnIndex + 1 < turns.length) { turnIndex++; play(turnIndex); }
-      else if (phase === 'playing') { setPhase('finished'); stopTicking(); input.pacer?.releaseAll(); }
+      else if (phase === 'playing') {
+        if (program?.finale && !finaleDone) { finaleDone = true; startPiece(program.finale); return; }
+        setPhase('finished'); stopTicking(); input.pacer?.releaseAll();
+      }
     }
     app.renderer.render(app.stage);
   };
@@ -523,7 +548,18 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     application.canvas.style.cssText = 'display:block;width:100%;height:100%'; section.append(application.canvas);
     application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label; if (input.finish) section.dataset.battle2Finished = `left:${finishedSides.left} right:${finishedSides.right}`;
     beats = battle2SwapBeatsV1(input.settlement.party, { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome, kind: input.settlement.encounter.defender.kind });
-    if (beats.length > 0) {
+    if (input.guardianChoreo === true) {
+      // presentation only: read from the settled transcript and the turns already built from it; the guardian is the defender (B, right)
+      const defender = { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome, kind: input.settlement.encounter.defender.kind };
+      const start = guardianDecisiveStartHpV1(input.settlement.party, defender), maxB = input.settlement.transcript.maxB;
+      program = planGuardianProgramV1({ defender, guardianSide: 'right', seed: ctx.seed, reducedMotion: input.reducedMotion,
+        guardian: { side: 'right', mass: right.mass, card: right.card, seed: right.seed, label: input.chronicle.defenderName },
+        opponent: { side: 'left', mass: left.mass, card: left.card, seed: left.seed, label: input.chronicle.championName },
+        log: input.settlement.transcript.log, maxB: start?.maxB ?? (typeof maxB === 'number' ? maxB : null), startHpB: start?.startHpB ?? null,
+        turns, turnRows, riseFromDy: Math.max(0, 1 - built.bodies().right.topY) });
+      if (program) turns = [...program.turns];
+    }
+    if (beats.length > 0 || program) {
       beatCaption = new pixi.Text({ text: '', style: { ...style, fontSize: 28 }, anchor: 0.5 });
       beatCaption.x = BATTLE2_FRAME.width / 2; beatCaption.y = 56; application.stage.addChild(beatCaption as unknown as object);
     }

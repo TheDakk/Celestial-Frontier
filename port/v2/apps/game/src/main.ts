@@ -46,7 +46,7 @@ import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './
 import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import { localeFromSearchV1, localizeElementV1, SETTINGS_CATALOG_V1 } from './i18n.js';
-import { battle2On } from './battle2-gate.js';
+import { battle2On, guardianChoreoOn } from './battle2-gate.js';
 import { CompendiumRevealQueueV1 } from './compendium-reveal.js';
 import { VistaPillsControllerV1, composeVistaPostcardV1, deliverVistaPostcardV1, postcardTitleV1, type PostcardCanvasLike, type PostcardDeliveryV1 } from './vista-postcard.js';
 import { DEFAULT_CODEX_LIST_VIEW_V1, codexChipBarHtmlV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, shelveCodexRowsV1, type CodexListViewV1, type CodexShelfHeaderV1 } from './compendium-shelves.js';
@@ -17632,7 +17632,7 @@ function presentCommittedCombatChronicle(
   }
   // The painted battle stage over the same Chronicle mount (A4: the default; `?battle2=0` opts out). A dynamic import reached only when a
   // fight is presented, so boot never loads it; a study failure leaves the Chronicle, which stays the accessible owner of the outcome.
-  if (battle2On(location.search)) void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ ...(finishRoute ? { finish: async (g: Readonly<Record<string, unknown>>, p: Parameters<NonNullable<Parameters<typeof m.mountBattle2Study>[0]['finish']>>[1]) => { const r = await finishRoute; return r ? r.stage(g, p) : null; } } : {}), mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
+  if (battle2On(location.search)) void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ ...(finishRoute ? { finish: async (g: Readonly<Record<string, unknown>>, p: Parameters<NonNullable<Parameters<typeof m.mountBattle2Study>[0]['finish']>>[1]) => { const r = await finishRoute; return r ? r.stage(g, p) : null; } } : {}), mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, guardianChoreo: guardianChoreoOn(location.search), ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
   try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {
