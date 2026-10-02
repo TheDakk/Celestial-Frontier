@@ -34,3 +34,5 @@ No further source, art or native work was performed for this read-only gap audit
 
 
 The full profile on signed `85fb78b2b` passed all 5,812 tests but stopped at game TypeScript: the fake root children were typed as `object[]`. The subsequent correction narrows that test-only container array to the existing `Node[]` factory type. Game TypeScript now passes; no emitted game code, assertion or threshold changes. `type-correction.json` binds both source hashes and the retained red profile. A full profile on the corrected signed source follows.
+
+Final corrected signed source `f85c1ce94` passes the full develop profile in 130.829 seconds: 577 passing test files, one skipped; 5,812 passing tests, two expected failures, three skipped; all three TypeScript programs, artaudit, overridecheck and speccheck PASS. Optional local-AI dependencies were set aside and restored. Root validation also passes. Exact evidence: `typed-final-develop-profile.json`, `typed-final-develop-profile.log`, and `root-validate-final.log`. The existing overridecontrol and 81-control Actions policy evidence remain current because their inputs did not change.
