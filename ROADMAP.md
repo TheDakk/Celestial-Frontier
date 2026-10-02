@@ -129,7 +129,8 @@ manual references plus an incomplete Water Strider draft are in `C136_BIRD_INSEC
 owners contain paint, with anatomy/contact holds retained. `G2_C136_TARGETED_EDITS_20261002` adds four separate successors
 for Giant Salamander, Giraffe, Buffalo and Bee, all framing PASS, original source paintings unchanged.
 
-**Gates and next steps:** C159 released the bounded Centipede SIMD epoch; no reservation is active. Its exact four
+**Gates and next steps:** C162 reserves one fresh I5 3+1 epoch on signed `06e0b0f60`, with separate clean source,
+unchanged ceilings and first-red stop. C159 released the preceding bounded Centipede SIMD epoch. Its exact four
 artifacts are promoted with 17 leaf controls, the nine-test library owner and root validation passing. The one 4× film
 has 789 live frames, zero refusals, CPU p95 8.7 ms and three slow frames (maximum 23.3 ms); 18 stills equal the prior
 corrected film. C160/C161 deliver that promotion and the first D29 arena batch. Draft release and 68 merged routing/theme
