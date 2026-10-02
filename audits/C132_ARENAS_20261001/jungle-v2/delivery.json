@@ -7,18 +7,31 @@
   "plates": {
     "far": {
       "master": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
-      "runtime": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
-      "runtimeSha256": "21cc4f65b78eb183fb3dadff062b6eec8cc29193142ee1b648644fdb23bdc12f"
+      "runtime": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.webp",
+      "runtimeSha256": "dccc68c3c75c3ee506a30d3261fafa15a10f4850b28f30fbd96689aa96780e73",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.png",
+        "sha256": "21cc4f65b78eb183fb3dadff062b6eec8cc29193142ee1b648644fdb23bdc12f"
+      }
     },
     "mid": {
       "master": "audits/C132_ARENAS_20261001/jungle-v2/arena-mid.png",
-      "runtime": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.png",
-      "runtimeSha256": "463d61e9766b3bb6b86808844a1533e8249b020b32551ce1ed2dfaaa8d597111"
+      "runtime": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "67baeb9e80c7c5263df2d2953edcad3e53f7ed0a71c55c2154e3ef72cfa35bfd",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-mid.png",
+        "sha256": "463d61e9766b3bb6b86808844a1533e8249b020b32551ce1ed2dfaaa8d597111"
+      }
     },
     "near": {
       "master": "audits/C132_ARENAS_20261001/jungle-v2/arena-near.png",
-      "runtime": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.png",
-      "runtimeSha256": "6be8202a01b5b8fccd3cdee6a074c8aa952e3dd3eee582893ea05a76db109661"
+      "runtime": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.webp",
+      "runtimeSha256": "2e505c8422730251b93e0cd2b53d12f01e8b099769c6b95131999a1d2322ac27",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/jungle-v2/keyed/arena-near.png",
+        "sha256": "6be8202a01b5b8fccd3cdee6a074c8aa952e3dd3eee582893ea05a76db109661"
+      }
     }
-  }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
 }

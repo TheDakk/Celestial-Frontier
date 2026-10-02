@@ -13,7 +13,7 @@ test('films draw the game\'s runtime plates: the registered temperate set, despi
   const p = arenaPlateFiles(repo), sets = JSON.parse(fs.readFileSync(ARENA_SETS_FILE, 'utf8')), row = sets.sets.find((s) => s.id === 'earth-temperate-v1');
   assert.equal(p.setId, 'earth-temperate-v1');
   assert.deepEqual(Object.fromEntries(Object.entries(p.files).map(([n, f]) => [n, path.relative(repo, f)])), { 'arena-recipe.json': row.recipe, 'arena-far.png': row.far, 'arena-mid.png': row.mid, 'arena-near.png': row.near });
-  assert.equal(path.relative(repo, p.files['arena-mid.png']), 'audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png');
+  assert.equal(path.relative(repo, p.files['arena-mid.png']), 'audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp'); // D30: the WebP runtime copy of the despilled MID (the flat served name stays; createImageBitmap sniffs the bytes)
   for (const f of Object.values(p.files)) assert.ok(fs.existsSync(f), f);
   // every harness takes its plates from the registry: no hard-coded keyed MID left, and each one calls arenaPlateFiles
   for (const name of ['native-runner.mjs', 'archetype-native-runner.mjs', 'build.mjs']) {

@@ -541,7 +541,7 @@ describe('battle2 wiring: live home-ground worlds (2026-10-02, main.ts liveArena
     const frames: string[][] = [];
     if (app && ready.phase === 'playing') for (let t = 0; t <= 12000; t += 250) { h.setNow(t); h.ticker.step(); frames.push(scene(app)); }
     const end = handle.status(); handle.dispose('test');
-    return { ready, end, frames, calls: h.calls, plates: h.calls.filter((c) => c.endsWith('.png') && /arena-(far|mid|near)/.test(c)) };
+    return { ready, end, frames, calls: h.calls, plates: h.calls.filter((c) => /\.(png|webp)$/.test(c) && /arena-(far|mid|near)/.test(c)) }; // D30: the arena plates are WebP runtime copies
   }
   it('today\'s encounters: Earth and every generated world draw the same plates and the same scene, frame for frame; only the route label changes', async () => {
     const base = await film({});

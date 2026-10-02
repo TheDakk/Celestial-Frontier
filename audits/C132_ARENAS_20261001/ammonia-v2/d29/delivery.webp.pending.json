@@ -1,0 +1,39 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "ammonia-v2",
+  "biome": "ammonia",
+  "medium": "ground",
+  "mediumNote": "Recipe medium \"air\" (a gas-giant cloud deck): to be registered as a GROUND set, the fighters standing on the cloud layer. There is no air routing medium. Pending Dakk's acceptance.",
+  "recipe": "audits/C132_ARENAS_20261001/ammonia-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/ammonia-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.webp",
+      "runtimeSha256": "6f5a01c3ed2ddeb54d547abef924ee284c13975c62a227066ff5530aafd81daa",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.png",
+        "sha256": "9a41d230571c21671dc209ec99afa28fee9763948900b475ce06e47d60a705a5"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "f302382e69de8675bab8d1fd7483ff232425cfa227f0509517a0aac7c71a4b73",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-mid.png",
+        "sha256": "cd91f083105e358a6417003fb97178d1ae549393b7ff061bf54bfad41f0e9992"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/ammonia-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-near.webp",
+      "runtimeSha256": "35958dfdd899c13644784d7cd716aa94b232951539a541ee191304ca59b3b8bd",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-near.png",
+        "sha256": "6e24ce174338c2077c39288b4c8efc358f2509cb53f87ea3e1261c2695c1cc79"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}
