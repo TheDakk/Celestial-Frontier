@@ -1,9 +1,0 @@
-{
- "id": "tarantula",
- "family": "arachnid",
- "verdict": "REFUSE",
- "reasons": [
-  "no-reference: no other hand-authored subject of family arachnid"
- ],
- "semanticPresence": null
-}
