@@ -1,0 +1,1974 @@
+{
+  "schema": "cf.c163-reference-comparison/v1",
+  "rows": [
+    {
+      "id": "01-giant-salamander",
+      "name": "Giant Salamander",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+        ],
+        "bestReference": "salamander",
+        "groundContacts": 1
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+        ],
+        "bestReference": "c136-sprawler-24-newt",
+        "groundContacts": 1
+      },
+      "reviewed": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+        ],
+        "bestReference": "c136-sprawler-24-newt",
+        "groundContacts": 1
+      },
+      "excludedJoints": [
+        "earFarRoot",
+        "earFarTip",
+        "earNearRoot",
+        "earNearTip"
+      ],
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "02-alpine-salamander",
+      "name": "Alpine Salamander",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+        ],
+        "bestReference": "river-otter",
+        "groundContacts": 1
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+        ],
+        "bestReference": "c136-sprawler-24-newt",
+        "groundContacts": 1
+      },
+      "reviewed": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+        ],
+        "bestReference": "c136-sprawler-24-newt",
+        "groundContacts": 1
+      },
+      "excludedJoints": [
+        "earFarRoot",
+        "earFarTip",
+        "earNearRoot",
+        "earNearTip"
+      ],
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "03-olm",
+      "name": "Olm",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "wrong-family: biped-bird matches clearly better (0.0168 < 0.0243)",
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+          "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 53%)",
+          "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 0% paint (reference 81%)",
+          "missing-anatomy: part fore-near-paw (foreNearPaw) covers 0% paint (reference 57%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 12% paint (reference 44%)",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+        ],
+        "bestReference": "05-cat-v2",
+        "groundContacts": 1
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+          "missing-anatomy: part hind-near-paw (hindNearPaw) covers 5% paint (reference 72%)",
+          "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 74%)",
+          "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 0% paint (reference 92%)",
+          "missing-anatomy: part fore-near-paw (foreNearPaw) covers 17% paint (reference 74%)",
+          "missing-anatomy: part fore-near-knee (foreNearKnee) covers 0% paint (reference 100%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 61%)",
+          "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 29% paint (reference 94%)"
+        ],
+        "bestReference": "c132-04-cat",
+        "groundContacts": 1
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "04-blind-salamander",
+      "name": "Blind Salamander",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)",
+          "missing-anatomy: part hind-far-paw (hindFarPaw) covers 5% paint (reference 53%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 44%)",
+          "missing-anatomy: part fore-far-knee (foreFarKnee) covers 18% paint (reference 59%)",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+        ],
+        "bestReference": "05-cat-v2",
+        "groundContacts": 2
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)",
+          "missing-anatomy: part hind-far-paw (hindFarPaw) covers 5% paint (reference 53%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 44%)",
+          "missing-anatomy: part fore-far-knee (foreFarKnee) covers 18% paint (reference 59%)",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+        ],
+        "bestReference": "05-cat-v2",
+        "groundContacts": 2
+      },
+      "reviewed": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)",
+          "missing-anatomy: part hind-far-paw (hindFarPaw) covers 5% paint (reference 53%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 44%)",
+          "missing-anatomy: part fore-far-knee (foreFarKnee) covers 18% paint (reference 59%)",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+        ],
+        "bestReference": "05-cat-v2",
+        "groundContacts": 2
+      },
+      "excludedJoints": [
+        "earFarRoot",
+        "earFarTip",
+        "earNearRoot",
+        "earNearTip"
+      ],
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "05-axolotl",
+      "name": "Axolotl",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+          "missing-anatomy: part hind-near-paw (hindNearPaw) covers 18% paint (reference 53%)",
+          "missing-anatomy: part ear-near-tip (earNearTip) covers 15% paint (reference 66%)",
+          "missing-anatomy: part ear-near-root (earNearRoot) covers 33% paint (reference 100%)"
+        ],
+        "bestReference": "05-cat-v2",
+        "groundContacts": 1
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+          "missing-anatomy: part ear-near-root (earNearRoot) covers 32% paint (reference 95%)"
+        ],
+        "bestReference": "c132-04-cat",
+        "groundContacts": 1
+      },
+      "reviewed": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+          "unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 5.8%)"
+        ],
+        "bestReference": "c132-04-cat",
+        "groundContacts": 1
+      },
+      "excludedJoints": [
+        "earFarRoot",
+        "earFarTip",
+        "earNearRoot",
+        "earNearTip"
+      ],
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "06-giraffe",
+      "name": "Giraffe",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+        ],
+        "bestReference": "wild-horse",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+        ],
+        "bestReference": "wild-horse",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "07-buffalo",
+      "name": "Buffalo",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)",
+          "unexplained-anatomy: 6.4% of the paint lies away from the body and in no part (reference 1.7%)"
+        ],
+        "bestReference": "wild-horse",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 9.6% paint that no reference appendage lands on",
+          "missing-anatomy: part ear-far-tip (earFarTip) covers 17% paint (reference 54%)",
+          "missing-anatomy: part ear-far-root (earFarRoot) covers 33% paint (reference 100%)"
+        ],
+        "bestReference": "c132-02-gaur",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "08-wildebeest",
+      "name": "Wildebeest",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "wild-horse",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 17.5% paint that no reference appendage lands on",
+          "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 54%)"
+        ],
+        "bestReference": "c132-02-gaur",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "09-banteng",
+      "name": "Banteng",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 13% paint (reference 70%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 10% paint (reference 57%)"
+        ],
+        "bestReference": "cattle",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "c132-02-gaur",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "10-water-buffalo",
+      "name": "Water Buffalo",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 84%)"
+        ],
+        "bestReference": "wild-horse",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 9.2% paint that no reference appendage lands on"
+        ],
+        "bestReference": "c132-02-gaur",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "11-reindeer",
+      "name": "Reindeer",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+        ],
+        "bestReference": "impala",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+        ],
+        "bestReference": "impala",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "12-caribou",
+      "name": "Caribou",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 6%)"
+        ],
+        "bestReference": "impala",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 6%)"
+        ],
+        "bestReference": "impala",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "13-saiga",
+      "name": "Saiga",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "impala",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "c132-01-gazelle",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "14-yak",
+      "name": "Yak",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 22% paint (reference 70%)",
+          "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)",
+          "missing-anatomy: part head (head) covers 19% paint (reference 61%)"
+        ],
+        "bestReference": "cattle",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 13.4% paint that no reference appendage lands on",
+          "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 54%)",
+          "missing-anatomy: part ear-far-root (earFarRoot) covers 29% paint (reference 100%)"
+        ],
+        "bestReference": "c132-02-gaur",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "15-wild-sheep",
+      "name": "Wild Sheep",
+      "family": "quadruped",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)",
+          "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 69%)"
+        ],
+        "bestReference": "wild-horse",
+        "groundContacts": 4
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)",
+          "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 69%)"
+        ],
+        "bestReference": "wild-horse",
+        "groundContacts": 4
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "16-lark",
+      "name": "Lark",
+      "family": "biped-bird",
+      "baseline": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "01-robin",
+        "groundContacts": 2
+      },
+      "expanded": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "01-robin",
+        "groundContacts": 2
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "17-chough",
+      "name": "Chough",
+      "family": "biped-bird",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part far-thigh (legFarKnee) covers 24% paint (reference 72%)"
+        ],
+        "bestReference": "03-duck-v2",
+        "groundContacts": 2
+      },
+      "expanded": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "c136-bird-insect-02-egret",
+        "groundContacts": 2
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "18-hawk",
+      "name": "Hawk",
+      "family": "biped-bird",
+      "baseline": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "02-pigeon",
+        "groundContacts": 3
+      },
+      "expanded": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "02-pigeon",
+        "groundContacts": 3
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "19-crow",
+      "name": "Crow",
+      "family": "biped-bird",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part far-thigh (legFarKnee) covers 19% paint (reference 88%)"
+        ],
+        "bestReference": "02-pigeon",
+        "groundContacts": 2
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part far-thigh (legFarKnee) covers 19% paint (reference 88%)"
+        ],
+        "bestReference": "02-pigeon",
+        "groundContacts": 2
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "20-snowy-owl",
+      "name": "Snowy Owl",
+      "family": "biped-bird",
+      "baseline": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "02-pigeon",
+        "groundContacts": 2
+      },
+      "expanded": {
+        "verdict": "ADMIT",
+        "reasons": [],
+        "bestReference": "02-pigeon",
+        "groundContacts": 2
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "21-bee",
+      "name": "Bee",
+      "family": "insect",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)",
+          "missing-anatomy: part head (head) covers 11% paint (reference 98%)"
+        ],
+        "bestReference": "beetle",
+        "groundContacts": 3
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 41.7% paint that no reference appendage lands on",
+          "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 0% paint (reference 24%)"
+        ],
+        "bestReference": "c136-bird-insect-18-wasp",
+        "groundContacts": 3
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "22-giant-water-bug",
+      "name": "Giant Water Bug",
+      "family": "insect",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 29% paint (reference 88%)"
+        ],
+        "bestReference": "beetle",
+        "groundContacts": 1
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 17.0% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on",
+          "unexplained-anatomy: 16.9% of the paint lies away from the body and in no part (reference 6.0%)"
+        ],
+        "bestReference": "c136-bird-insect-18-wasp",
+        "groundContacts": 1
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "23-carrion-beetle",
+      "name": "Carrion Beetle",
+      "family": "insect",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 8.7% paint that no reference appendage lands on"
+        ],
+        "bestReference": "08-ant",
+        "groundContacts": 1
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 8.7% paint that no reference appendage lands on"
+        ],
+        "bestReference": "08-ant",
+        "groundContacts": 1
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    },
+    {
+      "id": "24-water-strider",
+      "name": "Water Strider",
+      "family": "insect",
+      "baseline": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 11.5% paint that no reference appendage lands on",
+          "extra-anatomy (detached): 1 separate paint island(s) of ≥ 1% (reference 0)",
+          "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 8% paint (reference 44%)",
+          "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 26%)",
+          "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 0% paint (reference 34%)",
+          "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 36%)",
+          "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 9% paint (reference 58%)",
+          "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 42%)",
+          "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 7% paint (reference 88%)",
+          "missing-anatomy: part antenna-near (antennaNear) covers 11% paint (reference 35%)",
+          "missing-anatomy: part mandible (mandible) covers 8% paint (reference 63%)",
+          "missing-anatomy: part abdomen (abdomen) covers 3% paint (reference 54%)"
+        ],
+        "bestReference": "08-ant",
+        "groundContacts": 1
+      },
+      "expanded": {
+        "verdict": "REFUSE",
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 11.5% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 11.3% paint that no reference appendage lands on",
+          "extra-anatomy (detached): 1 separate paint island(s) of ≥ 1% (reference 0)",
+          "missing-anatomy: part root (root) covers 13% paint (reference 100%)",
+          "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 10% paint (reference 46%)",
+          "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 0% paint (reference 31%)",
+          "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 37%)",
+          "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 3% paint (reference 25%)",
+          "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 0% paint (reference 34%)",
+          "missing-anatomy: part leg-mid-near-knee (legMidNearKnee) covers 0% paint (reference 59%)",
+          "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 13% paint (reference 62%)",
+          "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 16% paint (reference 58%)",
+          "missing-anatomy: part mandible (mandible) covers 9% paint (reference 69%)",
+          "missing-anatomy: part abdomen (abdomen) covers 14% paint (reference 84%)",
+          "unexplained-anatomy: 17.9% of the paint lies away from the body and in no part (reference 6.0%)"
+        ],
+        "bestReference": "c136-bird-insect-18-wasp",
+        "groundContacts": 1
+      },
+      "reviewed": null,
+      "excludedJoints": null,
+      "leaveOneSpeciesOut": true,
+      "qualityAccepted": false,
+      "scope": "Author-only candidate comparison, no reference-pool registration, intake, static, native, gallery or visual admission."
+    }
+  ],
+  "originalPool": [
+    {
+      "id": "salmon",
+      "family": "fish",
+      "packet": "audits/ARCHETYPE_SPRINT_20260922/02-fish"
+    },
+    {
+      "id": "eagle",
+      "family": "biped-bird",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12"
+    },
+    {
+      "id": "beetle",
+      "family": "insect",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit"
+    },
+    {
+      "id": "python",
+      "family": "serpent",
+      "packet": "audits/PYTHON_OPEN_POSE_20260923/candidate-02"
+    },
+    {
+      "id": "tree-frog",
+      "family": "hopper",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05"
+    },
+    {
+      "id": "chimpanzee",
+      "family": "primate",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02"
+    },
+    {
+      "id": "starfish",
+      "family": "radial",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/08-radial"
+    },
+    {
+      "id": "tarantula",
+      "family": "arachnid",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08"
+    },
+    {
+      "id": "octopus",
+      "family": "cephalopod",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod"
+    },
+    {
+      "id": "fruit-bat",
+      "family": "flyer-membrane",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02"
+    },
+    {
+      "id": "centipede",
+      "family": "myriapod",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11"
+    },
+    {
+      "id": "sturgeon",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04"
+    },
+    {
+      "id": "wall-lizard",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02"
+    },
+    {
+      "id": "cougar",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03"
+    },
+    {
+      "id": "impala",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01"
+    },
+    {
+      "id": "marmot",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/07-marmot"
+    },
+    {
+      "id": "bass",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/08-bass"
+    },
+    {
+      "id": "cattle",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/09-cattle"
+    },
+    {
+      "id": "tang",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/10-tang"
+    },
+    {
+      "id": "wolf",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/11-wolf"
+    },
+    {
+      "id": "gull",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/12-gull"
+    },
+    {
+      "id": "river-otter",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter"
+    },
+    {
+      "id": "brown-bear",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/14-brown-bear"
+    },
+    {
+      "id": "goose",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/15-goose"
+    },
+    {
+      "id": "heron",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/16-heron"
+    },
+    {
+      "id": "sparrow",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01"
+    },
+    {
+      "id": "ibex",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/18-ibex"
+    },
+    {
+      "id": "reef-shark",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark"
+    },
+    {
+      "id": "pike",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/20-pike"
+    },
+    {
+      "id": "racer",
+      "family": "serpent",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/21-racer"
+    },
+    {
+      "id": "grouse",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/22-grouse"
+    },
+    {
+      "id": "sandpiper",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/23-sandpiper"
+    },
+    {
+      "id": "herring",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/24-herring"
+    },
+    {
+      "id": "wild-horse",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/25-wild-horse"
+    },
+    {
+      "id": "salamander",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/26-salamander"
+    },
+    {
+      "id": "eel",
+      "family": "serpent",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/27-eel"
+    },
+    {
+      "id": "honeybee",
+      "family": "insect",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/28-honeybee"
+    },
+    {
+      "id": "rat",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/29-rat"
+    },
+    {
+      "id": "dragonfly",
+      "family": "insect",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03"
+    },
+    {
+      "id": "jellyfish",
+      "family": "radial",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03"
+    },
+    {
+      "id": "05-cat-v2",
+      "family": "quadruped",
+      "packet": "audits/G2_REFERENCES_C62_20260927/05-cat-v2"
+    },
+    {
+      "id": "07-weasel",
+      "family": "quadruped",
+      "packet": "audits/G2_REFERENCES_C62_20260927/07-weasel"
+    },
+    {
+      "id": "08-ant",
+      "family": "insect",
+      "packet": "audits/G2_REFERENCES_C62_20260927/08-ant"
+    },
+    {
+      "id": "09-cricket",
+      "family": "insect",
+      "packet": "audits/G2_REFERENCES_C62_20260927/09-cricket"
+    },
+    {
+      "id": "01-robin",
+      "family": "biped-bird",
+      "packet": "audits/G2_REFERENCES_C62_20260927/01-robin"
+    },
+    {
+      "id": "02-pigeon",
+      "family": "biped-bird",
+      "packet": "audits/G2_REFERENCES_C62_20260927/02-pigeon"
+    },
+    {
+      "id": "03-duck-v2",
+      "family": "biped-bird",
+      "packet": "audits/G2_REFERENCES_C62_20260927/03-duck-v2"
+    },
+    {
+      "id": "04-hawk-v2",
+      "family": "biped-bird",
+      "packet": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2"
+    }
+  ],
+  "additionalCandidateReferences": [
+    {
+      "id": "c132-01-gazelle",
+      "family": "quadruped",
+      "packet": "audits/C132_REFERENCES_20261001/01-gazelle/candidate-02"
+    },
+    {
+      "id": "c132-02-gaur",
+      "family": "quadruped",
+      "packet": "audits/C132_REFERENCES_20261001/02-gaur/candidate-02"
+    },
+    {
+      "id": "c132-03-dog",
+      "family": "quadruped",
+      "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02"
+    },
+    {
+      "id": "c132-04-cat",
+      "family": "quadruped",
+      "packet": "audits/C132_REFERENCES_20261001/04-cat/candidate-02"
+    },
+    {
+      "id": "c136-bird-insect-02-egret",
+      "family": "biped-bird",
+      "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02"
+    },
+    {
+      "id": "c136-bird-insect-03-stork",
+      "family": "biped-bird",
+      "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02"
+    },
+    {
+      "id": "c136-bird-insect-18-wasp",
+      "family": "insect",
+      "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp"
+    },
+    {
+      "id": "c136-sprawler-05-monitor-lizard",
+      "family": "quadruped",
+      "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard"
+    },
+    {
+      "id": "c136-sprawler-15-iguana",
+      "family": "quadruped",
+      "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana"
+    },
+    {
+      "id": "c136-sprawler-24-newt",
+      "family": "quadruped",
+      "packet": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt"
+    }
+  ],
+  "policy": "Same current author, topK=1, chains+counter, rank0 only, no shopping or retry. A third branch supplies the separate exact-master admitted presence reviews. No reference is self/same-species. All candidates remain unregistered.",
+  "inputs": [
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/corpus.json",
+      "sha256": "973470aae963fc8d63c342cc3904c34617f5bd83408c5f6e88f4e7109925e76e"
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/pilots/reference-pool-extras.json",
+      "sha256": "8b00d872040eacd4c3245862d6c3a528cb864718d1fe4be4fe267b445fb81b69"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/reference-packets.json",
+      "sha256": "f296e162ee2a683fdd7270f0dc902f51e289fae3e094403957a6de32bf1ce97c"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/reference-packets.json",
+      "sha256": "a04b8421dc71c2b7b6518ba1e03b628425436ee66e099723dcf615cdc41b1122"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/reference-packets.json",
+      "sha256": "f45d2ec9a36f78d85bb99c0272892c7c087d36a80f8c85bb279a50c68b6a68b2"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
+      "sha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/authoring.json",
+      "sha256": "1876ba55fd1234d96e2059a653d8bf0ef16823667d98be9028c75c3b41c50065"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/subject-source.json",
+      "sha256": "c238c6f79ddc58d2b8d46cd5c914765ffc77a66a7a28786bcc06135cde7e2813"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12/authoring.json",
+      "sha256": "49b078decfea139afaa0ff03b1701b4ff60b7f200457d3173ea7da9c44e741cf"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12/subject-source.json",
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/master.png",
+      "sha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/authoring.json",
+      "sha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/subject-source.json",
+      "sha256": "3fe4fafdce0c1fd38584b099be810651b457136eeabaee1aee6117538e765694"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/master.png",
+      "sha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/authoring.json",
+      "sha256": "c165cb4c967989483b39f6fdae76fa6287bcf51db8f0d083493db58a9468954a"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/subject-source.json",
+      "sha256": "7045ce9b8ff117638dd975e66b2b3f1888750da731412e8f43b0b07a6050d72f"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/master.png",
+      "sha256": "4166f8f158b34c76d4c62d925ceef5224862bec1fbefe28afbc406321737f8d0"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/authoring.json",
+      "sha256": "70cbea9195ccad4454688533e86c171b8de83db0e44ebb7b9c1a4aff6dbc6f80"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/subject-source.json",
+      "sha256": "b60c3c4508b9572e0508c29315c0cfb45c661f47133b7da17a65d1e91a4954d0"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02/master.png",
+      "sha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02/authoring.json",
+      "sha256": "3618a00115f3decd733fcd9e3380b184914098c12b90447e893c944e6cc7dbd9"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02/subject-source.json",
+      "sha256": "9652f406d364002c708254c8e3abdc4828d9d408f4ac421cadfeeaffc9a7bbbe"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+      "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring.json",
+      "sha256": "cbc685725e77a1fd76614308a7fdfcc03dd26e0a4a2bd02147fe16deb38c5619"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/subject-source.json",
+      "sha256": "a6ad4b171fe23f5a8892c303d35bdac2c9f11019fcf4a5ccaacb5bc05daf6d3b"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08/master.png",
+      "sha256": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08/authoring.json",
+      "sha256": "3a18aba744ffee2531e400e8bc735df5a9c447caa23434e20a1a5be61a187705"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08/subject-source.json",
+      "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png",
+      "sha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/authoring.json",
+      "sha256": "55700ac6f3275d004601d51cec01681f021d90c7ade198c019c72c4fc06626e1"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/subject-source.json",
+      "sha256": "ce8465b898ede8a650598d284ee22f7f55852411a7f673c3c80bc2a194eb08f1"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02/master.png",
+      "sha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02/authoring.json",
+      "sha256": "3d619e738f1411ce37ea22ca58576e2f827a1918ee74c7f19abc8ac58727345b"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02/subject-source.json",
+      "sha256": "11b0449e8b28659334e36aba28200712f679e0c4d7ca886b188c16cd58baa9e3"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/authoring.json",
+      "sha256": "f9340f385333ab4a6f8ca53b277a7fdf3470b53f3a9b37457c1c1d6f42720d93"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/subject-source.json",
+      "sha256": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/master.png",
+      "sha256": "cd1a2cd6aecb629019d576abe64b50f549f95a4efa2cb8c58744aa5b0a9601f2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/authoring.json",
+      "sha256": "9492131d67b710cca0ab4a83afcc97fae1795f31b310972b56cc5bb60e1d2d57"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/subject-source.json",
+      "sha256": "eb2179313088bfb2f67bea7a5fc1a75e73829f6d8098eb171b1487f485169b86"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/master.png",
+      "sha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/authoring.json",
+      "sha256": "f1afa2d0fcd9a04fe75ba9c794f46d8bec1f7765518f3f6d48357d86853ed9ca"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/subject-source.json",
+      "sha256": "ccd978ba613eca27cd02eaa0666e91ca9ea11b9b339c63d65eecfef1e8ddebed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/master.png",
+      "sha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/authoring.json",
+      "sha256": "2762791a739706d8116e5af5f1eae9d6c343baf466818d2eb56467d736c7651b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/subject-source.json",
+      "sha256": "68fc59086ab5d5c9cd7176d7dcdf710e83eeb9b6c584f12e683d04e9b8a49f08"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/master.png",
+      "sha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/authoring.json",
+      "sha256": "0cda43f0ef31cfafbf4f4d63f73cb48c271c703172d7b715477e303b465c647a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/subject-source.json",
+      "sha256": "d65c1c12400d4548d222da36dff910062cc0535f16bf807f2a93046a446490df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/07-marmot/master.png",
+      "sha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/07-marmot/authoring.json",
+      "sha256": "b85329419d55c6af508fa17439346cc9e5b8c84bf478e175cb858b0280c5b0df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/07-marmot/subject-source.json",
+      "sha256": "c06f28a30699a13f25d2704286c6b571be056bf6d133fdca99550e253124a07e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/08-bass/master.png",
+      "sha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/08-bass/authoring.json",
+      "sha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/08-bass/subject-source.json",
+      "sha256": "e1245b184879496d76003d0542c2faa2f22b6f4a63b7f8b05b8c66ceb5fb125b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/09-cattle/master.png",
+      "sha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/09-cattle/authoring.json",
+      "sha256": "abac731e391157abd3f083369138b424cceb231456268bd1d6cf85997263adad"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/09-cattle/subject-source.json",
+      "sha256": "414e11a152a04fa931bce39c8bc3accc188630b49064b6f1b4831f2f5cea4ad0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/10-tang/master.png",
+      "sha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/10-tang/authoring.json",
+      "sha256": "5b2f555e6d3377bd487c5198a35484acde96e988e9c74fb7c15854e59d7267d6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/10-tang/subject-source.json",
+      "sha256": "e5d01372f9f7e3bfe5efcc1b051641766219c18a9cb1b70dc67fd17041f301be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/master.png",
+      "sha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/authoring.json",
+      "sha256": "15844566d12676ccb038c7488e18e28a3320144cd068dde1f213630534a74025"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/subject-source.json",
+      "sha256": "e0fc40ff8822c85c6b65b96d0c89238af9a13fd539eaf7aa41191473983b2d3d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/12-gull/master.png",
+      "sha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/12-gull/authoring.json",
+      "sha256": "4eafdcdfb50faf5629b8aaadc1c2df6f3c4835e04e53781faef01a900e651a89"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/12-gull/subject-source.json",
+      "sha256": "56cedb9916df8c2ffc9d7bb9e15b61408f429fe3911bba492334cad5b4f68a9f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/master.png",
+      "sha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/authoring.json",
+      "sha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/subject-source.json",
+      "sha256": "5d2f64208f664022cc34f4d862fb5ceb390f487ecbb68a62f7532f8cd24ca96c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/master.png",
+      "sha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/authoring.json",
+      "sha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/subject-source.json",
+      "sha256": "cdc02843154ddd601c7086708ed9759aa5ce6197c54dc6ea02900194bc95ca06"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/15-goose/master.png",
+      "sha256": "0f3575a5fe537ced0a819a5bb181a1115914c3eef824bcad3440bf541e16cfd1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/15-goose/authoring.json",
+      "sha256": "138b62a40ba3f84d5b073e53205de5f0bc8d8fdc7e330b0f5887d06323865c38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/15-goose/subject-source.json",
+      "sha256": "33b483f1e93a774d0cf9b2e253781601ec1c3b7f842c8cd997f5429a7711cb54"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/16-heron/master.png",
+      "sha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/16-heron/authoring.json",
+      "sha256": "da7131c2fbc816ada7a4e0d409b553ddd1f0d8d3b3a17e60375eaf48a1fb3f3d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/16-heron/subject-source.json",
+      "sha256": "5eecda3718f23ba7d32c1e713029f75adffc2eeffc2a1c4d1a4bb8c45bdbd1e9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/master.png",
+      "sha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/authoring.json",
+      "sha256": "9810630bb911cdbeb584619116303e6208784b731e1913994c62ff6e64ee2ba0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/subject-source.json",
+      "sha256": "3588bbdfde56faf6a8f9db297c67f600adbe78f6f4542fa5513600e73e078b6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/master.png",
+      "sha256": "97dde355ce484eaa944a58ecb67674fb08fa2d36299904d4e1b0d539b27c988a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/authoring.json",
+      "sha256": "f1103f2ca90a0c2e9f51c6ebc3fc2eede7ac273a168ea2ad4445e9779788a7a1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/subject-source.json",
+      "sha256": "1e96c6c62943d75105b2d28cec2b8b98297fe3ba6c0356f90b5c082523b11a87"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/master.png",
+      "sha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/authoring.json",
+      "sha256": "695c3b98022fcb2ae7f7292bfb2ac15aad6b4d6f7b35c6b95bb3b474acb81798"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/subject-source.json",
+      "sha256": "da3f098a88065dd1d975d3f49c2a9bfb683a73aaaa74a20392dd4855d813e673"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/20-pike/master.png",
+      "sha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/20-pike/authoring.json",
+      "sha256": "4705494141027b8c796fb646efc6293f447974230da934522ae6894c404cd004"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/20-pike/subject-source.json",
+      "sha256": "c1c6b7cb50d6b0625ef972edfc0b2359ce84160c24f0bf91fca2312dd6b687ee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/master.png",
+      "sha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/authoring.json",
+      "sha256": "deb82b0a38d91def5297a4d2091c1ffb4a4c44bda9c81c0aad7b7935b1b690ba"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/subject-source.json",
+      "sha256": "640a6e7e91979e4309fdedd8d52294eca5d70794d10012196f1279852a350011"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/22-grouse/master.png",
+      "sha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/22-grouse/authoring.json",
+      "sha256": "8345cf18f8a60d7b85fdc769eb771ae0e088c68b300fb01962311acb300929a1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/22-grouse/subject-source.json",
+      "sha256": "eda86ac45dbb0f4529cc2ac2b72a0e52a1bae56cf6cbc37161710d97d84e8da2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/master.png",
+      "sha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/authoring.json",
+      "sha256": "022b14ee022276040dc34a579498116592d9544aca14522ce3c518c7b6a41fec"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/subject-source.json",
+      "sha256": "8378816208ccdac0a98644427494e1e88a478f0b73b77c78f6c86708a6903dc6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/24-herring/master.png",
+      "sha256": "3abc568beb996e694c78736854a216222dc5cfae47d39494a4f6ba7e84b5494f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/24-herring/authoring.json",
+      "sha256": "e7a891c74ac404df0b654bb80179474ff4aa8346739ba30cddb8b58f203931cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/24-herring/subject-source.json",
+      "sha256": "7d582c3e7169c68c0cdf853078e48e8960ed24cded54a9e8b2d2c9c2116c3fb6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/master.png",
+      "sha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/authoring.json",
+      "sha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/subject-source.json",
+      "sha256": "3c30b1a830701ee754e8a5d616880dbe333937b1fecd317c2140e88924807ae7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/master.png",
+      "sha256": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/authoring.json",
+      "sha256": "f866320348c6b6bbba64058a1e3b2052dc2518fd404e504698af8d9e76b59d09"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/subject-source.json",
+      "sha256": "b3902910bd9e24b10c023ef2be92ee6e6c236facff62caa2f6af77bb73269cc5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/27-eel/master.png",
+      "sha256": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/27-eel/authoring.json",
+      "sha256": "8067e8640d264788f033232c8abc5cd65e68721c480b7e6e429c2c06636ac3df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/27-eel/subject-source.json",
+      "sha256": "f0221ad6aea42396d59f6ab3f186e58ed9753287b29f6978443cad38b9d64f70"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/28-honeybee/master.png",
+      "sha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/28-honeybee/authoring.json",
+      "sha256": "ac8d6dd9897fd5bb366e9eac67fb5a4e76c63ce2a321f99c2be66f9f6060c3bb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/28-honeybee/subject-source.json",
+      "sha256": "fa22ff130e119a29864e2f91ad81e173a477fb8c26d0a7751e0c88266f4a3d97"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/29-rat/master.png",
+      "sha256": "41f8ed50d1e195f7cbd2096ac228dc48df5f9da6b1a95537d67ab3427e3c4701"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/29-rat/authoring.json",
+      "sha256": "033b37d14089e19e2038c6bef89967d721bf07634a5e4039e47501a554f1955b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/29-rat/subject-source.json",
+      "sha256": "d8eb3ffeb97f408eea5fdbf5f206e7fe65f3c54685abe66f13545bffc33a0293"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+      "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/authoring.json",
+      "sha256": "df6b9a783fd35bd1b3ce1d2a79b4018677392ec4d02a8fd60e88d204121a5c0f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/subject-source.json",
+      "sha256": "7e88c5376123e27cc2877d705a2db6963762e8b6ee95b31e568b656d028399a5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/master.png",
+      "sha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/authoring.json",
+      "sha256": "357adcc08bf853e4e02a49ac53d71ea13ff954589826799c591a6267e77d9cdc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/subject-source.json",
+      "sha256": "b6e42cbd3b8967347a2d49bf5563d7ed5ca4a742703f8d5b16fe0f22c4445d54"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/05-cat-v2/master.png",
+      "sha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/05-cat-v2/authoring.json",
+      "sha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/05-cat-v2/subject-source.json",
+      "sha256": "afa1d5963cdee5e33d8d9d4c151b9fb995cefb609994a9961f145fdb6c83a7f2"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/07-weasel/master.png",
+      "sha256": "43006af17548682e07146521da9d676d75643dcb0012334230f0549f2ab5560b"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/07-weasel/authoring.json",
+      "sha256": "7d2448a7a59064154d2b480d9e8606d3080499295d0b1214f0f39c83bb326385"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/07-weasel/subject-source.json",
+      "sha256": "b1144cb8d3370bb965b9551c332419651ab70c8b8fc81d9d975196b28cfeb983"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/08-ant/master.png",
+      "sha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/08-ant/authoring.json",
+      "sha256": "0ef6659dc3425e1ae001566a0cdf15903f83327f7e8aee8a4df08f75017e9d34"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/08-ant/subject-source.json",
+      "sha256": "6e7df0cbdd46b7878d5fb573edb15b0d01cb3e6da68538fc655ce0e2eb22953c"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/09-cricket/master.png",
+      "sha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/09-cricket/authoring.json",
+      "sha256": "dd3ecced51db3d376540f1967668f3c5ed1887671e3b3be489de62b91299bee1"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/09-cricket/subject-source.json",
+      "sha256": "96a6895e4c9b327fa113731126107fe866eef8c5a485fc9b34effaf02b790a87"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/01-robin/master.png",
+      "sha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/01-robin/authoring.json",
+      "sha256": "2ec6f99c17cd3d2a25e3b5f02e39207c40a412ed64a67d148deb7d9d8245f16f"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/01-robin/subject-source.json",
+      "sha256": "6471dd3b51794f5020fc4fb7716ad50541b350d824246e982f866138b1645081"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/02-pigeon/master.png",
+      "sha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/02-pigeon/authoring.json",
+      "sha256": "52852e5335c2d613a4cf4b260f3f43f3eec7c7c7b21044b5e832971b55e62d6f"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/02-pigeon/subject-source.json",
+      "sha256": "2f333aaf62ac5171e2f632100e2c2fd5b83f61a0899e3401c28719d21061968a"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/03-duck-v2/master.png",
+      "sha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/03-duck-v2/authoring.json",
+      "sha256": "53c2d3034b1fa503733ae87189e647efdb0121d99ee0685b0e26c2db76241976"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/03-duck-v2/subject-source.json",
+      "sha256": "ea64e278a7624cfd5ec060a502989612ae0b15aed2d9ccdef279a6891bd47fae"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/master.png",
+      "sha256": "a3cc39bbb343cd4f6ed8eec6af71759ce283d0ea0eec26c6cdb24d91d5fe73d3"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/authoring.json",
+      "sha256": "4eb4362fcd280f210c0d9509b4a2007b88d16ebaebfc6b6191a1eb55cfcff2ac"
+    },
+    {
+      "path": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/subject-source.json",
+      "sha256": "87c4c9113ec33cb9421c04800eb08dc511fd67c3f1cea70599270491e99b4568"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/01-gazelle/candidate-02/master.png",
+      "sha256": "a9843c0dfff014482e6aa6ef1939ad8cf7e05ddb93ed8c87c7e9c34ba1719032"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/01-gazelle/candidate-02/authoring.json",
+      "sha256": "46ed1dacd39de5a6cb7adc784dbf2b5052efb4e2d88cb671270a6d8f5af8144b"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/01-gazelle/candidate-02/subject-source.json",
+      "sha256": "17de34d7fd2c9d334485c4dc0f7bbc629a1f53bff145d0f2a0e853c383f1765e"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/02-gaur/candidate-02/master.png",
+      "sha256": "0731c9c4dd33b652ccf2e03bf6135993ce9ed0caae42831e74a266d5eb651edd"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/02-gaur/candidate-02/authoring.json",
+      "sha256": "9310f3e80381889e7563853b3ff5efbdbf1cc79cc918a9a602d65fc9417f74ac"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/02-gaur/candidate-02/subject-source.json",
+      "sha256": "f83aa57e0f9c66db556351626c5b5396b1f1403471b54e8b1be81ea1c0bb0230"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+      "sha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/authoring.json",
+      "sha256": "bccf32b4794c4a9b4146f9d059529fd246f2253f01ea7d9a22b5d9c4f13047f4"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/subject-source.json",
+      "sha256": "79741c0e83197a072b5f02e3f2c6eb3e76474e50c8e1b42abb63d1064a646bf1"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/04-cat/candidate-02/master.png",
+      "sha256": "67167440b376f60187ebeb6e98fee6344421ac297db66f2d34abe5811435def8"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/04-cat/candidate-02/authoring.json",
+      "sha256": "2eda4752282f8e163eeceb6929a2bdeb40a4092102649118f954878f5145371a"
+    },
+    {
+      "path": "audits/C132_REFERENCES_20261001/04-cat/candidate-02/subject-source.json",
+      "sha256": "afa1d5963cdee5e33d8d9d4c151b9fb995cefb609994a9961f145fdb6c83a7f2"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png",
+      "sha256": "fbcde72daf7c15afec6898e839b893bd6e757eeddb7edc938fa28ce5a756f0b1"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/authoring.json",
+      "sha256": "129c3a206d2fc995b57a6ea771b2ce4fd273c4da6af921a20fda22fe2ef635b6"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/subject-source.json",
+      "sha256": "3d46d822247a2e1f6578bbbbd3152436f582afcdcb98817c075c82e00c1be4d3"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02/master.png",
+      "sha256": "d3d9d6ceaa29855600d1d140d972d73c04006481b89bb03def2f0a67ac04ac3b"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02/authoring.json",
+      "sha256": "992e7e80669a6231871b666faedd1e3484cdbb559db8d721a9add7cc211acbcd"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02/subject-source.json",
+      "sha256": "5b5c05a248e6ad3c9c06cf902382cfe76fdc401580ee58f481230349f8f093e6"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp/master.png",
+      "sha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp/authoring.json",
+      "sha256": "5631f64918ead6cbd773858cb75f3f316e08ae465e4e8ece772731b1b1b90fd5"
+    },
+    {
+      "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp/subject-source.json",
+      "sha256": "40f442869665e989355028a7a3baaa8cd3c7699ace4b11eb6be3daaadf400335"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard/master.png",
+      "sha256": "a3b0609ee1433e396e13f0e3d2ec6a559a827478f720d14c708d4620defae18d"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard/authoring.json",
+      "sha256": "da484396b617d4bea8823731e9d52a2498c027f0683f0df206a04485f0638b2e"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/05-monitor-lizard/subject-source.json",
+      "sha256": "de157e51d27bfef8ddda30f48c9ebf3f4315dc0262ebf633b81868cd72d07303"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana/master.png",
+      "sha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana/authoring.json",
+      "sha256": "e2b68e4fdb9ff464e8ea1b8292d3a8edac5188108c1ecf41fe2f0f06c3d3de27"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/15-iguana/subject-source.json",
+      "sha256": "b596d5228be477403f246a7a7d2402a680812ad2e4928cb31e758b1f374a2d88"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt/master.png",
+      "sha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt/authoring.json",
+      "sha256": "6186efefde5a9bfbe92ed442a3e5d7c716a97f808acb23b83d7eebb48d0af2a3"
+    },
+    {
+      "path": "audits/C136_SPRAWLER_REFERENCES_20261002/24-newt/subject-source.json",
+      "sha256": "76955feb104067a31e264b7a124cbe44b4b092ab0140f5df8a21bf1fcc50a1db"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/reviewed-presence.json",
+      "sha256": "56dc63bd24d5bcc0cf502079e265f21d1edb5d7c85524de6a21f820096fa8026"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/presence/01-giant-salamander.json",
+      "sha256": "7a09145f7bfcc9c3a195cdf2c7abfccba36a3370dee4920725da3d8bb55970ce"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/presence/02-alpine-salamander.json",
+      "sha256": "e7c9817ba414d65e2bb2e2deadfda541bd415ed3b30d51bcc204e80525291136"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/presence/04-blind-salamander.json",
+      "sha256": "22624a7c2ca3d1c3f612326593f4a89c54d7d4b41af143a84c3dfaec7b98e056"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/presence/05-axolotl.json",
+      "sha256": "3d25b83a950e4d90dc9d5621ced8b69b1d5e4e1bae8be845a5b697dd5db660fd"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+      "sha256": "1b2bd0d5998d99f078566aea066baf47237c86af3d850c66812ca5395544a77d"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander/subject-source.json",
+      "sha256": "4c018d60de9d91c4ad39c92a0731fbd057aff06d21af4647c2a767dcad153609"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander/master.png",
+      "sha256": "86a3b41704ac12cbccd253bc658076b949147b84ba999325a0d399a96315df31"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/02-alpine-salamander/subject-source.json",
+      "sha256": "9aa6d8419c155d16c8b0c5859973b95e361a0165e3a5d0d84cbc8feab0e16866"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/02-alpine-salamander/master.png",
+      "sha256": "5558d9b412c372da88815ec8722603260740d8e6ef05eda7261d738507917977"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/03-olm/subject-source.json",
+      "sha256": "861c3c3400320b339491d50072ceace9a324d92714bb042f3dafc97bba182e61"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/03-olm/master.png",
+      "sha256": "bc4e40dba81d9aeed829804bf983606a23ffa00705b437bd264f8bb56b1c3627"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/04-blind-salamander/subject-source.json",
+      "sha256": "1820b6a52b3d421df88af48e5ff8e0667b1b7a9a2a0dc78ca7773fde78a77e29"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/04-blind-salamander/master.png",
+      "sha256": "e9b6b1c67854e873ac998afb711e829a61413e450cfcb0ba3afd632980d24c3a"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/05-axolotl/subject-source.json",
+      "sha256": "d73a8f1a1be46cea67ee58bf627ddfd8431c74044680bca9255bc41cc99b21f7"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/05-axolotl/master.png",
+      "sha256": "d29c7652d97db8efaa9e555b35be7b04f89543d4724ecd2d5abdea1875137d5e"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/06-giraffe/subject-source.json",
+      "sha256": "c90dc0a3046f279f29027c9ad346fa14afbf1e26045f5bf6e70e50b2b9836487"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/06-giraffe/master.png",
+      "sha256": "9ac84c0f0d1dda6ec7fc530968824f6f1aabc06a0417ed3ba30722cfae1d0bca"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/07-buffalo/subject-source.json",
+      "sha256": "89046191530df4b861bb56a33e2b6a3d7afec68d146ba7755d5a88194ceb6638"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/07-buffalo/master.png",
+      "sha256": "5e66328d99c1ac8bd959cdd5ee9f394e5fe3bc6a36f25f7ff53931e15018ad0b"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/08-wildebeest/subject-source.json",
+      "sha256": "2758fa86559b3eee18152e1136ea8118b2ce571eb2721b41ed1a5e54e4dfa974"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/08-wildebeest/master.png",
+      "sha256": "dac2c58325e8872ee177848a872e6183ddba7ee27cd72ab844b9d1244acffbdc"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/09-banteng/subject-source.json",
+      "sha256": "ccd3d7a37d7bf579e93feb3b34065fc74241d560aa17214a5c5808de90faae61"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/09-banteng/master.png",
+      "sha256": "77104268838f9507fa23a637d5f548730e3fae6fdde38fe837859673fd27187e"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo/subject-source.json",
+      "sha256": "d170dec63e28797f6d120e712cb7c47fb9f8c7103bcffd4adf1cf55b3e321298"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo/master.png",
+      "sha256": "9ee61714939202265479c4603a29802ddc690812ff4ae059b7b45713e59868d8"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/11-reindeer/subject-source.json",
+      "sha256": "862326214df663144fbc23963aa2a61c55db5dd50f352b3ccd245fb779323a5f"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/11-reindeer/master.png",
+      "sha256": "640c13419702a65c12e5346f3f8cbbb6f564d323403c1e27573197db6aacb9a4"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/12-caribou/subject-source.json",
+      "sha256": "288038c032007bdbb74de5fdd76cd928ede640bb5162acf1d8ee44e8d294b9fe"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/12-caribou/master.png",
+      "sha256": "567cc852c8bc1748be9b5f2f58e6051479e9085bcf4e554bb2e687d3c87f31bd"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/13-saiga/subject-source.json",
+      "sha256": "603ad2df7148c994024dcd2664cfbce91bd1a0b2e475ce11dbe67503bd5eb25e"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/13-saiga/master.png",
+      "sha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/14-yak/subject-source.json",
+      "sha256": "da52e87e3385ed3f925b0d171632addbffc37d7ba99d1f44d5dd3a384c7822ad"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/14-yak/master.png",
+      "sha256": "c23b7769f1c9846a978d3ca54a98d18d575f924464bd5fcca756078f654f2932"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/15-wild-sheep/subject-source.json",
+      "sha256": "c3948cfb886a20473cc6bd27055fe36b40f3c2056212bdbef68bf5f3c991db11"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/15-wild-sheep/master.png",
+      "sha256": "87ec5c3fbb53dabaea831ba2a1e9c66b248ea3f5f802d8d0af7a77d835d2511d"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/16-lark/subject-source.json",
+      "sha256": "4923aaca5089ca648e6bfa2bc613024ac600bea617cf169216a92e9e2e459a85"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/16-lark/master.png",
+      "sha256": "ed62d06bbddbfbe101a6ed6a43003e90904a218c0a3b764281633f114e39b335"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/17-chough/subject-source.json",
+      "sha256": "40bfee796060ee4e3592abd7bccf2ebac68786d7475ebe3dae88959ba0aeb999"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/17-chough/master.png",
+      "sha256": "f0169a110876a1f3abeac0a968c33a7da10a09cbca0ea61ea862f16023a0dfb3"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/18-hawk/subject-source.json",
+      "sha256": "87c4c9113ec33cb9421c04800eb08dc511fd67c3f1cea70599270491e99b4568"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/18-hawk/master.png",
+      "sha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/19-crow/subject-source.json",
+      "sha256": "9f56be332d6bf379d0d8e8334a763e5133190058f0b57204dd02dbc2e39b410c"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/19-crow/master.png",
+      "sha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/20-snowy-owl/subject-source.json",
+      "sha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/20-snowy-owl/master.png",
+      "sha256": "e2ce15115fe4ac6735e9f5cf03d46f71f13e9712b487151f2f758d6f28a7fa60"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/21-bee/subject-source.json",
+      "sha256": "e790c853eaf177557816a80c3559afda0a6b9410b2f1db4033aafa3010787fc2"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/21-bee/master.png",
+      "sha256": "240299d6a6d01d759c7cd50b5a3673aa1755e5994bc6a389c13598cf38335056"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/22-giant-water-bug/subject-source.json",
+      "sha256": "100fb3255011695b163925acc9f41d86c7d6f7db411c981ff2da58e6d237c708"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/22-giant-water-bug/master.png",
+      "sha256": "9be93dedacfc64fe89a6c8af14cecd28601601c3d159214b2afe60f7e837bb3c"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/23-carrion-beetle/subject-source.json",
+      "sha256": "372af2b8ec1d59e3ddfbfe9fba0c838cc3d7465f4846f063fa37ac6f0938d039"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/23-carrion-beetle/master.png",
+      "sha256": "52ab03a1d448e18b7d45026f78ca59e2620ab5eab3655d64ade59a57ce5751df"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/24-water-strider/subject-source.json",
+      "sha256": "07de671ecc94c05a66d9b7344869cfce9e96f5fcaea96ca6a78c0e64e4922d37"
+    },
+    {
+      "path": "audits/G2_C136_REPAIRS_20261002/24-water-strider/master.png",
+      "sha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/auto-author.mjs",
+      "sha256": "2f21f305181ed862649494364e0b1087665924c704c442d096c8ed3aa8af48fd"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/reviewed-exclusions.mjs",
+      "sha256": "a9f2359bd290067e6c12e33bde9720071734d2ff38967912a2e8e07de6e84f21"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/reviewed-presence.mjs",
+      "sha256": "882b604ff1e8797afea878a5cb4289db1fe28a74c8018c74842d9abb664cec7f"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/compare-references.mjs",
+      "sha256": "219c82a1fc638d4021b49290152e7b1d1152632ce87587e77b85b469c1745793"
+    }
+  ],
+  "qualityAccepted": false
+}

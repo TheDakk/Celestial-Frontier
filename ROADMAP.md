@@ -114,7 +114,11 @@ Original compression/fold evidence and initial candidate transition failures are
 
 **Originals delivered (C178):** `G2_C163_FAMILY_ORIGINALS_20261002/pilot.json` contains 24 new native originals (3 quadrupeds, 9 primates, 3 myriapods, 5 cephalopods, 4 membrane flyers), 30,168,687 bytes. Framing24/24PASS; anatomical/ground-contact holds stay explicit, no admission claim.
 
-**In progress:** source-polygon repairs and refusal-class references, native effect-anchor film and remaining performance work. Each agent owns separate audits only. Root owns motion,
+**Reference/authoring delivery (C181):** `C163_REFERENCE_REPAIR_20261002` has seven exact-paint head-contour candidates (six staticPASS; Chough folded-triangleRED), three independent ungulate references, four salamander reviews and a measured24-case pool comparison. D28 stays5%; Horse/WildAss, WaterBuffalo cap, Wasp missing foot and pool regression holds remain explicit. Claude C168 accepts Mara from C178: coverage193/631; four new-family reference backlog follows.
+
+**Performance hold:** C179 candidate is byte-exact across56targets and18 current-source stills, but one unprofiled4× film has4CPU frames over1000/60ms (max55.1ms; p958.3ms). Candidate remains unpromoted; strict all-pair60fps not qualified. Full1444ordered-pair instrument is being prepared with no timing allowance change.
+
+**In progress:** native effect-anchor film, then the one fresh combined I5 epoch on clean signed product `20e80c912` (C165+sprawler+C168 merge), C12 candidate excluded. Each agent owns separate audits only. Root owns motion,
 remaining three Centipede slow frames, sequential native films/all-pair 4× sweep, then
 ONE fresh combined I5 3+1 on the complete signed product after Claude posts C165+.
 Never reuse or re-bind the prior I5 proof after product changes.

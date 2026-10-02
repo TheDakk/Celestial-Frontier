@@ -120,5 +120,99 @@
     }
   ],
   "reportSha256": "1e22601a4fb7c1a240f3cba393613cbc92b136692264b4287a71b926aec3914b",
-  "scope": "One diagnostic original C12 pair and script. Strict all-pair 60 fps not established."
+  "scope": "One diagnostic original C12 pair and script. Strict all-pair 60 fps not established.",
+  "priorStillsScope": "Prior SIMD film predates C165 body effect anchoring, so eight still differences are source changes, not candidate geometry.",
+  "stillsVsCurrentSourceProfile": [
+    {
+      "file": "turn0-hit-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "identical": true
+    },
+    {
+      "file": "turn0-hit-impact.png",
+      "sha256": "031ccde3f3f262411077198ea53dd1de9a4fadee821483bdfd63eabe6f980158",
+      "identical": true
+    },
+    {
+      "file": "turn0-hit-reaction-50.png",
+      "sha256": "ebbeff302a2fdff74894379cd9fbe21204115f38b235e3325e282cfbb13f4875",
+      "identical": true
+    },
+    {
+      "file": "turn0-hit-return-end.png",
+      "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "identical": true
+    },
+    {
+      "file": "turn1-hit-approach-50.png",
+      "sha256": "2419ff55e60bd0713f0857321d22d8f83b7d4099b9b2ac3350bab683fa780028",
+      "identical": true
+    },
+    {
+      "file": "turn1-hit-impact.png",
+      "sha256": "25fb7f5a15d4259f5ba8bb4b587a2e8251a8161741c6bbfd11ea5b6efe67ed1c",
+      "identical": true
+    },
+    {
+      "file": "turn1-hit-reaction-50.png",
+      "sha256": "32c80d584cacbad21a06e67d3f8050966c619064908e244ff4fb0ab12417be9b",
+      "identical": true
+    },
+    {
+      "file": "turn1-hit-return-end.png",
+      "sha256": "68073fe050af3413f5fbf2052e65e7e9b20d25f95ee6816cd45a5db77edc47d0",
+      "identical": true
+    },
+    {
+      "file": "turn2-dodge-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "identical": true
+    },
+    {
+      "file": "turn2-dodge-impact.png",
+      "sha256": "7c12e57f717990c6657b772699199da3bf663730703b811f6aa736675128ad34",
+      "identical": true
+    },
+    {
+      "file": "turn2-dodge-reaction-50.png",
+      "sha256": "dcd98073feec3244622fad7c1029b76d6665ce112af6a828a80c91e6c846bd2f",
+      "identical": true
+    },
+    {
+      "file": "turn2-dodge-return-end.png",
+      "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-idle-50.png",
+      "sha256": "f98eb5515e8d1395d2820bb45f4d22f5bc627267208d4a7b8a43709ba661c3f0",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-idle-90.png",
+      "sha256": "08ef15bbcf0545f335c4bdb5ebf643c694b22b7f21a7f755893b95f8a43fdbd7",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-impact.png",
+      "sha256": "a901bf38dd7be30f0c857ec7dc69e45a8bb781bdd1c54db5007dd152c8b0e9f4",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-reaction-50.png",
+      "sha256": "1e58e64c367dcdcbb98ae36053613dcadf316eb928d19b858fdbec8407b8c8e7",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-return-end.png",
+      "sha256": "6f030f458fc4cb8da4a59efa2f61f66f4afc8eacc45c9b352569f9a5836c6c9d",
+      "identical": true
+    }
+  ],
+  "currentSourceStillsByteIdentical": true
 }

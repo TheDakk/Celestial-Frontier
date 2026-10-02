@@ -1,0 +1,29 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Alpine Salamander",
+  "family": "quadruped",
+  "masterSha256": "5558d9b412c372da88815ec8722603260740d8e6ef05eda7261d738507917977",
+  "subjectSha256": "9aa6d8419c155d16c8b0c5859973b95e361a0165e3a5d0d84cbc8feab0e16866",
+  "promptSha256": "266cba2aba8301129ca0ffa86e52ffe4a86722b9e82cd460006757c6cc7a9c5f",
+  "profileId": "salamander",
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: black smooth skin, rounded head, continuous tapering tail and short bent limbs. No external pinnae. Perspective separates the far and near foot heights, so the existing single-contact author refusal remains independent of this review.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. External gills, ear openings and all other actual head/neck paint remain present and are not excluded."
+      }
+    ]
+  },
+  "scope": "exact-master-only-no-visual-admission"
+}

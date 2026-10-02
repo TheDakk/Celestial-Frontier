@@ -1,0 +1,138 @@
+{
+  "schema": "cf.c163-audit-harness-derivation/v1",
+  "scope": "Only import/root relocation and privacy normalization when serializing new JSON. Computational checks, sample counts, thresholds and refusal outcomes unchanged. Existing intake legacy manual-origin fields are not an origin attestation; the packet separately records transferred coordinates and reviewed additions.",
+  "rows": [
+    {
+      "source": "port/v2/tools/creature-animation/intake-authored.mjs",
+      "sourceSha256": "3c5e92d42a8d2ea3bb59476c76c5f58cff32c8167343d74289fe71603930140b",
+      "target": "audits/C163_REFERENCE_REPAIR_20261002/intake.mjs",
+      "targetSha256": "a289d650c78626f4de0944332fa3f08d11cedf8a2555b9f80bb1bdac6e7cb5ed",
+      "changes": [
+        {
+          "before": "from './family-contracts.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/family-contracts.mjs'"
+        },
+        {
+          "before": "from './portable-record-writer.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/portable-record-writer.mjs'"
+        },
+        {
+          "before": "from './quadruped-template.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/quadruped-template.mjs'"
+        },
+        {
+          "before": "from './build-authored-parts.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/build-authored-parts.mjs'"
+        },
+        {
+          "before": "from './authored-intake.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/authored-intake.mjs'"
+        },
+        {
+          "before": "from './authored-region-owners.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/authored-region-owners.mjs'"
+        },
+        {
+          "before": "from './build-paint-skin.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/build-paint-skin.mjs'"
+        },
+        {
+          "before": "from './split-observed-surfaces.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/split-observed-surfaces.mjs'"
+        },
+        {
+          "before": "from '../quadruped-proof/source-join-continuity.mjs'",
+          "after": "from '../../port/v2/tools/quadruped-proof/source-join-continuity.mjs'"
+        },
+        {
+          "before": "const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..');",
+          "after": "const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');"
+        },
+        {
+          "before": "JSON.stringify(value,null,2)",
+          "after": "JSON.stringify(value,(_key,item)=>typeof item==='string'?item.replaceAll(/\\/Users\\/[^/\\s]+/g,'~'):item,2)"
+        }
+      ]
+    },
+    {
+      "source": "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+      "sourceSha256": "f37f8acdfeed3c7cb791a8cd1a450576cefb081968599bbd81c120b653eb15ba",
+      "target": "audits/C163_REFERENCE_REPAIR_20261002/static.ts",
+      "targetSha256": "9682c04d3e441f6c0fc5053bf8e34d80ff195bdb29be71a2fbe69883ea9f6cf3",
+      "changes": [
+        {
+          "before": "from '../../../port/v2/apps/game/src/motion/index.ts'",
+          "after": "from '../../port/v2/apps/game/src/motion/index.ts'"
+        },
+        {
+          "before": "from '../../../port/v2/apps/game/src/motion/painted-supports.ts'",
+          "after": "from '../../port/v2/apps/game/src/motion/painted-supports.ts'"
+        },
+        {
+          "before": "from '../../../port/v2/apps/game/src/creature-rig-performance.ts'",
+          "after": "from '../../port/v2/apps/game/src/creature-rig-performance.ts'"
+        },
+        {
+          "before": "from '../../../port/v2/apps/game/src/creature-rig-contact.ts'",
+          "after": "from '../../port/v2/apps/game/src/creature-rig-contact.ts'"
+        },
+        {
+          "before": "from '../../../port/v2/apps/game/src/motion-pose-blend.ts'",
+          "after": "from '../../port/v2/apps/game/src/motion-pose-blend.ts'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/creature-animation/family-contracts.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/family-contracts.mjs'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/creature-animation/skeleton-pose.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/skeleton-pose.mjs'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/creature-animation/compiled-skin-field.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/compiled-skin-field.mjs'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/creature-animation/arap-skin.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/arap-skin.mjs'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/creature-animation/paint-skin.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/paint-skin.mjs'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/creature-animation/part-masks.mjs'",
+          "after": "from '../../port/v2/tools/creature-animation/part-masks.mjs'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/quadruped-proof/source-join-continuity.mjs'",
+          "after": "from '../../port/v2/tools/quadruped-proof/source-join-continuity.mjs'"
+        },
+        {
+          "before": "from '../../../port/v2/tools/animation-completion/review-schedule.mjs'",
+          "after": "from '../../port/v2/tools/animation-completion/review-schedule.mjs'"
+        },
+        {
+          "before": "JSON.stringify(report,null,2)",
+          "after": "JSON.stringify(report,(_key,value)=>typeof value==='string'?value.replaceAll(/\\/Users\\/[^/\\s]+/g,'~'):value,2)"
+        }
+      ]
+    },
+    {
+      "source": "audits/G1_AUTO_AUTHOR_20260926/harness/static-runner.mjs",
+      "sourceSha256": "5241e675dd1347bcb663f99e8e7f8f1aa51f33be7c14a5b3ae6e779fb189688f",
+      "target": "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+      "targetSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+      "changes": [
+        {
+          "before": "const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');",
+          "after": "const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');"
+        },
+        {
+          "before": "JSON.stringify(receipt,null,2)",
+          "after": "JSON.stringify(receipt,(_key,value)=>typeof value==='string'?value.replaceAll(/\\/Users\\/[^/\\s]+/g,'~'):value,2)"
+        }
+      ]
+    }
+  ]
+}

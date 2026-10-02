@@ -1,0 +1,99 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "c136-reference-24-newt",
+    "parts": 27,
+    "atlasSize": {
+      "width": 671,
+      "height": 300
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "d3a278374049859f8574d0b436282717433d5f47683d5e6cc73a7388a211e6dc",
+    "recordRecipeHash": "07cf3f5bdff43df832d9fc0c9ab3bc5bca911dabbbdeeb7e4b3cca552a81aa9d",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "d3a278374049859f8574d0b436282717433d5f47683d5e6cc73a7388a211e6dc",
+      "atlasSha256": "63e03e1118d3c7d31a973a491cfce8ee08f0d197d0b7ac24ec2066615c4e861c",
+      "parts": 27,
+      "comparedChannels": 359452,
+      "changedChannels": 0
+    },
+    "vertices": 294,
+    "partVertices": 901,
+    "parts": 27,
+    "leaves": 124,
+    "triangles": 496,
+    "ownershipEdges": 1695,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 14,
+        "distancePx": 7.280109889280591,
+        "supports": [
+          51,
+          54
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 15,
+        "distancePx": 4.651881339845219,
+        "supports": [
+          121,
+          125
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 9,
+        "distancePx": 2.2360679774998533,
+        "supports": [
+          1,
+          2
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 9,
+        "distancePx": 7.9999999999999485,
+        "supports": [
+          75,
+          76
+        ]
+      }
+    ],
+    "sourceBindingHash": "573119a36c07ddb8e055eab6c1d46d09ec50f4d4cc99d5b4e5c45d91062fe928",
+    "sourceVertices": 294,
+    "vertices": 405,
+    "sharedSupports": 142,
+    "pins": 49,
+    "independentSurfaceParts": 27,
+    "sourceJoins": 34,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "07cf3f5bdff43df832d9fc0c9ab3bc5bca911dabbbdeeb7e4b3cca552a81aa9d",
+  "bindingHash": "3f4aa06774057616d12ec03c5f161486026bfae21acd6057e61cd5c758673255",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

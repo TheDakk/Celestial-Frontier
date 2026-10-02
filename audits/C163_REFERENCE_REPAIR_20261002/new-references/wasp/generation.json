@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c163-reference-generation/v1",
+  "generator": "built-in image_gen",
+  "intent": "one bounded source-specific anatomical reference edit",
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-71dabb62-b837-4df2-8a7c-418c17933485.png",
+  "sourceOutputSha256": "3d948f0acfae052f7bcb9c1d285b06c17871c7b9582c2daae324f9648e5866c3",
+  "retainedMaster": "audits/C163_REFERENCE_REPAIR_20261002/new-references/wasp/master.png",
+  "retainedSha256": "3d948f0acfae052f7bcb9c1d285b06c17871c7b9582c2daae324f9648e5866c3",
+  "bytes": 1126979,
+  "nativeCanvas": {
+    "width": 1254,
+    "height": 1254
+  },
+  "actualInput": {
+    "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp/master.png",
+    "sha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2"
+  },
+  "basePrompt": {
+    "path": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp/prompt.txt",
+    "sha256": "758a35209a076ddba0a3267391693e1d238cd1d4445c3bb5f0cedb90c32a2951"
+  },
+  "sentPrompt": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/new-references/wasp/prompt.txt",
+    "sha256": "c44fc6b30d49f00f5a70798837244ddf1ce38875a631664baebebb6751141224"
+  },
+  "instruction": "TARGETED REFERENCE EDIT: preserve this exact Wasp, black-and-yellow markings, narrow waist, tapering abdomen, head, two antennae, mandibular mouthparts, existing folded wing panels, painterly materials and full native 1254 by 1254 square canvas. Correct the standing pose of the EXISTING SIX LEGS only: three near legs and three far legs, with six distinctly separated continuous leg paths from the thorax through knee and shank to six visible terminal tarsi. Spread the far front leg sideways enough that it is never hidden by the near front leg. Put ALL SIX terminal foot contact tips on the SAME horizontal imaginary support level at y=800, with feet spaced apart across the image and an empty magenta gap between every adjacent foot. Every leg must have a natural bent knee and complete foot. No leg is raised, hovering, shortened, fused or missing; no seventh leg or extra antenna. Preserve body height, natural limb proportions and the original whole-subject framing. Do not paint the support line or ground: background remains perfectly flat pure #FF00FF everywhere outside the one creature, with no shadow, scenery, labels, diagram or text. Preserve generous magenta margins and connected head, legs and wings.",
+  "basePromptPreservedVerbatim": true,
+  "originalPixelsModified": false,
+  "originalSourceUnchanged": true,
+  "qualityAccepted": false
+}
