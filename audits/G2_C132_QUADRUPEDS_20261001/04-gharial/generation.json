@@ -1,0 +1,14 @@
+{
+  "id": "04-gharial",
+  "name": "Gharial",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-b57e7814-ecbd-4fb9-af4c-87d718b878b1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "dbceeda92d83273fca2fd898b1554162b218e25b896f4bd71f6bb59bbe1af8d1",
+  "bytes": 985910,
+  "promptSha256": "b5167398b68db4055643a93e14938f4609d678719298078c770472982d726638",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

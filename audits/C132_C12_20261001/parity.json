@@ -1,0 +1,234 @@
+{
+  "schema": "cf.c132-arap-parity/v1",
+  "status": "PASS_EXACT",
+  "scope": "Actual Centipede/Cattle topology with deterministic target probes; not actual battle timing or 60fps evidence.",
+  "calls": 20,
+  "controls": [
+    "signed-zero difference refused",
+    "one-bit difference refused"
+  ],
+  "oldModuleSha256": "8e59150df463ec99b4c05f614651e21807e5901854bdf24bf0ad8a7ee747d967",
+  "candidateModuleSha256": "a48d554ba386ae1fc9f186a02f25984b307e6ec4bfe8bfc782dc6d79b67efd78",
+  "rows": [
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float32Array",
+      "phase": 0,
+      "outputSha256": "3d6a8612e9cdf36b0e18e84e5bf4c428fc106aafa08647c0b179960c6240e329",
+      "normalPasses": 0,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float32Array",
+      "phase": 0.05,
+      "outputSha256": "7210a1f231e8322be92ae931a365080f07c610f4392b3ad4e00a779252626343",
+      "normalPasses": 4,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float32Array",
+      "phase": -0.2,
+      "outputSha256": "7ff0b3eaac58672f318e0ccc0907a1d5949669a836fb8dcef54e27af8588c8b8",
+      "normalPasses": 8,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float32Array",
+      "phase": 0.55,
+      "outputSha256": "8c0ad80fad9ef24c5e879c7171d9cb71602b65c0beea678971ccf2313cf806a6",
+      "normalPasses": 12,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float32Array",
+      "phase": 0.05,
+      "outputSha256": "7210a1f231e8322be92ae931a365080f07c610f4392b3ad4e00a779252626343",
+      "normalPasses": 16,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float64Array",
+      "phase": 0,
+      "outputSha256": "3bed7db8ea5a9173a0437a7433f70537a94d27868b2980943354c1726d9d44e6",
+      "normalPasses": 16,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float64Array",
+      "phase": 0.05,
+      "outputSha256": "b181ecc684d43d090beca35285c5641373e4695efb19a57e6a7367254b136e7b",
+      "normalPasses": 20,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float64Array",
+      "phase": -0.2,
+      "outputSha256": "b483ae8c1878dde7a692123f0dfdd6fe84f2d5ddbca27e2b54f050bd3fa095fb",
+      "normalPasses": 24,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float64Array",
+      "phase": 0.55,
+      "outputSha256": "7d113ed9bf54be00dc8bf9c9ed052e117a56c97cde9d9b8da81d6fea1b64a2b4",
+      "normalPasses": 28,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "centipede",
+      "type": "Float64Array",
+      "phase": 0.05,
+      "outputSha256": "b181ecc684d43d090beca35285c5641373e4695efb19a57e6a7367254b136e7b",
+      "normalPasses": 32,
+      "robustFallbacks": 0,
+      "memoryBefore": 1179648,
+      "memoryAfter": 1179648
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float32Array",
+      "phase": 0,
+      "outputSha256": "a4cdc8d68c6ff66c044e9fd573c97ed72e00793384a03262d88086982898b2ab",
+      "normalPasses": 0,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float32Array",
+      "phase": 0.05,
+      "outputSha256": "4eac8b1a5d3ed7ec3f0e7b800dc65440f50f29bbacb02d21ef7536ed3311e839",
+      "normalPasses": 4,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float32Array",
+      "phase": -0.2,
+      "outputSha256": "c591e9f00960bf32499688aa846d1e1ce2a3b969e628d8b643199851b0a6c213",
+      "normalPasses": 8,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float32Array",
+      "phase": 0.55,
+      "outputSha256": "a3259978ba22760aa6c450193e19af5568dcee38c00fbdb5619c1cc2bddc6bd0",
+      "normalPasses": 12,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float32Array",
+      "phase": 0.05,
+      "outputSha256": "4eac8b1a5d3ed7ec3f0e7b800dc65440f50f29bbacb02d21ef7536ed3311e839",
+      "normalPasses": 16,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float64Array",
+      "phase": 0,
+      "outputSha256": "7544edaecb129f12c5fe0b17af19859f13cc42929cfa5895cd3cb95276302969",
+      "normalPasses": 16,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float64Array",
+      "phase": 0.05,
+      "outputSha256": "45fc93af97de5ed59c36fe918a7988d59743321141b832051b23a70da54b7e66",
+      "normalPasses": 20,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float64Array",
+      "phase": -0.2,
+      "outputSha256": "afc2fa9e68f6cbd7a49a4c2ec697b2ab9158d2c9318956d68c55903a3e71e9d6",
+      "normalPasses": 24,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float64Array",
+      "phase": 0.55,
+      "outputSha256": "d3f7939b1bd239837ca375a24ebb5d24ae9a0c0cda55550299e83ebaa7cc4068",
+      "normalPasses": 28,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    },
+    {
+      "refusal": null,
+      "name": "cattle",
+      "type": "Float64Array",
+      "phase": 0.05,
+      "outputSha256": "45fc93af97de5ed59c36fe918a7988d59743321141b832051b23a70da54b7e66",
+      "normalPasses": 32,
+      "robustFallbacks": 0,
+      "memoryBefore": 720896,
+      "memoryAfter": 720896
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 # Celestial Frontier — development toolchain
 
+**October 1 resumed-session startup:** official stable metadata and idle-tool checks under the shared lock;
+ImageMagick 7.1.2-31 → 7.1.2-32, Python 3.12.14 → 3.12.15, gh 2.101.0 → 2.102.0,
+and REAPER 7.80 → 7.81 installed. Inspected dependencies: aom 3.15.1, libde265 1.1.3,
+libheif 1.23.5, ca-certificates 2026-09-25, OpenSSL 3.6.5. Homebrew 7.0.7;
+Node 26.10.0 unchanged. All seven CLI capability checks PASS, including audio venv imports.
+No game/runtime/test pins changed. REAPER metadata is not a fresh render qualification.
+Receipts: `audits/C132_PROGRAM_20261001/toolchain-check.json` and `toolchain-install-verify.log`.
+
 **September 26 startup:** official metadata and idle processes checked under the shared lock.
 Approved Node26.9.0 → 26.10.0_1 (runtime v26.10.0) and its inspected simdutf9.2.0 → 9.2.1_1
 dependency installed; Homebrew7.0.6. All seven CLI capability checks pass. No project dependency

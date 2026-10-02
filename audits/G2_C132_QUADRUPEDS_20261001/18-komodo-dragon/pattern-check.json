@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Komodo Dragon",
+  "masterSha256": "45a7f88dc0db11fd16c3b657510117ee6035cc621e4ed085ba2785c44ec08e30",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

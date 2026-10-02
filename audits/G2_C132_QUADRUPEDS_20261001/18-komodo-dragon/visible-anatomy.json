@@ -1,0 +1,172 @@
+{
+  "id": "18-komodo-dragon",
+  "name": "Komodo Dragon",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "45a7f88dc0db11fd16c3b657510117ee6035cc621e4ed085ba2785c44ec08e30",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 6981,
+    "coreRadius": 10,
+    "bodyBox": {
+      "x0": 184,
+      "y0": 179,
+      "x1": 311,
+      "y1": 225
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0453,
+        "pixels": 316,
+        "box": {
+          "x0": 312,
+          "y0": 179,
+          "x1": 342,
+          "y1": 206
+        },
+        "attach": {
+          "x": 312,
+          "y": 188.5,
+          "relX": 1.01,
+          "relY": 0.21
+        },
+        "dir": {
+          "x": 0.98,
+          "y": 0.2
+        },
+        "class": "front",
+        "length": 34.7
+      },
+      {
+        "k": 1,
+        "frac": 0.2276,
+        "pixels": 1589,
+        "box": {
+          "x0": 74,
+          "y0": 195,
+          "x1": 193,
+          "y1": 235
+        },
+        "attach": {
+          "x": 185.1,
+          "y": 211.8,
+          "relX": 0.01,
+          "relY": 0.71
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.09
+        },
+        "class": "rear",
+        "length": 113.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0486,
+        "pixels": 339,
+        "box": {
+          "x0": 276,
+          "y0": 209,
+          "x1": 313,
+          "y1": 239
+        },
+        "attach": {
+          "x": 284.7,
+          "y": 214.7,
+          "relX": 0.79,
+          "relY": 0.78
+        },
+        "dir": {
+          "x": 0.54,
+          "y": 0.84
+        },
+        "class": "limb-down",
+        "length": 37.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0387,
+        "pixels": 270,
+        "box": {
+          "x0": 249,
+          "y0": 222,
+          "x1": 270,
+          "y1": 242
+        },
+        "attach": {
+          "x": 255.5,
+          "y": 222,
+          "relX": 0.56,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": 0.08,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 24.7
+      },
+      {
+        "k": 4,
+        "frac": 0.0351,
+        "pixels": 245,
+        "box": {
+          "x0": 199,
+          "y0": 226,
+          "x1": 225,
+          "y1": 241
+        },
+        "attach": {
+          "x": 205,
+          "y": 226,
+          "relX": 0.17,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.47,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 25
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 203,
+        "x1": 225,
+        "cx": 213.8
+      },
+      {
+        "x0": 251,
+        "x1": 270,
+        "cx": 259.9
+      },
+      {
+        "x0": 296,
+        "x1": 309,
+        "cx": 302.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

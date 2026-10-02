@@ -82,32 +82,30 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 - A green number is not visual acceptance. The static runner needs its fit and output under `audits/`.
 - Codex reservations: when Codex posts "native/performance reservation active", run no native, gate or heavy CPU until its terminal notice.
 
-## Current Codex sprint handoff — 2026-09-27, development paused; I5 proof passed
+## Current Codex sprint handoff — 2026-10-01, C132 development RESUMED
 
-**Housekeeping — 2026-10-01:** Development remains PAUSED by Dakk. Starting post-rewrite head is
-`73238cb44` (signed G); every historical commit ID in this Codex block is explicitly pre-rewrite.
-Older handoffs and sealed evidence retain their historical references; do not resolve them as current commits.
-Claude C130–C131 were read from `~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md`.
-The I5 producer authority matches a build without the optional local-AI runtime: temporarily rename
-`tools/local-image-generation/node_modules` aside for the develop profile, and restore it afterward.
-Do not re-bind. Fixing the hard-coded home paths in `anatomy-verify/score.mjs` and `calibrate.mjs`,
-and excluding `__local_ai/` from service-worker identity, wait for the next authorized I5 re-measure.
-Use only Dakk/TheDakk and `~/` home paths in new records. Keep the pre-push guard; never bypass hooks.
-This housekeeping authorizes one normal `openai/mac` push after a signed G commit and green gate;
-no PR, label, hosted run, develop/main merge, release or deploy. PR #43 is closed unmerged;
-Claude reports #44 as its unlabeled continuation. No tool maintenance or development resumes here.
-Codex completes this documentation/gate/push batch, then waits. Claude keeps development paused;
-C121 remains first when Dakk resumes. No app switch or relay through Dakk is needed.
-Local housekeeping validation PASS: develop profile 5,725 passed / 2 expected failures / 2 skips;
-all seven profile commands and separate overridecontrol passed. Optional runtime restored.
-Evidence: `audits/HOUSEKEEPING_20261001/develop.log`; disk 119 GiB free at batch end.
+Dakk resumed the full C132 art program. Its exact program is `audits/MAILBOX/C132_ART_PROGRAM_20261001.md`.
+Read Claude's absolute read-only mailbox at `~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md`
+at run start and batch end. Signed G merge `4cad826c9` includes Claude through `d0059f822`; his handoff above is preserved.
 
-**Dakk's latest instruction:** pause art/gameplay development, record everything, finish I5 immediately. Do not start further painting/repair batches without his resumption. No active generation is pending. All168 recent originals in seven24 batches (C101/106/107/110/114/118/121) are saved and signed; C121 is queued first for Claude when art resumes. Claude's latest score is175/631 accepted in his native review,13held; Dakk's final visual acceptance is still outstanding. D28 undecided: retain5%island cap.
+**Program order:** 43 biome-family FAR/MID/NEAR sets (dedicated lake and reef first); ten remaining painted ability-theme
+sequences; anatomical full-stage attacks per family; C12 60 fps at 4× CPU; continuing 24-original quadruped batches and
+reference/template repairs; ~1 GB Mac finisher evaluation and physical-iPhone probe prep; recorded sound cues.
+Claude owns scoring, full-size/native review, finisher/rebinding, gallery/coverage, and battle2 wiring. Dakk makes one final
+visual pass. Latest accepted coverage remains 179/631 (18 held); new originals are candidates until scored.
 
-**I5 proof:** signed product d20c2716604209a67359d4f16cfaac504347963f (pre-rewrite) passed3calibrations+1certification and all4rawverifiers, no retry or source drift; all78outcomes/40ceilings and historical v1 bytes unchanged. Evidence signedafec51f84 (pre-rewrite); Claude pause handoff merged through816f30dd1 (pre-rewrite) in d34db50 (pre-rewrite). `audits/I5_IDB_OWNERS_20260927/epoch/execution.json` is the terminal certified record. No native reservation remains. The explicit active-v2 selector now admits only fully verified raw evidence matching current measurement and built product. I5 CLOSED: final develop profile5725PASS (2expectedfail/2skipped,0unexpectedfailures), allseven ownersPASS on signed991997ae5 (pre-rewrite); source/loghashesverified. Current source digest and complete proof are in audits/I5_IDB_OWNERS_20260927/RESULT.json. Claude independently confirmed the same green battery in signede573f934 (pre-rewrite); merge05716bf (pre-rewrite) adds only his roadmap/mailbox confirmation, preserving his handoff byte-identically. Checkpoint7227a39af (pre-rewrite) was normally pushed toopenai/mac; this confirmation supplement changes documentation/evidence only. No hosted action.
+**Current batch:** three agents own independent audit-only packets `audits/C132_ARENAS_20261001`,
+`audits/C132_EFFECTS_20261001`, and `audits/G2_C132_QUADRUPEDS_20261001`. Root owns C12, phone finisher,
+recorded sound, shared docs, signing and sequential native epochs. Delivery rows follow in `audits/MAILBOX/TO_CLAUDE.md`.
+24 immutable reptile/amphibian originals are delivered for scoring (`G2_C132_QUADRUPEDS_20261001/pilot.json`): 21 framing PASS, 3 held; every anatomical hold remains. Arena/effect candidates and reference packets continue. The 20-probe C12 SIMD candidate passes exact numerical parity, but current native baseline fails a Centipede refusal/missing phase; no successor measurement or 60 fps claim. 49 recorded-file cues are technically prepared; listening and layered impacts remain open. Startup passed all seven capability checks.
+Receipts and cleanup measurement: `audits/C132_PROGRAM_20261001/`. Own cleanup recovered 1.14 GiB; Claude reports removing three completed build worktrees (~57 GB) and 111 GiB free. Identity backups remain preserved.
 
-**Repairs carried:** actual Back chip occlusion, Mac native keycode timer starvation, painted/audio cache lifetime, padded raster scratch disposal (exact7,077,888bytes), and IDB callback wrappers (exact11transient listeners). Database-owned capture dispatch replaces per-operation native callbacks while preserving atomic save/stale/abort/error outcomes. Native checks plus real mutants are retained. Every stopped epoch remains stopped with raw evidence preserved; none was resumed. Full pause/history map: `audits/I5_IDB_OWNERS_20260927/SESSION_HANDOFF.md`; previous Codex handoff archived verbatim.
-
-**When Dakk resumes:** C121 automatic scoring; hand-authored reference packets (standing/folded birds, separated-leg cat/dog/mustelid/insects/ungulates); remaining insect/bird/quad motion and body/tail seams; Bobcat slowdown; broad pattern-first G2 batches and eligible finished originals. Do not infer visual acceptance from green metrics. Main project goal remains all631 Earth creatures with their own generated painting and full battle-biome movement, one final Dakk pass.
-
-**Operations:** openai/mac only, signedG commits; Claude's absolute mailbox read-only at run start/batch end, replies onlyownTO_CLAUDE. Merge newerGanthropic/mac --no-ff preserving Claude handoff byte-identically and grep conflicts. Quiet develop+7owners before own normal push, fresh PUBLIC/UNFROZEN/workflow checks. No PR/label/hosted/develop/main/release/deploy/version bump. Native commands outside sandbox. Disk167GiB, floor40. Reuse managed i5-back-proof at the rewritten equivalent of d20 (pre-rewrite); do not rerun successful/stopped epochs or weaken/rebind a certificate for later source changes. No app-switch/relay needed.
+**Gates:** native/performance reservation is posted before every native epoch and released at its terminal result.
+No heavy concurrent work during those measurements. Browser commands run outside the sandbox. I5 stays unchanged;
+`tools/local-image-generation/node_modules` is temporarily renamed aside for develop and restored afterward.
+Any source/asset change invalidating current producer authority remains blocked pending an authorized new I5 measurement;
+never re-bind historical evidence. Score/calibrate home-path fixes and service-worker local-AI exclusion remain deferred.
+Use Dakk/TheDakk and `~/` paths. Signed G commits on openai/mac only, hooks enabled, no new branches. Budget UNFROZEN;
+own normal pushes require green local battery and fresh workflow/visibility checks. No PR, label, hosted run,
+develop/main merge, release, version bump or deploy is authorized. Native notices and next deliveries are in the own-lane mailbox.
+Codex continues C132 in order; Claude reviews delivered packets and wires admitted assets. No app switch or relay needed.

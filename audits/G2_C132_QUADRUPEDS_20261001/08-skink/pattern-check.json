@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Skink",
+  "masterSha256": "33426fa518e345737cd9246e7d2e7ca325e90442c2b384a01bcbac8cb524be30",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
