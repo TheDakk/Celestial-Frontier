@@ -96,9 +96,10 @@ Claude scores, repairs islands, runs accepted finishes/finished-rig films, updat
 Latest C136 coverage is 181/631 accepted, 19 held. Dakk's final visual pass and physical-phone gates remain open.
 
 **Delivered and measured:**
-- `C132_ARENAS_20261001`: eight painted triplets retain their original held reports. D29 (Dakk, October 2) now
-  explicitly admits native 1672×941 alongside native 2560×1440. The signed validator is merged; revalidate these eight
-  and generate the remaining 36 triplets in three disjoint queues. Actual seams, fringes and staging holds still need full-size review.
+- `C132_ARENAS_20261001`: D29 admits native 1672×941 alongside native 2560×1440. Twelve new triplets and all eight
+  earlier candidates now pass both exact master/runtime checks: 20 sets, 60 selected separate paintings, 402 source/input
+  hashes. `d29-delivery-batch-01.json` binds the manifests and concrete visual holds. No set is accepted or registered;
+  all refused predecessors and prior reports remain. Three agents continue the remaining 24 triplets in disjoint queues.
 - `C132_EFFECTS_20261001`: ten themes / 30 phase assets pass delivery controls and full-script native films at 4× CPU
   on signed `b80e4b156`: zero rig refusals, CPU p95 6.2–6.4 ms. All 30 phases are visible in actual-film review.
   Ground-level placement despite a jaw attack and four low-contrast phases remain concrete holds; Claude's separate
@@ -128,10 +129,11 @@ manual references plus an incomplete Water Strider draft are in `C136_BIRD_INSEC
 owners contain paint, with anatomy/contact holds retained. `G2_C136_TARGETED_EDITS_20261002` adds four separate successors
 for Giant Salamander, Giraffe, Buffalo and Bee, all framing PASS, original source paintings unchanged.
 
-**Gates and next steps:** C158 reserves one bounded Centipede SIMD native follow-up after exact 56-target/1,792-part
-parity; production sweep bytes remain unchanged. C153 released the prior ten-theme epoch. C154–C157 deliver audits,
-references and the signed Claude merge. Root validation, draft release and 68 merged routing/theme checks pass (one
-optional delivery diagnostic skipped). Post the exact reservation before every
+**Gates and next steps:** C159 released the bounded Centipede SIMD epoch; no reservation is active. Its exact four
+artifacts are promoted with 17 leaf controls, the nine-test library owner and root validation passing. The one 4× film
+has 789 live frames, zero refusals, CPU p95 8.7 ms and three slow frames (maximum 23.3 ms); 18 stills equal the prior
+corrected film. C160/C161 deliver that promotion and the first D29 arena batch. Draft release and 68 merged routing/theme
+checks pass (one optional delivery diagnostic skipped). Post the exact reservation before every
 native/performance epoch and release it afterward; no concurrent heavy work. Browser commands require outside-sandbox
 execution. Score/calibrate home resolution and exact service-worker `__local_ai/` exclusion are implemented with focused
 controls in `C132_I5_PREP_20261002`; new v2 evidence serialization aliases home paths without changing samples or old evidence.

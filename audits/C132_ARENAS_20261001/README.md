@@ -1,6 +1,6 @@
 # C132 painted arena candidates — 2026-10-02
 
-Eight separately generated FAR/MID/NEAR compositions are retained for review. **Zero sets are accepted or registered.** Every selected original is 1672×941; `cf.arena-delivery/v1` requires native 2560×1440. The exact new validator rejects all eight master sets and all eight keyed runtime sets on that dimension requirement. The old technical intake passes are narrower and do not override this hold.
+D29, decided by Dakk on 2026-10-02 and merged from signed `anthropic/mac` `02a94595c`, admits generator-native **1672×941** or native **2560×1440**, with no upscale. Generation has resumed across the remaining canonical families. **Zero sets in this packet are accepted or registered.** Per-candidate `d29/delivery-review.json` is the current mechanical and visual-review record. The original eight-set reports remain byte-for-byte historical evidence of the earlier dimension refusal; they do not describe the current D29 dimension rule.
 
 The packet is in `~/Projects/celestial-frontier-openai-mac/audits/C132_ARENAS_20261001`. The sibling routing contract was read in `~/Projects/celestial-frontier-anthropic-mac/audits/ARENA_ROUTING_20261001/README.md`; the merged validator is used directly. No registration, runtime wiring, native epoch, acceptance exemption, upscaling or certificate rebinding occurred.
 
@@ -21,6 +21,18 @@ Each directory includes original source paintings, keyed copies, full-size compo
 
 `compile.mjs` prepared 135 prompts: all 43 canonical biome profiles plus freshwater-lake and karst-cave habitat variants. Canonical palette/weather/hazard/fauna/flora come from the game profile table. Named stage materials and depth are explicit authored interpretations; no live planet snapshot or star binding is fabricated. All three roles use the locked Living Worlds triptych. Frozen kit reference, style, accuracy, layout, technical and negative sections remain intact. `inventory.json` preserves the original compiler snapshot; `inventory-current.json` contains current prompt hashes. `prompt-amendments.json` verifies 20 SUBJECT-only refinements against preserved originals, including repair prompts.
 
-Generation of further families is held because the built-in tool returned non-admissible dimensions despite the exact kit request. Prepared canonical priority after the first eight is archipelago, mangrove, pack ice, canyon and boulder, following Claude's routing coverage. A future generation route must demonstrate native 2560×1440 before mass production. Every candidate still needs visual repair/scoring, Dakk acceptance, route review and native battle proof.
+D29 removes the historical blanket generation hold. Every newly generated plate must still have exactly an admitted native canvas; 1672×940 and ultra-wide attempts are refused and retained. Versioned successors preserve those originals and bind any SUBJECT-only repair prompts. Every candidate still needs its recorded visual defects resolved, independent scoring, Dakk acceptance, route review and native battle proof. Mechanical PASS does not clear seams, chopped vegetation, invented sun disks or chroma remnants.
 
 The generation/compiler/intake/finalization scripts are append-only authoring helpers: they refuse to overwrite existing outputs. `finalize.mjs` was executed once; its checked result is in the delivery summary. Re-running it in this frozen directory intentionally refuses the first existing output. Parent owns the signed batch, mailbox record and required repository checks.
+
+
+The additive `finalize-one.mjs` takes one candidate id and a repository-relative visual-notes JSON path, then creates only that candidate's new `d29/` directory. It verifies original-byte receipts, exact prompt hashes, locked reference bytes, original/keyed hashes and current validator results. Explicitly false acceptance must still refuse registration. It refuses incomplete intake and existing D29 output directories. Its focused controls cover native-size admission, other-size refusal, false acceptance, damaged FAR/MID/NEAR pixels and altered source/prompt/receipt evidence. Historical `finalize.mjs` is intentionally not rerun under D29.
+
+Visual notes use `cf.c132-arena-visual-review/v1`, the candidate `id`, `qualityAccepted: false`, repository-relative `inspectedImages` including the full-size composition, and nonempty concrete `findings`. Example invocation from the workspace (PowerShell):
+
+```powershell
+node audits/C132_ARENAS_20261001/finalize-one.mjs <candidate-id> audits/C132_ARENAS_20261001/<candidate-id>/visual-notes.d29.json
+node --test audits/C132_ARENAS_20261001/finalize-one.test.mjs
+```
+
+The first A-lane additions are `archipelago-v2`, `packice-v2`, `swamp-v2` and `abyssal`. All carry explicit full-size visual holds: doubled island depth and seams; an invented sun and snow shelf; chopped swamp trunks and chroma remnants; repeated abyssal ridges and dark foreground. The A-lane also revalidates `freshwater-lake-v2` and `coral` without changing their original bytes. Agents B/C own their separate candidate directories; individual D29 reports carry their precise status. No runtime registration, browser epoch, acceptance flag or certificate change is part of this packet.

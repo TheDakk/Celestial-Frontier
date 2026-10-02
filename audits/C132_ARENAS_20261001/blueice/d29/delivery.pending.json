@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "blueice",
+  "biome": "blueice",
+  "recipe": "audits/C132_ARENAS_20261001/blueice/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/blueice/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/blueice/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/blueice/arena-far.png",
+      "runtimeSha256": "088edd7634b8c7f7501bf50f855c95c01006365a9c421a8fceb01ec064b16283"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/blueice/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/blueice/keyed/arena-mid.png",
+      "runtimeSha256": "b7a4bc74e2c642145be4514ebc1a6aa89737d3ce653b615089f909b2db59b575"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/blueice/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/blueice/keyed/arena-near.png",
+      "runtimeSha256": "05105616731ffd05b61291f0c6315bb64b5ecc9493bc1b0432033bd5437ab5eb"
+    }
+  }
+}

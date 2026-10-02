@@ -242,8 +242,9 @@ every number's source and Dakk's open choices: `audits/GUARDIAN_CHOREOGRAPHY_202
 ### Current measured limits (2026-10-02)
 - The bounded Centipede orientation correction is promoted. The library owner now requires zero refusals for all
   38 archetypes and 114 presentation-scale cases. The same captured native pair at 4× CPU has zero refusals and CPU p95
-  9.0 ms; five frames exceed 16.667 ms (maximum 23.5 ms), so strict all-pair 60 fps remains open. The existing Chimpanzee
-  victory deformation is unchanged. Evidence: `audits/C132_C12_REPAIR_20261002/`.
+  8.7 ms with the subsequent exact-output SIMD sweep; three frames exceed 16.667 ms (maximum 23.3 ms), so strict all-pair
+  60 fps remains open. The existing Chimpanzee victory deformation is unchanged. Evidence:
+  `audits/C132_C12_REPAIR_20261002/` and `audits/C132_C12_SIMD_20261002/`.
 - Battle2 files are in the selected build's pinned first-use asset list. The service worker verifies them and caches
   them on demand; a missing or incorrect file still fails closed with 503. The old blanket battle2 rejection described
   here is superseded by `pwa-battle2-assets.ts` and `pwa-build.ts`.

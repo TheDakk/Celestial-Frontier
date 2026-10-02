@@ -1,4 +1,10 @@
-# C132 Centipede SIMD candidate — 2026-10-02
+# C132 Centipede SIMD promotion — 2026-10-02
+
+The four exact measured sweep artifacts are promoted. `promotion.json` binds source, binary, embedded bytes and build receipt. Seventeen leaf controls, the nine-test library owner (38 archetypes, 114 scale cases) and root validation pass. The v3 captured-target verifier retains the prior production kernel explicitly under `baseline/`, so it continues to compare two different kernels after promotion; the v2 verifier is preserved as text with its earlier evidence.
+
+The one native run on signed `bf3c3f045` has 789 live frames, zero refusals, CPU p95 8.7 ms and frame-interval p95 16.7 ms. Three frames exceed 16.667 ms (maximum 23.3 ms). All 18 retained stills equal the preceding correction's film byte-for-byte; its Chimpanzee victory deformation is unchanged. One run per candidate is not an isolated microbenchmark or proof of a universal speed improvement. Strict all-pair 60 fps and physical-device qualification remain open. C159 released the reservation.
+
+## Retained candidate plan before the native epoch
 
 This audit combines the already-promoted bounded orientation correction with the separately retained October 1 SIMD rotation/RHS candidate. Production sweep bytes remain unchanged. It moves independent x/y arithmetic into SIMD lanes, preserving each neighbor's addition order, IEEE operations, robust fallback, solver iterations, hard pins and orientation/paint guards. No relaxed arithmetic, extra solver work, cached prior pose or threshold change is introduced.
 

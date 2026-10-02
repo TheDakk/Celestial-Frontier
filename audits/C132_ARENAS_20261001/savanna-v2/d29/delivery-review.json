@@ -1,0 +1,172 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "savanna-v2",
+  "biome": "savanna",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "savanna"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "savanna"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "savanna"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.generation.json",
+      "sha256": "4b88d044dba14f8cd67c8ef0f2e961db645ca553fa6f72867f66c46d96c54eb9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.generation.json",
+      "sha256": "1ba2f28e24d59aa156953a681c95a45ee26275d1943f71ddd45b242f4fdc8f0d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.generation.json",
+      "sha256": "1178783a4744e19513acf299f31402df86a1637d7d16251d42750d45ea5c79c5"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-composed-review.png",
+      "sha256": "70995ff80c37967b20daa4adb92b0992060ea2c59820c74963d1be73108d84c1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/visual-notes.d29.json",
+      "sha256": "b940fd161c5989c624a59464bf582c34c832aa692bb3f0c429d1d3e2f504f379"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-manifest.json",
+      "sha256": "984b9edac4060406411a79fec16f8f7a651897133068ea69119e5d3e03d17f2a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-recipe.json",
+      "sha256": "15103e097c989e2c97557b82fac9f5681d4fc2ef7c8497812f73935c59856622"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.generation.json",
+      "sha256": "4b88d044dba14f8cd67c8ef0f2e961db645ca553fa6f72867f66c46d96c54eb9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-far.prompt.txt",
+      "sha256": "98f3b5645ed30fff5b7e7af40095b6f6a5281c733dc646b80c5032d8ac56c972"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-far.png",
+      "sha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+      "sha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.generation.json",
+      "sha256": "1ba2f28e24d59aa156953a681c95a45ee26275d1943f71ddd45b242f4fdc8f0d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-mid-repair.prompt.txt",
+      "sha256": "887594c55294aa121e7bab9fa610863ccf910ccb11504399b693cf45521c587a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.png",
+      "sha256": "08fe51e0c52717928b7f667dcbb42e39906a5336e56546035f48682240acf189"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.png",
+      "sha256": "8fdfe56558971dbdbab565c6ff5b3546653e70e989dff2101ea2619f96fb814a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.generation.json",
+      "sha256": "1178783a4744e19513acf299f31402df86a1637d7d16251d42750d45ea5c79c5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-near.prompt.txt",
+      "sha256": "94fa8949f69e7055bfa4303923ee98025073f4f873095b536522ea44d8f419e5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-near.png",
+      "sha256": "1e5961612a6b04388bd584521ea7cc49012bffc9a0f40b0dcdaa7c405f0e4956"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.png",
+      "sha256": "1e5961612a6b04388bd584521ea7cc49012bffc9a0f40b0dcdaa7c405f0e4956"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.png",
+      "sha256": "57d3737dcbce4b246d3377d8b92bf5052ca731346b882b99b983c8dda26214f6"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/savanna-v2/visual-notes.d29.json",
+    "findings": [
+      "Full-size existing 1672×941 composite re-inspected under D29. The corrected MID avoids the prior baked mountain/chopped-canopy problem; warm grasses and acacias establish the biome.",
+      "The NEAR makes a conspicuous horizontal ridge and abrupt texture transition across the bottom, with bright edge remnants on grasses. Repeated horizontal dirt bands read as layered strips in the static composition.",
+      "D29 removes only the native-size rejection. Current mechanical validation cannot confer seam quality, native performance, registration or Dakk acceptance; earlier evidence and original bytes remain unchanged."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

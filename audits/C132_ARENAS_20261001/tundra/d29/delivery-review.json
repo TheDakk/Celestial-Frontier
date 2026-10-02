@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "tundra",
+  "biome": "tundra",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "tundra"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "tundra"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "tundra"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-far.generation.json",
+      "sha256": "7e72264f59e01cf2db83d5e4d2778043f386644a2edec66d14f13510a61be83c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-mid.generation.json",
+      "sha256": "6262bd40efe720895d10b08c8600347352047a4fb779bec26417f5e226e6c959"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-near.generation.json",
+      "sha256": "1b8269d1753ec263abb1ef03bde3df3ba8325502346ee75d56d61bfac3ec7ff8"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-composed-review.png",
+      "sha256": "bb752ea61df3a42669918addf47ca8ac1c87f227d6319f37ca6dbf3b66fcd45c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-plates-review.png",
+      "sha256": "e9973b98070b4f524cc3ae4ba484bd6e9893fc4563a7a9b1b4fff63b33f0f729"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/visual-notes.d29.json",
+      "sha256": "d4683974ac5e006d89cb0fa61c0d923c55d9f4fd292c98ad5743d4920f9b20b8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-manifest.json",
+      "sha256": "d9a9e5b231cb632620a0d04394688de3397e983420923a3feb22726a9bfc1d74"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-recipe.json",
+      "sha256": "a1cfc7c3475835248d76919ce5325f950e99e02f7c6b2efb58397cb1dafadf3d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-far.generation.json",
+      "sha256": "7e72264f59e01cf2db83d5e4d2778043f386644a2edec66d14f13510a61be83c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-far.prompt.txt",
+      "sha256": "09f73fed83bbad3550401f415cf2cc46352d255670d4388a58dea87095e571d8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+      "sha256": "59d0945ea50363751af1c412c9eb0cab3306cf2e5e0810b04b9066ed9c0c331f"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-mid.generation.json",
+      "sha256": "6262bd40efe720895d10b08c8600347352047a4fb779bec26417f5e226e6c959"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-mid-repair.prompt.txt",
+      "sha256": "b84685604d5babfb92da63370cf2787c79b5619f94126740542a2c27ad8622b5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-mid.png",
+      "sha256": "0cf040b1f42a1a217e93857579279237fbfd432ad0d6f29372ac6a33c58cc4b9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-mid.png",
+      "sha256": "19ae7de43a382d8c9c67134511b0a9a8069e80b9d29cfab6dc195f41afa5d846"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-near.generation.json",
+      "sha256": "1b8269d1753ec263abb1ef03bde3df3ba8325502346ee75d56d61bfac3ec7ff8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-near.prompt.txt",
+      "sha256": "5040e9ce9f7de16b9add4e5a106601ffdd94fddaab7ace019c353e7ee510e6cd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-near.png",
+      "sha256": "0718b14f78fba6fa31d6b6418c7b85000b47bdf948ba8ff503b268a1b249441a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/keyed/arena-near.png",
+      "sha256": "99aa984c719ea4b36151b654604eb275491040400bc2dfa9b2d43d8c22c93dce"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/tundra/visual-notes.d29.json",
+    "findings": [
+      "Full native-size composition and four-row plate sheet inspected. Snow, moss and distant mountain/lake palette are coherent; the center remains a broad unobstructed terrain band.",
+      "The lower NEAR terrain has a visible horizontal change in texture and scale, and fine shrubs/stone edges still need independent fringe and combatant-contrast scoring. A coherent composition is not visual acceptance.",
+      "No new generation or rekeying in this revalidation. The selected MID contains neither the previous ultra-wide framing nor pseudo-text. Historical attempts and dimension rejection stay unchanged."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

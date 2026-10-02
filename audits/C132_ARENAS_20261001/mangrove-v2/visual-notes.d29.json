@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "mangrove-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/mangrove-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full-size 1672×941 composite inspected. Warm mangrove roots and tidal water identify the biome; a broad brown runway stays clear between the opposing stands.",
+    "The targeted NEAR successor removes the tall side foliage that caused the original fighting-path refusal. The original three masters and refusal remain in mangrove/.",
+    "Visible magenta flecks remain among the MID foliage on both sides and along the distant shrub line, despite zero unresolved pixels reported by intake. The FAR and MID repeat shoreline/root masses; the thin NEAR creates a horizontal texture transition near the bottom. These are visual holds.",
+    "The painting suggests depth through a receding shore and detailed outer canopy; native parallax, player silhouette occlusion and underwater-versus-ground habitat suitability remain untested. No quality acceptance is claimed."
+  ]
+}

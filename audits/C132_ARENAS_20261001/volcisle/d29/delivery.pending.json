@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "volcisle",
+  "biome": "volcisle",
+  "recipe": "audits/C132_ARENAS_20261001/volcisle/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/volcisle/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+      "runtimeSha256": "fcb8a8f376e4c81a84f905d3a88fd9b0406efc0e132e16bcb29347777fc2950e"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/volcisle/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-mid.png",
+      "runtimeSha256": "50661c96bba037885e507818132b576a1ddcb27b82b88a373f8b53b87ba43236"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/volcisle/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-near.png",
+      "runtimeSha256": "2b382db41ca621c4cf612d4b8bc8655dde6499b7bd761e7f6ce8a1f72a2e7849"
+    }
+  }
+}

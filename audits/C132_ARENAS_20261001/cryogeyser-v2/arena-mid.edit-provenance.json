@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c132-arena-targeted-edit/v1",
+  "reason": "Original bakes semi-transparent vapor into the magenta key field; all atmosphere must remain on FAR, not be cut out by masks.",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-mid.prompt.txt",
+    "sha256": "d5a549af62a2c1015d3d62e06d27a6335a6f1a2e97fcdcf0d00b89148c595b7a"
+  },
+  "editPrompt": {
+    "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.prompt.txt",
+    "sha256": "acaf97b446b292eb2e33f7734b9d8fcbcce222c16d5a1313662ee4c98d4d534b"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-mid.png",
+      "sha256": "2198169740203896541169f6d36f1adc9880b71dd66f2ab371ec0bf61f3dd311"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the original arena master; the actual sole image input was the original painting named above."
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f730bdf2-a5ab-4b54-a2de-d5da5faa1d1a.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "The edited generator output is retained byte-for-byte; the source painting is unchanged in its own original directory.",
+  "qualityAccepted": false
+}

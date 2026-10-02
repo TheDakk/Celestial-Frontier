@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "abyssal",
+  "biome": "abyssal",
+  "recipe": "audits/C132_ARENAS_20261001/abyssal/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/abyssal/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/abyssal/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/abyssal/arena-far.png",
+      "runtimeSha256": "819fd2f5d12a5cdb60bcd35819fa18dc0a061919ffc0c823285331b7e1aa1557"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/abyssal/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/abyssal/keyed/arena-mid.png",
+      "runtimeSha256": "8208cff1139fbf88c7f3fc04f0b4ec1ace8d0df3dbaf73643c79e0f1aaf2427e"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/abyssal/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/abyssal/keyed/arena-near.png",
+      "runtimeSha256": "7527602866d6b999b17b88e9c80988c36e925bc9244cc92793b419a40037d47f"
+    }
+  }
+}

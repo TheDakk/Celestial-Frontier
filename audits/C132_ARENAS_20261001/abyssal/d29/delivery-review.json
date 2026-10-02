@@ -1,0 +1,164 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "abyssal",
+  "biome": "abyssal",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "abyssal"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "abyssal"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "abyssal"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-far.generation.json",
+      "sha256": "9942dfb7deaf7b0e4ec3870b5ff040f63d98f58ff775584459d5718b120a694f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-mid.generation.json",
+      "sha256": "9ee6221a02a31c713adbd0a02bc27f3fd6566d1eea261a58a85b2b268f9aa232"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-near.generation.json",
+      "sha256": "186739316dd4ed64241898ca38b6dd8cf628460b44ac68ed7fce6a0bff59e8b2"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-composed-review.png",
+      "sha256": "020b5b425ab295c777d1ec5d8bda69f067324b432d85a09a1eed059c0827b6a3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-far.png",
+      "sha256": "819fd2f5d12a5cdb60bcd35819fa18dc0a061919ffc0c823285331b7e1aa1557"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-mid.png",
+      "sha256": "31b1ef376dc86712cf1a9b1e0a00ba8cfefd77dfa01908665f02a385e94b2a17"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-near.png",
+      "sha256": "9797856cf02a5f22c2030ac057ebbba98fdf0407717555eda245e6396634596c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/visual-notes.d29.json",
+      "sha256": "955000ceb38444a399d00734ae18995c7804fa1a0c4b3c46263b1ad46e1a48c7"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-manifest.json",
+      "sha256": "6a5229a896f33d53bd72b66e833fb6de2f023d3c19df84567a16bbb188e9096f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-recipe.json",
+      "sha256": "3a6efa6f5fbeb2a48cd6ff5caee7d7ef50c18f4c8c8bc3e37993c0d35e34893e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-far.generation.json",
+      "sha256": "9942dfb7deaf7b0e4ec3870b5ff040f63d98f58ff775584459d5718b120a694f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-far.prompt.txt",
+      "sha256": "e6c79427bce79812932ce5d0aa00b8faa04c1064ad55021954aad8fc2564c7da"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-mid.generation.json",
+      "sha256": "9ee6221a02a31c713adbd0a02bc27f3fd6566d1eea261a58a85b2b268f9aa232"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-mid.prompt.txt",
+      "sha256": "8a03ac60a12262ce7e9ec59c94525471de02d513e4049e11482a98fd607aff88"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/keyed/arena-mid.png",
+      "sha256": "8208cff1139fbf88c7f3fc04f0b4ec1ace8d0df3dbaf73643c79e0f1aaf2427e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-near.generation.json",
+      "sha256": "186739316dd4ed64241898ca38b6dd8cf628460b44ac68ed7fce6a0bff59e8b2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-near.prompt.txt",
+      "sha256": "316a200dd0b7afd3e2f387eb4b0bff9fb0a5603ba142295bbda29380314a0c60"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/keyed/arena-near.png",
+      "sha256": "7527602866d6b999b17b88e9c80988c36e925bc9244cc92793b419a40037d47f"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/abyssal/visual-notes.d29.json",
+    "findings": [
+      "All three originals and full native1672×941 composition inspected. Dark blue abyssal rock walls and seafloor provide distinct depth; static fighting stands remain unobstructed.",
+      "MID and NEAR introduce repeated rock ridges and a visible horizontal texture edge near the lower frame. The near foreground is substantially darker than the illuminated center.",
+      "Small high-chroma remnants are visible around the side tube-like formations. Dark combatant readability, movement occlusion and native battle appearance still need independent testing; no acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "scope": "SUBJECT only; frozen reference/style/accuracy/layout/technical/negative unchanged",
+  "original": {
+    "path": "audits/C132_ARENAS_20261001/archipelago/arena-near.prompt.txt",
+    "sha256": "ea2375344eeed820e55b4a7e1ec8b423ec8f737dfe23a9c4dcfaed2b981df1f5"
+  },
+  "current": {
+    "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.prompt.txt",
+    "sha256": "6631a24c2facefc0b747f5f4c7fddb08923f7e93840afcc84a6856e62f0df27a"
+  },
+  "reason": "One bounded full-frame repair after native 1984\u00d7793 refusal; no crop or upscale"
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "cf.c132-simd-native-comparison/v1",
+  "head": "bf3c3f0453f7eab8a2424e92fcda3408de87b00d",
+  "status": "DIAGNOSTIC_PASS",
+  "cpuP95Ms": 8.699999999254942,
+  "frameIntervalP95Ms": 16.700000000000728,
+  "liveFrames": 789,
+  "thresholdMs": 16.666666666666668,
+  "overBudgetFrames": [
+    {
+      "ms": 4316.5,
+      "turn": 1,
+      "localMs": 1019.8333333333335,
+      "phase": "approach",
+      "cpuMs": 23.300000000745058,
+      "refusals": 0
+    },
+    {
+      "ms": 4949.8,
+      "turn": 1,
+      "localMs": 1653.1333333333337,
+      "phase": "approach",
+      "cpuMs": 18.59999999962747,
+      "refusals": 0
+    },
+    {
+      "ms": 5033.2,
+      "turn": 1,
+      "localMs": 1736.5333333333333,
+      "phase": "approach",
+      "cpuMs": 18.699999999254942,
+      "refusals": 0
+    }
+  ],
+  "maximumCpuMs": 23.300000000745058,
+  "stills": [
+    {
+      "name": "turn0-hit-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn0-hit-impact.png",
+      "sha256": "40b24a8f7f083b4adb9ddcc87eb63b040dc749c3942867777247cdf4f730cfcf",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn0-hit-reaction-50.png",
+      "sha256": "eab33e4e0fb2dd8913c8e426b94cc9f9d31a739a103829167db053499a2bced5",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn0-hit-return-end.png",
+      "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn1-hit-approach-50.png",
+      "sha256": "2419ff55e60bd0713f0857321d22d8f83b7d4099b9b2ac3350bab683fa780028",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn1-hit-impact.png",
+      "sha256": "8e3048e3ecad709d1fd86d97042f85a9f60e8b91f75ad343d038013f3f195132",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn1-hit-reaction-50.png",
+      "sha256": "ef2d7f6676c115f8d9aa00069eea98507b5916eeedad6f4abf7ab3718ff7cb12",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn1-hit-return-end.png",
+      "sha256": "68073fe050af3413f5fbf2052e65e7e9b20d25f95ee6816cd45a5db77edc47d0",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn2-dodge-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn2-dodge-impact.png",
+      "sha256": "276ccacb440757205fbb771a0ee94d3d4cc8792f007a0d9393cd1596f7bf6764",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn2-dodge-reaction-50.png",
+      "sha256": "d53e29b5f17427dae84f9c9833b73cd066e392a1c32d74fd0e2762004e96565a",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn2-dodge-return-end.png",
+      "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn3-hit-approach-50.png",
+      "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn3-hit-idle-50.png",
+      "sha256": "f98eb5515e8d1395d2820bb45f4d22f5bc627267208d4a7b8a43709ba661c3f0",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn3-hit-idle-90.png",
+      "sha256": "08ef15bbcf0545f335c4bdb5ebf643c694b22b7f21a7f755893b95f8a43fdbd7",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn3-hit-impact.png",
+      "sha256": "6f2f8383d0af925bde1c46682cfda3ecca7614d6b54a6b22780e5ef9148c0714",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn3-hit-reaction-50.png",
+      "sha256": "3fbe84d0ba63eef5b9b419e49e9d7b5603e4fbbfc93d7443e281b982c6ccfe79",
+      "baselineByteEqual": true
+    },
+    {
+      "name": "turn3-hit-return-end.png",
+      "sha256": "6f030f458fc4cb8da4a59efa2f61f66f4afc8eacc45c9b352569f9a5836c6c9d",
+      "baselineByteEqual": true
+    }
+  ],
+  "scope": "One native Chimpanzee/Centipede pair, same complete script; no all-pair or phone claim."
+}

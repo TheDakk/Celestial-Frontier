@@ -5,8 +5,9 @@ import { createHash } from 'node:crypto';
 import { registerHooks } from 'node:module';
 import { resolve } from '../../port/v2/tools/effects-proof/resolve-ts-hook.mjs';
 import { createArapScratch, solveArapSkin } from '../../port/v2/tools/creature-animation/arap-skin.mjs';
-import { ARAP_SWEEP_BYTES as baselineBytes } from '../../port/v2/tools/creature-animation/arap-sweep-bytes.mjs';
-import { ARAP_SWEEP_BYTES as candidateBytes } from '../C132_C12_20261001/arap-sweep-bytes.mjs';
+import { ARAP_SWEEP_BYTES as productionBytes } from '../../port/v2/tools/creature-animation/arap-sweep-bytes.mjs';
+import { ARAP_SWEEP_BYTES as baselineBytes } from './baseline/arap-sweep-bytes.mjs';
+import { ARAP_SWEEP_BYTES as candidateBytes } from './arap-sweep-bytes.mjs';
 import { familyContractForRecord } from '../../port/v2/tools/creature-animation/family-contracts.mjs';
 import { createSkeletonPoseProgram } from '../../port/v2/tools/creature-animation/skeleton-pose.mjs';
 import { createCompiledSkinField, applyCompiledSkinField } from '../../port/v2/tools/creature-animation/compiled-skin-field.mjs';
@@ -39,7 +40,7 @@ const idle = makeClip(actor, 'idle', seed), approach = makeClip(actor, 'approach
 const perCycle = event.context.stageDisplacement / (event.context.elapsedMs / event.context.durationMs - .5);
 const native = globalThis.WebAssembly;
 function scratch(binary, vertices = skin.vertices, triangles = skin.triangles, w = width, h = height, options = skin.solver) {
-  function Module(b) { return new native.Module(Buffer.from(b).equals(Buffer.from(baselineBytes)) ? binary : b); }
+  function Module(b) { return new native.Module(Buffer.from(b).equals(Buffer.from(productionBytes)) ? binary : b); }
   Module.imports = native.Module.imports; Module.exports = native.Module.exports;
   try {
     globalThis.WebAssembly = { Module, Instance: native.Instance, Memory: native.Memory };
@@ -104,5 +105,5 @@ const report = {
   verifierSha256: sha(fs.readFileSync(new URL('./check-captured.mjs', import.meta.url))),
   targets: measurements.length, paintedParts, hardPins, controls, measurements,
 };
-fs.writeFileSync(new URL('./captured-parity-v2.json', import.meta.url), JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
+fs.writeFileSync(new URL('./captured-parity-v3.json', import.meta.url), JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
 console.log(JSON.stringify({ status: report.status, targets: report.targets, paintedParts, hardPins }));

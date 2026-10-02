@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "marsh",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/marsh/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full-size existing 1672×941 composite re-inspected under D29 without altering historical evidence. A wet silt runway is clear between reed beds; distant mountains and haze provide depth.",
+    "The duplicated gray reed/water shelf behind the runway is visibly pasted over a similar FAR shelf. Side reeds retain magenta edge flecks; NEAR foliage and mud textures transition abruptly into the MID.",
+    "D29 removes only the native-size rejection. These seam/fringe/staging findings remain visual holds; no native film, registration or quality acceptance is implied."
+  ]
+}

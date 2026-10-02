@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "mangrove-v2",
+  "biome": "mangrove",
+  "recipe": "audits/C132_ARENAS_20261001/mangrove-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/mangrove-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.png",
+      "runtimeSha256": "6936d209515eebff386ddba34920905f9166573d76666e4f5011e546aed92f34"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/mangrove-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-mid.png",
+      "runtimeSha256": "1be61a1a0c21df8d6f50f0540b595c33b9610f1ce4272977fd8e69fd4c765096"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-near.png",
+      "runtimeSha256": "5fb2d7e6019f4622552477053c98a95445fa8b32d6afe724f395e76b336127a2"
+    }
+  }
+}

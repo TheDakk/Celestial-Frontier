@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "dunesea",
+  "biome": "dunesea",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.generation.json",
+      "sha256": "c8652f2cbc885075594cc398e61bed202db9897b29e2eb8741eb413253e9d60c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-mid.generation.json",
+      "sha256": "ba70f91b1cc9d9cf9c437c878937a75faaef59f1ccf4ef2dfcf4fc45a57f18e2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.generation.json",
+      "sha256": "1d98f841b5bec2fc221ab50ee539014bc27c60318cb98f96092f385bc439d01b"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-composed-review.png",
+      "sha256": "2532f21c4f1fdd7eab51f68e7732b8210b1b1150d5abcec1fc02495b5d95fa85"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-plates-review.png",
+      "sha256": "798e777b5ad98bf099e149b2447057079b39a4f5a8e265c5d14b868020815f01"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/visual-notes.d29.json",
+      "sha256": "e064e37c1cf85a220560bed8b01fc88afe91bbe800ab20c5627aeb27e0c187b7"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-manifest.json",
+      "sha256": "bac742deeda6a3aff018b56885748bb2a0520359b6c33ecf21519873502ab3f3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-recipe.json",
+      "sha256": "33375201746a2e08330a92a528a709f9c85e4124dd2a1d0ff371e6f1c462d9d8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.generation.json",
+      "sha256": "c8652f2cbc885075594cc398e61bed202db9897b29e2eb8741eb413253e9d60c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-far-repair.prompt.txt",
+      "sha256": "2c84aaf68b9c1d7b439dcb8fff8e8a53f3059beb8a0db124f5459bde017340c0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+      "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-mid.generation.json",
+      "sha256": "ba70f91b1cc9d9cf9c437c878937a75faaef59f1ccf4ef2dfcf4fc45a57f18e2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-mid.prompt.txt",
+      "sha256": "a191f784c44a3d09c06447120d237e2c7b36dddd27e0faf986cfdad8f67ad351"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-mid.png",
+      "sha256": "97c84060c150881327008a751881733fd4a33a6111032ff057cd5f9e993b9355"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.png",
+      "sha256": "d7d5f56bc6000b030291ea114fd03a805ac72e55a5be4c0d17d3e20216d8d426"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.generation.json",
+      "sha256": "1d98f841b5bec2fc221ab50ee539014bc27c60318cb98f96092f385bc439d01b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.prompt.txt",
+      "sha256": "fc273efa4114c8c39adec1ea80e4c05869caee502f4e37864d8b68681ceb1a06"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.png",
+      "sha256": "bc1b1b7fd0ef21d4c04a1e8cd379c026806f13cc966d5789b08a323b19418422"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
+      "sha256": "b1b4e3d34688e9606076232f9ca2df3058367e9dd17299fb8239e1539d9a539d"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/dunesea/visual-notes.d29.json",
+    "findings": [
+      "Full native-size composition and four-row plate sheet inspected. Warm desert material, continuous central fighting band and deep atmosphere are readable; no invented moons are present in the selected FAR.",
+      "The MID introduces another ridge contour across the already painted terrain, creating a conspicuous pasted strip and mauve boundary around the center and right. NEAR adds a separate horizontal texture band and small magenta foliage remnants. These remain visual holds after D29 size admission.",
+      "No new generation or rekeying in this revalidation. Historical originals, intake and previous dimension rejection stay unchanged."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}
