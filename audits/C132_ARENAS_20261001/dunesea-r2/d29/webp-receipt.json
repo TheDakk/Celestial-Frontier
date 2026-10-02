@@ -1,0 +1,106 @@
+{
+  "schema": "cf.c163-arena-webp-candidate/v1",
+  "id": "dunesea-r2",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "pngSourceManifest": {
+    "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/delivery.pending.json",
+    "sha256": "c40681b99453aae25d668e362ec4be5275b45569afbaaee3987db73f8d299de6"
+  },
+  "encoder": {
+    "path": "port/v2/tools/morph/arena-webp.mjs",
+    "sha256": "8622e74d9e215b81eadece8e434bb3edef39efe788e4f7cf429c71b7bf0d3173",
+    "options": {
+      "quality": 88,
+      "alphaQuality": 100,
+      "effort": 6,
+      "smartSubsample": true,
+      "bleedRadius": 24
+    },
+    "sharp": "0.35.4",
+    "webp": "1.6.0"
+  },
+  "pngBytes": 5888432,
+  "webpBytes": 526914,
+  "plates": {
+    "far": {
+      "source": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.png",
+      "sourceSha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418",
+      "sourceBytes": 2485454,
+      "webp": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.webp",
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "bytes": 332238,
+      "sha256": "699ffa48023c0bbf9291406772fe3b4315e75c1bf33c48f5181b8c0e74559741",
+      "alphaIdentical": true,
+      "visiblePixels": 1573352,
+      "psnr": 38.736,
+      "maxAbs": 32,
+      "ssim": 0.98635,
+      "ssimMinBlock": 0.89114,
+      "secondEncodeSha256": "699ffa48023c0bbf9291406772fe3b4315e75c1bf33c48f5181b8c0e74559741"
+    },
+    "mid": {
+      "source": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-mid.png",
+      "sourceSha256": "e51ba9611228906467c1546c8e3d0e97b9d05129b72cc11d3ecad14437993097",
+      "sourceBytes": 1960493,
+      "webp": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-mid.webp",
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "bytes": 129194,
+      "sha256": "9cf46d4be12bede3e9aa47c6046fe4bfa88d85d62daa20b9e69959932f56d11e",
+      "alphaIdentical": true,
+      "visiblePixels": 441099,
+      "psnr": 36.401,
+      "maxAbs": 40,
+      "ssim": 0.98792,
+      "ssimMinBlock": 0.90565,
+      "secondEncodeSha256": "9cf46d4be12bede3e9aa47c6046fe4bfa88d85d62daa20b9e69959932f56d11e"
+    },
+    "near": {
+      "source": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-near.png",
+      "sourceSha256": "0cce96b0722a343d39c898de0dbe9b96d1e1986fd95545f12bb9821d66cf08a8",
+      "sourceBytes": 1442485,
+      "webp": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-near.webp",
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "bytes": 65482,
+      "sha256": "5362e9c234bec37aa59d4d8b8f059930453ecdcfa2610f7c9f425bdac73a6441",
+      "alphaIdentical": true,
+      "visiblePixels": 177020,
+      "psnr": 35.488,
+      "maxAbs": 36,
+      "ssim": 0.99208,
+      "ssimMinBlock": 0.92369,
+      "secondEncodeSha256": "5362e9c234bec37aa59d4d8b8f059930453ecdcfa2610f7c9f425bdac73a6441"
+    }
+  },
+  "mechanical": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "originalMastersModified": false
+}

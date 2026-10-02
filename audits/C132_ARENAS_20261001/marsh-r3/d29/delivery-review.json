@@ -1,0 +1,174 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "marsh-r3",
+  "biome": "marsh",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.generation.json",
+      "sha256": "fc1aab32bb42e0b5ec73c218f1c0847214c0bd783275c39c08bebfc2d38b572d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.generation.json",
+      "sha256": "270fa0cdc078551001fe6073083cc770c9b083e721b429d31f3ce42d7cbc59c3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.generation.json",
+      "sha256": "6d0c9b3f61e50d126cc86e55abc4ab4eb56deeb1777d0805989304c5198cd049"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-composed-review.png",
+      "sha256": "5c97a673d1612cc4a39e838b748601686b31c63962e05cd4f7d9232c715c8378"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-plates-review.png",
+      "sha256": "9d4a769ce9506970218ed8e96161076016b999caa44e0d3d9a1ebd209cdc146f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.png",
+      "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.png",
+      "sha256": "6a5d7d927f7751a57527e771e03f42e15f2de806734dd389b022c8e33153f848"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.png",
+      "sha256": "29da6b08ff6ba7429cb55574dc0dd2fd9d6211fb652f14e0996f057aa91e4bff"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-attempt-1.png",
+      "sha256": "5a344de0b5e58a802407af7b8570f1f0eddce4fec420ed9f305dd34ca46d1971"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/visual-notes.d29.json",
+      "sha256": "cd56809e4e0cdcde7482be89d347980aa656774cc6bf69cb00fd6ed2e6a36059"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-manifest.json",
+      "sha256": "0cc0aca3686ebb266317bc9bcb68dbbedf36c961517e8c073bb1f48dad7b4aa0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-recipe.json",
+      "sha256": "1aab77db034348bc5ac1ef8749024d647eec7eaf624d3df85040bbb207c165c8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.generation.json",
+      "sha256": "fc1aab32bb42e0b5ec73c218f1c0847214c0bd783275c39c08bebfc2d38b572d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-far.prompt.txt",
+      "sha256": "13199b8c2d78ac16763c2a15d4528f906a458b89add244fece45802778b28375"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.generation.json",
+      "sha256": "270fa0cdc078551001fe6073083cc770c9b083e721b429d31f3ce42d7cbc59c3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid-c163.prompt.txt",
+      "sha256": "88eb276e43cfdbf897f9c064c3bc2e5762d90c085cf4b22f9f7f350dd5f5572f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-mid.png",
+      "sha256": "77c92492184e4ed2acf8b6cf03818cb0d9e6ce379a71e981d4340d13939ac453"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.generation.json",
+      "sha256": "6d0c9b3f61e50d126cc86e55abc4ab4eb56deeb1777d0805989304c5198cd049"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-c163-second.prompt.txt",
+      "sha256": "ea5ca14dbc954b275ab90fcbc547db73122a299aca3077642797689ad05ec1db"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-near.png",
+      "sha256": "15d551091c076234b4fd19e45e50fa9a47fbd2977dcc3529f304b134ec76bedf"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/marsh-r3/visual-notes.d29.json",
+    "findings": [
+      "The new MID removes the predecessor duplicated gray reed-and-water shelf and leaves a continuous open mud runway. The accepted FAR is reused byte-for-byte.",
+      "The selected second NEAR uses the new MID as the edit target; its mud and reed texture is closer than the first retained attempt. The bottom foreground is still roughly the lower 14 percent rather than the requested six percent.",
+      "A straight horizontal texture join remains at approximately y=0.86. It is visible at native size and remains a scoring hold; this is improvement evidence, not seam acceptance.",
+      "Small pink-tinted remnants remain around thin MID reed tips, especially at the right edge. Mechanical key checks do not establish visual fringe acceptance.",
+      "The full-size plates and composition were inspected. No creature occlusion, native battle film, phone read, quality acceptance, or runtime registration is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

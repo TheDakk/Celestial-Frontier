@@ -1,0 +1,101 @@
+{
+  "schema": "cf.c163-arena-edit-provenance/v1",
+  "id": "freshwater-lake-v3",
+  "qualityAccepted": false,
+  "originalsModified": false,
+  "edits": [
+    {
+      "role": "near",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-attempt-1.png",
+        "sha256": "c18f8a7136d764ba6017442a7e4576bbb38ffc3274dc0d8007929833b8d8105d",
+        "bytes": 1235960
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-attempt-1.generation.json",
+        "sha256": "f83d9e97704815cf0f97600a7d4f179cf9362747d978dcd8a67a95d8381cd80b",
+        "bytes": 890
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.png",
+        "sha256": "f378db79c9ec3d8cf9164e192531ba6846ca4cecf030050a416e120c7c53ad73",
+        "bytes": 1238294
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": false,
+      "hold": "Preserved too much predecessor shelf/plant/color texture; immutable predecessor retained.",
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-c163.prompt.txt",
+        "sha256": "a61da4c8f84a288a7a024f581d842954f76862133ed1c9583de0afa27e1b887c"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    },
+    {
+      "role": "near",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near.png",
+        "sha256": "b59b6d0d4305f72ad1492d7615bb0d2d347af692818d094152795cb9777b3191",
+        "bytes": 1223314
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near.generation.json",
+        "sha256": "e3023f9c5e35f8163d0a97169737d04ad5fff06f1c81b5c2564e35031c2c9c45",
+        "bytes": 873
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.png",
+        "sha256": "ba5ac07fc6b02781d2525b78ef1350a882fa2b94eb6fb960ed2709d45d62c9bf",
+        "bytes": 1987031
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": true,
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-c163-second.prompt.txt",
+        "sha256": "a2b7d57406646591d4ca329cee157bf1c794dfa044f23e1f3c555d7e40692d8c"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    }
+  ],
+  "reused": [
+    {
+      "role": "far",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.png",
+        "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38",
+        "bytes": 2874963
+      },
+      "copy": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.png",
+        "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38",
+        "bytes": 2874963
+      }
+    },
+    {
+      "role": "mid",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.png",
+        "sha256": "ba5ac07fc6b02781d2525b78ef1350a882fa2b94eb6fb960ed2709d45d62c9bf",
+        "bytes": 1987031
+      },
+      "copy": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-mid.png",
+        "sha256": "ba5ac07fc6b02781d2525b78ef1350a882fa2b94eb6fb960ed2709d45d62c9bf",
+        "bytes": 1987031
+      }
+    }
+  ]
+}

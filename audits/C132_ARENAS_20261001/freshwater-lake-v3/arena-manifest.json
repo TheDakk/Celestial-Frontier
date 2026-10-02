@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-recipe.json",
+    "sha256": "b558d7fe315af26ee07006263035250740a343fc38368cce5bb30346cfba39a0"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.png",
+        "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.png",
+        "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-mid.png",
+        "sha256": "ba5ac07fc6b02781d2525b78ef1350a882fa2b94eb6fb960ed2709d45d62c9bf"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-mid.png",
+        "sha256": "7172142d0763d33a55731aaeea0827461e342ea7b955e5ad5cbaaf66445b2b3a"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near.png",
+        "sha256": "b59b6d0d4305f72ad1492d7615bb0d2d347af692818d094152795cb9777b3191"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-near.png",
+        "sha256": "5748b01064525b8f959de4426ba5db8f2d18054eedf1a87bf8e33e2eef562d11"
+      }
+    }
+  ]
+}

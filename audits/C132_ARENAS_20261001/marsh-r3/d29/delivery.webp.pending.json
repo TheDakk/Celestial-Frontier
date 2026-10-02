@@ -1,0 +1,37 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "marsh-r3",
+  "biome": "marsh",
+  "recipe": "audits/C132_ARENAS_20261001/marsh-r3/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/marsh-r3/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.webp",
+      "runtimeSha256": "40ac702c61cb4482dbd1a95aad4dd0b0de96788f2a684ab404d2cdbc3a9196ce",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.png",
+        "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-mid.webp",
+      "runtimeSha256": "cece0e7ac7304141baced44630b9c4fad7cc80b26141c75816ad9d7dd25912d7",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-mid.png",
+        "sha256": "77c92492184e4ed2acf8b6cf03818cb0d9e6ce379a71e981d4340d13939ac453"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-near.webp",
+      "runtimeSha256": "756b3ea5899e2e0340ff4ecb63993e386263f1683f95a5c7781e7e1061022e20",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-near.png",
+        "sha256": "15d551091c076234b4fd19e45e50fa9a47fbd2977dcc3529f304b134ec76bedf"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 q88 WebP runtime candidate copies; lossless alpha; receipt audits/C132_ARENAS_20261001/marsh-r3/d29/webp-receipt.json"
+}

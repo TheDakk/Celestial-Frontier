@@ -1,0 +1,106 @@
+{
+  "schema": "cf.c163-arena-webp-candidate/v1",
+  "id": "freshwater-lake-v3",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "pngSourceManifest": {
+    "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/delivery.pending.json",
+    "sha256": "db26ada40299d62006fee66413dc2475d0630da262f6fe54575fcdba926e2b3c"
+  },
+  "encoder": {
+    "path": "port/v2/tools/morph/arena-webp.mjs",
+    "sha256": "8622e74d9e215b81eadece8e434bb3edef39efe788e4f7cf429c71b7bf0d3173",
+    "options": {
+      "quality": 88,
+      "alphaQuality": 100,
+      "effort": 6,
+      "smartSubsample": true,
+      "bleedRadius": 24
+    },
+    "sharp": "0.35.4",
+    "webp": "1.6.0"
+  },
+  "pngBytes": 6978798,
+  "webpBytes": 750682,
+  "plates": {
+    "far": {
+      "source": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.png",
+      "sourceSha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38",
+      "sourceBytes": 2874963,
+      "webp": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.webp",
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "bytes": 431454,
+      "sha256": "49c4e63ba0f728788baa0bd3095734277b21938d694c4ce0de5bd8f82b1b57c3",
+      "alphaIdentical": true,
+      "visiblePixels": 1573352,
+      "psnr": 38.22,
+      "maxAbs": 31,
+      "ssim": 0.98756,
+      "ssimMinBlock": 0.90924,
+      "secondEncodeSha256": "49c4e63ba0f728788baa0bd3095734277b21938d694c4ce0de5bd8f82b1b57c3"
+    },
+    "mid": {
+      "source": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-mid.png",
+      "sourceSha256": "7172142d0763d33a55731aaeea0827461e342ea7b955e5ad5cbaaf66445b2b3a",
+      "sourceBytes": 2619819,
+      "webp": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-mid.webp",
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "bytes": 243884,
+      "sha256": "0113f9426370f5d135498e0a1de56e58179441cb6340cddfd9bf5f49b58ad84e",
+      "alphaIdentical": true,
+      "visiblePixels": 594740,
+      "psnr": 35.543,
+      "maxAbs": 48,
+      "ssim": 0.99279,
+      "ssimMinBlock": 0.90288,
+      "secondEncodeSha256": "0113f9426370f5d135498e0a1de56e58179441cb6340cddfd9bf5f49b58ad84e"
+    },
+    "near": {
+      "source": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-near.png",
+      "sourceSha256": "5748b01064525b8f959de4426ba5db8f2d18054eedf1a87bf8e33e2eef562d11",
+      "sourceBytes": 1484016,
+      "webp": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-near.webp",
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "bytes": 75344,
+      "sha256": "c80a2c4902d6f23b32eff5d271233100c97dbd00a0dc3e909f631f1eae7ddeeb",
+      "alphaIdentical": true,
+      "visiblePixels": 196955,
+      "psnr": 36.514,
+      "maxAbs": 29,
+      "ssim": 0.99333,
+      "ssimMinBlock": 0.93941,
+      "secondEncodeSha256": "c80a2c4902d6f23b32eff5d271233100c97dbd00a0dc3e909f631f1eae7ddeeb"
+    }
+  },
+  "mechanical": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "temperate"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "temperate"
+  },
+  "originalMastersModified": false
+}

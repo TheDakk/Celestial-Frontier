@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "marsh-r3",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/marsh-r3/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/marsh-r3/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/marsh-r3/arena-far.png",
+    "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.png",
+    "audits/C132_ARENAS_20261001/marsh-r3/arena-near.png",
+    "audits/C132_ARENAS_20261001/marsh-r3/arena-near-attempt-1.png"
+  ],
+  "findings": [
+    "The new MID removes the predecessor duplicated gray reed-and-water shelf and leaves a continuous open mud runway. The accepted FAR is reused byte-for-byte.",
+    "The selected second NEAR uses the new MID as the edit target; its mud and reed texture is closer than the first retained attempt. The bottom foreground is still roughly the lower 14 percent rather than the requested six percent.",
+    "A straight horizontal texture join remains at approximately y=0.86. It is visible at native size and remains a scoring hold; this is improvement evidence, not seam acceptance.",
+    "Small pink-tinted remnants remain around thin MID reed tips, especially at the right edge. Mechanical key checks do not establish visual fringe acceptance.",
+    "The full-size plates and composition were inspected. No creature occlusion, native battle film, phone read, quality acceptance, or runtime registration is claimed."
+  ]
+}
