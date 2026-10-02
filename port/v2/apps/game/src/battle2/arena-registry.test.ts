@@ -140,7 +140,10 @@ describe('selectArena: home ground by fight kind', () => {
   it('fallback reasons for all 43 biomes: own set → biome, same world type → kin, otherwise fallback (named)', () => {
     for (const b of BIOME_PROFILE_KEYS_V1) {
       const s = selectArena(ctx('wild', world(b))), type = ARENA_BIOME_WORLD_TYPE[b];
-      const expected = ARENA_SETS.some((r) => r.biome === b) ? 'biome' : ARENA_SETS.some((r) => ARENA_BIOME_WORLD_TYPE[r.biome] === type) ? 'kin' : 'fallback';
+      // a ground fight (no medium) routes over the GROUND sets only (2026-10-02: water sets are for water fights)
+      const GROUND = ARENA_SETS.filter((r) => r.medium === 'ground');
+      const expected = GROUND.some((r) => r.biome === b) ? 'biome' : GROUND.some((r) => ARENA_BIOME_WORLD_TYPE[r.biome] === type) ? 'kin' : 'fallback';
+      expect(s.set.medium, b).toBe('ground');
       expect(s.match, b).toBe(expected);
       if (expected === 'fallback') { expect(s.set.id).toBe(ARENA_FALLBACK_SET_ID); expect(s.reason).toContain(`no painted ${type} set yet`); expect(s.reason.includes('wet arena')).toBe(LIQUID.has(b)); }
       if (expected === 'kin') expect(s.reason).toMatch(new RegExp(`no ${b} set yet; nearest kin`));
@@ -166,6 +169,55 @@ describe('selectArena: home ground by fight kind', () => {
     expect(() => selectArena({ ...ctx('wild', null), seed: 1.5 })).toThrow(/seed/);
     expect(() => selectArena({ ...ctx('duel', null), round: -1 })).toThrow(/round/);
     expect(() => selectArena(ctx('wild', { ...world('temperate'), biome: 'moon' as never }))).toThrow(/live biome/);
+  });
+});
+
+describe('medium-aware routing (2026-10-02): water sets only for water fights', () => {
+  const base = (MANIFEST as { sets: Record<string, unknown>[] }).sets[0]!;
+  it('every row carries its recipe\'s medium; the recipe without one (the accepted temperate set) is ground', () => {
+    for (const row of ARENA_SETS) expect(row.medium, row.id).toBe(((json(row.recipe) as { medium?: string }).medium ?? 'ground'));
+    expect(ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!.medium).toBe('ground');
+  });
+  it('the 43 biomes × both media: a ground fight never draws a water set; a water fight draws a water set of its biome, else its world type, else the ground route with the procedural water named', () => {
+    for (const b of BIOME_PROFILE_KEYS_V1) {
+      const type = ARENA_BIOME_WORLD_TYPE[b], dry = selectArena(ctx('wild', world(b))), wet = selectArena(ctx('wild', world(b), world(b), { medium: 'water' }));
+      expect(dry.set.medium, b).toBe('ground'); expect(dry.medium).toBe('ground');
+      const own = ARENA_SETS.filter((r) => r.medium === 'water' && r.biome === b), kin = ARENA_SETS.filter((r) => r.medium === 'water' && ARENA_BIOME_WORLD_TYPE[r.biome] === type);
+      expect(wet.medium).toBe('water');
+      if (own.length) { expect(wet.set.medium, b).toBe('water'); expect(wet.match).toBe('biome'); expect(own.map((r) => r.id)).toContain(wet.set.id); }
+      else if (kin.length) { expect(wet.set.medium, b).toBe('water'); expect(wet.match).toBe('kin'); expect(kin.map((r) => r.id)).toContain(wet.set.id); }
+      else { expect(wet.set.medium, b).toBe('ground'); expect(wet.set.id).toBe(dry.set.id); expect(wet.reason).toMatch(/water fight: no painted .* water set yet; the stage's procedural wet arena draws the water/); }
+    }
+    // the two shipped water sets: temperate → the lake, coral → the reef, an ocean kin (opensea) → the reef, a terran kin (jungle) → the lake
+    const wetOn = (b: BiomeProfileKeyV1) => selectArena(ctx('wild', world(b), world(b), { medium: 'water' })).set.id;
+    expect([wetOn('temperate'), wetOn('coral'), wetOn('opensea'), wetOn('jungle')]).toEqual(['freshwater-lake-v2', 'coral', 'coral', 'freshwater-lake-v2']);
+    // a water fight without world context (Earth's open water, the picker's lake): the temperate water set; a ground one keeps the fallback
+    expect(selectArena({ ...ctx('wild', null), medium: 'water' }).set.id).toBe('freshwater-lake-v2');
+    expect(selectArena({ ...ctx('wild', null), earth: true, medium: 'water' }).reason).toMatch(/Earth .*water fight .*painted water set freshwater-lake-v2/);
+    expect(selectArena(ctx('wild', null)).set.id).toBe(ARENA_FALLBACK_SET_ID);
+  });
+  it('a ground set is never chosen for a water fight when a water set exists for that biome or kin (even with several ground sets of the biome)', () => {
+    const sets = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [base, { ...base, id: 'reef-dry', biome: 'coral' }, { ...base, id: 'reef-wet', biome: 'coral', medium: 'water' }, { ...base, id: 'sea-wet', biome: 'opensea', medium: 'water' }] });
+    for (let seed = 0; seed < 50; seed++) {
+      expect(selectArena(ctx('wild', world('coral', seed), world('coral', seed), { medium: 'water' }), sets).set.id).toBe('reef-wet');
+      expect(selectArena(ctx('wild', world('coral', seed)), sets).set.id).toBe('reef-dry');
+      expect(selectArena(ctx('wild', world('archipelago', seed), world('archipelago', seed), { medium: 'water' }), sets).set.medium).toBe('water');
+      expect(selectArena(ctx('wild', world('archipelago', seed)), sets).set.id).toBe('reef-dry'); // ground kin, never the wet kin, for a land fight
+    }
+  });
+  it('negative controls: an unknown medium is refused by name; a water fallback set is refused; a medium-blind route would draw the reef for a land fight', () => {
+    expect(() => parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [base, { ...base, id: 'x', medium: 'lava' }] })).toThrow(/medium "lava" is not one of ground, water/);
+    expect(() => parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [{ ...base, medium: 'water' }] })).toThrow(/must be a ground set/);
+    expect(() => selectArena({ ...ctx('wild', world('coral')), medium: 'air' as never })).toThrow(/unknown fight medium/);
+    const blind = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: ARENA_SETS.map((r) => ({ ...r, medium: 'ground' })) });
+    expect(selectArena(ctx('wild', world('coral')), blind).set.id).toBe('coral'); // what the medium field prevents
+    expect(selectArena(ctx('wild', world('coral'))).set.id).not.toBe('coral');
+  });
+  it('the generator reads the recipe medium and refuses a manifest that disagrees with it', () => {
+    const rel = 'audits/C132_ARENAS_20261001/coral/delivery.json', m = json(rel) as Record<string, unknown>;
+    expect(checkArenaDelivery(REPO_PATH, rel, m).medium).toBe('water');
+    expect(() => checkArenaDelivery(REPO_PATH, rel, { ...m, medium: 'ground' })).toThrow(/medium "ground" disagrees with its recipe's "water"/);
+    const t = 'audits/ARENA_ROUTING_20261001/earth-temperate-v1.delivery.json'; expect(checkArenaDelivery(REPO_PATH, t, json(t)).medium).toBe('ground');
   });
 });
 

@@ -5,6 +5,7 @@
   {
    "id": "earth-temperate-v1",
    "biome": "temperate",
+   "medium": "ground",
    "delivery": "audits/ARENA_ROUTING_20261001/earth-temperate-v1.delivery.json",
    "recipe": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
    "acceptance": "audits/ARENA_V1_ACCEPTANCE_20260912/acceptance.json",
@@ -20,6 +21,7 @@
   {
    "id": "karst-cave",
    "biome": "karst",
+   "medium": "ground",
    "delivery": "audits/C132_ARENAS_20261001/karst-cave/delivery.json",
    "recipe": "audits/C132_ARENAS_20261001/karst-cave/arena-delivery-recipe.json",
    "acceptance": "audits/C132_ARENAS_20261001/karst-cave/acceptance.json",
@@ -35,6 +37,7 @@
   {
    "id": "jungle-v2",
    "biome": "jungle",
+   "medium": "ground",
    "delivery": "audits/C132_ARENAS_20261001/jungle-v2/delivery.json",
    "recipe": "audits/C132_ARENAS_20261001/jungle-v2/arena-delivery-recipe.json",
    "acceptance": "audits/C132_ARENAS_20261001/jungle-v2/acceptance.json",
@@ -50,6 +53,7 @@
   {
    "id": "marsh",
    "biome": "marsh",
+   "medium": "ground",
    "delivery": "audits/C132_ARENAS_20261001/marsh/delivery.json",
    "recipe": "audits/C132_ARENAS_20261001/marsh/arena-delivery-recipe.json",
    "acceptance": "audits/C132_ARENAS_20261001/marsh/acceptance.json",
@@ -65,6 +69,7 @@
   {
    "id": "savanna-v2",
    "biome": "savanna",
+   "medium": "ground",
    "delivery": "audits/C132_ARENAS_20261001/savanna-v2/delivery.json",
    "recipe": "audits/C132_ARENAS_20261001/savanna-v2/arena-delivery-recipe.json",
    "acceptance": "audits/C132_ARENAS_20261001/savanna-v2/acceptance.json",
@@ -80,6 +85,7 @@
   {
    "id": "dunesea",
    "biome": "dunesea",
+   "medium": "ground",
    "delivery": "audits/C132_ARENAS_20261001/dunesea/delivery.json",
    "recipe": "audits/C132_ARENAS_20261001/dunesea/arena-delivery-recipe.json",
    "acceptance": "audits/C132_ARENAS_20261001/dunesea/acceptance.json",
@@ -95,6 +101,7 @@
   {
    "id": "tundra",
    "biome": "tundra",
+   "medium": "ground",
    "delivery": "audits/C132_ARENAS_20261001/tundra/delivery.json",
    "recipe": "audits/C132_ARENAS_20261001/tundra/arena-delivery-recipe.json",
    "acceptance": "audits/C132_ARENAS_20261001/tundra/acceptance.json",
@@ -105,6 +112,38 @@
     "far": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
     "mid": "audits/C132_ARENAS_20261001/tundra/arena-mid.png",
     "near": "audits/C132_ARENAS_20261001/tundra/arena-near.png"
+   }
+  },
+  {
+   "id": "freshwater-lake-v2",
+   "biome": "temperate",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/freshwater-lake-v2/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/freshwater-lake-v2/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.png"
+   }
+  },
+  {
+   "id": "coral",
+   "biome": "coral",
+   "medium": "water",
+   "delivery": "audits/C132_ARENAS_20261001/coral/delivery.json",
+   "recipe": "audits/C132_ARENAS_20261001/coral/arena-delivery-recipe.json",
+   "acceptance": "audits/C132_ARENAS_20261001/coral/acceptance.json",
+   "far": "audits/C132_ARENAS_20261001/coral/arena-far.png",
+   "mid": "audits/C132_ARENAS_20261001/coral/keyed/arena-mid.png",
+   "near": "audits/C132_ARENAS_20261001/coral/keyed/arena-near.png",
+   "masters": {
+    "far": "audits/C132_ARENAS_20261001/coral/arena-far.png",
+    "mid": "audits/C132_ARENAS_20261001/coral/arena-mid.png",
+    "near": "audits/C132_ARENAS_20261001/coral/arena-near.png"
    }
   }
  ]

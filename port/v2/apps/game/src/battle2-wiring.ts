@@ -35,7 +35,7 @@ import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-c
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { ARENA_SETS, type ArenaSetRow, BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectArena, selectHabitatArena, ARENA_FALLBACK_ASSETS, turnPlanInputFromTranscriptEvent, type ArenaKind,
+import { ARENA_SETS, type ArenaSetRow, BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, habitatFightMedium, lakeArenaWorld, selectArena, selectHabitatArena, ARENA_FALLBACK_ASSETS, turnPlanInputFromTranscriptEvent, type ArenaKind,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -43,6 +43,7 @@ import { ARENA_SETS, type ArenaSetRow, BattleStage, GUARDIAN_FRAME_FILL, combata
 import { createPartsRig } from './battle2/parts-rig.js';
 import { attackRepertoire, compileAnatomyAttack, type WeaponDeclaration } from './anatomy-attacks.js';
 import type { ArenaWorld } from './battle-habitat.js';
+import { ARENA_GROUND_LINE } from './battle2/arena-delivery.js';
 import { liveBattleArena, liveSettlementEncounter, liveWorldSnapshot } from './battle2-live-worlds.js';
 import { individualFromGenomeV1 } from './morph/morph-individual.js';
 import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/morph-atlas-cache.js';
@@ -414,14 +415,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const themeRows = input.paintedThemes === undefined ? BATTLE2_ASSETS.paintedThemes : parsePaintedThemeManifest(input.paintedThemes);
     // Home ground (2026-10-01): the fight world's biome picks the painted set; without `worlds` this is the accepted temperate set at its
     // delivery manifest's runtime paths, the ones BATTLE2_ASSETS names (arena-registry.test.ts pins that).
-    const route = selectArena({ kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null, ...(input.worldPreset === 'earth' && !input.worlds ? { earth: true } : {}) }, input.arenaSets ?? ARENA_SETS);
-    arenaRoute = route.reason;
-    const [recipeRaw, anchorsFetched, far, mid, near] = await Promise.all([assets.json(route.assets.recipe), fetchPaintedThemeAnchors(themeRows, (p) => assets.json(p)), assets.image(route.assets.far), assets.image(route.assets.mid), assets.image(route.assets.near)]);
-    const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };
-    if (typeof recipe.groundLineNormalized !== 'number' || typeof recipe.seed !== 'number' || typeof recipe.systemCard !== 'string') throw new Error('battle2 arena recipe lacks groundLineNormalized/seed/systemCard');
-    // Every manifest row's anchors are admitted here (a required row — Wild — fails the study exactly as before; any other row
-    // falls back to its theme's labelled procedural emitter with the reason). The theme library is built once the phase images load.
-    const paintedAnchors = admitPaintedThemeAnchors(themeRows, anchorsFetched);
+    const arenaContext = { kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null, ...(input.worldPreset === 'earth' && !input.worlds ? { earth: true } : {}) } as const;
     // Default records: the Civet landmark record (as before) plus every registered source paint-skin fit's record; a missing
     // fit is skipped with its reason, and one body is never listed twice (the Civet fit carries the same record bytes).
     const loadRecords = async (): Promise<ResolvedAnatomyRecord[]> => {
@@ -433,7 +427,26 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       fetched.forEach((r, i) => { const fit = BATTLE2_ASSETS.partsFits[i]!; if (r.status === 'fulfilled') admit(r.value); else skipped.push(`${fit.earthName}: fit record unavailable (${r.reason instanceof Error ? r.reason.message : String(r.reason)})`); });
       return out;
     };
-    const records = input.records ?? await loadRecords();
+    // the records come first (with the effect anchors), because the plate set depends on the fight's MEDIUM (2026-10-02): a painted water set
+    // only when the habitat compiler places both combatants in water on the fight world (`habitatFightMedium`, the rule placeCombatants applies)
+    const [anchorsFetched, records] = await Promise.all([fetchPaintedThemeAnchors(themeRows, (p) => assets.json(p)), input.records ? Promise.resolve(input.records) : loadRecords()]);
+    if (disposed) throw new Error('disposed while loading');
+    const championGenomeEarly = input.settlement.champion.kind === 'owned-fauna' && input.settlement.champion.genome ? input.settlement.champion.genome : null;
+    const fightSides = { left: { record: matchRecord(records, championGenomeEarly), genome: championGenomeEarly }, right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome } };
+    const sets = input.arenaSets ?? ARENA_SETS;
+    const world0 = selectArena(arenaContext, sets).world;
+    const mediumOn = (w: ArenaWorld | null) => habitatFightMedium({ contextId: input.settlement.battleId, seed: arenaContext.seed, world: w, groundLineY: ARENA_GROUND_LINE, ...fightSides });
+    // the same world placement will use: the routed world, else the picker's lake, else the dry default — and on Earth the lake when the dry plates refuse
+    let fight = mediumOn(world0 ?? (input.worldPreset === 'lake' ? lakeArenaWorld(ARENA_GROUND_LINE) : null));
+    if (!world0 && input.worldPreset === 'earth' && fight.medium === 'ground' && /refused/.test(fight.reason)) fight = mediumOn(lakeArenaWorld(ARENA_GROUND_LINE));
+    const route = selectArena({ ...arenaContext, medium: fight.medium }, sets);
+    arenaRoute = route.reason;
+    const [recipeRaw, far, mid, near] = await Promise.all([assets.json(route.assets.recipe), assets.image(route.assets.far), assets.image(route.assets.mid), assets.image(route.assets.near)]);
+    const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };
+    if (typeof recipe.groundLineNormalized !== 'number' || typeof recipe.seed !== 'number' || typeof recipe.systemCard !== 'string') throw new Error('battle2 arena recipe lacks groundLineNormalized/seed/systemCard');
+    // Every manifest row's anchors are admitted here (a required row — Wild — fails the study exactly as before; any other row
+    // falls back to its theme's labelled procedural emitter with the reason). The theme library is built once the phase images load.
+    const paintedAnchors = admitPaintedThemeAnchors(themeRows, anchorsFetched);
     if (disposed) throw new Error('disposed while loading');
     const texture = (img: Battle2Image): EffectTextureLike => pixi.Texture.from(img.source);
     const champion = input.settlement.champion, championGenome = champion.kind === 'owned-fauna' && champion.genome ? champion.genome : null;
@@ -568,7 +581,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName, ...(championVoice?.ok ? { card: championVoice } : {}) },
         right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName, ...(defenderVoice.ok ? { card: defenderVoice } : {}) } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices, impactMaterial: (side) => voices?.cards[side]?.material ?? null }) : null;
-    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}),
+    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}), plateMedium: route.set.medium,
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
         phaseTextures: (a) => { const loaded = paintedThemes.textures.get(a.sequenceId); return a.phases.map((p, i) => { if (isProceduralImage(p.keyedImage)) return null; const t = loaded?.[i]; if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }); },

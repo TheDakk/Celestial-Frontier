@@ -59,6 +59,9 @@ export interface BattleRigV1 extends CreatureRigV1 {
   /** The record's guardian block (D2): a guardian FILLS the battle screen (kit GUARDIAN RULE) — the stage scales it with
    * `frameFill` instead of its mass class; desktop-only, its own CPU gate. Absent for every other creature. */
   readonly guardian?: Readonly<{ desktopOnly?: boolean; cpuP95GateMs?: number; landmarkComparisonBoundPx?: number }>;
+  /** A joint's position in the LAST applied pose, cut-out display units (parts rigs; C156: the stage reads the attack's contact joint at the
+   * launch beat so the effect launches from it). Absent = the rig cannot report joints; the effect falls back, labelled. */
+  readonly jointPosition?: (joint: string) => { readonly x: number; readonly y: number } | null;
 }
 
 export interface PixelBox { readonly x: number; readonly y: number; readonly width: number; readonly height: number; }
