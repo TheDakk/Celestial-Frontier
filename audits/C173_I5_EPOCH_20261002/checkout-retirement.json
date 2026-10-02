@@ -1,0 +1,15 @@
+{
+  "source": "~/.codex/worktrees/c173-i5/celestial-frontier-openai-mac",
+  "activeProcessesUsingSource": [],
+  "sourceClean": true,
+  "retainedEvidenceHashesVerified": 9,
+  "freeBytesBefore": 129416237056,
+  "retireVia": "Codex archive_worktree; ignored locked dependency clones are regenerable",
+  "status": "ARCHIVED",
+  "sourceCheckoutExistsAfter": false,
+  "freeBytesAfter": 152780800000,
+  "observedFreeSpaceIncreaseBytes": 23364562944,
+  "observedFreeSpaceIncreaseGiB": 21.76,
+  "freeGiBAfter": 142.288,
+  "scope": "Observed volume change across completed managed temporary I5 checkout archival; concurrent light source artifacts mean this is not exact unique allocation."
+}

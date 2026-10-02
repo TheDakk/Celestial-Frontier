@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-gate-interruption/v1",
+  "firstResult": "develop-profile.json",
+  "exitCode": 143,
+  "signal": "SIGTERM-equivalent conventional exit",
+  "testVerdictAvailable": false,
+  "lastStage": "Vite build completed; Vitest startup printed; no Vitest result",
+  "optionalRuntimeRestored": true,
+  "concurrentAction": "Codex managed checkout archive was queued during the browser-free profile",
+  "causality": "Temporal association only; terminating sender not observed. Do not call this a product test failure or a proven archival defect.",
+  "resolvedConditions": [
+    "Managed archival now terminal and source checkout absent",
+    "Shared lock released",
+    "No maintenance will overlap the next foreground profile"
+  ],
+  "nextAction": "One separately retained full browser-free profile after environment stabilization; no I5 repetition and no limit/expectation changes"
+}
