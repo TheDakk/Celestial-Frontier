@@ -1,0 +1,124 @@
+{
+  "schema": "cf.c163-fixed-rotation-native-review/v1",
+  "status": "NATIVE_CAPTURE_PASS_PERFORMANCE_HOLD",
+  "source": "25e40029b8bc31967711641d7484cd97f247cd89",
+  "cpuThrottle": 4,
+  "cpuP95Ms": 8.299999997019768,
+  "frames": 787,
+  "limitMs": 16.666666666666668,
+  "slowFrames": [
+    {
+      "ms": 3299.9,
+      "turn": 1,
+      "localMs": 3.233333333333576,
+      "phase": "ready",
+      "cpuMs": 20.400000005960464,
+      "refusals": 0
+    },
+    {
+      "ms": 4266.4,
+      "turn": 1,
+      "localMs": 969.7333333333331,
+      "phase": "approach",
+      "cpuMs": 55.100000001490116,
+      "refusals": 0
+    },
+    {
+      "ms": 4316.4,
+      "turn": 1,
+      "localMs": 1019.7333333333331,
+      "phase": "approach",
+      "cpuMs": 16.899999998509884,
+      "refusals": 0
+    },
+    {
+      "ms": 4499.799999999999,
+      "turn": 1,
+      "localMs": 1203.1333333333328,
+      "phase": "approach",
+      "cpuMs": 18.30000000447035,
+      "refusals": 0
+    }
+  ],
+  "maximumCpuMs": 55.100000001490116,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "stillsVsPrior": [
+    {
+      "file": "turn2-dodge-reaction-50.png",
+      "identical": false
+    },
+    {
+      "file": "turn0-hit-return-end.png",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-approach-50.png",
+      "identical": true
+    },
+    {
+      "file": "turn0-hit-approach-50.png",
+      "identical": true
+    },
+    {
+      "file": "turn1-hit-approach-50.png",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-return-end.png",
+      "identical": true
+    },
+    {
+      "file": "turn1-hit-reaction-50.png",
+      "identical": false
+    },
+    {
+      "file": "turn0-hit-reaction-50.png",
+      "identical": false
+    },
+    {
+      "file": "turn2-dodge-return-end.png",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-reaction-50.png",
+      "identical": false
+    },
+    {
+      "file": "turn1-hit-impact.png",
+      "identical": false
+    },
+    {
+      "file": "turn0-hit-impact.png",
+      "identical": false
+    },
+    {
+      "file": "turn1-hit-return-end.png",
+      "identical": true
+    },
+    {
+      "file": "turn2-dodge-impact.png",
+      "identical": false
+    },
+    {
+      "file": "turn2-dodge-approach-50.png",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-impact.png",
+      "identical": false
+    },
+    {
+      "file": "turn3-hit-idle-90.png",
+      "identical": true
+    },
+    {
+      "file": "turn3-hit-idle-50.png",
+      "identical": true
+    }
+  ],
+  "reportSha256": "1e22601a4fb7c1a240f3cba393613cbc92b136692264b4287a71b926aec3914b",
+  "scope": "One diagnostic original C12 pair and script. Strict all-pair 60 fps not established."
+}
