@@ -1,0 +1,109 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "05-chough",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+ "subjectSourceSha256": "40bfee796060ee4e3592abd7bccf2ebac68786d7475ebe3dae88959ba0aeb999",
+ "identity": {
+  "name": "Chough",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chough\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2759847108\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 2759847108,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "01-robin",
+  "authoringSha256": "2ec6f99c17cd3d2a25e3b5f02e39207c40a412ed64a67d148deb7d9d8245f16f",
+  "masterSha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1578,
+     "class": "top",
+     "attach": {
+      "x": 263.5,
+      "y": 159,
+      "relX": 0.91,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.157,
+     "class": "rear",
+     "attach": {
+      "x": 160.4,
+      "y": 212.2,
+      "relX": -0.01,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0987,
+     "class": "limb-down",
+     "attach": {
+      "x": 205.9,
+      "y": 241.9,
+      "relX": 0.4,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "01-robin",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

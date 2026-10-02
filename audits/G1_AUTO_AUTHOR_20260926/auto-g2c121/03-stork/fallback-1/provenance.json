@@ -1,0 +1,119 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "03-stork",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "ec3a22b439b261cb55cab3cdaebcbe498864a397bb003c06cc785ecf242cb325",
+ "subjectSourceSha256": "5b5c05a248e6ad3c9c06cf902382cfe76fdc401580ee58f481230349f8f093e6",
+ "identity": {
+  "name": "Stork",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Stork\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1575710504\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 1575710504,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "04-hawk-v2",
+  "authoringSha256": "4eb4362fcd280f210c0d9509b4a2007b88d16ebaebfc6b6191a1eb55cfcff2ac",
+  "masterSha256": "a3cc39bbb343cd4f6ed8eec6af71759ce283d0ea0eec26c6cdb24d91d5fe73d3"
+ },
+ "habitat": {
+  "profileId": "wading-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "6d8efc434397d850b8454feeae51f8b874edc579c5d7ef1b95bbdff2553a7074",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group wading-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1843,
+     "class": "top",
+     "attach": {
+      "x": 244.3,
+      "y": 165.3,
+      "relX": 0.93,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1434,
+     "class": "rear",
+     "attach": {
+      "x": 158.8,
+      "y": 212.2,
+      "relX": 0.02,
+      "relY": 0.85
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0706,
+     "class": "limb-down",
+     "attach": {
+      "x": 209.5,
+      "y": 221,
+      "relX": 0.56,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0627,
+     "class": "limb-down",
+     "attach": {
+      "x": 194.5,
+      "y": 223,
+      "relX": 0.4,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "04-hawk-v2",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

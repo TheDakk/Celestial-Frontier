@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "24-termite",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "9dd3255e863880d5579067d32c9baa123f213b9f9e0d18e22c3934de7e117e32",
+ "subjectSourceSha256": "a6ace681f4eff515be74545535e093e5db3d56347b9e563586f9bd731e991c75",
+ "identity": {
+  "name": "Termite",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Termite\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3531041631\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 3531041631,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "08-ant",
+  "authoringSha256": "0ef6659dc3425e1ae001566a0cdf15903f83327f7e8aee8a4df08f75017e9d34",
+  "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.3695,
+     "class": "front",
+     "attach": {
+      "x": 208.6,
+      "y": 194.9,
+      "relX": 1,
+      "relY": 0.43
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0274,
+     "class": "rear",
+     "attach": {
+      "x": 81,
+      "y": 206,
+      "relX": -0.01,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0262,
+     "class": "limb-down",
+     "attach": {
+      "x": 194,
+      "y": 220,
+      "relX": 0.89,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0338,
+     "class": "limb-down",
+     "attach": {
+      "x": 170.6,
+      "y": 222.6,
+      "relX": 0.7,
+      "relY": 0.92
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "08-ant",
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

@@ -1,0 +1,157 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C121_20260927",
+ "tag": "g2c121",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-finch",
+  "04-lark",
+  "05-chough",
+  "06-ptarmigan",
+  "07-raven",
+  "08-vulture",
+  "09-hawk",
+  "10-crow",
+  "12-sandpiper",
+  "14-snowy-owl",
+  "18-wasp"
+ ],
+ "refused": [
+  {
+   "id": "02-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 10% paint (reference 72%)"
+  },
+  {
+   "id": "13-grouse",
+   "reason": "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "15-peacock",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 84%)"
+  },
+  {
+   "id": "16-turkey",
+   "reason": "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 3.0%)"
+  },
+  {
+   "id": "17-bee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)"
+  },
+  {
+   "id": "19-giant-water-bug",
+   "reason": "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 1% paint (reference 31%)"
+  },
+  {
+   "id": "20-cockroach",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 8% paint (reference 19%)"
+  },
+  {
+   "id": "21-stick-insect",
+   "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 44%)"
+  },
+  {
+   "id": "23-water-strider",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "03-stork",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "11-sparrow",
+   "static": "RED"
+  },
+  {
+   "id": "22-carrion-beetle",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "24-termite",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-finch",
+   "name": "Finch",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-lark",
+   "name": "Lark",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-chough",
+   "name": "Chough",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-ptarmigan",
+   "name": "Ptarmigan",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-raven",
+   "name": "Raven",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-vulture",
+   "name": "Vulture",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-hawk",
+   "name": "Hawk",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-crow",
+   "name": "Crow",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "12-sandpiper",
+   "name": "Sandpiper",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-snowy-owl",
+   "name": "Snowy Owl",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-wasp",
+   "name": "Wasp",
+   "family": "insect",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

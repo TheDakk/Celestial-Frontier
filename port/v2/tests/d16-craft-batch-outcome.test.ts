@@ -13,6 +13,8 @@ import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { createMemoryBackend, readArc2Loot, readSaveV5 } from '@cf/persistence';
 import { fabricationBatchOffered } from '../apps/game/src/engineering-panel.js';
+// @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
+import { ENGINEERING_ACTION_CONTROL_COUNT, ENGINEERING_ACTION_KEYS, ENGINEERING_FABRICATE_BATCH_RECIPE_IDS } from '../tools/engineering-browser-contract.mjs';
 import { engineeringCommittedCopy, runFabricationBatchV1 } from '../apps/game/src/fabrication-batch.js';
 import {
   ENGINEERING_SECTIONS as SECTIONS, NOW, REGISTRY, boot, fixtureExtensions, fixtureSave, marsSurface, mount,
@@ -44,6 +46,16 @@ describe('D16 craft ×5 — the real button, durable receipts, reboot', () => {
     expect(fabricationBatchOffered({ category: 'comp', outputKind: 'stackable' })).toBe(true);
     expect(fabricationBatchOffered({ category: 'gear', outputKind: 'gear-instance' })).toBe(false);
     expect(fabricationBatchOffered({ category: 'sys', outputKind: 'permanent-system' })).toBe(false);
+  });
+
+  it('the real panel renders EXACTLY the browser gates\' action inventory (Glass/Slice read ENGINEERING_ACTION_KEYS; 85 = 70 + 15 ×5)', async () => {
+    const nav = marsSurface(), save = fixtureSave(4 * 7), booted = await boot(save, fixtureExtensions(save, nav)), view = mount({ save, booted, nav });
+    const keys = [...view.body.querySelectorAll<HTMLButtonElement>('button[data-engineering-action]')].map((b) => `${b.dataset.engineeringAction}:${b.dataset.actionId ?? ''}${b.dataset.actionRepeat === undefined ? '' : `:x${b.dataset.actionRepeat}`}`);
+    expect(keys).toEqual([...ENGINEERING_ACTION_KEYS]);
+    expect(keys).toHaveLength(ENGINEERING_ACTION_CONTROL_COUNT);
+    /* control: the pre-×5 inventory (no batch keys) no longer matches the product, so a stale gate list fails here, not in a hosted run */
+    expect(keys).not.toEqual((ENGINEERING_ACTION_KEYS as readonly string[]).filter((k: string) => !k.endsWith(':x5')));
+    expect((ENGINEERING_FABRICATE_BATCH_RECIPE_IDS as readonly string[]).every((id: string) => keys.includes(`fabricate:${id}:x5`))).toBe(true);
   });
 
   it('one press crafts five plates as five receipts, survives two reads and a reboot, and a second press stops at the shortage', async () => {

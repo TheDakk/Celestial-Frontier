@@ -49,11 +49,22 @@ export const ENGINEERING_RECIPE_IDS = Object.freeze(
   ENGINEERING_RECIPE_GROUPS.flatMap(({ recipes }) => recipes),
 );
 
+/* D16 parity (×5, e1882e49): every stackable part/component recipe row carries a second fabricate control,
+   `data-action-repeat="5"`, directly after its Fabricate button (engineering-panel.ts fabricationBatchOffered).
+   All 15 part/comp outputs are stackable; tests/d16-craft-batch-outcome.test.ts binds this inventory to the
+   real catalogue so a catalogue change fails there instead of drifting here. */
+export const ENGINEERING_FABRICATE_BATCH = 5;
+export const ENGINEERING_FABRICATE_BATCH_RECIPE_IDS = Object.freeze(
+  ENGINEERING_RECIPE_GROUPS.filter(({ id }) => id === 'part' || id === 'comp').flatMap(({ recipes }) => recipes),
+);
+
 export const ENGINEERING_ACTION_CONTROL_COUNT = 2
-  + ENGINEERING_RESEARCH_IDS.length + ENGINEERING_RECIPE_IDS.length;
+  + ENGINEERING_RESEARCH_IDS.length + ENGINEERING_RECIPE_IDS.length + ENGINEERING_FABRICATE_BATCH_RECIPE_IDS.length;
+/* Browser gates read each control as `operation:actionId` plus `:x<repeat>` for a batch control. */
 export const ENGINEERING_ACTION_KEYS = Object.freeze([
   'mine:', 'skim:', ...ENGINEERING_RESEARCH_IDS.map((id) => `research:${id}`),
-  ...ENGINEERING_RECIPE_IDS.map((id) => `fabricate:${id}`),
+  ...ENGINEERING_RECIPE_IDS.flatMap((id) => (ENGINEERING_FABRICATE_BATCH_RECIPE_IDS.includes(id)
+    ? [`fabricate:${id}`, `fabricate:${id}:x${ENGINEERING_FABRICATE_BATCH}`] : [`fabricate:${id}`])),
 ]);
 
 export const ENGINEERING_REMNANT_ROUTE_TARGET = Object.freeze({
@@ -967,7 +978,7 @@ export const engineeringUiSnapshotComplete = (value) => {
       === canonicalToolJson(ENGINEERING_RESEARCH_IDS)
     && canonicalToolJson(value.renderedFacts.recipes.map((row) => row?.id))
       === canonicalToolJson(ENGINEERING_RECIPE_IDS)
-    && canonicalToolJson(value.actionAvailability.map((row) => `${row?.operation}:${row?.id ?? ''}`))
+    && canonicalToolJson(value.actionAvailability.map((row) => `${row?.operation}:${row?.id ?? ''}${row?.repeat === undefined ? '' : `:x${row.repeat}`}`))
       === canonicalToolJson(ENGINEERING_ACTION_KEYS);
 };
 
@@ -1189,9 +1200,9 @@ const engineeringUiSelftestBefore = {
     })),
   },
   actionAvailability: ENGINEERING_ACTION_KEYS.map((key) => {
-    const split = key.indexOf(':');
+    const [operation, id, repeat] = key.split(':');
     return {
-      operation: key.slice(0, split), id: key.slice(split + 1) || null,
+      operation, id: id || null, ...(repeat === undefined ? {} : { repeat: Number(repeat.slice(1)) }),
       modelEnabled: 'false', disabled: true, ariaDisabled: 'true',
     };
   }),
@@ -2110,7 +2121,10 @@ if (ENGINEERING_RESEARCH_IDS.length !== 6
   || ENGINEERING_RECIPE_IDS.length !== 62
   || new Set(ENGINEERING_RECIPE_IDS).size !== ENGINEERING_RECIPE_IDS.length
   || ENGINEERING_RECIPE_GROUPS.length !== 5
-  || ENGINEERING_ACTION_CONTROL_COUNT !== 70
+  || ENGINEERING_FABRICATE_BATCH_RECIPE_IDS.length !== 15
+  || ENGINEERING_ACTION_CONTROL_COUNT !== 85
+  || ENGINEERING_ACTION_KEYS.length !== ENGINEERING_ACTION_CONTROL_COUNT
+  || new Set(ENGINEERING_ACTION_KEYS).size !== ENGINEERING_ACTION_KEYS.length
   || ENGINEERING_REMNANT_ROUTE_TARGET.neighborhoodRadius !== 300
   || ENGINEERING_REMNANT_ROUTE_TARGET.sourceWitness?.schema !== 'cf-v2-tool-star-source-oracle/v1'
   || ENGINEERING_REMNANT_ROUTE_TARGET.sourceWitness?.generator !== 'WorldGen.starsInCell+systemFor'

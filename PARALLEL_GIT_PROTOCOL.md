@@ -11,7 +11,7 @@ implied.
 This reference matches the explicitly adopted operating model in Claude's
 `audits/OPERATING_MODEL_20260925/README.md`. Each lane writes only its own
 worktree. At EVERY run start and batch end, Codex reads the absolute read-only
-`/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md`
+`~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md`
 and replies in its own `audits/MAILBOX/TO_CLAUDE.md`; Claude does the reverse.
 State done, blocked, or in-progress delivery truthfully, with evidence paths and
 concrete requests. Dakk is not the message courier.
@@ -113,8 +113,8 @@ recovery bundle and outstanding-work disposition are linked from ROADMAP.md. No 
 
 | Agent environment | Allowed branch | Allowed folder |
 | --- | --- | --- |
-| OpenAI/Codex on macOS | `openai/mac` | `/Users/dakk/Projects/celestial-frontier-openai-mac` |
-| Anthropic/Claude Code on macOS | `anthropic/mac` | `/Users/dakk/Projects/celestial-frontier-anthropic-mac` |
+| OpenAI/Codex on macOS | `openai/mac` | `~/Projects/celestial-frontier-openai-mac` |
+| Anthropic/Claude Code on macOS | `anthropic/mac` | `~/Projects/celestial-frontier-anthropic-mac` |
 
 **Mac-only since 2026-09-26 (Dakk).** The Windows lanes (`openai/windows`, `anthropic/windows`) are retired: their branches are deleted on GitHub and on both machines. Never push to, merge from or recreate them. Historical records that mention them stay as history.
 

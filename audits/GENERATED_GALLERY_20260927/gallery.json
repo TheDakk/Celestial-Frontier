@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 195,
+ "total": 206,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -787,6 +787,76 @@
    "note": "HELD: crown island floats above the lowered head (same as the C101 Hummingbird); repair refused at the cap (14.8%)"
   },
   {
+   "family": "Birds",
+   "name": "Finch",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/01-finch",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Lark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/04-lark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 10.8% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Chough",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/05-chough",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 5.9% > 5%, D28); a red beak fragment also floats"
+  },
+  {
+   "family": "Birds",
+   "name": "Ptarmigan",
+   "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/06-ptarmigan/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated white flecks over the lowered head)"
+  },
+  {
+   "family": "Birds",
+   "name": "Raven",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/07-raven",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 12.8% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Vulture",
+   "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/08-vulture/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/09-hawk",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 15.9% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Crow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/10-crow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 8.3% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Sandpiper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/12-sandpiper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (long bill and legs intact)"
+  },
+  {
+   "family": "Birds",
+   "name": "Snowy Owl",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/14-snowy-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 41.6% > 5%, D28)"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -1366,6 +1436,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-30-firefly",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean; glowing abdomen"
+  },
+  {
+   "family": "Insects",
+   "name": "Wasp",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/18-wasp",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; six legs, both wing pairs and antennae intact"
   }
  ]
 }

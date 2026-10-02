@@ -59,7 +59,7 @@ node tools/rig-secondopinion.js --dry-run
 
 ```text
 Verify before anything else: `git rev-parse --show-toplevel` must print
-/Users/dakk/Projects/celestial-frontier-anthropic-mac and `git branch --show-current`
+~/Projects/celestial-frontier-anthropic-mac and `git branch --show-current`
 must print anthropic/mac. If either differs, stop and report; edit nothing.
 Then read CLAUDE.md, ROADMAP.md, PROCESS_LAWS.md and TYPESAFE_START_HERE.md.
 
