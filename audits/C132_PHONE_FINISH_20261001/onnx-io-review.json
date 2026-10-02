@@ -1,0 +1,131 @@
+{
+  "schema": "cf.onnx-metadata-review/v1",
+  "method": "Seek over protobuf tensor data; inspect graph ValueInfo only; no inference",
+  "models": [
+    {
+      "file": "taesd/encoder.onnx",
+      "inputs": [
+        {
+          "name": "image",
+          "elementType": 1,
+          "dims": [
+            1,
+            3,
+            512,
+            512
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "elementType": 1,
+          "dims": [
+            1,
+            4,
+            64,
+            64
+          ]
+        }
+      ],
+      "sha256": "bd6fb129ea4c75935c2263b931b569e29111ade644207145e65134d189bb92a8"
+    },
+    {
+      "file": "sdxs/text_encoder.onnx",
+      "inputs": [
+        {
+          "name": "input_ids",
+          "elementType": 7,
+          "dims": [
+            1,
+            77
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "last_hidden_state",
+          "elementType": 1,
+          "dims": [
+            1,
+            77,
+            768
+          ]
+        }
+      ],
+      "sha256": "73464847bad29badc218bf9f0d285f36b92ddccd6b874643d2a2d31766870e83"
+    },
+    {
+      "file": "sdxs/unet.onnx",
+      "inputs": [
+        {
+          "name": "sample",
+          "elementType": 1,
+          "dims": [
+            1,
+            4,
+            64,
+            64
+          ]
+        },
+        {
+          "name": "timestep",
+          "elementType": 1,
+          "dims": [
+            1
+          ]
+        },
+        {
+          "name": "encoder_hidden_states",
+          "elementType": 1,
+          "dims": [
+            1,
+            77,
+            768
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "out_sample",
+          "elementType": 1,
+          "dims": [
+            1,
+            4,
+            64,
+            64
+          ]
+        }
+      ],
+      "sha256": "f81dc16670944fead5561851a06038a21c23779760065249274801f47896ece7"
+    },
+    {
+      "file": "sdxs/vae_decoder.onnx",
+      "inputs": [
+        {
+          "name": "latent",
+          "elementType": 1,
+          "dims": [
+            1,
+            4,
+            64,
+            64
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "elementType": 1,
+          "dims": [
+            1,
+            3,
+            512,
+            512
+          ]
+        }
+      ],
+      "sha256": "75c5e431703b1d87bcc44f5610b49f6b73594b09857a2263958123afe0be7190"
+    }
+  ]
+}

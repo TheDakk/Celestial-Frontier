@@ -7,6 +7,7 @@ import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { performance } from 'node:perf_hooks';
+import { privateJson, privatePathText } from './compendiummem-v2-privacy.mjs';
 import { materialize } from './compendiummem-v2-materialize.mjs';
 import { policy, v1, v1Bytes, growthGuard, guardedCeilings } from './compendiummem-v2-guard.mjs';
 import { buildCompendiumFixture, stableJson } from './compendiummem-fixture.mjs';
@@ -15,7 +16,7 @@ import { sha256, calibrationMetrics, candidateCalibrationEvidence } from './comp
 const here = path.dirname(fileURLToPath(import.meta.url));
 const instrumentRoot = path.resolve(here, '../../..');
 const git = (root, args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
-const write = (file, value) => fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n');
+const write = (file, value) => fs.writeFileSync(file, privateJson(value));
 const assert = (value, message) => { if (!value) throw new Error(message); };
 export const phases = Object.freeze(['calibration-1', 'calibration-2', 'calibration-3', 'certification']);
 export function claimPhase(ledger, phase) {
@@ -73,10 +74,10 @@ export async function runEpoch({ source, head, out }) {
     CF_BROWSER: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge' };
   process.env.CF_COMPENDIUM_V2_SOURCE = source;
   function run(name, executable, args, cwd = v2, extra = {}) {
-    const log = fs.openSync(path.join(out, name + '.log'), 'wx');
+    const log = path.join(out, name + '.log');
     const began = new Date().toISOString(), start = performance.now();
-    const result = spawnSync(executable, args, { cwd, env: { ...env, ...extra }, stdio: ['ignore', log, log] });
-    fs.closeSync(log);
+    const result = spawnSync(executable, args, { cwd, env: { ...env, ...extra }, stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 128 * 1024 * 1024 });
+    fs.writeFileSync(log, privatePathText(String(result.stdout ?? '') + String(result.stderr ?? '')), { flag: 'wx' });
     const exitCode = result.status ?? 2;
     ledger.commands.push({ name, executable, args, startedAt: began, durationMs: performance.now() - start, exitCode, error: result.error?.message ?? null });
     saveLedger(); console.log(name + ': ' + exitCode);

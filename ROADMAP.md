@@ -108,3 +108,5 @@ develop/main merge, release, version bump or deploy is authorized. Native notice
 Codex continues C132 in order; Claude reviews delivered packets and wires admitted assets. No app switch or relay needed.
 
 **Latest C132 deliveries (C138–C142):** eight arena triplets held at native 1672×941 against required 2560×1440; ten effect themes pass exact delivery checks but still need films/review; four manual mammal reference candidates and four missing painting-template families; 49 recorded cue candidates with 11 layered impacts, listening pending. Small finisher source is prepared against the same five C121 subjects (639 MB image model weights plus fixed embedding), native/visual/phone acceptance pending. The source and evidence are audit-only except the explicitly queued I5 producer fixes.
+
+**Native reservation:** C143 reserves the smaller-finisher Mac comparison only. Its five-source input and runtime hashes are pinned; a terminal mailbox notice releases the reservation. No iPhone qualification follows from a Mac conservation result. New v2 evidence serialization uses `~/` without changing numerical samples or historical evidence.

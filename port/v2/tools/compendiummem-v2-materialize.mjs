@@ -90,6 +90,8 @@ export function materializedSources() {
   contract = contract.slice(0, validatorStart) + validator + contract.slice(validatorEnd);
   contract = once(contract, "budget.path !== 'budgets/compendium-memory-v1.json'", "budget.path !== 'apps/game/smoke/compendium-memory-v2.json'");
   let collector = collectorOriginal;
+  collector = once(collector, "import fs from 'node:fs';", "import fs from 'node:fs';\nimport { privateJson } from './compendiummem-v2-privacy.mjs';");
+  collector = once(collector, "fs.writeFileSync(temporary, JSON.stringify(value, null, 2) + '\\n');", "fs.writeFileSync(temporary, privateJson(value));");
   collector = section(collector, 'async function runBrokenBaselineCalibration(', 'async function runGate(', '');
   collector = section(collector, '  const baselineArg = process.argv.slice(2)', '  const calibrate = process.argv.length', '');
   collector = section(collector, '  if (process.argv.length === 3 && process.argv[2] === SELFTEST_FLAG)', '  const verifyArg = process.argv.slice(2)', '');

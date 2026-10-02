@@ -1,0 +1,73 @@
+{
+  "model": "madebyollin/taesd",
+  "revision": "614f76814bbe30edbe2e627ace1c2234c81a2c0e",
+  "sourceUrl": "https://huggingface.co/api/models/madebyollin/taesd",
+  "tree": [
+    {
+      "type": "file",
+      "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519,
+      "path": ".gitattributes"
+    },
+    {
+      "type": "file",
+      "oid": "33a1b64249875e511a77c7ca6254ea9d3651eb85",
+      "size": 1315,
+      "path": "README.md"
+    },
+    {
+      "type": "file",
+      "oid": "accadb8be0fabedda0082b4d83b698f4835a8a80",
+      "size": 597,
+      "path": "config.json"
+    },
+    {
+      "type": "file",
+      "oid": "056eaad8cc87704e4d8bcb90a61be8214be693be",
+      "size": 9823878,
+      "lfs": {
+        "oid": "5fd7edbf16d049365dda1dfd6df71526dc1b24ce78537dcad733f7b73921d267",
+        "size": 9823878,
+        "pointerSize": 132
+      },
+      "xetHash": "ff1e318ad7757178660d86105f21754f6a871b56ef23a76151cc6a625aa50c59",
+      "path": "diffusion_pytorch_model.bin"
+    },
+    {
+      "type": "file",
+      "oid": "7565c6bc9231b95f7db33bcc96d18d3ea56533bc",
+      "size": 9793292,
+      "lfs": {
+        "oid": "db169d69145ec4ff064e49d99c95fa05d3eb04ee453de35824a6d0f325513549",
+        "size": 9793292,
+        "pointerSize": 132
+      },
+      "xetHash": "4caeae7adb4e35eaa7b90c04722c707492256f7440a4aabab745041400871c20",
+      "path": "diffusion_pytorch_model.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "c7dc0f31834cf207dd7765d984f4d08849434703",
+      "size": 4895612,
+      "lfs": {
+        "oid": "f0fb51dd10d41c26612c070fa0b52ea0215a5ff90792134b4971109dd713c019",
+        "size": 4895612,
+        "pointerSize": 132
+      },
+      "xetHash": "4f0fbee2d1ef9357eaf4f10903745dabdd6b0f5e16924011c2789a4a16150e66",
+      "path": "taesd_decoder.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "3f65ac784b499423c0874a4c121bd76ac4b1bc72",
+      "size": 4895600,
+      "lfs": {
+        "oid": "160d90c61c3a5ce50fe2cbe6404b3429f5763772d61b38523cc37e1525b4e19f",
+        "size": 4895600,
+        "pointerSize": 132
+      },
+      "xetHash": "18d5694369574bcc4b4300bd643b39ed25a6314f0543ecb4bc84cce75f842a55",
+      "path": "taesd_encoder.safetensors"
+    }
+  ]
+}
