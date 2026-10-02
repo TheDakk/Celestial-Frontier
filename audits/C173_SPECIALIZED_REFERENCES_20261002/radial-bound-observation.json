@@ -1,0 +1,67 @@
+{
+  "schema": "cf.c173-radial-bound-observation/v1",
+  "authoringSha256": "7195ecfa60bd1d8648d7c5c7acf92873d901ed0ca716f43e545ab8a09341a93c",
+  "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+  "bodyAxisPixels": 65.25335240430181,
+  "bodyAxisMeaning": "actual disc centre to visible upper rim, legacy bell control name",
+  "ratios": [
+    {
+      "arm": 0,
+      "chainPixels": 523.6280093839612,
+      "ratio": 8.024538051924534,
+      "unchangedBound": [
+        0.3,
+        8
+      ],
+      "passes": false
+    },
+    {
+      "arm": 1,
+      "chainPixels": 630.0693633635158,
+      "ratio": 9.655739362779139,
+      "unchangedBound": [
+        0.3,
+        8
+      ],
+      "passes": false
+    },
+    {
+      "arm": 2,
+      "chainPixels": 572.1334122155891,
+      "ratio": 8.76787768191158,
+      "unchangedBound": [
+        0.3,
+        8
+      ],
+      "passes": false
+    },
+    {
+      "arm": 3,
+      "chainPixels": 545.7286183684901,
+      "ratio": 8.363227301905075,
+      "unchangedBound": [
+        0.3,
+        8
+      ],
+      "passes": false
+    },
+    {
+      "arm": 4,
+      "chainPixels": 578.1517231216867,
+      "ratio": 8.860107593239489,
+      "unchangedBound": [
+        0.3,
+        8
+      ],
+      "passes": false
+    }
+  ],
+  "geometryRetuned": false,
+  "sourceRescaled": false,
+  "templateChanged": false,
+  "firstIntakeRefusal": {
+    "stage": "family-record",
+    "error": "Error: Family admission: proportion bound: arm/bell:arm0\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:10:39)\n    at checkFamilyGeometry (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:34:76)\n    at sealFamilyRecord (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:48:36)\n    at sealPortableFamilyRecord (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.mjs:20:75)\n    at file://~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs:69:22"
+  },
+  "qualityAccepted": false
+}

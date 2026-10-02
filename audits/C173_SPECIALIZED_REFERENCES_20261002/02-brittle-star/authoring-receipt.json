@@ -1,0 +1,30 @@
+{
+  "schema": "cf.c173-source-authoring/v1",
+  "writer": "audits/C173_SPECIALIZED_REFERENCES_20261002/author-brittle-star.mjs",
+  "writerSha256": "e86ffb2b89b8605605f446127f00d210fddbecfcd0972cc3e10a81289aad9fb6",
+  "retentionHelperSha256": "39edac47e2bf64a505b2e745aadfcd5a9c6d988bdffca398290ae4b7fe6eceda",
+  "source": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star",
+  "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+  "authoringSha256": "7195ecfa60bd1d8648d7c5c7acf92873d901ed0ca716f43e545ab8a09341a93c",
+  "presenceSha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394",
+  "subjectSourceSha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d",
+  "sourceEvidence": [
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/source-evidence/generation.json",
+      "sha256": "f66ccb60535d3533a65b3a6596edaf307a35c8bf48576effac9d1d356b063091"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/source-evidence/request.json",
+      "sha256": "190661db3c2af403c64624f7aee83518af7d82470ddc6abbf725662008fcb51a"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/source-evidence/prompt.txt",
+      "sha256": "7195a2ddd42dcf726e6f26cf95c4fa7a38ac09d974814cb90607bb8a8edf96df"
+    }
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

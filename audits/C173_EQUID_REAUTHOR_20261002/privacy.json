@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c173-equid-privacy/v1",
+  "status": "PASS",
+  "textFilesChecked": 93,
+  "unredactedHomePaths": 0,
+  "emailLikeStrings": 0,
+  "paths": "repository-relative or ~/",
+  "scope": "Text evidence only; immutable paintings retain their original bytes."
+}

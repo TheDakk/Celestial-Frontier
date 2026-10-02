@@ -1,0 +1,120 @@
+{
+  "id": "wild-ass",
+  "variants": [
+    {
+      "mode": "original",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/baseline-fit",
+      "durationMs": 1032,
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.09609533773690017,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 4406,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 4406,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 4406,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": []
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0852014592716154,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 4406,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 4406,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 4406,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": []
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "mode": "candidate",
+      "fit": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/fit01",
+      "durationMs": 1032,
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.09609533773690017,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 4056,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 4056,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 4056,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": []
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0852014592716154,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 4056,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 4056,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 4056,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": []
+        }
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "sourceCoordinateUnit": "posed coordinates normalized by original 1254-square painting; multiply by 1254 for source-coordinate pixels, not native film pixels",
+  "nativeRun": false,
+  "qualityAccepted": false
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "a7dc3342e9783f7fcb47d73d51e62b08deb910cf",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/master.png",
+      "sha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/authoring.json",
+      "sha256": "7195ecfa60bd1d8648d7c5c7acf92873d901ed0ca716f43e545ab8a09341a93c"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/subject-source.json",
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/presence.json",
+      "sha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/master.png",
+      "sha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/authoring.json",
+      "sha256": "7195ecfa60bd1d8648d7c5c7acf92873d901ed0ca716f43e545ab8a09341a93c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/subject-source.json",
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/presence.json",
+      "sha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "family-record",
+    "error": "Error: Family admission: proportion bound: arm/bell:arm0\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:10:39)\n    at checkFamilyGeometry (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:34:76)\n    at sealFamilyRecord (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:48:36)\n    at sealPortableFamilyRecord (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.mjs:20:75)\n    at file://~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs:69:22"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "cf.c173-specialized-full-size-review/v1",
+  "reviewer": "Codex",
+  "sourceImages": [
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/master.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/master.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/master.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/master.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/master.png"
+  ],
+  "inspectedPreviews": [
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/observation-preview.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/observation-preview.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/observation-preview.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/observation-preview.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/ownership-preview-01.png",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/joint-preview-01.png"
+  ],
+  "findings": {
+    "01-shrimp-hold": [
+      "Full-size original and diagnostic overlay inspected. The far thoracic cluster remains unresolved; walking legs and swimmerets are not conflated.",
+      "Faint extreme antenna tips are reduced by the established diagnostic keyer. The preserved magenta original, not this overlay, owns source anatomy."
+    ],
+    "02-brittle-star": [
+      "All five full arm curves and tips are visible; manual controls sit on those observed curves. The small central disc remains natural.",
+      "Some marginal spines extend outside diagnostic bands; no raster mask or D28 acceptance is claimed because geometry refused first."
+    ],
+    "03-fiddler-crab-hold": [
+      "The major claw overlaps proximal walking anatomy. Six distal walking tips are marked without inventing two more.",
+      "Both eye stalks and both asymmetric claws are visible; diagnostic contours are not a joint-ownership fit."
+    ],
+    "04-spider-part-ids": [
+      "Full-size ownership and joint previews inspected. Eight walking paths, two chelicerae and the smaller palps remain distinct.",
+      "The shared body driver includes both palps. Structural remainder failure remains unresolved; source conservation and tiny static gaps do not waive D28.",
+      "Some body/limb roots overlap in projection; native moving attachments, depth order and grounded foot paint have not been reviewed."
+    ],
+    "05-standing-vampire-bat-hold": [
+      "Both front supports now end in one claw; the prior extra-front-claw issue is resolved in source pixels.",
+      "Marked membrane corner is not asserted to be the anatomical wingtip. Far shoulder/root and folded digit identities remain obscured."
+    ]
+  },
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

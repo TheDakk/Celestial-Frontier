@@ -1,0 +1,115 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c173-specialized-spider-part-ids",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "b9ed8952e0e66c62482243cf7243b47b71cbb1b40a42a1f2af13aa108b6a67a2",
+    "pngSha256": "e35d365ef668f767501cd8cca10aff718ac86c287471a15fc78cc7e89734788a"
+  },
+  "parts": [
+    {
+      "name": "abdomen.png",
+      "sha256": "25b27be663dfc21989d9ab8e96f088e62dcffd45fa291d5b0ecc5bcfc631c6e4"
+    },
+    {
+      "name": "cephalothorax.png",
+      "sha256": "3d8580b16a8ebc298380f456ce55380add2c16854ba94d962daf14d98a047560"
+    },
+    {
+      "name": "chelicerafar.png",
+      "sha256": "e857bcd738ecd78f2c17447b7792cfe5dd78e8cf83d1c9c76071fec128a3e8ef"
+    },
+    {
+      "name": "cheliceranear.png",
+      "sha256": "5e0d7b02aa7477892631f303647dcb55b5b2671347ed7d211e4a532a701cf535"
+    },
+    {
+      "name": "leg1farfoot.png",
+      "sha256": "6fd64c8570fbbb7b1a986851081f48e2499b886d6c75fca6af26add02e090791"
+    },
+    {
+      "name": "leg1farknee.png",
+      "sha256": "888cda7dfa7a0c9d4bbdcef296891e53980f1fe320c5d41f47ac867a8044187e"
+    },
+    {
+      "name": "leg1nearfoot.png",
+      "sha256": "c572eaff55441fee4913ebcf318451f4e7fecbbb77d376c5dfea0177c624a164"
+    },
+    {
+      "name": "leg1nearknee.png",
+      "sha256": "e603c1c592ff79644bfcf58f2f7a4b261be54d75434497a2a3aece87eeba0a6f"
+    },
+    {
+      "name": "leg2farfoot.png",
+      "sha256": "e40ea03bbf6e9f600272d30c5544881bfd8b89c306d4d073e364858aa8f2083e"
+    },
+    {
+      "name": "leg2farknee.png",
+      "sha256": "cc0e0a080046f83f25da1b64a0af08a5723ad9a5e6a2560606f3c511b7680404"
+    },
+    {
+      "name": "leg2nearfoot.png",
+      "sha256": "f3d04daa00cb3fb4bd092b35f7ba3fc2b88805d46d266cb1ed5b2fd8b42e9c79"
+    },
+    {
+      "name": "leg2nearknee.png",
+      "sha256": "960854750ee58e8965ef991584f5965591f8fff05e7a30002e0236bab51dd860"
+    },
+    {
+      "name": "leg3farfoot.png",
+      "sha256": "d60f7aca59c5d7d61fa7f54db6f92d41eaab5c78feca5418c7ea135d3c934d72"
+    },
+    {
+      "name": "leg3farknee.png",
+      "sha256": "caab9afd897c2803720a00ede2d7018e59fc3f5050e8b1b6fad9453fa9829a0b"
+    },
+    {
+      "name": "leg3nearfoot.png",
+      "sha256": "3dff1aa4ed15843dfd233f7b1a9ed5328289aec7de1ba609f2b828e05bb23d07"
+    },
+    {
+      "name": "leg3nearknee.png",
+      "sha256": "3f213d077889e2fa865446c368cab462f4212171ec3b097320138860cb1a6641"
+    },
+    {
+      "name": "leg4farfoot.png",
+      "sha256": "96ee371960a0b476a32f3cbbff99cb469ab8f1491c453beaa4b8073d4d4782a4"
+    },
+    {
+      "name": "leg4farknee.png",
+      "sha256": "fe1b8ab64dab5e88a5416c1a18c06f2ec340bde0e39f9a3abdeb487dabb43b99"
+    },
+    {
+      "name": "leg4nearfoot.png",
+      "sha256": "bbe23311eb7302e1464e5ddf28a2cda8bef06a2dfb87459ea8628846cf0df2fe"
+    },
+    {
+      "name": "leg4nearknee.png",
+      "sha256": "d5a66281180604f7beb20cbf2c85099ac86cd30e29b1e4e0da334245963c5c46"
+    },
+    {
+      "name": "root.png",
+      "sha256": "e5ef3dc3fb51c20eec1b8bf3314dae648b6a4ae199b8f459647ee6c9e7db4af3"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

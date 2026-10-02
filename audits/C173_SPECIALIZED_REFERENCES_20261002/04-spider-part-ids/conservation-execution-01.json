@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "conservation",
+  "command": [
+    "node",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01",
+    "01"
+  ],
+  "helperSha256": "644cae5cb6e9651c027e9afaffddba39a5e469e9882de0525f69051fc5e93565",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/conservation-01.log",
+  "logSha256": "ff5416ee00380edba31d2e2a1ed15e5d7d4fc69e7ad87bc785739ca134c5fdae",
+  "nativeRuns": 0
+}

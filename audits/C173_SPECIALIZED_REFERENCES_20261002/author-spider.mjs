@@ -1,0 +1,46 @@
+import{writeObservedPacket}from'./write-observed-packet.mjs';
+const base='audits/C173_SPECIALIZED_REFERENCES_20261002',writer=base+'/author-spider.mjs';
+// Pair 1 is the front short walking pair; pair 4 is the rear upper pair.
+// Far/Near labels are screen-left/screen-right depth group labels in this view.
+const points={root:[652,565],cephalothorax:[629,591],abdomen:[695,439],cheliceraFar:[586,665],cheliceraNear:[625,668],
+ leg1FarKnee:[507,650],leg1FarFoot:[526,767],leg1NearKnee:[698,687],leg1NearFoot:[665,803],
+ leg2FarKnee:[436,587],leg2FarFoot:[270,909],leg2NearKnee:[774,648],leg2NearFoot:[844,976],
+ leg3FarKnee:[447,508],leg3FarFoot:[232,752],leg3NearKnee:[827,574],leg3NearFoot:[986,845],
+ leg4FarKnee:[501,404],leg4FarFoot:[382,590],leg4NearKnee:[887,509],leg4NearFoot:[1023,694]};
+const region=(joint,polygonPx,layer=joint.includes('Far')?'far':'near')=>({id:joint,joint,layer,polygonPx});
+const parts=[
+ region('root',[[648,561],[656,561],[656,569],[648,569]]),
+ region('cheliceraFar',[[571,630],[588,631],[605,646],[607,671],[599,695],[582,698],[567,684],[563,658]]),
+ region('cheliceraNear',[[611,632],[630,635],[646,649],[647,674],[638,699],[622,705],[607,692],[603,670],[605,650]]),
+ region('leg1FarFoot',[[494,656],[515,666],[507,697],[520,736],[536,767],[527,780],[512,771],[494,742],[481,706],[482,676]]),
+ region('leg1FarKnee',[[558,629],[561,664],[529,666],[509,674],[491,660],[496,640],[525,625]]),
+ region('leg1NearFoot',[[687,692],[713,702],[705,744],[689,782],[671,814],[654,815],[653,802],[674,763],[682,729]]),
+ region('leg1NearKnee',[[667,636],[690,637],[712,661],[716,696],[687,709],[676,681]]),
+ region('leg2FarFoot',[[437,570],[451,600],[420,633],[388,686],[352,747],[329,826],[288,906],[274,925],[258,918],[262,894],[288,824],[310,746],[349,675],[396,606]]),
+ region('leg2FarKnee',[[534,612],[536,645],[493,634],[449,612],[426,601],[421,581],[438,567],[466,580],[509,601]]),
+ region('leg2NearFoot',[[763,650],[793,652],[813,700],[824,762],[838,826],[848,898],[857,969],[850,991],[831,983],[822,948],[813,886],[800,834],[789,776],[777,722],[764,697]]),
+ region('leg2NearKnee',[[708,636],[747,626],[779,627],[797,647],[781,671],[744,676],[717,675]]),
+ region('leg3FarFoot',[[447,488],[462,516],[430,540],[372,577],[314,614],[293,670],[256,742],[236,767],[218,761],[227,735],[252,674],[274,615],[283,587],[339,551],[390,522]]),
+ region('leg3FarKnee',[[552,574],[526,610],[480,567],[437,524],[430,504],[448,487],[470,497],[509,535]]),
+ region('leg3NearFoot',[[827,556],[847,567],[883,599],[912,643],[948,689],[962,742],[988,812],[1000,847],[985,864],[970,848],[954,807],[933,754],[919,717],[890,680],[859,639],[839,610]]),
+ region('leg3NearKnee',[[707,612],[743,594],[806,556],[832,551],[850,570],[829,593],[789,615],[745,641],[721,646]]),
+ region('leg4FarFoot',[[490,388],[510,416],[470,438],[421,469],[407,505],[401,565],[389,606],[369,600],[374,548],[377,502],[377,462],[397,441],[450,411]]),
+ region('leg4FarKnee',[[584,553],[550,569],[518,524],[490,454],[479,405],[500,382],[522,396],[538,437],[559,499]]),
+ region('leg4NearFoot',[[886,490],[914,499],[956,529],[992,559],[1008,579],[1011,627],[1040,694],[1030,710],[1012,701],[1007,681],[990,648],[981,606],[968,591],[937,568],[906,545],[878,527]]),
+ region('leg4NearKnee',[[726,582],[777,548],[839,505],[875,489],[895,491],[912,510],[894,531],[858,533],[819,562],[775,594],[742,614]]),
+ region('abdomen',[[549,478],[548,434],[569,389],[605,350],[648,322],[698,309],[746,316],[789,339],[822,380],[841,432],[840,473],[821,513],[791,544],[752,568],[714,578],[674,564],[615,541],[578,526],[559,504]]),
+ region('cephalothorax',[[0,0],[1254,0],[1254,1254],[0,1254]])
+];
+const limitations=[
+ 'Eight walking chains are visible. The two short mouth-adjacent pedipalps are retained with the cephalothorax; they are not counted or labelled as extra walking legs.',
+ 'Two chelicerae are observed independently. Sting is declared biologically absent for the canonical Spider; no tail or stinger landmark is invented.',
+ 'The template supplies a single knee and foot control per leg although several real segment articulations are visible. Each authored region is a coarse deforming section rather than a claim of two biological leg segments.',
+ 'Proximal legs overlap at the cephalothorax and the pedicel is partly occluded. No hidden internal attachment is inferred; this coarse template uses the shared cephalothorax driver.',
+ 'Front walking legs overlap rear legs in the painted projection. Polygon priority follows those visible crossings; a numerical conservation result alone will not prove moving depth or attachment quality.',
+ 'Perspective endpoints have different image heights. groundLineY is the source lower envelope; eight coplanar ground contacts are not claimed.',
+ 'Canonical Spider is broad; the strongly patterned hairy original still needs species/style scoring. Full-stage moving paint and native acceptance remain unmeasured.'
+];
+console.log(writeObservedPacket({id:'04-spider',source:'audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider',masterSha256:'1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6',writer,
+ presence:{schema:'cf.anatomy-presence/v2',absent:['sting'],hidden:[],folded:[]},
+ author:{id:'c173-specialized-spider',family:'arachnid',landmarksPx:points,groundLineY:981/1254,materials:{surface:'chitin'},remainderPart:'cephalothorax',parts,coverage:{scope:'Independent eight-legged Spider source reference candidate',limitations,qualityAccepted:false,nativeAcceptance:false}},
+ observations:{fullSizeInspected:true,visibleAnatomy:['abdomen','cephalothorax','eight walking chains','two chelicerae','two smaller mouth-adjacent pedipalps'],walkingLegs:8,pedipalpsAreWalkingLegs:false,biologicallyAbsent:['sting'],sideLabelMeaning:'screen-left Far and screen-right Near; does not infer unseen anatomy',limitations}}));

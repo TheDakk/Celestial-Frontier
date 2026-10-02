@@ -1,0 +1,11 @@
+import fs from'node:fs';import assert from'node:assert/strict';import{createHash}from'node:crypto';
+import{writeObservedPacket}from'./write-observed-packet.mjs';
+const base='audits/C173_SPECIALIZED_REFERENCES_20261002',prior=base+'/04-spider',writer=base+'/correct-spider-part-ids.mjs';
+const read=p=>JSON.parse(fs.readFileSync(p)),sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const before=read(prior+'/authoring.json'),author=structuredClone(before);
+author.id='c173-specialized-spider-part-ids';author.parts=author.parts.map(p=>({...p,id:p.id.toLowerCase()}));
+assert(author.parts.every(p=>/^[a-z0-9-]+$/.test(p.id)));assert.equal(new Set(author.parts.map(p=>p.id)).size,author.parts.length);
+assert.deepEqual(author.landmarksPx,before.landmarksPx);assert.deepEqual(author.parts.map(({id,...p})=>p),before.parts.map(({id,...p})=>p));
+const packet=writeObservedPacket({id:'04-spider-part-ids',source:'audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider',masterSha256:'1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6',writer,author,presence:read(prior+'/presence.json'),observations:{...read(prior+'/observation.json'),predecessor:prior,correction:'Part identifiers made lowercase to satisfy the existing mask-id syntax. Joint names, pixel polygons, priority order, source bytes, ground line, materials and presence unchanged.'}});
+fs.writeFileSync(packet+'/part-id-correction-proof.json',JSON.stringify({schema:'cf.c173-part-id-correction/v1',predecessor:prior,predecessorAuthoringSha256:sha(prior+'/authoring.json'),authoringSha256:sha(packet+'/authoring.json'),sourceBytesUnchanged:sha(prior+'/master.png')===sha(packet+'/master.png'),landmarksUnchanged:true,polygonsJointsLayersPriorityUnchanged:true,presenceUnchanged:true,groundLineAndMaterialsUnchanged:true,changes:before.parts.filter((p,i)=>p.id!==author.parts[i].id).map((p,i)=>({from:p.id,to:p.id.toLowerCase()})),priorRefusalRetained:true,nativeRuns:0,qualityAccepted:false},null,2)+'\n',{flag:'wx'});
+console.log(packet);

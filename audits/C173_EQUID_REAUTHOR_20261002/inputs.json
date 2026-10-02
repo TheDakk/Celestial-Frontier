@@ -1,0 +1,139 @@
+{
+  "schema": "cf.c173-equid-inputs/v1",
+  "rows": [
+    {
+      "id": "wild-pony",
+      "packet": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/candidate",
+      "fit": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/fit01",
+      "originalPacket": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/original",
+      "originalFit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/baseline-fit",
+      "inputs": [
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/original/master.png",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/original/master.png",
+          "sha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+          "bytes": 1323422
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/original/authoring.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/original/authoring.json",
+          "sha256": "bcd9522c773ca5c066f585e5529cbb56980d7aa1a29282e2157c31fabad1ea98",
+          "bytes": 17461
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/original/subject-source.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/original/subject-source.json",
+          "sha256": "92c79718751a2ea2197881462ab2359b5b02e5ee5aa1e058ba2990691ab21245",
+          "bytes": 2421
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/original/presence.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+          "bytes": 89
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/baseline-fit/record.json",
+          "sha256": "f1ed5c9a00456dad9f50a2c18ee8b98c17ceaf72f44d4077d6cf56d53d9e6cbf"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/baseline-fit/binding.json",
+          "sha256": "0d130dc6700b076e4e5aa9570b00a632ada362617cdfb3292f9da0d5606f3ce6"
+        }
+      ],
+      "originalAuthoringSha256": "bcd9522c773ca5c066f585e5529cbb56980d7aa1a29282e2157c31fabad1ea98",
+      "candidateAuthoringSha256": "307500e0a385343a760067fbfb9c877c23cdf3d3f4a054acf9e622003fd4648d"
+    },
+    {
+      "id": "horse",
+      "packet": "audits/C173_EQUID_REAUTHOR_20261002/horse/candidate",
+      "fit": "audits/C173_EQUID_REAUTHOR_20261002/horse/fit01",
+      "originalPacket": "audits/C173_EQUID_REAUTHOR_20261002/horse/original",
+      "originalFit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/baseline-fit",
+      "inputs": [
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/original/master.png",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/horse/original/master.png",
+          "sha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+          "bytes": 1281991
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/original/authoring.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/horse/original/authoring.json",
+          "sha256": "1fde2d2dd677dedc77ca27b2630e56ee160ad29b6960c16737ef019aa5659119",
+          "bytes": 13242
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/original/subject-source.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/horse/original/subject-source.json",
+          "sha256": "ce8242ba0f1b36a708d68c74085852a06482faa4f790dacc79bc65116fd20431",
+          "bytes": 2260
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/original/presence.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/horse/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+          "bytes": 89
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/baseline-fit/record.json",
+          "sha256": "86d2d6f9d0caa2c03654e0bc2ea35720703691412417e89417c1da2a538d7e7d"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/horse/baseline-fit/binding.json",
+          "sha256": "ea07f7233d43a19597abb3899093a38f0f521f667a4cfba8be037150f747b9f9"
+        }
+      ],
+      "originalAuthoringSha256": "1fde2d2dd677dedc77ca27b2630e56ee160ad29b6960c16737ef019aa5659119",
+      "candidateAuthoringSha256": "66edd21680fa35043e38c611a2216d43e48fc794a4b5671e5a05d7830db24bc8"
+    },
+    {
+      "id": "wild-ass",
+      "packet": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/candidate",
+      "fit": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/fit01",
+      "originalPacket": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/original",
+      "originalFit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/baseline-fit",
+      "inputs": [
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/original/master.png",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/original/master.png",
+          "sha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916",
+          "bytes": 1198957
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/original/authoring.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/original/authoring.json",
+          "sha256": "ee221b7227f05e4fe274c5842c4f4e0f452dc76ea1104296219b8403d49e39a5",
+          "bytes": 13318
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/original/subject-source.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/original/subject-source.json",
+          "sha256": "393bd1c06c505c360c7a028325aa32d912aa1c2f57abfd7cc0464f85bfd28cc7",
+          "bytes": 2250
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/original/presence.json",
+          "snapshot": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+          "bytes": 89
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/baseline-fit/record.json",
+          "sha256": "b8d86c5c0652fb43c8c9847bd8219c5504de2a54e51c4a01b64a36b758ef1b08"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-ass/baseline-fit/binding.json",
+          "sha256": "7d88c6a31a336f1743a44d15e8295329c91605b61d0be474dd537f2dc7f32941"
+        }
+      ],
+      "originalAuthoringSha256": "ee221b7227f05e4fe274c5842c4f4e0f452dc76ea1104296219b8403d49e39a5",
+      "candidateAuthoringSha256": "381712e02336d6d644e65c764f11468881fea45f1be91222e98988f0396955ff"
+    }
+  ],
+  "sourcePlan": {
+    "path": "audits/C173_EQUID_REAUTHOR_20261002/authoring-plan.mjs",
+    "sha256": "15e0751e86e7ba9caa43550246599d270ec7594cd5665a5c1be27f9cf20ff735"
+  },
+  "nativeAcceptance": false
+}

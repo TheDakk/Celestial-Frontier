@@ -1,0 +1,956 @@
+{
+  "id": "c173-specialized-brittle-star",
+  "family": "radial",
+  "landmarksPx": {
+    "root": [
+      608,
+      637
+    ],
+    "centre": [
+      621,
+      620
+    ],
+    "bell": [
+      638,
+      557
+    ],
+    "arm0Seg0": [
+      675,
+      499
+    ],
+    "arm0Seg1": [
+      603,
+      337
+    ],
+    "arm0Seg2": [
+      782,
+      220
+    ],
+    "arm1Seg0": [
+      777,
+      648
+    ],
+    "arm1Seg1": [
+      979,
+      547
+    ],
+    "arm1Seg2": [
+      1143,
+      730
+    ],
+    "arm2Seg0": [
+      670,
+      765
+    ],
+    "arm2Seg1": [
+      863,
+      834
+    ],
+    "arm2Seg2": [
+      870,
+      1048
+    ],
+    "arm3Seg0": [
+      478,
+      749
+    ],
+    "arm3Seg1": [
+      456,
+      902
+    ],
+    "arm3Seg2": [
+      279,
+      992
+    ],
+    "arm4Seg0": [
+      431,
+      523
+    ],
+    "arm4Seg1": [
+      241,
+      568
+    ],
+    "arm4Seg2": [
+      218,
+      400
+    ]
+  },
+  "groundLineY": 0.8413078149920256,
+  "materials": {
+    "surface": "plate"
+  },
+  "remainderPart": "centre",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          604,
+          633
+        ],
+        [
+          612,
+          633
+        ],
+        [
+          612,
+          641
+        ],
+        [
+          604,
+          641
+        ]
+      ]
+    },
+    {
+      "id": "arm0Seg2",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          570,
+          283
+        ],
+        [
+          578,
+          247
+        ],
+        [
+          625,
+          204
+        ],
+        [
+          688,
+          184
+        ],
+        [
+          750,
+          188
+        ],
+        [
+          800,
+          208
+        ],
+        [
+          800,
+          235
+        ],
+        [
+          733,
+          229
+        ],
+        [
+          683,
+          244
+        ],
+        [
+          643,
+          275
+        ],
+        [
+          626,
+          295
+        ]
+      ]
+    },
+    {
+      "id": "arm0Seg1",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          577,
+          278
+        ],
+        [
+          628,
+          278
+        ],
+        [
+          638,
+          320
+        ],
+        [
+          625,
+          354
+        ],
+        [
+          642,
+          391
+        ],
+        [
+          679,
+          424
+        ],
+        [
+          687,
+          452
+        ],
+        [
+          649,
+          468
+        ],
+        [
+          608,
+          426
+        ],
+        [
+          581,
+          389
+        ],
+        [
+          568,
+          350
+        ],
+        [
+          570,
+          310
+        ]
+      ]
+    },
+    {
+      "id": "arm0Seg0",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          621,
+          441
+        ],
+        [
+          659,
+          418
+        ],
+        [
+          699,
+          457
+        ],
+        [
+          718,
+          491
+        ],
+        [
+          715,
+          528
+        ],
+        [
+          691,
+          570
+        ],
+        [
+          669,
+          592
+        ],
+        [
+          641,
+          579
+        ],
+        [
+          648,
+          548
+        ],
+        [
+          659,
+          513
+        ],
+        [
+          651,
+          477
+        ]
+      ]
+    },
+    {
+      "id": "arm1Seg2",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1025,
+          521
+        ],
+        [
+          1072,
+          540
+        ],
+        [
+          1113,
+          576
+        ],
+        [
+          1144,
+          620
+        ],
+        [
+          1161,
+          680
+        ],
+        [
+          1157,
+          741
+        ],
+        [
+          1130,
+          746
+        ],
+        [
+          1123,
+          689
+        ],
+        [
+          1110,
+          640
+        ],
+        [
+          1084,
+          605
+        ],
+        [
+          1052,
+          585
+        ],
+        [
+          1015,
+          574
+        ]
+      ]
+    },
+    {
+      "id": "arm1Seg1",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          839,
+          591
+        ],
+        [
+          891,
+          553
+        ],
+        [
+          946,
+          527
+        ],
+        [
+          1000,
+          519
+        ],
+        [
+          1037,
+          526
+        ],
+        [
+          1048,
+          567
+        ],
+        [
+          1000,
+          574
+        ],
+        [
+          964,
+          572
+        ],
+        [
+          924,
+          589
+        ],
+        [
+          876,
+          622
+        ],
+        [
+          858,
+          653
+        ],
+        [
+          826,
+          628
+        ]
+      ]
+    },
+    {
+      "id": "arm1Seg0",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          665,
+          604
+        ],
+        [
+          731,
+          617
+        ],
+        [
+          794,
+          617
+        ],
+        [
+          848,
+          588
+        ],
+        [
+          878,
+          628
+        ],
+        [
+          828,
+          674
+        ],
+        [
+          764,
+          687
+        ],
+        [
+          708,
+          678
+        ],
+        [
+          671,
+          663
+        ]
+      ]
+    },
+    {
+      "id": "arm2Seg2",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          889,
+          888
+        ],
+        [
+          928,
+          890
+        ],
+        [
+          947,
+          940
+        ],
+        [
+          940,
+          986
+        ],
+        [
+          911,
+          1029
+        ],
+        [
+          875,
+          1063
+        ],
+        [
+          854,
+          1057
+        ],
+        [
+          879,
+          1021
+        ],
+        [
+          901,
+          980
+        ],
+        [
+          905,
+          941
+        ]
+      ]
+    },
+    {
+      "id": "arm2Seg1",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          718,
+          775
+        ],
+        [
+          782,
+          777
+        ],
+        [
+          834,
+          786
+        ],
+        [
+          881,
+          813
+        ],
+        [
+          917,
+          859
+        ],
+        [
+          932,
+          899
+        ],
+        [
+          908,
+          928
+        ],
+        [
+          884,
+          910
+        ],
+        [
+          863,
+          875
+        ],
+        [
+          826,
+          850
+        ],
+        [
+          780,
+          842
+        ],
+        [
+          738,
+          838
+        ],
+        [
+          712,
+          824
+        ]
+      ]
+    },
+    {
+      "id": "arm2Seg0",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          601,
+          671
+        ],
+        [
+          653,
+          674
+        ],
+        [
+          660,
+          714
+        ],
+        [
+          677,
+          752
+        ],
+        [
+          716,
+          777
+        ],
+        [
+          754,
+          781
+        ],
+        [
+          751,
+          835
+        ],
+        [
+          704,
+          829
+        ],
+        [
+          663,
+          806
+        ],
+        [
+          637,
+          776
+        ],
+        [
+          619,
+          738
+        ],
+        [
+          611,
+          705
+        ]
+      ]
+    },
+    {
+      "id": "arm3Seg2",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          420,
+          927
+        ],
+        [
+          457,
+          953
+        ],
+        [
+          422,
+          980
+        ],
+        [
+          368,
+          1002
+        ],
+        [
+          310,
+          1011
+        ],
+        [
+          271,
+          1003
+        ],
+        [
+          268,
+          981
+        ],
+        [
+          308,
+          978
+        ],
+        [
+          355,
+          965
+        ],
+        [
+          398,
+          948
+        ]
+      ]
+    },
+    {
+      "id": "arm3Seg1",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          444,
+          783
+        ],
+        [
+          498,
+          788
+        ],
+        [
+          495,
+          836
+        ],
+        [
+          487,
+          883
+        ],
+        [
+          465,
+          932
+        ],
+        [
+          445,
+          957
+        ],
+        [
+          413,
+          934
+        ],
+        [
+          432,
+          895
+        ],
+        [
+          441,
+          850
+        ]
+      ]
+    },
+    {
+      "id": "arm3Seg0",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          553,
+          631
+        ],
+        [
+          583,
+          664
+        ],
+        [
+          555,
+          693
+        ],
+        [
+          518,
+          727
+        ],
+        [
+          503,
+          772
+        ],
+        [
+          496,
+          812
+        ],
+        [
+          441,
+          813
+        ],
+        [
+          441,
+          765
+        ],
+        [
+          465,
+          713
+        ],
+        [
+          505,
+          675
+        ]
+      ]
+    },
+    {
+      "id": "arm4Seg2",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          227,
+          384
+        ],
+        [
+          235,
+          408
+        ],
+        [
+          201,
+          432
+        ],
+        [
+          181,
+          466
+        ],
+        [
+          180,
+          491
+        ],
+        [
+          193,
+          514
+        ],
+        [
+          165,
+          535
+        ],
+        [
+          144,
+          501
+        ],
+        [
+          146,
+          456
+        ],
+        [
+          170,
+          420
+        ],
+        [
+          200,
+          397
+        ]
+      ]
+    },
+    {
+      "id": "arm4Seg1",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          164,
+          506
+        ],
+        [
+          194,
+          521
+        ],
+        [
+          225,
+          541
+        ],
+        [
+          258,
+          549
+        ],
+        [
+          309,
+          538
+        ],
+        [
+          360,
+          519
+        ],
+        [
+          387,
+          558
+        ],
+        [
+          329,
+          583
+        ],
+        [
+          281,
+          593
+        ],
+        [
+          239,
+          593
+        ],
+        [
+          204,
+          582
+        ],
+        [
+          179,
+          564
+        ],
+        [
+          155,
+          539
+        ]
+      ]
+    },
+    {
+      "id": "arm4Seg0",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          356,
+          521
+        ],
+        [
+          397,
+          503
+        ],
+        [
+          446,
+          496
+        ],
+        [
+          490,
+          509
+        ],
+        [
+          533,
+          529
+        ],
+        [
+          575,
+          553
+        ],
+        [
+          596,
+          574
+        ],
+        [
+          572,
+          603
+        ],
+        [
+          535,
+          583
+        ],
+        [
+          495,
+          561
+        ],
+        [
+          455,
+          548
+        ],
+        [
+          418,
+          547
+        ],
+        [
+          373,
+          568
+        ]
+      ]
+    },
+    {
+      "id": "bell",
+      "joint": "bell",
+      "layer": "near",
+      "polygonPx": [
+        [
+          622,
+          551
+        ],
+        [
+          645,
+          552
+        ],
+        [
+          657,
+          565
+        ],
+        [
+          650,
+          583
+        ],
+        [
+          628,
+          589
+        ],
+        [
+          613,
+          579
+        ],
+        [
+          612,
+          565
+        ]
+      ]
+    },
+    {
+      "id": "centre",
+      "joint": "centre",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independent five-armed dorsal Brittle Star reference candidate",
+    "limitations": [
+      "Five complete painted arms are explicitly declared. The default six-arm inventory is not used; zero walking legs does not mean zero radial arms.",
+      "The centre landmark is the observed central disc. Legacy template name bell denotes an observed upper disc-rim control, not a biological jellyfish bell or invented organ.",
+      "Three controls per arm represent continuous source curves, not the many biological arm ossicles. Visible marginal spines stay owned by the enclosing arm region.",
+      "The naturally small disc and long curved arms may exceed the unchanged arm/bell ratio guard. The disc is not enlarged, its centre is not displaced and no limit is changed to force intake.",
+      "Only dorsal paint is observed; no mouth, eyes, underside, tube feet or hidden structures are invented.",
+      "groundLineY is the bottom painted envelope, not a claim that the flat dorsal view shows five coplanar planted tips. Static and native support behavior remain unmeasured at authoring."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  }
+}

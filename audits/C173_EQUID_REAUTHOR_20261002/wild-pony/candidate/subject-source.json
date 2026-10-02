@@ -1,0 +1,77 @@
+{
+  "name": "Wild Pony",
+  "family": "quadruped",
+  "species": {
+    "name": "Wild Pony",
+    "aspect": 1.7,
+    "headFrac": 0.31,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "short stocky legs under a deep round barrel",
+      "thick shaggy mane and forelock over the eyes",
+      "small head with a broad forehead"
+    ],
+    "note": "Pony proportions differ from a horse: legs are short relative to body depth, so the silhouette is longer and lower."
+  },
+  "genome": {
+    "seed": 2427727360,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 8,
+    "body": 5,
+    "loco": 13,
+    "trait": 20,
+    "size": 4,
+    "diet": 4,
+    "head": 7,
+    "limbs": 5,
+    "skin": 5,
+    "tail": 5,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 9,
+    "accent": 9,
+    "temper": 3,
+    "sense": 5,
+    "repro": 3,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Wild Pony"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wild Pony\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2427727360\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "index": 266,
+  "profile": {
+    "id": "hoofed-unhorned",
+    "names": [
+      "Zebra",
+      "Wild Horse",
+      "Wild Ass",
+      "Camel",
+      "Wild Pony",
+      "Dromedary Camel",
+      "Bactrian Camel",
+      "Horse",
+      "Donkey",
+      "Llama",
+      "Alpaca",
+      "Okapi"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": "No generic claw; horn use not inferred."
+  }
+}
