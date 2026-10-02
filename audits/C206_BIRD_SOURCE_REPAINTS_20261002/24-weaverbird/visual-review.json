@@ -1,0 +1,28 @@
+{
+  "name": "Weaverbird",
+  "masterSha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: bright yellow plumage, black face mask, thick conical bill, folded yellow-edged dark wing and continuous short tail are visible. Two actual legs emerge separately from the feather margins through ankles and feet; no nest or prop. Toe bases and hidden proximal segments still require independent ownership review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 294,
+      "y0": 349,
+      "x1": 900,
+      "y1": 872
+    },
+    "margins": {
+      "left": 294,
+      "right": 353,
+      "top": 349,
+      "bottom": 381
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

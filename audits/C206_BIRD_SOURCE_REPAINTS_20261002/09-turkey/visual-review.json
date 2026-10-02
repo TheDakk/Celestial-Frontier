@@ -1,0 +1,28 @@
+{
+  "name": "Turkey",
+  "masterSha256": "d072d2c5af840617df583116581bed9ed0fc10c44421276e2df1aec95d983616",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: blue/red warty bare head, snood/wattle, dark hanging breast beard, iridescent layered body, two distinct legs with spurs and complete feet, and a folded barred tail are visible. Tail is no longer a display fan. Beard is long and separate from legs; its real ownership must be preserved rather than removed as stray appendage. Far-wing and tail-root overlap remains.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 253,
+      "y0": 296,
+      "x1": 1009,
+      "y1": 917
+    },
+    "margins": {
+      "left": 253,
+      "right": 244,
+      "top": 296,
+      "bottom": 336
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

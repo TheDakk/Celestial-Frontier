@@ -1,0 +1,14 @@
+{
+  "id": "12-guineafowl",
+  "name": "Guineafowl",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-69cffbea-07c7-49e5-a259-be6a0e9cfa4e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d91a630c7ec76ed5c670a8d4220d8db2c52222cd9895397cb5d1b5aa255d2360",
+  "bytes": 1253957,
+  "promptSha256": "0b2f5fd987fe65fb980235971b067e3e22cdfa413c7fbe8bb54cc668d4fd5607",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

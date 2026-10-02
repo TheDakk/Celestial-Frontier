@@ -1,0 +1,14 @@
+{
+  "id": "04-moorhen",
+  "name": "Moorhen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-67b8ce12-244c-4b75-9a9a-6134d3bd0e2a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1f30ab8b7d4da51abc51907e6b00626270d79042292793c75318becd6d693daa",
+  "bytes": 1223871,
+  "promptSha256": "457c189c1ca341c04037a4939587e6920ecb0bfc089dfd605533c201629c7d82",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

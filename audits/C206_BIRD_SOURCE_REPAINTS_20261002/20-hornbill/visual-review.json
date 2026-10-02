@@ -1,0 +1,28 @@
+{
+  "name": "Hornbill",
+  "masterSha256": "cc44d4c6f8fcb34ffe1f40b66685895948f2705558ed8af78622f0ca016c1020",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: large curved yellow bill with an externally closed casque, coloured bare throat/eye skin, long broad black-and-white tail and two separate feet are visible. The previous open tube-like casque is absent. Bill interior/closure, exact casque species identity, toe anatomy and layered wing-tail ownership remain independent review holds; no fit admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 185,
+      "y0": 324,
+      "x1": 1068,
+      "y1": 892
+    },
+    "margins": {
+      "left": 185,
+      "right": 185,
+      "top": 324,
+      "bottom": 361
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

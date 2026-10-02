@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c173-interruption-disclosure/v1",
+  "sourceCommit": "b9ac28855",
+  "sourceMailbox": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+  "sourceRow": "C180",
+  "mergedIn": "60a71c4e6",
+  "reportedAction": "Claude reports starting a develop gate during C205, then broad pkill matching vitest and check-profile.mjs --profile=develop; he warns this could also terminate Codex processes.",
+  "reportedApproximateTime": "2026-10-02 around 18:49Z",
+  "observedGateStart": "2026-10-02T18:47:59.376576+00:00",
+  "observedGateEnd": "2026-10-02T18:48:31.908641+00:00",
+  "observedExitCode": 143,
+  "attribution": "The matching broad kill is a credible disclosed external interruption. Its approximate time is not an exact process-level attribution; the terminating sender was not captured. Earlier archival association remains unproven.",
+  "i5Disposition": "I5 had completed before the develop invocation; no I5 overlap with the later disclosed gate window is indicated. Retained raw certificate independently verifies after archival.",
+  "approvalDisposition": "The automatic review rejection and first exit143 evidence remain unchanged. No replacement develop or all-pair native run executed. Explicit Dakk authorization still pending.",
+  "reservation": "C205 released in C210. Fresh reservation required before authorized recovery."
+}

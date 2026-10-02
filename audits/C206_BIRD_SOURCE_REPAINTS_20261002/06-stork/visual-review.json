@@ -1,0 +1,28 @@
+{
+  "name": "Stork",
+  "masterSha256": "049d179d7d7d1ab091c4aebd56aba7f87e91ae0e0a18ea0974f61732588b8b16",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: heavy straight reddish bill, extended nearly straight neck, white body and black folded flight feathers, and two long red leg chains with separate feet are visible. White short tail remains partly beneath overlapping black wing tips; wing-tail ownership is held for authoring. Natural visible leg emergence is retained without invented proximal segments.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 309,
+      "y0": 257,
+      "x1": 976,
+      "y1": 991
+    },
+    "margins": {
+      "left": 309,
+      "right": 277,
+      "top": 257,
+      "bottom": 262
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Peacock",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "36e52f27a70a418ba4c79974cf97e43dfadf75dca9e41d1e4bdc3956f4271fac",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "ground-foraging-bird",
+  "authoringCreated": false,
+  "sourceHead": "0486f0f9779604496000c8e913b6fe38e7612471",
+  "basePromptSha256": "d9bdaf280196043d865b003d8d42a7d452225830d25c25a670f7f730701e05ef",
+  "batchCompilerSha256": "2b5f31c02d1299de513811e149a6435e5263e15a98a18d89a72585718ec7f383",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "previousId": "15-peacock",
+    "previousMaster": "audits/G2_C121_20260927/15-peacock/master.png",
+    "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/summary.json",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 84%)",
+      "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 4.6%)"
+    ],
+    "static": null,
+    "previousVisual": "Blue neck, crest and green train with visible eye spots. Long folded train nearly fills width and violates requested margin. True tail beneath train is not proven separately; hold.",
+    "correction": "Keep the male long eyespotted train fully folded and naturally trailing; it consists of upper tail coverts, not the true tail. Show the actual small supporting tail under the train only where naturally visible, never fabricate one or shorten the train. Two real legs and feet are separate. Zoom out to retain every train tip."
+  },
+  "layoutOverride": null,
+  "sourceCorrection": "TARGETED SOURCE REPAINT — BIOLOGICAL PRIORITY: Keep the male long eyespotted train fully folded and naturally trailing; it consists of upper tail coverts, not the true tail. Show the actual small supporting tail under the train only where naturally visible, never fabricate one or shorten the train. Two real legs and feet are separate. Zoom out to retain every train tip. Preserve the real species anatomy if a generic pose instruction conflicts. No invented far wing, false leg, disconnected tail, artificial gap through tissue or removal of actual appendages. This request does not establish measured anatomical presence.",
+  "compositionCheck": "COMPOSITION: square native 1254 by 1254 painting. Keep the entire specimen small, inside the central half of the canvas, with generous pure magenta around every bill, toe, plume and tail tip. Preserve real proportions by zooming out, never shortening appendages. No ground, cast shadow, scenery, perch, branch, prop, text, diagram or framing marks.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

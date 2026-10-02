@@ -1,0 +1,28 @@
+{
+  "name": "Pheasant",
+  "masterSha256": "f6bc7e401b11939cca3085fb6a354615eecfd8937d7c786aea210d206583658d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: red facial wattle, green-black head, white neck ring, patterned flank and extremely long pointed barred tail are visible. Both legs and feet have separate silhouettes, and the tail root continues from the rump behind the folded wing. Tail tips approach the left framing boundary; no cropping or shortening applied. Wing-root and exact toe ownership still require authoring.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 122,
+      "y0": 372,
+      "x1": 1107,
+      "y1": 864
+    },
+    "margins": {
+      "left": 122,
+      "right": 146,
+      "top": 372,
+      "bottom": 389
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

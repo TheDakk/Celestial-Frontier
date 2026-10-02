@@ -1,0 +1,28 @@
+{
+  "name": "Tern",
+  "masterSha256": "e4bc60adf1e4101b7b54831189fcd8d8988b6b9dafcbf8a994fa4467d9edaf80",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: black cap, slim red/dark dagger bill, grey folded wing and two separate short red leg/foot silhouettes are visible. Two complete long white-edged tail streamers extend left, but their roots still cross or overlap ambiguously beneath the folded wing. HOLD: webbing is not clearly visible and connected tail-root ownership is unresolved. No trimming or semantic presence claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 220,
+      "y0": 463,
+      "x1": 1041,
+      "y1": 785
+    },
+    "margins": {
+      "left": 220,
+      "right": 212,
+      "top": 463,
+      "bottom": 468
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

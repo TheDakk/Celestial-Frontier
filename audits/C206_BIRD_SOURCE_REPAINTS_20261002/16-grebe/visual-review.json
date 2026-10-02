@@ -1,0 +1,28 @@
+{
+  "name": "Grebe",
+  "masterSha256": "3f7acf801540303b2c0c95f3785875262812180e770db57291a4a32ac45f686b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: pointed bill, crested chestnut/black head, folded wing and puffy rounded rump without invented tail fan are visible. Legs are placed farther back, but the bird still reads as standing above the ground rather than a naturally low rest. HOLD: toes again read as joined webbing rather than clearly separate lobes. This one-attempt repaint does not resolve the canonical foot requirement.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 335,
+      "y0": 330,
+      "x1": 970,
+      "y1": 903
+    },
+    "margins": {
+      "left": 335,
+      "right": 283,
+      "top": 330,
+      "bottom": 350
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

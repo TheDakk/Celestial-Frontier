@@ -1,0 +1,28 @@
+{
+  "name": "Snipe",
+  "masterSha256": "83237c54f8194f7107bbc0f2a522b73a0a2f21eb253b9656fc695cc9b315dfc9",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: long straight dagger bill, high rear-set eye, cream crown/back stripes and mottled brown plumage are visible. Two independent leg silhouettes emerge from separate feather margins to complete toes; short barred tail remains beneath the folded wing. Hidden proximal anatomy and far-wing ownership remain unproven; no forced part-presence claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 205,
+      "y0": 321,
+      "x1": 1107,
+      "y1": 893
+    },
+    "margins": {
+      "left": 205,
+      "right": 146,
+      "top": 321,
+      "bottom": 360
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

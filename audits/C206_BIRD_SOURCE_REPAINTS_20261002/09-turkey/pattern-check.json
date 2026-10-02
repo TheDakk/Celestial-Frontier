@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Turkey",
+  "masterSha256": "d072d2c5af840617df583116581bed9ed0fc10c44421276e2df1aec95d983616",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
