@@ -1,0 +1,104 @@
+{
+  "id": "03-stork",
+  "masterSha256": "d3d9d6ceaa29855600d1d140d972d73c04006481b89bb03def2f0a67ac04ac3b",
+  "authoringSha256": "992e7e80669a6231871b666faedd1e3484cdbb559db8d721a9add7cc211acbcd",
+  "scope": "Observed keyed raster occupancy of manual priority polygons; not intake or anatomy/skin/contact/native validation.",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "pixels": 196
+    },
+    {
+      "id": "leg-far-foot",
+      "joint": "legFarFoot",
+      "pixels": 1371
+    },
+    {
+      "id": "leg-far-ankle",
+      "joint": "legFarAnkle",
+      "pixels": 1000
+    },
+    {
+      "id": "leg-far-knee",
+      "joint": "legFarKnee",
+      "pixels": 1501
+    },
+    {
+      "id": "leg-near-foot",
+      "joint": "legNearFoot",
+      "pixels": 1555
+    },
+    {
+      "id": "leg-near-ankle",
+      "joint": "legNearAnkle",
+      "pixels": 1110
+    },
+    {
+      "id": "leg-near-knee",
+      "joint": "legNearKnee",
+      "pixels": 1482
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "pixels": 2874
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "pixels": 3115
+    },
+    {
+      "id": "neck1",
+      "joint": "neck1",
+      "pixels": 2174
+    },
+    {
+      "id": "neck0",
+      "joint": "neck0",
+      "pixels": 5194
+    },
+    {
+      "id": "wing-far-tip",
+      "joint": "wingFarTip",
+      "pixels": 7371
+    },
+    {
+      "id": "wing-far-root",
+      "joint": "wingFarRoot",
+      "pixels": 5946
+    },
+    {
+      "id": "wing-near-tip",
+      "joint": "wingNearTip",
+      "pixels": 16955
+    },
+    {
+      "id": "wing-near-root",
+      "joint": "wingNearRoot",
+      "pixels": 19427
+    },
+    {
+      "id": "tail-fan",
+      "joint": "tailFan",
+      "pixels": 1428
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "pixels": 6302
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "pixels": 3561
+    },
+    {
+      "id": "spine",
+      "joint": "spine",
+      "pixels": 6033
+    }
+  ],
+  "empty": []
+}

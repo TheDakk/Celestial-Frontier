@@ -1,0 +1,28 @@
+{
+  "name": "Bee",
+  "masterSha256": "6c4384cd7f8b485fd29d44d9c1cd64d08e1641bfebdc729c9a1eb17fec9dabfa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full 1254-square successor inspected: six separate terminal tarsal tips are visible in three apparent thoracic pairs, with the two antennae separate from the leg count. Alternating dark and yellow furry abdominal bands and translucent venated wing panels remain visible. Two far foot tips sit above the others, leg roots overlap beneath the thorax, and the opaque pollen load hides part of one hind leg. Six visible tips therefore do not establish shared-ground contact or a valid six-chain fit.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 331,
+      "y0": 418,
+      "x1": 955,
+      "y1": 830
+    },
+    "margins": {
+      "left": 331,
+      "right": 298,
+      "top": 418,
+      "bottom": 423
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

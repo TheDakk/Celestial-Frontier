@@ -84,7 +84,7 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 Dakk resumed the full program in `audits/MAILBOX/C132_ART_PROGRAM_20261001.md`. Read Claude's absolute read-only
 mailbox at `~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md` at run start and batch end;
 write only this lane's `audits/MAILBOX/TO_CLAUDE.md`. Signed G merges `4cad826c9` and `062d85b2a` include Claude
-through `4c6698fea`; newer signed Claude work through `1d8af1843` awaits the next clean merge. His handoff above is preserved.
+through `4c6698fea`; newer signed Claude work through `02a94595c` awaits the next clean merge. His handoff above is preserved.
 
 **Program and ownership:** 43 biome-family FAR/MID/NEAR sets; ten remaining painted ability-theme sequences;
 anatomical full-stage attacks; Centipede C12 and all-pair 60 fps at 4× CPU; continuing 24-original batches and
@@ -93,11 +93,13 @@ Claude scores, repairs islands, runs accepted finishes/finished-rig films, updat
 Latest C136 coverage is 181/631 accepted, 19 held. Dakk's final visual pass and physical-phone gates remain open.
 
 **Delivered and measured:**
-- `C132_ARENAS_20261001`: eight painted triplets, all HELD. Available generation returned native 1672×941,
-  below the new-plate 2560×1440 contract; no upscale or inherited temperate exception is acceptance. Further same-route
-  arena generation waits for a compliant output route. Routing recipes/prompts cover all 43 families.
-- `C132_EFFECTS_20261001`: ten themes / 30 phase assets pass exact delivery controls; native films and visual acceptance
-  remain open. Audit runner supports exact theme anchors, arena manifest and hash-bound source overrides.
+- `C132_ARENAS_20261001`: eight painted triplets retain their original held reports. D29 (Dakk, October 2) now
+  explicitly admits native 1672×941 alongside native 2560×1440. Merge Claude's signed validator, revalidate these eight
+  and resume the remaining biome families. Actual seams, fringes and staging holds still need full-size review.
+- `C132_EFFECTS_20261001`: ten themes / 30 phase assets pass delivery controls and full-script native films at 4× CPU
+  on signed `b80e4b156`: zero rig refusals, CPU p95 6.2–6.4 ms. All 30 phases are visible in actual-film review.
+  Ground-level placement despite a jaw attack and four low-contrast phases remain concrete holds; Claude's separate
+  full-size admission and registry wiring in `9f9032526` awaits merge.
 - `G2_C132_QUADRUPEDS_20261001`: 24 immutable originals scored by Claude; Iguana and repaired Horned Lizard accepted.
   `C136_SPRAWLER_REFERENCES_20261002`: Monitor Lizard, Iguana and Newt manual references remain UNMEASURED;
   24 exact-original reviewed external-pinna absence declarations are ready for C136 re-scoring.
@@ -115,12 +117,16 @@ Latest C136 coverage is 181/631 accepted, 19 held. Dakk's final visual pass and 
 - `C132_SOUND_20261001`: 49 recorded-file cue candidates, including 11 separately layered impacts. Technical checks pass;
   listening, loudness/mass extremes, battle timing and runtime admission remain open.
 
-**Active repair:** C136 Alligator's reported late `idle` still actually holds final FAINT with zero underlying idle.
-The captured source hashes agree; a no-dip idle change cannot fix it. Exact inputs are retained in
-`C132_FAINT_GROUND_20261002`; geometry-aware head/jaw ground clearance is being investigated without moving the floor,
-foot targets, timing or guards. The next 24-original repair/new-subject batch is delivered in `G2_C136_REPAIRS_20261002`: 23 framing PASS, one refused, all visual/anatomy holds retained.
+**Authoring handoffs:** `C132_FAINT_GROUND_20261002` confirms the C136 Alligator frame holds final FAINT with zero
+underlying idle. A continuous head/neck candidate clears ground in 5,070 publications; a detached spine-owned fragment
+and layered tail clipping still hold the whole creature. Five controls and actual-rig byte parity pass; no runtime change.
+The next 24-original batch `G2_C136_REPAIRS_20261002` has 23 framing PASS and one refused. Three standing-bird/insect
+manual references plus an incomplete Water Strider draft are in `C136_BIRD_INSECT_REFERENCES_20261002`; all 79 authored
+owners contain paint, with anatomy/contact holds retained. `G2_C136_TARGETED_EDITS_20261002` adds four separate successors
+for Giant Salamander, Giraffe, Buffalo and Bee, all framing PASS, original source paintings unchanged.
 
-**Gates and next steps:** C152 reserves the ten-theme native effect epoch (Civet/Wolf, observed supports, accepted temperate control arena; stop at first red). Post the exact reservation before every
+**Gates and next steps:** C153 released the ten-theme native reservation; no epoch is active. C154–C156 deliver the
+completed audits/references. Root validation and draft-release owner pass. Post the exact reservation before every
 native/performance epoch and release it afterward; no concurrent heavy work. Browser commands require outside-sandbox
 execution. Score/calibrate home resolution and exact service-worker `__local_ai/` exclusion are implemented with focused
 controls in `C132_I5_PREP_20261002`; new v2 evidence serialization aliases home paths without changing samples or old evidence.
@@ -129,8 +135,9 @@ Finish the combined signed product, merge newer signed Claude work, run the requ
 `tools/local-image-generation/node_modules` aside and always restore it afterward.
 
 **Operations:** OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac` only. Signed G commits,
-hooks/pre-push guard retained, no new branches. Startup receipt reused from `C132_PROGRAM_20261001`; 1.14 GiB measured
-own cleanup plus Claude's approximately 57 GB completed-worktree cleanup. Current free space approximately 151 GiB;
-identity backups remain preserved. Budget UNFROZEN; normal own-branch push requires green local battery and current
+hooks/pre-push guard retained, no new branches. Startup receipt reused from `C132_PROGRAM_20261001`. Documented cleanup
+is approximately 101 GB: roughly 57 GB worktrees, 43 GB verification copies, and 1.23 GB measured own scratch recovery.
+This is not an exact summed APFS delta; attributing prior usage to unrelated activity was unsupported. Approximately
+169 GB / 157 GiB is currently free; identity backups remain preserved. Budget UNFROZEN; normal own-branch push requires green local battery and current
 visibility/workflow checks. No resumed-turn push yet. No PR, label, hosted attempt, develop/main merge, release or deploy.
 Codex continues the active repairs and evidence; Claude can consume signed mailbox deliveries directly. No app switch or Dakk relay needed.

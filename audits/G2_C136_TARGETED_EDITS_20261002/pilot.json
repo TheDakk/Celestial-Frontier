@@ -1,0 +1,42 @@
+[
+  {
+    "id": "01-giant-salamander",
+    "name": "Giant Salamander",
+    "family": "quadruped",
+    "packet": "audits/G2_C136_TARGETED_EDITS_20261002/01-giant-salamander",
+    "master": "audits/G2_C136_TARGETED_EDITS_20261002/01-giant-salamander/master.png",
+    "sourcePacket": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander",
+    "purpose": "TARGETED_EDIT",
+    "repairReason": "Giant Salamander original fails unchanged 8% framing."
+  },
+  {
+    "id": "06-giraffe",
+    "name": "Giraffe",
+    "family": "quadruped",
+    "packet": "audits/G2_C136_TARGETED_EDITS_20261002/06-giraffe",
+    "master": "audits/G2_C136_TARGETED_EDITS_20261002/06-giraffe/master.png",
+    "sourcePacket": "audits/G2_C136_REPAIRS_20261002/06-giraffe",
+    "purpose": "TARGETED_EDIT",
+    "repairReason": "Giraffe original far ear hidden behind crown."
+  },
+  {
+    "id": "07-buffalo",
+    "name": "Buffalo",
+    "family": "quadruped",
+    "packet": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo",
+    "master": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo/master.png",
+    "sourcePacket": "audits/G2_C136_REPAIRS_20261002/07-buffalo",
+    "purpose": "TARGETED_EDIT",
+    "repairReason": "C136 original still hides the far external ear beneath the horn/crown; attempt to expose the existing pinna without inventing an extra ear."
+  },
+  {
+    "id": "21-bee",
+    "name": "Bee",
+    "family": "insect",
+    "packet": "audits/G2_C136_TARGETED_EDITS_20261002/21-bee",
+    "master": "audits/G2_C136_TARGETED_EDITS_20261002/21-bee/master.png",
+    "sourcePacket": "audits/G2_C136_REPAIRS_20261002/21-bee",
+    "purpose": "TARGETED_EDIT",
+    "repairReason": "C136 original has only four clear leg endpoints. Expose all three true thoracic pairs independently; no accepted or held-gallery master is replaced."
+  }
+]

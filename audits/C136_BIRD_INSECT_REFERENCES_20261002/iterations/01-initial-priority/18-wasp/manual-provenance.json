@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+  "authoringSha256": "5907f765981a834d283c7c930e25c37eea8276c96f703a123799ebb1b606353c",
+  "observationSource": "audits/C136_BIRD_INSECT_REFERENCES_20261002/manual-observations.mjs",
+  "observationSha256": "65ea4a827827add2b77a6acd84743354f4d20216d751c4768c15776905a86d98",
+  "sourcePacket": "audits/G2_C121_20260927/18-wasp",
+  "origin": "Independent manual full-size observation; no coordinates read from another authoring, fit or reference.",
+  "limitations": [
+    "Six leg tips are independently visible, but front-pair knee/foot paths overlap closely. Near/far pairing and hidden coxal attachments are manual depth interpretations.",
+    "The far front foot is elevated relative to the other tips; no common-ground or runtime contact claim is made.",
+    "Folded wing panels remain semitransparent on magenta; fringing, root overlap and skin binding need unchanged checks."
+  ],
+  "admission": "CANDIDATE_UNMEASURED: unchanged intake, static, native and reference-pool controls required."
+}

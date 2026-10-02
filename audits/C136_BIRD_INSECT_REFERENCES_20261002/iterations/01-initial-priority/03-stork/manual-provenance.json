@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "d3d9d6ceaa29855600d1d140d972d73c04006481b89bb03def2f0a67ac04ac3b",
+  "authoringSha256": "2d9c440299bc36feee05c028e40af2cac247c2d98ed8dab676995e554e79c781",
+  "observationSource": "audits/C136_BIRD_INSECT_REFERENCES_20261002/manual-observations.mjs",
+  "observationSha256": "65ea4a827827add2b77a6acd84743354f4d20216d751c4768c15776905a86d98",
+  "sourcePacket": "audits/G2_C121_20260927/03-stork",
+  "origin": "Independent manual full-size observation; no coordinates read from another authoring, fit or reference.",
+  "limitations": [
+    "Targeted edit lifts the far wing; its shoulder junction behind the near coverts is interpreted and not proven by a motion fit.",
+    "Standing side view has two independent shanks and toe fans. Toe tips are not perfectly coplanar; unchanged contact checks must decide admission.",
+    "Black flight feathers, white tail tips and flank feather fringes retain source-specific overlap and island risks."
+  ],
+  "admission": "CANDIDATE_UNMEASURED: unchanged intake, static, native and reference-pool controls required."
+}

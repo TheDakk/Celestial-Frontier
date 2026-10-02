@@ -1,0 +1,36 @@
+{
+  "captureSource": "c3e9d8b36e927458ff8bc82b8cc2862801f2720c",
+  "captureSha256": "5c445c99b48f2006b2585dd4d44d3c6837d2c35e6fe0fc8cafaea1766b6295aa",
+  "inputs": [
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136/03-alligator/fallback-1/fit/record.json",
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/record.json",
+      "sha256": "5e1d4b6fa1240969d47d68b5d67682c61b6f7e33c6e4cfa459eaf2715a5a32de",
+      "bytes": 7553
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136/03-alligator/fallback-1/fit/binding.json",
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/binding.json",
+      "sha256": "3f4ed0057fe471025ce0c7a79702b36d8b70848fad319473d0314576a6c7bf09",
+      "bytes": 1800266
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136/03-alligator/fallback-1/fit/parts/keyed.png",
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/parts/keyed.png",
+      "sha256": "c740060561de6d3757dd0aa313ae6bbda8874083020ac4db957946fac6b786d9",
+      "bytes": 1418058
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136/03-alligator/fallback-1/fit/parts/atlas/03-alligator.png",
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/parts/atlas/03-alligator.png",
+      "sha256": "2ba23c114c948ccf93d6bf80912c0296006dd50a3c97fd9c6bb871e9236bc2d1",
+      "bytes": 439559
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c136/03-alligator/fallback-1/packet/master.png",
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/packet/master.png",
+      "sha256": "64f9dc3207fa10afccd71456fe950a37c2caf9d1fcf5864602553ab59bb32140",
+      "bytes": 1215719
+    }
+  ]
+}

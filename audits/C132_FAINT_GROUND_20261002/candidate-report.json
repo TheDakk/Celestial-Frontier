@@ -1,0 +1,2878 @@
+{
+  "schema": "cf.c132-faint-ground-candidate/v1",
+  "status": "HEAD_CLEARANCE_CANDIDATE_WHOLE_PAINT_HELD",
+  "runtimeChanged": false,
+  "nativeRun": false,
+  "visualAcceptance": false,
+  "limitations": [
+    "Audit-only author invokes full contact/skin/ARAP publication and is not wired into runtime.",
+    "Dense one-millisecond sampling is not a mathematical all-times proof.",
+    "A separate spine-owned painted fragment remains below ground; no complete Alligator repair or gallery acceptance.",
+    "Other safe creature geometries and all idle start phases remain unqualified."
+  ],
+  "captureSha256": "5c445c99b48f2006b2585dd4d44d3c6837d2c35e6fe0fc8cafaea1766b6295aa",
+  "sourcePins": [
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "9f8ab0acfbde47490f50ea72db760b510bc0e9fc032190d8d6720659cfd6686d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/painted-supports.ts",
+      "sha256": "685981c31ef67838b6d52f0b80b126077c6ef2f8f11a4f985ce58c284d309695"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "b8bb2996172c4fec8e947ce73e69216052cdd1518ad10181d39711dc8e0d4c5c"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/stance-envelope.ts",
+      "sha256": "029320a695cf279b68c4a73a5b7b09150a53ae527b257c84d0cdcfa6f6890f1d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "sha256": "04a69912932c6eb854e6e9597b640472c556d2495edd15ce3d977570bb92dd8f"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "sha256": "573ec7f5d433515169992ffee8c4d53855fd1c945bbe1175ce8f80307d113f0e"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "51d71ae6a485dc79821ab102a1187a313b84d0434fcd58d2c8ec015076256a35"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "26c11e94b09cf8b297c408e0f02e754ba0cb70affe8fdd01779aa04285e54a1a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/rigid-parent-frame.mjs",
+      "sha256": "a2b4d700e8ee7cf76af602814e5820b50acb67355e735dce921f7a16030ff56c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-sampling-guard.mjs",
+      "sha256": "bcc199f9cabb5835b9b76ba65499608c0b62dbee7e88c93374cb31f572270f74"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-projector.mjs",
+      "sha256": "bf84208615f7f9f29d1f3d51c6431166f408e4c399036966b1cae29a844bb6ad"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "sha256": "1274932542fcef86d150e7fd645ff641d4daaaaf401b0aba0830c926323d5081"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+      "sha256": "0c702aed88d6c9f15fbafeba774be4fa6f797054e433c21c2cea53b73a74373b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "sha256": "7824324f2b3343f9df805cdecda7cbd874a721351163b13e631ccf58f569053a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-orientation-forward.mjs",
+      "sha256": "214e54700624591e6eba71905f530ed52d991354fdbba1ccc65e70d8035ca554"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-forward-bytes.mjs",
+      "sha256": "6fd71d6c0beedc600e59e7b268e63d368e40523038ea704bb40862abb6c56d93"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "a1ecb42df0fe1f2a70a7f7894aae1309e533635ab2f05b1232c16fd9ae9c4707"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/curve-candidate.mjs",
+      "sha256": "6f75d662667cfcc6e7544cec1cec114da0e4971d3d289785bbc74789d9d72d6b"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-pixel-trace.mjs",
+      "sha256": "58c2ee2f4df13638c14738dbe14f9de916a40c654999085c2782858edc190dbb"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/verify-candidate.mjs",
+      "sha256": "e30704690f729b55b27c95628d4a1ee785550033b9f0ca48988863d3de99eb12"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
+    }
+  ],
+  "recordRecipeHash": "a3feed7eb5bd9dd857f6c9c761aec601c8a6ab913ff18f226244115d18c5d49f",
+  "bindingHash": "525c0c655eead4ee2a49d68003f68638085ecb53339d64b9ae89b5c484419e2b",
+  "scopedParts": [
+    "jaw",
+    "head",
+    "neck"
+  ],
+  "joints": [
+    "neck",
+    "head"
+  ],
+  "gain": 0.353515625,
+  "clearanceReserveSourcePx": 2,
+  "originalDurationMs": 840,
+  "authorPublications": 1394,
+  "authorMs": 890.5838330000001,
+  "verificationMs": 3809.079125,
+  "rigidParentGroups": [],
+  "stageCoordinates": {
+    "frame": {
+      "width": 1024,
+      "height": 576
+    },
+    "stands": {
+      "left": {
+        "x": 0.2621204819277108,
+        "y": 0.78
+      },
+      "right": {
+        "x": 0.7378795180722891,
+        "y": 0.78
+      }
+    },
+    "alphaTop": 488,
+    "stageScales": {
+      "left": 464.1310843373494,
+      "right": 464.1310843373494
+    },
+    "groundPixels": 449.28000000000003,
+    "policy": "Source-normalized mesh, actual captured stands and scale reconstructed from actual restFill + source alphaBox (>8), before common stage-root camera shake; held pose shake is zero."
+  },
+  "samplingGuard": {
+    "schema": "cf.opaque-seam-sampling-guard/v1",
+    "sourceAtlasSha256": "2ba23c114c948ccf93d6bf80912c0296006dd50a3c97fd9c6bb871e9236bc2d1",
+    "bindingHash": "525c0c655eead4ee2a49d68003f68638085ecb53339d64b9ae89b5c484419e2b",
+    "guardTexels": 7284,
+    "opaqueEdges": 3620,
+    "joins": [
+      {
+        "name": "chest--fore-near-root",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 76,
+        "maxBasisDifference": 5.662137425588298e-15
+      },
+      {
+        "name": "chest--neck",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 58,
+        "maxBasisDifference": 6.050715484207103e-15
+      },
+      {
+        "name": "ear-far-root--ear-far-tip",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 23,
+        "maxBasisDifference": 1.2212453270876722e-15
+      },
+      {
+        "name": "ear-near-root--ear-near-tip",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 61,
+        "maxBasisDifference": 9.992007221626409e-15
+      },
+      {
+        "name": "fore-far-ankle--fore-far-paw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 25,
+        "maxBasisDifference": 3.2751579226442118e-15
+      },
+      {
+        "name": "fore-far-knee--fore-far-ankle",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 48,
+        "maxBasisDifference": 2.942091015256665e-15
+      },
+      {
+        "name": "fore-far-root--fore-far-knee",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 99,
+        "maxBasisDifference": 6.772360450213455e-15
+      },
+      {
+        "name": "fore-near-knee--fore-near-ankle",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 110,
+        "maxBasisDifference": 5.995204332975845e-15
+      },
+      {
+        "name": "fore-near-root--fore-near-knee",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 154,
+        "maxBasisDifference": 1.1393663790215669e-14
+      },
+      {
+        "name": "head--ear-far-root",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 41,
+        "maxBasisDifference": 7.563394355258879e-16
+      },
+      {
+        "name": "head--ear-near-root",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 38,
+        "maxBasisDifference": 7.216449660063518e-16
+      },
+      {
+        "name": "head--jaw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 246,
+        "maxBasisDifference": 3.4416913763379853e-15
+      },
+      {
+        "name": "hind-far-ankle--hind-far-paw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 60,
+        "maxBasisDifference": 7.882583474838611e-15
+      },
+      {
+        "name": "hind-far-knee--hind-far-ankle",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 69,
+        "maxBasisDifference": 1.3641865415081611e-14
+      },
+      {
+        "name": "hind-far-root--hind-far-knee",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 106,
+        "maxBasisDifference": 5.134781488891349e-15
+      },
+      {
+        "name": "hind-near-ankle--hind-near-paw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 20,
+        "maxBasisDifference": 4.6074255521944e-15
+      },
+      {
+        "name": "hind-near-knee--hind-near-ankle",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 99,
+        "maxBasisDifference": 3.83026943495679e-15
+      },
+      {
+        "name": "hind-near-root--hind-near-knee",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 294,
+        "maxBasisDifference": 8.271161533457416e-15
+      },
+      {
+        "name": "jaw--fore-far-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 7,
+        "maxBasisDifference": 5.551115123125783e-17
+      },
+      {
+        "name": "neck--fore-far-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 130,
+        "maxBasisDifference": 9.43689570931383e-15
+      },
+      {
+        "name": "neck--fore-near-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 125,
+        "maxBasisDifference": 4.996003610813204e-16
+      },
+      {
+        "name": "neck--head",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 71,
+        "maxBasisDifference": 5.551115123125783e-17
+      },
+      {
+        "name": "pelvis--hind-near-root",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 132,
+        "maxBasisDifference": 1.532107773982716e-14
+      },
+      {
+        "name": "pelvis--spine",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 38,
+        "maxBasisDifference": 1.5987211554602254e-14
+      },
+      {
+        "name": "spine--chest",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 147,
+        "maxBasisDifference": 3.608224830031759e-16
+      },
+      {
+        "name": "spine--fore-far-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 74,
+        "maxBasisDifference": 6.661338147750939e-16
+      },
+      {
+        "name": "spine--fore-near-knee",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 103,
+        "maxBasisDifference": 1.1879386363489175e-14
+      },
+      {
+        "name": "spine--fore-near-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 123,
+        "maxBasisDifference": 1.1324274851176597e-14
+      },
+      {
+        "name": "spine--hind-far-knee",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 74,
+        "maxBasisDifference": 1.4210854715202004e-14
+      },
+      {
+        "name": "spine--hind-far-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 228,
+        "maxBasisDifference": 9.992007221626409e-15
+      },
+      {
+        "name": "spine--hind-near-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 95,
+        "maxBasisDifference": 6.106226635438361e-16
+      },
+      {
+        "name": "tail0--hind-near-knee",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 22,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "tail0--hind-near-root",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 212,
+        "maxBasisDifference": 4.773959005888173e-15
+      },
+      {
+        "name": "tail0--tail1",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 283,
+        "maxBasisDifference": 4.884981308350689e-15
+      },
+      {
+        "name": "tail1--tail2",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 88,
+        "maxBasisDifference": 5.551115123125783e-16
+      },
+      {
+        "name": "tail2--tail3",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 41,
+        "maxBasisDifference": 4.996003610813204e-16
+      }
+    ],
+    "policy": "Decode-time copies of exact opaque adjacent-owner RGBA in a one-texel ring at independently enumerated shared-field skin joins; original bytes, geometry, silhouettes, nonopaque pixels and distinct-limb/depth boundaries remain unchanged."
+  },
+  "rows": [
+    {
+      "name": "original",
+      "modes": [
+        {
+          "mode": "standalone",
+          "facing": 1,
+          "samples": 845,
+          "minimumHeadClearancePx": -118.84928676015531,
+          "minimumAllPaintClearancePx": -118.84928676015531,
+          "maximumContactError": 6.280369834735101e-16,
+          "maximumPublishedContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "elapsedMs": 520,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.8156567215919495,
+            "y": 0.7191160917282104,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": -118.84928676015531
+          },
+          "worstAllPaint": {
+            "elapsedMs": 520,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.8156567215919495,
+            "y": 0.7191160917282104,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": -118.84928676015531
+          }
+        },
+        {
+          "mode": "actual-layered-left",
+          "facing": 1,
+          "samples": 845,
+          "minimumHeadClearancePx": -118.84928676015531,
+          "minimumAllPaintClearancePx": -118.84928676015531,
+          "maximumContactError": 4.965068306494546e-16,
+          "maximumPublishedContactDriftPx": 0.01515058502773526,
+          "worst": {
+            "elapsedMs": 840,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.8156567811965942,
+            "y": 0.7191160917282104,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": -118.84928676015531,
+            "stage": {
+              "x": 392.2661241352127,
+              "y": 493.2685552924334
+            }
+          },
+          "worstAllPaint": {
+            "elapsedMs": 840,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.8156567811965942,
+            "y": 0.7191160917282104,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": -118.84928676015531,
+            "stage": {
+              "x": 392.2661241352127,
+              "y": 493.2685552924334
+            }
+          }
+        },
+        {
+          "mode": "actual-layered-right",
+          "facing": -1,
+          "samples": 845,
+          "minimumHeadClearancePx": -118.84928676015531,
+          "minimumAllPaintClearancePx": -118.84928676015531,
+          "maximumContactError": 4.965068306494546e-16,
+          "maximumPublishedContactDriftPx": 0.0037891817934044853,
+          "worst": {
+            "elapsedMs": 808,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.8156567811965942,
+            "y": 0.7191160917282104,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": -118.84928676015531,
+            "stage": {
+              "x": 631.7338758647873,
+              "y": 493.2685552924334
+            }
+          },
+          "worstAllPaint": {
+            "elapsedMs": 808,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.8156567811965942,
+            "y": 0.7191160917282104,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": -118.84928676015531,
+            "stage": {
+              "x": 631.7338758647873,
+              "y": 493.2685552924334
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "candidate",
+      "modes": [
+        {
+          "mode": "standalone",
+          "facing": 1,
+          "samples": 845,
+          "minimumHeadClearancePx": 2.017206941779513,
+          "minimumAllPaintClearancePx": -21.408380473915678,
+          "maximumContactError": 6.280369834735101e-16,
+          "maximumPublishedContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "elapsedMs": 520,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.9244137406349182,
+            "y": 0.6227313280105591,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": 2.017206941779513
+          },
+          "worstAllPaint": {
+            "elapsedMs": 520,
+            "part": "spine",
+            "vertex": 381,
+            "x": 0.7333852648735046,
+            "y": 0.6414120197296143,
+            "source": {
+              "triangle": [
+                1131,
+                1130,
+                1132
+              ],
+              "barycentric": [
+                0,
+                0.6842105263157895,
+                0.3157894736842105
+              ]
+            },
+            "faces": [
+              570
+            ],
+            "clearancePx": -21.408380473915678
+          }
+        },
+        {
+          "mode": "actual-layered-left",
+          "facing": 1,
+          "samples": 845,
+          "minimumHeadClearancePx": 2.017206941779513,
+          "minimumAllPaintClearancePx": -37.44834157354031,
+          "maximumContactError": 4.965068306494546e-16,
+          "maximumPublishedContactDriftPx": 0.01515058502773526,
+          "worst": {
+            "elapsedMs": 840,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.924413800239563,
+            "y": 0.6227313280105591,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": 2.017206941779513,
+            "stage": {
+              "x": 442.7436373129235,
+              "y": 448.5333903945607
+            }
+          },
+          "worstAllPaint": {
+            "elapsedMs": 284,
+            "part": "tail3",
+            "vertex": 19,
+            "x": 0.07343822717666626,
+            "y": 0.6542030572891235,
+            "source": {
+              "triangle": [
+                1157,
+                1158,
+                1159
+              ],
+              "barycentric": [
+                0.7,
+                0.018421052631578946,
+                0.2815789473684211
+              ]
+            },
+            "faces": [
+              20,
+              21
+            ],
+            "clearancePx": -37.44834157354031,
+            "stage": {
+              "x": 47.779421842643956,
+              "y": 463.1403982305923
+            }
+          }
+        },
+        {
+          "mode": "actual-layered-right",
+          "facing": -1,
+          "samples": 845,
+          "minimumHeadClearancePx": 2.017206941779513,
+          "minimumAllPaintClearancePx": -61.455887521568876,
+          "maximumContactError": 4.965068306494546e-16,
+          "maximumPublishedContactDriftPx": 0.0037891817934044853,
+          "worst": {
+            "elapsedMs": 805,
+            "part": "jaw",
+            "vertex": 108,
+            "x": 0.924413800239563,
+            "y": 0.6227313280105591,
+            "source": {
+              "triangle": [
+                800,
+                801,
+                799
+              ],
+              "barycentric": [
+                0,
+                0.7,
+                0.30000000000000004
+              ]
+            },
+            "faces": [
+              152,
+              153
+            ],
+            "clearancePx": 2.017206941779513,
+            "stage": {
+              "x": 581.2563626870764,
+              "y": 448.5333903945607
+            }
+          },
+          "worstAllPaint": {
+            "elapsedMs": 284,
+            "part": "tail3",
+            "vertex": 19,
+            "x": 0.08389192819595337,
+            "y": 0.6733478307723999,
+            "source": {
+              "triangle": [
+                1157,
+                1158,
+                1159
+              ],
+              "barycentric": [
+                0.7,
+                0.018421052631578946,
+                0.2815789473684211
+              ]
+            },
+            "faces": [
+              20,
+              21
+            ],
+            "clearancePx": -61.455887521568876,
+            "stage": {
+              "x": 971.3686905679358,
+              "y": 472.0260827067783
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "held": [
+    {
+      "name": "original",
+      "extrema": [
+        {
+          "part": "hind-near-ankle",
+          "vertex": 47,
+          "x": 0.40675240755081177,
+          "y": 0.5769144892692566,
+          "source": {
+            "triangle": [
+              28,
+              20,
+              29
+            ],
+            "barycentric": [
+              0,
+              0.15789473684210525,
+              0.8421052631578947
+            ]
+          },
+          "faces": [
+            59,
+            60
+          ],
+          "clearancePx": 59.471522723372836,
+          "stageRight": {
+            "x": 821.5191061952889,
+            "y": 427.2683713486505
+          }
+        },
+        {
+          "part": "hind-near-paw",
+          "vertex": 11,
+          "x": 0.4061054289340973,
+          "y": 0.586213231086731,
+          "source": {
+            "triangle": [
+              30,
+              29,
+              31
+            ],
+            "barycentric": [
+              0,
+              0.55,
+              0.44999999999999996
+            ]
+          },
+          "faces": [
+            10,
+            25
+          ],
+          "clearancePx": 47.81090048425998,
+          "stageRight": {
+            "x": 821.8193890822077,
+            "y": 431.5842064713679
+          }
+        },
+        {
+          "part": "hind-near-knee",
+          "vertex": 59,
+          "x": 0.3287736475467682,
+          "y": 0.5566591620445251,
+          "source": {
+            "triangle": [
+              87,
+              74,
+              88
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          "faces": [
+            76,
+            77,
+            82,
+            83
+          ],
+          "clearancePx": 84.87170306318606,
+          "stageRight": {
+            "x": 857.7114726312476,
+            "y": 417.867244360228
+          }
+        },
+        {
+          "part": "hind-near-root",
+          "vertex": 195,
+          "x": 0.3286362290382385,
+          "y": 0.5406491160392761,
+          "source": {
+            "triangle": [
+              76,
+              245,
+              74
+            ],
+            "barycentric": [
+              0.1,
+              0,
+              0.9
+            ]
+          },
+          "faces": [
+            299,
+            300
+          ],
+          "clearancePx": 104.94830075376834,
+          "stageRight": {
+            "x": 857.7752528326196,
+            "y": 410.43648434752095
+          }
+        },
+        {
+          "part": "fore-near-ankle",
+          "vertex": 38,
+          "x": 0.6857976913452148,
+          "y": 0.5944765210151672,
+          "source": {
+            "triangle": [
+              277,
+              271,
+              276
+            ],
+            "barycentric": [
+              0.3,
+              0.060526315789473685,
+              0.6394736842105263
+            ]
+          },
+          "faces": [
+            47
+          ],
+          "clearancePx": 37.44873491400089,
+          "stageRight": {
+            "x": 692.0055160485692,
+            "y": 435.41945618604694
+          }
+        },
+        {
+          "part": "fore-near-paw",
+          "vertex": 26,
+          "x": 0.7006979584693909,
+          "y": 0.5795966982841492,
+          "source": {
+            "triangle": [
+              291,
+              287,
+              292
+            ],
+            "barycentric": [
+              0,
+              0.7,
+              0.30000000000000004
+            ]
+          },
+          "faces": [
+            29,
+            35
+          ],
+          "clearancePx": 56.10803261869754,
+          "stageRight": {
+            "x": 685.0898389113092,
+            "y": 428.51326792715196
+          }
+        },
+        {
+          "part": "fore-near-knee",
+          "vertex": 78,
+          "x": 0.7087941765785217,
+          "y": 0.5849342346191406,
+          "source": {
+            "triangle": [
+              265,
+              264,
+              343
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          "faces": [
+            114,
+            115
+          ],
+          "clearancePx": 49.41476205461826,
+          "stageRight": {
+            "x": 681.3321324212867,
+            "y": 430.9905844540016
+          }
+        },
+        {
+          "part": "fore-near-root",
+          "vertex": 110,
+          "x": 0.7431405782699585,
+          "y": 0.5392639636993408,
+          "source": {
+            "triangle": [
+              405,
+              402,
+              406
+            ],
+            "barycentric": [
+              0,
+              0.05,
+              0.95
+            ]
+          },
+          "faces": [
+            158,
+            159
+          ],
+          "clearancePx": 106.6852817880472,
+          "stageRight": {
+            "x": 665.390899761154,
+            "y": 409.7935920900144
+          }
+        },
+        {
+          "part": "hind-far-ankle",
+          "vertex": 58,
+          "x": 0.5023825168609619,
+          "y": 0.5952008962631226,
+          "source": {
+            "triangle": [
+              462,
+              450,
+              461
+            ],
+            "barycentric": [
+              0.10526315789473684,
+              0.42105263157894735,
+              0.4736842105263158
+            ]
+          },
+          "faces": [
+            79
+          ],
+          "clearancePx": 36.54036835306491,
+          "stageRight": {
+            "x": 777.1341998658697,
+            "y": 435.75566125534755
+          }
+        },
+        {
+          "part": "hind-far-paw",
+          "vertex": 39,
+          "x": 0.5218310952186584,
+          "y": 0.6007000803947449,
+          "source": {
+            "triangle": [
+              479,
+              461,
+              468
+            ],
+            "barycentric": [
+              0.7368421052631579,
+              -8.975276662232845e-16,
+              0.26315789473684303
+            ]
+          },
+          "faces": [
+            47,
+            48
+          ],
+          "clearancePx": 29.64439145201053,
+          "stageRight": {
+            "x": 768.1075101038921,
+            "y": 438.3080035493282
+          }
+        },
+        {
+          "part": "hind-far-knee",
+          "vertex": 72,
+          "x": 0.532524049282074,
+          "y": 0.547502338886261,
+          "source": {
+            "triangle": [
+              526,
+              519,
+              527
+            ],
+            "barycentric": [
+              0,
+              0.7368421052631579,
+              0.26315789473684215
+            ]
+          },
+          "faces": [
+            97
+          ],
+          "clearancePx": 96.35435930364932,
+          "stageRight": {
+            "x": 763.1445777396696,
+            "y": 413.6172780986975
+          }
+        },
+        {
+          "part": "hind-far-root",
+          "vertex": 65,
+          "x": 0.5592256188392639,
+          "y": 0.516209065914154,
+          "source": {
+            "triangle": [
+              553,
+              552,
+              554
+            ],
+            "barycentric": [
+              0,
+              0.2,
+              0.8
+            ]
+          },
+          "faces": [
+            90,
+            91
+          ],
+          "clearancePx": 135.5961236106714,
+          "stageRight": {
+            "x": 750.7515493075819,
+            "y": 399.0930973816889
+          }
+        },
+        {
+          "part": "fore-far-ankle",
+          "vertex": 41,
+          "x": 0.7169392108917236,
+          "y": 0.5954325795173645,
+          "source": {
+            "triangle": [
+              593,
+              594,
+              595
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          "faces": [
+            54,
+            55
+          ],
+          "clearancePx": 36.249837552245516,
+          "stageRight": {
+            "x": 677.5517688135353,
+            "y": 435.8631926553617
+          }
+        },
+        {
+          "part": "fore-far-paw",
+          "vertex": 29,
+          "x": 0.7930021286010742,
+          "y": 0.5960453748703003,
+          "source": {
+            "triangle": [
+              622,
+              613,
+              616
+            ],
+            "barycentric": [
+              0.7368421052631579,
+              0,
+              0.26315789473684215
+            ]
+          },
+          "faces": [
+            31
+          ],
+          "clearancePx": 35.481392179664034,
+          "stageRight": {
+            "x": 642.2486043392319,
+            "y": 436.1476100269967
+          }
+        },
+        {
+          "part": "fore-far-knee",
+          "vertex": 62,
+          "x": 0.7712969779968262,
+          "y": 0.563910186290741,
+          "source": {
+            "triangle": [
+              654,
+              655,
+              651
+            ],
+            "barycentric": [
+              0,
+              0.47368421052631576,
+              0.5263157894736843
+            ]
+          },
+          "faces": [
+            82
+          ],
+          "clearancePx": 75.77891865843142,
+          "stageRight": {
+            "x": 652.322639424887,
+            "y": 421.2326701061806
+          }
+        },
+        {
+          "part": "fore-far-root",
+          "vertex": 61,
+          "x": 0.7894051671028137,
+          "y": 0.5735957622528076,
+          "source": {
+            "triangle": [
+              687,
+              676,
+              688
+            ],
+            "barycentric": [
+              0,
+              0.3684210526315789,
+              0.631578947368421
+            ]
+          },
+          "faces": [
+            84,
+            85
+          ],
+          "clearancePx": 63.63320640199985,
+          "stageRight": {
+            "x": 643.9180659797393,
+            "y": 425.72804697988636
+          }
+        },
+        {
+          "part": "ear-near-tip",
+          "vertex": 25,
+          "x": 0.7907997369766235,
+          "y": 0.5339441895484924,
+          "source": {
+            "triangle": [
+              700,
+              701,
+              702
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.10526315789473684,
+              0.5789473684210527
+            ]
+          },
+          "faces": [
+            23,
+            24
+          ],
+          "clearancePx": 113.35627857321109,
+          "stageRight": {
+            "x": 643.2708027520237,
+            "y": 407.3245195449513
+          }
+        },
+        {
+          "part": "ear-near-root",
+          "vertex": 41,
+          "x": 0.7814204692840576,
+          "y": 0.5331863760948181,
+          "source": {
+            "triangle": [
+              715,
+              699,
+              702
+            ],
+            "barycentric": [
+              0.7,
+              0.07105263157894737,
+              0.22894736842105268
+            ]
+          },
+          "faces": [
+            46
+          ],
+          "clearancePx": 114.30657664411868,
+          "stageRight": {
+            "x": 647.6240124364646,
+            "y": 406.972794764972
+          }
+        },
+        {
+          "part": "ear-far-tip",
+          "vertex": 12,
+          "x": 0.8055886626243591,
+          "y": 0.5432508587837219,
+          "source": {
+            "triangle": [
+              721,
+              701,
+              722
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.09210526315789473,
+              0.5921052631578948
+            ]
+          },
+          "faces": [
+            9
+          ],
+          "clearancePx": 101.6857153522333,
+          "stageRight": {
+            "x": 636.4068026549558,
+            "y": 411.6440340286674
+          }
+        },
+        {
+          "part": "ear-far-root",
+          "vertex": 19,
+          "x": 0.8060089349746704,
+          "y": 0.5543525218963623,
+          "source": {
+            "triangle": [
+              724,
+              723,
+              722
+            ],
+            "barycentric": [
+              0.7368421052631579,
+              0.15789473684210525,
+              0.10526315789473689
+            ]
+          },
+          "faces": [
+            19
+          ],
+          "clearancePx": 87.76422980898226,
+          "stageRight": {
+            "x": 636.2117411932887,
+            "y": 416.79666096708513
+          }
+        },
+        {
+          "part": "jaw",
+          "vertex": 108,
+          "x": 0.8156567811965942,
+          "y": 0.7191160917282104,
+          "source": {
+            "triangle": [
+              800,
+              801,
+              799
+            ],
+            "barycentric": [
+              0,
+              0.7,
+              0.30000000000000004
+            ]
+          },
+          "faces": [
+            152,
+            153
+          ],
+          "clearancePx": -118.84928676015531,
+          "stageRight": {
+            "x": 631.7338758647873,
+            "y": 493.2685552924334
+          }
+        },
+        {
+          "part": "head",
+          "vertex": 114,
+          "x": 0.8350925445556641,
+          "y": 0.708132266998291,
+          "source": {
+            "triangle": [
+              795,
+              796,
+              797
+            ],
+            "barycentric": [
+              0.6,
+              0.1,
+              0.30000000000000004
+            ]
+          },
+          "faces": [
+            164,
+            165
+          ],
+          "clearancePx": -105.07557054883634,
+          "stageRight": {
+            "x": 622.713133942018,
+            "y": 488.17062081036454
+          }
+        },
+        {
+          "part": "neck",
+          "vertex": 85,
+          "x": 0.7873239517211914,
+          "y": 0.5627498030662537,
+          "source": {
+            "triangle": [
+              677,
+              678,
+              679
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.39210526315789473,
+              0.29210526315789476
+            ]
+          },
+          "faces": [
+            118
+          ],
+          "clearancePx": 77.2340392219385,
+          "stageRight": {
+            "x": 644.8840227315512,
+            "y": 420.6941001819524
+          }
+        },
+        {
+          "part": "root",
+          "vertex": 18,
+          "x": 0.5690078139305115,
+          "y": 0.4565674662590027,
+          "source": {
+            "triangle": [
+              878,
+              880,
+              877
+            ],
+            "barycentric": [
+              0,
+              0.47368421052631576,
+              0.5263157894736843
+            ]
+          },
+          "faces": [
+            16
+          ],
+          "clearancePx": 210.38668957823123,
+          "stageRight": {
+            "x": 746.2113284926817,
+            "y": 371.41157706212937
+          }
+        },
+        {
+          "part": "chest",
+          "vertex": 43,
+          "x": 0.6721640229225159,
+          "y": 0.46582919359207153,
+          "source": {
+            "triangle": [
+              362,
+              363,
+              364
+            ],
+            "barycentric": [
+              0,
+              0.55,
+              0.44999999999999996
+            ]
+          },
+          "faces": [
+            58
+          ],
+          "clearancePx": 198.7724835025629,
+          "stageRight": {
+            "x": 698.3333253570925,
+            "y": 375.71023261206346
+          }
+        },
+        {
+          "part": "spine",
+          "vertex": 381,
+          "x": 0.7333852648735046,
+          "y": 0.6414120197296143,
+          "source": {
+            "triangle": [
+              1131,
+              1130,
+              1132
+            ],
+            "barycentric": [
+              0,
+              0.6842105263157895,
+              0.3157894736842105
+            ]
+          },
+          "faces": [
+            570
+          ],
+          "clearancePx": -21.408380473915678,
+          "stageRight": {
+            "x": 669.9186439459007,
+            "y": 457.20368009829747
+          }
+        },
+        {
+          "part": "pelvis",
+          "vertex": 53,
+          "x": 0.4321921169757843,
+          "y": 0.4616049826145172,
+          "source": {
+            "triangle": [
+              197,
+              199,
+              196
+            ],
+            "barycentric": [
+              0.21052631578947367,
+              0.6947368421052632,
+              0.09473684210526312
+            ]
+          },
+          "faces": [
+            63,
+            64
+          ],
+          "clearancePx": 204.069644068416,
+          "stageRight": {
+            "x": 809.7117462746494,
+            "y": 373.7496449905815
+          }
+        },
+        {
+          "part": "tail3",
+          "vertex": 22,
+          "x": 0.05621736869215965,
+          "y": 0.5492106080055237,
+          "source": {
+            "triangle": [
+              1160,
+              1156,
+              1161
+            ],
+            "barycentric": [
+              0,
+              0.35,
+              0.65
+            ]
+          },
+          "faces": [
+            24,
+            25
+          ],
+          "clearancePx": 94.2121898280939,
+          "stageRight": {
+            "x": 984.2133138789901,
+            "y": 414.4101388973609
+          }
+        },
+        {
+          "part": "tail2",
+          "vertex": 38,
+          "x": 0.07172711938619614,
+          "y": 0.5428443551063538,
+          "source": {
+            "triangle": [
+              1191,
+              1188,
+              1192
+            ],
+            "barycentric": [
+              0,
+              0.8,
+              0.19999999999999996
+            ]
+          },
+          "faces": [
+            49
+          ],
+          "clearancePx": 102.19547096365298,
+          "stageRight": {
+            "x": 977.014756471565,
+            "y": 411.4553630361034
+          }
+        },
+        {
+          "part": "tail1",
+          "vertex": 114,
+          "x": 0.2995662987232208,
+          "y": 0.5542032122612,
+          "source": {
+            "triangle": [
+              1277,
+              89,
+              1276
+            ],
+            "barycentric": [
+              0,
+              0.4,
+              0.6
+            ]
+          },
+          "faces": [
+            169
+          ],
+          "clearancePx": 87.95146409147586,
+          "stageRight": {
+            "x": 871.2675111113399,
+            "y": 416.72736172421526
+          }
+        },
+        {
+          "part": "tail0",
+          "vertex": 85,
+          "x": 0.3249282240867615,
+          "y": 0.5541185140609741,
+          "source": {
+            "triangle": [
+              87,
+              88,
+              89
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.631578947368421,
+              0.052631578947368474
+            ]
+          },
+          "faces": [
+            113,
+            114
+          ],
+          "clearancePx": 88.05767563455905,
+          "stageRight": {
+            "x": 859.4962531914769,
+            "y": 416.688050656703
+          }
+        }
+      ],
+      "resolved": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.04230378128369068,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.4363323129985824,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.5235987755982988,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarRoot": {
+          "rotation": 0
+        },
+        "hindFarKnee": {
+          "rotation": -0.34044694229578826
+        },
+        "hindFarAnkle": {
+          "rotation": 0.6391497437187236
+        },
+        "hindFarPaw": {
+          "rotation": -0.35158252802754864
+        },
+        "foreFarRoot": {
+          "rotation": 0
+        },
+        "foreFarKnee": {
+          "rotation": 0.0712444085310578
+        },
+        "foreFarAnkle": {
+          "rotation": -0.8957878687481715
+        },
+        "foreFarPaw": {
+          "rotation": 0.7293599523288097
+        },
+        "hindNearRoot": {
+          "rotation": 0
+        },
+        "hindNearKnee": {
+          "rotation": -0.2540651670009778
+        },
+        "hindNearAnkle": {
+          "rotation": 0.39873228496823954
+        },
+        "hindNearPaw": {
+          "rotation": -0.1975468445718751
+        },
+        "foreNearRoot": {
+          "rotation": 0
+        },
+        "foreNearKnee": {
+          "rotation": -0.7258399073101306
+        },
+        "foreNearAnkle": {
+          "rotation": 1.7091222333040323
+        },
+        "foreNearPaw": {
+          "rotation": -1.0784658338822057
+        },
+        "tail0": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail1": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail2": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.052879726604613354,
+          "dx": 0,
+          "dy": 0.0666552734375
+        }
+      },
+      "belowGroundPaint": [
+        {
+          "partId": "jaw",
+          "positiveAlphaSourcePixelsBelow": 3805,
+          "deepest": {
+            "source": [
+              1206,
+              584
+            ],
+            "atlas": [
+              1759,
+              109
+            ],
+            "alpha": 255,
+            "face": 143,
+            "vertices": [
+              98,
+              102,
+              97
+            ],
+            "publishedX": 0.8306880061115538,
+            "publishedY": 0.7092482426336834,
+            "depthPx": 106.47500399561832,
+            "stageRight": {
+              "x": 624.7574171460885,
+              "y": 488.6885797921132
+            }
+          },
+          "components": [
+            {
+              "sourceOpaquePixels": 7699,
+              "belowGroundSourcePixels": 3805,
+              "sourceBounds": {
+                "minX": 985,
+                "maxX": 1207,
+                "minY": 556,
+                "maxY": 612
+              },
+              "maximumDepthPx": 106.47500399561832
+            }
+          ]
+        },
+        {
+          "partId": "head",
+          "positiveAlphaSourcePixelsBelow": 2030,
+          "deepest": {
+            "source": [
+              1207,
+              578
+            ],
+            "atlas": [
+              1786,
+              70
+            ],
+            "alpha": 255,
+            "face": 164,
+            "vertices": [
+              112,
+              113,
+              114
+            ],
+            "publishedX": 0.8352431878447533,
+            "publishedY": 0.7075886676708858,
+            "depthPx": 104.39389699227019,
+            "stageRight": {
+              "x": 622.6432157089049,
+              "y": 487.91831946509086
+            }
+          },
+          "components": [
+            {
+              "sourceOpaquePixels": 8105,
+              "belowGroundSourcePixels": 2030,
+              "sourceBounds": {
+                "minX": 959,
+                "maxX": 1207,
+                "minY": 513,
+                "maxY": 578
+              },
+              "maximumDepthPx": 104.39389699227019
+            }
+          ]
+        },
+        {
+          "partId": "spine",
+          "positiveAlphaSourcePixelsBelow": 354,
+          "deepest": {
+            "source": [
+              928,
+              749
+            ],
+            "atlas": [
+              763,
+              266
+            ],
+            "alpha": 255,
+            "face": 569,
+            "vertices": [
+              379,
+              378,
+              380
+            ],
+            "publishedX": 0.7242940078179041,
+            "publishedY": 0.6401435201366741,
+            "depthPx": 19.817681984368697,
+            "stageRight": {
+              "x": 674.1381789411062,
+              "y": 456.61493000674466
+            }
+          },
+          "components": [
+            {
+              "sourceOpaquePixels": 619,
+              "belowGroundSourcePixels": 354,
+              "sourceBounds": {
+                "minX": 895,
+                "maxX": 937,
+                "minY": 712,
+                "maxY": 749
+              },
+              "maximumDepthPx": 19.817681984368697
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "candidate",
+      "extrema": [
+        {
+          "part": "hind-near-ankle",
+          "vertex": 47,
+          "x": 0.40675240755081177,
+          "y": 0.5769144892692566,
+          "source": {
+            "triangle": [
+              28,
+              20,
+              29
+            ],
+            "barycentric": [
+              0,
+              0.15789473684210525,
+              0.8421052631578947
+            ]
+          },
+          "faces": [
+            59,
+            60
+          ],
+          "clearancePx": 59.471522723372836,
+          "stageRight": {
+            "x": 821.5191061952889,
+            "y": 427.2683713486505
+          }
+        },
+        {
+          "part": "hind-near-paw",
+          "vertex": 11,
+          "x": 0.4061054289340973,
+          "y": 0.586213231086731,
+          "source": {
+            "triangle": [
+              30,
+              29,
+              31
+            ],
+            "barycentric": [
+              0,
+              0.55,
+              0.44999999999999996
+            ]
+          },
+          "faces": [
+            10,
+            25
+          ],
+          "clearancePx": 47.81090048425998,
+          "stageRight": {
+            "x": 821.8193890822077,
+            "y": 431.5842064713679
+          }
+        },
+        {
+          "part": "hind-near-knee",
+          "vertex": 59,
+          "x": 0.3287736475467682,
+          "y": 0.5566591620445251,
+          "source": {
+            "triangle": [
+              87,
+              74,
+              88
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          "faces": [
+            76,
+            77,
+            82,
+            83
+          ],
+          "clearancePx": 84.87170306318606,
+          "stageRight": {
+            "x": 857.7114726312476,
+            "y": 417.867244360228
+          }
+        },
+        {
+          "part": "hind-near-root",
+          "vertex": 195,
+          "x": 0.3286362290382385,
+          "y": 0.5406491160392761,
+          "source": {
+            "triangle": [
+              76,
+              245,
+              74
+            ],
+            "barycentric": [
+              0.1,
+              0,
+              0.9
+            ]
+          },
+          "faces": [
+            299,
+            300
+          ],
+          "clearancePx": 104.94830075376834,
+          "stageRight": {
+            "x": 857.7752528326196,
+            "y": 410.43648434752095
+          }
+        },
+        {
+          "part": "fore-near-ankle",
+          "vertex": 38,
+          "x": 0.6857995390892029,
+          "y": 0.5944769382476807,
+          "source": {
+            "triangle": [
+              277,
+              271,
+              276
+            ],
+            "barycentric": [
+              0.3,
+              0.060526315789473685,
+              0.6394736842105263
+            ]
+          },
+          "faces": [
+            47
+          ],
+          "clearancePx": 37.44821170442905,
+          "stageRight": {
+            "x": 692.0046584531485,
+            "y": 435.4196498366258
+          }
+        },
+        {
+          "part": "fore-near-paw",
+          "vertex": 26,
+          "x": 0.7006979584693909,
+          "y": 0.5795966982841492,
+          "source": {
+            "triangle": [
+              291,
+              287,
+              292
+            ],
+            "barycentric": [
+              0,
+              0.7,
+              0.30000000000000004
+            ]
+          },
+          "faces": [
+            29,
+            35
+          ],
+          "clearancePx": 56.10803261869754,
+          "stageRight": {
+            "x": 685.0898389113092,
+            "y": 428.51326792715196
+          }
+        },
+        {
+          "part": "fore-near-knee",
+          "vertex": 78,
+          "x": 0.7088025808334351,
+          "y": 0.5849369168281555,
+          "source": {
+            "triangle": [
+              265,
+              264,
+              343
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          "faces": [
+            114,
+            115
+          ],
+          "clearancePx": 49.41139856451358,
+          "stageRight": {
+            "x": 681.3282317453408,
+            "y": 430.9918293505801
+          }
+        },
+        {
+          "part": "fore-near-root",
+          "vertex": 110,
+          "x": 0.7442254424095154,
+          "y": 0.5383746027946472,
+          "source": {
+            "triangle": [
+              405,
+              402,
+              406
+            ],
+            "barycentric": [
+              0,
+              0.05,
+              0.95
+            ]
+          },
+          "faces": [
+            158,
+            159
+          ],
+          "clearancePx": 107.80054036253298,
+          "stageRight": {
+            "x": 664.8873805917027,
+            "y": 409.38081204895167
+          }
+        },
+        {
+          "part": "hind-far-ankle",
+          "vertex": 58,
+          "x": 0.5023825168609619,
+          "y": 0.5952008962631226,
+          "source": {
+            "triangle": [
+              462,
+              450,
+              461
+            ],
+            "barycentric": [
+              0.10526315789473684,
+              0.42105263157894735,
+              0.4736842105263158
+            ]
+          },
+          "faces": [
+            79
+          ],
+          "clearancePx": 36.54036835306491,
+          "stageRight": {
+            "x": 777.1341998658697,
+            "y": 435.75566125534755
+          }
+        },
+        {
+          "part": "hind-far-paw",
+          "vertex": 39,
+          "x": 0.5218310952186584,
+          "y": 0.6007000803947449,
+          "source": {
+            "triangle": [
+              479,
+              461,
+              468
+            ],
+            "barycentric": [
+              0.7368421052631579,
+              -8.975276662232845e-16,
+              0.26315789473684303
+            ]
+          },
+          "faces": [
+            47,
+            48
+          ],
+          "clearancePx": 29.64439145201053,
+          "stageRight": {
+            "x": 768.1075101038921,
+            "y": 438.3080035493282
+          }
+        },
+        {
+          "part": "hind-far-knee",
+          "vertex": 72,
+          "x": 0.532524049282074,
+          "y": 0.547502338886261,
+          "source": {
+            "triangle": [
+              526,
+              519,
+              527
+            ],
+            "barycentric": [
+              0,
+              0.7368421052631579,
+              0.26315789473684215
+            ]
+          },
+          "faces": [
+            97
+          ],
+          "clearancePx": 96.35435930364932,
+          "stageRight": {
+            "x": 763.1445777396696,
+            "y": 413.6172780986975
+          }
+        },
+        {
+          "part": "hind-far-root",
+          "vertex": 65,
+          "x": 0.5592252612113953,
+          "y": 0.5162094831466675,
+          "source": {
+            "triangle": [
+              553,
+              552,
+              554
+            ],
+            "barycentric": [
+              0,
+              0.2,
+              0.8
+            ]
+          },
+          "faces": [
+            90,
+            91
+          ],
+          "clearancePx": 135.59560040109957,
+          "stageRight": {
+            "x": 750.7517152937924,
+            "y": 399.09329103226776
+          }
+        },
+        {
+          "part": "fore-far-ankle",
+          "vertex": 41,
+          "x": 0.7169422507286072,
+          "y": 0.5954331159591675,
+          "source": {
+            "triangle": [
+              593,
+              594,
+              595
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          "faces": [
+            54,
+            55
+          ],
+          "clearancePx": 36.24916485422458,
+          "stageRight": {
+            "x": 677.5503579307464,
+            "y": 435.8634416346774
+          }
+        },
+        {
+          "part": "fore-far-paw",
+          "vertex": 29,
+          "x": 0.7930023670196533,
+          "y": 0.5960454940795898,
+          "source": {
+            "triangle": [
+              622,
+              613,
+              616
+            ],
+            "barycentric": [
+              0.7368421052631579,
+              0,
+              0.26315789473684215
+            ]
+          },
+          "faces": [
+            31
+          ],
+          "clearancePx": 35.48124269121494,
+          "stageRight": {
+            "x": 642.2484936817583,
+            "y": 436.14766535573347
+          }
+        },
+        {
+          "part": "fore-far-knee",
+          "vertex": 62,
+          "x": 0.7743058800697327,
+          "y": 0.562504231929779,
+          "source": {
+            "triangle": [
+              654,
+              655,
+              651
+            ],
+            "barycentric": [
+              0,
+              0.47368421052631576,
+              0.5263157894736843
+            ]
+          },
+          "faces": [
+            82
+          ],
+          "clearancePx": 77.54198542707766,
+          "stageRight": {
+            "x": 650.926114443124,
+            "y": 420.5801229840985
+          }
+        },
+        {
+          "part": "fore-far-root",
+          "vertex": 61,
+          "x": 0.7992622256278992,
+          "y": 0.5634651780128479,
+          "source": {
+            "triangle": [
+              687,
+              676,
+              688
+            ],
+            "barycentric": [
+              0,
+              0.3684210526315789,
+              0.631578947368421
+            ]
+          },
+          "faces": [
+            84,
+            85
+          ],
+          "clearancePx": 76.33695903890933,
+          "stageRight": {
+            "x": 639.3430987181146,
+            "y": 421.02612793162297
+          }
+        },
+        {
+          "part": "ear-near-tip",
+          "vertex": 25,
+          "x": 0.7982238531112671,
+          "y": 0.4888995587825775,
+          "source": {
+            "triangle": [
+              700,
+              701,
+              702
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.10526315789473684,
+              0.5789473684210527
+            ]
+          },
+          "faces": [
+            23,
+            24
+          ],
+          "clearancePx": 169.8422455536684,
+          "stageRight": {
+            "x": 639.8250396802051,
+            "y": 386.4179062239917
+          }
+        },
+        {
+          "part": "ear-near-root",
+          "vertex": 41,
+          "x": 0.7907058000564575,
+          "y": 0.4951474368572235,
+          "source": {
+            "triangle": [
+              715,
+              699,
+              702
+            ],
+            "barycentric": [
+              0.7,
+              0.07105263157894737,
+              0.22894736842105268
+            ]
+          },
+          "faces": [
+            46
+          ],
+          "clearancePx": 162.0074064480623,
+          "stageRight": {
+            "x": 643.3144017966397,
+            "y": 389.31774064958466
+          }
+        },
+        {
+          "part": "ear-far-tip",
+          "vertex": 12,
+          "x": 0.8150747418403625,
+          "y": 0.48732680082321167,
+          "source": {
+            "triangle": [
+              721,
+              701,
+              722
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.09210526315789473,
+              0.5921052631578948
+            ]
+          },
+          "faces": [
+            9
+          ],
+          "clearancePx": 171.81448403471316,
+          "stageRight": {
+            "x": 632.0040184223221,
+            "y": 385.687940366911
+          }
+        },
+        {
+          "part": "ear-far-root",
+          "vertex": 19,
+          "x": 0.8215945959091187,
+          "y": 0.4963272511959076,
+          "source": {
+            "triangle": [
+              724,
+              723,
+              722
+            ],
+            "barycentric": [
+              0.7368421052631579,
+              0.15789473684210525,
+              0.10526315789473689
+            ]
+          },
+          "faces": [
+            19
+          ],
+          "clearancePx": 160.52791926735247,
+          "stageRight": {
+            "x": 628.977951483669,
+            "y": 389.86532915791486
+          }
+        },
+        {
+          "part": "jaw",
+          "vertex": 108,
+          "x": 0.924413800239563,
+          "y": 0.6227313280105591,
+          "source": {
+            "triangle": [
+              800,
+              801,
+              799
+            ],
+            "barycentric": [
+              0,
+              0.7,
+              0.30000000000000004
+            ]
+          },
+          "faces": [
+            152,
+            153
+          ],
+          "clearancePx": 2.017206941779513,
+          "stageRight": {
+            "x": 581.2563626870764,
+            "y": 448.5333903945607
+          }
+        },
+        {
+          "part": "head",
+          "vertex": 114,
+          "x": 0.9338201880455017,
+          "y": 0.6024827361106873,
+          "source": {
+            "triangle": [
+              795,
+              796,
+              797
+            ],
+            "barycentric": [
+              0.6,
+              0.1,
+              0.30000000000000004
+            ]
+          },
+          "faces": [
+            164,
+            165
+          ],
+          "clearancePx": 27.408941184218783,
+          "stageRight": {
+            "x": 576.8905657150085,
+            "y": 439.1353894797687
+          }
+        },
+        {
+          "part": "neck",
+          "vertex": 85,
+          "x": 0.8114609718322754,
+          "y": 0.5418062806129456,
+          "source": {
+            "triangle": [
+              677,
+              678,
+              679
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.39210526315789473,
+              0.29210526315789476
+            ]
+          },
+          "faces": [
+            118
+          ],
+          "clearancePx": 103.49721637838687,
+          "stageRight": {
+            "x": 633.6812814147213,
+            "y": 410.9735603958549
+          }
+        },
+        {
+          "part": "root",
+          "vertex": 18,
+          "x": 0.5690078139305115,
+          "y": 0.4565674662590027,
+          "source": {
+            "triangle": [
+              878,
+              880,
+              877
+            ],
+            "barycentric": [
+              0,
+              0.47368421052631576,
+              0.5263157894736843
+            ]
+          },
+          "faces": [
+            16
+          ],
+          "clearancePx": 210.38668957823123,
+          "stageRight": {
+            "x": 746.2113284926817,
+            "y": 371.41157706212937
+          }
+        },
+        {
+          "part": "chest",
+          "vertex": 43,
+          "x": 0.6710671782493591,
+          "y": 0.4654562771320343,
+          "source": {
+            "triangle": [
+              362,
+              363,
+              364
+            ],
+            "barycentric": [
+              0,
+              0.55,
+              0.44999999999999996
+            ]
+          },
+          "faces": [
+            58
+          ],
+          "clearancePx": 199.24012074344958,
+          "stageRight": {
+            "x": 698.8424050645942,
+            "y": 375.53715049109917
+          }
+        },
+        {
+          "part": "spine",
+          "vertex": 381,
+          "x": 0.7333852648735046,
+          "y": 0.6414120197296143,
+          "source": {
+            "triangle": [
+              1131,
+              1130,
+              1132
+            ],
+            "barycentric": [
+              0,
+              0.6842105263157895,
+              0.3157894736842105
+            ]
+          },
+          "faces": [
+            570
+          ],
+          "clearancePx": -21.408380473915678,
+          "stageRight": {
+            "x": 669.9186439459007,
+            "y": 457.20368009829747
+          }
+        },
+        {
+          "part": "pelvis",
+          "vertex": 53,
+          "x": 0.4321921169757843,
+          "y": 0.4616049826145172,
+          "source": {
+            "triangle": [
+              197,
+              199,
+              196
+            ],
+            "barycentric": [
+              0.21052631578947367,
+              0.6947368421052632,
+              0.09473684210526312
+            ]
+          },
+          "faces": [
+            63,
+            64
+          ],
+          "clearancePx": 204.069644068416,
+          "stageRight": {
+            "x": 809.7117462746494,
+            "y": 373.7496449905815
+          }
+        },
+        {
+          "part": "tail3",
+          "vertex": 22,
+          "x": 0.05621736869215965,
+          "y": 0.5492106080055237,
+          "source": {
+            "triangle": [
+              1160,
+              1156,
+              1161
+            ],
+            "barycentric": [
+              0,
+              0.35,
+              0.65
+            ]
+          },
+          "faces": [
+            24,
+            25
+          ],
+          "clearancePx": 94.2121898280939,
+          "stageRight": {
+            "x": 984.2133138789901,
+            "y": 414.4101388973609
+          }
+        },
+        {
+          "part": "tail2",
+          "vertex": 38,
+          "x": 0.07172711938619614,
+          "y": 0.5428443551063538,
+          "source": {
+            "triangle": [
+              1191,
+              1188,
+              1192
+            ],
+            "barycentric": [
+              0,
+              0.8,
+              0.19999999999999996
+            ]
+          },
+          "faces": [
+            49
+          ],
+          "clearancePx": 102.19547096365298,
+          "stageRight": {
+            "x": 977.014756471565,
+            "y": 411.4553630361034
+          }
+        },
+        {
+          "part": "tail1",
+          "vertex": 114,
+          "x": 0.2995662987232208,
+          "y": 0.5542032122612,
+          "source": {
+            "triangle": [
+              1277,
+              89,
+              1276
+            ],
+            "barycentric": [
+              0,
+              0.4,
+              0.6
+            ]
+          },
+          "faces": [
+            169
+          ],
+          "clearancePx": 87.95146409147586,
+          "stageRight": {
+            "x": 871.2675111113399,
+            "y": 416.72736172421526
+          }
+        },
+        {
+          "part": "tail0",
+          "vertex": 85,
+          "x": 0.3249282240867615,
+          "y": 0.5541185140609741,
+          "source": {
+            "triangle": [
+              87,
+              88,
+              89
+            ],
+            "barycentric": [
+              0.3157894736842105,
+              0.631578947368421,
+              0.052631578947368474
+            ]
+          },
+          "faces": [
+            113,
+            114
+          ],
+          "clearancePx": 88.05767563455905,
+          "stageRight": {
+            "x": 859.4962531914769,
+            "y": 416.688050656703
+          }
+        }
+      ],
+      "resolved": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.04230378128369068,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.15425029033738946,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.18510034840486736,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarRoot": {
+          "rotation": 0
+        },
+        "hindFarKnee": {
+          "rotation": -0.34044694229578826
+        },
+        "hindFarAnkle": {
+          "rotation": 0.6391497437187236
+        },
+        "hindFarPaw": {
+          "rotation": -0.35158252802754864
+        },
+        "foreFarRoot": {
+          "rotation": 0
+        },
+        "foreFarKnee": {
+          "rotation": 0.0712444085310578
+        },
+        "foreFarAnkle": {
+          "rotation": -0.8957878687481715
+        },
+        "foreFarPaw": {
+          "rotation": 0.7293599523288097
+        },
+        "hindNearRoot": {
+          "rotation": 0
+        },
+        "hindNearKnee": {
+          "rotation": -0.2540651670009778
+        },
+        "hindNearAnkle": {
+          "rotation": 0.39873228496823954
+        },
+        "hindNearPaw": {
+          "rotation": -0.1975468445718751
+        },
+        "foreNearRoot": {
+          "rotation": 0
+        },
+        "foreNearKnee": {
+          "rotation": -0.7258399073101306
+        },
+        "foreNearAnkle": {
+          "rotation": 1.7091222333040323
+        },
+        "foreNearPaw": {
+          "rotation": -1.0784658338822057
+        },
+        "tail0": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail1": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail2": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.052879726604613354,
+          "dx": 0,
+          "dy": 0.0666552734375
+        }
+      },
+      "belowGroundPaint": [
+        {
+          "partId": "spine",
+          "positiveAlphaSourcePixelsBelow": 354,
+          "deepest": {
+            "source": [
+              928,
+              749
+            ],
+            "atlas": [
+              763,
+              266
+            ],
+            "alpha": 255,
+            "face": 569,
+            "vertices": [
+              379,
+              378,
+              380
+            ],
+            "publishedX": 0.7242940078179041,
+            "publishedY": 0.6401435201366741,
+            "depthPx": 19.817681984368697,
+            "stageRight": {
+              "x": 674.1381789411062,
+              "y": 456.61493000674466
+            }
+          },
+          "components": [
+            {
+              "sourceOpaquePixels": 619,
+              "belowGroundSourcePixels": 354,
+              "sourceBounds": {
+                "minX": 895,
+                "maxX": 937,
+                "minY": 712,
+                "maxY": 749
+              },
+              "maximumDepthPx": 19.817681984368697
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    "root",
+    "phases",
+    "durationMs",
+    "bodyMs",
+    "limitsRad",
+    "deform",
+    "stanceEnvelope",
+    "secondary",
+    "all other tracks",
+    "each key time/ease",
+    "all five input hashes",
+    "ground/supports/contact/shape/ARAP limits"
+  ]
+}

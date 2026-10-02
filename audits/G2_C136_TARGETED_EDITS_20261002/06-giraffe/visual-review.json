@@ -1,0 +1,28 @@
+{
+  "name": "Giraffe",
+  "masterSha256": "5b83ccff54a485e67a315ba6589cf7e9f737591612a89347edf33aab1f15b179",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full 1254-square successor inspected: two separate leaf-shaped external pinnae now flank the crown, with both short ossicones still visible. The far ear is visibly exposed above/right of the brow; near ear remains left of the crown. Long neck, irregular tan-brown patches, dark mane, complete tufted tail and four hoof tips remain. The head turns slightly toward the viewer; partly occluded proximal legs, true ear-root anatomy and near/far depth remain fit-review holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 410,
+      "y0": 268,
+      "x1": 891,
+      "y1": 968
+    },
+    "margins": {
+      "left": 410,
+      "right": 362,
+      "top": 268,
+      "bottom": 285
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

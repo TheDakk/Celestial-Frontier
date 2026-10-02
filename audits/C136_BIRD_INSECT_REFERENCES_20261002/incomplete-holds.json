@@ -1,0 +1,10 @@
+[
+  {
+    "id": "c136-bird-insect-24-water-strider",
+    "family": "insect",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/24-water-strider",
+    "unresolved": [
+      "mandible"
+    ]
+  }
+]
