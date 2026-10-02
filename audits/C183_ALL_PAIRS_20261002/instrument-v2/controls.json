@@ -1,0 +1,104 @@
+{
+  "schema": "cf.c183-local-probe-controls/v1",
+  "status": "PASS",
+  "checks": 16,
+  "rows": [
+    {
+      "name": "all five actual offsets show the original two pre-beat branches",
+      "status": "PASS"
+    },
+    {
+      "name": "exact local probe and restoration, actual turn 0",
+      "status": "PASS"
+    },
+    {
+      "name": "exact local probe and restoration, actual turn 1",
+      "status": "PASS"
+    },
+    {
+      "name": "exact local probe and restoration, actual turn 2",
+      "status": "PASS"
+    },
+    {
+      "name": "exact local probe and restoration, actual turn 3",
+      "status": "PASS"
+    },
+    {
+      "name": "exact local probe and restoration, actual turn 4",
+      "status": "PASS"
+    },
+    {
+      "name": "deliberately early sampled time is rejected and restored",
+      "status": "PASS"
+    },
+    {
+      "name": "deliberately late sampled time is rejected and restored",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong sampled action at exact time is rejected and restored",
+      "status": "PASS"
+    },
+    {
+      "name": "read callback failure still restores the ordinary start",
+      "status": "PASS"
+    },
+    {
+      "name": "stale segment restoration refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "genuine mismatched independent contact remains distinct and fails",
+      "status": "PASS"
+    },
+    {
+      "name": "pre-beat metadata is rejected even if coordinates are copied from plan",
+      "status": "PASS"
+    },
+    {
+      "name": "early/late requests are preserved, never silently snapped",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged live stageAt and capture bodies; semantic stills use local probe",
+      "status": "PASS"
+    },
+    {
+      "name": "CPU-only RED continuation and instrument-stop supervisor stay exact",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Negligible browser-free stage-contract double and exact retained arithmetic; not actual BattleStage/rig, bundle or native qualification.",
+  "inputs": [
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/retained-first-pair/report.json",
+      "sha256": "6c5f10a8f851a8b0921c0df7d1b9ddb37cc4baa67a1b667b253303accd4e32cd"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/local-beat-probe.mjs",
+      "sha256": "b515d406eb62ff4f91af09b552c95107df6c0d565072abbe4645ee8f302f122e"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/probe-controls.mjs",
+      "sha256": "aaf0e7c7cb978aa7dab75dd238d1314d88511e4795b0bbb3dbd15ebd16ca418b"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-entry.mjs",
+      "sha256": "82adccd89f1e7fcf1ae0988ef512b1f61d74f4400ebcf47a0e2126fda0be77f6"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-runner.mjs",
+      "sha256": "bbc8e10cc67b180cda2cce99636b8518e07f6c6020b85dae417cd85e9eef60ab"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/run-sweep-v2.mjs",
+      "sha256": "f9cb3b9bae9d2aa44b95ed40ba4c40d9f6d421ff2db61c070ecf35042cc67077"
+    }
+  ],
+  "pending": [
+    "Actual BattleStage with loaded Crab fit",
+    "Targeted successor bundle/preparation",
+    "Independent real contact-anchor mutation controls",
+    "Native validation"
+  ]
+}
