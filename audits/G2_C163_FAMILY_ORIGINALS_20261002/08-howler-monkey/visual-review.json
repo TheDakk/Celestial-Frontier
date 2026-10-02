@@ -1,0 +1,28 @@
+{
+  "name": "Howler Monkey",
+  "masterSha256": "4968de4ee55f14737fb831247c001764ab1246175aea9c877dfe2e87be48efc1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Large rounded throat/beard region, dark face, brown-black coat and long connected prehensile-looking tail with a bare terminal underside are visible. Two hands and two feet are visible but do not share one baseline; far forelimb is lifted and both proximal pairs overlap. Tail attachment is continuous. Throat proportions, digit topology and grounded fit remain review holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 305,
+      "y0": 338,
+      "x1": 948,
+      "y1": 919
+    },
+    "margins": {
+      "left": 305,
+      "right": 305,
+      "top": 338,
+      "bottom": 334
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

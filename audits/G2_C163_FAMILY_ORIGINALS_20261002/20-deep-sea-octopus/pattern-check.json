@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Deep-Sea Octopus",
+  "masterSha256": "61564a71a8c916c94f35b7288236879a736494576379dc78872e250b26e1b783",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

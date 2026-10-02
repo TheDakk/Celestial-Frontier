@@ -1,0 +1,14 @@
+{
+  "id": "13-centipede",
+  "name": "Centipede",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8b9f3874-76de-43a5-94ff-0ca3a52c7785.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "098a1cf56d03ef6b1b169d3a82cc03a29bc87013e03a7f57a3ff9e4788eaf664",
+  "bytes": 1081105,
+  "promptSha256": "7b3b1bedfd3617711aa76cc9d5ec13b8f306bece4b700cc16fb2092d3578f340",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c163-effect-generation/v1",
+  "theme": "sand",
+  "phase": "travel",
+  "generator": "built-in image_gen",
+  "intent": "edit",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-de382fb8-03d4-41c9-a317-a0ce7ef37328.png",
+  "sourceSha256": "ef10a0bd399e39fdc2ed70b370b57b87034822b66cfbafc0aa2eb936e36df9af",
+  "master": "audits/C163_EFFECTS_POLISH_20261002/sand/travel-master.png",
+  "masterSha256": "ef10a0bd399e39fdc2ed70b370b57b87034822b66cfbafc0aa2eb936e36df9af",
+  "prompt": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/sand/travel.prompt.txt",
+    "sha256": "e2e04aefc80b37b502c9245c7b0351541e3d4f0231a35be98ac6460c041b34b0"
+  },
+  "editTarget": {
+    "path": "audits/C132_EFFECTS_20261001/sand/travel-master.png",
+    "sha256": "f9c0ffeade814bf1fb5ee1a428b124005776cb7b0dc2cd5c7da7a174fee05750"
+  },
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "predecessorAnchors": "sand/final/anchors.json",
+  "originalPixelsModified": false,
+  "qualityAccepted": false,
+  "nativeProof": false
+}

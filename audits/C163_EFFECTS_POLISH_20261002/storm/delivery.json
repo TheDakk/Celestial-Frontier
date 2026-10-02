@@ -1,0 +1,18 @@
+{
+  "theme": "storm",
+  "phase": "launch",
+  "anchors": "audits/C163_EFFECTS_POLISH_20261002/storm/anchors.json",
+  "anchorsSha256": "7e99d6930027a8c1e898b9fc6a7cb212c5938852c7cdcff7203da8d91d3caa55",
+  "generation": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/storm/generation.json",
+    "sha256": "4296e2a07bdcbb71fa2af7f009216ab2f89d81e421cbb7843c372feda0a4706b",
+    "bytes": 1191
+  },
+  "review": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/storm/visual-review.json",
+    "sha256": "ae59972b76c2a894acc7746a4f46d4878a1d091fe2e52fb3477540529187872a",
+    "bytes": 4461
+  },
+  "qualityAccepted": false,
+  "registered": false
+}

@@ -96,23 +96,25 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 Dakk authorizes the ordered C163 program, large signed batches without per-step approval.
 Own lane: OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac`.
 Signed anthropic/mac through `fc2d7ac30` merged as `1ced0a1fd` G; Claude's handoff above is retained.
-Read sibling mailbox C160–C165 and D29/D30. C165 posts signed WebP head `72bbe1531`; merge it after this motion delivery, then measure the final combined product once.
+Read sibling mailbox through C167 and D29/D30. C165 WebP head `72bbe1531` merged as `b5dfd0a2f` G, preserving both handoffs; measure the final combined product once.
 
 **Current product:** 45 Dakk-accepted arena sets across all 43 biome families, native
 1672×941 WebP runtime copies, roughly 84 MiB within unchanged 128 MiB pack. PNG masters
 are preserved. Eleven painted ability themes are wired, effects anchor to actual contact
-joints, guardian film PASS remains flag-off, coverage 184/631.
+joints, guardian film PASS remains flag-off. Claude C167 accepts all ten C136 native films after the sprawler fix: coverage 192/631, Alligator snout hold resolved.
 
 **First delivery:** `C163_SPRAWLER_MOTION_20261002`: geometry-selected low-slung profile
 clears all nine unchanged C136 static fits, 171 action rows plus nine presentation rows,
 34,108 publications. No head/neck idle dip. Alligator's old snout failure reproduces;
 2,532 new standalone/two-facing publications keep all mesh above ground. Detached source
 fragments and visual admission remain held. 126 motion tests, game types/root validate PASS.
-Original compression/fold evidence and initial candidate transition failures are preserved.
+Original compression/fold evidence and initial candidate transition failures are preserved. Signed delivery `f584839fa` G; Claude C167 provides independent native/full-size acceptance.
 
-**In progress:** next 24 originals include first primate/myriapod/cephalopod/flyer-membrane
-paintings; source-polygon repairs and refusal-class references; four weak effect phases
-and marsh/dunesea/lake repaints. Each agent owns separate audits only. Root owns motion,
+**Art candidates delivered:** C176/C177 bind four stronger effect phases and three arena successors in `C163_EFFECTS_POLISH_20261002` and `C132_ARENAS_20261001/effects-agent-repaint-c163.json`. Sixty-four effect controls, all D29 and nine D30 checks PASS; remaining seams/fringes and Sand theme-identity hold stay explicit. No replacement registry/acceptance inferred.
+
+**Originals delivered (C178):** `G2_C163_FAMILY_ORIGINALS_20261002/pilot.json` contains 24 new native originals (3 quadrupeds, 9 primates, 3 myriapods, 5 cephalopods, 4 membrane flyers), 30,168,687 bytes. Framing24/24PASS; anatomical/ground-contact holds stay explicit, no admission claim.
+
+**In progress:** source-polygon repairs and refusal-class references, native effect-anchor film and remaining performance work. Each agent owns separate audits only. Root owns motion,
 remaining three Centipede slow frames, sequential native films/all-pair 4× sweep, then
 ONE fresh combined I5 3+1 on the complete signed product after Claude posts C165+.
 Never reuse or re-bind the prior I5 proof after product changes.
@@ -126,6 +128,6 @@ serialize heavy work under the shared lock. No native reservation currently acti
 Budget UNFROZEN, no hosted authority. Only own-branch normal push after green required gates
 and trigger/visibility check. No PR, label, hosted run, develop/main merge, release/deploy.
 
-Next: Claude re-scores unchanged C136 against the signed profile; Codex completes the
+Next: Claude scores delivered candidates and finishes the accepted C136 rigs; Codex completes the
 remaining ordered deliveries and combined gates. Read sibling mailbox at each batch end,
 write delivery rows only to TO_CLAUDE. No Dakk relay or app switch is needed.

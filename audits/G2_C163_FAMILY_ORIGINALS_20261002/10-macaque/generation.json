@@ -1,0 +1,14 @@
+{
+  "id": "10-macaque",
+  "name": "Macaque",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-66a3c6fc-eb56-42c7-b9f5-5639616ed8ef.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "56995df1a7e64468a934dcd3c118880bc46c8f3b6baaf8c18f4695310a898376",
+  "bytes": 1247259,
+  "promptSha256": "5dc096b47516cf787903cb9dff4362f77fa441a4dc540d6cd063d41996d430f7",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

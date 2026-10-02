@@ -1,0 +1,28 @@
+{
+  "name": "Cuttlefish",
+  "masterSha256": "32558a20501498deb6e00bdc0d71fe97def50b76177a55a1edb9b22ce6f018a6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Broad flattened patterned mantle, continuous undulating side-fin fringe and a W-shaped pupil are clearly visible. Two longer club-ended feeding tentacles are distinct. The short-arm fan contains dense overlapping roots and curled tips; eight-arm count cannot be established confidently from this painting and remains held. Natural patterned skin is present, but glossy edge treatment and partly hidden mantle attachments require review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 220,
+      "y0": 413,
+      "x1": 1048,
+      "y1": 872
+    },
+    "margins": {
+      "left": 220,
+      "right": 205,
+      "top": 413,
+      "bottom": 381
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

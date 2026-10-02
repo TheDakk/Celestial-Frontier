@@ -1,0 +1,14 @@
+{
+  "id": "02-salamander",
+  "name": "Salamander",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-cfffcc3e-b965-4581-b8e4-0b3b50811d8d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "02031f9202dd2f2164f169f6a42e9e45d1ebbec57cee586740b93f8660d603c8",
+  "bytes": 1166826,
+  "promptSha256": "e0a4e919c8d3b66505b84976a02bb46affe2801229b7e7934844623ebfa703f0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

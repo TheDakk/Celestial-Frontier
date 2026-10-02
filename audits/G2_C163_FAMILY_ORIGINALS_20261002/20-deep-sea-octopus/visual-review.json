@@ -1,0 +1,28 @@
+{
+  "name": "Deep-Sea Octopus",
+  "masterSha256": "61564a71a8c916c94f35b7288236879a736494576379dc78872e250b26e1b783",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Soft translucent pale mantle, two ear-like fins and a broad connected arm web are visible. ANATOMY HOLD: only seven arm tips can be confidently traced in the painted silhouette; an eighth is not independently readable. No feeding-tentacle clubs are added. Fin-root separation, mantle opening and sucker topology need review; translucent mottling is heavy and may complicate later ownership.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 270,
+      "y0": 265,
+      "x1": 984,
+      "y1": 968
+    },
+    "margins": {
+      "left": 270,
+      "right": 269,
+      "top": 265,
+      "bottom": 285
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

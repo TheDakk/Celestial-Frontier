@@ -1,0 +1,28 @@
+{
+  "name": "Millipede",
+  "masterSha256": "17b95ff46b994e99c8f89324ef805b0927d83a540ff4d41db152b69bb06f15b2",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Cylindrical brown ringed trunk, short clubbed antennae and a dense fringe of short legs differ clearly from the centipedes. No tail stinger or giant splayed legs. The image does not establish two leg pairs on each diplosegment; most legs overlap at their roots and far legs are hard to trace. Large simple-looking eye and glossy metallic-looking cuticle remain anatomical/style review holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 254,
+      "y0": 538,
+      "x1": 1018,
+      "y1": 730
+    },
+    "margins": {
+      "left": 254,
+      "right": 235,
+      "top": 538,
+      "bottom": 523
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

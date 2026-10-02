@@ -1,0 +1,28 @@
+{
+  "name": "Gorilla",
+  "masterSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Broad gorilla muzzle, heavy crest, silver saddle, long strong arms and natural taillessness are clear. Two hands and two feet are visible, but the far hindleg root is occluded and the far hand is lifted rather than grounded. Torso and face use a three-quarter angle instead of a strict lateral fit. Finger ownership and the single visible ear require review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 313,
+      "y0": 308,
+      "x1": 959,
+      "y1": 972
+    },
+    "margins": {
+      "left": 313,
+      "right": 294,
+      "top": 308,
+      "bottom": 281
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

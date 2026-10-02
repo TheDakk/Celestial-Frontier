@@ -1,0 +1,18 @@
+{
+  "theme": "void",
+  "phase": "launch",
+  "anchors": "audits/C163_EFFECTS_POLISH_20261002/void/anchors.json",
+  "anchorsSha256": "1686432301df33d6b2814c2f126469cc42ce2de5b4b6af2444407710083efd0d",
+  "generation": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/void/generation.json",
+    "sha256": "c6877c77dd608f7e676794d7ed8874b464d8097422da8bcdabebf36f81c57ca9",
+    "bytes": 1186
+  },
+  "review": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/void/visual-review.json",
+    "sha256": "079c9e887d8c34d90bb939e67d132b026b23b1fe5c08b5b244862ce1a0283b10",
+    "bytes": 4443
+  },
+  "qualityAccepted": false,
+  "registered": false
+}

@@ -1,0 +1,18 @@
+{
+  "theme": "sand",
+  "phase": "travel",
+  "anchors": "audits/C163_EFFECTS_POLISH_20261002/sand/anchors.json",
+  "anchorsSha256": "b3262db06422dc2789d988d666744cb6c593e1df54ffe2d743c4c6a1d376ccb4",
+  "generation": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/sand/generation.json",
+    "sha256": "5cd80ee588d151508301b5a474ecda5135a6bd4db8ea9529e25d0bcf98622ae8",
+    "bytes": 1186
+  },
+  "review": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/sand/visual-review.json",
+    "sha256": "9c61d5467c1e10c686e3d7c3bf27cc26fbf6a3a31c148bd190bee6c0920db47a",
+    "bytes": 4380
+  },
+  "qualityAccepted": false,
+  "registered": false
+}

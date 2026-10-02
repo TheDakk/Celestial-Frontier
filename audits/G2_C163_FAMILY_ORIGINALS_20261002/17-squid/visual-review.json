@@ -1,0 +1,28 @@
+{
+  "name": "Squid",
+  "masterSha256": "2b3fc8cd8f5fc8ffadd635162f15101f444ac4a1d93927e6dbd8c9ba5e7f9ef0",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Torpedo mantle, paired terminal fins, large eye and two distinctly longer club-ended feeding tentacles are visible. Eight shorter arm tips appear around the fan, but several roots overlap and require traced ownership before any count declaration. Reddish mottled skin and pale sucker rows are readable; rings at the mantle opening and very glossy finish need style/anatomy review. Full silhouette uncropped.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 254,
+      "y0": 445,
+      "x1": 999,
+      "y1": 825
+    },
+    "margins": {
+      "left": 254,
+      "right": 254,
+      "top": 445,
+      "bottom": 428
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

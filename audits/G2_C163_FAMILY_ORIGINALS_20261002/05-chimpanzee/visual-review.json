@@ -1,0 +1,28 @@
+{
+  "name": "Chimpanzee",
+  "masterSha256": "5a237ca7019a0507d1f9f1dbee49ccdd7741cf2cdaca4e4a9b2e36ee1d32991c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Dark shaggy coat, pale bare face, large round ear, long arms, two hands and two feet, with no tail. The far hand and rear foot are lifted at different heights, and the hindlimbs overlap proximally. Individual digits require semantic review; no full-stage or grounded-pose claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 320,
+      "y0": 310,
+      "x1": 927,
+      "y1": 952
+    },
+    "margins": {
+      "left": 320,
+      "right": 326,
+      "top": 310,
+      "bottom": 301
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

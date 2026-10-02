@@ -1,0 +1,28 @@
+{
+  "name": "Centipede",
+  "masterSha256": "098a1cf56d03ef6b1b169d3a82cc03a29bc87013e03a7f57a3ff9e4788eaf664",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Flattened segmented brown trunk, two long head antennae, a trailing terminal leg pair and many separated walking legs are visible in a shallow curved top/side view. Rear has no scorpion stinger. Exact segment-to-leg pairing is not verified; far legs are partly obscured and the apparent venom claws project forward from the mouth region, needing attachment review. Surface is unusually glossy; no anatomical or motion admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 168,
+      "y0": 472,
+      "x1": 1119,
+      "y1": 771
+    },
+    "margins": {
+      "left": 168,
+      "right": 134,
+      "top": 472,
+      "bottom": 482
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

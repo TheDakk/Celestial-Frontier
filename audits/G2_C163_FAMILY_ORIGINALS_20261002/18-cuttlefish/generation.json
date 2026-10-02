@@ -1,0 +1,14 @@
+{
+  "id": "18-cuttlefish",
+  "name": "Cuttlefish",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-18006474-d073-4660-89da-6b8ae65c20a8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "32558a20501498deb6e00bdc0d71fe97def50b76177a55a1edb9b22ce6f018a6",
+  "bytes": 1269722,
+  "promptSha256": "9e630a905ed7bfb51eb21af0d744aa75b4ec83ce7f0527a686cca63b0e11cf78",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Bat",
+  "masterSha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two large ears, a small mammalian face, furred trunk, two broad membrane wings and two hind feet are visible. Thumb claws and long wing struts appear connected; no extra arms or feathers. The hind membrane/tail outline is difficult to distinguish from overlapping wing surfaces, and the far root and finger counts remain unverified. Dense vein texture requires style review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 266,
+      "y0": 311,
+      "x1": 978,
+      "y1": 925
+    },
+    "margins": {
+      "left": 266,
+      "right": 275,
+      "top": 311,
+      "bottom": 328
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

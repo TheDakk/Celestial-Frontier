@@ -1,0 +1,14 @@
+{
+  "id": "20-deep-sea-octopus",
+  "name": "Deep-Sea Octopus",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0378373b-906b-4f43-9da9-6a6ca0a492f6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "61564a71a8c916c94f35b7288236879a736494576379dc78872e250b26e1b783",
+  "bytes": 1353312,
+  "promptSha256": "799ca9970e9c0aaea7094e9982b5912ba66560b74b7d7ab5ced14db672d511a2",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

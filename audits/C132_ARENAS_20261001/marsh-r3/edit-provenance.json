@@ -1,0 +1,120 @@
+{
+  "schema": "cf.c163-arena-edit-provenance/v1",
+  "id": "marsh-r3",
+  "qualityAccepted": false,
+  "originalsModified": false,
+  "edits": [
+    {
+      "role": "mid",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.png",
+        "sha256": "6a5d7d927f7751a57527e771e03f42e15f2de806734dd389b022c8e33153f848",
+        "bytes": 1957960
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.generation.json",
+        "sha256": "270fa0cdc078551001fe6073083cc770c9b083e721b429d31f3ce42d7cbc59c3",
+        "bytes": 844
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/marsh/arena-mid.png",
+        "sha256": "d3177d982c9ececcca16851ea897b5adb058a11342a767ed9c626ac53d3ca50d",
+        "bytes": 2064551
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": true,
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid-c163.prompt.txt",
+        "sha256": "88eb276e43cfdbf897f9c064c3bc2e5762d90c085cf4b22f9f7f350dd5f5572f"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    },
+    {
+      "role": "near",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-attempt-1.png",
+        "sha256": "5a344de0b5e58a802407af7b8570f1f0eddce4fec420ed9f305dd34ca46d1971",
+        "bytes": 1402279
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-attempt-1.generation.json",
+        "sha256": "03538745916abb44f241839b8bd521db0c1c21b675c3e7b04f469dfb2ce0ab8f",
+        "bytes": 870
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/marsh/arena-near.png",
+        "sha256": "c5e74c2de6314d04cabddf8d50df1e730c2361d136e62f8b9f7cc8ca919544ba",
+        "bytes": 1396857
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": false,
+      "hold": "Preserved too much predecessor shelf/plant/color texture; immutable predecessor retained.",
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-c163.prompt.txt",
+        "sha256": "7126830b031d99a145e71ad0ebb3361f11987e41721cda12ab327e512740ba96"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    },
+    {
+      "role": "near",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.png",
+        "sha256": "29da6b08ff6ba7429cb55574dc0dd2fd9d6211fb652f14e0996f057aa91e4bff",
+        "bytes": 1267655
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.generation.json",
+        "sha256": "6d0c9b3f61e50d126cc86e55abc4ab4eb56deeb1777d0805989304c5198cd049",
+        "bytes": 853
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.png",
+        "sha256": "6a5d7d927f7751a57527e771e03f42e15f2de806734dd389b022c8e33153f848",
+        "bytes": 1957960
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": true,
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-c163-second.prompt.txt",
+        "sha256": "ea5ca14dbc954b275ab90fcbc547db73122a299aca3077642797689ad05ec1db"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    }
+  ],
+  "reused": [
+    {
+      "role": "far",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
+        "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989",
+        "bytes": 2464395
+      },
+      "copy": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.png",
+        "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989",
+        "bytes": 2464395
+      }
+    }
+  ]
+}
