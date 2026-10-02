@@ -1,7 +1,11 @@
 import fs from 'node:fs';
 import {it,expect} from 'vitest';
 import {compileBodyCard} from './body-card.js';
-import {buildTimeline,sampleTimeline,type MotionTimeline} from './timeline.js';
+import {buildActionTimeline,sampleTimeline,type MotionTimeline} from './timeline.js';
+import {actionsFor} from './family-actions.js';
+// Exercise the generic envelope directly; the production sprawler author now
+// precedes it and has separate full-motion regression coverage.
+const buildTimeline=(card:Parameters<typeof buildActionTimeline>[0],id:string,seed:number)=>buildActionTimeline(card,actionsFor(card.template.id,card.anatomy)![id]!,seed);
 import {createFamilyContactSolver,observedContactSupports} from '../creature-rig-contact.js';
 const root=new URL('../../../../../../',import.meta.url);
 const read=(fit:string,file:string)=>JSON.parse(fs.readFileSync(new URL(fit+'/'+file,root),'utf8'));

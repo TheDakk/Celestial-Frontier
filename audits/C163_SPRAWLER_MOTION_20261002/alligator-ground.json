@@ -1,0 +1,109 @@
+{
+  "schema": "cf.c163-sprawler-ground/v1",
+  "scope": "actual published mesh, recorded target beats, two facings; no native or visual acceptance",
+  "rows": [
+    {
+      "name": "retained-original",
+      "modes": [
+        {
+          "mode": "standalone",
+          "samples": 844,
+          "headClearancePx": -118.84928676015531,
+          "allClearancePx": -118.84928676015531,
+          "maxContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "ms": 520,
+            "part": "jaw"
+          }
+        },
+        {
+          "mode": "left",
+          "samples": 844,
+          "headClearancePx": -118.84928676015531,
+          "allClearancePx": -118.84928676015531,
+          "maxContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "ms": 520,
+            "part": "jaw"
+          }
+        },
+        {
+          "mode": "right",
+          "samples": 844,
+          "headClearancePx": -118.84928676015531,
+          "allClearancePx": -118.84928676015531,
+          "maxContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "ms": 520,
+            "part": "jaw"
+          }
+        }
+      ]
+    },
+    {
+      "name": "sprawler",
+      "modes": [
+        {
+          "mode": "standalone",
+          "samples": 844,
+          "headClearancePx": 153.0110794650873,
+          "allClearancePx": 21.457806025679965,
+          "maxContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "ms": 519,
+            "part": "spine"
+          }
+        },
+        {
+          "mode": "left",
+          "samples": 844,
+          "headClearancePx": 153.0110794650873,
+          "allClearancePx": 21.457806025679965,
+          "maxContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "ms": 519,
+            "part": "spine"
+          }
+        },
+        {
+          "mode": "right",
+          "samples": 844,
+          "headClearancePx": 153.0110794650873,
+          "allClearancePx": 21.457806025679965,
+          "maxContactDriftPx": 0.0007211421109194227,
+          "worst": {
+            "ms": 519,
+            "part": "spine"
+          }
+        }
+      ]
+    }
+  ],
+  "unchangedInputs": [
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/record.json",
+      "sha256": "5e1d4b6fa1240969d47d68b5d67682c61b6f7e33c6e4cfa459eaf2715a5a32de",
+      "unchanged": true
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/binding.json",
+      "sha256": "3f4ed0057fe471025ce0c7a79702b36d8b70848fad319473d0314576a6c7bf09",
+      "unchanged": true
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/parts/keyed.png",
+      "sha256": "c740060561de6d3757dd0aa313ae6bbda8874083020ac4db957946fac6b786d9",
+      "unchanged": true
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/fit/parts/atlas/03-alligator.png",
+      "sha256": "2ba23c114c948ccf93d6bf80912c0296006dd50a3c97fd9c6bb871e9236bc2d1",
+      "unchanged": true
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/inputs/packet/master.png",
+      "sha256": "64f9dc3207fa10afccd71456fe950a37c2caf9d1fcf5864602553ab59bb32140",
+      "unchanged": true
+    }
+  ]
+}

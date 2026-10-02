@@ -4,7 +4,7 @@ Motion direction and animation contract, PROPOSED version 1, 2026-09-12. Compani
 
 Each section is plain text inside a fenced block. Sections 1 and 2 are frozen once approved; section 3 is filled by the compiler from the resolved-anatomy record; sections 4 to 7 are the closed action, timing, secondary-motion and staging vocabularies.
 
-Matches code as of 2026-09-13 (see Implementation at the end; sections 1, 2, 5 and 6 are Dakk's wording and are not touched by that note).
+Implementation notes refreshed through 2026-10-02; the historical implementation paragraph is dated 2026-09-13. Sections 1, 2, 5 and 6 remain frozen.
 
 ## 0. How to use
 
@@ -280,3 +280,24 @@ Matches code as of 2026-09-13. The kit is implemented in `port/v2/apps/game/src/
 ### Insect faint geometry envelope — matches code 2026-09-27
 
 The common timeline author extends the existing quadruped faint envelope to insect root/thorax curves, using source family chains. One constant nonzero gain preserves phases, limb/head/abdomen/secondary motion and all contact limits;129samples and90% author reserve remain. The actual painted contact, ARAP and stage owners remain independent. This does not repair Cicada cast/hit/tame/feed or Termite wing/body ownership. Evidence and old-author negative controls: audits/INSECT_CONTACT_C67_20260927.
+
+### Sprawler morphology profile — matches code 2026-10-02
+
+`motion/sprawler-profile.ts` selects land/amphibious quadrupeds from all four observed
+upper limbs (at most 45% of trunk length) and socket-to-ankle vertical drops (at most 65%).
+It has no species-name list. Shallow whole-curve trunk translation/rotation and smaller
+head/tail excursions preserve action phases, durations, limb articulation and contact limits.
+A near-horizontal support chain keeps the trunk fixed. Idle keeps head/neck level; faint
+also avoids the long-snouted head dip. Stage approach/return remains arena-owned.
+The original generic contact-envelope authors still run after profile selection.
+
+Nine unchanged C136 fits pass 34,108 static action/presentation publications, exact source
+rest reconstruction and contact/mesh guards. The retained Alligator failure reproduces
+118.849 source pixels below ground; 2,532 current standalone/two-facing publications clear
+head paint by at least 153.011 pixels and all mesh parts by 21.458 pixels. This does not
+accept detached source islands, native performance or artistic quality. Claude re-scores
+the unchanged originals. Evidence: `audits/C163_SPRAWLER_MOTION_20261002`.
+
+Current shared battle work separately includes 45 accepted WebP arena sets covering all
+43 biome families and eleven painted effect themes. Historical September implementation
+limitations above are not the current arena/effect inventory.
