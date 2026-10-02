@@ -1,0 +1,22 @@
+[
+ {
+  "id": "basking-shark",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/basking-shark/fit"
+ },
+ {
+  "id": "great-white-shark-framing-v2",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/great-white-shark-framing-v2/fit"
+ },
+ {
+  "id": "mako-shark-framing-v2",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/mako-shark-framing-v2/fit"
+ },
+ {
+  "id": "whale-shark-framing-v2",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/fit"
+ },
+ {
+  "id": "snailfish",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/fit"
+ }
+]
