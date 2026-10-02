@@ -1,0 +1,20 @@
+{
+ "id": "cougar",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "bodyLengthPx": 1209.3,
+ "landmarkMedian": 0.0508,
+ "landmarkMax": 0.1188,
+ "worst": [
+  "foreFarRoot 0.119",
+  "foreNearKnee 0.102",
+  "foreNearRoot 0.101"
+ ],
+ "labelAgreement": 0.48,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

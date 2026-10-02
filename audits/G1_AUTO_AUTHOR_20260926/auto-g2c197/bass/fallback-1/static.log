@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0,"gap":0.0000634724937805911,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"approach:swim","status":"PASS","samples":121,"drift":0,"gap":0.000056377871572290386,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0,"gap":0.00005398193994429116,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"RED","samples":24,"drift":0,"gap":0.00005337686613602537,"exactRest":true,"firstRefusal":{"ms":138,"sampleNumber":25,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 9"}}
+{"id":"hit","status":"RED","samples":13,"drift":0,"gap":0.00005739116227084251,"exactRest":true,"firstRefusal":{"ms":57.416666666666664,"sampleNumber":14,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 9"}}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00007474422454833984,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0,"gap":0.00005571105567186547,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0,"gap":0.00006381287415109151,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0,"gap":0.00005442043683608589,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0,"gap":0.00005571105567186547,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"PASS","samples":121,"drift":0,"gap":0.00005571105567186547,"exactRest":true,"firstRefusal":null}
+{"id":"melee:tail","status":"PASS","samples":121,"drift":0,"gap":0.00005398193996615401,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

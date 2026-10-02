@@ -1,0 +1,10 @@
+{
+ "id": "22-marmoset",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0088 < 0.0150)",
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+ ],
+ "semanticPresence": null
+}

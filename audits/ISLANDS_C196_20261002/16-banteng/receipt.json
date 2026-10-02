@@ -1,0 +1,278 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c196/16-banteng/fit",
+  "sourceMasterSha256": "9d514e5beed5d4b51f58a9db9a94191324b866763ad0baf8a13635d40f426720",
+  "keyedRgbaSha256": "4281e1d57de143656102f9910141383206afe21f87bf451127b894fd8a71732a",
+  "remainder": "spine",
+  "remainderPixels": 40398,
+  "movedPixels": 4330,
+  "islands": [
+    {
+      "pixels": 356,
+      "to": "neck",
+      "border": {
+        "neck": 39
+      }
+    },
+    {
+      "pixels": 86,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-far-tip": 11
+      }
+    },
+    {
+      "pixels": 443,
+      "to": "ear-far-root",
+      "border": {
+        "ear-far-tip": 33,
+        "ear-far-root": 55,
+        "head": 14
+      }
+    },
+    {
+      "pixels": 49,
+      "to": "head",
+      "border": {
+        "head": 28
+      }
+    },
+    {
+      "pixels": 191,
+      "to": "tail0",
+      "border": {
+        "tail0": 81
+      }
+    },
+    {
+      "pixels": 1866,
+      "to": "neck",
+      "border": {
+        "jaw": 22,
+        "head": 47,
+        "neck": 102,
+        "chest": 20
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "jaw",
+      "border": {
+        "jaw": 15
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "jaw",
+      "border": {
+        "jaw": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail0",
+      "border": {
+        "tail0": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-root": 2,
+        "tail2": 1,
+        "tail1": 1
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-root": 5,
+        "tail2": 4,
+        "tail1": 1
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "tail2",
+      "border": {
+        "hind-near-root": 6,
+        "tail2": 7
+      }
+    },
+    {
+      "pixels": 824,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-knee": 46,
+        "hind-near-root": 57,
+        "hind-far-root": 34
+      }
+    },
+    {
+      "pixels": 121,
+      "to": "hind-far-root",
+      "border": {
+        "hind-far-knee": 3,
+        "hind-far-root": 45
+      }
+    },
+    {
+      "pixels": 24,
+      "to": "fore-far-root",
+      "border": {
+        "fore-near-root": 6,
+        "fore-far-root": 13
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 4,
+        "fore-near-knee": 3
+      }
+    },
+    {
+      "pixels": 40,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 13
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 4
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 9
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 2
+      }
+    },
+    {
+      "pixels": 117,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 38
+      }
+    },
+    {
+      "pixels": 95,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 20
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 12
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 7
+      }
+    },
+    {
+      "pixels": 51,
+      "to": "fore-near-paw",
+      "border": {
+        "fore-near-paw": 31
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "16-banteng",
+    "parts": 31,
+    "atlasSize": {
+      "width": 1391,
+      "height": 757
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 45,
+        "distancePx": 4.527692569068699,
+        "supports": [
+          567
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 46,
+        "distancePx": 5.099019513592793,
+        "supports": [
+          797
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 21,
+        "distancePx": 6.992138442565329,
+        "supports": [
+          158
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 53,
+        "distancePx": 3.5805027579936266,
+        "supports": [
+          372
+        ]
+      }
+    ],
+    "sourceBindingHash": "70b1a1bcfc90458830a3eead16242b2f62c3894f3042c36f53e214bcddcba590",
+    "sourceVertices": 1336,
+    "vertices": 1537,
+    "sharedSupports": 480,
+    "pins": 111,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 34,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

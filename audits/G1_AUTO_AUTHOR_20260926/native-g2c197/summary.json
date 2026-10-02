@@ -1,0 +1,50 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+ "tag": "g2c197",
+ "pilot": 9,
+ "patternSkipped": [
+  {
+   "id": "basking-shark",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "flounder",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "great-white-shark-framing-v2",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "mako-shark-framing-v2",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "rhea",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "snailfish",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "snow-petrel",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "tiger-shark-framing-v2",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "whale-shark-framing-v2",
+   "pattern": "MISSING"
+  }
+ ],
+ "scored": 0,
+ "admitPassStatic": [],
+ "refused": [],
+ "staticRed": [],
+ "native": [],
+ "runnerExit": 0
+}

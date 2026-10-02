@@ -1,0 +1,22 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the right (head) end is not thicker than the left (tail) end (39 vs 47.4)"
+ ],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 0.481,
+  "mainShare": 1,
+  "dominantShare": 0.9994,
+  "gapFrac": 0,
+  "elongation": 12.49,
+  "headEnd": 39,
+  "tailEnd": 47.4,
+  "tailTip": 25.4,
+  "median": 75,
+  "xmin": 160,
+  "xmax": 1096,
+  "ext": 937,
+  "paint": 69953
+ }
+}

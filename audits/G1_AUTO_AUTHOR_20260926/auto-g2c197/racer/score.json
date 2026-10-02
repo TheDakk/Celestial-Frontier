@@ -1,0 +1,20 @@
+{
+ "id": "racer",
+ "family": "serpent",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+ "bodyLengthPx": 625.5,
+ "landmarkMedian": 0.0297,
+ "landmarkMax": 0.1077,
+ "worst": [
+  "seg9 0.108",
+  "jaw 0.090",
+  "head 0.067"
+ ],
+ "labelAgreement": 0.0227,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

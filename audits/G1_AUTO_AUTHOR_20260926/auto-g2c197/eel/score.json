@@ -1,0 +1,9 @@
+{
+ "id": "eel",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the right (head) end is not thicker than the left (tail) end (39 vs 47.4)"
+ ],
+ "semanticPresence": null
+}

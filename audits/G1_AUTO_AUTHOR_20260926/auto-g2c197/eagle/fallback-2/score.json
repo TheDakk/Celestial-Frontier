@@ -1,0 +1,19 @@
+{
+ "id": "eagle",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.2%)"
+ ],
+ "semanticPresence": null,
+ "bodyLengthPx": 1131.6,
+ "landmarkMedian": 0.0338,
+ "landmarkMax": 0.3838,
+ "worst": [
+  "wingFarTip 0.384",
+  "wingNearTip 0.261",
+  "pelvis 0.123"
+ ],
+ "labelAgreement": 0.4568,
+ "missingJoints": []
+}

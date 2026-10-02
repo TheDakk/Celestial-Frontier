@@ -1,0 +1,19 @@
+{
+ "id": "sandpiper",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches biped-bird better (0.0155 < 0.0199)"
+ ],
+ "semanticPresence": null,
+ "bodyLengthPx": 954.9,
+ "landmarkMedian": 0.1465,
+ "landmarkMax": 0.3565,
+ "worst": [
+  "legFarFoot 0.356",
+  "legFarAnkle 0.323",
+  "wingFarTip 0.270"
+ ],
+ "labelAgreement": 0.4777,
+ "missingJoints": []
+}
