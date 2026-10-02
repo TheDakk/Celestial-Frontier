@@ -1,0 +1,28 @@
+{
+  "name": "Lizard",
+  "masterSha256": "9be71c29629125411d1f7df0738cd41a1943b5fef5e1cdd17407dc958442f070",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: wedge-shaped scaly head, spotted and banded trunk, continuous long tail, bent elbows and splayed near feet. Two far foot-like structures appear under the body, but their connections and the far hindlimb attachment are ambiguous; HOLD until all four limb chains can be observed without inference. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 316,
+      "y0": 556,
+      "x1": 945,
+      "y1": 715
+    },
+    "margins": {
+      "left": 316,
+      "right": 308,
+      "top": 556,
+      "bottom": 538
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

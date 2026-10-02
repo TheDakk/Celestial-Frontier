@@ -1,0 +1,71 @@
+{
+  "name": "Newt",
+  "family": "quadruped",
+  "species": {
+    "name": "Newt",
+    "aspect": 4,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "sprawling",
+    "mustRead": [
+      "laterally flattened paddle tail",
+      "four small splayed limbs",
+      "moist granular skin"
+    ]
+  },
+  "genome": {
+    "seed": 775735149,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 0,
+    "body": 2,
+    "loco": 1,
+    "trait": 24,
+    "size": 5,
+    "diet": 3,
+    "head": 6,
+    "limbs": 0,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 3,
+    "habitat": 5,
+    "detail": 9,
+    "accent": 16,
+    "temper": 8,
+    "sense": 8,
+    "repro": 0,
+    "life": 5,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Newt"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Newt\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"775735149\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 134,
+  "profile": {
+    "id": "salamander",
+    "names": [
+      "Salamander",
+      "Newt",
+      "Giant Salamander",
+      "Alpine Salamander",
+      "Olm",
+      "Blind Salamander",
+      "Axolotl"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Preserve tail and optional external gills; no mammalian ears."
+  }
+}

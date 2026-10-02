@@ -1,0 +1,14 @@
+{
+  "id": "18-komodo-dragon",
+  "name": "Komodo Dragon",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-39edf1bb-dbef-407d-9c51-89f35abd4a4a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "45a7f88dc0db11fd16c3b657510117ee6035cc621e4ed085ba2785c44ec08e30",
+  "bytes": 1044897,
+  "promptSha256": "c24bede77a1b9f5f386586b88242cd554e3ee22910c4db7ce966ce46e553e216",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

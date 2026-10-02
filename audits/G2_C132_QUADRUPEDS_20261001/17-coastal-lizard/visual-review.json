@@ -1,0 +1,28 @@
+{
+  "name": "Coastal Lizard",
+  "masterSha256": "5db624cdd2993284581f6e1c5514152569e30919f9e83b82c85f784d49eaf580",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: scaly wedge head with visible dark ear opening, long tapering banded tail and four separated foot endpoints. Near elbows and hind knees bend naturally; far upper limbs remain body-occluded. Toe counts unconfirmed. No external ears or invented structures. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 291,
+      "y0": 552,
+      "x1": 927,
+      "y1": 717
+    },
+    "margins": {
+      "left": 291,
+      "right": 326,
+      "top": 552,
+      "bottom": 536
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

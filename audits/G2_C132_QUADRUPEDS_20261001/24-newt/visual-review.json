@@ -1,0 +1,28 @@
+{
+  "name": "Newt",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: smooth dark amphibian skin, bright orange spotted belly, laterally flattened continuous tail and four short visible limbs. No scales, external ears or larval gills. Near toe counts look reduced/merged and require anatomical review; tail taper is fairly abrupt but connected. Broad margins. Never an all-visible anatomy admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 373,
+      "y0": 564,
+      "x1": 880,
+      "y1": 709
+    },
+    "margins": {
+      "left": 373,
+      "right": 373,
+      "top": 564,
+      "bottom": 544
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

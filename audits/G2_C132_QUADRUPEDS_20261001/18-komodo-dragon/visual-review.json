@@ -1,0 +1,28 @@
+{
+  "name": "Komodo Dragon",
+  "masterSha256": "45a7f88dc0db11fd16c3b657510117ee6035cc621e4ed085ba2785c44ec08e30",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: heavy scaled monitor-like body, loose throat/neck folds, long forked pale-yellow tongue, muscular tapering tail and four visible clawed feet. Far upper limbs partly occluded; body support is elevated and requires grounded rig inspection. Tail/body ratio is approximately half total but not measured. Broad margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 222,
+      "y0": 530,
+      "x1": 1021,
+      "y1": 724
+    },
+    "margins": {
+      "left": 222,
+      "right": 232,
+      "top": 530,
+      "bottom": 529
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

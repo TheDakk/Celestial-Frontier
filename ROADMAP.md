@@ -94,9 +94,8 @@ visual pass. Latest accepted coverage remains 179/631 (18 held); new originals a
 **Current batch:** three agents own independent audit-only packets `audits/C132_ARENAS_20261001`,
 `audits/C132_EFFECTS_20261001`, and `audits/G2_C132_QUADRUPEDS_20261001`. Root owns C12, phone finisher,
 recorded sound, shared docs, signing and sequential native epochs. Delivery rows follow in `audits/MAILBOX/TO_CLAUDE.md`.
-A lake/reef set, three theme packets, 49 recorded-file cue candidates and a 20-probe exact C12 SIMD candidate are prepared;
-none establishes gameplay admission, all-pair 60 fps, or visual acceptance. Startup passed all seven capability checks.
-Receipts and cleanup measurement: `audits/C132_PROGRAM_20261001/`. Own cleanup recovered 1.14 GiB; latest disk 73 GiB free.
+24 immutable reptile/amphibian originals are delivered for scoring (`G2_C132_QUADRUPEDS_20261001/pilot.json`): 21 framing PASS, 3 held; every anatomical hold remains. Arena/effect candidates and reference packets continue. The 20-probe C12 SIMD candidate passes exact numerical parity, but current native baseline fails a Centipede refusal/missing phase; no successor measurement or 60 fps claim. 49 recorded-file cues are technically prepared; listening and layered impacts remain open. Startup passed all seven capability checks.
+Receipts and cleanup measurement: `audits/C132_PROGRAM_20261001/`. Own cleanup recovered 1.14 GiB; Claude reports removing three completed build worktrees (~57 GB) and 111 GiB free. Identity backups remain preserved.
 
 **Gates:** native/performance reservation is posted before every native epoch and released at its terminal result.
 No heavy concurrent work during those measurements. Browser commands run outside the sandbox. I5 stays unchanged;

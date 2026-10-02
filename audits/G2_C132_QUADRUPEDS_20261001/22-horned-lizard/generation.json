@@ -1,0 +1,14 @@
+{
+  "id": "22-horned-lizard",
+  "name": "Horned Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-5e1a14be-42e8-4156-b65f-365743680228.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "436fa9c4674658a73ae49046439dfcf747c8640f894c24dee43ddf9c0388875e",
+  "bytes": 1009093,
+  "promptSha256": "54335815d388b41e451a6f4ac92080e2e788f4a72fa8833dc7cbbced8b88f767",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
