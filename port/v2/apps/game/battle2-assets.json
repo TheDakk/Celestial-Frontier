@@ -3,8 +3,8 @@
  "files": [
   {
    "path": "battle2/MANIFEST.json",
-   "bytes": 40173,
-   "sha256": "98df9bd5d7efdf35107cfb9533709757f1a24ba733b3ed5fa68ddbc0ef776f99"
+   "bytes": 66429,
+   "sha256": "fe74319d7d915166d0457509538fd2e08f31742298a875e11a9680c7983d0408"
   },
   {
    "path": "battle2/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json.gz",
@@ -522,6 +522,226 @@
    "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
   },
   {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssal/arena-far.webp",
+   "bytes": 185048,
+   "sha256": "4dc1bdaf50a91828cb30dfa3a3a6673abe3a6c6a90864e0fb147f538fe82bcad"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssal/d29/arena-delivery-recipe.json",
+   "bytes": 4192,
+   "sha256": "e8ac75884b55f602118fa5b69b4eb552b10c13bf918b476769a150208cf6abf8"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssal/keyed/arena-mid.webp",
+   "bytes": 173230,
+   "sha256": "06016ac20f5183f733a9412367b3073a1bd43d70f6c1cbfa35f0c94456493856"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssal/keyed/arena-near.webp",
+   "bytes": 65494,
+   "sha256": "b24bad6e8727d2dc2d5fcd9506f943a2c4cae9259ee9bdb90a18d6e17f762273"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssgreen/arena-far.webp",
+   "bytes": 189320,
+   "sha256": "3412a2b9607ade378220c8c616cc1b9f2cd053e68c5f1e55887aa2a3472601ed"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssgreen/d29/arena-delivery-recipe.json",
+   "bytes": 4082,
+   "sha256": "88c9194d2c3b619c33fca3321498b328594e4c18f57fd98204a0ed833b3c9f96"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssgreen/keyed/arena-mid.webp",
+   "bytes": 186768,
+   "sha256": "cc989c6aef63704d68fc2e59dcc890a0117d982e54203cd0c69a4a92e0973a0c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/abyssgreen/keyed/arena-near.webp",
+   "bytes": 43514,
+   "sha256": "40f7448e516bbeec4e3430d6230c6fe8df54f722e504965ebc1dc8fcdaef7c5e"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/acidhaze/arena-far.webp",
+   "bytes": 225416,
+   "sha256": "da79e9a10f7651b5bb42372359ab0774c6497d8d06805766d245215855666a5c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/acidhaze/d29/arena-delivery-recipe.json",
+   "bytes": 4095,
+   "sha256": "7dfe22fa79684fe65f3981138a27e85b933814a9aadf281c6befc4c08d4fcab9"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/acidhaze/keyed/arena-mid.webp",
+   "bytes": 214294,
+   "sha256": "96ceb4c4e43507b44a2308c17662301c168e777afee209a9cf6b8b4a8bdc35a1"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/acidhaze/keyed/arena-near.webp",
+   "bytes": 77378,
+   "sha256": "7a7304e152388a12b4e9578deae7698c9f9093ba339c7b21cc74c44c752b3910"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ammonia-v2/arena-far.webp",
+   "bytes": 171762,
+   "sha256": "6f5a01c3ed2ddeb54d547abef924ee284c13975c62a227066ff5530aafd81daa"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ammonia-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4135,
+   "sha256": "ff734fe956fed82cb87db973c38923e7552b6f3a290b5ce34f7369dc1c18e643"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-mid.webp",
+   "bytes": 78886,
+   "sha256": "f302382e69de8675bab8d1fd7483ff232425cfa227f0509517a0aac7c71a4b73"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-near.webp",
+   "bytes": 30886,
+   "sha256": "35958dfdd899c13644784d7cd716aa94b232951539a541ee191304ca59b3b8bd"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/archipelago-v2/arena-far.webp",
+   "bytes": 289694,
+   "sha256": "8215761add651fb779db8910d0c594ca0050a80d411482a5ee7c3ad8ebce66fd"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/archipelago-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4247,
+   "sha256": "62a2f474a0d6109c9342505e33a1babbb3702f1e31a787c89c61d788694869bc"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-mid.webp",
+   "bytes": 235484,
+   "sha256": "a1d5b18ea73d86ffe217791f7017093c83f45fc69f1c90ebe064067994016f42"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-near.webp",
+   "bytes": 82728,
+   "sha256": "68ba315dd5bcd07fe0c6d0e55560cd4747ec8d0f51ba58b597a1b4be4eb6fac8"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ashwaste/arena-far.webp",
+   "bytes": 286730,
+   "sha256": "57bf2a936414916c8dc14ffe0f1a6b72ff38b2432d6513754cd56f5b4191fcb8"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ashwaste/d29/arena-delivery-recipe.json",
+   "bytes": 4106,
+   "sha256": "84c0ed9a2a367c4a3e18280ad1ee5f74a3902626ebdea92937240712aa59deee"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ashwaste/keyed/arena-mid.webp",
+   "bytes": 181492,
+   "sha256": "582e4b86e90d5d6fe6f9a48f5380f633d6f0af679d5f6d272686e76f6b5bc53c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/ashwaste/keyed/arena-near.webp",
+   "bytes": 74576,
+   "sha256": "81bd750a1756ef8f893866d3f881630dad1d7e75ce5bfacc46f0055a3f765d91"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/banded-v2/arena-far.webp",
+   "bytes": 219062,
+   "sha256": "fb387dceb275af430eb27d7e9ed361703f2b944b891e730599931bc81b68115c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/banded-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4175,
+   "sha256": "543d5a2d3a997d7c25dc10d35b95e7b88143d4ac56b77bf82b74af36dab2485f"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/banded-v2/keyed/arena-mid.webp",
+   "bytes": 81990,
+   "sha256": "096a6eac8e18a2edf244f7c699feb2a202df26c7299515a56960d3ac86004b75"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/banded-v2/keyed/arena-near.webp",
+   "bytes": 36708,
+   "sha256": "1aad50360a369b63ec33c36cd0f0b189d2a62b6f740922068ea05dd9ad15bb13"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/blueice/arena-far.webp",
+   "bytes": 229798,
+   "sha256": "bc1e586328429f0ebe8f77b0060fde7d11f6fdd0f683aea86f62aa34de333594"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/blueice/d29/arena-delivery-recipe.json",
+   "bytes": 4127,
+   "sha256": "85f5bce2bf9e7d81e2c6618effbe2fff64d96aa583d82883999300b737e1481a"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/blueice/keyed/arena-mid.webp",
+   "bytes": 221390,
+   "sha256": "f72d8a53f44e55d84e587dda59da5b01c782cdd88ea2c8cd2cd2c8e43be595ea"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/blueice/keyed/arena-near.webp",
+   "bytes": 67714,
+   "sha256": "8603c5e9966f85ba87e6eb0dec54913743dff3ed6552d3869d3d30a7e9ca9fdb"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/boulder-v3/arena-far.webp",
+   "bytes": 417298,
+   "sha256": "3a9fde76fedec6cf66ac0aa233efe529a3deaf7475e37c31f009d5fc58fa6909"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/boulder-v3/d29/arena-delivery-recipe.json",
+   "bytes": 4191,
+   "sha256": "600f320d5bff6cfa6f074b3519218487ba91b493a16a386a2ed7fcdf16553f9c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-mid.webp",
+   "bytes": 263852,
+   "sha256": "ca1814d2f67bc622e68fbf07fb3c643bc3f681fc3b1fa5da8b0c2c54260be4ff"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/boulder-v3/keyed/arena-near.webp",
+   "bytes": 101820,
+   "sha256": "028ec25193d2bd69656b5c67ac559ac62691920dd3e0fd3d2567acee672b9c13"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/canyon/arena-far.webp",
+   "bytes": 326852,
+   "sha256": "ac82d2db50463933ba44136335b89a0f6d1301b1da08b8841aa10580a191a763"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/canyon/d29/arena-delivery-recipe.json",
+   "bytes": 4182,
+   "sha256": "20ea37b37583b09cb8578f48482b31c38507c2ef7c3de7b6e794c1a17f86dd88"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/canyon/keyed/arena-mid.webp",
+   "bytes": 238898,
+   "sha256": "72599c2e33236904b6ad2328d8c70b7335f2c98cc16db8d1c57fdff99090878f"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/canyon/keyed/arena-near.webp",
+   "bytes": 117852,
+   "sha256": "5f7202096c06048f71be37a23d1375fa1958f0b2816376849789c244fa32d946"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/carbon/arena-far.webp",
+   "bytes": 285110,
+   "sha256": "4450ef30f582c41d231458edd9d59ae3767aeb3e765544a965e4b6f633b80080"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/carbon/d29/arena-delivery-recipe.json",
+   "bytes": 4095,
+   "sha256": "a341276fbd10faf369308ac64fc2029048ebce4274a8b9a3051823e903ff8791"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/carbon/keyed/arena-mid.webp",
+   "bytes": 183742,
+   "sha256": "54b2215a7e692fedc53189d653041e25c4aedff798150913e354c651623fc4ad"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/carbon/keyed/arena-near.webp",
+   "bytes": 44000,
+   "sha256": "26c8ddf33876b906b079d320a903f163a2d538e811de86a805df956ecf4e0a45"
+  },
+  {
    "path": "battle2/audits/C132_ARENAS_20261001/coral/arena-delivery-recipe.json",
    "bytes": 4246,
    "sha256": "80c379e5ae6461652e76198566210e162a0094010bbffccaaf9387de9a4c11a0"
@@ -540,6 +760,66 @@
    "path": "battle2/audits/C132_ARENAS_20261001/coral/keyed/arena-near.webp",
    "bytes": 115586,
    "sha256": "5357c7dfa38e1f23e2785c8824ff2e08d6568e7adb9b7a5bc3e92ce750a38342"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cratered-v2/arena-far.webp",
+   "bytes": 348828,
+   "sha256": "6b85a0059a09d3c133f03a9ec7f3358f67c12bb51147e657d627a54d786ded3e"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cratered-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4141,
+   "sha256": "c0ec91e18b140f7768288eab2e5cfd4c389c6d9bcf5ce12d63aa5207434b260c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-mid.webp",
+   "bytes": 200234,
+   "sha256": "d8bc1ea174cdce11576b4697101e7f9b2f890b24cc36a4af3ba197412f631adc"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cratered-v2/keyed/arena-near.webp",
+   "bytes": 71042,
+   "sha256": "011b6ff018310d7db9e5e58958ef03a90779678a77c54ad0dac1900f5eeda5dc"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.webp",
+   "bytes": 236364,
+   "sha256": "ba4a7f28271fb5cac8ec3815ac8c0770efcc45123da2ae1fa2d3ccb14e9b389b"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cryogeyser-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4176,
+   "sha256": "c1224081570d6c130f8f5785f58049f587d08bf8fd6926f1e15fc0b66fb9c8c1"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-mid.webp",
+   "bytes": 180876,
+   "sha256": "cbaf1439ce095d8e283b927c54388b9eb4d64164f85d52db23532a1dead49a23"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-near.webp",
+   "bytes": 103638,
+   "sha256": "02bc34dbf4dcb8bd3446643cdc1166b16fdbfed6dc608e69325f60f500ae0a45"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.webp",
+   "bytes": 320064,
+   "sha256": "2551cc258eaa005a5f2fb7871ad853259dae170559c97fb8b238d6769f18bbea"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4215,
+   "sha256": "23225dc4bc3c49e65ae40b9d6e1a1274090fb3fb6ea1bb06405ce1146aae77c4"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-mid.webp",
+   "bytes": 249654,
+   "sha256": "d15c2778790ce684e87c1a291d238d2de104bbe38a98129dd8e6381725f0f828"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-near.webp",
+   "bytes": 97328,
+   "sha256": "633b15b0428d5074ba4c2b312b535ee800b49ff222f7bd0122fac105538018dc"
   },
   {
    "path": "battle2/audits/C132_ARENAS_20261001/dunesea/arena-delivery-recipe.json",
@@ -562,6 +842,26 @@
    "sha256": "c768254e0999a229d9e5510ca18c65479bbfab65e3f6f6feb0dd4ea9cfc34d0b"
   },
   {
+   "path": "battle2/audits/C132_ARENAS_20261001/emberfield/arena-far.webp",
+   "bytes": 293234,
+   "sha256": "a260774796dbecf0ebf781126d632dd5597a22ec6d6773efbde48372325c4a8d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/emberfield/d29/arena-delivery-recipe.json",
+   "bytes": 4139,
+   "sha256": "f08b835c1d7352be7cb95ed6910c30f1f88f611816f917f038b6aae0bbb67ad2"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/emberfield/keyed/arena-mid.webp",
+   "bytes": 220172,
+   "sha256": "c3ca51b5d4717daaa1c7e4cb27a2de93ad52ba534e86d4f4874671ed6936eb7c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/emberfield/keyed/arena-near.webp",
+   "bytes": 76806,
+   "sha256": "0081c22283489cdaf85fbf2ddb9ac0d66683d0c8cc0c800d444c873d0154921e"
+  },
+  {
    "path": "battle2/audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-delivery-recipe.json",
    "bytes": 4364,
    "sha256": "32673cb908dacc92f8df15a556d6d31a4b056256ca5de911189637695cbffb0d"
@@ -580,6 +880,126 @@
    "path": "battle2/audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.webp",
    "bytes": 71780,
    "sha256": "3a7fe729a7d8e6f6b0a3cd9b98e6cf7d76c1f2ca0bddf145518bc6c25f7040ab"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/fungal/arena-far.webp",
+   "bytes": 421218,
+   "sha256": "d5917dbab03b52dc5c681106a597fbd0214fb1b454e5185b144984be606516c9"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/fungal/d29/arena-delivery-recipe.json",
+   "bytes": 4195,
+   "sha256": "d0b2d2bdd776abea272c709b27fe2d9c31b50926f0a0a2eaf45fd8bd4e678347"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/fungal/keyed/arena-mid.webp",
+   "bytes": 298942,
+   "sha256": "9a5959327d33ab1cdfd606d41fcf938dd08bcc3b5916349f624c7005b247a42c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/fungal/keyed/arena-near.webp",
+   "bytes": 78594,
+   "sha256": "2ba5be0429e9ba861612c8722a07a170292190bccaea4fb45062c62bd24f9a2a"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/geode/arena-far.webp",
+   "bytes": 391966,
+   "sha256": "d4edbeaa90838867aeea5f39597b1f21bf0e7ea8e05421a517c32464daf8a4a4"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/geode/d29/arena-delivery-recipe.json",
+   "bytes": 4117,
+   "sha256": "0ba90d14262d7215c6a9d1c4f464d8f5b00d5570b5968c6e71d5cedb825b9e7a"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/geode/keyed/arena-mid.webp",
+   "bytes": 204774,
+   "sha256": "6eeda2623d07246f4f21fe38be8813d06eb245a7cac38fac0b6ee651f76c7527"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/geode/keyed/arena-near.webp",
+   "bytes": 89100,
+   "sha256": "c14e065837c6344d94cf099c87aed327aeaa580bacc8319d6f88940fdf852d9c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glacier/arena-far.webp",
+   "bytes": 380266,
+   "sha256": "eac04d75b5798fd7335f495b2f802bdf50e21a265f1ff00b19b28f066d7d39f4"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glacier/d29/arena-delivery-recipe.json",
+   "bytes": 4182,
+   "sha256": "e36e76fd2ca3b0a150149a2611967a496402a95c9664051b328ad567b2a6447a"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glacier/keyed/arena-mid.webp",
+   "bytes": 162204,
+   "sha256": "df68ad80e41f67044f217847bf746c20819366206a7431d59c0754e6a36d51f9"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glacier/keyed/arena-near.webp",
+   "bytes": 73666,
+   "sha256": "79084c9b00274976395624b1e319b2a8c92831dcd2bd59c4533d5c8b73e94d10"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glass-v3/arena-far.webp",
+   "bytes": 305230,
+   "sha256": "e0c512c61bec655269ba25acd45b8973ccba158f65f401bef558b6033ad185da"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glass-v3/d29/arena-delivery-recipe.json",
+   "bytes": 4117,
+   "sha256": "a1cc3156dd199b49ef118cd4e2ade3c57df7995350796b732242e2502943aa08"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glass-v3/keyed/arena-mid.webp",
+   "bytes": 221422,
+   "sha256": "99875aa17bbdb05fa40490cf2cb6f659903664c3a7af4cc21e80732dbc8d4f95"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/glass-v3/keyed/arena-near.webp",
+   "bytes": 100244,
+   "sha256": "1837cede673310779219f8364cf9ce3cd39bcb9875e106b3652ca2f179edd685"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/graben/arena-far.webp",
+   "bytes": 336100,
+   "sha256": "d722345a7e0a1544c11ad2bd871c5310506b2e459bcabe580e6601da621e3202"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/graben/d29/arena-delivery-recipe.json",
+   "bytes": 4117,
+   "sha256": "86a41ec3316d2ab6aa6d2e02552b2701d6fca1b2b6932469a67b974e77f562cc"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/graben/keyed/arena-mid.webp",
+   "bytes": 291290,
+   "sha256": "0b8564419479684e090d0903fe74cf29c02fd95276372a6c6caf1fee62594927"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/graben/keyed/arena-near.webp",
+   "bytes": 107768,
+   "sha256": "ef306278b7d693cc68af3f3821faa01e12d2a8a4b590baef56d49767fae108e2"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/hotglow/arena-far.webp",
+   "bytes": 141642,
+   "sha256": "aa10a325c4eb752e1e0e853426be84689ffebb36675257978a77dd987c7269ea"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/hotglow/d29/arena-delivery-recipe.json",
+   "bytes": 4132,
+   "sha256": "6fb34f26434afca86ae8b9f4d0dae82e744606b6c8bc611dd37aa77cd9eaac5b"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/hotglow/keyed/arena-mid.webp",
+   "bytes": 100712,
+   "sha256": "6b4a5f33c26c240b6275f2527c7039c62f09eace7710c6b0461946b0153c0626"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/hotglow/keyed/arena-near.webp",
+   "bytes": 35488,
+   "sha256": "6564ec6c2823bf9cf6d3f96b06c64ac0e44f8c5740cb8dc6a78fb1639fe970ff"
   },
   {
    "path": "battle2/audits/C132_ARENAS_20261001/jungle-v2/arena-delivery-recipe.json",
@@ -622,6 +1042,66 @@
    "sha256": "ee3e959d4cfa428e9ce16e8aabe5f1ce8acceacc930569c723e1494a65399e4c"
   },
   {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst/arena-far.webp",
+   "bytes": 373208,
+   "sha256": "d854bb44fa19acad31a8c2d037fed909b2efeb9524834f8f37521138ef85f0a6"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst/d29/arena-delivery-recipe.json",
+   "bytes": 4196,
+   "sha256": "ef4c5b849e47a33168b17c1c157040a13160f3f34ddbe0d864086b09d4c60c2d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst/keyed/arena-mid.webp",
+   "bytes": 274664,
+   "sha256": "c2048d67b2c72533e85792ae05ee23a929368f1253313a1b87a81ca8c65c98df"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/karst/keyed/arena-near.webp",
+   "bytes": 86110,
+   "sha256": "ed129692e692b8663f765d0a3c8dbeeaafcd640d7accf049990ddda492671aa5"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/magmasea-v2/arena-far.webp",
+   "bytes": 257368,
+   "sha256": "ee6ccea96da3c3a783c3b66231f0bdb398b09fd2470e7a739ea03d06223970fd"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/magmasea-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4103,
+   "sha256": "8a1b9358e87b01e084ae7f941ae6cd46e98b4495b809bd084b816353c35263ee"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-mid.webp",
+   "bytes": 189594,
+   "sha256": "afa3d3bb038e00fadb3ac6bf499f97e0eece75deb02f70bf3a6c3181636bb680"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-near.webp",
+   "bytes": 79636,
+   "sha256": "67bbd2fc4ffb67ed88fa2639f597328c88e7ea1891b8972275727b808714a01d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/mangrove-v2/arena-far.webp",
+   "bytes": 402338,
+   "sha256": "e9da7c5a020cbcae04942aeda0e134498739face005d039e37a2c2a1a14d3d2c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/mangrove-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4243,
+   "sha256": "61be4f1181c49e54231c747df7a61c710e96f2b7b4091bc7b0ed54adcb32927c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-mid.webp",
+   "bytes": 290648,
+   "sha256": "8cfd6d2a11168796e7d09978bb91b37de2f96a88446af26d9c1e7cbc30b678ed"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-near.webp",
+   "bytes": 75646,
+   "sha256": "c424f60edb441e2439be4dfc1cc10aae484262d2ae858c610bfc51c638b0d9b7"
+  },
+  {
    "path": "battle2/audits/C132_ARENAS_20261001/marsh/arena-delivery-recipe.json",
    "bytes": 4220,
    "sha256": "8bb29cb695c45c5ac57f10ae88c30406cda7a597cd3598d79726b4036129406d"
@@ -640,6 +1120,146 @@
    "path": "battle2/audits/C132_ARENAS_20261001/marsh/keyed/arena-near.webp",
    "bytes": 126690,
    "sha256": "eb7d8c104b5468691360deea4ffe77607d6fd3a05729495b9b4141f7088212a2"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/milksea-v2/arena-far.webp",
+   "bytes": 238254,
+   "sha256": "fe065d0c1fa176180f0b2880c65b204d3e2f2f1f21fce02a85eb643bbc34a06b"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/milksea-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4166,
+   "sha256": "daf05a50ed44b8c77f6af235098c30c5d3aaf579632588b47ca07ed0c9e8e4a0"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-mid.webp",
+   "bytes": 196478,
+   "sha256": "1fa07d7993a7c6214bc213007cd7c434e17bf39146a24f127d36c575bb0896db"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/milksea-v2/keyed/arena-near.webp",
+   "bytes": 45254,
+   "sha256": "c123a78f830591850bf994f87c34b6ec030644115c6558fa0893cb36df651d43"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/obsidian/arena-far.webp",
+   "bytes": 236212,
+   "sha256": "4ddf0a9fa5d695061e8030f6c34896178c5e08e3e9038d7df0bb48e18afb772e"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/obsidian/d29/arena-delivery-recipe.json",
+   "bytes": 4130,
+   "sha256": "d7e01d9791b6a7b8b58253d5a243184b4b931e3304b20416fa4bc1af38eac0e7"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/obsidian/keyed/arena-mid.webp",
+   "bytes": 170992,
+   "sha256": "5ee3240f43cbfc4964a415641557bddd790c11d3faff5d4a77da136499327f34"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/obsidian/keyed/arena-near.webp",
+   "bytes": 59768,
+   "sha256": "e7845e9ca8be1dbeeed3bed115e73c88ede08a959e8d2366e11f86009fe4bca5"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/opensea/arena-far.webp",
+   "bytes": 250104,
+   "sha256": "b9fc1ac2937cf5e6f8266b04dc42f64fbaf8a6b54bd9aa470f5cd5beb3e6f53f"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/opensea/d29/arena-delivery-recipe.json",
+   "bytes": 4196,
+   "sha256": "af3f948083f581890195b2408222036ec1ba92700caec6b3d77a169848a39cf9"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/opensea/keyed/arena-mid.webp",
+   "bytes": 231148,
+   "sha256": "a0894e807a32c879ca9b890a1a082b9ce415d26dd2c0521ce1bbfec3ab6cac45"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/opensea/keyed/arena-near.webp",
+   "bytes": 71434,
+   "sha256": "f4c51b0776900d2f6bcf54aee0c44ea154674862cb095b74d476d22803a97c37"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/oxide-v2/arena-far.webp",
+   "bytes": 340388,
+   "sha256": "6321a0f7237ae98221e7fda4871da2454fdceb07107b4f9883a8e18e7f469bab"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/oxide-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4141,
+   "sha256": "94e8cdf6e344d44c858ffbe7a1ea7654834911832fb00d9977e41c1f9683972d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/oxide-v2/keyed/arena-mid.webp",
+   "bytes": 268600,
+   "sha256": "f8484b62faee09ec89ceda2924941f1e21c8932b09357e2c076aebf8fa9bf37e"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/oxide-v2/keyed/arena-near.webp",
+   "bytes": 106650,
+   "sha256": "9646d0457848272b6efb035d884b27f414719e8834ae7220b1086a52bdb61744"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/packice-v2/arena-far.webp",
+   "bytes": 221764,
+   "sha256": "d0027d40407c770f64683fabe2687de1b63b9e72b74f475e59dfc7a409b5f7eb"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/packice-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4147,
+   "sha256": "8c715840bfb85db8645cb52534c1f66f493c9b54c588bd91c48cdd7c58cf5663"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/packice-v2/keyed/arena-mid.webp",
+   "bytes": 154808,
+   "sha256": "c72934386872b6db7f8bf31182e5970d11531f21d4680087d42d4493ed9474e3"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/packice-v2/keyed/arena-near.webp",
+   "bytes": 57374,
+   "sha256": "ca521098680c74bd2725b8ad110411607e2f669a50376feb1829cfb6bbb6144d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltflat/arena-far.webp",
+   "bytes": 360032,
+   "sha256": "4f2aac9e7daa36d411f0ff2f486e9173ec3d2a56b5d2785ba9aa1086d382eaa0"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltflat/d29/arena-delivery-recipe.json",
+   "bytes": 4230,
+   "sha256": "c8e15d034a6135f590ce0fffadf339129b3a9c3869825c2c1c18e3f8e6c764b0"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltflat/keyed/arena-mid.webp",
+   "bytes": 188782,
+   "sha256": "132dccaa7e9ca036754f2d852805caa4a9c8628ec1ea73126aef38d5915863e9"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltflat/keyed/arena-near.webp",
+   "bytes": 85112,
+   "sha256": "310b89d3c9a5c9caf718ad5b401d95a3d1c01ade7c2f14475c2601bc6b459ab7"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltpan-r2/arena-far.webp",
+   "bytes": 244362,
+   "sha256": "106e1de535dfb193ea62c5a5ac7b47f7e77e2ce0f79fb8aeeb3b735cef007e03"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltpan-r2/d29/arena-delivery-recipe.json",
+   "bytes": 4134,
+   "sha256": "994fe76282f376fa03f2d39552a093dbc91454cf2b87d32ce3f68f417e6e8ff2"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-mid.webp",
+   "bytes": 203850,
+   "sha256": "4685be5823e5734f68e2d185abd5de1ddb1077fee856bc41a8bcae7687df3814"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-near.webp",
+   "bytes": 81944,
+   "sha256": "9d61d2cea6f773d7c741363082ec477034becbd3262a5a48eff4ed9fa8c2c4b7"
   },
   {
    "path": "battle2/audits/C132_ARENAS_20261001/savanna-v2/arena-delivery-recipe.json",
@@ -662,6 +1282,86 @@
    "sha256": "837722d78e627e24635a4b960d022c3507b78c7eb7e0e157c698671d1d6bfcb1"
   },
   {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormeye/arena-far.webp",
+   "bytes": 197586,
+   "sha256": "184f27524098214d8e3faf5d89186ec9aeb33511714f780bd133fdb7fc25b5d7"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormeye/d29/arena-delivery-recipe.json",
+   "bytes": 4187,
+   "sha256": "d58210a96f18e3740e73ea88d1d38b3e0779c82f1e58e1a06bc35e088a9e53ab"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormeye/keyed/arena-mid.webp",
+   "bytes": 88808,
+   "sha256": "e09945b2458e562c0ed5218dc989f5ed999ff26ae98aa9a2e8a0ac8d9292142e"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormeye/keyed/arena-near.webp",
+   "bytes": 41486,
+   "sha256": "1a982eb05433fd136b962caf2c70e0ec8f829df9eee7dd6b8aece4e8eef52de0"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormsea-v2/arena-far.webp",
+   "bytes": 322742,
+   "sha256": "bfa19bb01ea22bee9cc6b9d57a816bd45f869cf8f5d96da2424cb457b9c2307b"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormsea-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4179,
+   "sha256": "59abb1b74bb558c78467bc48653e5b05940af9b1621c5038fd7b3fe12517bc59"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormsea-v2/keyed/arena-mid.webp",
+   "bytes": 228354,
+   "sha256": "38d363b1dfd8f8e3566917794719bd5b8bfa1c23fddde56fbb5af044d0e5b272"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/stormsea-v2/keyed/arena-near.webp",
+   "bytes": 85298,
+   "sha256": "ea0160ab17cb28b487c911d18189838876f2d3aa71dab11c139f63968cea0d36"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/sulfurdeck/arena-far.webp",
+   "bytes": 265288,
+   "sha256": "9a4d175aaff3b1cd55f95ff5b87e0d8f12a3766b057162f9d4ee3755215de5b5"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/sulfurdeck/d29/arena-delivery-recipe.json",
+   "bytes": 4115,
+   "sha256": "e00256b2e422eb79eab30108a766a4389a1de8b8f1366283d61a4d3f998f3e79"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-mid.webp",
+   "bytes": 204064,
+   "sha256": "cf1730b800b7a986f75339e9136f2941c07184d0ced3c81f83697e75c9845953"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-near.webp",
+   "bytes": 54364,
+   "sha256": "f6dabc9c62731029ba96eefdc5e5a89a7903d86eb74b6af9b5d9f3bf296db03c"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/swamp-v2/arena-far.webp",
+   "bytes": 401116,
+   "sha256": "7638a19b2fe7e8a3d359c3404efe79d5f0494249f2013301847e37b384efd060"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/swamp-v2/d29/arena-delivery-recipe.json",
+   "bytes": 4210,
+   "sha256": "c067f81037157d7ab36de3a7924868ebca23e0a7e3a11f091d73d48cfa401398"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/swamp-v2/keyed/arena-mid.webp",
+   "bytes": 264334,
+   "sha256": "09a2c2cfc864c7517f501a86b1568c192394889b3cfcae2d9f6f70dd6d469757"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/swamp-v2/keyed/arena-near.webp",
+   "bytes": 81910,
+   "sha256": "15a49f64debb8946e54e87e8529222e11a44acb8f176325d40862bb0e2cbf82f"
+  },
+  {
    "path": "battle2/audits/C132_ARENAS_20261001/tundra/arena-delivery-recipe.json",
    "bytes": 4200,
    "sha256": "3cf42283f7946a64924225014f29b70ff56f071da7b70b87a45c03a32c810435"
@@ -680,6 +1380,26 @@
    "path": "battle2/audits/C132_ARENAS_20261001/tundra/keyed/arena-near.webp",
    "bytes": 106842,
    "sha256": "a5728e589d0191376816d487a3c8686b32c52cc859e5ad307fad185d2e3658d8"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/volcisle/arena-far.webp",
+   "bytes": 300210,
+   "sha256": "a91105db460fbbd3c684187816ecbb931f85a5148ef3e9b332e314fd1236193d"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/volcisle/d29/arena-delivery-recipe.json",
+   "bytes": 4176,
+   "sha256": "9e087351de783de5b542f9d4943416f91ac1d0e46805384a56b5f93cee1d4291"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/volcisle/keyed/arena-mid.webp",
+   "bytes": 251768,
+   "sha256": "cd663e345db732e3922ca067660ddb6ce0ecf7f4598aa128eb8361880b0732ce"
+  },
+  {
+   "path": "battle2/audits/C132_ARENAS_20261001/volcisle/keyed/arena-near.webp",
+   "bytes": 115816,
+   "sha256": "9efee6c706d06c77a943fd385bf93d98cd0e0eb18159ca4850236297bc26e3e3"
   },
   {
    "path": "battle2/audits/C132_EFFECTS_20261001/chem/anchors.json",

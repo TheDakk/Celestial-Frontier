@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "cryogeyser-v2",
+  "biome": "cryogeyser",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.webp",
+      "runtimeSha256": "ba4a7f28271fb5cac8ec3815ac8c0770efcc45123da2ae1fa2d3ccb14e9b389b",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.png",
+        "sha256": "55de22d80c94bf8e9e97daf1aa1cea61f3103a5e4fddf131311de514114dcdd2"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "cbaf1439ce095d8e283b927c54388b9eb4d64164f85d52db23532a1dead49a23",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-mid.png",
+        "sha256": "c4f73756f12517b01a3b9f61a9b155c6841550cefec525839df51174edb97438"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-near.webp",
+      "runtimeSha256": "02bc34dbf4dcb8bd3446643cdc1166b16fdbfed6dc608e69325f60f500ae0a45",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/keyed/arena-near.png",
+        "sha256": "1f70919895534e5cbfbc494ca4f8b14e971e3a4177bec9e200b3366f57a8d400"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}
