@@ -13,7 +13,9 @@
  * - `unexplained-anatomy`: a large painted region no part claims and far from the body (a duplicated / extra limb),
  * - `facing`: the mirrored target matches its family better than the target does,
  * - `wrong-family`: another family's references match clearly better.
- * Presence (cf.anatomy-presence/v2) starts all-visible; hidden/folded are declared classes and are NEVER inferred here. */
+ * Presence (cf.anatomy-presence/v2) starts all-visible; hidden/folded are declared classes and are NEVER inferred here.
+ * `excludedJoints` (2026-10-02): joints an ADMITTED, hash-bound reviewed presence removes (caller: reviewed-exclusions.mjs); they are
+ * not authored and are exempt from the missing-anatomy coverage checks only. Absent/empty → output byte-identical to before. */
 import {keyAndDespill} from '../../../../tools/local-image-generation/kit-contact-math.mjs';
 import {countVisibleAnatomy, referenceInventory, inventoryCheck} from './limb-counter.mjs';
 import {limbSeparation, nearFarPairs} from './limb-separation.mjs';
@@ -303,7 +305,7 @@ export function autoAuthorShop(opts) {
 
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
-export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0, separation = false, grow = false, legMatch = 0 }) {
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0, separation = false, grow = false, legMatch = 0, excludedJoints = null }) {
   const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
   if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
   const trAll = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), reasons = [];
@@ -351,6 +353,16 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
     inventory = inventoryCheck(tc, rc, inventoryOf(best.ref), rc.detached.length, parts, { remainderPart: best.ref.authoring.remainderPart, sameFamilyCounts: same.map((r) => countOf(r)), ...(counter.options ?? {}) });
     reasons.push(...inventory.reasons);
     inventory = { ...inventory, target: { appendages: tc.appendages.map(({ k, frac, class: c, attach }) => ({ k, frac, class: c, attach })), detached: tc.detached, byClass: tc.byClass, ground: tc.ground.length }, reference: { subject: best.ref.subjectId, byClass: rc.byClass, detached: rc.detached.length } }; }
+  /* reviewed exclusions (Claude 2026-10-02; run-auto passes them ONLY from an ADMITTED hash-bound reviewed presence, via
+   * reviewed-exclusions.mjs): the named joints are not authored (their parts and landmarks are dropped here, after the counter's
+   * inventory on the full transfer and before placement and every coverage check), so only they escape the missing-anatomy
+   * coverage and off-canvas checks; the unexplained-paint check then runs on the parts actually authored (it can only get stricter).
+   * Absent or empty → this block does nothing and the output is byte-identical to the author without it. Never inferred here. */
+  let exclusion = null; if (excludedJoints?.length) { const ex = new Set(excludedJoints), drop = parts.filter((p) => ex.has(p.joint));
+    if (drop.some((p) => p.id === best.ref.authoring.remainderPart)) reasons.push(`reviewed-absence: excluded joint ${drop.find((p) => p.id === best.ref.authoring.remainderPart).joint} owns the remainder part; the remainder is never excluded`);
+    parts = parts.filter((p) => !ex.has(p.joint) || p.id === best.ref.authoring.remainderPart);
+    const lm = Object.keys(landmarksPx).filter((j) => ex.has(j)); for (const j of lm) delete landmarksPx[j];
+    exclusion = { joints: [...ex].sort(), removedParts: drop.filter((p) => p.id !== best.ref.authoring.remainderPart).map((p) => p.id), removedLandmarks: lm.sort() }; }
   // optional bounded nudge: each non-remainder part may translate within ±nudgeFrac of the diagonal to sit on its painted anatomy
   const nudged = []; if (nudgeFrac > 0) { const Rn = nudgeFrac * Math.hypot(target.box.w, target.box.h), stepN = Rn / 3;
     // contact-chain parts (legs) stay where the transfer put them: their paint coverage is the erased-limb evidence
@@ -387,7 +399,7 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
     coverage: { declarations: `G1 automatic authoring (automatic transfer, not observed): landmarks transferred from ${top.length === 1 ? 'the single best registered reference' : `the median of ${top.length} registered references`}; parts from ${best.ref.subjectId}. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
-    evidence: { schema: AUTO_AUTHOR_SCHEMA, legMatch: legPick, remainderMarker: !!remainderMarker, grown, chains: chainLog, nudged, clamped, untangled, separation: separationEvidence, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, legMatch: legPick, remainderMarker: !!remainderMarker, grown, chains: chainLog, nudged, clamped, untangled, separation: separationEvidence, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4), ...(exclusion ? { reviewedExclusion: exclusion } : {}) } };
 }
 
 /** Skeleton mode: parts grown from the TARGET's own paint by nearest bone of the placed skeleton, traced to polygons; the verdict is

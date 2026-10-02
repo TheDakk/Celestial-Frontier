@@ -10,7 +10,7 @@ import {createHash} from 'node:crypto';
 import {summarizeStaticOutcome} from '../../port/v2/tools/anatomy-verify/static-outcome.mjs';
 import {autoAuthor, autoAuthorShop, prepareSubject, mirrorSubject, referenceStats, skeletonStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
 import {serpentAuthor} from '../../port/v2/tools/anatomy-verify/serpent-author.mjs';
-import {admitReviewedPresence} from '../../port/v2/tools/painted-creature/reviewed-presence.mjs';
+import {reviewedExclusions} from '../../port/v2/tools/anatomy-verify/reviewed-exclusions.mjs';
 import {resolveAnatomyInventory} from '../../port/v2/tools/creature-animation/anatomy-inventory.mjs';
 const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
 const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
@@ -27,9 +27,13 @@ const shopArg = args.find((x) => x.startsWith('--shop=')), shopN = shopArg ? Num
 const fallbackArg = args.find((x) => x.startsWith('--fallback=')), fallbackN = fallbackArg ? Number(fallbackArg.slice(11)) : 0;
 const { familyContract, familyContactChains } = await import(path.join(ROOT, 'port/v2/tools/creature-animation/family-contracts.mjs'));
 const topkArg = args.find((x) => x.startsWith('--topk=')), topK = topkArg ? Number(topkArg.slice(7)) : 3;
-const useChains = args.includes('--chains'); /* --reviewed-presence=<json [{id, review}]> (labelled): a Codex reviewed-presence declaration (cf.reviewed-optional-absence/v1, bound to the
- * exact master/subject/prompt hashes) admitted by admitReviewedPresence; AFTER the author's verdict, only the joints the admitted
- * inventory excludes are dropped (as Codex's C89 Hyrax adapter). Never infers absence; a failed admission leaves the packet unchanged. */
+const useChains = args.includes('--chains'); /* --reviewed-presence=<json [{id, review}]> (labelled): a Codex reviewed-presence declaration (cf.reviewed-optional-absence/v1
+ * tail, cf.reviewed-external-ear-absence/v1 pinnae; bound to the exact master/subject/prompt hashes) admitted by admitReviewedPresence.
+ * Since 2026-10-02 (Claude) the admission runs BEFORE the author (reviewed-exclusions.mjs): the joints the admitted inventory removes
+ * go to autoAuthor as `excludedJoints`, which does not author them and exempts ONLY them from the missing-anatomy coverage checks
+ * (every other check, the counter's inventory included, is unchanged). The post-verdict drop (as Codex's C89 Hyrax adapter) is kept
+ * as a consistency pass and is then a no-op. Never infers absence; with no review, or a review whose admission fails (any hash
+ * mismatch), nothing is excluded and author output and verdicts are byte-identical to the runner without this option. */
 const reviewedArg = args.find((x) => x.startsWith('--reviewed-presence=')), reviewedById = new Map(reviewedArg ? JSON.parse(fs.readFileSync(path.join(ROOT, reviewedArg.slice(20)), 'utf8')).map((e) => [e.id, JSON.parse(fs.readFileSync(path.join(ROOT, e.review), 'utf8'))]) : []);
 const useSerpentStrips = args.includes('--serpent-strips'), useTailLabels = args.includes('--tail-labels'), useMergeJoint = args.includes('--merge-joint-labels'); const legMatchArg = args.find((x) => x.startsWith('--leg-match=')), legMatch = legMatchArg ? Number(legMatchArg.slice(12)) : 0;
 const useSkeleton = args.includes('--skeleton'), graphOf = (family) => familyContract(family).graph;
@@ -131,7 +135,8 @@ function runCandidate(s, rank, dir) {
   /* --serpent-strips (labelled, off by default): serpents use the strip author (vertical cuts on the measured centreline) instead of
    * the contour warp; same identity checks, provenance, intake and gates. References: the other serpent corpus packets, leave-one-species-out. */
   const serpentRefs = () => refs.map((r) => subjects.find((o) => o.id === r.subjectId)).filter((o) => o && o.family === 'serpent').map((o) => ({ id: o.id, name: o.subject.name, authoring: o.authoring, rgba: o.img.rgba, w: o.img.w, h: o.img.h }));
-  const res0 = useSerpentStrips && s.family === 'serpent' ? serpentAuthor({ rgba: s.img.rgba, w: s.img.w, h: s.img.h, id: s.id, refs: serpentRefs(), materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name) }) : (rank === 0 && shopN > 0 ? autoAuthorShop : autoAuthor)({ grow: args.includes('--grow'), shop: shopN, target: s.prepared, mirrored, family: s.family, id: s.id, refs, refRank: rank, legMatch, materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null });
+  const rx = reviewedById.has(s.id) ? reviewedExclusions({ packetDir: s.dir, review: reviewedById.get(s.id), family: s.family }) : null;
+  const res0 = useSerpentStrips && s.family === 'serpent' ? serpentAuthor({ rgba: s.img.rgba, w: s.img.w, h: s.img.h, id: s.id, refs: serpentRefs(), materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name) }) : (rank === 0 && shopN > 0 ? autoAuthorShop : autoAuthor)({ grow: args.includes('--grow'), shop: shopN, target: s.prepared, mirrored, family: s.family, id: s.id, refs, refRank: rank, legMatch, materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null, excludedJoints: rx?.excludedJoints ?? null });
   const res = idReasons.length ? { ...res0, verdict: 'REFUSE', reasons: [...idReasons, ...res0.reasons] } : res0;
   fs.writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify({ verdict: res.verdict, reasons: res.reasons, ...res.evidence }, null, 1) + '\n');
   // outer provenance envelope (Codex G1 review): intake stays unchanged and still writes manualAuthoring=true and
@@ -155,12 +160,12 @@ function runCandidate(s, rank, dir) {
     fs.copyFileSync(path.join(s.dir, 'master.png'), path.join(packet, 'master.png'));
     fs.copyFileSync(path.join(s.dir, 'subject-source.json'), path.join(packet, 'subject-source.json')); // species metadata, not anatomy
     let authoringOut = res.authoring, presenceOut = res.presence;
-    if (res.verdict === 'ADMIT' && reviewedById.has(s.id)) { const review = reviewedById.get(s.id), rd = s.dir;
-      try { const admitted = admitReviewedPresence({ masterBytes: fs.readFileSync(path.join(rd, 'master.png')), subjectBytes: fs.readFileSync(path.join(rd, 'subject-source.json')), promptBytes: fs.readFileSync(path.join(rd, 'prompt.txt')), review });
+    if (res.verdict === 'ADMIT' && rx) {
+      try { if (!rx.admitted) throw Error(rx.refused); const admitted = rx.admitted, authorRemoved = res.evidence?.reviewedExclusion?.removedParts ?? [];
         const allowed = new Set(resolveAnatomyInventory(familyContract(res.authoring.family), admitted).joints);
         const removed = res.authoring.parts.filter((p) => !allowed.has(p.joint)); if (removed.some((p) => p.id === res.authoring.remainderPart)) throw Error('cannot remove the remainder');
         authoringOut = { ...res.authoring, landmarksPx: Object.fromEntries(Object.entries(res.authoring.landmarksPx).filter(([j]) => allowed.has(j))), parts: res.authoring.parts.filter((p) => allowed.has(p.joint)) };
-        presenceOut = admitted; row.reviewedPresence = { absent: admitted.absent, removedParts: removed.map((p) => p.id) };
+        presenceOut = admitted; row.reviewedPresence = { absent: admitted.absent, removedParts: [...authorRemoved, ...removed.map((p) => p.id)] };
       } catch (e) { row.reviewedPresence = { refused: String(e.message).slice(0, 160) }; } }
     fs.writeFileSync(path.join(packet, 'authoring.json'), JSON.stringify(authoringOut, null, 2) + '\n');
     fs.writeFileSync(path.join(packet, 'presence.json'), JSON.stringify(presenceOut, null, 2) + '\n');
