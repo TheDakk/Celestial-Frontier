@@ -6944,7 +6944,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 120,
-    sha256: 'da3387a9a5cbbe0144e890a23f6ac0dec848c39cf6990ebbc8e7883e8cff1d06',
+    sha256: 'a6859ade844f31b93a2848c9d4f2a752cc0d4891946fdf9fe0e23e5785344000',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];

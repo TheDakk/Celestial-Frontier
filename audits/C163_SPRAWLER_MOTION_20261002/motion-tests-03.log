@@ -1,0 +1,20 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+·········································································································x····················
+
+ Test Files  1 failed | 19 passed (20)
+      Tests  1 failed | 125 passed (126)
+   Start at  09:40:55
+   Duration  5.04s (transform 1.56s, setup 0ms, import 3.29s, tests 18.73s, environment 1ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/sprawler-profile.test.ts > retains refusal of the reported compression fault and externally excessive poses
+AssertionError: expected 0 to be greater than 0
+ ❯ apps/game/src/motion/sprawler-profile.test.ts:25:19
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

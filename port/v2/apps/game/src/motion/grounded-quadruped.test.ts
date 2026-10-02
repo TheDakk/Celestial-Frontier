@@ -1,7 +1,15 @@
 import fs from 'node:fs';
 import {it,expect} from 'vitest';
 import {compileBodyCard} from './body-card.js';
-import {buildTimeline,buildActionTimeline,sampleTimeline,type MotionTimeline} from './timeline.js';
+import {buildActionTimeline,sampleTimeline,type MotionTimeline} from './timeline.js';
+import {groundedQuadrupedAction} from './grounded-quadruped.js';
+// Preserve the generic fallback's contracts independently of the new sprawler
+// profile, whose full-motion regressions live in sprawler-profile.test.ts.
+const buildTimeline=(card:Parameters<typeof buildActionTimeline>[0],id:string,seed:number)=>{
+ const action=actionsFor(card.template.id,card.anatomy)![id]!,compile=(a:typeof action)=>buildActionTimeline(card,a,seed),base=compile(action);
+ const selected=groundedQuadrupedAction(card,action,base,sampleTimeline,compile);
+ return selected.action===action?base:buildActionTimeline(card,selected.action,seed,[...card.notes,selected.note!]);
+};
 import {actionsFor} from './family-actions.js';
 import {createFamilyContactSolver,observedContactSupports} from '../creature-rig-contact.js';
 const root=new URL('../../../../../../',import.meta.url),base='audits/ART_BATTLE_FOCUS_20260925/';

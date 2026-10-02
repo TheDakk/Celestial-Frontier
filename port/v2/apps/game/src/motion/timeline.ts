@@ -5,6 +5,7 @@
 import { DEG, type Ease, type MotionAction } from './actions.js';
 import {groundedBirdAction} from './grounded-bird.js';
 import {groundedQuadrupedAction} from './grounded-quadruped.js';
+import {sprawlerAction} from './sprawler-profile.js';
 import {groundedInsectAction} from './grounded-insect.js';
 import {faintStanceEnvelope,applyStanceEnvelope,type StanceEnvelope} from './stance-envelope.js';
 import {stationaryContactEnvelope,type ContactStanceEnvelope} from './contact-envelope.js';
@@ -86,9 +87,10 @@ const CHAIN_ATTENUATION = 0.6;
 
 export function buildTimeline(card: BodyCard, actionId: string, seed: number): MotionTimeline {
   const resolved = resolveActionId(card, actionId);
-  const action: MotionAction | undefined = actionsFor(card.template.id,card.anatomy)?.[resolved.id];
-  if (!action) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
-  const notes=resolved.note?[...card.notes,resolved.note]:card.notes;
+  const authored: MotionAction | undefined = actionsFor(card.template.id,card.anatomy)?.[resolved.id];
+  if (!authored) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
+  const action=sprawlerAction(card,authored);
+  const notes=[...card.notes,...resolved.note?[resolved.note]:[],...action!==authored?['sprawler:low-trunk-v1']:[]];
   const base=buildActionTimeline(card,action,seed,notes);
   const selected=card.template.id==='quadruped'
     ?groundedQuadrupedAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes))
