@@ -1,0 +1,50 @@
+{
+  "schema": "cf.c163-fixed-rotations-delivery/v1",
+  "status": "AUDIT_CANDIDATE_VERIFIED_NATIVE_PENDING",
+  "productionEdited": false,
+  "nativeRun": false,
+  "qualityAccepted": false,
+  "scope": "Within-one-solve pinned-only rotation reuse; full first pass and full robust fallback; all guards and iteration ceilings inherited",
+  "module": {
+    "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep.wasm",
+    "sha256": "8dc3b57219c486d8e6db654284a3d6c9987233695d1c116d5559df2e235cd2be",
+    "bytes": 1933
+  },
+  "sourceOverrides": {
+    "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/source-overrides.json",
+    "sha256": "cc1ef0a4e4c3117cba4694a23d9dfb68f664a7fa2a86fe635956203602c09aec",
+    "bytes": 957
+  },
+  "verification": {
+    "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/verification.json",
+    "sha256": "f106215d34dbac27660018b0512b6285c2f005000492e3be05485d85f7c23e34",
+    "bytes": 3749
+  },
+  "capturedParity": {
+    "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/captured-parity.json",
+    "sha256": "b2365a0cd7bb0d6fabe4c7284d7b8d2220e4c10e7cc910b52579039b55e14fbd",
+    "bytes": 14485
+  },
+  "readme": {
+    "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/README.md",
+    "sha256": "1028bb6eea3f082491086a520518d2d2552adc5b308a59dddbaa3ea3341d1cbe",
+    "bytes": 4431
+  },
+  "counts": {
+    "vertices": 5334,
+    "cachedRotations": 1307,
+    "fourPassRotationEvaluationsBefore": 21336,
+    "fourPassRotationEvaluationsCandidate": 17415,
+    "skipped": 3921
+  },
+  "tests": 22,
+  "capturedTargets": 56,
+  "paintedPartChecks": 1792,
+  "hardPinCoordinateChecks": 218736,
+  "repeatBuildIdentical": true,
+  "remaining": [
+    "Signed reservation and one unprofiled 4x native epoch",
+    "Review full-size frames and performance evidence",
+    "Only then consider bounded production promotion"
+  ]
+}

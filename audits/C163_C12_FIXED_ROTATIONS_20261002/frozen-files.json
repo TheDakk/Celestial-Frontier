@@ -1,0 +1,157 @@
+{
+  "schema": "cf.c163-fixed-rotations-frozen-files/v1",
+  "files": [
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/README.md",
+      "sha256": "1028bb6eea3f082491086a520518d2d2552adc5b308a59dddbaa3ea3341d1cbe",
+      "bytes": 4431
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399",
+      "bytes": 12545
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline/arap-sweep-build.json",
+      "sha256": "0cbd0509f4d19ed3bfbb92cd9bc016c0782c85117cb15400a75b0b992e14bc85",
+      "bytes": 1004
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline/arap-sweep-bytes.mjs",
+      "sha256": "44d181aedd47321a459ba6ee23fb269064d9d6f9e0cc5f311bcfc3329b6b79a0",
+      "bytes": 5584
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline/arap-sweep.c",
+      "sha256": "87002ac565a72f94e4239faa618f689f7cd197db7973cbf9b511139193def285",
+      "bytes": 4577
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline/arap-sweep.wasm",
+      "sha256": "a48d554ba386ae1fc9f186a02f25984b307e6ec4bfe8bfc782dc6d79b67efd78",
+      "bytes": 1894
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline/build-arap-sweep.mjs",
+      "sha256": "af04958347fcd50f743c0c7c6cff30c357311febc9f3483e48744a882d27f356",
+      "bytes": 4705
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd",
+      "bytes": 7035
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/baseline-sources.json",
+      "sha256": "e86af798240e47a7a186c5f7286417ea9c55f791559d66ef1402868db5de0137",
+      "bytes": 1222
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-kernel-numerics.test.mjs",
+      "sha256": "a61a72ab50998a148ae15c976da5dfaa791dfbf3604bf8a9392e40f09f6ac058",
+      "bytes": 3000
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-skin.mjs",
+      "sha256": "1c8ec08dbfc840480b61a4548a04c9272a10ec00c6c29a7f05453f9a37b5cc2b",
+      "bytes": 12830
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-skin.test.mjs",
+      "sha256": "d3ef24bd2b64f09602b467141e941ed4e224a94b06b4e4b61a24225749d95d75",
+      "bytes": 5699
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep-build.json",
+      "sha256": "819d4accd112b9f8c770e13eb6241188b738b040b86c241744983859454a42e3",
+      "bytes": 1004
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep-bytes.mjs",
+      "sha256": "7bcc54b594a03b611429b834512a3b01c528c544f03b11f0e6933631c0c3560c",
+      "bytes": 5692
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep.c",
+      "sha256": "19f9313e2c4d1feea8fe2b030ce42ad9142a2dffa8a147d23e3402361197b8a1",
+      "bytes": 4947
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep.wasm",
+      "sha256": "8dc3b57219c486d8e6db654284a3d6c9987233695d1c116d5559df2e235cd2be",
+      "bytes": 1933
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/build-arap-sweep.mjs",
+      "sha256": "18b41f6a05fa5bd147b024d1a58735ac791213949801a48a161879165063e97b",
+      "bytes": 4705
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-arap-sweep.mjs",
+      "sha256": "808770c8160b8cd9f68684674fb4aeea4226831176c9c68e056a3e7505149b8c",
+      "bytes": 8830
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-arap-sweep.test.mjs",
+      "sha256": "8545af38c400c3c38181329456705870d03540391644585ab97632f8aa160cf8",
+      "bytes": 7419
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/captured-parity.json",
+      "sha256": "b2365a0cd7bb0d6fabe4c7284d7b8d2220e4c10e7cc910b52579039b55e14fbd",
+      "bytes": 14485
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/check-captured.mjs",
+      "sha256": "ddbc9177b6bafb5adccb7bb92bff1f1bcf086fa3aad29a6d6e07d74b4eda4337",
+      "bytes": 8862
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/fixed-rotations.test.mjs",
+      "sha256": "b7a863ee737772540e226427092d6d0284ba5717ed22d8492b4f266aeb78d906",
+      "bytes": 5080
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/import-hook.mjs",
+      "sha256": "021bb2cb0511a8db9a2b0f45fa5410df63701e384daea43933b9a92262eecc73",
+      "bytes": 415
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/inherited-tests.json",
+      "sha256": "5cfc3a05869fb1adfcff0caa9513cdc47bd7b616706c7e5624e85e5cf68b7805",
+      "bytes": 1075
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/prepare.py",
+      "sha256": "ec7bde975c7622c26904b4c4f312ab6ba4b148a4c852cebac791740b5568d30e",
+      "bytes": 5906
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/receipt.json",
+      "sha256": "d41404212110edd4ad35098a34946e212dbdeb0efec0d2c4c97aef2159c1729a",
+      "bytes": 1848
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/source-overrides.json",
+      "sha256": "cc1ef0a4e4c3117cba4694a23d9dfb68f664a7fa2a86fe635956203602c09aec",
+      "bytes": 957
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/validation.log",
+      "sha256": "2bd545c492dabb7a0a930d9b4819dbce8a4f05f05f4697872b0b2b405f4d525d",
+      "bytes": 2625
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/verification.json",
+      "sha256": "f106215d34dbac27660018b0512b6285c2f005000492e3be05485d85f7c23e34",
+      "bytes": 3749
+    },
+    {
+      "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/verify.mjs",
+      "sha256": "39d4aeec846c9fc6c06d3c169554b487b87c06fe7a9e0c0657c4c5d2c90f1f25",
+      "bytes": 3121
+    }
+  ],
+  "count": 30,
+  "bytes": 147179
+}

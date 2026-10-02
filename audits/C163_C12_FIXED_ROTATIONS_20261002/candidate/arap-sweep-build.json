@@ -1,0 +1,23 @@
+{
+  "schema": "cf.arap-wasm-leaf/v1",
+  "abi": "pass(i32 x 14) -> i32; 1 normal pass, 0 position-untouched robust fallback",
+  "sourceSha256": "19f9313e2c4d1feea8fe2b030ce42ad9142a2dffa8a147d23e3402361197b8a1",
+  "objectSha256": "391d4e73f47a444162c8dcd9c1e4777c94f65657cf580e5bf3a4f2329915b31d",
+  "moduleSha256": "8dc3b57219c486d8e6db654284a3d6c9987233695d1c116d5559df2e235cd2be",
+  "moduleBytes": 1933,
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+  "flags": [
+    "--target=wasm32-unknown-unknown",
+    "-O3",
+    "-msimd128",
+    "-fno-vectorize",
+    "-fno-slp-vectorize",
+    "-ffp-contract=off",
+    "-fno-fast-math",
+    "-fno-math-errno",
+    "-fno-builtin",
+    "-nostdlib",
+    "-c"
+  ],
+  "sections": "type; memory-only import; one function; one added export; code. All custom metadata removed; relocations/globals/data/tables/imported functions refused."
+}
