@@ -1,0 +1,8 @@
+{
+  "source": "~/.codex/worktrees/c183-i5/celestial-frontier-openai-mac",
+  "ancestor": true,
+  "epochTerminal": true,
+  "independentCertificateReplay": true,
+  "sourceExists": true,
+  "freeBytesBefore": 124928000000
+}

@@ -1,0 +1,32 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c54-14-goose hit against the actual painted supports 55ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c54-14-goose tame against the actual painted supports 45ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c54-15-quail tame against the actual painted supports 52ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'hawk' nape/skull paint separation without changing its fit 154ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c56-10-raven hit against the actual painted supports 45ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c59-08-vulture hit against the actual painted supports 40ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c56-15-dove melee:claw against the actual painted supports 39ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'crow' nape/skull paint separation without changing its fit 22ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'snowy-owl' nape/skull paint separation without changing its fit 26ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > removes the reproduced 'capuchin' nape/skull paint separation without changing its fit 16ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > preserves every captured non-faint canonical action and every explicit editor timeline 160ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > is deterministic, anatomy-derived, and leaves unsupported or already coherent curves by identity 2ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > does not trade the primate upper nape spike for an increased throat/arm gap 178ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > preserves 'hawk' wing/tail geometry during the faint transition 340ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > preserves 'crow' wing/tail geometry during the faint transition 118ms
+ ✓ apps/game/src/motion/axial-faint.test.ts > preserves 'snowy-owl' wing/tail geometry during the faint transition 156ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors 02-pigeon tame against the actual painted supports 48ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > preserves every already-passing probe outcome 3611ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c59-08-vulture faint against painted supports without changing limbs or timing 123ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c56-15-dove faint against painted supports without changing limbs or timing 129ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors 02-pigeon faint against painted supports without changing limbs or timing 139ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors 04-hawk-v2 faint against painted supports without changing limbs or timing 122ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > rejects restored nape curl, erased anticipation and unrelated faint changes 21ms
+
+ Test Files  2 passed (2)
+      Tests  23 passed (23)
+   Start at  18:40:38
+   Duration  4.79s (transform 326ms, setup 0ms, import 427ms, tests 5.65s, environment 0ms)
+

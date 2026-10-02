@@ -1,0 +1,6 @@
+{
+  "stage": "first offline replay preparation",
+  "error": "Local painter fit is ignored/absent; no publication ran",
+  "resolution": "Read sibling fit read-only, verify exact native report hashes, retain immutable paired record/binding locally",
+  "nativeRuns": 0
+}

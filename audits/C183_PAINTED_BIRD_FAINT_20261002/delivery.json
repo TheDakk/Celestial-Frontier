@@ -1,0 +1,248 @@
+{
+  "schema": "cf.c183-painted-bird-faint-delivery/v1",
+  "status": "TARGETED_PASS_RUNTIME_UNCHANGED",
+  "sourceHead": "5cc190cd31ac22b466785351bba854c5219431d8",
+  "baseline": {
+    "fail": 5,
+    "pass": 7,
+    "receipt": "audits/C183_PAINTED_BIRD_FAINT_20261002/baseline-01.json"
+  },
+  "corrected": {
+    "pass": 23,
+    "fail": 0,
+    "receipt": "audits/C183_PAINTED_BIRD_FAINT_20261002/corrected-01.json"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "receipt": "audits/C183_PAINTED_BIRD_FAINT_20261002/typecheck-01.json"
+  },
+  "changedFiles": [
+    {
+      "path": "port/v2/apps/game/src/motion/painted-bird-author.test.ts",
+      "sha256": "9b3186cf4b254a0e24d0095b235ef0ee3266a9270494f6a82da8afa39a5fc821"
+    },
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "sha256": "198d9205611ed1715728f2b5f99d274aaf4591370c6d36d64964ee3d15bf394c"
+    }
+  ],
+  "runtimeSourceProof": [
+    {
+      "path": "port/v2/apps/game/src/motion/axial-faint.ts",
+      "sha256": "dc1f130d8b2e2442c7a778cb05788b63b01173f3ab4560996d7211a5fd45ff58",
+      "unchanged": true,
+      "unchangedAcrossCorrection": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/axial-faint.test.ts",
+      "sha256": "d1cbcdab11bf7faf934ec7063e49c767496ccf328bb008ca5673708ce81f3bdf",
+      "unchanged": true,
+      "unchangedAcrossCorrection": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "0865a05c2e5d767acf0c406776b3325493b264d49138259941ea417d3a8782b8",
+      "unchanged": true,
+      "unchangedAcrossCorrection": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.ts",
+      "sha256": "7dfec38b2f458f0031a4c9126d2ea4cb721172455e4ebccddcf6d75fa56c3148",
+      "unchanged": true,
+      "unchangedAcrossCorrection": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/painted-supports.ts",
+      "sha256": "685981c31ef67838b6d52f0b80b126077c6ef2f8f11a4f985ce58c284d309695",
+      "unchanged": true,
+      "unchangedAcrossCorrection": true
+    }
+  ],
+  "fixtureInputs": [
+    {
+      "name": "c54-14-goose",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c54-14-goose/record.json",
+      "sha256": "0fb3a200efac5e1cbe8501222d7711f15e86a7a8b8d872d64a482685cbee22a8"
+    },
+    {
+      "name": "c54-14-goose",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c54-14-goose/binding.json",
+      "sha256": "dff80f4b885cfbedba5a5156f08ac89d3643f129876dae50c016bd62289060ba"
+    },
+    {
+      "name": "c54-15-quail",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c54-15-quail/record.json",
+      "sha256": "b709d0d12f88f3c4647721e43ff88d794f680b8f1d8ba6e91542518120f46d74"
+    },
+    {
+      "name": "c54-15-quail",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c54-15-quail/binding.json",
+      "sha256": "7bdc6c9985c8bab6eeabb79dbadb6f7f9a020caf0c1e8ad6abb02b9b6e5f1ac7"
+    },
+    {
+      "name": "c56-10-raven",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven/record.json",
+      "sha256": "25b019470c95a9ac9076515f8061258c49a6a4e9d90e75f93aa5182066cb486f"
+    },
+    {
+      "name": "c56-10-raven",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven/binding.json",
+      "sha256": "1099c2f19d7b79725e5ffd04bbada4bc6a29d2ed0030527faf9d6210d65b43bd"
+    },
+    {
+      "name": "c59-08-vulture",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c59-08-vulture/record.json",
+      "sha256": "34b44097545131c727ea9acec54ac282b9f6506ad81bdbcdc9cd1a421846da06"
+    },
+    {
+      "name": "c59-08-vulture",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c59-08-vulture/binding.json",
+      "sha256": "4ed05f42323def2e84c13bf88dc9ac19e8d9aef865d43fd3c9c5dd777aaa0713"
+    },
+    {
+      "name": "c56-09-crow",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-09-crow/record.json",
+      "sha256": "2f43c779a92b38c15d80fb3b0b4b7b79c001360bec170c21c5b85f40b686f7e9"
+    },
+    {
+      "name": "c56-09-crow",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-09-crow/binding.json",
+      "sha256": "000b39a4458b24818bfedaabbf888a76fcf78ffbdad4a2502107fefdf675953e"
+    },
+    {
+      "name": "c56-13-magpie",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-13-magpie/record.json",
+      "sha256": "b1820018ec99fb95b8766b7e722fb2bf3dd7b246d6746e35fa77780e1289ee91"
+    },
+    {
+      "name": "c56-13-magpie",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-13-magpie/binding.json",
+      "sha256": "93ff224a71d5e8e03712b78cea69a12fec195f1c5a199a9163c75a870f381c5f"
+    },
+    {
+      "name": "c56-15-dove",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-15-dove/record.json",
+      "sha256": "d477d2f8ae3ef727595558f8fe40eee2dcc3530af71ea6cb724f55f0119f56b2"
+    },
+    {
+      "name": "c56-15-dove",
+      "path": "audits/BIRD_MOTION_C69_20260927/inputs/c56-15-dove/binding.json",
+      "sha256": "bcfd3418d7091217389cf44d908b105c3576fa04bfe08456c6e0823f3801d16a"
+    },
+    {
+      "name": "01-robin",
+      "path": "audits/G2_REFERENCES_C62_20260927/01-robin/fit-01/record.json",
+      "sha256": "bf91e2d4a064dee489d93a2acb857d806c820eb770125d31801548e028b8287d"
+    },
+    {
+      "name": "01-robin",
+      "path": "audits/G2_REFERENCES_C62_20260927/01-robin/fit-01/binding.json",
+      "sha256": "c1151bec52435297847f3af3ec47029469fb10728ab3c25561468585609a393a"
+    },
+    {
+      "name": "02-pigeon",
+      "path": "audits/G2_REFERENCES_C62_20260927/02-pigeon/fit-01/record.json",
+      "sha256": "e6cbf8ecac13d5065f204a872c18d35aa0ce87b8212fb423f59849bfde726a12"
+    },
+    {
+      "name": "02-pigeon",
+      "path": "audits/G2_REFERENCES_C62_20260927/02-pigeon/fit-01/binding.json",
+      "sha256": "4aa19bc56399bf12a1a4408797f190ada31aae547e11ffceaebdc9534b7eb21e"
+    },
+    {
+      "name": "03-duck-v2",
+      "path": "audits/G2_REFERENCES_C62_20260927/03-duck-v2/fit-01/record.json",
+      "sha256": "2c28810b9e37540bb352982c59c0ac30cfe20a9a6ac652326ca80ab0f47e634c"
+    },
+    {
+      "name": "03-duck-v2",
+      "path": "audits/G2_REFERENCES_C62_20260927/03-duck-v2/fit-01/binding.json",
+      "sha256": "7ad262fdaae3863b04c562a6abe3317c7fb9e49ed3d54cca79e014f3af15fd84"
+    },
+    {
+      "name": "04-hawk-v2",
+      "path": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/fit-01/record.json",
+      "sha256": "202d9591d93a0f6023086d69c662d9efd9cd37a291a796e4c1f8b1210c700f79"
+    },
+    {
+      "name": "04-hawk-v2",
+      "path": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/fit-01/binding.json",
+      "sha256": "d590424837ada85cdbb9a4b3bcc13824da056d3721e42a51dc22bb5ad034751a"
+    }
+  ],
+  "initialRedPreserved": true,
+  "initialTestPreserved": true,
+  "negativeControls": [
+    "restored final neck curl",
+    "erased initial head nod",
+    "changed wing track",
+    "widened joint limit",
+    "changed duration"
+  ],
+  "existingPaintOutcomeMutationTestsPreserved": true,
+  "numericLimitsChanged": false,
+  "runtimeBehaviorChanged": false,
+  "nativeRuns": 0,
+  "fullDevelopRuns": 0,
+  "visualAcceptanceClaimed": false,
+  "freeGiB": 138.85,
+  "fileCount": 11,
+  "bytes": 26831,
+  "files": [
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/README.md",
+      "bytes": 3623,
+      "sha256": "1346beb29a229d21b0e7f50ded9b3f42282bba09318a55385ea31f4e31a7ca9c"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/baseline-01.json",
+      "bytes": 1665,
+      "sha256": "7cc8d360efe2438e977a3e647a3be7499fee226e06764ff87066bd6bdea409f8"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/baseline-01.log",
+      "bytes": 6119,
+      "sha256": "21d1196ec9743a996b800b9a2539072ff4dec94beb5d2e02adf6883ff25781aa"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/corrected-01.json",
+      "bytes": 1715,
+      "sha256": "ecc291cf7ac872d9159d24c33ee1d7255cf9edae21cd826329192272d5f18950"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/corrected-01.log",
+      "bytes": 3260,
+      "sha256": "2bfa3943391152e9528eacc44a38d84b53495f02faf7a78d1cf97bd47eba5f90"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/freeze.mjs",
+      "bytes": 2739,
+      "sha256": "10bef6024c501b83b8395f30654c9470d6ed31525623e8ff9c630f86a702bcd0"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/painted-bird-author.before.ts.txt",
+      "bytes": 4083,
+      "sha256": "2d07530462e71cfce1762081b6546770be5012ecb8ecb4973b6d7d27ddb32baf"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/run-check.mjs",
+      "bytes": 1807,
+      "sha256": "1dc46f5d26dae17aef409da2d7ed1b5a07994f898a4cf94b1c07d29a1c5d8ad0"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/run-typecheck.mjs",
+      "bytes": 1203,
+      "sha256": "639d8e3358dfba4806f4dbcd44d4dd24c9392e929c215d39632d1c8d44da4808"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/typecheck-01.json",
+      "bytes": 617,
+      "sha256": "aa7a2f001bf89772ff24231c27c2abc660a34017d0c507adbc6d1bac5d0b239e"
+    },
+    {
+      "path": "audits/C183_PAINTED_BIRD_FAINT_20261002/typecheck-01.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
