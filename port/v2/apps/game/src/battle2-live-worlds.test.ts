@@ -13,6 +13,7 @@ import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
 import { surfaceWater, type PlanetType } from './biome-vista-surface.js';
 import { earthDuelWorld, liveArenaWorld, liveBattleArena, liveSettlementEncounter, liveWorldSnapshot, type LiveWorldSnapshotV1 } from './battle2-live-worlds.js';
 import { fnv1a32, liveArenaInput } from './battle2-wiring.js';
+import DELIVERIES from '../../../tools/morph/arena-deliveries.json';
 
 beforeAll(() => installCaptureHooks());
 
@@ -23,7 +24,7 @@ const SOL_OTHERS = systemFor(SOL.star.seed).planets.map((p) => ({ ...SOL, planet
 const snap = (biome: BiomeProfileKeyV1 | null, planetType = biome ? ARENA_BIOME_WORLD_TYPE[biome] : 'rocky', climateBand = 'temperate', key = `w|test|${biome}`): LiveWorldSnapshotV1 =>
   ({ key, address: { galaxy: { seed: 1, x: 0, y: 0 }, star: { seed: 2, x: 0, y: 0 }, planet: { seed: 3, ordinal: 0 } }, source: { planetSeed: 3, planetType, climateBand, biomeKey: biome } });
 /* the routing mechanism is tested against the temperate-only registry (the state these invariants describe); the shipped registry is
- * pinned separately below (six C132 sets accepted by Dakk 2026-10-02) */
+ * pinned separately below (all 45 sets accepted by Dakk 2026-10-02, D29) */
 const TEMPERATE_ONLY = ARENA_SETS.filter((s) => s.id === ARENA_FALLBACK_SET_ID);
 const route = (battleId: string, live: ReturnType<typeof liveBattleArena>, sets: readonly ArenaSetRow[] = TEMPERATE_ONLY) =>
   selectArena({ contextId: battleId, ...live.arenaContext, worlds: live.worlds, ...(live.worldPreset === 'earth' ? { earth: true } : {}) }, sets);
@@ -113,14 +114,51 @@ describe('live battle worlds from the encounter (battle2-live-worlds.ts)', () =>
 });
 const PH = Object.freeze({ realm: 'land' as const, preferred: 'ground' as const, allowed: Object.freeze(['ground'] as const), source: 'test', liquid: null });
 
-describe('the shipped arena registry (C132 arenas, Dakk 2026-10-02)', () => {
-  it('registers the temperate set, the six accepted ground arenas and the two accepted WATER arenas; a ground fight on each ground biome draws its own set', () => {
-    expect(ARENA_SETS.map((s) => s.id)).toEqual([ARENA_FALLBACK_SET_ID, 'karst-cave', 'jungle-v2', 'marsh', 'savanna-v2', 'dunesea', 'tundra', 'freshwater-lake-v2', 'coral']);
-    expect(ARENA_SETS.filter((s) => s.medium === 'water').map((s) => [s.id, s.biome])).toEqual([['freshwater-lake-v2', 'temperate'], ['coral', 'coral']]);
-    for (const row of ARENA_SETS.filter((s) => s.medium === 'ground').slice(1)) {
-      const live = liveBattleArena('b-' + row.id, liveSettlementEncounter('fauna', snap(row.biome as BiomeProfileKeyV1)));
-      expect(route('b-' + row.id, live, ARENA_SETS).set.id, row.biome).toBe(row.id);
-    }
+/* The shipped registry: the temperate fallback, the first C132 registration (six ground + two water sets) and the 36 D29 sets Dakk accepted
+ * 2026-10-02 — 45 sets, every one of the 43 biome families painted. In arena-deliveries.json order. */
+const SHIPPED_IDS = [ARENA_FALLBACK_SET_ID, 'karst-cave', 'jungle-v2', 'marsh', 'savanna-v2', 'dunesea', 'tundra', 'freshwater-lake-v2', 'coral',
+  'abyssal', 'abyssgreen', 'acidhaze', 'ammonia-v2', 'archipelago-v2', 'ashwaste', 'banded-v2', 'blueice', 'boulder-v3', 'canyon', 'carbon', 'cratered-v2',
+  'cryogeyser-v2', 'crystalsteppe-v2', 'emberfield', 'fungal', 'geode', 'glacier', 'glass-v3', 'graben', 'hotglow', 'karst', 'magmasea-v2', 'mangrove-v2',
+  'milksea-v2', 'obsidian', 'opensea', 'oxide-v2', 'packice-v2', 'saltflat', 'saltpan-r2', 'stormeye', 'stormsea-v2', 'sulfurdeck', 'swamp-v2', 'volcisle'] as const;
+const SHIPPED_WATER = [['freshwater-lake-v2', 'temperate'], ['coral', 'coral'], ['abyssal', 'abyssal'], ['milksea-v2', 'milksea'], ['opensea', 'opensea'], ['stormsea-v2', 'stormsea']];
+/** Every way the shipped registry can be wrong, named (empty = the pin holds). Run on the shipped rows and on mutants of them. */
+function shippedPinFailures(sets: readonly ArenaSetRow[]): string[] {
+  const f: string[] = [];
+  if (JSON.stringify(sets.map((s) => s.id)) !== JSON.stringify(SHIPPED_IDS)) f.push('ids differ from the 45 accepted sets');
+  if (JSON.stringify(sets.map((s) => s.delivery)) !== JSON.stringify(DELIVERIES.deliveries)) f.push('rows are not arena-deliveries.json, in order');
+  if (JSON.stringify(sets.filter((s) => s.medium === 'water').map((s) => [s.id, s.biome])) !== JSON.stringify(SHIPPED_WATER)) f.push('water sets differ');
+  for (const b of BIOME_PROFILE_KEYS_V1) {
+    if (!sets.some((s) => s.biome === b)) f.push(`biome family ${b} has no set`);
+    const own = sets.filter((s) => s.biome === b && s.medium === 'ground').map((s) => s.id);
+    const r = route('pin-' + b, liveBattleArena('pin-' + b, liveSettlementEncounter('fauna', snap(b))), sets);
+    // the painted water sets by the pinned list, not by the rows' own medium (so a medium-blind registry cannot hide one)
+    if (r.set.medium !== 'ground' || SHIPPED_WATER.some(([id]) => id === r.set.id)) f.push(`${b}: a ground fight drew the water set ${r.set.id}`);
+    else if (own.length && !own.includes(r.set.id)) f.push(`${b}: a ground fight drew ${r.set.id}, not its own ${own.join('/')}`);
+    else if (!own.length && r.match !== 'kin') f.push(`${b}: no ground set of its own, yet match ${r.match} (${r.set.id})`);
+  }
+  return f;
+}
+
+describe('the shipped arena registry (C132 arenas, Dakk 2026-10-02; all 45 sets with D29)', () => {
+  it('registers exactly the 45 accepted sets in arena-deliveries.json order; every biome family has a set; a ground fight on each biome draws its own ground set (a water-only ocean biome: a ground kin)', () => {
+    expect(ARENA_SETS.map((s) => s.id)).toEqual(SHIPPED_IDS);
+    expect(ARENA_SETS).toHaveLength(45); expect(DELIVERIES.deliveries).toHaveLength(45);
+    expect(new Set(ARENA_SETS.map((s) => s.biome))).toEqual(new Set(BIOME_PROFILE_KEYS_V1));
+    expect(ARENA_SETS.filter((s) => s.medium === 'water').map((s) => [s.id, s.biome])).toEqual(SHIPPED_WATER);
+    expect(shippedPinFailures(ARENA_SETS)).toEqual([]);
+    // the biome with two ground sets (karst: karst-cave, karst) draws one of them, stable per world
+    const k = route('b-karst', liveBattleArena('b-karst', liveSettlementEncounter('fauna', snap('karst'))), ARENA_SETS);
+    expect(['karst-cave', 'karst']).toContain(k.set.id); expect(k.match).toBe('biome');
+    // Earth still never routes to a painted biome set
+    expect(route('b-earth', liveBattleArena('b-earth', liveSettlementEncounter('fauna', liveWorldSnapshot(EARTH))), ARENA_SETS).set.id).toBe(ARENA_FALLBACK_SET_ID);
+  });
+  it('negative controls: the pin fails, by name, on a dropped set, a reordered registry, a mislabelled biome and a medium-blind registry', () => {
+    const reparse = (rows: readonly object[]) => parseArenaSets({ schema: 'cf.arena-sets/v1', sets: rows });
+    expect(shippedPinFailures(reparse(ARENA_SETS.filter((s) => s.id !== 'canyon')))).toEqual(expect.arrayContaining(['ids differ from the 45 accepted sets', 'biome family canyon has no set']));
+    expect(shippedPinFailures(reparse([...ARENA_SETS].reverse()))).toEqual(expect.arrayContaining(['rows are not arena-deliveries.json, in order']));
+    expect(shippedPinFailures(reparse(ARENA_SETS.map((s) => (s.id === 'canyon' ? { ...s, biome: 'dunesea' } : s))))).toEqual(expect.arrayContaining(['biome family canyon has no set']));
+    const blind = shippedPinFailures(reparse(ARENA_SETS.map((s) => ({ ...s, medium: 'ground' }))));
+    expect(blind).toContain('water sets differ'); expect(blind.some((m) => /^(coral|opensea|abyssal|milksea|stormsea): a ground fight drew /.test(m)), blind.join('; ')).toBe(true);
   });
   // the fight's medium from the habitat compiler on the live world, exactly as the wiring computes it
   const land = civetRecord(), swimmer = { ...civetRecord(), habitat: { realm: 'aquatic' as const, source: 'test: declared swimmer' } };
@@ -129,26 +167,51 @@ describe('the shipped arena registry (C132 arenas, Dakk 2026-10-02)', () => {
     const m = habitatFightMedium({ contextId: 'b-' + biome, seed: live.arenaContext.seed, world: live.worlds!.home, groundLineY: 0.78, left: { record: left, genome: null }, right: { record: right, genome: null } });
     return { m, r: selectArena({ contextId: 'b-' + biome, ...live.arenaContext, worlds: live.worlds, medium: m.medium }, sets), world: live.worlds!.home };
   };
-  it('a LAND fight on a temperate or coral world never draws a water set; a SWIMMER fight there draws its painted water set', () => {
+  /* the medium MECHANISM over a FIXED subset (the first C132 registration: no ocean ground set, so the coral land fight's fallback and its
+   * reason stay exercised); the shipped 45-set registry is checked by the next test */
+  const NINE = SHIPPED_IDS.slice(0, 9).map((id) => ARENA_SETS.find((s) => s.id === id)!);
+  it('a LAND fight on a temperate or coral world never draws a water set; a SWIMMER fight there draws its painted water set (fixed subset)', () => {
     for (const [biome, wet] of [['temperate', 'freshwater-lake-v2'], ['coral', 'coral']] as const) {
-      const dry = fightOn(biome, land, land);
+      const dry = fightOn(biome, land, land, NINE);
       expect(dry.m.medium, dry.m.reason).toBe('ground'); expect(dry.r.set.medium).toBe('ground'); expect(dry.r.set.id).not.toBe(wet);
-      const mixed = fightOn(biome, swimmer, land); // a swimmer facing a land fighter: the land fighter keeps its floor (half lake), never underwater
+      const mixed = fightOn(biome, swimmer, land, NINE); // a swimmer facing a land fighter: the land fighter keeps its floor (half lake), never underwater
       expect(mixed.r.set.medium, `${biome}: ${mixed.m.reason}`).toBe('ground');
-      const fish = fightOn(biome, swimmer, swimmer);
+      const fish = fightOn(biome, swimmer, swimmer, NINE);
       expect(fish.world.liquid).toBe('water'); expect(fish.m.medium, fish.m.reason).toBe('water');
       expect(fish.r.set.id).toBe(wet); expect(fish.r.match).toBe('biome'); expect(fish.r.reason).toMatch(/water fight/);
     }
     // the temperate land fight keeps the accepted temperate plates; the coral land fight falls back (no ocean ground set) and names the water set it skipped
+    expect(fightOn('temperate', land, land, NINE).r.set.id).toBe(ARENA_FALLBACK_SET_ID);
+    expect(fightOn('coral', land, land, NINE).r).toMatchObject({ match: 'fallback', set: { id: ARENA_FALLBACK_SET_ID } });
+    expect(fightOn('coral', land, land, NINE).r.reason).toMatch(/not a water fight: the water set coral is drawn only when both combatants are in water/);
+  });
+  it('shipped (45 sets): on every world of a painted water set, a land or mixed fight draws a GROUND set; a swimmer fight draws that water set', () => {
+    for (const [wet, biome] of SHIPPED_WATER as [string, BiomeProfileKeyV1][]) {
+      const dry = fightOn(biome, land, land), mixed = fightOn(biome, swimmer, land), fish = fightOn(biome, swimmer, swimmer);
+      expect(dry.m.medium, dry.m.reason).toBe('ground'); expect(dry.r.set.medium, biome).toBe('ground'); expect(dry.r.set.id).not.toBe(wet);
+      expect(dry.r.reason, biome).toMatch(new RegExp(`not a water fight: the water sets? (.*, )?${wet}(, .*)? (is|are) drawn only when both combatants are in water`));
+      expect(mixed.r.set.medium, `${biome}: ${mixed.m.reason}`).toBe('ground');
+      expect(fish.world.liquid, biome).toBe('water'); expect(fish.m.medium, fish.m.reason).toBe('water');
+      expect([fish.r.set.id, fish.r.match], biome).toEqual([wet, 'biome']); expect(fish.r.reason).toMatch(/water fight/);
+    }
+    // the ocean land fight now takes an ocean ground kin (archipelago, mangrove or volcanic isle), never the fallback
+    expect(fightOn('coral', land, land).r).toMatchObject({ match: 'kin', set: { medium: 'ground' } });
+    expect(ARENA_BIOME_WORLD_TYPE[fightOn('coral', land, land).r.set.biome]).toBe('ocean');
     expect(fightOn('temperate', land, land).r.set.id).toBe(ARENA_FALLBACK_SET_ID);
-    expect(fightOn('coral', land, land).r.reason).toMatch(/not a water fight: the water set coral is drawn only when both combatants are in water/);
   });
   it('negative control: a medium-blind registry (the water rows relabelled ground) puts the land fighters underwater — the check sees it', () => {
-    const blind = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: ARENA_SETS.map((s) => ({ ...s, medium: 'ground' })) });
-    expect(fightOn('coral', land, land, blind).r.set.id).toBe('coral');
-    expect(fightOn('temperate', land, land, blind).r.set.id).toBeOneOf([ARENA_FALLBACK_SET_ID, 'freshwater-lake-v2']);
-    // and without a water set for its biome or world type, a swimmer fight keeps today's ground route with the procedural water, labelled
-    const noWater = ARENA_SETS.filter((s) => s.medium === 'ground'), fish = fightOn('coral', swimmer, swimmer, noWater);
+    for (const sets of [NINE, ARENA_SETS]) {
+      const blind = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: sets.map((s) => ({ ...s, medium: 'ground' })) });
+      expect(fightOn('coral', land, land, blind).r.set.id).toBe('coral');
+      expect(fightOn('temperate', land, land, blind).r.set.id).toBeOneOf([ARENA_FALLBACK_SET_ID, 'freshwater-lake-v2']);
+    }
+    const blindShipped = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: ARENA_SETS.map((s) => ({ ...s, medium: 'ground' })) });
+    for (const [wet, biome] of SHIPPED_WATER.slice(1) as [string, BiomeProfileKeyV1][]) expect(fightOn(biome, land, land, blindShipped).r.set.id, biome).toBe(wet);
+    // and without a water set for its biome or world type, a swimmer fight keeps the ground route with the procedural water, labelled:
+    // over the subset that is the fallback; over the shipped ground sets, the coral world's ocean ground kin
+    const fish = fightOn('coral', swimmer, swimmer, NINE.filter((s) => s.medium === 'ground'));
     expect(fish.m.medium).toBe('water'); expect(fish.r.set.id).toBe(ARENA_FALLBACK_SET_ID); expect(fish.r.reason).toMatch(/procedural wet arena draws the water/);
+    const fishShipped = fightOn('coral', swimmer, swimmer, ARENA_SETS.filter((s) => s.medium === 'ground'));
+    expect(fishShipped.m.medium).toBe('water'); expect(fishShipped.r).toMatchObject({ match: 'kin', set: { medium: 'ground' } }); expect(fishShipped.r.reason).toMatch(/procedural wet arena draws the water/);
   });
 });

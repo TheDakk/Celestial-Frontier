@@ -25,6 +25,12 @@ const plate = async (rel: string): Promise<ArenaPlateImage> => (rel.endsWith('.w
 const LIQUID: ReadonlySet<string> = new Set(['opensea', 'archipelago', 'coral', 'stormsea', 'volcisle', 'abyssal', 'milksea']);
 const world = (biome: BiomeProfileKeyV1, seed = 7, key = `w:${biome}:${seed}`): ArenaWorld => Object.freeze({ key, biome, seed, solid: true, atmosphere: true, liquid: LIQUID.has(biome) ? 'water' : null, surfaceWater: LIQUID.has(biome), signature: biome, cardHash: 'c-' + key });
 const ctx = (kind: ArenaKind, home: ArenaWorld | null, visitor: ArenaWorld | null = home, extra: Partial<ArenaSelectionContext> = {}): ArenaSelectionContext => ({ kind, contextId: 'battle-1', seed: 42, round: 0, worlds: home && visitor ? { home, visitor } : null, ...extra });
+/* The routing MECHANISM (kin, unpainted-biome fallback, procedural water) is tested over a FIXED subset registry: the first C132
+ * registration of 2026-10-02 (the temperate fallback, six ground sets, two water sets). Since D29 all 45 accepted sets cover every biome
+ * family, so the shipped registry alone never reaches the fallback branch; the shipped registry is pinned per branch here and as a whole
+ * in battle2-live-worlds.test.ts. */
+const FIRST_NINE = ['earth-temperate-v1', 'karst-cave', 'jungle-v2', 'marsh', 'savanna-v2', 'dunesea', 'tundra', 'freshwater-lake-v2', 'coral'] as const;
+const NINE: readonly ArenaSetRow[] = FIRST_NINE.map((id) => { const r = ARENA_SETS.find((s) => s.id === id); if (!r) throw new Error(`subset registry: ${id} is not registered`); return r; });
 
 describe('the arena biome vocabulary is the generator\'s', () => {
   it('43 live biomes in 8 world types, equal to BIOME_PROFILE_KEYS_V1', () => {
@@ -105,9 +111,14 @@ describe('selectArena: home ground by fight kind', () => {
     for (let round = 0; round < 6; round++) expect(selectArena(ctx('wild', world('temperate'), world('opensea'), { round })).world?.biome).toBe('temperate');
   });
   it('guardian: its lair (home); an unpainted ocean lair falls back to temperate plates with the wet-arena reason', () => {
-    const s = selectArena(ctx('guardian', world('abyssal'), world('temperate')));
+    // over the fixed subset (no ocean ground set): the unpainted-world-type fallback
+    const s = selectArena(ctx('guardian', world('abyssal'), world('temperate')), NINE);
     expect([s.owner, s.world?.biome, s.match, s.set.id, s.worldType]).toEqual(['lair', 'abyssal', 'fallback', 'earth-temperate-v1', 'ocean']);
     expect(s.reason).toMatch(/guardian's lair .*no painted ocean set yet; fallback accepted earth-temperate-v1 plates; world liquid water: the stage's procedural wet arena/);
+    // shipped (D29): the abyssal set is a WATER set, so a ground fight in that lair takes an ocean GROUND kin, never the fallback
+    const shipped = selectArena(ctx('guardian', world('abyssal'), world('temperate')));
+    expect([shipped.owner, shipped.match, shipped.set.medium, ARENA_BIOME_WORLD_TYPE[shipped.set.biome]]).toEqual(['lair', 'kin', 'ground', 'ocean']);
+    expect(shipped.reason).toMatch(/guardian's lair .*no abyssal set yet; nearest kin .*not a water fight: the water sets .*abyssal/);
   });
   it('duel: a seeded first host, then host and visitor alternate by round', () => {
     const firsts = new Set<string>();
@@ -142,19 +153,23 @@ describe('selectArena: home ground by fight kind', () => {
     }
   });
   it('fallback reasons for all 43 biomes: own set → biome, same world type → kin, otherwise fallback (named)', () => {
-    for (const b of BIOME_PROFILE_KEYS_V1) {
-      const s = selectArena(ctx('wild', world(b))), type = ARENA_BIOME_WORLD_TYPE[b];
+    for (const sets of [NINE, ARENA_SETS]) for (const b of BIOME_PROFILE_KEYS_V1) {
+      const s = selectArena(ctx('wild', world(b)), sets), type = ARENA_BIOME_WORLD_TYPE[b];
       // a ground fight (no medium) routes over the GROUND sets only (2026-10-02: water sets are for water fights)
-      const GROUND = ARENA_SETS.filter((r) => r.medium === 'ground');
+      const GROUND = sets.filter((r) => r.medium === 'ground');
       const expected = GROUND.some((r) => r.biome === b) ? 'biome' : GROUND.some((r) => ARENA_BIOME_WORLD_TYPE[r.biome] === type) ? 'kin' : 'fallback';
       expect(s.set.medium, b).toBe('ground');
       expect(s.match, b).toBe(expected);
       if (expected === 'fallback') { expect(s.set.id).toBe(ARENA_FALLBACK_SET_ID); expect(s.reason).toContain(`no painted ${type} set yet`); expect(s.reason.includes('wet arena')).toBe(LIQUID.has(b)); }
       if (expected === 'kin') expect(s.reason).toMatch(new RegExp(`no ${b} set yet; nearest kin`));
     }
-    // with only the temperate set registered today: 1 biome, 10 terran kin, 32 fallbacks
-    const counts = { biome: 0, kin: 0, fallback: 0, default: 0 }; for (const b of BIOME_PROFILE_KEYS_V1) counts[selectArena(ctx('wild', world(b))).match]++;
-    if (ARENA_SETS.length === 1) expect(counts).toEqual({ biome: 1, kin: 10, fallback: 32, default: 0 });
+    // every branch is reached: the temperate set alone and the fixed subset have own sets, kin and unpainted world types; the shipped
+    // registry (D29, every biome family painted) has no fallback left, and only the five ocean biomes painted as WATER sets take an ocean
+    // ground kin for a land fight
+    const counts = (sets: readonly ArenaSetRow[]) => { const c = { biome: 0, kin: 0, fallback: 0, default: 0 }; for (const b of BIOME_PROFILE_KEYS_V1) c[selectArena(ctx('wild', world(b)), sets).match]++; return c; };
+    expect(counts([NINE[0]!])).toEqual({ biome: 1, kin: 10, fallback: 32, default: 0 });
+    expect(counts(NINE)).toEqual({ biome: 7, kin: 9, fallback: 27, default: 0 });
+    expect(counts(ARENA_SETS)).toEqual({ biome: 38, kin: 5, fallback: 0, default: 0 });
   });
   it('a newly registered set is used with zero code changes; several sets for one biome are picked per WORLD (stable home ground)', () => {
     const base = (MANIFEST as { sets: Record<string, unknown>[] }).sets[0]!;
@@ -184,18 +199,25 @@ describe('medium-aware routing (2026-10-02): water sets only for water fights', 
     expect(ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!.medium).toBe('ground');
   });
   it('the 43 biomes × both media: a ground fight never draws a water set; a water fight draws a water set of its biome, else its world type, else the ground route with the procedural water named', () => {
-    for (const b of BIOME_PROFILE_KEYS_V1) {
-      const type = ARENA_BIOME_WORLD_TYPE[b], dry = selectArena(ctx('wild', world(b))), wet = selectArena(ctx('wild', world(b), world(b), { medium: 'water' }));
+    const branches = { own: 0, kin: 0, procedural: 0 };
+    for (const sets of [NINE, ARENA_SETS]) for (const b of BIOME_PROFILE_KEYS_V1) {
+      const type = ARENA_BIOME_WORLD_TYPE[b], dry = selectArena(ctx('wild', world(b)), sets), wet = selectArena(ctx('wild', world(b), world(b), { medium: 'water' }), sets);
       expect(dry.set.medium, b).toBe('ground'); expect(dry.medium).toBe('ground');
-      const own = ARENA_SETS.filter((r) => r.medium === 'water' && r.biome === b), kin = ARENA_SETS.filter((r) => r.medium === 'water' && ARENA_BIOME_WORLD_TYPE[r.biome] === type);
+      const own = sets.filter((r) => r.medium === 'water' && r.biome === b), kin = sets.filter((r) => r.medium === 'water' && ARENA_BIOME_WORLD_TYPE[r.biome] === type);
+      branches[own.length ? 'own' : kin.length ? 'kin' : 'procedural']++;
       expect(wet.medium).toBe('water');
       if (own.length) { expect(wet.set.medium, b).toBe('water'); expect(wet.match).toBe('biome'); expect(own.map((r) => r.id)).toContain(wet.set.id); }
       else if (kin.length) { expect(wet.set.medium, b).toBe('water'); expect(wet.match).toBe('kin'); expect(kin.map((r) => r.id)).toContain(wet.set.id); }
       else { expect(wet.set.medium, b).toBe('ground'); expect(wet.set.id).toBe(dry.set.id); expect(wet.reason).toMatch(/water fight: no painted .* water set yet; the stage's procedural wet arena draws the water/); }
     }
-    // the two shipped water sets: temperate → the lake, coral → the reef, an ocean kin (opensea) → the reef, a terran kin (jungle) → the lake
-    const wetOn = (b: BiomeProfileKeyV1) => selectArena(ctx('wild', world(b), world(b), { medium: 'water' })).set.id;
+    expect(Object.values(branches).every((n) => n > 0), JSON.stringify(branches)).toBe(true); // all three water-fight branches ran
+    // the fixed subset's two water sets: temperate → the lake, coral → the reef, an ocean kin (opensea) → the reef, a terran kin (jungle) → the lake
+    const wetOn = (b: BiomeProfileKeyV1, sets: readonly ArenaSetRow[] = NINE) => selectArena(ctx('wild', world(b), world(b), { medium: 'water' }), sets).set.id;
     expect([wetOn('temperate'), wetOn('coral'), wetOn('opensea'), wetOn('jungle')]).toEqual(['freshwater-lake-v2', 'coral', 'coral', 'freshwater-lake-v2']);
+    // shipped (D29): each ocean biome painted as water draws its own water set; an ocean biome painted only as ground draws an ocean water kin
+    expect([wetOn('temperate', ARENA_SETS), wetOn('coral', ARENA_SETS), wetOn('opensea', ARENA_SETS), wetOn('abyssal', ARENA_SETS), wetOn('milksea', ARENA_SETS), wetOn('stormsea', ARENA_SETS), wetOn('jungle', ARENA_SETS)])
+      .toEqual(['freshwater-lake-v2', 'coral', 'opensea', 'abyssal', 'milksea-v2', 'stormsea-v2', 'freshwater-lake-v2']);
+    expect(['coral', 'opensea', 'abyssal', 'milksea-v2', 'stormsea-v2']).toContain(wetOn('archipelago', ARENA_SETS));
     // a water fight without world context (Earth's open water, the picker's lake): the temperate water set; a ground one keeps the fallback
     expect(selectArena({ ...ctx('wild', null), medium: 'water' }).set.id).toBe('freshwater-lake-v2');
     expect(selectArena({ ...ctx('wild', null), earth: true, medium: 'water' }).reason).toMatch(/Earth .*water fight .*painted water set freshwater-lake-v2/);
@@ -219,14 +241,18 @@ describe('medium-aware routing (2026-10-02): water sets only for water fights', 
     expect(selectArena(ctx('wild', world('coral'))).set.id).not.toBe('coral');
   });
   it('a gas-giant cloud deck (recipe medium "air") is read as a GROUND set only with the manifest\'s explicit note; it then routes as its biome\'s own ground set', () => {
-    // the four pending D29 cloud decks (not registered: acceptance is Dakk's) through the generator's own check, then the router
-    const rows = ['ammonia-v2', 'banded-v2', 'hotglow', 'stormeye'].map((id) => { const rel = `audits/C132_ARENAS_20261001/${id}/d29/delivery.webp.pending.json`, m = json(rel) as { recipe: string };
-      expect((json(m.recipe) as { medium?: string }).medium, id).toBe('air'); return checkArenaDelivery(REPO_PATH, rel, m); });
-    const sets = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [...(MANIFEST as { sets: object[] }).sets, ...rows] });
-    for (const row of rows) { expect(row.medium, row.id).toBe('ground');
-      const s = selectArena(ctx('wild', world(row.biome as BiomeProfileKeyV1)), sets); expect([s.set.id, s.match], row.id).toEqual([row.id, 'biome']);
-      expect(selectArena(ctx('wild', world(row.biome as BiomeProfileKeyV1), world(row.biome as BiomeProfileKeyV1), { medium: 'water' }), sets).set.medium, row.id).toBe('ground'); }
-    const rel = 'audits/C132_ARENAS_20261001/hotglow/d29/delivery.webp.pending.json', m = json(rel) as Record<string, unknown>, { mediumNote: _note, ...noNote } = m;
+    // the four D29 cloud decks, registered (Dakk accepted all 36 D29 sets 2026-10-02): each registered delivery manifest carries the
+    // explicit note, the generator's own check re-derives exactly the registered row, and the router draws it as its biome's ground set
+    const CLOUD = ['ammonia-v2', 'banded-v2', 'hotglow', 'stormeye'];
+    expect(ARENA_SETS.filter((s) => (json(s.recipe) as { medium?: string }).medium === 'air').map((s) => s.id)).toEqual(CLOUD);
+    const rows = CLOUD.map((id) => { const reg = ARENA_SETS.find((s) => s.id === id)!, m = json(reg.delivery) as { recipe: string; mediumNote?: unknown };
+      expect(reg.delivery, id).toBe(`audits/C132_ARENAS_20261001/${id}/d29/delivery.json`);
+      expect((json(m.recipe) as { medium?: string }).medium, id).toBe('air'); expect(m.mediumNote, id).toMatch(/cloud deck.*GROUND set/);
+      expect(JSON.parse(JSON.stringify(checkArenaDelivery(REPO_PATH, reg.delivery, m))), id).toEqual(JSON.parse(JSON.stringify(reg))); return reg; });
+    for (const row of rows) { expect(row.medium, row.id).toBe('ground'); expect(ARENA_BIOME_WORLD_TYPE[row.biome], row.id).toBe('gas');
+      const s = selectArena(ctx('wild', world(row.biome))); expect([s.set.id, s.match], row.id).toEqual([row.id, 'biome']);
+      expect(selectArena(ctx('wild', world(row.biome), world(row.biome), { medium: 'water' })).set.medium, row.id).toBe('ground'); }
+    const rel = 'audits/C132_ARENAS_20261001/hotglow/d29/delivery.json', m = json(rel) as Record<string, unknown>, { mediumNote: _note, ...noNote } = m;
     expect(() => checkArenaDelivery(REPO_PATH, rel, noNote)).toThrow(/medium "air" \(a cloud deck\) registers only as a ground set/);
     expect(() => checkArenaDelivery(REPO_PATH, rel, { ...m, medium: 'water' })).toThrow(/registers only as a ground set/);
   });
