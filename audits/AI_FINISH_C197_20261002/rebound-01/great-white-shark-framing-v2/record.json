@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Great White Shark\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"436496319\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"0\"]]]]",
+    "seed": 436496319,
+    "ownerId": "authored:archetype-sprint/great-white-shark-framing-v2",
+    "earthName": "Great White Shark"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 436496319,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 10,
+    "body": 14,
+    "loco": 2,
+    "trait": 0,
+    "size": 5,
+    "diet": 3,
+    "head": 5,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 6,
+    "detail": 1,
+    "accent": 0,
+    "temper": 6,
+    "sense": 6,
+    "repro": 3,
+    "life": 5,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Great White Shark"
+  },
+  "geometry": {
+    "cutoutAssetHash": "6b1efdd9e85eda1dc65518737e6b17ab52f23be5a95593d63aa8fbaa8c64bf78",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7444149404011474,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6228070175438597,
+      0.49122807017543857
+    ],
+    "head": [
+      0.719377990430622,
+      0.496969696969697
+    ],
+    "jaw": [
+      0.7198564593301435,
+      0.5196172248803828
+    ],
+    "spine0": [
+      0.5631578947368422,
+      0.4909090909090909
+    ],
+    "spine1": [
+      0.5099681020733652,
+      0.4946570972886762
+    ],
+    "spine2": [
+      0.4735247208931419,
+      0.49728867623604467
+    ],
+    "spine3": [
+      0.4200159489633174,
+      0.49760765550239233
+    ],
+    "spine4": [
+      0.35637958532695374,
+      0.49728867623604467
+    ],
+    "spine5": [
+      0.3085326953748006,
+      0.4962519936204146
+    ],
+    "caudal": [
+      0.27073365231259966,
+      0.48939393939393944
+    ],
+    "dorsal": [
+      0.5107655502392344,
+      0.4211323763955343
+    ],
+    "pectoralNear": [
+      0.5449760765550239,
+      0.5564593301435407
+    ],
+    "pectoralFar": [
+      0.5976874003189793,
+      0.5656299840510366
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/great-white-shark-framing-v2/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile predatory-shark media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from reef-shark. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "06ebf7c82c158967b59545507eab711a3ffb2fc2335848ded9cbb251ac52b30c",
+    "subjectSourceSha256": "78604f62847c45c97d5185b2a7c79810eda2fd2629edfadf74a217a769cfb8ce",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.09674150651370035,
+      "jaw": 0.0226525815957718,
+      "spine0": 0.05964997568665904,
+      "spine1": 0.05332168035053927,
+      "spine2": 0.03653827088962045,
+      "spine3": 0.053509722679250867,
+      "spine4": 0.06363716307812493,
+      "spine5": 0.04785811936274766,
+      "caudal": 0.038416149783540195,
+      "dorsal": 0.07352904532218314,
+      "pectoralFar": 0.07852795653699651,
+      "pectoralNear": 0.10155182249587527
+    },
+    "measures": {
+      "body": 0.2546812493285324,
+      "bone-min": 0.0226525815957718,
+      "bone-max": 0.10155182249587527,
+      "caudal/body": 0.15084011832368674,
+      "head/body": 0.37985327450984124
+    }
+  },
+  "recipeHash": "9d911c48a3d77f1cef9025f3f7ab1e3d464703b3e442b6194bfaa889f4a5ef35"
+}
