@@ -17,7 +17,7 @@ import type { BiomeVistaRenderRequestV1 } from './biome-vista-protocol.js';
 const PLANET_TYPES = Object.freeze([
   'terran', 'ocean', 'ice', 'desert', 'rocky', 'venus', 'lava', 'gas',
 ] as const);
-type PlanetType = typeof PLANET_TYPES[number];
+export type PlanetType = typeof PLANET_TYPES[number];
 
 const SEA_KEYS = new Set<BiomeVisualKeyV1>([
   'opensea', 'archipelago', 'stormsea', 'volcisle', 'milksea',
@@ -92,7 +92,9 @@ export function hasCanonicalEarthMagneticFieldV1(roster: CanonicalWorldRoster): 
     && address.planet.seed === 133 && address.planet.ordinal === 2;
 }
 
-function surfaceWater(type: PlanetType, band: string): 'liquid' | 'frozen' | 'none' {
+/** The world's surface water from its type and climate band: the vista's rule, shared with the battle stage's live worlds
+ * (battle2-live-worlds.ts) so the vista and the arena never disagree about whether a world has open water. */
+export function surfaceWater(type: PlanetType, band: string): 'liquid' | 'frozen' | 'none' {
   if (type === 'ocean') return 'liquid';
   if (type === 'ice') return 'frozen';
   if (type !== 'terran') return 'none';

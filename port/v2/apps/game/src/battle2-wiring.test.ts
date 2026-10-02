@@ -8,10 +8,13 @@ import { readFileSync } from 'node:fs';
 // Lives beside the app (not under tests/): its closure reaches Codex's pixi-backed creature-rig, whose @webgpu/types
 // collide with lib.dom in the fully strict root program (apps/game/tsconfig.json _skipLibCheckReason).
 import { createRequire } from 'node:module';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
+import { installCaptureHooks } from '@cf/domain-descriptors';
+import { systemFor } from '@cf/domain-worldgen';
+import { liveBattleArena, liveSettlementEncounter } from './battle2-live-worlds.js';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { FIXTURE_RIG_LABEL, PORTRAIT_RIG_LABEL, type FixturePartCut } from './battle2/index.js';
-import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv1a32, genomeMass, genomeSeed, genomeTheme, matchRecord, mountBattle2Study, mountBattle2StudyIfEnabled,
+import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv1a32, liveArenaInput, genomeMass, genomeSeed, genomeTheme, matchRecord, mountBattle2Study, mountBattle2StudyIfEnabled,
   type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
 import type { ResolvedAnatomyRecord } from './motion/body-card.js';
 import { BATTLE2_DEFAULT, battle2On } from './battle2-gate.js';
@@ -513,5 +516,67 @@ describe('battle2 wiring: home-ground arena route (2026-10-01)', () => {
     for (const round of [0, 1]) { const d = harness({ worlds, arenaContext: { kind: 'duel', round, seed: 77 } }); const s = await mountBattle2Study(d.input).ready; both.push([s.arenaRoute!.includes('visitor-packice'), s.arena!.startsWith('visitor-packice')]); }
     for (const [routeOnVisitor, habitatOnVisitor] of both) expect(habitatOnVisitor).toBe(routeOnVisitor);
     expect(both.map(([v]) => v).sort()).toEqual([false, true]);
+  });
+});
+
+describe('battle2 wiring: live home-ground worlds (2026-10-02, main.ts liveArenaInput)', () => {
+  beforeAll(() => installCaptureHooks());
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  const SOL = { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 424242, x: 560, y: 170 } } as const;
+  const EARTH = { ...SOL, planet: { seed: 133 } };
+  const DEEP = { galaxy: { seed: 2775120088, x: -15585.946043489894, y: -13862.482918268226 }, star: { seed: 510510541, x: -550.8509466005489, y: -8.055439678020775 }, planet: { seed: 3303620273 } };
+  const settlementWith = (h: ReturnType<typeof harness>, world: unknown, kind: string) => ({ ...h.input.settlement, encounter: { ...h.input.settlement.encounter, defender: { ...h.input.settlement.encounter.defender, kind }, identity: { world } } });
+  /** Everything the fake renderer was asked to draw: each node's type, transform, visibility and text, depth-first. */
+  const scene = (app: FakeApp): string[] => { const out: string[] = []; const walk = (n: unknown, d: number) => { const o = n as Node & { constructor: { name: string } };
+    out.push(`${d}:${o.constructor.name}:${[o.x, o.y, o.rotation, o.alpha].map((v) => Number(v ?? 0).toFixed(5)).join(',')}:${o.visible}:${o.text ?? ''}`); for (const c of o.children ?? []) walk(c, d + 1); }; walk(app.stage, 0); return out; };
+  /** Mount, then play the whole fight on the injected clock, capturing the drawn scene at fixed times. */
+  async function film(over: Partial<Battle2StudyInput>, mutate?: (h: ReturnType<typeof harness>) => Partial<Battle2StudyInput>) {
+    const h = harness(over); if (mutate) Object.assign(h.input, mutate(h));
+    const handle = mountBattle2Study(h.input), ready = await handle.ready.catch(() => handle.status()), app = FakeApp.made.at(-1);
+    const frames: string[][] = [];
+    if (app && ready.phase === 'playing') for (let t = 0; t <= 12000; t += 250) { h.setNow(t); h.ticker.step(); frames.push(scene(app)); }
+    const end = handle.status(); handle.dispose('test');
+    return { ready, end, frames, calls: h.calls, plates: h.calls.filter((c) => c.endsWith('.png') && /arena-(far|mid|near)/.test(c)) };
+  }
+  it('today\'s encounters: Earth and every generated world draw the same plates and the same scene, frame for frame; only the route label changes', async () => {
+    const base = await film({});
+    expect(base.ready.phase).toBe('playing'); expect(base.end.phase).toBe('finished'); expect(base.frames.length).toBeGreaterThan(40);
+    const worlds = [EARTH, DEEP, ...systemFor(SOL.star.seed).planets.map((p) => ({ ...SOL, planet: { seed: (p.P as { seed: number }).seed } })).filter((a) => a.planet.seed !== 133)];
+    const routes: string[] = [];
+    for (const w of worlds) for (const kind of ['fauna', 'guardian']) {
+      const live = await film({}, (h) => liveArenaInput(settlementWith(h, w, kind)));
+      expect(live.plates, JSON.stringify(w.planet)).toEqual(base.plates); expect(live.plates).toEqual([BATTLE2_ASSETS.far, BATTLE2_ASSETS.mid, BATTLE2_ASSETS.near]);
+      expect(live.calls).toEqual(base.calls);
+      expect(live.frames).toEqual(base.frames); // the drawn scene is byte-identical at every sampled moment
+      expect({ ...live.end, arenaRoute: null, arena: null }).toEqual({ ...base.end, arenaRoute: null, arena: null });
+      // the habitat report differs only in the world's name: the same medium and source for each side
+      expect(live.end.arena!.slice(live.end.arena!.indexOf(' · left '))).toBe(base.end.arena!.slice(base.end.arena!.indexOf(' · left ')));
+      expect(live.end.arenaRoute).not.toBe(base.end.arenaRoute); routes.push(live.end.arenaRoute!);
+    }
+    expect(routes[0]).toBe("the wild creature's world is Earth (home world, no generator biome): accepted earth-temperate-v1 plates");
+    expect(routes[3]).toMatch(/^the guardian's lair CF1\|.+ \(acidhaze, venus\): no painted venus set yet; fallback accepted earth-temperate-v1 plates$/);
+  });
+  it('a wet generated world (archipelago) with two ground fighters: same scene; Earth with a swimmer: the lake world instead of a refusal', async () => {
+    const base = await film({});
+    const ocean = liveBattleArena('battle-1', liveSettlementEncounter('fauna', { key: 'w|ocean', address: null, source: { planetSeed: 9, planetType: 'ocean', climateBand: 'temperate', biomeKey: 'archipelago' } }));
+    expect(ocean.worlds!.home.liquid).toBe('water');
+    const wet = await film({ worlds: ocean.worlds, arenaContext: ocean.arenaContext });
+    expect(wet.frames).toEqual(base.frames); expect(wet.plates).toEqual(base.plates);
+    expect(wet.end.arenaRoute).toMatch(/no painted ocean set yet; fallback accepted earth-temperate-v1 plates; world liquid water/);
+    // the Civet declared a swimmer: the dry default refuses it (today), the Earth preset stages it on the lake world, a generated wet world in its own water
+    const swimmer = (h: ReturnType<typeof harness>) => ({ records: [{ ...h.input.records![0]!, habitat: { realm: 'aquatic' as const, source: 'test: declared swimmer' } }] as NonNullable<Battle2StudyInput['records']> });
+    const dry = await film({}, swimmer);
+    expect(dry.ready.phase).toBe('failed'); expect(dry.ready.reason).toMatch(/battle2 habitat: Selected home arena cannot support both organisms/);
+    const earth = await film({}, (h) => ({ ...swimmer(h), ...liveArenaInput(settlementWith(h, EARTH, 'fauna')) }));
+    expect(earth.ready.phase).toBe('playing'); expect(earth.ready.arena).toMatch(/^lake · left Civet: water/);
+    expect(earth.ready.arenaRoute).toBe("the wild creature's world is Earth (home world, no generator biome): accepted earth-temperate-v1 plates; a side lives in water: the lake world (Earth's open water)");
+    expect(earth.plates).toEqual(base.plates);
+    const sea = await film({ worlds: ocean.worlds, arenaContext: ocean.arenaContext }, swimmer);
+    expect(sea.ready.phase).toBe('playing'); expect(sea.ready.arena).toMatch(/^w\|ocean · left Civet: water/);
+  });
+  it('main.ts spreads liveArenaInput(settlement) into the one gated study call (the settled encounter carries its world identity)', () => {
+    const line = mainSource.split('\n').find((l) => l.includes(`if (${GATE_CALL})`) && l.includes("import('./battle2-wiring.js')"))!;
+    expect(line).toContain('m.mountBattle2Study({ ...m.liveArenaInput(settlement)');
+    expect(line.indexOf('...m.liveArenaInput(settlement)')).toBeLessThan(line.indexOf('settlement, chronicle'));
   });
 });

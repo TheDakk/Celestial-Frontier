@@ -1,0 +1,16 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": { "A": "stone", "B": "wild" },
+ "supports": "observed",
+ "guardianChoreo": true,
+ "guardian": { "kind": "guardian", "maxB": 40 },
+ "rows": [
+  { "side": "A", "an": "Crab", "dn": "Brown Bear", "dmg": 12, "crit": false, "hpA": 30, "hpB": 28 },
+  { "side": "B", "an": "Brown Bear", "dn": "Crab", "dmg": 9, "crit": false, "hpA": 21, "hpB": 28 },
+  { "side": "A", "an": "Crab", "dn": "Brown Bear", "dmg": 10, "crit": true, "hpA": 21, "hpB": 18 },
+  { "side": "B", "an": "Brown Bear", "dn": "Crab", "dmg": 11, "crit": true, "hpA": 10, "hpB": 18 },
+  { "an": "Brown Bear", "dn": "Crab", "dodge": true },
+  { "side": "A", "an": "Crab", "dn": "Brown Bear", "dmg": 18, "crit": true, "hpA": 10, "hpB": 0 }
+ ]
+}
