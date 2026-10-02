@@ -1,0 +1,43 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "wild",
+  "B": "stone"
+ },
+ "rows": [
+  {
+   "side": "A",
+   "an": "Wasp",
+   "dn": "Wasp",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "side": "B",
+   "an": "Wasp",
+   "dn": "Wasp",
+   "dmg": 6,
+   "crit": false,
+   "hpA": 24,
+   "hpB": 21
+  },
+  {
+   "an": "Wasp",
+   "dn": "Wasp",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Wasp",
+   "dn": "Wasp",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 24,
+   "hpB": 0
+  }
+ ],
+ "supports": "observed"
+}

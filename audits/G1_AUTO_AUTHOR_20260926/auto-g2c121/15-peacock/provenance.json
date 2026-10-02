@@ -1,0 +1,105 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "15-peacock",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "8d380bf61b8d5c6bd830d8d5959f20be98cbea9dfcf8218f7df7abaa4f964034",
+ "subjectSourceSha256": "6915612761d8933750c016bd5994b3287ca004bf434b642e30d1ed8c14941aaa",
+ "identity": {
+  "name": "Peacock",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Peacock\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1818451895\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 1818451895,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "02-pigeon",
+  "authoringSha256": "52852e5335c2d613a4cf4b260f3f43f3eec7c7c7b21044b5e832971b55e62d6f",
+  "masterSha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.064,
+     "class": "top",
+     "attach": {
+      "x": 375.8,
+      "y": 181.5,
+      "relX": 0.85,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.4831,
+     "class": "rear",
+     "attach": {
+      "x": 240.3,
+      "y": 229.9,
+      "relX": 0.08,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0247,
+     "class": "limb-down",
+     "attach": {
+      "x": 313,
+      "y": 238,
+      "relX": 0.49,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0233,
+     "class": "limb-down",
+     "attach": {
+      "x": 333.5,
+      "y": 238,
+      "relX": 0.61,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "02-pigeon",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

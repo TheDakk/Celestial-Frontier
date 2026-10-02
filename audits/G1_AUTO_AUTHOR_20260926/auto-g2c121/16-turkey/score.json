@@ -1,0 +1,9 @@
+{
+ "id": "16-turkey",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 3.0%)"
+ ],
+ "semanticPresence": null
+}

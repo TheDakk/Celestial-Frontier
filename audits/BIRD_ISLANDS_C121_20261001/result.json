@@ -1,0 +1,38 @@
+{
+ "04-lark": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/04-lark/fit",
+  "islands": "REFUSED"
+ },
+ "05-chough": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/05-chough/fit",
+  "islands": "REFUSED"
+ },
+ "06-ptarmigan": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/06-ptarmigan/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "07-raven": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/07-raven/fit",
+  "islands": "REFUSED"
+ },
+ "08-vulture": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/08-vulture/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "09-hawk": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/09-hawk/fit",
+  "islands": "REFUSED"
+ },
+ "10-crow": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/10-crow/fit",
+  "islands": "REFUSED"
+ },
+ "14-snowy-owl": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/14-snowy-owl/fit",
+  "islands": "REFUSED"
+ }
+}

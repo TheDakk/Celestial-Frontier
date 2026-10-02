@@ -1,0 +1,120 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "06-ptarmigan",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "6720df96f5b78cc893a610dd22a538e2d7debd6c22801add40ba07c4b4dcaa69",
+ "subjectSourceSha256": "055624e407a28c4566f2a17b0de2d88e63d977aa45cfaa909f588785ac19bed2",
+ "identity": {
+  "name": "Ptarmigan",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ptarmigan\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2500445455\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 2500445455,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "01-robin",
+  "authoringSha256": "2ec6f99c17cd3d2a25e3b5f02e39207c40a412ed64a67d148deb7d9d8245f16f",
+  "masterSha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1237,
+     "class": "top",
+     "attach": {
+      "x": 287.3,
+      "y": 170.3,
+      "relX": 0.91,
+      "relY": 0.13
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0998,
+     "class": "rear",
+     "attach": {
+      "x": 149,
+      "y": 222,
+      "relX": -0.01,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0616,
+     "class": "limb-down",
+     "attach": {
+      "x": 196.5,
+      "y": 266,
+      "relX": 0.31,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0629,
+     "class": "limb-down",
+     "attach": {
+      "x": 238.5,
+      "y": 266,
+      "relX": 0.59,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "01-robin",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

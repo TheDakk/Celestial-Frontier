@@ -752,7 +752,7 @@
   "family": "insect",
   "name": "Termite",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-24-termite",
-  "note": "thin abdomen line (right); abdomen-peel history \u2014 check other frames",
+  "note": "thin abdomen line (right); abdomen-peel history — check other frames",
   "batch": "insect pool re-score (Codex C85 insect motion)",
   "tag": "insect-pool",
   "supports": "observed"
@@ -1642,5 +1642,93 @@
   "note": "HELD: crown island floats above the lowered head (same as the C101 Hummingbird); repair refused at the cap (14.8%)",
   "batch": "audits/G2_C118_20260927",
   "tag": "g2c118"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Finch",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/01-finch",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Lark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/04-lark",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 10.8% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Chough",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/05-chough",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 5.9% > 5%, D28); a red beak fragment also floats",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Ptarmigan",
+  "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/06-ptarmigan/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated white flecks over the lowered head)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Raven",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/07-raven",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 12.8% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Vulture",
+  "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/08-vulture/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hawk",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/09-hawk",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 15.9% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Crow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/10-crow",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 8.3% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Sandpiper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/12-sandpiper",
+  "note": "whole in reaction and late idle (long bill and legs intact)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snowy Owl",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/14-snowy-owl",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 41.6% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "insect",
+  "name": "Wasp",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/18-wasp",
+  "note": "whole in reaction and late idle; six legs, both wing pairs and antennae intact",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
  }
 ]
