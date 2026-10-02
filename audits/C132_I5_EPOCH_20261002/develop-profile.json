@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c132-develop-gate/v1",
+  "command": [
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 127.931,
+  "optionalLocalAiRuntimeRenamedAside": true,
+  "optionalLocalAiRuntimeRestored": true,
+  "logSha256": "4f6a1cc98025c2ba03ea08a6bbff401e915b9db58bb64dc95f6be37c3effe24c"
+}

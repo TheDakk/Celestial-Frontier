@@ -129,23 +129,16 @@ manual references plus an incomplete Water Strider draft are in `C136_BIRD_INSEC
 owners contain paint, with anatomy/contact holds retained. `G2_C136_TARGETED_EDITS_20261002` adds four separate successors
 for Giant Salamander, Giraffe, Buffalo and Bee, all framing PASS, original source paintings unchanged.
 
-**Gates and next steps:** C162 reserves one fresh I5 3+1 epoch on signed `06e0b0f60`, with separate clean source,
-unchanged ceilings and first-red stop. C159 released the preceding bounded Centipede SIMD epoch. Its exact four
-artifacts are promoted with 17 leaf controls, the nine-test library owner and root validation passing. The one 4× film
-has 789 live frames, zero refusals, CPU p95 8.7 ms and three slow frames (maximum 23.3 ms); 18 stills equal the prior
-corrected film. C160/C161 deliver that promotion and the first D29 arena batch. Draft release and 68 merged routing/theme
-checks pass (one optional delivery diagnostic skipped). Post the exact reservation before every
-native/performance epoch and release it afterward; no concurrent heavy work. Browser commands require outside-sandbox
-execution. Score/calibrate home resolution and exact service-worker `__local_ai/` exclusion are implemented with focused
-controls in `C132_I5_PREP_20261002`; new v2 evidence serialization aliases home paths without changing samples or old evidence.
-Finish the combined signed product, merge newer signed Claude work, run the required battery and perform one fresh I5
-3+1 measurement. Never re-bind the historical certificate. For develop, rename
-`tools/local-image-generation/node_modules` aside and always restore it afterward.
+**Gates and next steps:** C162's fresh I5 3+1 epoch on signed `06e0b0f60` PASSED all four collectors and all four raw verifiers, unchanged limits, zero retries; C163 released the reservation. `C132_I5_EPOCH_20261002` retains the exact evidence and the active selector now binds its nine required inputs. Independent replay and 21 certificate admission/refusal controls pass. The temporary managed checkout was archived, not retained. The first full develop profile then stopped at one stale draft-release copy hash (5,811 passed); the explicit ordered 120-bullet hash is refreshed, with all 29 Guide-copy controls passing. Full develop verification follows on this corrected instrument; the old red log is retained. No I5 re-bind or product change accompanies the copy-oracle correction.
+
+C159 released the preceding Centipede SIMD epoch. Exact promotion has 17 leaf controls, nine library controls and root validation passing; its one 4× film has 789 live frames, zero refusals, CPU p95 8.7 ms, three slow frames (maximum 23.3 ms), and 18 stills equal the prior corrected film. Strict all-pair performance and visual acceptance remain open. C160/C161 delivered that promotion and the first 20-set D29 arena batch. C164 records the pack limit: those candidate runtime plates plus the current pack exceed the unchanged 128 MiB limit by at least 65,952,503 bytes. Claude owns registration and needs a delivery/encoding plan before admitting all sets. Additional triplets are being prepared in audit-only groups.
+
+Post the exact reservation before every native/performance epoch and release it afterward; no concurrent heavy work. Browser commands require outside-sandbox execution. Score/calibrate home resolution and exact service-worker `__local_ai/` exclusion are included in the measured product, with focused controls in `C132_I5_PREP_20261002`. New v2 evidence aliases home paths without changing samples or old evidence. For develop, rename `tools/local-image-generation/node_modules` aside and always restore it afterward.
 
 **Operations:** OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac` only. Signed G commits,
 hooks/pre-push guard retained, no new branches. Startup receipt reused from `C132_PROGRAM_20261001`. Documented cleanup
 is approximately 101 GB: roughly 57 GB worktrees, 43 GB verification copies, and 1.23 GB measured own scratch recovery.
-This is not an exact summed APFS delta; attributing prior usage to unrelated activity was unsupported. Approximately
-169 GB / 157 GiB is currently free; identity backups remain preserved. Budget UNFROZEN; normal own-branch push requires green local battery and current
+This is not an exact summed APFS delta; attributing prior usage to unrelated activity was unsupported. After temporary I5 checkout retirement, approximately
+166 GB / 155 GiB is free; identity backups remain preserved. The temporary checkout removal is not added to the earlier cleanup total. Budget UNFROZEN; normal own-branch push requires green local battery and current
 visibility/workflow checks. No resumed-turn push yet. No PR, label, hosted attempt, develop/main merge, release or deploy.
 Codex continues the active repairs and evidence; Claude can consume signed mailbox deliveries directly. No app switch or Dakk relay needed.
