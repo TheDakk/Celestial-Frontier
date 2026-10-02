@@ -3,8 +3,9 @@
  * own diagnosis (never a bare "invalid"). The contract is ART_KIT §Arena scene profile + the accepted Earth temperate set:
  * - recipe: the accepted `cf.arena.authoring-proof/v1` shape (biomeFamily one of the 43 live biomes, ground line 0.78,
  *   stands at 1/3 and 2/3, three plates far/mid/near with master SHA-256);
- * - canvas: every plate 2560 × 1440 (the kit's size). The one exemption is the accepted template v1 (1672 × 941), bound to
- *   its three master hashes — a look-alike at that size with other bytes is refused;
+ * - canvas: every plate 1672 × 941 — the image generator's native arena size, the delivery size since Dakk's decision of
+ *   2026-10-02 (the kit's 2560 × 1440 cannot be generated natively and upscaling adds no detail; the battle stage draws at
+ *   1024 × 576) — or the kit's 2560 × 1440 if a route ever produces it natively; any other size is refused;
  * - FAR: opaque scene (every alpha 255, no key field);
  * - MID: on the key (magenta field or alpha 0 above the terrain), terrain across the fighting path on the ground line;
  * - NEAR: on the key, a ground edge at the bottom, the stands clear above the ground line;
@@ -12,6 +13,8 @@
 import { BIOME_PROFILE_KEYS_V1 } from '@cf/domain-biome-profile';
 
 export const ARENA_KIT_CANVAS = Object.freeze({ width: 2560, height: 1440 });
+/** Admitted delivery canvases: the generator's native 1672 × 941 (Dakk, 2026-10-02) and the kit's 2560 × 1440. */
+export const ARENA_DELIVERY_CANVASES = Object.freeze([Object.freeze({ width: 1672, height: 941 }), ARENA_KIT_CANVAS]);
 export const ARENA_GROUND_LINE = 0.78;
 export const ARENA_STANDS_X = Object.freeze([1 / 3, 2 / 3] as const);
 /** The accepted Earth temperate template v1 (audits/ARENA_V1_ACCEPTANCE_20260912/acceptance.json): accepted before the kit's
@@ -96,9 +99,9 @@ export function validateArenaDelivery(input: ArenaDeliveryInput): ArenaDeliveryV
     });
   }
   /* ---- canvas size ---- */
-  if (canvas && !(canvas.width === ARENA_KIT_CANVAS.width && canvas.height === ARENA_KIT_CANVAS.height)) {
+  if (canvas && !ARENA_DELIVERY_CANVASES.some((c) => c.width === canvas!.width && c.height === canvas!.height)) {
     const ex = ARENA_CANVAS_EXEMPTIONS.find((e) => e.width === canvas!.width && e.height === canvas!.height && e.far === sha.far && e.mid === sha.mid && e.near === sha.near);
-    if (!ex) f.push(`canvas: ${canvas.width}×${canvas.height} ≠ the kit's ${ARENA_KIT_CANVAS.width}×${ARENA_KIT_CANVAS.height} (three separately painted 2560 × 1440 masters)`);
+    if (!ex) f.push(`canvas: ${canvas.width}×${canvas.height} is not a delivery size (${ARENA_DELIVERY_CANVASES.map((c) => `${c.width}×${c.height}`).join(' or ')})`);
   }
   /* ---- plates ---- */
   const L = ARENA_PLATE_LIMITS;

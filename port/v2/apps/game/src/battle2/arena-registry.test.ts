@@ -181,9 +181,8 @@ describe('the delivery check rejects every way a delivery can be wrong (mutants 
   it('wrong size: a cropped plate, and a recipe canvas that is neither the kit size nor the exempt accepted bytes', async () => {
     const d = await load();
     fails({ ...d, plates: { ...d.plates, mid: crop(d.plates.mid, 900) } }, /plate mid: 1672×900 ≠ recipe canvas 1672×941/);
-    // a look-alike at the accepted size with other master bytes does not inherit the exemption
-    const plates = (d.recipe.plates as Record<string, unknown>[]).map((p, i) => (i === 1 ? { ...p, sha256: 'a'.repeat(64) } : p));
-    fails({ ...d, recipe: { ...d.recipe, plates }, acceptance: undefined }, /canvas: 1672×941 ≠ the kit's 2560×1440/);
+    // (retired 2026-10-02: "a 1672 × 941 look-alike without the exempt bytes" is no longer a mutant — 1672 × 941 is a delivery size
+    //  by Dakk's decision; wrong-size refusal is covered by the synthetic 1280 × 720 case below)
   }, 30_000);
   it('opaque MID (a scene instead of key-painted terrain), and FAR with a key field / transparency', async () => {
     const d = await load();
@@ -211,15 +210,13 @@ describe('the delivery check rejects every way a delivery can be wrong (mutants 
     fails({ ...d, acceptance: { ...a, plates: a.plates.map((p) => (p.name === 'arena-far' ? { ...p, masterSha256: 'b'.repeat(64) } : p)) } }, /acceptance arena-far: masterSha256 bbbbbbbbbbbb… ≠ recipe/);
     fails({ ...d, recipe: { ...d.recipe, battleContext: { biomeFamily: 'moonbase' } } }, /biomeFamily: "moonbase" is not one of the 43 live biomes/);
   }, 30_000);
-  it('a synthetic kit-size delivery (2560 × 1440, new biome) passes — the contract is the kit, not the temperate pixels', async () => {
-    const d = await load(), { width: W, height: H } = ARENA_KIT_CANVAS;
-    const make = (top: number, standGap = false): ArenaPlateImage => { const px = new Uint8Array(W * H * 4); for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const i = (y * W + x) * 4, content = top < 0 || (y / H >= top && !(standGap && y / H < 0.8 && Math.abs(x / W - 0.5) > 0.1));
+  it('a synthetic delivery at each admitted size (1672 × 941 generator-native, Dakk 2026-10-02; 2560 × 1440 kit) passes for a new biome; any other size is refused', async () => {
+    const d = await load();
+    const synth = (W: number, H: number) => { const make = (top: number): ArenaPlateImage => { const px = new Uint8Array(W * H * 4); for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const i = (y * W + x) * 4, content = top < 0 || y / H >= top;
       px[i] = content ? 60 + (x % 50) : 255; px[i + 1] = content ? 90 : 0; px[i + 2] = content ? 70 : 255; px[i + 3] = 255; } return { width: W, height: H, rgba: px }; };
-    const far = make(-1), mid = make(0.6), nearPlate = make(0.82);
-    const recipe = { ...d.recipe, battleContext: { biomeFamily: 'savanna' }, canvasSize: { width: W, height: H }, plates: (d.recipe.plates as Record<string, unknown>[]).map((p, i) => ({ ...p, sha256: String(i).repeat(64) })) };
-    const v = validateArenaDelivery({ recipe, plates: { far, mid, near: nearPlate } });
-    expect(v.failures).toEqual([]); expect(v.biome).toBe('savanna');
-    // and the same synthetic delivery at the old 1672 × 941 size is refused (no exemption without the accepted bytes)
-    fails({ recipe: { ...recipe, canvasSize: { width: 1672, height: 941 } }, plates: { far: d.plates.far, mid: d.plates.mid, near: d.plates.near } }, /canvas: 1672×941 ≠ the kit's/);
+      const recipe = { ...d.recipe, battleContext: { biomeFamily: 'savanna' }, canvasSize: { width: W, height: H }, plates: (d.recipe.plates as Record<string, unknown>[]).map((p, i) => ({ ...p, sha256: String(i).repeat(64) })) };
+      return { recipe, plates: { far: make(-1), mid: make(0.6), near: make(0.82) } }; };
+    for (const { width, height } of [{ width: 1672, height: 941 }, ARENA_KIT_CANVAS]) { const v = validateArenaDelivery(synth(width, height)); expect(v.failures).toEqual([]); expect(v.biome).toBe('savanna'); }
+    fails(synth(1280, 720), /canvas: 1280×720 is not a delivery size \(1672×941 or 2560×1440\)/);
   }, 60_000);
 });
