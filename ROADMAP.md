@@ -93,46 +93,78 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 
 ## Current Codex sprint handoff — 2026-10-02, C163 ACTIVE
 
-Dakk authorizes the ordered C163 program, large signed batches without per-step approval.
-Own lane: OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac`.
-Signed anthropic/mac through `fc2d7ac30` merged as `1ced0a1fd` G; Claude's handoff above is retained.
-Read sibling mailbox through C167 and D29/D30. C165 WebP head `72bbe1531` merged as `b5dfd0a2f` G, preserving both handoffs; measure the final combined product once.
+Dakk authorizes large signed C132/C163 batches without per-step approval. Own lane:
+OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac`.
+Claude's handoff above is preserved. Signed lane merges include C165 WebP head
+`72bbe1531`, C168 scoring, and C171 Bat staging evidence through `683d6d58e`
+(merge `d6237e0e3`). Claude's later `818ba677f` acknowledges our `db3cc11bf` with
+an identical tree; it adds no new product or evidence content. Mailbox read through C171.
 
-**Current product:** 45 Dakk-accepted arena sets across all 43 biome families, native
-1672×941 WebP runtime copies, roughly 84 MiB within unchanged 128 MiB pack. PNG masters
-are preserved. Eleven painted ability themes are wired, effects anchor to actual contact
-joints, guardian film PASS remains flag-off. Claude C167 accepts all ten C136 native films after the sprawler fix: coverage 192/631, Alligator snout hold resolved.
+**Accepted progress:** the geometry-selected low-slung sprawler profile removes
+hit/cast failures and head/neck late-idle dip. Nine unchanged static fits pass;
+Claude C167 accepts all ten native C136 films, including Alligator's snout hold.
+Eight new reptiles, Mara, Lark and Hummingbird bring coverage from 184 to **195/631**.
+The live pack still has 45 accepted WebP arena sets across all 43 biome families,
+1672×941, roughly 84 MiB within the unchanged 128 MiB cap. Eleven themes are wired;
+contact-joint anchoring is filmed; guardian choreography remains flag-off.
 
-**First delivery:** `C163_SPRAWLER_MOTION_20261002`: geometry-selected low-slung profile
-clears all nine unchanged C136 static fits, 171 action rows plus nine presentation rows,
-34,108 publications. No head/neck idle dip. Alligator's old snout failure reproduces;
-2,532 new standalone/two-facing publications keep all mesh above ground. Detached source
-fragments and visual admission remain held. 126 motion tests, game types/root validate PASS.
-Original compression/fold evidence and initial candidate transition failures are preserved. Signed delivery `f584839fa` G; Claude C167 provides independent native/full-size acceptance.
+**Art and references delivered:** C178 contains 24 new original paintings (three
+quadrupeds first, then nine primates, three myriapods, five cephalopods and four
+membrane flyers). C181 supplies source head contours, three independent ungulate
+candidates and salamander/refusal evidence; its exact paint and D28 cap are unchanged.
+C176/C177 contain four stronger effect phases and three WebP arena repaint sets;
+Sand identity, seams/fringes and other visual holds remain explicit. Repaints are
+unregistered, queued by Claude for Dakk's look. All prompts, sources and checks are retained.
 
-**Art candidates delivered:** C176/C177 bind four stronger effect phases and three arena successors in `C163_EFFECTS_POLISH_20261002` and `C132_ARENAS_20261001/effects-agent-repaint-c163.json`. Sixty-four effect controls, all D29 and nine D30 checks PASS; remaining seams/fringes and Sand theme-identity hold stay explicit. No replacement registry/acceptance inferred.
+**Latest reference delivery:** C190 spread Bat passes static/conservation/D28;
+Claude C171 films 749 frames with no refusal, but holds it because aerial placement
+puts it above the frame. Claude owns a separate, unmerged staging correction.
+The folded standing Vampire Bat painting has an anatomical hold, with no invented
+thumb/contact or fit. C192's current `C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01`
+passes all 13 actions, presentation, exact conservation and the unchanged 5% check;
+independent review concurs. Native/moving-paint and small-fringe holds remain.
+Gorilla is still RED on contact/motion and island coverage. C189 documents why the
+cephalopod views cannot supply a truthful far-eye reference under the current template.
+No global reference pool or runtime was changed by these audit packets.
 
-**Originals delivered (C178):** `G2_C163_FAMILY_ORIGINALS_20261002/pilot.json` contains 24 new native originals (3 quadrupeds, 9 primates, 3 myriapods, 5 cephalopods, 4 membrane flyers), 30,168,687 bytes. Framing24/24PASS; anatomical/ground-contact holds stay explicit, no admission claim.
+**Head repair hold:** C191 `C169_NAPE_RECUT_20261002` preserves exact source attribution
+and two rejected recuts. Each passes 61 static clips and 1,984 publication samples,
+but full-size review exposes existing and new gaps at part joins. Neither is a visual
+repair or an admitted reference. The captured defects occur during held faint despite
+the `idle-90` filenames. Original paint, earlier receipts and the 5% cap remain intact.
+Further work needs source join/occlusion coverage or separately measured product work.
 
-**Reference/authoring delivery (C181):** `C163_REFERENCE_REPAIR_20261002` has seven exact-paint head-contour candidates (six staticPASS; Chough folded-triangleRED), three independent ungulate references, four salamander reviews and a measured24-case pool comparison. D28 stays5%; Horse/WildAss, WaterBuffalo cap, Wasp missing foot and pool regression holds remain explicit. Claude C168 accepts Mara from C178: coverage193/631; four new-family reference backlog follows.
+**Performance hold:** C179's fixed-rotation candidate stays unpromoted. It preserves
+56 captured target outputs and 18 current-source stills, but its one unprofiled 4× film
+has four frames above 1000/60 ms (maximum 55.1 ms; p95 8.3 ms). No JIT/GC dismissal is proved.
+C188's corrected all-pair instrument covers 1,444 ordered pairs / 38 mirrors and passes
+36 synthetic plus 12 exact path/inventory controls with independent review. Current
+entry point: `C163_ALL_PAIRS_20261002/run-sweep-v2.mjs` and `prepared-v2/manifest.json`.
+Its rejected first preparation is immutable. Native matrix runs remain zero; CPU and
+all-library 60 fps qualification are UNMEASURED. Resolve C12 before spending that sweep.
 
-**Performance hold:** C179 candidate is byte-exact across56targets and18 current-source stills, but one unprofiled4× film has4CPU frames over1000/60ms (max55.1ms; p958.3ms). Candidate remains unpromoted; strict all-pair60fps not qualified. The corrected 1,444-pair instrument is prepared and independently reviewed (36 synthetic + 12 exact path/inventory controls); native matrix remains unrun, CPU/60 fps unqualified. Current entry point is `C163_ALL_PAIRS_20261002/run-sweep-v2.mjs`; the rejected first preparation is retained unchanged.
+**Combined I5 and develop gate GREEN:** ONE fresh 3+1 epoch on signed product
+`20e80c9127b18eb4149d500ca3f688ca88bff188` passed all four independent raw verifiers,
+unchanged limits, zero retries. Fresh selector activation `08ddca65f` passed the full
+develop profile: 5,975 tests, 2 expected failures, 3 skipped; all three TypeScript
+projects and art/override/spec owners PASS in 195.25 s. Optional local-AI dependencies
+were renamed aside and restored. Root validation and 81 Actions-policy controls pass.
+Later commits contain only audits/references. The retained proof still replays after
+the temporary managed source checkout was archived. Historical I5 proof was not rebound.
+Evidence: `C163_I5_EPOCH_20261002`. No native/performance reservation is active.
 
-**Native/I5 complete:** current Civet/Wolf jaw film897frames/zero refusals/p955.3ms at4×; mouth placement visible, larger Storm footprint and0.704px Wolf/4.513px claw discrepancies retained. ONE fresh combined I5 on clean signed `20e80c912` certified3+1 plus4rawverifiers in267.263s/zero retries; fresh selector replayPASS, historical proof unchanged. Optional AI absent in source checkout. Full develop gate on signed activation `08ddca65f` PASS: 5,975 tests, all three TypeScript projects and art/override/spec owners green in 195.25 s; optional runtime set aside and restored. Actions policy 81/81 PASS.
+**Operations and next steps:** all commits are signed G; the pre-push guard remains.
+Budget UNFROZEN, repository PUBLIC, normal own-branch push triggers no workflow.
+No PR, label, hosted run, develop/main merge, release or deploy is authorized.
+The prior approximately 101 GB CF cleanup is historical; retiring this temporary I5
+checkout is not added to it. Identity backups remain untouched. Reuse this session's
+startup receipt in `C163_SPRAWLER_MOTION_20261002`; native work requires a posted
+reservation, serialized execution and a terminal release notice. Future develop gates
+still set the optional runtime aside and restore it in a finalizer.
 
-**In progress:** C169 nape recuts for Hawk/Crow/SnowyOwl and small WildPony fleck, exact-source attribution first. Claude C169 accepts Lark/Hummingbird: coverage195/631. The captured spikes are heldFAINT despite the file name idle-90. Frozen C181 candidates/reds remain intact. Each agent owns separate audits only. Root owns motion,
-remaining C12 performance diagnosis and all-pair instrument preparation. The ONE requested combined I5 epoch is complete; no further epoch or re-bind is implied.
-Never reuse or re-bind the prior I5 proof after product changes.
-
-**Operations:** startup check current in `C163_SPRAWLER_MOTION_20261002`; REAPER suffix
-resolved via empty scoped outdated response. Start free space 129 GiB. Previous approximate
-101 GB cleanup is historical, not a fresh recovery claim. All hooks/pre-push retained;
-never `--no-verify`. Develop gate always renames optional local-AI node_modules aside and
-restores it in a finalizer. Post native/performance reservation first, terminal notice last;
-serialize heavy work under the shared lock. No native reservation currently active.
-Budget UNFROZEN, no hosted authority. Only own-branch normal push after green required gates
-and trigger/visibility check. No PR, label, hosted run, develop/main merge, release/deploy.
-
-Next: Claude scores delivered candidates and finishes the accepted C136 rigs; Codex completes the
-remaining ordered deliveries and combined gates. Read sibling mailbox at each batch end,
-write delivery rows only to TO_CLAUDE. No Dakk relay or app switch is needed.
+Codex next: C12 timing, source-join head repair, remaining refusal/new-family references,
+and further original batches; keep all holds explicit. Claude next: score C192 Capuchin,
+review supplied reference candidates, and batch any aerial/arena product changes before
+a separately authorized future combined epoch. Current product stays certified. Read the
+opposite mailbox at each batch boundary and reply only in this lane's TO_CLAUDE.
+Dakk need not switch apps or relay the handoff. The detailed delivery rows are C173–C193.
