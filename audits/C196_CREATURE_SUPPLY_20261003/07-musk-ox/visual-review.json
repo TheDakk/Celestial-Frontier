@@ -1,0 +1,28 @@
+{
+  "name": "Musk Ox",
+  "masterSha256": "223e419fbee39efaef9f37544ce221b024849fe9ad1deafbb6d9200905d99318",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full1254 original: heavy shaggy dark Musk Ox with pale dorsal saddle and genuine downward sweeping horn bosses. Four separate hooves emerge below the long skirt, but most limb chains remain hidden by hair. Both ear tips are visible; far ear base is still obscured by the horn/crown, leaving the ear-root correction HELD. Tail cannot be independently distinguished from rear coat. Do not invent source owners beneath fur or grant fit admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 223,
+      "y0": 317,
+      "x1": 1049,
+      "y1": 937
+    },
+    "margins": {
+      "left": 223,
+      "right": 204,
+      "top": 317,
+      "bottom": 316
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

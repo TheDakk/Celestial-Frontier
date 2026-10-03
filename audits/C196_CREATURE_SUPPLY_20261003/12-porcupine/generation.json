@@ -1,0 +1,14 @@
+{
+  "id": "12-porcupine",
+  "name": "Porcupine",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-aa4605b5-1405-4571-9936-f18b520b64e1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "62dd4eb53306d4b75f5abaa0f280cda03b80f78843a678ef62f75e465b24a006",
+  "bytes": 1650460,
+  "promptSha256": "4d18228715334b7679e9e9c1728a2b37224acbc325962e956892c94076f7df7a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

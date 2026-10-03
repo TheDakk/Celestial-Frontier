@@ -1,0 +1,28 @@
+{
+  "name": "Llama",
+  "masterSha256": "3081c0fb6da2026f8f9982975f059bea50282c08f389cc5986797dd644130992",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full1254 original: long-necked woolly brown-and-white Llama with two long curved ears, real short hanging tail and four distinct foot silhouettes. Both ear shafts/tips are visible, but far ear base is partly hidden behind crown; requested full far-ear root remains uncertain. Feet read as dark hoof-like tips and their natural two-toed/padded anatomy needs review; far leg roots under wool remain partly occluded. No rig/native acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 302,
+      "y0": 171,
+      "x1": 977,
+      "y1": 1003
+    },
+    "margins": {
+      "left": 302,
+      "right": 276,
+      "top": 171,
+      "bottom": 250
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

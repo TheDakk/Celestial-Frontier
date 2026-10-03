@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Leech",
+  "family": "annelid",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "a489bd1dd7d33ab8028368133533f99c72e91795dd888113d83460fad5c07097",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "e815fd8b415dcfd247f8d890e966e5eaefa8dba6db38ce473849a0f550c4543c",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "one naturally flattened annelid body with fine annuli, a smaller anterior sucker and a posterior sucker; no invented limbs or vertebrate face",
+  "profileId": "annelid-water",
+  "authoringCreated": false,
+  "sourceHead": "7eb42d989913f892eb6e972b76bad232d747bd55",
+  "basePromptSha256": "f2ff4b44fb7d50fcba945c246456ef78994c4d69a19a7880f28e6559f67d7c72",
+  "batchCompilerSha256": "dd1856d2dc0cd1b662a8c39c8ac84441abaf58f141ac25375bb967313dd7c85a",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "The prior annelid reference silhouette has exaggerated-looking terminal cavities. Paint a real elongated leech in a shallow gentle curve, with fine annuli and modest actual anterior and posterior suckers clearly attached at both endpoints, anterior smaller. No huge funnel mouths, overlapping loop, vertebrate face, invented limbs or deleted true eye spots if naturally visible. This is a distinct leech reference candidate, never an Earthworm relabel.",
+    "priorSources": [
+      {
+        "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+        "id": "20-leech",
+        "master": "audits/C213_CREATURE_SUPPLY_20261002/20-leech/master.png",
+        "packet": "audits/C213_CREATURE_SUPPLY_20261002/20-leech"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C213_CREATURE_SUPPLY_20261002/pilot.json"
+  ],
+  "auditCompilerExtension": true,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: The prior annelid reference silhouette has exaggerated-looking terminal cavities. Paint a real elongated leech in a shallow gentle curve, with fine annuli and modest actual anterior and posterior suckers clearly attached at both endpoints, anterior smaller. No huge funnel mouths, overlapping loop, vertebrate face, invented limbs or deleted true eye spots if naturally visible. This is a distinct leech reference candidate, never an Earthworm relabel.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

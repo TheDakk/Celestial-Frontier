@@ -1,0 +1,14 @@
+{
+  "id": "16-dragonfly",
+  "name": "Dragonfly",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-a5ccdbcf-38d6-4dc6-933a-12b739d7ae93.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0350fe20c53d3e4110c83d4b01599cb1da51352b10c6c015bd34775113e90b1d",
+  "bytes": 1375830,
+  "promptSha256": "86f43e5ab1a71adf82fbea035aaf96147b23962467745a8c517b0d12f4fcb169",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

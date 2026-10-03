@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mountain Tapir",
+  "masterSha256": "c9e5333ec8eeae2bf47171cc5222f2911cc9075db708f65412117175f4fe42fa",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

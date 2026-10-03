@@ -1,0 +1,28 @@
+{
+  "name": "Orchid Bee",
+  "masterSha256": "facb72833d8fc4fd4b7bb4f86b702c85d92baf3fe272c5bf01307149aca01708",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: metallic emerald/teal segmented body with golden fur, blue-green enlarged hind tibia, long curved orange-brown proboscis, two segmented antennae and overlapping translucent wings. Five independent distal leg tips are visible; the sixth chain/root remains unresolved behind the body, so the requested six-leg correction is held. Both antennae and the long proboscis are inside the image, but the wing stack exposes only a limited set of margins/roots. Fur/body-leg borders are clean in visible regions; ownership conservation remains unmeasured. No missing leg or wing root may be invented, and no anatomical/native acceptance is claimed.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 258,
+      "y0": 384,
+      "x1": 1047,
+      "y1": 877
+    },
+    "margins": {
+      "left": 258,
+      "right": 206,
+      "top": 384,
+      "bottom": 376
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

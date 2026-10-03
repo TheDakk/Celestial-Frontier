@@ -1,0 +1,28 @@
+{
+  "name": "Diving Beetle",
+  "masterSha256": "bfbefdef9a56c5324d23d68d8cd4bea55aad4132b48d976d11e952e393196297",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: glossy dark oval elytra with yellow-tan edge and pronotum borders, two long segmented antennae separated to their tips, and dark paired mouthpart projections. Antenna silhouettes are more distinct and comfortably inside the canvas, but both visible bases cluster at the near side of the head and require source-specific landmark review. Two fringed paddle-like rear appendages and three other distal leg tips are independently visible (five total); a sixth complete chain is unresolved behind the body, so six-legged authoring remains held. No missing chain may be invented. Floating lateral presentation is not a grounded contact proof.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 164,
+      "y0": 404,
+      "x1": 1102,
+      "y1": 852
+    },
+    "margins": {
+      "left": 164,
+      "right": 151,
+      "top": 404,
+      "bottom": 401
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

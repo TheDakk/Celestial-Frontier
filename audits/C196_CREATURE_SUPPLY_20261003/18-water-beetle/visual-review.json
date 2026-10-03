@@ -1,0 +1,28 @@
+{
+  "name": "Water Beetle",
+  "masterSha256": "705a1278a5ad70f3fe73b2cfbecb52685db4e970fe1689c34920d21af4d1774d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Parent full-size original review: Oval closed wing cases, clubbed antennae and fringed paddle-like rear limbs. Five independently visible distal leg silhouettes; sixth chain/root unresolved. Rear appendage insertion under abdomen requires source-anatomy review; do not invent thoracic roots. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 156,
+      "y0": 403,
+      "x1": 1096,
+      "y1": 845
+    },
+    "margins": {
+      "left": 156,
+      "right": 157,
+      "top": 403,
+      "bottom": 408
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

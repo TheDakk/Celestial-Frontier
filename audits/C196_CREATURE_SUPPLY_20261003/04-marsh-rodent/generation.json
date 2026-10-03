@@ -1,0 +1,14 @@
+{
+  "id": "04-marsh-rodent",
+  "name": "Marsh Rodent",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-cc5f48f6-4e6c-4581-b4e7-22f5860ccdeb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "edb15a41fa3984bdbf2cb015e69e995de942c90557eb157c8e003186b8150518",
+  "bytes": 1371715,
+  "promptSha256": "584278e7549db7e371a549c0813548fa288d12798ec1b5a8ca8920cc734b1f2d",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

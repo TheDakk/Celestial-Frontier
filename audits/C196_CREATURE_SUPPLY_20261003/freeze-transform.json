@@ -1,0 +1,19 @@
+{
+  "source": "audits/C196_CREATURE_SUPPLY_20261003/freeze.mjs",
+  "sourceSha256": "fef11c6a3620cb4050a8f0a3a800cadd18b1bfbeec8989cdbca7c00a74ea1b76",
+  "outputSha256": "1cda062cacd452f5c5d9b2cff23ef401daae8d6e32ff7550ca9e7d816a315f51",
+  "changes": [
+    {
+      "before": "const files=[];function walk(d)",
+      "after": "const manual=JSON.parse(fs.readFileSync(base+'/manual-framing.json'));const manualNames=manual.rows.map(r=>r.name);for(const r of manual.rows){if(r.status!=='REFUSE'||r.masterSha256!==sha(fs.readFileSync(root+'/'+r.master)))throw Error('Stale manual refusal '+r.name);}\nconst files=[];function walk(d)"
+    },
+    {
+      "before": "if(e.isDirectory())walk(f);else if(e.isFile()",
+      "after": "if(e.isSymbolicLink())throw Error('No symlinks in source delivery');if(e.isDirectory())walk(f);else if(e.isFile()"
+    },
+    {
+      "before": "framingPass:observations.filter(o=>o.framing.status==='PASS_FRAMING_ONLY').length,framingRefused:observations.filter(o=>o.framing.status==='REFUSE').map(o=>o.name)",
+      "after": "framingScope:'Whole-original review; unchanged keyed-mask results plus source-pixel-bound manual refusals',framingPass:observations.filter(o=>o.framing.status==='PASS_FRAMING_ONLY'&&!manualNames.includes(o.name)).length,framingRefused:[...new Set([...observations.filter(o=>o.framing.status==='REFUSE').map(o=>o.name),...manualNames])],automaticKeyedMask:{pass:observations.filter(o=>o.framing.status==='PASS_FRAMING_ONLY').length,refused:observations.filter(o=>o.framing.status==='REFUSE').map(o=>o.name)},manualFraming:{path:'audits/C196_CREATURE_SUPPLY_20261003/manual-framing.json',sha256:sha(fs.readFileSync(base+'/manual-framing.json'))}"
+    }
+  ]
+}

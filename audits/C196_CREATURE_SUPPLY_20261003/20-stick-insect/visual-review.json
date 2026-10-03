@@ -1,0 +1,28 @@
+{
+  "name": "Stick Insect",
+  "masterSha256": "1d0623adc94ff89efe2c2b596bb9a4fb1019cd0e6249bdaab110a6d45ce4615e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: long segmented twig-like tan/brown body, two thin long antennae and six independently visible distal hooked feet. The nearest front leg has a long continuous contour to its distal tip, improving the requested front-foot visibility. The two front chains overlap along a shared projected upper segment and their roots are not individually resolved; far middle/root segments are occluded by the body. Six tips therefore do not prove six independent complete anatomical chains. The lower antenna reaches near the right 8% boundary and needs unchanged original framing measurement. No forced inference or grounded-support claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 128,
+      "y0": 374,
+      "x1": 1130,
+      "y1": 873
+    },
+    "margins": {
+      "left": 128,
+      "right": 123,
+      "top": 374,
+      "bottom": 380
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

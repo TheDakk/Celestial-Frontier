@@ -1,0 +1,28 @@
+{
+  "name": "Bee",
+  "masterSha256": "90d94766ef43d77f393c5dd057432f3df990c010d518f130f49a8899bc06e413",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Parent full-size original review: Gold/black abdomen bands, hairy thorax, paired antennae and distinct mouthpart tips are visible. Six continuous leg chains and their separate roots are not all independently traceable; five distal leg silhouettes are obvious, with overlap at rear/middle roots. Far wings overlap. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 258,
+      "y0": 349,
+      "x1": 1079,
+      "y1": 884
+    },
+    "margins": {
+      "left": 258,
+      "right": 174,
+      "top": 349,
+      "bottom": 369
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Ibex",
+  "masterSha256": "5f57a75bb93cddf170a779663db9912413b41a50a43eeb63b97ba917e2ef2e9e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full1254 original: brown-and-cream Ibex with large ridged swept horns, dark beard, short tufted tail and four separated hoofed legs. Near ear has a clear full contour; far ear is not independently observable beside the overlapping horn roots, so complete paired-ear correction remains HELD. Natural head turn is stronger than a strict lateral face. Limb roots still partly behind torso; four feet have slightly different projected heights. No invented far ear or contact claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 279,
+      "y0": 212,
+      "x1": 992,
+      "y1": 1012
+    },
+    "margins": {
+      "left": 279,
+      "right": 261,
+      "top": 212,
+      "bottom": 241
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

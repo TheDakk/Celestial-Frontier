@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Leech",
+  "masterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "02-giant-otter",
+  "name": "Giant Otter",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-1b3a0343-ffd8-44dc-b8b4-58e29edfe4aa.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c7d944b8e9ea42bf708abe2ee024f2cf75aefee3a2327bc4dd3ed6ec26d18753",
+  "bytes": 1320432,
+  "promptSha256": "73931d595d36f1e1c3c7471898ab07fb7571a3a65e7bbac58bbb7150e9d3eb65",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

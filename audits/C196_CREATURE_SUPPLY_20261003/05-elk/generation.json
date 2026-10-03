@@ -1,0 +1,14 @@
+{
+  "id": "05-elk",
+  "name": "Elk",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3d9024a8-dd46-4834-a188-11583c23995f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "53ab3e9c270b19ccbdfed06e6e85fe4b23830fe6927d78375079dc873366984a",
+  "bytes": 1328382,
+  "promptSha256": "005ed054d150283d8797cb61ddf71c2b5fce8f1313ee12592aa691c7b8644c8b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,24 @@
+{
+  "scope": "Source-pixel evidence controls only; unchanged automated result preserved",
+  "manualSha256": "30665b1ed5c8f494dd29ea9791bfffe82b0d31bad766cbe953b6ad25d5ae93e7",
+  "results": [
+    {
+      "name": "Marsh Rodent",
+      "status": "PASS",
+      "sourceBound": true,
+      "outsideUnchangedMargin": true,
+      "staleMasterRefused": true,
+      "interiorPixelRefused": true,
+      "falsePassRefused": true
+    },
+    {
+      "name": "Stick Insect",
+      "status": "PASS",
+      "sourceBound": true,
+      "outsideUnchangedMargin": true,
+      "staleMasterRefused": true,
+      "interiorPixelRefused": true,
+      "falsePassRefused": true
+    }
+  ]
+}

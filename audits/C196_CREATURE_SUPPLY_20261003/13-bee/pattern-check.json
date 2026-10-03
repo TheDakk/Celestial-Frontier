@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bee",
+  "masterSha256": "90d94766ef43d77f393c5dd057432f3df990c010d518f130f49a8899bc06e413",
+  "required": [
+    "furry thorax with banded amber-and-black abdomen"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "furry thorax with banded amber-and-black abdomen",
+      "status": "PRESENT",
+      "observed": "Parent full-size original review: Gold/black abdomen bands, hairy thorax, paired antennae and distinct mouthpart tips are visible. Six continuous leg chains and their separate roots are not all independently traceable; five distal leg silhouettes are obvious, with overlap at rear/middle roots. Far wings overlap. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "14-honeybee",
+  "name": "Honeybee",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-9340a1ea-dc5e-4b7e-8dd7-cbe5e732ab79.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "116fcac6e33cf5384113705dfdfbc4172c9acd1efd6cb90340d5baac7f5a089d",
+  "bytes": 1363701,
+  "promptSha256": "15db4db922703073f6ee461fe2ffb45bb21293f74ac3d81cfc20688e599082b9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
