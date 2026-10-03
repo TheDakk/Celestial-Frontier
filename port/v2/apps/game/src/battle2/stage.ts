@@ -228,10 +228,21 @@ export class BattleStage {
     if (input.arena.effectLaunch) return buildTurnPlan(base);
     const pending = !input.attack || !input.attacker.card ? 'the turn has no anatomy attack (no contact joint)' : reducedMotion ? 'reduced motion: no effect is drawn' : 'contact joint not probed';
     const first = buildTurnPlan({ ...base, arena: { ...arena, effectLaunch: { point: null, reason: pending } } });
+    // D31: a casting limbless/sessile body launches from its declared emitter landmark, else its painted body centre, at the launch beat
+    if (first.effect && !first.reducedMotion && first.castAttack) {
+      const emitter = first.castAttack.emitter, probe = emitter ? this.#contactJointAt(first, emitter) : null;
+      const launch = probe?.point ? { ...probe, cast: 'emitter' as const } : { ...this.#bodyCentreAt(first, arena), cast: 'body-centre' as const, reason: probe ? `${probe.reason}; painted body centre at the launch beat` : 'painted body centre at the launch beat' };
+      return buildTurnPlan({ ...base, arena: { ...arena, effectLaunch: launch } });
+    }
     if (!first.effect || first.reducedMotion || !first.attack) return first;
     const probe = this.#contactJointAt(first, first.attack.contactJoint);
     return probe.point ? buildTurnPlan({ ...base, arena: { ...arena, effectLaunch: probe } })
       : buildTurnPlan({ ...base, arena: { ...arena, effectLaunch: { point: null, reason: probe.reason } } });
+  }
+  /** The attacker's painted box centre at the plan's launch beat (frame-normalized): its rest box centre carried by the stage displacement. */
+  #bodyCentreAt(plan: TurnPlan, arena: TurnArena): Readonly<{ point: NormalizedPoint }> {
+    const side = plan.attacker.side, s = sampleTurn(plan, plan.beats.actionStart).attacker;
+    return { point: Object.freeze({ x: arena.centresX![side] + s.displacementX, y: arena.bodies![side].centreY }) };
   }
   /** The attacker's `joint` in frame-normalized space at the plan's launch beat, from the posed rig (null + reason when it cannot be read). */
   #contactJointAt(plan: TurnPlan, joint: string): Readonly<{ point: NormalizedPoint | null; reason: string }> {

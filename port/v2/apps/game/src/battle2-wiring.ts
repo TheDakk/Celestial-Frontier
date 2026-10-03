@@ -42,6 +42,7 @@ import { ARENA_SETS, type ArenaSetRow, BattleStage, GUARDIAN_FRAME_FILL, combata
 // test program must stay free of pixi.js types (see apps/game/tsconfig.json _skipLibCheckReason).
 import { createPartsRig } from './battle2/parts-rig.js';
 import { attackRepertoire, compileAnatomyAttack, type WeaponDeclaration } from './anatomy-attacks.js';
+import { castAttackOf } from './motion/cast-attack.js';
 import type { ArenaWorld } from './battle-habitat.js';
 import { ARENA_GROUND_LINE } from './battle2/arena-delivery.js';
 import { liveBattleArena, liveSettlementEncounter, liveWorldSnapshot } from './battle2-live-worlds.js';
@@ -557,7 +558,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => {
       const card = side === 'A' ? left.card : right.card, key = side === 'A' ? 'left' : 'right'; if (!card) return null;
       try { const r = compileAnatomyAttack(card, mediums[side], ordinal, undefined, (side === 'A' ? left : right).declaration); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
-      catch (error) { attackLabels[key] ??= `family delivery clip (no admitted anatomy move: ${error instanceof Error ? error.message : String(error)})`; return null; }
+      catch (error) { const cast = castAttackOf(card); attackLabels[key] ??= cast ? `cast body pulse (${cast.reason})` : `family delivery clip (no admitted anatomy move: ${error instanceof Error ? error.message : String(error)})`; return null; }
     };
     // Painted phase images of every admitted theme (paths resolved against each anchors JSON's directory; Wild: `keyed/wild-*.png`).
     // Every theme without an admitted, fully loaded sequence plays the labelled procedural emitter in its §4K material colour.
