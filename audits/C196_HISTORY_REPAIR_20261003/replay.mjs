@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {readActiveCompendiumBudget,verifyActiveCompendiumCertificate} from '../../port/v2/tools/compendiummem-active.mjs';
+const budget=readActiveCompendiumBudget();
+const result=await verifyActiveCompendiumCertificate(budget.measurementAuthority,budget.producerAuthority);
+assert.equal(result.ok,true);
+const selector=JSON.parse(fs.readFileSync('port/v2/budgets/compendium-memory-active.json'));
+for(const [name,hash] of Object.entries(selector.files)) assert.equal(createHash('sha256').update(fs.readFileSync(selector.epochDirectory+'/'+name)).digest('hex'),hash);
+fs.writeFileSync('audits/C196_HISTORY_REPAIR_20261003/activation-replay.json',JSON.stringify({...result,boundFiles:Object.keys(selector.files).length,nativeRun:false,selectorModified:false},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify(result));
