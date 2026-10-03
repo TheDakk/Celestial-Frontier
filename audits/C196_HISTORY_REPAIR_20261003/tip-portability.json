@@ -1,0 +1,141 @@
+{
+  "head": "c85de35e1bd93d6c9dae2168673fa7c47b52c89c",
+  "trackedSymlinks": [
+    {
+      "path": "audits/C192_I5_EPOCH_20261002/epoch/instrument/shared",
+      "blob": "0b47222fac63507843c046757b505420d43562e6",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/coconut-crab-b32-i56/parts",
+      "blob": "024d56950ee317e16d26ca02b514a6bb1e0b21c4",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/coconut-crab-b48-i56/parts",
+      "blob": "024d56950ee317e16d26ca02b514a6bb1e0b21c4",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/crab-b24-i128/parts",
+      "blob": "aff8a77d8f8648c7628b4d90649b40dc02bd6d03",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/crab-b24-i256/parts",
+      "blob": "aff8a77d8f8648c7628b4d90649b40dc02bd6d03",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/crab-b24-i80/parts",
+      "blob": "aff8a77d8f8648c7628b4d90649b40dc02bd6d03",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/crab-b32-i56/parts",
+      "blob": "aff8a77d8f8648c7628b4d90649b40dc02bd6d03",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/crab-b48-i56/parts",
+      "blob": "aff8a77d8f8648c7628b4d90649b40dc02bd6d03",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/freshwater-crab-b24-i128/parts",
+      "blob": "523811e00cea97a3b44a28d45a408f6d8ae5623d",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/freshwater-crab-b24-i256/parts",
+      "blob": "523811e00cea97a3b44a28d45a408f6d8ae5623d",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/freshwater-crab-b24-i80/parts",
+      "blob": "523811e00cea97a3b44a28d45a408f6d8ae5623d",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/freshwater-crab-b32-i56/parts",
+      "blob": "523811e00cea97a3b44a28d45a408f6d8ae5623d",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/freshwater-crab-b48-i56/parts",
+      "blob": "523811e00cea97a3b44a28d45a408f6d8ae5623d",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/mud-crab-b24-i128/parts",
+      "blob": "77bf01f02ec341d334df26bd097297ce6d709f1c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/mud-crab-b24-i256/parts",
+      "blob": "77bf01f02ec341d334df26bd097297ce6d709f1c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/mud-crab-b24-i80/parts",
+      "blob": "77bf01f02ec341d334df26bd097297ce6d709f1c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/mud-crab-b32-i56/parts",
+      "blob": "77bf01f02ec341d334df26bd097297ce6d709f1c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/mud-crab-b48-i56/parts",
+      "blob": "77bf01f02ec341d334df26bd097297ce6d709f1c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/vent-crab-b24-i128/parts",
+      "blob": "b851c30d6718d390bdd9e774de568d213259b03c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/vent-crab-b24-i256/parts",
+      "blob": "b851c30d6718d390bdd9e774de568d213259b03c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/vent-crab-b24-i80/parts",
+      "blob": "b851c30d6718d390bdd9e774de568d213259b03c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/vent-crab-b32-i56/parts",
+      "blob": "b851c30d6718d390bdd9e774de568d213259b03c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_CONSOLIDATED_20260920/candidates/vent-crab-b48-i56/parts",
+      "blob": "b851c30d6718d390bdd9e774de568d213259b03c",
+      "absolute": false
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-02/parts",
+      "blob": "1b30e2db1be03eaea2513af00b05738a7f4c62b0",
+      "absolute": false
+    }
+  ],
+  "absoluteSymlinkCount": 0,
+  "productTreeIdenticalToPreRepair": true,
+  "changedPaths": [
+    "ROADMAP.md",
+    "audits/C192_I5_EPOCH_20261002/epoch/instrument/shared",
+    "audits/C196_HISTORY_REPAIR_20261003/README.md",
+    "audits/C196_HISTORY_REPAIR_20261003/activation-replay.json",
+    "audits/C196_HISTORY_REPAIR_20261003/inherited-link-removal.json",
+    "audits/C196_HISTORY_REPAIR_20261003/replay.mjs",
+    "audits/C196_HISTORY_REPAIR_20261003/rewrite.json",
+    "audits/I5_CARD_SCRATCH_20260927/epoch/instrument/shared",
+    "audits/I5_IDB_OWNERS_20260927/epoch/instrument/shared",
+    "audits/I5_NATIVE_KEYS_20260927/epoch/instrument/shared",
+    "audits/MAILBOX/TO_CLAUDE.md"
+  ],
+  "sourceCommitStillAncestor": true
+}
