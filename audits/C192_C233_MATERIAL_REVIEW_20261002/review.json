@@ -1,0 +1,250 @@
+{
+  "schema": "cf.c192-c233-independent-material-review/v1",
+  "createdAt": "2026-10-03T03:02:12.144859+00:00",
+  "status": "CORRECTIONS_REQUIRED_BEFORE_AUTHORING_ADMISSION",
+  "scope": "Read-only source painting and closed material implementation inspection; no biology-source inference beyond painted/canonical observations.",
+  "productChanged": false,
+  "sharedRunnerChanged": false,
+  "nativeRuns": 0,
+  "testsRun": 0,
+  "frozenSupplyDelivery": {
+    "path": "audits/C192_CREATURE_SUPPLY_20261002/delivery.json",
+    "sha256": "9e892b78eb966ffb42f8698038cdadc69660de08f0ea88db84b53728f35de3dd",
+    "bytes": 54551
+  },
+  "sourceSubjects": [
+    {
+      "id": "06-sloth",
+      "source": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/06-sloth/master.png",
+        "sha256": "60506dea26146c98ec3223eeba7b564006cf41b5e16da5f91c663576755b152b",
+        "bytes": 1445225
+      },
+      "identity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/06-sloth/subject-source.json",
+        "sha256": "22c67eefcf50329d6e3e9143a76a03f550cc3f7c4e5597e42a8ea04e489f5aee",
+        "bytes": 2139
+      },
+      "fullSizeVisualInspection": true,
+      "observation": "Long coarse fur visibly covers torso and limbs. Furred is a reasonable source body-category proposal. Claws/contacts/hidden limbs remain outside this material review.",
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "07-tortoise",
+      "source": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/master.png",
+        "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+        "bytes": 1552562
+      },
+      "identity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/subject-source.json",
+        "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+        "bytes": 2190
+      },
+      "fullSizeVisualInspection": true,
+      "observation": "Domed visibly scuted shell; exposed wrinkled/scaled neck, scaly limbs and short tail. Shell/body plated is a proposal requiring independent observed exposed-joint partition.",
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "08-box-turtle",
+      "source": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/master.png",
+        "sha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3",
+        "bytes": 1323696
+      },
+      "identity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/subject-source.json",
+        "sha256": "10abc6bf68fe4e2e9a1f296f226a945b27d0e41472df30d96fb6e78efb8d5f6e",
+        "bytes": 2076
+      },
+      "fullSizeVisualInspection": true,
+      "observation": "Scuted shell and orange/black scaled head, neck, limbs and short tail. Far forelimb is obscured; material selection cannot supply missing source anatomy.",
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "09-pond-turtle",
+      "source": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle/master.png",
+        "sha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984",
+        "bytes": 1297453
+      },
+      "identity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle/subject-source.json",
+        "sha256": "87d4e6d6eb702355cd1a01d74734e06ab913a1d380050f16cdec4fb87c250bb8",
+        "bytes": 2249
+      },
+      "fullSizeVisualInspection": true,
+      "observation": "Scuted shell with striped/scaled long neck, exposed limbs and visible scaled tail. Occluded limb paths remain outside the material decision.",
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "10-snapping-turtle",
+      "source": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/10-snapping-turtle/master.png",
+        "sha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff",
+        "bytes": 1389792
+      },
+      "identity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/10-snapping-turtle/subject-source.json",
+        "sha256": "97524cd57b379e83072a96e37887ac871c7c4e34f699001fcbb6d73de8ab4818",
+        "bytes": 2144
+      },
+      "fullSizeVisualInspection": true,
+      "observation": "Ridged shell, rough scaled neck/limbs and long serrated-looking tail. Plated body does not justify rigid tail. Existing proportions/anatomy and framing holds remain.",
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "12-turtle",
+      "source": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/12-turtle/master.png",
+        "sha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150",
+        "bytes": 1368396
+      },
+      "identity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/12-turtle/subject-source.json",
+        "sha256": "eb9766c2b58c9a42f4c995f5c4f3944b5ed81f5d270b4a31d09508354a5ce990",
+        "bytes": 2311
+      },
+      "fullSizeVisualInspection": true,
+      "observation": "Scuted shell and striped/scaled exposed head/neck/limbs with a short tail. Material choice is not contact or complete-limb admission.",
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "11-softshell-turtle",
+      "source": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/11-softshell-turtle/master.png",
+        "sha256": "1c7f3e94470012bfbdcda71caf25274e4c1e6dd09bdbbfd0fdb1c01f95e44bc0",
+        "bytes": 1338064
+      },
+      "identity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/11-softshell-turtle/subject-source.json",
+        "sha256": "cb5bac8c60c9c16ef979edf33405aa78726e76f4df723dfe1613d7d8c9068630",
+        "bytes": 2126
+      },
+      "fullSizeVisualInspection": true,
+      "observation": "Continuous mottled leathery-looking shell covering and supple wrinkled neck/limbs. Hold the mixed source; do not infer visible bone from this painting or select whole-body slick/plated by profile.",
+      "admission": "UNMEASURED"
+    }
+  ],
+  "reviewedOwners": [
+    {
+      "path": "audits/C192_C233_AUTHORING_HANDOFF_20261002/README.md",
+      "sha256": "327ebb4e2674329a01bd8b730d47904c3dfab3c4b9d7c6a8bf858a6d7dc158ec",
+      "bytes": 3329
+    },
+    {
+      "path": "audits/C192_C233_AUTHORING_HANDOFF_20261002/material-decisions.json",
+      "sha256": "926c3d327a0dfb2049c71e16eba0f8c1a46448405540ecb71413a9ddac51f48e",
+      "bytes": 4569
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "252721efe190ed830d2cc43b34a3d1bcc23524d6761d3aec94b02cc68af29b22",
+      "bytes": 21470
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "3c8e8c7c5ab5f86a870175f13f5a0ec16bf24be5f396872b5c264a1e15842054",
+      "bytes": 19511
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "9f8ab0acfbde47490f50ea72db760b510bc0e9fc032190d8d6720659cfd6686d",
+      "bytes": 23934
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "da51acb7b05b77a561f09d084eb02c6a3bc314f180f0e3be1ccfb4f2855b8de5",
+      "bytes": 6784
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "bc4ccea589ec9d52b054faf25b1e06915017a0b6d76793ef0f3ba214091e5e48",
+      "bytes": 7695
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "01fb429e30a2ce63d3fd7fc0071db172e99346a2e965e0646f349f70a8cf4690",
+      "bytes": 22661
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/amplitude-profile.ts",
+      "sha256": "c9f6af34209068d6e525c0cb306b9975302e7cb81bb3d06203a03cb04ad601e7",
+      "bytes": 1669
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/flora-observed.test.ts",
+      "sha256": "2f1517cff7191a6e342cc68d16a39ab7b56d71af4e434ebe56c71792af03cb25",
+      "bytes": 2694
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "9b3c9d83d3900e66e543656a05464a2db311565952d7f4f4c720fdaa88f3ef07",
+      "bytes": 10155
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "CORRECTION",
+      "target": "handoff README profile explanation",
+      "finding": "Pangolin is not in the current xenarthran profile. Canonical xenarthran contains Sloth and Armadillo; Pangolin is in toothless-clawed-mammal.",
+      "requiredCorrection": "Replace Armadillo/Pangolin with Armadillo. Keep the prohibition on a blanket xenarthran=fur mapping.",
+      "evidence": [
+        "port/v2/apps/game/src/earth-fauna-profiles.ts:22",
+        "port/v2/apps/game/src/earth-fauna-profiles.ts:23"
+      ]
+    },
+    {
+      "id": "R2",
+      "severity": "PRE_AUTHORING_HOLD",
+      "target": "five scuted turtle rows exposedChainRequirement",
+      "finding": "The required partition mentions neck/limbs but omits exposed tails. Base plated initializes all resolved joints to plated; unoverridden quadruped tail secondary joints then have zero lag and rigid=true.",
+      "requiredCorrection": "Require source-authored scaled head/neck, exposed limb and exposed tail joints, only where those resolved joints have observed source ownership. Explicitly keep each turtle PARTITION_PENDING until that actual record is authored and checked; do not use the body-only row as an admissible whole-animal material patch. Do not invent hidden roots or fill absent chains.",
+      "evidence": [
+        "port/v2/apps/game/src/motion/body-card.ts:209",
+        "port/v2/apps/game/src/motion/body-card.ts:211",
+        "port/v2/apps/game/src/motion/secondary.ts:26",
+        "port/v2/apps/game/src/motion/secondary.ts:30",
+        "port/v2/apps/game/src/motion/secondary.ts:84",
+        "port/v2/apps/game/src/motion/templates.ts:71",
+        "MOTION_KIT.md:175"
+      ]
+    },
+    {
+      "id": "R3",
+      "severity": "PROVENANCE_CORRECTION",
+      "target": "named material decision rows",
+      "finding": "The handoff currently binds only short ID/name/profile, not exact source bytes. A future source of the same identity could silently inherit this visual judgment.",
+      "requiredCorrection": "Add exact C233 master relative path and SHA-256 plus canonical subject-source binding to each row, retaining its visual-review scope. Require a new review if source bytes differ.",
+      "evidence": [
+        "audits/C192_C233_AUTHORING_HANDOFF_20261002/material-decisions.json"
+      ]
+    },
+    {
+      "id": "R4",
+      "severity": "SCOPE_WORDING",
+      "target": "handoff README shell/body stays rigid wording",
+      "finding": "Closed material tags are supported, but the inspected implementation does not make them a general rigid-shell geometry constraint. Per-joint overrides feed secondary chains and the amplitude profile; for current quadrupeds neck/limb materials are not independent secondary chains, and the amplitude logic only has special material scaling for plant/translucent arm cases. Group materials remain the body default.",
+      "requiredCorrection": "Say proposed shell/body material is plated; observed shell ownership and motion rigidity still require authoring and verification. Do not claim that neck/limb overrides alone establish anatomically correct primary motion or a rigid shell. Keep fit/native admission unmeasured.",
+      "evidence": [
+        "port/v2/apps/game/src/motion/body-card.ts:209",
+        "port/v2/apps/game/src/motion/body-card.ts:218",
+        "port/v2/apps/game/src/motion/body-card.ts:240",
+        "port/v2/apps/game/src/motion/amplitude-profile.ts:10",
+        "port/v2/apps/game/src/motion/templates.ts:71"
+      ]
+    }
+  ],
+  "concurrence": [
+    "Sloth source fur maps to closed furred; no generic xenarthran default.",
+    "Five visibly scuted shell sources can propose plated body category, subject to real partition and all other holds.",
+    "Softshell Turtle remains held; neither blanket freshwater plated nor whole-source slick is justified.",
+    "Existing record.materials.joints support rejects unknown resolved joints and unmapped surfaces. No new numerical material laws are required."
+  ],
+  "limits": [
+    "Static code inspection only; no compiler/test/native execution.",
+    "No authored turtle material partition or fit was produced.",
+    "No source painting, frozen supply file, product or shared runner was changed."
+  ]
+}
