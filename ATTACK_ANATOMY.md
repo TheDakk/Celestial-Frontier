@@ -1,5 +1,28 @@
 # Attack anatomy and physical motion
 
+Matches code as of October 2, 2026 (D31, Dakk): limbless and sessile families with no admitted
+melee verb — annelid, sessile-filter, gastropod and bivalve — fight with a CAST attack instead of
+throwing `no admitted <family> melee`. `motion/cast-attack.ts` owns the rows below; the battle
+plan switches such an attacker's delivery to `cast` whatever its theme (no melee clip is looked
+up, no lunge beyond the stage's existing caster approach), plays a small whole-body pulse and
+launches the theme effect from the declared emitter landmark, else the painted body centre, at
+the launch beat; the effect travels to the target's body. No melee row, weapon, outcome, reward
+or RNG changed; every other family's clips and plans are byte-identical. Evidence and negative
+controls: audits/CAST_ATTACK_D31_20261002/README.md.
+
+| Family | Cast (D31) | Effect launch | Pulse |
+| --- | --- | --- | --- |
+| Annelid | Body pulse cast | Painted body centre (no mouth landmark) | Whole chain gathers up (total chain turn ≈ 2× the gather angle), snaps out nearly flat, small root lift |
+| Sessile filter | Body pulse cast | Declared `aperture` (osculum), else body centre | Root and base fixed; body/crown lean away, then through rest toward the target |
+| Gastropod | Body pulse cast | Declared `mouth`, else body centre | Foot chain gathers up, head lifts; mouth opens on release; rigid shell still |
+| Bivalve | Body pulse cast | Declared `siphon` (optional), else body centre | Valves open on the gather and clap on the release; soft mantle/siphon/foot pulse |
+
+Pulse timing is the kit §5 cast row (rise 180, hold 120, release 90, settle 220) scaled by the
+mass class; amplitudes follow the body's kit §6 material (slick/warty: gather 12°, stretch,
+overshoot .15; translucent: two damped wobbles; plated/chitinous/crystalline: no stretch, dead
+stop). Directions come from the record's own landmarks, never from a species name. The
+families' other actions are unchanged. A record later admitting a melee verb keeps melee.
+
 Matches code as of September17,2026: observed brachyuran records declare `source-pincers`.
 One shared projection computes closure direction/amplitude from palm and opposing painted tips;
 unsupported/degenerate gapes refuse. Pinch anticipation opens, strike closes, recovery returns
@@ -50,6 +73,7 @@ Matches code as of October 2, 2026: 33 melee rows across 13 animal families; the
 | Cephalopod | Arm/feeding-tentacle lash, beak lunge | Striking chain or head/mantle; water only |
 | Membrane flyer | Flying bite, foot rake | Jaw or feet, supported by wing joints |
 | Primate | Arm strike, bite | Arm/hand chain or jaw |
+| Annelid, sessile filter, gastropod, bivalve | No melee clip; D31 cast (see the cast table above) | Cast, not a melee row |
 | Woody plant | No melee clip in current library | Explicit unsupported result |
 | Herbaceous plant | No melee clip in current library | Explicit unsupported result |
 

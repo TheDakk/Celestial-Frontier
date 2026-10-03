@@ -323,3 +323,17 @@ removes that regression. Full-size software review still records pre-existing li
 openings, bird ground flecks and primate hand penetration; static publication does
 not establish native performance or full visual admission. Evidence:
 `audits/C172_SHARED_HEAD_SPIKE_20261002`.
+
+### D31 limbless / sessile cast — matches code 2026-10-02
+
+Specialized families with no admitted melee (annelid, sessile-filter, gastropod, bivalve) use
+§4 `cast` as their attack (Dakk D31). `motion/cast-attack.ts` replaces only those families'
+`cast` key poses with a whole-body pulse on the §5 cast phases (rise 180, hold 120, release 90,
+settle 220, x mass class, 0.6x..2.0x) whose amplitudes follow §6 by body material (slick/warty
+squash .06 -> 12 degree gather, stretch .04 -> release; overshoot .15 on settle; translucent two
+damped wobbles; rigid materials stop dead with no stretch). The rig pose has no scale channel,
+so the squash is a gathered curl plus a root lift of half the stretch on mobile bodies; anchored
+bodies keep root and base fixed. The battle plan casts the theme effect from the declared
+emitter (`aperture`, `mouth`, `siphon`) or the painted body centre. All other families and
+actions are byte-identical (before/after fingerprint of 362 timeline/plan entries: only the
+seven D31 `cast` entries changed). Evidence: `audits/CAST_ATTACK_D31_20261002`.

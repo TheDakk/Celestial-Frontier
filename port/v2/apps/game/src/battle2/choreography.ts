@@ -6,6 +6,7 @@
  * No clock, no randomness: seeds only reach the idle period through the motion timing table. */
 import type { BodyCard } from '../motion/body-card.js';
 import { buildTimeline, EASE_FN, sampleTimeline, type MotionTimeline } from '../motion/timeline.js';
+import { castAttackOf, type CastAttackV1 } from '../motion/cast-attack.js';
 import { ACTION_PHASES, DAMAGE_NUMBER, FLASH, HITSTOP, SHAKE, SMEAR_FRAME_MS, TIMING_BAR, hitstopMs, scaleMs } from '../motion/timing.js';
 import { placeEffectSequence, type EffectSequenceAnchors, type NormalizedPoint, type SequencePlacement } from '../effects/anchors.js';
 import { buildEffectSchedule, sampleSchedule, type EffectDelivery, type EffectSample, type EffectSchedule } from '../effects/sequencer.js';
@@ -47,11 +48,11 @@ export interface TurnArena {
    * launches at this point (or, when null, at the legacy attacker point, labelled) and its impact lands on the TARGET'S BODY CENTRE (box centre
    * x from `centresX`, `bodies` centre y; without `bodies`, the legacy ground/stand point, labelled); travel runs between them; timing is
    * unchanged. Absent (a direct caller) → the legacy stand/ground placement, byte-identical to before. */
-  readonly effectLaunch?: Readonly<{ point: NormalizedPoint | null; reason: string }>;
+  readonly effectLaunch?: Readonly<{ point: NormalizedPoint | null; reason: string; /** D31 cast: what the stage read (absent = the contact joint) */ cast?: 'emitter' | 'body-centre' }>;
 }
 /** Where a plan's effect was anchored and why (only on plans built with `arena.effectLaunch`). */
 export interface EffectAnchoring {
-  readonly launch: 'contact-joint' | 'fallback'; readonly impact: 'target-body' | 'fallback';
+  readonly launch: 'contact-joint' | 'cast-emitter' | 'body-centre' | 'fallback'; readonly impact: 'target-body' | 'fallback';
   readonly launchPoint: NormalizedPoint; readonly impactPoint: NormalizedPoint; readonly reason: string;
 }
 /** An anatomy attack selected for the turn (E1 §1.2): its motion replaces the delivery clip and its contact instant is the
@@ -99,6 +100,8 @@ export interface TurnPlan {
   readonly attack: TurnAttack | null;
   /** Present only when the input carried a Guardian heavy strike (opt-in guardian choreography). */
   readonly guardianStrike?: GuardianStrikeV1;
+  /** D31: present only when the attacker is a limbless/sessile family that casts (its delivery is then 'cast' whatever the theme). */
+  readonly castAttack?: CastAttackV1;
 }
 export interface CombatantSample { readonly pose: RigPose; readonly displacementX: number; readonly facing: 1 | -1; readonly context: RigPoseContext; }
 export interface NumberSample { readonly text: string; readonly x: number; readonly y: number; readonly scale: number; readonly alpha: number; readonly visible: boolean; }
@@ -165,13 +168,15 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const hit = input.outcome === 'hit', targetFaints = hit && input.targetFaints === true;
   const seedA = (input.seed ^ A.seed) >>> 0, seedT = (input.seed ^ T.seed ^ 0x9e3779b9) >>> 0;
   const attack = input.attack && A.card ? input.attack : null;
+  // D31: a limbless/sessile attacker with no admitted melee casts — its theme effect leaves the body, no melee clip is looked up
+  const castAttack = attack ? null : castAttackOf(A.card), delivery: EffectDelivery = castAttack ? 'cast' : input.delivery;
   if (attack) {
     if (!(attack.contactMs > 0) || !Number.isFinite(attack.contactMs) || attack.contactMs > attack.timeline.durationMs) throw new TypeError('turn plan: attack contact must lie inside its timeline');
     if (attack.timeline.recipeHash !== A.card!.recipeHash) throw new TypeError('turn plan: attack timeline was built for another body');
     if (!attack.contactJoint || !(attack.contactJoint in A.card!.bounds.limitsDeg)) throw new TypeError(`turn plan: attack contact joint ${attack.contactJoint} is not on the attacker`);
   }
   const clips = {
-    attacker: { idle: makeClip(A, 'idle', seedA), approach: makeClip(A, 'approach', seedA), action: attack ? { source: 'timeline' as const, timeline: attack.timeline } : makeClip(A, input.delivery, seedA), after: makeClip(A, targetFaints ? 'victory' : 'idle', seedA) },
+    attacker: { idle: makeClip(A, 'idle', seedA), approach: makeClip(A, 'approach', seedA), action: attack ? { source: 'timeline' as const, timeline: attack.timeline } : makeClip(A, delivery, seedA), after: makeClip(A, targetFaints ? 'victory' : 'idle', seedA) },
     target: { idle: makeClip(T, 'idle', seedT), reaction: hit ? makeClip(T, targetFaints ? 'faint' : 'hit', seedT) : input.outcome === 'dodge' ? makeClip(T, 'dodge', seedT) : null },
   };
   const readyEnd = input.readyMs, commandEnd = readyEnd + input.commandMs;
@@ -198,7 +203,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const gs = input.guardianStrike ?? null;
   if (gs && (!(gs.hitstopMs > 0) || gs.hitstopMs > HITSTOP.capMs || !(gs.shakeMass > 0) || !Number.isFinite(gs.shakeMass))) throw new TypeError(`turn plan: a guardian strike's hitstop must lie in (0, ${HITSTOP.capMs}] ms and its shake mass be positive`);
   const stop = hit ? (gs ? gs.hitstopMs : hitstopMs(massA)) : 0;
-  let effect: TurnPlan['effect'] = null, impactLocal = attack ? attack.contactMs : impactOffset(input.delivery, massA);
+  let effect: TurnPlan['effect'] = null, impactLocal = attack ? attack.contactMs : impactOffset(delivery, massA);
   if (input.effect) {
     // legacy (no `effectLaunch`): the attacker's run-up point and the target's stand/body point, contact on `impactY` — exactly as before
     const legacyLaunch: NormalizedPoint = { x: standA.x + runUp, y: bodyPoint(A.side, standA).y }, legacyTarget = bodyPoint(T.side, standT), legacyImpact: NormalizedPoint = { x: legacyTarget.x, y: impactY };
@@ -212,15 +217,16 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
       launchPt = joint ?? legacyLaunch; impactPt = body ?? legacyImpact;
       const coincide = Math.hypot(impactPt.x - launchPt.x, impactPt.y - launchPt.y) < 1e-6;
       if (coincide) { launchPt = legacyLaunch; impactPt = legacyImpact; }
-      const why = coincide ? 'fallback: the contact joint and the target body coincide; legacy stand/ground points' : [joint ? `launch at the ${attack?.contactJoint ?? 'contact'} joint (${el.reason})` : `launch fallback: ${el.reason}; legacy attacker stand point`,
+      const castFrom = castAttack && joint ? (el.cast === 'emitter' && castAttack.emitter ? `the ${castAttack.emitter} joint` : 'the body centre') : null;
+      const why = coincide ? 'fallback: the contact joint and the target body coincide; legacy stand/ground points' : [joint ? (castFrom ? `cast launch at ${castFrom} (${el.reason}; ${castAttack!.reason})` : `launch at the ${attack?.contactJoint ?? 'contact'} joint (${el.reason})`) : `launch fallback: ${el.reason}; legacy attacker stand point`,
         body ? 'impact at the target body centre' : 'impact fallback: no target body box; legacy ground/stand point'].join(' · ');
-      anchoring = Object.freeze({ launch: joint && launchPt === joint ? 'contact-joint' as const : 'fallback' as const, impact: body && impactPt === body ? 'target-body' as const : 'fallback' as const, launchPoint: Object.freeze(launchPt), impactPoint: Object.freeze(impactPt), reason: why });
+      anchoring = Object.freeze({ launch: joint && launchPt === joint ? (castFrom ? (el.cast === 'emitter' && castAttack!.emitter ? 'cast-emitter' as const : 'body-centre' as const) : 'contact-joint' as const) : 'fallback' as const, impact: body && impactPt === body ? 'target-body' as const : 'fallback' as const, launchPoint: Object.freeze(launchPt), impactPoint: Object.freeze(impactPt), reason: why });
     }
     const raw = anchoring ? placeEffectSequence(input.effect, { attacker: launchPt, target: impactPt }, { groundLineY: impactPt.y })
       : placeEffectSequence(input.effect, { attacker: legacyLaunch, target: legacyTarget }, { groundLineY: impactY });
     // Melee themes hold the sweep across both stands (revealed by alpha in sampleTurn); cast themes slide origin→contact.
-    const placement: SequencePlacement = input.delivery === 'melee' ? { ...raw, travel: raw.travel.map((p) => ({ ...p, from: raw.launch.from, to: raw.launch.from })) } : raw;
-    const schedule = buildEffectSchedule(input.effect, { delivery: input.delivery, attackerMassClass: massA, ...(attack ? { impactAtMs: attack.contactMs } : {}) }, placement);
+    const placement: SequencePlacement = delivery === 'melee' ? { ...raw, travel: raw.travel.map((p) => ({ ...p, from: raw.launch.from, to: raw.launch.from })) } : raw;
+    const schedule = buildEffectSchedule(input.effect, { delivery, attackerMassClass: massA, ...(attack ? { impactAtMs: attack.contactMs } : {}) }, placement);
     if (Math.abs(schedule.impactAt - impactLocal) > 1e-6) throw new Error(`turn plan: effect impact ${schedule.impactAt} disagrees with motion strike ${impactLocal}`);
     impactLocal = schedule.impactAt; effect = { anchors: input.effect, schedule, placement, startMs: actionStart, ...(anchoring ? { anchoring } : {}) };
   }
@@ -242,8 +248,8 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   return Object.freeze({
     kind: 'turn-plan', seed: input.seed,
     attacker: { side: A.side, facing, mass: massA, label: A.label, rigged: A.card !== null }, target: { side: T.side, facing: facingOf(T.side), mass: massT, label: T.label, rigged: T.card !== null },
-    delivery: input.delivery, theme: input.theme, outcome: input.outcome, targetFaints, beats, phases: Object.freeze(phases), hitstopMs: stop, runUp, cadence, arena: input.arena, clips, effect,
-    number: { text, x: standT.x, y: numberY }, reducedMotion: input.reducedMotion === true, attack, ...(gs ? { guardianStrike: gs } : {}),
+    delivery, theme: input.theme, outcome: input.outcome, targetFaints, beats, phases: Object.freeze(phases), hitstopMs: stop, runUp, cadence, arena: input.arena, clips, effect,
+    number: { text, x: standT.x, y: numberY }, reducedMotion: input.reducedMotion === true, attack, ...(gs ? { guardianStrike: gs } : {}), ...(castAttack ? { castAttack } : {}),
   });
 }
 
