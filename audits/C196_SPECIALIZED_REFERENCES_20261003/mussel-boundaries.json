@@ -1,0 +1,576 @@
+{
+  "schema": "cf.c196-posed-source-boundary-diagnostic/v1",
+  "writer": {
+    "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/mussel-boundaries.mjs",
+    "sha256": "3bb673bfa02fa949b57a9bd1b6a3a49f95eed83aa98573db3c87db8f1ed77e3f"
+  },
+  "coordinateSpace": "Posed 1254-square source-coordinate pixels; not measured native screen distances.",
+  "scope": "Distances between adjacent positive-alpha source-pixel centres across ownership boundaries, interpolated through actual published triangles at cast50. These are diagnostic coverage findings, not a universal seam gate or a ban on intentional valve opening.",
+  "rows": [
+    {
+      "variant": "original",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01",
+      "inputs": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/record.json",
+          "sha256": "68e6564e1ac55326b6b1bcbf453f766ff6317ee85a9add880ea884be524ac383"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/binding.json",
+          "sha256": "b8a92feee25fded051fdedadbe3a4ddd1fd5c1b9a1b2eed67040496d44c89eb9"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/atlas/c192-mussel-external-junction.png",
+          "sha256": "849b41c254e6e25a846748b5348bf4322207ad95552c7c91e7e77b5658895d1c"
+        }
+      ],
+      "boundaries": [
+        {
+          "parts": "hinge / valvenear",
+          "sourceAdjacentPixelPairs": 132,
+          "medianPx": 0.9757113002988791,
+          "p95Px": 1.0254456685963222,
+          "max": {
+            "source": [
+              [
+                428,
+                352
+              ],
+              [
+                428,
+                353
+              ]
+            ],
+            "posed": [
+              [
+                428.5508952453732,
+                351.89064208567146
+              ],
+              [
+                428.5267022117972,
+                352.9288941934705
+              ]
+            ],
+            "distancePx": 1.0385339388882275
+          }
+        },
+        {
+          "parts": "hinge / valvefar",
+          "sourceAdjacentPixelPairs": 240,
+          "medianPx": 1.0095360948216665,
+          "p95Px": 1.0681153269304056,
+          "max": {
+            "source": [
+              [
+                431,
+                354
+              ],
+              [
+                432,
+                354
+              ]
+            ],
+            "posed": [
+              [
+                431.59111451357603,
+                353.79868978410957
+              ],
+              [
+                432.6930966451764,
+                353.6530524328351
+              ]
+            ],
+            "distancePx": 1.1115641485999603
+          }
+        },
+        {
+          "parts": "hinge / mantle",
+          "sourceAdjacentPixelPairs": 46,
+          "medianPx": 1.0324842450838174,
+          "p95Px": 1.0324902894254266,
+          "max": {
+            "source": [
+              [
+                427,
+                352
+              ],
+              [
+                427,
+                353
+              ]
+            ],
+            "posed": [
+              [
+                427.52622853964573,
+                351.9306040853262
+              ],
+              [
+                427.5052706524729,
+                352.96534739434713
+              ]
+            ],
+            "distancePx": 1.034955529768487
+          }
+        },
+        {
+          "parts": "foot / valvenear",
+          "sourceAdjacentPixelPairs": 186,
+          "medianPx": 81.82699027872025,
+          "p95Px": 91.35279461821216,
+          "max": {
+            "source": [
+              [
+                624,
+                769
+              ],
+              [
+                624,
+                770
+              ]
+            ],
+            "posed": [
+              [
+                578.7609202176333,
+                792.0912349641324
+              ],
+              [
+                667.9441387653351,
+                767.0483095943928
+              ]
+            ],
+            "distancePx": 92.63257840307313
+          }
+        },
+        {
+          "parts": "mantle / siphon",
+          "sourceAdjacentPixelPairs": 334,
+          "medianPx": 1.016920741374453,
+          "p95Px": 1.0873095939130464,
+          "max": {
+            "source": [
+              [
+                874,
+                728
+              ],
+              [
+                875,
+                728
+              ]
+            ],
+            "posed": [
+              [
+                902.0312890470028,
+                696.0348232269287
+              ],
+              [
+                903.1104461610319,
+                695.8879311561585
+              ]
+            ],
+            "distancePx": 1.089108514894034
+          }
+        },
+        {
+          "parts": "siphon / valvefar",
+          "sourceAdjacentPixelPairs": 119,
+          "medianPx": 19.73463773602984,
+          "p95Px": 21.96904853981858,
+          "max": {
+            "source": [
+              [
+                922,
+                656
+              ],
+              [
+                922,
+                657
+              ]
+            ],
+            "posed": [
+              [
+                952.9029968261718,
+                600.1098813682794
+              ],
+              [
+                943.6413951158523,
+                620.3515161752701
+              ]
+            ],
+            "distancePx": 22.259852782535834
+          }
+        },
+        {
+          "parts": "siphon / valvenear",
+          "sourceAdjacentPixelPairs": 24,
+          "medianPx": 119.84157129390839,
+          "p95Px": 121.2229381349983,
+          "max": {
+            "source": [
+              [
+                931,
+                737
+              ],
+              [
+                931,
+                738
+              ]
+            ],
+            "posed": [
+              [
+                962.563691586256,
+                696.8587701201438
+              ],
+              [
+                887.3220853328704,
+                792.0449346542358
+              ]
+            ],
+            "distancePx": 121.33303437358165
+          }
+        },
+        {
+          "parts": "mantle / valvenear",
+          "sourceAdjacentPixelPairs": 992,
+          "medianPx": 57.266642872873426,
+          "p95Px": 113.76354131880281,
+          "max": {
+            "source": [
+              [
+                905,
+                764
+              ],
+              [
+                905,
+                765
+              ]
+            ],
+            "posed": [
+              [
+                937.1607942938804,
+                728.2762267827987
+              ],
+              [
+                858.7446737587452,
+                816.3004707276821
+              ]
+            ],
+            "distancePx": 117.8870454369316
+          }
+        },
+        {
+          "parts": "mantle / valvefar",
+          "sourceAdjacentPixelPairs": 803,
+          "medianPx": 16.65443054422518,
+          "p95Px": 24.52183710384864,
+          "max": {
+            "source": [
+              [
+                861,
+                606
+              ],
+              [
+                861,
+                607
+              ]
+            ],
+            "posed": [
+              [
+                887.1948622047902,
+                556.4814548894763
+              ],
+              [
+                876.9140340864658,
+                578.9317627474666
+              ]
+            ],
+            "distancePx": 24.692341924513126
+          }
+        },
+        {
+          "parts": "valvefar / valvenear",
+          "sourceAdjacentPixelPairs": 27,
+          "medianPx": 139.49589299443085,
+          "p95Px": 140.99955857468188,
+          "max": {
+            "source": [
+              [
+                935,
+                748
+              ],
+              [
+                936,
+                748
+              ]
+            ],
+            "posed": [
+              [
+                890.2987708300353,
+                802.3957629352809
+              ],
+              [
+                976.0615829229356,
+                690.241376903057
+              ]
+            ],
+            "distancePx": 141.1873444907412
+          }
+        }
+      ]
+    },
+    {
+      "variant": "D28",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit",
+      "inputs": [
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/record.json",
+          "sha256": "68e6564e1ac55326b6b1bcbf453f766ff6317ee85a9add880ea884be524ac383"
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/binding.json",
+          "sha256": "b1247aa12e24dba98f15bcb5904e937c1ecec77a578f98ee0bc553a853c9d394"
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/atlas/c196-mussel-islands.png",
+          "sha256": "6841699c7d9831505ef38826cbda09a2eb1920a60d7c1fa3f6e73fd99434da5f"
+        }
+      ],
+      "boundaries": [
+        {
+          "parts": "hinge / valvefar",
+          "sourceAdjacentPixelPairs": 250,
+          "medianPx": 1.0048185185668244,
+          "p95Px": 1.020926883154734,
+          "max": {
+            "source": [
+              [
+                443,
+                359
+              ],
+              [
+                444,
+                359
+              ]
+            ],
+            "posed": [
+              [
+                445.32975940704347,
+                355.4040822833776
+              ],
+              [
+                446.3566848094762,
+                355.2889592814446
+              ]
+            ],
+            "distancePx": 1.0333581604340238
+          }
+        },
+        {
+          "parts": "hinge / valvenear",
+          "sourceAdjacentPixelPairs": 100,
+          "medianPx": 0.980227847343821,
+          "p95Px": 1.0104837589150761,
+          "max": {
+            "source": [
+              [
+                389,
+                336
+              ],
+              [
+                389,
+                337
+              ]
+            ],
+            "posed": [
+              [
+                389.081898021698,
+                336.6600024998188
+              ],
+              [
+                389.033568406105,
+                337.6739546209574
+              ]
+            ],
+            "distancePx": 1.0151032734184133
+          }
+        },
+        {
+          "parts": "hinge / mantle",
+          "sourceAdjacentPixelPairs": 57,
+          "medianPx": 1.0003718139599644,
+          "p95Px": 1.0506111177572293,
+          "max": {
+            "source": [
+              [
+                393,
+                338
+              ],
+              [
+                394,
+                338
+              ]
+            ],
+            "posed": [
+              [
+                393.12841583602136,
+                338.6181819364429
+              ],
+              [
+                394.1892617583275,
+                338.574399523437
+              ]
+            ],
+            "distancePx": 1.0617490148628357
+          }
+        },
+        {
+          "parts": "foot / valvenear",
+          "sourceAdjacentPixelPairs": 186,
+          "medianPx": 81.82699027872025,
+          "p95Px": 91.35279461821216,
+          "max": {
+            "source": [
+              [
+                624,
+                769
+              ],
+              [
+                624,
+                770
+              ]
+            ],
+            "posed": [
+              [
+                578.7609202176333,
+                792.0912349641324
+              ],
+              [
+                667.9441387653351,
+                767.0483095943928
+              ]
+            ],
+            "distancePx": 92.63257840307313
+          }
+        },
+        {
+          "parts": "mantle / siphon",
+          "sourceAdjacentPixelPairs": 334,
+          "medianPx": 1.016920741374453,
+          "p95Px": 1.0873095939130464,
+          "max": {
+            "source": [
+              [
+                874,
+                728
+              ],
+              [
+                875,
+                728
+              ]
+            ],
+            "posed": [
+              [
+                902.0312890470028,
+                696.0348232269287
+              ],
+              [
+                903.1104461610319,
+                695.8879311561585
+              ]
+            ],
+            "distancePx": 1.089108514894034
+          }
+        },
+        {
+          "parts": "siphon / valvefar",
+          "sourceAdjacentPixelPairs": 135,
+          "medianPx": 19.54883828306467,
+          "p95Px": 21.914187338062977,
+          "max": {
+            "source": [
+              [
+                922,
+                656
+              ],
+              [
+                922,
+                657
+              ]
+            ],
+            "posed": [
+              [
+                952.9029968261718,
+                600.1098813682794
+              ],
+              [
+                943.6413951158523,
+                620.3515161752701
+              ]
+            ],
+            "distancePx": 22.259852782535834
+          }
+        },
+        {
+          "parts": "mantle / valvenear",
+          "sourceAdjacentPixelPairs": 980,
+          "medianPx": 57.919610195102905,
+          "p95Px": 113.8634055819195,
+          "max": {
+            "source": [
+              [
+                905,
+                764
+              ],
+              [
+                905,
+                765
+              ]
+            ],
+            "posed": [
+              [
+                937.1607942938804,
+                728.2762267827987
+              ],
+              [
+                858.7446839511395,
+                816.3004778623581
+              ]
+            ],
+            "distancePx": 117.88704398449482
+          }
+        },
+        {
+          "parts": "mantle / valvefar",
+          "sourceAdjacentPixelPairs": 804,
+          "medianPx": 16.65443054422518,
+          "p95Px": 24.52183710384864,
+          "max": {
+            "source": [
+              [
+                861,
+                606
+              ],
+              [
+                861,
+                607
+              ]
+            ],
+            "posed": [
+              [
+                887.1948622047902,
+                556.4814548894763
+              ],
+              [
+                876.9140340864658,
+                578.9317627474666
+              ]
+            ],
+            "distancePx": 24.692341924513126
+          }
+        }
+      ]
+    }
+  ],
+  "sourceUnchanged": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

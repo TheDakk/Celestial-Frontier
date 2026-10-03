@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "African Wild Dog",
+  "masterSha256": "35fa47ca0ca969e1b446b54493747fe7364ea34142dd021f6b6073217eac0d8e",
+  "required": [
+    "irregular patchwork blotches of black, tan and white"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "irregular patchwork blotches of black, tan and white",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: four distinct paw ends and long leg shafts, two very large rounded ears, irregular black/tan/white coat patches and full continuous white-tipped tail. Near/far upper forelegs and rear roots partly overlap naturally; the large ear proportions merit biological review. No apparent fifth leg, but exact ownership and native motion are unmeasured."
+    }
+  ]
+}

@@ -1,0 +1,653 @@
+{
+  "schema": "cf.c192-landmark-alpha-diagnostic/v1",
+  "id": "03-shrimp-dorsal",
+  "masterSha256": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a",
+  "authoringSha256": "4e0c97932da1b6e2f6a90d92e655fee58715b0436833f6374708ff84a9b9e7c8",
+  "rows": [
+    {
+      "joint": "leg0FarRoot",
+      "declared": [
+        648,
+        574
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            646,
+            576
+          ],
+          "distance": 2.8284271247461903
+        },
+        {
+          "point": [
+            645,
+            574
+          ],
+          "distance": 3
+        },
+        {
+          "point": [
+            648,
+            577
+          ],
+          "distance": 3
+        },
+        {
+          "point": [
+            645,
+            573
+          ],
+          "distance": 3.1622776601683795
+        },
+        {
+          "point": [
+            645,
+            575
+          ],
+          "distance": 3.1622776601683795
+        },
+        {
+          "point": [
+            647,
+            577
+          ],
+          "distance": 3.1622776601683795
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg0FarFoot",
+      "declared": [
+        733,
+        485
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            741,
+            491
+          ],
+          "distance": 10
+        },
+        {
+          "point": [
+            742,
+            492
+          ],
+          "distance": 11.40175425099138
+        },
+        {
+          "point": [
+            742,
+            493
+          ],
+          "distance": 12.041594578792296
+        },
+        {
+          "point": [
+            743,
+            494
+          ],
+          "distance": 13.453624047073712
+        },
+        {
+          "point": [
+            743,
+            495
+          ],
+          "distance": 14.142135623730951
+        },
+        {
+          "point": [
+            744,
+            495
+          ],
+          "distance": 14.866068747318504
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg1FarRoot",
+      "declared": [
+        625,
+        576
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            625,
+            579
+          ],
+          "distance": 3
+        },
+        {
+          "point": [
+            624,
+            579
+          ],
+          "distance": 3.1622776601683795
+        },
+        {
+          "point": [
+            626,
+            579
+          ],
+          "distance": 3.1622776601683795
+        },
+        {
+          "point": [
+            627,
+            579
+          ],
+          "distance": 3.6055512754639896
+        },
+        {
+          "point": [
+            625,
+            580
+          ],
+          "distance": 4
+        },
+        {
+          "point": [
+            624,
+            580
+          ],
+          "distance": 4.123105625617661
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg1FarFoot",
+      "declared": [
+        662,
+        440
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            669,
+            447
+          ],
+          "distance": 9.899494936611665
+        },
+        {
+          "point": [
+            671,
+            450
+          ],
+          "distance": 13.453624047073712
+        },
+        {
+          "point": [
+            672,
+            452
+          ],
+          "distance": 15.620499351813312
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg2FarFoot",
+      "declared": [
+        579,
+        425
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            586,
+            429
+          ],
+          "distance": 8.06225774829855
+        },
+        {
+          "point": [
+            587,
+            430
+          ],
+          "distance": 9.433981132056603
+        },
+        {
+          "point": [
+            591,
+            434
+          ],
+          "distance": 15
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg3FarFoot",
+      "declared": [
+        500,
+        434
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            508,
+            432
+          ],
+          "distance": 8.246211251235321
+        },
+        {
+          "point": [
+            509,
+            432
+          ],
+          "distance": 9.219544457292889
+        },
+        {
+          "point": [
+            512,
+            433
+          ],
+          "distance": 12.041594578792294
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg4FarFoot",
+      "declared": [
+        411,
+        460
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            418,
+            458
+          ],
+          "distance": 7.280109889280519
+        },
+        {
+          "point": [
+            419,
+            458
+          ],
+          "distance": 8.246211251235321
+        },
+        {
+          "point": [
+            420,
+            458
+          ],
+          "distance": 9.219544457292889
+        },
+        {
+          "point": [
+            421,
+            458
+          ],
+          "distance": 10.19803902718557
+        },
+        {
+          "point": [
+            422,
+            458
+          ],
+          "distance": 11.180339887498947
+        },
+        {
+          "point": [
+            423,
+            458
+          ],
+          "distance": 12.165525060596437
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg0NearFoot",
+      "declared": [
+        732,
+        786
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            739,
+            781
+          ],
+          "distance": 8.602325267042627
+        },
+        {
+          "point": [
+            740,
+            780
+          ],
+          "distance": 10
+        },
+        {
+          "point": [
+            741,
+            778
+          ],
+          "distance": 12.041594578792296
+        },
+        {
+          "point": [
+            741,
+            777
+          ],
+          "distance": 12.727922061357857
+        },
+        {
+          "point": [
+            742,
+            777
+          ],
+          "distance": 13.453624047073712
+        },
+        {
+          "point": [
+            742,
+            776
+          ],
+          "distance": 14.142135623730951
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg1NearRoot",
+      "declared": [
+        625,
+        691
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            626,
+            688
+          ],
+          "distance": 3.1622776601683795
+        },
+        {
+          "point": [
+            627,
+            688
+          ],
+          "distance": 3.6055512754639896
+        },
+        {
+          "point": [
+            625,
+            687
+          ],
+          "distance": 4
+        },
+        {
+          "point": [
+            624,
+            687
+          ],
+          "distance": 4.123105625617661
+        },
+        {
+          "point": [
+            626,
+            687
+          ],
+          "distance": 4.123105625617661
+        },
+        {
+          "point": [
+            628,
+            688
+          ],
+          "distance": 4.242640687119286
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg1NearFoot",
+      "declared": [
+        660,
+        822
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            667,
+            815
+          ],
+          "distance": 9.899494936611665
+        },
+        {
+          "point": [
+            668,
+            814
+          ],
+          "distance": 11.313708498984761
+        },
+        {
+          "point": [
+            669,
+            812
+          ],
+          "distance": 13.453624047073712
+        },
+        {
+          "point": [
+            670,
+            811
+          ],
+          "distance": 14.866068747318504
+        },
+        {
+          "point": [
+            671,
+            810
+          ],
+          "distance": 16.278820596099706
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg2NearFoot",
+      "declared": [
+        579,
+        844
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            591,
+            837
+          ],
+          "distance": 13.892443989449806
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg3NearFoot",
+      "declared": [
+        505,
+        833
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            511,
+            832
+          ],
+          "distance": 6.0827625302982185
+        },
+        {
+          "point": [
+            517,
+            830
+          ],
+          "distance": 12.36931687685298
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg4NearFoot",
+      "declared": [
+        420,
+        805
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            430,
+            806
+          ],
+          "distance": 10.04987562112089
+        },
+        {
+          "point": [
+            431,
+            806
+          ],
+          "distance": 11.045361017187261
+        },
+        {
+          "point": [
+            432,
+            806
+          ],
+          "distance": 12.041594578792294
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "antennaFarBase",
+      "declared": [
+        809,
+        586
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            809,
+            585
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            808,
+            585
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            810,
+            585
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            809,
+            584
+          ],
+          "distance": 2
+        },
+        {
+          "point": [
+            808,
+            584
+          ],
+          "distance": 2.23606797749979
+        },
+        {
+          "point": [
+            810,
+            584
+          ],
+          "distance": 2.23606797749979
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "antennaFarTip",
+      "declared": [
+        1093,
+        453
+      ],
+      "nearestPaint": [],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "antennaNearBase",
+      "declared": [
+        809,
+        682
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            808,
+            682
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            809,
+            683
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            808,
+            683
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            810,
+            683
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            807,
+            682
+          ],
+          "distance": 2
+        },
+        {
+          "point": [
+            809,
+            684
+          ],
+          "distance": 2
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "antennaNearTip",
+      "declared": [
+        1078,
+        864
+      ],
+      "nearestPaint": [],
+      "automaticCorrectionApplied": false
+    }
+  ],
+  "sourcePixelsChanged": 0
+}

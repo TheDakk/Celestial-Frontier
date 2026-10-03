@@ -1,0 +1,5 @@
+{
+  "scope": "Offline review counter; not I5 or native epoch",
+  "failure": "Retained fingerprint files each contain361keys, not the362 stated in Claude README; exact seven intended cast keys differ, no missing/added keys",
+  "action": "Preserve first script; additive v2 checks exact inventory equality and seven named changed rows"
+}

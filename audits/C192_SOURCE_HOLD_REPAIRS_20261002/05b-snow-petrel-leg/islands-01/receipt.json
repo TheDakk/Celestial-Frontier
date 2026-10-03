@@ -1,0 +1,181 @@
+{
+  "schema": "cf.c192-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05b-snow-petrel-leg/fit01",
+  "sourceConservationSha256": "28df9e9fad48dbeea51ab7bb3c8952ec19cfd78709871620b1cb44b4a7012db5",
+  "sourceMasterSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+  "sourceBindingSha256": "6b445d7059a7efb02c7d8e89c2e38717709a23949e9c639ac0583ffc4b916c10",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 4354,
+  "remainderPixels": 19861,
+  "islands": [
+    {
+      "pixels": 206,
+      "to": "far-wing-root",
+      "border": {
+        "9": 11,
+        "10": 10,
+        "11": 31
+      }
+    },
+    {
+      "pixels": 12,
+      "to": "neck-upper",
+      "border": {
+        "8": 5,
+        "9": 6
+      }
+    },
+    {
+      "pixels": 3023,
+      "to": "far-wing-root",
+      "border": {
+        "10": 77,
+        "11": 152,
+        "12": 16,
+        "13": 115,
+        "14": 42
+      }
+    },
+    {
+      "pixels": 101,
+      "to": "tail",
+      "border": {
+        "14": 34,
+        "15": 41
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-flight",
+      "border": {
+        "14": 2,
+        "15": 2
+      }
+    },
+    {
+      "pixels": 39,
+      "to": "tail",
+      "border": {
+        "15": 8
+      }
+    },
+    {
+      "pixels": 893,
+      "to": "tail",
+      "border": {
+        "15": 80
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "far-thigh",
+      "border": {
+        "6": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-shin",
+      "border": {
+        "4": 2
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "far-shin",
+      "border": {
+        "2": 5,
+        "4": 9
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "near-shin",
+      "border": {
+        "1": 3,
+        "3": 10
+      }
+    },
+    {
+      "pixels": 33,
+      "to": "far-foot",
+      "border": {
+        "2": 6
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "near-shin",
+      "border": {
+        "3": 4
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "near-foot",
+      "border": {
+        "1": 10
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-05b-snow-petrel-leg",
+    "parts": 17,
+    "atlasSize": {
+      "width": 997,
+      "height": 485
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 24,
+        "distancePx": 4.472135954999582,
+        "supports": [
+          44,
+          45
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 24,
+        "distancePx": 4.60977222864653,
+        "supports": [
+          4
+        ]
+      }
+    ],
+    "sourceBindingHash": "70665de1e6eda249e751eeae60c5612a12f4ced5fdba7cdf33558b71f3c1ebef",
+    "sourceVertices": 832,
+    "vertices": 1007,
+    "sharedSupports": 231,
+    "pins": 382,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

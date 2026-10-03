@@ -1,0 +1,28 @@
+{
+  "name": "Leech",
+  "masterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full1254 original: one continuous gently arched annulated olive-brown leech with longitudinal dark markings, larger posterior sucker at left and smaller anterior sucker at right, zero limbs. Both endpoint rims and their connections are visible. Suckers are relatively shallow radial discs rather than deep funnels, but posterior remains broadly flared; wet specular surface and curved lifted mid-body require author/reviewer assessment. No external vertebrate face or invented appendage; no contact, material, template or native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 202,
+      "y0": 454,
+      "x1": 1057,
+      "y1": 784
+    },
+    "margins": {
+      "left": 202,
+      "right": 196,
+      "top": 454,
+      "bottom": 469
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

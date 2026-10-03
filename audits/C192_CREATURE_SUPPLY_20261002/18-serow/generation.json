@@ -1,0 +1,14 @@
+{
+  "id": "18-serow",
+  "name": "Serow",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-69b84778-ed55-4f2c-a6ed-74f998b6ebe6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "91d5b1533a4d4de053f6f81730dcc4b41522382a6b16d780f66983427a87ecab",
+  "bytes": 1445658,
+  "promptSha256": "12600f84e03db366c3659ad86f51ef9b48548521481dea17817a9d583f8e0678",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

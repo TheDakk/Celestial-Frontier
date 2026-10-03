@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Badger",
+  "masterSha256": "a2b7a71905d5cc7f6dfd73ac4f285d466a44e3e47f4f030b46d48daea43b1a4a",
+  "required": [
+    "white stripe running back over the face"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white stripe running back over the face",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: four separately visible clawed feet, broad low body, coarse fur, clear pale central facial stripe bordered by dark patches and short attached tail. Near ear is visible and far ear only a small tip. Dense skirt still overlaps upper leg emergence. No apparent extra limb; fringe ownership, short-tail transfer and motion remain held pending scoring."
+    }
+  ]
+}

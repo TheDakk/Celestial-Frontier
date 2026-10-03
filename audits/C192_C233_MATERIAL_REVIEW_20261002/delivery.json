@@ -1,0 +1,20 @@
+{
+  "schema": "cf.audit-review-delivery/v1",
+  "status": "FROZEN_REVIEW",
+  "files": [
+    {
+      "path": "audits/C192_C233_MATERIAL_REVIEW_20261002/README.md",
+      "sha256": "760f898630a536327c1a961d62286fdd26a70e7973638b1794a2969117e2fa20",
+      "bytes": 2497
+    },
+    {
+      "path": "audits/C192_C233_MATERIAL_REVIEW_20261002/review.json",
+      "sha256": "02c1ce5e572c738b72f9b608c093ff373ccefb7145fb6e93e35ad7b837e81ffb",
+      "bytes": 12143
+    }
+  ],
+  "fileCount": 2,
+  "bytes": 14640,
+  "nativeRuns": 0,
+  "testsRun": 0
+}

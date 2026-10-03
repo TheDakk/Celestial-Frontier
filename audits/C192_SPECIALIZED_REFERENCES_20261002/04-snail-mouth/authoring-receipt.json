@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c192-manual-reference/v1",
+  "writer": "audits/C192_SPECIALIZED_REFERENCES_20261002/author-snail.mjs",
+  "writerSha256": "f5ec6b74bf9c3776962ff148663417ceab10af7dd29c131d0d21de809ca09d93",
+  "masterSha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+  "authoringSha256": "261c816490f69bded9af45dab7042091d0c615cacd91758d9a6ff6e0cfdae7e4",
+  "fullSizeInspected": true,
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "visibleMouthPx": [
+    913,
+    734
+  ],
+  "ocularTentacles": 2,
+  "shortSensoryTentacles": 2,
+  "limitations": [
+    "Independent source-coordinate Snail reference, a distinct canonical subject from the retained Banana Slug. No Slug landmarks or owners were transferred.",
+    "The targeted source successor has two upper ocular tentacles, two lower sensory tentacles and a separate small ventral oral opening at [913,734]. The lower tips remain plain painted sensory tips, not declared eyes.",
+    "The coarse gastropod template owns the two lower sensory tentacles with the head. It does not contain independent controls for them; all visible paint is retained.",
+    "The shell follows the existing rigid shell control. Four foot controls sample a continuous muscular foot, not four biological legs.",
+    "The edited eyes and mouth remain stylized and the shell has strong glossy highlights. Source visibility is not style or moving-paint acceptance.",
+    "No native run, reference-pool registration, family-wide admission or quality acceptance."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

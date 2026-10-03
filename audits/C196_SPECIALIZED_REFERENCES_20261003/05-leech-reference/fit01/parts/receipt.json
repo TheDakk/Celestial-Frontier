@@ -1,0 +1,176 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "d93dca979532c2bfb8a0bc87a04a01abd24adf2ee3d4cf8885dd4ff4f1df1ec9",
+  "declarationHash": "ad774591281b567f6b0666a70d6adc26a1895ce49d05718d16e6fedd2e35e0d8",
+  "paintedPixels": 120754,
+  "parts": [
+    {
+      "id": "segment0",
+      "joint": "segment0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 993,
+        "y": 684,
+        "width": 65,
+        "height": 68
+      },
+      "pixels": 2610
+    },
+    {
+      "id": "segment1",
+      "joint": "segment1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 916,
+        "y": 642,
+        "width": 97,
+        "height": 82
+      },
+      "pixels": 4958
+    },
+    {
+      "id": "segment2",
+      "joint": "segment2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 835,
+        "y": 609,
+        "width": 105,
+        "height": 107
+      },
+      "pixels": 6972
+    },
+    {
+      "id": "segment3",
+      "joint": "segment3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 754,
+        "y": 567,
+        "width": 121,
+        "height": 136
+      },
+      "pixels": 9029
+    },
+    {
+      "id": "segment4",
+      "joint": "segment4",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 682,
+        "y": 514,
+        "width": 132,
+        "height": 158
+      },
+      "pixels": 10842
+    },
+    {
+      "id": "segment5",
+      "joint": "segment5",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 623,
+        "y": 467,
+        "width": 121,
+        "height": 171
+      },
+      "pixels": 11910
+    },
+    {
+      "id": "segment6",
+      "joint": "segment6",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 257,
+        "y": 454,
+        "width": 400,
+        "height": 226
+      },
+      "pixels": 12688
+    },
+    {
+      "id": "segment7",
+      "joint": "segment7",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 458,
+        "y": 456,
+        "width": 120,
+        "height": 183
+      },
+      "pixels": 13483
+    },
+    {
+      "id": "segment8",
+      "joint": "segment8",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 375,
+        "y": 478,
+        "width": 145,
+        "height": 191
+      },
+      "pixels": 13588
+    },
+    {
+      "id": "segment9",
+      "joint": "segment9",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 309,
+        "y": 527,
+        "width": 155,
+        "height": 184
+      },
+      "pixels": 13147
+    },
+    {
+      "id": "segment10",
+      "joint": "segment10",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 257,
+        "y": 590,
+        "width": 153,
+        "height": 152
+      },
+      "pixels": 11475
+    },
+    {
+      "id": "segment11",
+      "joint": "segment11",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 202,
+        "y": 652,
+        "width": 121,
+        "height": 133
+      },
+      "pixels": 10052
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 2646,
+    "despilledPixels": 0,
+    "unresolvedEdgePixels": 0
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

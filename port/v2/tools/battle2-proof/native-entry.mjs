@@ -3,7 +3,8 @@ import {battleCaptureDuration} from './capture-timeline.mjs';
  * the accepted Earth-temperate plates: Codex's rigs through the parts-rig adapter (performance owner + contact
  * solver), anatomy attacks from `compileAnatomyAttack`, the Wild painted effect, the habitat-selected stands,
  * a scripted transcript, a manual clock. Films the full script (at least 10 s) and renders stills on demand. Diagnostic study, not visual
- * acceptance; every number it reports is read from the live stage. */
+ * acceptance; every number it reports is read from the live stage. D31 fallback labels identify the admitted body cast;
+ * explicit invalid weapon declarations still refuse. Only the Wild painted sequence is loaded by this diagnostic harness. */
 import { Application, Container, Graphics, Particle, ParticleContainer, Sprite, Text, Texture } from 'pixi.js';
 import { compileAnatomyAttack } from 'cf-proof/anatomy-attacks.ts';
 import { combatantScale, composeArena } from 'cf-proof/battle2/arena.ts';
@@ -21,6 +22,7 @@ import { PARTICLE_DISC_SIZE, particleDiscRgba } from 'cf-proof/effects/particle-
 import { createPixiEffectHost } from 'cf-proof/effects/pixi-adapter.ts';
 import { EffectThemeLibrary, isProceduralImage } from 'cf-proof/effects/theme-library.ts';
 import { compileBodyCard } from 'cf-proof/motion/body-card.ts';
+import { castAttackOf } from 'cf-proof/motion/cast-attack.ts';
 import { withPaintedContactSupports } from 'cf-proof/motion/painted-supports.ts';
 import { primeRecorder } from '../quadruped-proof/capture-contract.mjs';
 import { planGuardianProgramV1 } from 'cf-proof/battle2/guardian-choreo.ts';
@@ -81,7 +83,7 @@ try {
       emittersForTheme: (t) => themes.emittersFor(t, 'desktop'), tintForTheme: (t) => themes.tintFor(t) } });
   app.stage.addChild(stage.root);
   const attackLabels = { left: null, right: null }, mediums = { A: habitat.stands.left.medium, B: habitat.stands.right.medium };
-  const attackFor = (side, ordinal) => { const s = side === 'A' ? left : right, key = side === 'A' ? 'left' : 'right'; try { const r = compileAnatomyAttack(s.card, mediums[side], ordinal, undefined, script.weaponDeclarations?.[side]); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; } catch (e) { if(script.weaponDeclarations?.[side])throw e; attackLabels[key] ??= 'family delivery clip (' + (e?.message ?? e) + ')'; return null; } };
+  const attackFor = (side, ordinal) => { const s = side === 'A' ? left : right, key = side === 'A' ? 'left' : 'right'; try { const r = compileAnatomyAttack(s.card, mediums[side], ordinal, undefined, script.weaponDeclarations?.[side]); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; } catch (e) { if(script.weaponDeclarations?.[side])throw e; const cast = castAttackOf(s.card); attackLabels[key] ??= cast ? `cast body pulse (${cast.reason})` : 'family delivery clip (' + (e?.message ?? e) + ')'; return null; } };
   const ctx = { A: { side: 'A', name: left.name, mass: masses.left, card: left.card, theme: script.themes?.A ?? 'wild', seed: 1 }, B: { side: 'B', name: right.name, mass: masses.right, card: right.card, theme: script.themes?.B ?? 'stone', seed: 2 },
     arena: { groundLineY: layout.groundLineY, stands: stagedLayout.stands, halfWidths: stage.halfWidths() }, seed: recipe.seed, anchorsForTheme: (t) => themes.anchorsFor(t), readyMs: script.readyMs ?? 600, commandMs: script.commandMs ?? 300, attackFor };
   const ordinals = { A: 0, B: 0 }, skipped = [], turnRows = []; let turns = [];

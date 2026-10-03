@@ -1,0 +1,56 @@
+/** Independent replay of the one observed near-shin fringe correction. */
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
+import {intakeAuthoredPixels} from '../../port/v2/tools/creature-animation/authored-intake.mjs';
+import {authoredRegionOwners} from '../../port/v2/tools/creature-animation/authored-region-owners.mjs';
+const B='audits/C196_TURTLES_HOLDS_20261003',P=B+'/01c-tortoise-near-shin',OLD=B+'/01b-tortoise-far-shin';
+const read=p=>fs.readFileSync(p),J=p=>JSON.parse(read(p)),sha=b=>createHash('sha256').update(b).digest('hex');
+const require=createRequire(new URL('../../port/v2/package.json',import.meta.url)),{PNG}=require('pngjs');
+const before=J(OLD+'/authoring.json'),after=J(P+'/authoring.json'),correction=J(P+'/correction.json');
+assert.equal(sha(read(correction.priorAuthoring)),correction.priorAuthoringSha256);
+assert.deepEqual(before.landmarksPx,after.landmarksPx);
+assert.deepEqual(before.materials,after.materials);
+assert.deepEqual(after.parts.filter(p=>p.id!=='near-front-shin-fringe'),before.parts);
+assert.deepEqual(read(OLD+'/master.png'),read(P+'/master.png'));
+const source=PNG.sync.read(read(P+'/master.png')),key=intakeAuthoredPixels(new Uint8ClampedArray(source.data),source.width,source.height).rgba;
+const oldKey=PNG.sync.read(read(OLD+'/fit01/parts/keyed.png')).data,newKey=PNG.sync.read(read(P+'/fit01/parts/keyed.png')).data;
+assert.deepEqual(oldKey,newKey);assert.deepEqual(Buffer.from(key),newKey);
+const owners=authoredRegionOwners(after.parts,after.remainderPart),previous=authoredRegionOwners(before.parts,before.remainderPart);
+assert.deepEqual(owners.ownerParts,previous.ownerParts);
+const oldOwn=PNG.sync.read(read(OLD+'/fit01/parts/ownership.png')).data,own=PNG.sync.read(read(P+'/fit01/parts/ownership.png')).data;
+const inside=(x,y,p)=>{let c=false;for(let i=0,j=p.length-1;i<p.length;j=i++){const a=p[i],b=p[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])c=!c;}return c;};
+const color=n=>[(n+1)*83%200+35,(n+1)*137%200+35,(n+1)*47%200+35,255];
+const root=color(owners.ownerParts.findIndex(p=>p.joint==='root')),shin=color(owners.ownerParts.findIndex(p=>p.joint==='foreNearKnee'));
+let changed=0,box=[Infinity,Infinity,-Infinity,-Infinity];
+for(let y=0;y<source.height;y++)for(let x=0;x<source.width;x++){
+ const i=(y*source.width+x)*4;assert.equal(own[i+3],key[i+3]>0?255:0);
+ if(!key[i+3])continue;
+ let k=after.parts.findIndex(p=>inside((x+.5)/source.width,(y+.5)/source.height,p.polygonPx.map(([a,b])=>[a/source.width,b/source.height])));if(k<0)k=after.parts.findIndex(p=>p.id===after.remainderPart);
+ assert.deepEqual(Array.from(own.subarray(i,i+4)),color(owners.ownerIndex[k]));
+ if(own.subarray(i,i+4).equals(oldOwn.subarray(i,i+4)))continue;
+ assert.deepEqual(Array.from(oldOwn.subarray(i,i+4)),root,'prior non-root owner changed');
+ assert.deepEqual(Array.from(own.subarray(i,i+4)),shin,'unexpected new owner');changed++;
+ box=[Math.min(box[0],x),Math.min(box[1],y),Math.max(box[2],x),Math.max(box[3],y)];
+}
+assert.equal(changed,128);assert.deepEqual(box,[852,777,863,803]);
+const mutant=Buffer.from(newKey),painted=key.findIndex((x,i)=>i%4===3&&x>0)-3;mutant[painted]^=1;
+assert.throws(()=>assert.deepEqual(mutant,oldKey));
+assert.throws(()=>assert.deepEqual({...after.landmarksPx,foreNearAnkle:[0,0]},before.landmarksPx));
+assert.throws(()=>assert.deepEqual({...after.materials,surface:'scaled'},before.materials));
+assert.throws(()=>assert.deepEqual(shin,root));
+const original=J(B+'/01-tortoise/static-01.json'),prior=J(OLD+'/static-01.json'),current=J(P+'/static-01.json');
+assert.equal(original.status,'RED');assert.equal(original.rows.filter(r=>r.status==='RED').length,13);
+assert.equal(prior.status,'RED');assert.equal(prior.rows.filter(r=>r.status==='RED').length,1);
+assert.equal(prior.rows.find(r=>r.status==='RED').id,'melee:claw');
+assert.equal(current.status,'PASS_STATIC');assert.equal(current.rows.length,19);assert.equal(current.presentation.status,'PASS');
+const bundle=J(B+'/review-near-shin-bundle-receipt.json'),review=J(P+'/review-01/review.json');
+assert.equal(review.status,'PASS_OFFLINE');assert.equal(review.rows.length,26);
+const exact=review.rows.find(r=>r.action==='melee:claw'&&r.fraction===null);assert.equal(exact.ms,prior.rows.find(r=>r.id==='melee:claw').firstRefusal.ms);assert.equal(exact.status,'PASS');
+const inputs=[...current.inputs,...J(P+'/static-01.json.sources.json'),...bundle.inputs,bundle.bundle,...review.inputs];
+for(const e of inputs){const p=e.path.startsWith('~/')?process.env.HOME+e.path.slice(1):e.path;assert.equal(sha(read(p)),e.sha256,'bound source changed');}
+const files=[P+'/authoring.json',P+'/correction.json',P+'/static-01.json',P+'/fit01/record.json',P+'/fit01/binding.json',P+'/review-01/review.json',OLD+'/static-01.json',B+'/01-tortoise/static-01.json'];
+const receipt={schema:'cf.c196-near-shin-verification/v1',status:'PASS',changedSourceRgbaChannels:0,changedLandmarks:0,changedPriorNonRootOwners:0,rootToForeNearKneePixels:changed,sourcePixelBounds:box,materialAndSolverAndMotionChanges:0,oldNegativeStaticReportsPreserved:[{id:'01-tortoise',redActions:13},{id:'01b-tortoise-far-shin',redActions:1}],currentStatic:{actions:current.rows.length,successfulSamples:current.rows.reduce((n,r)=>n+r.samples,0),presentation:current.presentation},actualRig:{samples:review.rows.length,exactFormerClawRefusalMs:exact.ms,exactFormerClawRefusal:'PASS',partPositions:'byte-exact parity'},mutationsRejected:['source RGBA','landmark drift','material drift','unintended owner'],sourceClosureFiles:bundle.inputs.length,inputs:files.map(path=>({path,sha256:sha(read(path))})),native:false,qualityAccepted:false,limitsChanged:false};
+fs.writeFileSync(B+'/near-shin-verification.json',JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({status:receipt.status,changed,box,actualRigSamples:review.rows.length,exactClaw:exact.ms}));

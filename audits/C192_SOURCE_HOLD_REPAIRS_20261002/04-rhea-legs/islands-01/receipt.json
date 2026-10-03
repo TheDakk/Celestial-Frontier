@@ -1,0 +1,360 @@
+{
+  "schema": "cf.c192-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/fit01",
+  "sourceConservationSha256": "f240c086f24fe3159b4d0561b8910f0f052feb54e799b60c5109ce1901d82cca",
+  "sourceMasterSha256": "1e1a1a15c937a0646cba6ad93b89f62bddebdbc036f58840f428700add32a216",
+  "sourceBindingSha256": "275cc5752976f79207f4a1c96ce3e672e07cb883ebe7469e9c762982a2bf195f",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 8615,
+  "remainderPixels": 29475,
+  "islands": [
+    {
+      "pixels": 9,
+      "to": "head",
+      "border": {
+        "8": 14
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "head",
+      "border": {
+        "8": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "7": 1,
+        "8": 2
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "beak",
+      "border": {
+        "7": 4
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "head",
+      "border": {
+        "7": 2,
+        "8": 3
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "far-wing-root",
+      "border": {
+        "11": 5
+      }
+    },
+    {
+      "pixels": 89,
+      "to": "neck-lower",
+      "border": {
+        "9": 14,
+        "10": 23
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-root",
+      "border": {
+        "11": 1
+      }
+    },
+    {
+      "pixels": 7829,
+      "to": "near-wing-flight",
+      "border": {
+        "14": 271
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "neck-lower",
+      "border": {
+        "10": 7,
+        "11": 4
+      }
+    },
+    {
+      "pixels": 273,
+      "to": "neck-lower",
+      "border": {
+        "10": 53,
+        "11": 34,
+        "13": 27
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "chest",
+      "border": {
+        "16": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "chest",
+      "border": {
+        "16": 1
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "tail",
+      "border": {
+        "15": 15
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "tail",
+      "border": {
+        "15": 12
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-thigh",
+      "border": {
+        "6": 3
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "far-shin",
+      "border": {
+        "4": 8,
+        "6": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-thigh",
+      "border": {
+        "5": 2
+      }
+    },
+    {
+      "pixels": 58,
+      "to": "near-shin",
+      "border": {
+        "3": 33,
+        "5": 6
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-shin",
+      "border": {
+        "3": 4
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-shin",
+      "border": {
+        "3": 4
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "near-shin",
+      "border": {
+        "3": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-shin",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-shin",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "near-shin",
+      "border": {
+        "3": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-shin",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-shin",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-shin",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "near-shin",
+      "border": {
+        "3": 5
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "near-shin",
+      "border": {
+        "3": 5
+      }
+    },
+    {
+      "pixels": 120,
+      "to": "near-shin",
+      "border": {
+        "1": 14,
+        "3": 49
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "near-foot",
+      "border": {
+        "1": 5
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "far-foot",
+      "border": {
+        "2": 4,
+        "4": 1
+      }
+    },
+    {
+      "pixels": 23,
+      "to": "far-foot",
+      "border": {
+        "2": 11,
+        "4": 3
+      }
+    },
+    {
+      "pixels": 19,
+      "to": "near-foot",
+      "border": {
+        "1": 17
+      }
+    },
+    {
+      "pixels": 55,
+      "to": "far-foot",
+      "border": {
+        "2": 23
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-foot",
+      "border": {
+        "2": 2
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "far-foot",
+      "border": {
+        "2": 23
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-foot",
+      "border": {
+        "2": 1
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-04-rhea-legs",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1186,
+      "height": 645
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 71,
+        "distancePx": 7.071067811865479,
+        "supports": [
+          45
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 54,
+        "distancePx": 2.828427124746172,
+        "supports": [
+          3
+        ]
+      }
+    ],
+    "sourceBindingHash": "7577b8de6f92a77b91b9cf06ff7a7957416810b1ddd196a277d70c3683f6114f",
+    "sourceVertices": 938,
+    "vertices": 1182,
+    "sharedSupports": 273,
+    "pins": 538,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 14,
+    "excludedOverlaps": 8,
+    "observedExcludedBoundaries": 8,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 8,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,14 @@
+{
+  "id": "24-leech",
+  "name": "Leech",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a8c3660e-54a9-4839-ac16-bd36e76e812c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+  "bytes": 1144949,
+  "promptSha256": "a489bd1dd7d33ab8028368133533f99c72e91795dd888113d83460fad5c07097",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Damselfly",
+  "masterSha256": "1e51ec300a93eee25a1cf007bec7bfd29595a8ecf725c292893d7aca754a88de",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Parent full-size original review: Slender blue/black abdomen and closed narrow veined wings. Five distal leg tips are clearly visible; sixth chain/root is not independently traceable. Four individual overlapping wings cannot be authoritatively partitioned from this view. Antenna-like strokes need species review. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 162,
+      "y0": 401,
+      "x1": 1076,
+      "y1": 833
+    },
+    "margins": {
+      "left": 162,
+      "right": 177,
+      "top": 401,
+      "bottom": 420
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

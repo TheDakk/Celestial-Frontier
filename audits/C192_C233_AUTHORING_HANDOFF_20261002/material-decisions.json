@@ -1,0 +1,127 @@
+{
+  "schema": "cf.c192-named-material-review/v1",
+  "status": "AUTHORING_HANDOFF",
+  "productChanged": false,
+  "runnerChanged": false,
+  "rows": [
+    {
+      "id": "06-sloth",
+      "name": "Sloth",
+      "profile": "xenarthran",
+      "sourceSurface": "fur",
+      "closedBodyMaterial": "furred",
+      "scope": "Proposed body material only; no geometry rigidity, contact, presence, fit or motion admission",
+      "exposedChainRequirement": null,
+      "sourceMaster": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/06-sloth/master.png",
+        "sha256": "60506dea26146c98ec3223eeba7b564006cf41b5e16da5f91c663576755b152b"
+      },
+      "status": "SURFACE_PROPOSAL_SOURCE_AUTHORING_PENDING",
+      "sourceIdentity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/06-sloth/subject-source.json",
+        "sha256": "22c67eefcf50329d6e3e9143a76a03f550cc3f7c4e5597e42a8ea04e489f5aee"
+      }
+    },
+    {
+      "id": "07-tortoise",
+      "name": "Tortoise",
+      "profile": "tortoise",
+      "sourceSurface": "plated",
+      "closedBodyMaterial": "plated",
+      "scope": "Proposed body material only; no geometry rigidity, contact, presence, fit or motion admission",
+      "exposedChainRequirement": "Author observed exposed neck, limb and tail joint overrides independently; base plated initializes all joints and does not prove shell geometry rigidity",
+      "sourceMaster": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/master.png",
+        "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+      },
+      "status": "HELD_PARTITION_PENDING",
+      "sourceIdentity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/subject-source.json",
+        "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+      }
+    },
+    {
+      "id": "08-box-turtle",
+      "name": "Box Turtle",
+      "profile": "tortoise",
+      "sourceSurface": "plated",
+      "closedBodyMaterial": "plated",
+      "scope": "Proposed body material only; no geometry rigidity, contact, presence, fit or motion admission",
+      "exposedChainRequirement": "Author observed exposed neck, limb and tail joint overrides independently; base plated initializes all joints and does not prove shell geometry rigidity",
+      "sourceMaster": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/master.png",
+        "sha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3"
+      },
+      "status": "HELD_PARTITION_PENDING",
+      "sourceIdentity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/subject-source.json",
+        "sha256": "10abc6bf68fe4e2e9a1f296f226a945b27d0e41472df30d96fb6e78efb8d5f6e"
+      }
+    },
+    {
+      "id": "09-pond-turtle",
+      "name": "Pond Turtle",
+      "profile": "freshwater-turtle",
+      "sourceSurface": "plated",
+      "closedBodyMaterial": "plated",
+      "scope": "Proposed body material only; no geometry rigidity, contact, presence, fit or motion admission",
+      "exposedChainRequirement": "Author observed exposed neck, limb and tail joint overrides independently; base plated initializes all joints and does not prove shell geometry rigidity",
+      "sourceMaster": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle/master.png",
+        "sha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984"
+      },
+      "status": "HELD_PARTITION_PENDING",
+      "sourceIdentity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle/subject-source.json",
+        "sha256": "87d4e6d6eb702355cd1a01d74734e06ab913a1d380050f16cdec4fb87c250bb8"
+      }
+    },
+    {
+      "id": "10-snapping-turtle",
+      "name": "Snapping Turtle",
+      "profile": "freshwater-turtle",
+      "sourceSurface": "plated",
+      "closedBodyMaterial": "plated",
+      "scope": "Proposed body material only; no geometry rigidity, contact, presence, fit or motion admission",
+      "exposedChainRequirement": "Author observed exposed neck, limb and tail joint overrides independently; base plated initializes all joints and does not prove shell geometry rigidity",
+      "sourceMaster": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/10-snapping-turtle/master.png",
+        "sha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff"
+      },
+      "status": "HELD_PARTITION_PENDING",
+      "sourceIdentity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/10-snapping-turtle/subject-source.json",
+        "sha256": "97524cd57b379e83072a96e37887ac871c7c4e34f699001fcbb6d73de8ab4818"
+      }
+    },
+    {
+      "id": "12-turtle",
+      "name": "Turtle",
+      "profile": "freshwater-turtle",
+      "sourceSurface": "plated",
+      "closedBodyMaterial": "plated",
+      "scope": "Proposed body material only; no geometry rigidity, contact, presence, fit or motion admission",
+      "exposedChainRequirement": "Author observed exposed neck, limb and tail joint overrides independently; base plated initializes all joints and does not prove shell geometry rigidity",
+      "sourceMaster": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/12-turtle/master.png",
+        "sha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150"
+      },
+      "status": "HELD_PARTITION_PENDING",
+      "sourceIdentity": {
+        "path": "audits/C186_CREATURE_SUPPLY_20261002/12-turtle/subject-source.json",
+        "sha256": "eb9766c2b58c9a42f4c995f5c4f3944b5ed81f5d270b4a31d09508354a5ce990"
+      }
+    }
+  ],
+  "held": [
+    {
+      "id": "11-softshell-turtle",
+      "reason": "Mixed rigid shell core and leathery cover require source partition; framing also held"
+    }
+  ],
+  "forbiddenDefaults": [
+    "xenarthran=fur",
+    "freshwater-turtle=plated"
+  ],
+  "nativeRuns": 0
+}

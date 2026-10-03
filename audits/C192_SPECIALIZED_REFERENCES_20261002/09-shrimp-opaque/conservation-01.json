@@ -1,0 +1,127 @@
+{
+  "schema": "cf.c173-reference-conservation/v1",
+  "masterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+  "authoringSha256": "0d3fd10a4da2c26f3061e5b97a236ac7026f828f42c5d870ba5d9dab569b4fac",
+  "recordRecipeHash": "922bfdd4a8c3af5ff90ed53aa3f25121967ce058afb205208b6151b0de10c32a",
+  "keyedRgbaSha256": "ea4e6af94667152ad00b59927c5a0f00985b73e0314f867309b320cab486b306",
+  "ownershipSha256": "f10a893d8b0a1d217bb1e04382fc5ce9ebe62b7cbebbb35abda43c8e4fbc10b0",
+  "sourcePixelChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "ownershipReplayMismatch": 0,
+  "controls": [
+    "independent ownership replay equals published raster",
+    "deterministic replay",
+    "unchanged established keyed RGBA",
+    "changed source channel rejected",
+    "paint deletion rejected",
+    "different anatomical owner rejected",
+    "D28 default 0.5 moves only the non-largest bordered component; original labels and largest component conserved; explicit stricter 0.05 caller still refuses"
+  ],
+  "islandCap": 0.5,
+  "islandOutcome": {
+    "status": "PASS",
+    "remainderPixels": 11672,
+    "movablePixels": 206,
+    "islands": [
+      {
+        "pixels": 1,
+        "to": 5,
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 105,
+        "to": 5,
+        "border": {
+          "5": 83
+        }
+      },
+      {
+        "pixels": 7,
+        "to": 3,
+        "border": {
+          "3": 1
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 1,
+        "border": {
+          "1": 1
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 5,
+        "border": {
+          "5": 4
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 5,
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 5,
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 19,
+        "to": 5,
+        "border": {
+          "5": 8,
+          "6": 7
+        }
+      },
+      {
+        "pixels": 15,
+        "to": 3,
+        "border": {
+          "3": 7,
+          "4": 7
+        }
+      },
+      {
+        "pixels": 19,
+        "to": 14,
+        "border": {
+          "13": 7,
+          "14": 9
+        }
+      },
+      {
+        "pixels": 20,
+        "to": 15,
+        "border": {
+          "15": 8,
+          "16": 8
+        }
+      },
+      {
+        "pixels": 8,
+        "to": 11,
+        "border": {
+          "11": 1
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 13,
+        "border": {
+          "13": 1
+        }
+      }
+    ]
+  },
+  "automaticIslandTransferApplied": false,
+  "qualityAccepted": false,
+  "nativeRun": false
+}

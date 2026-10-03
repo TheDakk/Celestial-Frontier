@@ -1,0 +1,28 @@
+{
+  "name": "Quoll",
+  "masterSha256": "2970f2f1c454541741c542a69441c3a6e03f118fb3d13bf9e668f4b939e37b1e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: brown dense coat with many discrete cream-white spots continuing onto a long bushy tail, pointed muzzle, pink nose and pale underside. Four distinct clawed distal feet/legs are visible with separated silhouettes and unequal projected support heights; far upper roots remain behind the body. Near ear full contour is exposed, while the far ear is a pointed wedge with hidden base; requested ear-root correction remains held. Tail is continuous to rump but broad/furry, requiring actual canonical proportion review. Fine muzzle whiskers and left tail fringe must remain in original-margin assessment. No missing far root or ear may be invented.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 117,
+      "y0": 440,
+      "x1": 1110,
+      "y1": 813
+    },
+    "margins": {
+      "left": 117,
+      "right": 143,
+      "top": 440,
+      "bottom": 440
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

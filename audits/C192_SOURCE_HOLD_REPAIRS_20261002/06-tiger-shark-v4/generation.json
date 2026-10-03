@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c192-source-edit/v1",
+  "generator": "builtin image_gen.imagegen",
+  "mode": "precise-object-edit",
+  "generatorPath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-a2725be4-08d1-484e-84f3-5ea551e96af3.png",
+  "source": "audits/C183_REMAINING_HOLDS_20261002/tiger-shark-v3/master.png",
+  "sourceSha256": "faccdfad0a5dce5e98105719b630bc0322e6749839cd8a2034a14e50e47c4065",
+  "outputSha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+  "promptSha256": "f35fed19b0694da3f803d63a47d2122053afdda1c6607cfbb5394fd05917708a",
+  "transparentBackground": false,
+  "qualityAccepted": false,
+  "oldMasksRebound": false,
+  "attempt": 1,
+  "exactSentPromptFile": "prompt.txt"
+}

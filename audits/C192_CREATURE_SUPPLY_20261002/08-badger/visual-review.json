@@ -1,0 +1,28 @@
+{
+  "name": "Badger",
+  "masterSha256": "a2b7a71905d5cc7f6dfd73ac4f285d466a44e3e47f4f030b46d48daea43b1a4a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separately visible clawed feet, broad low body, coarse fur, clear pale central facial stripe bordered by dark patches and short attached tail. Near ear is visible and far ear only a small tip. Dense skirt still overlaps upper leg emergence. No apparent extra limb; fringe ownership, short-tail transfer and motion remain held pending scoring.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 170,
+      "y0": 391,
+      "x1": 1109,
+      "y1": 863
+    },
+    "margins": {
+      "left": 170,
+      "right": 144,
+      "top": 391,
+      "bottom": 390
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

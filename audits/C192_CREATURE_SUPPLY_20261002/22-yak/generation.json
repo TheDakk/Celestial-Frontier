@@ -1,0 +1,14 @@
+{
+  "id": "22-yak",
+  "name": "Yak",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f987bc9a-50e1-44dd-919c-de0a2ef77cac.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "31368a7d864635fa150fcf17d3ac36d46aac7c83cc9921d2197d94440c266840",
+  "bytes": 1549848,
+  "promptSha256": "9cb862a9481792bd255a65f20b31957d07c6eb33191cdd92b839209af99cf146",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

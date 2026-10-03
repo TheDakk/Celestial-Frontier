@@ -1,0 +1,41 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+  "cutoutSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+  "parts": [
+    {
+      "id": "hinge",
+      "joint": "hinge",
+      "layer": "near"
+    },
+    {
+      "id": "foot",
+      "joint": "foot",
+      "layer": "near"
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near"
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "near"
+    },
+    {
+      "id": "valvefar",
+      "joint": "valveFar",
+      "layer": "near"
+    },
+    {
+      "id": "valvenear",
+      "joint": "valveNear",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "e6e9415b92302280a951d095dba5edeade2ffcbd6438f99f7789d0335ffc1757",
+  "keyedRgbaSha256": "b5bc92c0c81fc94aa64257f1aa1ff5e6a826051463f1fe57696c1b89bcd0efc0",
+  "declarationHash": "8167ade6e6f60db0cab48a598ac366392a17a75e807d8915eb3f6d01263f4c7a"
+}

@@ -1,0 +1,620 @@
+{
+  "scope": "Read-only predecessor bindings; all original source bytes remain unchanged. Original helpers retained; executed additive review/freeze wrappers have separate exact transform receipts.",
+  "sources": [
+    {
+      "name": "Prawn",
+      "correction": "Prior side-oblique sources hide thoracic roots. Paint directly DORSAL from above, longitudinal body axis horizontal and head right, two sides of thorax equally exposed, all five genuine walking-leg pairs separated from actual roots through distal tips. Retain real swimmerets, antennules, six abdominal sections and intact tail fan. Do not fabricate extra legs or suppress true anatomy; all antennae complete inside the generous margins.",
+      "predecessors": [
+        {
+          "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "03-prawn",
+          "master": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn/master.png",
+          "packet": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn",
+          "resolvedMaster": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn/master.png",
+          "masterSha256": "43b9e3595cd5a1f29477f22561c5c02a81c64944f52a1ba9506ed1107fc2f214",
+          "masterBytes": 1292804,
+          "pilotSha256": "0f54b5bc2e72b6d208203e1b2a040d76a06a0909ab593985615fdb919547387a"
+        },
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "23-prawn",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+          "masterSha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b",
+          "masterBytes": 1342040,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        }
+      ]
+    },
+    {
+      "name": "Shrimp",
+      "correction": "Prior reference source has ambiguous far thoracic chains. Paint directly DORSAL from above, body axis horizontal head right, with five real walking pairs visible on both sides from roots to tips, not a side view. Retain swimmerets, antennules, real rostrum, two eyes, six abdomen sections and tail fan; no lobster claws or invented anatomy. Keep every long antenna inside generous margins.",
+      "predecessors": [
+        {
+          "pilot": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json",
+          "id": "01-shrimp",
+          "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png",
+          "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp",
+          "resolvedMaster": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png",
+          "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+          "masterBytes": 1242234,
+          "pilotSha256": "536ffcb77bfcf41455cc0bd022dc3412f246f69c72083278ca7aeba6e650fd40"
+        }
+      ]
+    },
+    {
+      "name": "Snail",
+      "correction": "Old source mouth is obscured. Paint a real right-facing crawling snail with a small ordinary ventral oral slit visible underneath the front between the two real short sensory tentacles, distinct from both. Exactly two upper eye-bearing stalks and two lower sensory tentacles; no circular open cartoon mouth, third lower projection, lips or face. Keep coiled shell and complete natural broad foot.",
+      "predecessors": [
+        {
+          "pilot": "audits/C196_SIMPLE_ORIGINALS_20261002/pilot.json",
+          "id": "03-snail",
+          "master": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail/master.png",
+          "packet": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail",
+          "resolvedMaster": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail/master.png",
+          "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+          "masterBytes": 1393126,
+          "pilotSha256": "20a6003428382a9eec5cfcb60bb605898f1d689715facce1b4f46f36c4c81542"
+        }
+      ]
+    },
+    {
+      "name": "Impala",
+      "correction": "Prior source has no separately observable far-ear tip. Use a natural shallow head turn to expose both actual ears from attached base to tip; preserve the lyre-shaped ringed horns, rump stripes and four real legs. No enlarged invented ears or fifth limb.",
+      "predecessors": [
+        {
+          "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "01-impala",
+          "master": "audits/C186_CREATURE_SUPPLY_20261002/01-impala/master.png",
+          "packet": "audits/C186_CREATURE_SUPPLY_20261002/01-impala",
+          "resolvedMaster": "audits/C186_CREATURE_SUPPLY_20261002/01-impala/master.png",
+          "masterSha256": "c44ccc6e081abd0cc9cac9e9027ccde3b0a94f93c54086582797615c65033c51",
+          "masterBytes": 1305869,
+          "pilotSha256": "0f54b5bc2e72b6d208203e1b2a040d76a06a0909ab593985615fdb919547387a"
+        },
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "03-impala",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/03-impala",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+          "masterSha256": "f1d5c74e0ef6e7a6dd87402affc1a20913065e6e2a94938b864fac279a38d9ab",
+          "masterBytes": 1466341,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        },
+        {
+          "pilot": "audits/G2_C110_20260927/pilot.json",
+          "id": "04-impala",
+          "master": "audits/G2_C110_20260927/04-impala/master.png",
+          "packet": "audits/G2_C110_20260927/04-impala",
+          "resolvedMaster": "audits/G2_C110_20260927/04-impala/master.png",
+          "masterSha256": "20e117e8ad04cea37d45fa2c7ca88aef8bd985b054a7c934e6358a37da4761bb",
+          "masterBytes": 1178768,
+          "pilotSha256": "e40347e6940c2a9907efbb788f99a755a8a22cf2b3e971a7dbaf58ebe2998f38"
+        }
+      ]
+    },
+    {
+      "name": "Dog",
+      "correction": "Prior tightly curled plumed tail was classified as an unassigned top appendage. Retain the real high plumed tail with a visibly continuous open arch from rump to tip, not a closed loop over the back; natural quadruped stance, four complete separate leg silhouettes and two actual ears. This does not claim to repair a classifier.",
+      "predecessors": [
+        {
+          "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "13-dog",
+          "master": "audits/C186_CREATURE_SUPPLY_20261002/13-dog/master.png",
+          "packet": "audits/C186_CREATURE_SUPPLY_20261002/13-dog",
+          "resolvedMaster": "audits/C186_CREATURE_SUPPLY_20261002/13-dog/master.png",
+          "masterSha256": "f096d62b8bbbdba63270d18bf6f9b1e96ad16e8a8c4bda78776fbcf97fe98e38",
+          "masterBytes": 1299529,
+          "pilotSha256": "0f54b5bc2e72b6d208203e1b2a040d76a06a0909ab593985615fdb919547387a"
+        },
+        {
+          "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+          "id": "06-dog",
+          "master": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+          "packet": "audits/G2_REFERENCES_C62_20260927/06-dog-margin",
+          "resolvedMaster": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+          "masterSha256": "d7dd14c398a7e35a786fab91f7c593d8efdd7b0442f3198c26b4757f0addfa25",
+          "masterBytes": 778633,
+          "pilotSha256": "a9484b09817cfbb971e98b514350e4bb094e1c453fb53cbaf720b2845d675523"
+        },
+        {
+          "pilot": "audits/C132_REFERENCES_20261001/pilot.json",
+          "id": "03-dog",
+          "master": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+          "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02",
+          "resolvedMaster": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+          "masterSha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4",
+          "masterBytes": 1237655,
+          "pilotSha256": "869d3e84a5f0acfbf9d25eaeb78584a98ec7f0f597db2ca9080980a6d04b4b81"
+        }
+      ]
+    },
+    {
+      "name": "Wolverine",
+      "correction": "Prior bushy tail merged into body fringe and tail3 was refused. Show its actual short bushy tail attached at the rump and clearly separate from hind legs and flank, without lengthening it. Separate four real limbs and preserve the pale sweeping flank stripe, massive paws and shaggy coat.",
+      "predecessors": [
+        {
+          "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "18-wolverine",
+          "master": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine/master.png",
+          "packet": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine",
+          "resolvedMaster": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine/master.png",
+          "masterSha256": "2831ca7871fa31d13657372664f461f28f769735e08dabbf226c7e64a1b906aa",
+          "masterBytes": 1442596,
+          "pilotSha256": "0f54b5bc2e72b6d208203e1b2a040d76a06a0909ab593985615fdb919547387a"
+        },
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "06-wolverine",
+          "master": "audits/G2_C59_20260926/06-wolverine/master.png",
+          "packet": "audits/G2_C59_20260926/06-wolverine",
+          "resolvedMaster": "audits/G2_C59_20260926/06-wolverine/master.png",
+          "masterSha256": "0498e155c50e65b61174930019c0f8ec98b8ab5722b4267e875795dbe837510a",
+          "masterBytes": 1253920,
+          "pilotSha256": "953b4a06319c7d6b45ccc57537d7601ce9218c4ed6cd81e72c6db40f6fb3b5ba"
+        }
+      ]
+    },
+    {
+      "name": "Badger",
+      "correction": "Prior body/fringe authoring left unexplained paint. Show four genuine low legs and clawed feet separately from their natural body emergence, the genuine short tail distinct from rear feet, both visible small ears, and the facial stripe. Preserve coarse fur but avoid disconnected fur islands; do not stretch the animal.",
+      "predecessors": [
+        {
+          "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "19-badger",
+          "master": "audits/C186_CREATURE_SUPPLY_20261002/19-badger/master.png",
+          "packet": "audits/C186_CREATURE_SUPPLY_20261002/19-badger",
+          "resolvedMaster": "audits/C186_CREATURE_SUPPLY_20261002/19-badger/master.png",
+          "masterSha256": "9b16cceae9d904915a83fb538f7b0990559e54d6666e441be7ca141f8af93b68",
+          "masterBytes": 1415234,
+          "pilotSha256": "0f54b5bc2e72b6d208203e1b2a040d76a06a0909ab593985615fdb919547387a"
+        },
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "05-badger",
+          "master": "audits/G2_C59_20260926/05-badger/master.png",
+          "packet": "audits/G2_C59_20260926/05-badger",
+          "resolvedMaster": "audits/G2_C59_20260926/05-badger/master.png",
+          "masterSha256": "8a20aa882cbc0362d3b6ca44ca22377be63d2c477b865dd1c1310d5fe81a2453",
+          "masterBytes": 1206616,
+          "pilotSha256": "953b4a06319c7d6b45ccc57537d7601ce9218c4ed6cd81e72c6db40f6fb3b5ba"
+        },
+        {
+          "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+          "id": "09-badger",
+          "master": null,
+          "packet": "audits/G2_QUADRUPED_PILOT_20260926/09-badger",
+          "resolvedMaster": "audits/G2_QUADRUPED_PILOT_20260926/09-badger/master.png",
+          "masterSha256": "35c2bc9d8623bfc0335f60ce15cfeccf4d1f7acac275ded5875e6d6b31eb2210",
+          "masterBytes": 1140849,
+          "pilotSha256": "5f231ecd21e86260f3189869d466a5e42160f5ed434f40283e09d27fc227e768"
+        }
+      ]
+    },
+    {
+      "name": "Beaver",
+      "correction": "Prior paint was unexplained around body/feet. Show four real leg silhouettes and the full actual paddle tail joined at its true base, separated from hind feet; expose true small ears with a slight head turn. Preserve orange incisors, real webbed hind feet and natural bulky fur, no invented limb.",
+      "predecessors": [
+        {
+          "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "20-beaver",
+          "master": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver/master.png",
+          "packet": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver",
+          "resolvedMaster": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver/master.png",
+          "masterSha256": "545ac4d2f6e645e0ce3667714cfef3fa3937b0cb3054911327cbe44ab46515d1",
+          "masterBytes": 1433586,
+          "pilotSha256": "0f54b5bc2e72b6d208203e1b2a040d76a06a0909ab593985615fdb919547387a"
+        },
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "24-beaver",
+          "master": "audits/G2_C101_20260927/24-beaver/master.png",
+          "packet": "audits/G2_C101_20260927/24-beaver",
+          "resolvedMaster": "audits/G2_C101_20260927/24-beaver/master.png",
+          "masterSha256": "06fa7ee76984e64d4ee1bbb9c16572331844118baef553c9a548d378d551d14e",
+          "masterBytes": 1350961,
+          "pilotSha256": "f3ed5cba703c00f3e863ef2af2a7c124eb1cc3380d4771e002b74fdbfa104f86"
+        }
+      ]
+    },
+    {
+      "name": "Fishing Cat",
+      "correction": "Earlier authoring left unassigned limb paint. Preserve the stocky short-legged spotted Fishing Cat with real proportionately short tail; display all four actual limb paths from body emergence to separate paws and both rounded ears. No extra shaggy limb-shaped appendage.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "17-fishing-cat",
+          "master": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+          "packet": "audits/G2_C83_20260927/17-fishing-cat",
+          "resolvedMaster": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+          "masterSha256": "d33174c28f5d8d82cdd70a450e450cfddce5ae79a28cbaea8e8fb52041edd8d9",
+          "masterBytes": 1328945,
+          "pilotSha256": "aa1edaf1347933139b7bdcb24ca13347bc10cef8205160bf8356d21f44e2380a"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "17-fishing-cat",
+          "master": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+          "packet": "audits/G2_C83_20260927/17-fishing-cat",
+          "resolvedMaster": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+          "masterSha256": "d33174c28f5d8d82cdd70a450e450cfddce5ae79a28cbaea8e8fb52041edd8d9",
+          "masterBytes": 1328945,
+          "pilotSha256": "2c66a39691803d3862ff05a0172883f1447199479138644d6ec922b60d1f120d"
+        }
+      ]
+    },
+    {
+      "name": "African Wild Dog",
+      "correction": "Earlier source layout left an unassigned limb-down structure. Preserve its irregular painted coat and large round ears while exposing four real long leg chains, separate paw tips, and an actual continuous white-tipped tail. No invented fifth leg or forced symmetric coat.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "19-african-wild-dog",
+          "master": "audits/G2_C83_20260927/19-african-wild-dog/master.png",
+          "packet": "audits/G2_C83_20260927/19-african-wild-dog",
+          "resolvedMaster": "audits/G2_C83_20260927/19-african-wild-dog/master.png",
+          "masterSha256": "6c065b50401371701d1c882d948e4adce38400917a614a009085a91a94439f24",
+          "masterBytes": 1169679,
+          "pilotSha256": "aa1edaf1347933139b7bdcb24ca13347bc10cef8205160bf8356d21f44e2380a"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "19-african-wild-dog",
+          "master": "audits/G2_C83_20260927/19-african-wild-dog/master.png",
+          "packet": "audits/G2_C83_20260927/19-african-wild-dog",
+          "resolvedMaster": "audits/G2_C83_20260927/19-african-wild-dog/master.png",
+          "masterSha256": "6c065b50401371701d1c882d948e4adce38400917a614a009085a91a94439f24",
+          "masterBytes": 1169679,
+          "pilotSha256": "2c66a39691803d3862ff05a0172883f1447199479138644d6ec922b60d1f120d"
+        }
+      ]
+    },
+    {
+      "name": "Spotted Hyena",
+      "correction": "Earlier source has unassigned limb-down paint. Preserve sloping back and naturally longer forelegs, blunt muzzle, round ears and spotted coat; four genuine separated leg silhouettes, every foot whole. No fifth appendage and no artificial flattening of natural proportions.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "20-spotted-hyena",
+          "master": "audits/G2_C83_20260927/20-spotted-hyena/master.png",
+          "packet": "audits/G2_C83_20260927/20-spotted-hyena",
+          "resolvedMaster": "audits/G2_C83_20260927/20-spotted-hyena/master.png",
+          "masterSha256": "de358b8aaf9cf7fb88fc767744eb0e86a3ff6f77f619beb356f541c937c9c838",
+          "masterBytes": 1291893,
+          "pilotSha256": "aa1edaf1347933139b7bdcb24ca13347bc10cef8205160bf8356d21f44e2380a"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "20-spotted-hyena",
+          "master": "audits/G2_C83_20260927/20-spotted-hyena/master.png",
+          "packet": "audits/G2_C83_20260927/20-spotted-hyena",
+          "resolvedMaster": "audits/G2_C83_20260927/20-spotted-hyena/master.png",
+          "masterSha256": "de358b8aaf9cf7fb88fc767744eb0e86a3ff6f77f619beb356f541c937c9c838",
+          "masterBytes": 1291893,
+          "pilotSha256": "2c66a39691803d3862ff05a0172883f1447199479138644d6ec922b60d1f120d"
+        }
+      ]
+    },
+    {
+      "name": "Aardvark",
+      "correction": "Earlier source left substantial unexplained anatomy. Preserve long rabbit-like ears, tubular pig-like snout, thick tapering tail and real digging claws; separate four actual limbs from trunk emergence to their feet, tail distinct from legs. Do not shorten long anatomical structures to fit a generic mammal.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "24-aardvark",
+          "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+          "packet": "audits/G2_C83_20260927/24-aardvark",
+          "resolvedMaster": "audits/G2_C83_20260927/24-aardvark/master.png",
+          "masterSha256": "0e3dddd3c82c550e7c68081f3287c0d2b58bae3aab23ec581b443a9bb0ca2050",
+          "masterBytes": 1302396,
+          "pilotSha256": "aa1edaf1347933139b7bdcb24ca13347bc10cef8205160bf8356d21f44e2380a"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "24-aardvark",
+          "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+          "packet": "audits/G2_C83_20260927/24-aardvark",
+          "resolvedMaster": "audits/G2_C83_20260927/24-aardvark/master.png",
+          "masterSha256": "0e3dddd3c82c550e7c68081f3287c0d2b58bae3aab23ec581b443a9bb0ca2050",
+          "masterBytes": 1302396,
+          "pilotSha256": "2c66a39691803d3862ff05a0172883f1447199479138644d6ec922b60d1f120d"
+        }
+      ]
+    },
+    {
+      "name": "Okapi",
+      "correction": "Earlier source far ear was hidden. Reveal both real large ears in a shallow natural head turn with uninterrupted bases, keep four real legs, striped rump/legs and actual short tufted tail visibly separate. No giraffe neck or invented horns.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "24-okapi",
+          "master": "audits/G2_C76_20260927/24-okapi/master.png",
+          "packet": "audits/G2_C76_20260927/24-okapi",
+          "resolvedMaster": "audits/G2_C76_20260927/24-okapi/master.png",
+          "masterSha256": "20060058c0e89809749b376fc6405e972a724c0d3835b9be9a2ee73812b55679",
+          "masterBytes": 1195245,
+          "pilotSha256": "431319962ecca9f374dd4958b7c7f28346759ee920368c47f95bcf719f3a957f"
+        }
+      ]
+    },
+    {
+      "name": "Pronghorn",
+      "correction": "Earlier source tail3 was refused. Paint the actual short white-rump tail with its real base and full natural tip distinct from the hindquarters and rear feet, without elongation; reveal both real ears and four true hoofed legs.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "13-pronghorn",
+          "master": "audits/G2_C95_20260927/13-pronghorn/master.png",
+          "packet": "audits/G2_C95_20260927/13-pronghorn",
+          "resolvedMaster": "audits/G2_C95_20260927/13-pronghorn/master.png",
+          "masterSha256": "0cb05436326b123d20b6c52d6d480673549d612dc661ffaa10be902c5756cf28",
+          "masterBytes": 1256801,
+          "pilotSha256": "551b6907b3194721cacef547940ae05de4e26916477b07f3a916c759bb59be9c"
+        }
+      ]
+    },
+    {
+      "name": "Springbok",
+      "correction": "Earlier source hides the far ear. Slight natural head turn exposes both true ears base to tip while preserving lyre horns, dark flank band, white underside and four separate real hoofed legs. Actual short tail visible, no artificial elongation.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "14-springbok",
+          "master": "audits/G2_C95_20260927/14-springbok/master.png",
+          "packet": "audits/G2_C95_20260927/14-springbok",
+          "resolvedMaster": "audits/G2_C95_20260927/14-springbok/master.png",
+          "masterSha256": "e6870bf363c0fe0885a5e43acb0ee6e69480ceb42f0766da902e815562278a52",
+          "masterBytes": 1280706,
+          "pilotSha256": "551b6907b3194721cacef547940ae05de4e26916477b07f3a916c759bb59be9c"
+        }
+      ]
+    },
+    {
+      "name": "Duiker",
+      "correction": "Earlier source short tail was not covered. Show the actual short attached tail with a distinct natural tip separated from hind legs, both real ears and all four small hoofed legs. Do not replace short species anatomy with a long generic antelope tail.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "16-duiker",
+          "master": "audits/G2_C95_20260927/16-duiker/master.png",
+          "packet": "audits/G2_C95_20260927/16-duiker",
+          "resolvedMaster": "audits/G2_C95_20260927/16-duiker/master.png",
+          "masterSha256": "f94c7b56f7eea193747a03dbdde92167af9bb76e62a7fdf6bc14ea7065e7a73d",
+          "masterBytes": 1275799,
+          "pilotSha256": "551b6907b3194721cacef547940ae05de4e26916477b07f3a916c759bb59be9c"
+        }
+      ]
+    },
+    {
+      "name": "Serow",
+      "correction": "Earlier source short tail3 was refused. Preserve coarse genuine coat, real short tail clearly separate from rump and feet, true horns and ears, and four visible hoofed leg chains. Avoid detached coat fragments and do not lengthen its tail.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "18-serow",
+          "master": "audits/G2_C95_20260927/18-serow/master.png",
+          "packet": "audits/G2_C95_20260927/18-serow",
+          "resolvedMaster": "audits/G2_C95_20260927/18-serow/master.png",
+          "masterSha256": "5cda3fba67f8b75e7727a00700c4a534ac3dc99c0c43976cca8110203887196b",
+          "masterBytes": 1319250,
+          "pilotSha256": "551b6907b3194721cacef547940ae05de4e26916477b07f3a916c759bb59be9c"
+        }
+      ]
+    },
+    {
+      "name": "Bison",
+      "correction": "Earlier source had unexplained low paint. Preserve the real shoulder hump and dense beard; separate all four true legs and hoof ends from the hanging coat, keeping their actual roots where visible. Preserve real horns, ears and attached tufted tail; do not shave the coat or invent hidden joints.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "03-bison",
+          "master": "audits/G2_C59_20260926/03-bison/master.png",
+          "packet": "audits/G2_C59_20260926/03-bison",
+          "resolvedMaster": "audits/G2_C59_20260926/03-bison/master.png",
+          "masterSha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5",
+          "masterBytes": 1646279,
+          "pilotSha256": "953b4a06319c7d6b45ccc57537d7601ce9218c4ed6cd81e72c6db40f6fb3b5ba"
+        },
+        {
+          "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+          "id": "14-bison",
+          "master": null,
+          "packet": "audits/G2_QUADRUPED_PILOT_20260926/14-bison",
+          "resolvedMaster": "audits/G2_QUADRUPED_PILOT_20260926/14-bison/master.png",
+          "masterSha256": "a6e7dec8d65b19b2676dfb66dddf72e5e140436afd4fb8d5239308a010040085",
+          "masterBytes": 1779005,
+          "pilotSha256": "5f231ecd21e86260f3189869d466a5e42160f5ed434f40283e09d27fc227e768"
+        }
+      ]
+    },
+    {
+      "name": "Warthog",
+      "correction": "Earlier source tail3 was refused. Show the genuine thin attached tufted tail completely inside the frame and separate from hind legs, natural stance not a copied long mammal tail. Preserve real facial warts, paired upward tusks, bristle mane and four distinct hoofed leg paths.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C98_20260927/pilot.json",
+          "id": "22-warthog",
+          "master": "audits/G2_C98_20260927/22-warthog/master.png",
+          "packet": "audits/G2_C98_20260927/22-warthog",
+          "resolvedMaster": "audits/G2_C98_20260927/22-warthog/master.png",
+          "masterSha256": "045a2107c9d43bf87f09ff7fd6429a9bb0b58f370abcb81dc8e44a18c08ca8ca",
+          "masterBytes": 1257930,
+          "pilotSha256": "6e7433a1c78cbcebaacc23ae7c2040b750c4231b0891c3b7fc6534c1123c1a88"
+        }
+      ]
+    },
+    {
+      "name": "Caribou",
+      "correction": "Previous source left a limb-down appendage unassigned. Show four and only four real hoofed legs clearly separated through joints and hooves, keeping actual shaggy neck and antlers. Both real ears exposed by natural head angle and natural short tail separate; no invented fifth leg.",
+      "predecessors": [
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "12-caribou",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/12-caribou/master.png",
+          "masterSha256": "505a4b14ad2d4e59bc8b25b95cb77ffb2e05b35411fb539f68dccb00f402ecd5",
+          "masterBytes": 1544701,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        },
+        {
+          "pilot": "audits/G2_C110_20260927/pilot.json",
+          "id": "17-caribou",
+          "master": "audits/G2_C110_20260927/17-caribou/master.png",
+          "packet": "audits/G2_C110_20260927/17-caribou",
+          "resolvedMaster": "audits/G2_C110_20260927/17-caribou/master.png",
+          "masterSha256": "d50180c7f247c38da4f7d88bb04265a621416b6ef58971354239afaa8d7b75ee",
+          "masterBytes": 1296207,
+          "pilotSha256": "e40347e6940c2a9907efbb788f99a755a8a22cf2b3e971a7dbaf58ebe2998f38"
+        },
+        {
+          "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+          "id": "12-caribou",
+          "master": "audits/G2_C136_REPAIRS_20261002/12-caribou/master.png",
+          "packet": "audits/G2_C136_REPAIRS_20261002/12-caribou",
+          "resolvedMaster": "audits/G2_C136_REPAIRS_20261002/12-caribou/master.png",
+          "masterSha256": "567cc852c8bc1748be9b5f2f58e6051479e9085bcf4e554bb2e687d3c87f31bd",
+          "masterBytes": 1098460,
+          "pilotSha256": "1b2bd0d5998d99f078566aea066baf47237c86af3d850c66812ca5395544a77d"
+        }
+      ]
+    },
+    {
+      "name": "Yak",
+      "correction": "Previous source has unassigned limb-down paint under hanging hair. Preserve its actual long dense skirt but clearly expose the four real leg/hoof ends, with continuous natural paths at visible emergence; no fringe shaped as an extra leg, no shaving or invented hidden roots. Actual bushy tail separate.",
+      "predecessors": [
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "13-yak",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/13-yak",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/master.png",
+          "masterSha256": "27de0750acf13570f3a6dd14eec24dad687e9e23f881449c4bf46a8497bffd35",
+          "masterBytes": 1686066,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        },
+        {
+          "pilot": "audits/G2_C110_20260927/pilot.json",
+          "id": "19-yak",
+          "master": "audits/G2_C110_20260927/19-yak/master.png",
+          "packet": "audits/G2_C110_20260927/19-yak",
+          "resolvedMaster": "audits/G2_C110_20260927/19-yak/master.png",
+          "masterSha256": "b933dcaa28590e37814c806db941389bcad3a336d1c0306794332f59ed44d831",
+          "masterBytes": 1349269,
+          "pilotSha256": "e40347e6940c2a9907efbb788f99a755a8a22cf2b3e971a7dbaf58ebe2998f38"
+        },
+        {
+          "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+          "id": "14-yak",
+          "master": "audits/G2_C136_REPAIRS_20261002/14-yak/master.png",
+          "packet": "audits/G2_C136_REPAIRS_20261002/14-yak",
+          "resolvedMaster": "audits/G2_C136_REPAIRS_20261002/14-yak/master.png",
+          "masterSha256": "c23b7769f1c9846a978d3ca54a98d18d575f924464bd5fcca756078f654f2932",
+          "masterBytes": 1207494,
+          "pilotSha256": "1b2bd0d5998d99f078566aea066baf47237c86af3d850c66812ca5395544a77d"
+        }
+      ]
+    },
+    {
+      "name": "Bactrian Camel",
+      "correction": "Previous source has unexplained paint. Preserve two real humps, shaggy neck, true two-toed padded feet and naturally short tail. Separate four actual limb silhouettes and feet from hanging hair, ears and tail visible as far as natural anatomy permits; no third hump or extra limb.",
+      "predecessors": [
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "18-bactrian-camel",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/master.png",
+          "masterSha256": "d0f39b9dac474204c18d6ce431158be51a50e7c1bd8767d48e94480cfd1ba372",
+          "masterBytes": 1634685,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        },
+        {
+          "pilot": "audits/G2_C110_20260927/pilot.json",
+          "id": "24-bactrian-camel",
+          "master": "audits/G2_C110_20260927/24-bactrian-camel/master.png",
+          "packet": "audits/G2_C110_20260927/24-bactrian-camel",
+          "resolvedMaster": "audits/G2_C110_20260927/24-bactrian-camel/master.png",
+          "masterSha256": "be09e814c9539c7b6baa677440d1deaf75a9b4f9749f8b77bb9742913fbecfb7",
+          "masterBytes": 1471569,
+          "pilotSha256": "e40347e6940c2a9907efbb788f99a755a8a22cf2b3e971a7dbaf58ebe2998f38"
+        }
+      ]
+    },
+    {
+      "name": "Buffalo",
+      "correction": "Repeated tail3 refusal on earlier sources. Preserve true heavy horns, dark hide and four genuine hoofed legs while showing the complete real attached tail and terminal tuft separate from body and rear feet. Do not elongate the tail to a reference template.",
+      "predecessors": [
+        {
+          "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+          "id": "15-buffalo",
+          "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo/master.png",
+          "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo",
+          "resolvedMaster": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo/master.png",
+          "masterSha256": "b2bfd6b1f3367812f21762ea7d06473d316c1e93469cf50f4065c98a7615e3de",
+          "masterBytes": 1305819,
+          "pilotSha256": "ede09f7be8d112d9e78b3788c2d2c3fd5146f0db671485effb0f098f8ac0ba62"
+        },
+        {
+          "pilot": "audits/G2_C110_20260927/pilot.json",
+          "id": "05-buffalo",
+          "master": "audits/G2_C110_20260927/05-buffalo/master.png",
+          "packet": "audits/G2_C110_20260927/05-buffalo",
+          "resolvedMaster": "audits/G2_C110_20260927/05-buffalo/master.png",
+          "masterSha256": "2e3b4686460626be61c778ce9980f8c3abe47c99e976b114a686a9c7bc493917",
+          "masterBytes": 1411045,
+          "pilotSha256": "e40347e6940c2a9907efbb788f99a755a8a22cf2b3e971a7dbaf58ebe2998f38"
+        },
+        {
+          "pilot": "audits/G2_C136_TARGETED_EDITS_20261002/pilot.json",
+          "id": "07-buffalo",
+          "master": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo/master.png",
+          "packet": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo",
+          "resolvedMaster": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo/master.png",
+          "masterSha256": "fab8454d46248d7f4a297e312dab16497bd9726d4b0c2606f10f98b53916217e",
+          "masterBytes": 1207546,
+          "pilotSha256": "f12c21083df5c9cd8eab01f779201be45cb23c8689557c5ebce927f632b1512a"
+        },
+        {
+          "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+          "id": "07-buffalo",
+          "master": "audits/G2_C136_REPAIRS_20261002/07-buffalo/master.png",
+          "packet": "audits/G2_C136_REPAIRS_20261002/07-buffalo",
+          "resolvedMaster": "audits/G2_C136_REPAIRS_20261002/07-buffalo/master.png",
+          "masterSha256": "5e66328d99c1ac8bd959cdd5ee9f394e5fe3bc6a36f25f7ff53931e15018ad0b",
+          "masterBytes": 1219893,
+          "pilotSha256": "1b2bd0d5998d99f078566aea066baf47237c86af3d850c66812ca5395544a77d"
+        }
+      ]
+    }
+  ],
+  "unchangedHelpers": [
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "identicalTo": "audits/C186_CREATURE_SUPPLY_20261002/retain.mjs"
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "identicalTo": "audits/C186_CREATURE_SUPPLY_20261002/observe.mjs"
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "identicalTo": "audits/C186_CREATURE_SUPPLY_20261002/framing.mjs"
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/review.mjs",
+      "sha256": "8f84e1feae646897995d16e4c25427ef5287ba7231aa431344366a8ccc27f637",
+      "identicalTo": "audits/C186_CREATURE_SUPPLY_20261002/review.mjs"
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/freeze.mjs",
+      "sha256": "fef11c6a3620cb4050a8f0a3a800cadd18b1bfbeec8989cdbca7c00a74ea1b76",
+      "identicalTo": "audits/C186_CREATURE_SUPPLY_20261002/freeze.mjs"
+    }
+  ]
+}

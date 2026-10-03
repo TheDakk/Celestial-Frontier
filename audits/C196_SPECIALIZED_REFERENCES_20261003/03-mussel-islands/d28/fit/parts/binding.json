@@ -1,0 +1,120 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+  "atlasSha256": "6841699c7d9831505ef38826cbda09a2eb1920a60d7c1fa3f6e73fd99434da5f",
+  "atlasSize": {
+    "width": 1720,
+    "height": 932
+  },
+  "parts": [
+    {
+      "id": "hinge",
+      "joint": "hinge",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1451,
+        "y": 5,
+        "width": 139,
+        "height": 79
+      },
+      "cutout": {
+        "x": 328,
+        "y": 283,
+        "width": 139,
+        "height": 79
+      }
+    },
+    {
+      "id": "foot",
+      "joint": "foot",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1250,
+        "y": 5,
+        "width": 191,
+        "height": 266
+      },
+      "cutout": {
+        "x": 440,
+        "y": 704,
+        "width": 191,
+        "height": 266
+      }
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1600,
+        "y": 5,
+        "width": 115,
+        "height": 132
+      },
+      "cutout": {
+        "x": 835,
+        "y": 636,
+        "width": 115,
+        "height": 132
+      }
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 481,
+        "width": 561,
+        "height": 446
+      },
+      "cutout": {
+        "x": 388,
+        "y": 336,
+        "width": 561,
+        "height": 446
+      }
+    },
+    {
+      "id": "valvefar",
+      "joint": "valveFar",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 624,
+        "height": 466
+      },
+      "cutout": {
+        "x": 343,
+        "y": 283,
+        "width": 624,
+        "height": 466
+      }
+    },
+    {
+      "id": "valvenear",
+      "joint": "valveNear",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 639,
+        "y": 5,
+        "width": 601,
+        "height": 587
+      },
+      "cutout": {
+        "x": 310,
+        "y": 296,
+        "width": 601,
+        "height": 587
+      }
+    }
+  ],
+  "bindingHash": "77e3273ea89655c6e7bd4f2f980c23e20df6bed7068d292fa3ba119f8824532e"
+}

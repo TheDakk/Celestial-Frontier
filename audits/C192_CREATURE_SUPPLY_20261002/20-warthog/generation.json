@@ -1,0 +1,14 @@
+{
+  "id": "20-warthog",
+  "name": "Warthog",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d0d29d3d-f076-4894-a4f5-7fcd8e2285da.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "93ee8025d14f671dabf179f40898decd695f16387777367c8724674ebe66aacd",
+  "bytes": 1473502,
+  "promptSha256": "db185bf9fba97703aa235017e24c7ad88818e88068257f67ffba4c8b4e16bfca",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

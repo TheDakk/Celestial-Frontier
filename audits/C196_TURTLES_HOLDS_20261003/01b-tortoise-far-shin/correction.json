@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c196-source-observed-authoring/v1",
+  "id": "01b-tortoise-far-shin",
+  "type": "one source-observed contour successor",
+  "previousFailure": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/07-tortoise/packet/authoring.json",
+  "findings": [
+    "The first static failure at walk43.166666666666664ms folds triangle967 between two moving far-ankle vertices and a root-owned vertex. All13 refused actions reach this same triangle.",
+    "Exact output ownership contains57 root-owned far-shin pixels at x943\u2013952/y790\u2013816: my first outline cut inside the visible outer scales. Only the far-front shin contour is expanded to that observed outline; no landmark, source pixel, other contour or limit changes."
+  ],
+  "changedJoints": [],
+  "landmarkOrigin": "manual full-size painting inspection; no donor coordinates",
+  "limitsChanged": false,
+  "source": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/master.png",
+  "sourceSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+  "sourceIdentity": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/subject-source.json",
+  "sourceIdentitySha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false,
+  "priorAuthoring": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/authoring.json",
+  "priorAuthoringSha256": "ed853afe60fb74cb0beb9db43e66e3d90059295e98de6e0247f897872aa237f7",
+  "changedParts": [
+    "far-front-shin"
+  ]
+}

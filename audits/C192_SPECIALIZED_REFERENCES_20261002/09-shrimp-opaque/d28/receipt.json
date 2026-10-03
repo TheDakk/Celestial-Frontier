@@ -1,0 +1,245 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01",
+  "sourceMasterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+  "keyedRgbaSha256": "ea4e6af94667152ad00b59927c5a0f00985b73e0314f867309b320cab486b306",
+  "remainder": "thorax",
+  "remainderPixels": 11672,
+  "movedPixels": 206,
+  "islands": [
+    {
+      "pixels": 1,
+      "to": "leg2far-foot",
+      "border": {
+        "leg2far-foot": 2
+      }
+    },
+    {
+      "pixels": 105,
+      "to": "leg2far-foot",
+      "border": {
+        "leg2far-foot": 83
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "leg1far-foot",
+      "border": {
+        "leg1far-foot": 1
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "leg0far-foot",
+      "border": {
+        "leg0far-foot": 1
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "leg2far-foot",
+      "border": {
+        "leg2far-foot": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "leg2far-foot",
+      "border": {
+        "leg2far-foot": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "leg2far-foot",
+      "border": {
+        "leg2far-foot": 2
+      }
+    },
+    {
+      "pixels": 19,
+      "to": "leg2far-foot",
+      "border": {
+        "leg2far-foot": 8,
+        "leg2far-upper": 7
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "leg1far-foot",
+      "border": {
+        "leg1far-foot": 7,
+        "leg1far-upper": 7
+      }
+    },
+    {
+      "pixels": 19,
+      "to": "leg1near-upper",
+      "border": {
+        "leg1near-foot": 7,
+        "leg1near-upper": 9
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "leg2near-foot",
+      "border": {
+        "leg2near-foot": 8,
+        "leg2near-upper": 8
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "leg0near-foot",
+      "border": {
+        "leg0near-foot": 1
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "leg1near-foot",
+      "border": {
+        "leg1near-foot": 1
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c192-independent-shrimp",
+    "parts": 31,
+    "atlasSize": {
+      "width": 536,
+      "height": 2048
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-foot",
+        "vertex": 7,
+        "distancePx": 4.123105625617575,
+        "supports": [
+          0,
+          4,
+          1
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-foot",
+        "vertex": 28,
+        "distancePx": 5.385164807134399,
+        "supports": [
+          262,
+          261
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-foot",
+        "vertex": 6,
+        "distancePx": 5.099019513592725,
+        "supports": [
+          56,
+          53
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-foot",
+        "vertex": 26,
+        "distancePx": 2.282542442102662,
+        "supports": [
+          315,
+          317
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-foot",
+        "vertex": 1,
+        "distancePx": 2.2360679774998533,
+        "supports": [
+          94,
+          95
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-foot",
+        "vertex": 16,
+        "distancePx": 2.8284271247462707,
+        "supports": [
+          360,
+          357,
+          356
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3far-foot",
+        "vertex": 4,
+        "distancePx": 2.236067977499791,
+        "supports": [
+          146,
+          148,
+          149
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-foot",
+        "vertex": 30,
+        "distancePx": 1.9999999999999176,
+        "supports": [
+          412,
+          414,
+          415
+        ]
+      },
+      {
+        "joint": "leg4FarFoot",
+        "part": "leg4far-foot",
+        "vertex": 1,
+        "distancePx": 1.1499999999999213,
+        "supports": [
+          194,
+          195
+        ]
+      },
+      {
+        "joint": "leg4NearFoot",
+        "part": "leg4near-foot",
+        "vertex": 32,
+        "distancePx": 0.9999999999998892,
+        "supports": [
+          465,
+          468,
+          466
+        ]
+      }
+    ],
+    "sourceBindingHash": "547c131251214fab740caef25f96a3925f88b9dadb4ad974ee23fa1b3064fb0f",
+    "sourceVertices": 969,
+    "vertices": 1209,
+    "sharedSupports": 259,
+    "pins": 367,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 26,
+    "excludedOverlaps": 27,
+    "observedExcludedBoundaries": 27,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 27,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

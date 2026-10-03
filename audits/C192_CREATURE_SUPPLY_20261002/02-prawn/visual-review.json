@@ -1,0 +1,28 @@
+{
+  "name": "Prawn",
+  "masterSha256": "2b3f9b74992ef4befb6c66fd9e902839faaac1d161b17d869751e92e8b091672",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: true dorsal-looking body, two visible eyes, serrated rostrum, abdomen sections and five-part tail fan. Five walking-leg endpoints appear on each side with much clearer thoracic emergence than predecessor; fine anterior roots still need independent tracing. Additional short antennules and abdominal swimmerets are retained. Two long antennae approach the right canvas edge closely, leaving a likely framing refusal. Pale seam-like lines at thorax/abdomen and exact walking-leg morphology remain visual holds; no measured reference admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 131,
+      "y0": 352,
+      "x1": 1206,
+      "y1": 895
+    },
+    "margins": {
+      "left": 131,
+      "right": 47,
+      "top": 352,
+      "bottom": 358
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

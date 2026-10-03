@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c192-source-edit/v1",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset/master.png",
+    "sha256": "949df79df52b00a64ff06408b2e294eedf91adebb7ff8f12e76bd7dd285b5b98",
+    "snapshot": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset/prompt.txt",
+    "sha256": "ea21ae0ca715fbf373d1b2a2c6ac2ad2628bbe32bec7a1e89a469be773e6e82d"
+  },
+  "exactSentPromptSha256": "76a8f4ec4090b460948f6f2ed3b2d39ebe27d992db2d43f19c22dee7cdc9bb08",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceEditsOnly": true,
+  "nativeRuns": 0
+}

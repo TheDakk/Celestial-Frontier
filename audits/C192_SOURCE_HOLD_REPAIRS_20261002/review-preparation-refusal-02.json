@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c192-instrument-preparation/v1",
+  "attempt": 2,
+  "status": "REFUSED_BUNDLE_CONFIGURATION",
+  "cause": "Product dynamic imports required output.dir or explicit single-file codeSplitting:false. No bundle, rig or publication was produced.",
+  "correction": "Set codeSplitting:false on this audit-only single-file bundle. No input candidate or product changes.",
+  "native": false
+}

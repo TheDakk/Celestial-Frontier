@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c196-prior-packet-recheck/v1",
+  "priorDelivery": {
+    "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/delivery.json",
+    "sha256": "e908acedc1d1f72e69f9ed6eb58ff5b5f6f2a10f17dd8e5c510b95efd84a887a",
+    "bytes": 130602
+  },
+  "verifiedFiles": 582,
+  "verifiedBytes": 110944703,
+  "allUnchanged": true
+}

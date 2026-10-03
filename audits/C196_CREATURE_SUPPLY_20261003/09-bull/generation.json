@@ -1,0 +1,14 @@
+{
+  "id": "09-bull",
+  "name": "Bull",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c78bb1b9-ba19-4b15-8783-6e8c0e22002f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0c3ceb3c0c0d45c8993dd4867302314aa94bad680261cfc3bc4fa92990652b56",
+  "bytes": 1388793,
+  "promptSha256": "6c9aa39de0f1d9aed26263bb5d15eaceb61ea734b1a4e878dbe05fa6ce2662c3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

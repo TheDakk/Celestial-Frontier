@@ -1,0 +1,56 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Stick Insect",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "d6c73016bfb51022a121e02b869171e3ef530d8499d1fd3f2cdf9fdccfc19e95",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "7eb42d989913f892eb6e972b76bad232d747bd55",
+  "basePromptSha256": "a9a0eeafa98bac15c47d8bbbc8ba61ff13ab45fdb4cab15923adedbc8e6e7771",
+  "batchCompilerSha256": "dd1856d2dc0cd1b662a8c39c8ac84441abaf58f141ac25375bb967313dd7c85a",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Earlier source lost a real middle/front/far leg chain during transfer. Preserve exactly six genuine legs attached to the thorax, all continuous from visible roots through bends and tarsi, separated where the natural view permits. Keep actual wings, antennae and abdominal anatomy distinct from legs; no extra appendage, hidden-root inference or forced elongated legs. Dragonfly keeps four real wings and Scorpionfly keeps its real abdominal tip, not a stinger.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C72_20260927/pilot.json",
+        "id": "20-stick-insect",
+        "master": "audits/G2_C72_20260927/20-stick-insect/master.png",
+        "packet": "audits/G2_C72_20260927/20-stick-insect"
+      },
+      {
+        "pilot": "audits/G2_C121_20260927/pilot.json",
+        "id": "21-stick-insect",
+        "master": "audits/G2_C121_20260927/21-stick-insect/master.png",
+        "packet": "audits/G2_C121_20260927/21-stick-insect"
+      },
+      {
+        "pilot": "audits/G2_THROUGHPUT_C56_20260926/pilot.json",
+        "id": "32-stick-insect",
+        "master": "audits/G2_THROUGHPUT_C56_20260926/32-stick-insect/master.png",
+        "packet": "audits/G2_THROUGHPUT_C56_20260926/32-stick-insect"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C72_20260927/pilot.json",
+    "audits/G2_C121_20260927/pilot.json",
+    "audits/G2_THROUGHPUT_C56_20260926/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Earlier source lost a real middle/front/far leg chain during transfer. Preserve exactly six genuine legs attached to the thorax, all continuous from visible roots through bends and tarsi, separated where the natural view permits. Keep actual wings, antennae and abdominal anatomy distinct from legs; no extra appendage, hidden-root inference or forced elongated legs. Dragonfly keeps four real wings and Scorpionfly keeps its real abdominal tip, not a stinger.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

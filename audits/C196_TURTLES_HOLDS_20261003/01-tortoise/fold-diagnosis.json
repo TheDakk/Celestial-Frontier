@@ -1,0 +1,891 @@
+{
+  "schema": "cf.c196-source-fold-localization/v1",
+  "scope": "Captured contact-resolved poses, unchanged leaf solve; no motion or native qualification",
+  "inputs": [
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/record.json",
+      "sha256": "2b742c2a8b206d30b6058283416bec0b51c060d80e999bbab10e9817fba68602"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/binding.json",
+      "sha256": "deeb4e6ebdc93936217016f4233a6ffbfc01afc82f9f157e8bf4f7a0be21a309"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/static-01.json",
+      "sha256": "8ac43204c3e17481dbab2a09257ff17bea27d8d39b3410709fd94946cffc59af"
+    }
+  ],
+  "rows": [
+    {
+      "action": "approach:walk",
+      "ms": 43.166666666666664,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.2866107409639781,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "approach:trot",
+      "ms": 30.833333333333332,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.06548358508363208,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "approach:gallop",
+      "ms": 111,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.6530596017860631,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "approach:hop",
+      "ms": 67.83333333333333,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.1355249359640652,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "melee:bite",
+      "ms": 165.33333333333334,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.11434735534220977,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "melee:claw",
+      "ms": 165.33333333333334,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.11434735534220977,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "melee:gore",
+      "ms": 165.33333333333334,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.11434735534220977,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "melee:tail",
+      "ms": 75.77777777777777,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.019291034900192017,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "melee:headbutt",
+      "ms": 165.33333333333334,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.11434735534220977,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "cast",
+      "ms": 62,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.2559925498716922,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "dodge",
+      "ms": 15,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.23358286151664628,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "victory",
+      "ms": 15.333333333333334,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.47105617179477405,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    },
+    {
+      "action": "melee:kick",
+      "ms": 75.77777777777777,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 967,
+          "ratio": -0.203095379306491,
+          "vertices": [
+            {
+              "index": 587,
+              "x": 930,
+              "y": 831.5,
+              "source": {
+                "x": 930,
+                "y": 831.5,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 588,
+              "x": 940,
+              "y": 822,
+              "source": {
+                "x": 940,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 589,
+              "x": 940,
+              "y": 841,
+              "source": {
+                "x": 940,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-front-paw",
+            "far-front-ankle",
+            "far-front-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    }
+  ]
+}

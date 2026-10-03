@@ -1,0 +1,28 @@
+{
+  "name": "Water Vole",
+  "masterSha256": "70181f3643a1746802cb3b695ae557411f22a7e6f5637621caf2082a588247e8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full1254 original: stout brown Water Vole with rounded muzzle, small visible near ear, four short foot silhouettes and continuous tail. Nearest hind paw is individually visible, but true upper limb roots remain under fur and the four feet are not exactly level. Far ear hidden; tail is notably bushy and its species-correct length/material remain visual holds. Coat fringes remain attached; no claim that the old transfer refusal is resolved.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 215,
+      "y0": 419,
+      "x1": 1016,
+      "y1": 837
+    },
+    "margins": {
+      "left": 215,
+      "right": 237,
+      "top": 419,
+      "bottom": 416
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

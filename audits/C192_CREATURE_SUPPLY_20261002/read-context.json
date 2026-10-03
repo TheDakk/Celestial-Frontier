@@ -1,0 +1,20 @@
+{
+  "scope": "Read-only current sibling evidence; C187-C192 and D28-D31 govern; coverage237 accepted exclusions at selection",
+  "records": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/GENERATED_GALLERY_20260927/coverage.json",
+      "sha256": "6f92de78f5884309a5a9c2f813717281fcabdd516a7404d235ed2b8e880a590a",
+      "bytes": 6370
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c233/summary.json",
+      "sha256": "e4f1e44da71df77ee76a24f40b4b77931160c1149e2b3a62df4ee3668b8aa5fc",
+      "bytes": 3626
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+      "sha256": "ce24bc1296f60cbaa5fd041279dee312902ddfa7ce1cc7ce5558f13c67bbb093",
+      "bytes": 138195
+    }
+  ]
+}

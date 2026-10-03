@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c196-source-freeze-checks/v1",
+  "status": "PASS",
+  "boundReviewClosureEntries": 1704,
+  "selectedStaticPassing": 2,
+  "partialNotFit": 4,
+  "retainedOriginalRedActions": 13,
+  "retainedFarShinRedActions": 1,
+  "exactMasterBytesPreserved": true,
+  "privateHomeOccurrences": 0,
+  "symlinks": 0,
+  "qualityAccepted": false,
+  "native": false,
+  "productChanges": false,
+  "nodeVersion": "v26.10.0",
+  "toolchain": [
+    {
+      "path": "audits/C196_PROGRAM_20261003/toolchain-check.json",
+      "sha256": "2e4b7386e90bc8a98c63664e99f9dbf00862697bf720ea5af5b94e9f20536538"
+    },
+    {
+      "path": "audits/C196_PROGRAM_20261003/toolchain-verify.json",
+      "sha256": "8c9bf8f9293beb1da42decd2ad020de82f11f423dbdec63b88f2fb0b0430557f"
+    }
+  ],
+  "batchEndMailboxRead": {
+    "path": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+    "lastRow": "C196"
+  },
+  "cpuStatus": "TERMINAL; no active local jobs"
+}

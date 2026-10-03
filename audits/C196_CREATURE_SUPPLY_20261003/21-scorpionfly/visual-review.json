@@ -1,0 +1,28 @@
+{
+  "name": "Scorpionfly",
+  "masterSha256": "356644d26574db6e48174c7ac717430b46d1c5c10d379fbc7468cbe09d1f0956",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: yellow-brown segmented body, patterned translucent-looking folded wings, elongated rostrum with separated dark mouthpart tips, paired segmented antennae, and upcurved male terminal genital bulb. Six distinct distal leg tips are visible; the rear far-foot contour is separated, improving the requested local feature, but far proximal roots remain partly behind thorax/abdomen and cannot be invented. Folded wing stack does not independently reveal all four roots. Terminal bulb includes a sharp hook-like projection whose real genital-clasper anatomy needs review, not a venom-stinger interpretation. Antenna margin remains near 8% and must retain exact framing result. No native/anatomical acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 214,
+      "y0": 267,
+      "x1": 1155,
+      "y1": 866
+    },
+    "margins": {
+      "left": 214,
+      "right": 98,
+      "top": 267,
+      "bottom": 387
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

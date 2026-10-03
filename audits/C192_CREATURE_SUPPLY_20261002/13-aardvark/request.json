@@ -1,0 +1,49 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Aardvark",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "4c184f02e030c72d5a25d7885aad95fbe29340396ab6d9e185ab0fc03cc7ab96",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "aardvark",
+  "authoringCreated": false,
+  "sourceHead": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "basePromptSha256": "5ce6156b870308069839e9f50cbab61c760fdfb67190a8460ac5a56dd560d67e",
+  "batchCompilerSha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Earlier source left substantial unexplained anatomy. Preserve long rabbit-like ears, tubular pig-like snout, thick tapering tail and real digging claws; separate four actual limbs from trunk emergence to their feet, tail distinct from legs. Do not shorten long anatomical structures to fit a generic mammal.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C83_20260927/pilot-original.json",
+        "id": "24-aardvark",
+        "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+        "packet": "audits/G2_C83_20260927/24-aardvark"
+      },
+      {
+        "pilot": "audits/G2_C83_20260927/pilot.json",
+        "id": "24-aardvark",
+        "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+        "packet": "audits/G2_C83_20260927/24-aardvark"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C83_20260927/pilot-original.json",
+    "audits/G2_C83_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Earlier source left substantial unexplained anatomy. Preserve long rabbit-like ears, tubular pig-like snout, thick tapering tail and real digging claws; separate four actual limbs from trunk emergence to their feet, tail distinct from legs. Do not shorten long anatomical structures to fit a generic mammal.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

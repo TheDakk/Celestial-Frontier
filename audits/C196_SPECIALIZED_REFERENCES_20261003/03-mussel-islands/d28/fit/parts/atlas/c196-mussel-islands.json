@@ -1,0 +1,157 @@
+{
+  "frames": {
+    "foot.png": {
+      "frame": {
+        "h": 266,
+        "w": 191,
+        "x": 1250,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 266,
+        "w": 191
+      },
+      "spriteSourceSize": {
+        "h": 266,
+        "w": 191,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "hinge.png": {
+      "frame": {
+        "h": 79,
+        "w": 139,
+        "x": 1451,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 79,
+        "w": 139
+      },
+      "spriteSourceSize": {
+        "h": 79,
+        "w": 139,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "mantle.png": {
+      "frame": {
+        "h": 446,
+        "w": 561,
+        "x": 5,
+        "y": 481
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 446,
+        "w": 561
+      },
+      "spriteSourceSize": {
+        "h": 446,
+        "w": 561,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "siphon.png": {
+      "frame": {
+        "h": 132,
+        "w": 115,
+        "x": 1600,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 132,
+        "w": 115
+      },
+      "spriteSourceSize": {
+        "h": 132,
+        "w": 115,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "valvefar.png": {
+      "frame": {
+        "h": 466,
+        "w": 624,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 466,
+        "w": 624
+      },
+      "spriteSourceSize": {
+        "h": 466,
+        "w": 624,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "valvenear.png": {
+      "frame": {
+        "h": 587,
+        "w": 601,
+        "x": 639,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 587,
+        "w": 601
+      },
+      "spriteSourceSize": {
+        "h": 587,
+        "w": 601,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c196-mussel-islands.png",
+    "scale": "1",
+    "size": {
+      "h": 932,
+      "w": 1720
+    }
+  }
+}

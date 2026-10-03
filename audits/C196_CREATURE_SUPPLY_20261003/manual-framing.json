@@ -1,0 +1,68 @@
+{
+  "schema": "cf.source-framing-manual/v2",
+  "scope": "Full native original observations; automated keyed-mask results unchanged. No image/mask/threshold edits.",
+  "rows": [
+    {
+      "name": "Marsh Rodent",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/04-marsh-rodent/master.png",
+      "masterSha256": "edb15a41fa3984bdbf2cb015e69e995de942c90557eb157c8e003186b8150518",
+      "status": "REFUSE",
+      "requiredMargin": 101,
+      "observed": "Fine white muzzle whiskers extend into the right forbidden band beyond x1152. The unchanged keyed-mask bounds end at x1123 and omit them. Visible example at x1158,y594.",
+      "nativePixelSamples": [
+        {
+          "x": 1158,
+          "y": 594,
+          "rgba": [
+            246,
+            67,
+            220,
+            255
+          ]
+        },
+        {
+          "x": 1159,
+          "y": 595,
+          "rgba": [
+            247,
+            63,
+            226,
+            255
+          ]
+        }
+      ],
+      "acceptance": false
+    },
+    {
+      "name": "Stick Insect",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/20-stick-insect/master.png",
+      "masterSha256": "1d0623adc94ff89efe2c2b596bb9a4fb1019cd0e6249bdaab110a6d45ce4615e",
+      "status": "REFUSE",
+      "requiredMargin": 101,
+      "observed": "The lower antenna tip extends into the right forbidden band beyond x1152. The unchanged keyed-mask bounds end at x1130 and omit that tip. Visible dark source pixels at x1155,y476.",
+      "nativePixelSamples": [
+        {
+          "x": 1155,
+          "y": 476,
+          "rgba": [
+            74,
+            43,
+            23,
+            255
+          ]
+        },
+        {
+          "x": 1156,
+          "y": 476,
+          "rgba": [
+            54,
+            39,
+            9,
+            255
+          ]
+        }
+      ],
+      "acceptance": false
+    }
+  ]
+}

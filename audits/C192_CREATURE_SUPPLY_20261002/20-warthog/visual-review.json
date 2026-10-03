@@ -1,0 +1,28 @@
+{
+  "name": "Warthog",
+  "masterSha256": "93ee8025d14f671dabf179f40898decd695f16387777367c8724674ebe66aacd",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four distinct hoof endpoints/leg shafts, two visible ears, facial warts, two prominent upward tusks, coarse mane and complete upright tufted tail. A narrow hair-like contour along the rear rump and fine mane tips need ownership review. Far proximal legs remain partly hidden; tusk symmetry and proportions remain biological review items. No native or static acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 240,
+      "y0": 282,
+      "x1": 1050,
+      "y1": 947
+    },
+    "margins": {
+      "left": 240,
+      "right": 203,
+      "top": 282,
+      "bottom": 306
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

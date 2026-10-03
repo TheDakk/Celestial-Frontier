@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c192-source-owner-successor/v1",
+  "writerSha256": "bd89399714ff3a77e7451819955abf3639b311e41d3cc025aed5f647e02141f0",
+  "priorAuthoring": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/authoring.json",
+  "priorAuthoringSha256": "261c816490f69bded9af45dab7042091d0c615cacd91758d9a6ff6e0cfdae7e4",
+  "masterSha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+  "masterUnchanged": true,
+  "landmarksUnchanged": true,
+  "changedOwners": [
+    "root paint region removed into existing foot2 body owner",
+    "full eyeFar/eyeNear stalk contours"
+  ],
+  "sourceLandmarksReused": true,
+  "sourceLabelsReused": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

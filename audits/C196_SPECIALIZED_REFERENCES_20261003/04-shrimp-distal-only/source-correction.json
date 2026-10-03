@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c196-distal-contour-successor/v1",
+  "source": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque",
+  "rejectedCandidate": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours",
+  "originalMasterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+  "priorAuthoringSha256": "0d3fd10a4da2c26f3061e5b97a236ac7026f828f42c5d870ba5d9dab569b4fac",
+  "rejectedAuthoringSha256": "f1d227bd62828edb85536b8a88c94283516570ae6ac4cdd6267ad7fce2b1f088",
+  "candidateAuthoringSha256": "1efdfcd0d14fcf309113ed02d5bdeee393e91b43af5c10a4ef2348d3aa6f183a",
+  "changedContours": [
+    "leg0far-foot",
+    "leg1far-foot",
+    "leg2far-foot",
+    "leg3far-foot",
+    "leg4far-foot",
+    "leg0near-foot",
+    "leg1near-foot",
+    "leg2near-foot",
+    "leg3near-foot",
+    "leg4near-foot",
+    "antenna-far",
+    "antenna-near"
+  ],
+  "landmarksUnchanged": true,
+  "proximalAndBodyPolygonsByteEqual": true,
+  "sourceRgbaChanges": 0,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

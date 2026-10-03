@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Capybara",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "fda1a12fdc9eb2132a123a2f971a266b617bce25fd8166628f001de118d819de",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "aquatic-pawed-mammal",
+  "authoringCreated": false,
+  "sourceHead": "7eb42d989913f892eb6e972b76bad232d747bd55",
+  "basePromptSha256": "9e946f66e4563cc3467e7e0a9bd33dd3ed1676708e3655d5def0373b4a090c05",
+  "batchCompilerSha256": "dd1856d2dc0cd1b662a8c39c8ac84441abaf58f141ac25375bb967313dd7c85a",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Earlier source transfer refused an ear root or tip. Preserve the true species ear size; a shallow natural head turn exposes both real ear contours from attached base to tip. Keep body right-facing, four genuine limb silhouettes clearly separated from their true body emergence to whole feet on one level, and the actual tail. No invented far ear, enlarged ear, extra limb or lengthened short tail. This source request does not claim a transfer or classifier repair. Capybara has no externally visible tail: preserve that true absence; never paint a rodent tail.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C76_20260927/pilot.json",
+        "id": "17-capybara",
+        "master": "audits/G2_C76_20260927/17-capybara/master.png",
+        "packet": "audits/G2_C76_20260927/17-capybara"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C76_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Earlier source transfer refused an ear root or tip. Preserve the true species ear size; a shallow natural head turn exposes both real ear contours from attached base to tip. Keep body right-facing, four genuine limb silhouettes clearly separated from their true body emergence to whole feet on one level, and the actual tail. No invented far ear, enlarged ear, extra limb or lengthened short tail. This source request does not claim a transfer or classifier repair. Capybara has no externally visible tail: preserve that true absence; never paint a rodent tail.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

@@ -1,0 +1,503 @@
+{
+  "id": "c192-snail-contours",
+  "family": "gastropod",
+  "landmarksPx": {
+    "root": [
+      621,
+      783
+    ],
+    "foot0": [
+      237,
+      777
+    ],
+    "foot1": [
+      472,
+      789
+    ],
+    "foot2": [
+      700,
+      785
+    ],
+    "foot3": [
+      839,
+      731
+    ],
+    "head": [
+      890,
+      681
+    ],
+    "mouth": [
+      913,
+      734
+    ],
+    "eyeFar": [
+      1059,
+      520
+    ],
+    "eyeNear": [
+      956,
+      461
+    ],
+    "shell": [
+      485,
+      576
+    ]
+  },
+  "groundLineY": 0.6562998405103668,
+  "materials": {
+    "surface": "slick"
+  },
+  "remainderPart": "foot3",
+  "parts": [
+    {
+      "id": "shell",
+      "joint": "shell",
+      "layer": "near",
+      "polygonPx": [
+        [
+          249,
+          592
+        ],
+        [
+          270,
+          511
+        ],
+        [
+          315,
+          458
+        ],
+        [
+          370,
+          426
+        ],
+        [
+          457,
+          393
+        ],
+        [
+          541,
+          397
+        ],
+        [
+          605,
+          428
+        ],
+        [
+          656,
+          474
+        ],
+        [
+          682,
+          520
+        ],
+        [
+          700,
+          584
+        ],
+        [
+          706,
+          618
+        ],
+        [
+          723,
+          630
+        ],
+        [
+          711,
+          649
+        ],
+        [
+          665,
+          670
+        ],
+        [
+          604,
+          689
+        ],
+        [
+          551,
+          704
+        ],
+        [
+          488,
+          723
+        ],
+        [
+          426,
+          735
+        ],
+        [
+          369,
+          750
+        ],
+        [
+          313,
+          731
+        ],
+        [
+          281,
+          686
+        ],
+        [
+          260,
+          641
+        ]
+      ]
+    },
+    {
+      "id": "eyefar",
+      "joint": "eyeFar",
+      "layer": "near",
+      "polygonPx": [
+        [
+          897,
+          640
+        ],
+        [
+          924,
+          662
+        ],
+        [
+          944,
+          639
+        ],
+        [
+          972,
+          609
+        ],
+        [
+          1008,
+          580
+        ],
+        [
+          1053,
+          542
+        ],
+        [
+          1077,
+          533
+        ],
+        [
+          1079,
+          508
+        ],
+        [
+          1050,
+          498
+        ],
+        [
+          1028,
+          530
+        ],
+        [
+          991,
+          564
+        ],
+        [
+          949,
+          599
+        ],
+        [
+          916,
+          623
+        ]
+      ]
+    },
+    {
+      "id": "eyenear",
+      "joint": "eyeNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          839,
+          635
+        ],
+        [
+          871,
+          666
+        ],
+        [
+          898,
+          647
+        ],
+        [
+          913,
+          596
+        ],
+        [
+          936,
+          543
+        ],
+        [
+          958,
+          490
+        ],
+        [
+          973,
+          474
+        ],
+        [
+          974,
+          447
+        ],
+        [
+          949,
+          441
+        ],
+        [
+          934,
+          457
+        ],
+        [
+          928,
+          486
+        ],
+        [
+          902,
+          534
+        ],
+        [
+          877,
+          584
+        ],
+        [
+          858,
+          614
+        ]
+      ]
+    },
+    {
+      "id": "mouth",
+      "joint": "mouth",
+      "layer": "near",
+      "polygonPx": [
+        [
+          890,
+          725
+        ],
+        [
+          907,
+          719
+        ],
+        [
+          928,
+          721
+        ],
+        [
+          941,
+          730
+        ],
+        [
+          937,
+          742
+        ],
+        [
+          922,
+          753
+        ],
+        [
+          904,
+          752
+        ],
+        [
+          889,
+          741
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          839,
+          628
+        ],
+        [
+          882,
+          625
+        ],
+        [
+          918,
+          642
+        ],
+        [
+          939,
+          672
+        ],
+        [
+          945,
+          699
+        ],
+        [
+          970,
+          725
+        ],
+        [
+          1005,
+          746
+        ],
+        [
+          1008,
+          762
+        ],
+        [
+          989,
+          775
+        ],
+        [
+          970,
+          764
+        ],
+        [
+          939,
+          743
+        ],
+        [
+          916,
+          754
+        ],
+        [
+          896,
+          751
+        ],
+        [
+          900,
+          772
+        ],
+        [
+          888,
+          783
+        ],
+        [
+          876,
+          775
+        ],
+        [
+          868,
+          745
+        ],
+        [
+          849,
+          734
+        ],
+        [
+          830,
+          709
+        ],
+        [
+          825,
+          670
+        ]
+      ]
+    },
+    {
+      "id": "foot0",
+      "joint": "foot0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          350,
+          0
+        ],
+        [
+          350,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "foot1",
+      "joint": "foot1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          350,
+          0
+        ],
+        [
+          587,
+          0
+        ],
+        [
+          587,
+          1254
+        ],
+        [
+          350,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "foot2",
+      "joint": "foot2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          587,
+          0
+        ],
+        [
+          773,
+          0
+        ],
+        [
+          773,
+          1254
+        ],
+        [
+          587,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "foot3",
+      "joint": "foot3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Additive source-owner correction on the identical Snail master",
+    "limitations": [
+      "Independent source-coordinate Snail reference, a distinct canonical subject from the retained Banana Slug. No Slug landmarks or owners were transferred.",
+      "The targeted source successor has two upper ocular tentacles, two lower sensory tentacles and a separate small ventral oral opening at [913,734]. The lower tips remain plain painted sensory tips, not declared eyes.",
+      "The coarse gastropod template owns the two lower sensory tentacles with the head. It does not contain independent controls for them; all visible paint is retained.",
+      "The shell follows the existing rigid shell control. Four foot controls sample a continuous muscular foot, not four biological legs.",
+      "The edited eyes and mouth remain stylized and the shell has strong glossy highlights. Source visibility is not style or moving-paint acceptance.",
+      "No native run, reference-pool registration, family-wide admission or quality acceptance.",
+      "The original cast frame showed a detached root-owned 8px body square and two foot-remainder slivers beside the ocular stalks. The artificial root paint region is removed, so the existing foot2 owner receives the same continuous body pixels; root remains an unchanged rig landmark. The ocular polygons now cover their full observed stalk contours. No source pixel or landmark changes."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false,
+    "sourceLandmarksReused": true
+  }
+}

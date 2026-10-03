@@ -1,0 +1,191 @@
+{
+  "schema": "cf.c196-specialized-visual-review/v1",
+  "scope": "Only listed full-size software source-coordinate images inspected. No gallery/native/performance admission.",
+  "selected": [
+    {
+      "id": "01-prawn-contours",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01",
+      "status": "IMPROVED_DIAGNOSTIC_CANDIDATE",
+      "notes": "Traced free limb/antenna flecks removed; pink swimmeret fringe and fine source ends remain visual concerns. Parent full-size comparison concurs.",
+      "images": [
+        "master.png",
+        "motion-cast-50-left.png",
+        "motion-cast-50-right.png",
+        "motion-faint-50-right.png"
+      ],
+      "recipeHash": "d72e88d53aca2b1dcd02dc94a74fc0af2f5c45d611975f8ce3f51125b22edc07",
+      "bindingHash": "1e7428610a44b61cdcbdb5e1dcc9498239d4f6e7eb9debd041eff0b0866d7756",
+      "masterSha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/master.png",
+          "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+          "bytes": 1143772
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-cast-50-left.png",
+          "sha256": "87c131c3de2976a70fffd5927e29e7071819bdd97002b357ba0876305f7d08bf",
+          "bytes": 237091
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-cast-50-right.png",
+          "sha256": "be36bc403090a5dae6dbd69f931c05556ebf2e7c68b77a3468c6b4c9829ce602",
+          "bytes": 237523
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-faint-50-right.png",
+          "sha256": "f005ef5d8e6ad7aed90776da04a2059151cfde223692ac917b74613805db910f",
+          "bytes": 235305
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "04-shrimp-distal-only",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01",
+      "status": "HELD_VISUAL",
+      "notes": "Distal fragments removed; restored exact original proximal/body polygons. Existing underside rear leg-root separation remains clear. Parent concurs.",
+      "images": [
+        "master.png",
+        "motion-approach-swim-50-left.png",
+        "motion-approach-swim-50-right.png",
+        "motion-cast-50-right.png"
+      ],
+      "recipeHash": "671e4b3bc8d69048b8c957a76861ea2de305ed679d2000df8f1a7d4ad3dc7e93",
+      "bindingHash": "e93b96d87b2569d6217cd9f1265e0545e7ada0b87eac795a8b361d9dc80d386d",
+      "masterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/master.png",
+          "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+          "bytes": 1146184
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-approach-swim-50-left.png",
+          "sha256": "6ea710831f66455828d9f5f3ac95b656adc3f2ba56a84133e9a67f82e7c02e58",
+          "bytes": 228377
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-approach-swim-50-right.png",
+          "sha256": "4bbef34428763eadf16b5a1c6187ce03420efc3e9ccfedeb7a2d38d8e8754bd8",
+          "bytes": 228601
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-cast-50-right.png",
+          "sha256": "6b84a8052fd2cca37b5b399e4d776a510e8595b3398b914be1a1b62178c76f1e",
+          "bytes": 227802
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "03-mussel-islands",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit",
+      "status": "HELD_VISUAL",
+      "notes": "153px D28 placement removes small siphon fleck, broad shell/mantle/foot openings unchanged. Parent concurs. Not a qualified real-bivalve film.",
+      "images": [
+        "master.png",
+        "motion-d28-cast-50-left.png",
+        "motion-d28-cast-50-right.png"
+      ],
+      "recipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+      "bindingHash": "7fa4be5a6cb899d69c78c9e31ba889dcfee80efd3e4cb205b5aa9ca817a531dd",
+      "masterSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/master.png",
+          "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+          "bytes": 1408242
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-cast-50-left.png",
+          "sha256": "30a3c85c63038e0d82c64bb7d9e080a32f744babd70691acd7205c28f8e32c72",
+          "bytes": 599566
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-cast-50-right.png",
+          "sha256": "37f0df89f3185d18e893e46a343e32278e9a5d7f27ae36025b7f693f3b14d54a",
+          "bytes": 598476
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "05-leech-reference",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01",
+      "status": "MANUAL_REFERENCE_CANDIDATE",
+      "notes": "Continuous visible body and two suckers in reviewed cast/faint. Glossy finish, broad posterior sucker and lifted raw cast retain style/native grounding qualifications. Parent concurs.",
+      "images": [
+        "master.png",
+        "joint-preview-01.png",
+        "motion-cast-50-left.png",
+        "motion-cast-50-right.png",
+        "motion-faint-100-right.png"
+      ],
+      "recipeHash": "d93dca979532c2bfb8a0bc87a04a01abd24adf2ee3d4cf8885dd4ff4f1df1ec9",
+      "bindingHash": "618bb0e5325c6beda76d3a21dfbd6cf97701bc23f03ffe577ebf57e586650638",
+      "masterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+      "fullSizeInspected": [
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/master.png",
+          "sha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+          "bytes": 1144949
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/joint-preview-01.png",
+          "sha256": "af95adfb0d816c931275c2aee4b93fa2cafaa497c4b8199d0a763bab615faafa",
+          "bytes": 387771
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-cast-50-left.png",
+          "sha256": "759075e7defa15e689ccb08ae32516c23f80e9a024d8a880148c7206003c5417",
+          "bytes": 326933
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-cast-50-right.png",
+          "sha256": "8b9de0141b90ce71aedf4cb475fa7c837c958867677e6f4f29e7578bf3a68fcb",
+          "bytes": 324480
+        },
+        {
+          "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-faint-100-right.png",
+          "sha256": "c34934bb649695953c16f19dee13541c5a9fd393242c9de782348142062ac22b",
+          "bytes": 321622
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    }
+  ],
+  "rejected": [
+    {
+      "id": "02-shrimp-contours",
+      "status": "REJECTED_VISUAL_REGRESSION",
+      "reason": "Widened proximal regions increased existing body notch despite static green.",
+      "inspected": {
+        "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-approach-swim-50-left.png",
+        "sha256": "c34c0c831ef2cb5df51cfd8e5b033c2abb95bf783bd6a40ddc4d9d9ece707d56",
+        "bytes": 227234
+      }
+    }
+  ],
+  "unchangedSnail": {
+    "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit",
+    "status": "C243_DIAGNOSTIC_CANDIDATE_AWAITING_CLAUDE_SCORING",
+    "newGeneration": 0,
+    "newAuthoring": 0
+  },
+  "earthworm": {
+    "directFit": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01",
+    "status": "C195_ACCEPTED_DIRECT_FIT_UNCHANGED",
+    "transfer": {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/earthworm-transfer-result.json",
+      "sha256": "87038e660e3170e247dffbecf7608a929aefe7aab8d6f322f047265a7a4ae180",
+      "bytes": 11701
+    }
+  },
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

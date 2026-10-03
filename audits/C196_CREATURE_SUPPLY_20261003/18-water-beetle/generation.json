@@ -1,0 +1,14 @@
+{
+  "id": "18-water-beetle",
+  "name": "Water Beetle",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-ee1484d4-79e7-49aa-94bd-37bdca44df3d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "705a1278a5ad70f3fe73b2cfbecb52685db4e970fe1689c34920d21af4d1774d",
+  "bytes": 1306535,
+  "promptSha256": "09463e898062ddcc1eca01837622e3217691ac151698a00ac948dfd58b35e17a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

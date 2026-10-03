@@ -1,0 +1,14 @@
+{
+  "id": "11-mountain-tapir",
+  "name": "Mountain Tapir",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-47f7ce58-f01b-4730-8ba5-d54365501d9f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c9e5333ec8eeae2bf47171cc5222f2911cc9075db708f65412117175f4fe42fa",
+  "bytes": 1422730,
+  "promptSha256": "8da6369cf8c17321062fc3b0a6c3dc8c610501bf0eea9905ff0138cd054956c1",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

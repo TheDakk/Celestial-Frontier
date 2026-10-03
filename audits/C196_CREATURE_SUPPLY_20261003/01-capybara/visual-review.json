@@ -1,0 +1,28 @@
+{
+  "name": "Capybara",
+  "masterSha256": "9f3c91c9f0b2024680455092d8a844c042cd667344ecda4cfd3a5146f88958aa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original1254 square: barrel-bodied golden-brown Capybara, blunt muzzle, coarse coat and no external tail. Four real foot silhouettes are separately visible; leg roots partially merge into shaggy torso and contacts occupy slightly different heights. Near ear is complete; far ear remains a small partly hidden tip with no fully observable root, so the requested far-ear improvement is HELD. No anatomical or native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 228,
+      "y0": 304,
+      "x1": 1089,
+      "y1": 945
+    },
+    "margins": {
+      "left": 228,
+      "right": 164,
+      "top": 304,
+      "bottom": 308
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c192-source-edit/v1",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/C173_STANDING_BAT_REPAINT_20261002/master.png",
+    "sha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+    "snapshot": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat/prompt.txt",
+    "sha256": "aebffe16f54e58b8fce00d8270b7833916549881f12624a9141ec50da11c5ad9"
+  },
+  "exactSentPromptSha256": "c40f8371c8e8708bdc1cfa585fbf8facd4d5f2215700a8a907e32f3e6edbd93d",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceEditsOnly": true,
+  "nativeRuns": 0
+}

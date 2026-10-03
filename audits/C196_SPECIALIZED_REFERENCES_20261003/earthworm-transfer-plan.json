@@ -1,0 +1,412 @@
+{
+  "schema": "cf.c196-fixed-reference-plan/v1",
+  "target": "Earthworm",
+  "soleSameFamilyReference": "Leech C196",
+  "otherFamilyControls": "Current immutable G1 canonical corpus excluding every annelid and target species; no reference shopping or post-result fallback.",
+  "referenceRows": [
+    {
+      "id": "salmon",
+      "family": "fish",
+      "packet": "audits/ARCHETYPE_SPRINT_20260922/02-fish"
+    },
+    {
+      "id": "eagle",
+      "family": "biped-bird",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12"
+    },
+    {
+      "id": "beetle",
+      "family": "insect",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit"
+    },
+    {
+      "id": "python",
+      "family": "serpent",
+      "packet": "audits/PYTHON_OPEN_POSE_20260923/candidate-02"
+    },
+    {
+      "id": "tree-frog",
+      "family": "hopper",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05"
+    },
+    {
+      "id": "chimpanzee",
+      "family": "primate",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02"
+    },
+    {
+      "id": "starfish",
+      "family": "radial",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/08-radial"
+    },
+    {
+      "id": "tarantula",
+      "family": "arachnid",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08"
+    },
+    {
+      "id": "octopus",
+      "family": "cephalopod",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod"
+    },
+    {
+      "id": "fruit-bat",
+      "family": "flyer-membrane",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02"
+    },
+    {
+      "id": "centipede",
+      "family": "myriapod",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11"
+    },
+    {
+      "id": "sturgeon",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04"
+    },
+    {
+      "id": "wall-lizard",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02"
+    },
+    {
+      "id": "cougar",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03"
+    },
+    {
+      "id": "impala",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01"
+    },
+    {
+      "id": "marmot",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/07-marmot"
+    },
+    {
+      "id": "bass",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/08-bass"
+    },
+    {
+      "id": "cattle",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/09-cattle"
+    },
+    {
+      "id": "tang",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/10-tang"
+    },
+    {
+      "id": "wolf",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/11-wolf"
+    },
+    {
+      "id": "gull",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/12-gull"
+    },
+    {
+      "id": "river-otter",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter"
+    },
+    {
+      "id": "brown-bear",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/14-brown-bear"
+    },
+    {
+      "id": "goose",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/15-goose"
+    },
+    {
+      "id": "heron",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/16-heron"
+    },
+    {
+      "id": "sparrow",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01"
+    },
+    {
+      "id": "ibex",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/18-ibex"
+    },
+    {
+      "id": "reef-shark",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark"
+    },
+    {
+      "id": "pike",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/20-pike"
+    },
+    {
+      "id": "racer",
+      "family": "serpent",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/21-racer"
+    },
+    {
+      "id": "grouse",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/22-grouse"
+    },
+    {
+      "id": "sandpiper",
+      "family": "biped-bird",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/23-sandpiper"
+    },
+    {
+      "id": "herring",
+      "family": "fish",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/24-herring"
+    },
+    {
+      "id": "wild-horse",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/25-wild-horse"
+    },
+    {
+      "id": "salamander",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/26-salamander"
+    },
+    {
+      "id": "eel",
+      "family": "serpent",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/27-eel"
+    },
+    {
+      "id": "honeybee",
+      "family": "insect",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/28-honeybee"
+    },
+    {
+      "id": "rat",
+      "family": "quadruped",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/29-rat"
+    },
+    {
+      "id": "dragonfly",
+      "family": "insect",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03"
+    },
+    {
+      "id": "jellyfish",
+      "family": "radial",
+      "packet": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03"
+    }
+  ],
+  "settings": {
+    "topK": 3,
+    "minPartPaint": 0.08,
+    "unexplainedFrac": 0.06,
+    "counter": true,
+    "requireCount": true,
+    "refRank": 0,
+    "separation": false,
+    "grow": false,
+    "legMatch": 0
+  },
+  "inputs": [
+    {
+      "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/master.png",
+      "sha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121"
+    },
+    {
+      "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/subject-source.json",
+      "sha256": "5f716b02343653a3a95d12543aa1b0c602cf25fc7b7cd2d9905ddbf71918d4a6"
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/master.png",
+      "sha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061"
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/subject-source.json",
+      "sha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d"
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/authoring.json",
+      "sha256": "f38f240b5fb5e678037ff27a6643f1544bc2b84dc5c09d5c83c0c5f951c6c696"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/auto-author.mjs",
+      "sha256": "2f21f305181ed862649494364e0b1087665924c704c442d096c8ed3aa8af48fd"
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/corpus.json",
+      "sha256": "973470aae963fc8d63c342cc3904c34617f5bd83408c5f6e88f4e7109925e76e"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
+      "sha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/master.png",
+      "sha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/master.png",
+      "sha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/master.png",
+      "sha256": "4166f8f158b34c76d4c62d925ceef5224862bec1fbefe28afbc406321737f8d0"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02/master.png",
+      "sha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+      "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08/master.png",
+      "sha256": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png",
+      "sha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02/master.png",
+      "sha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/master.png",
+      "sha256": "cd1a2cd6aecb629019d576abe64b50f549f95a4efa2cb8c58744aa5b0a9601f2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/master.png",
+      "sha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/master.png",
+      "sha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/master.png",
+      "sha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/07-marmot/master.png",
+      "sha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/08-bass/master.png",
+      "sha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/09-cattle/master.png",
+      "sha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/10-tang/master.png",
+      "sha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/master.png",
+      "sha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/12-gull/master.png",
+      "sha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/master.png",
+      "sha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/master.png",
+      "sha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/15-goose/master.png",
+      "sha256": "0f3575a5fe537ced0a819a5bb181a1115914c3eef824bcad3440bf541e16cfd1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/16-heron/master.png",
+      "sha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/master.png",
+      "sha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/master.png",
+      "sha256": "97dde355ce484eaa944a58ecb67674fb08fa2d36299904d4e1b0d539b27c988a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/master.png",
+      "sha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/20-pike/master.png",
+      "sha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/master.png",
+      "sha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/22-grouse/master.png",
+      "sha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/master.png",
+      "sha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/24-herring/master.png",
+      "sha256": "3abc568beb996e694c78736854a216222dc5cfae47d39494a4f6ba7e84b5494f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/master.png",
+      "sha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/26-salamander/master.png",
+      "sha256": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/27-eel/master.png",
+      "sha256": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/28-honeybee/master.png",
+      "sha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/29-rat/master.png",
+      "sha256": "41f8ed50d1e195f7cbd2096ac228dc48df5f9da6b1a95537d67ab3427e3c4701"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+      "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/master.png",
+      "sha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee"
+    }
+  ],
+  "attemptsAuthorizedAndPerformed": 1,
+  "noNative": true,
+  "noPoolChanges": true
+}

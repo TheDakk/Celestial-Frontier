@@ -1,0 +1,41 @@
+{
+  "schema": "cf.c192-input-recheck/v1",
+  "inputs": [
+    {
+      "path": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel/master.png",
+      "sha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+      "bytes": 1393275
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/master.png",
+      "sha256": "2b3f9b74992ef4befb6c66fd9e902839faaac1d161b17d869751e92e8b091672",
+      "bytes": 1268607
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/master.png",
+      "sha256": "c2c1275202841abd425cc9114a7665c62997a5c8bae5dce9d91b1eca560a031f",
+      "bytes": 1294050
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/master.png",
+      "sha256": "9675e29fd6daaa32eb8592e22f0ce999c51951124f32c77084d0b2735a226d18",
+      "bytes": 1319389
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/master.png",
+      "sha256": "be35c16758d75f1ccc3410d816678d80b986f4c485c6f2af5ac53a1a2bb0aeaa",
+      "bytes": 1455758
+    },
+    {
+      "path": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset/master.png",
+      "sha256": "949df79df52b00a64ff06408b2e294eedf91adebb7ff8f12e76bd7dd285b5b98",
+      "bytes": 1252623
+    },
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/master.png",
+      "sha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+      "bytes": 1392777
+    }
+  ],
+  "unchanged": true
+}
