@@ -1,0 +1,84 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "b3335e613b92c655575aad1aabd9fcc6df53ac91",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/master.png",
+      "sha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/authoring.json",
+      "sha256": "4f1b8c570dbce1cf4f7af5f78885128346887af4488e45298cd303b2fc874fcf"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/subject-source.json",
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "fe84731e1fae117d71ab4b9c3f713b4f41102dbf49148fb3d37c5b29a8eb259e",
+  "bindingHash": "2f55a181dd5451d12f8ed7cbf00dd36ad29f961017868d505e97c2fbb5f31e6e",
+  "contactEndpoints": [
+    "legFarFoot",
+    "legNearFoot"
+  ],
+  "shapeJoints": [
+    "armNearHand",
+    "armFarHand",
+    "legNearFoot",
+    "legFarFoot",
+    "armNearElbow",
+    "armFarElbow",
+    "legNearKnee",
+    "legFarKnee",
+    "armNearShoulder",
+    "armFarShoulder",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/master.png",
+      "sha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/authoring.json",
+      "sha256": "4f1b8c570dbce1cf4f7af5f78885128346887af4488e45298cd303b2fc874fcf",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/subject-source.json",
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+      "unchanged": true
+    }
+  ]
+}

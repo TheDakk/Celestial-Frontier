@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c198-source-anatomy-hold/v1",
+  "id": "rhea",
+  "status": "SOURCE_ANATOMY_HOLD",
+  "source": "audits/C198_CREATURE_SUPPLY_C_20261003/10-rhea/master.png",
+  "sourceSha256": "aa82e8b95912f35b1b4307a860aa903fd23355deddcbb7a6b007731ef7e4ae4a",
+  "fullSizeInspected": true,
+  "findings": [
+    "Two distinct long legs and feet are visible. Both small feather fans are present.",
+    "The far wing appears behind the body/neck. Its proximal root cannot be independently located from the visible pixels; the fan attribution remains ambiguous near the torso.",
+    "This new painting improves separation but does not justify declaring a hidden far-wing root absent or inventing one. Prior wing/back-tear evidence remains a negative control; no old mask is rebound to these new pixels."
+  ],
+  "authoringAttempted": false,
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "native": false
+}

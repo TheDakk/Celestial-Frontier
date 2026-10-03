@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c198-full-size-review/v1",
+  "status": "STATIC_AND_VISUAL_HOLD",
+  "inspectedImages": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/master.png",
+      "sha256": "9f3c91c9f0b2024680455092d8a844c042cd667344ecda4cfd3a5146f88958aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/faint-0p9.png",
+      "sha256": "baba66725be350bb3a8f1c8bf607c54acf2777473a50362c8c85839c0320bef2"
+    }
+  ],
+  "findings": [
+    "The source and canonical mustRead have no visible external tail. Removing the four transferred rump-tail controls is anatomically justified.",
+    "The static tail action still refuses at247.86666666666667ms on the unchanged scale-compression bound; the original246.17777777777778ms failure is retained. No limit or action was skipped.",
+    "Full-size faint reveals major inherited head/neck openings, detached fur strips, and an angular stretched foreleg. The other transferred contours are not repaired or accepted.",
+    "Twenty coarse actual-rig samples pass but do not cover the precise static refusal time; they cannot override the RED."
+  ],
+  "scope": "Native 1254-square source images and full-size software raster of actual loaded-rig-verified publications. No native/GPU/full-stage acceptance. Red horizontal line is the source authoring guide, not a measured battle floor.",
+  "qualityAccepted": false,
+  "native": false
+}

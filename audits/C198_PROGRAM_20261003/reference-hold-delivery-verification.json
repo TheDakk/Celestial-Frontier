@@ -1,0 +1,16 @@
+[
+  {
+    "manifest": "audits/C198_REFERENCE_PACKETS_20261003/delivery.json",
+    "sha256": "d2402c1cb496b70a08ecd972ceb017dba3457faca14221f63496bc74465a82ca",
+    "verifiedFiles": 137,
+    "bytes": 39031914,
+    "mismatches": []
+  },
+  {
+    "manifest": "audits/C198_SOURCE_HOLDS_20261003/delivery.json",
+    "sha256": "318c708a7e2c0735b0637f7e4636a46b9d92a901b794e8f6f3e6d91aeda69523",
+    "verifiedFiles": 568,
+    "bytes": 113013161,
+    "mismatches": []
+  }
+]

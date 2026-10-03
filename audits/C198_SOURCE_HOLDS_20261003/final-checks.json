@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c198-packet-final-checks/v1",
+  "privateHomeTextMatches": 0,
+  "symlinks": 0,
+  "sourcePixelsDeleted": 0,
+  "sourcePixelsAdded": 0,
+  "qualityAccepted": false,
+  "native": false,
+  "localProcessing": "TERMINAL",
+  "availableDiskGiB": 128.94
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c198-independent-source-authoring/v1",
+  "source": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/06-tiger-shark-v4/master.png",
+  "sourceSha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+  "generatorProvenance": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/06-tiger-shark-v4",
+  "sourcePixelsChanged": 0,
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "observations": [
+    "Full source shows the long upper caudal lobe and concave subterminal notch, shorter lower lobe, two pectoral surfaces, dorsal fin and actual jaw.",
+    "The prior v4 source edit changed pixels beyond its tail; every coordinate/region here is newly observed on the v4 bytes, never rebound from the predecessor."
+  ],
+  "independentReferenceEligible": false,
+  "qualityAccepted": false,
+  "native": false
+}

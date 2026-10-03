@@ -1,0 +1,355 @@
+{
+  "schema": "cf.c198-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01",
+  "sourceConservationSha256": "38b4e73504892dbc34afd4d9e657d1df95b9cb02bcad057bba73ea5e5cfb7848",
+  "sourceMasterSha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+  "sourceBindingSha256": "347e402386cb7c4591cfad4a8ba3e2ee09854b1242824d9d00799e0b284f70dd",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 5713,
+  "remainderPixels": 47417,
+  "islands": [
+    {
+      "pixels": 34,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 27
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 5
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 2
+      }
+    },
+    {
+      "pixels": 344,
+      "to": "far-wing-tip",
+      "border": {
+        "9": 141
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "head",
+      "border": {
+        "13": 17
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "head",
+      "border": {
+        "13": 5
+      }
+    },
+    {
+      "pixels": 1738,
+      "to": "head",
+      "border": {
+        "10": 2,
+        "13": 140,
+        "14": 62,
+        "15": 47
+      }
+    },
+    {
+      "pixels": 246,
+      "to": "head",
+      "border": {
+        "12": 10,
+        "13": 72
+      }
+    },
+    {
+      "pixels": 1647,
+      "to": "near-wing-flight",
+      "border": {
+        "7": 72,
+        "8": 290
+      }
+    },
+    {
+      "pixels": 21,
+      "to": "far-wing-tip",
+      "border": {
+        "7": 5,
+        "9": 17
+      }
+    },
+    {
+      "pixels": 820,
+      "to": "near-wing-root",
+      "border": {
+        "7": 120,
+        "9": 74,
+        "10": 50
+      }
+    },
+    {
+      "pixels": 13,
+      "to": "beak",
+      "border": {
+        "12": 16
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-flight",
+      "border": {
+        "8": 2
+      }
+    },
+    {
+      "pixels": 127,
+      "to": "near-wing-flight",
+      "border": {
+        "8": 78
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-root",
+      "border": {
+        "10": 2,
+        "15": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-root",
+      "border": {
+        "7": 2,
+        "10": 2
+      }
+    },
+    {
+      "pixels": 82,
+      "to": "near-wing-flight",
+      "border": {
+        "8": 22
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "near-wing-flight",
+      "border": {
+        "8": 8
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-wing-flight",
+      "border": {
+        "8": 4
+      }
+    },
+    {
+      "pixels": 263,
+      "to": "tail",
+      "border": {
+        "11": 31,
+        "17": 31
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "pelvis",
+      "border": {
+        "17": 8
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "tail",
+      "border": {
+        "11": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-thigh",
+      "border": {
+        "6": 1
+      }
+    },
+    {
+      "pixels": 23,
+      "to": "far-shin",
+      "border": {
+        "4": 11,
+        "6": 5
+      }
+    },
+    {
+      "pixels": 131,
+      "to": "near-foot",
+      "border": {
+        "1": 38,
+        "3": 18
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "far-foot",
+      "border": {
+        "2": 8
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-foot",
+      "border": {
+        "2": 3
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "far-foot",
+      "border": {
+        "2": 6
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-foot",
+      "border": {
+        "2": 3
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "far-foot",
+      "border": {
+        "2": 4
+      }
+    },
+    {
+      "pixels": 44,
+      "to": "far-foot",
+      "border": {
+        "2": 28
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-foot",
+      "border": {
+        "1": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 68,
+      "to": "near-foot",
+      "border": {
+        "1": 29
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "far-foot",
+      "border": {
+        "2": 9
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-03-snow-petrel-open",
+    "parts": 18,
+    "atlasSize": {
+      "width": 2044,
+      "height": 481
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 34,
+        "distancePx": 15.811388300841845,
+        "supports": [
+          54,
+          55,
+          56
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 26,
+        "distancePx": 9.486832980505254,
+        "supports": [
+          2,
+          3
+        ]
+      }
+    ],
+    "sourceBindingHash": "693a8bcb763f160045cd05d484cc657469ee54ebdb25956f09a742b75fcc3a7d",
+    "sourceVertices": 1198,
+    "vertices": 1583,
+    "sharedSupports": 254,
+    "pins": 828,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 13,
+    "excludedOverlaps": 16,
+    "observedExcludedBoundaries": 16,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 16,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

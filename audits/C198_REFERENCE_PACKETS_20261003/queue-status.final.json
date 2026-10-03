@@ -1,0 +1,58 @@
+{
+  "schema": "cf.c198-reference-queue-terminal/v1",
+  "status": "TERMINAL_BOUNDED_DELIVERY",
+  "rows": [
+    {
+      "id": "01-gorilla",
+      "terminal": "STATIC_AND_VISUAL_HOLD",
+      "diagnosticFit": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01",
+      "selectedFit": null,
+      "static": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static-01.json",
+      "review": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/visual-review.final.json",
+      "conservation": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/conservation.json"
+    },
+    {
+      "id": "02-capuchin",
+      "terminal": "STATIC_AND_VISUAL_HOLD",
+      "diagnosticFit": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01",
+      "selectedFit": null,
+      "static": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/static-01.json",
+      "review": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/visual-review.final.json",
+      "conservation": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/conservation.json"
+    },
+    {
+      "id": "03-squid-source-hold",
+      "terminal": "SOURCE_ANATOMY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_REFERENCE_PACKETS_20261003/03-squid-source-hold/source-review.json"
+    },
+    {
+      "id": "04-cuttlefish-source-hold",
+      "terminal": "SOURCE_ANATOMY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_REFERENCE_PACKETS_20261003/04-cuttlefish-source-hold/source-review.json"
+    },
+    {
+      "id": "05-diving-beetle-source-hold",
+      "terminal": "SOURCE_ANATOMY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_REFERENCE_PACKETS_20261003/05-diving-beetle-source-hold/source-review.json"
+    },
+    {
+      "id": "06-grasshopper-partial",
+      "terminal": "SOURCE_ANATOMY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_REFERENCE_PACKETS_20261003/06-grasshopper-partial/partial-anatomy.json"
+    },
+    {
+      "id": "07-dobsonfly-partial",
+      "terminal": "SOURCE_ANATOMY_HOLD",
+      "selectedFit": null,
+      "review": "audits/C198_REFERENCE_PACKETS_20261003/07-dobsonfly-partial/partial-anatomy.json"
+    }
+  ],
+  "newReferenceAdmitted": false,
+  "newGlobalReferencePoolEntries": 0,
+  "qualityAccepted": false,
+  "native": false
+}

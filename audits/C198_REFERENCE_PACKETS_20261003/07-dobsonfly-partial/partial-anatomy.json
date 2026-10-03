@@ -1,0 +1,44 @@
+{
+  "schema": "cf.c198-partial-source-observations/v1",
+  "status": "SOURCE_ANATOMY_HOLD",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/24-dobsonfly/master.png",
+  "sourceSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+  "fullSizeInspected": true,
+  "observedDistalTipPointsPxApproximate": [
+    [
+      374,
+      793
+    ],
+    [
+      538,
+      699
+    ],
+    [
+      545,
+      839
+    ],
+    [
+      739,
+      851
+    ],
+    [
+      841,
+      815
+    ],
+    [
+      847,
+      753
+    ]
+  ],
+  "completeChainAssignment": false,
+  "findings": [
+    "Six substantial distal feet are visible, with differently projected heights.",
+    "A thin central downward projection near x656/y681 is unresolved; it must be distinguished from an extra limb or anatomical spur before a complete source inventory is claimed.",
+    "Some proximal paths overlap under the thorax. Tip counting alone is not a complete source reference."
+  ],
+  "requiredSuccessor": "A source painting with each of six leg paths and its actual thoracic emergence separately readable, no extra projection mistaken for a leg, and mandatory wing surfaces independently distinguishable.",
+  "maskAuthored": false,
+  "presenceDeclarationWritten": false,
+  "qualityAccepted": false,
+  "native": false
+}

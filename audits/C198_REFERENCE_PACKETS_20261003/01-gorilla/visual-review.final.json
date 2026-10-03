@@ -1,0 +1,22 @@
+{
+  "schema": "cf.c198-full-size-review/v1",
+  "status": "STATIC_AND_VISUAL_HOLD",
+  "inspectedImages": [
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/master.png",
+      "sha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/faint-0p9.png",
+      "sha256": "6b5739f87432448b0a60e0314bc6f2565773a568f9eb989f2437a8edbc11d951"
+    }
+  ],
+  "findings": [
+    "Four actual support endpoints are visible, but far proximal emergence and projected support levels remain limited.",
+    "The independent fit is static RED on walk compression, climb/dodge folds and a faint far-foot joint limit.",
+    "Full-size faint also shows detached rump/limb strips and awkward crossed rear-leg geometry. Preserve source/geometry failures; no D28 or coordinate tuning was applied to hide them."
+  ],
+  "scope": "Native 1254-square source images and full-size software raster of actual loaded-rig-verified publications. No native/GPU/full-stage acceptance. Red horizontal line is the source authoring guide, not a measured battle floor.",
+  "qualityAccepted": false,
+  "native": false
+}

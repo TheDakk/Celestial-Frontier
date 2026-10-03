@@ -1,0 +1,44 @@
+{
+  "schema": "cf.c198-partial-source-observations/v1",
+  "status": "SOURCE_ANATOMY_HOLD",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/23-grasshopper/master.png",
+  "sourceSha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+  "fullSizeInspected": true,
+  "observedDistalTipPointsPxApproximate": [
+    [
+      357,
+      827
+    ],
+    [
+      498,
+      776
+    ],
+    [
+      539,
+      873
+    ],
+    [
+      655,
+      781
+    ],
+    [
+      800,
+      901
+    ],
+    [
+      981,
+      840
+    ]
+  ],
+  "completeChainAssignment": false,
+  "findings": [
+    "Six distal tips are distinguishable in the full-size painting.",
+    "The large hind femora cross other thoracic appendages. Far proximal roots and parts of the far hind chain remain obscured; a complete six-chain assignment is not established.",
+    "Two independently bounded folded wing surfaces are not sufficiently separable. A compliant family fit cannot replace the uncertain surface with invented paint or biological absence."
+  ],
+  "requiredSuccessor": "A source painting with each of six leg paths and its actual thoracic emergence separately readable, no extra projection mistaken for a leg, and mandatory wing surfaces independently distinguishable.",
+  "maskAuthored": false,
+  "presenceDeclarationWritten": false,
+  "qualityAccepted": false,
+  "native": false
+}

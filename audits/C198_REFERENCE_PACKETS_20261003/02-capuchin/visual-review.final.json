@@ -1,0 +1,22 @@
+{
+  "schema": "cf.c198-full-size-review/v1",
+  "status": "STATIC_AND_VISUAL_HOLD",
+  "inspectedImages": [
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/master.png",
+      "sha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/faint-0p9.png",
+      "sha256": "61f5f11aebd09188468a0e74d7ae439939591a6e12438be6daf9dd2bf0459818"
+    }
+  ],
+  "findings": [
+    "Four actual support endpoints and an open tail curl are visible; hidden proximal depths are not claimed.",
+    "The independent fit is static RED at walk73.7ms and presentation walk95.51829788585474ms on the unchanged scale-compression bound.",
+    "Full-size faint shows detached tail/foot/leg strips and a far-hind opening. Twenty coarse actual-rig samples pass, but the denser static RED remains authoritative."
+  ],
+  "scope": "Native 1254-square source images and full-size software raster of actual loaded-rig-verified publications. No native/GPU/full-stage acceptance. Red horizontal line is the source authoring guide, not a measured battle floor.",
+  "qualityAccepted": false,
+  "native": false
+}

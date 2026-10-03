@@ -1,0 +1,469 @@
+{
+  "schema": "cf.c198-independent-source-conservation/v1",
+  "packet": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla",
+  "masterSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+  "authoringSha256": "4f1b8c570dbce1cf4f7af5f78885128346887af4488e45298cd303b2fc874fcf",
+  "bindingSha256": "70d70655e848f6f219902259dac9218aafd1b79bc410a76a51a23703dc00b0c4",
+  "keyedRgbaSha256": "321415857ae6273e26cbdc58378caa2fe6c19703bb1b8637153d6cc95f469807",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 20028,
+    "remainderPixels": 45377,
+    "islands": [
+      {
+        "pixels": 7,
+        "to": "head",
+        "border": {
+          "12": 7
+        }
+      },
+      {
+        "pixels": 69,
+        "to": "head",
+        "border": {
+          "12": 48
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "head",
+        "border": {
+          "12": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "head",
+        "border": {
+          "12": 3
+        }
+      },
+      {
+        "pixels": 4621,
+        "to": "neck",
+        "border": {
+          "9": 111,
+          "12": 77,
+          "13": 165
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "head",
+        "border": {
+          "12": 5
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "head",
+        "border": {
+          "12": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "head",
+        "border": {
+          "12": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "head",
+        "border": {
+          "12": 4
+        }
+      },
+      {
+        "pixels": 198,
+        "to": "head",
+        "border": {
+          "11": 23,
+          "12": 26
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "jaw",
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "jaw",
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 1091,
+        "to": "armFarShoulder",
+        "border": {
+          "10": 97,
+          "11": 56
+        }
+      },
+      {
+        "pixels": 68,
+        "to": "jaw",
+        "border": {
+          "10": 16,
+          "11": 27,
+          "13": 11
+        }
+      },
+      {
+        "pixels": 2029,
+        "to": "legNearKnee",
+        "border": {
+          "7": 66,
+          "15": 65
+        }
+      },
+      {
+        "pixels": 249,
+        "to": "armFarShoulder",
+        "border": {
+          "10": 41,
+          "13": 38,
+          "14": 25
+        }
+      },
+      {
+        "pixels": 7757,
+        "to": "armFarElbow",
+        "border": {
+          "6": 233,
+          "10": 112,
+          "14": 44
+        }
+      },
+      {
+        "pixels": 21,
+        "to": "legNearKnee",
+        "border": {
+          "7": 9
+        }
+      },
+      {
+        "pixels": 344,
+        "to": "legNearKnee",
+        "border": {
+          "7": 66
+        }
+      },
+      {
+        "pixels": 2100,
+        "to": "armNearElbow",
+        "border": {
+          "5": 101,
+          "9": 73,
+          "14": 63
+        }
+      },
+      {
+        "pixels": 72,
+        "to": "armFarShoulder",
+        "border": {
+          "6": 9,
+          "10": 13
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "armFarElbow",
+        "border": {
+          "6": 4
+        }
+      },
+      {
+        "pixels": 37,
+        "to": "legNearKnee",
+        "border": {
+          "7": 17
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "armFarElbow",
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "armFarElbow",
+        "border": {
+          "6": 3
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "armNearElbow",
+        "border": {
+          "5": 7
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "legNearKnee",
+        "border": {
+          "7": 2
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "armNearElbow",
+        "border": {
+          "5": 4
+        }
+      },
+      {
+        "pixels": 66,
+        "to": "legNearKnee",
+        "border": {
+          "7": 43
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "armFarElbow",
+        "border": {
+          "6": 6
+        }
+      },
+      {
+        "pixels": 72,
+        "to": "armFarElbow",
+        "border": {
+          "6": 28
+        }
+      },
+      {
+        "pixels": 769,
+        "to": "armNearElbow",
+        "border": {
+          "5": 95,
+          "8": 85
+        }
+      },
+      {
+        "pixels": 42,
+        "to": "legNearKnee",
+        "border": {
+          "7": 33
+        }
+      },
+      {
+        "pixels": 156,
+        "to": "armFarElbow",
+        "border": {
+          "6": 48
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "legNearKnee",
+        "border": {
+          "7": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "legNearKnee",
+        "border": {
+          "7": 2
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "armFarElbow",
+        "border": {
+          "6": 8
+        }
+      },
+      {
+        "pixels": 27,
+        "to": "armNearElbow",
+        "border": {
+          "5": 10
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "armFarElbow",
+        "border": {
+          "6": 3
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "armFarElbow",
+        "border": {
+          "6": 9
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "armNearElbow",
+        "border": {
+          "5": 1
+        }
+      },
+      {
+        "pixels": 73,
+        "to": "legFarFoot",
+        "border": {
+          "4": 39,
+          "8": 8
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "armNearElbow",
+        "border": {
+          "1": 3,
+          "5": 4
+        }
+      },
+      {
+        "pixels": 64,
+        "to": "armNearHand",
+        "border": {
+          "1": 18,
+          "5": 15
+        }
+      },
+      {
+        "pixels": 10,
+        "to": "armFarElbow",
+        "border": {
+          "6": 8
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "armFarHand",
+        "border": {
+          "2": 2,
+          "6": 2
+        }
+      },
+      {
+        "pixels": 15,
+        "to": "armFarHand",
+        "border": {
+          "2": 16
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateRemainderComponents": [
+    {
+      "pixels": 25349,
+      "minX": 314,
+      "minY": 440,
+      "maxX": 613,
+      "maxY": 928
+    },
+    {
+      "pixels": 7757,
+      "minX": 804,
+      "minY": 594,
+      "maxX": 890,
+      "maxY": 857
+    },
+    {
+      "pixels": 4621,
+      "minX": 600,
+      "minY": 242,
+      "maxX": 760,
+      "maxY": 395
+    },
+    {
+      "pixels": 2100,
+      "minX": 718,
+      "minY": 618,
+      "maxX": 769,
+      "maxY": 737
+    },
+    {
+      "pixels": 2029,
+      "minX": 322,
+      "minY": 490,
+      "maxX": 378,
+      "maxY": 563
+    },
+    {
+      "pixels": 1091,
+      "minX": 887,
+      "minY": 478,
+      "maxX": 926,
+      "maxY": 559
+    },
+    {
+      "pixels": 769,
+      "minX": 606,
+      "minY": 774,
+      "maxX": 632,
+      "maxY": 851
+    },
+    {
+      "pixels": 344,
+      "minX": 305,
+      "minY": 609,
+      "maxX": 312,
+      "maxY": 673
+    },
+    {
+      "pixels": 249,
+      "minX": 825,
+      "minY": 494,
+      "maxX": 842,
+      "maxY": 527
+    },
+    {
+      "pixels": 198,
+      "minX": 904,
+      "minY": 424,
+      "maxX": 919,
+      "maxY": 449
+    },
+    {
+      "pixels": 156,
+      "minX": 982,
+      "minY": 810,
+      "maxX": 993,
+      "maxY": 846
+    },
+    {
+      "pixels": 73,
+      "minX": 598,
+      "minY": 913,
+      "maxX": 626,
+      "maxY": 925
+    }
+  ],
+  "unchangedD28Cap": 0.5,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent normalized-polygon ownership replay",
+    "no source alpha addition/deletion",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "ownership mutation rejected",
+    "legacy structural-island negative control refused with explicit 0.05; authorized default remains 0.5"
+  ],
+  "sourceControlFrameLimit": "Root, pelvis, spine and chest are source-local control frames inside visible tissue, not observed skeletal bones.",
+  "qualityAccepted": false,
+  "native": false
+}

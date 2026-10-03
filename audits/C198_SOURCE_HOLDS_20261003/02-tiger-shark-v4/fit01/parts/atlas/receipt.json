@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c198-tiger-shark-v4-source",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "edb71543c7e1ca8ed67e27fc0f37662a1bf9c9afaf0513c6b39337587e1eae84",
+    "pngSha256": "2889877925b2e8e1fb841e7a9435b416c7290d1c0c9edc01840652e4e15d1848"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "7dd031eabaa36d1acfb2141d607e619a78378bf713af0010c748025b52eabca4"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "c39c22f9c4bfa67bbf0c6147521996239dbaba13b317f63dd5b3b0ad7d2be61d"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "4dead126d86859a4672bfecc3cd9a65eb846e2d84ffbf5df3b84b91704c7d14b"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "106af05ec3d1b76d008306aaddc4bb87784beaff86b8f2142050acc1ca563525"
+    },
+    {
+      "name": "head.png",
+      "sha256": "79117532502cb478057a50cf0df30f05fadc2e6f253893a5151ec39a8cd98b3e"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "0623457fd31430375a8f877679b35dfb3add1e95fa0e76c8c4ca80a1bc2b102f"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "572ff8a80c0b69a4f90ae91c67d44f0e5f3a78bbfb64ff89dbec54bf00c59446"
+    },
+    {
+      "name": "spine0.png",
+      "sha256": "3bf56d80947d60ad4a4c231dbdea94e5fbc6a92110bceddf6fc4c32e1989a601"
+    },
+    {
+      "name": "spine1.png",
+      "sha256": "0e396b317ffd7767bd08367204a08cd457e5dd9f9776765f15be5c43f206e461"
+    },
+    {
+      "name": "spine2.png",
+      "sha256": "3b9aa746047c8381c1d73e7f8cf4dbfce9ad14e6eed52b8c652592345937bc08"
+    },
+    {
+      "name": "spine3.png",
+      "sha256": "593d1c86c2bf26405f2bd03c655cd24697bd9421c4d4cfeebef2d46f94063363"
+    },
+    {
+      "name": "spine4.png",
+      "sha256": "acd87f84f879ae8f815f6b6b606828b3e2697d7886737f586c284f8ce8b47843"
+    },
+    {
+      "name": "spine5.png",
+      "sha256": "3794630ce221e461546e07c6b0a423bbdf847335b4e51b7faf86e969bd9448af"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

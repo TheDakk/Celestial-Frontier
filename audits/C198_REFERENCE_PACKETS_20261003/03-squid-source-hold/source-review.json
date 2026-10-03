@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c198-reference-source-hold/v1",
+  "id": "03-squid-source-hold",
+  "status": "SOURCE_ANATOMY_HOLD",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/03-squid/master.png",
+  "sourceSha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+  "boundSourcePacket": {
+    "request.json": "3aaf9bc5571e12ef39d2ef876e80ead62378e5470c0d1c8fef1a6dbf5cc5db9d",
+    "master.png": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+    "prompt.txt": "278a3f9e21ef2204fc83e89353829a1068aaf3e7d9bb63cf8588a659e6f1e4fd",
+    "subject-source.json": "8c7ee09cdb8a3928daa47b934b6ba6cf6e67744911cb54a8de97a86a90d60922",
+    "generation.json": "8487cee581bd32e12d61acb64407c87ef4993f815fa7de4af0ab794c28f02e4d"
+  },
+  "fullSizeInspected": true,
+  "findings": [
+    "The near eye, visible siphon, two fin lobes and two longer tentacles ending in clubs are visible.",
+    "The far eye is only a narrow visible sliver; no full far-eye polygon or landmark set can be recovered from it.",
+    "Short arms crowd at the head. Eight independent root-to-tip short-arm paths cannot be traced. The painting cannot support the required source-bound repeated-arm inventory without guessing."
+  ],
+  "authoringAttempted": false,
+  "reason": "Mandatory source-visible anatomy is unresolved; no hidden or absent declaration is substituted.",
+  "pixelsChanged": 0,
+  "presenceInvented": false,
+  "qualityAccepted": false,
+  "native": false
+}

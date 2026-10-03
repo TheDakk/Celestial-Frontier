@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c198-independent-reference/v1",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/02-capuchin/master.png",
+  "sourceSha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+  "authoringMethod": "Independent full-size source observation; no other authoring files loaded.",
+  "mandatoryContacts": 4,
+  "holds": [
+    "Separate hands and feet are visible; the far hip/shoulder controls mark painted emergence rather than unseen anatomical roots.",
+    "The tail is an open curl, with three coarse observed control frames; no claim of an anatomically segmented tail.",
+    "Different projected support levels and dense fur overlaps remain source limitations to be checked, not flattened in authoring."
+  ],
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "native": false
+}

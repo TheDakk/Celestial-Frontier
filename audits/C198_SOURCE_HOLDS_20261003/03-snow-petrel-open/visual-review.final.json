@@ -1,0 +1,41 @@
+{
+  "schema": "cf.c198-full-size-review/v1",
+  "status": "VISUAL_REJECT",
+  "inspectedImages": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/master.png",
+      "sha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/faint-0p9.png",
+      "sha256": "f70f1fe4906b68c2512030a845eb7cdd642a689c7a290b9155465cf08e7d88b9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/faint-0p9.png",
+      "sha256": "6015efac2f03b1914d6564ccea9c756ecaf9567683ed7a3b22d78a2c28695d63"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/faint-0p9.png",
+      "sha256": "73bed5e153f37f3b0cfc09203cc29b5c866e1d64cc1ec94b749ed06410262f7b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/approach-walk-0p2.png",
+      "sha256": "896ba1f1bd4bc1a3fba801d2c4d02c5955d254d77dc46c10d5881b8fe10b5cb7"
+    }
+  ],
+  "findings": [
+    "D28 reassigns ownership of 5713 disconnected remainder pixels with exact keyed RGBA conservation. Detached arcs above the wing/head and stray foot fragments disappear.",
+    "The D28-only fit retains a large torso/neck opening at faint0.9.",
+    "The one source-join successor closes the opening but badly crushes/flattens the head and eye and leaves the bill hanging at faint0.9. It is VISUALLY REJECTED despite unchanged static PASS and byte-exact actual-rig parity.",
+    "Walk0.2 looks substantially more continuous, demonstrating why the failed faint pose must remain in the review; it does not override the reject. No further iteration was run."
+  ],
+  "scope": "Native 1254-square source images and full-size software raster of actual loaded-rig-verified publications. No native/GPU/full-stage acceptance. Red horizontal line is the source authoring guide, not a measured battle floor.",
+  "qualityAccepted": false,
+  "native": false,
+  "parentIndependentSubsetConcurrence": {
+    "images": [
+      "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/faint-0p9.png"
+    ],
+    "finding": "Parent independently concurred: flattened/crushed head-eye and hanging bill; not an acceptable join repair."
+  }
+}
