@@ -1,7 +1,7 @@
 {
-  "schema": "cf-v2-compendium-active-certificate/v1",
-  "epochDirectory": "audits/C198_I5_EPOCH_20261003/epoch",
-  "files": {
+  "target": "../../../../port/v2",
+  "sameResolvedDestination": true,
+  "boundFilesUnchanged": {
     "calibration-budget.json": "d3ab899a0962254c1eb63904e73a192f26e9a2a01f3db01a9bcc178cc5e21db8",
     "compendium-memory-v2.json": "3e6d22d37a397a731ebc360f086c4a3b6fcbd7909221839c6308ab142da0e578",
     "execution.json": "cfb0dfbaa703b34909418a2efb6487e502f82bb958df3bab179c3f0ef0822938",

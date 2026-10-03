@@ -1,0 +1,187 @@
+{
+  "schema": "cf-v2-compendium-memory-budget/v2",
+  "status": "calibration-required",
+  "fixture": {
+    "schema": "cf-v2-compendium-fixture/v1",
+    "generator": "compendium-realistic-genomes/v1",
+    "count": 1500,
+    "rowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706"
+  },
+  "requirements": {
+    "fixtureCount": 1500,
+    "listNaturalDimensionMax": 132,
+    "commandTimeoutMs": 2000,
+    "warmCycles": 4
+  },
+  "browserAuthority": {
+    "schema": "cf-v2-compendium-browser-authority/v2",
+    "scope": "arc1a-compendium-memory-only",
+    "family": "microsoft-edge",
+    "protocolVersion": "1.3",
+    "capabilityContract": "cf-v2-compendium-cdp-capabilities/v1",
+    "capabilityContractSha256": "35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341"
+  },
+  "measurementAuthority": {
+    "schema": "cf-v2-compendium-measurement-authority/v1",
+    "sha256": "e45de44a283f6a1abc2957af1130405eadcf5595c6304a72dd25051c673b004a",
+    "inputs": {
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
+      "outcomeContract": "1ff537505dc674d776432d93deba2b78a085ed629434eea4a0b25074c8ef7871",
+      "collector": "fa0a4c8eeaa5d5cf9d2c754a0d10c7607357b0a45ae4a91eb631fa428415b850",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+      "package": "c55abed7f6669694d53e2e756e6f743ecf9a88228eb8a1702d19e9ebc732efc0",
+      "packageLock": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+      "appPackage": "282354469f5a4b5bfac27bd33b0d6d1605ff15c3309c09f0b3d25a794cbb1513",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+      "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+    }
+  },
+  "producerAuthority": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "627040f062ce1d163f024e3310b69898cdc46afa2cb3aa96a5286f881cedf18d",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "8dbe0707dda89eb5ce716446d427e1b5bedc3af2ba94bb9e2b7a91795f2df626"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio--qTbtBI4.js",
+        "sha256": "ca8ab3187ecd11c7571ed2b4a12ede1eac5202fd9a3832ca24fe3ebf75cfdd84"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+        "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+        "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "0419aeaddd409a1d04cad68b2ff775330c0ff71f052b379c8a1c0d8b7d570ed6"
+      }
+    }
+  },
+  "source": {
+    "commit": "869ce0e44a9aac23d614571a90c33fa23a3880b6",
+    "branch": "detached",
+    "state": "committed",
+    "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+  },
+  "instrument": {
+    "commit": "46ca80696bd5ecd284314de24c8e04af30f3cb4a",
+    "sha256": "add703921ab3e08817b5e05ddfe62a678889f2f7f4db123864b80efe21248c27"
+  },
+  "epoch": "i5-v2-869ce0e44a9a",
+  "growthGuard": {
+    "v1Sha256": "340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9",
+    "allowance": {
+      "phone": {
+        "mountedRowsMax": 0,
+        "heapUsedBytesMax": 0,
+        "documentsMax": 0,
+        "nodesMax": 0,
+        "embedderHeapUsedBytesMax": 0,
+        "backingStorageBytesMax": 0,
+        "heapAggregateBytesMax": 0,
+        "jsEventListenersMax": 0,
+        "liveCacheEntriesMax": 0,
+        "liveDecodedPixelsMax": 0,
+        "liveDecodedBytesMax": 0,
+        "liveEncodedBytesMax": 0,
+        "queuedJobsPeakMax": 0,
+        "activeJobsPeakMax": 0,
+        "liveLeasesMax": 0,
+        "liveSubscribersMax": 0,
+        "livePortraitCacheEntriesMax": 0,
+        "livePortraitEncodedBytesMax": 0,
+        "warmHeapAggregateRangeBytesMax": 0,
+        "warmEncodedBytesRangeMax": 0
+      },
+      "desktop": {
+        "mountedRowsMax": 0,
+        "heapUsedBytesMax": 0,
+        "documentsMax": 0,
+        "nodesMax": 0,
+        "embedderHeapUsedBytesMax": 0,
+        "backingStorageBytesMax": 0,
+        "heapAggregateBytesMax": 0,
+        "jsEventListenersMax": 0,
+        "liveCacheEntriesMax": 0,
+        "liveDecodedPixelsMax": 0,
+        "liveDecodedBytesMax": 0,
+        "liveEncodedBytesMax": 0,
+        "queuedJobsPeakMax": 0,
+        "activeJobsPeakMax": 0,
+        "liveLeasesMax": 0,
+        "liveSubscribersMax": 0,
+        "livePortraitCacheEntriesMax": 0,
+        "livePortraitEncodedBytesMax": 0,
+        "warmHeapAggregateRangeBytesMax": 0,
+        "warmEncodedBytesRangeMax": 0
+      }
+    }
+  },
+  "calibration": {
+    "requiredIndependentRunsPerProfile": 3,
+    "samples": {
+      "phone": [],
+      "desktop": []
+    }
+  },
+  "ceilings": {
+    "phone": {
+      "rationale": "Retain the v1 ceilings exactly. All calibration samples must fit with strict headroom; a breach is a regression, never a new limit.",
+      "mountedRowsMax": 16,
+      "heapUsedBytesMax": 11534336,
+      "documentsMax": 2.5,
+      "nodesMax": 960,
+      "embedderHeapUsedBytesMax": 4194304,
+      "backingStorageBytesMax": 5242880,
+      "heapAggregateBytesMax": 17825792,
+      "jsEventListenersMax": 96,
+      "liveCacheEntriesMax": 96.5,
+      "liveDecodedPixelsMax": 1672705,
+      "liveDecodedBytesMax": 6690817,
+      "liveEncodedBytesMax": 3407872,
+      "queuedJobsPeakMax": 24,
+      "activeJobsPeakMax": 1.5,
+      "liveLeasesMax": 24,
+      "liveSubscribersMax": 0.5,
+      "livePortraitCacheEntriesMax": 1.5,
+      "livePortraitEncodedBytesMax": 393216,
+      "warmHeapAggregateRangeBytesMax": 524288,
+      "warmEncodedBytesRangeMax": 0.5
+    },
+    "desktop": {
+      "rationale": "Retain the v1 ceilings exactly. All calibration samples must fit with strict headroom; a breach is a regression, never a new limit.",
+      "mountedRowsMax": 16,
+      "heapUsedBytesMax": 15728640,
+      "documentsMax": 2.5,
+      "nodesMax": 960,
+      "embedderHeapUsedBytesMax": 4194304,
+      "backingStorageBytesMax": 6815744,
+      "heapAggregateBytesMax": 23068672,
+      "jsEventListenersMax": 96,
+      "liveCacheEntriesMax": 256.5,
+      "liveDecodedPixelsMax": 4460545,
+      "liveDecodedBytesMax": 17842177,
+      "liveEncodedBytesMax": 8912896,
+      "queuedJobsPeakMax": 24,
+      "activeJobsPeakMax": 1.5,
+      "liveLeasesMax": 24,
+      "liveSubscribersMax": 0.5,
+      "livePortraitCacheEntriesMax": 1.5,
+      "livePortraitEncodedBytesMax": 393216,
+      "warmHeapAggregateRangeBytesMax": 524288,
+      "warmEncodedBytesRangeMax": 0.5
+    }
+  }
+}
