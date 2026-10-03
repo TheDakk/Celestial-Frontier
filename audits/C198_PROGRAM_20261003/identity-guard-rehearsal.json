@@ -1,0 +1,8 @@
+{
+  "scope": "Read-only local invocation of unchanged pre-push identity guard; no network or push",
+  "head": "a37968246b55c8bf03c3d1aca5d1a8d3e2f345f0",
+  "remoteTrackingBase": "59b1df9876a9476b1b49ecedb20af63d7e86c1ae",
+  "exitCode": 0,
+  "seconds": 11.81,
+  "output": ""
+}
