@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scope": "Exact native-entry attackFor closure against real source cards; no browser or native performance claim",
+  "rows": [
+    {
+      "id": "01-earthworm-direct",
+      "label": "cast body pulse (D31 cast: annelid has no admitted melee; launch at an annelid declares no mouth landmark: the painted body centre)",
+      "restoredOldLabelRejected": true,
+      "explicitDeclarationRefusalPreserved": true
+    },
+    {
+      "id": "02-sponge-direct",
+      "label": "cast body pulse (D31 cast: sessile-filter has no admitted melee; launch at the declared exhalant aperture (osculum); anchored: casts from its stand, no run-up)",
+      "restoredOldLabelRejected": true,
+      "explicitDeclarationRefusalPreserved": true
+    },
+    {
+      "id": "04-banana-slug-visible-mouth",
+      "label": "cast body pulse (D31 cast: gastropod has no admitted melee; launch at the declared mouth)",
+      "restoredOldLabelRejected": true,
+      "explicitDeclarationRefusalPreserved": true
+    }
+  ],
+  "fingerprintScope": "Independent comparison of retained Claude before/anchored files",
+  "fingerprintChanged": [
+    "synthetic:bivalve/cast",
+    "synthetic:gastropod/cast",
+    "synthetic:annelid/cast",
+    "synthetic:sessile-filter/cast",
+    "d31:01-earthworm-direct/cast",
+    "d31:02-sponge-direct/cast",
+    "d31:04-banana-slug-visible-mouth/cast"
+  ]
+}

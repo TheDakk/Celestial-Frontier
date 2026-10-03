@@ -80,6 +80,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const named = placed.islands.map((s) => ({ ...s, to: s.to === null ? null : parts[s.to - 1].id, border: Object.fromEntries(Object.entries(s.border).map(([k, v]) => [parts[k - 1].id, v])) }));
   fs.writeFileSync(path.join(out, 'receipt.json'), JSON.stringify({ schema: 'cf.g1-remainder-islands/v1', sourceFit: path.relative(root, src), sourceMasterSha256: sha(master), keyedRgbaSha256, remainder: remainderId,
     remainderPixels: placed.remainderPixels, movedPixels: placed.moved, islands: named, ownershipMismatch: 0, conservationErrors: 0, sourceRgbaChanges: 0, placementOnly: true, verdictChanged: false,
-    rule: 'each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses', intake, split: split.receipt }, null, 2) + '\n');
+    rule: `each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > ${MAX_SHARE * 100}% refuses`, intake, split: split.receipt }, null, 2) + '\n');
   console.log(id, JSON.stringify({ moved: placed.moved, islands: named.map((s) => `${s.pixels}->${s.to}`) }));
 }
