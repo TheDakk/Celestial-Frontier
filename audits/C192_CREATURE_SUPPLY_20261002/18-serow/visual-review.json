@@ -1,0 +1,28 @@
+{
+  "name": "Serow",
+  "masterSha256": "91d5b1533a4d4de053f6f81730dcc4b41522382a6b16d780f66983427a87ecab",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: coarse shaggy coat and throat hair, two short backward horns, four separated hoof endpoints and a short attached tail. Only one complete ear silhouette is clear; far ear is obscured. Coat hangs over proximal limb roots and may still need manual ownership. Natural short tail was preserved rather than lengthened; identity/proportion and moving-paint review remain pending.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 269,
+      "y0": 237,
+      "x1": 1025,
+      "y1": 984
+    },
+    "margins": {
+      "left": 269,
+      "right": 228,
+      "top": 237,
+      "bottom": 269
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "08-badger",
+  "name": "Badger",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-b666a09e-cc5a-4974-b0c5-00725b0c4a63.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a2b7a71905d5cc7f6dfd73ac4f285d466a44e3e47f4f030b46d48daea43b1a4a",
+  "bytes": 1431039,
+  "promptSha256": "0b9111b1b48f49bec5bec1985f26660aef1caa4823b639c01e69dad24a82ecfb",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

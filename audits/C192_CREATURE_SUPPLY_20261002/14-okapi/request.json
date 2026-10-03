@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Okapi",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "9e1a26b6dc99070534385807f2520c2a05a45d194900692c2fe2367c99dd3eae",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-unhorned",
+  "authoringCreated": false,
+  "sourceHead": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "basePromptSha256": "bb92615b6b884c1f4053510a38b2aac2900753fb2d8eb98952c90bf8e79f56c6",
+  "batchCompilerSha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Earlier source far ear was hidden. Reveal both real large ears in a shallow natural head turn with uninterrupted bases, keep four real legs, striped rump/legs and actual short tufted tail visibly separate. No giraffe neck or invented horns.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C76_20260927/pilot.json",
+        "id": "24-okapi",
+        "master": "audits/G2_C76_20260927/24-okapi/master.png",
+        "packet": "audits/G2_C76_20260927/24-okapi"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C76_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Earlier source far ear was hidden. Reveal both real large ears in a shallow natural head turn with uninterrupted bases, keep four real legs, striped rump/legs and actual short tufted tail visibly separate. No giraffe neck or invented horns.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

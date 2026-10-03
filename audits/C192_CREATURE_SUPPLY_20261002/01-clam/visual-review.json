@@ -1,0 +1,28 @@
+{
+  "name": "Clam",
+  "masterSha256": "be35c16758d75f1ccc3410d816678d80b986f4c485c6f2af5ac53a1a2bb0aeaa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: two connected gape-separated shell valves with concentric growth rings, broad visible mantle edge, a pale ventral muscular-foot-shaped projection and two separate hollow posterior siphon openings. No head or invented eyes. The true dorsal hinge/ligament is partly obscured by the upper valve in this oblique view; an exact observable hinge coordinate is for independent review, not inferred from shell tips. Foot proportions and soft-tissue continuity require biological review. Source is not authoring or D31 admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 236,
+      "y0": 336,
+      "x1": 1040,
+      "y1": 898
+    },
+    "margins": {
+      "left": 236,
+      "right": 213,
+      "top": 336,
+      "bottom": 355
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

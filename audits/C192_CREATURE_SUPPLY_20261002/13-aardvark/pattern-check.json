@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Aardvark",
+  "masterSha256": "c1ce128614ecea72959cbc9afd3b5397d8d2c93973354ccc945432aaa63a30a3",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

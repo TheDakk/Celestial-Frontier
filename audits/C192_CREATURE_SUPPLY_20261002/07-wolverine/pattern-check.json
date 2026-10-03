@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wolverine",
+  "masterSha256": "128e59eff1ef8e0c064aacdf659412c939cdb7d2d327ecd4d2b3af4ce8ca5f73",
+  "required": [
+    "pale stripe sweeping along each flank to the tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale stripe sweeping along each flank to the tail",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: four separate clawed paw endpoints, heavy shaggy body, short visibly continuous bushy tail and pale sweeping stripe along the visible flank. Far ear is still a small crown tip; fur covers proximal roots. Near/far forelegs are now distinguishable below the chest, but upper ownership remains unmeasured. Tail remains naturally short, not stretched to match a reference."
+    }
+  ]
+}

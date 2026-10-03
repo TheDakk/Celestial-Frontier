@@ -1,0 +1,14 @@
+{
+  "id": "23-bactrian-camel",
+  "name": "Bactrian Camel",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-63d4e2d6-95c0-48ed-bc02-14aa4a446e1c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c5ce49555bd9eef8b5a4266450231691eda3fb003f8b4feb3a900934f00632d3",
+  "bytes": 1459513,
+  "promptSha256": "f8b300947fb3357d8f39f01531883a1aa5b9ae8810562b35877a776e7e3e2b97",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

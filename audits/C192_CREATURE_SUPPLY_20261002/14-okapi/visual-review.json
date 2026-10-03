@@ -1,0 +1,28 @@
+{
+  "name": "Okapi",
+  "masterSha256": "1da73429a2fdc7c2a626a02d4e35fc9aa8ae661b41a2b52707548529fa9cbd33",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: two clearly separate large ears, four whole hooves and leg shafts, chestnut body, striped hindquarters/upper rear legs, white lower-leg bands and continuous tufted tail. Two short male-like ossicones are visible. Body reads rounded and neck/limb proportions merit biological review. Far proximal limb roots are partially hidden; no claim of complete anatomical fit.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 264,
+      "y0": 216,
+      "x1": 1040,
+      "y1": 984
+    },
+    "margins": {
+      "left": 264,
+      "right": 213,
+      "top": 216,
+      "bottom": 269
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

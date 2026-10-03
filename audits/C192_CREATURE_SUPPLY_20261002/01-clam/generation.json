@@ -1,0 +1,14 @@
+{
+  "id": "01-clam",
+  "name": "Clam",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-153900a2-818c-483c-81d6-0fa56fe1c040.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "be35c16758d75f1ccc3410d816678d80b986f4c485c6f2af5ac53a1a2bb0aeaa",
+  "bytes": 1455758,
+  "promptSha256": "708abc37410bc24df7f14f7e9a10d1561ffa2ce2c085c7639e6219f0816b46f9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

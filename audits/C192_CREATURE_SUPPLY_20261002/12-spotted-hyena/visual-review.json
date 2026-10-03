@@ -1,0 +1,28 @@
+{
+  "name": "Spotted Hyena",
+  "masterSha256": "310ae3f17fe9f77c30ddf830953303df75b882688bc851c86d65b34662ff36fc",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separate paw endpoints, sloping back with higher forequarters, coarse tan spotted coat, dark muzzle, bushy attached tail and two visible ears. Ears appear elongated/pointed compared with the requested rounded form and remain an identity hold. Fur covers upper roots; no extra limb is evident. No acceptance or claimed solver correction.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 214,
+      "y0": 314,
+      "x1": 1066,
+      "y1": 922
+    },
+    "margins": {
+      "left": 214,
+      "right": 187,
+      "top": 314,
+      "bottom": 331
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

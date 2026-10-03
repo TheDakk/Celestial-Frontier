@@ -1,0 +1,28 @@
+{
+  "name": "Springbok",
+  "masterSha256": "38dcb86243a0deeab8a91c5dee80087034faaea35b9ecff63ed8c9c34328bbb3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: two full ear silhouettes, two ringed curved horns, four hoof endpoints, dark flank band above white belly, face stripes and small continuous black-tipped tail. Far proximal foreleg remains behind the chest/near leg. Tail stays naturally short; no invisible segments are invented. Pattern visibility is observed, but reference transfer and motion remain unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 272,
+      "y0": 206,
+      "x1": 999,
+      "y1": 1008
+    },
+    "margins": {
+      "left": 272,
+      "right": 254,
+      "top": 206,
+      "bottom": 245
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Dog",
+  "masterSha256": "d2c99c68ccc9f2198187deeacb022a8a6c843a5f23435801efb3d291e1262857",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separate paw ends, continuous high plumed tail in an open arch, black nose and white/brown coat. Ears are naturally folded rather than the earlier erect-ear depiction; far ear is partially obscured by the head and crown fur. Dense chest and upper-leg feathering remains. The tail no longer forms a closed loop over the back, but classifier behavior is not measured; identity and proximal ownership remain for review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 265,
+      "y0": 322,
+      "x1": 990,
+      "y1": 913
+    },
+    "margins": {
+      "left": 265,
+      "right": 263,
+      "top": 322,
+      "bottom": 340
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

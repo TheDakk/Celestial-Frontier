@@ -1,0 +1,1384 @@
+{
+  "schema": "cf.g2-source-delivery/v1",
+  "scope": "24 originals only; source candidates with explicit holds, no rig/native/gallery admission",
+  "originals": 24,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "framingScope": "Automatic keyed-mask result plus explicit master-bound whole-original visual refusal; original mask evidence retained",
+  "framingPass": 22,
+  "framingRefused": [
+    "Prawn",
+    "Shrimp"
+  ],
+  "automaticKeyedMask": {
+    "pass": 23,
+    "refused": [
+      "Prawn"
+    ]
+  },
+  "manualFraming": {
+    "path": "audits/C192_CREATURE_SUPPLY_20261002/manual-framing.json",
+    "sha256": "f2459c747af6e5f50eae85a9479df2c3d1feea5026065a02add81cbcf0d4c56d"
+  },
+  "masterBytes": 33234986,
+  "files": [
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/generation.json",
+      "sha256": "4db0d891efccb0f3173f041ee751c8e609da9c1ed4032e83b98bfdb996e291a9",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/master.png",
+      "sha256": "be35c16758d75f1ccc3410d816678d80b986f4c485c6f2af5ac53a1a2bb0aeaa",
+      "bytes": 1455758
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/pattern-check.json",
+      "sha256": "a9ccc0d83052586970ad9465a05b43dc3754b637a59308be159d7441e7ec1625",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/prompt.canonical.txt",
+      "sha256": "f2f9cf5f32a6a3b9a1d57a26a348c333dbeb639195276f1680e7c9cb95871342",
+      "bytes": 8349
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/prompt.txt",
+      "sha256": "708abc37410bc24df7f14f7e9a10d1561ffa2ce2c085c7639e6219f0816b46f9",
+      "bytes": 9410
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/request.json",
+      "sha256": "769b788759ddc49f550bbf761b2310c0085c843e4714c94c58cd65bc50dd8b40",
+      "bytes": 1903
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/subject-source.json",
+      "sha256": "83fd5decd6b3f62f5f253dbf17524439ea0c68a1b27de3fddd05c05636af46ba",
+      "bytes": 2156
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/visible-anatomy.json",
+      "sha256": "d47e04fc603cec017062882fe2327963559a277581bdcc6c6ac680677ff7ec47",
+      "bytes": 3611
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/visual-review.json",
+      "sha256": "50937d9354796fc5d4f04f5d1369c26b24e69b9af31dda1001391382eeca9998",
+      "bytes": 1250
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/generation.json",
+      "sha256": "c2a0a50302113edcb249554211c0603a73506acacf1e888f6a5c1dd7e590c075",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/master.png",
+      "sha256": "2b3f9b74992ef4befb6c66fd9e902839faaac1d161b17d869751e92e8b091672",
+      "bytes": 1268607
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/pattern-check.json",
+      "sha256": "6419f1cade73ab9252073c6af39890aae974a41dc840f782b41d84a51425a734",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/prompt.canonical.txt",
+      "sha256": "73d3947dd9b83b50f79ac5a3169b68119bb93311e6e69c33a6facbd36558757e",
+      "bytes": 8265
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/prompt.txt",
+      "sha256": "e5cf939dd27b9516aa7ed2b00e8b58d0d15731afa2a2a0b47fc14e674270e546",
+      "bytes": 9784
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/request.json",
+      "sha256": "d7a74821fe802672d10807f0721b181545f6f6965f62c337d232de494266f52a",
+      "bytes": 3253
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/subject-source.json",
+      "sha256": "adc6d9af35d82d61dbbfb6592f3a0b4ea8e1bccdb946f2e483be4c36ebc6ed72",
+      "bytes": 2392
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/visible-anatomy.json",
+      "sha256": "3ed60e5267d19799eee3ac060aa2a4e68beb35c9d70c987f6600622a0a80a445",
+      "bytes": 7918
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/visual-review.json",
+      "sha256": "1ba106fbbd58d905a7ec646465411afa380cf6909f4f134a4e7bc0e1d95b2760",
+      "bytes": 1260
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/generation.json",
+      "sha256": "b5e775d2dff45c0c9a6a0a041a390e005ef25c6edc2b2a69069a1424fa18fd29",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/master.png",
+      "sha256": "c2c1275202841abd425cc9114a7665c62997a5c8bae5dce9d91b1eca560a031f",
+      "bytes": 1294050
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/pattern-check.json",
+      "sha256": "7627a227ccdb3c28a936674b17a46d6a32e0e801c79804c2c33468b03f879b59",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/prompt.canonical.txt",
+      "sha256": "3f7cf67a087bc8925709d7ef7633b2b6c2666ccbde4fe7c2c906191104caaaa6",
+      "bytes": 8176
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/prompt.txt",
+      "sha256": "02e6b75a93ca17a9001d5c9f05e58c47e41faf991884aea5829f94ded8655cb8",
+      "bytes": 9599
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/request.json",
+      "sha256": "197637b6d4df1cc216d2028754c053e180042b09b513cef1179815eeec3fe842",
+      "bytes": 2892
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/subject-source.json",
+      "sha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+      "bytes": 2382
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/visible-anatomy.json",
+      "sha256": "317dd70f062ea2f2fdc56bedde18c07633fa378957daae56a855d51d6ef083ee",
+      "bytes": 6701
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/visual-review.json",
+      "sha256": "6a0b536c7232eebf207faead0377d2244301386e9702fc3f3910a34bec376951",
+      "bytes": 1250
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/generation.json",
+      "sha256": "533631a9733ba12ccbf4820ba0ea3ad4b42186e2da0cd562fca8935ea7fc4dd9",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/master.png",
+      "sha256": "9675e29fd6daaa32eb8592e22f0ce999c51951124f32c77084d0b2735a226d18",
+      "bytes": 1319389
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/pattern-check.json",
+      "sha256": "3dc509beff1169ff994be1195e50078240e40ab2a71e3912a47477f5e1281c5f",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/prompt.canonical.txt",
+      "sha256": "1a4195a927a5150b32e589f1a56702e5c77e5e60ccceb2d22d26ecb3612749e1",
+      "bytes": 8190
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/prompt.txt",
+      "sha256": "392dc8c2ed6bea9856d5f16c1c1ae47b46f7f0d4bcfdea52114275978bbea539",
+      "bytes": 9627
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/request.json",
+      "sha256": "2d4f7cfa95bfd949fa01597777c1931cb459ef31928f3565053e71e85c1d3eaa",
+      "bytes": 2883
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/subject-source.json",
+      "sha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26",
+      "bytes": 2140
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/visible-anatomy.json",
+      "sha256": "bfe197594336dcb851ebfc9198dfd69d1ceb96d29a32a0e1c250aaabecb1ebef",
+      "bytes": 2730
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/visual-review.json",
+      "sha256": "469e943591112d411c854dd1fd9ffe06fce813803b2dc697bdc712c6c8d97aee",
+      "bytes": 1185
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/generation.json",
+      "sha256": "0e91055db339ab8b3aa6eecfed4a9673a94ce46228f5eb6e033b452d889b78b5",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/master.png",
+      "sha256": "cbab1175a80359433ec8b2630210f8f3aa882453bd8c4bb38dee90d42d0f1f1e",
+      "bytes": 1255447
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/pattern-check.json",
+      "sha256": "05d41d34cfbb7f9a97e9841e201828b2e934a85c10695bd36aa0324e32813200",
+      "bytes": 1586
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/prompt.canonical.txt",
+      "sha256": "b1e12938e9151e998ffd7058c835c8990b8cb2e9a66704c634e593673a87c853",
+      "bytes": 8920
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/prompt.txt",
+      "sha256": "2549e6cfa9f967a65227a1d3b5d6c81fa461812a8902ce813f027ead2dfc3b40",
+      "bytes": 10071
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/request.json",
+      "sha256": "d1e42414ae4e2c1016d1c92f1f3aea7fda831600120732b7c37d4cdab4dbf0b0",
+      "bytes": 3087
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/subject-source.json",
+      "sha256": "2a183d583872fcc6ffc5a22cd0afe2def061e1326fe61b6a92ec203edae1043f",
+      "bytes": 2833
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/visible-anatomy.json",
+      "sha256": "431a4524b9057de59fabdd098351e9032ba1dcd19655aa0a3b075b0604b42a2c",
+      "bytes": 2958
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/visual-review.json",
+      "sha256": "2a73facc5e5e1da1feab15fa0a2f79b7ecb2fad0ecb8e524f2a28a4e8b1fceff",
+      "bytes": 1153
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/generation.json",
+      "sha256": "c370cc9b2a718d524769e6fa59dc1a0572db4510a4b89f39569ba4410905060b",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/master.png",
+      "sha256": "d2c99c68ccc9f2198187deeacb022a8a6c843a5f23435801efb3d291e1262857",
+      "bytes": 1305195
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/pattern-check.json",
+      "sha256": "43a7b6125a499708c43b9fc13890954f5c2a57578fb21c83c925dcd72a04bf0a",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/prompt.canonical.txt",
+      "sha256": "5c45e56f574d17c6c6c5152c535efaff7919df2e95474eb8bc28d96ca70c06fc",
+      "bytes": 8935
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/prompt.txt",
+      "sha256": "c52b74229e7050d70d97f570156d30d4d00796f191637642f8446f929b5e3bea",
+      "bytes": 10238
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/request.json",
+      "sha256": "83f06461127bc3a36e8cf7fd20239dfbba867a447599a469a37b1ff54221c4f0",
+      "bytes": 3261
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/subject-source.json",
+      "sha256": "79741c0e83197a072b5f02e3f2c6eb3e76474e50c8e1b42abb63d1064a646bf1",
+      "bytes": 2267
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/visible-anatomy.json",
+      "sha256": "70ea2b8d36b682b1d10d5e2bdf84b1b36224040e94697466c0667a2f007ef495",
+      "bytes": 3820
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/visual-review.json",
+      "sha256": "56a960a20ae1dd24fd582aa7ca77da55a97912d2f34c62a711974484268a284d",
+      "bytes": 1149
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/generation.json",
+      "sha256": "fd7b2eeaf39b48b48548de9a03f805a93612461a7c22d6b9414f03c3f04b58e2",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/master.png",
+      "sha256": "128e59eff1ef8e0c064aacdf659412c939cdb7d2d327ecd4d2b3af4ce8ca5f73",
+      "bytes": 1399986
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/pattern-check.json",
+      "sha256": "b234a98496da0179e9f0d39ce67e0436cf98d6c33a58e710eff236d0412f1221",
+      "bytes": 889
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/prompt.canonical.txt",
+      "sha256": "e90c89bb21b232c436f9f56f80bc3816a4e269c38635a5c033f064607e7d0cd6",
+      "bytes": 9012
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/prompt.txt",
+      "sha256": "796f65efbfda55539c56fe94950f72bf60fd343f6fcd11824a538c66f7c1b4c7",
+      "bytes": 10233
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/request.json",
+      "sha256": "0e5ac824aebf0423e571e591686fe1059ecc90df64c0186160bfc192c32d6ced",
+      "bytes": 2867
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/subject-source.json",
+      "sha256": "cc1e8b34ce9e3b829cf761be49c2770443be87b7015e7a87d55d85864349a665",
+      "bytes": 2791
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/visible-anatomy.json",
+      "sha256": "1cd9d2c498135d6635ae9e6cc448952f706cda92980761ab76bd13f6a190f6f1",
+      "bytes": 2982
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/visual-review.json",
+      "sha256": "50ba466ffc750b1a3dfe63e80ee6654e722e72daf9a82b5eee6695c19b7476e9",
+      "bytes": 1103
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/generation.json",
+      "sha256": "962b735a537d3dca5a7828e388e7e47067dd31d5470de549e24e533697b30acc",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/master.png",
+      "sha256": "a2b7a71905d5cc7f6dfd73ac4f285d466a44e3e47f4f030b46d48daea43b1a4a",
+      "bytes": 1431039
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/pattern-check.json",
+      "sha256": "2c7efe0d35a20a0d46108e08f94b92b44c376c016099e2cb7e3c0fd1493dcd39",
+      "bytes": 845
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/prompt.canonical.txt",
+      "sha256": "47683d87b89f7dd9f3f52a3817351327f608f74f16e8ddf268d7f6fed6bd932e",
+      "bytes": 8863
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/prompt.txt",
+      "sha256": "0b9111b1b48f49bec5bec1985f26660aef1caa4823b639c01e69dad24a82ecfb",
+      "bytes": 10146
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/request.json",
+      "sha256": "ae7ca5b6cc5e2d394bac9995db38383bd665c250cfb7f3eee5ec09dd59112704",
+      "bytes": 3160
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/subject-source.json",
+      "sha256": "0e58841c2155fad0a1d75101c79bc3340826759e2ee050812585cbb66f10f50a",
+      "bytes": 2652
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/visible-anatomy.json",
+      "sha256": "a3c7fd21e7aa15bad51665c56519a65318e873e3733a1042e2a20dd28318333c",
+      "bytes": 3763
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/visual-review.json",
+      "sha256": "2ce0ecfccd5d791161f1d0dff473f9f1a5bd653ca8822c5c66db6c3fc9c48027",
+      "bytes": 1079
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/generation.json",
+      "sha256": "a6334ef1e58b0326741d8d4acd7c70a4493bbcc639b8dac5907272bbbbe303b6",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/master.png",
+      "sha256": "479f048c931f46ef1fbde983b53aae7554650035814007ad92a79228b1c9a9f3",
+      "bytes": 1408796
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/pattern-check.json",
+      "sha256": "ae8f7327f5c0f727fbcfc6b7408bb983f5060e0c4b51cec527f0020a61ae1270",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/prompt.canonical.txt",
+      "sha256": "199cb62e9bc6c72345df4cc1d3ddf4c5b13de227b0ba7fb143c7ccc245b1d09d",
+      "bytes": 8845
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/prompt.txt",
+      "sha256": "d93ed4c7089f34c81228e5ae6c5cddfd4a7c63b56f29600b9d9b8610f088d16e",
+      "bytes": 10082
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/request.json",
+      "sha256": "8c8f4eec0e1a7f714a6eb77c05ba171ad71252d93c0f2fa317fb14f6d8cd7a42",
+      "bytes": 2867
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/subject-source.json",
+      "sha256": "adaff50bc8cbab40e430a4bc7ee0bee0323855615b6f405fe2f9530a36235e2c",
+      "bytes": 2158
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/visible-anatomy.json",
+      "sha256": "6b919172419492fde31f5c8ede2433573102d843617fa537435f918278bffa50",
+      "bytes": 3847
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/visual-review.json",
+      "sha256": "ae0e0ac3ca910cfdd87cfb1d25ed2ca698eed70f30da7b071f4f8ff5fa42f783",
+      "bytes": 1112
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/generation.json",
+      "sha256": "2d026f391cd50be9994015d0c083de7108058b68d78a7a37e0c86c90bb874c5d",
+      "bytes": 621
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/master.png",
+      "sha256": "5292968cfe7a53d7d2daf4e0db70ab9e347a82caba8b7688449f8b1e1479b9c9",
+      "bytes": 1399846
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/pattern-check.json",
+      "sha256": "89dc815230ada55bf3597c562a9a88c1b1e48f93d188078aafb704157c812197",
+      "bytes": 858
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/prompt.canonical.txt",
+      "sha256": "8b1440cbb0d0d4c09b34b126d32c5ac620b45faa07743eef97e84b697a6eb11b",
+      "bytes": 8882
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/prompt.txt",
+      "sha256": "7992574021ac07179bf23eb148b605b226fff7a4ad28bbb0cca793b262e6c996",
+      "bytes": 10067
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/request.json",
+      "sha256": "6d78ae9d3ea69bb68a975f8a6c95424df72c7cd68d7b286b1d948af1d77081ed",
+      "bytes": 2793
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/subject-source.json",
+      "sha256": "435c5f82b9371856a067dda87766339f874a5a7efbd26c6c726e21661e5d1044",
+      "bytes": 2299
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/visible-anatomy.json",
+      "sha256": "c8604298a5a1758e81f92daa51399fd9e760a0d7b1dc2317125b1c902d7d981e",
+      "bytes": 3823
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/visual-review.json",
+      "sha256": "dadb80b1ae1d017caa8f1fda130cdb32db6e9cb61727fc5d94e12fbe9817ca51",
+      "bytes": 1056
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/generation.json",
+      "sha256": "032d866bf17f1ef8a1494a4d095a08e74d76c0dea346437f4e098d59d43e7aee",
+      "bytes": 631
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/master.png",
+      "sha256": "35fa47ca0ca969e1b446b54493747fe7364ea34142dd021f6b6073217eac0d8e",
+      "bytes": 1345654
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/pattern-check.json",
+      "sha256": "aa6f91ebea7f594dd82e011c07134fb7a7d10a847c7659b84c291cd7475de346",
+      "bytes": 877
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/prompt.canonical.txt",
+      "sha256": "0878ddc87a9856c092720f4365646c38db415e601104c77c7425867cde7730cd",
+      "bytes": 8931
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/prompt.txt",
+      "sha256": "f7fb94aa53ddb3d0fa2859ce3c7420e9d5b197b220e3832662c48e79fd0530b2",
+      "bytes": 10118
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/request.json",
+      "sha256": "d228d333904ed522a7c849b4082c377a938b16c9cb34d5b3cc89d75b231b3d55",
+      "bytes": 2830
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/subject-source.json",
+      "sha256": "76f3282b6edfc4a3a22a2851fa91f843fcb11af29143d96827462a4094743cd8",
+      "bytes": 2273
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/visible-anatomy.json",
+      "sha256": "06df92606019848369fe04e9b77332dfd49ee0ead9d5525c2ac011234b38c3b8",
+      "bytes": 3848
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/11-african-wild-dog/visual-review.json",
+      "sha256": "443e8ed3de8799516f1fd0bd62deae040454fb2d4a01cb67ff0986e8c5dee024",
+      "bytes": 1085
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/generation.json",
+      "sha256": "6764beba99b7d4ea9e0799e675aeb9ddebf829fec426603bbe5529b49da07d50",
+      "bytes": 625
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/master.png",
+      "sha256": "310ae3f17fe9f77c30ddf830953303df75b882688bc851c86d65b34662ff36fc",
+      "bytes": 1383259
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/pattern-check.json",
+      "sha256": "55a915fc3a9ca6eeb5a740bf375de5d8d3987813c279b0f9259d1eeb34bebb26",
+      "bytes": 357
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/prompt.canonical.txt",
+      "sha256": "a6f8c2e120eced43efa739798bf4f2026cd0ce21898e333b2a85aa26b61243fc",
+      "bytes": 8912
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/prompt.txt",
+      "sha256": "a4d4d5418289228cf16652c4d5a44528e0e3f564966a60513978553740e7373c",
+      "bytes": 10101
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/request.json",
+      "sha256": "6680de94d3ccee7b5b56a197c9a5ead2605357993e05ee182e47411935e465f6",
+      "bytes": 2811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/subject-source.json",
+      "sha256": "0f2d83b776a7990933ccc6cacbd7a4d2bbc09257abc344ed786d7daeed19225b",
+      "bytes": 2090
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/visible-anatomy.json",
+      "sha256": "aeec6d1dd974914bbe73693b7e397a66304be1b92c3edb10699b7b8a1b80197e",
+      "bytes": 3413
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/visual-review.json",
+      "sha256": "23066bccbf37eac5fc6a864f96e319213f2955fcba37ab494de7312f2876ebc3",
+      "bytes": 1080
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/generation.json",
+      "sha256": "60b93065011376953b20b8ea2e6a5f9d42849ee76829b0552baec0ab861de24f",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/master.png",
+      "sha256": "c1ce128614ecea72959cbc9afd3b5397d8d2c93973354ccc945432aaa63a30a3",
+      "bytes": 1424133
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/pattern-check.json",
+      "sha256": "e6c003ffe1cfdcc71007281eaf61467f39403c32ffc7f0698df4b6b1f3c70c99",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/prompt.canonical.txt",
+      "sha256": "5ce6156b870308069839e9f50cbab61c760fdfb67190a8460ac5a56dd560d67e",
+      "bytes": 8864
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/prompt.txt",
+      "sha256": "4c184f02e030c72d5a25d7885aad95fbe29340396ab6d9e185ab0fc03cc7ab96",
+      "bytes": 10123
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/request.json",
+      "sha256": "fd97dfae4b172e116a1deec4a41d47bc133603ab7e486b9298ad232561ad8063",
+      "bytes": 2849
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/subject-source.json",
+      "sha256": "d0bc07be35d69e7846ba2992173be920368c1de2748ebc6d44dd2c0000e4141a",
+      "bytes": 1998
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/visible-anatomy.json",
+      "sha256": "81da8e02086f450a742ac289f65b1830ca0b0f033ed9e2c9bff02e117d299d5c",
+      "bytes": 3833
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/visual-review.json",
+      "sha256": "233d32759fe534272d8dd212de1bbd43db1b85c37b9ca744399011f1e26cf259",
+      "bytes": 1117
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/generation.json",
+      "sha256": "9ca99dc2b70e35b7f90ddd89e37185b8634a4a85006671102a4526eeeeb662fe",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/master.png",
+      "sha256": "1da73429a2fdc7c2a626a02d4e35fc9aa8ae661b41a2b52707548529fa9cbd33",
+      "bytes": 1366317
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/pattern-check.json",
+      "sha256": "029c094f95dd1c2551e5a12497a75775239832a7fadd4ac623987e7c3dc520f5",
+      "bytes": 902
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/prompt.canonical.txt",
+      "sha256": "bb92615b6b884c1f4053510a38b2aac2900753fb2d8eb98952c90bf8e79f56c6",
+      "bytes": 9011
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/prompt.txt",
+      "sha256": "9e1a26b6dc99070534385807f2520c2a05a45d194900692c2fe2367c99dd3eae",
+      "bytes": 10136
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/request.json",
+      "sha256": "7839e187b55f8894f8549b0eb5bfe59c97706a23490d0745df85bceaa7e50ee5",
+      "bytes": 2429
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/subject-source.json",
+      "sha256": "a7df37fbd5cd59edeafbf735d8f19e01898e9010cea40ef64b458ab43ae4d976",
+      "bytes": 2394
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/visible-anatomy.json",
+      "sha256": "3e748ac2c359125e3bfdd7189e5ad2277ce547f4f77b343d3974b092c150b5cc",
+      "bytes": 3382
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/visual-review.json",
+      "sha256": "0d570c6ee207a78c85f9ac85593bea612f357580059a8181e8ea60cd8536cf95",
+      "bytes": 1096
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/generation.json",
+      "sha256": "65abaa9881b4576ca7549451b437f2c4155f69160d970d2c59529cb58c225772",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/master.png",
+      "sha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+      "bytes": 1297746
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/pattern-check.json",
+      "sha256": "8f6cd375a5a5ef3a3b7cacad4a5d7e2030a1a70d26fc101dbf462d54693de701",
+      "bytes": 880
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/prompt.canonical.txt",
+      "sha256": "4080825ef8e781f91122a88c3c2749d4d1c6c5e722434e630341d07e1c0b2b00",
+      "bytes": 8897
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/prompt.txt",
+      "sha256": "4ed368c3860bfdf20ef6a7140a5c738126c2d187304aedfc929e9c0b524105ba",
+      "bytes": 9996
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/request.json",
+      "sha256": "035e87b6473f5805c0365cf1eb2ede6534cdcff792d1ba2ad7ad277b3ef8612b",
+      "bytes": 2417
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/subject-source.json",
+      "sha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66",
+      "bytes": 2815
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/visible-anatomy.json",
+      "sha256": "41206b245e413f750065e0649470e647422d7679964b27803fc93523a5d51a0c",
+      "bytes": 2975
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/visual-review.json",
+      "sha256": "63176309a03f02c18fd59c653822f59ee2df48753baf5e11859e4a4e0482d088",
+      "bytes": 1114
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/generation.json",
+      "sha256": "3dd276d9ca93d6b84b8cc6cced9821e9feba2d582646cc24c4f94c4a5e44ded4",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/master.png",
+      "sha256": "38dcb86243a0deeab8a91c5dee80087034faaea35b9ecff63ed8c9c34328bbb3",
+      "bytes": 1284575
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/pattern-check.json",
+      "sha256": "3e99b94263a0dc211a9eeede15d28b80263fa94506e1d400f1ba6258644b99b1",
+      "bytes": 2023
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/prompt.canonical.txt",
+      "sha256": "7c6de0e0331b9548af51d9ff8a734062d1b0dcda907506fadd7bd4b11ff1b45b",
+      "bytes": 8910
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/prompt.txt",
+      "sha256": "366d2a15198674654e94896aca30498c309f10db45a6122ccc082643b64ce902",
+      "bytes": 10043
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/request.json",
+      "sha256": "9c71a236056ad923a5fe7a51af95077acb21a9e769b3f6be3ee0f834151e1923",
+      "bytes": 2451
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/subject-source.json",
+      "sha256": "d9b29f5ea8bcd66c50aa813be803903047a58d9f68940dd7396137c257287a52",
+      "bytes": 2831
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/visible-anatomy.json",
+      "sha256": "afede3af6c81b639a09d9792dd05f9445819ba082882e226f5d0ff6921b41a49",
+      "bytes": 3410
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/visual-review.json",
+      "sha256": "1d7fb3555b3a19018f3f7add3bbe1b5fd73e5cbb71b404097868c16cd0be1d1e",
+      "bytes": 1099
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/generation.json",
+      "sha256": "ef5ecb52d6945c754b48a8191b0d26512518b8f9a35eb53d673716135eb10dbb",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/master.png",
+      "sha256": "cecce9f5d0d1882e00a4da072a232d21990938e3f13fe83ed080fc5748e2b01b",
+      "bytes": 1353767
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/pattern-check.json",
+      "sha256": "a4f48a460939fcaa1509e48075237981c6aba4a58c12af2b1cf55451171b899b",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/prompt.canonical.txt",
+      "sha256": "880ac5b1c689ec775ac2d091d77894dd05c71364d4e93f5ec32729ee9e13b670",
+      "bytes": 9013
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/prompt.txt",
+      "sha256": "328ebbaad7a616d085fefe2bdfcd273ded3210cb2467f80c3f927d1c89c3003a",
+      "bytes": 10160
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/request.json",
+      "sha256": "a52c0d82373595feac68ad1ff375305e1a42a683db93b93801bfd967bef9afe4",
+      "bytes": 2453
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/subject-source.json",
+      "sha256": "dfdc8087589303c03936ff93786fb327a6a3f1ee961bedb713e53b1fe68e6a28",
+      "bytes": 2920
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/visible-anatomy.json",
+      "sha256": "d660fb27c57943f74f7d91c9ca6294807bdc51f38f992f2f97238c3820db3854",
+      "bytes": 3404
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/visual-review.json",
+      "sha256": "7282dcb2c036cca5a64c4950becca165f2ad292f111f76ff22599a2252e7dbfc",
+      "bytes": 1094
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/generation.json",
+      "sha256": "2dd6eb6367c128cdddadb8a77f3eaf3174a735407d2fbbd238c287e3ed512f22",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/master.png",
+      "sha256": "91d5b1533a4d4de053f6f81730dcc4b41522382a6b16d780f66983427a87ecab",
+      "bytes": 1445658
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/pattern-check.json",
+      "sha256": "9c378d165b5856cd28aeb79a64eea76f24018bb42dea597e0f07452dad1ce714",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/prompt.canonical.txt",
+      "sha256": "61d919118306fe5ad2b3b792f15232193aef094e8dc185631ef4e70ec1e93a67",
+      "bytes": 8885
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/prompt.txt",
+      "sha256": "12600f84e03db366c3659ad86f51ef9b48548521481dea17817a9d583f8e0678",
+      "bytes": 10008
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/request.json",
+      "sha256": "125ff004211b7f8efc83586f23bb39de25498e07aa1f85c7fd91cf8e7993f035",
+      "bytes": 2425
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/subject-source.json",
+      "sha256": "252f2b5ba1529597beb3ca71673ac06fd958da77b22151bf5589e30786bb0202",
+      "bytes": 2800
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/visible-anatomy.json",
+      "sha256": "eef00a7ebaefd919d70d82b0e22dc1c6ceade50bd8e23e09981fd9cabf5a6b42",
+      "bytes": 3404
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/visual-review.json",
+      "sha256": "a650d98e2e8c8f1f0980c698c0abf4123eee112cfcc53bd1899f1ee285a81393",
+      "bytes": 1103
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/generation.json",
+      "sha256": "391e0147675bc740901751377ee68fced1f76686bc00e5febfdead6c348fa3c5",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/master.png",
+      "sha256": "b774569d4c2e302f0dc8532e29afcb3379f9a6ca62b061c10071651e0f4cc45d",
+      "bytes": 1517698
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/pattern-check.json",
+      "sha256": "45b60f565fd64bbebef84e534dc2894de526247912de18001d1487e9a02638dc",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/prompt.canonical.txt",
+      "sha256": "501acd1b26955ad8b4a33b44d9380b0fd6183eae1a2ab47701a465ba8fdef660",
+      "bytes": 9032
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/prompt.txt",
+      "sha256": "fe29736062583f1e2e365d8d1b5baee58f64be60a7f6833422c87378f9814f6d",
+      "bytes": 10269
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/request.json",
+      "sha256": "dc5fe9a2a570903bfc4496805b529aba09b4e6eb4225582a91911e60cdffb802",
+      "bytes": 2789
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/subject-source.json",
+      "sha256": "8758f07b7036ef4e581a2a527e2f3b9f5d3e5ddd0bb3dc21b0605d4c22872f25",
+      "bytes": 2934
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/visible-anatomy.json",
+      "sha256": "fb636e47f42f4255e038f89b2530f80e8ca251edc0846c9bde69a7603ff2c88c",
+      "bytes": 4254
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/visual-review.json",
+      "sha256": "64f27240da67aadfb7554a0a9199d38b5712b60e8e7f0f7ad3c3ff69ab33286b",
+      "bytes": 1101
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/generation.json",
+      "sha256": "d47c63d265071305954c0a116fea126273d9bb3dab16ba695cf9f474d6f7b440",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/master.png",
+      "sha256": "93ee8025d14f671dabf179f40898decd695f16387777367c8724674ebe66aacd",
+      "bytes": 1473502
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/pattern-check.json",
+      "sha256": "99a270b4f70de8a91cbcda63b41b85febbcf1bf76b9754c5d7497899af807b11",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/prompt.canonical.txt",
+      "sha256": "99cc9d51a82e9eb1154e0b5785e0b64bf8bdcb1f9b69fc695ac2136d2409b538",
+      "bytes": 9008
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/prompt.txt",
+      "sha256": "db185bf9fba97703aa235017e24c7ad88818e88068257f67ffba4c8b4e16bfca",
+      "bytes": 10207
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/request.json",
+      "sha256": "fb5529f4e14b62b8e252525d23c89f59b911f3a8c032d7ac06fd1ff1a32f7430",
+      "bytes": 2500
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/subject-source.json",
+      "sha256": "d15dac0d48c1148983d1e96ef7e5b6c8b92f0e37a81b85f17f458af63df81c43",
+      "bytes": 2285
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/visible-anatomy.json",
+      "sha256": "4ead5cbb673de9957affa1d6a77bf1220437b3e768ebed54896af2cdfc88791e",
+      "bytes": 4685
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/visual-review.json",
+      "sha256": "e16216d21f93d9e7e22e343b5f9ad69a1dca51dd1f8cb51f2acbbfb5be45be25",
+      "bytes": 1102
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/generation.json",
+      "sha256": "95fa1ead1dda6b088a276051f052160bc5f6ab6477ab1151a934bf843591ea7c",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/master.png",
+      "sha256": "0734724070440ff3873b12b46ba3fabd12f60cabeb143c2d75d925f91da63ac8",
+      "bytes": 1383389
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/pattern-check.json",
+      "sha256": "e37aa9cc62390966f8cfb7054654c1564bf3e62f7a4c5e64e4d9cd6a8721d1b5",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/prompt.canonical.txt",
+      "sha256": "1e403296dfaf3bb216be58cc3eded91f1405f61ad3e063bcdd13103d04113746",
+      "bytes": 8967
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/prompt.txt",
+      "sha256": "4cd22181f8147b587f6f0af4bf519ea14d9360c6b3ce82cf6fc9717de75a2f18",
+      "bytes": 10174
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/request.json",
+      "sha256": "e95fdf492624490f7507c764e0dd5dad029815a09468644595721124aac83be4",
+      "bytes": 3133
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/subject-source.json",
+      "sha256": "288038c032007bdbb74de5fdd76cd928ede640bb5162acf1d8ee44e8d294b9fe",
+      "bytes": 2871
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/visible-anatomy.json",
+      "sha256": "ae08a1db44afe735d789427729925afce7a8fc0c10720afd07a5f3b9d4712333",
+      "bytes": 3801
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/visual-review.json",
+      "sha256": "db12fe72ef06264d8cac016dfa796ff369d6b61d9fcb736c3e0758042aa010d0",
+      "bytes": 1078
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/generation.json",
+      "sha256": "c24b49c6f20d916ee97a7379acd653ed4f617537abea5691fbc1d6a2b9caf7af",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/master.png",
+      "sha256": "31368a7d864635fa150fcf17d3ac36d46aac7c83cc9921d2197d94440c266840",
+      "bytes": 1549848
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/pattern-check.json",
+      "sha256": "9110409320c0a98128324e41be6e39e8d24eb8c58208bb2342b24b553f2095b6",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/prompt.canonical.txt",
+      "sha256": "4c50541e4183a9a38e8f67a762121885aa46ea956baedbc39127cea8ac0f74d1",
+      "bytes": 8876
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/prompt.txt",
+      "sha256": "9cb862a9481792bd255a65f20b31957d07c6eb33191cdd92b839209af99cf146",
+      "bytes": 10125
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/request.json",
+      "sha256": "0c765c4efb8a147a5f73afdb13a3b58343f7fe2a0a7c2fc38fb2831b49f41a76",
+      "bytes": 3135
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/subject-source.json",
+      "sha256": "da52e87e3385ed3f925b0d171632addbffc37d7ba99d1f44d5dd3a384c7822ad",
+      "bytes": 2790
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/visible-anatomy.json",
+      "sha256": "b3443e077194939e9c4d4e93349568c88c6a8b555bc14c48a64d9e2bda2648d8",
+      "bytes": 4243
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/visual-review.json",
+      "sha256": "a6aca5ec4231320eef97359805672ad466b4c38786ddd4177cc39dd1947a3be1",
+      "bytes": 1095
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/generation.json",
+      "sha256": "2cba8531e5005355fc7112c63d54a035ddf1bb03f4ca3949e6c95db9455fcd33",
+      "bytes": 627
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/master.png",
+      "sha256": "c5ce49555bd9eef8b5a4266450231691eda3fb003f8b4feb3a900934f00632d3",
+      "bytes": 1459513
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/pattern-check.json",
+      "sha256": "8aa92472ae12860c1251cd2b70fce48795276d2a13106ce8c350dd7f27a02637",
+      "bytes": 290
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/prompt.canonical.txt",
+      "sha256": "ed6764ead441851b6b4451e31c644fc4b7ce171a9de596e4ff7009638a5fe3c1",
+      "bytes": 8900
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/prompt.txt",
+      "sha256": "f8b300947fb3357d8f39f01531883a1aa5b9ae8810562b35877a776e7e3e2b97",
+      "bytes": 10105
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/request.json",
+      "sha256": "c354f6406267b91ba5df7d6bc900cb76d28980ab1fd4acf31b51805ff62d4fd7",
+      "bytes": 2886
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/subject-source.json",
+      "sha256": "09ec9c2b574e2c52cb8ef2e379d5225936b65519ad50ebbbda285e4261a98811",
+      "bytes": 2298
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/visible-anatomy.json",
+      "sha256": "0d8dfbf0b5f826c71119da9df9b7716fa74820cc8e77663d9b85d99b0b4d1e05",
+      "bytes": 3420
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/visual-review.json",
+      "sha256": "9be2de02427742d9afd50e69fdecb6490be61e43b5bd6c830954363b6c0f8f75",
+      "bytes": 1098
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/generation.json",
+      "sha256": "33370357163ae28b9f34b2521f619d08f44816aa00dcc911e1e298dadabf0bb0",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/master.png",
+      "sha256": "621ad155c78f33340abf4d87b550801f21a736e14bebc25a95f0d903196bfed8",
+      "bytes": 1411814
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/pattern-check.json",
+      "sha256": "9ce9f7138b5eb24306022cc4e10fe95c7ad50d776ec4afe0d5d1a98df0e5fc80",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/prompt.canonical.txt",
+      "sha256": "0f6e4e3a20ad3e102627217fad76a13509fc6c306ae523a3278ff288f0ad1cdd",
+      "bytes": 8979
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/prompt.txt",
+      "sha256": "9cb65e016b8417a0e540fed55c9328ba7abdc8ed91b2b5ffc0f9e69220431de9",
+      "bytes": 10136
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/request.json",
+      "sha256": "eea195b1471ae215b24f54b0d17d3ba09a8824c525654b2198d23ecd7959f5f4",
+      "bytes": 3423
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/subject-source.json",
+      "sha256": "89046191530df4b861bb56a33e2b6a3d7afec68d146ba7755d5a88194ceb6638",
+      "bytes": 2881
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/visible-anatomy.json",
+      "sha256": "f817205afdb77dc0adf677a1a09e91155b88134e2501d12e1d416d1710093286",
+      "bytes": 4251
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/visual-review.json",
+      "sha256": "3f8ea58380c24312d72f8428fde24081eff83c8cff139d9d5c6517f620997716",
+      "bytes": 1166
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/compile.mjs",
+      "sha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+      "bytes": 12445
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/compiler.audit.mjs",
+      "sha256": "f2e948709d21fc05c0b88ca79d2186a7cc2eac8ffc7f2d3ba6574126de82bffb",
+      "bytes": 23345
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/controls.json",
+      "sha256": "caaced243c9a3b45534e0fac4c251e5fa751b76e1fef36cd40fa64e87a84ad2c",
+      "bytes": 2481
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/controls.mjs",
+      "sha256": "4a58a5732a3dea11b707829c9b7b9be61285c0a43fd734e0944a2562b28554a3",
+      "bytes": 2926
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "bytes": 963
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/freeze-reviewed.mjs",
+      "sha256": "d8ee285373888cc33a62427a6ebbd9c32e5f04df9f4845fd476239dab8f99b8a",
+      "bytes": 3157
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/freeze-wrapper-receipt.json",
+      "sha256": "f1487e76ee45f53187e81bd43a469cafd9e3e8f3e47cc8a9cc8e8842e86ec989",
+      "bytes": 1761
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/freeze.mjs",
+      "sha256": "fef11c6a3620cb4050a8f0a3a800cadd18b1bfbeec8989cdbca7c00a74ea1b76",
+      "bytes": 2406
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/manual-framing.json",
+      "sha256": "f2459c747af6e5f50eae85a9479df2c3d1feea5026065a02add81cbcf0d4c56d",
+      "bytes": 1306
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/materialize.mjs",
+      "sha256": "7354778e30a877cde41d01c936b9c2c27d28096dec624af2d7fc886e40e5914f",
+      "bytes": 2976
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/next-candidates.md",
+      "sha256": "213fd4e6d6f263d39dbe3906b6231255f9b8b8698d0795ceff4f58c0d88bdca6",
+      "bytes": 2225
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/observations.json",
+      "sha256": "3fff2d185ad4a5697256b2657f13f776eb74567baba105be1b69b113a94c7c60",
+      "bytes": 18777
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "bytes": 2547
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/pattern-overrides.json",
+      "sha256": "eeee046e85e6f955592c9a6f21055e94386d68ef7aac81120594ada4fb3d45c2",
+      "bytes": 277
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/pattern-summary.json",
+      "sha256": "24f7f89d33389d17b8ab97fdc23e7882e184e122cc9ae474284f7199bdfcb7a9",
+      "bytes": 2257
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+      "sha256": "473cc70e72171aed5de774bd31d3973c090b93ffba6cdfd74b9d28665d1b508c",
+      "bytes": 26388
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/pipeline-proof.json",
+      "sha256": "aec8b279e59b87eed8fc2dddab3f7ed7215e3aba73d5036f8feee1f152e1c6f1",
+      "bytes": 25405
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/provenance.mjs",
+      "sha256": "c16960f6cac12aee063b19ca5feed82827c12869877d91a4da967d4d6a2e94e1",
+      "bytes": 4030
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/read-context.json",
+      "sha256": "9d2146372397ff197081ae61eff707e093aa978ca8d59e617bf977eb5f16ab02",
+      "bytes": 816
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/README.md",
+      "sha256": "cb877ecf8964ee35063bcfbfce3217f6f3594da24b7af42300da1e394a083210",
+      "bytes": 5866
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "bytes": 1279
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/retained-history.json",
+      "sha256": "f0abd16c019317aa618ce74b23a803d9125238957a5e834e2e6c6e2dd1489008",
+      "bytes": 35296
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/review-controls.json",
+      "sha256": "e9b463c60b8d18e26e281eaccec92b299a7e8f9ca085bbdcd113d10ac0a17263",
+      "bytes": 832
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/review-sheet.png",
+      "sha256": "bff5d49af1b8018b7b9f031a0f16a1224f0f9a66c49d01295a7d0b0d42550ff5",
+      "bytes": 2796043
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/review-source.mjs",
+      "sha256": "d6361db11935bfbe544935f78f7809d291c97df6cba3cc5a9afe5e49f8619870",
+      "bytes": 2128
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/review-wrapper-receipt.json",
+      "sha256": "81a90ddbd04c07297d3aa6c3fd392d6fd43b20b77e96bccb53fb9c75bd9cfae2",
+      "bytes": 1043
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/review.mjs",
+      "sha256": "8f84e1feae646897995d16e4c25427ef5287ba7231aa431344366a8ccc27f637",
+      "bytes": 1985
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/selection.json",
+      "sha256": "f4b45a3db3715d7ee5727ae98fe56737d639a02a3e2325d2ac897d6372182b4e",
+      "bytes": 44990
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/specialized-layouts.json",
+      "sha256": "c8ce6f8d2945fae4a1f7ce654e760c0bb4369f5f80fc5ec3bee3eccd01bc530f",
+      "bytes": 2686
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/transform-receipt.json",
+      "sha256": "e2f17de50144814c3a8fed19c7d19279859c249e7ae47cee0160b1efbc07a3d1",
+      "bytes": 6500
+    },
+    {
+      "path": "audits/C192_CREATURE_SUPPLY_20261002/visual-notes.json",
+      "sha256": "802c3de34eedb00ab9f4279ce5a001b71f0ac517bc3bd97116f9de0a414f45c1",
+      "bytes": 10578
+    }
+  ],
+  "bytes": 37390166
+}

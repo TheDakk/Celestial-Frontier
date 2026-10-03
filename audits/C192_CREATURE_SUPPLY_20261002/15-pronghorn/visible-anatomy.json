@@ -1,0 +1,154 @@
+{
+  "id": "15-pronghorn",
+  "name": "Pronghorn",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 20939,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 113,
+      "y0": 155,
+      "x1": 276,
+      "y1": 227
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1882,
+        "pixels": 3941,
+        "box": {
+          "x0": 257,
+          "y0": 71,
+          "x1": 335,
+          "y1": 199
+        },
+        "attach": {
+          "x": 273.8,
+          "y": 170.2,
+          "relX": 0.99,
+          "relY": 0.21
+        },
+        "dir": {
+          "x": 0.52,
+          "y": -0.85
+        },
+        "class": "top",
+        "length": 116.6
+      },
+      {
+        "k": 1,
+        "frac": 0.0194,
+        "pixels": 407,
+        "box": {
+          "x0": 95,
+          "y0": 168,
+          "x1": 112,
+          "y1": 208
+        },
+        "attach": {
+          "x": 112,
+          "y": 188,
+          "relX": -0.01,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": -0.95,
+          "y": -0.31
+        },
+        "class": "rear",
+        "length": 26.2
+      },
+      {
+        "k": 2,
+        "frac": 0.1431,
+        "pixels": 2997,
+        "box": {
+          "x0": 86,
+          "y0": 224,
+          "x1": 167,
+          "y1": 326
+        },
+        "attach": {
+          "x": 137.5,
+          "y": 224,
+          "relX": 0.15,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.3,
+          "y": 0.95
+        },
+        "class": "limb-down",
+        "length": 114.3
+      },
+      {
+        "k": 3,
+        "frac": 0.1103,
+        "pixels": 2309,
+        "box": {
+          "x0": 206,
+          "y0": 228,
+          "x1": 278,
+          "y1": 327
+        },
+        "attach": {
+          "x": 233,
+          "y": 228,
+          "relX": 0.74,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.06,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 108.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 90,
+        "x1": 104,
+        "cx": 95.9
+      },
+      {
+        "x0": 145,
+        "x1": 167,
+        "cx": 156.2
+      },
+      {
+        "x0": 209,
+        "x1": 225,
+        "cx": 216.1
+      },
+      {
+        "x0": 256,
+        "x1": 278,
+        "cx": 267.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

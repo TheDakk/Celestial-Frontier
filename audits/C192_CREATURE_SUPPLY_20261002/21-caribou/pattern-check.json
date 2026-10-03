@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Caribou",
+  "masterSha256": "0734724070440ff3873b12b46ba3fabd12f60cabeb143c2d75d925f91da63ac8",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

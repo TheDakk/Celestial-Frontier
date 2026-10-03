@@ -1,0 +1,9 @@
+{
+  "scope": "Explicit observed refusal passed into unchanged production assessPatternObservation; no rule or acceptance threshold changed. Original review helper retained unchanged; this additive wrapper is the executed source review.",
+  "source": "audits/C192_CREATURE_SUPPLY_20261002/review.mjs",
+  "sourceSha256": "8f84e1feae646897995d16e4c25427ef5287ba7231aa431344366a8ccc27f637",
+  "output": "audits/C192_CREATURE_SUPPLY_20261002/review-source.mjs",
+  "outputSha256": "d6361db11935bfbe544935f78f7809d291c97df6cba3cc5a9afe5e49f8619870",
+  "before": "const observation={name:row.name,masterSha256,status:'PRESENT',features:requirements.map(requirement=>({requirement,status:'PRESENT',observed:notes[row.name]}))};",
+  "after": "const explicit=JSON.parse(fs.readFileSync(base+'/pattern-overrides.json'))[row.name];\n const observation={name:row.name,masterSha256,status:explicit?.status??'PRESENT',features:requirements.map(requirement=>({requirement,status:explicit?.status??'PRESENT',observed:explicit?.observed??notes[row.name]}))};"
+}

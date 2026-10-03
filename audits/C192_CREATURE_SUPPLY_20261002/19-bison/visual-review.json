@@ -1,0 +1,28 @@
+{
+  "name": "Bison",
+  "masterSha256": "b774569d4c2e302f0dc8532e29afcb3379f9a6ca62b061c10071651e0f4cc45d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separated hoof endpoints and lower legs, real heavy shoulder hump, dense beard/front coat, two horns and full attached tail/tuft separated from rear feet. Only the near ear is unambiguously visible; far ear remains obscured. Hanging forequarter fur still overlaps upper limbs and forms deep fringe; this is retained as an ownership limitation, not claimed repaired.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 187,
+      "y0": 304,
+      "x1": 1078,
+      "y1": 917
+    },
+    "margins": {
+      "left": 187,
+      "right": 175,
+      "top": 304,
+      "bottom": 336
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

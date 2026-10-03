@@ -1,0 +1,28 @@
+{
+  "name": "Impala",
+  "masterSha256": "cbab1175a80359433ec8b2630210f8f3aa882453bd8c4bb38dee90d42d0f1f1e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: both full ear silhouettes are separately visible in a shallow head turn, two ringed lyre-shaped horns, four distinct hooves/leg shafts and continuous short tufted tail. The white rump carries two dark vertical stripe markings; hind-hoof dark tufts are visible. Far upper foreleg remains partly hidden by the chest. No apparent fifth limb. Improved ear exposure is observed; semantic ownership and motion remain unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 282,
+      "y0": 175,
+      "x1": 977,
+      "y1": 996
+    },
+    "margins": {
+      "left": 282,
+      "right": 276,
+      "top": 175,
+      "bottom": 257
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

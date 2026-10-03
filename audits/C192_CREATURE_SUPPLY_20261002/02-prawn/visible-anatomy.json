@@ -1,0 +1,416 @@
+{
+  "id": "02-prawn",
+  "name": "Prawn",
+  "family": "crustacean-small",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "2b3f9b74992ef4befb6c66fd9e902839faaac1d161b17d869751e92e8b091672",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16051,
+    "coreRadius": 14,
+    "bodyBox": {
+      "x0": 116,
+      "y0": 184,
+      "x1": 284,
+      "y1": 232
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0369,
+        "pixels": 592,
+        "box": {
+          "x0": 201,
+          "y0": 118,
+          "x1": 254,
+          "y1": 183
+        },
+        "attach": {
+          "x": 218,
+          "y": 183,
+          "relX": 0.61,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": 0.28,
+          "y": -0.96
+        },
+        "class": "top",
+        "length": 74.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0176,
+        "pixels": 282,
+        "box": {
+          "x0": 231,
+          "y0": 132,
+          "x1": 282,
+          "y1": 183
+        },
+        "attach": {
+          "x": 234.5,
+          "y": 183,
+          "relX": 0.71,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": 0.78,
+          "y": -0.62
+        },
+        "class": "top",
+        "length": 69.7
+      },
+      {
+        "k": 2,
+        "frac": 0.0148,
+        "pixels": 238,
+        "box": {
+          "x0": 163,
+          "y0": 137,
+          "x1": 203,
+          "y1": 183
+        },
+        "attach": {
+          "x": 201,
+          "y": 183,
+          "relX": 0.51,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": -0.41,
+          "y": -0.91
+        },
+        "class": "top",
+        "length": 59.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0847,
+        "pixels": 1359,
+        "box": {
+          "x0": 247,
+          "y0": 143,
+          "x1": 398,
+          "y1": 277
+        },
+        "attach": {
+          "x": 278.4,
+          "y": 211.6,
+          "relX": 0.97,
+          "relY": 0.58
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.02
+        },
+        "class": "front",
+        "length": 137.9
+      },
+      {
+        "k": 4,
+        "frac": 0.26,
+        "pixels": 4173,
+        "box": {
+          "x0": 44,
+          "y0": 159,
+          "x1": 115,
+          "y1": 258
+        },
+        "attach": {
+          "x": 115,
+          "y": 208.5,
+          "relX": -0.01,
+          "relY": 0.51
+        },
+        "dir": {
+          "x": -1,
+          "y": 0
+        },
+        "class": "rear",
+        "length": 86.6
+      },
+      {
+        "k": 5,
+        "frac": 0.0089,
+        "pixels": 143,
+        "box": {
+          "x0": 166,
+          "y0": 173,
+          "x1": 196,
+          "y1": 185
+        },
+        "attach": {
+          "x": 183.5,
+          "y": 185,
+          "relX": 0.4,
+          "relY": 0.02
+        },
+        "dir": {
+          "x": -0.89,
+          "y": -0.46
+        },
+        "class": "rear",
+        "length": 21.2
+      },
+      {
+        "k": 6,
+        "frac": 0.007,
+        "pixels": 112,
+        "box": {
+          "x0": 144,
+          "y0": 175,
+          "x1": 161,
+          "y1": 186
+        },
+        "attach": {
+          "x": 155.5,
+          "y": 186,
+          "relX": 0.24,
+          "relY": 0.04
+        },
+        "dir": {
+          "x": -0.73,
+          "y": -0.69
+        },
+        "class": "top",
+        "length": 15.9
+      },
+      {
+        "k": 7,
+        "frac": 0.0119,
+        "pixels": 191,
+        "box": {
+          "x0": 246,
+          "y0": 175,
+          "x1": 300,
+          "y1": 188
+        },
+        "attach": {
+          "x": 249,
+          "y": 185,
+          "relX": 0.79,
+          "relY": 0.02
+        },
+        "dir": {
+          "x": 0.98,
+          "y": -0.2
+        },
+        "class": "front",
+        "length": 52
+      },
+      {
+        "k": 8,
+        "frac": 0.0047,
+        "pixels": 75,
+        "box": {
+          "x0": 123,
+          "y0": 180,
+          "x1": 141,
+          "y1": 189
+        },
+        "attach": {
+          "x": 136,
+          "y": 189,
+          "relX": 0.12,
+          "relY": 0.1
+        },
+        "dir": {
+          "x": -0.75,
+          "y": -0.66
+        },
+        "class": "top",
+        "length": 15.8
+      },
+      {
+        "k": 9,
+        "frac": 0.0047,
+        "pixels": 76,
+        "box": {
+          "x0": 106,
+          "y0": 224,
+          "x1": 123,
+          "y1": 233
+        },
+        "attach": {
+          "x": 119.5,
+          "y": 224,
+          "relX": 0.02,
+          "relY": 0.83
+        },
+        "dir": {
+          "x": -0.81,
+          "y": 0.58
+        },
+        "class": "limb-down",
+        "length": 16.2
+      },
+      {
+        "k": 10,
+        "frac": 0.0076,
+        "pixels": 122,
+        "box": {
+          "x0": 115,
+          "y0": 226,
+          "x1": 138,
+          "y1": 237
+        },
+        "attach": {
+          "x": 132.6,
+          "y": 226.9,
+          "relX": 0.1,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": -0.84,
+          "y": 0.54
+        },
+        "class": "limb-down",
+        "length": 20.3
+      },
+      {
+        "k": 11,
+        "frac": 0.0094,
+        "pixels": 151,
+        "box": {
+          "x0": 135,
+          "y0": 230,
+          "x1": 160,
+          "y1": 242
+        },
+        "attach": {
+          "x": 154,
+          "y": 230,
+          "relX": 0.23,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.82,
+          "y": 0.57
+        },
+        "class": "limb-down",
+        "length": 22.5
+      },
+      {
+        "k": 12,
+        "frac": 0.0107,
+        "pixels": 172,
+        "box": {
+          "x0": 156,
+          "y0": 232,
+          "x1": 182,
+          "y1": 246
+        },
+        "attach": {
+          "x": 176,
+          "y": 232,
+          "relX": 0.36,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 24.4
+      },
+      {
+        "k": 13,
+        "frac": 0.0164,
+        "pixels": 263,
+        "box": {
+          "x0": 163,
+          "y0": 233,
+          "x1": 203,
+          "y1": 282
+        },
+        "attach": {
+          "x": 201,
+          "y": 233,
+          "relX": 0.51,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.38,
+          "y": 0.93
+        },
+        "class": "limb-down",
+        "length": 62
+      },
+      {
+        "k": 14,
+        "frac": 0.0369,
+        "pixels": 592,
+        "box": {
+          "x0": 207,
+          "y0": 233,
+          "x1": 256,
+          "y1": 300
+        },
+        "attach": {
+          "x": 215.5,
+          "y": 233,
+          "relX": 0.59,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 78.3
+      },
+      {
+        "k": 15,
+        "frac": 0.0169,
+        "pixels": 272,
+        "box": {
+          "x0": 232,
+          "y0": 233,
+          "x1": 279,
+          "y1": 288
+        },
+        "attach": {
+          "x": 235,
+          "y": 233,
+          "relX": 0.71,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.78,
+          "y": 0.63
+        },
+        "class": "limb-down",
+        "length": 70.4
+      }
+    ],
+    "byClass": {
+      "top": 5,
+      "front": 2,
+      "rear": 2,
+      "limb-down": 7
+    },
+    "ground": [
+      {
+        "x0": 207,
+        "x1": 217,
+        "cx": 212.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
