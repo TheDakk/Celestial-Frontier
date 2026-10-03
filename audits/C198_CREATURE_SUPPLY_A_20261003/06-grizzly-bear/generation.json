@@ -1,0 +1,14 @@
+{
+  "id": "06-grizzly-bear",
+  "name": "Grizzly Bear",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-99adc57e-92c1-4d92-97af-2d90bd2e062f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5c10271f242c78e3d55f06a392b061e1ccd3a51ea8e5844f15726d49be1fca17",
+  "bytes": 1522695,
+  "promptSha256": "e9ac03f567b628fbdddc7f63bc883bd23f3930d33e7c7d72c2c87667b5fbe014",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

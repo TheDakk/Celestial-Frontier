@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "scope": "Every listed manifest entry was independently rehashed by parent before signed delivery; frozen packets unchanged. Counts are entries, not deduplicated filesystem objects. Earlier Prawn product receipt is separate.",
+  "manifests": [
+    {
+      "manifest": "audits/C198_CREATURE_SUPPLY_A_20261003/delivery.json",
+      "sha256": "35f5f51bc4b994ba41add4a84f101bacfe35828fe3eb7c2cc93f74da3b79ab38",
+      "verifiedEntries": 260,
+      "bytes": 37253352
+    },
+    {
+      "manifest": "audits/C198_CREATURE_SUPPLY_B_20261003/delivery.json",
+      "sha256": "ffa83bd45d68b3b946471b1f8305d9dda07a7d0dea44564d7cfc4473dc81b46b",
+      "verifiedEntries": 261,
+      "bytes": 36823838
+    },
+    {
+      "manifest": "audits/C198_CREATURE_SUPPLY_C_20261003/delivery.json",
+      "sha256": "23e8c3573430910c91aa37da9e758c980b184a28b5e56fbce6d198d404a25ecd",
+      "verifiedEntries": 261,
+      "bytes": 35393903
+    },
+    {
+      "manifest": "audits/C198_TORTOISE_CAPTURE_20261003/delivery.json",
+      "sha256": "b1e00dbe786915baec8aee7e46b67ae446aa9c3a8ebc1bbb7a6540fd5e77ac07",
+      "verifiedEntries": 129,
+      "bytes": 26975114
+    },
+    {
+      "manifest": "audits/C198_REFERENCE_PACKETS_20261003/delivery.json",
+      "sha256": "d2402c1cb496b70a08ecd972ceb017dba3457faca14221f63496bc74465a82ca",
+      "verifiedEntries": 137,
+      "bytes": 39031914
+    },
+    {
+      "manifest": "audits/C198_SOURCE_HOLDS_20261003/delivery.json",
+      "sha256": "318c708a7e2c0735b0637f7e4636a46b9d92a901b794e8f6f3e6d91aeda69523",
+      "verifiedEntries": 568,
+      "bytes": 113013161
+    },
+    {
+      "manifest": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/delivery.json",
+      "sha256": "c425f1deffb3d63c62f9f1ade042ca59c6bda135d9f6ed91cd00581b7010020a",
+      "verifiedEntries": 14,
+      "bytes": 813223
+    }
+  ],
+  "entries": 1630,
+  "bytes": 289304505
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Rooster",
+  "masterSha256": "577f8cb725826e3af4458667b6f6cc7706379603d17f4605a252a9b76f295416",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two complete legs/feet/spurs, comb/wattles and long sickle tail complete with generous margins. Far wing concealed and near wing merges into saddle feather edge; face shows a questionable small pale cheek feature, requires full-size identity review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 264,
+      "y0": 242,
+      "x1": 945,
+      "y1": 990
+    },
+    "margins": {
+      "left": 264,
+      "right": 308,
+      "top": 242,
+      "bottom": 263
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

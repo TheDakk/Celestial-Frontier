@@ -1,0 +1,107 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "near-pectoral",
+      "joint": "pectoralNear",
+      "owner": "near-pectoral"
+    },
+    {
+      "region": "far-pectoral",
+      "joint": "pectoralFar",
+      "owner": "far-pectoral"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "dorsal",
+      "joint": "dorsal",
+      "owner": "dorsal"
+    },
+    {
+      "region": "caudal",
+      "joint": "caudal",
+      "owner": "caudal"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "spine5",
+      "joint": "spine5",
+      "owner": "spine5"
+    },
+    {
+      "region": "spine4",
+      "joint": "spine4",
+      "owner": "spine4"
+    },
+    {
+      "region": "second-dorsal",
+      "joint": "spine4",
+      "owner": "spine4"
+    },
+    {
+      "region": "spine3",
+      "joint": "spine3",
+      "owner": "spine3"
+    },
+    {
+      "region": "rear-ventral-fin",
+      "joint": "spine3",
+      "owner": "spine3"
+    },
+    {
+      "region": "spine2",
+      "joint": "spine2",
+      "owner": "spine2"
+    },
+    {
+      "region": "spine1",
+      "joint": "spine1",
+      "owner": "spine1"
+    },
+    {
+      "region": "spine0",
+      "joint": "spine0",
+      "owner": "spine0"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    7592,
+    1840,
+    2388,
+    8444,
+    13983,
+    15619,
+    2014,
+    8438,
+    13466,
+    14715,
+    16932,
+    12495,
+    13074
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "b68b3b1e73d90d6dcb725aaf940c9baa980dcb5077ea6c33ab41c8f0cdecccb8",
+  "intake": {
+    "erodedPixels": 3640,
+    "despilledPixels": 34,
+    "unresolvedEdgePixels": 4
+  },
+  "remainderPart": "body"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "11-chipmunk",
+  "name": "Chipmunk",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e2b4526e-baa4-4272-b7d3-46bc988c124d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "38e11107b041cf1f84c727bceb73c4ae6045144d7deeca936e70bbcaa8b5778c",
+  "bytes": 1399352,
+  "promptSha256": "c5bf65fe675ba97daa34f8e6e646e434c92837c5669c1e0cd72303c33d8df330",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Rabbit",
+  "masterSha256": "189e708c531b80c6768a64e09b185b3317293f271606f5a8b3df045ad9ba377f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: brown mottled fur, pale underside/tail, two tall ears and four distinct paws with enlarged hind feet. Far-ear base and far upper limbs remain partially occluded; stance is elevated rather than low crouch. This is a source for existing quadruped routing, not a qualified hopping rig.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 297,
+      "y0": 252,
+      "x1": 958,
+      "y1": 939
+    },
+    "margins": {
+      "left": 297,
+      "right": 295,
+      "top": 252,
+      "bottom": 314
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

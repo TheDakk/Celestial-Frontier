@@ -1,0 +1,14 @@
+{
+  "id": "05-diving-beetle",
+  "name": "Diving Beetle",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-4d2852f3-779d-4be5-b99a-95d7649c3ecf.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+  "bytes": 1361660,
+  "promptSha256": "7e8c7cf8631c166eb5c872688d3ff53606f6a16dbee8d33a7f058cd5e64f4c44",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

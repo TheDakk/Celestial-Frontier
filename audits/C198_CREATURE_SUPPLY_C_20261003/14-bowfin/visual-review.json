@@ -1,0 +1,28 @@
+{
+  "name": "Bowfin",
+  "masterSha256": "a67c727c1f09ef24ab3495aadf8ab77e7b683c69f16fd3ae625cfdcd4296059c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Full long dorsal and rounded tail with eye spot visible; near paired fins clear, far paired-fin attachment hidden. Silhouette reaches roughly x92 and1173, below101px margins on both sides: original framing REFUSED. Ventral fin count/shape requires author review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 92,
+      "y0": 425,
+      "x1": 1174,
+      "y1": 796
+    },
+    "margins": {
+      "left": 92,
+      "right": 79,
+      "top": 425,
+      "bottom": 457
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

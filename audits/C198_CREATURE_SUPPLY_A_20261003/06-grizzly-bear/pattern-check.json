@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Grizzly Bear",
+  "masterSha256": "5c10271f242c78e3d55f06a392b061e1ccd3a51ea8e5844f15726d49be1fca17",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

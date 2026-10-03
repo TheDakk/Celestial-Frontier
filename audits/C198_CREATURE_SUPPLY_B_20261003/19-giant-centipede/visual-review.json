@@ -1,0 +1,28 @@
+{
+  "name": "Giant Centipede",
+  "masterSha256": "660c90f614be72b9d6814013724b1357bfdc498c0a8647b7c8d31c590140d55a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: flattened dark plated body, orange legs, long paired antennae, rear terminal pair and large curved head-region claws. Numerous near legs clear but full far chains and biological count unresolved; preserve all real source paint rather than deleting legs to fit. Both horizontal endpoints encroach strongly into 8% margins, especially right antenna. Large claws/eyes require identity review; framing/anatomy held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 82,
+      "y0": 434,
+      "x1": 1212,
+      "y1": 806
+    },
+    "margins": {
+      "left": 82,
+      "right": 41,
+      "top": 434,
+      "bottom": 447
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

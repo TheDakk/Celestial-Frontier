@@ -1,0 +1,14 @@
+{
+  "id": "23-grasshopper",
+  "name": "Grasshopper",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-4ce1330f-4185-47df-bb93-415da43f919d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+  "bytes": 1269247,
+  "promptSha256": "50351356c73da0eeb7ff62047d4681403552fb9db633792bce0e14f1e200bfce",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

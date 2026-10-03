@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Dobsonfly",
+  "masterSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

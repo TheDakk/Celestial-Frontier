@@ -1,0 +1,28 @@
+{
+  "name": "Baboon",
+  "masterSha256": "51550b9472c88e69eb75f641b74302fbdb441d1ded007c97b6f12b75936f9aee",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: brown shaggy mane, elongated dark muzzle, visible rump callosity and natural raised-base dropping tail. Four distal limbs visible, but far hand lifted/curling and support heights unequal; far roots partly hidden. No complete four-ground-contact claim. Natural facial/callosity identity preserved, source-specific root/finger review held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 243,
+      "y0": 293,
+      "x1": 1016,
+      "y1": 946
+    },
+    "margins": {
+      "left": 243,
+      "right": 237,
+      "top": 293,
+      "bottom": 307
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

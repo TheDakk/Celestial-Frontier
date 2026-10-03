@@ -1,0 +1,28 @@
+{
+  "name": "Remora",
+  "masterSha256": "624270b22c441173879f495a194f87583af5679b4061e04e29f41ab44d7be96e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Complete tail, near pectoral and dorsal/anal silhouettes; generous but narrower lateral margins. Raised oval head disc appears cap-like, and rear small fin silhouettes need anatomy review against the species. Hidden far paired roots remain unassigned; source candidate only.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 117,
+      "y0": 475,
+      "x1": 1128,
+      "y1": 767
+    },
+    "margins": {
+      "left": 117,
+      "right": 125,
+      "top": 475,
+      "bottom": 486
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

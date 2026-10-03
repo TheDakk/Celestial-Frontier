@@ -58,4 +58,7 @@ it('retains 53 pending painted identities even after their candidate templates a
  for(const name of admitted){expect(rows.some(r=>r.name===name)).toBe(false);expect(earthFaunaProfile(name)!.candidateTemplates).toEqual(['brachyuran']);}
  for(const r of rows){expect(SPECIALIZED_TEMPLATES[r.target]).toBeDefined();expect(earthFaunaProfile(r.name)!.candidateTemplates).toEqual([r.target]);expect(earthFaunaProfile(r.name)!.needsObservedFit).toBe(true);expect(r.status).toBe('needs-observed-fit');}
  expect(rows.find(r=>r.name==='Sea Squirt')!.target).toBe('sessile-filter');expect(rows.find(r=>r.name==='Salp')!.target).toBe('colonial-filter');
+ for(const name of ['Cave Shrimp','Freshwater Shrimp','Shrimp','Prawn','Vent Shrimp']){const row=rows.find(r=>r.name===name)!;expect(row).toMatchObject({profile:'shrimp-prawn',target:'crustacean-small',status:'needs-observed-fit'});expect(row.media).toEqual(['water']);}
+ // A candidate physical strike must not silently remove a name from the pending painter ledger.
+ expect(rows.filter(r=>r.profile==='shrimp-prawn')).toHaveLength(5);
 });

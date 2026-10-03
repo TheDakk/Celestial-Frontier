@@ -1,0 +1,28 @@
+{
+  "name": "Shrew",
+  "masterSha256": "988c8418d4a4cb8e47c6e8ef3dcfb6b142b5bc85bfb7fe92ad33ad7bcbc9a36d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: brown-gray fur, very long pointed muzzle, small visible eye, one clear rounded ear, long bare tapering tail and four separate small feet. Far-ear outline/root not independently visible, far upper leg roots covered and snout length/proportions need species review. No hidden ear invention.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 135,
+      "y0": 417,
+      "x1": 1118,
+      "y1": 809
+    },
+    "margins": {
+      "left": 135,
+      "right": 135,
+      "top": 417,
+      "bottom": 444
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

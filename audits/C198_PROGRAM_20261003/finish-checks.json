@@ -1,0 +1,16 @@
+{
+  "head": "e18a0bd76a7d2487e8251e4529f570ef6b9347b2",
+  "latestSiblingRow": "C198",
+  "siblingMailboxSha256": "a720d30ef6e4b402f685cdbe720c4ea823451715370b8e2fa6be00181fbcafd3",
+  "trackedSymlinks": 25,
+  "absoluteTargets": [],
+  "optionalAiPresent": true,
+  "asidePresent": false,
+  "freeBytes": 138444800000,
+  "freeGiB": 128.94,
+  "allPairsRuns": 0,
+  "nativeCandidateFilms": 0,
+  "newEpochs": 1,
+  "developAttempts": 1,
+  "scope": "Final repository/source handoff check; no gate retry"
+}

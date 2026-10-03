@@ -1,0 +1,14 @@
+{
+  "id": "03-plover",
+  "name": "Plover",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-1438c1d9-474d-40a1-aad4-a4f011c9b02a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "30d96db1a148f540afdb372717d4104c873b60a6636065e9357f0c8b18ee6143",
+  "bytes": 1246253,
+  "promptSha256": "042e0ec70802d36c38e7be822f7d6e863f737e037f4c06c378622a1b7bc57fe8",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

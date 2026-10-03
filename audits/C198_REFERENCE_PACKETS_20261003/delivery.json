@@ -1,0 +1,701 @@
+{
+  "schema": "cf.c198-audit-delivery/v1",
+  "status": "FROZEN_TERMINAL",
+  "root": "audits/C198_REFERENCE_PACKETS_20261003",
+  "files": [
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/authoring.json",
+      "bytes": 11240,
+      "sha256": "4f1b8c570dbce1cf4f7af5f78885128346887af4488e45298cd303b2fc874fcf"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/conservation.json",
+      "bytes": 8448,
+      "sha256": "43114f1b3438cf40d6be3082af9d182f5f3fa5a63ef90519f1abe0f96a9ca1b5"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/binding.json",
+      "bytes": 2130273,
+      "sha256": "70d70655e848f6f219902259dac9218aafd1b79bc410a76a51a23703dc00b0c4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/declaration.json",
+      "bytes": 14767,
+      "sha256": "c1dc0830314e70e69a94f64dc079d61299e6d06d18ac963c721108caad325480"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/intake-provenance.json",
+      "bytes": 3091,
+      "sha256": "9feade92b4a28c36a451c404c8a2bac764443c9548d3cb66ad3eca4a4d57893d"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/atlas/c198-reference-01-gorilla.json",
+      "bytes": 6625,
+      "sha256": "2f4e575b56d64ed957432cb5cad960d8c7e3258aa80d18413d853ff5947edb43"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/atlas/c198-reference-01-gorilla.png",
+      "bytes": 870654,
+      "sha256": "6ddd40a45f9bd774549b78e5dc3ef6950ee1ac887f79916811a44dbaa551dd7e"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/atlas/receipt.json",
+      "bytes": 2785,
+      "sha256": "73bdb9895a98770b3d6f4d8d722527359dcb566793a167f34ed3982905ab9b21"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/binding.json",
+      "bytes": 5506,
+      "sha256": "62d5aef20fe7a7a035fd407ccecc1e5a24d0673c2ceb9a21f31dfecd9beee8df"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/keyed.png",
+      "bytes": 1901258,
+      "sha256": "396930a886ec0a62bd50059874f74252dfa0bd21a386691fe8be70280eacb4e4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/manifest.json",
+      "bytes": 2651,
+      "sha256": "e9063d8bd8bf5d9ed9c265d7f6a8b331c81e8f1df6551dc98d9a50d4bec005a3"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/ownership.png",
+      "bytes": 24602,
+      "sha256": "6aca462bebce28446841e9b51fb5267b3d2d2ce49f490222d5045c4a84c9af33"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/body.png",
+      "bytes": 143341,
+      "sha256": "93e5be5f489cf4bd5e5264066fdffab76028a56bf089159fd2281c53bd844046"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/chest.png",
+      "bytes": 22111,
+      "sha256": "e09230b234244a6b6807fb9798b31b1311af494bd91cb78638fa717825456cbf"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/far-foot.png",
+      "bytes": 14929,
+      "sha256": "1083ac069cc45b1e7e94aef65a2406558e7379474cbbaa5de56c0f3566149ae7"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/far-forearm.png",
+      "bytes": 75191,
+      "sha256": "6a767c9dffcfa88d801ee23bb87e6ec6f722b76476ae43bd70408b55d097f3d8"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/far-hand.png",
+      "bytes": 15793,
+      "sha256": "03fbb15f2440e381df802cadbeee9b1279770e555e519a27389bd0ac55669492"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/far-leg.png",
+      "bytes": 40273,
+      "sha256": "e33cf9f1d0c1cba5dc39af4679399c6f6194aab133b8099c0643ee511f1cd809"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/far-upper-arm.png",
+      "bytes": 39876,
+      "sha256": "a5f0719edf12ef78143fe4a9f3d322f5cfbc77214a6f5263eb89f8b88d12c9d3"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/head.png",
+      "bytes": 81857,
+      "sha256": "e0d423049a2642bb9db448beafae1d1a87654c379e10a4b71f9ae802421c328b"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/jaw.png",
+      "bytes": 14367,
+      "sha256": "c3b5c5f1ad6605d498e4569314809c9e515fef415114c4e643bdaf268180b6fe"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/near-foot.png",
+      "bytes": 16288,
+      "sha256": "bddd6a7adf47688ea7ddce864c34b1e259564ecac8ae5824d3870b919afaadcd"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/near-forearm.png",
+      "bytes": 89692,
+      "sha256": "ec5362c306b10a10a5aed77bcd5f0be4ec7a148fe9821b2f2908ceefbcc6e051"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/near-hand.png",
+      "bytes": 22039,
+      "sha256": "14d3da5541257dc765dc4143ccd36da33b57cd42b75d9f382551e0b48b7ca7ed"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/near-leg.png",
+      "bytes": 114743,
+      "sha256": "50f5c68427d8aa84c4c1b0088b76bdf0d82e7d8b8708e87782ff19487872a861"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/near-upper-arm.png",
+      "bytes": 138700,
+      "sha256": "5e130e5a1388b200969f1712367e558ea2b30d3927b083f5be61c1e7e7feb2a9"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/neck.png",
+      "bytes": 52350,
+      "sha256": "c9df34edf8705c1fc8cc32fe121a9965ceeb2bfccb1420670f091ef3a107dfa1"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/parts/pelvis.png",
+      "bytes": 60352,
+      "sha256": "6b237eb259be2f366a0bddab260ea3d19bd8a5228890e5d7297933f980e639a6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/receipt.json",
+      "bytes": 4426,
+      "sha256": "4d178588336b027440585569b4716efc2d1fc8cdc394cc696fee37daa0856ea2"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/pre-split-binding.json",
+      "bytes": 1457260,
+      "sha256": "2f264ad7a862f6896fd6f862a41b4ca328da1241c4a5ef7b6cd167d2ec127b39"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/receipt.json",
+      "bytes": 2439,
+      "sha256": "0e53a4e0d01508d8b35893637436dd3e3ffe67cbf1bb6217698b8b5f3fa00f83"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/record.json",
+      "bytes": 5801,
+      "sha256": "81cdf95391f31b6c996ad4cbc418164d21601633ade148650bb5035c870c7bb7"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/intake-execution.json",
+      "bytes": 458,
+      "sha256": "05f6453b5fee691c07b8fd5872af37b6107f33ab9073d7b59f03961d49e35870"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/intake.log",
+      "bytes": 309,
+      "sha256": "252e9a9ee5e3a00bd4b0157aca302e1b0ff4910a64a36bb934d313f4b750dfe2"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/master.png",
+      "bytes": 1526890,
+      "sha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/presence.json",
+      "bytes": 103,
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/approach-walk-0.png",
+      "bytes": 832468,
+      "sha256": "4cf9cd3a778ecf6fea77ae08924c079dcc6091713f41f40a1ba709bbbd69b8d6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/approach-walk-0p9.png",
+      "bytes": 824228,
+      "sha256": "9328fc220547601144b8a7ff958b9aac28a8269b4e4cf9521f2838cee966bfd2"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/approach-walk-1.png",
+      "bytes": 832468,
+      "sha256": "4cf9cd3a778ecf6fea77ae08924c079dcc6091713f41f40a1ba709bbbd69b8d6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/faint-0.png",
+      "bytes": 832468,
+      "sha256": "4cf9cd3a778ecf6fea77ae08924c079dcc6091713f41f40a1ba709bbbd69b8d6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/faint-0p2.png",
+      "bytes": 827134,
+      "sha256": "9ca0951f779dd0ef467fc79c477ab94161f67daa061ce4157825d8c236ee19b0"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/faint-0p9.png",
+      "bytes": 804740,
+      "sha256": "6b5739f87432448b0a60e0314bc6f2565773a568f9eb989f2437a8edbc11d951"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/faint-1.png",
+      "bytes": 804722,
+      "sha256": "b834237fe9f763437aa1153f2310183d66453aee5d6c11c31ae8818042fe5ba6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/hit-0.png",
+      "bytes": 832468,
+      "sha256": "4cf9cd3a778ecf6fea77ae08924c079dcc6091713f41f40a1ba709bbbd69b8d6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/hit-0p2.png",
+      "bytes": 786216,
+      "sha256": "0c41dd307996d90d27b8f9e5487e6a429b0335b582d97b730cb3aaf258276b98"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/hit-0p9.png",
+      "bytes": 833981,
+      "sha256": "6670614f9971acae9d615c821d86d00ca19bf4fb0b214e41f542649e112cff94"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/hit-1.png",
+      "bytes": 832468,
+      "sha256": "4cf9cd3a778ecf6fea77ae08924c079dcc6091713f41f40a1ba709bbbd69b8d6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/idle-0.png",
+      "bytes": 832468,
+      "sha256": "4cf9cd3a778ecf6fea77ae08924c079dcc6091713f41f40a1ba709bbbd69b8d6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/idle-0p2.png",
+      "bytes": 827692,
+      "sha256": "9dfc9e6c1780e25daf3f959590b83280595b14415eb06c0d28317cbac6a1420e"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/idle-0p9.png",
+      "bytes": 833616,
+      "sha256": "bba642930baa61d5da46b4dd7fa57fb910ae111177cd13e7890ce5252a5e34fe"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/idle-1.png",
+      "bytes": 832468,
+      "sha256": "4cf9cd3a778ecf6fea77ae08924c079dcc6091713f41f40a1ba709bbbd69b8d6"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/review.json",
+      "bytes": 5480,
+      "sha256": "bb6b2ac507ee9b5eb82689803fa2ba08ecda1e1399ff3a8de88a615e2e1d05f1"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/source-observations.json",
+      "bytes": 816,
+      "sha256": "296b53039b4bf42d47dd12435a575595542b08972193629587f85257efc12b4c"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static-01.json",
+      "bytes": 30474,
+      "sha256": "a85e25d0f1e966cff7b950f1c29e4c3d127023b816340f5d0c25da439685d531"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "28c11eb45401792f41523d9f6a4307ad99fc25806d17cbdbfcba31b2ea2199de"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static-execution.json",
+      "bytes": 480,
+      "sha256": "7d256fc69ba52a442017a878b1dd65471dabb219e5ad9388d527eaa2374e93fc"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static.log",
+      "bytes": 2473,
+      "sha256": "bc584e85281a1dc2eefcf2d9d9a486d41dc582b126aeabc0cb197b948cbcaf40"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/subject-source.json",
+      "bytes": 2413,
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/visual-review.final.json",
+      "bytes": 1201,
+      "sha256": "a3335bb5a98177868d78f7b30a8fddd3f25e4339bf8f9d92cb03d55a19197207"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/authoring.json",
+      "bytes": 14095,
+      "sha256": "54a81038162259e617a71a10d843160fed9aa7a7f79816d656d7dc6d090e52a9"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/conservation.json",
+      "bytes": 6917,
+      "sha256": "2f0993fb5ab88e5031c319bdaddfe0b74c03592bdd3ed2070642d8dd97881d60"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/binding.json",
+      "bytes": 1987333,
+      "sha256": "141e57ed6771bfe390acf8c9aa64523885fdcadde653e40c79d838dab5c8dee4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/declaration.json",
+      "bytes": 18956,
+      "sha256": "fbb53ad9b6fae4060d4679031f16bf6496a4fb0ddd8cbde9001f8be833f91a36"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/intake-provenance.json",
+      "bytes": 3138,
+      "sha256": "d6478e363a027147d1add6a6e4fbd48d0567c268895743218cae4a7d4b920e24"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/atlas/c198-reference-02-capuchin.json",
+      "bytes": 7801,
+      "sha256": "137a0bc6ae292805dab155dee3bbc0a309725cda82fb426d525bd935fb369871"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/atlas/c198-reference-02-capuchin.png",
+      "bytes": 565644,
+      "sha256": "5d62068f7fd97b3ae646a066f80ebe377ebacb84c36a7516f3a081c54eb3cc55"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/atlas/receipt.json",
+      "bytes": 3155,
+      "sha256": "e29de4cbaf3e890a7dcc301fafef1190a0dad4611283f183a7cace945ea7ef08"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/binding.json",
+      "bytes": 6429,
+      "sha256": "6d0dd53f1cbcdadc093c094727f62401360da1132cf11da4c8d698dd47528a6a"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/keyed.png",
+      "bytes": 1685405,
+      "sha256": "cdb5fbda6a248dbec7050d75b2f5709da80395801074edf453a24fac1105def4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/manifest.json",
+      "bytes": 3120,
+      "sha256": "28f1f641bf472246ff7d79a1ffabd782222a4477689faffdd2c69f308c140c9c"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/ownership.png",
+      "bytes": 21577,
+      "sha256": "2842749167cdb76ed8cdc4aa86c063a9c5e008572119e2ce92584421ab2d5732"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/body.png",
+      "bytes": 156115,
+      "sha256": "67efe81af420ced7077b810e11ea6f1509f178faf98d53c3875c569b8f227b85"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/chest.png",
+      "bytes": 5187,
+      "sha256": "31443e57ab6ca8907654dd7cb8a3e3c952daefef73c42e0975a2315d7685bad7"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/far-foot.png",
+      "bytes": 12553,
+      "sha256": "b47e72dfcf0e24d176f8c1223a12dbecf589b208c2f4c3a0e88adee40f39e634"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/far-forearm.png",
+      "bytes": 33311,
+      "sha256": "bad130657c51ab7d838a40702e6320a8e5f3c07302e91ce84466b5563aee3098"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/far-hand.png",
+      "bytes": 9613,
+      "sha256": "cd57b0f166924ea3fbd6608762e33066929066c7875147c60b7c63d75d38cf45"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/far-leg.png",
+      "bytes": 13864,
+      "sha256": "71809fbda10208f6008d4355367e642246e40d41048626b70553354aee375ce3"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/far-upper-arm.png",
+      "bytes": 29985,
+      "sha256": "e5407b8e0e03068fd5a3656a8d431570355af1f5515e9c61667bcf41ea5d7972"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/head.png",
+      "bytes": 53815,
+      "sha256": "ee8b327ca74e4599901917667e210547b994793939727f4b879eae8c542810e7"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/jaw.png",
+      "bytes": 7553,
+      "sha256": "34c9827ba3c3eef065ffe35c153fe946f01fbf241839f246fa77343db4df6ed0"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/near-foot.png",
+      "bytes": 13150,
+      "sha256": "036f4914f28c32c402925d1c808653711b6c64972b93e0eb0849a6b0884f0de5"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/near-forearm.png",
+      "bytes": 36145,
+      "sha256": "d1f010798040daba7db1f345a7ed9944a33a929f9d1827f16126f58e0d43f1d5"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/near-hand.png",
+      "bytes": 12925,
+      "sha256": "d7f4c439ef4f9329279349700dcf008f7ee56ad1e9d0bdc68067e3cbd652b279"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/near-leg.png",
+      "bytes": 62944,
+      "sha256": "c5070f26e990b9425ff10f1d12d32369f8cdf416111fe93163069cbba469f5f2"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/near-upper-arm.png",
+      "bytes": 60961,
+      "sha256": "99be918a4d878269283663defd6ba214b3971d11642bd0bba216ae557c0478dd"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/neck.png",
+      "bytes": 31604,
+      "sha256": "406511878a635abdc9ebaf81e5d3876f2a07fa59aa39d471641a27d77b6ad4d5"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/pelvis.png",
+      "bytes": 40492,
+      "sha256": "02d3ee17d16c0ec173f9e7530d10efcf622364d7e4b2a8189c64de5ae03771ff"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/tail0.png",
+      "bytes": 35332,
+      "sha256": "28edc3f91c0010848c7f860454bfcd5a67f2ad33f7f579cd6f18af8af6b4d67f"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/tail1.png",
+      "bytes": 26439,
+      "sha256": "9abd2f218e69309678c5ce4ea9d17f3b7a2bdb0b966b3722fcdd36fa191c7b94"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/parts/tail2.png",
+      "bytes": 27762,
+      "sha256": "9940ab722f0e20ea9dc3c0226facbeb551aee0ea3089ffd52946f3dab1ffea50"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/parts/receipt.json",
+      "bytes": 5103,
+      "sha256": "f6b6a4545cda73bca018e56beebe5896457f61873a9a639ec94e4764ad0550b3"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/pre-split-binding.json",
+      "bytes": 1319305,
+      "sha256": "4792716e392ea089e56e5c49730c05f29c774a59f713ab35f429aa2351b14c05"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/receipt.json",
+      "bytes": 2439,
+      "sha256": "3c8793213ff29e3ee16657f7cebbb5187867b963962be50852df6b82b551fc9f"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/fit01/record.json",
+      "bytes": 6121,
+      "sha256": "a9135f7eed43167c05b3c1a50c13f37f1d224310b27fb9c0dc2b21febb723380"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/intake-execution.json",
+      "bytes": 467,
+      "sha256": "8368d0eff3358503cbf83018ad9fe9e2cc0484faa9a26ca76fa6b4eda74d72a3"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/intake.log",
+      "bytes": 310,
+      "sha256": "ef9de249df67798ad293310f361482f91496f03096786387b565c5866044b537"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/master.png",
+      "bytes": 1324004,
+      "sha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/approach-walk-0.png",
+      "bytes": 529877,
+      "sha256": "4e39beea7df9dacb8f1074c7e3de61bd9e4b50669e20a8ff6f3fb2c3ecd8d902"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/approach-walk-0p2.png",
+      "bytes": 510545,
+      "sha256": "cae6896eb4d113f3c580f0beeba34a9d0d24719ae91db016b3311ff5822218bc"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/approach-walk-0p9.png",
+      "bytes": 534346,
+      "sha256": "f7ed340c1d535a2a0de86035a1ec1d0dd821abc043a70a00cedaa83c9c7a3c91"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/approach-walk-1.png",
+      "bytes": 529877,
+      "sha256": "4e39beea7df9dacb8f1074c7e3de61bd9e4b50669e20a8ff6f3fb2c3ecd8d902"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/faint-0.png",
+      "bytes": 529877,
+      "sha256": "4e39beea7df9dacb8f1074c7e3de61bd9e4b50669e20a8ff6f3fb2c3ecd8d902"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/faint-0p2.png",
+      "bytes": 533266,
+      "sha256": "7b73d1d9f71545da104c90c184ea44e36cb3cc31e5fd9141f52b553866feea09"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/faint-0p9.png",
+      "bytes": 511344,
+      "sha256": "61f5f11aebd09188468a0e74d7ae439939591a6e12438be6daf9dd2bf0459818"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/faint-1.png",
+      "bytes": 511034,
+      "sha256": "b93e285809d23da20cd36814ade6f8083e5350ab355e84b1bab5ca72f76880e9"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/hit-0.png",
+      "bytes": 529877,
+      "sha256": "4e39beea7df9dacb8f1074c7e3de61bd9e4b50669e20a8ff6f3fb2c3ecd8d902"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/hit-0p2.png",
+      "bytes": 528648,
+      "sha256": "9518a5ef60932bcf7cc6cc9f7bf5ffb6a1e0f575b477e3f268c184424880be4e"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/hit-0p9.png",
+      "bytes": 529877,
+      "sha256": "4e39beea7df9dacb8f1074c7e3de61bd9e4b50669e20a8ff6f3fb2c3ecd8d902"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/hit-1.png",
+      "bytes": 529877,
+      "sha256": "4e39beea7df9dacb8f1074c7e3de61bd9e4b50669e20a8ff6f3fb2c3ecd8d902"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/idle-0.png",
+      "bytes": 530750,
+      "sha256": "a051347dded87f7149557625c119b9b1ec466825d9465bfd2cdf049f11e840b4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/idle-0p2.png",
+      "bytes": 522014,
+      "sha256": "e3a935db27383e60a15342283326a73d26e4851ff3060dd7f19266d49dad6d5f"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/idle-0p9.png",
+      "bytes": 529427,
+      "sha256": "0942aa306a8cfc7ce7b7ff49bccdd8410e8b0684ae7a640221a431fa2780c5a4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/idle-1.png",
+      "bytes": 530750,
+      "sha256": "a051347dded87f7149557625c119b9b1ec466825d9465bfd2cdf049f11e840b4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/review.json",
+      "bytes": 5549,
+      "sha256": "2955b7fd04f336a684cb17e3917afa3b919fcdaa1f956207a2895f96536508d8"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/source-observations.json",
+      "bytes": 819,
+      "sha256": "395c3efdd60915339bcb2a98750d3c115482feaadd1eea525f492ea3350e5aa3"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/static-01.json",
+      "bytes": 15563,
+      "sha256": "9a809f64369146aedda862c631b8210a248c69e41c7d8b8b5b16b12baf133c45"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "fc824d291bf5a5f50a110c4c4162aa325abb5dcce56ce72e6dd0de2323e82c3c"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/static-execution.json",
+      "bytes": 489,
+      "sha256": "eda0ba2451a37952a4520a564516dc92f3987d6fb9a126f1f0bae56e28581358"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/static.log",
+      "bytes": 2146,
+      "sha256": "d2c0136d2b05cba66a96731af7b7f2b085190798915ce1a3219bc52ab8c31f82"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/subject-source.json",
+      "bytes": 2319,
+      "sha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/visual-review.final.json",
+      "bytes": 1200,
+      "sha256": "99a62d679c7fa58634b3d906843b272529fead0ac85bfb735b8f6d5480184ac8"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/03-squid-source-hold/source-review.json",
+      "bytes": 1461,
+      "sha256": "c976afe525ab20fcbc06c7f828ff3a35c75fae71d50111ba0cc7195836c9cc46"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/04-cuttlefish-source-hold/source-review.json",
+      "bytes": 1468,
+      "sha256": "1c6b1c75f4adb34b46f1cf4b52b942cc6eed70016a60f10c9acc556862d68a57"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/05-diving-beetle-source-hold/source-review.json",
+      "bytes": 1508,
+      "sha256": "906a10c94ed8d86bbf738848f3cc2ac1db027a489193d41bccc76dd2dfa3f4c8"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/06-grasshopper-partial/partial-anatomy.json",
+      "bytes": 1372,
+      "sha256": "6811f747d0057afb7aa398defa62e94066277d8a837479dcadb8264dca380f9b"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/07-dobsonfly-partial/partial-anatomy.json",
+      "bytes": 1303,
+      "sha256": "1d3bb11e46e832dc94f69d90d7f2eaa08f83ac6783f7a802f94830579dd5ff96"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/README.md",
+      "bytes": 2548,
+      "sha256": "373b6e53eb90820a8d6e5af058f205a4eedbe680d0f2a24bfeb4772547e72197"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/author-primates.mjs",
+      "bytes": 8167,
+      "sha256": "e362b010b563a64fbb472eaf16c644bbe15548b79a19640b8c462779429c9aa0"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/bundle-review.mjs",
+      "bytes": 1222,
+      "sha256": "01928a14203b07fb7a6ca813be7e8d3e879dfef693f658de257139a04fd595a2"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/execution-summary.json",
+      "bytes": 3199,
+      "sha256": "d3f71ea4adfce708cde9beb63a762b16cca59e23dc3acd88abe7b84f1fb1c672"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/final-checks.json",
+      "bytes": 261,
+      "sha256": "f14d5748f1823efe5a6f49dfad4b358b3003a09c0c3e23d24671334ead6dc89f"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/queue-status.final.json",
+      "bytes": 2262,
+      "sha256": "7d8a0bc7b33580176ce05466ca3e83532b00ecb31b2eea1d3ec597af2a104adc"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/review-bundle-receipt.json",
+      "bytes": 178704,
+      "sha256": "1647ce3a2a2b46ab7ba4648c62c5699ca0f220f1c6d9b1bed68673fde3485ee1"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/review-rig.bundle.mjs",
+      "bytes": 1355218,
+      "sha256": "8b5eb39d6efcf6dd368a2dc1ba83d0db6e719c431f5456124b1a5b46d619f87c"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/review-rig.mjs",
+      "bytes": 4438,
+      "sha256": "4cd99ff68833ae4a6ef4c55a3c85183b25d8e1da363a725b6e3c95af90a07419"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/run-candidates.mjs",
+      "bytes": 1288,
+      "sha256": "1ff19bdf4b1fefba54ba60a616f2263f0b163d8921538f8ebb4a539ef506cbfe"
+    }
+  ],
+  "fileCount": 137,
+  "totalBytes": 39031914,
+  "queue": "audits/C198_REFERENCE_PACKETS_20261003/queue-status.final.json",
+  "executionSummary": "audits/C198_REFERENCE_PACKETS_20261003/execution-summary.json",
+  "qualityAccepted": false,
+  "native": false,
+  "productionEdited": false,
+  "referencePoolEdited": false,
+  "limitations": "Source and static/visual holds are explicit. No CPU/native/full-stage/AI-finish qualification. No pending local execution."
+}

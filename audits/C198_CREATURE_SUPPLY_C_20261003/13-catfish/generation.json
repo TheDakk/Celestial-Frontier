@@ -1,0 +1,14 @@
+{
+  "id": "13-catfish",
+  "name": "Catfish",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-58b55a4a-f239-4858-a0ce-25b34955a457.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2e3e86407a405bf6037628c6209746d3cd9ed532f7fd51b8aee283c6d269d9b8",
+  "bytes": 1256062,
+  "promptSha256": "24795e256c7360fc40deedd63e5a6e300c2fb9b15d4c29a6fb871111da3b1529",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "22-rabbit",
+  "name": "Rabbit",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f525ff6a-a171-4184-af53-d6ef4d444efd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "189e708c531b80c6768a64e09b185b3317293f271606f5a8b3df045ad9ba377f",
+  "bytes": 1370366,
+  "promptSha256": "1c2cd2a34c0c1db499c66e4fe471b03f545c72307c69c124ed4ee16242658e4b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Chipmunk",
+  "masterSha256": "38e11107b041cf1f84c727bceb73c4ae6045144d7deeca936e70bbcaa8b5778c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: alternating dark/light dorsal and facial stripes, inflated cheek shape, upright bushy tail, two ear outlines and four separated clawed feet. Far roots and far-ear base remain partly hidden; front contact heights differ. Tail attachment visible, but exact foot digits and ground plane unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 260,
+      "y0": 279,
+      "x1": 991,
+      "y1": 918
+    },
+    "margins": {
+      "left": 260,
+      "right": 262,
+      "top": 279,
+      "bottom": 335
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

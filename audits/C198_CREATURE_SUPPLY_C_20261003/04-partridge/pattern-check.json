@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Partridge",
+  "masterSha256": "a1dc9499ecf8ccb2af058d7c8a6ca01f433e1834e1d46b666a193b9f44834573",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

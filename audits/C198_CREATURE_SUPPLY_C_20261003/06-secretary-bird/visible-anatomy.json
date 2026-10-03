@@ -1,0 +1,121 @@
+{
+  "id": "06-secretary-bird",
+  "name": "Secretary Bird",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6d31085268258a90672c5efd95196be1d05dc1137985730c203c117ce7914f02",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 17422,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 176,
+      "y0": 133,
+      "x1": 292,
+      "y1": 209
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1826,
+        "pixels": 3182,
+        "box": {
+          "x0": 248,
+          "y0": 67,
+          "x1": 331,
+          "y1": 176
+        },
+        "attach": {
+          "x": 286.5,
+          "y": 145,
+          "relX": 0.95,
+          "relY": 0.16
+        },
+        "dir": {
+          "x": 0.19,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 89.8
+      },
+      {
+        "k": 1,
+        "frac": 0.1977,
+        "pixels": 3445,
+        "box": {
+          "x0": 66,
+          "y0": 163,
+          "x1": 208,
+          "y1": 259
+        },
+        "attach": {
+          "x": 182.2,
+          "y": 194.3,
+          "relX": 0.05,
+          "relY": 0.81
+        },
+        "dir": {
+          "x": -0.95,
+          "y": 0.33
+        },
+        "class": "rear",
+        "length": 133
+      },
+      {
+        "k": 2,
+        "frac": 0.1768,
+        "pixels": 3081,
+        "box": {
+          "x0": 182,
+          "y0": 209,
+          "x1": 298,
+          "y1": 346
+        },
+        "attach": {
+          "x": 240.5,
+          "y": 210,
+          "relX": 0.56,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.09,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 148.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 182,
+        "x1": 230,
+        "cx": 205.6
+      },
+      {
+        "x0": 249,
+        "x1": 298,
+        "cx": 272.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

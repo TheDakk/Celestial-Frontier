@@ -1,0 +1,14 @@
+{
+  "id": "11-albatross",
+  "name": "Albatross",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-16262bd7-2310-466e-b695-11242e10ab36.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "96b1750faf0a6e1f8844ae75bdaa8f7b3cee3c1b0392643e84b1978c65d58657",
+  "bytes": 1250330,
+  "promptSha256": "f43146852c4c22b41e2095935cbffbf3850e653496858946d915b960a25a54ea",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

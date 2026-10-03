@@ -12,6 +12,7 @@ export interface AnatomyAttack {
 }
 const row=(family:string,verb:string,weapon:Weapon,label:string,joints:string[],contactJoint:string,medium:BattleMedium[]=['ground','air','water'],contactPhase?:'strike'|'smear'):AnatomyAttack=>Object.freeze({family,verb,weapon,label,joints:Object.freeze(joints),contactJoint,medium:Object.freeze(medium),...(contactPhase?{contactPhase}:{})});
 export const ANATOMY_ATTACKS:readonly AnatomyAttack[]=Object.freeze([
+ row('crustacean-small','claw','claw','Foreleg tip strike',['thorax','head','leg0NearRoot','leg0NearKnee','leg0NearFoot','leg0FarRoot','leg0FarKnee','leg0FarFoot'],'leg0NearFoot',['water'],'strike'),
  row('brachyuran','pinch','claw','Pincer pinch',['clawNearPalm','clawNearFixedTip','clawNearDactylRoot','clawNearDactylTip'],'clawNearDactylTip',['ground','water'],'strike'),
  row('quadruped','bite','bite','Bite',['head','jaw'],'jaw'),
  row('quadruped','claw','claw','Foreclaw rake',['foreNearKnee','foreNearAnkle','foreNearPaw'],'foreNearPaw'),

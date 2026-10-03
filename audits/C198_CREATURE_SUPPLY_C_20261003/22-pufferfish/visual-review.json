@@ -1,0 +1,28 @@
+{
+  "name": "Pufferfish",
+  "masterSha256": "79fa0f7eb10037c977106d09b20a60b46e4000736080cb4a230e73305f16c670",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Complete inflated round body, tail, near pectoral, dorsal and small anal fin visible with generous margins; far paired fin hidden. Spiny puffer versus porcupine-fish identity and oversized eye require species review. No invented pelvic fins or admitted fin count.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 200,
+      "y0": 359,
+      "x1": 1044,
+      "y1": 902
+    },
+    "margins": {
+      "left": 200,
+      "right": 209,
+      "top": 359,
+      "bottom": 351
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

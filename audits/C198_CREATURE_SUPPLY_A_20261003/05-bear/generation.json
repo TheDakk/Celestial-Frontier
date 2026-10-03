@@ -1,0 +1,14 @@
+{
+  "id": "05-bear",
+  "name": "Bear",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-7bf1743b-cf6c-42fb-a6bf-f35c369e999e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9f6c3c41dd8df4b7bd0ad636306b88126279aac851a42c61c302f909eb9d00d9",
+  "bytes": 1452744,
+  "promptSha256": "8998aa5bd20c5b0159403029caab2edbd91ea18dfb7462ebf326a352e276f520",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

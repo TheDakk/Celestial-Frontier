@@ -1,0 +1,28 @@
+{
+  "name": "Plover",
+  "masterSha256": "30d96db1a148f540afdb372717d4104c873b60a6636065e9357f0c8b18ee6143",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two visible legs and complete toes, continuous short tail and brown/white banding. Far wing hidden; enlarged eye/head stylization remains full-size review hold. Generous all-side original margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 252,
+      "y0": 296,
+      "x1": 989,
+      "y1": 960
+    },
+    "margins": {
+      "left": 252,
+      "right": 264,
+      "top": 296,
+      "bottom": 293
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

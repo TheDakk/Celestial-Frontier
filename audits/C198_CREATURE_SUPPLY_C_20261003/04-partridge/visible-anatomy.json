@@ -1,0 +1,145 @@
+{
+  "id": "04-partridge",
+  "name": "Partridge",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "a1dc9499ecf8ccb2af058d7c8a6ca01f433e1834e1d46b666a193b9f44834573",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 21213,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 148,
+      "y0": 137,
+      "x1": 288,
+      "y1": 258
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1047,
+        "pixels": 2221,
+        "box": {
+          "x0": 226,
+          "y0": 94,
+          "x1": 313,
+          "y1": 136
+        },
+        "attach": {
+          "x": 256.5,
+          "y": 136,
+          "relX": 0.78,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.67,
+          "y": -0.75
+        },
+        "class": "top",
+        "length": 70.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0154,
+        "pixels": 326,
+        "box": {
+          "x0": 289,
+          "y0": 148,
+          "x1": 296,
+          "y1": 210
+        },
+        "attach": {
+          "x": 289,
+          "y": 179,
+          "relX": 1.01,
+          "relY": 0.35
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.06
+        },
+        "class": "front",
+        "length": 31.8
+      },
+      {
+        "k": 2,
+        "frac": 0.0907,
+        "pixels": 1923,
+        "box": {
+          "x0": 90,
+          "y0": 177,
+          "x1": 147,
+          "y1": 244
+        },
+        "attach": {
+          "x": 147,
+          "y": 207.5,
+          "relX": -0.01,
+          "relY": 0.58
+        },
+        "dir": {
+          "x": -0.87,
+          "y": 0.49
+        },
+        "class": "rear",
+        "length": 67.7
+      },
+      {
+        "k": 3,
+        "frac": 0.085,
+        "pixels": 1803,
+        "box": {
+          "x0": 163,
+          "y0": 259,
+          "x1": 285,
+          "y1": 319
+        },
+        "attach": {
+          "x": 204.5,
+          "y": 259,
+          "relX": 0.4,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.26,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 100.4
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 174,
+        "x1": 215,
+        "cx": 191.1
+      },
+      {
+        "x0": 238,
+        "x1": 285,
+        "cx": 258.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

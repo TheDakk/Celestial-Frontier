@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Capuchin",
+  "masterSha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "06-chimpanzee",
+  "name": "Chimpanzee",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-196e7046-047c-4a26-8624-bdabc8aa179e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4dd09305212d67f308fbb4ef00446473364b715868d16be4318fbce93c39851e",
+  "bytes": 1459166,
+  "promptSha256": "590716d9a745c7e3a5aab124130398ad06a0c5fc3fcae26822ab1491731df12f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

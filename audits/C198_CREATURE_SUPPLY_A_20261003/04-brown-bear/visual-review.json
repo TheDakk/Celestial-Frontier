@@ -1,0 +1,28 @@
+{
+  "name": "Brown Bear",
+  "masterSha256": "1567aaa877416d5903f849e80f2d8f7ef3a601d93b84a1a96d942cb4f642b8ef",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: brown shaggy bear with pronounced shoulder hump, pale muzzle, rounded ears, short tail and four separate clawed paws. Far ear base/upper limb roots remain behind fur/body, and contacts differ slightly in height. Complete silhouette useful; long fringe and exact claw ownership remain held. No reference or motion admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 229,
+      "y0": 359,
+      "x1": 1030,
+      "y1": 875
+    },
+    "margins": {
+      "left": 229,
+      "right": 223,
+      "top": 359,
+      "bottom": 378
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

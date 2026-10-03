@@ -1,0 +1,28 @@
+{
+  "name": "Triggerfish",
+  "masterSha256": "dca1dfb1e7d61703412b3f220cccc2a9d0ddd67dd2b6a51ac66f8133c2624b1d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Full tail, erected dorsal trigger and rear dorsal/anal fins visible. Near pectoral clear, far pectoral/root hidden. Ventral small pointed extension requires class-specific material/anatomy review, not generic pelvic fins. Generous margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 160,
+      "y0": 307,
+      "x1": 1104,
+      "y1": 913
+    },
+    "margins": {
+      "left": 160,
+      "right": 149,
+      "top": 307,
+      "bottom": 340
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

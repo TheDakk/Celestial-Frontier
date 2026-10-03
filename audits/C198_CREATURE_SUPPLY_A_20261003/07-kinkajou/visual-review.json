@@ -1,0 +1,28 @@
+{
+  "name": "Kinkajou",
+  "masterSha256": "952caeae2c72277e5d260d5f67343655de0427d85295bcd645be14006f58f73a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: golden-brown fur, pale underside, blunt rounded muzzle, large dark eyes, two rounded ears and a long continuous furry tail curling in an open arc. Four separate clawed feet are visible. Far upper roots and far-ear base remain partly occluded, and contact heights differ. Eye exaggeration/identity and source-specific ownership remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 152,
+      "y0": 412,
+      "x1": 1083,
+      "y1": 863
+    },
+    "margins": {
+      "left": 152,
+      "right": 170,
+      "top": 412,
+      "bottom": 390
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

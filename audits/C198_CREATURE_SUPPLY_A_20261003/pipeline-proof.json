@@ -1,0 +1,469 @@
+{
+  "schema": "cf.g2-source-pipeline-proof/v1",
+  "scope": "24 unchanged canonical compiler routes with disclosed source-visibility/composition additions. Native generator bytes retained. No authoring, native, reference-pool, runtime or gallery admission.",
+  "sourceCompiler": {
+    "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+    "sha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+  },
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "batchCompilerSha256": "263d500eaf1948488008b8355e7a604f411f34bf1f78a136b18b5c3facc27610",
+  "coveredAtSelection": 251,
+  "entries": [
+    {
+      "name": "Red Fox",
+      "id": "01-red-fox",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "50daa31212aff20a8e420c329e407adf49b02e9de0c2c5812a19131ff8bccaf2",
+      "finalPromptSha256": "b6c305dc8d9eca8708538641cdc26f4c6fe89d17ea315bcf0516e8fba841218b",
+      "masterSha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: russet coat, white throat/muzzle and broad white tail tip, black lower legs/ear tips. Four distinct paws/limbs and two ear outlines visible; far upper roots and ear base partly occluded. Continuous bushy tail separate from feet. Useful source contours, with fur-fringe and single-plane support review still required; no rig admission."
+    },
+    {
+      "name": "Hyena",
+      "id": "02-hyena",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "71f46ffea1db624fe4541b7a15b9e2ccb83e468ce3f80f5c2039da2f286ab5fa",
+      "finalPromptSha256": "6a9f79d4a188690a9cb8fb98290bdcafbc9491c2c6932448b679093a712939b2",
+      "masterSha256": "dd485b4e648a0dc0a7bb7d7314df4bedd7a22046041937223990f3ca8b699fae",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: tan coat with dark spots, heavier forequarters, sloping back, dark muzzle and short tufted tail; four distinct paws and two ear outlines. Ears are notably elongated/pointed rather than rounded spotted-hyena ears, so exact canonical identity remains held. Far limb/ear bases partly hidden, contacts slightly unequal. Preserve the anatomy ambiguity rather than relabeling species."
+    },
+    {
+      "name": "Sloth Bear",
+      "id": "03-sloth-bear",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5785d74584a25a95b191a80c92129de39d5a8406a55c96a9d5a2b95be48b06ac",
+      "finalPromptSha256": "044d30f418223594ea846057b55d9f13a63007f822f1f0495fee054182eaf4c6",
+      "masterSha256": "04c3982b75838e92dd708b9ca4a9a2b0aeb24bdc7a7d64c26fc2634a789799da",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: long shaggy black coat, pale muzzle, cream V-shaped chest patch and long curved pale claws on four visible paws. Two ear tips visible but far base and limb roots are fur-covered; tail not independently distinguished. Dense dangling fur and claw counts need source/ownership review. No hidden tail/ear inference or native admission."
+    },
+    {
+      "name": "Brown Bear",
+      "id": "04-brown-bear",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "96578fbee0fa6da1ee69317f490d78cd94e0cb5f3b4db014d2b7e6be27a9f3b5",
+      "finalPromptSha256": "f7702ef2dd1e2a59d9eb8f4f4e10b8c6d595852275230a3921afc363f6c24052",
+      "masterSha256": "1567aaa877416d5903f849e80f2d8f7ef3a601d93b84a1a96d942cb4f642b8ef",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown shaggy bear with pronounced shoulder hump, pale muzzle, rounded ears, short tail and four separate clawed paws. Far ear base/upper limb roots remain behind fur/body, and contacts differ slightly in height. Complete silhouette useful; long fringe and exact claw ownership remain held. No reference or motion admission."
+    },
+    {
+      "name": "Bear",
+      "id": "05-bear",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "911c766d3e19fa064d16165509478867c76a42d91342d51f884afeeb56364420",
+      "finalPromptSha256": "8998aa5bd20c5b0159403029caab2edbd91ea18dfb7462ebf326a352e276f520",
+      "masterSha256": "9f6c3c41dd8df4b7bd0ad636306b88126279aac851a42c61c302f909eb9d00d9",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: heavy brown bear, shoulder hump, pale muzzle, two rounded ear outlines, short furry tail and four visible clawed paws. Far roots are fur-obscured and support plane is not measured. Similar brown-bear appearance follows generic canonical identity; no claim of distinct subspecies. Fur/fringe, far-ear base and claw-count review held."
+    },
+    {
+      "name": "Grizzly Bear",
+      "id": "06-grizzly-bear",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "61d69329660a1efcfa7b4c1189570b11bd59ec30ee97899e7486114263893b52",
+      "finalPromptSha256": "e9ac03f567b628fbdddc7f63bc883bd23f3930d33e7c7d72c2c87667b5fbe014",
+      "masterSha256": "5c10271f242c78e3d55f06a392b061e1ccd3a51ea8e5844f15726d49be1fca17",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: heavy brown and cream-tipped grizzled fur, pronounced shoulder hump, pale muzzle, two rounded ear outlines, short stub tail and four distinct clawed paws. Far upper roots and far-ear base remain partly fur/torso occluded; projected feet are at slightly different heights. Actual claw counts not all visible. No acceptance or grounded-motion claim."
+    },
+    {
+      "name": "Kinkajou",
+      "id": "07-kinkajou",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "e86b59c5536a48c89636746f8cfa8504f71fa5c2219ed234bfe7b6d5627eb38d",
+      "finalPromptSha256": "e4eba498b3db185cdb1bb65dcd1b02ea8f3c77d3d715b9f518749b50b717b8d4",
+      "masterSha256": "952caeae2c72277e5d260d5f67343655de0427d85295bcd645be14006f58f73a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: golden-brown fur, pale underside, blunt rounded muzzle, large dark eyes, two rounded ears and a long continuous furry tail curling in an open arc. Four separate clawed feet are visible. Far upper roots and far-ear base remain partly occluded, and contact heights differ. Eye exaggeration/identity and source-specific ownership remain held."
+    },
+    {
+      "name": "Civet",
+      "id": "08-civet",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "c457d00b2f2a5856ab97aa4b4e81e2da764b43eef249e0049866a29631f5071c",
+      "finalPromptSha256": "675218f9326d153139cf6269a7a16319dc77912a2e774166877de00b94cc8f32",
+      "masterSha256": "43087c84eb1fcdb638849f14af23f9a582d7408e9ff199b38cb99b6bd204d373",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown-gold coat with dark spots/neck stripes, facial mask and ringed long tail, four separated feet and two ear outlines. Far upper leg and far-ear roots remain partly torso/head occluded. Foot heights differ slightly; fringe, claw counts and fitted ownership remain held."
+    },
+    {
+      "name": "Stoat",
+      "id": "09-stoat",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "199f0483f3def567a15e529fdca4d00be0e0d3852d44ec9f2d30264e433bb747",
+      "finalPromptSha256": "a1eb9712181531682d2bfe6ba3ff45f46857f20dcabf9461c7a41f40657b1f1e",
+      "masterSha256": "42303e5699497bff2968067ba085099d92ca3fdb20d66a15e7cd446c331db880",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown upper coat, white underside and black tail tip, long body, small ears and four separated paws. Raised long neck/high forequarter stance is a proportion/morphology hold; far-ear base and far upper limb roots remain occluded. Distal feet visible without claiming complete root paths or grounded motion."
+    },
+    {
+      "name": "Squirrel",
+      "id": "10-squirrel",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "3685478873336924cf2e9a22a7bde47525c4432e2debf581701f53a6c4764da4",
+      "finalPromptSha256": "d7f7477e7559ae9da528394c53027f632fc8ce074fe8d338439bd558aad177ed",
+      "masterSha256": "b482f5cd3cbeb4dd5602049210113027ca21a3973cac6a1bf305328776c6fbd7",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: reddish-gray fur, pale underside, large continuous bushy tail, two ear outlines, two hind feet and two forehands holding a nut. The upright seated posture and carried nut contradict the requested neutral four-contact/no-prop source correction; far hand/root overlaps nut. This is an explicit composition/contact hold, not a four-support source."
+    },
+    {
+      "name": "Chipmunk",
+      "id": "11-chipmunk",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "9983f7d09f49e4afd204c04f74c3f1c863e68b7c6b9e4221f699ff3100487370",
+      "finalPromptSha256": "c5bf65fe675ba97daa34f8e6e646e434c92837c5669c1e0cd72303c33d8df330",
+      "masterSha256": "38e11107b041cf1f84c727bceb73c4ae6045144d7deeca936e70bbcaa8b5778c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: alternating dark/light dorsal and facial stripes, inflated cheek shape, upright bushy tail, two ear outlines and four separated clawed feet. Far roots and far-ear base remain partly hidden; front contact heights differ. Tail attachment visible, but exact foot digits and ground plane unmeasured."
+    },
+    {
+      "name": "Vole",
+      "id": "12-vole",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "0871a704d08e31e212f5cff4e48440eed966916bb78309b4dc74565837834878",
+      "finalPromptSha256": "979826df3b0c311deebe7040294358ea57c95485439aa5fbe2bccf739e8d2de9",
+      "masterSha256": "98a988179ff3f017d9dff72ee6298e80b590a8b7e3d58afdeeb24b8546ab0e15",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: rounded brown/grizzled body, pale underside, short tail, a small visible ear and four distinct clawed feet. Far ear does not have a separately visible root, and upper leg roots are covered by body fur. Unequal support heights and furry fringe remain held."
+    },
+    {
+      "name": "Mole",
+      "id": "13-mole",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "587658234df4243f23fa1a20a7e95cd0a411cab5dd506202cc41c14b7321b722",
+      "finalPromptSha256": "9deebbcf445871c83660bbcc13b5396e87827fcdd13481c7575215d11b3a8c87",
+      "masterSha256": "f97383e74208d95804237bbad89dea10d45d1eb6087d77a2af9ef3f569219b14",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: dark velvety fur, long pink snout, short bare tail, two large splayed digging forepaws and two smaller hind feet. No external ear pinnae invented. Eyes are not independently visible and upper far roots are hidden; not suitable for declaring visible eye landmarks without an actual supported contract. Source claw counts and projected contact plane remain review holds."
+    },
+    {
+      "name": "Shrew",
+      "id": "14-shrew",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "e28a626f45eab1b1b73dd02ad3b64ae7f77a528fb8fa44683b2550a8b7482d5b",
+      "finalPromptSha256": "81d77404cc784ca53931f4fdf7e6698ce5b0fb464c58701d6f9dabb2b922c9bc",
+      "masterSha256": "988c8418d4a4cb8e47c6e8ef3dcfb6b142b5bc85bfb7fe92ad33ad7bcbc9a36d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown-gray fur, very long pointed muzzle, small visible eye, one clear rounded ear, long bare tapering tail and four separate small feet. Far-ear outline/root not independently visible, far upper leg roots covered and snout length/proportions need species review. No hidden ear invention."
+    },
+    {
+      "name": "Hedgehog",
+      "id": "15-hedgehog",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "3e3f276ce099571ac79d2a9b519bfb85ed7e0e75aca5221b71248e73427e956f",
+      "finalPromptSha256": "b72fffc879144d2dbb20552156dea9b72218db6fd02ca3d0142d493b4b1b11e2",
+      "masterSha256": "60677ffdb14c8afac6e225b99d758c414825ce3262fbd9e89de0945c4c90711b",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: dense cream/dark dorsal spines, furry pale face and underside, dark tapered nose, two ear outlines and four separate feet. Tail is not independently visible; far-ear base and upper roots remain covered. Source spines and fringe need ownership review; no claimed complete hidden-tail anatomy."
+    },
+    {
+      "name": "Lemming",
+      "id": "16-lemming",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "598f97bf2ca47c7eb4fb3b36d71792bcd58d82c316920e07cbdbe2e79620ca9c",
+      "finalPromptSha256": "4da7f1702b83407fc588b9721dafc997fdef55bb98067c0f6fc24ca6602ec92b",
+      "masterSha256": "1a25a2e00ec1839f9c6be02d3c2bb418698838d24872b797b959c7a006110c07",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: rounded brown-gold mottled fur with dark shoulder/head markings, pale underside, short rear tail tuft and four separate small feet. Only one independent ear outline is clear; far ear/upper roots are obscured. Source digit count and common contact plane remain held."
+    },
+    {
+      "name": "Hamster",
+      "id": "17-hamster",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d1a3498d93165f43987797e23c94fd5e63b74443ccea954332b2f6840095f5e9",
+      "finalPromptSha256": "75500568e49a3590ad484b5bd925fb9d7fd09fe1458b0e5598284df9e466a024",
+      "masterSha256": "5cbee5e34db4769ed29aac3a574e3b1f87c8e6986c1636445c97cf1f37616c37",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: golden-brown and white patchwork coat, rounded cheeks, two ear outlines, tiny pale tail and four separate pale feet. Far-ear base and upper limb roots partly hidden; source fingers/toes are not independently counted and supports differ in height. No motion/admission claim."
+    },
+    {
+      "name": "Agouti",
+      "id": "18-agouti",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "817b3154ca5448dd58d1ed47dd896d758fa163ab443b55c0df439d51e4f1fe1a",
+      "finalPromptSha256": "0fe50ca2a51e55bd6ee627e579586d49b8179d1ad96c6e55bb53f7ed1e6fde3a",
+      "masterSha256": "3999f1e00d99a3a670a72e1fa57129049cb5d154e8d5c41809490ec15c7117ac",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: golden-brown coarse coat, rounded high rump, small ears, short tail nub and four clearly separated long lower limbs/feet. Far upper roots and far-ear base remain partly occluded. Long legs and elevated posture need proportion/contact review; actual toe counts not all distinguishable."
+    },
+    {
+      "name": "Guinea Pig",
+      "id": "19-guinea-pig",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "b730e57011f76babb7cc31f91693a557066b42b2171ac07d5d1ab8907993038e",
+      "finalPromptSha256": "0742f3f4deca603159350b487f779b5f86e913575bb2d6f0178d6e85729d4b37",
+      "masterSha256": "04c68ba4d125d0de0b8279bcf5d0c34fed2a76597b67bce2b9b4d01c47a0b0fa",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown/white/dark patches, rounded stocky body, folded ear flaps, four separate short feet and no external tail. Far-ear base and upper leg roots are body/fur obscured. Source digit counts, belly clearance and common ground plane remain unqualified."
+    },
+    {
+      "name": "Rat",
+      "id": "20-rat",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "589fade1c169190f8760f552a9455c197017bcec71acada918914abff07ebf14",
+      "finalPromptSha256": "a521b4eb3cd84c9e19e0440b9a1c8341a15156ae939ff6b5f6b69e1d84615cdb",
+      "masterSha256": "cbf545ceb723dbcc6832844ede4c06ffcb5bda3b5fec4c08dc53ab5321f99724",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown-gray fur, pale underside, two ear outlines, long bare ring-textured tail and four distinct pale feet. Far upper roots and far-ear base remain body/head occluded. Contact heights differ; exact toe counts and motion not qualified."
+    },
+    {
+      "name": "Tasmanian Devil",
+      "id": "21-tasmanian-devil",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "8fd7a15fe1e79d959800afbbdf377df02c4166264fbe710e14207ff6288be401",
+      "finalPromptSha256": "c1aa6691ca35114808e6f33360af2ba2ebefd29a24133da61d03f9a2a6e61bb1",
+      "masterSha256": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: stocky black coat, white chest crescent, broad pale muzzle, two reddish ear outlines, thick furry tail and four separate clawed feet. Far upper roots partly obscured, far ear reads pointed and tail/ear proportions need species review. All contacts visible as tips without full-chain or motion claim."
+    },
+    {
+      "name": "Rabbit",
+      "id": "22-rabbit",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "eca9e6f554dab7450f7f5478d4390b32fc6c9899e468856524b95c98438efce5",
+      "finalPromptSha256": "1c2cd2a34c0c1db499c66e4fe471b03f545c72307c69c124ed4ee16242658e4b",
+      "masterSha256": "189e708c531b80c6768a64e09b185b3317293f271606f5a8b3df045ad9ba377f",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown mottled fur, pale underside/tail, two tall ears and four distinct paws with enlarged hind feet. Far-ear base and far upper limbs remain partially occluded; stance is elevated rather than low crouch. This is a source for existing quadruped routing, not a qualified hopping rig."
+    },
+    {
+      "name": "Pika",
+      "id": "23-pika",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "74be2f752a048c366b45b2e18d95e7a18ea4c58074c270cd5d1d8a1cf3267a1d",
+      "finalPromptSha256": "384c658df6d3b4166484adf7f79d0c92567db6f5115377eca66a4a829fd631e0",
+      "masterSha256": "c15ffff156b3006716cf4af1d783c531e7da956bf0c30888aaa980988539e2ff",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: rounded brown-gray body, two round ear outlines, pale underside, no external tail and four separate furry feet. Far-ear root and far upper limbs remain covered. Leg length/posture, source digits and motion require review; no inferred tail or hidden landmarks."
+    },
+    {
+      "name": "Snowshoe Hare",
+      "id": "24-snowshoe-hare",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "fdd8540570ce420b8dbc51026ab34012e61213d9f8e3cbbe44d2a78695af5304",
+      "finalPromptSha256": "d5d32ef021415ef339217bbbed67c4f38162f8c9497a02cd5a5b6b9df3af7fc4",
+      "masterSha256": "89f7b4946f99c6300bc7a1849a7485fae6500c7dafb04c9733d053b58c988d7f",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: white winter coat, black-tipped long ears, large furry hind feet and four clearly separate paws. Tail is not independently distinguished from rump fur, far-ear base and upper far roots partly hidden. Elevated stance and relative fore/hind limb proportions remain morphology/grounding holds; no hopping-motion claim."
+    }
+  ]
+}

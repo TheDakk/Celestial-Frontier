@@ -1,0 +1,1 @@
+{"args": ["node", "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs", "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01", "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/static.json"], "exitCode": 0, "elapsedSeconds": 2.9234345}

@@ -1,0 +1,22 @@
+{
+  "schema": "cf.c198-i5-invocation/v1",
+  "productHead": "869ce0e44a9aac23d614571a90c33fa23a3880b6",
+  "instrumentHead": "46ca80696bd5ecd284314de24c8e04af30f3cb4a",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C251 one fresh combined I5 3+1 first red stop",
+    "--",
+    "node",
+    "port/v2/tools/compendiummem-v2.mjs",
+    "--source=~/.codex/worktrees/c198-i5/celestial-frontier-openai-mac",
+    "--head=869ce0e44a9aac23d614571a90c33fa23a3880b6",
+    "--out=~/Projects/celestial-frontier-openai-mac/audits/C198_I5_EPOCH_20261003/epoch"
+  ],
+  "exitCode": 0,
+  "automaticRetries": 0,
+  "source": "~/.codex/worktrees/c198-i5/celestial-frontier-openai-mac",
+  "output": "audits/C198_I5_EPOCH_20261003/epoch",
+  "durationSeconds": 272.023
+}

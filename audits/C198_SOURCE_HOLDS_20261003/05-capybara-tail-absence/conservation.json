@@ -1,0 +1,444 @@
+{
+  "schema": "cf.c198-independent-source-conservation/v1",
+  "packet": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence",
+  "masterSha256": "9f3c91c9f0b2024680455092d8a844c042cd667344ecda4cfd3a5146f88958aa",
+  "authoringSha256": "7381a890b51c97da1c9779731e712ef3a045ae6ba047d109a09849e72b5f57b6",
+  "bindingSha256": "602e6d79c5832259f77e6a60a89dc600b5be435b1ac0bfd5ef8d0b21301d8be9",
+  "keyedRgbaSha256": "1041cbdc2f9eb82745fff8f8959ea068a8146b451cf71650961a20451cbaceb8",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 6340,
+    "remainderPixels": 59414,
+    "islands": [
+      {
+        "pixels": 16,
+        "to": "earFarTip",
+        "border": {
+          "4": 12
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "earFarTip",
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "earFarTip",
+        "border": {
+          "4": 1,
+          "5": 1
+        }
+      },
+      {
+        "pixels": 534,
+        "to": "neck",
+        "border": {
+          "13": 44,
+          "24": 185,
+          "25": 148
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "head",
+        "border": {
+          "23": 1
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "earFarRoot",
+        "border": {
+          "5": 2,
+          "23": 2
+        }
+      },
+      {
+        "pixels": 341,
+        "to": "head",
+        "border": {
+          "23": 99
+        }
+      },
+      {
+        "pixels": 32,
+        "to": "head",
+        "border": {
+          "3": 6,
+          "5": 12,
+          "23": 14
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "head",
+        "border": {
+          "23": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "head",
+        "border": {
+          "23": 2
+        }
+      },
+      {
+        "pixels": 1852,
+        "to": "head",
+        "border": {
+          "23": 167
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "foreNearRoot",
+        "border": {
+          "13": 2,
+          "24": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "foreNearRoot",
+        "border": {
+          "13": 2,
+          "24": 2
+        }
+      },
+      {
+        "pixels": 602,
+        "to": "neck",
+        "border": {
+          "22": 50,
+          "24": 56
+        }
+      },
+      {
+        "pixels": 173,
+        "to": "foreNearRoot",
+        "border": {
+          "13": 34,
+          "21": 22,
+          "24": 24
+        }
+      },
+      {
+        "pixels": 774,
+        "to": "pelvis",
+        "border": {
+          "9": 13,
+          "26": 88
+        }
+      },
+      {
+        "pixels": 3,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 9,
+        "to": "foreFarRoot",
+        "border": {
+          "21": 6
+        }
+      },
+      {
+        "pixels": 2,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 17,
+        "to": "foreFarRoot",
+        "border": {
+          "21": 6
+        }
+      },
+      {
+        "pixels": 51,
+        "to": "foreFarRoot",
+        "border": {
+          "20": 11,
+          "21": 12
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "pelvis",
+        "border": {
+          "26": 1
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 11,
+        "to": "foreFarKnee",
+        "border": {
+          "20": 6
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "foreFarKnee",
+        "border": {
+          "20": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 341,
+        "to": "foreFarKnee",
+        "border": {
+          "12": 36,
+          "20": 54,
+          "21": 1,
+          "25": 8
+        }
+      },
+      {
+        "pixels": 38,
+        "to": "hindFarKnee",
+        "border": {
+          "16": 9,
+          "17": 9
+        }
+      },
+      {
+        "pixels": 66,
+        "to": "hindNearKnee",
+        "border": {
+          "7": 3,
+          "8": 22
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "foreFarKnee",
+        "border": {
+          "20": 3
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "foreFarAnkle",
+        "border": {
+          "19": 8,
+          "20": 2
+        }
+      },
+      {
+        "pixels": 428,
+        "to": "hindFarKnee",
+        "border": {
+          "16": 82
+        }
+      },
+      {
+        "pixels": 13,
+        "to": "hindNearAnkle",
+        "border": {
+          "7": 6,
+          "8": 6
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "foreNearAnkle",
+        "border": {
+          "11": 4,
+          "12": 1
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindFarKnee",
+        "border": {
+          "16": 2
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "hindFarAnkle",
+        "border": {
+          "15": 7,
+          "16": 2
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "hindNearPaw",
+        "border": {
+          "6": 4,
+          "7": 3
+        }
+      },
+      {
+        "pixels": 21,
+        "to": "foreFarPaw",
+        "border": {
+          "18": 10,
+          "19": 8
+        }
+      },
+      {
+        "pixels": 440,
+        "to": "foreFarPaw",
+        "border": {
+          "18": 44
+        }
+      },
+      {
+        "pixels": 273,
+        "to": "hindNearPaw",
+        "border": {
+          "6": 33
+        }
+      },
+      {
+        "pixels": 49,
+        "to": "foreFarAnkle",
+        "border": {
+          "18": 5,
+          "19": 9
+        }
+      },
+      {
+        "pixels": 213,
+        "to": "foreNearPaw",
+        "border": {
+          "10": 28
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "foreNearPaw",
+        "border": {
+          "10": 4
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateRemainderComponents": [
+    {
+      "pixels": 53066,
+      "minX": 508,
+      "minY": 395,
+      "maxX": 762,
+      "maxY": 766
+    },
+    {
+      "pixels": 1852,
+      "minX": 1025,
+      "minY": 380,
+      "maxX": 1089,
+      "maxY": 488
+    },
+    {
+      "pixels": 774,
+      "minX": 228,
+      "minY": 571,
+      "maxX": 248,
+      "maxY": 665
+    },
+    {
+      "pixels": 602,
+      "minX": 960,
+      "minY": 503,
+      "maxX": 991,
+      "maxY": 541
+    },
+    {
+      "pixels": 534,
+      "minX": 849,
+      "minY": 320,
+      "maxX": 866,
+      "maxY": 489
+    },
+    {
+      "pixels": 440,
+      "minX": 892,
+      "minY": 901,
+      "maxX": 928,
+      "maxY": 927
+    },
+    {
+      "pixels": 428,
+      "minX": 383,
+      "minY": 811,
+      "maxX": 410,
+      "maxY": 870
+    },
+    {
+      "pixels": 341,
+      "minX": 936,
+      "minY": 344,
+      "maxX": 1006,
+      "maxY": 371
+    },
+    {
+      "pixels": 341,
+      "minX": 776,
+      "minY": 752,
+      "maxX": 793,
+      "maxY": 795
+    },
+    {
+      "pixels": 273,
+      "minX": 327,
+      "minY": 908,
+      "maxX": 354,
+      "maxY": 931
+    },
+    {
+      "pixels": 213,
+      "minX": 783,
+      "minY": 920,
+      "maxX": 806,
+      "maxY": 939
+    },
+    {
+      "pixels": 173,
+      "minX": 861,
+      "minY": 513,
+      "maxX": 875,
+      "maxY": 537
+    }
+  ],
+  "unchangedD28Cap": 0.5,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent normalized-polygon ownership replay",
+    "no source alpha addition/deletion",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "ownership mutation rejected",
+    "legacy structural-island negative control refused with explicit 0.05; authorized default remains 0.5"
+  ],
+  "sourceControlFrameLimit": null,
+  "qualityAccepted": false,
+  "native": false
+}

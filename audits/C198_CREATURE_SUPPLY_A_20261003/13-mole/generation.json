@@ -1,0 +1,14 @@
+{
+  "id": "13-mole",
+  "name": "Mole",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ffb125d3-e9be-4fda-8d58-c90b69cd358a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f97383e74208d95804237bbad89dea10d45d1eb6087d77a2af9ef3f569219b14",
+  "bytes": 1356989,
+  "promptSha256": "9deebbcf445871c83660bbcc13b5396e87827fcdd13481c7575215d11b3a8c87",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "01-red-fox",
+  "name": "Red Fox",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-9e755175-3ed9-48ab-9c53-735c3cf5d502.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+  "bytes": 1346170,
+  "promptSha256": "b6c305dc8d9eca8708538641cdc26f4c6fe89d17ea315bcf0516e8fba841218b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

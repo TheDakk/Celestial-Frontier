@@ -1,0 +1,28 @@
+{
+  "name": "Leafcutter Ant",
+  "masterSha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: reddish ant with constricted waist, spiny thorax, paired antennae/mandibles and six distinct distal leg tips. Near chains visible, some far proximal segments overlap under thorax and must be independently authored. A large carried leaf is present, contradicting the no-prop request even if suggested by canonical identity; preserve that explicit source-content hold, do not mask it away. Useful six-tip visibility, no anatomy or pack admission. Canonical identity explicitly requests carrying a leaf fragment overhead; this conflicts with the isolated no-prop correction. Retain the leaf and composition conflict honestly, rather than calling it an unprompted insertion.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 199,
+      "y0": 227,
+      "x1": 1124,
+      "y1": 960
+    },
+    "margins": {
+      "left": 199,
+      "right": 129,
+      "top": 227,
+      "bottom": 293
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

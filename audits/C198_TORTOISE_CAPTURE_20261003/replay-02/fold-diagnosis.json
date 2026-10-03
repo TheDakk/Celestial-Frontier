@@ -1,0 +1,135 @@
+{
+  "schema": "cf.c196-source-fold-localization/v1",
+  "scope": "Captured contact-resolved poses, unchanged leaf solve; no motion or native qualification",
+  "inputs": [
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay-02/review.json",
+      "sha256": "28ba247342e242f8c82fcc09111dd8e5d8556aa1eaf307bc6ea2663b0dcbfd56"
+    }
+  ],
+  "rows": [
+    {
+      "action": "approach:walk",
+      "ms": 336.2000000000007,
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folds": [
+        {
+          "triangle": 872,
+          "ratio": -0.039380957772897476,
+          "vertices": [
+            {
+              "index": 518,
+              "x": 440,
+              "y": 812,
+              "source": {
+                "x": 440,
+                "y": 812,
+                "weights": [
+                  [
+                    "root",
+                    0.3172185409571696
+                  ],
+                  [
+                    "hindFarKnee",
+                    0.25139180875181877
+                  ],
+                  [
+                    "hindFarPaw",
+                    0.21088943860407397
+                  ],
+                  [
+                    "hindFarAnkle",
+                    0.20566237161562773
+                  ],
+                  [
+                    "hindFarRoot",
+                    0.014534529321350803
+                  ],
+                  [
+                    "hindNearRoot",
+                    0.0002834836229288719
+                  ],
+                  [
+                    "hindNearKnee",
+                    0.000019743464955045345
+                  ],
+                  [
+                    "hindNearAnkle",
+                    8.366207522433316e-8
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 469,
+              "x": 430,
+              "y": 822,
+              "source": {
+                "x": 430,
+                "y": 822,
+                "weights": [
+                  [
+                    "root",
+                    0.31390764891630885
+                  ],
+                  [
+                    "hindFarPaw",
+                    0.3113180806982284
+                  ],
+                  [
+                    "hindFarAnkle",
+                    0.1955668275527042
+                  ],
+                  [
+                    "hindFarKnee",
+                    0.17039349245759114
+                  ],
+                  [
+                    "hindFarRoot",
+                    0.008588678465827258
+                  ],
+                  [
+                    "hindNearRoot",
+                    0.00021096188464383883
+                  ],
+                  [
+                    "hindNearKnee",
+                    0.00001425026749610706
+                  ],
+                  [
+                    "hindNearAnkle",
+                    5.975720008256662e-8
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 517,
+              "x": 430,
+              "y": 802,
+              "source": {
+                "x": 430,
+                "y": 802,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "far-hind-paw",
+            "far-hind-ankle",
+            "far-hind-shin",
+            "plate-remainder"
+          ]
+        }
+      ]
+    }
+  ]
+}

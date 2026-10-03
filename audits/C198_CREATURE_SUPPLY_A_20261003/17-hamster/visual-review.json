@@ -1,0 +1,28 @@
+{
+  "name": "Hamster",
+  "masterSha256": "5cbee5e34db4769ed29aac3a574e3b1f87c8e6986c1636445c97cf1f37616c37",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: golden-brown and white patchwork coat, rounded cheeks, two ear outlines, tiny pale tail and four separate pale feet. Far-ear base and upper limb roots partly hidden; source fingers/toes are not independently counted and supports differ in height. No motion/admission claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 285,
+      "y0": 352,
+      "x1": 1011,
+      "y1": 867
+    },
+    "margins": {
+      "left": 285,
+      "right": 242,
+      "top": 352,
+      "bottom": 386
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

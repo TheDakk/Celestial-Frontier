@@ -1,0 +1,28 @@
+{
+  "name": "Locust",
+  "masterSha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: green/tan banded segmented body, patterned folded wings, enlarged jumping hind femora, short paired antennae and mouthparts. Seven apparent distal leg endpoints can be distinguished, with crowded/overlapping chains under the thorax; exact six-leg biological inventory is therefore held, not declared correct. No deletion of the extra-looking projection or inferred root. Painted mechanical-looking joints/proportions require style/anatomy review. Independent parent review counts six distal tips; initial reviewer perceived a seventh apparent projection. The unresolved projection/root ownership is retained as a reviewer disagreement, not resolved by expected six-leg anatomy.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 167,
+      "y0": 374,
+      "x1": 1085,
+      "y1": 877
+    },
+    "margins": {
+      "left": 167,
+      "right": 168,
+      "top": 374,
+      "bottom": 376
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "Read-only unchanged pre-push guard on remaining delivery suffix; prior rehearsal covers origin through a37968246. No network/push.",
+  "head": "e18a0bd76a7d2487e8251e4529f570ef6b9347b2",
+  "priorVerifiedHead": "a37968246b55c8bf03c3d1aca5d1a8d3e2f345f0",
+  "exitCode": 0,
+  "seconds": 3.38,
+  "output": ""
+}

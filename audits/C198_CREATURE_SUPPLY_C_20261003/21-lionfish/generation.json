@@ -1,0 +1,14 @@
+{
+  "id": "21-lionfish",
+  "name": "Lionfish",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-c014427a-1584-4f09-909f-a3ca3e7c369a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2defa8bbc7a26b30b0d6afec780d9412491c4d00995155a4cbb3a02bf11bc675",
+  "bytes": 1554848,
+  "promptSha256": "4a0dddc90eda35af808c3a7e946e5b82001f9474eab2116e6a651ce17684b0d4",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

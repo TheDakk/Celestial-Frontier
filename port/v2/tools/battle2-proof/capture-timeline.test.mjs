@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {battleCaptureDuration,requireBattleCaptureTimeline,requireBattleCaptureMedia} from './capture-timeline.mjs';
+import {battleCaptureDuration,requireBattleCaptureTimeline,requireBattleCaptureMedia,assessBattleCaptureEvidence} from './capture-timeline.mjs';
 const beats={readyEnd:600,commandEnd:900,actionStart:1800,impactAt:2000,hitstopEnd:2070,actionEnd:3000,returnEnd:3400,end:4000};
 function fixture(){
  const gates={totalMs:16000,turns:Array.from({length:4},(_,turn)=>({turn,offsetMs:turn*4000,beats:{...beats}}))};
@@ -33,4 +33,16 @@ test('independent encoded duration and proportional frame floor reject old ten-s
  assert.throws(()=>requireBattleCaptureMedia({...media,streams:[{...media.streams[0],nb_read_frames:'606'}]},16000),/full script lost frames/);
  assert.throws(()=>requireBattleCaptureMedia({...media,streams:[{...media.streams[0],nb_read_frames:'480'}]},16000),/lost frames/);
  assert.equal(requireBattleCaptureMedia({...media,format:{duration:'10.1'},streams:[{...media.streams[0],nb_read_frames:'606'}]},10000).minimumFrames,570);
+});
+
+test('capture loss and rig refusals remain independently visible; neither failure masks the other',()=>{
+ const {gates,capture}=fixture();capture.refusalsAtEnd={left:0,right:0};capture.lastRefusal={left:null,right:null};
+ const media={format:{duration:'16.1'},streams:[{codec_type:'video',nb_read_frames:'962',width:1024,height:576}]};
+ assert.equal(assessBattleCaptureEvidence(gates,capture,media).status,'DIAGNOSTIC_PASS');
+ const bad=structuredClone(capture);bad.frameSamples=bad.frameSamples.filter((_,i)=>i%4);bad.frames=bad.frameSamples.length;bad.refusalsAtEnd={left:5,right:2};bad.lastRefusal={left:'ARAP skin: unresolved folded triangles: 16',right:'ARAP skin: unresolved folded triangles: 13'};
+ const result=assessBattleCaptureEvidence(gates,bad,{...media,streams:[{...media.streams[0],nb_read_frames:'795'}]});
+ assert.equal(result.status,'FAIL');assert.deepEqual(result.failures.map(f=>f.kind),['live-timeline','encoded-media','rig']);assert.match(result.failures[2].error,/folded triangles: 16/);
+ assert.deepEqual(assessBattleCaptureEvidence(gates,{...capture,refusalsAtEnd:bad.refusalsAtEnd},media).failures.map(f=>f.kind),['rig']);
+ assert.deepEqual(assessBattleCaptureEvidence(gates,{...bad,refusalsAtEnd:{left:0,right:0}},media).failures.map(f=>f.kind),['live-timeline']);
+ assert.match(assessBattleCaptureEvidence(gates,{...capture,refusalsAtEnd:{left:-1,right:0}},media).failures[0].error,/invalid rig refusal counts/);
 });

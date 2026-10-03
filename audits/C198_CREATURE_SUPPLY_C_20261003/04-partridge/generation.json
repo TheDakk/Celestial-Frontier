@@ -1,0 +1,14 @@
+{
+  "id": "04-partridge",
+  "name": "Partridge",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-fc3bb7fa-7113-4118-8717-ebae4f966ff8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a1dc9499ecf8ccb2af058d7c8a6ca01f433e1834e1d46b666a193b9f44834573",
+  "bytes": 1285794,
+  "promptSha256": "6b5e9e822f95c24789ca22d13380603ddd93cc2e7d50ac180c94923422eb3a16",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

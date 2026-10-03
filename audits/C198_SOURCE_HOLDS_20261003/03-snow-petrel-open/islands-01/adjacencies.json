@@ -1,0 +1,346 @@
+{
+  "schema": "cf.c198-observed-adjacency/v1",
+  "sourceFit": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit",
+  "inputs": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/record.json",
+      "sha256": "403e38de0492bdbb373c7e6bd73bfcf4d74f0ef7e8c75dde27fe3e53dff926ef"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/pre-split-binding.json",
+      "sha256": "d1758f04a6ed2fd4d6ac502d9fe8ae32109a07503b87b173a88514caa154849a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/atlas/c192-islands-03-snow-petrel-open.png",
+      "sha256": "9aa7eebf7b2cf2c249e4771318d087fba86e42f4ef7eb0952eb31122d559ca8d"
+    }
+  ],
+  "joins": [
+    {
+      "name": "body--pelvis",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "body",
+      "descendantPart": "pelvis",
+      "ancestorJoint": "root",
+      "descendantJoint": "pelvis",
+      "sourceEdges": 243,
+      "samples": 271
+    },
+    {
+      "name": "chest--lower-neck",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "chest",
+      "descendantPart": "lower-neck",
+      "ancestorJoint": "chest",
+      "descendantJoint": "neck0",
+      "sourceEdges": 160,
+      "samples": 168
+    },
+    {
+      "name": "far-shin--far-foot",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "far-shin",
+      "descendantPart": "far-foot",
+      "ancestorJoint": "legFarAnkle",
+      "descendantJoint": "legFarFoot",
+      "sourceEdges": 24,
+      "samples": 28
+    },
+    {
+      "name": "far-thigh--far-shin",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "far-thigh",
+      "descendantPart": "far-shin",
+      "ancestorJoint": "legFarKnee",
+      "descendantJoint": "legFarAnkle",
+      "sourceEdges": 61,
+      "samples": 76
+    },
+    {
+      "name": "far-wing-root--far-wing-tip",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "far-wing-root",
+      "descendantPart": "far-wing-tip",
+      "ancestorJoint": "wingFarRoot",
+      "descendantJoint": "wingFarTip",
+      "sourceEdges": 148,
+      "samples": 157
+    },
+    {
+      "name": "head--beak",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "head",
+      "descendantPart": "beak",
+      "ancestorJoint": "head",
+      "descendantJoint": "beak",
+      "sourceEdges": 65,
+      "samples": 76
+    },
+    {
+      "name": "lower-neck--upper-neck",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "lower-neck",
+      "descendantPart": "upper-neck",
+      "ancestorJoint": "neck0",
+      "descendantJoint": "neck1",
+      "sourceEdges": 114,
+      "samples": 120
+    },
+    {
+      "name": "near-shin--near-foot",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "near-shin",
+      "descendantPart": "near-foot",
+      "ancestorJoint": "legNearAnkle",
+      "descendantJoint": "legNearFoot",
+      "sourceEdges": 45,
+      "samples": 47
+    },
+    {
+      "name": "near-thigh--near-shin",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "near-thigh",
+      "descendantPart": "near-shin",
+      "ancestorJoint": "legNearKnee",
+      "descendantJoint": "legNearAnkle",
+      "sourceEdges": 25,
+      "samples": 30
+    },
+    {
+      "name": "near-wing-root--near-wing-flight",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "near-wing-root",
+      "descendantPart": "near-wing-flight",
+      "ancestorJoint": "wingNearRoot",
+      "descendantJoint": "wingNearTip",
+      "sourceEdges": 375,
+      "samples": 412
+    },
+    {
+      "name": "pelvis--near-thigh",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "pelvis",
+      "descendantPart": "near-thigh",
+      "ancestorJoint": "pelvis",
+      "descendantJoint": "legNearKnee",
+      "sourceEdges": 115,
+      "samples": 124
+    },
+    {
+      "name": "pelvis--tail",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "pelvis",
+      "descendantPart": "tail",
+      "ancestorJoint": "pelvis",
+      "descendantJoint": "tailFan",
+      "sourceEdges": 147,
+      "samples": 161
+    },
+    {
+      "name": "upper-neck--head",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "upper-neck",
+      "descendantPart": "head",
+      "ancestorJoint": "neck1",
+      "descendantJoint": "head",
+      "sourceEdges": 131,
+      "samples": 140
+    }
+  ],
+  "excluded": [
+    {
+      "name": "beak|body",
+      "parts": [
+        "beak",
+        "body"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "beak",
+      "descendantPart": "body",
+      "sourceEdges": 72,
+      "samples": 80
+    },
+    {
+      "name": "body|chest",
+      "parts": [
+        "body",
+        "chest"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "chest",
+      "sourceEdges": 478,
+      "samples": 505
+    },
+    {
+      "name": "body|far-thigh",
+      "parts": [
+        "body",
+        "far-thigh"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "far-thigh",
+      "sourceEdges": 115,
+      "samples": 122
+    },
+    {
+      "name": "body|far-wing-root",
+      "parts": [
+        "body",
+        "far-wing-root"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "far-wing-root",
+      "sourceEdges": 119,
+      "samples": 127
+    },
+    {
+      "name": "body|head",
+      "parts": [
+        "body",
+        "head"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "head",
+      "sourceEdges": 87,
+      "samples": 98
+    },
+    {
+      "name": "body|lower-neck",
+      "parts": [
+        "body",
+        "lower-neck"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "lower-neck",
+      "sourceEdges": 157,
+      "samples": 166
+    },
+    {
+      "name": "body|near-thigh",
+      "parts": [
+        "body",
+        "near-thigh"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "near-thigh",
+      "sourceEdges": 53,
+      "samples": 57
+    },
+    {
+      "name": "body|near-wing-flight",
+      "parts": [
+        "body",
+        "near-wing-flight"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "near-wing-flight",
+      "sourceEdges": 266,
+      "samples": 293
+    },
+    {
+      "name": "body|near-wing-root",
+      "parts": [
+        "body",
+        "near-wing-root"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "near-wing-root",
+      "sourceEdges": 236,
+      "samples": 261
+    },
+    {
+      "name": "body|tail",
+      "parts": [
+        "body",
+        "tail"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "tail",
+      "sourceEdges": 335,
+      "samples": 363
+    },
+    {
+      "name": "body|upper-neck",
+      "parts": [
+        "body",
+        "upper-neck"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "upper-neck",
+      "sourceEdges": 115,
+      "samples": 124
+    },
+    {
+      "name": "far-wing-root|head",
+      "parts": [
+        "far-wing-root",
+        "head"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "far-wing-root",
+      "descendantPart": "head",
+      "sourceEdges": 2,
+      "samples": 3
+    },
+    {
+      "name": "far-wing-root|lower-neck",
+      "parts": [
+        "far-wing-root",
+        "lower-neck"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "far-wing-root",
+      "descendantPart": "lower-neck",
+      "sourceEdges": 8,
+      "samples": 10
+    },
+    {
+      "name": "far-wing-root|near-wing-root",
+      "parts": [
+        "far-wing-root",
+        "near-wing-root"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "far-wing-root",
+      "descendantPart": "near-wing-root",
+      "sourceEdges": 72,
+      "samples": 78
+    },
+    {
+      "name": "far-wing-tip|near-wing-root",
+      "parts": [
+        "far-wing-tip",
+        "near-wing-root"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "far-wing-tip",
+      "descendantPart": "near-wing-root",
+      "sourceEdges": 84,
+      "samples": 93
+    },
+    {
+      "name": "head|lower-neck",
+      "parts": [
+        "head",
+        "lower-neck"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "head",
+      "descendantPart": "lower-neck",
+      "sourceEdges": 47,
+      "samples": 50
+    }
+  ],
+  "native": false,
+  "qualityAccepted": false
+}

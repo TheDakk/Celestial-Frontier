@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snowshoe Hare",
+  "masterSha256": "89f7b4946f99c6300bc7a1849a7485fae6500c7dafb04c9733d053b58c988d7f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

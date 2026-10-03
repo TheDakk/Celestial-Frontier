@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Hyena",
+  "masterSha256": "dd485b4e648a0dc0a7bb7d7314df4bedd7a22046041937223990f3ca8b699fae",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

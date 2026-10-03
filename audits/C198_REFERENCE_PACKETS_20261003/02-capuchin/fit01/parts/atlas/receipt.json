@@ -1,0 +1,107 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c198-reference-02-capuchin",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "137a0bc6ae292805dab155dee3bbc0a309725cda82fb426d525bd935fb369871",
+    "pngSha256": "5d62068f7fd97b3ae646a066f80ebe377ebacb84c36a7516f3a081c54eb3cc55"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "67efe81af420ced7077b810e11ea6f1509f178faf98d53c3875c569b8f227b85"
+    },
+    {
+      "name": "chest.png",
+      "sha256": "31443e57ab6ca8907654dd7cb8a3e3c952daefef73c42e0975a2315d7685bad7"
+    },
+    {
+      "name": "far-foot.png",
+      "sha256": "b47e72dfcf0e24d176f8c1223a12dbecf589b208c2f4c3a0e88adee40f39e634"
+    },
+    {
+      "name": "far-forearm.png",
+      "sha256": "bad130657c51ab7d838a40702e6320a8e5f3c07302e91ce84466b5563aee3098"
+    },
+    {
+      "name": "far-hand.png",
+      "sha256": "cd57b0f166924ea3fbd6608762e33066929066c7875147c60b7c63d75d38cf45"
+    },
+    {
+      "name": "far-leg.png",
+      "sha256": "71809fbda10208f6008d4355367e642246e40d41048626b70553354aee375ce3"
+    },
+    {
+      "name": "far-upper-arm.png",
+      "sha256": "e5407b8e0e03068fd5a3656a8d431570355af1f5515e9c61667bcf41ea5d7972"
+    },
+    {
+      "name": "head.png",
+      "sha256": "ee8b327ca74e4599901917667e210547b994793939727f4b879eae8c542810e7"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "34c9827ba3c3eef065ffe35c153fe946f01fbf241839f246fa77343db4df6ed0"
+    },
+    {
+      "name": "near-foot.png",
+      "sha256": "036f4914f28c32c402925d1c808653711b6c64972b93e0eb0849a6b0884f0de5"
+    },
+    {
+      "name": "near-forearm.png",
+      "sha256": "d1f010798040daba7db1f345a7ed9944a33a929f9d1827f16126f58e0d43f1d5"
+    },
+    {
+      "name": "near-hand.png",
+      "sha256": "d7f4c439ef4f9329279349700dcf008f7ee56ad1e9d0bdc68067e3cbd652b279"
+    },
+    {
+      "name": "near-leg.png",
+      "sha256": "c5070f26e990b9425ff10f1d12d32369f8cdf416111fe93163069cbba469f5f2"
+    },
+    {
+      "name": "near-upper-arm.png",
+      "sha256": "99be918a4d878269283663defd6ba214b3971d11642bd0bba216ae557c0478dd"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "406511878a635abdc9ebaf81e5d3876f2a07fa59aa39d471641a27d77b6ad4d5"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "02d3ee17d16c0ec173f9e7530d10efcf622364d7e4b2a8189c64de5ae03771ff"
+    },
+    {
+      "name": "tail0.png",
+      "sha256": "28edc3f91c0010848c7f860454bfcd5a67f2ad33f7f579cd6f18af8af6b4d67f"
+    },
+    {
+      "name": "tail1.png",
+      "sha256": "9abd2f218e69309678c5ce4ea9d17f3b7a2bdb0b966b3722fcdd36fa191c7b94"
+    },
+    {
+      "name": "tail2.png",
+      "sha256": "9940ab722f0e20ea9dc3c0226facbeb551aee0ea3089ffd52946f3dab1ffea50"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Chimpanzee",
+  "masterSha256": "4dd09305212d67f308fbb4ef00446473364b715868d16be4318fbce93c39851e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: dark tailless ape, bare tan face and large near ear, long arms, two knuckle-bearing hands and two separate feet. Far shoulder/hip emerge behind torso; far ear hidden, and projected hands/feet differ in height. Complete distal supports improve observability, but exact knuckle contacts/finger count and root ownership need source-specific review. No inferred hidden ear or single-plane/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 255,
+      "y0": 258,
+      "x1": 994,
+      "y1": 980
+    },
+    "margins": {
+      "left": 255,
+      "right": 259,
+      "top": 258,
+      "bottom": 273
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

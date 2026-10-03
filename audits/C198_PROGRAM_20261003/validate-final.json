@@ -1,0 +1,5 @@
+{
+  "command": "node tools/validate.js",
+  "exitCode": 0,
+  "scope": "Required legacy validation after completed source edits; not develop or a native measurement retry"
+}

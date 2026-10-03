@@ -1,0 +1,394 @@
+{
+  "schema": "cf.c198-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01",
+  "sourceConservationSha256": "4ffbe3fb82b544c3eeecb9f32dc6461d136c8173aa1cf6f450a08b187a2b6464",
+  "sourceMasterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "sourceBindingSha256": "9128208398ec8ad642a153d9f74e399584ba5707f9af812509e3df969164a2ce",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 1469,
+  "remainderPixels": 23051,
+  "islands": [
+    {
+      "pixels": 2,
+      "to": "tail2",
+      "border": {
+        "9": 4
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "tail2",
+      "border": {
+        "9": 8
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "tail2",
+      "border": {
+        "9": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "tail1",
+      "border": {
+        "10": 18
+      }
+    },
+    {
+      "pixels": 40,
+      "to": "tail1",
+      "border": {
+        "10": 22
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "13": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "head",
+      "border": {
+        "13": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "tail1",
+      "border": {
+        "10": 12
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "tail1",
+      "border": {
+        "10": 10
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "tail1",
+      "border": {
+        "10": 12
+      }
+    },
+    {
+      "pixels": 19,
+      "to": "tail1",
+      "border": {
+        "10": 18
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "tail1",
+      "border": {
+        "10": 4
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "tail1",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "14": 1
+      }
+    },
+    {
+      "pixels": 220,
+      "to": "arm-far-elbow",
+      "border": {
+        "6": 30,
+        "14": 28
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 8
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 2
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 12
+      }
+    },
+    {
+      "pixels": 24,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 21
+      }
+    },
+    {
+      "pixels": 589,
+      "to": "leg-far-knee",
+      "border": {
+        "4": 17,
+        "7": 28,
+        "8": 85
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 2
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 5
+      }
+    },
+    {
+      "pixels": 92,
+      "to": "arm-near-elbow",
+      "border": {
+        "5": 38,
+        "15": 4
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "leg-far-knee",
+      "border": {
+        "8": 9
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "leg-far-foot",
+      "border": {
+        "4": 3,
+        "8": 3
+      }
+    },
+    {
+      "pixels": 70,
+      "to": "leg-far-foot",
+      "border": {
+        "4": 30
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "leg-near-knee",
+      "border": {
+        "7": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm-far-elbow",
+      "border": {
+        "6": 1
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "arm-near-elbow",
+      "border": {
+        "5": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "leg-far-foot",
+      "border": {
+        "4": 2
+      }
+    },
+    {
+      "pixels": 24,
+      "to": "leg-far-foot",
+      "border": {
+        "4": 15
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm-near-hand",
+      "border": {
+        "1": 1,
+        "5": 1
+      }
+    },
+    {
+      "pixels": 25,
+      "to": "arm-far-hand",
+      "border": {
+        "2": 22
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm-near-hand",
+      "border": {
+        "1": 1
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "arm-far-hand",
+      "border": {
+        "2": 10
+      }
+    },
+    {
+      "pixels": 136,
+      "to": "leg-far-foot",
+      "border": {
+        "4": 42
+      }
+    },
+    {
+      "pixels": 71,
+      "to": "leg-far-foot",
+      "border": {
+        "4": 34
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "leg-near-foot",
+      "border": {
+        "3": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "leg-far-foot",
+      "border": {
+        "4": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "arm-far-hand",
+      "border": {
+        "2": 4
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-01-capuchin-fringes",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1442,
+      "height": 688
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarFoot",
+        "part": "leg-far-foot",
+        "vertex": 120,
+        "distancePx": 6.082762530298254,
+        "supports": [
+          449
+        ]
+      },
+      {
+        "joint": "legNearFoot",
+        "part": "leg-near-foot",
+        "vertex": 82,
+        "distancePx": 7.071067811865539,
+        "supports": [
+          289
+        ]
+      }
+    ],
+    "sourceBindingHash": "93ab51c4324aa60a19627bd19eb7029745dca2a6686c5cc5f0bb5e8c7728ebea",
+    "sourceVertices": 1275,
+    "vertices": 1467,
+    "sharedSupports": 226,
+    "pins": 691,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 14,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pika",
+  "masterSha256": "c15ffff156b3006716cf4af1d783c531e7da956bf0c30888aaa980988539e2ff",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

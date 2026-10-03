@@ -1,0 +1,14 @@
+{
+  "id": "21-tasmanian-devil",
+  "name": "Tasmanian Devil",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-6e434018-4d2e-4123-8f5f-816e2729b439.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+  "bytes": 1370769,
+  "promptSha256": "c1aa6691ca35114808e6f33360af2ba2ebefd29a24133da61d03f9a2a6e61bb1",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Red Fox",
+  "masterSha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

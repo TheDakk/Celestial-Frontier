@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Rat",
+  "masterSha256": "cbf545ceb723dbcc6832844ede4c06ffcb5bda3b5fec4c08dc53ab5321f99724",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

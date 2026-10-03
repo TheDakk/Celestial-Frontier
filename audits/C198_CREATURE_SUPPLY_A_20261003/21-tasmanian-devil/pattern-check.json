@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tasmanian Devil",
+  "masterSha256": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+  "required": [
+    "black fur with a white chest band"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black fur with a white chest band",
+      "status": "PRESENT",
+      "observed": "Full-size: stocky black coat, white chest crescent, broad pale muzzle, two reddish ear outlines, thick furry tail and four separate clawed feet. Far upper roots partly obscured, far ear reads pointed and tail/ear proportions need species review. All contacts visible as tips without full-chain or motion claim."
+    }
+  ]
+}

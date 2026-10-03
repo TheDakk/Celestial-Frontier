@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c198-bounded-execution/v1",
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01",
+    "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static-01.json"
+  ],
+  "status": "REFUSED",
+  "exitCode": 1,
+  "elapsedMs": 2271.599125,
+  "error": null,
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "nodeVersion": "v26.10.0",
+  "native": false
+}

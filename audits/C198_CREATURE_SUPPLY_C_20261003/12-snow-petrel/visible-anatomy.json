@@ -1,0 +1,167 @@
+{
+  "id": "12-snow-petrel",
+  "name": "Snow Petrel",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22614,
+    "coreRadius": 30,
+    "bodyBox": {
+      "x0": 164,
+      "y0": 152,
+      "x1": 294,
+      "y1": 258
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0461,
+        "pixels": 1043,
+        "box": {
+          "x0": 211,
+          "y0": 122,
+          "x1": 266,
+          "y1": 151
+        },
+        "attach": {
+          "x": 233.5,
+          "y": 151,
+          "relX": 0.53,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.58,
+          "y": -0.82
+        },
+        "class": "top",
+        "length": 43.6
+      },
+      {
+        "k": 1,
+        "frac": 0.1182,
+        "pixels": 2674,
+        "box": {
+          "x0": 262,
+          "y0": 131,
+          "x1": 339,
+          "y1": 229
+        },
+        "attach": {
+          "x": 289,
+          "y": 188.5,
+          "relX": 0.96,
+          "relY": 0.34
+        },
+        "dir": {
+          "x": 0.39,
+          "y": -0.92
+        },
+        "class": "top",
+        "length": 76.2
+      },
+      {
+        "k": 2,
+        "frac": 0.1337,
+        "pixels": 3023,
+        "box": {
+          "x0": 85,
+          "y0": 141,
+          "x1": 208,
+          "y1": 213
+        },
+        "attach": {
+          "x": 172.7,
+          "y": 168.7,
+          "relX": 0.07,
+          "relY": 0.16
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.15
+        },
+        "class": "rear",
+        "length": 98.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0817,
+        "pixels": 1848,
+        "box": {
+          "x0": 89,
+          "y0": 218,
+          "x1": 165,
+          "y1": 265
+        },
+        "attach": {
+          "x": 165,
+          "y": 234,
+          "relX": 0.01,
+          "relY": 0.77
+        },
+        "dir": {
+          "x": -0.94,
+          "y": 0.34
+        },
+        "class": "rear",
+        "length": 82.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0596,
+        "pixels": 1348,
+        "box": {
+          "x0": 189,
+          "y0": 259,
+          "x1": 283,
+          "y1": 310
+        },
+        "attach": {
+          "x": 222.5,
+          "y": 259,
+          "relX": 0.45,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.19,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 79.1
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "rear": 2,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 189,
+        "x1": 229,
+        "cx": 207.2
+      },
+      {
+        "x0": 249,
+        "x1": 280,
+        "cx": 263.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

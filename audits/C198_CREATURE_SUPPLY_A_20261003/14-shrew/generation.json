@@ -1,0 +1,14 @@
+{
+  "id": "14-shrew",
+  "name": "Shrew",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8b8291ad-ed39-47bc-ba32-2d162b375c8c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "988c8418d4a4cb8e47c6e8ef3dcfb6b142b5bc85bfb7fe92ad33ad7bcbc9a36d",
+  "bytes": 1268102,
+  "promptSha256": "81d77404cc784ca53931f4fdf7e6698ce5b0fb464c58701d6f9dabb2b922c9bc",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-whole-original-framing/v1",
+  "scope": "Hash-bound whole-original observations supplement unchanged keyed-mask results. No original edits or threshold changes.",
+  "rows": [
+    {
+      "name": "Catfish",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/13-catfish/master.png",
+      "masterSha256": "2e3e86407a405bf6037628c6209746d3cd9ed532f7fd51b8aee283c6d269d9b8",
+      "status": "REFUSE",
+      "requiredMargin": 101,
+      "method": "Parent full-original visual inspection; approximate edge observations, unchanged mask result retained",
+      "observation": "Whole tail, dorsal/adipose/anal fins and near paired-fin attachment visible, far fin roots obscured. Long mouth barbels reach roughly x1160 on1254 canvas: right margin about94px is below101px floor, original framing REFUSED even if a keyed mask loses those tips. Barbel count/root anatomy remains review hold."
+    },
+    {
+      "name": "Bowfin",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin/master.png",
+      "masterSha256": "a67c727c1f09ef24ab3495aadf8ab77e7b683c69f16fd3ae625cfdcd4296059c",
+      "status": "REFUSE",
+      "requiredMargin": 101,
+      "method": "Parent full-original visual inspection; approximate edge observations, unchanged mask result retained",
+      "observation": "Full long dorsal and rounded tail with eye spot visible; near paired fins clear, far paired-fin attachment hidden. Silhouette reaches roughly x92 and1173, below101px margins on both sides: original framing REFUSED. Ventral fin count/shape requires author review."
+    },
+    {
+      "name": "Arapaima",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima/master.png",
+      "masterSha256": "fa0ca18dfc4b4e8d7fd9bdaa4461b04a98790775b0f98f18b2094e82f8b2e21e",
+      "status": "REFUSE",
+      "requiredMargin": 101,
+      "method": "Parent full-original visual inspection; approximate edge observations, unchanged mask result retained",
+      "observation": "Large scales and red rear pigmentation, posterior dorsal/anal and full rounded tail visible. Paired fin roots partly hidden. Silhouette reaches about70px on both horizontal edges: framing REFUSED. No anatomy admission."
+    },
+    {
+      "name": "Arowana",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana/master.png",
+      "masterSha256": "f59ce9cc07a6b2285e9b83663e8663d83682084f359481d7673e3d231f6f5583",
+      "status": "REFUSE",
+      "requiredMargin": 101,
+      "method": "Parent full-original visual inspection; approximate edge observations, unchanged mask result retained",
+      "observation": "Complete red caudal/dorsal/anal fins and mouth barbels; far paired roots partly occluded. Rightmost barbel reaches about1157, leaving<101px: framing REFUSED. Large scales and paired barbels retained; near rays overlap other fins."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cuttlefish",
+  "masterSha256": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

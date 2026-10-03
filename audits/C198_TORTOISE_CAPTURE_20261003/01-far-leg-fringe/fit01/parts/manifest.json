@@ -1,0 +1,125 @@
+{
+  "creatureId": "c198-tortoise-far-leg-fringe",
+  "parts": [
+    {
+      "name": "near-hind-paw.png",
+      "path": "parts/near-hind-paw.png",
+      "sha256": "cee4a45b5e0582668abd799204a2f4678ff246a67c90c1212440513c8262168a"
+    },
+    {
+      "name": "near-hind-ankle.png",
+      "path": "parts/near-hind-ankle.png",
+      "sha256": "9d759267c7d44b081b9c557fe86352e5823319c863682dad5b767155ff9961fe"
+    },
+    {
+      "name": "near-hind-shin.png",
+      "path": "parts/near-hind-shin.png",
+      "sha256": "91a41c8c4496e7d7457d31d6ef20411fbb1252c0b3a69f0d0055c5c4806f6b73"
+    },
+    {
+      "name": "near-hind-emergence.png",
+      "path": "parts/near-hind-emergence.png",
+      "sha256": "dc4e07b90dbd6b9fba8636e96e853a21d936d7ec15a79a56f7bfc0c97f86710b"
+    },
+    {
+      "name": "near-front-paw.png",
+      "path": "parts/near-front-paw.png",
+      "sha256": "01d801fefd796a003789ae7bb0e2bb63b67f33000bffd4a66a0a1edc802399c5"
+    },
+    {
+      "name": "near-front-ankle.png",
+      "path": "parts/near-front-ankle.png",
+      "sha256": "987dbbf55e4523e870fbf95c66956eef5f3148ad9ba9661f5fe2ea5e91ef2309"
+    },
+    {
+      "name": "near-front-shin.png",
+      "path": "parts/near-front-shin.png",
+      "sha256": "76bc1c7de6f2ba82504513b14e32e576ee2e2f498053efa8b1752012ddfad723"
+    },
+    {
+      "name": "near-front-emergence.png",
+      "path": "parts/near-front-emergence.png",
+      "sha256": "f6006ec0eef2e678a1f33d318a05cbac29c62599ee660e6532bd3896287ebb56"
+    },
+    {
+      "name": "far-hind-paw.png",
+      "path": "parts/far-hind-paw.png",
+      "sha256": "280b8a3d16db5fb4051be3c737a49dc57bea1f7fa32030e0d537ab4ae146cb0a"
+    },
+    {
+      "name": "far-hind-ankle.png",
+      "path": "parts/far-hind-ankle.png",
+      "sha256": "392f6b9e9a90efd3e272871a61e7a930fb8756b883eeb3be0e9c3f107ccbac4d"
+    },
+    {
+      "name": "far-hind-shin.png",
+      "path": "parts/far-hind-shin.png",
+      "sha256": "00ae8bc4c4f5b233b4540801825fa74d988aed0ffb21892c4d805194e1b8bb43"
+    },
+    {
+      "name": "far-hind-emergence.png",
+      "path": "parts/far-hind-emergence.png",
+      "sha256": "0a7ac738fcd5336439ec49d7632f38c7373bfab492acdcc23b94a61e45cebd5b"
+    },
+    {
+      "name": "far-front-paw.png",
+      "path": "parts/far-front-paw.png",
+      "sha256": "df7f3eea5d995ad197018d878a5544352cb39ad9aa854d08056c67725901d531"
+    },
+    {
+      "name": "far-front-ankle.png",
+      "path": "parts/far-front-ankle.png",
+      "sha256": "a7a378229e78a3984b6f0fa9ca92970a57f07b074633542fab3f4cfb9e038bd6"
+    },
+    {
+      "name": "far-front-shin.png",
+      "path": "parts/far-front-shin.png",
+      "sha256": "42c7e6d6c705b4229ace832fb3fcaf050209e9a809d0dc0a72b405b70ac42f61"
+    },
+    {
+      "name": "far-front-emergence.png",
+      "path": "parts/far-front-emergence.png",
+      "sha256": "7b5250c197973979ad167acde2a0e6944ebaf29459bb5354c4bddacb2a6ee76f"
+    },
+    {
+      "name": "beak.png",
+      "path": "parts/beak.png",
+      "sha256": "905c176df7d0243dc6f545665d1e5fe6d431dc2bb07b22a382dddfddb52f55e9"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "fff0fbdd8a5ea789b831857b8fcdb03d10eb3ff46d004db7a91b8c849d44ebaf"
+    },
+    {
+      "name": "neck.png",
+      "path": "parts/neck.png",
+      "sha256": "62a68d0b2f524fedf4bece5675d40d15e3773af802ae78b58a39176963303513"
+    },
+    {
+      "name": "tail-tip.png",
+      "path": "parts/tail-tip.png",
+      "sha256": "17ae64fb26129000252012b08b1fe9aa07a69dcd166d8939846c87c79b362583"
+    },
+    {
+      "name": "tail-distal.png",
+      "path": "parts/tail-distal.png",
+      "sha256": "cb37d34110e1ddc91b2214b0bb8f85c3293766fe9ae969ef99384909f8b90b50"
+    },
+    {
+      "name": "tail-middle.png",
+      "path": "parts/tail-middle.png",
+      "sha256": "9b2c95cfc51dc33a384eae0e4c12bfb47824056b98466f946cc6bf4681b7db27"
+    },
+    {
+      "name": "tail-base.png",
+      "path": "parts/tail-base.png",
+      "sha256": "6b2231da6b984e179f4e732b8173d1fabf2b2a69391aa675523df7896e34f22d"
+    },
+    {
+      "name": "plate-remainder.png",
+      "path": "parts/plate-remainder.png",
+      "sha256": "101b7a0889658ed73663cd1727f9511d2f20d1080b0180076582c6bcae57919a"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "id": "16-arowana",
+  "name": "Arowana",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f59ce9cc07a6b2285e9b83663e8663d83682084f359481d7673e3d231f6f5583",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 26392,
+    "coreRadius": 28,
+    "bodyBox": {
+      "x0": 103,
+      "y0": 151,
+      "x1": 327,
+      "y1": 251
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0189,
+        "pixels": 498,
+        "box": {
+          "x0": 85,
+          "y0": 146,
+          "x1": 158,
+          "y1": 178
+        },
+        "attach": {
+          "x": 121.3,
+          "y": 154.8,
+          "relX": 0.08,
+          "relY": 0.04
+        },
+        "dir": {
+          "x": -0.98,
+          "y": 0.18
+        },
+        "class": "rear",
+        "length": 43.4
+      },
+      {
+        "k": 1,
+        "frac": 0.1514,
+        "pixels": 3995,
+        "box": {
+          "x0": 34,
+          "y0": 160,
+          "x1": 102,
+          "y1": 243
+        },
+        "attach": {
+          "x": 102,
+          "y": 211.6,
+          "relX": 0,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.93,
+          "y": -0.37
+        },
+        "class": "rear",
+        "length": 85.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0596,
+        "pixels": 1573,
+        "box": {
+          "x0": 328,
+          "y0": 169,
+          "x1": 385,
+          "y1": 224
+        },
+        "attach": {
+          "x": 328,
+          "y": 196.5,
+          "relX": 1,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": 0.97,
+          "y": -0.23
+        },
+        "class": "front",
+        "length": 63.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0193,
+        "pixels": 509,
+        "box": {
+          "x0": 190,
+          "y0": 238,
+          "x1": 234,
+          "y1": 268
+        },
+        "attach": {
+          "x": 223.5,
+          "y": 238,
+          "relX": 0.54,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -0.65,
+          "y": 0.76
+        },
+        "class": "limb-down",
+        "length": 45
+      },
+      {
+        "k": 4,
+        "frac": 0.022,
+        "pixels": 580,
+        "box": {
+          "x0": 229,
+          "y0": 238,
+          "x1": 305,
+          "y1": 260
+        },
+        "attach": {
+          "x": 277.9,
+          "y": 238,
+          "relX": 0.78,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -0.81,
+          "y": 0.59
+        },
+        "class": "limb-down",
+        "length": 53.7
+      },
+      {
+        "k": 5,
+        "frac": 0.0096,
+        "pixels": 253,
+        "box": {
+          "x0": 121,
+          "y0": 252,
+          "x1": 176,
+          "y1": 258
+        },
+        "attach": {
+          "x": 148.5,
+          "y": 252,
+          "relX": 0.2,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.74,
+          "y": 0.68
+        },
+        "class": "limb-down",
+        "length": 28.1
+      }
+    ],
+    "byClass": {
+      "rear": 2,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 199,
+        "x1": 213,
+        "cx": 206.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

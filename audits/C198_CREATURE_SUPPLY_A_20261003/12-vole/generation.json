@@ -1,0 +1,14 @@
+{
+  "id": "12-vole",
+  "name": "Vole",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-300131b5-9851-45d6-a7c6-ec274dd82303.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "98a988179ff3f017d9dff72ee6298e80b590a8b7e3d58afdeeb24b8546ab0e15",
+  "bytes": 1455520,
+  "promptSha256": "979826df3b0c311deebe7040294358ea57c95485439aa5fbe2bccf739e8d2de9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

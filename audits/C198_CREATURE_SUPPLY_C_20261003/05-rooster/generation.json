@@ -1,0 +1,14 @@
+{
+  "id": "05-rooster",
+  "name": "Rooster",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-fd6e8c4d-c966-411a-82ec-0f595da1e814.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "577f8cb725826e3af4458667b6f6cc7706379603d17f4605a252a9b76f295416",
+  "bytes": 1340505,
+  "promptSha256": "6754b0c1c4481ac647be14f5454e700b5bef1da6660dc0a97ec16a9e7609a26d",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

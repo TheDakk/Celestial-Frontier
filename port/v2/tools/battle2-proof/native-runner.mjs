@@ -14,7 +14,7 @@ import { repoRelativeSource } from '../creature-animation/record-source.mjs';
 import { CARD_ARCHETYPES } from '../morph/build-card-masters.mjs';
 import { openChromiumCdp } from '../browsercdp.mjs';
 import { acquireWorkspaceLock } from '../workspacelock.mjs';
-import {requireBattleCaptureTimeline,requireBattleCaptureMedia} from './capture-timeline.mjs';
+import {assessBattleCaptureEvidence,requireBattleCaptureMedia} from './capture-timeline.mjs';
 import { summarizeCpuProfile } from './cpu-profile.mjs';
 import { arenaPlateFiles } from './arena-plates.mjs';
 import { requireGuardianFilmTimeline } from './guardian-script.mjs';
@@ -93,9 +93,18 @@ try {
   } fs.writeFileSync(path.join(out, 'battle-full.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
   const media = JSON.parse(execFileSync('/opt/homebrew/bin/ffprobe', ['-v', 'error', '-count_frames', '-show_entries', 'format=duration:stream=codec_type,nb_read_frames,width,height', '-of', 'json', path.join(out, 'battle-full.webm')], { encoding: 'utf8' }));
   report.capture.encodedMedia = media; save();
-  report.capture.timelineProof=report.gates.guardian?requireGuardianFilmTimeline(report.gates,report.capture):requireBattleCaptureTimeline(report.gates,report.capture);
-  report.capture.encodedFrames=requireBattleCaptureMedia(media,report.capture.timelineProof.plannedDurationMs);
-  const refusals = report.capture.refusalsAtEnd; report.status = refusals.left === 0 && refusals.right === 0 ? 'DIAGNOSTIC_PASS' : 'FAIL'; if (report.status === 'FAIL') throw Error('rig refusals in play: ' + JSON.stringify(refusals) + ' ' + JSON.stringify(report.capture.lastRefusal));
+  if(report.gates.guardian){
+    report.capture.timelineProof=requireGuardianFilmTimeline(report.gates,report.capture);
+    report.capture.encodedFrames=requireBattleCaptureMedia(media,report.capture.timelineProof.plannedDurationMs);
+    const refusals=report.capture.refusalsAtEnd;
+    report.status=refusals.left===0&&refusals.right===0?'DIAGNOSTIC_PASS':'FAIL';
+    if(report.status==='FAIL')throw Error('rig refusals in play: '+JSON.stringify(refusals)+' '+JSON.stringify(report.capture.lastRefusal));
+  }else{
+    const evidence=assessBattleCaptureEvidence(report.gates,report.capture,media);
+    Object.assign(report.capture,{timelineProof:evidence.timelineProof,encodedFrames:evidence.encodedFrames,failures:evidence.failures});
+    report.status=evidence.status;
+    if(evidence.failures.length)throw Error(evidence.failures.map(f=>f.kind+': '+f.error).join('; '));
+  }
 } catch (e) { report.status = 'FAIL'; report.error = String(e.stack ?? e); process.exitCode = 1; }
 finally { report.sources = [...sources.values()]; for (const r of report.sources) if (sha(fs.readFileSync(r.path)) !== r.sha256) { report.status = 'FAIL'; report.error = 'source changed: ' + r.path; process.exitCode = 1; } save(); await browser?.close(); if (server) await new Promise((r) => server.close(r)); release?.(); fs.rmSync(scratch, { recursive: true, force: true }); }
 console.log(JSON.stringify({ status: report.status, error: report.error, refusals: report.capture?.refusalsAtEnd, attacks: report.gates?.attacks, capture: report.capture && { frames: report.capture.frames, cpuP95Ms: report.capture.cpuP95Ms, frameDeltaP95Ms: report.capture.frameDeltaP95Ms } }));

@@ -1,0 +1,99 @@
+{
+  "schema": "cf.c198-bounded-execution-summary/v1",
+  "static": [
+    {
+      "report": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static-01.json",
+      "reportSha256": "a85e25d0f1e966cff7b950f1c29e4c3d127023b816340f5d0c25da439685d531",
+      "status": "RED",
+      "actions": 13,
+      "actionPublications": 1208,
+      "actionAttempts": 1212,
+      "presentationPublications": 296,
+      "presentationAttempts": 297,
+      "presentationStatus": "RED",
+      "firstRefusals": [
+        {
+          "action": "approach:walk",
+          "ms": 59.5,
+          "error": "Error: Contact: approach:walk@59.5 exceeds scale compression bound"
+        },
+        {
+          "action": "approach:climb",
+          "ms": 63,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+        },
+        {
+          "action": "dodge",
+          "ms": 93.33333333333333,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"
+        },
+        {
+          "action": "faint",
+          "ms": 190.66666666666666,
+          "error": "Error: Contact: joint limit legFarFoot faint@190.66666666666666: -50.30320075411963"
+        }
+      ],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/static-01.json",
+      "reportSha256": "9a809f64369146aedda862c631b8210a248c69e41c7d8b8b5b16b12baf133c45",
+      "status": "RED",
+      "actions": 13,
+      "actionPublications": 1463,
+      "actionAttempts": 1464,
+      "presentationPublications": 308,
+      "presentationAttempts": 309,
+      "presentationStatus": "RED",
+      "firstRefusals": [
+        {
+          "action": "approach:walk",
+          "ms": 73.7,
+          "error": "Error: Contact: approach:walk@73.7 exceeds scale compression bound"
+        }
+      ],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    }
+  ],
+  "actualLoadedRigSoftware": [
+    {
+      "report": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/review-01/review.json",
+      "reportSha256": "bb6b2ac507ee9b5eb82689803fa2ba08ecda1e1399ff3a8de88a615e2e1d05f1",
+      "evaluations": 20,
+      "published": 18,
+      "refusals": 2,
+      "uniqueImages": 15,
+      "status": "RETAINED_REFUSALS"
+    },
+    {
+      "report": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/review-01/review.json",
+      "reportSha256": "2955b7fd04f336a684cb17e3917afa3b919fcdaa1f956207a2895f96536508d8",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    }
+  ],
+  "noNativeEpoch": true,
+  "noRuntimeOrLimitsEdited": true,
+  "d28Default": 0.5,
+  "paintContactTolerancePx": 0.25,
+  "endpointTolerance": 1e-08,
+  "startupReused": {
+    "path": "audits/C198_PROGRAM_20261003/toolchain-check.json",
+    "sha256": "bdb38ad67dda1238432971045048991c35d3387407269eb112ae3fe89eaa7f78"
+  },
+  "nodeVersion": "v26.10.0",
+  "qualityAccepted": false
+}

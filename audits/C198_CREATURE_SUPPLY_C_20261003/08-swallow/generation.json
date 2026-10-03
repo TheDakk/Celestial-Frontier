@@ -1,0 +1,14 @@
+{
+  "id": "08-swallow",
+  "name": "Swallow",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-5ef046ed-8aa8-4627-8d3e-b7516c87edd1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a33e03e1b84ddfce161e3666e99b5636ea4864a2843ad3c77453f1166500859f",
+  "bytes": 1126902,
+  "promptSha256": "825e6dba7deb627f90de53e5233df59a1c6903d022f3594b67c775a2d456f1a5",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

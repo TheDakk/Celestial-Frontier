@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "b3335e613b92c655575aad1aabd9fcc6df53ac91",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/master.png",
+      "sha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/authoring.json",
+      "sha256": "83120ccdf1c2f772723b3c95dfff22453bb207278873395c36863175d1de513d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/subject-source.json",
+      "sha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "fc4bea0ed333f25bd35bffb5a4d2a1a1f9083ff9cce9abd9f17b6f618901ad5b",
+  "bindingHash": "1803017e9e189c683b310d96497966065a2cab5170f8993384b7d284aa9e553b",
+  "contactEndpoints": [
+    "legFarFoot",
+    "legNearFoot"
+  ],
+  "shapeJoints": [
+    "armNearHand",
+    "armFarHand",
+    "legNearFoot",
+    "legFarFoot",
+    "armNearElbow",
+    "armFarElbow",
+    "legNearKnee",
+    "legFarKnee",
+    "tail2",
+    "tail1",
+    "tail0",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/master.png",
+      "sha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/authoring.json",
+      "sha256": "83120ccdf1c2f772723b3c95dfff22453bb207278873395c36863175d1de513d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/subject-source.json",
+      "sha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "review": "Independent full1254 software raster review; not a native film or acceptance",
+  "rows": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/faint-0p9.png",
+      "sha256": "5b2a183db9730eb822e71c46712dfcd48e689d075cdcb0f4457e803b879d1fb0",
+      "finding": "Pectoral-body opening closed in this full1254 pose and upper tail notch preserved. Hard fin/body texture boundary still visible; candidate only, no native admission."
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/faint-0p9.png",
+      "sha256": "73bed5e153f37f3b0cfc09203cc29b5c866e1d64cc1ec94b749ed06410262f7b",
+      "finding": "VISUAL_REJECT. Faint head and eye crushed into neck with hanging distorted bill despite green mechanics. Never nominate this successor as a visual repair."
+    }
+  ]
+}

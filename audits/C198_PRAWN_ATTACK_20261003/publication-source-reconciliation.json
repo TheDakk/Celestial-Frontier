@@ -1,0 +1,11 @@
+{
+  "scope": "The post-publication changes are test-only strengthening; runtime, fit, pixels and publication helpers remain identical.",
+  "runtimeDrift": 0,
+  "drift": [
+    {
+      "path": "port/v2/apps/game/src/motion/small-crustacean-attack.test.ts",
+      "sha256": "a840de08ae38fc05896d9ab43464b985a4fd57355bbea9604380f9ef2a1afc58",
+      "currentSha256": "69ebf00d0dac1d3ba3a0d437aaf732a6a93d9721a1538128fa1ee5c07f489db1"
+    }
+  ]
+}

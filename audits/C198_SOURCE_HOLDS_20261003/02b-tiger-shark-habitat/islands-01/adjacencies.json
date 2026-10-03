@@ -1,0 +1,228 @@
+{
+  "schema": "cf.c198-observed-adjacency/v1",
+  "sourceFit": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit",
+  "inputs": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/record.json",
+      "sha256": "7721bebb88209172056ddfe9e59d48c2f8d1c7fc467bbe7427ec4b592300e7ac"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/pre-split-binding.json",
+      "sha256": "152194b6cd452d49683f866ec94244cbd7812d79460e3ddb9f1fafca3dfb5982"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/atlas/c192-islands-02b-tiger-shark-habitat.png",
+      "sha256": "a147616a35823a4ffec516127e39f3dc2b2de7c220ebab4cf6d8482b8894736e"
+    }
+  ],
+  "joins": [
+    {
+      "name": "body--far-pectoral",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "body",
+      "descendantPart": "far-pectoral",
+      "ancestorJoint": "root",
+      "descendantJoint": "pectoralFar",
+      "sourceEdges": 30,
+      "samples": 36
+    },
+    {
+      "name": "body--head",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "body",
+      "descendantPart": "head",
+      "ancestorJoint": "root",
+      "descendantJoint": "head",
+      "sourceEdges": 480,
+      "samples": 504
+    },
+    {
+      "name": "body--near-pectoral",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "body",
+      "descendantPart": "near-pectoral",
+      "ancestorJoint": "root",
+      "descendantJoint": "pectoralNear",
+      "sourceEdges": 18,
+      "samples": 19
+    },
+    {
+      "name": "body--spine0",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "body",
+      "descendantPart": "spine0",
+      "ancestorJoint": "root",
+      "descendantJoint": "spine0",
+      "sourceEdges": 285,
+      "samples": 299
+    },
+    {
+      "name": "head--jaw",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "head",
+      "descendantPart": "jaw",
+      "ancestorJoint": "head",
+      "descendantJoint": "jaw",
+      "sourceEdges": 130,
+      "samples": 154
+    },
+    {
+      "name": "spine0--spine1",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "spine0",
+      "descendantPart": "spine1",
+      "ancestorJoint": "spine0",
+      "descendantJoint": "spine1",
+      "sourceEdges": 179,
+      "samples": 198
+    },
+    {
+      "name": "spine1--dorsal",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "spine1",
+      "descendantPart": "dorsal",
+      "ancestorJoint": "spine1",
+      "descendantJoint": "dorsal",
+      "sourceEdges": 108,
+      "samples": 123
+    },
+    {
+      "name": "spine1--spine2",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "spine1",
+      "descendantPart": "spine2",
+      "ancestorJoint": "spine1",
+      "descendantJoint": "spine2",
+      "sourceEdges": 186,
+      "samples": 202
+    },
+    {
+      "name": "spine2--spine3",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "spine2",
+      "descendantPart": "spine3",
+      "ancestorJoint": "spine2",
+      "descendantJoint": "spine3",
+      "sourceEdges": 170,
+      "samples": 184
+    },
+    {
+      "name": "spine3--spine4",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "spine3",
+      "descendantPart": "spine4",
+      "ancestorJoint": "spine3",
+      "descendantJoint": "spine4",
+      "sourceEdges": 114,
+      "samples": 126
+    },
+    {
+      "name": "spine4--spine5",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "spine4",
+      "descendantPart": "spine5",
+      "ancestorJoint": "spine4",
+      "descendantJoint": "spine5",
+      "sourceEdges": 59,
+      "samples": 65
+    },
+    {
+      "name": "spine5--caudal",
+      "rule": "nearest anatomical attachment",
+      "ancestorPart": "spine5",
+      "descendantPart": "caudal",
+      "ancestorJoint": "spine5",
+      "descendantJoint": "caudal",
+      "sourceEdges": 72,
+      "samples": 81
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|dorsal",
+      "parts": [
+        "body",
+        "dorsal"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "dorsal",
+      "sourceEdges": 66,
+      "samples": 74
+    },
+    {
+      "name": "body|jaw",
+      "parts": [
+        "body",
+        "jaw"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "body",
+      "descendantPart": "jaw",
+      "sourceEdges": 54,
+      "samples": 58
+    },
+    {
+      "name": "dorsal|spine0",
+      "parts": [
+        "dorsal",
+        "spine0"
+      ],
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "ancestorPart": "dorsal",
+      "descendantPart": "spine0",
+      "sourceEdges": 9,
+      "samples": 12
+    },
+    {
+      "name": "dorsal|spine2",
+      "parts": [
+        "dorsal",
+        "spine2"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "dorsal",
+      "descendantPart": "spine2",
+      "sourceEdges": 39,
+      "samples": 50
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "parts": [
+        "far-pectoral",
+        "near-pectoral"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "far-pectoral",
+      "descendantPart": "near-pectoral",
+      "sourceEdges": 60,
+      "samples": 65
+    },
+    {
+      "name": "near-pectoral|spine0",
+      "parts": [
+        "near-pectoral",
+        "spine0"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "near-pectoral",
+      "descendantPart": "spine0",
+      "sourceEdges": 157,
+      "samples": 172
+    },
+    {
+      "name": "near-pectoral|spine1",
+      "parts": [
+        "near-pectoral",
+        "spine1"
+      ],
+      "reason": "independent sibling adjacency",
+      "ancestorPart": "near-pectoral",
+      "descendantPart": "spine1",
+      "sourceEdges": 64,
+      "samples": 75
+    }
+  ],
+  "native": false,
+  "qualityAccepted": false
+}

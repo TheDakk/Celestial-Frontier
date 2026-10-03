@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Hamster",
+  "masterSha256": "5cbee5e34db4769ed29aac3a574e3b1f87c8e6986c1636445c97cf1f37616c37",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

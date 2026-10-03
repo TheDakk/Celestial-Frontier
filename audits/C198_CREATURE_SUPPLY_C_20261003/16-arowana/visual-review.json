@@ -1,0 +1,28 @@
+{
+  "name": "Arowana",
+  "masterSha256": "f59ce9cc07a6b2285e9b83663e8663d83682084f359481d7673e3d231f6f5583",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Complete red caudal/dorsal/anal fins and mouth barbels; far paired roots partly occluded. Rightmost barbel reaches about1157, leaving<101px: framing REFUSED. Large scales and paired barbels retained; near rays overlap other fins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 103,
+      "y0": 437,
+      "x1": 1149,
+      "y1": 800
+    },
+    "margins": {
+      "left": 103,
+      "right": 104,
+      "top": 437,
+      "bottom": 453
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c198-observed-source-correction/v1",
+  "source": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/master.png",
+  "sourceSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "priorAuthoring": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/authoring.json",
+  "changedJoints": [],
+  "changedParts": [],
+  "scope": "Recompile exact independent C168 source ownership under current unchanged intake, then evaluate current authorized D28 remainder placement. Existing topology and all source landmarks/regions remain byte-equivalent; id only is distinct. No neck weld is inferred from historical near-zero seam probes.",
+  "qualityAccepted": false,
+  "native": false
+}

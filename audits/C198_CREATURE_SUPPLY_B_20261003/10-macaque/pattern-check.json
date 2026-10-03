@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Macaque",
+  "masterSha256": "7c881d97d530002b51d67de4f9028cacd7c7817452b7fa23989136d9f45f820b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

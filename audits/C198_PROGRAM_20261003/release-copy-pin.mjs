@@ -1,0 +1,18 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+const releaseSource=fs.readFileSync('port/v2/apps/game/src/release-content.ts','utf8'),start='export const V2_DRAFT_RELEASE = ',end='} as const satisfies V2DraftRelease);';
+assert.equal(releaseSource.split(start).length-1,1);assert.equal(releaseSource.split(end).length-1,1);
+const literal=releaseSource.slice(releaseSource.indexOf(start)+start.length,releaseSource.indexOf(end)+end.length).replace(' as const satisfies V2DraftRelease','');
+const V2_DRAFT_RELEASE=new Function('V2_DEVELOPMENT_VERSION','return '+literal)('2.0');
+const rows=V2_DRAFT_RELEASE.sections.flatMap(s=>s.bullets),hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex');
+assert.equal(rows.length,121);
+const priorSentence='✨ BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse. Fixed creatures cast from their stand.';
+assert.equal(rows[0],priorSentence+' Prawns and shrimp with observed foreleg chains deliver a physical leg-tip strike.');
+const oldSha='336a504ecbc8ae68b6c4c55d8a89f9d7a3f1e2d4c347543915ae96a07e831ee3';
+assert.equal(hash([priorSentence,...rows.slice(1)]),oldSha,'Only the explicit first-row companion sentence changes');
+const currentSha=hash(rows);assert.notEqual(currentSha,oldSha);assert.notEqual(hash([...rows.slice(1),rows[0]]),currentSha);
+const target='port/v2/tools/slicesmoke.mjs',source=fs.readFileSync(target,'utf8');
+const old=`  const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({\n    count: 121,\n    sha256: '${oldSha}',\n  });`;
+assert.equal(source.split(old).length-1,1);const next=old.replace(oldSha,currentSha);
+fs.writeFileSync(target+'.tmp',source.replace(old,next),{flag:'wx'});fs.renameSync(target+'.tmp',target);
+fs.writeFileSync('audits/C198_PROGRAM_20261003/release-copy-pin.json',JSON.stringify({status:'PASS',count:rows.length,previousCount:121,previousSha256:oldSha,reviewedSha256:currentSha,oldRowsExact:true,changedRows:[rows[0]],reorderedRowsRejected:true,scope:'Rendered release-copy inventory only. No I5 certificate, measurement, allowance or producer authority re-bound.'},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({count:rows.length,sha256:currentSha,oldRowsExact:true}));

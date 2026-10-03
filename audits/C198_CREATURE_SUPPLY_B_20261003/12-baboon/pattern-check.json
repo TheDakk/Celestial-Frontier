@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Baboon",
+  "masterSha256": "51550b9472c88e69eb75f641b74302fbdb441d1ded007c97b6f12b75936f9aee",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

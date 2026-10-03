@@ -42,3 +42,18 @@ export function requireBattleCaptureMedia(media,plannedDurationMs){
  need(encoded.frames>=Math.ceil(plannedDurationMs/1000*57),'encoded full script lost frames');
  return {...encoded,durationSeconds:duration,minimumFrames:Math.ceil(plannedDurationMs/1000*57)};
 }
+
+/** Evaluate all already-retained evidence before reporting failure. A frame-floor
+ * failure must not hide simultaneous rig refusals (the C250 Tortoise case). */
+export function assessBattleCaptureEvidence(gates,capture,media){
+ const failures=[];let timelineProof=null,encodedFrames=null;
+ const check=(kind,fn)=>{try{return fn();}catch(e){failures.push({kind,error:String(e.message??e)});return null;}};
+ timelineProof=check('live-timeline',()=>requireBattleCaptureTimeline(gates,capture));
+ encodedFrames=check('encoded-media',()=>requireBattleCaptureMedia(media,battleCaptureDuration(gates?.totalMs)));
+ check('rig',()=>{
+  const r=capture?.refusalsAtEnd;
+  need(r&&['left','right'].every(side=>Number.isInteger(r[side])&&r[side]>=0),'invalid rig refusal counts');
+  need(r.left===0&&r.right===0,'rig refusals in play: '+JSON.stringify(r)+' '+JSON.stringify(capture.lastRefusal));
+ });
+ return {status:failures.length?'FAIL':'DIAGNOSTIC_PASS',timelineProof,encodedFrames,failures};
+}

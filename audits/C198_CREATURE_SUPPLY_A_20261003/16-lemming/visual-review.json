@@ -1,0 +1,28 @@
+{
+  "name": "Lemming",
+  "masterSha256": "1a25a2e00ec1839f9c6be02d3c2bb418698838d24872b797b959c7a006110c07",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: rounded brown-gold mottled fur with dark shoulder/head markings, pale underside, short rear tail tuft and four separate small feet. Only one independent ear outline is clear; far ear/upper roots are obscured. Source digit count and common contact plane remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 258,
+      "y0": 415,
+      "x1": 1003,
+      "y1": 851
+    },
+    "margins": {
+      "left": 258,
+      "right": 250,
+      "top": 415,
+      "bottom": 402
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

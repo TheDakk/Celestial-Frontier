@@ -1,0 +1,14 @@
+{
+  "id": "06-secretary-bird",
+  "name": "Secretary Bird",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-235f35af-38f2-4065-931f-c268e28b2ea7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6d31085268258a90672c5efd95196be1d05dc1137985730c203c117ce7914f02",
+  "bytes": 1283238,
+  "promptSha256": "fd2783a9af2e7ec309425cbbd1949dc2cdb4da58cfb0b0f3af8013368c76fd08",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

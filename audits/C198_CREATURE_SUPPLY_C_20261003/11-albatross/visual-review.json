@@ -1,0 +1,28 @@
+{
+  "name": "Albatross",
+  "masterSha256": "96b1750faf0a6e1f8844ae75bdaa8f7b3cee3c1b0392643e84b1978c65d58657",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two complete webbed feet and bill, attached short tail visible. Far wing hidden and near folded wing overlaps tail base; leg roots feather-covered. Generous original margins, no source admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 216,
+      "y0": 311,
+      "x1": 1039,
+      "y1": 942
+    },
+    "margins": {
+      "left": 216,
+      "right": 214,
+      "top": 311,
+      "bottom": 311
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

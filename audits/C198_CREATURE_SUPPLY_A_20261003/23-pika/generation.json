@@ -1,0 +1,14 @@
+{
+  "id": "23-pika",
+  "name": "Pika",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3d6de592-693f-4430-a3e6-1cb9a89a8c42.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c15ffff156b3006716cf4af1d783c531e7da956bf0c30888aaa980988539e2ff",
+  "bytes": 1526604,
+  "promptSha256": "384c658df6d3b4166484adf7f79d0c92567db6f5115377eca66a4a829fd631e0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

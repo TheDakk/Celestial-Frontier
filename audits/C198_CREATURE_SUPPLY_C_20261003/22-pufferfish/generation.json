@@ -1,0 +1,14 @@
+{
+  "id": "22-pufferfish",
+  "name": "Pufferfish",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-d0f86b72-7a49-4b94-bf62-acbb1cfcfe0b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "79fa0f7eb10037c977106d09b20a60b46e4000736080cb4a230e73305f16c670",
+  "bytes": 1402201,
+  "promptSha256": "6514fdfb4c61b71f2b1c5f1548ad47eff5a207833eeb94107a28e4ccf20e676c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -7,7 +7,7 @@ export const MISSING_BODY_TARGETS:Readonly<Record<string,SpecializedTemplateId>>
  'sessile-tunicate':'sessile-filter','fiddler-crab':'brachyuran',
  'bivalve':'bivalve','land-gastropod':'gastropod','water-gastropod':'gastropod',
  'annelid-land':'annelid','annelid-water':'annelid','clawed-crustacean':'crustacean-clawed',
- 'terrestrial-crab':'crustacean-clawed','small-crustacean':'crustacean-small',
+ 'terrestrial-crab':'crustacean-clawed','small-crustacean':'crustacean-small','shrimp-prawn':'crustacean-small',
  'barnacle':'barnacle','sponge':'sessile-filter','tunicate':'colonial-filter',
  'horseshoe-crab':'xiphosuran','larva':'larva','tardigrade':'lobopod',
 });

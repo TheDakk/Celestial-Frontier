@@ -1,0 +1,28 @@
+{
+  "name": "Vole",
+  "masterSha256": "98a988179ff3f017d9dff72ee6298e80b590a8b7e3d58afdeeb24b8546ab0e15",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: rounded brown/grizzled body, pale underside, short tail, a small visible ear and four distinct clawed feet. Far ear does not have a separately visible root, and upper leg roots are covered by body fur. Unequal support heights and furry fringe remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 221,
+      "y0": 369,
+      "x1": 1004,
+      "y1": 893
+    },
+    "margins": {
+      "left": 221,
+      "right": 249,
+      "top": 369,
+      "bottom": 360
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

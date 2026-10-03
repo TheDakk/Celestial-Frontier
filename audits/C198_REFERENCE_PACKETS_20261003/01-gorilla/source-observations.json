@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c198-independent-reference/v1",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/01-gorilla/master.png",
+  "sourceSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+  "authoringMethod": "Independent full-size source observation; no other authoring files loaded.",
+  "mandatoryContacts": 4,
+  "holds": [
+    "The far hind chain is authored only from its visible lower-belly emergence; hidden anatomical hip depth is not claimed.",
+    "Four knuckle/foot endpoints are distinct, with different projected support heights. Static checks must judge their actual rest geometry.",
+    "Fur and source proportions still require scoring; knuckle controls cannot establish biological joint depth."
+  ],
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "native": false
+}

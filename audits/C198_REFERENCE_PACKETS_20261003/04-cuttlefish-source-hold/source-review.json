@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c198-reference-source-hold/v1",
+  "id": "04-cuttlefish-source-hold",
+  "status": "SOURCE_ANATOMY_HOLD",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish/master.png",
+  "sourceSha256": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+  "boundSourcePacket": {
+    "request.json": "f56063d7390bb949ba94ba9c6496581b478bb28e5d06072da7cb5f21b821243a",
+    "master.png": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+    "prompt.txt": "d66f074ea0163a72dcc27f66120b31eebed0801d1dbcf0560f03e124e28739f7",
+    "subject-source.json": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461",
+    "generation.json": "1d2880b683e77726d7bf7414dd60b32230ee41e82fc2a5afb614baa75948d9ed"
+  },
+  "fullSizeInspected": true,
+  "findings": [
+    "Both eye surfaces and wavy pupils are visible, as are the siphon, mantle fin border and two long club-bearing tentacles.",
+    "The short-arm roots and intervening paths overlap. Eight separate short-arm chains are not confidently traceable from this painting.",
+    "Two visible eyes resolve the earlier eye-visibility limitation but do not resolve the independently required short-arm authoring limitation."
+  ],
+  "authoringAttempted": false,
+  "reason": "Mandatory source-visible anatomy is unresolved; no hidden or absent declaration is substituted.",
+  "pixelsChanged": 0,
+  "presenceInvented": false,
+  "qualityAccepted": false,
+  "native": false
+}

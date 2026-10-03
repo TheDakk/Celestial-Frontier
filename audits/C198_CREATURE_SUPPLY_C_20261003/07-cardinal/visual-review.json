@@ -1,0 +1,28 @@
+{
+  "name": "Cardinal",
+  "masterSha256": "2267fc6ed83ba7cc369567664565b882ab67022a772b6c9bd2319b2df232fe8f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two complete feet, red body, black face mask, crest and long attached feather tail. Near wing clear; far wing concealed. Large eye and crest exaggeration remain style/anatomy review holds. Original margins visually >8%.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 176,
+      "y0": 257,
+      "x1": 1007,
+      "y1": 966
+    },
+    "margins": {
+      "left": 176,
+      "right": 246,
+      "top": 257,
+      "bottom": 287
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

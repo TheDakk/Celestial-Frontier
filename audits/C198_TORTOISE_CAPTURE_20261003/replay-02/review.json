@@ -1,0 +1,1595 @@
+{
+  "schema": "cf.c196-actual-rig-software-review/v1",
+  "status": "RETAINED_REFUSALS",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "i": 0,
+      "status": "PASS",
+      "phase": {
+        "actionId": "approach:walk",
+        "elapsedMs": 716.5999999999999,
+        "durationMs": 740,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09385863597972971,
+        "realm": "land"
+      },
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail0": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail1": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail2": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "solved": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.06319172280409081
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreFarRoot": {
+            "rotation": 0
+          },
+          "foreFarKnee": {
+            "rotation": -0.29808014555123463
+          },
+          "foreFarAnkle": {
+            "rotation": 1.214253051352351
+          },
+          "foreFarPaw": {
+            "rotation": -0.9161729058011163
+          },
+          "hindNearRoot": {
+            "rotation": 0
+          },
+          "hindNearKnee": {
+            "rotation": 0.2202537710701331
+          },
+          "hindNearAnkle": {
+            "rotation": 0.014249553928182833
+          },
+          "hindNearPaw": {
+            "rotation": -0.23450332499831594
+          },
+          "foreNearRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail0": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail1": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail2": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail3": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "foreFarAnkle",
+            "target": {
+              "x": 0.7131563358743146,
+              "y": 0.6682615629984051
+            },
+            "endpointTarget": {
+              "x": 0.7143295386815772,
+              "y": 0.6642872584737645
+            },
+            "paintedTarget": {
+              "x": 0.7177731410451363,
+              "y": 0.6674641148325359
+            },
+            "stance": true
+          },
+          {
+            "joint": "hindNearAnkle",
+            "target": {
+              "x": 0.1621196532586846,
+              "y": 0.6690590111642744
+            },
+            "endpointTarget": {
+              "x": 0.1623878956196913,
+              "y": 0.6700771522993981
+            },
+            "paintedTarget": {
+              "x": 0.1581324124293385,
+              "y": 0.6706539074960127
+            },
+            "stance": true
+          }
+        ],
+        "maxError": 0,
+        "compression": 0.01916815960013929,
+        "maxPaintTargetErrorPx": 0.060807025715909256
+      }
+    },
+    {
+      "i": 1,
+      "status": "PASS",
+      "phase": {
+        "actionId": "approach:walk",
+        "elapsedMs": 716.5333333333342,
+        "durationMs": 740,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09384058277027052,
+        "realm": "land"
+      },
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail0": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail1": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail2": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "solved": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.06317633254370864
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreFarRoot": {
+            "rotation": 0
+          },
+          "foreFarKnee": {
+            "rotation": -0.2980699089734754
+          },
+          "foreFarAnkle": {
+            "rotation": 1.2141061700545523
+          },
+          "foreFarPaw": {
+            "rotation": -0.9160362610810768
+          },
+          "hindNearRoot": {
+            "rotation": 0
+          },
+          "hindNearKnee": {
+            "rotation": 0.22020516788510003
+          },
+          "hindNearAnkle": {
+            "rotation": 0.01425126683700606
+          },
+          "hindNearPaw": {
+            "rotation": -0.2344564347221061
+          },
+          "foreNearRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail0": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail1": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail2": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail3": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "foreFarAnkle",
+            "target": {
+              "x": 0.7131618120155694,
+              "y": 0.6682615629984051
+            },
+            "endpointTarget": {
+              "x": 0.7143345807127086,
+              "y": 0.6642877290986365
+            },
+            "paintedTarget": {
+              "x": 0.7177786171863911,
+              "y": 0.6674641148325359
+            },
+            "stance": true
+          },
+          {
+            "joint": "hindNearAnkle",
+            "target": {
+              "x": 0.1621251293999394,
+              "y": 0.6690590111642744
+            },
+            "endpointTarget": {
+              "x": 0.16239334460230187,
+              "y": 0.6700769519497249
+            },
+            "paintedTarget": {
+              "x": 0.1581378885705933,
+              "y": 0.6706539074960127
+            },
+            "stance": true
+          }
+        ],
+        "maxError": 2.220446049250313e-16,
+        "compression": 0.019163491220259732,
+        "maxPaintTargetErrorPx": 0.06080600130021471
+      }
+    },
+    {
+      "i": 2,
+      "status": "PASS",
+      "phase": {
+        "actionId": "approach:walk",
+        "elapsedMs": 716.2666666666673,
+        "durationMs": 740,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09376836993243262,
+        "realm": "land"
+      },
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail0": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail1": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail2": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "solved": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.06311478636284473
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreFarRoot": {
+            "rotation": 0
+          },
+          "foreFarKnee": {
+            "rotation": -0.29802887596215377
+          },
+          "foreFarAnkle": {
+            "rotation": 1.213518576571611
+          },
+          "foreFarPaw": {
+            "rotation": -0.9154897006094571
+          },
+          "hindNearRoot": {
+            "rotation": 0
+          },
+          "hindNearKnee": {
+            "rotation": 0.22001077236547495
+          },
+          "hindNearAnkle": {
+            "rotation": 0.014258122607568006
+          },
+          "hindNearPaw": {
+            "rotation": -0.23426889497304298
+          },
+          "foreNearRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail0": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail1": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail2": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail3": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "foreFarAnkle",
+            "target": {
+              "x": 0.7131837165805889,
+              "y": 0.6682615629984051
+            },
+            "endpointTarget": {
+              "x": 0.7143547495383283,
+              "y": 0.6642896121284692
+            },
+            "paintedTarget": {
+              "x": 0.7178005217514106,
+              "y": 0.6674641148325359
+            },
+            "stance": true
+          },
+          {
+            "joint": "hindNearAnkle",
+            "target": {
+              "x": 0.1621470339649589,
+              "y": 0.6690590111642744
+            },
+            "endpointTarget": {
+              "x": 0.16241514045043645,
+              "y": 0.6700761506523318
+            },
+            "paintedTarget": {
+              "x": 0.1581597931356128,
+              "y": 0.6706539074960127
+            },
+            "stance": true
+          }
+        ],
+        "maxError": 2.220446049250313e-16,
+        "compression": 0.019144822208477352,
+        "maxPaintTargetErrorPx": 0.060801900637914255
+      }
+    },
+    {
+      "i": 3,
+      "status": "REFUSED",
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "phase": {
+        "actionId": "approach:walk",
+        "elapsedMs": 336.2000000000007,
+        "durationMs": 740,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09104233530405426,
+        "realm": "land"
+      },
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.000361
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarKnee": {
+          "rotation": -0.283605,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarAnkle": {
+          "rotation": 0.126046,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarKnee": {
+          "rotation": 0.283605,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarAnkle": {
+          "rotation": -0.126046,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearKnee": {
+          "rotation": 0.283605,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearAnkle": {
+          "rotation": 0.126046,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearKnee": {
+          "rotation": -0.283605,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearAnkle": {
+          "rotation": -0.126046,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail0": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail1": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail2": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "solved": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.04179794541470005
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarRoot": {
+            "rotation": 0
+          },
+          "hindFarKnee": {
+            "rotation": 0.15806297316024187
+          },
+          "hindFarAnkle": {
+            "rotation": 0.5811203259359676
+          },
+          "hindFarPaw": {
+            "rotation": -0.7391832990962095
+          },
+          "foreFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreFarKnee": {
+            "rotation": 0.283605,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreFarAnkle": {
+            "rotation": -0.126046,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreFarPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindNearRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindNearKnee": {
+            "rotation": 0.283605,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindNearAnkle": {
+            "rotation": 0.126046,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindNearPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearRoot": {
+            "rotation": 0
+          },
+          "foreNearKnee": {
+            "rotation": 0.05477667380157625
+          },
+          "foreNearAnkle": {
+            "rotation": 0.24672292111448754
+          },
+          "foreNearPaw": {
+            "rotation": -0.3014995949160638
+          },
+          "tail0": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail1": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail2": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail3": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "hindFarAnkle",
+            "target": {
+              "x": 0.3336278387904567,
+              "y": 0.6690590111642744
+            },
+            "endpointTarget": {
+              "x": 0.3303190447381924,
+              "y": 0.6696304457829293
+            },
+            "paintedTarget": {
+              "x": 0.33123549429284904,
+              "y": 0.6650717703349281
+            },
+            "stance": true
+          },
+          {
+            "joint": "foreNearAnkle",
+            "target": {
+              "x": 0.5824316665416529,
+              "y": 0.6818181818181818
+            },
+            "endpointTarget": {
+              "x": 0.58283314544028,
+              "y": 0.6823633760219007
+            },
+            "paintedTarget": {
+              "x": 0.5808367702099144,
+              "y": 0.6834130781499203
+            },
+            "stance": true
+          }
+        ],
+        "maxError": 2.2887833992611187e-16,
+        "compression": 0.012788215899538935,
+        "maxPaintTargetErrorPx": 0.0021810013640926927
+      }
+    },
+    {
+      "i": 4,
+      "status": "PASS",
+      "phase": {
+        "actionId": "approach:walk",
+        "elapsedMs": 719.5,
+        "durationMs": 740,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09464395059121622,
+        "realm": "land"
+      },
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreFarPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "hindNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearAnkle": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "foreNearPaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail0": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail1": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail2": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "tail3": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "solved": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.0638626403705785
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "hindFarPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreFarRoot": {
+            "rotation": 0
+          },
+          "foreFarKnee": {
+            "rotation": -0.29851704725816514
+          },
+          "foreFarAnkle": {
+            "rotation": 1.2206358356602756
+          },
+          "foreFarPaw": {
+            "rotation": -0.9221187884021105
+          },
+          "hindNearRoot": {
+            "rotation": 0
+          },
+          "hindNearKnee": {
+            "rotation": 0.22236970248771026
+          },
+          "hindNearAnkle": {
+            "rotation": 0.014175403359995899
+          },
+          "hindNearPaw": {
+            "rotation": -0.23654510584770616
+          },
+          "foreNearRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearAnkle": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "foreNearPaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail0": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail1": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail2": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tail3": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "foreFarAnkle",
+            "target": {
+              "x": 0.7129181237297278,
+              "y": 0.6682615629984051
+            },
+            "endpointTarget": {
+              "x": 0.7141102782753596,
+              "y": 0.6642668376068392
+            },
+            "paintedTarget": {
+              "x": 0.7175349289005496,
+              "y": 0.6674641148325359
+            },
+            "stance": true
+          },
+          {
+            "joint": "hindNearAnkle",
+            "target": {
+              "x": 0.16188144111409786,
+              "y": 0.6690590111642744
+            },
+            "endpointTarget": {
+              "x": 0.16215085688343123,
+              "y": 0.6700858772669617
+            },
+            "paintedTarget": {
+              "x": 0.15789420028475176,
+              "y": 0.6706539074960127
+            },
+            "stance": true
+          }
+        ],
+        "maxError": 1.1102230246251565e-16,
+        "compression": 0.019371671301075866,
+        "maxPaintTargetErrorPx": 0.060851313344936174
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/record.json",
+      "sha256": "c109a2873a33468751064188fef54029a3c4335e1be1ca0a1ca7e4a277184bc1"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/binding.json",
+      "sha256": "2c8bda547e61b66bc7afce47f5f83033c34d54e54def366900cfbd54e4661820"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/atlas/c198-tortoise-far-leg-fringe.png",
+      "sha256": "1a191718df61b7a69e089239cc0b47e0797b7cccce7d2852a7aed746a670055f"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay.mjs",
+      "sha256": "12a6f1b2923cc9b737d07aa2877a32903c9956d934ce12652209f2d145811e67"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

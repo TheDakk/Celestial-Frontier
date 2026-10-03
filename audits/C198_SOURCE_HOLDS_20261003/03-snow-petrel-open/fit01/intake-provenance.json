@@ -1,0 +1,86 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "b3335e613b92c655575aad1aabd9fcc6df53ac91",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/master.png",
+      "sha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/authoring.json",
+      "sha256": "4b43d127d0b43de8ee27ead4371de347b6c5fa0f85d707c5a8796528dc1d84ae"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/subject-source.json",
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "531c638e513e5d4329ec65ac13a450360a0966d07e1cea533c4b4b917bbe414f",
+  "bindingHash": "1c91a5dec47da04c3d5e2e01bb2562bc9db7225cd399fcd3ac2e35fc2c358e34",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "wingNearRoot",
+    "wingNearTip",
+    "wingFarTip",
+    "wingFarRoot",
+    "tailFan",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "chest",
+    "pelvis"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/master.png",
+      "sha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/authoring.json",
+      "sha256": "4b43d127d0b43de8ee27ead4371de347b6c5fa0f85d707c5a8796528dc1d84ae",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/subject-source.json",
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}
