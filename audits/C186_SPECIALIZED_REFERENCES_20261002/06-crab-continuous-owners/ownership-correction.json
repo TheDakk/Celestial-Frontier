@@ -1,0 +1,76 @@
+{
+  "schema": "cf.c186-continuous-owner-authoring/v1",
+  "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-schema",
+  "masterSha256": "874590859d6795c66f6f00a50ab5aabe615302d15afe8fe80319c18e57e3b399",
+  "priorAuthoringSha256": "a034598efd453cf0a8b6cf566312f0c986404ce4cf0c08f9b8522828ef45d261",
+  "candidateAuthoringSha256": "103a7a936768aa59d9be2d69ed62c8df661955f3045b04ee40163b095c93c6ff",
+  "changes": [
+    {
+      "region": "leg0farroot",
+      "from": "leg0FarRoot",
+      "to": "leg0FarKnee"
+    },
+    {
+      "region": "leg1farroot",
+      "from": "leg1FarRoot",
+      "to": "leg1FarKnee"
+    },
+    {
+      "region": "leg2farroot",
+      "from": "leg2FarRoot",
+      "to": "leg2FarKnee"
+    },
+    {
+      "region": "leg3farroot",
+      "from": "leg3FarRoot",
+      "to": "leg3FarKnee"
+    },
+    {
+      "region": "leg0nearroot",
+      "from": "leg0NearRoot",
+      "to": "leg0NearKnee"
+    },
+    {
+      "region": "leg1nearroot",
+      "from": "leg1NearRoot",
+      "to": "leg1NearKnee"
+    },
+    {
+      "region": "leg2nearroot",
+      "from": "leg2NearRoot",
+      "to": "leg2NearKnee"
+    },
+    {
+      "region": "leg3nearroot",
+      "from": "leg3NearRoot",
+      "to": "leg3NearKnee"
+    },
+    {
+      "region": "clawfarfixedtip",
+      "from": "clawFarFixedTip",
+      "to": "clawFarFixedRoot"
+    },
+    {
+      "region": "clawfardactyltip",
+      "from": "clawFarDactylTip",
+      "to": "clawFarDactylRoot"
+    },
+    {
+      "region": "clawnearfixedtip",
+      "from": "clawNearFixedTip",
+      "to": "clawNearFixedRoot"
+    },
+    {
+      "region": "clawneardactyltip",
+      "from": "clawNearDactylTip",
+      "to": "clawNearDactylRoot"
+    }
+  ],
+  "priorOwners": 44,
+  "candidateOwners": 32,
+  "unchangedPartBudget": 32,
+  "landmarksChanged": 0,
+  "polygonCoordinatesChanged": 0,
+  "sourcePixelChanges": 0,
+  "qualityAccepted": false
+}

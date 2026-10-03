@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "01-zebra",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/01-zebra/master.png",
+  "sourceSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/01-zebra/packet/authoring.json",
+  "priorAuthoringSha256": "06b4ef363f888f70a3af76e648c4ec69b90686d99784092d6fa75afebce86f2b",
+  "changedJoints": [
+    "earNearRoot",
+    "earNearTip",
+    "earFarRoot",
+    "earFarTip"
+  ],
+  "changedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+  ],
+  "addedParts": [],
+  "findings": [
+    "Two actual ears are fully visible. Near ear occupies x949–995/y207–302; far ear x994–1053/y213–299. The prior envelopes omitted their upper/left contours and assigned some pinna paint to axial owners.",
+    "Four hoof endpoints remain visible. Original body/limb authoring is inherited automatic transfer, not claimed newly observed."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation outcome pending; no visual motion admission.",
+    "Unedited transferred landmarks/regions have not become independent manual reference evidence."
+  ]
+}

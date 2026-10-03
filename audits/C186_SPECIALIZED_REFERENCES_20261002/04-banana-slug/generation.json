@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c186-specialized-generated/v1",
+  "tool": "image_gen.imagegen",
+  "nativeOriginal": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-47f68f56-1033-4442-9bf5-e2b5c5d11437.png",
+  "sourceOriginalSha256": "e6b77cb669880ebaafca7370350cc47be5a7345e4a04e1f17e424766c6b8e3f4",
+  "masterSha256": "e6b77cb669880ebaafca7370350cc47be5a7345e4a04e1f17e424766c6b8e3f4",
+  "sourceByteIdentical": true,
+  "pixelsProcessed": false,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "sentPromptSha256": "acd815227b16967e4f091fa9de588b7dc001272e6a4bb482a1bf87b3bec7c4a4",
+  "promptFileSha256": "acd815227b16967e4f091fa9de588b7dc001272e6a4bb482a1bf87b3bec7c4a4",
+  "actualInput": {
+    "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/master.png",
+    "sha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+    "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Vampire Squid",
+  "masterSha256": "bcedf8e7b62bf35115e505e7240a964f541bf04e3d433787625b6b8820845530",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

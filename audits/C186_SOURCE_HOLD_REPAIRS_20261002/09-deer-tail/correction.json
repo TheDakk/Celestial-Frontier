@@ -1,0 +1,38 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "09-deer-tail",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/master.png",
+  "sourceSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/09-deer/packet/authoring.json",
+  "priorAuthoringSha256": "aa40781659d9f43c956e8fb05c1de57b2b32e9e9cd3b9f476a192eef22dbf690",
+  "changedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "changedParts": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "addedParts": [],
+  "priorityChanged": {
+    "tailBeforeInheritedOwners": true,
+    "distalPawBeforeAnkle": false
+  },
+  "findings": [
+    "Four short tail segments follow the attached brown-white tail x247–337/y552–721. The transferred tail3 envelope missed this actual distal white tuft.",
+    "Antler, neck and leg regions remain inherited automatic authoring and still need full-size motion review."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation evidence pending; no quality admission.",
+    "Unedited automatic geometry remains subject to full-size review."
+  ]
+}

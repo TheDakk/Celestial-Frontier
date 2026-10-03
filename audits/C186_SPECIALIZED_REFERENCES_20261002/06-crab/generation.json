@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c186-specialized-generated/v1",
+  "tool": "image_gen.imagegen",
+  "nativeOriginal": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-7e2b44b5-d27d-4428-8138-f7fe4d65b75c.png",
+  "sourceOriginalSha256": "874590859d6795c66f6f00a50ab5aabe615302d15afe8fe80319c18e57e3b399",
+  "masterSha256": "874590859d6795c66f6f00a50ab5aabe615302d15afe8fe80319c18e57e3b399",
+  "sourceByteIdentical": true,
+  "pixelsProcessed": false,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "sentPromptSha256": "d508e91e2a04fd78f21e3cf4928b281343651ea28cd5891e125c8026f04b12eb",
+  "promptFileSha256": "d508e91e2a04fd78f21e3cf4928b281343651ea28cd5891e125c8026f04b12eb",
+  "actualInput": {
+    "path": "audits/C186_CREATURE_SUPPLY_20261002/04-crab/master.png",
+    "sha256": "73e7cef15eb6d7de50c20054ee5a68b31621c0f3f3712b18e99e538f92ad80cc",
+    "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

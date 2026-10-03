@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Brittle Star",
+  "family": "radial",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "d84aa1d027ac7dfacd5972f1623efc217838f2a964596679cfd4949b7552894a",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "94c722dd51a54756e5bf6c647d3d4339052b3dd3f967ea6a51bb5dcc830b3119",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "one central disc and exactly five actual articulated arms; no head, face, eyes or walking legs",
+  "profileId": "echinoderm",
+  "authoringCreated": false,
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "basePromptSha256": "2240c315ece66a8b49d3d8df0f74df0592137c300a3c8c6f6f1c6050c5042479",
+  "batchCompilerSha256": "217d164bd9b882cfb517865862c3d29cd67457de72b6db41000d5890d140b586",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Use the biologically short-armed Ophiacantha kokusai representative documented in biological-reference.json, with five complete arms and a clearly bounded real disc. This is a fresh painting with real natural proportions, never geometric stretching of the former source or adaptation of anatomy to a rig threshold.",
+    "priorSources": [
+      {
+        "pilot": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json",
+        "id": "02-brittle-star",
+        "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/master.png",
+        "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json"
+  ],
+  "auditCompilerExtension": true,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Use the biologically short-armed Ophiacantha kokusai representative documented in biological-reference.json, with five complete arms and a clearly bounded real disc. This is a fresh painting with real natural proportions, never geometric stretching of the former source or adaptation of anatomy to a rig threshold.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

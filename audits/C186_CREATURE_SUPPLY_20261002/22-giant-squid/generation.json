@@ -1,0 +1,14 @@
+{
+  "id": "22-giant-squid",
+  "name": "Giant Squid",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-be1226ee-0d39-491c-974b-0e0e72097a9f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cb07009c82606a8d92a95f57b227a7bb6485ad13baaab75419701c2ad76046f8",
+  "bytes": 1225554,
+  "promptSha256": "144e24ace2353f246935afb5f776dcd2e94af2e5b9b126830908159a70877b7f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

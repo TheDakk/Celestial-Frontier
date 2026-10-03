@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "01-earthworm-direct",
+  "command": [
+    "node",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01",
+    "01"
+  ],
+  "helperSha256": "5fb70eb9e7d911e33717b08123211f1a1e299526d61608e4a8df1b999eba5855",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/conservation-01.log",
+  "logSha256": "36a7854b2e15e2bc9567b6f4b35ef93a0e380467ad2bdea1d7ee01ae3a8475dc",
+  "nativeRuns": 0
+}

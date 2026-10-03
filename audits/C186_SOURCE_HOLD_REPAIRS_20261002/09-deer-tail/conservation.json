@@ -1,0 +1,180 @@
+{
+  "schema": "cf.c186-source-conservation/v1",
+  "id": "09-deer-tail",
+  "masterSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "authoringSha256": "5abcef0cc51fcdb98f3f39663fef9126170b7ab7087dd92fe8df25d83e70bd65",
+  "bindingSha256": "6ab9638555e8a748bdbf75ff024be3d03304da22733a2602537c3480b5fade50",
+  "keyedRgbaSha256": "b37e7c125c11b9d9ec11c43835ee9536f584f89000bdd76125975a62d9ef0ee9",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "hindNearRoot -> tail0": 1169,
+    "tail0 -> spine": 46,
+    "tail0 -> tail1": 223,
+    "hindNearRoot -> tail1": 229,
+    "tail1 -> spine": 425,
+    "tail1 -> tail2": 642,
+    "tail2 -> spine": 639,
+    "tail2 -> tail3": 624,
+    "tail3 -> spine": 53
+  },
+  "originalCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 2726 px is 6.9% of the remainder (> 5%): structural, not a sliver",
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 2726 px is 6.7% of the remainder (> 5%): structural, not a sliver",
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 35519,
+      "minX": 486,
+      "minY": 512,
+      "maxX": 674,
+      "maxY": 755
+    },
+    {
+      "pixels": 2726,
+      "minX": 740,
+      "minY": 143,
+      "maxX": 805,
+      "maxY": 291
+    },
+    {
+      "pixels": 674,
+      "minX": 807,
+      "minY": 316,
+      "maxX": 838,
+      "maxY": 382
+    },
+    {
+      "pixels": 316,
+      "minX": 1037,
+      "minY": 246,
+      "maxX": 1059,
+      "maxY": 283
+    },
+    {
+      "pixels": 107,
+      "minX": 261,
+      "minY": 873,
+      "maxX": 297,
+      "maxY": 883
+    },
+    {
+      "pixels": 10,
+      "minX": 518,
+      "minY": 1068,
+      "maxX": 522,
+      "maxY": 1073
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 35519,
+      "minX": 486,
+      "minY": 512,
+      "maxX": 674,
+      "maxY": 755
+    },
+    {
+      "pixels": 2726,
+      "minX": 740,
+      "minY": 143,
+      "maxX": 805,
+      "maxY": 291
+    },
+    {
+      "pixels": 1045,
+      "minX": 273,
+      "minY": 629,
+      "maxX": 308,
+      "maxY": 712
+    },
+    {
+      "pixels": 674,
+      "minX": 807,
+      "minY": 316,
+      "maxX": 838,
+      "maxY": 382
+    },
+    {
+      "pixels": 316,
+      "minX": 1037,
+      "minY": 246,
+      "maxX": 1059,
+      "maxY": 283
+    },
+    {
+      "pixels": 107,
+      "minX": 261,
+      "minY": 873,
+      "maxX": 297,
+      "maxY": 883
+    },
+    {
+      "pixels": 64,
+      "minX": 261,
+      "minY": 609,
+      "maxX": 268,
+      "maxY": 626
+    },
+    {
+      "pixels": 46,
+      "minX": 286,
+      "minY": 573,
+      "maxX": 295,
+      "maxY": 584
+    },
+    {
+      "pixels": 10,
+      "minX": 518,
+      "minY": 1068,
+      "maxX": 522,
+      "maxY": 1073
+    },
+    {
+      "pixels": 5,
+      "minX": 271,
+      "minY": 599,
+      "maxX": 273,
+      "maxY": 603
+    },
+    {
+      "pixels": 1,
+      "minX": 274,
+      "minY": 597,
+      "maxX": 274,
+      "maxY": 597
+    },
+    {
+      "pixels": 1,
+      "minX": 270,
+      "minY": 605,
+      "maxX": 270,
+      "maxY": 605
+    }
+  ],
+  "unchangedD28Cap": 0.05,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "structural-island control refused at unchanged 5%"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c186-merge-receipt/v1",
+  "initialSibling": "2879eed4a",
+  "initialSignedMerge": "5743b2670",
+  "newerSibling": "f62d359bf",
+  "newerSignedMerge": "651c95864",
+  "newerChange": "Audit runner maps bivalve rigid shell to closed material plated",
+  "preservedClaudeHandoff": true,
+  "productSourceChange": false,
+  "mailboxReadThrough": "C186",
+  "sweepAuthority": "NOT YET",
+  "nativeRuns": 0
+}

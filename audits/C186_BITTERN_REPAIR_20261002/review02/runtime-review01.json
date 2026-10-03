@@ -1,0 +1,57 @@
+{
+  "status": "PASS_OFFLINE",
+  "rows": [
+    {
+      "ms": 900,
+      "status": "PASS",
+      "publishedParts": 17
+    },
+    {
+      "ms": 1200,
+      "status": "PASS",
+      "publishedParts": 17
+    },
+    {
+      "ms": 1504.1000000000004,
+      "status": "PASS",
+      "publishedParts": 17
+    },
+    {
+      "ms": 1512,
+      "status": "PASS",
+      "publishedParts": 17
+    },
+    {
+      "ms": 1504.1000000000004,
+      "status": "PASS",
+      "publishedParts": 17
+    },
+    {
+      "ms": 1200,
+      "status": "PASS",
+      "publishedParts": 17
+    },
+    {
+      "ms": 900,
+      "status": "PASS",
+      "publishedParts": 17
+    }
+  ],
+  "scope": "Actual loaded CreatureRig with candidate atlas RGBA matches publication coordinates at retained original native context; no browser/GPU/native acceptance",
+  "solverLimitsUnchanged": true,
+  "masterSha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+  "inputs": [
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/record.json",
+      "sha256": "92701930d8656ea907b1fd71832649631f51e6f5ed26777dba68b5c4b8ba9a8a"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/binding.json",
+      "sha256": "2c1e6d92b21d28fa1a9d55d14e70389c401abc011ce960213d47318a4d43d79f"
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/atlas/07-bittern.png",
+      "sha256": "d9d782af6cd0c0060b4a3e92e7af544930cf0956ec1cf8e0b85593eed20327b2"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "cf.c173-reference-conservation/v1",
+  "masterSha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43",
+  "authoringSha256": "243141dc0f5699c7d3447e17ffafc9091597dbdd11a18ccbd50015b67dad34c4",
+  "recordRecipeHash": "4e2890514b9364b8469933dd5a9209c9086c816873bc870e9d03cde484043c3d",
+  "keyedRgbaSha256": "ebec561f291c513ccabb01d42050d2dc0e1abae3ebadaf02d89ca08f1e44d4cf",
+  "ownershipSha256": "0c91be01b41f9dabdb21a935a573c63af9a1040a6df1fc84fe20be91bc02d554",
+  "sourcePixelChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "ownershipReplayMismatch": 0,
+  "controls": [
+    "independent ownership replay equals published raster",
+    "deterministic replay",
+    "unchanged established keyed RGBA",
+    "changed source channel rejected",
+    "paint deletion rejected",
+    "different anatomical owner rejected",
+    "structural remainder control rejected at unchanged 5% cap"
+  ],
+  "islandCap": 0.05,
+  "islandOutcome": {
+    "status": "PASS",
+    "remainderPixels": 43827,
+    "movablePixels": 2115,
+    "islands": [
+      {
+        "pixels": 9,
+        "to": 2,
+        "border": {
+          "2": 9
+        }
+      },
+      {
+        "pixels": 1257,
+        "to": 3,
+        "border": {
+          "3": 214
+        }
+      },
+      {
+        "pixels": 300,
+        "to": 2,
+        "border": {
+          "2": 35,
+          "3": 25,
+          "5": 27
+        }
+      },
+      {
+        "pixels": 548,
+        "to": 5,
+        "border": {
+          "3": 56,
+          "5": 65
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 5,
+        "border": {
+          "5": 2
+        }
+      }
+    ]
+  },
+  "automaticIslandTransferApplied": false,
+  "qualityAccepted": false,
+  "nativeRun": false
+}

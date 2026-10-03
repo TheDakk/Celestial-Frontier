@@ -1,0 +1,241 @@
+{
+  "schema": "cf.c186-final-output-check/v1",
+  "status": "PASS",
+  "species": 8,
+  "rows": [
+    {
+      "id": "01-zebra-fallback-ears",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 6309,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+      "recordSha256": "38e08c8bfc12c61d15b423903826d0da854ca29d386e7c9fe9bfd2f39a112237",
+      "bindingSha256": "7a5024ac7d6fab5beba6d747fc6b47657607aa161f4f4ab48649c0ace80b25f2",
+      "staticSha256": "bee171c1371bdca62e6cf62cfac781f3cab936e8402a366d07af27d359e2eb6c",
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "02-kudu",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/02-kudu/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 1357,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867",
+      "recordSha256": "4c60f134ccb1f22399bd5a9ba792db56299e4a92b2c60002f8c5dc047737da65",
+      "bindingSha256": "dacc88be9a273ef6a3b432545d30ff060e66f1c48f5c48726aa56cee98b0ed3f",
+      "staticSha256": "4c589a3b8cdbb2cedc298df72e3ef9767b88a289f9be616b4d77cbd2d13fcd6b",
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "05-gazelle",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/05-gazelle/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 829,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "56349e0398ad3d60adbdf584cd2b394f7fc925d79c09fe6246ee4686f0ab21ed",
+      "recordSha256": "7a02997aa6f0ebe033bff713670dd4a326ee2d58f490ede8b84e4dba189d0ae5",
+      "bindingSha256": "ed4afc1149ae8fb98e820b5bd78dbd163f2aa86876bc842a5ec60210ba66fabe",
+      "staticSha256": "58e922a0e01e98c4acc85b510e02d14493942ec341b98b0e5f535ff3c89e9df3",
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "07-oryx-tail-ears",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/07-oryx-tail-ears/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 2325,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4",
+      "recordSha256": "ce84bbe4cb562c7a16f2788c793620222c681aacef1efa7c23286e0ce17d470f",
+      "bindingSha256": "14932d9779e0d0acc4229a581764a314750757771a3df810ad97240f3edbf241",
+      "staticSha256": "42773da10e9eb266279dd749a593dcfb9370812547a5110788155bd710b4f788",
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "08-gaur-observed-ears",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 3436,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+      "recordSha256": "41f4c2c57c6cf25e7abe9aff155b0faef437e5089fcc45786fcdd33fb17bb934",
+      "bindingSha256": "b151e9f1e8d532b5712c946b704881f8ecd8f4d906b32e7e4b1fd25c0b1347e6",
+      "staticSha256": "08fd7d2aa9e904e2074ee5563f60b517be28a38f13920bbe0b06822aaf55254a",
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "09-deer-observed-ears",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-observed-ears/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 1596,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+      "recordSha256": "ac293315c5a3e96a0235064be740fb34d052cb698fd76f5f90de34aed80f1f38",
+      "bindingSha256": "12ec231e4e168dde7b4d436a4e43f6448a154eb37f4a9d323bbea28e3168eb9a",
+      "staticSha256": "e568d381d0948fa40e021b2ac56c1954368684328bc42b760c032a3f11e5cee4",
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "10-antelope-tail",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/10-antelope-tail/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 529,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+      "recordSha256": "9ae38a7feb55c9738e4576d9b45b6a325ded79b85f91e01f9fc07a31d8d38b3a",
+      "bindingSha256": "a69ba8f3aa72164f575c0dc24a554763647cfccacb6b6a94b8cdf1ac9713d140",
+      "staticSha256": "2c49c0c96ddc8689f9064fd415aeecc79942f30318d58489431f2c5db3c1cd6a",
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "15-sheep-observed-ears",
+      "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/15-sheep-observed-ears/islands-01/fit",
+      "status": "PASS",
+      "actions": 19,
+      "actionSamples": 2299,
+      "exactRest": true,
+      "presentation": "PASS",
+      "sourcePixelRest": {
+        "status": "PASS",
+        "changedVisibleRgbaChannels": 0,
+        "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+      },
+      "sourceRgbaChanged": 0,
+      "recordChangedByPlacement": false,
+      "declaredLabelsEqualActualOwnership": true,
+      "unchangedCap": 0.05,
+      "movedPixels": 7411,
+      "controls": [
+        "actual output color-label mutation rejected",
+        "actual keyed RGBA mutation rejected"
+      ],
+      "sourceSha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee",
+      "recordSha256": "25edd4767d5adc8f8da9416ab3d00cf3ac10f4e2f68874b48d8b13db412c9bea",
+      "bindingSha256": "ea9826ed3415f8b900c1956716043fca91e81685eb5b2815569158e0261c98c2",
+      "staticSha256": "d3e36c4dcd778d72ab1025f259f6eecd09bd64a424b84fc7f4c3837174fb0c0a",
+      "qualityAccepted": false,
+      "native": false
+    }
+  ],
+  "totalActionSamples": 18392,
+  "scope": "Exact delivered output ownership/source/static checks; no native or family-reference admission."
+}

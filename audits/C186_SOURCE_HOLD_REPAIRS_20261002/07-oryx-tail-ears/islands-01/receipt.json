@@ -1,0 +1,227 @@
+{
+  "schema": "cf.c186-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/07-oryx-tail-ears/fit01",
+  "sourceConservationSha256": "70a552d4944564b8f95316c1eeb4e4039c7c2dbea4c7ae0e74a0ded3901d8562",
+  "sourceMasterSha256": "2086c0f2977063010b92272067ff18d4ed437a7a9b2c64a3a516a1d01e7709a4",
+  "sourceBindingSha256": "789ce79fd7310b2365b249c94017f2d2fcdc3386bafc14555ba65f53b33b168b",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.05,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374",
+  "movedPixels": 2325,
+  "remainderPixels": 43559,
+  "islands": [
+    {
+      "pixels": 297,
+      "to": "head",
+      "border": {
+        "27": 63,
+        "28": 14
+      }
+    },
+    {
+      "pixels": 48,
+      "to": "chest",
+      "border": {
+        "28": 6,
+        "29": 29
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck",
+      "border": {
+        "28": 4,
+        "29": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail2",
+      "border": {
+        "2": 2
+      }
+    },
+    {
+      "pixels": 807,
+      "to": "tail2",
+      "border": {
+        "1": 17,
+        "2": 98
+      }
+    },
+    {
+      "pixels": 744,
+      "to": "tail2",
+      "border": {
+        "1": 24,
+        "2": 93
+      }
+    },
+    {
+      "pixels": 114,
+      "to": "tail3",
+      "border": {
+        "1": 25
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 112,
+      "to": "tail3",
+      "border": {
+        "1": 45
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 113,
+      "to": "tail3",
+      "border": {
+        "1": 32
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "1": 1
+      }
+    },
+    {
+      "pixels": 21,
+      "to": "tail3",
+      "border": {
+        "1": 7
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "tail3",
+      "border": {
+        "1": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 9,
+      "to": "tail3",
+      "border": {
+        "1": 13,
+        "6": 7
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "hind-near-ankle",
+      "border": {
+        "6": 5
+      }
+    },
+    {
+      "pixels": 33,
+      "to": "hind-far-paw",
+      "border": {
+        "15": 23
+      }
+    }
+  ],
+  "intake": {
+    "id": "c186-islands-07-oryx-tail-ears",
+    "parts": 31,
+    "atlasSize": {
+      "width": 2047,
+      "height": 736
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 28,
+        "distancePx": 5.604462507680738,
+        "supports": [
+          1029
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 29,
+        "distancePx": 7.955501241279692,
+        "supports": [
+          1202
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 16,
+        "distancePx": 6.42806347199528,
+        "supports": [
+          206
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 48,
+        "distancePx": 6.574191965557352,
+        "supports": [
+          626
+        ]
+      }
+    ],
+    "sourceBindingHash": "dd6e8b17f9c14a32213d60bf3187e1480d4fa599fb9bed64438e94175c56abd5",
+    "sourceVertices": 1892,
+    "vertices": 2130,
+    "sharedSupports": 550,
+    "pins": 472,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 34,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

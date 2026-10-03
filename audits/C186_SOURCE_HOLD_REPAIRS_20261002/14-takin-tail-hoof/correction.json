@@ -1,0 +1,42 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "14-takin-tail-hoof",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/master.png",
+  "sourceSha256": "dca8074553c08211b7b13d133286c1798d15bfc0b7b8834256bdacbd7f7c249e",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/14-takin/packet/authoring.json",
+  "priorAuthoringSha256": "dc20da291f0c306da69910715a5b1ecc1c8272e42a79ef62f34d16ce60a10581",
+  "changedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3",
+    "foreFarPaw",
+    "foreFarAnkle"
+  ],
+  "changedParts": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3",
+    "fore-far-ankle",
+    "fore-far-paw"
+  ],
+  "addedParts": [],
+  "priorityChanged": {
+    "tailBeforeInheritedOwners": true,
+    "distalPawBeforeAnkle": true
+  },
+  "findings": [
+    "Short down-left furry tail is separate from rump along the silhouette, x131–257/y491–677. Only visible tail hair is assigned.",
+    "The left of the two front hooves is a complete visible cloven endpoint; prior transferred paw missed its lower paint. Other dense-fur proximal ownership remains a review hold."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation evidence pending; no quality admission.",
+    "Unedited automatic geometry remains subject to full-size review."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "cf.audit-compiler-transform/v1",
+  "source": "port/v2/tools/painted-creature/compile-library-master.mjs",
+  "sourceSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "output": "audits/C186_CREATURE_SUPPLY_20261002/compiler.audit.mjs",
+  "outputSha256": "94c722dd51a54756e5bf6c647d3d4339052b3dd3f967ea6a51bb5dcc830b3119",
+  "transforms": [
+    {
+      "before": "from 'rolldown'",
+      "after": "from '../../port/v2/node_modules/rolldown/dist/index.mjs'"
+    },
+    {
+      "before": "from '../creature-animation/family-contracts.mjs'",
+      "after": "from '../../port/v2/tools/creature-animation/family-contracts.mjs'"
+    },
+    {
+      "before": "from './pattern-observation.mjs'",
+      "after": "from '../../port/v2/tools/painted-creature/pattern-observation.mjs'"
+    },
+    {
+      "before": "path.resolve(import.meta.dirname,'../../../..')",
+      "after": "path.resolve(import.meta.dirname,'../..')"
+    },
+    {
+      "before": " const candidates=profile?.candidateTemplates??[];",
+      "after": " const candidates=profile?.candidateTemplates??[];\n if(SIMPLE[species.name]){const family=SIMPLE[species.name].family;if(candidates.length!==1||candidates[0]!==family)throw Error('Specialized source canonical family mismatch');return family;}"
+    },
+    {
+      "before": "export function controlledLibraryLayout(family,name){",
+      "after": "export function controlledLibraryLayout(family,name){\n if(Object.values(SIMPLE).some(r=>r.family===family)){const row=SIMPLE[name];if(!row||row.family!==family)throw Error('Exact specialized source species required');return {legs:row.legs,accuracy:row.accuracy,layout:row.layout};}"
+    },
+    {
+      "before": "One anatomically accurate ${name}, one head;",
+      "after": "One anatomically accurate ${name}, ${family==='radial'?'no head':'one head'};"
+    }
+  ],
+  "appended": "\n/** Audit-only four-source vocabulary; no production support or measured anatomical admission. */\nconst SIMPLE=Object.freeze({\"Banana Slug\":{\"family\":\"gastropod\",\"legs\":0,\"accuracy\":\"one naturally shellless gastropod, continuous foot, actual mouth, two ocular tentacles and two short sensory tentacles\",\"layout\":\"One whole anatomically accurate adult in the approved painted hand, isolated on pure magenta. Entire natural specimen and all appendages stay inside the central half of native 1254 by 1254 canvas, with roughly 300 pixels empty magenta on every side. No floor, scenery, shadow, frame, guides, text or props. Real biological anatomy takes priority over a coarse template; requests are not measured presence. Right-facing very shallow three-quarter side view, from slightly BELOW head height so the real small oral opening under the front head is independently visible between and below both short lower sensory tentacles. Both long upper tentacles end in real eye tips. Entire bright yellow shellless body, breathing hole and rippling foot sole remain connected and natural. No giant mouth, lips, face, added stalks or legs. Use a relaxed extended pose with no tentacle crossings.\"},\"Prawn\":{\"family\":\"crustacean-small\",\"legs\":10,\"accuracy\":\"five genuine thoracic walking-leg pairs plus real swimmerets, two long antennae and short antennules, rostrum, eyes, segmented abdomen and tail fan\",\"layout\":\"One whole anatomically accurate adult in the approved painted hand, isolated on pure magenta. Entire natural specimen and all appendages stay inside the central half of native 1254 by 1254 canvas, with roughly 300 pixels empty magenta on every side. No floor, scenery, shadow, frame, guides, text or props. Real biological anatomy takes priority over a coarse template; requests are not measured presence. A right-facing prawn viewed slightly from below and in a shallow three-quarter side view so the real thoracic underside and both rows of walking-leg roots are visible. Five actual pairs of thoracic walking legs are naturally spread with their individual bases, bends and distal ends continuously visible, not hidden behind the carapace. Keep real abdominal swimmerets and small antennules separately recognizable. Retain all actual appendages and entire antenna lengths within the small centered silhouette; no lobster claws, deleted limbs or rearranged attachments.\"},\"Crab\":{\"family\":\"brachyuran\",\"legs\":8,\"accuracy\":\"eight actual walking legs, two separate genuine claw arms, two eye stalks and broad carapace; no vertebrate tail\",\"layout\":\"One whole anatomically accurate adult in the approved painted hand, isolated on pure magenta. Entire natural specimen and all appendages stay inside the central half of native 1254 by 1254 canvas, with roughly 300 pixels empty magenta on every side. No floor, scenery, shadow, frame, guides, text or props. Real biological anatomy takes priority over a coarse template; requests are not measured presence. One ordinary true crab in a direct elevated frontal view, carapace near horizontal and body slightly raised on its naturally splayed legs. All four real walking-leg pairs fan out laterally in staggered front-to-back directions with every actual proximal emergence, knee and terminal foot independently visible. The last posterior pair must remain separate from the third and not hide under the shell. Both claws reach forward and slightly apart with true base, elbow, palm, fixed and moving finger visible. Preserve actual short eye stalks and mouthparts; no extra limbs or invented exposed hidden segments.\"},\"Brittle Star\":{\"family\":\"radial\",\"legs\":0,\"accuracy\":\"one central disc and exactly five actual articulated arms; no head, face, eyes or walking legs\",\"layout\":\"One whole anatomically accurate adult in the approved painted hand, isolated on pure magenta. Entire natural specimen and all appendages stay inside the central half of native 1254 by 1254 canvas, with roughly 300 pixels empty magenta on every side. No floor, scenery, shadow, frame, guides, text or props. Real biological anatomy takes priority over a coarse template; requests are not measured presence. Straight dorsal view of one natural short-armed brittle star, using Ophiacantha kokusai as the biological representative for the generic canonical name. Its natural arms extend up to two and a half disc diameters from the disc edge, per the published adult description; preserve those real proportions rather than resizing an old animal to meet a rig. Five moderately short narrow tapering nodular articulated arms with real fine marginal spines spread without crossing. The disc has a clearly visible continuous outer boundary with each real arm root attached. No starfish-like broad fused arms, enlarged artificial disc, face, mouth on top or legs.\"}});\n",
+  "scope": "Only local import resolution and four exact named canonical family routes/painting layouts. Canonical identities, kit export, materials/style, requested dimensions and provenance retained. Production compiler unchanged."
+}

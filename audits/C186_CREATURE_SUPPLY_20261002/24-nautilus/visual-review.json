@@ -1,0 +1,28 @@
+{
+  "name": "Nautilus",
+  "masterSha256": "4a6de28b5aa5fd4c1e321e800c8bbcf723a3a218813ccc0e45887e236306f6c6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: cream and reddish striped coiled shell, spotted hood, one near eye and many slender suckerless-looking tentacles. Numerous tentacles overlap at their roots and tips; no exact total count or independently controlled chains are established. Far eye is hidden, not declared absent. The shell/hood and tentacle mass would need truthful coarse ownership beyond ordinary eight-arm assumptions; retained as a new source identity with a template/visibility hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 221,
+      "y0": 315,
+      "x1": 1069,
+      "y1": 943
+    },
+    "margins": {
+      "left": 221,
+      "right": 184,
+      "top": 315,
+      "bottom": 310
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

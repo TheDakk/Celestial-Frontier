@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "08-gaur-observed-leg",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/master.png",
+  "sourceSha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+  "priorAuthoring": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-far-hoof/authoring.json",
+  "priorAuthoringSha256": "d9d595326890fc7d0fbd409d9a36417bca361d5573801d6116d02c2620060f16",
+  "changedJoints": [
+    "foreFarRoot",
+    "foreFarKnee"
+  ],
+  "changedParts": [
+    "fore-far-root",
+    "fore-far-knee"
+  ],
+  "addedParts": [],
+  "findings": [
+    "Prior inherited foreFarRoot y538 lies on mid-torso, well above the visible near-front shoulder/leg flexion at y651; knee y805 is near the white stocking transition. Source-observed root and knee now follow this actual chain, retaining the separately observed hoof/pastern correction.",
+    "The same anatomical chain name is retained. No hidden deep shoulder point is reconstructed; the pivot marks visible limb emergence and flexion.",
+    "This bounded source correction follows the retained 11-fold faint refusal; it is not a parameter or threshold change."
+  ],
+  "originalPixelsChanged": 0,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Full-size dynamic review and source-visible placement remain unqualified."
+  ]
+}

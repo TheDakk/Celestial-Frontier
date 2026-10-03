@@ -1,0 +1,14 @@
+{
+  "id": "16-serval",
+  "name": "Serval",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-524aaf0e-2eb7-43e7-9842-0849eb7022c5.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+  "bytes": 1373589,
+  "promptSha256": "73f306497edb935d1ef9194fc3f0e20fea07467f40a0d310c302644797d61b66",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

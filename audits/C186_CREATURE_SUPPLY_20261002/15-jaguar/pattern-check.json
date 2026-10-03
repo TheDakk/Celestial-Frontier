@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Jaguar",
+  "masterSha256": "01288ac83387fc9f13a8e209ca10585dd69b59b884d4806737a1518e1459e388",
+  "required": [
+    "rosettes with spots inside them"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "rosettes with spots inside them",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: stocky golden and cream body, broad jaw and large black rosettes with dark internal spots visibly present on multiple torso rosettes. Four paw ends are separately visible; the far proximal leg roots remain partly hidden by the torso and near legs. The near rounded ear is distinct; the far ear is a small tip. Tail is continuous and fully inside the canvas. No apparent fifth limb. Pattern visibility is observed; root ownership, proportions and moving anatomy remain unadmitted."
+    }
+  ]
+}

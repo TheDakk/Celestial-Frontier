@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c186-specialized-generated/v1",
+  "tool": "image_gen.imagegen",
+  "nativeOriginal": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-066542d5-85c6-433e-8739-b79474289bf9.png",
+  "sourceOriginalSha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43",
+  "masterSha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43",
+  "sourceByteIdentical": true,
+  "pixelsProcessed": false,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "sentPromptSha256": "cf50513e59251e6a1aa632fce4393f1a09b230cad043a68a0613c81219e128da",
+  "promptFileSha256": "cf50513e59251e6a1aa632fce4393f1a09b230cad043a68a0613c81219e128da",
+  "actualInput": {
+    "path": "audits/C186_CREATURE_SUPPLY_20261002/02-banana-slug/master.png",
+    "sha256": "19d78b8c5eb9ffeb3e90abf021b1e7c76abf31185b658900f9de0a0b8348dc04",
+    "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/input-master.png",
+    "role": "sole edit target; source exposes mouth but adds an erroneous middle lower projection"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

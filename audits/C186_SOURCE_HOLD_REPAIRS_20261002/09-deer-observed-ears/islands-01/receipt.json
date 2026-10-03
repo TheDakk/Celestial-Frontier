@@ -1,0 +1,161 @@
+{
+  "schema": "cf.c186-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-observed-ears/fit01",
+  "sourceConservationSha256": "a31e3d17b90f8c08fb298cfbdd64bb4a5ac7d75373f37c9e84602dfea07a9d2b",
+  "sourceMasterSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "sourceBindingSha256": "47754870cba70a35388d2c5d2d91994434685d3facc2d3481416ebd8eb4bd5e6",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.05,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374",
+  "movedPixels": 1596,
+  "remainderPixels": 37115,
+  "islands": [
+    {
+      "pixels": 316,
+      "to": "head",
+      "border": {
+        "27": 22
+      }
+    },
+    {
+      "pixels": 46,
+      "to": "tail0",
+      "border": {
+        "3": 6,
+        "4": 17
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "tail1",
+      "border": {
+        "3": 8
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 64,
+      "to": "tail1",
+      "border": {
+        "2": 8,
+        "3": 20
+      }
+    },
+    {
+      "pixels": 1045,
+      "to": "tail3",
+      "border": {
+        "1": 49,
+        "2": 35,
+        "3": 35,
+        "9": 10,
+        "31": 39
+      }
+    },
+    {
+      "pixels": 107,
+      "to": "hind-near-paw",
+      "border": {
+        "6": 44,
+        "7": 45
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "hind-far-paw",
+      "border": {
+        "15": 9
+      }
+    }
+  ],
+  "intake": {
+    "id": "c186-islands-09-deer-observed-ears",
+    "parts": 31,
+    "atlasSize": {
+      "width": 560,
+      "height": 2044
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 42,
+        "distancePx": 4.94064773081427,
+        "supports": [
+          833
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 22,
+        "distancePx": 3.9051248379532417,
+        "supports": [
+          968
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 41,
+        "distancePx": 4.3174066289846404,
+        "supports": [
+          117
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 46,
+        "distancePx": 7.5953933407033665,
+        "supports": [
+          501
+        ]
+      }
+    ],
+    "sourceBindingHash": "2f3697906e83f8e53dcc94ba5f53fb2831e2fe76addee182c2c76347cc0e4f4a",
+    "sourceVertices": 1616,
+    "vertices": 1802,
+    "sharedSupports": 420,
+    "pins": 431,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 37,
+    "excludedOverlaps": 14,
+    "observedExcludedBoundaries": 14,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 14,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

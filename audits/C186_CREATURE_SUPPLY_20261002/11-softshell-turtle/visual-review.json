@@ -1,0 +1,28 @@
+{
+  "name": "Softshell Turtle",
+  "masterSha256": "1c7f3e94470012bfbdcda71caf25274e4c1e6dd09bdbbfd0fdb1c01f95e44bc0",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: flat leathery shell without scute plates, tubular snorkel snout, four broad webbed feet and short tapered tail. All four endpoints visible, but shell covers proximal roots. It reads as spread swimming/low-resting rather than four feet on a shared ground baseline. Toe/claw count and neck proportions need anatomical review. Right snout close to edge, framing pending. No forced hidden roots or ears.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 128,
+      "y0": 419,
+      "x1": 1155,
+      "y1": 836
+    },
+    "margins": {
+      "left": 128,
+      "right": 98,
+      "top": 419,
+      "bottom": 417
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

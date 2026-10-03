@@ -1,0 +1,38 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "17-dromedary-tail",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/master.png",
+  "sourceSha256": "c9fb75ce38aa66c3e3877b57cabdff6f9ced807d3e75e98d0eabecbf003fa303",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/17-dromedary-camel/packet/authoring.json",
+  "priorAuthoringSha256": "110da9247a25a08eb02058a764c62485e6e2dd3350c69e78a2a4e7ee26201529",
+  "changedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "changedParts": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "addedParts": [],
+  "priorityChanged": {
+    "tailBeforeInheritedOwners": true,
+    "distalPawBeforeAnkle": false
+  },
+  "findings": [
+    "Actual tail descends from rear rump to a long dark tuft x122–222/y613–839. Manually traced tail envelopes replace the detached donor tail3 envelope.",
+    "Four padded feet are visible; this tail correction does not redraw or move leg anatomy."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation evidence pending; no quality admission.",
+    "Unedited automatic geometry remains subject to full-size review."
+  ]
+}

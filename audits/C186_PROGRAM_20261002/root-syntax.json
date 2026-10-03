@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate01-dense.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate01.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate02-dense.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/compare-visual02.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/context.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/diagnose.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/diagnostic-publication.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fresh-turns02.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/probe-joins01.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/runtime-review01.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/runtime-review02.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/source-controls.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fresh-turns01.mjs",
+      "exit": 0
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/visual-publications.mjs",
+      "exit": 0
+    }
+  ]
+}

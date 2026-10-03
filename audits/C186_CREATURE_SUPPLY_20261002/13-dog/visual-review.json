@@ -1,0 +1,28 @@
+{
+  "name": "Dog",
+  "masterSha256": "f096d62b8bbbdba63270d18bf6f9b1e96ad16e8a8c4bda78776fbcf97fe98e38",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: two clear erect ear tips, black nose, high complete plumed tail, four separate paws and lower leg shafts. Body coat is shorter than the earlier source but neck/belly/thigh fur still obscures proximal contours; far limb roots partly overlap body. Paw heights differ slightly, and apparent neat stance is not an observed contact proof. Tail remains a real continuous curved plume, not straightened for a generic rig.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 273,
+      "y0": 290,
+      "x1": 999,
+      "y1": 935
+    },
+    "margins": {
+      "left": 273,
+      "right": 254,
+      "top": 290,
+      "bottom": 318
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

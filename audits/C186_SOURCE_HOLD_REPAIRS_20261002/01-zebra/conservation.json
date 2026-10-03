@@ -1,0 +1,231 @@
+{
+  "schema": "cf.c186-source-conservation/v1",
+  "id": "01-zebra",
+  "masterSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+  "authoringSha256": "992aa3377a4ded9dc45174ded8842485cd1b98902b84609226d2af45daaaeed2",
+  "bindingSha256": "abaad9a65efda4da6202feff2b4aa5e21638aa22421d919a04a2b0932109b36a",
+  "keyedRgbaSha256": "e772e266482c99025944c247d962778b541ad63893d994cbeb5d7d5aee6bcaaf",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "spine -> earNearTip": 494,
+    "spine -> earFarTip": 190,
+    "neck -> earNearTip": 695,
+    "earNearTip -> spine": 254,
+    "earNearTip -> earFarTip": 571,
+    "neck -> earNearRoot": 254,
+    "earNearTip -> earFarRoot": 275,
+    "earNearRoot -> earNearTip": 119,
+    "earFarRoot -> earFarTip": 213,
+    "earFarTip -> spine": 3,
+    "earNearTip -> earNearRoot": 59,
+    "earFarRoot -> spine": 57,
+    "earNearRoot -> earFarRoot": 250,
+    "earNearTip -> head": 7,
+    "earNearRoot -> head": 680,
+    "earFarRoot -> head": 17,
+    "head -> earFarRoot": 85,
+    "earNearRoot -> neck": 142
+  },
+  "originalCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 3850 px is 5.9% of the remainder (> 5%): structural, not a sliver",
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 3850 px is 5.9% of the remainder (> 5%): structural, not a sliver",
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 59530,
+      "minX": 458,
+      "minY": 410,
+      "maxX": 778,
+      "maxY": 692
+    },
+    {
+      "pixels": 3850,
+      "minX": 900,
+      "minY": 403,
+      "maxX": 1024,
+      "maxY": 533
+    },
+    {
+      "pixels": 813,
+      "minX": 308,
+      "minY": 700,
+      "maxX": 354,
+      "maxY": 786
+    },
+    {
+      "pixels": 494,
+      "minX": 961,
+      "minY": 208,
+      "maxX": 989,
+      "maxY": 248
+    },
+    {
+      "pixels": 294,
+      "minX": 429,
+      "minY": 694,
+      "maxX": 447,
+      "maxY": 747
+    },
+    {
+      "pixels": 190,
+      "minX": 1035,
+      "minY": 215,
+      "maxX": 1051,
+      "maxY": 234
+    },
+    {
+      "pixels": 97,
+      "minX": 860,
+      "minY": 967,
+      "maxX": 870,
+      "maxY": 987
+    },
+    {
+      "pixels": 31,
+      "minX": 290,
+      "minY": 941,
+      "maxX": 299,
+      "maxY": 953
+    },
+    {
+      "pixels": 27,
+      "minX": 251,
+      "minY": 963,
+      "maxX": 253,
+      "maxY": 974
+    },
+    {
+      "pixels": 26,
+      "minX": 411,
+      "minY": 916,
+      "maxX": 417,
+      "maxY": 931
+    },
+    {
+      "pixels": 23,
+      "minX": 257,
+      "minY": 981,
+      "maxX": 271,
+      "maxY": 984
+    },
+    {
+      "pixels": 19,
+      "minX": 241,
+      "minY": 917,
+      "maxX": 244,
+      "maxY": 929
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 59530,
+      "minX": 458,
+      "minY": 410,
+      "maxX": 778,
+      "maxY": 692
+    },
+    {
+      "pixels": 3850,
+      "minX": 900,
+      "minY": 403,
+      "maxX": 1024,
+      "maxY": 533
+    },
+    {
+      "pixels": 813,
+      "minX": 308,
+      "minY": 700,
+      "maxX": 354,
+      "maxY": 786
+    },
+    {
+      "pixels": 294,
+      "minX": 429,
+      "minY": 694,
+      "maxX": 447,
+      "maxY": 747
+    },
+    {
+      "pixels": 254,
+      "minX": 985,
+      "minY": 240,
+      "maxX": 1008,
+      "maxY": 282
+    },
+    {
+      "pixels": 97,
+      "minX": 860,
+      "minY": 967,
+      "maxX": 870,
+      "maxY": 987
+    },
+    {
+      "pixels": 60,
+      "minX": 1030,
+      "minY": 273,
+      "maxX": 1040,
+      "maxY": 287
+    },
+    {
+      "pixels": 31,
+      "minX": 290,
+      "minY": 941,
+      "maxX": 299,
+      "maxY": 953
+    },
+    {
+      "pixels": 27,
+      "minX": 251,
+      "minY": 963,
+      "maxX": 253,
+      "maxY": 974
+    },
+    {
+      "pixels": 26,
+      "minX": 411,
+      "minY": 916,
+      "maxX": 417,
+      "maxY": 931
+    },
+    {
+      "pixels": 23,
+      "minX": 257,
+      "minY": 981,
+      "maxX": 271,
+      "maxY": 984
+    },
+    {
+      "pixels": 19,
+      "minX": 241,
+      "minY": 917,
+      "maxX": 244,
+      "maxY": 929
+    }
+  ],
+  "unchangedD28Cap": 0.05,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "structural-island control refused at unchanged 5%"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

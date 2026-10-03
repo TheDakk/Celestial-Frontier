@@ -1,0 +1,168 @@
+{
+  "id": "10-snapping-turtle",
+  "name": "Snapping Turtle",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 26326,
+    "coreRadius": 29,
+    "bodyBox": {
+      "x0": 142,
+      "y0": 133,
+      "x1": 308,
+      "y1": 232
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0101,
+        "pixels": 266,
+        "box": {
+          "x0": 205,
+          "y0": 124,
+          "x1": 259,
+          "y1": 132
+        },
+        "attach": {
+          "x": 232,
+          "y": 132,
+          "relX": 0.54,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.2,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 28.2
+      },
+      {
+        "k": 1,
+        "frac": 0.1378,
+        "pixels": 3627,
+        "box": {
+          "x0": 307,
+          "y0": 155,
+          "x1": 388,
+          "y1": 221
+        },
+        "attach": {
+          "x": 308.9,
+          "y": 194.5,
+          "relX": 1.01,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": 0.95,
+          "y": -0.3
+        },
+        "class": "front",
+        "length": 88.4
+      },
+      {
+        "k": 2,
+        "frac": 0.175,
+        "pixels": 4606,
+        "box": {
+          "x0": 31,
+          "y0": 172,
+          "x1": 189,
+          "y1": 275
+        },
+        "attach": {
+          "x": 152,
+          "y": 214,
+          "relX": 0.06,
+          "relY": 0.82
+        },
+        "dir": {
+          "x": -0.89,
+          "y": 0.46
+        },
+        "class": "rear",
+        "length": 135.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0689,
+        "pixels": 1814,
+        "box": {
+          "x0": 272,
+          "y0": 230,
+          "x1": 339,
+          "y1": 279
+        },
+        "attach": {
+          "x": 291.4,
+          "y": 231.9,
+          "relX": 0.9,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 66.9
+      },
+      {
+        "k": 4,
+        "frac": 0.0358,
+        "pixels": 943,
+        "box": {
+          "x0": 191,
+          "y0": 233,
+          "x1": 237,
+          "y1": 266
+        },
+        "attach": {
+          "x": 211,
+          "y": 233,
+          "relX": 0.42,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.07,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 42
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 131,
+        "x1": 170,
+        "cx": 151.8
+      },
+      {
+        "x0": 287,
+        "x1": 333,
+        "cx": 310.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

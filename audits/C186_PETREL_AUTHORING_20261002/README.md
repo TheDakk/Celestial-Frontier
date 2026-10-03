@@ -1,0 +1,9 @@
+# Snow Petrel bounded shoulder authoring — HELD
+
+The original C197 Snow Petrel transfers Duck wing landmarks and regions. Its near shoulder landmark is on the back at (696.7,541.3), while the source shows the rounded folded-wing shoulder near (787,569). `packet01` moves that root and the distal tip onto observed paint and replaces the two near-wing polygons with the visible folded-wing envelope. All other authoring remains unchanged.
+
+`fit01` passes all 14 static actions and exact source-pixel conservation. Nevertheless full-size before/after software comparison **rejects it as a visual repair**: the neck wedge remains and a new proximal wing opening appears. Static green does not establish visual continuity. The attempted candidate is retained as evidence, not nominated for re-filming or admission.
+
+The inherited far-wing polygons own the dorsal/back feather strip rather than a separately observable far folded wing. The current hidden-anatomy contract supports only brachyuran leg3 chains, so marking an unpainted far wing hidden would require a product change. Declaring it absent would be anatomically false. No paint is deleted, no unobserved far wing is invented, no hidden-wing contract is bypassed, and no generic wing-to-neck weld is used to mask the defect. A truthful source showing both wing surfaces, or an explicitly reviewed general hidden-wing product change batched with the next I5, is required before completing this authoring.
+
+`visual-publications.json` renders the target reaction/faint at retained native beat times; these software images do not claim native frame parity. The original native report and selected source packet/fit were copied read-only from the sibling lane. Their file hashes are retained in `input-identity.json`. No original evidence was overwritten. This queue is terminal and source-held; the C228 coordinating reservation remains active until its explicit terminal row.

@@ -1,0 +1,14 @@
+{
+  "id": "15-jaguar",
+  "name": "Jaguar",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0dcd278b-641a-405b-b5ea-788a360bc9ef.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "01288ac83387fc9f13a8e209ca10585dd69b59b884d4806737a1518e1459e388",
+  "bytes": 1317184,
+  "promptSha256": "d0e8afa1c49ad5540f7a7fc116aa375801240b5decbb37432f17124d93155ed0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

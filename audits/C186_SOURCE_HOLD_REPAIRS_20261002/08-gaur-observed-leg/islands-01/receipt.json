@@ -1,0 +1,227 @@
+{
+  "schema": "cf.c186-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-leg/fit01",
+  "sourceConservationSha256": "8e058f98403a87a408d78c34249c5670463e0ee621f67e9176fda9e570594147",
+  "sourceMasterSha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+  "sourceBindingSha256": "500df85bf166d36aacf1bb9628fe0ea5c94ed3ea4449bb43a0403767326edaa2",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.05,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374",
+  "movedPixels": 3436,
+  "remainderPixels": 83165,
+  "islands": [
+    {
+      "pixels": 2,
+      "to": "head",
+      "border": {
+        "26": 3
+      }
+    },
+    {
+      "pixels": 37,
+      "to": "head",
+      "border": {
+        "26": 31
+      }
+    },
+    {
+      "pixels": 27,
+      "to": "tail2",
+      "border": {
+        "3": 19,
+        "4": 18
+      }
+    },
+    {
+      "pixels": 796,
+      "to": "neck",
+      "border": {
+        "27": 61,
+        "29": 37
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "hind-near-knee",
+      "border": {
+        "13": 5,
+        "14": 2,
+        "30": 3
+      }
+    },
+    {
+      "pixels": 1178,
+      "to": "hind-far-knee",
+      "border": {
+        "13": 58,
+        "17": 88,
+        "18": 6
+      }
+    },
+    {
+      "pixels": 909,
+      "to": "fore-far-knee",
+      "border": {
+        "12": 2,
+        "15": 42,
+        "19": 106,
+        "20": 40
+      }
+    },
+    {
+      "pixels": 94,
+      "to": "hind-near-paw",
+      "border": {
+        "6": 29,
+        "7": 33,
+        "13": 7
+      }
+    },
+    {
+      "pixels": 50,
+      "to": "fore-far-ankle",
+      "border": {
+        "12": 14
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "hind-near-ankle",
+      "border": {
+        "6": 7,
+        "7": 7
+      }
+    },
+    {
+      "pixels": 185,
+      "to": "hind-far-ankle",
+      "border": {
+        "8": 18,
+        "9": 14
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hind-near-ankle",
+      "border": {
+        "6": 5,
+        "7": 5
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hind-near-ankle",
+      "border": {
+        "6": 3,
+        "7": 3
+      }
+    },
+    {
+      "pixels": 23,
+      "to": "fore-near-ankle",
+      "border": {
+        "10": 10,
+        "11": 6
+      }
+    },
+    {
+      "pixels": 102,
+      "to": "hind-near-ankle",
+      "border": {
+        "6": 28,
+        "7": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-paw",
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-paw",
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "fore-far-paw",
+      "border": {
+        "1": 20
+      }
+    }
+  ],
+  "intake": {
+    "id": "c186-islands-08-gaur-observed-leg",
+    "parts": 31,
+    "atlasSize": {
+      "width": 741,
+      "height": 2048
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 12,
+        "distancePx": 6.525335240430136,
+        "supports": [
+          346
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 31,
+        "distancePx": 6.02079728939618,
+        "supports": [
+          477
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 32,
+        "distancePx": 3.5383612025908544,
+        "supports": [
+          299
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 29,
+        "distancePx": 8.161494961096349,
+        "supports": [
+          409
+        ]
+      }
+    ],
+    "sourceBindingHash": "228be9707551a621e00775ba41fd8af367a787675842da5ed0a1f67068304960",
+    "sourceVertices": 2134,
+    "vertices": 2398,
+    "sharedSupports": 723,
+    "pins": 178,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 37,
+    "excludedOverlaps": 18,
+    "observedExcludedBoundaries": 18,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 18,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

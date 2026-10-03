@@ -1,0 +1,28 @@
+{
+  "name": "Tortoise",
+  "masterSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: high domed growth-ring scutes, four columnar scaly foot endpoints, beaked head and wrinkled neck, short actual tail. Oblique view rather than strict profile; far upper limb roots are occluded by shell/body and contact heights differ. Shell is continuous body wall. No webbing or external ear flaps visible. No inferred hidden roots or no-ear admission; observed digit counts/proportions require author review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 156,
+      "y0": 325,
+      "x1": 1104,
+      "y1": 911
+    },
+    "margins": {
+      "left": 156,
+      "right": 149,
+      "top": 325,
+      "bottom": 342
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "24-nautilus",
+  "name": "Nautilus",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-b9e282ed-723e-4d3e-a3d5-4d93f83c00a6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4a6de28b5aa5fd4c1e321e800c8bbcf723a3a218813ccc0e45887e236306f6c6",
+  "bytes": 1479283,
+  "promptSha256": "31bf568881c2add9583df92efef4aed2ce8a19f14cd927ff1d818464ddce312f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
