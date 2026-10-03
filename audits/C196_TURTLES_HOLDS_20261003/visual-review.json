@@ -1,0 +1,98 @@
+{
+  "schema": "cf.c196-source-fullsize-review/v1",
+  "status": "REVIEWED_WITH_HOLDS",
+  "images": [
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "observations": "Four distinct feet and short left tail are visible; no external pinnae. Scuted shell and scaled exposed skin are different observed surfaces.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/faint-0p9.png",
+      "sha256": "657e6913d7e039a0392721423743d362f79f36e48b111e2be3466213cbe1aeba",
+      "observations": "The inner near-foreleg seam is substantially reduced from 01b; shell silhouette is coherent in this one raw-action still.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/approach-walk-0p2.png",
+      "sha256": "4dd64b83ac45347501cba8b22b57d352e069a98fe8b79728f983d33ad9c1cef5",
+      "observations": "A bright vertical slit separates near/far foreleg around x845\u2013865/y710\u2013795; a narrow painted strip hangs below it near x874/y820. Visually HELD.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-claw-null.png",
+      "sha256": "b90cb3d6bcfd19617aa382b566f6c3f865b3968c1e51a6181a3a2fbf86ef3d31",
+      "observations": "Exact former refusal at 220.44444444444443 ms now publishes. Full-size source rendering has stretched near-forelimb and neck texture, a gray inner-leg wedge, a dangling strip and a small detached head-side fleck. Visually HELD.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/faint-0p9.png",
+      "sha256": "4d2bcda8881efab28ba085499282db07fdd903b16fec6ae2918207ff93915e13",
+      "observations": "The source-observed ear-base correction reduces the old protruding wedge. A pointed nape edge and narrow ear/nape notch remain, with angular limbs and body/leg separation. Visually HELD.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial/master.png",
+      "sha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3",
+      "observations": "Three distinct feet are readable; no full fourth chain can be honestly authored from this source.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial/ownership-preview.png",
+      "sha256": "97448a420d9e7743c1a565af876ab60e818642fd592e8d1be1cdd7caf956b05a",
+      "observations": "Blue plated and amber scaled regions are partial source proposals only. Gray positive-alpha paint remains explicitly unassigned; this is not a complete fit.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial/master.png",
+      "sha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984",
+      "observations": "Three distinct feet are readable; no full fourth chain can be honestly authored from this source.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial/ownership-preview.png",
+      "sha256": "44a34fe6408990374b9f251a47e5c9547ecb44393c9fe5bbb33f8e7c00bc377f",
+      "observations": "Blue plated and amber scaled regions are partial source proposals only. Gray positive-alpha paint remains explicitly unassigned; this is not a complete fit.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial/master.png",
+      "sha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff",
+      "observations": "Three distinct feet are readable; no full fourth chain can be honestly authored from this source.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial/ownership-preview.png",
+      "sha256": "01e7b7e2c00ad27d8f2a4c509a5e289e3bf0f379caf3b836c9bb7c2676b7d288",
+      "observations": "Blue plated and amber scaled regions are partial source proposals only. Gray positive-alpha paint remains explicitly unassigned; this is not a complete fit.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial/master.png",
+      "sha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150",
+      "observations": "Three distinct feet are readable; no full fourth chain can be honestly authored from this source.",
+      "fullSize": true
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial/ownership-preview.png",
+      "sha256": "a66797f9846158e24d57df9fb843e0a6a6632c89c45a41c15d56471495306768",
+      "observations": "Blue plated and amber scaled regions are partial source proposals only. Gray positive-alpha paint remains explicitly unassigned; this is not a complete fit.",
+      "fullSize": true
+    }
+  ],
+  "comparisonInputs": [
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/faint-0p9.png",
+      "sha256": "ee00b65d5e188dd5409fe09d7e0da399b07d7b560522bc3e9d1c295d679e536f"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/axial-joins-02/review/faint-0p9.png",
+      "sha256": "fe5f71e68278394dd0b8ae3c23732b265d38156164914227c6b5e96b0e522b8a"
+    }
+  ],
+  "parentIndependentReview": "audits/C196_PROGRAM_20261003/parent-visual-review.json",
+  "renderLimit": "1254-square software renders from actual loaded-rig-verified Float32 publications; nearest-sampled source texture, no native GPU or full-stage film. A material label does not establish geometric shell rigidity.",
+  "qualityAccepted": false,
+  "native": false
+}

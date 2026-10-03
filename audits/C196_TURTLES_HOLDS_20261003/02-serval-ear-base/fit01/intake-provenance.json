@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "7eb42d989913f892eb6e972b76bad232d747bd55",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/master.png",
+      "sha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/authoring.json",
+      "sha256": "ee06e594e3c5f3c0eb0d5c4c4e9f2446b004a613561db65a1310da6ac5efec0b"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/subject-source.json",
+      "sha256": "95c18144eec22f1c7639223716c5fbcf62bf85abe116f37d4646e97fc689db78"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "af8877a55530e9fbd797259c53c036036db17282cceac1488a9f0a6004a9f941",
+  "bindingHash": "50a944ed7b29f7a9a443389282dfc2a76251cd9fe4b234f1bc59cd7e8c01be41",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/master.png",
+      "sha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/authoring.json",
+      "sha256": "ee06e594e3c5f3c0eb0d5c4c4e9f2446b004a613561db65a1310da6ac5efec0b",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/subject-source.json",
+      "sha256": "95c18144eec22f1c7639223716c5fbcf62bf85abe116f37d4646e97fc689db78",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

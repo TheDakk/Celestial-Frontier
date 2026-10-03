@@ -109,6 +109,8 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 
 **C248 supply delivered:**24 targeted source repaints (12 quadrupeds,11 insects,one Leech), exact native1254-square masters. Whole-original framing21 pass/3 explicit refusals; patterns5 pass/19 not required;14 compiler controls pass.273 files independently verified. Useful source corrections and remaining anatomical visibility holds are separate; no native or coverage acceptance.
 
+**C249 turtle/Serval packet delivered:**two mechanically passing19-action fits,4,598 action and3,202 presentation samples,46 actual-rig parity probes. Tortoise final128-pixel source ownership correction clears the exact claw fold, but strong claw/walk visual holds remain. Serval reduces ear-base wedge and retains nape/limb holds. Four partial turtle partitions never invent hidden limbs.431 files independently verified; no native or admission claim.
+
 ### Retained C192 delivery details (historical gate status superseded above)
 
 Dakk's C132 program is ACTIVE on **openai/mac**, macOS, `~/Projects/celestial-frontier-openai-mac`. Signed G commits only; pre-push identity guard unchanged; never --no-verify. Use Dakk/TheDakk and ~/ paths in new records. Claude's handoff above is preserved. Read the sibling's absolute read-only mailbox at start and batch end; write only own TO_CLAUDE. C187–C192 and D28–D31 were read. Signed anthropic/mac through 050db3900 merged --no-ff in 876776c64; reviewed D31 through 8041d168f merged --no-ff in e10a4b750. No retired Windows lane or hosted action.

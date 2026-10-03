@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c196-source-observed-authoring/v1",
+  "id": "01c-tortoise-near-shin",
+  "type": "one last-priority source-observed near-front shin contour successor",
+  "previousFailure": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/static-01.json",
+  "findings": [
+    "The far-shin successor retained one claw refusal at220.44444444444443ms: six folds at near fore shin/ankle and root-remainder boundaries.",
+    "Full-size source inspection identifies128 visible near-fore shin-fringe pixels atx852\u2013863/y777\u2013803 still owned by root. A last-priority source-local polygon is inserted immediately before carapace; it cannot take pixels already assigned to any prior exposed anatomical owner. No source pixels, landmarks, other regions, material, solver, motion or limits change."
+  ],
+  "changedJoints": [],
+  "landmarkOrigin": "manual full-size painting inspection; no donor coordinates",
+  "limitsChanged": false,
+  "source": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/master.png",
+  "sourceSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+  "sourceIdentity": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/subject-source.json",
+  "sourceIdentitySha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false,
+  "priorAuthoring": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/authoring.json",
+  "priorAuthoringSha256": "f91107506a162acf0e29664a748253d239add4df3e87bb8422d2a494ca61a142",
+  "changedParts": [
+    "near-front-shin-fringe"
+  ]
+}

@@ -1,0 +1,439 @@
+{
+  "schema": "cf.c196-source-partial-partition/v1",
+  "name": "Box Turtle",
+  "source": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/master.png",
+  "sourceSha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3",
+  "subjectSource": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/subject-source.json",
+  "subjectSourceSha256": "10abc6bf68fe4e2e9a1f296f226a945b27d0e41472df30d96fb6e78efb8d5f6e",
+  "status": "PARTIAL_SOURCE_PARTITION_NOT_A_FIT",
+  "regions": [
+    {
+      "name": "visible-keratin-beak-0",
+      "material": "plated",
+      "polygonPx": [
+        [
+          1027,
+          480
+        ],
+        [
+          1056,
+          479
+        ],
+        [
+          1064,
+          503
+        ],
+        [
+          1059,
+          533
+        ],
+        [
+          1043,
+          550
+        ],
+        [
+          1023,
+          535
+        ],
+        [
+          1035,
+          514
+        ]
+      ]
+    },
+    {
+      "name": "exposed-head-neck",
+      "material": "scaled",
+      "polygonPx": [
+        [
+          815,
+          588
+        ],
+        [
+          867,
+          539
+        ],
+        [
+          918,
+          493
+        ],
+        [
+          974,
+          469
+        ],
+        [
+          1040,
+          470
+        ],
+        [
+          1065,
+          494
+        ],
+        [
+          1057,
+          534
+        ],
+        [
+          1028,
+          561
+        ],
+        [
+          979,
+          600
+        ],
+        [
+          925,
+          637
+        ],
+        [
+          871,
+          681
+        ],
+        [
+          827,
+          694
+        ],
+        [
+          800,
+          651
+        ]
+      ]
+    },
+    {
+      "name": "near-forelimb",
+      "material": "scaled",
+      "polygonPx": [
+        [
+          773,
+          647
+        ],
+        [
+          808,
+          632
+        ],
+        [
+          845,
+          650
+        ],
+        [
+          864,
+          691
+        ],
+        [
+          861,
+          737
+        ],
+        [
+          877,
+          783
+        ],
+        [
+          922,
+          824
+        ],
+        [
+          916,
+          871
+        ],
+        [
+          789,
+          867
+        ],
+        [
+          770,
+          826
+        ],
+        [
+          774,
+          776
+        ],
+        [
+          764,
+          720
+        ]
+      ]
+    },
+    {
+      "name": "near-hindlimb",
+      "material": "scaled",
+      "polygonPx": [
+        [
+          307,
+          691
+        ],
+        [
+          343,
+          674
+        ],
+        [
+          389,
+          692
+        ],
+        [
+          411,
+          721
+        ],
+        [
+          392,
+          753
+        ],
+        [
+          359,
+          792
+        ],
+        [
+          372,
+          826
+        ],
+        [
+          375,
+          868
+        ],
+        [
+          253,
+          873
+        ],
+        [
+          234,
+          832
+        ],
+        [
+          260,
+          786
+        ],
+        [
+          278,
+          733
+        ]
+      ]
+    },
+    {
+      "name": "visible-far-hind-foot",
+      "material": "scaled",
+      "polygonPx": [
+        [
+          423,
+          757
+        ],
+        [
+          494,
+          758
+        ],
+        [
+          501,
+          790
+        ],
+        [
+          539,
+          814
+        ],
+        [
+          548,
+          848
+        ],
+        [
+          423,
+          842
+        ],
+        [
+          413,
+          805
+        ]
+      ]
+    },
+    {
+      "name": "exposed-tail",
+      "material": "scaled",
+      "polygonPx": [
+        [
+          203,
+          735
+        ],
+        [
+          230,
+          703
+        ],
+        [
+          260,
+          679
+        ],
+        [
+          304,
+          673
+        ],
+        [
+          318,
+          700
+        ],
+        [
+          282,
+          721
+        ],
+        [
+          248,
+          730
+        ]
+      ]
+    },
+    {
+      "name": "visible-shell",
+      "material": "plated",
+      "polygonPx": [
+        [
+          263,
+          658
+        ],
+        [
+          286,
+          596
+        ],
+        [
+          319,
+          529
+        ],
+        [
+          365,
+          475
+        ],
+        [
+          425,
+          435
+        ],
+        [
+          488,
+          407
+        ],
+        [
+          550,
+          402
+        ],
+        [
+          628,
+          414
+        ],
+        [
+          696,
+          444
+        ],
+        [
+          758,
+          485
+        ],
+        [
+          807,
+          544
+        ],
+        [
+          846,
+          575
+        ],
+        [
+          824,
+          624
+        ],
+        [
+          788,
+          668
+        ],
+        [
+          782,
+          721
+        ],
+        [
+          745,
+          756
+        ],
+        [
+          646,
+          773
+        ],
+        [
+          519,
+          774
+        ],
+        [
+          410,
+          759
+        ],
+        [
+          343,
+          724
+        ]
+      ]
+    }
+  ],
+  "pixelCounts": [
+    {
+      "region": "visible-keratin-beak-0",
+      "material": "plated",
+      "pixels": 1348
+    },
+    {
+      "region": "exposed-head-neck",
+      "material": "scaled",
+      "pixels": 27961
+    },
+    {
+      "region": "near-forelimb",
+      "material": "scaled",
+      "pixels": 17245
+    },
+    {
+      "region": "near-hindlimb",
+      "material": "scaled",
+      "pixels": 17417
+    },
+    {
+      "region": "visible-far-hind-foot",
+      "material": "scaled",
+      "pixels": 6237
+    },
+    {
+      "region": "exposed-tail",
+      "material": "scaled",
+      "pixels": 2585
+    },
+    {
+      "region": "visible-shell",
+      "material": "plated",
+      "pixels": 144234
+    }
+  ],
+  "unassignedSourcePixels": 5741,
+  "totalVisibleKeyedPixels": 222768,
+  "unassignedPreviewColor": "gray; never silently assigned to shell",
+  "proposedRecordMaterials": {
+    "surface": "plated",
+    "joints": {
+      "neck": "scaled",
+      "head": "scaled",
+      "hindNearRoot": "scaled",
+      "hindNearKnee": "scaled",
+      "hindNearAnkle": "scaled",
+      "hindNearPaw": "scaled",
+      "hindFarRoot": "scaled",
+      "hindFarKnee": "scaled",
+      "hindFarAnkle": "scaled",
+      "hindFarPaw": "scaled",
+      "foreNearRoot": "scaled",
+      "foreNearKnee": "scaled",
+      "foreNearAnkle": "scaled",
+      "foreNearPaw": "scaled",
+      "tail0": "scaled",
+      "tail1": "scaled",
+      "tail2": "scaled",
+      "tail3": "scaled"
+    }
+  },
+  "proposalScope": "Only a source-bound material/region proposal. No joint landmarks or complete record are supplied for the concealed fourth limb; do not pass this object directly to rig intake.",
+  "externalEars": "anatomically absent external pinnae; no ear controls proposed",
+  "held": [
+    "Only three distinct foot endpoints are visible; the far forelimb is occluded. A complete quadruped record would require unobserved anatomy.",
+    "Near head is slightly three-quarter; no unseen opposite-side eye or limb is declared."
+  ],
+  "originalBytesPreserved": true,
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

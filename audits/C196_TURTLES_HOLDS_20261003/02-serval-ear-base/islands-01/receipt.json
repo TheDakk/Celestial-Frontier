@@ -1,0 +1,278 @@
+{
+  "schema": "cf.c196-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01",
+  "sourceConservationSha256": "6b18b408e4d06e4d77ef7bce4091a6daeadb06f30a68bb03d41339ff2c129146",
+  "sourceMasterSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+  "sourceBindingSha256": "7c16050ec459d8f4a54382d47f1321d524b7d61929ac9aff557a70305c8d9806",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 3625,
+  "remainderPixels": 29833,
+  "islands": [
+    {
+      "pixels": 123,
+      "to": "ear-near-tip",
+      "border": {
+        "6": 25,
+        "7": 1,
+        "8": 15,
+        "9": 24
+      }
+    },
+    {
+      "pixels": 155,
+      "to": "ear-near-tip",
+      "border": {
+        "6": 27,
+        "7": 24
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "ear-near-root",
+      "border": {
+        "7": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck",
+      "border": {
+        "28": 7
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck",
+      "border": {
+        "28": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "28": 2
+      }
+    },
+    {
+      "pixels": 819,
+      "to": "hind-near-root",
+      "border": {
+        "1": 3,
+        "2": 27,
+        "3": 33,
+        "4": 30,
+        "13": 89
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "tail2",
+      "border": {
+        "2": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-root",
+      "border": {
+        "13": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hind-near-root",
+      "border": {
+        "13": 3
+      }
+    },
+    {
+      "pixels": 29,
+      "to": "hind-near-root",
+      "border": {
+        "13": 8
+      }
+    },
+    {
+      "pixels": 80,
+      "to": "hind-near-knee",
+      "border": {
+        "12": 14,
+        "13": 10
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "fore-near-knee",
+      "border": {
+        "20": 6
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "hind-near-knee",
+      "border": {
+        "12": 8
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hind-near-knee",
+      "border": {
+        "12": 4
+      }
+    },
+    {
+      "pixels": 349,
+      "to": "fore-far-knee",
+      "border": {
+        "24": 47,
+        "29": 18
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-knee",
+      "border": {
+        "12": 2
+      }
+    },
+    {
+      "pixels": 1973,
+      "to": "hind-near-knee",
+      "border": {
+        "11": 17,
+        "12": 178
+      }
+    },
+    {
+      "pixels": 24,
+      "to": "fore-far-ankle",
+      "border": {
+        "23": 21,
+        "24": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-ankle",
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 33,
+      "to": "hind-near-paw",
+      "border": {
+        "10": 19
+      }
+    }
+  ],
+  "intake": {
+    "id": "c196-islands-02-serval-ear-base",
+    "parts": 31,
+    "atlasSize": {
+      "width": 653,
+      "height": 1310
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 26,
+        "distancePx": 5.015974481593776,
+        "supports": [
+          624
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 29,
+        "distancePx": 7.421590126111925,
+        "supports": [
+          1026
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 4,
+        "distancePx": 3.1240998703626204,
+        "supports": [
+          247
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 48,
+        "distancePx": 7.28971878744302,
+        "supports": [
+          847
+        ]
+      }
+    ],
+    "sourceBindingHash": "21c61606d16192a9589fdf8a211347bbc06bdf949247abda4df005feca811c7b",
+    "sourceVertices": 1338,
+    "vertices": 1513,
+    "sharedSupports": 467,
+    "pins": 90,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 38,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

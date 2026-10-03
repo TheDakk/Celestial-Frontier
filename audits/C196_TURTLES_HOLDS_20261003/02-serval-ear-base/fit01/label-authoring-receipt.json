@@ -1,0 +1,210 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "tail3",
+      "joint": "tail3",
+      "owner": "tail3"
+    },
+    {
+      "region": "tail2",
+      "joint": "tail2",
+      "owner": "tail2"
+    },
+    {
+      "region": "tail1",
+      "joint": "tail1",
+      "owner": "tail1"
+    },
+    {
+      "region": "tail0",
+      "joint": "tail0",
+      "owner": "tail0"
+    },
+    {
+      "region": "root",
+      "joint": "root",
+      "owner": "root"
+    },
+    {
+      "region": "ear-near-tip",
+      "joint": "earNearTip",
+      "owner": "ear-near-tip"
+    },
+    {
+      "region": "ear-near-root",
+      "joint": "earNearRoot",
+      "owner": "ear-near-root"
+    },
+    {
+      "region": "ear-far-tip",
+      "joint": "earFarTip",
+      "owner": "ear-far-tip"
+    },
+    {
+      "region": "ear-far-root",
+      "joint": "earFarRoot",
+      "owner": "ear-far-root"
+    },
+    {
+      "region": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "owner": "hind-near-paw"
+    },
+    {
+      "region": "hind-near-ankle",
+      "joint": "hindNearAnkle",
+      "owner": "hind-near-ankle"
+    },
+    {
+      "region": "hind-near-knee",
+      "joint": "hindNearKnee",
+      "owner": "hind-near-knee"
+    },
+    {
+      "region": "hind-near-root",
+      "joint": "hindNearRoot",
+      "owner": "hind-near-root"
+    },
+    {
+      "region": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "owner": "hind-far-paw"
+    },
+    {
+      "region": "hind-far-ankle",
+      "joint": "hindFarAnkle",
+      "owner": "hind-far-ankle"
+    },
+    {
+      "region": "hind-far-knee",
+      "joint": "hindFarKnee",
+      "owner": "hind-far-knee"
+    },
+    {
+      "region": "hind-far-root",
+      "joint": "hindFarRoot",
+      "owner": "hind-far-root"
+    },
+    {
+      "region": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "owner": "fore-near-paw"
+    },
+    {
+      "region": "fore-near-ankle",
+      "joint": "foreNearAnkle",
+      "owner": "fore-near-ankle"
+    },
+    {
+      "region": "fore-near-knee",
+      "joint": "foreNearKnee",
+      "owner": "fore-near-knee"
+    },
+    {
+      "region": "fore-near-root",
+      "joint": "foreNearRoot",
+      "owner": "fore-near-root"
+    },
+    {
+      "region": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "owner": "fore-far-paw"
+    },
+    {
+      "region": "fore-far-ankle",
+      "joint": "foreFarAnkle",
+      "owner": "fore-far-ankle"
+    },
+    {
+      "region": "fore-far-knee",
+      "joint": "foreFarKnee",
+      "owner": "fore-far-knee"
+    },
+    {
+      "region": "fore-far-root",
+      "joint": "foreFarRoot",
+      "owner": "fore-far-root"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "pelvis",
+      "joint": "pelvis",
+      "owner": "pelvis"
+    },
+    {
+      "region": "neck-observed-nape",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "spine",
+      "joint": "spine",
+      "owner": "spine"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    842,
+    1061,
+    1381,
+    1460,
+    128,
+    4829,
+    6140,
+    1564,
+    2035,
+    2302,
+    2349,
+    21363,
+    27457,
+    2054,
+    5440,
+    9968,
+    3662,
+    2306,
+    3873,
+    10845,
+    14185,
+    1888,
+    2556,
+    8514,
+    4614,
+    2548,
+    6221,
+    11832,
+    5680,
+    3018,
+    29833
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "7006c91346efca7a81fbedda345814372cfe9b343d4dd37b7fff318a3302ed5c",
+  "intake": {
+    "erodedPixels": 5990,
+    "despilledPixels": 396,
+    "unresolvedEdgePixels": 32
+  },
+  "remainderPart": "spine"
+}
