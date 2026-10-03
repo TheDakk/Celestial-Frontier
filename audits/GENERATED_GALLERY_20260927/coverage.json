@@ -1,29 +1,24 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 232,
- "pct": 36.8,
+ "covered": 237,
+ "pct": 37.6,
  "heldNotCounted": [
   "Capuchin",
-  "Chough",
-  "Hawk",
   "Horse",
   "Rhea",
   "Serval",
   "Snow Petrel",
-  "Snowy Owl",
   "Tiger Shark",
-  "Wild Ass",
-  "Wild Pony",
-  "Wolf"
+  "Wild Ass"
  ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 77,
-   "pct": 37.6,
+   "covered": 79,
+   "pct": 38.5,
    "names": [
     "Jaguar",
     "Leopard",
@@ -40,6 +35,7 @@
     "Sand Cat",
     "Wildcat",
     "Jackal",
+    "Wolf",
     "Coyote",
     "Fox",
     "Arctic Fox",
@@ -89,6 +85,7 @@
     "Wild Sheep",
     "Bongo",
     "Zebra",
+    "Wild Pony",
     "Donkey",
     "Alligator",
     "Gharial",
@@ -193,9 +190,11 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 48,
-   "pct": 47.1,
+   "covered": 51,
+   "pct": 50,
    "names": [
+    "Hawk",
+    "Snowy Owl",
     "Kestrel",
     "Desert Owl",
     "Harpy Eagle",
@@ -233,6 +232,7 @@
     "Crow",
     "Raven",
     "Robin",
+    "Chough",
     "Lark",
     "Finch",
     "Magpie",

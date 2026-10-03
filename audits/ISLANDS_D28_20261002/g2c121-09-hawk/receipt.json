@@ -1,0 +1,171 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/09-hawk/fallback-1/fit",
+  "sourceMasterSha256": "5bdc4105b8d355ded54d56fe9478ae2598d4f72ec5e70346272a719f84c60851",
+  "keyedRgbaSha256": "8b1bd874a7014019e761fbe9e93d4f52d9af61adbff7230a1335e07ca7deb7e7",
+  "remainder": "body",
+  "remainderPixels": 21442,
+  "movedPixels": 3909,
+  "islands": [
+    {
+      "pixels": 1905,
+      "to": "far-wing-flight",
+      "border": {
+        "neck-upper": 14,
+        "neck-lower": 6,
+        "far-wing-shoulder": 100,
+        "far-wing-flight": 212
+      }
+    },
+    {
+      "pixels": 1398,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 282,
+        "far-wing-flight": 112
+      }
+    },
+    {
+      "pixels": 30,
+      "to": "far-wing-flight",
+      "border": {
+        "far-wing-flight": 36
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-flight",
+      "border": {
+        "far-wing-flight": 1
+      }
+    },
+    {
+      "pixels": 160,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 26
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail",
+      "border": {
+        "near-wing-flight": 1,
+        "tail": 2
+      }
+    },
+    {
+      "pixels": 63,
+      "to": "tail",
+      "border": {
+        "tail": 25
+      }
+    },
+    {
+      "pixels": 148,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 33,
+        "far-foot": 9
+      }
+    },
+    {
+      "pixels": 165,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 32,
+        "near-shin": 20
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2,
+        "near-shin": 1
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 5
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 5
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 1
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "09-hawk",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1935,
+      "height": 523
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 30,
+        "distancePx": 5.25547333738837,
+        "supports": [
+          53,
+          54
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 62,
+        "distancePx": 2.496497546564018,
+        "supports": [
+          21,
+          12
+        ]
+      }
+    ],
+    "sourceBindingHash": "213d43f4546be9b89785fe91567e9c81b1782969b22e917c6693a438ffed20fd",
+    "sourceVertices": 975,
+    "vertices": 1246,
+    "sharedSupports": 269,
+    "pins": 548,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

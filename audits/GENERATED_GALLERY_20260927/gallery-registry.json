@@ -1518,8 +1518,8 @@
  {
   "family": "quadruped",
   "name": "Wild Pony",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/23-wild-pony",
-  "note": "HELD: a small fragment floats above the lowered head in late idle; island repair refused at the 5% cap (5.1%)",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c107-23-wild-pony/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
   "batch": "audits/G2_C107_20260927",
   "tag": "g2c107"
  },
@@ -1527,7 +1527,7 @@
   "family": "quadruped",
   "name": "Wild Ass",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
-  "note": "HELD: an ear-tip fragment floats above the lowered head and a thin line under the belly in late idle; island repair refused at the cap (8.1%)",
+  "note": "HELD: after the D28 island repair a loose hoof-like fragment still shows by the front foot in the late idle",
   "batch": "audits/G2_C107_20260927",
   "tag": "g2c107"
  },
@@ -1559,7 +1559,7 @@
   "family": "quadruped",
   "name": "Horse",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
-  "note": "HELD: a fragment floats above the back in late idle; island repair refused at the 5% cap (7.5%)",
+  "note": "HELD: D28 island repair placed, but the static gate is RED",
   "batch": "audits/G2_C114_20260927",
   "tag": "g2c114"
  },
@@ -1662,8 +1662,8 @@
  {
   "family": "biped-bird",
   "name": "Chough",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/05-chough",
-  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 5.9% > 5%, D28); a red beak fragment also floats",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-05-chough/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
   "batch": "audits/G2_C121_20260927",
   "tag": "g2c121"
  },
@@ -1694,8 +1694,8 @@
  {
   "family": "biped-bird",
   "name": "Hawk",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/09-hawk",
-  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 15.9% > 5%, D28)",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-09-hawk/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
   "batch": "audits/G2_C121_20260927",
   "tag": "g2c121"
  },
@@ -1718,8 +1718,8 @@
  {
   "family": "biped-bird",
   "name": "Snowy Owl",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/14-snowy-owl",
-  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 41.6% > 5%, D28)",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-14-snowy-owl/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
   "batch": "audits/G2_C121_20260927",
   "tag": "g2c121"
  },
@@ -1782,8 +1782,8 @@
  {
   "family": "biped-bird",
   "name": "Hawk",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/18-hawk",
-  "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (36.0% > 5%, D28)",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c151-18-hawk/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
   "batch": "audits/G2_C136_REPAIRS_20261002",
   "tag": "g2c151"
  },
@@ -2270,8 +2270,8 @@
  {
   "family": "quadruped",
   "name": "Wolf",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/14-wolf",
-  "note": "HELD: a fleck floats over the lowered head in the late idle; island repair refused at the cap (5.6% > 5%, D28)",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c233-14-wolf/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
   "batch": "audits/C186_CREATURE_SUPPLY_20261002",
   "tag": "g2c233"
  },
@@ -2287,7 +2287,7 @@
   "family": "quadruped",
   "name": "Serval",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
-  "note": "HELD: ear spike and fleck over the lowered head in the late idle; island repair refused at the cap (6.2% > 5%, D28)",
+  "note": "HELD: D28 island repair placed, but the static gate is RED",
   "batch": "audits/C186_CREATURE_SUPPLY_20261002",
   "tag": "g2c233"
  },

@@ -334,16 +334,16 @@
   {
    "family": "Quadrupeds",
    "name": "Wild Pony",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/23-wild-pony",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c107-23-wild-pony/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: a small fragment floats above the lowered head in late idle; island repair refused at the 5% cap (5.1%)"
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
   },
   {
    "family": "Quadrupeds",
    "name": "Wild Ass",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: an ear-tip fragment floats above the lowered head and a thin line under the belly in late idle; island repair refused at the cap (8.1%)"
+   "note": "HELD: after the D28 island repair a loose hoof-like fragment still shows by the front foot in the late idle"
   },
   {
    "family": "Quadrupeds",
@@ -357,7 +357,7 @@
    "name": "Horse",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: a fragment floats above the back in late idle; island repair refused at the 5% cap (7.5%)"
+   "note": "HELD: D28 island repair placed, but the static gate is RED"
   },
   {
    "family": "Quadrupeds",
@@ -621,9 +621,9 @@
   {
    "family": "Quadrupeds",
    "name": "Wolf",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/14-wolf",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c233-14-wolf/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: a fleck floats over the lowered head in the late idle; island repair refused at the cap (5.6% > 5%, D28)"
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
   },
   {
    "family": "Quadrupeds",
@@ -637,7 +637,7 @@
    "name": "Serval",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: ear spike and fleck over the lowered head in the late idle; island repair refused at the cap (6.2% > 5%, D28)"
+   "note": "HELD: D28 island repair placed, but the static gate is RED"
   },
   {
    "family": "Quadrupeds",
@@ -1111,9 +1111,9 @@
   {
    "family": "Birds",
    "name": "Chough",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/05-chough",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-05-chough/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 5.9% > 5%, D28); a red beak fragment also floats"
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
   },
   {
    "family": "Birds",
@@ -1139,9 +1139,9 @@
   {
    "family": "Birds",
    "name": "Hawk",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/09-hawk",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-09-hawk/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 15.9% > 5%, D28)"
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
   },
   {
    "family": "Birds",
@@ -1160,9 +1160,9 @@
   {
    "family": "Birds",
    "name": "Snowy Owl",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/14-snowy-owl",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-14-snowy-owl/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 41.6% > 5%, D28)"
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
   },
   {
    "family": "Birds",
@@ -1174,9 +1174,9 @@
   {
    "family": "Birds",
    "name": "Hawk",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/18-hawk",
+   "nativeDir": "audits/ISLANDS_D28_20261002/g2c151-18-hawk/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (36.0% > 5%, D28)"
+   "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)"
   },
   {
    "family": "Birds",
