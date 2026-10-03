@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c192-original-retention/v1",
+  "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-aa0e02fd-8dd8-42ca-8a6c-c69ef7bfcc2e.png",
+  "master": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/master.png",
+  "masterSha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "exactOriginalBytesRetained": true,
+  "pixelTransformApplied": false,
+  "inputMasterSha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+  "exactSentPromptSha256": "b128be638f1e33e4e33e85ebd46f328db3b4946418a7dc0e123dc0c28270442a",
+  "canonicalPromptSha256": "e5cf939dd27b9516aa7ed2b00e8b58d0d15731afa2a2a0b47fc14e674270e546",
+  "frozenBlocks": [
+    {
+      "sha256": "9b206f6df55f30911bbeffa66d1f62fec3b9967608ea8ab3ea61ca2a1e5cf281",
+      "unchanged": true
+    },
+    {
+      "sha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+      "unchanged": true
+    },
+    {
+      "sha256": "caa365666085318ef597819c60c57d7d9945bba18d43054225e884337a938620",
+      "unchanged": true
+    }
+  ],
+  "frozenMutationRejected": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

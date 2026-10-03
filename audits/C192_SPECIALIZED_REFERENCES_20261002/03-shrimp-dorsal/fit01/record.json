@@ -1,0 +1,326 @@
+{
+  "kind": "crustacean-small",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Shrimp\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"4239261292\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"2\"]]]]",
+    "seed": 4239261292,
+    "ownerId": "authored:archetype-sprint/c192-independent-shrimp",
+    "earthName": "Shrimp"
+  },
+  "template": {
+    "id": "crustacean-small",
+    "version": 1
+  },
+  "clipSetId": "crustacean-small-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4239261292,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 9,
+    "body": 5,
+    "loco": 16,
+    "trait": 2,
+    "size": 3,
+    "diet": 2,
+    "head": 3,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 9,
+    "habitat": 1,
+    "detail": 1,
+    "accent": 9,
+    "temper": 3,
+    "sense": 5,
+    "repro": 5,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Shrimp"
+  },
+  "geometry": {
+    "cutoutAssetHash": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6730462519936204,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5191387559808612,
+      0.5031897926634769
+    ],
+    "thorax": [
+      0.529505582137161,
+      0.5055821371610846
+    ],
+    "head": [
+      0.6036682615629984,
+      0.5063795853269537
+    ],
+    "leg0FarRoot": [
+      0.5167464114832536,
+      0.45773524720893144
+    ],
+    "leg0FarKnee": [
+      0.6068580542264753,
+      0.43779904306220097
+    ],
+    "leg0FarFoot": [
+      0.5845295055821371,
+      0.386762360446571
+    ],
+    "leg1FarRoot": [
+      0.4984051036682616,
+      0.45933014354066987
+    ],
+    "leg1FarKnee": [
+      0.5574162679425837,
+      0.4218500797448166
+    ],
+    "leg1FarFoot": [
+      0.5279106858054227,
+      0.3508771929824561
+    ],
+    "leg2FarRoot": [
+      0.4800637958532695,
+      0.4609250398724083
+    ],
+    "leg2FarKnee": [
+      0.5119617224880383,
+      0.41148325358851673
+    ],
+    "leg2FarFoot": [
+      0.46172248803827753,
+      0.33891547049441784
+    ],
+    "leg3FarRoot": [
+      0.4625199362041467,
+      0.4625199362041467
+    ],
+    "leg3FarKnee": [
+      0.4688995215311005,
+      0.4003189792663477
+    ],
+    "leg3FarFoot": [
+      0.39872408293460926,
+      0.34609250398724084
+    ],
+    "leg4FarRoot": [
+      0.44417862838915473,
+      0.46411483253588515
+    ],
+    "leg4FarKnee": [
+      0.4098883572567783,
+      0.40271132376395535
+    ],
+    "leg4FarFoot": [
+      0.3277511961722488,
+      0.3668261562998405
+    ],
+    "leg0NearRoot": [
+      0.5167464114832536,
+      0.5502392344497608
+    ],
+    "leg0NearKnee": [
+      0.6076555023923444,
+      0.5773524720893142
+    ],
+    "leg0NearFoot": [
+      0.583732057416268,
+      0.6267942583732058
+    ],
+    "leg1NearRoot": [
+      0.4984051036682616,
+      0.55103668261563
+    ],
+    "leg1NearKnee": [
+      0.5606060606060606,
+      0.5933014354066986
+    ],
+    "leg1NearFoot": [
+      0.5263157894736842,
+      0.6555023923444976
+    ],
+    "leg2NearRoot": [
+      0.4800637958532695,
+      0.5502392344497608
+    ],
+    "leg2NearKnee": [
+      0.5175438596491229,
+      0.5972886762360446
+    ],
+    "leg2NearFoot": [
+      0.46172248803827753,
+      0.6730462519936204
+    ],
+    "leg3NearRoot": [
+      0.46172248803827753,
+      0.55103668261563
+    ],
+    "leg3NearKnee": [
+      0.47129186602870815,
+      0.6116427432216905
+    ],
+    "leg3NearFoot": [
+      0.40271132376395535,
+      0.664274322169059
+    ],
+    "leg4NearRoot": [
+      0.4433811802232855,
+      0.55103668261563
+    ],
+    "leg4NearKnee": [
+      0.41467304625199364,
+      0.6052631578947368
+    ],
+    "leg4NearFoot": [
+      0.3349282296650718,
+      0.6419457735247209
+    ],
+    "antennaFarBase": [
+      0.6451355661881978,
+      0.46730462519936206
+    ],
+    "antennaFarTip": [
+      0.8716108452950558,
+      0.361244019138756
+    ],
+    "antennaNearBase": [
+      0.6451355661881978,
+      0.543859649122807
+    ],
+    "antennaNearTip": [
+      0.8596491228070176,
+      0.6889952153110048
+    ],
+    "abdomen0": [
+      0.4665071770334928,
+      0.5055821371610846
+    ],
+    "abdomen1": [
+      0.4258373205741627,
+      0.5055821371610846
+    ],
+    "abdomen2": [
+      0.38516746411483255,
+      0.5055821371610846
+    ],
+    "abdomen3": [
+      0.34768740031897927,
+      0.5055821371610846
+    ],
+    "abdomen4": [
+      0.310207336523126,
+      0.5039872408293461
+    ],
+    "abdomen5": [
+      0.27352472089314195,
+      0.5039872408293461
+    ],
+    "tailFan": [
+      0.21929824561403508,
+      0.5039872408293461
+    ]
+  },
+  "materials": {
+    "surface": "plated"
+  },
+  "source": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/master.png",
+  "coverage": {
+    "scope": "Independent visible dorsal Shrimp reference candidate",
+    "limitations": [
+      "Independent manual Shrimp landmarks and priority ownership on the retained dorsal master. Five real walking chains are observed separately on each side; no hidden legs are inferred.",
+      "Far/Near are stable upper/lower image-side identifiers in this dorsal projection, not a claim that the camera sees lateral depth. Leg root/knee/foot are coarse controls at observed attachment, bend and terminal paint.",
+      "The full leg painting is retained. The three-joint template does not represent every biological segment; painted additional bends remain on their source chain.",
+      "The actual two eyes, short antennules, swimmerets and small rostral structures remain painted under the continuous head/abdominal owners. No extra template joint, appendage deletion or absent declaration is invented.",
+      "The dorsal view exposes the anatomical chains but does not provide a common ground-contact line. groundLineY records the painted lower walking-tip envelope only; swimming and crawling motion require full-size review.",
+      "Long antennae cross anterior structures in the source; visibility at crossings is limited to the painted topmost contour. The declared owners and software motion review must retain any cut-gap hold.",
+      "All originals and painting-side framing successors remain separate; source preservation is exact to this selected successor, not an assertion that the generator preserved predecessor pixels.",
+      "No reference-pool, native or family-wide admission."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "4e0c97932da1b6e2f6a90d92e655fee58715b0436833f6374708ff84a9b9e7c8",
+    "subjectSourceSha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.010639285537580786,
+      "head": 0.07416696665764862,
+      "abdomen0": 0.06299840510366822,
+      "abdomen1": 0.040669856459330134,
+      "abdomen2": 0.040669856459330134,
+      "abdomen3": 0.03748006379585328,
+      "abdomen4": 0.037513982412564845,
+      "abdomen5": 0.03668261562998404,
+      "tailFan": 0.05422647527910687,
+      "leg0FarRoot": 0.04951889855266356,
+      "leg0FarKnee": 0.09229063004261123,
+      "leg0FarFoot": 0.05570733396036042,
+      "leg0NearRoot": 0.04644408222826479,
+      "leg0NearKnee": 0.09486617134266692,
+      "leg0NearFoot": 0.05492559922718524,
+      "leg1FarRoot": 0.055735865247229836,
+      "leg1FarKnee": 0.0699076010971072,
+      "leg1FarFoot": 0.07686175923458685,
+      "leg1NearRoot": 0.0550759063790494,
+      "leg1NearKnee": 0.07520151841863341,
+      "leg1NearFoot": 0.07102662696700311,
+      "leg2FarRoot": 0.06662391889698699,
+      "leg2FarKnee": 0.05883849041689545,
+      "leg2FarFoot": 0.08826133820246672,
+      "leg2NearRoot": 0.06662391889698693,
+      "leg2NearKnee": 0.060153180751662275,
+      "leg2NearFoot": 0.09410226252955305,
+      "leg3FarRoot": 0.07963309558417817,
+      "leg3FarKnee": 0.06252725927882825,
+      "leg3FarFoot": 0.08868541482907714,
+      "leg3NearRoot": 0.08161288837002051,
+      "leg3NearKnee": 0.0613568869590792,
+      "leg3NearFoot": 0.08644867772164376,
+      "leg4FarRoot": 0.09486952297125507,
+      "leg4FarKnee": 0.07032932236156088,
+      "leg4FarFoot": 0.08963402520780551,
+      "leg4NearRoot": 0.09738340878970148,
+      "leg4NearKnee": 0.06135688695907923,
+      "leg4NearFoot": 0.087777275316217,
+      "antennaFarBase": 0.056977099451024735,
+      "antennaFarTip": 0.25007979567424543,
+      "antennaNearBase": 0.05589537132017571,
+      "antennaNearTip": 0.25899883888933617
+    },
+    "measures": {
+      "body": 0.25598582972019907,
+      "bone-min": 0.010639285537580786,
+      "bone-max": 0.25899883888933617
+    }
+  },
+  "recipeHash": "e8d858eca145c4d136eb0a958731a53cf083197e7703e101bdec880a52302944"
+}

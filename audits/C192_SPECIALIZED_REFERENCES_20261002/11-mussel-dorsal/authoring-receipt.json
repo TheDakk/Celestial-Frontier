@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c192-observed-external-junction/v1",
+  "writerSha256": "bcdf90d6728612a817d2149d16af2f4b0e573ef53fed27c92a84d51a21d30912",
+  "masterSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+  "authoringSha256": "c9e294ae8524f38526db35f392c9362a71661d2c0f5bdcb00b2de93435eddce1",
+  "fullSizeInspected": true,
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "observedExternalJunction": [
+    377,
+    326
+  ],
+  "sourceInterpretation": "provisional anterior dorsal junction, not posterior open gape",
+  "primaryText": "https://lanwebs.lander.edu/faculty/rsfox/invertebrates/mytilus.html",
+  "diagramInspected": false,
+  "parentConcurrence": "Parent authorized this explicitly observed external-junction diagnostic candidate with its interpretation held for full-size review.",
+  "limitations": [
+    "Provisional source-observed external-junction interpretation, not an internal anatomical reconstruction. Primary specimen text places the hinge on the anterior dorsal margin and the byssal gape ventrally. The source byssal/foot exit is lower-left around[550,755], opposite the closed anterior dorsal junction around[335,299]–[449,348].",
+    "The hinge anchor[377,326] lies on the visible narrow brown anterior external junction. It is not the wide open posterior mantle gape. Ligament-versus-periostracal-rim interpretation remains explicitly subject to full-size review. No unpainted internal hinge axis or mechanism is supplied.",
+    "Exactly two valves are painted. The existing bivalve template has one projected hinge control linked to both valve controls; this is a coarse projection, not a measured three-dimensional hinge axis.",
+    "A modest foot/byssal exit, connected mantle and short posterior aperture are present. No optional foot or siphon is declared absent or hidden merely to satisfy the template. Byssal threads remain on the foot owner; no independent thread joints are invented.",
+    "Closed material mapping uses plated shell/hinge and existing slick joint overrides for observed soft mantle, siphon and foot. No new material key or runtime change.",
+    "The primary Lander University specimen text was inspected; its diagram image links failed to render. No diagram inspection is claimed.",
+    "Eligibility is diagnostic review only if unchanged static checks pass. No biological certainty, gallery/pool admission, quality acceptance or native film is claimed."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

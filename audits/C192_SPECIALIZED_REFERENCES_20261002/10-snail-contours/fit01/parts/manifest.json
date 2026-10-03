@@ -1,0 +1,50 @@
+{
+  "creatureId": "c192-snail-contours",
+  "parts": [
+    {
+      "name": "shell.png",
+      "path": "parts/shell.png",
+      "sha256": "626e64dfe847dbba18bba441af406e0c6b3dcb312069bf9c981ab42bf8ea709e"
+    },
+    {
+      "name": "eyefar.png",
+      "path": "parts/eyefar.png",
+      "sha256": "214e201ef53e9a83a61b0eb67fdcfcbf763460de7185c8f78c5785d8cf7230bf"
+    },
+    {
+      "name": "eyenear.png",
+      "path": "parts/eyenear.png",
+      "sha256": "8d50b88f2cf7c4ff20bf12b2f08400a34f4e0d794a68432ca43317f96a8368eb"
+    },
+    {
+      "name": "mouth.png",
+      "path": "parts/mouth.png",
+      "sha256": "e98ff1b86729b3e3a01a9918b71ca2e5dc7a270b95a1cca9562666744e0d0c9f"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "4aece255a6cb001736e8cf68d0980cbccba1b9b980aaeef8f46f24d41c917372"
+    },
+    {
+      "name": "foot0.png",
+      "path": "parts/foot0.png",
+      "sha256": "7873eeca6d51bab0740709bed2870bd57b5978161ac24ad81ec7e8f7aa7b4045"
+    },
+    {
+      "name": "foot1.png",
+      "path": "parts/foot1.png",
+      "sha256": "4a84657070c463f92146a48f128816cff09a8f400a4710c4ad7efa643896982f"
+    },
+    {
+      "name": "foot2.png",
+      "path": "parts/foot2.png",
+      "sha256": "312509a57f4551482bc008e7e843a2b70a1d392bc82053b6b306fb533026e5b0"
+    },
+    {
+      "name": "foot3.png",
+      "path": "parts/foot3.png",
+      "sha256": "b77406e88f779e6cfd3fe659a987c56522338111b85d8f2f3554cbf86abb78f8"
+    }
+  ]
+}

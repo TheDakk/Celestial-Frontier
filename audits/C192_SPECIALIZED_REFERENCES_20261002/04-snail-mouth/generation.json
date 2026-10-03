@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c192-original-retention/v1",
+  "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-92d8f424-c2fd-4f28-8c33-eb4e827385dc.png",
+  "master": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/master.png",
+  "masterSha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "exactOriginalBytesRetained": true,
+  "pixelTransformApplied": false,
+  "inputMasterSha256": "9675e29fd6daaa32eb8592e22f0ce999c51951124f32c77084d0b2735a226d18",
+  "exactSentPromptSha256": "0b7e2d20a7656c3b76fa1bb81a99b65a1e4b17405e0466117d4301744b1cf9a0",
+  "canonicalPromptSha256": "392dc8c2ed6bea9856d5f16c1c1ae47b46f7f0d4bcfdea52114275978bbea539",
+  "frozenBlocks": [
+    {
+      "sha256": "9b206f6df55f30911bbeffa66d1f62fec3b9967608ea8ab3ea61ca2a1e5cf281",
+      "unchanged": true
+    },
+    {
+      "sha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+      "unchanged": true
+    },
+    {
+      "sha256": "caa365666085318ef597819c60c57d7d9945bba18d43054225e884337a938620",
+      "unchanged": true
+    }
+  ],
+  "frozenMutationRejected": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

@@ -1,0 +1,229 @@
+{
+  "frames": {
+    "eyefar.png": {
+      "frame": {
+        "h": 152,
+        "w": 172,
+        "x": 1114,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 152,
+        "w": 172
+      },
+      "spriteSourceSize": {
+        "h": 152,
+        "w": 172,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "eyenear.png": {
+      "frame": {
+        "h": 215,
+        "w": 128,
+        "x": 930,
+        "y": 161
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 215,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 215,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot0.png": {
+      "frame": {
+        "h": 80,
+        "w": 123,
+        "x": 661,
+        "y": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 80,
+        "w": 123
+      },
+      "spriteSourceSize": {
+        "h": 80,
+        "w": 123,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot1.png": {
+      "frame": {
+        "h": 132,
+        "w": 237,
+        "x": 465,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 132,
+        "w": 237
+      },
+      "spriteSourceSize": {
+        "h": 132,
+        "w": 237,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot2.png": {
+      "frame": {
+        "h": 178,
+        "w": 186,
+        "x": 465,
+        "y": 147
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 178,
+        "w": 186
+      },
+      "spriteSourceSize": {
+        "h": 178,
+        "w": 186,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "foot3.png": {
+      "frame": {
+        "h": 235,
+        "w": 208,
+        "x": 712,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 235,
+        "w": 208
+      },
+      "spriteSourceSize": {
+        "h": 235,
+        "w": 208,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 146,
+        "w": 174,
+        "x": 930,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 146,
+        "w": 174
+      },
+      "spriteSourceSize": {
+        "h": 146,
+        "w": 174,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "mouth.png": {
+      "frame": {
+        "h": 32,
+        "w": 50,
+        "x": 794,
+        "y": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 50
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 50,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "shell.png": {
+      "frame": {
+        "h": 346,
+        "w": 450,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 346,
+        "w": 450
+      },
+      "spriteSourceSize": {
+        "h": 346,
+        "w": 450,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c192-snail-contours.png",
+    "scale": "1",
+    "size": {
+      "h": 381,
+      "w": 1291
+    }
+  }
+}

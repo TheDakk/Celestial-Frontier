@@ -1,0 +1,75 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "1ed5574d26bbaed57dfc004ea347d0cddec189f9",
+  "helperSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/master.png",
+      "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/authoring.json",
+      "sha256": "919762a2631bc06eab8c3d4336ab7a86084484207e16c7d8ce659f26709ce883"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/subject-source.json",
+      "sha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "df7194ebb22419ed9b5bcc28481f69392f2d6ca94354b865985b1dbfd6f37ef3",
+  "bindingHash": "4203aa2ada1ca82f53ee799346b401fe2a8b5aa3d5b027e6eb169c5816618b7e",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "shell",
+    "eyeFar",
+    "eyeNear",
+    "mouth",
+    "head",
+    "foot0",
+    "foot1",
+    "foot2",
+    "foot3"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/master.png",
+      "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/authoring.json",
+      "sha256": "919762a2631bc06eab8c3d4336ab7a86084484207e16c7d8ce659f26709ce883",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/subject-source.json",
+      "sha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

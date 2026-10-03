@@ -1,0 +1,489 @@
+{
+  "schema": "cf.c192-landmark-alpha-diagnostic/v1",
+  "id": "02-prawn-dorsal",
+  "masterSha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+  "authoringSha256": "8b83997309e80c0ab6a0d6b98023c14305e8e88b922eddf40759fb9991442afa",
+  "rows": [
+    {
+      "joint": "leg0FarFoot",
+      "declared": [
+        831,
+        578
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            831,
+            581
+          ],
+          "distance": 3
+        },
+        {
+          "point": [
+            830,
+            581
+          ],
+          "distance": 3.1622776601683795
+        },
+        {
+          "point": [
+            832,
+            581
+          ],
+          "distance": 3.1622776601683795
+        },
+        {
+          "point": [
+            834,
+            580
+          ],
+          "distance": 3.6055512754639896
+        },
+        {
+          "point": [
+            833,
+            581
+          ],
+          "distance": 3.6055512754639896
+        },
+        {
+          "point": [
+            831,
+            582
+          ],
+          "distance": 4
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg1FarFoot",
+      "declared": [
+        793,
+        437
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            792,
+            442
+          ],
+          "distance": 5.099019513592785
+        },
+        {
+          "point": [
+            792,
+            443
+          ],
+          "distance": 6.0827625302982185
+        },
+        {
+          "point": [
+            792,
+            444
+          ],
+          "distance": 7.0710678118654755
+        },
+        {
+          "point": [
+            792,
+            445
+          ],
+          "distance": 8.06225774829855
+        },
+        {
+          "point": [
+            792,
+            446
+          ],
+          "distance": 9.055385138137417
+        },
+        {
+          "point": [
+            792,
+            447
+          ],
+          "distance": 10.04987562112089
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg2FarFoot",
+      "declared": [
+        711,
+        401
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            711,
+            405
+          ],
+          "distance": 4
+        },
+        {
+          "point": [
+            712,
+            408
+          ],
+          "distance": 7.0710678118654755
+        },
+        {
+          "point": [
+            712,
+            409
+          ],
+          "distance": 8.06225774829855
+        },
+        {
+          "point": [
+            712,
+            410
+          ],
+          "distance": 9.055385138137417
+        },
+        {
+          "point": [
+            713,
+            411
+          ],
+          "distance": 10.19803902718557
+        },
+        {
+          "point": [
+            713,
+            412
+          ],
+          "distance": 11.180339887498947
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg3FarFoot",
+      "declared": [
+        598,
+        399
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            605,
+            404
+          ],
+          "distance": 8.602325267042627
+        },
+        {
+          "point": [
+            606,
+            405
+          ],
+          "distance": 10
+        },
+        {
+          "point": [
+            607,
+            406
+          ],
+          "distance": 11.40175425099138
+        },
+        {
+          "point": [
+            608,
+            407
+          ],
+          "distance": 12.806248474865697
+        },
+        {
+          "point": [
+            609,
+            408
+          ],
+          "distance": 14.212670403551897
+        },
+        {
+          "point": [
+            609,
+            409
+          ],
+          "distance": 14.866068747318504
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg4FarFoot",
+      "declared": [
+        504,
+        440
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            510,
+            442
+          ],
+          "distance": 6.324555320336759
+        },
+        {
+          "point": [
+            512,
+            443
+          ],
+          "distance": 8.54400374531753
+        },
+        {
+          "point": [
+            514,
+            444
+          ],
+          "distance": 10.77032961426901
+        },
+        {
+          "point": [
+            515,
+            445
+          ],
+          "distance": 12.08304597359457
+        },
+        {
+          "point": [
+            516,
+            445
+          ],
+          "distance": 13
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg1NearFoot",
+      "declared": [
+        788,
+        810
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            789,
+            804
+          ],
+          "distance": 6.0827625302982185
+        },
+        {
+          "point": [
+            789,
+            803
+          ],
+          "distance": 7.0710678118654755
+        },
+        {
+          "point": [
+            789,
+            802
+          ],
+          "distance": 8.06225774829855
+        },
+        {
+          "point": [
+            788,
+            801
+          ],
+          "distance": 9
+        },
+        {
+          "point": [
+            789,
+            801
+          ],
+          "distance": 9.055385138137417
+        },
+        {
+          "point": [
+            788,
+            800
+          ],
+          "distance": 10
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg2NearFoot",
+      "declared": [
+        720,
+        846
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            722,
+            840
+          ],
+          "distance": 6.324555320336759
+        },
+        {
+          "point": [
+            722,
+            839
+          ],
+          "distance": 7.280109889280519
+        },
+        {
+          "point": [
+            723,
+            838
+          ],
+          "distance": 8.54400374531753
+        },
+        {
+          "point": [
+            723,
+            837
+          ],
+          "distance": 9.486832980505138
+        },
+        {
+          "point": [
+            723,
+            836
+          ],
+          "distance": 10.44030650891055
+        },
+        {
+          "point": [
+            723,
+            835
+          ],
+          "distance": 11.40175425099138
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg3NearFoot",
+      "declared": [
+        611,
+        845
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            617,
+            839
+          ],
+          "distance": 8.485281374238571
+        },
+        {
+          "point": [
+            618,
+            838
+          ],
+          "distance": 9.899494936611665
+        },
+        {
+          "point": [
+            619,
+            837
+          ],
+          "distance": 11.313708498984761
+        },
+        {
+          "point": [
+            620,
+            836
+          ],
+          "distance": 12.727922061357857
+        },
+        {
+          "point": [
+            620,
+            835
+          ],
+          "distance": 13.453624047073712
+        },
+        {
+          "point": [
+            621,
+            835
+          ],
+          "distance": 14.142135623730951
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "leg4NearFoot",
+      "declared": [
+        505,
+        806
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            513,
+            803
+          ],
+          "distance": 8.54400374531753
+        },
+        {
+          "point": [
+            514,
+            803
+          ],
+          "distance": 9.486832980505138
+        },
+        {
+          "point": [
+            515,
+            802
+          ],
+          "distance": 10.77032961426901
+        },
+        {
+          "point": [
+            516,
+            802
+          ],
+          "distance": 11.704699910719626
+        },
+        {
+          "point": [
+            517,
+            801
+          ],
+          "distance": 13
+        }
+      ],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "antennaFarTip",
+      "declared": [
+        1088,
+        506
+      ],
+      "nearestPaint": [],
+      "automaticCorrectionApplied": false
+    },
+    {
+      "joint": "antennaNearTip",
+      "declared": [
+        1088,
+        737
+      ],
+      "nearestPaint": [
+        {
+          "point": [
+            1087,
+            748
+          ],
+          "distance": 11.045361017187261
+        }
+      ],
+      "automaticCorrectionApplied": false
+    }
+  ],
+  "sourcePixelsChanged": 0
+}

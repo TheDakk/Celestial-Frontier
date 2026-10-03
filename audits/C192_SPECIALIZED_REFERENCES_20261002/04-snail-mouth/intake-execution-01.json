@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "intake",
+  "id": "04-snail-mouth",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/intake-01.log",
+  "logSha256": "27e39c66395d9748efef8e135d288c28edabe786e062c675b06405c1429f1019",
+  "nativeRuns": 0
+}

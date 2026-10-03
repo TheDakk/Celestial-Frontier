@@ -1,0 +1,322 @@
+{
+  "id": "c192-mussel-external-junction",
+  "family": "bivalve",
+  "landmarksPx": {
+    "root": [
+      633,
+      579
+    ],
+    "hinge": [
+      377,
+      326
+    ],
+    "valveFar": [
+      693,
+      417
+    ],
+    "valveNear": [
+      578,
+      604
+    ],
+    "mantle": [
+      778,
+      556
+    ],
+    "siphon": [
+      918,
+      696
+    ],
+    "foot": [
+      553,
+      755
+    ]
+  },
+  "groundLineY": 0.777511961722488,
+  "materials": {
+    "surface": "plated",
+    "joints": {
+      "mantle": "slick",
+      "siphon": "slick",
+      "foot": "slick"
+    }
+  },
+  "remainderPart": "valvenear",
+  "parts": [
+    {
+      "id": "hinge",
+      "joint": "hinge",
+      "layer": "near",
+      "polygonPx": [
+        [
+          326,
+          293
+        ],
+        [
+          346,
+          287
+        ],
+        [
+          459,
+          337
+        ],
+        [
+          467,
+          352
+        ],
+        [
+          450,
+          362
+        ],
+        [
+          335,
+          314
+        ]
+      ]
+    },
+    {
+      "id": "foot",
+      "joint": "foot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          499,
+          697
+        ],
+        [
+          529,
+          723
+        ],
+        [
+          576,
+          738
+        ],
+        [
+          625,
+          770
+        ],
+        [
+          649,
+          890
+        ],
+        [
+          621,
+          987
+        ],
+        [
+          423,
+          987
+        ],
+        [
+          425,
+          849
+        ],
+        [
+          493,
+          786
+        ]
+      ]
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near",
+      "polygonPx": [
+        [
+          835,
+          636
+        ],
+        [
+          884,
+          648
+        ],
+        [
+          932,
+          659
+        ],
+        [
+          950,
+          683
+        ],
+        [
+          946,
+          713
+        ],
+        [
+          922,
+          754
+        ],
+        [
+          896,
+          768
+        ],
+        [
+          872,
+          743
+        ],
+        [
+          879,
+          709
+        ],
+        [
+          866,
+          677
+        ]
+      ]
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "near",
+      "polygonPx": [
+        [
+          380,
+          331
+        ],
+        [
+          497,
+          386
+        ],
+        [
+          602,
+          449
+        ],
+        [
+          715,
+          509
+        ],
+        [
+          822,
+          578
+        ],
+        [
+          918,
+          649
+        ],
+        [
+          949,
+          702
+        ],
+        [
+          922,
+          748
+        ],
+        [
+          889,
+          783
+        ],
+        [
+          857,
+          725
+        ],
+        [
+          754,
+          625
+        ],
+        [
+          650,
+          519
+        ],
+        [
+          510,
+          416
+        ]
+      ]
+    },
+    {
+      "id": "valvefar",
+      "joint": "valveFar",
+      "layer": "near",
+      "polygonPx": [
+        [
+          330,
+          272
+        ],
+        [
+          502,
+          301
+        ],
+        [
+          677,
+          355
+        ],
+        [
+          804,
+          423
+        ],
+        [
+          911,
+          542
+        ],
+        [
+          979,
+          685
+        ],
+        [
+          976,
+          750
+        ],
+        [
+          939,
+          757
+        ],
+        [
+          917,
+          686
+        ],
+        [
+          820,
+          598
+        ],
+        [
+          701,
+          516
+        ],
+        [
+          561,
+          436
+        ],
+        [
+          415,
+          345
+        ]
+      ]
+    },
+    {
+      "id": "valvenear",
+      "joint": "valveNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Provisional external-junction Mussel authoring",
+    "limitations": [
+      "Provisional source-observed external-junction interpretation, not an internal anatomical reconstruction. Primary specimen text places the hinge on the anterior dorsal margin and the byssal gape ventrally. The source byssal/foot exit is lower-left around[550,755], opposite the closed anterior dorsal junction around[335,299]–[449,348].",
+      "The hinge anchor[377,326] lies on the visible narrow brown anterior external junction. It is not the wide open posterior mantle gape. Ligament-versus-periostracal-rim interpretation remains explicitly subject to full-size review. No unpainted internal hinge axis or mechanism is supplied.",
+      "Exactly two valves are painted. The existing bivalve template has one projected hinge control linked to both valve controls; this is a coarse projection, not a measured three-dimensional hinge axis.",
+      "A modest foot/byssal exit, connected mantle and short posterior aperture are present. No optional foot or siphon is declared absent or hidden merely to satisfy the template. Byssal threads remain on the foot owner; no independent thread joints are invented.",
+      "Closed material mapping uses plated shell/hinge and existing slick joint overrides for observed soft mantle, siphon and foot. No new material key or runtime change.",
+      "The primary Lander University specimen text was inspected; its diagram image links failed to render. No diagram inspection is claimed.",
+      "Eligibility is diagnostic review only if unchanged static checks pass. No biological certainty, gallery/pool admission, quality acceptance or native film is claimed."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  }
+}

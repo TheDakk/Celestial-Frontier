@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c192-source-retention/v1",
+  "writerSha256": "c89e7a69abb06304e5e88c8dd726579c229cdc9cab9659823e1ab9f6ee0dcdc1",
+  "rows": [
+    {
+      "id": "11-mussel-dorsal",
+      "masterSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c192-original-retention/v1",
+  "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-e8be74b0-be7c-4e5b-9e79-53ba0e17306e.png",
+  "master": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/master.png",
+  "masterSha256": "9d9841209d90ec22671805e2d471955e6d52e7afb0bf73b876b0ec5d8f69b40e",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "exactOriginalBytesRetained": true,
+  "pixelTransformApplied": false,
+  "inputMasterSha256": "949df79df52b00a64ff06408b2e294eedf91adebb7ff8f12e76bd7dd285b5b98",
+  "exactSentPromptSha256": "76a8f4ec4090b460948f6f2ed3b2d39ebe27d992db2d43f19c22dee7cdc9bb08",
+  "canonicalPromptSha256": "ea21ae0ca715fbf373d1b2a2c6ac2ad2628bbe32bec7a1e89a469be773e6e82d",
+  "frozenBlocks": [
+    {
+      "sha256": "9b206f6df55f30911bbeffa66d1f62fec3b9967608ea8ab3ea61ca2a1e5cf281",
+      "unchanged": true
+    },
+    {
+      "sha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+      "unchanged": true
+    },
+    {
+      "sha256": "caa365666085318ef597819c60c57d7d9945bba18d43054225e884337a938620",
+      "unchanged": true
+    }
+  ],
+  "frozenMutationRejected": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

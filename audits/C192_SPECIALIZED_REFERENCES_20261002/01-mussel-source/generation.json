@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c192-original-retention/v1",
+  "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-cc15bc7b-dcbe-4436-bce8-49dbe9a4af62.png",
+  "master": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/master.png",
+  "masterSha256": "e04685371b825a0738cd4fe5a3c60f330dd7ee80fbec474aae87257c87333c30",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "exactOriginalBytesRetained": true,
+  "pixelTransformApplied": false,
+  "inputMasterSha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+  "exactSentPromptSha256": "544ee687e46e0210fd6d7b43775d692afbf43b57a88e094a5f3e525f3affdaf1",
+  "canonicalPromptSha256": "9cb9bd80d6b5f0c364c19f7fa35e781f421c6860436a2aa16299e174f072d7fa",
+  "frozenBlocks": [
+    {
+      "sha256": "9b206f6df55f30911bbeffa66d1f62fec3b9967608ea8ab3ea61ca2a1e5cf281",
+      "unchanged": true
+    },
+    {
+      "sha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+      "unchanged": true
+    },
+    {
+      "sha256": "caa365666085318ef597819c60c57d7d9945bba18d43054225e884337a938620",
+      "unchanged": true
+    }
+  ],
+  "frozenMutationRejected": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

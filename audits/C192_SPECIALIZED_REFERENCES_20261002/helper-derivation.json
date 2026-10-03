@@ -1,0 +1,44 @@
+{
+  "schema": "cf.c192-helper-derivation/v1",
+  "rows": [
+    {
+      "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/run-stage.mjs",
+      "sourceSha256": "6748e9a061cbcb84f7a49c7d79f933eb3d4f6d3bb0fbba4ea30840f150e4b507",
+      "target": "audits/C192_SPECIALIZED_REFERENCES_20261002/run-stage.mjs",
+      "targetSha256": "3f2107d2b8ce3a8c0cee5ff2d759ebebe217b9d3f6a6d88e020a3b1619321465",
+      "changes": [
+        "Audit output base only"
+      ]
+    },
+    {
+      "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/intake-retained.mjs",
+      "sourceSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+      "target": "audits/C192_SPECIALIZED_REFERENCES_20261002/intake-retained.mjs",
+      "targetSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+      "changes": [
+        "Audit output base only"
+      ]
+    },
+    {
+      "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+      "sourceSha256": "5fb70eb9e7d911e33717b08123211f1a1e299526d61608e4a8df1b999eba5855",
+      "target": "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+      "targetSha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128",
+      "changes": [
+        "Audit output base only",
+        "Dakk D28 explicitly changed default cap to 0.5; additive control proves largest component protected, input immutable and explicit stricter caller still enforced. Historical 5% evidence remains unchanged."
+      ]
+    },
+    {
+      "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/review-publication.mjs",
+      "sourceSha256": "50f48530e4ba4762376ac91b46db55707e2ab191e199496c767e39e48c9da327",
+      "target": "audits/C192_SPECIALIZED_REFERENCES_20261002/review-publication.mjs",
+      "targetSha256": "ef10a897affb0bb40a86c09e8cee4e5d9666b30fa9f18bb9519bbedc2dfb3282",
+      "changes": [
+        "Audit output base only",
+        "Include first actually admitted attack from current static inventory in software publication review; no native claim."
+      ]
+    }
+  ],
+  "historicalEvidenceChanged": false
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c192-source-edit/v1",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+    "snapshot": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/input-master.png",
+    "role": "sole style reference; new independent painting, no failed bivalve input"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel/prompt.txt",
+    "sha256": "9cb9bd80d6b5f0c364c19f7fa35e781f421c6860436a2aa16299e174f072d7fa"
+  },
+  "exactSentPromptSha256": "1a02c54eb24ed95ab7864da70900bbc7d309d34ab510aecd95c5e188b2ee8800",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceEditsOnly": false,
+  "nativeRuns": 0
+}

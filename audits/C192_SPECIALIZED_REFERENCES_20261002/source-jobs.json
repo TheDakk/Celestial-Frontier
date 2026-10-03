@@ -1,0 +1,50 @@
+[
+  {
+    "key": "mussel",
+    "id": "01-mussel-source",
+    "source": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel",
+    "canonical": "c192_mussel_canonical",
+    "prompt": "c192_mussel_prompt",
+    "canonicalFile": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel/prompt.txt",
+    "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-cc15bc7b-dcbe-4436-bce8-49dbe9a4af62.png"
+  },
+  {
+    "key": "prawn",
+    "id": "02-prawn-dorsal",
+    "source": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn",
+    "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-a1698309-d2c7-453a-b8b2-23a135e7e8c4.png"
+  },
+  {
+    "key": "shrimp",
+    "id": "03-shrimp-dorsal",
+    "source": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp",
+    "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-026933c3-cd5f-4e99-8d96-c9769d724efa.png"
+  },
+  {
+    "key": "snail",
+    "id": "04-snail-mouth",
+    "source": "audits/C192_CREATURE_SUPPLY_20261002/04-snail",
+    "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-92d8f424-c2fd-4f28-8c33-eb4e827385dc.png"
+  },
+  {
+    "key": "clam",
+    "id": "05-clam-hinge",
+    "source": "audits/C192_CREATURE_SUPPLY_20261002/01-clam",
+    "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-c8accb01-2cb1-4b08-be4c-a8c5ea0c2808.png"
+  },
+  {
+    "key": "marmoset",
+    "id": "06-marmoset-source",
+    "source": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset",
+    "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-e8be74b0-be7c-4e5b-9e79-53ba0e17306e.png"
+  },
+  {
+    "key": "bat",
+    "id": "07-standing-bat-source",
+    "source": "audits/C173_STANDING_BAT_REPAINT_20261002",
+    "canonical": "c192_bat_canonical",
+    "canonicalFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat/prompt.txt",
+    "subjectFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat/subject-source.json",
+    "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-7da90198-4a86-4279-801a-db648b200696.png"
+  }
+]
