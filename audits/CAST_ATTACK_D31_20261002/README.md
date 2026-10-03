@@ -97,13 +97,36 @@ Full frames read:
 
 These are diagnostic films, not visual acceptance.
 
+## Follow-up: anchored casters cast from their stand (main lane decision, 2026-10-02)
+
+The main lane accepted the recommendation: an ANCHORED caster gets no run-up and casts from its stand,
+because fixed organisms never move (CREATURE_ANIMATION.md). Mobile casters (worm, slug) keep the
+stage's existing run-up. `castAttackOf` now carries `anchored` (from the specialized template). With it,
+`buildTurnPlan` sets the run-up to 0, so approach, action and return add no displacement. The reason
+label adds "anchored: casts from its stand, no run-up". Commit `dd9668e83`.
+
+- New test (8th in `cast-attack-d31.test.ts`): it samples 201 frames through the whole turn on the real stage.
+  The sponge's holder stays within 0.5 px of its stand, and its drawn `root`/`base` joints stay within 0.5 px.
+  `plan.runUp` is 0. The worm and slug still travel (run-up 0.05 of the frame, holder moves > 20 px).
+- Negative controls:
+  - Ignoring `anchored` fails the test with runUp 0.145.
+  - With the runUp assertion also removed, the drawn-position check alone still fails: the holder moves
+    148.7 px.
+- Fingerprint re-run (`fingerprint/fp-anchored.json`): identical to `fp-after.json`. Against the parent
+  sources only the same seven D31 `cast` rows differ.
+- Typecheck clean. Motion + battle2 + wiring + anatomy-attacks: 43 files, 471 passed + 2 expected fail.
+- Film `02-sponge-direct-anchored` (same command, `CF_CPU_THROTTLE=4`): DIAGNOSTIC_PASS, refusals 0/0,
+  713 frames, cpu p95 2.0 ms, frame Δ p95 16.7 ms. runUp 0 on all four turns, and the effect impact
+  is 390 ms after the action start.
+  - `turn1-hit-reaction-50`: lake world. The right sponge (attacker) stays upright at its own stand.
+    The two sponges are now a full stand-width apart, where the earlier film had them touching. The
+    left sponge is mid hit-reaction, ringed by bubble particles, with a "6" above it.
+  - `turn3-hit-idle-90`: both sponges upright at their stands, intact, nothing detached.
+
 ## Unfinished / for Dakk
 
-- The stage still gives every caster its run-up approach, so an anchored sponge slides across the
-  arena (seen in the sponge film). The brief said not to add travel beyond the stage's caster
-  behaviour, so this is unchanged; CREATURE_ANIMATION.md says fixed organisms never gain locomotion.
-  Recommended: no approach travel for an anchored caster (a one-line `runUp = 0` when `castAttack` and
-  the template is anchored). Waiting on your decision.
+- The anchored-approach question above is resolved: the sponge no longer slides. The original
+  `02-sponge-direct` film is kept as the before state.
 - No bivalve fit exists. Bivalve is covered by synthetic contract tests only.
 - The native runner's `attacks` label does not use the wiring's new cast label.
 - The runner films only the wild effect, so these films do not show the stone theme.
