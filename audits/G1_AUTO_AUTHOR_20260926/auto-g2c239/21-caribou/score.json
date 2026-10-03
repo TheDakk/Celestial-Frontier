@@ -1,0 +1,9 @@
+{
+ "id": "21-caribou",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-root (earFarRoot) covers 13% paint (reference 68%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","refusals":{"left":0,"right":0},"attacks":{"left":"cast body pulse (D31 cast: gastropod has no admitted melee; launch at the declared mouth)","right":"cast body pulse (D31 cast: gastropod has no admitted melee; launch at the declared mouth)"},"capture":{"frames":713,"cpuP95Ms":2.2000000178813934,"frameDeltaP95Ms":16.799999999999272}}

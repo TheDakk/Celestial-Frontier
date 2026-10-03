@@ -1,0 +1,10 @@
+{
+ "wild-ass": "DIAGNOSTIC_PASS",
+ "horse": "DIAGNOSTIC_PASS",
+ "serval": "DIAGNOSTIC_PASS",
+ "tortoise": "FAIL",
+ "snail": "DIAGNOSTIC_PASS",
+ "prawn": "FAIL",
+ "leech": "DIAGNOSTIC_PASS",
+ "mussel": "DIAGNOSTIC_PASS"
+}

@@ -1,0 +1,18 @@
+[
+ {
+  "id": "02-giant-otter",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c248/02-giant-otter/fit"
+ },
+ {
+  "id": "07-musk-ox",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c248/07-musk-ox/fit"
+ },
+ {
+  "id": "09-bull",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c248/09-bull/fit"
+ },
+ {
+  "id": "10-quoll",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c248/10-quoll/fallback-1/fit"
+ }
+]

@@ -1,0 +1,9 @@
+{
+ "id": "03-shrimp",
+ "family": "crustacean-small",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family crustacean-small"
+ ],
+ "semanticPresence": null
+}

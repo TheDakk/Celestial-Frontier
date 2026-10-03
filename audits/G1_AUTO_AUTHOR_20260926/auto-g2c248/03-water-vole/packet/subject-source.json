@@ -1,0 +1,74 @@
+{
+  "name": "Water Vole",
+  "family": "quadruped",
+  "species": {
+    "name": "Water Vole",
+    "aspect": 2.2,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "blunt rounded muzzle with a chubby face",
+      "small ears almost buried in fur",
+      "short furred tail about half the body length"
+    ],
+    "note": "Not a rat - blunt face, tiny hidden ears, and a furry rather than scaly tail."
+  },
+  "genome": {
+    "seed": 3754823709,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 6,
+    "body": 3,
+    "loco": 11,
+    "trait": 21,
+    "size": 5,
+    "diet": 4,
+    "head": 7,
+    "limbs": 3,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 9,
+    "detail": 1,
+    "accent": 5,
+    "temper": 9,
+    "sense": 1,
+    "repro": 1,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Water Vole"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Water Vole\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3754823709\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "index": 386,
+  "profile": {
+    "id": "aquatic-pawed-mammal",
+    "names": [
+      "River Otter",
+      "Otter",
+      "Giant Otter",
+      "Sea Otter",
+      "Beaver",
+      "Capybara",
+      "Water Vole",
+      "Marsh Rodent"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

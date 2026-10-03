@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 289,
+ "total": 303,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -343,7 +343,7 @@
    "name": "Wild Ass",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: after the D28 island repair a loose hoof-like fragment still shows by the front foot in the late idle"
+   "note": "SUPERSEDED by the C250 film of Codex's corrected fit"
   },
   {
    "family": "Quadrupeds",
@@ -357,7 +357,7 @@
    "name": "Horse",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: D28 island repair placed, but the static gate is RED"
+   "note": "SUPERSEDED by the C250 film of Codex's corrected fit"
   },
   {
    "family": "Quadrupeds",
@@ -637,7 +637,7 @@
    "name": "Serval",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: D28 island repair placed, but the static gate is RED"
+   "note": "SUPERSEDED by the C250 film of Codex's corrected fit"
   },
   {
    "family": "Quadrupeds",
@@ -701,6 +701,62 @@
    "nativeDir": "audits/FILMS_C186_20261002/15-sheep-observed-ears",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "African Wild Dog",
+   "nativeDir": "audits/ISLANDS_C239_20261003/11-african-wild-dog/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (D28 cap)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Giant Otter",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/02-giant-otter",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Musk Ox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/07-musk-ox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Bull",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/09-bull",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Quoll",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/10-quoll",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C248)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Ass",
+   "nativeDir": "audits/FILMS_C250_20261003/wild-ass",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (the loose hoof fragment is gone)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Horse",
+   "nativeDir": "audits/FILMS_C250_20261003/horse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Serval",
+   "nativeDir": "audits/FILMS_C250_20261003/serval",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -2024,6 +2080,48 @@
    "nativeDir": "audits/FILMS_C186_20261002/07-brittle-star-part-ids",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "annelid",
+   "name": "Earthworm",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/01-earthworm-direct",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "annelid",
+   "name": "Leech",
+   "nativeDir": "audits/FILMS_C250_20261003/leech",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)"
+  },
+  {
+   "family": "sessile-filter",
+   "name": "Sponge",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/02-sponge-direct-anchored",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "gastropod",
+   "name": "Banana Slug",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/04-banana-slug-visible-mouth",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "gastropod",
+   "name": "Snail",
+   "nativeDir": "audits/FILMS_C250_20261003/snail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)"
+  },
+  {
+   "family": "bivalve",
+   "name": "Mussel",
+   "nativeDir": "audits/FILMS_C250_20261003/mussel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)"
   }
  ]
 }
