@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c198-tortoise-source-control-failure/v1",
+  "status": "RETAINED_INSTRUMENT_FAILURE",
+  "script": "audits/C198_TORTOISE_CAPTURE_20261003/source-controls-failed-01.mjs",
+  "sha256": "50768e1983bd43ae3eb205891ea2dd521ea2c911f8c0eb15a0fe81972c80b798",
+  "stage": "independent owner replay against original C196 ownership.png",
+  "reason": "The oracle tested source-pixel polygons directly. Intake evaluates normalized-coordinate polygons at normalized pixel centres; exact-boundary floating-point arithmetic differed. Original and candidate source files were never changed.",
+  "candidateStatus": "Conservation unresolved until corrected normalized oracle runs after shared epoch terminal.",
+  "fix": "Match the established normalized coordinate semantics; preserve all source/pixel/owner constraints and original failed oracle."
+}

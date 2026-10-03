@@ -1,0 +1,10 @@
+{
+  "delivery": "audits/C198_TORTOISE_CAPTURE_20261003/delivery.json",
+  "deliverySha256": "b1e00dbe786915baec8aee7e46b67ae446aa9c3a8ebc1bbb7a6540fd5e77ac07",
+  "verifiedEntries": 129,
+  "viewed": [
+    "review-contexts-01/candidate-context-0-left.png",
+    "review-contexts-01/candidate-context-3-right.png"
+  ],
+  "finding": "Independent full-size review concurs: source correction clears the reproduced folds but hanging ankle strips and shin gaps remain. Raw source-reference feet cross the red line; no native grounding or acceptance claim. Native follow-on stopped after develop RED."
+}

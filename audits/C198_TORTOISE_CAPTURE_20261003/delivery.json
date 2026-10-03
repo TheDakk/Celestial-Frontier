@@ -1,0 +1,684 @@
+{
+  "schema": "cf.c198-tortoise-authoring-delivery/v1",
+  "status": "MECHANICAL_REPAIR_WITH_VISUAL_HOLDS",
+  "selectedFit": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01",
+  "recipeHash": "ca4e41b658b71522f4a03c3108cd54df70a9495e2c5713459d08dea0919e2591",
+  "bindingHash": "11b734d386b57cb8cdaeb0a75844c6fb9114f0110cd038dd35a1e7ff00d6dfd4",
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "originalRefusalsReproduced": 5,
+  "candidateExactContextPasses": 5,
+  "actualRigParityRasters": 10,
+  "earlierUnlocatedNativeRefusals": 2,
+  "static": {
+    "status": "PASS_STATIC",
+    "actions": 19,
+    "samples": 2299,
+    "presentationSamples": 1492,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "conservation": {
+    "sourcePixelsChanged": 0,
+    "landmarksChanged": 0,
+    "materialsChanged": 0,
+    "ownerChanges": {
+      "foreFarKnee": 398,
+      "hindFarKnee": 35
+    },
+    "nonRootPriorOwnerChanges": 0
+  },
+  "files": [
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/authoring.json",
+      "bytes": 16463,
+      "sha256": "faac9fcff49d7847c2bcc0636c2534cb566ee60c3d4e61b8e7d2a5533eb70722"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/correction.json",
+      "bytes": 668,
+      "sha256": "cad4b32582bf5fe2b31fccf1d22470393710010491ce2034c875bb44af12805a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/binding.json",
+      "bytes": 1612756,
+      "sha256": "2c8bda547e61b66bc7afce47f5f83033c34d54e54def366900cfbd54e4661820"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/declaration.json",
+      "bytes": 2726,
+      "sha256": "9272a366622bd815c7a836331f902214e0d582ddb0c8d88302bb32d27f5573ed"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/intake-provenance.json",
+      "bytes": 3370,
+      "sha256": "5cdffd1a6d4cb4ebb7f4fedaa0c849ce0a72ed2c3f1a2848c2d7bf0828546df9"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/label-authoring-receipt.json",
+      "bytes": 3646,
+      "sha256": "cde7ddc53378450ea84d1a50a41997a68afead5f01e4c380db051a2acecb7899"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/labels.png",
+      "bytes": 42451,
+      "sha256": "72931429f01ae8351652ffc1f72387bd4eb4fa6639c4a7ffb5480ab648220c12"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/atlas/c198-tortoise-far-leg-fringe.json",
+      "bytes": 9910,
+      "sha256": "0e91798576f298f1decd144b3fdd1a81bd8fc0b3548e6af479b7a44ab20d7172"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/atlas/c198-tortoise-far-leg-fringe.png",
+      "bytes": 873266,
+      "sha256": "1a191718df61b7a69e089239cc0b47e0797b7cccce7d2852a7aed746a670055f"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/atlas/receipt.json",
+      "bytes": 3917,
+      "sha256": "de3df9bdfbd214385a1cad0ca51fb99a4ab263a55b8ed6fbc1f07740941fa3df"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/binding.json",
+      "bytes": 8154,
+      "sha256": "e2a9c1ed58132d1669cb3730327d516621e71fe54c94b4d769b328b7267aef45"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/keyed.png",
+      "bytes": 1924929,
+      "sha256": "ab4258dc5c41a09fdf238334b29554f839d436f744e9b4240cfbfadf894322f7"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/manifest.json",
+      "bytes": 4192,
+      "sha256": "3b2dc645824caa477601acbbb70a9de3a0caaa792beb1e01094a3266b7114982"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/ownership.png",
+      "bytes": 19888,
+      "sha256": "ecc239657985194f45d42b7253b4fbabf66f963adb31516adf9182f6d17c31ff"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/beak.png",
+      "bytes": 8873,
+      "sha256": "905c176df7d0243dc6f545665d1e5fe6d431dc2bb07b22a382dddfddb52f55e9"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-front-ankle.png",
+      "bytes": 5289,
+      "sha256": "a7a378229e78a3984b6f0fa9ca92970a57f07b074633542fab3f4cfb9e038bd6"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-front-emergence.png",
+      "bytes": 8402,
+      "sha256": "7b5250c197973979ad167acde2a0e6944ebaf29459bb5354c4bddacb2a6ee76f"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-front-paw.png",
+      "bytes": 16962,
+      "sha256": "df7f3eea5d995ad197018d878a5544352cb39ad9aa854d08056c67725901d531"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-front-shin.png",
+      "bytes": 20829,
+      "sha256": "42c7e6d6c705b4229ace832fb3fcaf050209e9a809d0dc0a72b405b70ac42f61"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-hind-ankle.png",
+      "bytes": 4840,
+      "sha256": "392f6b9e9a90efd3e272871a61e7a930fb8756b883eeb3be0e9c3f107ccbac4d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-hind-emergence.png",
+      "bytes": 4190,
+      "sha256": "0a7ac738fcd5336439ec49d7632f38c7373bfab492acdcc23b94a61e45cebd5b"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-hind-paw.png",
+      "bytes": 14179,
+      "sha256": "280b8a3d16db5fb4051be3c737a49dc57bea1f7fa32030e0d537ab4ae146cb0a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/far-hind-shin.png",
+      "bytes": 12008,
+      "sha256": "00ae8bc4c4f5b233b4540801825fa74d988aed0ffb21892c4d805194e1b8bb43"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/head.png",
+      "bytes": 34092,
+      "sha256": "fff0fbdd8a5ea789b831857b8fcdb03d10eb3ff46d004db7a91b8c849d44ebaf"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-front-ankle.png",
+      "bytes": 14164,
+      "sha256": "987dbbf55e4523e870fbf95c66956eef5f3148ad9ba9661f5fe2ea5e91ef2309"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-front-emergence.png",
+      "bytes": 31948,
+      "sha256": "f6006ec0eef2e678a1f33d318a05cbac29c62599ee660e6532bd3896287ebb56"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-front-paw.png",
+      "bytes": 22366,
+      "sha256": "01d801fefd796a003789ae7bb0e2bb63b67f33000bffd4a66a0a1edc802399c5"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-front-shin.png",
+      "bytes": 37018,
+      "sha256": "76bc1c7de6f2ba82504513b14e32e576ee2e2f498053efa8b1752012ddfad723"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-hind-ankle.png",
+      "bytes": 13005,
+      "sha256": "9d759267c7d44b081b9c557fe86352e5823319c863682dad5b767155ff9961fe"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-hind-emergence.png",
+      "bytes": 35864,
+      "sha256": "dc4e07b90dbd6b9fba8636e96e853a21d936d7ec15a79a56f7bfc0c97f86710b"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-hind-paw.png",
+      "bytes": 20637,
+      "sha256": "cee4a45b5e0582668abd799204a2f4678ff246a67c90c1212440513c8262168a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/near-hind-shin.png",
+      "bytes": 22129,
+      "sha256": "91a41c8c4496e7d7457d31d6ef20411fbb1252c0b3a69f0d0055c5c4806f6b73"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/neck.png",
+      "bytes": 55523,
+      "sha256": "62a68d0b2f524fedf4bece5675d40d15e3773af802ae78b58a39176963303513"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/plate-remainder.png",
+      "bytes": 615211,
+      "sha256": "101b7a0889658ed73663cd1727f9511d2f20d1080b0180076582c6bcae57919a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/tail-base.png",
+      "bytes": 2331,
+      "sha256": "6b2231da6b984e179f4e732b8173d1fabf2b2a69391aa675523df7896e34f22d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/tail-distal.png",
+      "bytes": 1679,
+      "sha256": "cb37d34110e1ddc91b2214b0bb8f85c3293766fe9ae969ef99384909f8b90b50"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/tail-middle.png",
+      "bytes": 2655,
+      "sha256": "9b2c95cfc51dc33a384eae0e4c12bfb47824056b98466f946cc6bf4681b7db27"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/parts/tail-tip.png",
+      "bytes": 990,
+      "sha256": "17ae64fb26129000252012b08b1fe9aa07a69dcd166d8939846c87c79b362583"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/parts/receipt.json",
+      "bytes": 6573,
+      "sha256": "48308c3069432d5b1abc5a602d2e8a8573adb36dee8c3a870c02fba15921bb63"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/pre-split-binding.json",
+      "bytes": 1157748,
+      "sha256": "37b0bb80908bab68e769f7ca433c4baef18408a02bd7cb46066a893182bf87f3"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/receipt.json",
+      "bytes": 2890,
+      "sha256": "4d168e99fd17b2c62b5b57891b00f5d519a4ea9e557b1832b28396636f7e698a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/fit01/record.json",
+      "bytes": 7835,
+      "sha256": "c109a2873a33468751064188fef54029a3c4335e1be1ca0a1ca7e4a277184bc1"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/intake-execution.json",
+      "bytes": 250,
+      "sha256": "96f31dfb2e752d48b139065d4293c66b7e1412cd17b92b343d30dca129285ac5"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/intake.log",
+      "bytes": 315,
+      "sha256": "7182e192493c815463af99cacc8baaf987b687be94f89b296be3b78924469617"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/master.png",
+      "bytes": 1552562,
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/presence.json",
+      "bytes": 112,
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/01-far-leg-fringe/subject-source.json",
+      "bytes": 2190,
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/authoring.json",
+      "bytes": 16898,
+      "sha256": "c0c96e04de651327b755db970698a7b654fca09d57c3328a525784c9cac5e15e"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/binding.json",
+      "bytes": 1611859,
+      "sha256": "87866ac33885922e92b496bdb6ea399c245ad70421aacababea6f8df87b0d8cc"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/declaration.json",
+      "bytes": 2726,
+      "sha256": "b72fec0db9d9f12ea94426d87c3eb395b3436ab26f4be834f15b2d56867ec3fa"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/intake-provenance.json",
+      "bytes": 3418,
+      "sha256": "c58878b547386b8a0d3528b68502bb84e4c31b4ae2605359cfc1596f07736d49"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/label-authoring-receipt.json",
+      "bytes": 3760,
+      "sha256": "51d4b3bf33f6da97e6002ee3f893cfd6741e7275aa9297bdda6a6f3c9798e277"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/labels.png",
+      "bytes": 42438,
+      "sha256": "3039fd72e4e9f551741e3d0a2b07c0be3ae56ac261f1e8517eb325746cfedec7"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/atlas/c198-tortoise-both-far-leg-fringes.json",
+      "bytes": 9916,
+      "sha256": "170b7034b6896a93a54b40546b39e7a98889d08d587c07d6c69598cc939e0fb1"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/atlas/c198-tortoise-both-far-leg-fringes.png",
+      "bytes": 873212,
+      "sha256": "4d301aa3bf5d4a3f4274f5a0b37e10e46622d648782bfeba60ffc6e38eae6c34"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/atlas/receipt.json",
+      "bytes": 3923,
+      "sha256": "4734e695eba5fc4d3093b511bd19af2b7e1ae6b1ac6b17ff4ef873fa2573a0cb"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/binding.json",
+      "bytes": 8154,
+      "sha256": "583ac892f3aac6eb9fee0cd5e2bb6ef3c01db39fbe8a9362e15535ef49f63e69"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/keyed.png",
+      "bytes": 1924929,
+      "sha256": "ab4258dc5c41a09fdf238334b29554f839d436f744e9b4240cfbfadf894322f7"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/manifest.json",
+      "bytes": 4198,
+      "sha256": "808eedfd8b6079b62dfd36707754672a84c7697e5f80ae5c1f2d53cac719075f"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/ownership.png",
+      "bytes": 19882,
+      "sha256": "291b6ec94536504ed87affc64880855500a85996f0786287841a855bbde8624b"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/beak.png",
+      "bytes": 8873,
+      "sha256": "905c176df7d0243dc6f545665d1e5fe6d431dc2bb07b22a382dddfddb52f55e9"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-front-ankle.png",
+      "bytes": 5289,
+      "sha256": "a7a378229e78a3984b6f0fa9ca92970a57f07b074633542fab3f4cfb9e038bd6"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-front-emergence.png",
+      "bytes": 8402,
+      "sha256": "7b5250c197973979ad167acde2a0e6944ebaf29459bb5354c4bddacb2a6ee76f"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-front-paw.png",
+      "bytes": 16962,
+      "sha256": "df7f3eea5d995ad197018d878a5544352cb39ad9aa854d08056c67725901d531"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-front-shin.png",
+      "bytes": 20829,
+      "sha256": "42c7e6d6c705b4229ace832fb3fcaf050209e9a809d0dc0a72b405b70ac42f61"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-hind-ankle.png",
+      "bytes": 4840,
+      "sha256": "392f6b9e9a90efd3e272871a61e7a930fb8756b883eeb3be0e9c3f107ccbac4d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-hind-emergence.png",
+      "bytes": 4190,
+      "sha256": "0a7ac738fcd5336439ec49d7632f38c7373bfab492acdcc23b94a61e45cebd5b"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-hind-paw.png",
+      "bytes": 14179,
+      "sha256": "280b8a3d16db5fb4051be3c737a49dc57bea1f7fa32030e0d537ab4ae146cb0a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/far-hind-shin.png",
+      "bytes": 12159,
+      "sha256": "1d173d5a5d618ff92afc118438dc5cba17e57b9f1aea0ab63f273133aa3bbb70"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/head.png",
+      "bytes": 34092,
+      "sha256": "fff0fbdd8a5ea789b831857b8fcdb03d10eb3ff46d004db7a91b8c849d44ebaf"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-front-ankle.png",
+      "bytes": 14164,
+      "sha256": "987dbbf55e4523e870fbf95c66956eef5f3148ad9ba9661f5fe2ea5e91ef2309"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-front-emergence.png",
+      "bytes": 31948,
+      "sha256": "f6006ec0eef2e678a1f33d318a05cbac29c62599ee660e6532bd3896287ebb56"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-front-paw.png",
+      "bytes": 22366,
+      "sha256": "01d801fefd796a003789ae7bb0e2bb63b67f33000bffd4a66a0a1edc802399c5"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-front-shin.png",
+      "bytes": 37018,
+      "sha256": "76bc1c7de6f2ba82504513b14e32e576ee2e2f498053efa8b1752012ddfad723"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-hind-ankle.png",
+      "bytes": 13005,
+      "sha256": "9d759267c7d44b081b9c557fe86352e5823319c863682dad5b767155ff9961fe"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-hind-emergence.png",
+      "bytes": 35864,
+      "sha256": "dc4e07b90dbd6b9fba8636e96e853a21d936d7ec15a79a56f7bfc0c97f86710b"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-hind-paw.png",
+      "bytes": 20637,
+      "sha256": "cee4a45b5e0582668abd799204a2f4678ff246a67c90c1212440513c8262168a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/near-hind-shin.png",
+      "bytes": 22129,
+      "sha256": "91a41c8c4496e7d7457d31d6ef20411fbb1252c0b3a69f0d0055c5c4806f6b73"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/neck.png",
+      "bytes": 55523,
+      "sha256": "62a68d0b2f524fedf4bece5675d40d15e3773af802ae78b58a39176963303513"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/plate-remainder.png",
+      "bytes": 615055,
+      "sha256": "62e4004c81e5aecbe4b289c11520b7735f138ce66fc2d7109eca823f7a5fe7ed"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/tail-base.png",
+      "bytes": 2331,
+      "sha256": "6b2231da6b984e179f4e732b8173d1fabf2b2a69391aa675523df7896e34f22d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/tail-distal.png",
+      "bytes": 1679,
+      "sha256": "cb37d34110e1ddc91b2214b0bb8f85c3293766fe9ae969ef99384909f8b90b50"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/tail-middle.png",
+      "bytes": 2655,
+      "sha256": "9b2c95cfc51dc33a384eae0e4c12bfb47824056b98466f946cc6bf4681b7db27"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/parts/tail-tip.png",
+      "bytes": 990,
+      "sha256": "17ae64fb26129000252012b08b1fe9aa07a69dcd166d8939846c87c79b362583"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/receipt.json",
+      "bytes": 6573,
+      "sha256": "bbc0ea3951c62cc3ae7a2e06d62668a00d241d3d7b76b842ba16560ec7013a37"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/pre-split-binding.json",
+      "bytes": 1152879,
+      "sha256": "be3e214c123d31d79fbf2a2046a95d710d08c27a4630a2b168551c6472f11306"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/receipt.json",
+      "bytes": 2896,
+      "sha256": "89fa3f5954e10edfc02967ef7b2b97fc5c622f860ecc80e8f51b03d050c206c7"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/record.json",
+      "bytes": 7847,
+      "sha256": "18cd7b0f7a6c16193b626444910b4b83f06c20c208ebce692686aef9ac53f798"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/intake.log",
+      "bytes": 321,
+      "sha256": "5f4b2d90632298a76a07980bd75110d7fb7df7adaf31a977ea2d44427f669093"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/master.png",
+      "bytes": 1552562,
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/presence.json",
+      "bytes": 112,
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/static-execution.json",
+      "bytes": 269,
+      "sha256": "0d903a816bf4a00f04e7e09a38a61f99d41a9c7972e4da602da66cd5da44515d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/static.json",
+      "bytes": 10430,
+      "sha256": "305309735d4eb89781a05b4a2b8bb2043f80ae193700e9a28216727fa60259a5"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "5bd962b0b783e4371f32e621c19cf079641ded07db8055506d25bc9eebf2d730"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/static.log",
+      "bytes": 2890,
+      "sha256": "8209d290e04f7a8d20866980e22e08f0dd1775840e53ed404167de5874e14f50"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/subject-source.json",
+      "bytes": 2190,
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/bundle-comment-redaction.json",
+      "bytes": 662,
+      "sha256": "415ea3497d8851e33a75ac38cf4ed11369ab75366f144121ac19e26f0675b2f3"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/bundle.mjs",
+      "bytes": 1213,
+      "sha256": "c3a4b39722e3336d5ba86e3afa33e1ba01ae933cea7535ad66c86415e6aac4d4"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/diagnose-02.mjs",
+      "bytes": 2913,
+      "sha256": "59632008babe8cfc57931293bf92e952d119a95b7efc123cd071e69dc363ec91"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/diagnose.mjs",
+      "bytes": 2895,
+      "sha256": "3613fcacd319eabdd4527e9b6640bf60bcb9a1649ab4965b61bbfa212588db5d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/freeze.mjs",
+      "bytes": 2281,
+      "sha256": "93813fe1f5838b94093bd770e6e4226625c14f7b57abab6fe716c2541e2dca3d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/README.md",
+      "bytes": 4447,
+      "sha256": "8978a45fbf79a7946306c979cb70592ca25e8e54badb01293d075e070a9f14f0"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay-01/fold-diagnosis.json",
+      "bytes": 225340,
+      "sha256": "3e344cdede33afbc97392aba7722d083a000e609b250f64a5170be9dfcee42b3"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay-01/review.json",
+      "bytes": 35568,
+      "sha256": "7885bf262a364bd80690093f86e2e2314e9c96172207a853dcfc882286da076d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay-02/fold-diagnosis.json",
+      "bytes": 3582,
+      "sha256": "9741d724af927f8ed37adaf4bafd633dc125e7208053647c12ff3d8501654094"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay-02/review.json",
+      "bytes": 35288,
+      "sha256": "28ba247342e242f8c82fcc09111dd8e5d8556aa1eaf307bc6ea2663b0dcbfd56"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay-03/review.json",
+      "bytes": 35250,
+      "sha256": "14f4b2a7d020d8fe253446b46e9eaa10579eca1f345cbb8da8da763834724b91"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay.bundle.mjs",
+      "bytes": 1348651,
+      "sha256": "9263e3b141587a3a02764fc318d20fd64adc0c71225f1f29a31c8e0f51173488"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay.mjs",
+      "bytes": 3784,
+      "sha256": "12a6f1b2923cc9b737d07aa2877a32903c9956d934ce12652209f2d145811e67"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/REVIEW_NOTES.md",
+      "bytes": 2960,
+      "sha256": "7f0ac0fc7a6e1c59d6c80d161c239a0a80b4cf631241bcbf02218ab044268643"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-bundle-receipt.json",
+      "bytes": 178500,
+      "sha256": "6b6d902379f667d02953c79c05b42f59096757e266a342df464cedeb6a815c6d"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-0-left.png",
+      "bytes": 844887,
+      "sha256": "8e6827fe56c51300603b851a05c0961620ebfa8925c21b48e3fa1ba1aa914cf0"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-0-right.png",
+      "bytes": 847238,
+      "sha256": "a100fd27d82d1d843aab639cd522221168cf5c95992e63694c233faff58d14e5"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-1-left.png",
+      "bytes": 844832,
+      "sha256": "fee391ac6805bbf0266d245ee67311ea9581338cddeebf11cc2c8727685390b1"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-1-right.png",
+      "bytes": 847222,
+      "sha256": "b93a2388156834db6d5598074e6c76743c0f12b9d1e44cff7f8dd4a1556633d6"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-2-left.png",
+      "bytes": 844891,
+      "sha256": "f9d1478e726919c5e3a0f6fc059cd05a3c459bd465e5945deaee402445c30d2a"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-2-right.png",
+      "bytes": 847174,
+      "sha256": "3c1e2e337df4ef06bbab5f58162f37056b68a651185e01ae4560aa5001042cf3"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-3-left.png",
+      "bytes": 854195,
+      "sha256": "c4deff825f8b5ec6d34ed2b5fe0e79cbe90bd411441c4821392fbbc6b38a7b10"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-3-right.png",
+      "bytes": 857206,
+      "sha256": "c8c6d02e45328590de40a35339a76cb9d427487d7195e7a1577ec88b1de4a4e8"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-4-left.png",
+      "bytes": 844941,
+      "sha256": "b934c9df2cb31a518e9db414923d36354e96ab02084c235a5a73e889122616cd"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/candidate-context-4-right.png",
+      "bytes": 847523,
+      "sha256": "7043688d9db3e096cfd4dbf780fc7222b29ecc830498772c57bae161483507a0"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01/report.json",
+      "bytes": 40816,
+      "sha256": "5d5702de86749b514c9b2dd2042a6731a606e06155c42a2fb0a85b13b31f5a6b"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts-01.log",
+      "bytes": 116,
+      "sha256": "1bb3f04249475219157a6394748b40af3310b3fadaa19c40c3f2f73fcbe871d4"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/review-contexts.mjs",
+      "bytes": 5956,
+      "sha256": "24964861d3b19ce956e8f71c50545e517a57e52dda3cfdb0248006714225579e"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/source-controls-02.log",
+      "bytes": 153,
+      "sha256": "f0d82a64c1c2382e7f1af18168181d0819f3551e30c29f0173d0373577ac87e0"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/source-controls-failed-01.json",
+      "bytes": 846,
+      "sha256": "15853cde8ad8a19886000f59d57c47ca527a6f4c1dce497beeb7f9ba10a90572"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/source-controls-failed-01.mjs",
+      "bytes": 5793,
+      "sha256": "50768e1983bd43ae3eb205891ea2dd521ea2c911f8c0eb15a0fe81972c80b798"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/source-controls.json",
+      "bytes": 4464,
+      "sha256": "98e027c50a7e6d87ab293625a771d9a6fa775b8d7ffb011224e47af78f046c30"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/source-controls.mjs",
+      "bytes": 5853,
+      "sha256": "2d89812be5f8130164c7abc8058d0c02542fa6d99d82a7f080c8a5ee0610840e"
+    }
+  ],
+  "fileCount": 129,
+  "totalBytes": 26975114
+}
