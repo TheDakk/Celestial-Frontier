@@ -1,0 +1,47 @@
+{
+  "schema": "cf.c132-disk-directory-inventory/v1",
+  "date": "2026-10-02",
+  "scope": "Known Celestial Frontier project folders, retained source/bundle and identity backups; read-only directory measurement",
+  "method": "du -sk, converted from allocated 1024-byte blocks to decimal GB and rounded to three decimals",
+  "directories": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac",
+      "reportedAllocatedGB": 47.885
+    },
+    {
+      "path": "~/Projects/Celestial-Frontier",
+      "reportedAllocatedGB": 13.619
+    },
+    {
+      "path": "~/Projects/celestial-frontier-lanes-backup-20260919.bundle",
+      "reportedAllocatedGB": 3.116
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac",
+      "reportedAllocatedGB": 46.906
+    },
+    {
+      "path": "~/Projects/celestialfrontier.github.io",
+      "reportedAllocatedGB": 0.006
+    },
+    {
+      "path": "~/Projects/Celestial-Frontier-asset-sources",
+      "reportedAllocatedGB": 0.311
+    },
+    {
+      "path": "~/Backups/cf-identity-rewrite-v4",
+      "reportedAllocatedGB": 12.911
+    },
+    {
+      "path": "~/Backups/cf-push-ready",
+      "reportedAllocatedGB": 12.774
+    },
+    {
+      "path": "~/Backups/cf-identity-backup-20260929",
+      "reportedAllocatedGB": 12.176
+    }
+  ],
+  "sumReportedAllocatedGB": 149.704,
+  "limitations": "APFS clone/shared blocks can be reported for more than one directory; this is not unique physical allocation, a before/after recovery delta, or complete accounting of the Data volume. No inference about unrelated installed software. New development assets continue to grow.",
+  "mutations": "none"
+}

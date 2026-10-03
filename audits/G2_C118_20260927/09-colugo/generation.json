@@ -1,0 +1,13 @@
+{
+  "id": "09-colugo",
+  "name": "Colugo",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f171b810-0f31-4e90-9070-055e59eade7f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cd232ff2dd692404978b1811842d9916ae01b808170683e912d4dd6ed95b7618",
+  "bytes": 1302697,
+  "promptSha256": "c5e0aec505e737f9412d6dbc7f629d61ce90f0393a7703d4a8c14091bef57f32",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

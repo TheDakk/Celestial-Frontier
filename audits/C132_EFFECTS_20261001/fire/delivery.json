@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "fire",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "magma",
+  "abilityName": "Magma Strike",
+  "material": "flame tongues, embers, char, heat shimmer as shape",
+  "accent": "#ff7a4a",
+  "anchors": "fire/anchors.json",
+  "anchorsSha256": "926cb96634725cfdeb3016238d61f9f8ac3c82d48b3491c92ce5832bf3367dca",
+  "reviewSheet": "fire/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "fire/registered/launch.png",
+      "imageSha256": "7fa9ef9c4f24c0d4151d320ce3a60a4182854736e9de962ae6685ecb317df8ba",
+      "master": "fire/launch-master.png",
+      "masterSha256": "b7a9affcf0a2c8d20e5a55f3f68d8695412ded086975c83909b088e49f109baa",
+      "prompt": "fire/launch.prompt.txt",
+      "promptSha256": "ef6f173b9011822e97d50a6b8115f749beeb8046c61ebac13faecd7b28b0c9de",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 177,
+        "y": 408,
+        "width": 233,
+        "height": 230
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "fire/registered/travel.png",
+      "imageSha256": "dca5ec29ee67985a7516307fd9d3a82c9b9f37ef6c8330093cb2c4b3d626f007",
+      "master": "fire/travel-master.png",
+      "masterSha256": "754cc7573ab1d033e1e8a86f7549fcc84a086a87ea54fdd940360e9e9ce21c80",
+      "prompt": "fire/travel.prompt.txt",
+      "promptSha256": "558deb9b48d78283b4a1fea75bf9595f7154b35639d96eac966863a379911021",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 161,
+        "y": 436,
+        "width": 663,
+        "height": 244
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "fire/registered/impact.png",
+      "imageSha256": "a1554e337d526342f3848a88fdf6ac5eabab0d98ae3441f34706fc5ecb93d114",
+      "master": "fire/impact-master.png",
+      "masterSha256": "1f824dc0fa837aea37ad3e4acdb30617b39ca25ccc9b7ddf5217067488f3925d",
+      "prompt": "fire/impact.prompt.txt",
+      "promptSha256": "d8890623d3ebe7133e68ae0a7faa3c627f9abc759f4737e6f4b0d920276a61f4",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 520,
+        "y": 390,
+        "width": 347,
+        "height": 313
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/fire/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "fire",
+    "sequenceId": "fire-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 23762,
+        "edge": 8119,
+        "fringe": 14,
+        "fringeRatio": 0.0017243502894445128,
+        "accentShare": 0.01565181217825386,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 177,
+          "y": 408,
+          "width": 233,
+          "height": 230
+        }
+      },
+      "travel": {
+        "painted": 67589,
+        "edge": 16016,
+        "fringe": 28,
+        "fringeRatio": 0.0017482517482517483,
+        "accentShare": 0.004190086867654573,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 161,
+          "y": 436,
+          "width": 663,
+          "height": 244
+        }
+      },
+      "impact": {
+        "painted": 47189,
+        "edge": 13562,
+        "fringe": 10,
+        "fringeRatio": 0.000737354372511429,
+        "accentShare": 0.020985378418646936,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 520,
+          "y": 390,
+          "width": 347,
+          "height": 313
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "fire",
+    "anchors": "audits/C132_EFFECTS_20261001/fire/anchors.json",
+    "exitCode": 0,
+    "log": "tests/fire.txt"
+  },
+  "manifestRow": {
+    "theme": "fire",
+    "anchors": "../C132_EFFECTS_20261001/fire/anchors.json",
+    "contract": "v4.3"
+  }
+}

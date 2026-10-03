@@ -1,0 +1,34 @@
+[
+  {
+    "id": "02-egret",
+    "parts": 19,
+    "painted": 92028,
+    "minimumPixels": 0,
+    "empty": [
+      "root"
+    ]
+  },
+  {
+    "id": "03-stork",
+    "parts": 19,
+    "painted": 88595,
+    "minimumPixels": 0,
+    "empty": [
+      "root"
+    ]
+  },
+  {
+    "id": "18-wasp",
+    "parts": 21,
+    "painted": 87771,
+    "minimumPixels": 144,
+    "empty": []
+  },
+  {
+    "id": "24-water-strider",
+    "parts": 20,
+    "painted": 19131,
+    "minimumPixels": 61,
+    "empty": []
+  }
+]

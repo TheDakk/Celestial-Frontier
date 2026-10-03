@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Quoll",
+  "masterSha256": "4db4dd4d600286769dcc2c583af77d6ffc2b25345e7bd3087154cdf05db89127",
+  "required": [
+    "white spots scattered over the back and the tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white spots scattered over the back and the tail",
+      "status": "PRESENT",
+      "observed": "Brown coat with many clear white spots across back/flanks AND along the complete long tail, pale belly, pointed muzzle and large ears. All four legs/feet separated in stride. Ears are rather pointed and tail bushy/white-tipped, producing a cat/fox-like impression; retain morphology caveat while the required spot pattern is visibly present."
+    }
+  ]
+}

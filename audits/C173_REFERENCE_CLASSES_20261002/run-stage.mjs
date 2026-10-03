@@ -1,0 +1,7 @@
+import fs from 'node:fs';import os from 'node:os';import {spawnSync}from'node:child_process';import{createHash}from'node:crypto';
+const[stage,packet]=process.argv.slice(2);if(!['intake','static','conservation'].includes(stage)||!packet?.startsWith('audits/C173_REFERENCE_CLASSES_20261002/'))throw Error('Stage and owned packet required');
+const log=packet+'/'+stage+'-01.log',receipt=packet+'/'+stage+'-execution-01.json';if(fs.existsSync(log)||fs.existsSync(receipt))throw Error('New execution only');
+const args=stage==='intake'?['audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs',packet,packet+'/fit01']:stage==='static'?['audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs',packet+'/fit01',packet+'/static-01.json']:['audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs',packet,packet+'/fit01','01'];
+const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex'),before=hash(args[0]),result=spawnSync(process.execPath,args,{encoding:'utf8',timeout:900000,maxBuffer:32*1024*1024});
+const text=(String(result.stdout??'')+String(result.stderr??'')+String(result.error??'')).replaceAll(os.homedir(),'~');fs.writeFileSync(log,text,{flag:'wx'});
+const report={schema:'cf.c173-stage-execution/v1',stage,command:['node',...args],helperSha256:before,helperUnchanged:before===hash(args[0]),exitCode:result.status,signal:result.signal,log,logSha256:hash(log),nativeRuns:0};fs.writeFileSync(receipt,JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(text);console.log(JSON.stringify(report));process.exitCode=result.status??1;

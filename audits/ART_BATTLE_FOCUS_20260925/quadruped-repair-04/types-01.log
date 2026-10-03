@@ -1,0 +1,2 @@
+apps/game/src/motion/stance-envelope.ts(70,18): error TS2322: Type 'ContactStanceEnvelope | StanceEnvelope' is not assignable to type 'StanceEnvelope'.
+  Property 'angleReserve' is missing in type 'ContactStanceEnvelope' but required in type 'StanceEnvelope'.

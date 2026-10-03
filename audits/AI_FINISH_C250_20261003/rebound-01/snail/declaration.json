@@ -1,0 +1,56 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "df7194ebb22419ed9b5bcc28481f69392f2d6ca94354b865985b1dbfd6f37ef3",
+  "cutoutSha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+  "parts": [
+    {
+      "id": "shell",
+      "joint": "shell",
+      "layer": "near"
+    },
+    {
+      "id": "eyefar",
+      "joint": "eyeFar",
+      "layer": "near"
+    },
+    {
+      "id": "eyenear",
+      "joint": "eyeNear",
+      "layer": "near"
+    },
+    {
+      "id": "mouth",
+      "joint": "mouth",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "foot0",
+      "joint": "foot0",
+      "layer": "near"
+    },
+    {
+      "id": "foot1",
+      "joint": "foot1",
+      "layer": "near"
+    },
+    {
+      "id": "foot2",
+      "joint": "foot2",
+      "layer": "near"
+    },
+    {
+      "id": "foot3",
+      "joint": "foot3",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "6055158705b68c7038d095aeb5ca62647786340b60508b983f34e15f1b6a0dc3",
+  "keyedRgbaSha256": "b3ccbcd7c7a23d9d53b6f388db46331c9c38696a2620ef7758a75e577a5fadf9",
+  "declarationHash": "57ed0eb6e1f3ea2a8a43be7a156c08be6e6b43fe4d201cef823062a70fe28e9f"
+}

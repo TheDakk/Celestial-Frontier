@@ -1,0 +1,67 @@
+{
+  "name": "Pangolin",
+  "family": "quadruped",
+  "species": {
+    "name": "Pangolin",
+    "aspect": 1.9,
+    "headFrac": 0.22,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "overlapping keratin scales like a pinecone",
+      "thick tapering tail as long as the body",
+      "tiny smooth conical head with no visible teeth"
+    ],
+    "note": "the head and belly are bare skin; only the back, flanks and tail are scaled"
+  },
+  "genome": {
+    "seed": 3997137733,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 3,
+    "body": 3,
+    "loco": 10,
+    "trait": 18,
+    "size": 2,
+    "diet": 3,
+    "head": 2,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 10,
+    "detail": 0,
+    "accent": 3,
+    "temper": 2,
+    "sense": 9,
+    "repro": 1,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pangolin"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pangolin\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3997137733\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 22,
+  "profile": {
+    "id": "toothless-clawed-mammal",
+    "names": [
+      "Giant Anteater",
+      "Pangolin",
+      "Echidna"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw"
+    ],
+    "notes": "No bite granted from the quadruped default."
+  }
+}

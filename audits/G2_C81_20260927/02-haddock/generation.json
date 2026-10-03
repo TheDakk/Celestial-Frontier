@@ -1,0 +1,13 @@
+{
+  "id": "02-haddock",
+  "name": "Haddock",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-cc6adda2-9688-475f-9536-d50acab32ffb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5b021ce12e532886dcc39d347374981e885282633eeb642f5ca3e1712550b8c7",
+  "bytes": 1187759,
+  "promptSha256": "8e3a9c1e844cbc7094ba62bcd1d49ce7cd9507c3114cac77e537d1a6c9bae351",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

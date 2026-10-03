@@ -1,0 +1,30 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Giant Squid",
+  "family": "cephalopod",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "144e24ace2353f246935afb5f776dcd2e94af2e5b9b126830908159a70877b7f",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "eight sucker-bearing arms plus two longer feeding tentacles with terminal clubs, one mantle, two eyes and species-correct fins",
+  "profileId": "cephalopod",
+  "authoringCreated": false,
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "basePromptSha256": "654820aefb64ebbda473cfd1c57ec4ec49c9daaa39ceeb3a467fd81d17addf8f",
+  "batchCompilerSha256": "217d164bd9b882cfb517865862c3d29cd67457de72b6db41000d5890d140b586",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null,
+  "priorPilotPaths": [],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

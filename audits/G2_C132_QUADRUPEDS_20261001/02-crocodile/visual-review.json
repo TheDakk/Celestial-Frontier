@@ -1,0 +1,28 @@
+{
+  "name": "Crocodile",
+  "masterSha256": "62969b41d45b809baadc954106b24c84d0bd9f8f2acb6fd5528249d72c9c17ef",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: long narrow snout with enlarged lower tooth visible, rows of scutes, continuous banded swimming tail and four visible feet. Far proximal legs remain body-occluded. Side margins visibly below 8 percent; framing hold. Actual tail is comparatively short for a crocodile, and dorsolateral rather than strict side presentation needs review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 43,
+      "y0": 505,
+      "x1": 1211,
+      "y1": 746
+    },
+    "margins": {
+      "left": 43,
+      "right": 42,
+      "top": 505,
+      "bottom": 507
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

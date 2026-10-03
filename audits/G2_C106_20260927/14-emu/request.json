@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Emu",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "1c03aae43a317a5ac3aaa2c5f01a86385d03b592f791e4779179a3d2cd3cef7c",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "flightless-bird",
+  "authoringCreated": false,
+  "sourceHead": "87557292e471579fc6c8b9e1099d36def4d2402d",
+  "basePromptSha256": "9425ca9979d0c33777ccab52977b9e5b85031f743f8bb5326d7c15ddb25e4ea1",
+  "layoutCompilerSha256": "2d8c64b03d9532e31f9b033f73f5ee7cfb77d6deef016c75e6b61c92631d214e",
+  "layoutClarification": "Species identity features FIRST: shaggy drooping hair-like double plumage; long bare blue-grey neck; no visible wings, long three-toed legs. One Earth Emu. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
+  "contextClarification": "ANATOMY/POSE CONTEXT: Canonical Emu anatomy overrides the generic bird layout: NO VISIBLE WINGS. Preserve shaggy natural plumage and hidden vestigial wings; do not invent visible folded flight wings or a projecting feather tail. This prompt is not a measured absence declaration."
+}

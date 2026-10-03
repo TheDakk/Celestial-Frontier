@@ -1,0 +1,7 @@
+{
+  "status": "STATIC_PASS_NATIVE_PENDING",
+  "toolTests": 39,
+  "runtimeTests": 7,
+  "typecheck": "PASS",
+  "rootValidate": "PASS"
+}

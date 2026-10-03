@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "scope": "standalone-runtime",
+  "fileCount": 28,
+  "totalBytes": 37451014,
+  "manifestBytes": 8802,
+  "remaining128MiBBytes": 96766714,
+  "distributionQualified": false,
+  "combinedAppAdmissionQualified": false,
+  "retainedUpdateQualified": false,
+  "deviceQualified": false
+}
+

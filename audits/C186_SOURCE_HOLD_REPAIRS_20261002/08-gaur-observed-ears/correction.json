@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "08-gaur-observed-ears",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/08-gaur/master.png",
+  "sourceSha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+  "priorAuthoring": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-leg/authoring.json",
+  "priorAuthoringSha256": "4966ef9b02540eb2ba1f97344213b930d7c5d0c72472a65308560cd05d40a6eb",
+  "changedJoints": [
+    "earNearRoot",
+    "earNearTip",
+    "earFarRoot",
+    "earFarTip"
+  ],
+  "changedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+  ],
+  "addedParts": [],
+  "findings": [
+    "Full-size source and compiled ownership show the inherited near ear mask on the crest above the real pinna. Two actual ears are visible: broad near pinna x893\u2013981/y365\u2013435, small far pinna x1137\u20131170/y377\u2013418. Each corrected root and tip is on visible ear tissue.",
+    "This successor retains the exact observed foreleg correction that resolved the previous faint refusal. No horn material is intentionally ear-owned."
+  ],
+  "originalPixelsChanged": 0,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Unedited automatic body and limb regions require full-size motion review."
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "schema": "cf.c192-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/fit01",
+  "sourceConservationSha256": "e129c0804aaa99e6d5537bcb9335b6d9c4d04810142b417c3152a2fa3031a9b5",
+  "sourceMasterSha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+  "sourceBindingSha256": "4adfa6de554d42c4a6b14a1a5dfe7f13cb829e5fc3b01734de5e3867abe7c61b",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 11972,
+  "remainderPixels": 45854,
+  "islands": [
+    {
+      "pixels": 184,
+      "to": "ear-far-root",
+      "border": {
+        "18": 8,
+        "20": 16
+      }
+    },
+    {
+      "pixels": 22,
+      "to": "ear-far-tip",
+      "border": {
+        "19": 21,
+        "20": 21
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 14,
+      "to": "hind-near-root",
+      "border": {
+        "4": 12,
+        "27": 9,
+        "29": 7
+      }
+    },
+    {
+      "pixels": 2072,
+      "to": "tail1",
+      "border": {
+        "26": 177,
+        "27": 14
+      }
+    },
+    {
+      "pixels": 50,
+      "to": "hind-near-root",
+      "border": {
+        "4": 31,
+        "26": 9
+      }
+    },
+    {
+      "pixels": 1125,
+      "to": "fore-far-root",
+      "border": {
+        "16": 79,
+        "23": 28,
+        "28": 34
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "tail1",
+      "border": {
+        "26": 1
+      }
+    },
+    {
+      "pixels": 3634,
+      "to": "hind-near-knee",
+      "border": {
+        "3": 127,
+        "4": 120,
+        "8": 96
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 41,
+      "to": "tail1",
+      "border": {
+        "26": 3
+      }
+    },
+    {
+      "pixels": 4,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 592,
+      "to": "tail2",
+      "border": {
+        "25": 48,
+        "26": 23
+      }
+    },
+    {
+      "pixels": 21,
+      "to": "tail1",
+      "border": {
+        "26": 4
+      }
+    },
+    {
+      "pixels": 3,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 5,
+      "to": "tail1",
+      "border": {
+        "26": 7
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "26": 2
+      }
+    },
+    {
+      "pixels": 44,
+      "to": "tail1",
+      "border": {
+        "26": 8
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-root",
+      "border": {
+        "8": 2
+      }
+    },
+    {
+      "pixels": 706,
+      "to": "hind-far-root",
+      "border": {
+        "7": 37,
+        "8": 102
+      }
+    },
+    {
+      "pixels": 22,
+      "to": "tail3",
+      "border": {
+        "24": 3
+      }
+    },
+    {
+      "pixels": 38,
+      "to": "tail1",
+      "border": {
+        "26": 36
+      }
+    },
+    {
+      "pixels": 33,
+      "to": "tail3",
+      "border": {
+        "24": 2
+      }
+    },
+    {
+      "pixels": 785,
+      "to": "tail3",
+      "border": {
+        "24": 61
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-knee",
+      "border": {
+        "15": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "fore-far-knee",
+      "border": {
+        "15": 4
+      }
+    },
+    {
+      "pixels": 179,
+      "to": "hind-near-knee",
+      "border": {
+        "3": 55
+      }
+    },
+    {
+      "pixels": 3,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-knee",
+      "border": {
+        "15": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "24": 2,
+        "25": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-knee",
+      "border": {
+        "15": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 1492,
+      "to": "hind-far-knee",
+      "border": {
+        "6": 14,
+        "7": 211
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "24": 2,
+        "25": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "24": 2,
+        "25": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "24": 2,
+        "25": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-knee",
+      "border": {
+        "3": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "tail2",
+      "border": {
+        "25": 3
+      }
+    },
+    {
+      "pixels": 105,
+      "to": "fore-far-knee",
+      "border": {
+        "14": 13,
+        "15": 26
+      }
+    },
+    {
+      "pixels": 31,
+      "to": "tail3",
+      "border": {
+        "24": 8
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail3",
+      "border": {
+        "24": 1,
+        "25": 1
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "tail3",
+      "border": {
+        "24": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-ankle",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 27,
+      "to": "fore-near-ankle",
+      "border": {
+        "9": 2,
+        "10": 19
+      }
+    },
+    {
+      "pixels": 82,
+      "to": "hind-near-ankle",
+      "border": {
+        "1": 2,
+        "2": 33
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-ankle",
+      "border": {
+        "6": 2
+      }
+    },
+    {
+      "pixels": 111,
+      "to": "hind-far-ankle",
+      "border": {
+        "5": 13,
+        "6": 40
+      }
+    },
+    {
+      "pixels": 299,
+      "to": "fore-far-ankle",
+      "border": {
+        "13": 52,
+        "14": 56
+      }
+    },
+    {
+      "pixels": 209,
+      "to": "fore-near-paw",
+      "border": {
+        "9": 50
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-paw",
+      "border": {
+        "5": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-paw",
+      "border": {
+        "13": 2
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-03-horse-front-chain",
+    "parts": 31,
+    "atlasSize": {
+      "width": 1210,
+      "height": 951
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 6,
+        "distancePx": 7.467261881037795,
+        "supports": [
+          277,
+          278
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 52,
+        "distancePx": 7.2111025509278734,
+        "supports": [
+          645
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 21,
+        "distancePx": 6.092618484691102,
+        "supports": [
+          48
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 34,
+        "distancePx": 6.940461079784299,
+        "supports": [
+          532
+        ]
+      }
+    ],
+    "sourceBindingHash": "f9f67c8f70f086e5ca05f76e1aac905ba3664f61549e67122e6c308bfe82b5a9",
+    "sourceVertices": 1382,
+    "vertices": 1605,
+    "sharedSupports": 490,
+    "pins": 91,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 34,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

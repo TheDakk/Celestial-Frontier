@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "Earth layered scene focused verification; historical full-profile and navigation failures remain open",
+  "steps": [
+    {
+      "name": "route-controls",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecontrol"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 60.02
+    },
+    {
+      "name": "route-audit",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.688
+    },
+    {
+      "name": "spec-check",
+      "cmd": "node",
+      "args": [
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.279
+    },
+    {
+      "name": "root-validation",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 11.967
+    }
+  ],
+  "sourceFreeze": 786
+}

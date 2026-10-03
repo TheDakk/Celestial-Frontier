@@ -1,0 +1,19 @@
+{
+  "theme": "void",
+  "left": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01",
+  "right": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03",
+  "effectAnchors": "audits/C132_EFFECTS_20261001/void/final/anchors.json",
+  "effectAnchorsSha256": "cb8e04be607a3b416b1a21489482ab29c474f43cec75565844cca8617ff62e24",
+  "scriptSha256": "ada6b296890723811567c61280977c3e5db57b288527a42aed2d5da24594a5b3",
+  "recordSha256": [
+    {
+      "fit": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03",
+      "sha256": "0e103601830999fe1c7d3857b7c0a1d9e0fc3c0261df9e060e2fa70bf75078c0"
+    }
+  ],
+  "nativeRun": false
+}

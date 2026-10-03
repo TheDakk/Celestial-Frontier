@@ -1,0 +1,456 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [
+  {
+   "chain": "legFrontFar",
+   "refined": false,
+   "snap": {
+    "terminal": null,
+    "end": 0.0031
+   }
+  },
+  {
+   "chain": "legFrontNear",
+   "refined": false,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legMidFar",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legMidNear",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legHindFar",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legHindNear",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0014
+   }
+  }
+ ],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [
+  {
+   "id": "front-far-lower",
+   "repairs": 1
+  },
+  {
+   "id": "antenna-near",
+   "repairs": 1
+  },
+  {
+   "id": "elytron-near",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [],
+  "assign": [
+   {
+    "owners": [
+     "elytron-far"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.006,
+    "target": -1,
+    "overlap": 0
+   },
+   {
+    "owners": [
+     "elytron-near",
+     "membrane-far"
+    ],
+    "names": [
+     "other",
+     "wing"
+    ],
+    "refFrac": 0.0634,
+    "target": 1,
+    "overlap": 0
+   },
+   {
+    "owners": [
+     "thorax",
+     "head"
+    ],
+    "names": [
+     "other",
+     "head"
+    ],
+    "refFrac": 0.0769,
+    "target": 0,
+    "overlap": 0.417
+   },
+   {
+    "owners": [
+     "membrane-near"
+    ],
+    "names": [
+     "wing"
+    ],
+    "refFrac": 0.0312,
+    "target": 1,
+    "overlap": 0.095
+   },
+   {
+    "owners": [
+     "front-far-upper",
+     "front-far-lower"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0211,
+    "target": 2,
+    "overlap": 0.584
+   },
+   {
+    "owners": [
+     "front-near-lower"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.044,
+    "target": 2,
+    "overlap": 0.528
+   },
+   {
+    "owners": [
+     "mid-far-lower"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0165,
+    "target": 4,
+    "overlap": 0.389
+   },
+   {
+    "owners": [
+     "mid-near-lower"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0316,
+    "target": 6,
+    "overlap": 0.412
+   },
+   {
+    "owners": [
+     "hind-near-lower",
+     "hind-far-lower"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0499,
+    "target": 3,
+    "overlap": 0.225
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0646,
+     "class": "limb-down",
+     "attach": {
+      "x": 337.5,
+      "y": 185.1,
+      "relX": 0.82,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0112,
+     "class": "rear",
+     "attach": {
+      "x": 60,
+      "y": 186.5,
+      "relX": 0.11,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1052,
+     "class": "limb-down",
+     "attach": {
+      "x": 279.8,
+      "y": 234.2,
+      "relX": 0.67,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0454,
+     "class": "other",
+     "attach": {
+      "x": 62.2,
+      "y": 269,
+      "relX": 0.11,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0262,
+     "class": "limb-down",
+     "attach": {
+      "x": 213.5,
+      "y": 239,
+      "relX": 0.5,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0213,
+     "class": "limb-down",
+     "attach": {
+      "x": 136.5,
+      "y": 240,
+      "relX": 0.3,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0385,
+     "class": "limb-down",
+     "attach": {
+      "x": 175.5,
+      "y": 240,
+      "relX": 0.4,
+      "relY": 0.64
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "limb-down": 5,
+    "rear": 1,
+    "other": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "beetle",
+   "byClass": {
+    "top": 1,
+    "rear": 3,
+    "limb-down": 6
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.025,
+  "ref": 0.0292
+ },
+ "bestReference": "beetle",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "beetle",
+   "cost": 0.02549
+  },
+  {
+   "ref": "08-ant",
+   "cost": 0.02801
+  },
+  {
+   "ref": "honeybee",
+   "cost": 0.03985
+  },
+  {
+   "ref": "09-cricket",
+   "cost": 0.04461
+  },
+  {
+   "ref": "dragonfly",
+   "cost": 0.05234
+  }
+ ],
+ "mirrorBest": 0.02977,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.02003
+ },
+ "coverage": [
+  {
+   "id": "hind-near-lower",
+   "joint": "legHindNearFoot",
+   "paint": 0.34565456545654566,
+   "area": 72861.695
+  },
+  {
+   "id": "mid-near-lower",
+   "joint": "legMidNearFoot",
+   "paint": 0.42453190676346964,
+   "area": 41884.66499999998
+  },
+  {
+   "id": "front-near-lower",
+   "joint": "legFrontNearFoot",
+   "paint": 0.5029469548133595,
+   "area": 40822.33999999999
+  },
+  {
+   "id": "hind-near-upper",
+   "joint": "legHindNearKnee",
+   "paint": 0.990578734858681,
+   "area": 11944.769999999995
+  },
+  {
+   "id": "mid-near-upper",
+   "joint": "legMidNearKnee",
+   "paint": 0.978744939271255,
+   "area": 15815.820000000003
+  },
+  {
+   "id": "front-near-upper",
+   "joint": "legFrontNearKnee",
+   "paint": 0.9838207840696951,
+   "area": 25768.349999999977
+  },
+  {
+   "id": "hind-far-lower",
+   "joint": "legHindFarFoot",
+   "paint": 0.4166666666666667,
+   "area": 16237.890000000003
+  },
+  {
+   "id": "mid-far-lower",
+   "joint": "legMidFarFoot",
+   "paint": 0.3586054233536248,
+   "area": 28901.985
+  },
+  {
+   "id": "front-far-lower",
+   "joint": "legFrontFarFoot",
+   "paint": 0.27884615384615385,
+   "area": 5018.280000000007
+  },
+  {
+   "id": "front-far-upper",
+   "joint": "legFrontFarKnee",
+   "paint": 0.6983914209115282,
+   "area": 11956.340000000026
+  },
+  {
+   "id": "mid-far-upper",
+   "joint": "legMidFarKnee",
+   "paint": 0.9613259668508287,
+   "area": 5777.574999999997
+  },
+  {
+   "id": "hind-far-upper",
+   "joint": "legHindFarKnee",
+   "paint": 0.5273833671399595,
+   "area": 7922.865000000009
+  },
+  {
+   "id": "antenna-far",
+   "joint": "antennaFar",
+   "paint": 0.40034965034965037,
+   "area": 9159.130000000017
+  },
+  {
+   "id": "antenna-near",
+   "joint": "antennaNear",
+   "paint": 0.5,
+   "area": 3856.7749999999896
+  },
+  {
+   "id": "mandible",
+   "joint": "mandible",
+   "paint": 0.6164705882352941,
+   "area": 6812.595000000001
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.9917864476386037,
+   "area": 23297.655000000006
+  },
+  {
+   "id": "elytron-near",
+   "joint": "thorax",
+   "paint": 0.9996609020006781,
+   "area": 94405.55999999997
+  },
+  {
+   "id": "elytron-far",
+   "joint": "thorax",
+   "paint": 0.8706438275251034,
+   "area": 54144.32500000002
+  },
+  {
+   "id": "membrane-near",
+   "joint": "wingNear",
+   "paint": 0.956745623069001,
+   "area": 46459.10499999999
+  },
+  {
+   "id": "membrane-far",
+   "joint": "wingFar",
+   "paint": 0.9925173703901656,
+   "area": 29980.879999999997
+  },
+  {
+   "id": "thorax",
+   "joint": "thorax",
+   "paint": 0.9933166248955723,
+   "area": 19199.354999999996
+  },
+  {
+   "id": "abdomen",
+   "joint": "abdomen",
+   "paint": 0.9776659326832338,
+   "area": 50943.305
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.0338
+}

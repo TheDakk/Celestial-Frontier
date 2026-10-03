@@ -1,0 +1,86 @@
+{
+  "id": "12-rat-snake",
+  "name": "Rat Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8185bf41524a41d8db20d0ee9d0628ef2f17ea43809784f3c474775fda018103",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14035,
+    "coreRadius": 9,
+    "bodyBox": {
+      "x0": 53,
+      "y0": 171,
+      "x1": 349,
+      "y1": 246
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1176,
+        "pixels": 1650,
+        "box": {
+          "x0": 332,
+          "y0": 143,
+          "x1": 409,
+          "y1": 186
+        },
+        "attach": {
+          "x": 345.1,
+          "y": 173.9,
+          "relX": 0.99,
+          "relY": 0.04
+        },
+        "dir": {
+          "x": 0.85,
+          "y": -0.53
+        },
+        "class": "top",
+        "length": 71
+      },
+      {
+        "k": 1,
+        "frac": 0.1414,
+        "pixels": 1985,
+        "box": {
+          "x0": 12,
+          "y0": 179,
+          "x1": 132,
+          "y1": 298
+        },
+        "attach": {
+          "x": 53.3,
+          "y": 190.7,
+          "relX": 0,
+          "relY": 0.26
+        },
+        "dir": {
+          "x": -0.15,
+          "y": 0.99
+        },
+        "class": "other",
+        "length": 133.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "other": 1
+    },
+    "ground": [],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

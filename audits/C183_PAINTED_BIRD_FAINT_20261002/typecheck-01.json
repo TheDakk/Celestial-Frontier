@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c183-painted-bird-typecheck/v1",
+  "command": [
+    "node",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit",
+    "-p",
+    "apps/game/tsconfig.json"
+  ],
+  "workingDirectory": "port/v2",
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_PAINTED_BIRD_FAINT_20261002/typecheck-01.log",
+  "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "testSource": {
+    "path": "port/v2/apps/game/src/motion/painted-bird-author.test.ts",
+    "sha256": "9b3186cf4b254a0e24d0095b235ef0ee3266a9270494f6a82da8afa39a5fc821",
+    "unchanged": true
+  },
+  "nativeRuns": 0
+}

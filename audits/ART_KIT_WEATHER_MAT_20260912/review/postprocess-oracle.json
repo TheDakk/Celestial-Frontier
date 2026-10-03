@@ -1,0 +1,32 @@
+{
+  "schema": "cf.weather-postprocess-oracle.v1",
+  "status": "PASS",
+  "head": "9f51f2c9f32bc68b9228e543f6cfe6a5b6537121",
+  "sourceFinisherPixelSha256": "2dd0963b4ff14fa804dcfbbce7eedf302852ca4d8d4f3c8fd674b2ad62cdd58d",
+  "finalPixelSha256": "cba1f5228daf1a16c0a15e2a22b98209709464fd629c5e4a13f1d7ff17c9601c",
+  "postFinisherExactMatch": true,
+  "noWeatherNegativeRejected": true,
+  "preFinisherWeatherNegativeRejected": true,
+  "originalAndMasksUnchanged": true,
+  "alphaChanged": 0,
+  "changedPixels": 64230,
+  "receipt": {
+    "schema": "cf.kit-compositor-weather.v1",
+    "seed": 133,
+    "card": {
+      "weather": "rain",
+      "waterState": "liquid",
+      "timeOfDay": "day",
+      "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+      "lightFacing": "upward diffuse sky, no invented sun direction"
+    },
+    "kind": "rain",
+    "wetPixels": 52072,
+    "droplets": 357,
+    "precipitationStrokes": 1062,
+    "wholeFrameDensity": 0.0018,
+    "geometryChanged": false,
+    "stage": "after-finisher"
+  },
+  "limitation": "Pixel order and unchanged masks do not prove post-finisher anatomy or semantic species identity."
+}

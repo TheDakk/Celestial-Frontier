@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-02T15:01:49.202415+00:00",
+  "path": "~/.codex/worktrees/c163-i5/celestial-frontier-openai-mac",
+  "head": "20e80c9127b18eb4149d500ca3f688ca88bff188",
+  "clean": true,
+  "headRetainedInOpenaiHistory": true,
+  "noRunningSourceProcessObserved": true,
+  "retainedEvidence": "audits/C163_I5_EPOCH_20261002/epoch",
+  "ignoredInputs": "Locked dependency clones and generated source build are reproducible; epoch outputs live in this lane and are committed.",
+  "freeBytesBeforeArchive": 134758400000,
+  "scope": "Retire completed temporary I5 checkout only; separate from historical approximately 101 GB cleanup.",
+  "checkedAfterArchiveAt": "2026-10-02T15:04:05.552594+00:00",
+  "sourceCheckoutAbsent": true,
+  "freeBytesAfterArchive": 157286400000,
+  "observedFreeByteIncrease": 22528000000,
+  "observationCaveat": "Volume free-space change includes concurrent machine activity; no per-directory physical-block attribution is claimed."
+}

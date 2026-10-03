@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "checks": 10,
+  "scope": "Parse only; modules, rig controls, preparation and native runner were not executed",
+  "rows": [
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/actual-stage-control.mjs",
+      "sha256": "f7bd291ecf71add9cf50970a07c713031ef4cfc5767acb39f348cec3be6bd9a9",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/input-contract.mjs",
+      "sha256": "71f82026bde6d9da47eebe9ccfa0e52e63a8d92a452b91882fceb0ad7834c415",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/local-beat-probe.mjs",
+      "sha256": "b515d406eb62ff4f91af09b552c95107df6c0d565072abbe4645ee8f302f122e",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-entry.mjs",
+      "sha256": "82adccd89f1e7fcf1ae0988ef512b1f61d74f4400ebcf47a0e2126fda0be77f6",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-runner.mjs",
+      "sha256": "bbc8e10cc67b180cda2cce99636b8518e07f6c6020b85dae417cd85e9eef60ab",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/prepare-v2.mjs",
+      "sha256": "5e8d326454b3258092f821c037af85a1ce4190097e3354243d11c00cc7a4d487",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/probe-controls.mjs",
+      "sha256": "aaf0e7c7cb978aa7dab75dd238d1314d88511e4795b0bbb3dbd15ebd16ca418b",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/run-sweep-v2.mjs",
+      "sha256": "f9cb3b9bae9d2aa44b95ed40ba4c40d9f6d421ff2db61c070ecf35042cc67077",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/validate-v2.mjs",
+      "sha256": "3c0fa2fbcba576cc084625e66167932d73103385066383a31cdecf217392e31f",
+      "status": "PASS"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/validate.mjs",
+      "sha256": "803c4a3a734fd7c1f5858aa14265fcae17cc77fe23eeedf2aea9beb52b6baf0b",
+      "status": "PASS"
+    }
+  ]
+}

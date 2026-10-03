@@ -1,0 +1,13 @@
+{
+  "id": "20-tripod-fish",
+  "name": "Tripod Fish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-9fbd2089-e3ed-4163-8f63-9a8422e6bb9b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6b502378a8da6ee920473a640c4c934ad89e7496ecc42d487a255d5a9cb41cb1",
+  "bytes": 1230644,
+  "promptSha256": "d8fe95ee3c1ba70805fb2b62f2c044a00713aecde68481f2db4ec719a2bbe0f8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "runtime": "0.2.0",
+  "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+  "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+  "tokenizerFiles": [
+    {
+      "path": "tokenizer/tokenizer.json",
+      "bytes": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    {
+      "path": "tokenizer/tokenizer_config.json",
+      "bytes": 5404,
+      "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0"
+    }
+  ],
+  "tokenCount": 376,
+  "maximumTokens": 512,
+  "addSpecialTokens": false,
+  "truncation": false,
+  "padding": "right",
+  "padTokenId": 151643,
+  "idsSha256": "245e4d0e888af5621b4e9cf852ba4d47e5c846d301fc51288eb47b1d515e6ef5",
+  "chatPrompt": "<|im_start|>user\nCohesive natural-history painting: shared light, soft contact shadows, depth and restrained detail.\nDaylight, rainy temperate riverbank with liquid water, rooted vegetation and damp stones.\nImage 1 defines only the Platypus anatomy. Keep its diagnostic features clear.\nOne Civet at 72% across, base 77% down, 15% wide: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail.\nOne Persimmon at 13% across, base 78% down, 21% wide: branching woody tree; broad simple oval green leaves; orange fruits with four-lobed calyx.\nOne Platypus at 43% across, base 86% down, 20% wide, facing left: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail.\nOne Frog at 25% across, base 87% down, 7% wide: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs.\nOne Devil's Club at 87% across, base 88% down, 16% wide: thick spiny canes; huge palmate lobed green leaves; upright terminal red berry cones.\nOne Cranberry at 34% across, base 90% down, 11% wide: low creeping runners; small simple oval green leaves; red berries close to the ground.\nKeep each whole subject in frame, naturally integrated. No extra animals, duplicate anatomy, text or interface.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "chatPromptSha256": "1240327359601b8ec02b80ea9b52c000c79ef872af95e34e170f85ef443a1e67",
+  "prompt": "Cohesive natural-history painting: shared light, soft contact shadows, depth and restrained detail.\nDaylight, rainy temperate riverbank with liquid water, rooted vegetation and damp stones.\nImage 1 defines only the Platypus anatomy. Keep its diagnostic features clear.\nOne Civet at 72% across, base 77% down, 15% wide: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail.\nOne Persimmon at 13% across, base 78% down, 21% wide: branching woody tree; broad simple oval green leaves; orange fruits with four-lobed calyx.\nOne Platypus at 43% across, base 86% down, 20% wide, facing left: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail.\nOne Frog at 25% across, base 87% down, 7% wide: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs.\nOne Devil's Club at 87% across, base 88% down, 16% wide: thick spiny canes; huge palmate lobed green leaves; upright terminal red berry cones.\nOne Cranberry at 34% across, base 90% down, 11% wide: low creeping runners; small simple oval green leaves; red berries close to the ground.\nKeep each whole subject in frame, naturally integrated. No extra animals, duplicate anatomy, text or interface.",
+  "snapshotSha256": "a23ef143d97bb7e72c8b5cc72b858266246fd72682dd29de00e0e3fc69848b3f",
+  "conditioningSha256": "e021017a56f7c41c35f8d38538ca2fc47477cef69d016b3f6201071215d676d9",
+  "referenceRequirement": {
+    "imageIndex": 1,
+    "purpose": "named-species-fidelity",
+    "subjectIdentityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+    "name": "Platypus",
+    "fullGenome": {
+      "seed": 4049771185,
+      "kingdom": "fauna",
+      "color": 13,
+      "form": 14,
+      "body": 12,
+      "loco": 1,
+      "trait": 15,
+      "size": 2,
+      "diet": 4,
+      "head": 0,
+      "limbs": 0,
+      "skin": 6,
+      "tail": 4,
+      "pattern": 7,
+      "eyes": 0,
+      "behavior": 3,
+      "habitat": 9,
+      "detail": 8,
+      "accent": 16,
+      "temper": 7,
+      "sense": 4,
+      "repro": 6,
+      "life": 3,
+      "metab": 0,
+      "lumin": false,
+      "gen": 0,
+      "heat": 1,
+      "_earthName": "Platypus",
+      "_cradle": 1
+    },
+    "requiredFeatures": [
+      "low sleek dark-brown furred body",
+      "broad flat rubbery duck bill",
+      "four short limbs with webbed clawed feet",
+      "broad flat blunt paddle tail"
+    ],
+    "acceptance": "reviewed-exact-identity-reference-required"
+  },
+  "qualityAccepted": false
+}

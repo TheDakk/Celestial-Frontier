@@ -1,0 +1,13 @@
+{
+  "id": "03-tuna",
+  "name": "Tuna",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b750ded9-583b-4409-8247-1ec21e2d305b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5f6815380b2578b6e3b49be2ef0756f1740e8c04997ccda0bcc5a24b0798ccd6",
+  "bytes": 1297356,
+  "promptSha256": "ae8af831aba153427f640d6f39773e6e9dad439e555040853273e58e12fb8d1d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

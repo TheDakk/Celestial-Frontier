@@ -1,0 +1,7 @@
+{
+  "schema": "cf-civet-contact-analysis-first-failure/v1",
+  "status": "FAIL",
+  "sourceSha256": "b4ca22ecdbd61bb301f37bb4c43f35831a08c69c15aa5835cc343f5e322341b3",
+  "failure": "Independent encoded PNG changed-pixel count does not equal raw GPU-array count; solid alpha count assertion passed. PNG encoding through Canvas ImageData may round premultiplied RGB. Preserve both numerical observations, without reclassifying native FAIL.",
+  "productNativeRerun": false
+}

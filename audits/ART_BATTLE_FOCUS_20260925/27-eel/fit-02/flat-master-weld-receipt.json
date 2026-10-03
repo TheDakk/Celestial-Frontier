@@ -1,0 +1,67 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "2cad44597ba2643cb5d6f7d420aea122bbb57a01bb6bde6ca89972ce976a7b38",
+  "sourceBindingSha256": "db66a276d1e0f57069c426a8f0eaec752d99cbdfc93966ac796103f1fca95a49",
+  "sourceAtlasSha256": "ec6b20bf2d42112db1fb5d1987aa43a8b3a3eeff37a8548183833b3a30264537",
+  "helperSha256": "05e2b3ee586847c79d08c0b1aa1a34ce78f453e1aa3b18209d867451bd9d3a73",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "jaw",
+      "head",
+      "seg0",
+      "seg1",
+      "seg2",
+      "seg3",
+      "seg4",
+      "seg5",
+      "seg6",
+      "seg7",
+      "seg8",
+      "seg9"
+    ],
+    "contactEndpoints": [],
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "segment-0"
+      ],
+      [
+        "jaw",
+        "segment-0"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "202cf056ecc8e96eb10c18e41becf919b458dae0a76b78955692d7b7db1418aa",
+    "sourceVertices": 513,
+    "vertices": 521,
+    "sharedSupports": 173,
+    "pins": 16,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 2,
+    "observedExcludedBoundaries": 2,
+    "weldedExcludedBoundaries": 2,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "segment-0"
+      ],
+      [
+        "jaw",
+        "segment-0"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "1f5e0c0499a7d78a4722424d3bd6beb9b433f162cca9afa2588e6c028b763f49",
+  "scope": "Only this new unadmitted Eel candidate: all observed boundaries belong to one continuous unoverlapped eel body. Retain head/jaw/neck and tiny root-patch paint continuity; no pixel, solver, contract or limits change. Original fit01 inputs retained; this receipt owns new split."
+}

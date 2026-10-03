@@ -1,0 +1,8 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/creature-rig.test.ts(61,58): error TS2540: Cannot assign to 'x' because it is a read-only property.
+apps/game/src/creature-rig.test.ts(71,59): error TS2540: Cannot assign to 'width' because it is a read-only property.
+apps/game/src/creature-rig.test.ts(71,140): error TS2540: Cannot assign to 'parts' because it is a read-only property.
+apps/game/src/creature-rig.test.ts(72,91): error TS2540: Cannot assign to 'bindingHash' because it is a read-only property.

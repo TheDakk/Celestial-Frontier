@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c132-develop-gate/v1",
+  "head": "85fb78b2b64c438bfac733a5b430e4b680dc3a97",
+  "command": [
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 127.221,
+  "optionalLocalAiRuntimeRenamedAside": true,
+  "optionalLocalAiRuntimeRestored": true,
+  "logSha256": "4d671fb85d2a4c959903fce29f4ee18e45d7cccf6d32660636a75f0770b29e6b",
+  "reasonForNewRun": "Bounded scale-owner test change with actual no-fallback assertions and negative control."
+}

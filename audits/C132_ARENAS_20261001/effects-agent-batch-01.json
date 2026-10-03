@@ -1,0 +1,450 @@
+{
+  "schema": "cf.c132-arena-effects-agent-batch/v1",
+  "date": "2026-10-02",
+  "source": "bf3c3f0453f7eab8a2424e92fcda3408de87b00d",
+  "status": "SEVEN_MECHANICAL_CANDIDATES_VISUAL_REVIEW_HELD",
+  "newTriplets": 4,
+  "selectedNewOriginals": 12,
+  "retainedNewRejectedOriginals": 2,
+  "existingTripletsRevalidated": 3,
+  "upscaled": false,
+  "originalPixelsModified": false,
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeRun": false,
+  "validation": {
+    "masterAndRuntimeCandidatePasses": 14,
+    "falseAcceptanceRegistrationRefusals": 7,
+    "sourceAndInputHashesChecked": 140,
+    "selectedNativeCanvas": [
+      1672,
+      941
+    ],
+    "frozenReferenceHashVerified": true,
+    "subjectOnlyCorrectionsVerified": 2
+  },
+  "diskFreeGiBAtCompletion": 156.02,
+  "rows": [
+    {
+      "id": "dunesea",
+      "kind": "existing-D29-revalidation",
+      "review": "audits/C132_ARENAS_20261001/dunesea/d29/delivery-review.json",
+      "reviewSha256": "bb33dda5130f845e2c25fc53a40417de0e6c8c02b87b9c5ab96ce1b8ad3e5631",
+      "manifest": "audits/C132_ARENAS_20261001/dunesea/d29/delivery.pending.json",
+      "manifestSha256": "9fc16b2d71abc35ff8ffa4645657e92460970ccfaa33983a12b79c4900083086",
+      "notes": "audits/C132_ARENAS_20261001/dunesea/visual-notes.d29.json",
+      "notesSha256": "e064e37c1cf85a220560bed8b01fc88afe91bbe800ab20c5627aeb27e0c187b7",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "qualityAccepted": false,
+      "registered": false,
+      "originals": [
+        {
+          "receipt": "audits/C132_ARENAS_20261001/dunesea/arena-far-attempt-01.generation.json",
+          "receiptSha256": "0869b01695601a4d9c53925629b464d93c20802df73d4591a6ad0677a3fd1988",
+          "master": "audits/C132_ARENAS_20261001/dunesea/arena-far-attempt-01.png",
+          "masterSha256": "015c5aa7e25227a4f7f4b82ca429bcb91cff1d86eed9a19cfeed4b2a995b51ef",
+          "width": 1672,
+          "height": 941,
+          "status": "HELD_INVENTED_SKY_OBJECTS"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/dunesea/arena-far.generation.json",
+          "receiptSha256": "c8652f2cbc885075594cc398e61bed202db9897b29e2eb8741eb413253e9d60c",
+          "master": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+          "masterSha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/dunesea/arena-mid.generation.json",
+          "receiptSha256": "ba70f91b1cc9d9cf9c437c878937a75faaef59f1ccf4ef2dfcf4fc45a57f18e2",
+          "master": "audits/C132_ARENAS_20261001/dunesea/arena-mid.png",
+          "masterSha256": "97c84060c150881327008a751881733fd4a33a6111032ff057cd5f9e993b9355",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/dunesea/arena-near.generation.json",
+          "receiptSha256": "1d98f841b5bec2fc221ab50ee539014bc27c60318cb98f96092f385bc439d01b",
+          "master": "audits/C132_ARENAS_20261001/dunesea/arena-near.png",
+          "masterSha256": "bc1b1b7fd0ef21d4c04a1e8cd379c026806f13cc966d5789b08a323b19418422",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        }
+      ],
+      "findings": [
+        "Full native-size composition and four-row plate sheet inspected. Warm desert material, continuous central fighting band and deep atmosphere are readable; no invented moons are present in the selected FAR.",
+        "The MID introduces another ridge contour across the already painted terrain, creating a conspicuous pasted strip and mauve boundary around the center and right. NEAR adds a separate horizontal texture band and small magenta foliage remnants. These remain visual holds after D29 size admission.",
+        "No new generation or rekeying in this revalidation. Historical originals, intake and previous dimension rejection stay unchanged."
+      ]
+    },
+    {
+      "id": "tundra",
+      "kind": "existing-D29-revalidation",
+      "review": "audits/C132_ARENAS_20261001/tundra/d29/delivery-review.json",
+      "reviewSha256": "809558a0b1567fa628d95cb0d09be3edc48328f4c63adb515530eace175a7ad0",
+      "manifest": "audits/C132_ARENAS_20261001/tundra/d29/delivery.pending.json",
+      "manifestSha256": "45e61756b13b32e38f30be5b2b52f61b4d71e4b463142c11ae76b4cb1f499c96",
+      "notes": "audits/C132_ARENAS_20261001/tundra/visual-notes.d29.json",
+      "notesSha256": "d4683974ac5e006d89cb0fa61c0d923c55d9f4fd292c98ad5743d4920f9b20b8",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "qualityAccepted": false,
+      "registered": false,
+      "originals": [
+        {
+          "receipt": "audits/C132_ARENAS_20261001/tundra/arena-far.generation.json",
+          "receiptSha256": "7e72264f59e01cf2db83d5e4d2778043f386644a2edec66d14f13510a61be83c",
+          "master": "audits/C132_ARENAS_20261001/tundra/arena-far.png",
+          "masterSha256": "59d0945ea50363751af1c412c9eb0cab3306cf2e5e0810b04b9066ed9c0c331f",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/tundra/arena-mid-attempt-01.generation.json",
+          "receiptSha256": "e6e50676210737c2471d34e8aca3e3fe0ba83247b1172cc8ec3edb1696818583",
+          "master": "audits/C132_ARENAS_20261001/tundra/arena-mid-attempt-01.png",
+          "masterSha256": "26469a21118ea3bb4f6784233134767c95d2de3bf8213100b98907fd06fedc3c",
+          "width": 1983,
+          "height": 793,
+          "status": "HELD_WRONG_ASPECT_AND_TEXT"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/tundra/arena-mid.generation.json",
+          "receiptSha256": "6262bd40efe720895d10b08c8600347352047a4fb779bec26417f5e226e6c959",
+          "master": "audits/C132_ARENAS_20261001/tundra/arena-mid.png",
+          "masterSha256": "0cf040b1f42a1a217e93857579279237fbfd432ad0d6f29372ac6a33c58cc4b9",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/tundra/arena-near.generation.json",
+          "receiptSha256": "1b8269d1753ec263abb1ef03bde3df3ba8325502346ee75d56d61bfac3ec7ff8",
+          "master": "audits/C132_ARENAS_20261001/tundra/arena-near.png",
+          "masterSha256": "0718b14f78fba6fa31d6b6418c7b85000b47bdf948ba8ff503b268a1b249441a",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        }
+      ],
+      "findings": [
+        "Full native-size composition and four-row plate sheet inspected. Snow, moss and distant mountain/lake palette are coherent; the center remains a broad unobstructed terrain band.",
+        "The lower NEAR terrain has a visible horizontal change in texture and scale, and fine shrubs/stone edges still need independent fringe and combatant-contrast scoring. A coherent composition is not visual acceptance.",
+        "No new generation or rekeying in this revalidation. The selected MID contains neither the previous ultra-wide framing nor pseudo-text. Historical attempts and dimension rejection stay unchanged."
+      ]
+    },
+    {
+      "id": "karst-cave",
+      "kind": "existing-D29-revalidation",
+      "review": "audits/C132_ARENAS_20261001/karst-cave/d29/delivery-review.json",
+      "reviewSha256": "c16042ce922add09192a9561e9f91ab47c4a966a9eafdac567b68c1bb9806a76",
+      "manifest": "audits/C132_ARENAS_20261001/karst-cave/d29/delivery.pending.json",
+      "manifestSha256": "99745e88939346cfb9916ff0404027a4897f37dd282d3da54dc171c249e8b634",
+      "notes": "audits/C132_ARENAS_20261001/karst-cave/visual-notes.d29.json",
+      "notesSha256": "98f70e33e7dc81b8475f063ce90e744e44d1a2b9e49707b003ebcf15ec14aebb",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "qualityAccepted": false,
+      "registered": false,
+      "originals": [
+        {
+          "receipt": "audits/C132_ARENAS_20261001/karst-cave/arena-far.generation.json",
+          "receiptSha256": "8d6a57b184592c6a981797ff19316490fd217e3d9b8042ddf2424119308ab87d",
+          "master": "audits/C132_ARENAS_20261001/karst-cave/arena-far.png",
+          "masterSha256": "bf535a0cb58e4f7bf912735c5824cd36b890dee14dadbd0b000de3197e0b2ab7",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/karst-cave/arena-mid.generation.json",
+          "receiptSha256": "11cb4bf1d2a61c0aae3728d811c2b0824cd67c8801b3752cddc52a1579244875",
+          "master": "audits/C132_ARENAS_20261001/karst-cave/arena-mid.png",
+          "masterSha256": "41157f64847f3a465b52a88a14a711288e0f9a471fa0225f908ff70f204877cc",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/karst-cave/arena-near-attempt-01.generation.json",
+          "receiptSha256": "0f172a0e2a0a092ed0f389bfc28704f7d7c42a26fa302d3230b48b8bb7772495",
+          "master": "audits/C132_ARENAS_20261001/karst-cave/arena-near-attempt-01.png",
+          "masterSha256": "6d2560b430d3d90ff8e931b5c7cceb55c0ae05c45626728e61e579959b5d06a3",
+          "width": 1983,
+          "height": 793,
+          "status": "HELD_WRONG_ASPECT"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/karst-cave/arena-near.generation.json",
+          "receiptSha256": "1e90769131db5865ea476c232b308cac141ccbf28a7b32aa93fdce8fb3f27d6b",
+          "master": "audits/C132_ARENAS_20261001/karst-cave/arena-near.png",
+          "masterSha256": "e53201657f217d38825695281ddcf1e7bff6f7e5c6c5125b646bb9b700b85ff3",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        }
+      ],
+      "findings": [
+        "Full native-size composition and four-row plate sheet inspected. Tall limestone cave depth and a broad flat rock runway read coherently; side formations frame rather than cross the central path.",
+        "Small magenta remnants remain in the right-side fern/rock boundary. The lower terrain edge changes texture across the composition, and large background stalactites need creature-silhouette contrast scoring in motion. These are visual holds.",
+        "No new generation or rekeying in this revalidation. Selected NEAR uses the native landscape canvas; the previous wrong-aspect attempt remains retained."
+      ]
+    },
+    {
+      "id": "volcisle",
+      "kind": "newly-generated",
+      "review": "audits/C132_ARENAS_20261001/volcisle/d29/delivery-review.json",
+      "reviewSha256": "a8e714bda1df1ed02250a4ac9ce3d901238f15b2e8f1ce0578202ce851c8564e",
+      "manifest": "audits/C132_ARENAS_20261001/volcisle/d29/delivery.pending.json",
+      "manifestSha256": "0b4d6f056b71312a9f65d7177c7da791eedc9c08e009cb5f2ca668523ed3e726",
+      "notes": "audits/C132_ARENAS_20261001/volcisle/visual-notes.d29.json",
+      "notesSha256": "9e21883dda8d0a1621c3b7313b621cab49408e75d87f6167281d65278b98b2c6",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "qualityAccepted": false,
+      "registered": false,
+      "originals": [
+        {
+          "receipt": "audits/C132_ARENAS_20261001/volcisle/arena-far.generation.json",
+          "receiptSha256": "8584bec68bb4c36a8b4a7d87edc67230e56ffd30223c38319c6d7e4afcabe722",
+          "master": "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+          "masterSha256": "fcb8a8f376e4c81a84f905d3a88fd9b0406efc0e132e16bcb29347777fc2950e",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/volcisle/arena-mid.generation.json",
+          "receiptSha256": "93f6ea3e14d0ec7b7b7728bb590e01c13015869b8d1402f8af6eab163f28bc93",
+          "master": "audits/C132_ARENAS_20261001/volcisle/arena-mid.png",
+          "masterSha256": "fe5ea72b1d1c0cf38e6b856d785e39837cd873230d529497e57f9957f052ee72",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/volcisle/arena-near.generation.json",
+          "receiptSha256": "c6800f80444830906af89762bf02415036f88208eaca4f19abe40ac31b310bff",
+          "master": "audits/C132_ARENAS_20261001/volcisle/arena-near.png",
+          "masterSha256": "f64064eb206af36d46a6d38fd838a8fdcf3f38ccae677f00819444b85396a554",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        }
+      ],
+      "findings": [
+        "All three original paintings, full native-size composition and four-row plate sheet inspected. Dark volcanic-sand runway and teal ocean read as a distinct habitat; native size is 1672 by 941 with no upscaling.",
+        "MID repeats distant islands and cloud shapes over FAR, producing pasted mountain silhouettes near the horizon. Visible pink/green fringe survives at outer fern tips and mountain edges despite zero unresolved-edge pixels in the intake metric.",
+        "NEAR adds another wet rocky shelf with a prominent horizontal change in texture around the lower fifth; large edge rocks rise above the requested 0.92 band, although sampled combatant stands remain clear. The result needs authoring-side layer/seam and fringe repair, not acceptance."
+      ]
+    },
+    {
+      "id": "canyon",
+      "kind": "newly-generated",
+      "review": "audits/C132_ARENAS_20261001/canyon/d29/delivery-review.json",
+      "reviewSha256": "dc420f0ba37a5debd0b979b47bc9d265ca3e116ff8e4cb3366a2c9d6030aa5c9",
+      "manifest": "audits/C132_ARENAS_20261001/canyon/d29/delivery.pending.json",
+      "manifestSha256": "2815f83c3d6c5a6a3c37032cae61b24a265235ab9091fb0e19b6667a77f0ae68",
+      "notes": "audits/C132_ARENAS_20261001/canyon/visual-notes.d29.json",
+      "notesSha256": "740d181a1f5aceeef2a59a23f57a337fbed8b284559c3912ae16998d020fb541",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "qualityAccepted": false,
+      "registered": false,
+      "originals": [
+        {
+          "receipt": "audits/C132_ARENAS_20261001/canyon/arena-far.generation.json",
+          "receiptSha256": "ced17efc2335740f112ae1fca9b44144a6082acc6486b93bfa06bcdea5cfaf3b",
+          "master": "audits/C132_ARENAS_20261001/canyon/arena-far.png",
+          "masterSha256": "681f975e530324d6a09ce7d71d420a9392e8aec335e5f40d88f5064e97f2b073",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/canyon/arena-mid.generation.json",
+          "receiptSha256": "31947c136b3d5dff0da6cebb2bc1334c4cf3430a455204033e456eb9e356962c",
+          "master": "audits/C132_ARENAS_20261001/canyon/arena-mid.png",
+          "masterSha256": "cc4bab052fba25963527b8900098e264bfd4616f697d8282b545a1b011974ec5",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/canyon/arena-near.generation.json",
+          "receiptSha256": "f6c8964428110f1787881502ed27151aabfc207ff8f991201c0655d5d9b21032",
+          "master": "audits/C132_ARENAS_20261001/canyon/arena-near.png",
+          "masterSha256": "95bc824e8b930af1845043886b14b647af7f0384db88b6dc829b5364e01bb390",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        }
+      ],
+      "findings": [
+        "All three original paintings, full native-size composition and four-row plate sheet inspected. Red sandstone, sparse cacti and a continuous flat central runway establish the intended family; native size is 1672 by 941 with no upscaling.",
+        "MID repeats distant mesa walls already present in FAR. The duplicate contour creates a conspicuous pasted or terraced band behind the stands, with an abrupt depth-scale shift across the center.",
+        "NEAR contributes a second shallow rock/soil band with a visible horizontal color/texture seam. Tiny magenta remnants remain at shrub tips. These visual holds remain even if the exact delivery contract passes."
+      ]
+    },
+    {
+      "id": "opensea",
+      "kind": "newly-generated",
+      "review": "audits/C132_ARENAS_20261001/opensea/d29/delivery-review.json",
+      "reviewSha256": "29f24348003accc692e729934ee3aa666504183379362218a673948c544c1560",
+      "manifest": "audits/C132_ARENAS_20261001/opensea/d29/delivery.pending.json",
+      "manifestSha256": "263195d596e9de3837ae6dee4920e216f76db78f4472086c726f22e7fbb36fe4",
+      "notes": "audits/C132_ARENAS_20261001/opensea/visual-notes.d29.json",
+      "notesSha256": "de6566d0ff79d8c6c07def5b8c6c9165e827d6bf834847a47f8de03810ced047",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "qualityAccepted": false,
+      "registered": false,
+      "originals": [
+        {
+          "receipt": "audits/C132_ARENAS_20261001/opensea/arena-far-attempt-1.generation.json",
+          "receiptSha256": "6accd4c80ab21eb8dfe7ce93b8fcf4cbd8cbc7e9e3922ba8c9076ccf4d38c102",
+          "master": "audits/C132_ARENAS_20261001/opensea/arena-far-attempt-1.png",
+          "masterSha256": "dde4375d68a275f53e57e301f577535e1d82a783435583a7b90856c0cc5e16d3",
+          "width": 1672,
+          "height": 941,
+          "status": "REJECTED_BAKED_FAUNA"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/opensea/arena-far.generation.json",
+          "receiptSha256": "f6261e78632cc689b2e340c2517b04245c3219b176539758ce3d53300cd2e06d",
+          "master": "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+          "masterSha256": "d012ee6d9577804c931d1cff84bd9467944d63ca76036358bca96cb1906538b6",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/opensea/arena-mid.generation.json",
+          "receiptSha256": "efa0de335a9a25a1fa4d7c3c9c898d0a8ade4b9bb81cd3c27078a96f4a697f64",
+          "master": "audits/C132_ARENAS_20261001/opensea/arena-mid.png",
+          "masterSha256": "dc13c467cdbfc86c411bba6824289fceac25fa6936ef90de58b71970c0704019",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/opensea/arena-near-attempt-1.generation.json",
+          "receiptSha256": "1e0df53294d52511859c1729b1ec973bc01e752f7d81169701f3e21d49837f8b",
+          "master": "audits/C132_ARENAS_20261001/opensea/arena-near-attempt-1.png",
+          "masterSha256": "0a22bf9b7fed5aaaf5da54e1d9e5c25205f5852a2e280c160c02b56bd3331be6",
+          "width": 1983,
+          "height": 793,
+          "status": "REJECTED_WRONG_ASPECT"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/opensea/arena-near.generation.json",
+          "receiptSha256": "21bb21855fbd85a2a34c837acd730fec37b478638de0612681da5e0e5f8e1e26",
+          "master": "audits/C132_ARENAS_20261001/opensea/arena-near.png",
+          "masterSha256": "213df9cc1127e761c08e0ef01232c8f5b8558d3fd09b6447952ad20c28ace42c",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        }
+      ],
+      "findings": [
+        "All selected original paintings, full native-size composition and four-row plate sheet inspected. The selected FAR contains empty blue underwater habitat with distant shelves; MID leaves a wide continuous silt runway, and NEAR leaves the stands clear.",
+        "The first FAR baked fish into the scene and is retained as arena-far-attempt-1 with REJECTED_BAKED_FAUNA. A SUBJECT-only correction produced the selected fish-free FAR. The first NEAR was ultra-wide and is retained as arena-near-attempt-1 with REJECTED_WRONG_ASPECT; a SUBJECT-only canvas correction produced the selected 1672 by 941 NEAR.",
+        "Small magenta/cyan remnants remain around outer kelp silhouettes, and the lower NEAR band changes texture and depth abruptly. Physical underwater battle behavior and player contrast are not established by this static habitat painting."
+      ]
+    },
+    {
+      "id": "blueice",
+      "kind": "newly-generated",
+      "review": "audits/C132_ARENAS_20261001/blueice/d29/delivery-review.json",
+      "reviewSha256": "7ac96935ca000b4a63babd3e6528e19a767a7d9df6cf7572a8659c63b34794ac",
+      "manifest": "audits/C132_ARENAS_20261001/blueice/d29/delivery.pending.json",
+      "manifestSha256": "cfc4a923320766e3b3e61fda5d0bfbaa3a25dd69022009acecbc3f16f36fc3e9",
+      "notes": "audits/C132_ARENAS_20261001/blueice/visual-notes.d29.json",
+      "notesSha256": "3732b20b5114c577a0806718688f06fbd1179842d02bd06ec2f8eadc6a2f001b",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "qualityAccepted": false,
+      "registered": false,
+      "originals": [
+        {
+          "receipt": "audits/C132_ARENAS_20261001/blueice/arena-far.generation.json",
+          "receiptSha256": "404c72b03ee4b3394d467b0c94e4aab804c803c1723a6692a8002609c753b30f",
+          "master": "audits/C132_ARENAS_20261001/blueice/arena-far.png",
+          "masterSha256": "088edd7634b8c7f7501bf50f855c95c01006365a9c421a8fceb01ec064b16283",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/blueice/arena-mid.generation.json",
+          "receiptSha256": "18b06fa05e4aba536507653c1c0a04b25d61fcc0db44721a8e476e93fd6b84de",
+          "master": "audits/C132_ARENAS_20261001/blueice/arena-mid.png",
+          "masterSha256": "7bd1962298a48162adbde94d850fa0a23ffe97205bf38ad0f6053aa29eb123b4",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        },
+        {
+          "receipt": "audits/C132_ARENAS_20261001/blueice/arena-near.generation.json",
+          "receiptSha256": "ccf9f22b1b89416ca3ea6b352b28658329ae6769df1116a9cec09ef51d66a7f5",
+          "master": "audits/C132_ARENAS_20261001/blueice/arena-near.png",
+          "masterSha256": "ae09468de474ba9f96d0d327905af57b107534fe1589c60b7fd6d588ff19f2f4",
+          "width": 1672,
+          "height": 941,
+          "status": "REVIEW_PENDING"
+        }
+      ],
+      "findings": [
+        "All three original paintings, full native-size composition and four-row plate sheet inspected. Blue glacier and snowy mountain material is coherent, with a continuous ice runway and clear stand locations. Native size is 1672 by 941 with no upscaling.",
+        "NEAR repeats large cracks and an ice shelf from a different ground viewpoint, creating a strong horizontal shelf/seam across the lower frame. The background-to-MID ice edge also changes scale abruptly.",
+        "The bright cracked ground may compete with white creatures and effects; deep foreground cracks need scoring for whether the surface still reads as continuous traversable ice. No runtime, phone or visual acceptance is claimed."
+      ]
+    }
+  ],
+  "promptCorrections": [
+    {
+      "original": "audits/C132_ARENAS_20261001/opensea/arena-far.prompt.txt",
+      "originalSha256": "5d098d53fff3d9ec84016c9f769f71e2772281c3f181ec0ece992add120f543d",
+      "correction": "audits/C132_ARENAS_20261001/opensea/arena-far-correction.prompt.txt",
+      "correctionSha256": "4590209f3a98b466e4cc86980816bd374a822a81eeb4a2ff0cf4ffc136ea8745",
+      "scope": "SUBJECT only; locked style, layout, accuracy, technical and negative content unchanged"
+    },
+    {
+      "original": "audits/C132_ARENAS_20261001/opensea/arena-near.prompt.txt",
+      "originalSha256": "f16c7bebc991e96c71ebaea95da8b2b5560269de7f47de2ec39d7c75d7cd09a6",
+      "correction": "audits/C132_ARENAS_20261001/opensea/arena-near-correction.prompt.txt",
+      "correctionSha256": "c078419ddb89a46dfa195dc5412731e7f0c5ddc37b2ddff2976852913acfed5e",
+      "scope": "SUBJECT only; locked style, layout, accuracy, technical and negative content unchanged"
+    }
+  ],
+  "remainingAssignedQueue": [
+    "karst",
+    "saltpan",
+    "fungal",
+    "geode",
+    "emberfield",
+    "stormeye",
+    "acidhaze",
+    "hotglow"
+  ]
+}

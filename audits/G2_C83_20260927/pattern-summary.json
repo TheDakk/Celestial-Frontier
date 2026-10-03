@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Grouper",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Barracuda",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tuna",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Marlin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sailfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Swordfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mahi-Mahi",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wahoo",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Macaw",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Parrot",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Toucan",
+    "status": "PASS"
+  },
+  {
+    "name": "Hornbill",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tanager",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Weaverbird",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Kookaburra",
+    "status": "PASS"
+  },
+  {
+    "name": "Cockatoo",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Fishing Cat",
+    "status": "PASS"
+  },
+  {
+    "name": "Cheetah",
+    "status": "PASS"
+  },
+  {
+    "name": "African Wild Dog",
+    "status": "PASS"
+  },
+  {
+    "name": "Spotted Hyena",
+    "status": "PASS"
+  },
+  {
+    "name": "Maned Wolf",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sand Cat",
+    "status": "PASS"
+  },
+  {
+    "name": "Prairie Dog",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Aardvark",
+    "status": "NOT_REQUIRED"
+  }
+]

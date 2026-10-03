@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c183-isolation-precheck/v1",
+  "checkedAt": "2026-10-02T22:50:15.074168+00:00",
+  "status": "PASS",
+  "competingProcesses": [],
+  "agents": "faint/typecheck terminal; source compiler terminal, remote generation only; reference static held",
+  "sibling": "C183 terminal, C213/C216 reservation posted"
+}

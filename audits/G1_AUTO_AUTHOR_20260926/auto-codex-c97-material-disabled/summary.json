@@ -1,0 +1,11 @@
+[
+ {
+  "id": "23-springtail",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile springtail; the motion kit refuses an unclassified surface"
+  ],
+  "semanticPresence": null
+ }
+]

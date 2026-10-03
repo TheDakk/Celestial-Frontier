@@ -39,6 +39,7 @@ import {
   prepareArc9ProgressionRefreshV1,
   type Arc9ProgressionProjectionV1,
 } from './arc9-progression-projection.js';
+import { WEEKLY_CHARTER_CAP_V1, WEEKLY_CHARTER_DEFINITIONS_V1, projectWeeklyCharterBoardV1, stageWeeklyCharterAcceptV1, stageWeeklyCharterEventV1, weeklyCharterCycleV1, type WeeklyCharterIdV1, type WeeklyCharterStageFactsV1 } from './weekly-charters.js';
 import type {
   F4RuntimeActionCommitOutcome,
   F4RuntimeAuthority,
@@ -289,7 +290,7 @@ export function projectStarterCharterBoardV1(state: SaveStateV2): StarterCharter
         cap: STARTER_CHARTER_CAP_V1,
         rows: Object.freeze(rows),
         completedIds: Object.freeze([...checked.done]),
-        weeklyBoundary: 'Weekly Charters remain protected until wall-week, slate and rollover authority are ported.',
+        weeklyBoundary: 'Weekly Charters run on the expedition\u2019s own active-play clock: a new board every four hours of play; moving the device clock never resets or advances it.',
       }),
     });
   } catch (error) {
@@ -407,6 +408,9 @@ export interface StarterCharterStageFactsV1 {
   readonly priorBestRankIndex: number;
   readonly nextBestRankIndex: number;
   readonly projection: Arc9ProgressionProjectionV1 | null;
+  /** The weekly board's roll/progress/completions in the same transaction (weekly-charters.ts); null when the caller passed no
+   *  active-play snapshot. */
+  readonly weekly?: WeeklyCharterStageFactsV1 | null;
 }
 
 export type StarterCharterStageOutcomeV1 =
@@ -606,6 +610,8 @@ export function stageStarterCharterEventV1(input: Readonly<{
   extensions: V5Extensions;
   event: StarterCharterEventV1;
   receiptOrdinal: number;
+  /** This transaction's committed active-play snapshot: when present the weekly board rolls and counts here too. */
+  activePlayMs?: number;
 }>): StarterCharterStageOutcomeV1 {
   try {
     const checked = checkedState(input.draft);
@@ -629,16 +635,22 @@ export function stageStarterCharterEventV1(input: Readonly<{
         extensionWrites.push(...completed.extensionWrites);
       }
     }
-    if (progressIds.length === 0) {
+    if (progressIds.length > 0) input.draft.chProg = progress;
+    let weekly: WeeklyCharterStageFactsV1 | null = null;
+    if (input.activePlayMs !== undefined) {
+      const staged = stageWeeklyCharterEventV1({ draft: input.draft, event: input.event, activePlayMs: input.activePlayMs });
+      if (staged.kind === 'refused') return Object.freeze({ kind: 'refused', reason: `weekly Charter: ${staged.reason}` });
+      weekly = staged.facts;
+    }
+    if (progressIds.length === 0 && !weekly?.changed) {
       return Object.freeze({
-        kind: 'current', facts: facts(false, null, [], [], [], null),
+        kind: 'current', facts: Object.freeze({ ...facts(false, null, [], [], [], null), weekly }),
       });
     }
-    input.draft.chProg = progress;
     const progression = settleProgression(input.draft);
     return Object.freeze({
       kind: 'ready',
-      facts: facts(true, null, progressIds, completions, extensionWrites, progression),
+      facts: Object.freeze({ ...facts(true, null, progressIds, completions, extensionWrites, progression), weekly }),
     });
   } catch (error) {
     return Object.freeze({
@@ -679,6 +691,7 @@ interface StarterCharterPublicationFieldsV1 {
   readonly chacc: readonly string[];
   readonly chDone: readonly string[];
   readonly chProg: Readonly<Record<string, number>>;
+  readonly chWeek: number;
   readonly essence: number;
   readonly stats: Readonly<Record<string, number>>;
   readonly items: readonly (readonly [string, number])[];
@@ -687,9 +700,13 @@ interface StarterCharterPublicationFieldsV1 {
   readonly unlocked: readonly string[];
 }
 
+/** A starter Charter, or a weekly Charter of the current active-play cycle (weekly-charters.ts), accepted through ONE audited path. */
+export type CharterAcceptIdV1 = StarterCharterIdV1 | WeeklyCharterIdV1;
+export function isWeeklyCharterIdV1(id: string): id is WeeklyCharterIdV1 { return WEEKLY_CHARTER_DEFINITIONS_V1.some((d) => d.id === id); }
+
 export interface StarterCharterAcceptFactsV1 {
   readonly schema: typeof STARTER_CHARTER_ACCEPT_WITNESS_SCHEMA_V1;
-  readonly id: StarterCharterIdV1;
+  readonly id: CharterAcceptIdV1;
   readonly receiptOrdinal: number;
   readonly stage: StarterCharterStageFactsV1;
   readonly source: StarterCharterPublicationFieldsV1;
@@ -697,7 +714,7 @@ export interface StarterCharterAcceptFactsV1 {
 }
 
 export type StarterCharterAcceptActionOutcomeV1 =
-  | Readonly<{ kind: 'current'; id: StarterCharterIdV1 }>
+  | Readonly<{ kind: 'current'; id: CharterAcceptIdV1 }>
   | Readonly<{ kind: 'refused'; detail: string; transaction?: F4RuntimeActionCommitOutcome }>
   | Readonly<{
     kind: 'committed';
@@ -717,6 +734,7 @@ function publicationFields(state: SaveStateV2): StarterCharterPublicationFieldsV
     chacc: Object.freeze([...state.chacc]),
     chDone: Object.freeze([...state.chDone]),
     chProg: Object.freeze({ ...state.chProg }),
+    chWeek: state.chWeek,
     essence: state.essence,
     stats: Object.freeze({ ...state.stats }),
     items: Object.freeze(state.items.map(([id, count]) => Object.freeze([id, count] as const))),
@@ -732,20 +750,29 @@ export function operationForStarterCharterAcceptV1(id: StarterCharterIdV1): stri
   definitionFor(id);
   return `${STARTER_CHARTER_ACCEPT_OPERATION_PREFIX_V1}${id}`;
 }
+/** A weekly accept is exact-once PER CYCLE: the same Charter can be accepted again on a later board. */
+export function operationForWeeklyCharterAcceptV1(id: WeeklyCharterIdV1, cycle: number): string {
+  if (!isWeeklyCharterIdV1(id) || !Number.isSafeInteger(cycle) || cycle < 0) throw new RangeError('weekly Charter accept operation');
+  return `${STARTER_CHARTER_ACCEPT_OPERATION_PREFIX_V1}${id}@${cycle}`;
+}
 
 export async function commitStarterCharterAcceptV1(input: Readonly<{
   state: SaveStateV2;
-  id: StarterCharterIdV1;
+  id: CharterAcceptIdV1;
   codecNow: number;
   authority: Pick<F4RuntimeAuthority, 'commitAction'>;
+  /** Required for a weekly id: the live active-play value the board was shown at (its cycle names the operation). */
+  activePlayMs?: number;
 }>): Promise<StarterCharterAcceptActionOutcomeV1> {
+  if (isWeeklyCharterIdV1(input.id)) return commitWeeklyCharterAcceptV1({ ...input, id: input.id });
+  const starterId = input.id;
   const checked = checkedState(input.state);
-  if (checked.done.includes(input.id) || checked.accepted.includes(input.id)) {
-    return Object.freeze({ kind: 'current', id: input.id });
+  if (checked.done.includes(starterId) || checked.accepted.includes(starterId)) {
+    return Object.freeze({ kind: 'current', id: starterId });
   }
   const board = projectStarterCharterBoardV1(input.state);
   if (board.kind !== 'projected') return Object.freeze({ kind: 'refused', detail: board.reason });
-  const row = board.board.rows.find(({ definition }) => definition.id === input.id);
+  const row = board.board.rows.find(({ definition }) => definition.id === starterId);
   if (!row || row.status !== 'available') {
     return Object.freeze({
       kind: 'refused', detail: row?.lockedReason ?? 'starter Charter is not revealed',
@@ -762,7 +789,7 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
   }> | null = null;
   const transaction = await input.authority.commitAction({
     state: input.state,
-    operation: operationForStarterCharterAcceptV1(input.id),
+    operation: operationForStarterCharterAcceptV1(starterId),
     receiptKind: STARTER_CHARTER_ACCEPT_RECEIPT_KIND_V1,
     codecNow: input.codecNow,
     derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
@@ -773,14 +800,14 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
       }
       const source = publicationFields(draft);
       const staged = stageStarterCharterAcceptV1({
-        draft, extensions, id: input.id, receiptOrdinal,
+        draft, extensions, id: starterId, receiptOrdinal,
       });
       if (staged.kind !== 'ready') {
         throw new Error(staged.kind === 'refused' ? staged.reason : 'starter Charter became current');
       }
       const facts: StarterCharterAcceptFactsV1 = Object.freeze({
         schema: STARTER_CHARTER_ACCEPT_WITNESS_SCHEMA_V1,
-        id: input.id,
+        id: starterId,
         receiptOrdinal,
         stage: staged.facts,
         source,
@@ -825,7 +852,7 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
   if (!plan) return Object.freeze({ kind: 'committed-convergence', detail: 'missing-plan', transaction });
   const durableLoot = plan.expectedArc2LootState === null
     ? null : readArc2Loot(transaction.saved.extensions);
-  if (transaction.plan.operation !== operationForStarterCharterAcceptV1(input.id)
+  if (transaction.plan.operation !== operationForStarterCharterAcceptV1(starterId)
     || transaction.plan.receiptOrdinal !== plan.facts.receiptOrdinal
     || transaction.receipt.ordinal !== plan.facts.receiptOrdinal
     || transaction.receipt.kind !== STARTER_CHARTER_ACCEPT_RECEIPT_KIND_V1
@@ -848,6 +875,46 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
   });
 }
 
+
+/** The weekly accept: the starter path's exact transaction shape (receipt, witness, fixed-point verification), with the board
+ *  check against the weekly projection and the staging on the transaction's OWN active-play snapshot. */
+async function commitWeeklyCharterAcceptV1(input: Readonly<{
+  state: SaveStateV2; id: WeeklyCharterIdV1; codecNow: number; authority: Pick<F4RuntimeAuthority, 'commitAction'>; activePlayMs?: number;
+}>): Promise<StarterCharterAcceptActionOutcomeV1> {
+  if (input.activePlayMs === undefined) return Object.freeze({ kind: 'refused', detail: 'weekly Charter acceptance needs the live active-play clock' });
+  const board = projectWeeklyCharterBoardV1(input.state, input.activePlayMs), row = board.rows.find((r) => r.definition.id === input.id);
+  if (row?.status === 'accepted' || row?.status === 'completed') return Object.freeze({ kind: 'current', id: input.id });
+  if (!board.open || !row || row.status !== 'available') return Object.freeze({ kind: 'refused', detail: row?.lockedReason ?? 'that Charter is not on this week\u2019s board' });
+  if (input.state.chacc.length >= WEEKLY_CHARTER_CAP_V1) return Object.freeze({ kind: 'refused', detail: 'three accepted Charters is the exact cap' });
+  const operation = operationForWeeklyCharterAcceptV1(input.id, board.cycle);
+  let selected: Readonly<{ facts: StarterCharterAcceptFactsV1; witness: string; expectedStateJson: string }> | null = null;
+  const transaction = await input.authority.commitAction({
+    state: input.state, operation, receiptKind: STARTER_CHARTER_ACCEPT_RECEIPT_KIND_V1, codecNow: input.codecNow,
+    derive: ({ draft, receiptOrdinal, canonicalizeState, activePlayMs }) => {
+      if (weeklyCharterCycleV1(activePlayMs) !== board.cycle) throw new Error('the weekly board rolled before this acceptance committed');
+      const source = publicationFields(draft);
+      const staged = stageWeeklyCharterAcceptV1({ draft, id: input.id, activePlayMs });
+      if (staged.kind !== 'ready') throw new Error(staged.reason);
+      const facts: StarterCharterAcceptFactsV1 = Object.freeze({ schema: STARTER_CHARTER_ACCEPT_WITNESS_SCHEMA_V1, id: input.id, receiptOrdinal,
+        stage: Object.freeze({ ...facts0(), weekly: staged.facts }), source, successor: publicationFields(draft) });
+      const witness = `${STARTER_CHARTER_ACCEPT_WITNESS_SCHEMA_V1}:${sha256Hex(canonicalJson(facts))}`;
+      selected = Object.freeze({ facts, witness, expectedStateJson: canonicalJson(canonicalizeState(draft)) });
+      return Object.freeze({ state: draft, extensionWrites: Object.freeze([]), witness });
+    },
+  });
+  if (transaction.kind !== 'committed') return Object.freeze({ kind: 'refused', detail: transaction.kind, transaction });
+  const plan = selected as Readonly<{ facts: StarterCharterAcceptFactsV1; witness: string; expectedStateJson: string }> | null;
+  if (!plan) return Object.freeze({ kind: 'committed-convergence', detail: 'missing-plan', transaction });
+  if (transaction.plan.operation !== operation || transaction.plan.receiptOrdinal !== plan.facts.receiptOrdinal
+    || transaction.receipt.ordinal !== plan.facts.receiptOrdinal || transaction.receipt.kind !== STARTER_CHARTER_ACCEPT_RECEIPT_KIND_V1
+    || transaction.receipt.witness !== plan.witness || canonicalJson(transaction.state) !== canonicalJson(transaction.saved.canonicalState)
+    || canonicalJson(transaction.state) !== plan.expectedStateJson || canonicalJson(publicationFields(transaction.state)) !== canonicalJson(plan.facts.successor)) {
+    return Object.freeze({ kind: 'committed-convergence', detail: 'committed-verification-mismatch', transaction });
+  }
+  return Object.freeze({ kind: 'committed', state: transaction.state, facts: plan.facts, arc2LootState: null, transaction });
+}
+function facts0(): StarterCharterStageFactsV1 { return facts(true, null, [], [], [], null); }
+
 export function publishStarterCharterAcceptFieldsV1(
   target: SaveStateV2,
   outcome: Extract<StarterCharterAcceptActionOutcomeV1, { readonly kind: 'committed' }>,
@@ -858,6 +925,7 @@ export function publishStarterCharterAcceptFieldsV1(
   target.chacc = [...outcome.state.chacc];
   target.chDone = [...outcome.state.chDone];
   target.chProg = { ...outcome.state.chProg };
+  target.chWeek = outcome.state.chWeek;
   target.essence = outcome.state.essence;
   target.stats = { ...outcome.state.stats };
   target.items = outcome.state.items.map(([id, count]) => [id, count]);

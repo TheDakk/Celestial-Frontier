@@ -1,0 +1,175 @@
+{
+  "id": "07-jaguar-pattern-first",
+  "name": "Jaguar",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "811681c61a34735bd49008b1e3bd64eceda4842808135814766695dbb40d7753",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 48038,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 9,
+      "y0": 106,
+      "x1": 410,
+      "y1": 275
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0647,
+        "pixels": 3107,
+        "box": {
+          "x0": 32,
+          "y0": 148,
+          "x1": 104,
+          "y1": 275
+        },
+        "attach": {
+          "x": 80.3,
+          "y": 201.6,
+          "relX": 0.18,
+          "relY": 0.57
+        },
+        "dir": {
+          "x": -0.26,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 87.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0469,
+        "pixels": 2254,
+        "box": {
+          "x0": 73,
+          "y0": 215,
+          "x1": 135,
+          "y1": 312
+        },
+        "attach": {
+          "x": 111.9,
+          "y": 238.1,
+          "relX": 0.26,
+          "relY": 0.78
+        },
+        "dir": {
+          "x": -0.41,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 83.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0379,
+        "pixels": 1822,
+        "box": {
+          "x0": 242,
+          "y0": 239,
+          "x1": 281,
+          "y1": 316
+        },
+        "attach": {
+          "x": 259.9,
+          "y": 253.6,
+          "relX": 0.63,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -0.02,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 65.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0546,
+        "pixels": 2623,
+        "box": {
+          "x0": 137,
+          "y0": 246,
+          "x1": 205,
+          "y1": 317
+        },
+        "attach": {
+          "x": 159,
+          "y": 246,
+          "relX": 0.37,
+          "relY": 0.83
+        },
+        "dir": {
+          "x": 0.22,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 84.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0535,
+        "pixels": 2572,
+        "box": {
+          "x0": 284,
+          "y0": 246,
+          "x1": 369,
+          "y1": 319
+        },
+        "attach": {
+          "x": 308.2,
+          "y": 255.7,
+          "relX": 0.75,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": 0.56,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 87.7
+      }
+    ],
+    "byClass": {
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 73,
+        "x1": 108,
+        "cx": 91.3
+      },
+      {
+        "x0": 159,
+        "x1": 205,
+        "cx": 182.9
+      },
+      {
+        "x0": 243,
+        "x1": 281,
+        "cx": 262.1
+      },
+      {
+        "x0": 325,
+        "x1": 369,
+        "cx": 347.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

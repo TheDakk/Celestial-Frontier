@@ -1,0 +1,95 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "frog",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "996377f6aab14c5793c9a41c4e071042e25701bfb99180e9409873bc9aa25e55",
+    "pngSha256": "1e8223be09bba448beaa0f0efa08d873300954d096e64349d86af7cf7da9ad0a"
+  },
+  "parts": [
+    {
+      "name": "far-fore-foot.png",
+      "sha256": "a08762ca8c82145958cbcb31056afcaaa8c376ae2200fa50c12415b04e5feec1"
+    },
+    {
+      "name": "far-fore-lower.png",
+      "sha256": "05cb3ab52446227813a9af7510a353714b1e727126d20cdb12563edadc9e1a70"
+    },
+    {
+      "name": "far-fore-upper.png",
+      "sha256": "aff65724de944e457db3b07f1d7e8ba5f952099434c5c12d653837fb8b435816"
+    },
+    {
+      "name": "far-hind-foot.png",
+      "sha256": "bd0ff7be0c4f421bcf44aa46a0767cd7169ceaa15cae373a1eee69b7159e00c9"
+    },
+    {
+      "name": "far-hind-lower.png",
+      "sha256": "ad9a3c85c413c6c08bc149df0f6fd7b534a6ef2b6ed0e9ffd33a77a5c6d7c192"
+    },
+    {
+      "name": "far-hind-upper.png",
+      "sha256": "6805fc342f2bc1e193e7cd6ca8cd0542efde2679fe7b8d20c90138fdc8f015b1"
+    },
+    {
+      "name": "head.png",
+      "sha256": "b70562fecb954e9a3d1e8502dd1ba053fb15c3b939d734f4ccf0109038c6b05d"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "e8f84b52718c8689ced287f9566dd6625ebc1e7990718daec1dc93c397d56fbe"
+    },
+    {
+      "name": "near-fore-foot.png",
+      "sha256": "44b9096fc52efd53032554fb257298198ca4e8c53e1264ede62ac2466c6a0740"
+    },
+    {
+      "name": "near-fore-lower.png",
+      "sha256": "88fd826ee70d4ffdad1430a130dbdeb8005309d69aa7dc3cd150439a77795a67"
+    },
+    {
+      "name": "near-fore-upper.png",
+      "sha256": "34202ae9a2557ca152ebf1a85339ae0b95b2784a68f235c1964ba1e1efc2ed16"
+    },
+    {
+      "name": "near-hind-foot.png",
+      "sha256": "002d5990581a67b99bdadd7839f795b54fc47ddbb12ecb806b2fe869cd04c1ef"
+    },
+    {
+      "name": "near-hind-lower.png",
+      "sha256": "803c90aee8d2475685c279869cffe58d86c9bd123ebbe5cada0fb6964f0faa9d"
+    },
+    {
+      "name": "near-hind-upper.png",
+      "sha256": "3fd3edea5148d911378d02f6afe2c0217b2583210a61b917eb0a82d1828bf2fa"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "71e3ed4ecc2bb612d1b8a2184914072046933f8d27a44bb98f90de2e2fab9e71"
+    },
+    {
+      "name": "torso.png",
+      "sha256": "4120ecd7b2496b3ae0c6c27f435c78d4cb65be10a0614f77ba185acec42dbc5e"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

@@ -1,0 +1,7 @@
+# C54 quadruped faults — diagnosed, still open
+
+Read-only contact-chain paint ownership identifies misplaced automatic landmarks: Red Fox far hind root is42.9px outside its declared paint; Marmot far hind root/knee are77.0/70.6px away; Cattle far fore knee is36.3px away. Exact original source/author hashes and observed owner pixels are in `contact-ownership.json`.
+
+One automatic candidate moves each mismatched chain landmark to the nearest positive-alpha pixel of its declared owner, with a stale-observation check. No pixels, part polygons or runtime limits change. All three candidate fits pass unchanged static actions/presentation and exact rest reconstruction. **Red Fox still refuses native stage entry at the same zero-displacement idle+approach sample (54.3667ms, idle fraction0.46875), exceeding the unchanged scale-compression bound.** This rejects the hypothesis that those ownership corrections alone fix stage admission.
+
+Marmot crouch-head and Cattle rearing-hump are visual faults, and static PASS does not establish that these leg corrections fix them. They remain unresolved; no replacement is admitted and no extra native run is claimed for either. The next fit work must measure head/neck/body surface weights in the reported poses, and trace Red Fox's additive contact compression rather than weaken the8% bound. Original packets and all prior six-fit failures remain intact. The candidate operation is audit-only, not adopted by G1 before a held-out/mutation battery.

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Armadillo",
+  "masterSha256": "3d6fceaf77d7b140513e8a67c0faa21781dd5bccca605d83e330e6883f54b423",
+  "required": [
+    "hinged bands of armour across the middle of the back"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "hinged bands of armour across the middle of the back",
+      "status": "PRESENT",
+      "observed": "Full original: banded bony shell, scaled pointed snout, two ears, true segmented tapering tail and four separated clawed feet. HOLD foreclaw count and limb proportions need canonical review; no fantasy armour."
+    }
+  ]
+}

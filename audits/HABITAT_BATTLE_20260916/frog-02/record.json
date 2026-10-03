@@ -1,0 +1,189 @@
+{
+  "kind": "hopper",
+  "identity": {
+    "speciesVisualKey": "{\"seed\":1193089256,\"kingdom\":\"fauna\",\"color\":0,\"form\":12,\"body\":10,\"loco\":11,\"trait\":19,\"size\":0,\"diet\":5,\"head\":9,\"limbs\":4,\"skin\":3,\"tail\":1,\"pattern\":4,\"eyes\":1,\"behavior\":0,\"habitat\":17,\"detail\":7,\"accent\":4,\"temper\":8,\"sense\":5,\"repro\":5,\"life\":0,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Frog\",\"_cradle\":1}",
+    "seed": 1193089256,
+    "ownerId": "authored:Frog/accepted-master",
+    "earthName": "Frog"
+  },
+  "template": {
+    "id": "hopper",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.84,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.48,
+      0.46
+    ],
+    "pelvis": [
+      0.33,
+      0.45
+    ],
+    "spine": [
+      0.46,
+      0.41
+    ],
+    "chest": [
+      0.62,
+      0.43
+    ],
+    "neck": [
+      0.68,
+      0.4
+    ],
+    "head": [
+      0.74,
+      0.3
+    ],
+    "jaw": [
+      0.82,
+      0.38
+    ],
+    "hindNearRoot": [
+      0.32,
+      0.49
+    ],
+    "hindNearKnee": [
+      0.17,
+      0.48
+    ],
+    "hindNearAnkle": [
+      0.15,
+      0.68
+    ],
+    "hindNearPaw": [
+      0.25,
+      0.74
+    ],
+    "hindFarRoot": [
+      0.42,
+      0.46
+    ],
+    "hindFarKnee": [
+      0.5,
+      0.54
+    ],
+    "hindFarAnkle": [
+      0.62,
+      0.63
+    ],
+    "hindFarPaw": [
+      0.69,
+      0.665
+    ],
+    "foreNearRoot": [
+      0.55,
+      0.445
+    ],
+    "foreNearKnee": [
+      0.44,
+      0.59
+    ],
+    "foreNearAnkle": [
+      0.5,
+      0.73
+    ],
+    "foreNearPaw": [
+      0.595,
+      0.785
+    ],
+    "foreFarRoot": [
+      0.725,
+      0.45
+    ],
+    "foreFarKnee": [
+      0.79,
+      0.57
+    ],
+    "foreFarAnkle": [
+      0.825,
+      0.68
+    ],
+    "foreFarPaw": [
+      0.88,
+      0.73
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "clipSetId": "hopper-land-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png",
+  "anatomyObservation": {
+    "absent": [
+      "tail",
+      "external ears"
+    ],
+    "visibility": {
+      "hindFar": "partly occluded; landmarks provisional"
+    },
+    "status": "draft, not admitted animation asset"
+  },
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v1",
+    "absent": [
+      "tail",
+      "external-ears"
+    ]
+  },
+  "habitat": {
+    "realm": "amphibious",
+    "gait": "hop",
+    "source": "named Earth adult Frog anatomy"
+  },
+  "qualityAccepted": false,
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.15033296378372907,
+      "spine": 0.13601470508735444,
+      "chest": 0.16124515496597097,
+      "neck": 0.06708203932499372,
+      "head": 0.11661903789690602,
+      "jaw": 0.11313708498984758,
+      "hindFarRoot": 0.09055385138137413,
+      "hindFarKnee": 0.11313708498984763,
+      "hindFarAnkle": 0.14999999999999997,
+      "hindFarPaw": 0.07826237921249261,
+      "foreFarRoot": 0.10688779163215974,
+      "foreFarKnee": 0.1364734406395618,
+      "foreFarAnkle": 0.11543396380615203,
+      "foreFarPaw": 0.07433034373659252,
+      "hindNearRoot": 0.04123105625617658,
+      "hindNearKnee": 0.1503329637837291,
+      "hindNearAnkle": 0.20099751242241787,
+      "hindNearPaw": 0.11661903789690597,
+      "foreNearRoot": 0.07158910531638173,
+      "foreNearKnee": 0.18200274723201296,
+      "foreNearAnkle": 0.15231546211727817,
+      "foreNearPaw": 0.10977249200050074
+    },
+    "measures": {
+      "body": 0.2906888370749726,
+      "bone-min": 0.04123105625617658,
+      "bone-max": 0.20099751242241787,
+      "leg/torso:hindFar": 1.1744498606745215,
+      "leg/torso:foreFar": 1.1222919719416855,
+      "leg/torso:hindNear": 1.609795267034497,
+      "leg/torso:foreNear": 1.527718455990296
+    }
+  },
+  "recipeHash": "47a7809f8842d0396aeb94be53446e7fecb8486c4e452ebe1ec8018130161986"
+}

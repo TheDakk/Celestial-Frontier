@@ -1,0 +1,13 @@
+{
+ "id": "20-deep-sea-octopus",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 11.5% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 15.6% paint that no reference appendage lands on",
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 12% paint (reference 92%)",
+  "missing-anatomy: part arm1-middle (arm1Seg1) covers 25% paint (reference 95%)",
+  "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "semanticPresence": null
+}

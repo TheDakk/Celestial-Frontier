@@ -1,0 +1,282 @@
+{
+  "schema": "cf.c132-d29-delivery-batch/v1",
+  "date": "2026-10-02",
+  "newTriplets": 12,
+  "priorTripletsRevalidated": 8,
+  "selectedPaintings": 60,
+  "mechanicalCandidateChecksPassed": 40,
+  "registrationCorrectlyRefused": 20,
+  "sourceAndInputHashesChecked": 402,
+  "qualityAccepted": false,
+  "registered": false,
+  "upscaled": false,
+  "nativeRun": false,
+  "rows": [
+    {
+      "id": "freshwater-lake-v2",
+      "biome": "temperate",
+      "manifest": "audits/C132_ARENAS_20261001/freshwater-lake-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/freshwater-lake-v2/d29/delivery-review.json",
+      "reviewSha256": "72dbd9c315661a1f47d895be06742fc88f6e2c8b25b51ace3b6ec46147d6a5ac",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full native-size composition inspected: lake surface, mountain backdrop and lakebed identify freshwater habitat; both fighting stands are unobstructed in this static view.",
+        "NEAR introduces a conspicuous greener horizontal texture boundary near the lower eighth. Bright green/magenta remnants remain around thin side plants and small terrain edges.",
+        "Independent scoring, moving combatant occlusion and native battle appearance remain untested; this is a candidate with visual holds."
+      ]
+    },
+    {
+      "id": "coral",
+      "biome": "coral",
+      "manifest": "audits/C132_ARENAS_20261001/coral/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/coral/d29/delivery-review.json",
+      "reviewSha256": "cafd742d17ff798200064a283468612b9bfe64613dfaba79f6510d637c73f245",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full native-size composition inspected: turquoise underwater depth and reef columns distinguish this family; the central sand runway remains open in the static view.",
+        "Pink/mauve edges remain around side reef/plant detail; repeated shoreline-like contours and abrupt mid-to-near texture changes are visible.",
+        "Independent scoring, moving combatant occlusion and native battle appearance remain untested; this is a candidate with visual holds."
+      ]
+    },
+    {
+      "id": "dunesea",
+      "biome": "dunesea",
+      "manifest": "audits/C132_ARENAS_20261001/dunesea/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/dunesea/d29/delivery-review.json",
+      "reviewSha256": "bb33dda5130f845e2c25fc53a40417de0e6c8c02b87b9c5ab96ce1b8ad3e5631",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full native-size composition and four-row plate sheet inspected. Warm desert material, continuous central fighting band and deep atmosphere are readable; no invented moons are present in the selected FAR.",
+        "The MID introduces another ridge contour across the already painted terrain, creating a conspicuous pasted strip and mauve boundary around the center and right. NEAR adds a separate horizontal texture band and small magenta foliage remnants. These remain visual holds after D29 size admission.",
+        "No new generation or rekeying in this revalidation. Historical originals, intake and previous dimension rejection stay unchanged."
+      ]
+    },
+    {
+      "id": "tundra",
+      "biome": "tundra",
+      "manifest": "audits/C132_ARENAS_20261001/tundra/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/tundra/d29/delivery-review.json",
+      "reviewSha256": "809558a0b1567fa628d95cb0d09be3edc48328f4c63adb515530eace175a7ad0",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full native-size composition and four-row plate sheet inspected. Snow, moss and distant mountain/lake palette are coherent; the center remains a broad unobstructed terrain band.",
+        "The lower NEAR terrain has a visible horizontal change in texture and scale, and fine shrubs/stone edges still need independent fringe and combatant-contrast scoring. A coherent composition is not visual acceptance.",
+        "No new generation or rekeying in this revalidation. The selected MID contains neither the previous ultra-wide framing nor pseudo-text. Historical attempts and dimension rejection stay unchanged."
+      ]
+    },
+    {
+      "id": "jungle-v2",
+      "biome": "jungle",
+      "manifest": "audits/C132_ARENAS_20261001/jungle-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/jungle-v2/d29/delivery-review.json",
+      "reviewSha256": "6341f0752a702bbf10616346c6ec82519b2d3f4a93209bacc9bb5345044b4bf9",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full-size existing 1672\u00d7941 composite re-inspected under D29. The selected MID avoids the earlier chopped trunk and preserves a broad earthen fighting band.",
+        "Bright/magenta remnants remain on side foliage and leaves; the dense forest, cliffs and waterfall compete for silhouette attention behind the battle. The lower NEAR band has a distinct texture/depth transition.",
+        "D29 removes only the native-size rejection. Unchanged masters, intake and earlier refusal evidence are preserved. Parallax, occlusion, native performance and quality acceptance remain unproven."
+      ]
+    },
+    {
+      "id": "savanna-v2",
+      "biome": "savanna",
+      "manifest": "audits/C132_ARENAS_20261001/savanna-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/savanna-v2/d29/delivery-review.json",
+      "reviewSha256": "3a1743c0aa30e54c16b263592fd3a8dfaf568a0c623b7c405a63f5be7e108a2e",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full-size existing 1672\u00d7941 composite re-inspected under D29. The corrected MID avoids the prior baked mountain/chopped-canopy problem; warm grasses and acacias establish the biome.",
+        "The NEAR makes a conspicuous horizontal ridge and abrupt texture transition across the bottom, with bright edge remnants on grasses. Repeated horizontal dirt bands read as layered strips in the static composition.",
+        "D29 removes only the native-size rejection. Current mechanical validation cannot confer seam quality, native performance, registration or Dakk acceptance; earlier evidence and original bytes remain unchanged."
+      ]
+    },
+    {
+      "id": "marsh",
+      "biome": "marsh",
+      "manifest": "audits/C132_ARENAS_20261001/marsh/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/marsh/d29/delivery-review.json",
+      "reviewSha256": "de44d627dfb69aed96670671efd90e6cf9fcdd53c5e4a4005939ec59242ea85c",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full-size existing 1672\u00d7941 composite re-inspected under D29 without altering historical evidence. A wet silt runway is clear between reed beds; distant mountains and haze provide depth.",
+        "The duplicated gray reed/water shelf behind the runway is visibly pasted over a similar FAR shelf. Side reeds retain magenta edge flecks; NEAR foliage and mud textures transition abruptly into the MID.",
+        "D29 removes only the native-size rejection. These seam/fringe/staging findings remain visual holds; no native film, registration or quality acceptance is implied."
+      ]
+    },
+    {
+      "id": "karst-cave",
+      "biome": "karst",
+      "manifest": "audits/C132_ARENAS_20261001/karst-cave/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/karst-cave/d29/delivery-review.json",
+      "reviewSha256": "c16042ce922add09192a9561e9f91ab47c4a966a9eafdac567b68c1bb9806a76",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full native-size composition and four-row plate sheet inspected. Tall limestone cave depth and a broad flat rock runway read coherently; side formations frame rather than cross the central path.",
+        "Small magenta remnants remain in the right-side fern/rock boundary. The lower terrain edge changes texture across the composition, and large background stalactites need creature-silhouette contrast scoring in motion. These are visual holds.",
+        "No new generation or rekeying in this revalidation. Selected NEAR uses the native landscape canvas; the previous wrong-aspect attempt remains retained."
+      ]
+    },
+    {
+      "id": "archipelago-v2",
+      "biome": "archipelago",
+      "manifest": "audits/C132_ARENAS_20261001/archipelago-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/archipelago-v2/d29/delivery-review.json",
+      "reviewSha256": "0dc4587e150008a5eaadb740ba3fc34666567afe72bbec9237dd1b9cf15d63a3",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All three originals and full-size composition inspected at native1672\u00d7941. Island shore and beach runway are identifiable; shared stand region remains open.",
+        "MID bakes in a second distant island band in front of FAR, producing doubled horizons and mismatched depth. Pink/green chroma remnants persist around palm fronds and island silhouettes.",
+        "NEAR forms a conspicuous straight horizontal texture/color boundary across the lower frame. Mechanical clearance does not resolve these visual holds."
+      ]
+    },
+    {
+      "id": "mangrove-v2",
+      "biome": "mangrove",
+      "manifest": "audits/C132_ARENAS_20261001/mangrove-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/mangrove-v2/d29/delivery-review.json",
+      "reviewSha256": "3aabb87c3e89fd75e9abfe6606acf86cfcf7747ec53794e053d3bbf0e5f42fab",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full-size 1672\u00d7941 composite inspected. Warm mangrove roots and tidal water identify the biome; a broad brown runway stays clear between the opposing stands.",
+        "The targeted NEAR successor removes the tall side foliage that caused the original fighting-path refusal. The original three masters and refusal remain in mangrove/.",
+        "Visible magenta flecks remain among the MID foliage on both sides and along the distant shrub line, despite zero unresolved pixels reported by intake. The FAR and MID repeat shoreline/root masses; the thin NEAR creates a horizontal texture transition near the bottom. These are visual holds.",
+        "The painting suggests depth through a receding shore and detailed outer canopy; native parallax, player silhouette occlusion and underwater-versus-ground habitat suitability remain untested. No quality acceptance is claimed."
+      ]
+    },
+    {
+      "id": "volcisle",
+      "biome": "volcisle",
+      "manifest": "audits/C132_ARENAS_20261001/volcisle/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/volcisle/d29/delivery-review.json",
+      "reviewSha256": "a8e714bda1df1ed02250a4ac9ce3d901238f15b2e8f1ce0578202ce851c8564e",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All three original paintings, full native-size composition and four-row plate sheet inspected. Dark volcanic-sand runway and teal ocean read as a distinct habitat; native size is 1672 by 941 with no upscaling.",
+        "MID repeats distant islands and cloud shapes over FAR, producing pasted mountain silhouettes near the horizon. Visible pink/green fringe survives at outer fern tips and mountain edges despite zero unresolved-edge pixels in the intake metric.",
+        "NEAR adds another wet rocky shelf with a prominent horizontal change in texture around the lower fifth; large edge rocks rise above the requested 0.92 band, although sampled combatant stands remain clear. The result needs authoring-side layer/seam and fringe repair, not acceptance."
+      ]
+    },
+    {
+      "id": "packice-v2",
+      "biome": "packice",
+      "manifest": "audits/C132_ARENAS_20261001/packice-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/packice-v2/d29/delivery-review.json",
+      "reviewSha256": "dd3ecab09dd3425702c0950631ce4fbffa7bdc9ab7a883b7a3a3e75b12e7f806",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All three originals and full-size composition inspected at native1672\u00d7941. Icy seascape and solid snowy fighting band are identifiable, with clear static stands.",
+        "FAR invents a visible sun disk despite the unbound-star/no-visible-star system card; this is an authoring failure requiring repair.",
+        "NEAR produces a conspicuous lighter horizontal shelf/texture change near the bottom. Repeated ice shelves and layered water boundaries remain visible. No native motion or independent acceptance is claimed."
+      ]
+    },
+    {
+      "id": "stormsea-v2",
+      "biome": "stormsea",
+      "manifest": "audits/C132_ARENAS_20261001/stormsea-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/stormsea-v2/d29/delivery-review.json",
+      "reviewSha256": "e4b7bcd244038411a83c5e14a679f0221965f73094cfbc487dcfc36ddf8c01eb",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full-size 1672\u00d7941 composite inspected. Dark submerged cliffs, a visible water ceiling and cold directional water light distinguish this water arena; the horizontal lower fighting band remains continuous.",
+        "Targeted FAR removes the visible fish schools and isolated swimming silhouettes from the refused original. Targeted NEAR removes the tall kelp/side banks that covered the original fighting path. All original paintings are retained.",
+        "The NEAR is noticeably more cyan-green than the MID and produces a repeated, sharp horizontal ridge near the bottom. Small magenta edge flecks remain on side kelp after intake. These remain visual holds rather than accepted terrain.",
+        "This is an underwater interpretation of stormsea; it is not an above-surface rocky coast. Creature water containment, native parallax, effect readability and routing eligibility require independent review."
+      ]
+    },
+    {
+      "id": "canyon",
+      "biome": "canyon",
+      "manifest": "audits/C132_ARENAS_20261001/canyon/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/canyon/d29/delivery-review.json",
+      "reviewSha256": "dc420f0ba37a5debd0b979b47bc9d265ca3e116ff8e4cb3366a2c9d6030aa5c9",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All three original paintings, full native-size composition and four-row plate sheet inspected. Red sandstone, sparse cacti and a continuous flat central runway establish the intended family; native size is 1672 by 941 with no upscaling.",
+        "MID repeats distant mesa walls already present in FAR. The duplicate contour creates a conspicuous pasted or terraced band behind the stands, with an abrupt depth-scale shift across the center.",
+        "NEAR contributes a second shallow rock/soil band with a visible horizontal color/texture seam. Tiny magenta remnants remain at shrub tips. These visual holds remain even if the exact delivery contract passes."
+      ]
+    },
+    {
+      "id": "swamp-v2",
+      "biome": "swamp",
+      "manifest": "audits/C132_ARENAS_20261001/swamp-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/swamp-v2/d29/delivery-review.json",
+      "reviewSha256": "28ccd5ad4759ad43fbd790bd62af8d61e1ac08f2bc1a22b99e8b565e415ee0b9",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All three originals and full-size composition inspected at native1672\u00d7941. Mossy swamp trees and dark wet mud provide a distinct habitat with open static fighting stands.",
+        "MID includes visibly chopped side trunks and a duplicated desaturated tree line; magenta/green edge remnants remain around those silhouettes.",
+        "NEAR cuts side foliage at an obvious straight horizontal lower-frame seam. Detail density and overlapping tree silhouettes compete with the stage; this candidate requires visual repair and independent review."
+      ]
+    },
+    {
+      "id": "glacier",
+      "biome": "glacier",
+      "manifest": "audits/C132_ARENAS_20261001/glacier/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/glacier/d29/delivery-review.json",
+      "reviewSha256": "c3f49e9a811957e846aca17a76ac0f2a884cf33b48ed2370bb3970df38c77e2a",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full-size 1672\u00d7941 composite inspected. Blue ice cliffs and a broad snow/ice fighting band carry the glacier identity under consistent upper-left illumination.",
+        "The original triplet passes existing intake at native resolution without a replacement painting. No fauna, labels or celestial objects are visible.",
+        "The MID adds another small ridge across the lower center, visibly repeating the FAR mountain/ice horizon. A horizontal NEAR snow-texture transition remains near the bottom; hard keyed edges are visible at the side ice faces. Seam continuity under parallax remains a visual hold.",
+        "Mechanical pixel coverage does not demonstrate grounded movement, foot-contact shadows, player silhouette contrast or native performance. No quality acceptance is claimed."
+      ]
+    },
+    {
+      "id": "opensea",
+      "biome": "opensea",
+      "manifest": "audits/C132_ARENAS_20261001/opensea/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/opensea/d29/delivery-review.json",
+      "reviewSha256": "29f24348003accc692e729934ee3aa666504183379362218a673948c544c1560",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All selected original paintings, full native-size composition and four-row plate sheet inspected. The selected FAR contains empty blue underwater habitat with distant shelves; MID leaves a wide continuous silt runway, and NEAR leaves the stands clear.",
+        "The first FAR baked fish into the scene and is retained as arena-far-attempt-1 with REJECTED_BAKED_FAUNA. A SUBJECT-only correction produced the selected fish-free FAR. The first NEAR was ultra-wide and is retained as arena-near-attempt-1 with REJECTED_WRONG_ASPECT; a SUBJECT-only canvas correction produced the selected 1672 by 941 NEAR.",
+        "Small magenta/cyan remnants remain around outer kelp silhouettes, and the lower NEAR band changes texture and depth abruptly. Physical underwater battle behavior and player contrast are not established by this static habitat painting."
+      ]
+    },
+    {
+      "id": "abyssal",
+      "biome": "abyssal",
+      "manifest": "audits/C132_ARENAS_20261001/abyssal/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/abyssal/d29/delivery-review.json",
+      "reviewSha256": "5f28e910e56b773ad7b4b888d2493602622318cea4cb20d3d84869dc9766d670",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All three originals and full native1672\u00d7941 composition inspected. Dark blue abyssal rock walls and seafloor provide distinct depth; static fighting stands remain unobstructed.",
+        "MID and NEAR introduce repeated rock ridges and a visible horizontal texture edge near the lower frame. The near foreground is substantially darker than the illuminated center.",
+        "Small high-chroma remnants are visible around the side tube-like formations. Dark combatant readability, movement occlusion and native battle appearance still need independent testing; no acceptance is claimed."
+      ]
+    },
+    {
+      "id": "cryogeyser-v2",
+      "biome": "cryogeyser",
+      "manifest": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/cryogeyser-v2/d29/delivery-review.json",
+      "reviewSha256": "4878e0785fff240a4dedd071196e5d6c9da54842517bc7319a63089ca03c0d0d",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Full-size 1672\u00d7941 composite inspected. Cold blue mineral ice, distant vapor columns and irregular rocky ice shelves distinguish the cryogeyser environment; the central lower lane remains clear.",
+        "The targeted FAR removes both unbound celestial bodies; the targeted MID removes all visible vapor from the magenta field while the opaque FAR retains atmospheric plumes. The original master triplet remains unchanged under cryogeyser/.",
+        "The MID ice shelf is brighter and more cyan than the FAR ground, and repeated terrain bands remain visible. NEAR edges and pale vegetation tips still show scattered color remnants and create a foreground texture seam. These are visual holds.",
+        "Geyser atmosphere is static painted FAR content; no dynamic geyser effect, contact proof, habitat routing or native parallax is demonstrated. No quality acceptance is claimed."
+      ]
+    },
+    {
+      "id": "blueice",
+      "biome": "blueice",
+      "manifest": "audits/C132_ARENAS_20261001/blueice/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/blueice/d29/delivery-review.json",
+      "reviewSha256": "7ac96935ca000b4a63babd3e6528e19a767a7d9df6cf7572a8659c63b34794ac",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All three original paintings, full native-size composition and four-row plate sheet inspected. Blue glacier and snowy mountain material is coherent, with a continuous ice runway and clear stand locations. Native size is 1672 by 941 with no upscaling.",
+        "NEAR repeats large cracks and an ice shelf from a different ground viewpoint, creating a strong horizontal shelf/seam across the lower frame. The background-to-MID ice edge also changes scale abruptly.",
+        "The bright cracked ground may compete with white creatures and effects; deep foreground cracks need scoring for whether the surface still reads as continuous traversable ice. No runtime, phone or visual acceptance is claimed."
+      ]
+    }
+  ],
+  "remainingOriginallyUnpaintedTriplets": 24,
+  "scope": "Three separately painted native-size masters per set, immutable originals and additive D29 checks. Mechanical candidate readiness does not confer visual, habitat, native or phone admission."
+}

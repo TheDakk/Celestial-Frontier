@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "schema": "cf.d26-runtime-consumer/v1",
+  "manifestConsumer": "createCreatureFinishDeliveryV1",
+  "fetches": 11,
+  "rows": [
+    {
+      "id": "crab",
+      "key": "6401df2ef4119049acd1146ffd670ddd02850ff61007d9f20ce75b9775ce487c",
+      "sha256": "fd54725bff111df6d0e3e16372be55a8b734bcc33759a922dcb49100f0acc617",
+      "pngBytes": 34696,
+      "individualIdLength": 739,
+      "actualConsumer": true
+    },
+    {
+      "id": "freshwater-crab",
+      "key": "99e072c05a6a4f10fe8f221d253fc28102afa8dcb958876805096f37dc251426",
+      "sha256": "749027a0bf3bdec34e631ec87fbc5470d055dcd2be811b9db67221c6038f3673",
+      "pngBytes": 42750,
+      "individualIdLength": 747,
+      "actualConsumer": true
+    },
+    {
+      "id": "mud-crab",
+      "key": "5feeca2ac2a52a67f7bb0299bae9966f3320a8acb9bdb33af0899451369eeb9d",
+      "sha256": "54302a12f1033e64cc5825f67743d9c080c9dc6776c1d3cd70bcce7b3ed82bc6",
+      "pngBytes": 42268,
+      "individualIdLength": 741,
+      "actualConsumer": true
+    },
+    {
+      "id": "vent-crab",
+      "key": "d1ff554bde7f512052e1b1d6b68b8039b445df91ea536c7ad01ab71e43e73ac1",
+      "sha256": "f99cba0fcb3905f394e253c829c443c7cb608f2e1801f7d7494b3cf5032c8132",
+      "pngBytes": 27240,
+      "individualIdLength": 741,
+      "actualConsumer": true
+    },
+    {
+      "id": "coconut-crab",
+      "key": "e21686f0267bf37cd50a5c97b0dcd8030ff02a4883958f9b006562b908a26ad2",
+      "sha256": "9c0ae399a21668dcf4557b2650d6dee6d0390beb657594707311d851751768a1",
+      "pngBytes": 52683,
+      "individualIdLength": 744,
+      "actualConsumer": true
+    }
+  ],
+  "scope": "Actual bundled manifest and filesystem-backed HTTP responses; not physical phone rendering"
+}

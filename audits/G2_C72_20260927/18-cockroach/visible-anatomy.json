@@ -1,0 +1,190 @@
+{
+  "id": "18-cockroach",
+  "name": "Cockroach",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "03930afd9479407de3f2234da624bc259ccc2edce4635170e6f17e414e6c5c23",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 25186,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 11,
+      "y0": 118,
+      "x1": 414,
+      "y1": 272
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1242,
+        "pixels": 3129,
+        "box": {
+          "x0": 260,
+          "y0": 51,
+          "x1": 394,
+          "y1": 270
+        },
+        "attach": {
+          "x": 265.4,
+          "y": 201.4,
+          "relX": 0.63,
+          "relY": 0.54
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.03
+        },
+        "class": "front",
+        "length": 197.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0197,
+        "pixels": 497,
+        "box": {
+          "x0": 25,
+          "y0": 217,
+          "x1": 41,
+          "y1": 267
+        },
+        "attach": {
+          "x": 39,
+          "y": 243.8,
+          "relX": 0.07,
+          "relY": 0.82
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.17
+        },
+        "class": "rear",
+        "length": 30.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0652,
+        "pixels": 1641,
+        "box": {
+          "x0": 232,
+          "y0": 238,
+          "x1": 329,
+          "y1": 329
+        },
+        "attach": {
+          "x": 246,
+          "y": 238,
+          "relX": 0.58,
+          "relY": 0.78
+        },
+        "dir": {
+          "x": 0.44,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 123.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0458,
+        "pixels": 1154,
+        "box": {
+          "x0": 187,
+          "y0": 249,
+          "x1": 230,
+          "y1": 347
+        },
+        "attach": {
+          "x": 207,
+          "y": 249,
+          "relX": 0.49,
+          "relY": 0.85
+        },
+        "dir": {
+          "x": -0.09,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 100.7
+      },
+      {
+        "k": 4,
+        "frac": 0.0196,
+        "pixels": 494,
+        "box": {
+          "x0": 110,
+          "y0": 264,
+          "x1": 171,
+          "y1": 325
+        },
+        "attach": {
+          "x": 161,
+          "y": 264,
+          "relX": 0.37,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": -0.55,
+          "y": 0.84
+        },
+        "class": "limb-down",
+        "length": 79.5
+      },
+      {
+        "k": 5,
+        "frac": 0.0357,
+        "pixels": 900,
+        "box": {
+          "x0": 27,
+          "y0": 273,
+          "x1": 120,
+          "y1": 339
+        },
+        "attach": {
+          "x": 114,
+          "y": 273,
+          "relX": 0.26,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.72,
+          "y": 0.69
+        },
+        "class": "limb-down",
+        "length": 109.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 27,
+        "x1": 59,
+        "cx": 42.6
+      },
+      {
+        "x0": 202,
+        "x1": 230,
+        "cx": 214.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

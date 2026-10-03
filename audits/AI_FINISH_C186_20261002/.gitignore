@@ -1,0 +1,6 @@
+*.webm
+native-01/*/*.png
+!native-01/*/turn1-hit-reaction-50.png
+!native-01/*/turn3-hit-idle-90.png
+rebound-*/*/parts/
+finish-01/prepared/

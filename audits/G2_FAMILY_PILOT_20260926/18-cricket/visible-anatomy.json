@@ -1,0 +1,195 @@
+{
+  "id": "18-cricket",
+  "name": "Cricket",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "cafc05e3f44e62a56643d524215ff69c27ba20770724f2e524097ae2874be646",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 28342,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 20,
+      "y0": 206,
+      "x1": 332,
+      "y1": 324
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.16,
+        "pixels": 4535,
+        "box": {
+          "x0": 200,
+          "y0": 34,
+          "x1": 395,
+          "y1": 326
+        },
+        "attach": {
+          "x": 333,
+          "y": 238.5,
+          "relX": 1,
+          "relY": 0.28
+        },
+        "dir": {
+          "x": 0.54,
+          "y": -0.84
+        },
+        "class": "top",
+        "length": 243.9
+      },
+      {
+        "k": 1,
+        "frac": 0.1955,
+        "pixels": 5542,
+        "box": {
+          "x0": 24,
+          "y0": 175,
+          "x1": 169,
+          "y1": 351
+        },
+        "attach": {
+          "x": 130.4,
+          "y": 236.6,
+          "relX": 0.35,
+          "relY": 0.26
+        },
+        "dir": {
+          "x": -0.85,
+          "y": 0.53
+        },
+        "class": "rear",
+        "length": 156.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0338,
+        "pixels": 958,
+        "box": {
+          "x0": 290,
+          "y0": 271,
+          "x1": 360,
+          "y1": 347
+        },
+        "attach": {
+          "x": 308.5,
+          "y": 271,
+          "relX": 0.92,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": 0.41,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 91.8
+      },
+      {
+        "k": 3,
+        "frac": 0.0102,
+        "pixels": 288,
+        "box": {
+          "x0": 233,
+          "y0": 291,
+          "x1": 258,
+          "y1": 327
+        },
+        "attach": {
+          "x": 242.5,
+          "y": 291,
+          "relX": 0.71,
+          "relY": 0.72
+        },
+        "dir": {
+          "x": -0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 39.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0203,
+        "pixels": 576,
+        "box": {
+          "x0": 186,
+          "y0": 294,
+          "x1": 229,
+          "y1": 355
+        },
+        "attach": {
+          "x": 223.5,
+          "y": 294,
+          "relX": 0.65,
+          "relY": 0.75
+        },
+        "dir": {
+          "x": -0.4,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 71.6
+      },
+      {
+        "k": 5,
+        "frac": 0.0103,
+        "pixels": 292,
+        "box": {
+          "x0": 166,
+          "y0": 295,
+          "x1": 213,
+          "y1": 327
+        },
+        "attach": {
+          "x": 192,
+          "y": 295,
+          "relX": 0.55,
+          "relY": 0.75
+        },
+        "dir": {
+          "x": -0.59,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 41.2
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 37,
+        "x1": 75,
+        "cx": 54.9
+      },
+      {
+        "x0": 186,
+        "x1": 209,
+        "cx": 197.9
+      },
+      {
+        "x0": 338,
+        "x1": 360,
+        "cx": 350.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

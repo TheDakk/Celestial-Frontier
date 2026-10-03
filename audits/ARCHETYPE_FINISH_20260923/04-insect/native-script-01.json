@@ -1,0 +1,35 @@
+{
+  "runId": "20260923-beetle-native-01",
+  "readyMs": 400,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Beetle",
+      "dn": "Beetle",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "an": "Beetle",
+      "dn": "Beetle",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Beetle",
+      "dn": "Beetle",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 30,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

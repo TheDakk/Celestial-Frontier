@@ -1,0 +1,327 @@
+{
+  "id": "c196-observed-leech",
+  "family": "annelid",
+  "landmarksPx": {
+    "root": [
+      621,
+      554
+    ],
+    "segment0": [
+      1036,
+      726
+    ],
+    "segment1": [
+      966,
+      689
+    ],
+    "segment2": [
+      891,
+      665
+    ],
+    "segment3": [
+      824,
+      636
+    ],
+    "segment4": [
+      750,
+      593
+    ],
+    "segment5": [
+      677,
+      556
+    ],
+    "segment6": [
+      602,
+      540
+    ],
+    "segment7": [
+      529,
+      552
+    ],
+    "segment8": [
+      455,
+      581
+    ],
+    "segment9": [
+      389,
+      622
+    ],
+    "segment10": [
+      326,
+      674
+    ],
+    "segment11": [
+      257,
+      725
+    ]
+  },
+  "groundLineY": 0.6267942583732058,
+  "materials": {
+    "surface": "slick"
+  },
+  "remainderPart": "segment6",
+  "parts": [
+    {
+      "id": "segment0",
+      "joint": "segment0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1254,
+          228.85135135135135
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          712.1357142857142,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment1",
+      "joint": "segment1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1145.14,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          228.85135135135135
+        ],
+        [
+          792.5328767123287,
+          1101.8972602739727
+        ]
+      ]
+    },
+    {
+      "id": "segment2",
+      "joint": "segment2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1139.0597014925374,
+          0
+        ],
+        [
+          1145.14,
+          0
+        ],
+        [
+          743.86,
+          1254
+        ],
+        [
+          596.2835820895523,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment3",
+      "joint": "segment3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1124.4183673469392,
+          33.82653061224413
+        ],
+        [
+          596.2835820895523,
+          1254
+        ],
+        [
+          415.39864864864865,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment4",
+      "joint": "segment4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1004.6849315068494,
+          0
+        ],
+        [
+          1144.0743243243244,
+          0
+        ],
+        [
+          415.39864864864865,
+          1254
+        ],
+        [
+          369.09589041095893,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment5",
+      "joint": "segment5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          756.4066666666666,
+          0
+        ],
+        [
+          1004.6849315068494,
+          0
+        ],
+        [
+          575.9530180460486,
+          845.8764779091474
+        ]
+      ]
+    },
+    {
+      "id": "segment6",
+      "joint": "segment6",
+      "layer": "near",
+      "polygonPx": [
+        [
+          475.74657534246575,
+          0
+        ],
+        [
+          756.4066666666666,
+          0
+        ],
+        [
+          597.8907156673114,
+          743.0435203094777
+        ]
+      ]
+    },
+    {
+      "id": "segment7",
+      "joint": "segment7",
+      "layer": "near",
+      "polygonPx": [
+        [
+          269.9932432432433,
+          0
+        ],
+        [
+          475.74657534246575,
+          0
+        ],
+        [
+          624.4113100081366,
+          904.3771358828315
+        ]
+      ]
+    },
+    {
+      "id": "segment8",
+      "joint": "segment8",
+      "layer": "near",
+      "polygonPx": [
+        [
+          48.34090909090909,
+          0
+        ],
+        [
+          269.9932432432432,
+          0
+        ],
+        [
+          648.78125,
+          966.5625
+        ]
+      ]
+    },
+    {
+      "id": "segment9",
+      "joint": "segment9",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          48.34090909090909,
+          0
+        ],
+        [
+          735.0053003533567,
+          1105.3621908127207
+        ],
+        [
+          0,
+          214.875
+        ]
+      ]
+    },
+    {
+      "id": "segment10",
+      "joint": "segment10",
+      "layer": "near",
+      "polygonPx": [
+        [
+          857.6904761904761,
+          1254
+        ],
+        [
+          701.3478260869565,
+          1254
+        ],
+        [
+          0,
+          305.11764705882354
+        ],
+        [
+          0,
+          214.875
+        ]
+      ]
+    },
+    {
+      "id": "segment11",
+      "joint": "segment11",
+      "layer": "near",
+      "polygonPx": [
+        [
+          701.3478260869565,
+          1254
+        ],
+        [
+          0,
+          1254
+        ],
+        [
+          0,
+          305.11764705882354
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independently observed Leech annelid reference",
+    "limitations": [
+      "Independent second-species annelid source (Leech), not Earthworm reused against itself. C195 accepted Earthworm direct fit remains immutable.",
+      "Twelve observed centreline controls cover the continuous annulated body, small anterior right sucker and broad posterior left sucker. These are coarse motion controls, not twelve claimed biological segments. No eyes, feet, suckers or source pixels are invented.",
+      "The larger posterior disc remains broad and the body glossy; identity/paint style and moving-ground contact require full-size/native review. GroundLineY is the lowest painted posterior rim, not proof of a native stance.",
+      "No tiny artificial root paint patch is cut out of the body. The root landmark remains in the structural record; existing segment paint covers the body continuously.",
+      "New source anatomy and labels were independently observed; no global reference-pool promotion or auto-author result is implied."
+    ],
+    "sourceLandmarksReused": false,
+    "sourceLabelsReused": false,
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  }
+}

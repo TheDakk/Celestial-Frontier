@@ -1,0 +1,60 @@
+{
+  "schema": "cf.c163-path-controls/v1",
+  "status": "PASS",
+  "controls": 12,
+  "passed": 12,
+  "nativeRuns": 0,
+  "manifestSha256": "a5049258dc7bb133e794eaedee78069fce17e546932f1697080f89304fe68476",
+  "runnerSha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028",
+  "guardSha256": "5b427bc8a9f7c740fd83566fd6a0c5af057e99a7d2c929dfcce87db30e34b3a0",
+  "results": [
+    {
+      "name": "complete successor manifest has exact canonical fit and pair inventories",
+      "status": "PASS"
+    },
+    {
+      "name": "historical frozen preparation refuses the successor input contract",
+      "status": "PASS"
+    },
+    {
+      "name": "all 1444 actual case configurations pass the exact frozen pre-launch guard",
+      "status": "PASS"
+    },
+    {
+      "name": "historical trailing slash fails the exact frozen pre-launch guard",
+      "status": "PASS"
+    },
+    {
+      "name": "different actual fit cannot pass the exact frozen pre-launch guard",
+      "status": "PASS"
+    },
+    {
+      "name": "null pair input refuses before supervisor dereference",
+      "status": "PASS"
+    },
+    {
+      "name": "noncanonical double-slash input refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "missing exact fit file refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "pair missing a required fit file refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "input with changed hash refuses its shared source binding",
+      "status": "PASS"
+    },
+    {
+      "name": "duplicate source inventory refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "Jellyfish declaration cannot lose its exact file path",
+      "status": "PASS"
+    }
+  ]
+}

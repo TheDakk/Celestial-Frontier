@@ -1,0 +1,28 @@
+{
+  "name": "Giant Water Bug",
+  "masterSha256": "9be93dedacfc64fe89a6c8af14cecd28601601c3d159214b2afe60f7e837bb3c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: short antennae, flattened back and two large grasping forelegs. Five additional walking/swimming leg endpoints appear visible, giving an apparent SEVEN total rather than six; attachment at the rear is suspect. HOLD for extra-leg ambiguity. Hind paddles and flattened form improved but anatomy repair not accepted.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 304,
+      "y0": 466,
+      "x1": 945,
+      "y1": 818
+    },
+    "margins": {
+      "left": 304,
+      "right": 308,
+      "top": 466,
+      "bottom": 435
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

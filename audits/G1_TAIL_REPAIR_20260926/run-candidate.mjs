@@ -1,0 +1,10 @@
+import fs from 'node:fs';import path from 'node:path';import{createRequire}from'node:module';import{createHash}from'node:crypto';
+import{closeDistalContour}from'./contour-close.mjs';import{paintMask}from'../../port/v2/tools/anatomy-verify/auto-author.mjs';import{familyContract}from'../../port/v2/tools/creature-animation/family-contracts.mjs';
+const require=createRequire(new URL('../../port/v2/package.json',import.meta.url));const sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp');
+const [source,out,partId]=process.argv.slice(2);if(!source||!out||!partId||fs.existsSync(out))throw Error('SOURCE_PACKET NEW_OUT PART_ID');
+const read=n=>JSON.parse(fs.readFileSync(path.join(source,n))),author=read('authoring.json');const part=author.parts.find(p=>p.id===partId),parent=familyContract(author.family).graph.find(([c])=>c===part.joint)?.[1];if(!parent)throw Error('leaf parent required');
+const master=fs.readFileSync(path.join(source,'master.png'));const{data,info}=await sharp(master).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+const result=closeDistalContour({mask:paintMask(data,info.width,info.height).mask,w:info.width,h:info.height,parts:author.parts,remainderPart:author.remainderPart,partId,joint:author.landmarksPx[part.joint],parent:author.landmarksPx[parent]});
+fs.mkdirSync(out,{recursive:true});for(const f of ['master.png','subject-source.json','presence.json'])fs.copyFileSync(path.join(source,f),path.join(out,f));
+fs.writeFileSync(path.join(out,'authoring.json'),JSON.stringify({...author,parts:author.parts.map(p=>p.id===partId?result.part:p)},null,2)+'\n');
+fs.writeFileSync(path.join(out,'contour-receipt.json'),JSON.stringify({...result.receipt,source,masterSha256:createHash('sha256').update(master).digest('hex')},null,2)+'\n');console.log(JSON.stringify(result.receipt));

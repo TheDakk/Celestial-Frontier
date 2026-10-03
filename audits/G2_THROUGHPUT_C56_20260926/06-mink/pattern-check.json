@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mink",
+  "masterSha256": "ca16447ae172ad9100642840cb51378a8f75a76b737f8dc3cff844773b181e10",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

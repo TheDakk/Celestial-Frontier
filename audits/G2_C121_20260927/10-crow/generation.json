@@ -1,0 +1,13 @@
+{
+  "id": "10-crow",
+  "name": "Crow",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a1da9620-793d-4f40-be85-3aa15261c203.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387",
+  "bytes": 1117204,
+  "promptSha256": "e2e272ee5f21688db5bf201e00db6016a9d37682a47145ea6f893f1d233f80dc",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

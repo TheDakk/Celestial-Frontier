@@ -1,0 +1,27 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Bee",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "9d8949a10a168a188ddda2c2d3ba2e24fb808864b7bbba5bb03570a6d736330a",
+  "basePromptSha256": "59a59a7a2476e13e09362f7bdaf6334cc4a8c9ef6acd479dcd161bb4f8d82cd5",
+  "baseRequestSha256": "db407699555aacb8fa963af668df6076b3beb6ecc3f87311cfde9502bcfc5f49",
+  "baseCanonicalCompilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "editCompilerSha256": "674800ba13ff774877dd7aa1116657dd9f890027fe3b2c665f37eba7815c743c",
+  "styleSha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "profileId": "mandibulate-insect",
+  "editSource": "audits/G2_C136_REPAIRS_20261002/21-bee/master.png",
+  "editSourceSha256": "240299d6a6d01d759c7cd50b5a3673aa1755e5994bc6a389c13598cf38335056",
+  "purpose": "Targeted painting-repair successor; no silent original replacement or admission.",
+  "repairReason": "C136 original has only four clear leg endpoints. Expose all three true thoracic pairs independently; no accepted or held-gallery master is replaced.",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "authoringCreated": false
+}

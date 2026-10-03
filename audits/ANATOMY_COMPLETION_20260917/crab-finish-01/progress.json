@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "error": null,
+  "last": {
+    "type": "complete",
+    "creatureId": "vent-crab",
+    "elapsedMs": 15027.094999969006,
+    "atMs": 83545.58000004292,
+    "sequence": 335
+  },
+  "eventCount": 335,
+  "resultCount": 5
+}

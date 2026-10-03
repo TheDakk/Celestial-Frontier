@@ -1,0 +1,14 @@
+{
+  "source": "~/.codex/worktrees/c173-i5/celestial-frontier-openai-mac",
+  "activeProcessesUsingSource": [],
+  "sourceClean": true,
+  "retainedEvidenceHashesVerified": 9,
+  "freeBytesBefore": 129416237056,
+  "retireVia": "Codex archive_worktree; ignored locked dependency clones are regenerable",
+  "sourceCheckoutExistsAfter": true,
+  "freeBytesAfter": 129024000000,
+  "observedFreeSpaceIncreaseBytes": -392237056,
+  "observedFreeSpaceIncreaseGiB": -0.365,
+  "scope": "Immediate observation after archive_worktree returned queued; this is not recovered-space evidence or archival completion.",
+  "status": "ARCHIVE_QUEUED_NOT_COMPLETE"
+}

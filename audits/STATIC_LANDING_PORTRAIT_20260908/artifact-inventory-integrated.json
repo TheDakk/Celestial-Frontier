@@ -1,0 +1,466 @@
+{
+  "createdAt": "2026-09-09T02:46:49.991759+00:00",
+  "scope": "Exact packet inventory excluding this self-describing inventory file; preparation and all failed results preserved",
+  "files": [
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md",
+      "bytes": 2917,
+      "sha256": "23bba733a3a7e6583183d1cef4e44bdeee8fd8f9cd3551470af5ced1083e92c4"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/INDEPENDENT_REVIEW.md",
+      "bytes": 1701,
+      "sha256": "1b5f7b1b4b26718ef4e5c0775178c41efc1da5bd47dd19fd75aa14c738173f0b"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/INTEGRATION_SOURCE_REVIEW.md",
+      "bytes": 8963,
+      "sha256": "27fcfa9e23bc065a7d06cec738fd83944d953bd654d7f669cecb91319c6a5b81"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md",
+      "bytes": 3213,
+      "sha256": "3d580352dbb1713a0a043d4db6fac6d8c243da172c555a9cdf895936792b1c1f"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/README.md",
+      "bytes": 8682,
+      "sha256": "6dc37f1c292b79e77758f61d6f0ef5aa12e568e6458bb9de530feb2205d646a4"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/STORAGE_AND_QUALITY.md",
+      "bytes": 5989,
+      "sha256": "c78599585430daa7250ee2e9605d304f7e14d4438c51b9faa0b5c9fc0e345866"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/VISUAL_REVIEW.md",
+      "bytes": 1759,
+      "sha256": "86f74a8714aa8f2dc909771c69728e5ac08be9b5a70006f69890e04203da7f6b"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/artifact-inventory.json",
+      "bytes": 4236,
+      "sha256": "4df01d2e4125c3ac43c270c34f0c685baa04f7da3bb3ada8ea41ac149915d601"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/civet-landing-original.png",
+      "bytes": 2885444,
+      "sha256": "e7ef04af6c5d75bad9e41a26082f814a95893928e814309dd8a720e4fa2a2740"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/evidence-build-v2.log",
+      "bytes": 8718,
+      "sha256": "f7af6470e9735f6f304e17ffeb0e4d3a1ff631bebda0df87c5bf1f5a04e8d3ee"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/decoded.rgb",
+      "bytes": 1238400,
+      "sha256": "70237b627f859f9ce210438735938abf26c799c03e54ed9e85dea1b483851b18"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/display-reference.png",
+      "bytes": 848781,
+      "sha256": "e6b9460eeb333e202a25fe620cb2afb3baa618fb008b34a05a32d0a59323f86e"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/earth-civet-landing-v1.webp",
+      "bytes": 600756,
+      "sha256": "cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/export-runner.mjs",
+      "bytes": 2568,
+      "sha256": "d1754f3d155aaa8e057309a3cd79e32d0ea2e5b179f11ff5a894eb03a5799ff4"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/receipt.json",
+      "bytes": 4251,
+      "sha256": "250c703004d252bf5d803abd02c35bd68d4eebb78759528784b8c63da4ebcfc3"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/reference.rgb",
+      "bytes": 1238400,
+      "sha256": "70237b627f859f9ce210438735938abf26c799c03e54ed9e85dea1b483851b18"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/format-review.json",
+      "bytes": 926,
+      "sha256": "8af6f971c5b4c799d835343e330be1df07fb4549e99c7df86275ee89887ae10f"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/generation-result.json",
+      "bytes": 717,
+      "sha256": "11ca3bfba653421ffc5f1f8f1afd48ba957d0f28bdfba1ff4bda1de7a2350f5d"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-results.json",
+      "bytes": 2384,
+      "sha256": "caf99b9b89eda62b99da05586e2f80b22e7f24c8cdf238b7d138ac4c1452ed3e"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-runner.mjs",
+      "bytes": 3241,
+      "sha256": "2842d3bab9685044ca01b8df3ad33f42b079e873ed16feabfa709413405498c5"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-final-results.json",
+      "bytes": 4361,
+      "sha256": "88acdfa2bdd20829c2b91528f0f350ebb84ef89e81d582cf5340c58253b8df9c"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-native-corrected-results.json",
+      "bytes": 2798,
+      "sha256": "31f4b4df191ac18c7e928cac4eb69873781bd502d0f07a7856efabe0403827da"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-native-corrected-runner.mjs",
+      "bytes": 3296,
+      "sha256": "f81844919cad5b18b0a3e68f17756a8837c47211b068219656131ff85e808fca"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-start.json",
+      "bytes": 594,
+      "sha256": "63362ec5c9b812a741f1b01bfcf386c630e7208951a99a4b23f67cd0337ebb07"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-focused.log",
+      "bytes": 242,
+      "sha256": "34abb71c9441dfa591b32a1bdd3b114723e0bff2c76252be4d4f54ae4c4ab835"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-native-syntax-chain.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-native-syntax-runner.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-results.json",
+      "bytes": 13708,
+      "sha256": "d7dbb1c2f8a7f3b7de80e6a3473a69a2610f9f854c382b811f540618962b2e8f"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-runner.mjs",
+      "bytes": 5452,
+      "sha256": "251f9008903b6752a9d3d40b320605ca88c854926ace3d5d027895d93c8af6cd"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-typecheck.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-validate.log",
+      "bytes": 1093,
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-focused.log",
+      "bytes": 249,
+      "sha256": "df03300fe171a54302f014584e69a6d070e965ccbf5ec58e46137d5d0198a71a"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-native-syntax-chain.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-native-syntax-runner.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-results.json",
+      "bytes": 14578,
+      "sha256": "cdcc6602909997e59f4b5e00d3dca164af7c38c30293a5a87da9c1b146768728"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-runner.mjs",
+      "bytes": 5124,
+      "sha256": "867e3aa4042ec6eb32d16f6fcedfa6476cd3d310b583e01dd76d99a8c7ca5254"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-typecheck.log",
+      "bytes": 649,
+      "sha256": "1eb1390f92b9cd8188246b31e35e62f54f5d7d092d4d82759d25d928be9df593"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/landing-prompt.txt",
+      "bytes": 3039,
+      "sha256": "2f2c1ee8f28cd02e29fb1d579cde38a4df32a98ed6b88195666e3a568e93e6c2"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-chain.mjs",
+      "bytes": 5563,
+      "sha256": "44e36724a74d873904d976204cae517d25a84a9540ec0daebe7cae0c32597c4b"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-runner.mjs",
+      "bytes": 61703,
+      "sha256": "714d2dfba790e6b00cbab57b98dee70af748787b5ee48f901bc655aea6e5ab38"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v2-chain.mjs",
+      "bytes": 5705,
+      "sha256": "4a6b816828516d8bc1c37df22d2308eef85533bb79b1957c5d5699691cc1058a"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v2-runner.mjs",
+      "bytes": 66442,
+      "sha256": "851fae7eb087a3b6a52124aef42286bcb643dbca108778b906357c47937a9e95"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-remaining-chain.mjs",
+      "bytes": 9146,
+      "sha256": "dad869b005971bf339d508d55e54d0dbe83f23d961b3285e34e4f2af505eb560"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-runner.mjs",
+      "bytes": 71888,
+      "sha256": "dbba1b46e0a9a8c9e0226b5ebd0d4a616973d9d7e5f0bf62f31bbfa6a1a6779a"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/failure.png",
+      "bytes": 610125,
+      "sha256": "6611430a5e4bb3b12b546406b4ed4daf9d268f091b1e90727cc53c8f72c07954"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/review.json",
+      "bytes": 333805,
+      "sha256": "114d25d5d2363be41f8d1d77f81d8c3659c36b840b3691714c23a45835427919"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/runner.mjs",
+      "bytes": 66442,
+      "sha256": "851fae7eb087a3b6a52124aef42286bcb643dbca108778b906357c47937a9e95"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked.log",
+      "bytes": 472,
+      "sha256": "a4cc174bd9022670d9bc9849b17b91ddd3389f1230b6b03192793094db2de373"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json",
+      "bytes": 26025,
+      "sha256": "7cad845855b7563d281237f8deacb272f94504348b3ffa787a29003033289d88"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-runner.mjs",
+      "bytes": 5705,
+      "sha256": "4a6b816828516d8bc1c37df22d2308eef85533bb79b1957c5d5699691cc1058a"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/earth-landing-still-desktop.png",
+      "bytes": 850318,
+      "sha256": "6d23bf3821208d4069bc4c3f8c40511b2c86d2406e81308c7d95c19735764eea"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/review.json",
+      "bytes": 716082,
+      "sha256": "e33057cad8a25d909df06394b9164b7f57e79cb66ffdcb4e0322865ecb662867"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/runner.mjs",
+      "bytes": 66442,
+      "sha256": "851fae7eb087a3b6a52124aef42286bcb643dbca108778b906357c47937a9e95"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop.log",
+      "bytes": 138,
+      "sha256": "202e68704a93628df5b3150dcf04e8c0d3fddde2d8dff1e270e51a2dee814005"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/earth-landing-still-phone.png",
+      "bytes": 742194,
+      "sha256": "36fb95ed38129d797fe315c89a0e864bfae1e953ac41dfc83a2705de4c5c9ec1"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/review.json",
+      "bytes": 709513,
+      "sha256": "87cf020551769db6b138b2ac2f57b8bbef517c9422339aa4418e50ffc7255e62"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/runner.mjs",
+      "bytes": 66442,
+      "sha256": "851fae7eb087a3b6a52124aef42286bcb643dbca108778b906357c47937a9e95"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone.log",
+      "bytes": 136,
+      "sha256": "83785412c01b887e250f03eba9565fa18fd60c46d8edec8f4e43e706705e9a58"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2-chain.log",
+      "bytes": 566,
+      "sha256": "04c8be01683db5afdad4c207078c38e41e322279018a7ba6d469c95e87007b53"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked/earth-landing-still-blocked.png",
+      "bytes": 610459,
+      "sha256": "0156edda0bcdffd94b22e2b2df046ebc8eeeb894262f0d9031abf0e2ce234881"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked/review.json",
+      "bytes": 513922,
+      "sha256": "0614b0da2020d1421df799dcdf534ed7085759077e1c1c661c8c1f3f4624c133"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked/runner.mjs",
+      "bytes": 71888,
+      "sha256": "dbba1b46e0a9a8c9e0226b5ebd0d4a616973d9d7e5f0bf62f31bbfa6a1a6779a"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked.log",
+      "bytes": 148,
+      "sha256": "e83d53d9b1ce9a94bc862ff6674e837472f568930a20077f24a6e56fce863349"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/chain-report.json",
+      "bytes": 28007,
+      "sha256": "033367474bf98b619a05b13d3168e0e3e1cfa41583904424d45e7390fcf88545"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/chain-runner.mjs",
+      "bytes": 9146,
+      "sha256": "dad869b005971bf339d508d55e54d0dbe83f23d961b3285e34e4f2af505eb560"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default/earth-landing-still-default.png",
+      "bytes": 610665,
+      "sha256": "397a7e36c1936b71b1df5b5be496db387f84405341dc31e09ab37ec66cf8c053"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default/review.json",
+      "bytes": 503269,
+      "sha256": "37a5d67f53163a05bca07a521a625723d29c6224e218aa534ee1b86ab2fc4589"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default/runner.mjs",
+      "bytes": 71888,
+      "sha256": "dbba1b46e0a9a8c9e0226b5ebd0d4a616973d9d7e5f0bf62f31bbfa6a1a6779a"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default.log",
+      "bytes": 148,
+      "sha256": "462854d407e660a18159f1ec5c4edb08a8a73bb422beafffa19059716ed8d790"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining-chain.log",
+      "bytes": 155,
+      "sha256": "69fa64d501b822ad4b33e7ebda3f0118174594cc03cc308a7273844119b9a626"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/player-storage-build.json",
+      "bytes": 11434,
+      "sha256": "e8dfc64f955afeff815be8041357ef1bd7515e58cabbf4263add782b27b5ecfa"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/player-storage-first-parse.json",
+      "bytes": 437,
+      "sha256": "20b8c70049d349384b8726cea53710cb80e17b354d301bc9ad7fc11e4f69a57b"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime-check.json",
+      "bytes": 999,
+      "sha256": "0cdcb66878d37d2c9bfda56afad1b83f333ff79a3033864afe8390610d676040"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.json",
+      "bytes": 2981,
+      "sha256": "c6a5efd857fa840bfffb3585c9f5995b746cda0b83a39a89ed690bce539dbfb7"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch",
+      "bytes": 25319,
+      "sha256": "2469e2e49a2b4bc6b766c2fbbc9318a616a7d88cd3cc1434e15bfccf6f6318b7"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/main.ts",
+      "bytes": 854682,
+      "sha256": "23178a1ffa9d328bc9f86dca71d3f04a1a168594d9739ebfd90b6ac66a0dae6e"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-earth-landing-recipe.ts",
+      "bytes": 976,
+      "sha256": "638abba375542e6b56da39a30e0aab8ce8b4dd82290529368d5f1763934fa489"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-vista-load.test.ts",
+      "bytes": 12195,
+      "sha256": "dbd4fc0f39493f7018d38ac9f507151ee9d0c143dd860b511504138167e527cc"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-vista-load.ts",
+      "bytes": 6643,
+      "sha256": "bb2a76fd6e626dc7e10bd2fe58be174a18aee7c4a0bc34740b24c09cb46e6632"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/tests/earth-layered-shake-settlement.test.ts",
+      "bytes": 8130,
+      "sha256": "77e14d79af8ad56d78b84e99a7ea562f7b89d4f2110648f6f5a0c37ebbae7ad5"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/tests/painted-earth-landing-binding.test.ts",
+      "bytes": 4649,
+      "sha256": "5decb8b2519f1388945d27a1e81d28c4b35e0a9d60329cdd905ebf76c9137d95"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preserve-candidate-first.py",
+      "bytes": 2610,
+      "sha256": "e4c40b277512dc599961e48a53fbb9f14689548a7403b53337baa575395ee5c7"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-browser-check.log",
+      "bytes": 465,
+      "sha256": "fa586f3ffa68e584ca1aa5b6a989ce02716859273211396f0b8061e3f8724631"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package-results.json",
+      "bytes": 8680,
+      "sha256": "dbe12f3c8a67d96e6f9035087729d9a801882da0cbf87d632427ab743224d7f9"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package-runner.mjs",
+      "bytes": 2315,
+      "sha256": "d4a9a898509d4be6e2bfeb5278a66152fd1f64825e4741326db7a3fcb906b218"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package.log",
+      "bytes": 6330,
+      "sha256": "aa878de5913110513b83287ef26cfef75d652d7aaac714a165b521400bce3f7a"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-server.json",
+      "bytes": 541,
+      "sha256": "9d0254ca8cc74bb8d085c55bbba832211ac95ba15132191ac5e4ad6e5f85d6a2"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/reference-intake.json",
+      "bytes": 488,
+      "sha256": "1a85974f48b38944d2bc92f2c73f634abf10cb4f086fb5c7e449213164dffe82"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/serve-preview.mjs",
+      "bytes": 2993,
+      "sha256": "8b8d202f35669aad7d433c27dfb0d0d144a7c81ad10aad9d7f122b8fd4d3b2c2"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/syntax-native-landing-still-v3-remaining-chain.mjs.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/syntax-native-landing-still-v3-runner.mjs.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/user-approved-living-worlds.png",
+      "bytes": 3100660,
+      "sha256": "5ba8a19f3a9da76c0fa732c11414e4a3629f9376556321ece14c447f5a04f012"
+    }
+  ]
+}

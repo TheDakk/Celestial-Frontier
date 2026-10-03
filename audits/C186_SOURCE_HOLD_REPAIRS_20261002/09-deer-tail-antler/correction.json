@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "09-deer-tail-antler",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/09-deer/master.png",
+  "sourceSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "priorAuthoring": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail/authoring.json",
+  "priorAuthoringSha256": "5abcef0cc51fcdb98f3f39663fef9126170b7ab7087dd92fe8df25d83e70bd65",
+  "changedJoints": [],
+  "changedParts": [],
+  "addedParts": [
+    "head-observed-left-antler"
+  ],
+  "findings": [
+    "The 2,726-pixel structural body-remainder island at x740–805/y143–291 is visibly the left antler branch, not torso. Its independently traced source contour belongs to head. Earlier pinnae keep priority; this contour only claims previously unassigned paint.",
+    "The original D28 6.7% refusal is retained; unchanged 5% cap will evaluate the successor."
+  ],
+  "originalPixelsChanged": 0,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Unedited automatic authoring remains subject to full-size motion review."
+  ]
+}

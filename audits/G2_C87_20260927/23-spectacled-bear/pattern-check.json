@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Spectacled Bear",
+  "masterSha256": "887c6038336013e1b3fabdfd5206f7655edd2b86104e8e4c61c5c3c315365293",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

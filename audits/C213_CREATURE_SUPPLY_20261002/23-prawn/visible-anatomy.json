@@ -1,0 +1,189 @@
+{
+  "id": "23-prawn",
+  "name": "Prawn",
+  "family": "crustacean-small",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 19886,
+    "coreRadius": 16,
+    "bodyBox": {
+      "x0": 98,
+      "y0": 157,
+      "x1": 272,
+      "y1": 221
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1064,
+        "pixels": 2115,
+        "box": {
+          "x0": 246,
+          "y0": 99,
+          "x1": 393,
+          "y1": 263
+        },
+        "attach": {
+          "x": 266.7,
+          "y": 164.8,
+          "relX": 0.97,
+          "relY": 0.12
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.03
+        },
+        "class": "front",
+        "length": 160
+      },
+      {
+        "k": 1,
+        "frac": 0.2061,
+        "pixels": 4098,
+        "box": {
+          "x0": 37,
+          "y0": 190,
+          "x1": 147,
+          "y1": 297
+        },
+        "attach": {
+          "x": 108.4,
+          "y": 214.7,
+          "relX": 0.06,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": -0.51,
+          "y": 0.86
+        },
+        "class": "limb-down",
+        "length": 109
+      },
+      {
+        "k": 2,
+        "frac": 0.0112,
+        "pixels": 223,
+        "box": {
+          "x0": 272,
+          "y0": 190,
+          "x1": 311,
+          "y1": 237
+        },
+        "attach": {
+          "x": 272.9,
+          "y": 192.9,
+          "relX": 1,
+          "relY": 0.56
+        },
+        "dir": {
+          "x": 0.78,
+          "y": 0.63
+        },
+        "class": "limb-down",
+        "length": 58.3
+      },
+      {
+        "k": 3,
+        "frac": 0.1771,
+        "pixels": 3521,
+        "box": {
+          "x0": 154,
+          "y0": 209,
+          "x1": 292,
+          "y1": 313
+        },
+        "attach": {
+          "x": 215.7,
+          "y": 216.7,
+          "relX": 0.68,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": 0.4,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 122.9
+      },
+      {
+        "k": 4,
+        "frac": 0.021,
+        "pixels": 417,
+        "box": {
+          "x0": 155,
+          "y0": 215,
+          "x1": 179,
+          "y1": 249
+        },
+        "attach": {
+          "x": 166.5,
+          "y": 215,
+          "relX": 0.39,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": 0.35,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 36.2
+      },
+      {
+        "k": 5,
+        "frac": 0.0141,
+        "pixels": 280,
+        "box": {
+          "x0": 139,
+          "y0": 217,
+          "x1": 161,
+          "y1": 246
+        },
+        "attach": {
+          "x": 147.7,
+          "y": 219.7,
+          "relX": 0.29,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": 0.49,
+          "y": 0.87
+        },
+        "class": "limb-down",
+        "length": 29.5
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 195,
+        "x1": 205,
+        "cx": 200.3
+      },
+      {
+        "x0": 235,
+        "x1": 243,
+        "cx": 239.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

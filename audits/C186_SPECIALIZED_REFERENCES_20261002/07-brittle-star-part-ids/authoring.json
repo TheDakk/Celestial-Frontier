@@ -1,0 +1,830 @@
+{
+  "id": "c186-specialized-brittle-star",
+  "family": "radial",
+  "landmarksPx": {
+    "root": [
+      622,
+      650
+    ],
+    "centre": [
+      634,
+      630
+    ],
+    "bell": [
+      628,
+      548
+    ],
+    "arm0Seg0": [
+      614,
+      478
+    ],
+    "arm0Seg1": [
+      669,
+      343
+    ],
+    "arm0Seg2": [
+      637,
+      200
+    ],
+    "arm1Seg0": [
+      799,
+      567
+    ],
+    "arm1Seg1": [
+      959,
+      593
+    ],
+    "arm1Seg2": [
+      1036,
+      516
+    ],
+    "arm2Seg0": [
+      769,
+      786
+    ],
+    "arm2Seg1": [
+      790,
+      930
+    ],
+    "arm2Seg2": [
+      885,
+      981
+    ],
+    "arm3Seg0": [
+      522,
+      808
+    ],
+    "arm3Seg1": [
+      367,
+      895
+    ],
+    "arm3Seg2": [
+      383,
+      987
+    ],
+    "arm4Seg0": [
+      432,
+      595
+    ],
+    "arm4Seg1": [
+      330,
+      479
+    ],
+    "arm4Seg2": [
+      217,
+      508
+    ]
+  },
+  "groundLineY": 0.7886762360446571,
+  "materials": {
+    "surface": "plated"
+  },
+  "remainderPart": "centre",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          618,
+          646
+        ],
+        [
+          626,
+          646
+        ],
+        [
+          626,
+          654
+        ],
+        [
+          618,
+          654
+        ]
+      ]
+    },
+    {
+      "id": "arm0seg2",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          613,
+          178
+        ],
+        [
+          671,
+          206
+        ],
+        [
+          710,
+          245
+        ],
+        [
+          726,
+          291
+        ],
+        [
+          710,
+          326
+        ],
+        [
+          666,
+          323
+        ],
+        [
+          661,
+          288
+        ],
+        [
+          648,
+          249
+        ]
+      ]
+    },
+    {
+      "id": "arm0seg1",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          662,
+          306
+        ],
+        [
+          718,
+          308
+        ],
+        [
+          718,
+          350
+        ],
+        [
+          685,
+          389
+        ],
+        [
+          647,
+          439
+        ],
+        [
+          582,
+          421
+        ],
+        [
+          591,
+          388
+        ],
+        [
+          626,
+          350
+        ]
+      ]
+    },
+    {
+      "id": "arm0seg0",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          581,
+          406
+        ],
+        [
+          652,
+          420
+        ],
+        [
+          658,
+          472
+        ],
+        [
+          675,
+          528
+        ],
+        [
+          663,
+          556
+        ],
+        [
+          603,
+          566
+        ],
+        [
+          581,
+          526
+        ],
+        [
+          565,
+          477
+        ],
+        [
+          563,
+          439
+        ]
+      ]
+    },
+    {
+      "id": "arm1seg2",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          945,
+          566
+        ],
+        [
+          985,
+          568
+        ],
+        [
+          1013,
+          544
+        ],
+        [
+          1036,
+          497
+        ],
+        [
+          1053,
+          501
+        ],
+        [
+          1053,
+          545
+        ],
+        [
+          1036,
+          581
+        ],
+        [
+          1006,
+          612
+        ],
+        [
+          963,
+          623
+        ],
+        [
+          941,
+          610
+        ]
+      ]
+    },
+    {
+      "id": "arm1seg1",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          826,
+          522
+        ],
+        [
+          885,
+          526
+        ],
+        [
+          934,
+          548
+        ],
+        [
+          972,
+          566
+        ],
+        [
+          970,
+          620
+        ],
+        [
+          919,
+          621
+        ],
+        [
+          874,
+          594
+        ],
+        [
+          826,
+          594
+        ]
+      ]
+    },
+    {
+      "id": "arm1seg0",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          714,
+          563
+        ],
+        [
+          757,
+          544
+        ],
+        [
+          803,
+          521
+        ],
+        [
+          842,
+          522
+        ],
+        [
+          850,
+          591
+        ],
+        [
+          808,
+          608
+        ],
+        [
+          762,
+          625
+        ],
+        [
+          719,
+          633
+        ]
+      ]
+    },
+    {
+      "id": "arm2seg2",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          757,
+          906
+        ],
+        [
+          817,
+          915
+        ],
+        [
+          814,
+          953
+        ],
+        [
+          839,
+          966
+        ],
+        [
+          886,
+          968
+        ],
+        [
+          901,
+          983
+        ],
+        [
+          879,
+          996
+        ],
+        [
+          833,
+          996
+        ],
+        [
+          791,
+          982
+        ],
+        [
+          765,
+          958
+        ]
+      ]
+    },
+    {
+      "id": "arm2seg1",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          736,
+          777
+        ],
+        [
+          783,
+          764
+        ],
+        [
+          816,
+          799
+        ],
+        [
+          828,
+          839
+        ],
+        [
+          815,
+          884
+        ],
+        [
+          820,
+          924
+        ],
+        [
+          765,
+          932
+        ],
+        [
+          760,
+          889
+        ],
+        [
+          768,
+          853
+        ],
+        [
+          756,
+          827
+        ]
+      ]
+    },
+    {
+      "id": "arm2seg0",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          675,
+          692
+        ],
+        [
+          716,
+          680
+        ],
+        [
+          755,
+          716
+        ],
+        [
+          783,
+          748
+        ],
+        [
+          802,
+          785
+        ],
+        [
+          758,
+          819
+        ],
+        [
+          723,
+          787
+        ],
+        [
+          684,
+          759
+        ],
+        [
+          657,
+          724
+        ]
+      ]
+    },
+    {
+      "id": "arm3seg2",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          344,
+          884
+        ],
+        [
+          391,
+          891
+        ],
+        [
+          380,
+          922
+        ],
+        [
+          376,
+          956
+        ],
+        [
+          399,
+          989
+        ],
+        [
+          386,
+          1005
+        ],
+        [
+          358,
+          979
+        ],
+        [
+          345,
+          944
+        ],
+        [
+          334,
+          916
+        ]
+      ]
+    },
+    {
+      "id": "arm3seg1",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          504,
+          796
+        ],
+        [
+          548,
+          838
+        ],
+        [
+          518,
+          861
+        ],
+        [
+          472,
+          879
+        ],
+        [
+          431,
+          892
+        ],
+        [
+          387,
+          915
+        ],
+        [
+          350,
+          891
+        ],
+        [
+          369,
+          864
+        ],
+        [
+          405,
+          847
+        ],
+        [
+          451,
+          830
+        ]
+      ]
+    },
+    {
+      "id": "arm3seg0",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          554,
+          678
+        ],
+        [
+          607,
+          708
+        ],
+        [
+          579,
+          749
+        ],
+        [
+          569,
+          790
+        ],
+        [
+          545,
+          835
+        ],
+        [
+          505,
+          851
+        ],
+        [
+          480,
+          817
+        ],
+        [
+          509,
+          776
+        ],
+        [
+          524,
+          727
+        ]
+      ]
+    },
+    {
+      "id": "arm4seg2",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          206,
+          492
+        ],
+        [
+          226,
+          463
+        ],
+        [
+          264,
+          444
+        ],
+        [
+          299,
+          445
+        ],
+        [
+          321,
+          455
+        ],
+        [
+          313,
+          494
+        ],
+        [
+          282,
+          483
+        ],
+        [
+          251,
+          484
+        ],
+        [
+          223,
+          521
+        ],
+        [
+          207,
+          521
+        ]
+      ]
+    },
+    {
+      "id": "arm4seg1",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          301,
+          451
+        ],
+        [
+          338,
+          460
+        ],
+        [
+          367,
+          491
+        ],
+        [
+          398,
+          535
+        ],
+        [
+          387,
+          573
+        ],
+        [
+          347,
+          558
+        ],
+        [
+          325,
+          523
+        ],
+        [
+          302,
+          492
+        ]
+      ]
+    },
+    {
+      "id": "arm4seg0",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          373,
+          528
+        ],
+        [
+          408,
+          552
+        ],
+        [
+          451,
+          569
+        ],
+        [
+          492,
+          573
+        ],
+        [
+          538,
+          581
+        ],
+        [
+          543,
+          631
+        ],
+        [
+          502,
+          640
+        ],
+        [
+          460,
+          630
+        ],
+        [
+          414,
+          623
+        ],
+        [
+          385,
+          600
+        ],
+        [
+          358,
+          572
+        ]
+      ]
+    },
+    {
+      "id": "bell",
+      "joint": "bell",
+      "layer": "near",
+      "polygonPx": [
+        [
+          613,
+          541
+        ],
+        [
+          638,
+          541
+        ],
+        [
+          650,
+          551
+        ],
+        [
+          643,
+          567
+        ],
+        [
+          619,
+          570
+        ],
+        [
+          606,
+          555
+        ]
+      ]
+    },
+    {
+      "id": "centre",
+      "joint": "centre",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independent short-armed five-arm Brittle Star original-source authoring",
+    "limitations": [
+      "The five arms and central disc were independently observed on this new painting. No geometry or ownership labels were transferred from the refused long-armed source.",
+      "Legacy bell names the upper visible disc rim, not an invented organ. Centre-to-rim is measured on paint; neither disc size nor ratio limit is altered.",
+      "Three controls per real arm approximate its connected ossicle chain. Marginal spines stay with the enclosing arm; no hidden underside or tube feet are invented.",
+      "The naturally short-armed representative is bound to the source packet primary taxonomy citation. Decorative disc markings and material finish still need identity/style review.",
+      "Dorsal view does not establish coplanar support tips. groundLineY is the observed bottom envelope only; mechanical results and native support remain separate."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false,
+    "sourceLandmarksReused": true,
+    "sourceGeometryOrigin": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/authoring.json",
+    "schemaSuccessor": "lowercase part IDs only; original source-specific geometry and prior refusal retained"
+  }
+}

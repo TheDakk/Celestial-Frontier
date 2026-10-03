@@ -1,0 +1,76 @@
+{
+  "name": "Dingo",
+  "family": "quadruped",
+  "species": {
+    "name": "Dingo",
+    "aspect": 1.6,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "sandy-ginger coat with white feet",
+      "erect pointed triangular ears",
+      "lean wolfish frame with a bushy straight tail"
+    ]
+  },
+  "genome": {
+    "seed": 2526895335,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 13,
+    "body": 1,
+    "loco": 16,
+    "trait": 2,
+    "size": 2,
+    "diet": 0,
+    "head": 2,
+    "limbs": 4,
+    "skin": 7,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 9,
+    "habitat": 7,
+    "detail": 3,
+    "accent": 10,
+    "temper": 6,
+    "sense": 9,
+    "repro": 4,
+    "life": 4,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dingo"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dingo\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2526895335\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "index": 590,
+  "profile": {
+    "id": "canid",
+    "names": [
+      "Jackal",
+      "Wolf",
+      "Coyote",
+      "Fox",
+      "Red Fox",
+      "Arctic Fox",
+      "African Wild Dog",
+      "Maned Wolf",
+      "Pampas Fox",
+      "Fennec Fox",
+      "Dog",
+      "Dingo"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

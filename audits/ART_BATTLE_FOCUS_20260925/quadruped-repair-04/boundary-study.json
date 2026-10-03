@@ -1,0 +1,491 @@
+[
+  {
+    "fit": "06-impala/fit-01",
+    "excluded": [
+      {
+        "a": "ear-far-tip",
+        "b": "head",
+        "n": 59,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-root",
+        "b": "neck",
+        "n": 72,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-root",
+        "b": "spine",
+        "n": 11,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-tip",
+        "b": "head",
+        "n": 96,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-tip",
+        "b": "spine",
+        "n": 11,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-ankle",
+        "b": "fore-near-knee",
+        "n": 20,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-knee",
+        "b": "fore-near-knee",
+        "n": 210,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-root",
+        "b": "fore-near-knee",
+        "n": 13,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-root",
+        "b": "fore-near-root",
+        "n": 24,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-near-paw",
+        "b": "spine",
+        "n": 36,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "hind-far-ankle",
+        "b": "hind-near-knee",
+        "n": 37,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-knee",
+        "b": "hind-near-knee",
+        "n": 268,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-knee",
+        "b": "hind-near-root",
+        "n": 55,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-paw",
+        "b": "spine",
+        "n": 19,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-root",
+        "b": "hind-near-root",
+        "n": 45,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "root",
+        "b": "spine",
+        "n": 272,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "spine",
+        "b": "tail1",
+        "n": 3,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "spine",
+        "b": "tail2",
+        "n": 26,
+        "reason": "independent sibling adjacency"
+      }
+    ]
+  },
+  {
+    "fit": "07-marmot/fit-01",
+    "excluded": [
+      {
+        "a": "chest",
+        "b": "ear-near-root",
+        "n": 15,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "chest",
+        "b": "ear-near-tip",
+        "n": 4,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-far-root",
+        "b": "ear-near-tip",
+        "n": 33,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "ear-far-tip",
+        "b": "ear-near-tip",
+        "n": 29,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "ear-far-tip",
+        "b": "spine",
+        "n": 5,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-root",
+        "b": "neck",
+        "n": 128,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-tip",
+        "b": "head",
+        "n": 24,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-tip",
+        "b": "spine",
+        "n": 61,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-ankle",
+        "b": "fore-near-knee",
+        "n": 2,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-ankle",
+        "b": "fore-near-paw",
+        "n": 55,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-ankle",
+        "b": "spine",
+        "n": 102,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-knee",
+        "b": "fore-near-knee",
+        "n": 81,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-knee",
+        "b": "fore-near-root",
+        "n": 142,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-paw",
+        "b": "spine",
+        "n": 21,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-root",
+        "b": "fore-near-root",
+        "n": 164,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-near-ankle",
+        "b": "spine",
+        "n": 129,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-near-paw",
+        "b": "spine",
+        "n": 49,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "hind-far-ankle",
+        "b": "hind-near-knee",
+        "n": 19,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-ankle",
+        "b": "spine",
+        "n": 96,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-knee",
+        "b": "hind-near-knee",
+        "n": 30,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-knee",
+        "b": "hind-near-root",
+        "n": 93,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-paw",
+        "b": "spine",
+        "n": 53,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-root",
+        "b": "hind-near-root",
+        "n": 103,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-near-ankle",
+        "b": "spine",
+        "n": 88,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-near-knee",
+        "b": "hind-near-paw",
+        "n": 44,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "hind-near-paw",
+        "b": "spine",
+        "n": 32,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "jaw",
+        "b": "neck",
+        "n": 129,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "jaw",
+        "b": "spine",
+        "n": 56,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "root",
+        "b": "spine",
+        "n": 182,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "spine",
+        "b": "tail0",
+        "n": 25,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "spine",
+        "b": "tail1",
+        "n": 10,
+        "reason": "independent sibling adjacency"
+      }
+    ]
+  },
+  {
+    "fit": "09-cattle/fit-04",
+    "excluded": [
+      {
+        "a": "ear-far-tip",
+        "b": "head",
+        "n": 30,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-tip",
+        "b": "head",
+        "n": 14,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "ear-near-tip",
+        "b": "neck",
+        "n": 203,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-ankle",
+        "b": "spine",
+        "n": 39,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-knee",
+        "b": "fore-far-paw",
+        "n": 21,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-knee",
+        "b": "fore-near-knee",
+        "n": 65,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-knee",
+        "b": "fore-near-root",
+        "n": 93,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-paw",
+        "b": "fore-near-ankle",
+        "n": 65,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-paw",
+        "b": "fore-near-knee",
+        "n": 9,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-far-paw",
+        "b": "spine",
+        "n": 11,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-far-root",
+        "b": "fore-near-root",
+        "n": 213,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "fore-near-ankle",
+        "b": "spine",
+        "n": 24,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-near-knee",
+        "b": "fore-near-paw",
+        "n": 25,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "fore-near-paw",
+        "b": "spine",
+        "n": 7,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "hind-far-ankle",
+        "b": "spine",
+        "n": 36,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-knee",
+        "b": "hind-far-paw",
+        "n": 23,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "hind-far-knee",
+        "b": "hind-near-knee",
+        "n": 60,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-knee",
+        "b": "hind-near-root",
+        "n": 26,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-paw",
+        "b": "spine",
+        "n": 10,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-root",
+        "b": "hind-near-knee",
+        "n": 23,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-far-root",
+        "b": "hind-near-root",
+        "n": 327,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-near-ankle",
+        "b": "spine",
+        "n": 49,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-near-ankle",
+        "b": "tail3",
+        "n": 47,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "hind-near-knee",
+        "b": "hind-near-paw",
+        "n": 7,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "hind-near-paw",
+        "b": "spine",
+        "n": 19,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "jaw",
+        "b": "neck",
+        "n": 114,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "jaw",
+        "b": "spine",
+        "n": 7,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "neck",
+        "b": "spine",
+        "n": 125,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "pelvis",
+        "b": "tail1",
+        "n": 84,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "root",
+        "b": "spine",
+        "n": 184,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      }
+    ]
+  }
+]

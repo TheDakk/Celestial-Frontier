@@ -1,0 +1,72 @@
+{
+  "schema": "cf.c186-crab-source-join/v1",
+  "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-continuous-owners",
+  "sourceMasterSha256": "874590859d6795c66f6f00a50ab5aabe615302d15afe8fe80319c18e57e3b399",
+  "priorAuthoringSha256": "103a7a936768aa59d9be2d69ed62c8df661955f3045b04ee40163b095c93c6ff",
+  "candidateAuthoringSha256": "006bb792a301efc3481b05ec0ae176cb3de549625913cba5937ee8ddba97f37c",
+  "changedLandmarks": {
+    "clawFarBase": [
+      419,
+      527
+    ],
+    "clawFarElbow": [
+      302,
+      488
+    ],
+    "clawFarPalm": [
+      279,
+      405
+    ],
+    "clawNearBase": [
+      836,
+      527
+    ],
+    "clawNearElbow": [
+      951,
+      488
+    ],
+    "clawNearPalm": [
+      977,
+      405
+    ]
+  },
+  "changedContours": [
+    "clawfarbase",
+    "clawfarelbow",
+    "clawfarpalm",
+    "clawfardactylroot",
+    "clawnearbase",
+    "clawnearelbow",
+    "clawnearpalm",
+    "clawneardactylroot"
+  ],
+  "fixedChanges": [
+    {
+      "id": "clawfarfixedtip",
+      "from": "clawFarFixedRoot",
+      "to": "clawFarPalm"
+    },
+    {
+      "id": "clawfarfixedroot",
+      "from": "clawFarFixedRoot",
+      "to": "clawFarPalm"
+    },
+    {
+      "id": "clawnearfixedtip",
+      "from": "clawNearFixedRoot",
+      "to": "clawNearPalm"
+    },
+    {
+      "id": "clawnearfixedroot",
+      "from": "clawNearFixedRoot",
+      "to": "clawNearPalm"
+    }
+  ],
+  "priorOwnerCount": 32,
+  "ownerCount": 30,
+  "unrelatedOwnersUnchanged": true,
+  "sourcePixelsChanged": 0,
+  "limitChanges": 0,
+  "visualOutcomePending": true,
+  "qualityAccepted": false
+}

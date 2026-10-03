@@ -1,0 +1,44 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "species-adapter-controls-01",
+    "--",
+    "npm",
+    "--prefix",
+    "port/v2",
+    "test",
+    "--",
+    "tests/landfall-conditioning.test.ts",
+    "tests/local-ai-runtime.test.ts",
+    "tests/local-ai-game.test.ts"
+  ],
+  "startedAt": "2026-09-09T16:24:51.365531+00:00",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "sha256": "76a6a5fa20fded3ad687c22c9f219beda5349d1bc0d2727af4e50c67987eda54"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "sha256": "a032ebac01524cd2e7ca4567c08ee76c2396ca2296160d03b7bef6bf0d4385a8"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "sha256": "c8672f5bdebb15ab3fc714964dd6a8ccd8ce3ae3fb038becb14dfb971c502796"
+    },
+    {
+      "path": "port/v2/tests/landfall-conditioning.test.ts",
+      "sha256": "05ba76172265f91f40436f16595c8b6ffaa037197994cb60d3f0205771f88b96"
+    },
+    {
+      "path": "port/v2/tests/local-ai-runtime.test.ts",
+      "sha256": "a5cb2f7d8b710727d49cb12f2b9452bc1be7af5f55a5a24efe29dbf7cee64e8a"
+    },
+    {
+      "path": "port/v2/tests/local-ai-game.test.ts",
+      "sha256": "173c1f405fb7d695f077a6a90b700337f4c7fe516e346b37d1022c2f9e240ac5"
+    }
+  ]
+}

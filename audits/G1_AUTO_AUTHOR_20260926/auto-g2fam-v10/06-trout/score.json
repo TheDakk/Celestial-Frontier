@@ -1,0 +1,10 @@
+{
+ "id": "06-trout",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

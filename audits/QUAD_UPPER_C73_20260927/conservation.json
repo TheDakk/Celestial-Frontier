@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "name": "marmot",
+      "changed": 26194,
+      "recordRecipeUnchanged": true,
+      "masterSha256": "9921ec0d37bc5a3b6faef946500c38563ec513454e2281436c097a25235b13dc",
+      "nonChestNeckChanges": 0,
+      "transparentChanges": 0,
+      "lowerBodyChanges": 0
+    },
+    {
+      "name": "cattle",
+      "changed": 45791,
+      "recordRecipeUnchanged": true,
+      "masterSha256": "b69bb1d3c6918217337a2b541aee923df279d5b8b3996ae5f5f68848ccbf31bb",
+      "nonChestNeckChanges": 0,
+      "transparentChanges": 0,
+      "lowerBodyChanges": 0
+    }
+  ],
+  "foreignHeadMutation": "REFUSED"
+}

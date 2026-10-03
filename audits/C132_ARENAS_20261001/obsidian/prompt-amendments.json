@@ -1,0 +1,41 @@
+{
+  "reason": "Prevent measured recurring native-size/path-occlusion failures and observed invented celestial bodies/pseudo-lettering from prior groups. Authorized parent continuation; no source-pixel editing.",
+  "amendments": [
+    {
+      "role": "far",
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.prompt.txt",
+        "sha256": "d57e2db620eeade8b8860bc09228af83f861a8b8c2c28b8ff6daa8ffcc30599b"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/authoring-prompts/arena-far.prompt.txt",
+        "sha256": "974b14d98feeb10a1d4fcc4bfc7d37972006cb80bc0d63611d2058514b4ca944"
+      }
+    },
+    {
+      "role": "mid",
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-mid.prompt.txt",
+        "sha256": "4857635e7741438affca8978cf9792b63d6d133c6aa3feae81a23c20e11b4071"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/authoring-prompts/arena-mid.prompt.txt",
+        "sha256": "e1b04dbcc4d9d50af6b0739a58e2398324a2fc09359b51ee5342b236574e9e7a"
+      }
+    },
+    {
+      "role": "near",
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-near.prompt.txt",
+        "sha256": "1081da0ed4c4f1fe66c2f6d0eacd61c92a2ebe30f0d1ef14a2691284cd82b89e"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/authoring-prompts/arena-near.prompt.txt",
+        "sha256": "0023747cbdc33ee31cc08db72c2359632436e9c083d0a5e7616447342543a195"
+      }
+    }
+  ]
+}

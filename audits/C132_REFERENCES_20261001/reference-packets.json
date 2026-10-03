@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c132-01-gazelle",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/01-gazelle/candidate-02"
+  },
+  {
+    "id": "c132-02-gaur",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/02-gaur/candidate-02"
+  },
+  {
+    "id": "c132-03-dog",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02"
+  },
+  {
+    "id": "c132-04-cat",
+    "family": "quadruped",
+    "packet": "audits/C132_REFERENCES_20261001/04-cat/candidate-02"
+  }
+]

@@ -1,0 +1,775 @@
+{
+  "schema": "cf.c132-arena-delivery-review/v1",
+  "canonicalFamilies": 43,
+  "habitatVariants": 2,
+  "preparedPrompts": 135,
+  "candidateTriplets": 8,
+  "acceptedTriplets": 0,
+  "registeredTriplets": 0,
+  "actualNativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "requiredNativeCanvas": {
+    "width": 2560,
+    "height": 1440
+  },
+  "validator": {
+    "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+    "sha256": "57ad1685f5160b7b04cbdcbbb5e675ab0a73c560a6f67bc97e965029a9a595c1"
+  },
+  "validatorScope": "Exact shipped pure validator, decoded original masters and keyed runtime copies; no browser or native epoch",
+  "noCertificateRebinding": true,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-far.generation.json",
+      "sha256": "1afb9be80ea12137d6b2ae1d969444772b697873607aa31118ecd66fc718a0d0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-mid.generation.json",
+      "sha256": "0932b3822a10845a8a113d4e02c5b6addaa376038b4b2336bd784a2eb622b51f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/arena-near.generation.json",
+      "sha256": "88d01d50d54f93f1a569aef03332520259fdd85fe5df9c08a92d34e018fff1e5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-far-attempt-01.generation.json",
+      "sha256": "0869b01695601a4d9c53925629b464d93c20802df73d4591a6ad0677a3fd1988"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.generation.json",
+      "sha256": "c8652f2cbc885075594cc398e61bed202db9897b29e2eb8741eb413253e9d60c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-mid.generation.json",
+      "sha256": "ba70f91b1cc9d9cf9c437c878937a75faaef59f1ccf4ef2dfcf4fc45a57f18e2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.generation.json",
+      "sha256": "1d98f841b5bec2fc221ab50ee539014bc27c60318cb98f96092f385bc439d01b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-far-attempt-01.generation.json",
+      "sha256": "2eb216f228dcd853963acdfa0a5c95c1fe56a17144b019f2cf5680c0aa304ba5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-far.generation.json",
+      "sha256": "fc0fc35a4c1ce572080af857a1f5a191a15f150bcb517319651e9d14109d3c21"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-mid.generation.json",
+      "sha256": "5e9c44075567227a6cc1bd3754f70a82d51d6242cde2c2ae31ff250f7ea16335"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-near.generation.json",
+      "sha256": "f2d0cf44e0d1d304acf421be485f1e4bc5305689fc882d511691aa643f67cdbf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.generation.json",
+      "sha256": "fc0fc35a4c1ce572080af857a1f5a191a15f150bcb517319651e9d14109d3c21"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.generation.json",
+      "sha256": "5e9c44075567227a6cc1bd3754f70a82d51d6242cde2c2ae31ff250f7ea16335"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.generation.json",
+      "sha256": "7d89b89d9e16d8c81efafcda639174f176b857da614ef212b174b7b732cdd55a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-far.generation.json",
+      "sha256": "58c5118598e3a5bbd3b78ca16f211879591e719680a9539f3900365d00664d2d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-mid.generation.json",
+      "sha256": "338511f6d4b49ee2e696fe378f0d038154c4b10421c5ca2aed11d98f9cdae23c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle/arena-near.generation.json",
+      "sha256": "17091f164238a945ccdde255e8c5feb6ae1df773f70e1b53d5fd84c4af759121"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-far.generation.json",
+      "sha256": "58c5118598e3a5bbd3b78ca16f211879591e719680a9539f3900365d00664d2d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-mid.generation.json",
+      "sha256": "8ca323bfe473a342ea8dc84c87eb9af8783d55127f896de31a261353c80cd9ac"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-near.generation.json",
+      "sha256": "17091f164238a945ccdde255e8c5feb6ae1df773f70e1b53d5fd84c4af759121"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst-cave/arena-far.generation.json",
+      "sha256": "8d6a57b184592c6a981797ff19316490fd217e3d9b8042ddf2424119308ab87d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst-cave/arena-mid.generation.json",
+      "sha256": "11cb4bf1d2a61c0aae3728d811c2b0824cd67c8801b3752cddc52a1579244875"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst-cave/arena-near-attempt-01.generation.json",
+      "sha256": "0f172a0e2a0a092ed0f389bfc28704f7d7c42a26fa302d3230b48b8bb7772495"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst-cave/arena-near.generation.json",
+      "sha256": "1e90769131db5865ea476c232b308cac141ccbf28a7b32aa93fdce8fb3f27d6b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-far.generation.json",
+      "sha256": "cdbea6b9367df508964b1e08d8deda6f19a818b187fd49f9cc5e43ef8f9f4432"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-mid.generation.json",
+      "sha256": "dc6fe448ca0c4d253094163551eaeae917469b204040c05c696ec1b3623885a5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-near.generation.json",
+      "sha256": "772a2b97bd91d01cb4249c97229e39363b66ee9f789debea860ca7887272e7a4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-far.generation.json",
+      "sha256": "4b88d044dba14f8cd67c8ef0f2e961db645ca553fa6f72867f66c46d96c54eb9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-mid.generation.json",
+      "sha256": "010ea7545299d9c716f5006057483c2101de05ed381f7f32501be84e14e9c36f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna/arena-near.generation.json",
+      "sha256": "1178783a4744e19513acf299f31402df86a1637d7d16251d42750d45ea5c79c5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.generation.json",
+      "sha256": "4b88d044dba14f8cd67c8ef0f2e961db645ca553fa6f72867f66c46d96c54eb9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.generation.json",
+      "sha256": "1ba2f28e24d59aa156953a681c95a45ee26275d1943f71ddd45b242f4fdc8f0d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.generation.json",
+      "sha256": "1178783a4744e19513acf299f31402df86a1637d7d16251d42750d45ea5c79c5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-far.generation.json",
+      "sha256": "7e72264f59e01cf2db83d5e4d2778043f386644a2edec66d14f13510a61be83c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-mid-attempt-01.generation.json",
+      "sha256": "e6e50676210737c2471d34e8aca3e3fe0ba83247b1172cc8ec3edb1696818583"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-mid.generation.json",
+      "sha256": "6262bd40efe720895d10b08c8600347352047a4fb779bec26417f5e226e6c959"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/tundra/arena-near.generation.json",
+      "sha256": "1b8269d1753ec263abb1ef03bde3df3ba8325502346ee75d56d61bfac3ec7ff8"
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "freshwater-lake-v2",
+      "biome": "temperate",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/delivery.pending.json",
+        "sha256": "ef5e3da5acab250b4d50cd02884c6ce2dd426ff7d19bb691039f1e61b135cad0"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "temperate"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "temperate"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "temperate"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-composed-review.png",
+          "sha256": "ce906d9bb043c9393f8d9b52f909b3603be433ebda34ddef1938657550d52cfd"
+        },
+        "findings": [
+          "Replacement NEAR removes the former straight silhouette, but a bottom texture/color transition remains visible.",
+          "Small high-chroma edge pixels remain; zero unresolved-edge metric does not prove a clean composition."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    },
+    {
+      "id": "coral",
+      "biome": "coral",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/coral/delivery.pending.json",
+        "sha256": "7ba77cd78952917d1c867b961defedafa4c4a0b07e95b3562fed641ea5c66541"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "coral"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "coral"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "coral"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/coral/arena-composed-review.png",
+          "sha256": "a495decdc33784ff316c46caaa3797400b9f7f0eb5d3302390845532d865560a"
+        },
+        "findings": [
+          "Distinct underwater reef depth; no visible background fish in the selected FAR.",
+          "Some pink/mauve edge content and doubled terrain contours remain in the full composition."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    },
+    {
+      "id": "dunesea",
+      "biome": "dunesea",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/delivery.pending.json",
+        "sha256": "126177a0864de1449c6f2fcdf038329e89b9abbcc58507e857097f5fd193bd42"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "dunesea"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "dunesea"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "dunesea"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/dunesea/arena-composed-review.png",
+          "sha256": "2532f21c4f1fdd7eab51f68e7732b8210b1b1150d5abcec1fc02495b5d95fa85"
+        },
+        "findings": [
+          "Selected FAR replaces the rejected sky with invented moons.",
+          "Layered terrain contours and mauve boundary bands remain conspicuous; shared light/ground needs visual refinement."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    },
+    {
+      "id": "tundra",
+      "biome": "tundra",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/tundra/delivery.pending.json",
+        "sha256": "1df46b921f6fe766764ed1b77020c7dfd9f7103b4d89514a35acaa91d62599f3"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "tundra"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "tundra"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "tundra"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/tundra/arena-composed-review.png",
+          "sha256": "bb752ea61df3a42669918addf47ca8ac1c87f227d6319f37ca6dbf3b66fcd45c"
+        },
+        "findings": [
+          "Replacement MID removes the rejected ultra-wide canvas and pseudo-text marks.",
+          "Composition is coherent at the two fighting stands; snow/terrain transition still needs independent full-size scoring."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    },
+    {
+      "id": "jungle-v2",
+      "biome": "jungle",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/jungle-v2/delivery.pending.json",
+        "sha256": "913a09fc77f22a04a3925484bb87aeac3c2b866c985432ac55980949fe5e9344"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "jungle"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "jungle"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "jungle"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-composed-review.png",
+          "sha256": "91f6a04b908042b7166cd714f49b52114a5cf24d8f064d255bd2f538b3531d9e"
+        },
+        "findings": [
+          "Replacement MID removes the visibly chopped left trunk in the first version.",
+          "Bright magenta/green edge remnants remain around side foliage; the deep background may compete with combatants."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    },
+    {
+      "id": "savanna-v2",
+      "biome": "savanna",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/delivery.pending.json",
+        "sha256": "fc5a5796c5baaf3286b466471f9a3ffa08faffea416fb0fa1b71e780d20cf9f0"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "savanna"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "savanna"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "savanna"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-composed-review.png",
+          "sha256": "70995ff80c37967b20daa4adb92b0992060ea2c59820c74963d1be73108d84c1"
+        },
+        "findings": [
+          "Replacement MID removes the baked mauve distant mountains and chopped canopy from the first version.",
+          "NEAR still creates a strong horizontal foreground texture boundary; magenta fringe is visible around small side details."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    },
+    {
+      "id": "marsh",
+      "biome": "marsh",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/marsh/delivery.pending.json",
+        "sha256": "2c7c0235112443f97d45c1377dc4c0bece57fe4b210beaf30c9819790d5a0bb3"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "marsh"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "marsh"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "marsh"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/marsh/arena-composed-review.png",
+          "sha256": "c8ac4cfde93af016bba4233c6ed33739e318e259b91074139801037c5a40f11e"
+        },
+        "findings": [
+          "Clear silt runway and wetland identity.",
+          "The middle reed/water edge forms a conspicuous duplicated gray shelf across the background; magenta remnants remain on reeds."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    },
+    {
+      "id": "karst-cave",
+      "biome": "karst",
+      "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+      "qualityAccepted": false,
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/karst-cave/delivery.pending.json",
+        "sha256": "c4f98789c7d601bc2641cdd9c5457175fa39bfa4de1cde057eb5da4ee0111b39"
+      },
+      "nativeCanvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "requiredCanvas": {
+        "width": 2560,
+        "height": 1440
+      },
+      "masterCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "karst"
+      },
+      "runtimeCandidate": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "karst"
+      },
+      "registration": {
+        "ok": false,
+        "failures": [
+          "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+          "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+          "acceptance arena-far: qualityAccepted not true",
+          "acceptance arena-mid: qualityAccepted not true",
+          "acceptance arena-near: qualityAccepted not true"
+        ],
+        "canvas": {
+          "width": 1672,
+          "height": 941
+        },
+        "biome": "karst"
+      },
+      "originalMastersModified": false,
+      "upscaled": false,
+      "review": {
+        "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+        "image": {
+          "path": "audits/C132_ARENAS_20261001/karst-cave/arena-composed-review.png",
+          "sha256": "6179be908edbe505db8e66e95d6cc9b35a4a9f96b173fbae84b38857bb919a7a"
+        },
+        "findings": [
+          "Replacement NEAR corrects the rejected ultra-wide source.",
+          "Cave framing is coherent and runway clear; scattered magenta edge remnants and differing layer detail still require visual repair."
+        ]
+      },
+      "remaining": [
+        "Native 2560×1440 separately generated masters",
+        "Visual repair and independent full-size scoring",
+        "Dakk acceptance",
+        "Claude route/wiring review and native battle proof"
+      ]
+    }
+  ],
+  "nextCanonicalPriority": [
+    "archipelago",
+    "mangrove",
+    "packice",
+    "canyon",
+    "boulder"
+  ],
+  "nextGeneration": "Held: builtin generation returned non-admissible dimensions despite exact technical prompt. Preserve all 43-family prompts; do not mass-generate more non-admissible sources."
+}

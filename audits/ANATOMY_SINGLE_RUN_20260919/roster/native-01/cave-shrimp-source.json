@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1626795572,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 3,
+    "body": 5,
+    "loco": 8,
+    "trait": 22,
+    "size": 5,
+    "diet": 4,
+    "head": 7,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 4,
+    "detail": 6,
+    "accent": 4,
+    "temper": 2,
+    "sense": 9,
+    "repro": 4,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cave Shrimp"
+  },
+  "observation": null
+}

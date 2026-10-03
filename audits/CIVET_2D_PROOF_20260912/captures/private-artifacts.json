@@ -1,0 +1,117 @@
+[
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-10s.webm",
+    "bytes": 8058588,
+    "sha256": "60f8a550426076d5f64a6a0e7f8534e6e978ae9a854c90b10926ae85228f52af"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/civet-hit.png",
+    "bytes": 1764316,
+    "sha256": "f6707c1bd2e2a996effd80b5c3dc22a8faab6a0ea3bafd5092def50119e460e5"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/report.json",
+    "bytes": 64396,
+    "sha256": "1cbde1e3e3f79e9238a435e6c2560c08f03ad82790a3ab048cab2de02050b7f9"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-cutout.png",
+    "bytes": 62758,
+    "sha256": "4d75af529dfc9aedd6cc078fe35373c435dcfde3abfe305e03ead60e46ba1e27"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/fox-10s.webm",
+    "bytes": 9336293,
+    "sha256": "a4480f29d5d98de90e3cb8d92d65231b7faa6fa9aa012603b8b8201c932f586c"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/civet-cutout.png",
+    "bytes": 1512664,
+    "sha256": "f54a3c73f6c126b39b15c0024873df5fa1c3059bfb2ee08c1fdf57b775039f35"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/civet-10s.webm",
+    "bytes": 9886164,
+    "sha256": "9882c3cc324ad4c68b73d2e18ff774401ec6d9efddaf72539a9baf1cd78ff065"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/fox-anticipation.png",
+    "bytes": 1771234,
+    "sha256": "ffa51a19996f15e43f3c8bf3b04756e6eb31316e2f3a471bf49a519e8d28f290"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-hit.png",
+    "bytes": 1734054,
+    "sha256": "c270118834662042f1cc4db8a69785f95fa183bc0d158c96ee7f93f328f8300c"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/fox-strike.png",
+    "bytes": 1791701,
+    "sha256": "c6cfdb8ca0821f6d036acffe3344f2c8fd0537506c23cda82f392f529ec7d26c"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/civet-resolved-anatomy.json",
+    "bytes": 4720,
+    "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/fox-resolved-anatomy.json",
+    "bytes": 3917,
+    "sha256": "8d21a249436eefb27ccfe01ec2565c57fe35ac3ab2379abc5dc9b336ea7674a7"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/civet-anticipation.png",
+    "bytes": 1777283,
+    "sha256": "473c62bd83d6ca7b9b3e11f940aaf2b51909c39c759b3a11f45ae1fb0edd4368"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/fox-cutout.png",
+    "bytes": 1546693,
+    "sha256": "cdab67d3da161429e17e9bf90519213dfa674db6721fd505e60887c14fa9ece3"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-anticipation.png",
+    "bytes": 1745291,
+    "sha256": "3da88cbd6a993b7f1238783a3067a64d53266d3ec5564e114c15b81e7a89f808"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/civet-rest.png",
+    "bytes": 1765844,
+    "sha256": "c5dfd4decbc4d1bd34da26533a0ef10de721c3ce3be4a0a157e77b637fa69e84"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/fox-hit.png",
+    "bytes": 1758862,
+    "sha256": "0bfa0c1cb18765da074f056366e08ce477760e2d10c790b760578f8a4652b50c"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/fox-rest.png",
+    "bytes": 1759948,
+    "sha256": "544a60a089e392f6ba5d893b8149f614e04523ee4c51f67f374c4771f698ae96"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-strike.png",
+    "bytes": 1762553,
+    "sha256": "6ec6bab0b57dc160e792dff43c4e457174dfd789ba27e81db2d50bbc4afb9468"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/civet-strike.png",
+    "bytes": 1798723,
+    "sha256": "841c30993802a8502c843e1561b548764d0466fecadbffff240581fc16b169e3"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-resolved-anatomy.json",
+    "bytes": 5319,
+    "sha256": "2ff10ae0c13997b074eb2998ac37788d3818e288a5e793a20e14f121d1a34a59"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-rest.png",
+    "bytes": 1734631,
+    "sha256": "328c1851e4f01d5e30e6590fe39516dd29749eb3b133966e7e2e9d0c1c35da9c"
+  },
+  {
+    "path": "/private/tmp/cf-quadruped-proof-20260912-05/build.log",
+    "bytes": 87,
+    "sha256": "081d507f47e2be1eb6837e6e670fa4e39f49137a456414203036a59538520f7e"
+  }
+]

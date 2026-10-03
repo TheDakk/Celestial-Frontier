@@ -1,0 +1,13 @@
+{
+  "id": "10-swallow",
+  "name": "Swallow",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-607cdf8e-1527-41db-a6d4-2c28eb99520e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d1820c49417bd2e94fe01bc47f0a99d986253d2e2a8cd8b45df7cba447a72db5",
+  "bytes": 1103612,
+  "promptSha256": "309255231eb58454c78e87bed8fe1a164d89b14b6387cc1e741404b1621d1d36",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

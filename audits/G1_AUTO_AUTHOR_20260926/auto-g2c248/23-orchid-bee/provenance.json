@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "23-orchid-bee",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "facb72833d8fc4fd4b7bb4f86b702c85d92baf3fe272c5bf01307149aca01708",
+ "subjectSourceSha256": "eb4cb8c59e630fbeeb48cea0d6b9f6be25e5e60723b19e89aef350484c46ab73",
+ "identity": {
+  "name": "Orchid Bee",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Orchid Bee\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1111544913\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "seed": 1111544913,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "08-ant",
+  "authoringSha256": "0ef6659dc3425e1ae001566a0cdf15903f83327f7e8aee8a4df08f75017e9d34",
+  "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0044,
+     "class": "top",
+     "attach": {
+      "x": 230,
+      "y": 131,
+      "relX": 0.76,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0324,
+     "class": "rear",
+     "attach": {
+      "x": 112,
+      "y": 158,
+      "relX": -0.01,
+      "relY": 0.31
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1329,
+     "class": "front",
+     "attach": {
+      "x": 267,
+      "y": 164.5,
+      "relX": 1.01,
+      "relY": 0.39
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0499,
+     "class": "rear",
+     "attach": {
+      "x": 115.6,
+      "y": 202.9,
+      "relX": 0.02,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0616,
+     "class": "limb-down",
+     "attach": {
+      "x": 248,
+      "y": 199,
+      "relX": 0.88,
+      "relY": 0.8
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0748,
+     "class": "limb-down",
+     "attach": {
+      "x": 197.6,
+      "y": 202,
+      "relX": 0.55,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.075,
+     "class": "limb-down",
+     "attach": {
+      "x": 155,
+      "y": 217,
+      "relX": 0.27,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "08-ant",
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

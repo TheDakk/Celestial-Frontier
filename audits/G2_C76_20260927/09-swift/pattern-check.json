@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Swift",
+  "masterSha256": "ff422877f59e2ddc5584003082cd060879030bece0d44ce95c1e3fefe1a7e42e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

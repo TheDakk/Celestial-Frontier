@@ -1,0 +1,35 @@
+{
+  "reason": "Pack2 A2 parser requires per-phase alpha bounds; measured from registered PNG alpha, all image hashes unchanged.",
+  "phases": [
+    {
+      "phase": "launch",
+      "sha256": "164b45aad0448d2d642698136570b06b05a75f8ddf9f9a08421cf2d8edd3ed1b",
+      "alphaBoundsPixels": {
+        "x": 157,
+        "y": 412,
+        "width": 230,
+        "height": 219
+      }
+    },
+    {
+      "phase": "travel",
+      "sha256": "78e11c152e4d09ccc20c7c4ccd858cc46d4afe211bf4956674ee2c9b924a1705",
+      "alphaBoundsPixels": {
+        "x": 135,
+        "y": 346,
+        "width": 691,
+        "height": 366
+      }
+    },
+    {
+      "phase": "impact",
+      "sha256": "54fdf384a6ca0f475f20cc6e3ad296b3c672d193039c263c831cdbc139ddaa37",
+      "alphaBoundsPixels": {
+        "x": 563,
+        "y": 383,
+        "width": 313,
+        "height": 299
+      }
+    }
+  ]
+}

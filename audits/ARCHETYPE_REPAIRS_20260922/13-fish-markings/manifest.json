@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "path": "authority-audit-setup-error.json",
+      "bytes": 479,
+      "sha256": "36b699848f5f25009fd1e1865611533ab98af6e40bece40f2a21776043df890b"
+    },
+    {
+      "path": "authority-check.json",
+      "bytes": 57863,
+      "sha256": "b46116d4c815853f6c3d833b1c389b46eaa12f16793886ef7fd788ca9fc8191c"
+    },
+    {
+      "path": "predecessor-signing-success.json",
+      "bytes": 219,
+      "sha256": "6156c0c2b9e557739984c9f3cb5b2b47add5118b484d06c27282b580ee73523e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2543,
+      "sha256": "9999a4475f6943816678a84cdfa71835d0dbf91b49d3315c725c2451f9bf84d3"
+    },
+    {
+      "path": "result.json",
+      "bytes": 636,
+      "sha256": "fb1699f94352f32f7a29971d9658301e1db80e8f9b0a2124f23dcb2e80f5a6a0"
+    }
+  ]
+}

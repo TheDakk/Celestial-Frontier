@@ -1,0 +1,42 @@
+{
+  "scope": "Retained geometry only; no motion, split, intake or acceptance rerun.",
+  "executions": [
+    {
+      "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil.mjs",
+      "toolReceipt": "48146d",
+      "exitCode": 0
+    },
+    {
+      "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil-fit10.mjs",
+      "toolReceipt": "fd9c70",
+      "exitCode": 0
+    },
+    {
+      "scope": "Read-only retained body projected-reference counts and representative seam terms",
+      "toolReceipt": "dbd498",
+      "exitCode": 0
+    }
+  ],
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil.mjs",
+      "sha256": "b2ddb29a0db0484b230440ceca0a2e82b99eefaa4eabb7a6c6c265926a56fbf8"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil.json",
+      "sha256": "bd8a0588f1d5ad315957de1be964357dfa727586eeb2619482a9db3e9cc5fbdc"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil-fit10.mjs",
+      "sha256": "2f0de13b3f923f7882ace5fbd62377a264524ffcc7a26eca9c659fadde4fe53b"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil-fit10.json",
+      "sha256": "ada27ce27ca39ac546a42f6b68ef947f885368430442c00370c4d92a2a938515"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil-findings.md",
+      "sha256": "a856de07edf59c06cefd247c3d5a9cb531c340db56842f0b76e8c7bc464306be"
+    }
+  ]
+}

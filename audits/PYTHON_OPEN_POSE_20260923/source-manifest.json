@@ -1,0 +1,19 @@
+{
+  "head": "4ff2fad720e1d5734ce95a77c8a401cd8884e24e",
+  "scope": "Native03 uses this committed predecessor plus three explicitly changed harness source files and new asset inputs. Not a clean-source certificate.",
+  "files": [
+    {
+      "path": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "1fe5072de15b51d034decc1e10c1d628e376ed994696f69ec37ff5bd6b091403"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/painted-envelope.mjs",
+      "sha256": "3ffb3ca6c92f080878594d31239cda5f4a9eb14600af651e95648a5cafa40d53"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/painted-envelope.test.mjs",
+      "sha256": "5bac0342020a0a0cd6bc2aa1708e92dac1aeaaa6dacc7c043c4032367a9a163f"
+    }
+  ],
+  "diffSha256": "b51b48a9d2eb83732ed6e75764b891cd1fc2607a57d83db850b38c325cdbb746"
+}

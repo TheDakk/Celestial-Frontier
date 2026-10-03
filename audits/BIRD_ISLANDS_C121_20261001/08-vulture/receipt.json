@@ -1,0 +1,190 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/08-vulture/fit",
+  "sourceMasterSha256": "fe23842892a09f05140db1c51461da63bb317775f57b05fbc5d66862d91f0b18",
+  "keyedRgbaSha256": "746ac32fd6bdf1c51c69bff1e81eea2aa190b5dfaaad84904c3f2ccaf5db98ca",
+  "remainder": "body",
+  "remainderPixels": 16000,
+  "movedPixels": 1711,
+  "islands": [
+    {
+      "pixels": 448,
+      "to": "head",
+      "border": {
+        "head": 57,
+        "neck-upper": 30,
+        "far-wing-root": 6
+      }
+    },
+    {
+      "pixels": 739,
+      "to": "far-wing-root",
+      "border": {
+        "far-wing-root": 132
+      }
+    },
+    {
+      "pixels": 111,
+      "to": "head",
+      "border": {
+        "beak": 6,
+        "head": 43,
+        "neck-upper": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-root",
+      "border": {
+        "far-wing-root": 1
+      }
+    },
+    {
+      "pixels": 19,
+      "to": "beak",
+      "border": {
+        "beak": 5
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "far-wing-root",
+      "border": {
+        "neck-upper": 3,
+        "neck-lower": 1,
+        "far-wing-root": 4
+      }
+    },
+    {
+      "pixels": 102,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 39,
+        "chest": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 42,
+      "to": "far-thigh",
+      "border": {
+        "far-thigh": 21
+      }
+    },
+    {
+      "pixels": 22,
+      "to": "near-thigh",
+      "border": {
+        "near-thigh": 10
+      }
+    },
+    {
+      "pixels": 140,
+      "to": "far-shin",
+      "border": {
+        "far-foot": 22,
+        "far-shin": 33,
+        "far-thigh": 17
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 5
+      }
+    },
+    {
+      "pixels": 41,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 7
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 3
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 13
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "08-vulture",
+    "parts": 17,
+    "atlasSize": {
+      "width": 970,
+      "height": 550
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 30,
+        "distancePx": 24.86463351831254,
+        "supports": [
+          65,
+          63,
+          66
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 31,
+        "distancePx": 9.571409700587884,
+        "supports": [
+          5,
+          8
+        ]
+      }
+    ],
+    "sourceBindingHash": "7fb24b9371a2f88d81b0dd15bf8e935d4fb25f5ec9648532f52555d31133e495",
+    "sourceVertices": 985,
+    "vertices": 1203,
+    "sharedSupports": 212,
+    "pins": 614,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

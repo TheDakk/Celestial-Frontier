@@ -1,0 +1,28 @@
+{
+  "name": "Water Strider",
+  "masterSha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: four long support/rowing legs and two shorter foreleg endpoints are independently visible, with two separate antennae. Six-limb layout is visibly improved. Near/far roots still partly overlap under the thorax; legs occupy different vertical levels, and some extreme tips have pale fringes requiring key review. No runtime or species acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 270,
+      "y0": 452,
+      "x1": 989,
+      "y1": 837
+    },
+    "margins": {
+      "left": 270,
+      "right": 264,
+      "top": 452,
+      "bottom": 416
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

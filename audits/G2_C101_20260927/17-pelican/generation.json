@@ -1,0 +1,13 @@
+{
+  "id": "17-pelican",
+  "name": "Pelican",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2a91e7f1-211e-4eeb-bfce-4658e927e4df.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "13279973188739799448507097a081b09476d1f0a4a0ce55f3a1fa2dfd21637d",
+  "bytes": 1261253,
+  "promptSha256": "d39deffb2854bccf7818ce987467da1c4db85adcb83d3d14e0759e8da3fb5098",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

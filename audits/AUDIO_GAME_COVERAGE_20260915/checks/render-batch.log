@@ -1,0 +1,28 @@
+GROUP coverage-chem
+{"group": "coverage-chem", "validatedRenders": 11}
+GROUP coverage-contact
+{"group": "coverage-contact", "validatedRenders": 78}
+GROUP coverage-environment
+{"group": "coverage-environment", "validatedRenders": 12}
+GROUP coverage-events
+{"group": "coverage-events", "validatedRenders": 71}
+GROUP coverage-frost
+{"group": "coverage-frost", "validatedRenders": 11}
+GROUP coverage-life
+{"group": "coverage-life", "validatedRenders": 96}
+GROUP coverage-psionic
+{"group": "coverage-psionic", "validatedRenders": 11}
+GROUP coverage-sand
+{"group": "coverage-sand", "validatedRenders": 11}
+GROUP coverage-stone
+{"group": "coverage-stone", "validatedRenders": 11}
+GROUP coverage-storm
+{"group": "coverage-storm", "validatedRenders": 11}
+GROUP coverage-tide
+{"group": "coverage-tide", "validatedRenders": 11}
+GROUP coverage-venom
+{"group": "coverage-venom", "validatedRenders": 11}
+GROUP coverage-void
+{"group": "coverage-void", "validatedRenders": 11}
+GROUP coverage-wild
+{"group": "coverage-wild", "validatedRenders": 11}

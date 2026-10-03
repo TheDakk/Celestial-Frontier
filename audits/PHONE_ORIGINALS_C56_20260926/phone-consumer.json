@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "schema": "cf.d26-runtime-consumer/v1",
+  "manifestConsumer": "createCreatureFinishDeliveryV1",
+  "fetches": 7,
+  "rows": [
+    {
+      "id": "cougar",
+      "key": "a710569abe2a682ea6b58d1d99fbacd89a8cc47c5b5bb890db8fea696511982c",
+      "sha256": "889219f4bcbc597f33ccbe27bc4e7b7cf476167f48b7b3e97f4926553a8b70a7",
+      "pngBytes": 1171398,
+      "individualIdLength": 741,
+      "actualConsumer": true
+    },
+    {
+      "id": "wolf",
+      "key": "3dbaa4f0cd9e268193a613c00e4091bd57d73a076fcc82f189adc5eca82aa77a",
+      "sha256": "48a88be42af08041cc49a57d6ce06f8800e2bb4ff1e237bc2c15a44591353f49",
+      "pngBytes": 775236,
+      "individualIdLength": 736,
+      "actualConsumer": true
+    },
+    {
+      "id": "gull",
+      "key": "93b6bac2f050bd1a7ef94d00f80c8d7bc9e90303c82a4450ed2b77bc6c286121",
+      "sha256": "3dc67852481db05866d89b0a825cecbd0211368e09e9b0455297c0aeca481bd7",
+      "pngBytes": 620954,
+      "individualIdLength": 736,
+      "actualConsumer": true
+    }
+  ],
+  "scope": "Actual bundled manifest and filesystem-backed HTTP responses; not physical phone rendering"
+}

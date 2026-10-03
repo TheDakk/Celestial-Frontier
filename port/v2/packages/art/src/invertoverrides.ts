@@ -18,6 +18,8 @@
    Every key was read out of the catalog (the wave-7 lesson) and is checked
    by tools/overridecheck.mjs; the shadow check keeps it from re-covering
    what waves 3 and 7 already own. */
+import {startTopologyPartCapture,isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
+import type {TopologyPartCapture} from './topology-part-capture.js';
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
@@ -1667,6 +1669,7 @@ function resetMillipedeIII(c: Ctx, p: Pal): void {
 export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: boolean;
   hue?: string; segs?: number; scale?: number; legScale?: number; legContrast?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
   if (name === 'Millipede') { resetMillipedeIII(c, p); return; }
   const r = nrng(g, name, 0x33DD);
   const cx = S * 0.48, cy = S * 0.52;
@@ -1688,10 +1691,12 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
   for (let i = N - 1; i >= 0; i--) {
     const [x, y] = path(i);
     const legLen = segR * (opts.flat ? 2.6 : 1.5) * Math.min(1.35, opts.legScale ?? 1);
+    observed?.push({id:'segment'+i,kind:'body',points:[[x,y]],widths:[segR*2.1,segR*(opts.flat?.78:.95)*2],curve:'ellipse',layer:'near'});
     c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); c.lineCap = 'round';
     for (const s of [-1, 1] as const) {
       c.beginPath(); c.moveTo(x, y);
       c.quadraticCurveTo(x + s * legLen * 0.5, y + legLen * 0.7, x + s * legLen * (opts.flat ? 1.0 : 0.72), y + legLen * (opts.flat ? 0.7 : 1.0));
+      observed?.push({id:'leg'+i+(s<0?'Far':'Near'),kind:'leg',points:[[x,y],[x+s*legLen*.5,y+legLen*.7],[x+s*legLen*(opts.flat?1:.72),y+legLen*(opts.flat?.7:1)]],curve:'quadratic',layer:s<0?'far':'near'});
       c.stroke();
       if (opts.legContrast) { c.strokeStyle = p.lit; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1) * 0.54; c.stroke(); c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); }
     }
@@ -1723,6 +1728,7 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
       c.quadraticCurveTo(hx - segR * 2.4, hy + s * segR * 1.1, hx - segR * 1.9, hy + s * segR * 1.5); c.stroke();
     }
   }
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'myriapod',family:'myriapod',coordinateSize:S,materials:{surface:'chitinous',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['actual segment and paired-leg counts require a count-preserving motion variant','head/antenna landmarks and part masks not captured']});
 }
 
 /* ═══════════════ CRUSTACEANS ═══════════════ */
@@ -1777,8 +1783,17 @@ function resetCrustLeg(c: Ctx, p: Pal, root: InvertPt, knee: InvertPt, tip: Inve
 }
 
 function resetCrabChela(c: Ctx, p: Pal, root: InvertPt, elbow: InvertPt, palm: InvertPt,
-  size: number, angle: number): void {
+  size: number, angle: number, observation?:{features:DrawnFeature[];side:'Far'|'Near';masks?:TopologyPartCapture|undefined}): void {
+  if(observation){
+    const {features,side}=observation,project=(x:number,y:number):[number,number]=>[palm[0]+Math.cos(angle)*x-Math.sin(angle)*y,palm[1]+Math.sin(angle)*x+Math.cos(angle)*y];
+    features.push({id:'chela'+side,kind:'arm',points:[root,elbow,palm],curve:'polyline',layer:'near'});
+    features.push({id:'fixedFinger'+side,kind:'arm',points:[project(size*.34,-size*.34),project(size*1.15,-size*.62),project(size*1.48,-size*.24)],curve:'quadratic',layer:'near'});
+    features.push({id:'dactyl'+side,kind:'arm',points:[project(size*.34,size*.31),project(size*1.13,size*.50),project(size*1.42,size*.11)],curve:'quadratic',layer:'near'});
+  }
+  const masks=observation?.masks,side=observation?.side??'Near',prefix='claw-'+side.toLowerCase();
+  masks?.chain([{id:prefix+'-upper',joint:'claw'+side+'Elbow',layer:'near'},{id:prefix+'-palm',joint:'claw'+side+'Palm',layer:'near'}],[root,elbow,palm]);
   resetCrustLeg(c, p, root, elbow, palm, Math.max(7, size * 0.24));
+  masks?.stage(prefix+'-palm','claw'+side+'Palm');
   c.save(); c.translate(palm[0], palm[1]); c.rotate(angle);
   c.fillStyle = crustGradient(c, p, -size * 0.08, 0, size);
   c.beginPath(); c.ellipse(-size * 0.08, 0, size * 0.72, size * 0.48, 0, 0, TAU); c.fill();
@@ -1789,9 +1804,11 @@ function resetCrabChela(c: Ctx, p: Pal, root: InvertPt, elbow: InvertPt, palm: I
   c.beginPath(); c.moveTo(size * 0.34, -size * 0.34);
   c.quadraticCurveTo(size * 1.15, -size * 0.62, size * 1.48, -size * 0.24);
   c.quadraticCurveTo(size * 1.03, -size * 0.27, size * 0.34, -size * 0.06); c.closePath(); c.fill();
+  masks?.stage(prefix+'-dactyl','claw'+side+'DactylRoot');
   c.beginPath(); c.moveTo(size * 0.34, size * 0.31);
   c.quadraticCurveTo(size * 1.13, size * 0.50, size * 1.42, size * 0.11);
   c.quadraticCurveTo(size * 0.98, size * 0.10, size * 0.34, size * 0.03); c.closePath(); c.fill();
+  masks?.stage(prefix+'-palm','claw'+side+'Palm');
   c.strokeStyle = crustTone(p, 0.34, 0.72); c.lineWidth = Math.max(1.5, size * 0.045);
   c.beginPath(); c.moveTo(size * 0.36, -size * 0.27); c.quadraticCurveTo(size * 0.23, 0, size * 0.36, size * 0.25); c.stroke();
   c.restore();
@@ -1916,11 +1933,14 @@ function resetHermitCrab(c: Ctx, g: G, p: Pal, name: string): void {
   }
 }
 
-function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignature): void {
+function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignature, paletteSource:string): void {
   if (sig === 'hermitCrab') { resetHermitCrab(c, g, p, name); return; }
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
+  const masks=startTopologyPartCapture(c);masks?.stage('shadow','root');
   const cx = S * 0.50, cy = S * 0.505;
   const w = sig === 'mudCrab' ? S * 0.205 : sig === 'ventCrab' ? S * 0.145 : S * 0.175;
   const h = sig === 'mudCrab' ? S * 0.120 : sig === 'ventCrab' ? S * 0.105 : S * 0.135;
+  observed?.push({id:'carapace',kind:'body',points:[[cx,cy+h*(sig==='mudCrab'?.84:sig==='freshwaterCrab'?.90:.88)],[cx,cy]],widths:[w*2,h*2],layer:'near'});
   shadow(c, cx, S * 0.79, sig === 'ventCrab' ? S * 0.25 : S * 0.31);
   for (const side of [-1, 1] as const) {
     for (let i = 0; i < 4; i++) {
@@ -1930,22 +1950,33 @@ function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignatu
         cy - h * 0.72 + i * S * 0.052];
       const tip: InvertPt = [cx + side * (w + S * (0.155 + i * 0.016)) * span,
         cy - h * 0.40 + i * S * 0.092];
-      resetCrustLeg(c, p, root, knee, tip, sig === 'ventCrab' ? 5.6 - i * 0.30 : 8.6 - i * 0.55,
-        sig === 'mudCrab' && i === 3 ? 0.88 : 0);
+      const width=sig==='ventCrab'?5.6-i*.30:8.6-i*.55,paddle=sig==='mudCrab'&&i===3?.88:0;
+      const id='leg'+i+(side<0?'Far':'Near');
+      observed?.push({id,kind:'leg',points:[root,knee,tip],curve:'polyline',widths:[width],layer:'far'});
+      if(observed&&paddle){
+        const a=Math.atan2(tip[1]-knee[1],tip[0]-knee[0]);
+        // A rigid terminal paddle is a surface of the foot, not another leg.
+        observed.push({id:id+'Paddle',kind:'body',points:[[tip[0]+Math.cos(a)*width*1.05,tip[1]+Math.sin(a)*width*1.05],tip],widths:[width*(1.45+paddle)*2,width*(.72+paddle*.35)*2],curve:'ellipse',layer:'far'});
+      }
+      masks?.chain([{id:id.toLowerCase()+'-upper',joint:id+'Knee',layer:'far'},{id:id.toLowerCase()+'-lower',joint:id+'Foot',layer:'far'}],[root,knee,tip]);
+      resetCrustLeg(c, p, root, knee, tip, width, paddle);
     }
   }
   /* Arms are rooted behind the carapace; only their filled chelae remain in front. */
   const leftSize = sig === 'mudCrab' ? S * 0.082 : sig === 'ventCrab' ? S * 0.044 : S * 0.063;
   const rightSize = sig === 'mudCrab' ? S * 0.058 : sig === 'ventCrab' ? S * 0.042 : S * 0.063;
   resetCrabChela(c, p, [cx - w * 0.52, cy - h * 0.36], [cx - w * 0.92, cy - h * 0.93],
-    [cx - w * 1.20, cy - h * 1.10], leftSize, Math.PI - 0.25);
+    [cx - w * 1.20, cy - h * 1.10], leftSize, Math.PI - 0.25, observed?{features:observed,side:'Far',masks}:undefined);
   resetCrabChela(c, p, [cx + w * 0.52, cy - h * 0.36], [cx + w * 0.92, cy - h * 0.93],
-    [cx + w * 1.20, cy - h * 1.10], rightSize, 0.25);
+    [cx + w * 1.20, cy - h * 1.10], rightSize, 0.25, observed?{features:observed,side:'Near',masks}:undefined);
+  masks?.stage('carapace','carapace');
   resetCrabCarapace(c, g, p, name, sig, cx, cy, w, h);
 
   /* Eyes live on the front edge. Vent eyes are reduced pale knobs, not beads. */
   for (const side of [-1, 1] as const) {
     const bx = cx + side * w * 0.30, by = cy - h * 0.77;
+    masks?.stage('eye-'+(side<0?'far':'near'),'eye'+(side<0?'Far':'Near')+'Tip');
+    observed?.push({id:'eye'+(side<0?'Far':'Near'),kind:'head',points:[[bx,by],[bx+side*w*.035,by-h*(sig==='ventCrab'?.22:.38)]],layer:'near'});
     c.strokeStyle = sig === 'ventCrab' ? 'rgba(176,182,188,0.72)' : crustTone(p, 0.38, 1);
     c.lineWidth = sig === 'ventCrab' ? 3 : 5; c.lineCap = 'round';
     c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + side * w * 0.035, by - h * (sig === 'ventCrab' ? 0.20 : 0.35)); c.stroke();
@@ -1953,6 +1984,7 @@ function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignatu
       c.fillStyle = 'rgba(126,130,136,0.72)'; c.beginPath(); c.arc(bx + side * w * 0.035, by - h * 0.22, 3.2, 0, TAU); c.fill();
     } else eyeDot(c, bx + side * w * 0.035, by - h * 0.38, S * 0.014);
   }
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'resetCrabII:'+sig,family:'brachyuran',coordinateSize:S,materials:{surface:'chitinous',paletteSource},features:observed,...(masks?{partMasks:masks.finish()}:{}),unresolved:['Hidden joints, complete source-bound motion and visual qualification remain open']});
 }
 
 export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?: boolean; big?: boolean; hue?: string;
@@ -1963,11 +1995,15 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const resetSignature = RESET_CRAB_II[name];
-  if (resetSignature) { resetCrabII(c, g, p, name, resetSignature); return; }
+  if (resetSignature) { resetCrabII(c, g, p, name, resetSignature, opts.hue?'named':'genome'); return; }
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
+  const masks=startTopologyPartCapture(c);masks?.stage('shadow','root');
+  if(masks&&opts.hermit)throw Error('Crab masks: borrowed shell needs its own source graph');
   const r = nrng(g, name, 0xC2AB);
   const cx = S * 0.50, cy = S * 0.50;
   const cw = S * (opts.wide ? 0.155 : 0.125) * (opts.big ? 1.2 : 1) * nv(name, 0x41, 0.12);
   const ch = cw * (opts.wide ? 0.62 : 0.74) * nv(name, 0x42, 0.18);   /* carapace ASPECT */
+  observed?.push({id:'carapace',kind:'body',points:[[cx,cy+ch*.92],[cx,cy]],widths:[cw*2,ch*2],layer:'near'});
   shadow(c, cx, cy + ch * 1.9, cw * 1.3);
   c.strokeStyle = p.dark; c.lineCap = 'round';
   for (const s of [-1, 1] as const) {
@@ -1976,6 +2012,9 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
       const span = opts.terrestrial ? 1.62 : 1;
       const kx = ox + s * cw * (0.62 + i * 0.10) * span, ky = oy - ch * (0.42 - i * 0.22);
       const ex = ox + s * cw * (1.05 + i * 0.07) * span, ey = oy + ch * (0.85 + i * 0.24) * (opts.terrestrial ? 1.12 : 1);
+      observed?.push({id:'leg'+i+(s<0?'Far':'Near'),kind:'leg',points:[[ox,oy],[kx,ky],[ex,ey]],curve:'polyline',layer:s<0?'far':'near'});
+      const id='leg'+i+(s<0?'Far':'Near'),layer=s<0?'far' as const:'near' as const;
+      masks?.chain([{id:id.toLowerCase()+'-upper',joint:id+'Knee',layer},{id:id.toLowerCase()+'-lower',joint:id+'Foot',layer}],[[ox,oy],[kx,ky],[ex,ey]]);
       limb(c, ox, oy, ex, ey, kx, ky, (opts.terrestrial ? 8.2 : 5.5) - i * 0.5, p.dark);
     }
   }
@@ -1989,6 +2028,7 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
       c.fillStyle = gg; c.beginPath(); c.arc(wx, wy, wr, 0, TAU); c.fill();
     }
   }
+  masks?.stage('carapace','carapace');
   /* the carapace */
   const carap = (): void => {
     /* ★ POLISH — a crab carapace is a SHIELD, not a balloon: widest at the
@@ -2020,21 +2060,35 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   for (const s of [-1, 1] as const) {
     const clawK = opts.crusher && s < 0 ? 1.78 : 1;
     const px = cx + s * cw * 1.02, py = cy - ch * 0.86;
+    const side=s<0?'Far':'Near',prefix='claw-'+side.toLowerCase();
+    masks?.chain([{id:prefix+'-upper',joint:'claw'+side+'Elbow',layer:'near'},{id:prefix+'-palm',joint:'claw'+side+'Palm',layer:'near'}],[[cx+s*cw*.52,cy-ch*.3],[cx+s*cw*1.06,cy-ch*.14],[px,py]]);
     limb(c, cx + s * cw * 0.52, cy - ch * 0.3, px, py, cx + s * cw * 1.06, cy - ch * 0.14, 7.5 * clawK, p.dark);
+    if(observed){
+      const angle=s*-.62,project=(x:number,y:number):[number,number]=>[px+Math.cos(angle)*x-Math.sin(angle)*y,py+Math.sin(angle)*x+Math.cos(angle)*y];
+      const side=s<0?'Far':'Near';
+      observed.push({id:'chela'+side,kind:'arm',points:[[cx+s*cw*.52,cy-ch*.3],[cx+s*cw*1.06,cy-ch*.14],[px,py]],curve:'polyline',layer:'near'});
+      observed.push({id:'fixedFinger'+side,kind:'arm',points:[project(cw*.20*clawK,-cw*.09*clawK),project(cw*.52*clawK,-cw*.22*clawK),project(cw*.64*clawK,-cw*.10*clawK)],curve:'quadratic',layer:'near'});
+      observed.push({id:'dactyl'+side,kind:'arm',points:[project(cw*.20*clawK,cw*.06*clawK),project(cw*.50*clawK,cw*.10*clawK),project(cw*.62*clawK,-cw*.02*clawK)],curve:'quadratic',layer:'near'});
+    }
+    masks?.stage(prefix+'-palm','claw'+side+'Palm');
     c.save(); c.translate(px, py); c.rotate(s * -0.62);
     c.fillStyle = shell(c, p, 0, 0, cw * 0.34 * clawK);
     c.beginPath(); c.ellipse(0, 0, cw * 0.34 * clawK, cw * 0.19 * clawK, 0, 0, TAU); c.fill();
     c.strokeStyle = p.dark; c.lineWidth = 6 * clawK; c.lineCap = 'round';
     c.beginPath(); c.moveTo(cw * 0.20 * clawK, -cw * 0.09 * clawK); c.quadraticCurveTo(cw * 0.52 * clawK, -cw * 0.22 * clawK, cw * 0.64 * clawK, -cw * 0.10 * clawK); c.stroke();
+    masks?.stage(prefix+'-dactyl','claw'+side+'DactylRoot');
     c.lineWidth = 5 * clawK;
     c.beginPath(); c.moveTo(cw * 0.20 * clawK, cw * 0.06 * clawK); c.quadraticCurveTo(cw * 0.50 * clawK, cw * 0.10 * clawK, cw * 0.62 * clawK, -cw * 0.02 * clawK); c.stroke();
     c.restore();
   }
   c.strokeStyle = p.dark; c.lineWidth = 3; c.lineCap = 'round';   /* eyestalks */
   for (const s of [-1, 1] as const) {
+    masks?.stage('eye-'+(s<0?'far':'near'),'eye'+(s<0?'Far':'Near')+'Tip');
     c.beginPath(); c.moveTo(cx + s * cw * 0.24, cy - ch * 0.78); c.lineTo(cx + s * cw * 0.30, cy - ch * 1.30); c.stroke();
+    observed?.push({id:'eye'+(s<0?'Far':'Near'),kind:'head',points:[[cx+s*cw*.24,cy-ch*.78],[cx+s*cw*.30,cy-ch*1.36]],layer:'near'});
     eyeDot(c, cx + s * cw * 0.30, cy - ch * 1.36, cw * 0.075);
   }
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'crabBody',family:'brachyuran',coordinateSize:S,materials:{surface:'chitinous',paletteSource:opts.hue?'named':'genome'},features:observed,...(masks?{partMasks:masks.finish()}:{}),unresolved:['Hidden joints, full source-bound motion and visual qualification remain open','borrowed shells require an additional declared surface when present']});
 }
 
 type ResetShrimpIISignature = 'shrimp' | 'prawn' | 'freshwaterShrimp' | 'brineShrimp'
@@ -3955,10 +4009,12 @@ export const INVERT_NAME: Record<string, PainterI> = {
     not reach and a painter was the right answer. */
 export function isopodBody(c: Ctx, g: G, pIn: Pal, opts: { giant?: boolean; hue?: string }, name = ''): void {
   const p = speciesHue(pIn, opts.hue);
+  const observed:DrawnFeature[]|null=isObservingPainterTopology(c)?[]:null;
   const r = nrng(g, name, 0x1509);
   const cx = S * 0.50, cy = S * 0.52;
   const bw = S * (opts.giant ? 0.225 : 0.165) * nv(name, 0x31, 0.10);
   const bh = bw * 0.46;                       /* FLAT — this is the whole read */
+  observed?.push({id:'dorsum',kind:'body',points:[[cx,cy]],widths:[2*bw,2*bh],curve:'ellipse',layer:'near'});
   shadow(c, cx, cy + bh * 1.5, bw * 0.92);
 
   /* seven stout pereopods a side, the far bank first and dimmer */
@@ -3970,6 +4026,7 @@ export function isopodBody(c: Ctx, g: G, pIn: Pal, opts: { giant?: boolean; hue?
       const u = -0.72 + (i / 6) * 1.44;
       const lx = cx + bw * u, ly = cy + bh * (far ? 0.30 : 0.68);
       const out = bw * (0.20 + Math.abs(u) * 0.06) * (far ? 0.72 : 1);
+      observed?.push({id:'leg'+i+(far?'Far':'Near'),kind:'leg',points:[[lx,ly],[lx+out*.5,ly+bh*.55],[lx+out,ly+bh*(far?.75:1.05)]],widths:[bh*.15],curve:'quadratic',layer:far?'far':'near'});
       c.beginPath(); c.moveTo(lx, ly);
       c.quadraticCurveTo(lx + out * 0.5, ly + bh * 0.55, lx + out, ly + bh * (far ? 0.75 : 1.05));
       c.stroke();
@@ -3980,6 +4037,7 @@ export function isopodBody(c: Ctx, g: G, pIn: Pal, opts: { giant?: boolean; hue?
     /* Paired uropod paddles flank the pleotelson. Drawing them before the
        dorsum and terminal plate buries their roots in the continuous shell. */
     for (const side of [-1, 1] as const) {
+      observed?.push({id:'uropod'+(side<0?'Far':'Near'),kind:'body',points:[[cx+bw*.76,cy+side*bh*.42],[cx+bw*1.02,cy+side*bh*.54],[cx+bw*1.35,cy+side*bh*.88],[cx+bw*1.53,cy+side*bh*.98]],curve:'cubic',layer:'far'});
       const ug = c.createLinearGradient(cx + bw * 0.78, cy, cx + bw * 1.48, cy + side * bh);
       ug.addColorStop(0, p.base); ug.addColorStop(1, p.dark);
       c.fillStyle = ug;
@@ -4010,6 +4068,7 @@ export function isopodBody(c: Ctx, g: G, pIn: Pal, opts: { giant?: boolean; hue?
   for (let i = 0; i < 7; i++) {
     const u = -0.62 + (i / 6) * 1.24;
     const x = cx + bw * u;
+    observed?.push({id:'tergite'+i,kind:'body',points:[[x,cy-bh],[x+bw*.04,cy],[x,cy+bh]],widths:[2.2],curve:'quadratic',layer:'near'});
     c.strokeStyle = 'rgba(0,0,0,0.30)'; c.lineWidth = 2.2;
     c.beginPath(); c.moveTo(x, cy - bh); c.quadraticCurveTo(x + bw * 0.04, cy, x, cy + bh); c.stroke();
     c.strokeStyle = 'rgba(255,252,242,0.16)'; c.lineWidth = 1.6;
@@ -4028,13 +4087,16 @@ export function isopodBody(c: Ctx, g: G, pIn: Pal, opts: { giant?: boolean; hue?
   c.closePath(); c.fill();
   rim(c, () => { c.moveTo(cx + bw * 0.70, cy - bh * 0.86); c.quadraticCurveTo(cx + bw * 1.30, cy, cx + bw * 0.70, cy + bh * 0.86); }, 1.8);
 
+  observed?.push({id:'head',kind:'head',points:[[cx-bw*.94,cy]],widths:[bw*.52,bh*1.72],curve:'ellipse',layer:'near'},{id:'pleotelson',kind:'body',points:[[cx+bw*.70,cy-bh*.86],[cx+bw*1.30,cy],[cx+bw*.70,cy+bh*.86]],curve:'quadratic',layer:'near'});
   /* SHORT antennae — a whip antenna is what made these read as shrimp */
   c.strokeStyle = p.dark; c.lineWidth = bh * 0.10; c.lineCap = 'round';
   for (const s of [-1, 1] as const) {
+    observed?.push({id:'antenna'+(s<0?'Far':'Near'),kind:'antenna',points:[[cx-bw*1.05,cy+s*bh*.30],[cx-bw*1.36,cy+s*bh*.62],[cx-bw*1.48,cy+s*bh*.30]],widths:[bh*.10],curve:'quadratic',layer:s<0?'far':'near'});
     c.beginPath(); c.moveTo(cx - bw * 1.05, cy + s * bh * 0.30);
     c.quadraticCurveTo(cx - bw * 1.36, cy + s * bh * 0.62, cx - bw * 1.48, cy + s * bh * 0.30);
     c.stroke();
   }
   eyeDot(c, cx - bw * 1.02, cy - bh * 0.34, bh * 0.14);
   eyeDot(c, cx - bw * 1.02, cy + bh * 0.34, bh * 0.14);
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'isopodBody',family:'crustacean-small',coordinateSize:S,materials:{surface:'chitinous',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['Seven leg pairs and seven tergite marks; do not use the five-pair shrimp candidate','Isopod paired uropods are present only on the named Isopod owner','Hidden limb roots, source part masks, articulated plate graph and full motion']});
 }

@@ -1,0 +1,19 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "status": "STOPPED_SECOND_PAINT_FAILURE",
+  "item": 11,
+  "name": "Fruit Bat",
+  "sourceHead": "7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c",
+  "runId": "20260922-fruit-bat-repair-02",
+  "generation": 2,
+  "masterSha256": "9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd",
+  "promptSha256": "9046f8bdb5185d9bdc893366d79d3d68fb647b3871eeea82a8e2a290310000cd",
+  "finding": "Both wings now point rearward but the near lower wing reaches and is cut by the left canvas border; requested complete anatomy and8percent margin are not met. Visual review also finds forearms still rise from elbow to wrist instead of the requested shallow downward continuation; this is a painting finding, not a measured solver refusal.",
+  "intake": null,
+  "static": null,
+  "exactRest": null,
+  "native": null,
+  "cpuP95Ms": null,
+  "protectedChanges": false,
+  "originalPacket": "../../ARCHETYPE_SPRINT_20260922/11-flyer-membrane"
+}

@@ -1,0 +1,41 @@
+{
+  "reason": "Prevent measured recurring native-size/path-occlusion failures and observed invented celestial bodies/pseudo-lettering from prior groups. Authorized parent continuation; no source-pixel editing.",
+  "amendments": [
+    {
+      "role": "far",
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/carbon/arena-far.prompt.txt",
+        "sha256": "1ba2edd197edc6f591af58da1df2ca7effbf39f99bfe3494cb93545cdc028f89"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/carbon/authoring-prompts/arena-far.prompt.txt",
+        "sha256": "9e0bbc7c6f89895247548a61cf9a356cee67cb12158ba42d70740d62e6d13ba7"
+      }
+    },
+    {
+      "role": "mid",
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/carbon/arena-mid.prompt.txt",
+        "sha256": "f420f4003d1ccc17989821cb434d4129a06b9034c04bd29dd54e87d952241def"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/carbon/authoring-prompts/arena-mid.prompt.txt",
+        "sha256": "ce46d34bc5958a85cb5daae0e68984e203bff27941abe7251a5b42337fc76f30"
+      }
+    },
+    {
+      "role": "near",
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/carbon/arena-near.prompt.txt",
+        "sha256": "ee0e1c1902b6fcd1a528905c08ff6902c16d17e5fa0893d94ac7f686d93b6fbf"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/carbon/authoring-prompts/arena-near.prompt.txt",
+        "sha256": "e3e1b9d1658f0517838bc5acda81b80d6ec00d1df8781f9ebe23250c59bdd380"
+      }
+    }
+  ]
+}

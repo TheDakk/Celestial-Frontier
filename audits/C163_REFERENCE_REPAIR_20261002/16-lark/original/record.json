@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Lark\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2349932396\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"24\"]]]]",
+    "seed": 2349932396,
+    "ownerId": "authored:archetype-sprint/16-lark",
+    "earthName": "Lark"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2349932396,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 13,
+    "body": 8,
+    "loco": 10,
+    "trait": 24,
+    "size": 4,
+    "diet": 0,
+    "head": 0,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 0,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 0,
+    "detail": 9,
+    "accent": 8,
+    "temper": 5,
+    "sense": 4,
+    "repro": 7,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Lark"
+  },
+  "geometry": {
+    "cutoutAssetHash": "ed62d06bbddbfbe101a6ed6a43003e90904a218c0a3b764281633f114e39b335",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6715045736681056,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5248006379585327,
+      0.5236044657097289
+    ],
+    "pelvis": [
+      0.49800637958532695,
+      0.5537480063795853
+    ],
+    "spine": [
+      0.5692185007974482,
+      0.5127591706539075
+    ],
+    "chest": [
+      0.6393939393939394,
+      0.46850079744816586
+    ],
+    "neck0": [
+      0.6573365231259968,
+      0.4307814992025519
+    ],
+    "neck1": [
+      0.6681818181818182,
+      0.39681020733652317
+    ],
+    "head": [
+      0.651993620414673,
+      0.3621212121212121
+    ],
+    "beak": [
+      0.7104465709728868,
+      0.38995215311004783
+    ],
+    "legNearKnee": [
+      0.4728867623604466,
+      0.5781499202551834
+    ],
+    "legNearAnkle": [
+      0.4728867623604466,
+      0.6400318979266348
+    ],
+    "legNearFoot": [
+      0.47974481658692186,
+      0.6559808612440191
+    ],
+    "legFarKnee": [
+      0.5582137161084529,
+      0.573524720893142
+    ],
+    "legFarAnkle": [
+      0.5967304625199362,
+      0.6477671451355661
+    ],
+    "legFarFoot": [
+      0.6134768740031897,
+      0.662200956937799
+    ],
+    "wingNearRoot": [
+      0.5847687400318979,
+      0.46547049441786287
+    ],
+    "wingNearTip": [
+      0.4103668261562999,
+      0.5169059011164274
+    ],
+    "wingFarRoot": [
+      0.5780701754385965,
+      0.4445773524720893
+    ],
+    "wingFarTip": [
+      0.5012759170653908,
+      0.4587719298245614
+    ],
+    "tailFan": [
+      0.33740031897926637,
+      0.5496810207336523
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/16-lark/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "55d32f0cb59a9755ba92493194371dda6d7d513b3e663a8711b2df8fc95588d1",
+    "subjectSourceSha256": "4923aaca5089ca648e6bfa2bc613024ac600bea617cf169216a92e9e2e459a85",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.04033069954619432,
+      "spine": 0.08216599577487299,
+      "chest": 0.0829662327759229,
+      "neck0": 0.041769387966828865,
+      "neck1": 0.03566046965331126,
+      "head": 0.03828033615312276,
+      "beak": 0.06474031746357935,
+      "legFarKnee": 0.06337224793361573,
+      "legFarAnkle": 0.08363897005295196,
+      "legFarFoot": 0.022108306599753928,
+      "legNearKnee": 0.03502068774762446,
+      "legNearAnkle": 0.06188197767145143,
+      "legNearFoot": 0.017360942908510025,
+      "wingFarRoot": 0.0658250350943619,
+      "wingFarTip": 0.0780950968070723,
+      "wingNearRoot": 0.05470918699631936,
+      "wingNearTip": 0.18182856933308986,
+      "tailFan": 0.1606575459654536
+    },
+    "measures": {
+      "body": 0.16509854238978322,
+      "bone-min": 0.017360942908510025,
+      "bone-max": 0.18182856933308986,
+      "leg/torso:legFar": 1.024355043589938,
+      "leg/torso:legNear": 0.6920933805570465,
+      "wing/torso": 0.8717226077117711
+    }
+  },
+  "recipeHash": "4a03a8cbab90f0d2eaf4e33b027a0c17afe31109adc172e28db6c9f6917eb93f"
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c173-material-equivalence/v1",
+  "rows": [
+    {
+      "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm",
+      "successor": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material",
+      "oldSurface": "skin",
+      "newSurface": "slick",
+      "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+      "landmarksChanged": false,
+      "ownershipPolygonsChanged": false,
+      "presenceChanged": false,
+      "keyedPngByteIdentity": true,
+      "ownershipPngByteIdentity": true,
+      "sourcePixelsChanged": 0,
+      "oldMaterialRefusalRetained": true
+    },
+    {
+      "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge",
+      "successor": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material",
+      "oldSurface": "porous",
+      "newSurface": "warty",
+      "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+      "landmarksChanged": false,
+      "ownershipPolygonsChanged": false,
+      "presenceChanged": false,
+      "keyedPngByteIdentity": true,
+      "ownershipPngByteIdentity": true,
+      "sourcePixelsChanged": 0,
+      "oldMaterialRefusalRetained": true
+    }
+  ],
+  "scope": "Light exact-file/JSON retention verification; no motion rerun or native measurement",
+  "productionChanged": false
+}

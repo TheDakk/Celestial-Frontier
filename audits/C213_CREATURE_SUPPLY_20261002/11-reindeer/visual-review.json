@@ -1,0 +1,28 @@
+{
+  "name": "Reindeer",
+  "masterSha256": "287f646975b919937cb1a89654b6341b69e440ba47024e84513654fafdc4fdae",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original inspected: four separate hoof endpoints, dark brown/cream mottled body, pale neck ruff, short white tail and large antlers with forward brow shovel. Antler tops remain heavily palmated and exaggerated, so the earlier moose-like identity/proportion issue is not claimed resolved. Only the near ear is clearly distinguishable; the far ear remains obscured by head/antlers. Far proximal limb roots partly overlap the torso. The right antler is close to the canvas edge; unchanged framing observer is pending. No hidden anatomy inferred.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 116,
+      "y0": 106,
+      "x1": 1199,
+      "y1": 1052
+    },
+    "margins": {
+      "left": 116,
+      "right": 54,
+      "top": 106,
+      "bottom": 201
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

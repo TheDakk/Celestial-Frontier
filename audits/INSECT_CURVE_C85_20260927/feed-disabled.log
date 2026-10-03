@@ -1,0 +1,28 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/grounded-insect.test.ts (7 tests | 1 failed) 370ms
+   × repairs Cicada feed while the unchanged external guard still refuses 66ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/grounded-insect.test.ts > repairs Cicada feed while the unchanged external guard still refuses
+AssertionError: expected 118 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 118
+
+ ❯ apps/game/src/motion/grounded-insect.test.ts:17:110
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  06:49:33
+   Duration  620ms (transform 111ms, setup 0ms, import 143ms, tests 370ms, environment 0ms)
+

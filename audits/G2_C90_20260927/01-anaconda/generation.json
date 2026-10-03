@@ -1,0 +1,13 @@
+{
+  "id": "01-anaconda",
+  "name": "Anaconda",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0aea207f-15cc-4216-85c5-93174fd09cbf.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "595659a83fa7373ac9c9329221556dd5438da69bc31865b2637c4523bf727f9b",
+  "bytes": 1119266,
+  "promptSha256": "284ab6d5d34748a7b024837a7ea4a652ffa101542695a0bf718195e62514ba77",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

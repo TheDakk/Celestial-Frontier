@@ -1,0 +1,140 @@
+{
+ "package": "dev-preview-1a680294cf59-20260925230408",
+ "serviceWorker": "served",
+ "viewport": "desktop 1280x800@1",
+ "swControl": true,
+ "runs": [
+  {
+   "from": "url",
+   "vs": "alien:12,alien:11",
+   "status": "playing",
+   "generation": "1",
+   "text": "real duel · alien:12 vs Torovoora (alien:11) · playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left alien:12: ground (exact-name Earth fauna presentation profile) · right Torovoora: ground (exact-name Earth fauna presentation profile) · attacks: bite (jaw) / bite (cheliceraNear)",
+   "still": "picker-1.png",
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   },
+   "controlled": true
+  },
+  {
+   "from": "controls",
+   "vs": "Salmon,Octopus",
+   "status": "playing",
+   "generation": "1",
+   "text": "real duel · Salmon vs Veloraine (Octopus) · playing · lake · left Salmon: water (exact-name Earth fauna presentation profile) · right Veloraine: water (exact-name Earth fauna presentation profile) · attacks: bite (jaw) / bite (head)",
+   "still": "picker-2.png",
+   "controlled": true,
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   }
+  },
+  {
+   "from": "reload, arena refused by the server",
+   "vs": "alien:12,alien:11",
+   "status": "playing",
+   "controlled": true,
+   "text": "real duel · alien:12 vs Torovoora (alien:11) · playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left alien:12: ground (exact-name Earth fauna presentation profile) · right Torovoora: ground (exact-name Earth fauna presentation profile) · attacks: bite (jaw) / bite (cheliceraNear)",
+   "still": "picker-3-offline.png",
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   }
+  }
+ ],
+ "browser": {
+  "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  "product": "Edg/154.0.4258.37",
+  "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+  "js_version": "15.4.11.5",
+  "protocol_version": "1.3"
+ },
+ "pageErrorsDuringDuel": [],
+ "duel": {
+  "trace": [
+   [
+    0,
+    2,
+    "0",
+    null,
+    "playing"
+   ],
+   [
+    2029,
+    2,
+    "0",
+    "120",
+    "playing"
+   ],
+   [
+    4268,
+    3,
+    "1",
+    "240",
+    "playing"
+   ],
+   [
+    6302,
+    5,
+    "1",
+    "390",
+    "playing"
+   ],
+   [
+    8339,
+    5,
+    "2",
+    "510",
+    "playing"
+   ],
+   [
+    10375,
+    10,
+    "2",
+    "630",
+    "playing"
+   ]
+  ],
+  "samples": 51,
+  "increments": [
+   {
+    "ms": 2232,
+    "rows": 3,
+    "stage": "playing"
+   },
+   {
+    "ms": 6302,
+    "rows": 5,
+    "stage": "playing"
+   },
+   {
+    "ms": 10375,
+    "rows": 10,
+    "stage": "playing"
+   }
+  ],
+  "completed": true,
+  "spreadMs": 8143
+ },
+ "arenaHitsBeforeOffline": {
+  "served": 60,
+  "refused": 0
+ },
+ "arenaHits": {
+  "served": 60,
+  "refused": 0
+ },
+ "coldControl": {
+  "vs": "Starfish,Tarantula",
+  "failed": "cold control: study failed — Starfish: pinned parts rig unavailable (battle2 asset ../ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/manifest.json: HTTP 503) (could not stage: Starfish: pinned parts rig unavailable (battle2 asset ../ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/manifest.json:",
+  "rigs": null,
+  "arenaHits": {
+   "served": 60,
+   "refused": 1
+  }
+ },
+ "pageErrors": [],
+ "status": "PASS"
+}

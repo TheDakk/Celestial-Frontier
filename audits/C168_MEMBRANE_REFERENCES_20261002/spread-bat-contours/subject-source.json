@@ -1,0 +1,70 @@
+{
+  "name": "Bat",
+  "family": "flyer-membrane",
+  "species": {
+    "name": "Bat",
+    "aspect": 1.4,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "flying",
+    "mustRead": [
+      "skin membrane stretched between enormously elongated finger bones",
+      "large ears on a small furry body",
+      "membrane also spanning the hind legs and tail"
+    ],
+    "note": "Generic name read as a representative insectivorous microbat. The wing is a hand, so the finger struts must fan visibly through the membrane; feathered or leathery bird wings are wrong."
+  },
+  "genome": {
+    "seed": 135514800,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 14,
+    "body": 9,
+    "loco": 0,
+    "trait": 7,
+    "size": 0,
+    "diet": 5,
+    "head": 3,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 4,
+    "detail": 0,
+    "accent": 8,
+    "temper": 3,
+    "sense": 0,
+    "repro": 6,
+    "life": 1,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Bat"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bat\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"135514800\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 291,
+  "profile": {
+    "id": "bat",
+    "names": [
+      "Fruit Bat",
+      "Bat",
+      "Insect-Eating Bat",
+      "Vampire Bat"
+    ],
+    "candidateTemplates": [
+      "flyer-membrane"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

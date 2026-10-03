@@ -1,0 +1,13 @@
+{
+  "name": "Grayling",
+  "masterSha256": "09ba182690b8c5d3207ea28c1ada45b57482813b939d292ee1b7d88f73a68905",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated originals and sheet; pattern only, not G1, anatomy or Dakk approval",
+  "features": [
+    {
+      "requirement": "tall sail-like spotted dorsal fin",
+      "status": "PRESENT",
+      "observed": "Tall spotted sail dorsal, small mouth, separate adipose and forked caudal visible. Left/right margins narrower than requested."
+    }
+  ]
+}

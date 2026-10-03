@@ -1,0 +1,130 @@
+{
+  "mode": "phone",
+  "subjects": [
+    {
+      "id": "01-finch",
+      "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/01-finch/fallback-2/fit",
+      "masterPath": "audits/C132_PHONE_FINISH_20261001/inputs/01-finch-master.png",
+      "masterOrigin": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/01-finch/fallback-2/packet/master.png",
+      "recordRecipeHash": "2b865c1f8568d604cc7019b051e97b5761718efb1f8feb71104e1935905e3e42",
+      "cutoutAssetHash": "12684c53b407ddd05ac21c3bb81ee35d528d0015f70adc23244d05bf091f7be5",
+      "seed": 3842168715,
+      "width": 1254,
+      "height": 1254,
+      "master": {
+        "url": "/inputs/01-finch-master.rgba",
+        "sha256": "6790eaf807fd3a8020f758c36d665a76a5bcaf5b887f62f6272da4e41cb4a39c",
+        "width": 1254,
+        "height": 1254
+      },
+      "labels": {
+        "url": "/inputs/01-finch-labels.rgba",
+        "sha256": "07bd2f0e924ce79a6a8a4026bf77d8c450ffb22067d122ec1c05729bd6c15f76",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "12-sandpiper",
+      "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/12-sandpiper/fit",
+      "masterPath": "audits/C132_PHONE_FINISH_20261001/inputs/12-sandpiper-master.png",
+      "masterOrigin": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/12-sandpiper/packet/master.png",
+      "recordRecipeHash": "10cd2e99d7d2f8db50ee11916ebdbe5b8bb6eee4b61cf2a243fc30ea6a4a9803",
+      "cutoutAssetHash": "f5bc7652f37005f7c511a3999dd6f11864ef5cc1f17eb5342f17b18f0aa4ecee",
+      "seed": 3320756328,
+      "width": 1254,
+      "height": 1254,
+      "master": {
+        "url": "/inputs/12-sandpiper-master.rgba",
+        "sha256": "8e647f84200e24e8d300589ff35948ed0b6db85125bd19616492f2de918f9389",
+        "width": 1254,
+        "height": 1254
+      },
+      "labels": {
+        "url": "/inputs/12-sandpiper-labels.rgba",
+        "sha256": "37b4185f952c1dbc059374caf18e2cb8cd6e29b6912214ff20b3fce2b849764d",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "18-wasp",
+      "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/18-wasp/fit",
+      "masterPath": "audits/C132_PHONE_FINISH_20261001/inputs/18-wasp-master.png",
+      "masterOrigin": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/18-wasp/packet/master.png",
+      "recordRecipeHash": "7aa59f54b5ab5249a16ab7a15379adcf37c32c386f516f03199145377881ec17",
+      "cutoutAssetHash": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+      "seed": 3763256145,
+      "width": 1254,
+      "height": 1254,
+      "master": {
+        "url": "/inputs/18-wasp-master.rgba",
+        "sha256": "913063ea66558128593bb3a288f0a7cb6c6904c569a6d5185674fd73b78de3a8",
+        "width": 1254,
+        "height": 1254
+      },
+      "labels": {
+        "url": "/inputs/18-wasp-labels.rgba",
+        "sha256": "a298bca73b640e6cf7f4091091e8a3bbe442663ea84fb75179771b4c1e750c8c",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "06-ptarmigan",
+      "fit": "audits/BIRD_ISLANDS_C121_20261001/06-ptarmigan/fit",
+      "masterPath": "audits/C132_PHONE_FINISH_20261001/inputs/06-ptarmigan-master.png",
+      "masterOrigin": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/06-ptarmigan/packet/master.png",
+      "recordRecipeHash": "7cf2a83283433a530ab0f4018509c127428fc309f4c95372fbf3309a5b05644e",
+      "cutoutAssetHash": "6720df96f5b78cc893a610dd22a538e2d7debd6c22801add40ba07c4b4dcaa69",
+      "seed": 2500445455,
+      "width": 1254,
+      "height": 1254,
+      "master": {
+        "url": "/inputs/06-ptarmigan-master.rgba",
+        "sha256": "114d5cfd7688f6174ff586ae81016d09164f9ef9bcbacd4fd97fdde40d3a28ee",
+        "width": 1254,
+        "height": 1254
+      },
+      "labels": {
+        "url": "/inputs/06-ptarmigan-labels.rgba",
+        "sha256": "5ec70f47ad3b2495b8c594f3c93b5cdbfcd7c4eb215392344db6febf6197ae24",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "08-vulture",
+      "fit": "audits/BIRD_ISLANDS_C121_20261001/08-vulture/fit",
+      "masterPath": "audits/C132_PHONE_FINISH_20261001/inputs/08-vulture-master.png",
+      "masterOrigin": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/08-vulture/packet/master.png",
+      "recordRecipeHash": "3237065e08706e572fbd19cd8fdefcde5d39b6c041a9211f57e794454fb6fb07",
+      "cutoutAssetHash": "fe23842892a09f05140db1c51461da63bb317775f57b05fbc5d66862d91f0b18",
+      "seed": 1235245760,
+      "width": 1254,
+      "height": 1254,
+      "master": {
+        "url": "/inputs/08-vulture-master.rgba",
+        "sha256": "a7fc908f3a6f46c4750e67f0d981a5d0253a849bce9a253d06194d0fdf570714",
+        "width": 1254,
+        "height": 1254
+      },
+      "labels": {
+        "url": "/inputs/08-vulture-labels.rgba",
+        "sha256": "e5feb2ec9aa238b375fa50240b3a28a83f8fff74833f915584e5be75155430c4",
+        "width": 1254,
+        "height": 1254
+      }
+    }
+  ],
+  "embedding": {
+    "sha256": "ea59bdd82829989d6c2063aca7833fc54c319f320867b328d55ef822c6c3d7a1",
+    "promptSha256": "2292956f5140c54aee4e9eb18e9517fc5e2b74d82fa0f18a76269a5a26d96f08",
+    "bytes": 236544,
+    "dims": [
+      1,
+      77,
+      768
+    ]
+  }
+}

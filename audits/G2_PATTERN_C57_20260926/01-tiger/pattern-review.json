@@ -1,0 +1,23 @@
+{
+  "name": "Tiger",
+  "masterSha256": "2748a131c4206e2feeca1b28a636749c3f093dbde243414b2ee7b8b28bf06e09",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated original; pattern only, not anatomy/G1/Dakk approval",
+  "features": [
+    {
+      "requirement": "vertical black stripes over orange",
+      "status": "PRESENT",
+      "observed": "Repeated vertical black flank stripes over orange, white cheek/eyebrow fur, and black rings along the complete tail are visible."
+    },
+    {
+      "requirement": "white cheek ruff and white eyebrow spots",
+      "status": "PRESENT",
+      "observed": "Repeated vertical black flank stripes over orange, white cheek/eyebrow fur, and black rings along the complete tail are visible."
+    },
+    {
+      "requirement": "long ringed tail",
+      "status": "PRESENT",
+      "observed": "Repeated vertical black flank stripes over orange, white cheek/eyebrow fur, and black rings along the complete tail are visible."
+    }
+  ]
+}

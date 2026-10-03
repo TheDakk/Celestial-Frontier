@@ -1,0 +1,1 @@
+This diagnostic was launched with 11-wolf/battle-script.json by mistake. The fit is Cougar but the script actor labels are Wolf. It is retained as a script-selection error; the corrected independent control uses full-battle-capture-01/cougar-script.json in a fresh output directory.

@@ -1,0 +1,58 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "07-mahi-mahi",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1608,
+      "height": 955
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "213fb6a004f326eb82308998aa463e41c65e98eb920914c482c86eba81f05cfb",
+    "recordRecipeHash": "d06961adc6eceee2dddb9cce2969fda6ac52d3405106596b0aee5f3f33d9cfae",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "213fb6a004f326eb82308998aa463e41c65e98eb920914c482c86eba81f05cfb",
+      "atlasSha256": "37188fea4c6fbbb9a7d17615f1f1b7885bfe79af455e73d3744ddc8520445bb6",
+      "parts": 13,
+      "comparedChannels": 2571104,
+      "changedChannels": 0
+    },
+    "vertices": 1168,
+    "partVertices": 2103,
+    "parts": 13,
+    "leaves": 517,
+    "triangles": 2132,
+    "ownershipEdges": 4333,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "887dfae1a4972d0a74d97860759219aef8eac2c1ec76f2c60e78447821e6f87e",
+    "sourceVertices": 1168,
+    "vertices": 1647,
+    "sharedSupports": 204,
+    "pins": 1022,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 9,
+    "excludedOverlaps": 19,
+    "observedExcludedBoundaries": 19,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 19,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "d06961adc6eceee2dddb9cce2969fda6ac52d3405106596b0aee5f3f33d9cfae",
+  "bindingHash": "be29b2b3bcb5d1ca3320c0403466f9b6ad4ba3c5581fae1962673479782a2c84",
+  "masterSha256": "d4582b15b20e2a84c19c6c5bbb23e7923e77119b7a468843523ddef69dcad25a",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

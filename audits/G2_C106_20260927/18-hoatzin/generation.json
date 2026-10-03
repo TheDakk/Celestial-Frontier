@@ -1,0 +1,13 @@
+{
+  "id": "18-hoatzin",
+  "name": "Hoatzin",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d07b1f8c-c645-453a-923d-0fc213c154ac.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9159c9493e848f0faf22dba3a9eef36003fe12a84bafd5d5a7bf4c9d78a5dd49",
+  "bytes": 1277362,
+  "promptSha256": "0c8580293196a96ab6287592301ffe6368216239f077bb758c01bd3b1abb7ed2",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

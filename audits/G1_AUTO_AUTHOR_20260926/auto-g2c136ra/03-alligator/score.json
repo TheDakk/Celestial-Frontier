@@ -1,0 +1,41 @@
+{
+ "id": "03-alligator",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "reviewedPresence": {
+  "absent": [
+   "external-ears"
+  ],
+  "removedParts": [
+   "ear-near-tip",
+   "ear-near-root",
+   "ear-far-tip",
+   "ear-far-root"
+  ]
+ },
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Family admission: proportion bound: leg/torso:hindFar\n    at need (file://~/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/family-record.mjs:10:39)\n    at ",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "RED",
+   "reasons": []
+  },
+  {
+   "rank": 2,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 1.9%)"
+   ]
+  }
+ ]
+}

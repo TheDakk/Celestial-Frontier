@@ -1,0 +1,4 @@
+DEV PREVIEW BROWSER CHECK: PASS — acca36b469da2024a7112c3cdd426f351f6bd2f5
+  browser Edg/152.0.4191.66; executable /Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge
+  loopback rendered trail Milky Way›Sun (Sol); distributable without diagnostic API; no corner badge; Guide identity Celestial Frontier v2.0 developmentBuild acca36b469da2024a7112c3cdd426f351f6bd2f5
+  expected remote origin https://dev-celestialfrontier.github.io; publishable false

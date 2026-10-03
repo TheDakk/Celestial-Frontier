@@ -1,0 +1,6 @@
+{
+  "originalBytes": 32291934,
+  "originalSha256": "56ee4915067334d39744b1b42f6863474f87ea26dd63770148d15574ed17d196",
+  "retainedGzip": "runtime-contract-stale-civet-control.log.gz",
+  "note": "Exact failed assertion output compressed losslessly; runtime array dump dominated size."
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Finch",
+    "masterSha256": "12684c53b407ddd05ac21c3bb81ee35d528d0015f70adc23244d05bf091f7be5",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Egret",
+    "masterSha256": "7eff1a96c9b49c707c8169a95277e8395e0e57380d6e46c4b879c96fbb4d763b",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Stork",
+    "masterSha256": "ec3a22b439b261cb55cab3cdaebcbe498864a397bb003c06cc785ecf242cb325",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Lark",
+    "masterSha256": "2e8ce284735f42df7100d38b6c6bb781180653cb8011f26eca25a8bae7fd84cf",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Chough",
+    "masterSha256": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Ptarmigan",
+    "masterSha256": "6720df96f5b78cc893a610dd22a538e2d7debd6c22801add40ba07c4b4dcaa69",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Raven",
+    "masterSha256": "76601c0f52416a974bccafec46351c94d3c8560cb2df6f72a5c321004c95cbbb",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Vulture",
+    "masterSha256": "fe23842892a09f05140db1c51461da63bb317775f57b05fbc5d66862d91f0b18",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Hawk",
+    "masterSha256": "5bdc4105b8d355ded54d56fe9478ae2598d4f72ec5e70346272a719f84c60851",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Crow",
+    "masterSha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Sparrow",
+    "masterSha256": "53c42838c7c2a227521fc19b3ae61af6da4c1ea51d3458f2cfbed0859b6017ee",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Sandpiper",
+    "masterSha256": "f5bc7652f37005f7c511a3999dd6f11864ef5cc1f17eb5342f17b18f0aa4ecee",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Grouse",
+    "masterSha256": "cf211ce86dc2e718c173edbbcd1cc979e0359391f5ef6e6e3405bf96d98b84b3",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Snowy Owl",
+    "masterSha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Peacock",
+    "masterSha256": "8d380bf61b8d5c6bd830d8d5959f20be98cbea9dfcf8218f7df7abaa4f964034",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Turkey",
+    "masterSha256": "bf2af495c956cd5792a5ad1b795824df1f03ea46d2ef617d9fcda6bf65803f96",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Bee",
+    "masterSha256": "e8b7ede7f23f2ed13972449dca5ba0467b1829054b10028ac34007a034373517",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Wasp",
+    "masterSha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Giant Water Bug",
+    "masterSha256": "d744b6e97025e1bfea16bac7b7bf0cdcf283813e7d2694b7b12c709c51379964",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Cockroach",
+    "masterSha256": "d3ab33bf46738ce8f2b59c892adb505d5ded378dd459702a2a38893e14bfb8b0",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Stick Insect",
+    "masterSha256": "363eb9d07059bde46aa973e9ab82f02a29af575a8a495e17173420932bc9a888",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Carrion Beetle",
+    "masterSha256": "6b98fa6d2d68b901dac83b916928c93469669e2dbbd1473b5389a125325a1440",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Water Strider",
+    "masterSha256": "eac2202fe82b1bb51a0bb4047e661777d8b048a1b9e56db71245d004c55d5476",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  },
+  {
+    "name": "Termite",
+    "masterSha256": "9dd3255e863880d5579067d32c9baa123f213b9f9e0d18e22c3934de7e117e32",
+    "originalByteIdentical": true,
+    "promptExact": true,
+    "styleReferenceExact": true
+  }
+]

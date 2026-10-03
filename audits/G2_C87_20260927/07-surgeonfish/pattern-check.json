@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Surgeonfish",
+  "masterSha256": "e1d2ca7fd88815cc64332e152c462cc01d867a469a8f30ab90fa94d418e2def5",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

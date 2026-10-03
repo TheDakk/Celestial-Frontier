@@ -1,0 +1,13 @@
+{
+  "id": "05-dragonfly-six-legs",
+  "name": "Dragonfly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-bba5b6a9-edc8-4777-ab34-a3f1732d6930.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8fbfb8117ae9b6b28125bb9ec212a067276c44a0d38fb10968964fc75bc0b87a",
+  "bytes": 1337877,
+  "promptSha256": "4058250c540e96a086765e9b481d88fe6cd568b7ce2f9b5eaa78236fd4527112",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "01-shrimp",
+    "name": "Shrimp",
+    "family": "crustacean-small",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 156,
+        "y0": 288,
+        "x1": 1174,
+        "y1": 868
+      },
+      "margins": {
+        "left": 156,
+        "right": 79,
+        "top": 288,
+        "bottom": 385
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "02-brittle-star",
+    "name": "Brittle Star",
+    "family": "radial",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 158,
+        "y0": 204,
+        "x1": 1145,
+        "y1": 1047
+      },
+      "margins": {
+        "left": 158,
+        "right": 108,
+        "top": 204,
+        "bottom": 206
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "03-fiddler-crab",
+    "name": "Fiddler Crab",
+    "family": "brachyuran",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 177,
+        "y0": 300,
+        "x1": 1081,
+        "y1": 915
+      },
+      "margins": {
+        "left": 177,
+        "right": 172,
+        "top": 300,
+        "bottom": 338
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 3,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "04-spider",
+    "name": "Spider",
+    "family": "arachnid",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 229,
+        "y0": 317,
+        "x1": 1026,
+        "y1": 979
+      },
+      "margins": {
+        "left": 229,
+        "right": 227,
+        "top": 317,
+        "bottom": 274
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "front": 2,
+      "rear": 2
+    },
+    "groundContacts": 1,
+    "detached": []
+  }
+]

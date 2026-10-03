@@ -1,0 +1,30 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C196_SIMPLE_ORIGINALS_20261002",
+ "tag": "g2c203",
+ "pilot": 4,
+ "patternSkipped": [],
+ "scored": 4,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "01-earthworm",
+   "reason": "materials-unknown: no species-group material for profile annelid-land; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "02-sponge",
+   "reason": "materials-unknown: no species-group material for profile sponge; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "03-snail",
+   "reason": "materials-unknown: no species-group material for profile land-gastropod; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "04-mussel",
+   "reason": "materials-unknown: no species-group material for profile bivalve; the motion kit refuses an unclassified surface"
+  }
+ ],
+ "staticRed": [],
+ "native": [],
+ "runnerExit": 0
+}

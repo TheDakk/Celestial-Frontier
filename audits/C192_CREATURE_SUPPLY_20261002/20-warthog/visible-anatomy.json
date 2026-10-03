@@ -1,0 +1,246 @@
+{
+  "id": "20-warthog",
+  "name": "Warthog",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "93ee8025d14f671dabf179f40898decd695f16387777367c8724674ebe66aacd",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 28025,
+    "coreRadius": 28,
+    "bodyBox": {
+      "x0": 102,
+      "y0": 122,
+      "x1": 317,
+      "y1": 238
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0167,
+        "pixels": 469,
+        "box": {
+          "x0": 86,
+          "y0": 94,
+          "x1": 104,
+          "y1": 177
+        },
+        "attach": {
+          "x": 101.7,
+          "y": 173.7,
+          "relX": 0,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": -0.18,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 81.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0168,
+        "pixels": 470,
+        "box": {
+          "x0": 236,
+          "y0": 105,
+          "x1": 294,
+          "y1": 121
+        },
+        "attach": {
+          "x": 271,
+          "y": 121,
+          "relX": 0.79,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.26,
+          "y": -0.97
+        },
+        "class": "top",
+        "length": 38.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0071,
+        "pixels": 198,
+        "box": {
+          "x0": 296,
+          "y0": 105,
+          "x1": 316,
+          "y1": 133
+        },
+        "attach": {
+          "x": 304,
+          "y": 124.5,
+          "relX": 0.94,
+          "relY": 0.02
+        },
+        "dir": {
+          "x": 0.51,
+          "y": -0.86
+        },
+        "class": "top",
+        "length": 23
+      },
+      {
+        "k": 3,
+        "frac": 0.0521,
+        "pixels": 1459,
+        "box": {
+          "x0": 290,
+          "y0": 153,
+          "x1": 352,
+          "y1": 221
+        },
+        "attach": {
+          "x": 312.9,
+          "y": 187.4,
+          "relX": 0.98,
+          "relY": 0.56
+        },
+        "dir": {
+          "x": 0.8,
+          "y": 0.59
+        },
+        "class": "limb-down",
+        "length": 52.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0106,
+        "pixels": 297,
+        "box": {
+          "x0": 93,
+          "y0": 180,
+          "x1": 101,
+          "y1": 226
+        },
+        "attach": {
+          "x": 101,
+          "y": 203,
+          "relX": 0,
+          "relY": 0.7
+        },
+        "dir": {
+          "x": -0.97,
+          "y": -0.26
+        },
+        "class": "rear",
+        "length": 24.4
+      },
+      {
+        "k": 5,
+        "frac": 0.0529,
+        "pixels": 1483,
+        "box": {
+          "x0": 80,
+          "y0": 237,
+          "x1": 131,
+          "y1": 314
+        },
+        "attach": {
+          "x": 115.1,
+          "y": 238.9,
+          "relX": 0.06,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.45,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 82.9
+      },
+      {
+        "k": 6,
+        "frac": 0.0488,
+        "pixels": 1369,
+        "box": {
+          "x0": 126,
+          "y0": 239,
+          "x1": 167,
+          "y1": 309
+        },
+        "attach": {
+          "x": 146.5,
+          "y": 239,
+          "relX": 0.21,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.09,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 72.9
+      },
+      {
+        "k": 7,
+        "frac": 0.095,
+        "pixels": 2663,
+        "box": {
+          "x0": 217,
+          "y0": 239,
+          "x1": 286,
+          "y1": 317
+        },
+        "attach": {
+          "x": 240,
+          "y": 239,
+          "relX": 0.64,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.12,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 90.6
+      }
+    ],
+    "byClass": {
+      "top": 3,
+      "limb-down": 4,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 85,
+        "x1": 106,
+        "cx": 94.6
+      },
+      {
+        "x0": 147,
+        "x1": 167,
+        "cx": 157.1
+      },
+      {
+        "x0": 220,
+        "x1": 246,
+        "cx": 232.9
+      },
+      {
+        "x0": 265,
+        "x1": 286,
+        "cx": 275.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "05-water-vole",
+  "name": "Water Vole",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ac9045ec-3903-4004-b034-107624a720fb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "09341f8fd19de21f0c914e6498f15cc3fe74a86344790389547e360abc10bf6b",
+  "bytes": 1304038,
+  "promptSha256": "cade973bae7e3e832db024cee89a17b92d561b3200bfd8bb64615a05fe0a893d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

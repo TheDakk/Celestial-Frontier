@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Great White Shark",
+  "masterSha256": "6b1efdd9e85eda1dc65518737e6b17ab52f23be5a95593d63aa8fbaa8c64bf78",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 279,
+      "y0": 474,
+      "x1": 965,
+      "y1": 771
+    },
+    "margins": {
+      "left": 279,
+      "right": 288,
+      "top": 474,
+      "bottom": 482
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Distinct grey dorsal/white ventral boundary, triangular teeth, conical snout, gill slits and crescent tail. Whole-body framing corrected by a new generated edit, not local scaling. Far fin roots partly occluded; no movement acceptance.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}

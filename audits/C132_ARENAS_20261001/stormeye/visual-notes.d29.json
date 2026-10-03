@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "stormeye",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/stormeye/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/stormeye/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+    "audits/C132_ARENAS_20261001/stormeye/arena-mid.png",
+    "audits/C132_ARENAS_20261001/stormeye/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. The large storm eye and layered amber clouds are readable; the sampled shared path and both stands are clear of NEAR.",
+    "MID cloud silhouettes form a visibly hard, cut-paper edge over FAR. A second small spiral appears at the right edge, and NEAR forms an obvious separate cloud shelf with a sharp contour across the lower fifth. Their perspective and scale need a composition repair.",
+    "Amber lighting, cloudy ground readability and creature contrast remain visual holds. Authoring a cloud band does not establish valid support, motion or physical-medium behavior. No native or visual acceptance is claimed."
+  ]
+}

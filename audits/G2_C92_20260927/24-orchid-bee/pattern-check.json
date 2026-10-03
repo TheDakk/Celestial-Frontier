@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Orchid Bee",
+  "masterSha256": "8e344c38a060f07fce9fe5954dadf205bef82efc9d6fb05df4a420b5f135e843",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

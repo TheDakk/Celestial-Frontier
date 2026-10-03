@@ -1,0 +1,13 @@
+# Four invertebrate source originals
+
+Shrimp, Brittle Star, Fiddler Crab and Spider: four separate native 1254-square source requests, using canonical Earth identity, ART_KIT wording/materials and the locked DiscoveryAtlas style reference. Exactly one built-in generation per species; all generator files are retained unchanged. This is a distinct inventory from the completed 24-original packet and the separate four simple sources.
+
+The source compiler is an audit-only extension. `prepare-tools.mjs` constructs it from the earlier audited extension, then `materialize.mjs` creates an exact replayable transformation of the current production compiler. The transform receipt records original and output hashes. Four named existing family routes are added only in the audit copy. Required walking-leg requests are Shrimp 10, Brittle Star 0, Fiddler Crab 8 and Spider 8. Brittle Star's zero walking legs is distinct from its five actual arms. The biological counts are requests, not observations or semantic-presence declarations. Existing canonical source/genome construction, ART_KIT export, materials/style paragraph, dimensions and provenance are inherited without copying another animal's genome.
+
+All four outputs have been visually inspected at full size and copied byte-identically. `visual-notes.json` preserves the actual holds. Brittle Star shows five complete noncrossing arms with a small central disc; a later author must explicitly review five arms. Spider has eight apparent long walking endpoints plus mouth-adjacent palps and two chelicerae, with proximal/pedicel occlusion. Shrimp retains real swimmerets and head appendages but far walking chains overlap; no ten-path proof is claimed. Fiddler Crab has unequal open claws and two eye stalks, but only six complete walking paths are confidently visible; no hidden legs are invented. Coarse-template limitations remain explicit.
+
+All four `pattern-check.json` records are in the existing source-bound schema with exact master hashes. Their canonical entries have no requirements in that specific pattern owner, so NOT_REQUIRED is correct; it is not an anatomy verdict.
+
+After C179 terminal release, the bounded local observer and all 23 audit-compiler controls passed. All four masters remain exact native 1254-square generator bytes. Brittle Star, Fiddler Crab and Spider pass the unchanged framing-only observer; Shrimp is refused for its antenna margin. This negative result and all visible anatomy holds remain retained. Pattern receipts are source-bound. No native run, fit intake, product changes or admission occurred; these are source candidates only.
+
+Prepared for Dakk. No production source, Git, mailbox, ROADMAP, global pool or registered-pack edits.

@@ -1,0 +1,14 @@
+{
+  "id": "01-earthworm",
+  "name": "Earthworm",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e617c04f-f197-4861-b61a-ed316d6d4d8a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+  "bytes": 1041462,
+  "promptSha256": "2439990c3aa05babbf7d93c4cd2a4a3704920727d0b76db09eb8e365dfa20a66",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

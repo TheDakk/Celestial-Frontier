@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Char",
+  "masterSha256": "f4da50fc81c70faddd0d1fa7e4074564b6caddd1c80e06cdb660bf85cb4afc87",
+  "required": [
+    "pale spots on a dark ground (not dark on pale)"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale spots on a dark ground (not dark on pale)",
+      "status": "PRESENT",
+      "observed": "Pale spots on dark flank, orange underside, light fin edges and separate adipose visible. Narrow left/right framing."
+    }
+  ]
+}

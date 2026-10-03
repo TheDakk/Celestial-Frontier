@@ -1,0 +1,40 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Penguin",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "27f655273201ee2eef6006ba9b7e9842549af279f82864b1dc8732cce8ebab58",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "penguin",
+  "authoringCreated": false,
+  "sourceHead": "0486f0f9779604496000c8e913b6fe38e7612471",
+  "basePromptSha256": "9495754835c551c77cfbf0695569ca9d959c706119a9d2128baefd9e15a4c183",
+  "batchCompilerSha256": "2b5f31c02d1299de513811e149a6435e5263e15a98a18d89a72585718ec7f383",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "previousId": "14-penguin",
+    "previousMaster": "audits/G2_C118_20260927/14-penguin/master.png",
+    "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c118/summary.json",
+    "verdict": "REFUSE",
+    "reasons": [
+      "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 2.3%)"
+    ],
+    "static": null,
+    "previousVisual": "Full original: black back, white belly, yellow neck patches, two feet and near flipper. HOLD feet appear unwebbed and rear tail has exaggerated long pointed feather fronds; not cleared by bird motion.",
+    "correction": "Use a fully upright natural penguin stance, two short rear-set webbed feet with real toe webbing, and the natural small stiff short tail. The two real stiff flippers are its wings, held at the sides, not feathered flying wings. Never add long flowing tail fronds or artificially long legs."
+  },
+  "layoutOverride": null,
+  "sourceCorrection": "TARGETED SOURCE REPAINT — BIOLOGICAL PRIORITY: Use a fully upright natural penguin stance, two short rear-set webbed feet with real toe webbing, and the natural small stiff short tail. The two real stiff flippers are its wings, held at the sides, not feathered flying wings. Never add long flowing tail fronds or artificially long legs. Preserve the real species anatomy if a generic pose instruction conflicts. No invented far wing, false leg, disconnected tail, artificial gap through tissue or removal of actual appendages. This request does not establish measured anatomical presence.",
+  "compositionCheck": "COMPOSITION: square native 1254 by 1254 painting. Keep the entire specimen small, inside the central half of the canvas, with generous pure magenta around every bill, toe, plume and tail tip. Preserve real proportions by zooming out, never shortening appendages. No ground, cast shadow, scenery, perch, branch, prop, text, diagram or framing marks.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

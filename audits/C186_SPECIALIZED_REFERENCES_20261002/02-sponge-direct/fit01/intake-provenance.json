@@ -1,0 +1,70 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "c7baa3254ca2e97c0c6793f2328cdb0052af5a62",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/master.png",
+      "sha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/authoring.json",
+      "sha256": "6d8987088117793b19a3de692cf45b6acc74dcee45abc5b2f34b879c8a3b88f3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/subject-source.json",
+      "sha256": "0b6dc1abb8bd45945961981cc11128e07e7b183425701a77792fc226445438c7"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "11f3d9d703e76e09114515c9e102973abc8be19e1dd74520daad633866719b8f",
+  "bindingHash": "ea584131446544f1ad5078f9dc9bdb390979e5b432dd3fb45b466c22e262043e",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "aperture",
+    "crown",
+    "base",
+    "body"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/master.png",
+      "sha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/authoring.json",
+      "sha256": "6d8987088117793b19a3de692cf45b6acc74dcee45abc5b2f34b879c8a3b88f3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/subject-source.json",
+      "sha256": "0b6dc1abb8bd45945961981cc11128e07e7b183425701a77792fc226445438c7",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

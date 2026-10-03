@@ -1,0 +1,14 @@
+{
+  "id": "23-orchid-bee",
+  "name": "Orchid Bee",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2235ba89-c285-4dd0-b81a-d63a37535318.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "facb72833d8fc4fd4b7bb4f86b702c85d92baf3fe272c5bf01307149aca01708",
+  "bytes": 1330718,
+  "promptSha256": "54db98745d69577a25ca685fcb1db8648416c45d4295a4b05dd865bf4d42c8d0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

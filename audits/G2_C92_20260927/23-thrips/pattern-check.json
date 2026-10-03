@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Thrips",
+  "masterSha256": "3fdce81885bfe97b9be5468bbe05e08a7f04cc9dbe07c9083176e1dc62162e28",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

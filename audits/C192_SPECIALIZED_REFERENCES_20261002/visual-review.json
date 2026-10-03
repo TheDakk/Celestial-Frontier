@@ -1,0 +1,350 @@
+{
+  "schema": "cf.c192-specialized-visual-review/v1",
+  "scope": "Full-size human/model inspection of specifically named source-coordinate software diagnostic files; not every static sample or native screen.",
+  "selected": [
+    {
+      "id": "10-snail-contours",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit",
+      "status": "DIAGNOSTIC_CANDIDATE",
+      "note": "The inspected final cast poses have continuous eye stalks and no prior root fleck. Glossy bead-like eyes and rounded mouth remain an art/anatomy review concern. No native stage-grounding or whole-film claim.",
+      "images": [
+        "master.png",
+        "motion-d28-cast-50-left.png",
+        "motion-d28-cast-50-right.png"
+      ],
+      "review": "Independent effects agent concurs after full-size master and both cast stills; no contour rework requested. Body above red software guide does not establish stage grounding.",
+      "recordRecipeHash": "df7194ebb22419ed9b5bcc28481f69392f2d6ca94354b865985b1dbfd6f37ef3",
+      "sourceSha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+      "staticReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-d28.json",
+        "sha256": "f1c8c9b2c1223408fefc1da85101a7a67ee3ec66324936f3fe00bc4438038dc8",
+        "bytes": 6268
+      },
+      "publicationReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/publication-d28.json",
+        "sha256": "eb4af84a7136de30528f5d30884b81bd11c0447d823a33aeafea609c7405ad21",
+        "bytes": 36171
+      },
+      "fullSizeInspectedFiles": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/master.png",
+          "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+          "bytes": 1337811
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-cast-50-left.png",
+          "sha256": "edcb8280ea212e8d43fa9718299aa2cc43278957a4de6be46354e1f5e4815484",
+          "bytes": 548088
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-cast-50-right.png",
+          "sha256": "bf0df671a479e536ab50f7513dc60409983cdb5038155ba11bd0cb555843992b",
+          "bytes": 551540
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "08-prawn-opaque",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit",
+      "status": "HELD_VISUAL",
+      "note": "Small detached flecks around thin distal legs/antennae persist in reviewed cast. Five walking endpoints on each side were authored from this dorsal source; no invisible side-view roots were invented. A dorsal swim projection does not prove a shared land stance.",
+      "images": [
+        "master.png",
+        "joint-preview-01.png",
+        "ownership-preview-01.png",
+        "motion-d28-cast-50-left.png"
+      ],
+      "recordRecipeHash": "97e0bba24df61a04af37c759e74b474a5125eeb26aa148f977f2121f49decf23",
+      "sourceSha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+      "staticReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-d28.json",
+        "sha256": "498b8b9b11d666c3fb56043439883095489d393b995ce44e6f68875ebd2c3195",
+        "bytes": 6859
+      },
+      "publicationReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/publication-d28.json",
+        "sha256": "2c4ff60b5d0f6043a32540b472de5bc45673814806bf4ffc59bedb60dfc3a897",
+        "bytes": 36133
+      },
+      "fullSizeInspectedFiles": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/master.png",
+          "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+          "bytes": 1143772
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/joint-preview-01.png",
+          "sha256": "cc1eb90033ef8520e38711fc316f12d1a6770943f3b0513b84ced79463f93931",
+          "bytes": 305998
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/ownership-preview-01.png",
+          "sha256": "aed2220e686d47ca289f513d08ecfa7f37486815e144e643f13b24b59ac75862",
+          "bytes": 268065
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-cast-50-left.png",
+          "sha256": "2253e5cf0440228c6e2a336a4716deec3a229a228601c3a6e9d1508dc83a4c77",
+          "bytes": 237713
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "09-shrimp-opaque",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit",
+      "status": "HELD_VISUAL",
+      "note": "Reviewed swim has tiny distal detached flecks and a clear lower rear leg/body cut opening. Source conservation and static endpoint probes cannot override this painted discontinuity.",
+      "images": [
+        "master.png",
+        "joint-preview-01.png",
+        "ownership-preview-01.png",
+        "motion-d28-approach-swim-50-left.png"
+      ],
+      "recordRecipeHash": "922bfdd4a8c3af5ff90ed53aa3f25121967ce058afb205208b6151b0de10c32a",
+      "sourceSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+      "staticReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/static-d28.json",
+        "sha256": "a8385a2e27f7a10d3b8d06555b29298f223bdd9ce1f3d64be4df77e1e2d47817",
+        "bytes": 6865
+      },
+      "publicationReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/publication-d28.json",
+        "sha256": "67b00e5b4c3361aefe69c443611c83147fcd514ceb79c02f98c4b5777a229269",
+        "bytes": 36153
+      },
+      "fullSizeInspectedFiles": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/master.png",
+          "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+          "bytes": 1146184
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/joint-preview-01.png",
+          "sha256": "61084ec83959df8746ebfeab5e979fe504215f066f9faecdde947b015f3c34aa",
+          "bytes": 289875
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/ownership-preview-01.png",
+          "sha256": "20659207719365c35b9e66b84004eeaf34b53177a5ca72b9dfc71d3f99526621",
+          "bytes": 254593
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-approach-swim-50-left.png",
+          "sha256": "0061d60d536888a3eda16603ba83e523933d3327bc8fab3d2581f92ae6d15624",
+          "bytes": 228357
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "11-mussel-dorsal",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01",
+      "status": "HELD_VISUAL",
+      "note": "Provisional observed anterior external hinge interpretation. Cast visibly separates continuous shell/mantle boundaries and small flecks. First real bivalve source/clip integration finding: intentional D31 valve opening/clapping needs adequate painted boundary coverage; unchanged numeric/static probes pass. Not a qualified bivalve film.",
+      "images": [
+        "master.png",
+        "joint-preview-01.png",
+        "ownership-preview-01.png",
+        "motion-cast-50-left.png",
+        "motion-cast-50-right.png",
+        "motion-faint-100-right.png"
+      ],
+      "review": "Parent independently reviewed cast-left and agrees with broad splits distinct from tiny islands.",
+      "islandPlacement": {
+        "applied": false,
+        "movablePixels": 153,
+        "remainderPixels": 131367,
+        "nextStep": "Explicit unattempted Claude-side diagnostic, not a demonstrated repair for broad continuous boundary openings."
+      },
+      "recordRecipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+      "sourceSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+      "staticReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/static-01.json",
+        "sha256": "a81cfc3c88e1f5f6c017a973c33104e3b16b927cfb0078a4cefeb11674f420ff",
+        "bytes": 6655
+      },
+      "publicationReport": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/publication-review.json",
+        "sha256": "eef13c715d5dfbf631f42b4e7aedb1184e2c43d855eb1672bdf458746a932c3c",
+        "bytes": 36117
+      },
+      "fullSizeInspectedFiles": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/master.png",
+          "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+          "bytes": 1408242
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/joint-preview-01.png",
+          "sha256": "01553bff35a5356ceba996bdd2cec666aef513faf3ceb35babf62b561f38c240",
+          "bytes": 720550
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/ownership-preview-01.png",
+          "sha256": "921015a6ef49703144902bdc4ac76a26e205b0145f12545fbb2371e2f52030d9",
+          "bytes": 663607
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-cast-50-left.png",
+          "sha256": "7d7cb8d2aae8d6e3e8c636061cfa1e328be0a7a89485da19c6342ab50fd276d9",
+          "bytes": 599978
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-cast-50-right.png",
+          "sha256": "b3f6ebdfde0eac45cb99294f14d8ad9d9bf852efc03b3f4a23b2ee0f97251bbf",
+          "bytes": 599264
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-faint-100-right.png",
+          "sha256": "b8aa67300a2ce5fd4fd5a21bb0636050bdb356cd5f63c96ce91613ee6d2bb69c",
+          "bytes": 602887
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    }
+  ],
+  "retained": [
+    {
+      "id": "01-mussel-source",
+      "status": "HELD_SOURCE",
+      "reason": "Anterior convergence exists, but no defensible external dorsal hinge path; parent full-size concurrence.",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/master.png",
+        "sha256": "e04685371b825a0738cd4fe5a3c60f330dd7ee80fbec474aae87257c87333c30",
+        "bytes": 1452870
+      },
+      "generation": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/generation.json",
+        "sha256": "bafaadbfcdb456f41e477f383b13f146ebabf9d8887f9e976f3c44b94ed87fff",
+        "bytes": 1210
+      },
+      "fullSizeSourceInspected": true,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "02-prawn-dorsal",
+      "status": "REFUSED_INTAKE",
+      "reason": "Fine far antenna is removed in part by unchanged one-pixel erosion; observed endpoint is outside keyed-paint allowance. Original refusal retained, not snapped to unrelated shaft.",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/master.png",
+        "sha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+        "bytes": 1160556
+      },
+      "generation": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/generation.json",
+        "sha256": "15f97b1aa71d986e65d9d1f328115106b5790d0f08ad33fa25122ae7327b59ae",
+        "bytes": 1209
+      },
+      "fullSizeSourceInspected": true,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "03-shrimp-dorsal",
+      "status": "REFUSED_INTAKE",
+      "reason": "Fine far antenna is removed in part by unchanged keyer erosion; observed endpoint refuses. Original refusal retained.",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/master.png",
+        "sha256": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a",
+        "bytes": 1177921
+      },
+      "generation": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/generation.json",
+        "sha256": "5886affb4e07c2dad77c6099e55a1405afa21d30efd43bad380bc43cc24bfbed",
+        "bytes": 1210
+      },
+      "fullSizeSourceInspected": true,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "04-snail-mouth",
+      "status": "REJECTED_OWNERSHIP_PREDECESSOR",
+      "reason": "Cast stalk spikes and tiny detached root region; exact source preserved by selected folder 10 successor.",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/master.png",
+        "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+        "bytes": 1337811
+      },
+      "generation": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/generation.json",
+        "sha256": "6058a2a11bca17dc1436fee2f478f42be0afd0be388488be5f0fc4b6e59af90a",
+        "bytes": 1208
+      },
+      "fullSizeSourceInspected": true,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "05-clam-hinge",
+      "status": "HELD_SOURCE",
+      "reason": "Rear rim reads as ambiguous extra shell surface; external dorsal hinge not proven; parent full-size concurrence.",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/master.png",
+        "sha256": "cfcd71fbf61e3a7bcf20e0f33a1919e8c1295cbd226b3728917b6f74ea7a0823",
+        "bytes": 1589480
+      },
+      "generation": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/generation.json",
+        "sha256": "75bd5d4ac941165c5b1080568b32a3ca1f2a94294d71d43764df705af6e6f50d",
+        "bytes": 1207
+      },
+      "fullSizeSourceInspected": true,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "06-marmoset-source",
+      "status": "HELD_SOURCE",
+      "reason": "Distal support alignment improved but far upper limb roots remain covered by fur/trunk. No observed complete four-chain fit.",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/master.png",
+        "sha256": "9d9841209d90ec22671805e2d471955e6d52e7afb0bf73b876b0ec5d8f69b40e",
+        "bytes": 1221074
+      },
+      "generation": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/generation.json",
+        "sha256": "263c2a6137264953b86dae3beb746b5e2ee3a8793a0a730f4cf78adb8052eb34",
+        "bytes": 1212
+      },
+      "fullSizeSourceInspected": true,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "07-standing-bat-source",
+      "status": "HELD_SOURCE",
+      "reason": "Far wing root/finger fold chains remain occluded; supports unequal. One thumb claw per wing retained, no hidden chains invented.",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/master.png",
+        "sha256": "8a640473b4b4090d813e2aa7efc3457bdcf50f3a216748f6d06fcc44aed8be70",
+        "bytes": 1274497
+      },
+      "generation": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/generation.json",
+        "sha256": "159f6490854ee2ebe8d4924bba7dd22cdb53c1f8ceea5c90322900dafd39da24",
+        "bytes": 1216
+      },
+      "fullSizeSourceInspected": true,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    }
+  ],
+  "totalSelected": {
+    "actions": 43,
+    "samples": 5203,
+    "softwarePoses": 24,
+    "softwareStills": 48
+  },
+  "sourceNotes": "Original PNGs are byte-retained. Established keying/despill/erosion affects the derived keyed mask. Conservation is exact against that unchanged keyed output, not a claim of zero effect on hairline original features.",
+  "D28Default": 0.5,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

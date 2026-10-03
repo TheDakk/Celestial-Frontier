@@ -1,0 +1,61 @@
+{
+  "schema": "cf.c173-sweep-instrument-freeze/v1",
+  "nativeRunnerAndEntryUnchangedFromC163": true,
+  "controls": "controls-v2.json",
+  "pathControls": "paths-controls.json",
+  "cpuLimitMs": 16.666666666666668,
+  "newOutputRequired": true,
+  "automaticRetries": 0,
+  "files": [
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/native-runner.mjs",
+      "sha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028",
+      "bytes": 16832
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/native-entry.mjs",
+      "sha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e",
+      "bytes": 21652
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/prepare-v2.mjs",
+      "sha256": "cc10114295268d986c488b33c7be5d5c861fdb542564deb47c0e13e0416e857d",
+      "bytes": 9901
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/prepare-entry.ts",
+      "sha256": "8c761ef18f94fb2200fcc6b9f84fdb035fd8d79da97bab27902aa46a4dfe7878",
+      "bytes": 645
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/input-contract.mjs",
+      "sha256": "cf511d1fb67f082ad0949f059a7a9d72bdb7fe0c64ce8e65aba20091935b451e",
+      "bytes": 1202
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate.mjs",
+      "sha256": "77164c00473f378d3e770e3cdad21852d0ab60e1889378dfe31b969e962088f6",
+      "bytes": 10925
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate-v2.mjs",
+      "sha256": "aa7124a57393c406fdb64757dbdf3fb8a70985aaaba64e172fbfb042183d6fee",
+      "bytes": 2180
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/run-sweep-v2.mjs",
+      "sha256": "f9cb3b9bae9d2aa44b95ed40ba4c40d9f6d421ff2db61c070ecf35042cc67077",
+      "bytes": 3467
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate.test.mjs",
+      "sha256": "112d36c1ec131ba96c9ebfa2281f27f030efeba49c0bd750607f5887f4ddaa2b",
+      "bytes": 12570
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/paths-v2.test.mjs",
+      "sha256": "c29da0f97544f7fe87b2ed66c1f99e7c8981b1452465faa6e155357d1bc4746d",
+      "bytes": 3934
+    }
+  ]
+}

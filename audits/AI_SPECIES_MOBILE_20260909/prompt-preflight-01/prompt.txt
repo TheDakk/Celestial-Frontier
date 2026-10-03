@@ -1,0 +1,16 @@
+<|im_start|>user
+Cohesive natural-history painting: shared light, soft contact shadows, depth and restrained detail.
+Daylight, rainy temperate riverbank with liquid water, rooted vegetation and damp stones.
+Show exactly three separate animals: Civet, Platypus and Frog, each with its own complete body and a visible gap. Never merge animals or transfer anatomy between species.
+Image 1 guides ONLY Civet. One Civet at 72% across, base 77% down, 15% wide: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail.
+Image 2 guides ONLY Persimmon. One Persimmon at 13% across, base 78% down, 21% wide: branching woody tree; broad simple oval green leaves; orange fruits with four-lobed calyx.
+Image 3 guides ONLY Platypus. One Platypus at 43% across, base 86% down, 20% wide, facing left: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail.
+Image 4 guides ONLY Frog. One Frog at 25% across, base 87% down, 7% wide: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs.
+Image 5 guides ONLY Devil's Club. One Devil's Club at 87% across, base 88% down, 16% wide: thick spiny canes; huge palmate lobed green leaves; upright terminal red berry cones.
+Image 6 guides ONLY Cranberry. One Cranberry at 34% across, base 90% down, 11% wide: low creeping runners; small simple oval green leaves; red berries close to the ground.
+Integrate subjects into one environment, not six panels. Keep each whole subject in frame. No extra animals, duplicate anatomy, text or interface.<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+

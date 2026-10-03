@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1667153150,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 15,
+    "body": 15,
+    "loco": 0,
+    "trait": 6,
+    "size": 2,
+    "diet": 5,
+    "head": 4,
+    "limbs": 0,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 4,
+    "detail": 7,
+    "accent": 13,
+    "temper": 0,
+    "sense": 1,
+    "repro": 4,
+    "life": 4,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Copepod"
+  },
+  "observation": null
+}

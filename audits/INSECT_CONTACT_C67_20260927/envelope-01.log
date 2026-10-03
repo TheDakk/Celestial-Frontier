@@ -1,0 +1,17 @@
+file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:790
+		if (!ok) throw Error("Skeleton pose: " + reason);
+		               ^
+
+Error: Skeleton pose: unknown pose joint: pelvis
+    at need$3 (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:790:18)
+    at Object.evaluate (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:768:5)
+    at fits (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:12687:29)
+    at faintStanceEnvelope (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:12702:6)
+    at envelopeFor (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:12856:16)
+    at buildActionTimeline (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:13031:19)
+    at buildTimeline (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:12911:15)
+    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:17134:21
+    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:14:49
+    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-insect-trace-1jtLPh/run.mjs:17235:16
+
+Node.js v26.10.0

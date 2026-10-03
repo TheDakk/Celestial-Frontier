@@ -1,0 +1,27 @@
+[
+  {
+    "file": "port/v2/apps/game/src/local-model-delivery.ts",
+    "bytes": 23791,
+    "sha256": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8"
+  },
+  {
+    "file": "port/v2/apps/game/src/local-model-manifest.ts",
+    "bytes": 3866,
+    "sha256": "398dd13f6dc6a764a9903782a1000305ee99a1a9dc3d1ad57292a2c27dfee0c6"
+  },
+  {
+    "file": "port/v2/apps/game/src/local-model-sha256.ts",
+    "bytes": 5162,
+    "sha256": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677"
+  },
+  {
+    "file": "port/v2/tests/local-model-delivery.test.ts",
+    "bytes": 15497,
+    "sha256": "82945c783ddcc1a0a2fec64278b60d4b95dc1ac4e91987e3f9d66ebc92836fa4"
+  },
+  {
+    "file": "port/v2/tests/local-model-sha256.test.ts",
+    "bytes": 5621,
+    "sha256": "e3e923786a322b9126e4bcbc713e959854586b64757ccd49b56e02a29af2afff"
+  }
+]

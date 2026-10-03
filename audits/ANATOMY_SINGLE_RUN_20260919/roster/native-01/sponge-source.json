@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1852297885,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 13,
+    "body": 14,
+    "loco": 13,
+    "trait": 12,
+    "size": 4,
+    "diet": 3,
+    "head": 2,
+    "limbs": 4,
+    "skin": 5,
+    "tail": 1,
+    "pattern": 2,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 10,
+    "detail": 4,
+    "accent": 8,
+    "temper": 0,
+    "sense": 4,
+    "repro": 0,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sponge"
+  },
+  "observation": null
+}

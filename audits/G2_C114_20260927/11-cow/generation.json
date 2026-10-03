@@ -1,0 +1,13 @@
+{
+  "id": "11-cow",
+  "name": "Cow",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8d84ae40-82cf-4dc0-98ac-e7bbfd58d70c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6dec68473a30935385b10fdf874d56004c33962ffbf1c8f7f680a8052f0618f4",
+  "bytes": 1286254,
+  "promptSha256": "50775025d8d1ed07cf033e5e66b78c594dbba78d44ddb2ba2dbddb942691fb64",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,3171 @@
+{
+  "schema": "cf.local-model-delivery-native.v1",
+  "status": "PASS",
+  "startedAt": "2026-09-09T14:12:55.126Z",
+  "scope": "Actual native browser OPFS + HTTP Range + Blob URL; tiny synthetic bytes only",
+  "qualityAccepted": false,
+  "deviceQualified": false,
+  "actualModelDownloaded": false,
+  "sources": [
+    {
+      "file": "audits/LOCAL_MODEL_DELIVERY_20260909/native-01/browser-entry.mjs",
+      "bytes": 3188,
+      "sha256": "8f8b48609442e8679c489f63a9dd5686d5e731af4f62d5aa2256a748cf716045"
+    },
+    {
+      "file": "audits/LOCAL_MODEL_DELIVERY_20260909/native-01/index.html",
+      "bytes": 720,
+      "sha256": "08fbfe6be45bb6a48107e066c1c436528131b5e1e952d6a07c5bb8623b383c62"
+    },
+    {
+      "file": "audits/LOCAL_MODEL_DELIVERY_20260909/native-01/run.mjs",
+      "bytes": 18610,
+      "sha256": "5c577260d62c2ce0acb5c304bec6b054192e6ab0fa28243d4f5481ccff47445f"
+    },
+    {
+      "file": "port/v2/apps/game/src/local-model-delivery.ts",
+      "bytes": 23791,
+      "sha256": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8"
+    },
+    {
+      "file": "port/v2/apps/game/src/local-model-sha256.ts",
+      "bytes": 5162,
+      "sha256": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677"
+    },
+    {
+      "file": "port/v2/package-lock.json",
+      "bytes": 90228,
+      "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d"
+    },
+    {
+      "file": "port/v2/tools/browsercdp.mjs",
+      "bytes": 159934,
+      "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca"
+    },
+    {
+      "file": "port/v2/tools/browserpath.mjs",
+      "bytes": 7617,
+      "sha256": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0"
+    }
+  ],
+  "virtualSources": [
+    {
+      "id": "\u0000rolldown/runtime.js",
+      "bytes": 4405,
+      "sha256": "2027378d81078b5bb25f18920376547f296bebd7be04bd10dc2e0221a5aa0991"
+    }
+  ],
+  "observations": [
+    {
+      "label": "initial-missing",
+      "status": {
+        "phase": "missing",
+        "ready": false,
+        "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+        "totalBytes": 2097336,
+        "storedBytes": 0,
+        "verifiedBytes": 0,
+        "downloadedBytes": 0,
+        "verifiedFiles": 0,
+        "totalFiles": 2,
+        "file": null,
+        "error": null,
+        "attemptId": null,
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 0,
+          "quotaBytes": 10737418240,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "missing",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "good",
+      "operationPending": false,
+      "modelRequests": []
+    },
+    {
+      "label": "cancel-after-one-committed-chunk",
+      "status": {
+        "phase": "canceled",
+        "ready": false,
+        "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+        "totalBytes": 2097336,
+        "storedBytes": 1048576,
+        "verifiedBytes": 0,
+        "downloadedBytes": 1048576,
+        "verifiedFiles": 0,
+        "totalFiles": 2,
+        "file": "weights.bin",
+        "error": "canceled",
+        "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 0,
+          "quotaBytes": 10737418240,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c0",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        }
+      ],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "missing",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 1048576,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 1048576,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "canceled",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 1048576,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": "canceled",
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "good",
+      "operationPending": false,
+      "modelRequests": [
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": false,
+          "closedBeforeFinish": true,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 0,
+          "expectedBytes": 2097223,
+          "heldAfterBytes": 1048576
+        }
+      ]
+    },
+    {
+      "label": "reloaded-partial",
+      "status": {
+        "phase": "partial",
+        "ready": false,
+        "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+        "totalBytes": 2097336,
+        "storedBytes": 1048576,
+        "verifiedBytes": 0,
+        "downloadedBytes": 0,
+        "verifiedFiles": 0,
+        "totalFiles": 2,
+        "file": null,
+        "error": null,
+        "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 1049619,
+          "quotaBytes": 10738467859,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c0",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        }
+      ],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "partial",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "good",
+      "operationPending": false,
+      "modelRequests": [
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": false,
+          "closedBeforeFinish": true,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 0,
+          "expectedBytes": 2097223,
+          "heldAfterBytes": 1048576
+        }
+      ]
+    },
+    {
+      "label": "resumed-committed-ready",
+      "status": {
+        "phase": "ready",
+        "ready": true,
+        "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+        "totalBytes": 2097336,
+        "storedBytes": 2097336,
+        "verifiedBytes": 2097336,
+        "downloadedBytes": 1048760,
+        "verifiedFiles": 2,
+        "totalFiles": 2,
+        "file": null,
+        "error": null,
+        "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 1049619,
+          "quotaBytes": 10738467859,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c0",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c1",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c2",
+          "bytes": 71
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f1-c0",
+          "bytes": 113
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/ready-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        }
+      ],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "partial",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 1014078,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 1048576,
+          "verifiedBytes": 0,
+          "downloadedBytes": 1048647,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097152,
+          "verifiedBytes": 0,
+          "downloadedBytes": 1048647,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 0,
+          "downloadedBytes": 1048647,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 1048647,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 1048647,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 1048760,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 1048760,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 1048760,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 1048760,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "good",
+      "operationPending": false,
+      "modelRequests": [
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": false,
+          "closedBeforeFinish": true,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 0,
+          "expectedBytes": 2097223,
+          "heldAfterBytes": 1048576
+        },
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": "bytes=1048576-",
+          "status": 206,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 1048576,
+          "expectedBytes": 1048647
+        },
+        {
+          "path": "/model/good/tokenizer.json",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "tokenizer.json",
+          "start": 0,
+          "expectedBytes": 113
+        }
+      ]
+    },
+    {
+      "label": "reloaded-verified-ready",
+      "status": {
+        "phase": "ready",
+        "ready": true,
+        "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+        "totalBytes": 2097336,
+        "storedBytes": 2097336,
+        "verifiedBytes": 2097336,
+        "downloadedBytes": 0,
+        "verifiedFiles": 2,
+        "totalFiles": 2,
+        "file": null,
+        "error": null,
+        "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 2099316,
+          "quotaBytes": 10739517556,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c0",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c1",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c2",
+          "bytes": 71
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f1-c0",
+          "bytes": 113
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/ready-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        }
+      ],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 0,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "good",
+      "operationPending": false,
+      "modelRequests": [
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": false,
+          "closedBeforeFinish": true,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 0,
+          "expectedBytes": 2097223,
+          "heldAfterBytes": 1048576
+        },
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": "bytes=1048576-",
+          "status": 206,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 1048576,
+          "expectedBytes": 1048647
+        },
+        {
+          "path": "/model/good/tokenizer.json",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "tokenizer.json",
+          "start": 0,
+          "expectedBytes": 113
+        }
+      ]
+    },
+    {
+      "label": "one-byte-corruption-refused",
+      "status": {
+        "phase": "invalid",
+        "ready": false,
+        "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+        "totalBytes": 4099,
+        "storedBytes": 4099,
+        "verifiedBytes": 0,
+        "downloadedBytes": 4099,
+        "verifiedFiles": 0,
+        "totalFiles": 1,
+        "file": "broken.bin",
+        "error": "hash-mismatch",
+        "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 2099316,
+          "quotaBytes": 10739517556,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [
+        {
+          "path": "cf-local-model-delivery-v1/23c68c26-0c93-4229-8ae8-8ed57b56dc27/f0-c0",
+          "bytes": 4099
+        },
+        {
+          "path": "cf-local-model-delivery-v1/23c68c26-0c93-4229-8ae8-8ed57b56dc27/failed.json",
+          "bytes": 108,
+          "json": {
+            "code": "hash-mismatch",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c0",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c1",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c2",
+          "bytes": 71
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f1-c0",
+          "bytes": 113
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+            "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/ready-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        }
+      ],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 0,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "missing",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "invalid",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": "hash-mismatch",
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "corrupt",
+      "operationPending": false,
+      "modelRequests": [
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": false,
+          "closedBeforeFinish": true,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 0,
+          "expectedBytes": 2097223,
+          "heldAfterBytes": 1048576
+        },
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": "bytes=1048576-",
+          "status": 206,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 1048576,
+          "expectedBytes": 1048647
+        },
+        {
+          "path": "/model/good/tokenizer.json",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "tokenizer.json",
+          "start": 0,
+          "expectedBytes": 113
+        },
+        {
+          "path": "/model/corrupt/broken.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "corrupt",
+          "file": "broken.bin",
+          "start": 0,
+          "expectedBytes": 4099,
+          "control": "one-byte-corruption"
+        }
+      ]
+    },
+    {
+      "label": "restored-response-ready-new-attempt",
+      "status": {
+        "phase": "ready",
+        "ready": true,
+        "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+        "totalBytes": 4099,
+        "storedBytes": 4099,
+        "verifiedBytes": 4099,
+        "downloadedBytes": 4099,
+        "verifiedFiles": 1,
+        "totalFiles": 1,
+        "file": null,
+        "error": null,
+        "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 2099316,
+          "quotaBytes": 10739517556,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [
+        {
+          "path": "cf-local-model-delivery-v1/23c68c26-0c93-4229-8ae8-8ed57b56dc27/f0-c0",
+          "bytes": 4099
+        },
+        {
+          "path": "cf-local-model-delivery-v1/23c68c26-0c93-4229-8ae8-8ed57b56dc27/failed.json",
+          "bytes": 108,
+          "json": {
+            "code": "hash-mismatch",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c0",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c1",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c2",
+          "bytes": 71
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f1-c0",
+          "bytes": 113
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+            "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/b732db2e-b169-4143-893b-7c40e7996fe1/f0-c0",
+          "bytes": 4099
+        },
+        {
+          "path": "cf-local-model-delivery-v1/ready-1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+            "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/ready-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        }
+      ],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 0,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "missing",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "invalid",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": "hash-mismatch",
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 4099,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 1,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 4099,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 1,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "corrupt",
+      "operationPending": false,
+      "modelRequests": [
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": false,
+          "closedBeforeFinish": true,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 0,
+          "expectedBytes": 2097223,
+          "heldAfterBytes": 1048576
+        },
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": "bytes=1048576-",
+          "status": 206,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 1048576,
+          "expectedBytes": 1048647
+        },
+        {
+          "path": "/model/good/tokenizer.json",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "tokenizer.json",
+          "start": 0,
+          "expectedBytes": 113
+        },
+        {
+          "path": "/model/corrupt/broken.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "corrupt",
+          "file": "broken.bin",
+          "start": 0,
+          "expectedBytes": 4099,
+          "control": "one-byte-corruption"
+        },
+        {
+          "path": "/model/corrupt/broken.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "corrupt",
+          "file": "broken.bin",
+          "start": 0,
+          "expectedBytes": 4099
+        }
+      ]
+    },
+    {
+      "label": "original-verified-install-preserved",
+      "status": {
+        "phase": "ready",
+        "ready": true,
+        "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+        "totalBytes": 2097336,
+        "storedBytes": 2097336,
+        "verifiedBytes": 2097336,
+        "downloadedBytes": 0,
+        "verifiedFiles": 2,
+        "totalFiles": 2,
+        "file": null,
+        "error": null,
+        "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+        "qualityAccepted": false,
+        "deviceQualified": false
+      },
+      "capability": {
+        "secureContext": true,
+        "opfs": true,
+        "webLocks": true,
+        "webgpu": true,
+        "shaderF16": true,
+        "fallbackAdapter": false,
+        "limits": {
+          "maxBufferSize": 4294967292,
+          "maxStorageBufferBindingSize": 4294967292,
+          "maxStorageBuffersPerShaderStage": 10
+        },
+        "storage": {
+          "usageBytes": 2099316,
+          "quotaBytes": 10739517556,
+          "persisted": false
+        },
+        "supported": true,
+        "deviceQualified": false,
+        "errors": []
+      },
+      "inventory": [
+        {
+          "path": "cf-local-model-delivery-v1/23c68c26-0c93-4229-8ae8-8ed57b56dc27/f0-c0",
+          "bytes": 4099
+        },
+        {
+          "path": "cf-local-model-delivery-v1/23c68c26-0c93-4229-8ae8-8ed57b56dc27/failed.json",
+          "bytes": 108,
+          "json": {
+            "code": "hash-mismatch",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c0",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c1",
+          "bytes": 1048576
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f0-c2",
+          "bytes": 71
+        },
+        {
+          "path": "cf-local-model-delivery-v1/2d2412db-de3b-4436-81dc-cdbf98c51d9a/f1-c0",
+          "bytes": 113
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+            "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/active-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/b732db2e-b169-4143-893b-7c40e7996fe1/f0-c0",
+          "bytes": 4099
+        },
+        {
+          "path": "cf-local-model-delivery-v1/ready-1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+            "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1"
+          }
+        },
+        {
+          "path": "cf-local-model-delivery-v1/ready-81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47.json",
+          "bytes": 173,
+          "json": {
+            "schema": "cf.local-model-attempt.v1",
+            "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+            "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a"
+          }
+        }
+      ],
+      "states": [
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 0,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "missing",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "invalid",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": "hash-mismatch",
+          "attemptId": "23c68c26-0c93-4229-8ae8-8ed57b56dc27",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 0,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 0,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "downloading",
+          "ready": false,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 4099,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 1,
+          "totalFiles": 1,
+          "file": "broken.bin",
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "1d40d5335dbdc53d08071c421c93d8b3bcced59a459580031d3705d6e8764a3d",
+          "totalBytes": 4099,
+          "storedBytes": 4099,
+          "verifiedBytes": 4099,
+          "downloadedBytes": 4099,
+          "verifiedFiles": 1,
+          "totalFiles": 1,
+          "file": null,
+          "error": null,
+          "attemptId": "b732db2e-b169-4143-893b-7c40e7996fe1",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": null,
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 0,
+          "verifiedBytes": 0,
+          "downloadedBytes": 0,
+          "verifiedFiles": 0,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097223,
+          "verifiedBytes": 2097223,
+          "downloadedBytes": 0,
+          "verifiedFiles": 1,
+          "totalFiles": 2,
+          "file": "weights.bin",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "verifying",
+          "ready": false,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": "tokenizer.json",
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        },
+        {
+          "phase": "ready",
+          "ready": true,
+          "manifestSha256": "81498880cd37c7a77b05a0923089b70e0ef83cbc6b1c11506cfc8478d1d74c47",
+          "totalBytes": 2097336,
+          "storedBytes": 2097336,
+          "verifiedBytes": 2097336,
+          "downloadedBytes": 0,
+          "verifiedFiles": 2,
+          "totalFiles": 2,
+          "file": null,
+          "error": null,
+          "attemptId": "2d2412db-de3b-4436-81dc-cdbf98c51d9a",
+          "qualityAccepted": false,
+          "deviceQualified": false
+        }
+      ],
+      "error": null,
+      "ready": true,
+      "kind": "good",
+      "operationPending": false,
+      "modelRequests": [
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": false,
+          "closedBeforeFinish": true,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 0,
+          "expectedBytes": 2097223,
+          "heldAfterBytes": 1048576
+        },
+        {
+          "path": "/model/good/weights.bin",
+          "search": "",
+          "range": "bytes=1048576-",
+          "status": 206,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "weights.bin",
+          "start": 1048576,
+          "expectedBytes": 1048647
+        },
+        {
+          "path": "/model/good/tokenizer.json",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "good",
+          "file": "tokenizer.json",
+          "start": 0,
+          "expectedBytes": 113
+        },
+        {
+          "path": "/model/corrupt/broken.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "corrupt",
+          "file": "broken.bin",
+          "start": 0,
+          "expectedBytes": 4099,
+          "control": "one-byte-corruption"
+        },
+        {
+          "path": "/model/corrupt/broken.bin",
+          "search": "",
+          "range": null,
+          "status": 200,
+          "finished": true,
+          "closedBeforeFinish": false,
+          "fixture": "corrupt",
+          "file": "broken.bin",
+          "start": 0,
+          "expectedBytes": 4099
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "path": "/",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/bundle.mjs",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/favicon.ico",
+      "search": "",
+      "range": null,
+      "status": 204,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/fixture.json",
+      "search": "?kind=good",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/model/good/weights.bin",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": false,
+      "closedBeforeFinish": true,
+      "fixture": "good",
+      "file": "weights.bin",
+      "start": 0,
+      "expectedBytes": 2097223,
+      "heldAfterBytes": 1048576
+    },
+    {
+      "path": "/",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/bundle.mjs",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/favicon.ico",
+      "search": "",
+      "range": null,
+      "status": 204,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/fixture.json",
+      "search": "?kind=good",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/model/good/weights.bin",
+      "search": "",
+      "range": "bytes=1048576-",
+      "status": 206,
+      "finished": true,
+      "closedBeforeFinish": false,
+      "fixture": "good",
+      "file": "weights.bin",
+      "start": 1048576,
+      "expectedBytes": 1048647
+    },
+    {
+      "path": "/model/good/tokenizer.json",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false,
+      "fixture": "good",
+      "file": "tokenizer.json",
+      "start": 0,
+      "expectedBytes": 113
+    },
+    {
+      "path": "/",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/bundle.mjs",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/favicon.ico",
+      "search": "",
+      "range": null,
+      "status": 204,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/fixture.json",
+      "search": "?kind=good",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/fixture.json",
+      "search": "?kind=corrupt",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    },
+    {
+      "path": "/model/corrupt/broken.bin",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false,
+      "fixture": "corrupt",
+      "file": "broken.bin",
+      "start": 0,
+      "expectedBytes": 4099,
+      "control": "one-byte-corruption"
+    },
+    {
+      "path": "/model/corrupt/broken.bin",
+      "search": "",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false,
+      "fixture": "corrupt",
+      "file": "broken.bin",
+      "start": 0,
+      "expectedBytes": 4099
+    },
+    {
+      "path": "/fixture.json",
+      "search": "?kind=good",
+      "range": null,
+      "status": 200,
+      "finished": true,
+      "closedBeforeFinish": false
+    }
+  ],
+  "clicks": [
+    {
+      "geometry": {
+        "id": "install",
+        "x": 127.5078125,
+        "y": 148.4375,
+        "width": 191.015625,
+        "height": 46,
+        "visible": true,
+        "disabled": false,
+        "hit": true
+      },
+      "event": {
+        "id": "install",
+        "trusted": true
+      }
+    },
+    {
+      "geometry": {
+        "id": "cancel",
+        "x": 327.03125,
+        "y": 148.4375,
+        "width": 176.03125,
+        "height": 46,
+        "visible": true,
+        "disabled": false,
+        "hit": true
+      },
+      "event": {
+        "id": "cancel",
+        "trusted": true
+      }
+    },
+    {
+      "geometry": {
+        "id": "install",
+        "x": 127.5078125,
+        "y": 148.4375,
+        "width": 191.015625,
+        "height": 46,
+        "visible": true,
+        "disabled": false,
+        "hit": true
+      },
+      "event": {
+        "id": "install",
+        "trusted": true
+      }
+    },
+    {
+      "geometry": {
+        "id": "install",
+        "x": 127.5078125,
+        "y": 148.4375,
+        "width": 191.015625,
+        "height": 46,
+        "visible": true,
+        "disabled": false,
+        "hit": true
+      },
+      "event": {
+        "id": "install",
+        "trusted": true
+      }
+    },
+    {
+      "geometry": {
+        "id": "install",
+        "x": 127.5078125,
+        "y": 148.4375,
+        "width": 191.015625,
+        "height": 46,
+        "visible": true,
+        "disabled": false,
+        "hit": true
+      },
+      "event": {
+        "id": "install",
+        "trusted": true
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01-canceled.png",
+      "bytes": 83907,
+      "sha256": "0c03fe532d58279e97b1eba5193970954e441ad8f96fcace9edda403915cf828"
+    },
+    {
+      "file": "02-reloaded-ready.png",
+      "bytes": 81249,
+      "sha256": "556d93d71f6cc4694e1907264440e4101ecee4118796a757e03bb0dd6349706a"
+    },
+    {
+      "file": "03-corrupt-refusal.png",
+      "bytes": 83555,
+      "sha256": "ebde25d200f535e96286052be74cadb34a1db95c8d3564bf8ab4c9a7c65d88a5"
+    }
+  ],
+  "browserEvents": [],
+  "cleanup": {
+    "targetClosed": true,
+    "browserClosed": true,
+    "serverClosed": true
+  },
+  "syntheticBytes": 2101435,
+  "bundle": {
+    "file": "bundle.mjs",
+    "bytes": 25898,
+    "sha256": "518719d9297408176b44e446e63c495685a4297f5f73a44902b81b6e2abcdfa4"
+  },
+  "origin": "http://127.0.0.1:58625",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "browserPid": 72966,
+  "installedBlobs": [
+    {
+      "path": "weights.bin",
+      "isBlob": true,
+      "bytes": 2097223,
+      "sha256": "4f3606187e8cf4ddd1af757b1c6e37d3fb285f51b4cdeef367bebec430e8b074",
+      "blobUrlBytes": 2097223,
+      "blobUrlSha256": "4f3606187e8cf4ddd1af757b1c6e37d3fb285f51b4cdeef367bebec430e8b074"
+    },
+    {
+      "path": "tokenizer.json",
+      "isBlob": true,
+      "bytes": 113,
+      "sha256": "0b6334219cda4c5a503020824f34fdd8084bfd92def47025420d682634c02c49",
+      "blobUrlBytes": 113,
+      "blobUrlSha256": "0b6334219cda4c5a503020824f34fdd8084bfd92def47025420d682634c02c49"
+    }
+  ],
+  "reopenedBlobs": [
+    {
+      "path": "weights.bin",
+      "isBlob": true,
+      "bytes": 2097223,
+      "sha256": "4f3606187e8cf4ddd1af757b1c6e37d3fb285f51b4cdeef367bebec430e8b074",
+      "blobUrlBytes": 2097223,
+      "blobUrlSha256": "4f3606187e8cf4ddd1af757b1c6e37d3fb285f51b4cdeef367bebec430e8b074"
+    },
+    {
+      "path": "tokenizer.json",
+      "isBlob": true,
+      "bytes": 113,
+      "sha256": "0b6334219cda4c5a503020824f34fdd8084bfd92def47025420d682634c02c49",
+      "blobUrlBytes": 113,
+      "blobUrlSha256": "0b6334219cda4c5a503020824f34fdd8084bfd92def47025420d682634c02c49"
+    }
+  ],
+  "corruptOpenRefusal": "Error: DeliveryError: model-not-verified-ready\n    at requireValue (http://127.0.0.1:58625/bundle.mjs:193:24)\n    at Object.openFile (http://127.0.0.1:58625/bundle.mjs:574:4)\n    at api.openAll (http://127.0.0.1:58625/bundle.mjs:684:35)\n    at <anonymous>:1:22",
+  "restoredBlobs": [
+    {
+      "path": "broken.bin",
+      "isBlob": true,
+      "bytes": 4099,
+      "sha256": "7a69b0d4dbd27bc47891e193d96bfd133e21386022045e1297ba16424db39258",
+      "blobUrlBytes": 4099,
+      "blobUrlSha256": "7a69b0d4dbd27bc47891e193d96bfd133e21386022045e1297ba16424db39258"
+    }
+  ],
+  "checks": {
+    "actualOpfs": true,
+    "actualWebLocks": true,
+    "trustedInstallCancel": true,
+    "actualHttpAbort": true,
+    "persistedPartialAfterReload": true,
+    "exactRangeResume": true,
+    "allFilesShaVerifiedBeforeReady": true,
+    "readyReverifiedAfterReload": true,
+    "noNetworkOnReadyReload": true,
+    "openFileAndBlobUrlHashes": true,
+    "corruptHashRefused": true,
+    "corruptOpenRefused": true,
+    "failedAttemptPreserved": true,
+    "restoredRetry": true,
+    "priorVerifiedInstallPreserved": true
+  },
+  "finishedAt": "2026-09-09T14:12:56.997Z"
+}

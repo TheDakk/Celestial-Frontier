@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Guillemot",
+  "masterSha256": "c278ce4a029753b1bf168d40026d0c347155c62cdf766c4361c8efb7ad4f9799",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

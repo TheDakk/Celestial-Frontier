@@ -1,0 +1,1222 @@
+{
+  "schema": "cf.c132-native-effect-visual-review/v1",
+  "reviewedOn": "2026-10-02",
+  "status": "PAINTED_PHASES_OBSERVED_VISUAL_ACCEPTANCE_HELD",
+  "qualityAccepted": false,
+  "source": "b80e4b1562d53db514fa15c8199f655760e79d79",
+  "batch": {
+    "path": "audits/C132_EFFECTS_20261001/native-batch-01/batch.json",
+    "sha256": "1f838c67418943af39fe9c43e02f465f57fcedae5e087258c2f9719ede4ce66b"
+  },
+  "delivery": {
+    "path": "audits/C132_EFFECTS_20261001/delivery.json",
+    "sha256": "7f1467152e45200408fe81c0aa849833a770cf421a08a85508ed97ad2eb43617"
+  },
+  "extraction": {
+    "path": "audits/C132_EFFECTS_20261001/native-review-01/extraction.json",
+    "sha256": "c8cb456afc01c295a3fb905ed24e995438dd92a464aea42beab2b89db141a4ef",
+    "mapping": "Video end PTS minus final capture clock estimates recorder offset. Selected phase-center frames avoid boundaries; timestamps do not claim exact seek still equivalence."
+  },
+  "scope": {
+    "themes": 10,
+    "paintedPhases": 30,
+    "fullSizeFramesReviewed": 30,
+    "frameSize": [
+      1024,
+      576
+    ],
+    "turn": 0,
+    "direction": "left Civet to right Wolf",
+    "arena": "accepted Earth temperate control",
+    "newNativeRun": false,
+    "limits": [
+      "Phase-center frames decoded from retained videos; not an exhaustive frame-by-frame film review.",
+      "Recorder offset is estimated from final encoded PTS and capture clock; exact script time is not claimed.",
+      "Opposite facing, other arenas, phone display and all creature pairs are outside this visual sample.",
+      "Native diagnostic performance and visible painted phases do not constitute quality acceptance, strict 60 fps, I5, production or deployment admission."
+    ]
+  },
+  "routingSourceChecks": [
+    {
+      "path": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "captureSha256": "18cdfd512bf8cc7bdc41b55e147112acc7d1425dc6ff6e4e231367bbaeaa92a7",
+      "currentSha256": "18cdfd512bf8cc7bdc41b55e147112acc7d1425dc6ff6e4e231367bbaeaa92a7",
+      "matchesCapture": true
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/theme-library.ts",
+      "captureSha256": "2c91e8c052fa29006ec6553625cb4571354d44c7d95e2d035b99441282113dd2",
+      "currentSha256": "2c91e8c052fa29006ec6553625cb4571354d44c7d95e2d035b99441282113dd2",
+      "matchesCapture": true
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/pixi-adapter.ts",
+      "captureSha256": "7694ad3a30cf7604f6d9fd238a5b07ce51007dd2a83968959e3a020a746171bf",
+      "currentSha256": "7694ad3a30cf7604f6d9fd238a5b07ce51007dd2a83968959e3a020a746171bf",
+      "matchesCapture": true
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/anchors.ts",
+      "captureSha256": "3f26b0c6c40f4b210080e18d347d0ede86df2b3f4f018eb70cb9d344ef870870",
+      "currentSha256": "3f26b0c6c40f4b210080e18d347d0ede86df2b3f4f018eb70cb9d344ef870870",
+      "matchesCapture": true
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/sequencer.ts",
+      "captureSha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685",
+      "currentSha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685",
+      "matchesCapture": true
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "captureSha256": "573ec7f5d433515169992ffee8c4d53855fd1c945bbe1175ce8f80307d113f0e",
+      "currentSha256": "573ec7f5d433515169992ffee8c4d53855fd1c945bbe1175ce8f80307d113f0e",
+      "matchesCapture": true
+    }
+  ],
+  "routingConclusion": "The exact supplied themed anchors are registered in the diagnostic EffectThemeLibrary; all three nonprocedural PNGs are loaded and bound to their tracks. Every captured input hash equals the delivered anchor and registered asset hash. Painted forms are visibly distinct in all 30 inspected frames; particles are also present. This is diagnostic injection, not proof that the product registry accepts these rows.",
+  "placementHold": {
+    "observation": "All sampled themes originate/travel/impact at the paw and ground line while the attack is authored as bite (jaw).",
+    "turn": 0,
+    "attack": {
+      "verb": "bite",
+      "contactMs": 209.66666666666666,
+      "contactJoint": "jaw"
+    },
+    "impactAtMs": 1978.6666666666667,
+    "groundYNormalized": 0.78,
+    "groundYPixels": 449.28000000000003,
+    "attackerJawAtImpact": {
+      "x": 0.4849913987559511,
+      "y": 0.5476540252834222,
+      "targetStandX": 0.6771047693477235,
+      "gapToTargetStand": 0.19211337059177236
+    },
+    "attackerJawYPixels": 315.4487185632512,
+    "groundMinusAttackerJawPixels": 133.8312814367488,
+    "sourceReason": "choreography.ts bodyPoint returns the stand for grounded combatants and impactY explicitly equals groundLineY; placeEffectSequence uses those ground points.",
+    "disposition": "Geometry/attack-contact integration hold; do not repair by redrawing or vertically offsetting individual theme PNGs. Attacker-jaw distance is a measured reference, not a claim that target impact must equal the attacker jaw coordinate."
+  },
+  "rows": [
+    {
+      "theme": "fire",
+      "sequenceId": "fire-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/fire/report.json",
+        "sha256": "17f12efe2c8aa58b1b558e29ca913447dbd4b22882d16261dbbec596663844a7",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/fire/battle-full.webm",
+        "sha256": "24b20463bff84b54ab4aca8986b44cf2278d1fb6cc0d83a762c9303611edc23a",
+        "encodedFrames": {
+          "frames": 902,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.036559,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/fire/native-input/script.json",
+        "sha256": "597df3ee07cce9da67a1006e05257d54aa298d66004c163b4e41fdb91d2cd477",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/fire/anchors.json",
+        "sha256": "926cb96634725cfdeb3016238d61f9f8ac3c82d48b3491c92ce5832bf3367dca",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/fire/registered/launch.png",
+          "sha256": "7fa9ef9c4f24c0d4151d320ce3a60a4182854736e9de962ae6685ecb317df8ba",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "fire",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.10320000000000107,
+            "frameIndex": 114,
+            "actualVideoPtsSeconds": 1.923,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/fire/launch.png",
+            "sha256": "c30ac5918d137d7ede339b9e92f8f278c8534137bb95aafee591abb024ef763c",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/fire/registered/travel.png",
+          "sha256": "dca5ec29ee67985a7516307fd9d3a82c9b9f37ef6c8330093cb2c4b3d626f007",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "fire",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.10320000000000107,
+            "frameIndex": 122,
+            "actualVideoPtsSeconds": 2.055,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/fire/travel.png",
+            "sha256": "1c43a37fb2c71fcfe5c602a35050c7d56a19ef327735239f04fc62c2619eff42",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/fire/registered/impact.png",
+          "sha256": "a1554e337d526342f3848a88fdf6ac5eabab0d98ae3441f34706fc5ecb93d114",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "fire",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.10320000000000107,
+            "frameIndex": 139,
+            "actualVideoPtsSeconds": 2.338,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/fire/impact.png",
+            "sha256": "2600103c78ffd1e0c6875fd492997ac91040cd16b7598cb600ebb9fe9ed08a9d",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Orange and charcoal launch coil, broad flame travel, orange burst impact.",
+      "hold": "Strong visibility; warm particles overlap lower legs, but faces and damage numbers remain readable.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.300000000745058,
+      "frameDeltaP95Ms": 16.700000000000728,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "frost",
+      "sequenceId": "frost-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/frost/report.json",
+        "sha256": "1d3c153b2de90adf58c29beec34a89ea66a91881c71c41a72cbd0b457df9c1c5",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/frost/battle-full.webm",
+        "sha256": "af0bc4333a07ee9a869e0745d44209ba61acb5035ef0c3f635433ba8f1649850",
+        "encodedFrames": {
+          "frames": 900,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.004859,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/frost/native-input/script.json",
+        "sha256": "6600bc3965bedf50b300eefed21cb73afa8e699971c25550abee0129ca7a98f2",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/frost/anchors.json",
+        "sha256": "31001930b095dfbef13591fd78b36285a04d4f85d421d25964ba6a18c59d87a8",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/frost/registered/launch.png",
+          "sha256": "5917619501737c9318931369c59d8523b1980270b1c0b90f30b275927c3a441e",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "frost",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.07130000000000081,
+            "frameIndex": 112,
+            "actualVideoPtsSeconds": 1.892,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/frost/launch.png",
+            "sha256": "940dbe384f91ad6dcf03254085302c1a59b25b5732ce83f02a7ff517584751c7",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/frost/registered/travel.png",
+          "sha256": "b00756664bf2c4a7781562d1395022f2bfdc0407ffece134fb1d2b1f73f37011",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "frost",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.07130000000000081,
+            "frameIndex": 119,
+            "actualVideoPtsSeconds": 2.009,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/frost/travel.png",
+            "sha256": "afa6a4b260ee6842243b2083973a5ffc4320c0799e821b9e10f638ab8939e8ba",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/frost/registered/impact.png",
+          "sha256": "52b2f3630353c66165367c0ac4307ba898b0fec1cfe883b4f154206366accb5c",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "frost",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.07130000000000081,
+            "frameIndex": 137,
+            "actualVideoPtsSeconds": 2.307,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/frost/impact.png",
+            "sha256": "a472e3a8d2f13037f96685ffe6b1d65db9969d58882ba147b48727afb26b5f8e",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Blue crystalline launch, jagged horizontal ice travel, vertical ice impact.",
+      "hold": "All three painted forms are distinct from fluid Tide; faces and damage numbers remain readable.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.299999998882413,
+      "frameDeltaP95Ms": 16.700000000000728,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "storm",
+      "sequenceId": "storm-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/storm/report.json",
+        "sha256": "77913eec2e8cc043033c3a208ed0d9e9919851c49c5e982ed65ce6b77a9f5a3c",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/storm/battle-full.webm",
+        "sha256": "e2667baff92b83b51f211c07bedfca42ae3af73b869c765cb0cf5899b6a4af73",
+        "encodedFrames": {
+          "frames": 901,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.010873,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/storm/native-input/script.json",
+        "sha256": "2ca679a702a9126770a490abd6bc51af36e06b6500242222b5f89f1014584b5f",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+        "sha256": "4a40b1579f0b341e178deea305b87395fb01839490f82dbf5eb1d22d260c3409",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/storm/final/registered/launch.png",
+          "sha256": "cf1e1ddc66b11df2391400ebca3295c5a916143ed8cee45f125a3c847682431e",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "storm",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.07729999999999926,
+            "frameIndex": 113,
+            "actualVideoPtsSeconds": 1.895,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/storm/launch.png",
+            "sha256": "de719e1a4f588561b3389a777063da8e392d7c9e39301ddf80a17629c32c4d2e",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/storm/final/registered/travel.png",
+          "sha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "storm",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.07729999999999926,
+            "frameIndex": 121,
+            "actualVideoPtsSeconds": 2.028,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/storm/travel.png",
+            "sha256": "5bef82f412f48f740d6f6436fd17f57987cc566beeaf7464f084e32ae5cfe52d",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/storm/final/registered/impact.png",
+          "sha256": "3cdfa440d457cbb7b4fe4cf740c0e7cf76b8931fe1ff40d16daa8eda3afe0634",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "storm",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.07729999999999926,
+            "frameIndex": 138,
+            "actualVideoPtsSeconds": 2.312,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/storm/impact.png",
+            "sha256": "9e5a0ddac3cfe058c69d760b974b8f2dcd57cac63ff81d4582fc39492f6496ed",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Thin white and gold branching launch, lightning travel, branching star impact.",
+      "hold": "Launch is small and low contrast against wet stony ground; phone readability remains held.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.400000000372529,
+      "frameDeltaP95Ms": 16.700000000000728,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "tide",
+      "sequenceId": "tide-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/tide/report.json",
+        "sha256": "86448fbe53f57a4aec342f58a480afa485ff054b5f887bc2df6c8c2f4d798dcf",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/tide/battle-full.webm",
+        "sha256": "ef8565f6fccc68edcac91cf0195c0a547ffe768c591238b9ca2b656fd66454c7",
+        "encodedFrames": {
+          "frames": 901,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.020929,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/tide/native-input/script.json",
+        "sha256": "db2350aa686e776458f4f062952edaef81491fef32ce81b19b0fa49341f988ed",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/tide/anchors.json",
+        "sha256": "b76d893f6aa706d1846a68918ee9a3f33b9b0940a507b46f22eeae6838ef2e20",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/tide/registered/launch.png",
+          "sha256": "84f5c13703ccb3b5929e66086a7822df4616852de13dbb13f4b79e275bc73d57",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "tide",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.08740000000000059,
+            "frameIndex": 113,
+            "actualVideoPtsSeconds": 1.907,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/tide/launch.png",
+            "sha256": "28046df832653087677c2265c72aa940b98f53eaf168b1b2e3c6bf0bc3ad228a",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/tide/registered/travel.png",
+          "sha256": "465cbbdf0adf1244502e7086a580358ed44d991713ce4aadf31550b22a186fd6",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "tide",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.08740000000000059,
+            "frameIndex": 121,
+            "actualVideoPtsSeconds": 2.038,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/tide/travel.png",
+            "sha256": "1dfdf1e1dd8b950ed9925b1e177334612a5c1f9eb90252e2c4b1e1e6792900a8",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/tide/registered/impact.png",
+          "sha256": "cb311ab37ceab4b0197fdeaecd0843c48a31197d6ee8397c1ace3dd53acd066c",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "tide",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.08740000000000059,
+            "frameIndex": 138,
+            "actualVideoPtsSeconds": 2.323,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/tide/impact.png",
+            "sha256": "fa02cfdfa1139e3eb4fb665b262a915c1691ca912fae864ad487a4357dd2bfe2",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Cyan wave coil launch, cresting wave travel, foamy splash impact.",
+      "hold": "Strong visibility; fluid silhouettes distinguish Tide from Frost. Lower legs are partly obscured, faces remain readable.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.400000000372529,
+      "frameDeltaP95Ms": 16.700000000000728,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "stone",
+      "sequenceId": "stone-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/stone/report.json",
+        "sha256": "349994ddd52c6e28c3ee66f775d4fae28c14c47a3805614e1199689b900fa992",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/stone/battle-full.webm",
+        "sha256": "93c266c3fecde580e76f2b75787fe9294f2779750f4925deebe0c5b7f4e0e292",
+        "encodedFrames": {
+          "frames": 901,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.01265,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/stone/native-input/script.json",
+        "sha256": "68b623072ea72f68c75793acd4702ae260cda1b1f71573e8baa925943c4d530b",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+        "sha256": "35dee9b691316117ad134d2de90c331b0abd780cf71ffdff676b1fff353505e2",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/stone/shards/registered/launch.png",
+          "sha256": "c2fe80c792ee44c4f89bb3945a91175ef03e31d40b660d1ef1ec927159ecf141",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "stone",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.07910000000000039,
+            "frameIndex": 113,
+            "actualVideoPtsSeconds": 1.899,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/stone/launch.png",
+            "sha256": "b5fabff517bc22fb94ef5ebebb8c444710ef18cb6a83c1dc2aa101403a1845af",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/stone/shards/registered/travel.png",
+          "sha256": "47e15ed079e9dbd322272e7ef36c64720d5ccc285a0f952f249281aa26b6b606",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "stone",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.07910000000000039,
+            "frameIndex": 121,
+            "actualVideoPtsSeconds": 2.032,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/stone/travel.png",
+            "sha256": "0eee0162cb91cde1936112dbb3d24e34d296ff305ced80524b776e370a25f479",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/stone/shards/registered/impact.png",
+          "sha256": "7d752451427474c4a952cecbfe906b1767ca4f3333de0bcbd28b2a88c560dd39",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "stone",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.07910000000000039,
+            "frameIndex": 138,
+            "actualVideoPtsSeconds": 2.313,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/stone/impact.png",
+            "sha256": "7611d0958a929f5fefc140f5148f821b3ef85ab286795e4383a2ccf68a5694bc",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Brown rock launch, gray slabs and shards in travel, ochre rock and dust impact.",
+      "hold": "Gray travel blends into rocky ground and changes color noticeably from the ochre phases. Contrast and phase cohesion need visual scoring.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.300000000745058,
+      "frameDeltaP95Ms": 16.799999999999272,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "venom",
+      "sequenceId": "venom-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/venom/report.json",
+        "sha256": "31cd4dcd913469de35790d4f2d610a5084a8937b5a4f92286f1b00f23ec9de69",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/venom/battle-full.webm",
+        "sha256": "c3f5cc122df0a4b8d6b22910bc14431e7e804be16d40b44f3a9835cfae57dc83",
+        "encodedFrames": {
+          "frames": 901,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.016224,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/venom/native-input/script.json",
+        "sha256": "9c52a3cb9bfbaea5af2267ebe4b01e222779f3eb15e7dee3513a18fb7a96ffe4",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/venom/anchors.json",
+        "sha256": "66bd85cb4dcbf393f41a06251cd4a9634fe396f8ff99d03fb706b2854b500ab7",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/venom/registered/launch.png",
+          "sha256": "df5ed04a970f775995eb27a67ecc2ebf21ce38ddfcdb47935336366bdc9d93d9",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "venom",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.08340000000000103,
+            "frameIndex": 113,
+            "actualVideoPtsSeconds": 1.904,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/venom/launch.png",
+            "sha256": "82378f92646ebd0f684d2650806f29b09cd305081351c28f8ce031f5b400167a",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/venom/registered/travel.png",
+          "sha256": "f126eb3df3a998699c2e993cf74b1cc32c817a38c1d53d3e7164b17bfb1ac392",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "venom",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.08340000000000103,
+            "frameIndex": 120,
+            "actualVideoPtsSeconds": 2.02,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/venom/travel.png",
+            "sha256": "88fefcc8171a2455064210e27daf5d747f1783c6ad99cad44e55c2cefadb607f",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/venom/registered/impact.png",
+          "sha256": "72de039576963f53c2ebcdff9c7ed012b7e6f04292263326a1d4f2159e1d5234",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "venom",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.08340000000000103,
+            "frameIndex": 138,
+            "actualVideoPtsSeconds": 2.32,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/venom/impact.png",
+            "sha256": "330bfb6471e8a78a3bff9d89c6b34f9d974edfe65517556bfc9d4ff59f590d9b",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Green coiled fluid launch, lime liquid travel, green splash impact.",
+      "hold": "Smaller transparent green details blend into moss and ground. Violet particle accents are visible at impact; this review does not attribute them to source-key contamination.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.299999998882413,
+      "frameDeltaP95Ms": 16.799999999999272,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "void",
+      "sequenceId": "void-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/void/report.json",
+        "sha256": "f83d8713baf2cb42f5ffc41a4872b9c74fd06ead4f8ae8c86ecf3be2a7190871",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/void/battle-full.webm",
+        "sha256": "d4f12824c206e28297a63201518c70e59725063700f0098cff17ad9f734e6787",
+        "encodedFrames": {
+          "frames": 901,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.013655,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/void/native-input/script.json",
+        "sha256": "ada6b296890723811567c61280977c3e5db57b288527a42aed2d5da24594a5b3",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/void/final/anchors.json",
+        "sha256": "cb8e04be607a3b416b1a21489482ab29c474f43cec75565844cca8617ff62e24",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/void/final/registered/launch.png",
+          "sha256": "985b298205226f55c3f5f24fdeaf073453fe80692d79f67a34f2abfe788fffc9",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "void",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.08020000000000138,
+            "frameIndex": 113,
+            "actualVideoPtsSeconds": 1.899,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/void/launch.png",
+            "sha256": "6c6b4cddaa45d1dd78abc4232182b3abc74356bcf2f478ace8815d0313d24045",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/void/final/registered/travel.png",
+          "sha256": "2fd346d7688b50d0111d9cb94a4bde26667a248f2d995afadf201911afa62e17",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "void",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.08020000000000138,
+            "frameIndex": 121,
+            "actualVideoPtsSeconds": 2.034,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/void/travel.png",
+            "sha256": "8dfae55183e5f11edc47cc553a86b7aaa29621702b5b5772f2954715e652cc88",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/void/final/registered/impact.png",
+          "sha256": "46e7b1a5fe12bc454e3e4e22f6d55fe28ae648ce8b3e407cc25f88e5040da288",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "void",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.08020000000000138,
+            "frameIndex": 138,
+            "actualVideoPtsSeconds": 2.317,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/void/impact.png",
+            "sha256": "053d547ed52756b055281a779b2f2ed7114b7babf88f581c15d39d022703902b",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Dark violet coil launch, broad ink-dark travel, violet-black collapse-ring impact.",
+      "hold": "Dark launch has weak contrast against dark ground; travel and impact remain legible.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.300000000745058,
+      "frameDeltaP95Ms": 16.799999999999272,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "sand",
+      "sequenceId": "sand-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/sand/report.json",
+        "sha256": "ee7a87dbf1ead4e48297daba79aba6fbd73ef452b99c6cf7cb61c68df3264d23",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/sand/battle-full.webm",
+        "sha256": "da234d13d25639cbb0283e222bfa6ad18a5fd1dc677d73369444e5e720127f56",
+        "encodedFrames": {
+          "frames": 901,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.011789,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/sand/native-input/script.json",
+        "sha256": "34bca483ee04ef46c38d58ac0103512121d95849d3c1896d3e0621f9d4050f03",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+        "sha256": "2930258125c1e99bd2882ee1d0e886eba8b8c0e5a35c54e1b523a68a7348395f",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/sand/final/registered/launch.png",
+          "sha256": "258a217973f61a36065885c8bca3543fe66211a8c98101aeb6b634833a2baf2d",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "sand",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.07820000000000071,
+            "frameIndex": 113,
+            "actualVideoPtsSeconds": 1.901,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/sand/launch.png",
+            "sha256": "72b32b22e0a00824b951656987d51f2071e9179ed79fd083db0c9f4b286629fa",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/sand/final/registered/travel.png",
+          "sha256": "24c2c55ca543e43a9677a318d973a856bc40fd2081f8b7f054b0c74fda55bdb9",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "sand",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.07820000000000071,
+            "frameIndex": 120,
+            "actualVideoPtsSeconds": 2.015,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/sand/travel.png",
+            "sha256": "1fc6f5646172d86c3ec0783ad706edef1aa9a85c83c79b9362cc66e2ba2fddcf",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/sand/final/registered/impact.png",
+          "sha256": "75d5ad014f93b494d8b377fe12fc99af10d7e482906e10565c81a4b4f9771ff6",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "sand",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.07820000000000071,
+            "frameIndex": 138,
+            "actualVideoPtsSeconds": 2.316,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/sand/impact.png",
+            "sha256": "b8e486e8e8efd964fa0222ce913819d2e25f8036715f6304385248eca3b7f55a",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Golden granular curl launch, translucent ochre dust travel, curved brown-orange burst impact.",
+      "hold": "Travel is present but markedly low contrast on temperate ground; it is the weakest travel read in this set.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.200000001117587,
+      "frameDeltaP95Ms": 16.799999999999272,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "chem",
+      "sequenceId": "chem-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/chem/report.json",
+        "sha256": "10b6807944ee42a6ca778b13191bbeff4125e52c1699f8fb81ba9001393e41c6",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/chem/battle-full.webm",
+        "sha256": "4113bf2b3073a31306c7c26fb83a946f9fda669bbbc89de5d65d2c64756a477a",
+        "encodedFrames": {
+          "frames": 900,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.003949,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/chem/native-input/script.json",
+        "sha256": "6ca302d4256f5004266a8d2e6cf38ef34358fdd2c282b5b2815509f27a0a4247",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/chem/anchors.json",
+        "sha256": "bde174def1affb9cf35520d456cc076c3c14de3431b7209bfb6755506dbc79e4",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/chem/registered/launch.png",
+          "sha256": "333ecfa8f9fc749430f83744e127314aa7e8722d2ee8926f354b5722f9ee45db",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "chem",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.07029999999999959,
+            "frameIndex": 112,
+            "actualVideoPtsSeconds": 1.89,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/chem/launch.png",
+            "sha256": "7da7dd40fb63443e75fea982fdbe5e18319efea89272e0f7d78b2f184895cc23",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/chem/registered/travel.png",
+          "sha256": "0167b8d4d433da139b9f1819815e2a880e9a2255b50ad003bf1e7289f197a985",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "chem",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.07029999999999959,
+            "frameIndex": 120,
+            "actualVideoPtsSeconds": 2.022,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/chem/travel.png",
+            "sha256": "2c4bdb7a75a73e8a137011d5d90ccfd77af333efc5c26dffcfaf5d26c5f6f7cf",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/chem/registered/impact.png",
+          "sha256": "52ed2bd4cab580905c296368a65e09258f9b7b1470d5855f4262be644fda6f64",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "chem",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.07029999999999959,
+            "frameIndex": 137,
+            "actualVideoPtsSeconds": 2.306,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/chem/impact.png",
+            "sha256": "a7a9e3bf6fc41df93ffc5f01ac8d22c37a30294fe38b3f569762d6be8132af61",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Yellow-green foam launch, broad bubbling reactive trail, foam and spray impact.",
+      "hold": "Bubbles distinguish it from Venom, but both use green fluid vocabulary. Theme separation needs phone/full-motion scoring.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.299999998882413,
+      "frameDeltaP95Ms": 16.700000000000728,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    },
+    {
+      "theme": "psionic",
+      "sequenceId": "psionic-c132-v43",
+      "qualityAccepted": false,
+      "report": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/psionic/report.json",
+        "sha256": "8f59b2b4b6ce1526ced442c9357013d9fa241bb5fde0bc02f3e5244038cb6b84",
+        "status": "DIAGNOSTIC_PASS"
+      },
+      "video": {
+        "path": "audits/C132_EFFECTS_20261001/native-batch-01/psionic/battle-full.webm",
+        "sha256": "626101aeead1a67b503efbb62d67d08c5e78a322c6d0cd8a6bfa0625bceedf23",
+        "encodedFrames": {
+          "frames": 901,
+          "width": 1024,
+          "height": 576,
+          "durationSeconds": 15.010159,
+          "minimumFrames": 851
+        }
+      },
+      "script": {
+        "path": "audits/C132_EFFECTS_20261001/psionic/native-input/script.json",
+        "sha256": "7803b091e528b42c70a2128b3b53ad49308ac7120d042e6481958dbbd7e99d5f",
+        "supports": "observed",
+        "names": {
+          "left": "Civet",
+          "right": "Wolf"
+        }
+      },
+      "anchors": {
+        "path": "audits/C132_EFFECTS_20261001/psionic/final/anchors.json",
+        "sha256": "377a235f92becbe6ba2e887dbb2f2fdd9a6a165a1d0bdafca2a9847aba18a5bb",
+        "matchesDeliveryAndCapture": true
+      },
+      "phases": [
+        {
+          "phase": "launch",
+          "asset": "audits/C132_EFFECTS_20261001/psionic/final/registered/launch.png",
+          "sha256": "993e9adaa07f0ed351018c88ea8dcee203392413c618f72072643ecc1e42f6e5",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "psionic",
+            "phase": "launch",
+            "desiredScriptMs": 1819,
+            "estimatedRecorderOffsetSeconds": 0.07719999999999949,
+            "frameIndex": 113,
+            "actualVideoPtsSeconds": 1.897,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/psionic/launch.png",
+            "sha256": "e669d4f5b8cb2fd47dab69feb924fc6257e410d2837920349671cc4cfd467bd5",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "travel",
+          "asset": "audits/C132_EFFECTS_20261001/psionic/final/registered/travel.png",
+          "sha256": "27233e950914e65f7c62937d7ea649f512b7474b3806ba44de2809ef68f7bee5",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "psionic",
+            "phase": "travel",
+            "desiredScriptMs": 1945,
+            "estimatedRecorderOffsetSeconds": 0.07719999999999949,
+            "frameIndex": 121,
+            "actualVideoPtsSeconds": 2.029,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/psionic/travel.png",
+            "sha256": "1b8905b3b46fdcfbabef75ccc06bb296790c74b2fb26d5f60c0acec473a72a19",
+            "width": 1024,
+            "height": 576
+          }
+        },
+        {
+          "phase": "impact",
+          "asset": "audits/C132_EFFECTS_20261001/psionic/final/registered/impact.png",
+          "sha256": "9d3b74bb6bcfb48264416d36c7b7dfa6b7384a471cbb13a141958ad24219335a",
+          "matchesCaptureSource": true,
+          "matchesAnchorDigest": true,
+          "visiblePaintedForm": true,
+          "blankPhaseObserved": false,
+          "opaqueKeyRectangleObserved": false,
+          "reviewFrame": {
+            "theme": "psionic",
+            "phase": "impact",
+            "desiredScriptMs": 2230,
+            "estimatedRecorderOffsetSeconds": 0.07719999999999949,
+            "frameIndex": 138,
+            "actualVideoPtsSeconds": 2.311,
+            "path": "audits/C132_EFFECTS_20261001/native-review-01/psionic/impact.png",
+            "sha256": "90591bf83e0b2b1e2ab2e8da79fe37fb9300a2a035b3770deca0ef75a4e4a237",
+            "width": 1024,
+            "height": 576
+          }
+        }
+      ],
+      "observation": "Pale concentric launch ring, repeated warped-air travel rings, pale snap-ring impact.",
+      "hold": "All three painted ring forms are visible; fine pale strokes and translucent travel need phone readability review.",
+      "cpuThrottle": 4,
+      "cpuP95Ms": 6.200000001117587,
+      "frameDeltaP95Ms": 16.799999999999272,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      }
+    }
+  ]
+}

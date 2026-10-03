@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "intake",
+  "id": "02-shrimp-contours",
+  "command": [
+    "node",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/intake-retained.mjs",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01"
+  ],
+  "helperSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/intake-01.log",
+  "logSha256": "4ccb4e3b506bada6038c96e960825d3c1a02678356687ec4658d552c5b113714",
+  "nativeRuns": 0
+}

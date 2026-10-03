@@ -1,0 +1,21 @@
+{
+ "id": "impala",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1268.6,
+ "landmarkMedian": 0.044,
+ "landmarkMax": 0.1709,
+ "worst": [
+  "earFarTip 0.171",
+  "hindNearAnkle 0.168",
+  "earFarRoot 0.166"
+ ],
+ "labelAgreement": 0.5178,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "approach:gallop",
+  "melee:tail"
+ ]
+}

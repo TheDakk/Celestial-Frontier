@@ -1,0 +1,28 @@
+{
+  "name": "Fiddler Crab",
+  "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Broad carapace, two long eye stalks and grossly unequal major/minor open claws are clear. Only three complete distal walking-leg paths per side are confidently visible; other roots/tips are covered by claws or carapace. Eight complete walking chains are not established. Do not invent the hidden last pair or use symmetrical claw geometry. Major claw dactyl/fixed finger need exact source-specific ownership.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 177,
+      "y0": 300,
+      "x1": 1081,
+      "y1": 915
+    },
+    "margins": {
+      "left": 177,
+      "right": 172,
+      "top": 300,
+      "bottom": 338
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

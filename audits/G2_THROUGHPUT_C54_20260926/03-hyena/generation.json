@@ -1,0 +1,15 @@
+{
+  "id": "03-hyena",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-57d51ce5-72f6-41b7-b28b-72998a4621c2.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "8d7b92bbf3276ba5e40c5719f61c52dba8615ae83fe7a0f66f58eeb7bd25802d",
+  "bytes": 1582589,
+  "promptSha256": "79d3b3eb2b83f0787d60f756eec7b5676dc8562c208b061a9b4c083f0390d92b",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

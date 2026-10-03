@@ -1,0 +1,172 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-beetle-family-master",
+    "seed": 424242,
+    "ownerId": "authored:beetle/accepted-master",
+    "earthName": "Beetle"
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "5cf63ca2f7465212bc1f770babe650bd390986c7dc16a841179c326a31a74168",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.79,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6,
+      0.39
+    ],
+    "thorax": [
+      0.485,
+      0.427
+    ],
+    "head": [
+      0.379,
+      0.507
+    ],
+    "mandible": [
+      0.37,
+      0.577
+    ],
+    "abdomen": [
+      0.684,
+      0.339
+    ],
+    "legFrontFarKnee": [
+      0.2,
+      0.515
+    ],
+    "legFrontFarFoot": [
+      0.128,
+      0.71
+    ],
+    "legFrontNearKnee": [
+      0.598,
+      0.522
+    ],
+    "legFrontNearFoot": [
+      0.593,
+      0.753
+    ],
+    "legMidFarKnee": [
+      0.258,
+      0.457
+    ],
+    "legMidFarFoot": [
+      0.253,
+      0.566
+    ],
+    "legMidNearKnee": [
+      0.728,
+      0.515
+    ],
+    "legMidNearFoot": [
+      0.837,
+      0.697
+    ],
+    "legHindFarKnee": [
+      0.71,
+      0.365
+    ],
+    "legHindFarFoot": [
+      0.765,
+      0.397
+    ],
+    "legHindNearKnee": [
+      0.873,
+      0.432
+    ],
+    "legHindNearFoot": [
+      0.94,
+      0.6
+    ],
+    "antennaFar": [
+      0.119,
+      0.409
+    ],
+    "antennaNear": [
+      0.485,
+      0.575
+    ],
+    "wingFar": [
+      0.465,
+      0.267
+    ],
+    "wingNear": [
+      0.702,
+      0.307
+    ]
+  },
+  "materials": {
+    "surface": "chitinous",
+    "sheenTier": "painted",
+    "paletteSource": "accepted authored master"
+  },
+  "clipSetId": "insect-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-insect.png",
+  "coverage": {
+    "occluded": [
+      "hindFar walking leg: body-covered; no separate visible surface",
+      "flight wings: folded beneath elytra; not anatomically absent"
+    ],
+    "unproven": [
+      "open-wing flight requires an additional painted view",
+      "hidden limb emergence",
+      "out-of-plane views",
+      "full motion and visual fit"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.12080562900792327,
+      "head": 0.1328006024082722,
+      "mandible": 0.07057619995437552,
+      "abdomen": 0.21758906222510363,
+      "legFrontFarKnee": 0.2982767171604247,
+      "legFrontFarFoot": 0.20786774641584005,
+      "legFrontNearKnee": 0.14762791064023092,
+      "legFrontNearFoot": 0.2310541062175697,
+      "legMidFarKnee": 0.22897379762758882,
+      "legMidFarFoot": 0.10911461863563464,
+      "legMidNearKnee": 0.2584434174050482,
+      "legMidNearFoot": 0.21214381914163793,
+      "legHindFarKnee": 0.23338594644922384,
+      "legHindFarFoot": 0.06363175307973219,
+      "legHindNearKnee": 0.3880322151574531,
+      "legHindNearFoot": 0.18086735471057233,
+      "antennaFar": 0.2778560778532656,
+      "antennaNear": 0.1259364919314493,
+      "wingFar": 0.16124515496597097,
+      "wingNear": 0.2479697562203907
+    },
+    "measures": {
+      "body": 0.3482082710103251,
+      "bone-min": 0.06363175307973219,
+      "bone-max": 0.3880322151574531,
+      "leg/body:legFrontFar": 1.4535681823630677,
+      "leg/body:legFrontNear": 1.087515858710237,
+      "leg/body:legMidFar": 0.9709373510349455,
+      "leg/body:legMidNear": 1.3514533562952968,
+      "leg/body:legHindFar": 0.8529886400089239,
+      "leg/body:legHindNear": 1.6337910877802109
+    }
+  },
+  "recipeHash": "b83417bd32df6a3ddc708e07620d5055ce08a483633dd6c86b954794b86942b8"
+}

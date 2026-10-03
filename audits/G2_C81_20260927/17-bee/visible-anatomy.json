@@ -1,0 +1,131 @@
+{
+  "id": "17-bee",
+  "name": "Bee",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "29effb7362d75a4d569b495f3fe6a153dc3002cf33bee49d9377df94c3e2593b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22380,
+    "coreRadius": 21,
+    "bodyBox": {
+      "x0": 106,
+      "y0": 156,
+      "x1": 201,
+      "y1": 240
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.608,
+        "pixels": 13608,
+        "box": {
+          "x0": 75,
+          "y0": 120,
+          "x1": 356,
+          "y1": 283
+        },
+        "attach": {
+          "x": 170.6,
+          "y": 177.1,
+          "relX": 0.68,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": 0.98,
+          "y": 0.2
+        },
+        "class": "front",
+        "length": 213.5
+      },
+      {
+        "k": 1,
+        "frac": 0.0559,
+        "pixels": 1252,
+        "box": {
+          "x0": 82,
+          "y0": 199,
+          "x1": 140,
+          "y1": 258
+        },
+        "attach": {
+          "x": 113.1,
+          "y": 229.4,
+          "relX": 0.07,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -0.91,
+          "y": 0.41
+        },
+        "class": "rear",
+        "length": 43.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0336,
+        "pixels": 753,
+        "box": {
+          "x0": 117,
+          "y0": 241,
+          "x1": 167,
+          "y1": 286
+        },
+        "attach": {
+          "x": 154.5,
+          "y": 241,
+          "relX": 0.51,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.41,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 58.6
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 117,
+        "x1": 140,
+        "cx": 128.3
+      },
+      {
+        "x0": 181,
+        "x1": 191,
+        "cx": 185.5
+      },
+      {
+        "x0": 247,
+        "x1": 261,
+        "cx": 254.6
+      },
+      {
+        "x0": 288,
+        "x1": 298,
+        "cx": 292.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

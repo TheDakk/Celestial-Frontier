@@ -1,0 +1,219 @@
+{
+  "schema": "cf.c192-actual-rig-software-review/v1",
+  "status": "PASS_OFFLINE",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "idle",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 659.2913410440087,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 2966.8110346980393,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 3296.4567052200437,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 659.2913410440087,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 928.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 1032,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:hop",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-hop-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:hop",
+      "ms": 186.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-hop-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:hop",
+      "ms": 838.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-hop-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:hop",
+      "ms": 932,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-hop-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:hop",
+      "ms": 186.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-hop-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:tail",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-tail-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:tail",
+      "ms": 203.73333333333335,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-tail-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:tail",
+      "ms": 916.8,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-tail-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:tail",
+      "ms": 1018.6666666666666,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-tail-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:tail",
+      "ms": 203.73333333333335,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-tail-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/islands-01/fit/record.json",
+      "sha256": "9221a9a40f60055536fd5805019c23ee2058b6035f30235cac70146e46a9aa42"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/islands-01/fit/binding.json",
+      "sha256": "9d49366a46242c5f12de2a72cb8d5a3e6b37aca95183a39451f0c5f0c6bf4ab1"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/islands-01/fit/parts/atlas/c192-islands-01-wild-ass.png",
+      "sha256": "af448588a7f0028a29427e2e7f29943e2dbce4efe7d78284b6a4d09787057b0b"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/master.png",
+      "sha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/review-rig.mjs",
+      "sha256": "26f7c7337c6bedaffa59ec614b2f5998ddaa0d67edbb879ac1c855689d4c17fa"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

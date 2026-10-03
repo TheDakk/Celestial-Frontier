@@ -1,0 +1,21 @@
+{
+ "id": "03-alligator",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "reviewedPresence": {
+  "absent": [
+   "external-ears"
+  ],
+  "removedParts": [
+   "ear-near-tip",
+   "ear-near-root",
+   "ear-far-tip",
+   "ear-far-root"
+  ]
+ },
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

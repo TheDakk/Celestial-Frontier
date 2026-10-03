@@ -1,0 +1,1293 @@
+{
+  "schema": "cf.fauna-source-bindings/v1",
+  "catalogueSha256": "7d82553cd7e70626b9a7ef516278933cc729b90e320c85bc711b8247a22801e6",
+  "bindings": [
+    {
+      "gameName": "Chimpanzee",
+      "taxonId": 43577,
+      "scientificName": "Pan troglodytes",
+      "recordedCommonName": "Chimpanzee",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Wild Boar",
+      "taxonId": 42134,
+      "scientificName": "Sus scrofa",
+      "recordedCommonName": "Wild Boar",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Capuchin",
+      "taxonId": 410834,
+      "scientificName": "Sapajus nigritus",
+      "recordedCommonName": "Black capuchin",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Howler Monkey",
+      "taxonId": 74053,
+      "scientificName": "Alouatta guariba",
+      "recordedCommonName": "Brown Howler Monkey",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Coati",
+      "taxonId": 41670,
+      "scientificName": "Nasua nasua",
+      "recordedCommonName": "South American Coati",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Fruit Bat",
+      "taxonId": 40811,
+      "scientificName": "Epomophorus wahlbergi",
+      "recordedCommonName": "Wahlberg's Epauletted Fruit Bat",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Macaw",
+      "taxonId": 72814,
+      "scientificName": "Diopsittaca nobilis",
+      "recordedCommonName": "Red-shouldered Macaw",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Parrot",
+      "taxonId": 19196,
+      "scientificName": "Alisterus scapularis",
+      "recordedCommonName": "Australian King Parrot",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Toucan",
+      "taxonId": 339907,
+      "scientificName": "Ramphastos ambiguus",
+      "recordedCommonName": "Yellow-throated Toucan",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Hornbill",
+      "taxonId": 5538,
+      "scientificName": "Ocyceros griseus",
+      "recordedCommonName": "Malabar Grey Hornbill",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Hummingbird",
+      "taxonId": 6317,
+      "scientificName": "Calypte anna",
+      "recordedCommonName": "Anna's Hummingbird",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Kingfisher",
+      "taxonId": 2548,
+      "scientificName": "Megaceryle alcyon",
+      "recordedCommonName": "Belted Kingfisher",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Eagle",
+      "taxonId": 5305,
+      "scientificName": "Haliaeetus leucocephalus",
+      "recordedCommonName": "Bald Eagle",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Owl",
+      "taxonId": 19893,
+      "scientificName": "Strix varia",
+      "recordedCommonName": "Barred Owl",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Tree Frog",
+      "taxonId": 1668922,
+      "scientificName": "Dryophytes chrysoscelis",
+      "recordedCommonName": "Cope's Gray Tree Frog",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Poison Dart Frog",
+      "taxonId": 66278,
+      "scientificName": "Oophaga pumilio",
+      "recordedCommonName": "Strawberry Poison Dart Frog",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Deer",
+      "taxonId": 42184,
+      "scientificName": "Capreolus capreolus",
+      "recordedCommonName": "Western Roe Deer",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Macaque",
+      "taxonId": 43459,
+      "scientificName": "Macaca fascicularis",
+      "recordedCommonName": "Long-tailed Macaque",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Jackal",
+      "taxonId": 851014,
+      "scientificName": "Canis aureus",
+      "recordedCommonName": "Golden Jackal",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Porcupine",
+      "taxonId": 44026,
+      "scientificName": "Erethizon dorsatum",
+      "recordedCommonName": "North American Porcupine",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Squirrel",
+      "taxonId": 46017,
+      "scientificName": "Sciurus carolinensis",
+      "recordedCommonName": "Eastern Gray Squirrel",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Bullfrog",
+      "taxonId": 65979,
+      "scientificName": "Lithobates catesbeianus",
+      "recordedCommonName": "American Bullfrog",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Cicada",
+      "taxonId": 243961,
+      "scientificName": "Cicada orni",
+      "recordedCommonName": "Ash Cicada",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Lion",
+      "taxonId": 41964,
+      "scientificName": "Panthera leo",
+      "recordedCommonName": "Lion",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Zebra",
+      "taxonId": 43335,
+      "scientificName": "Equus quagga",
+      "recordedCommonName": "Plains Zebra",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Baboon",
+      "taxonId": 57556,
+      "scientificName": "Papio ursinus",
+      "recordedCommonName": "Chacma Baboon",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Guineafowl",
+      "taxonId": 1428,
+      "scientificName": "Numida meleagris",
+      "recordedCommonName": "Helmeted Guineafowl",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Possum",
+      "taxonId": 42808,
+      "scientificName": "Trichosurus vulpecula",
+      "recordedCommonName": "Common Brushtail Possum",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Tanager",
+      "taxonId": 9921,
+      "scientificName": "Piranga olivacea",
+      "recordedCommonName": "Scarlet Tanager",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Pika",
+      "taxonId": 43188,
+      "scientificName": "Ochotona princeps",
+      "recordedCommonName": "American Pika",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Pheasant",
+      "taxonId": 981,
+      "scientificName": "Phasianus colchicus",
+      "recordedCommonName": "Ring-necked Pheasant",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Woodpecker",
+      "taxonId": 18205,
+      "scientificName": "Melanerpes carolinus",
+      "recordedCommonName": "Red-bellied Woodpecker",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Gecko",
+      "taxonId": 51940,
+      "scientificName": "Hemidactylus frenatus",
+      "recordedCommonName": "Asian House Gecko",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Wolf",
+      "taxonId": 42048,
+      "scientificName": "Canis lupus",
+      "recordedCommonName": "Gray Wolf",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Coyote",
+      "taxonId": 42051,
+      "scientificName": "Canis latrans",
+      "recordedCommonName": "Coyote",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Bobcat",
+      "taxonId": 41976,
+      "scientificName": "Lynx rufus",
+      "recordedCommonName": "Bobcat",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Fox",
+      "taxonId": 42069,
+      "scientificName": "Vulpes vulpes",
+      "recordedCommonName": "Red Fox",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Raccoon",
+      "taxonId": 41663,
+      "scientificName": "Procyon lotor",
+      "recordedCommonName": "Common Raccoon",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Flying Squirrel",
+      "taxonId": 46272,
+      "scientificName": "Glaucomys volans",
+      "recordedCommonName": "Southern Flying Squirrel",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Chipmunk",
+      "taxonId": 46217,
+      "scientificName": "Tamias striatus",
+      "recordedCommonName": "Eastern Chipmunk",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Hedgehog",
+      "taxonId": 43048,
+      "scientificName": "Erinaceus roumanicus",
+      "recordedCommonName": "Northern White-breasted Hedgehog",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Hawk",
+      "taxonId": 5206,
+      "scientificName": "Buteo lineatus",
+      "recordedCommonName": "Red-shouldered Hawk",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Crow",
+      "taxonId": 8021,
+      "scientificName": "Corvus brachyrhynchos",
+      "recordedCommonName": "American Crow",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Raven",
+      "taxonId": 8010,
+      "scientificName": "Corvus corax",
+      "recordedCommonName": "Common Raven",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Robin",
+      "taxonId": 12727,
+      "scientificName": "Turdus migratorius",
+      "recordedCommonName": "American Robin",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Cardinal",
+      "taxonId": 9083,
+      "scientificName": "Cardinalis cardinalis",
+      "recordedCommonName": "Northern Cardinal",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Turkey",
+      "taxonId": 906,
+      "scientificName": "Meleagris gallopavo",
+      "recordedCommonName": "Wild Turkey",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Frog",
+      "taxonId": 24255,
+      "scientificName": "Pseudacris maculata",
+      "recordedCommonName": "Boreal Chorus Frog",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Bee",
+      "taxonId": 47219,
+      "scientificName": "Apis mellifera",
+      "recordedCommonName": "Western Honey Bee",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "River Otter",
+      "taxonId": 41777,
+      "scientificName": "Lontra canadensis",
+      "recordedCommonName": "North American River Otter",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Beaver",
+      "taxonId": 43794,
+      "scientificName": "Castor canadensis",
+      "recordedCommonName": "American Beaver",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Heron",
+      "taxonId": 4956,
+      "scientificName": "Ardea herodias",
+      "recordedCommonName": "Great Blue Heron",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Beetle",
+      "taxonId": 55761,
+      "scientificName": "Lilioceris lilii",
+      "recordedCommonName": "Lily Leaf Beetle",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Red Fox",
+      "taxonId": 42069,
+      "scientificName": "Vulpes vulpes",
+      "recordedCommonName": "Red Fox",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Grouse",
+      "taxonId": 72797,
+      "scientificName": "Dendragapus fuliginosus",
+      "recordedCommonName": "Sooty Grouse",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Ptarmigan",
+      "taxonId": 974,
+      "scientificName": "Lagopus leucura",
+      "recordedCommonName": "White-tailed Ptarmigan",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Goose",
+      "taxonId": 7089,
+      "scientificName": "Branta canadensis",
+      "recordedCommonName": "Canada Goose",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Duck",
+      "taxonId": 7107,
+      "scientificName": "Aix sponsa",
+      "recordedCommonName": "Wood Duck",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Wood Frog",
+      "taxonId": 66012,
+      "scientificName": "Lithobates sylvaticus",
+      "recordedCommonName": "Wood Frog",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Marmot",
+      "taxonId": 46082,
+      "scientificName": "Marmota marmota",
+      "recordedCommonName": "Alpine Marmot",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Falcon",
+      "taxonId": 4647,
+      "scientificName": "Falco peregrinus",
+      "recordedCommonName": "Peregrine Falcon",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Chough",
+      "taxonId": 8349,
+      "scientificName": "Pyrrhocorax pyrrhocorax",
+      "recordedCommonName": "Red-billed Chough",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Otter",
+      "taxonId": 41777,
+      "scientificName": "Lontra canadensis",
+      "recordedCommonName": "North American River Otter",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Egret",
+      "taxonId": 4940,
+      "scientificName": "Egretta thula",
+      "recordedCommonName": "Snowy Egret",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Ibis",
+      "taxonId": 3740,
+      "scientificName": "Threskiornis molucca",
+      "recordedCommonName": "Australian Ibis",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Stork",
+      "taxonId": 4733,
+      "scientificName": "Ciconia ciconia",
+      "recordedCommonName": "White Stork",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Crane",
+      "taxonId": 41,
+      "scientificName": "Grus grus",
+      "recordedCommonName": "Common Crane",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Spoonbill",
+      "taxonId": 62529,
+      "scientificName": "Platalea ajaja",
+      "recordedCommonName": "Roseate Spoonbill",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Flamingo",
+      "taxonId": 73222,
+      "scientificName": "Phoenicopterus roseus",
+      "recordedCommonName": "Greater Flamingo",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Prairie Dog",
+      "taxonId": 46179,
+      "scientificName": "Cynomys ludovicianus",
+      "recordedCommonName": "Black-tailed Prairie Dog",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Ground Squirrel",
+      "taxonId": 180007,
+      "scientificName": "Otospermophilus beecheyi",
+      "recordedCommonName": "California Ground Squirrel",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Lark",
+      "taxonId": 578607,
+      "scientificName": "Galerida cristata",
+      "recordedCommonName": "Crested Lark",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Rattlesnake",
+      "taxonId": 30746,
+      "scientificName": "Crotalus horridus",
+      "recordedCommonName": "Timber Rattlesnake",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Grasshopper",
+      "taxonId": 371315,
+      "scientificName": "Chorthippus biguttulus",
+      "recordedCommonName": "Bow-winged Grasshopper",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Cricket",
+      "taxonId": 71248,
+      "scientificName": "Gryllus campestris",
+      "recordedCommonName": "European Field Cricket",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Sandgrouse",
+      "taxonId": 117079,
+      "scientificName": "Pterocles bicinctus",
+      "recordedCommonName": "Double-banded Sandgrouse",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Pampas Fox",
+      "taxonId": 423656,
+      "scientificName": "Lycalopex gymnocerca",
+      "recordedCommonName": "Pampas Fox",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Seriema",
+      "taxonId": 14,
+      "scientificName": "Cariama cristata",
+      "recordedCommonName": "Red-legged Seriema",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Sparrow",
+      "taxonId": 9100,
+      "scientificName": "Melospiza melodia",
+      "recordedCommonName": "Song Sparrow",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Finch",
+      "taxonId": 199840,
+      "scientificName": "Haemorhous mexicanus",
+      "recordedCommonName": "House Finch",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Swallow",
+      "taxonId": 11901,
+      "scientificName": "Hirundo rustica",
+      "recordedCommonName": "Barn Swallow",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Quail",
+      "taxonId": 1409,
+      "scientificName": "Callipepla californica",
+      "recordedCommonName": "California Quail",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Magpie",
+      "taxonId": 891696,
+      "scientificName": "Pica pica",
+      "recordedCommonName": "Eurasian Magpie",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Jay",
+      "taxonId": 8229,
+      "scientificName": "Cyanocitta cristata",
+      "recordedCommonName": "Blue Jay",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Partridge",
+      "taxonId": 831,
+      "scientificName": "Perdix perdix",
+      "recordedCommonName": "Gray Partridge",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Dove",
+      "taxonId": 3454,
+      "scientificName": "Zenaida macroura",
+      "recordedCommonName": "Mourning Dove",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Curlew",
+      "taxonId": 3896,
+      "scientificName": "Numenius arquata",
+      "recordedCommonName": "Eurasian Curlew",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Snipe",
+      "taxonId": 318836,
+      "scientificName": "Gallinago gallinago",
+      "recordedCommonName": "Common Snipe",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Toad",
+      "taxonId": 64968,
+      "scientificName": "Anaxyrus americanus",
+      "recordedCommonName": "American Toad",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Roadrunner",
+      "taxonId": 1986,
+      "scientificName": "Geococcyx californianus",
+      "recordedCommonName": "Greater Roadrunner",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Hyrax",
+      "taxonId": 43092,
+      "scientificName": "Dendrohyrax arboreus",
+      "recordedCommonName": "Southern Tree Hyrax",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Gull",
+      "taxonId": 144510,
+      "scientificName": "Chroicocephalus ridibundus",
+      "recordedCommonName": "Black-headed Gull",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Plover",
+      "taxonId": 4896,
+      "scientificName": "Pluvialis fulva",
+      "recordedCommonName": "Pacific Golden-Plover",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Sandpiper",
+      "taxonId": 3978,
+      "scientificName": "Actitis hypoleucos",
+      "recordedCommonName": "Common Sandpiper",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Bat",
+      "taxonId": 40509,
+      "scientificName": "Eptesicus fuscus",
+      "recordedCommonName": "Big Brown Bat",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Pigeon",
+      "taxonId": 3048,
+      "scientificName": "Columba palumbus",
+      "recordedCommonName": "Common Wood-Pigeon",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Swan",
+      "taxonId": 6915,
+      "scientificName": "Cygnus buccinator",
+      "recordedCommonName": "Trumpeter Swan",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Seal",
+      "taxonId": 41728,
+      "scientificName": "Mirounga angustirostris",
+      "recordedCommonName": "Northern Elephant Seal",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Orca",
+      "taxonId": 41521,
+      "scientificName": "Orcinus orca",
+      "recordedCommonName": "Orca",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Tern",
+      "taxonId": 4450,
+      "scientificName": "Sterna hirundo",
+      "recordedCommonName": "Common Tern",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Guillemot",
+      "taxonId": 4415,
+      "scientificName": "Cepphus columba",
+      "recordedCommonName": "Pigeon Guillemot",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Fur Seal",
+      "taxonId": 41751,
+      "scientificName": "Arctocephalus gazella",
+      "recordedCommonName": "Antarctic Fur Seal",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Humpback Whale",
+      "taxonId": 41566,
+      "scientificName": "Megaptera novaeangliae",
+      "recordedCommonName": "Humpback Whale",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Penguin",
+      "taxonId": 3808,
+      "scientificName": "Pygoscelis papua",
+      "recordedCommonName": "Gentoo Penguin",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Albatross",
+      "taxonId": 4144,
+      "scientificName": "Phoebastria immutabilis",
+      "recordedCommonName": "Laysan Albatross",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Petrel",
+      "taxonId": 4134,
+      "scientificName": "Bulweria bulwerii",
+      "recordedCommonName": "Bulwer's Petrel",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Skua",
+      "taxonId": 144296,
+      "scientificName": "Stercorarius maccormicki",
+      "recordedCommonName": "South Polar Skua",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Monkey",
+      "taxonId": 74053,
+      "scientificName": "Alouatta guariba",
+      "recordedCommonName": "Brown Howler Monkey",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Swift",
+      "taxonId": 6571,
+      "scientificName": "Chaetura pelagica",
+      "recordedCommonName": "Chimney Swift",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Loon",
+      "taxonId": 4626,
+      "scientificName": "Gavia immer",
+      "recordedCommonName": "Common Loon",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Grebe",
+      "taxonId": 4237,
+      "scientificName": "Tachybaptus ruficollis",
+      "recordedCommonName": "Little Grebe",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Cormorant",
+      "taxonId": 1454382,
+      "scientificName": "Nannopterum auritum",
+      "recordedCommonName": "Double-crested Cormorant",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Osprey",
+      "taxonId": 116999,
+      "scientificName": "Pandion haliaetus",
+      "recordedCommonName": "Osprey",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Coot",
+      "taxonId": 482,
+      "scientificName": "Fulica atra",
+      "recordedCommonName": "Eurasian Coot",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Moorhen",
+      "taxonId": 201282,
+      "scientificName": "Gallinula chloropus",
+      "recordedCommonName": "Eurasian Moorhen",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Rail",
+      "taxonId": 243,
+      "scientificName": "Rallus limicola",
+      "recordedCommonName": "Virginia Rail",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Bittern",
+      "taxonId": 5033,
+      "scientificName": "Botaurus stellaris",
+      "recordedCommonName": "Eurasian Bittern",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Sea Lion",
+      "taxonId": 41740,
+      "scientificName": "Zalophus californianus",
+      "recordedCommonName": "California Sea Lion",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Oystercatcher",
+      "taxonId": 4843,
+      "scientificName": "Haematopus ostralegus",
+      "recordedCommonName": "Eurasian Oystercatcher",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Dolphin",
+      "taxonId": 1664971,
+      "scientificName": "Aethalodelphis obliquidens",
+      "recordedCommonName": "Pacific White-sided Dolphin",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Godwit",
+      "taxonId": 3947,
+      "scientificName": "Limosa limosa",
+      "recordedCommonName": "Black-tailed Godwit",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Avocet",
+      "taxonId": 4883,
+      "scientificName": "Recurvirostra avosetta",
+      "recordedCommonName": "Pied Avocet",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Gannet",
+      "taxonId": 3802,
+      "scientificName": "Morus bassanus",
+      "recordedCommonName": "Northern Gannet",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Frigatebird",
+      "taxonId": 4631,
+      "scientificName": "Fregata magnificens",
+      "recordedCommonName": "Magnificent Frigatebird",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Whale",
+      "taxonId": 41566,
+      "scientificName": "Megaptera novaeangliae",
+      "recordedCommonName": "Humpback Whale",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Cat",
+      "taxonId": 118552,
+      "scientificName": "Felis catus",
+      "recordedCommonName": "Domestic Cat",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Booby",
+      "taxonId": 3793,
+      "scientificName": "Sula sula",
+      "recordedCommonName": "Red-footed Booby",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Tropicbird",
+      "taxonId": 4320,
+      "scientificName": "Phaethon rubricauda",
+      "recordedCommonName": "Red-tailed Tropicbird",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Kestrel",
+      "taxonId": 472766,
+      "scientificName": "Falco tinnunculus",
+      "recordedCommonName": "Eurasian Kestrel",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Starling",
+      "taxonId": 14850,
+      "scientificName": "Sturnus vulgaris",
+      "recordedCommonName": "European Starling",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Wasp",
+      "taxonId": 129102,
+      "scientificName": "Dolichovespula saxonica",
+      "recordedCommonName": "Saxon Wasp",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Dog",
+      "taxonId": 47144,
+      "scientificName": "Canis familiaris",
+      "recordedCommonName": "Domestic Dog",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Fly",
+      "taxonId": 143338,
+      "scientificName": "Milesia virginiensis",
+      "recordedCommonName": "Virginia Giant Hover Fly",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Koala",
+      "taxonId": 42983,
+      "scientificName": "Phascolarctos cinereus",
+      "recordedCommonName": "Koala",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Sugar Glider",
+      "taxonId": 1472419,
+      "scientificName": "Petaurus breviceps",
+      "recordedCommonName": "Sugar Glider",
+      "relation": "same_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Lemur",
+      "taxonId": 43617,
+      "scientificName": "Lemur catta",
+      "recordedCommonName": "Ring-tailed Lemur",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Gibbon",
+      "taxonId": 883485,
+      "scientificName": "Hylobates funereus",
+      "recordedCommonName": "North Bornean Gray Gibbon",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Marmoset",
+      "taxonId": 43372,
+      "scientificName": "Callithrix geoffroyi",
+      "recordedCommonName": "Geoffroy\u2019s Tufted-ear Marmoset",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Kiwi",
+      "taxonId": 20491,
+      "scientificName": "Apteryx owenii",
+      "recordedCommonName": "Little Spotted Kiwi",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Cockatoo",
+      "taxonId": 1432688,
+      "scientificName": "Zanda funerea",
+      "recordedCommonName": "Yellow-tailed Black Cockatoo",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Kookaburra",
+      "taxonId": 2413,
+      "scientificName": "Dacelo novaeguineae",
+      "recordedCommonName": "Laughing Kookaburra",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Quetzal",
+      "taxonId": 20853,
+      "scientificName": "Pharomachrus auriceps",
+      "recordedCommonName": "Golden-headed Quetzal",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    },
+    {
+      "gameName": "Screamer",
+      "taxonId": 6908,
+      "scientificName": "Anhima cornuta",
+      "recordedCommonName": "Horned Screamer",
+      "relation": "narrower_identified_taxon",
+      "scope": "Identified recording candidate only; no attack/hurt/faint behavior inferred, no accepted species voice. A broader game name retains the actual narrower source taxon.",
+      "listeningStatus": "not_reviewed"
+    }
+  ]
+}

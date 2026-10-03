@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/saltflat/arena-recipe.json",
+    "sha256": "b2d25f99eaf94c7bacc2a682ccc8bb6d27440e7b241f5e56049ece06770eebb0"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+        "sha256": "7f12a38a6797431314b71283eb1814d7cec44057944e8b139af7a3bd03702405"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+        "sha256": "7f12a38a6797431314b71283eb1814d7cec44057944e8b139af7a3bd03702405"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.png",
+        "sha256": "1285fa0f1631f507728bf1e5c03d9f9a24cdefb554e162de4836e8a669397299"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-mid.png",
+        "sha256": "83def4a22aa019ea339096891370c485dd81dc3565da9a97f18a96b5f3073a12"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.png",
+        "sha256": "aadaa8e8d46e18dacf5e0b2c2866213d0551b298eace2d2a8a5c5a65664dc201"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-near.png",
+        "sha256": "59ffd4aa59c2b01a3032bbe9da9a77114bd5b94813d22c1c5df7fa9d4fd79729"
+      }
+    }
+  ]
+}

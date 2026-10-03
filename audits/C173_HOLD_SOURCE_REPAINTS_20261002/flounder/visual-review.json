@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Flounder",
+  "masterSha256": "2c2e53c4b47e375798c471615aab12cb72fe5424d2754ebcafcf13c9589d0a29",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 184,
+      "y0": 380,
+      "x1": 1047,
+      "y1": 838
+    },
+    "margins": {
+      "left": 184,
+      "right": 206,
+      "top": 380,
+      "bottom": 415
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Both eyes are visible on the same upper side. Dorsal/anal fin ribbons visibly attach continuously along the flattened body; no painted magenta incision at those roots. The lateral-line paint remains on the body. Moving ownership seams require a new fit/film.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}

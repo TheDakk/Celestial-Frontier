@@ -1,0 +1,24 @@
+{
+ "id": "c92-20-aphid",
+ "family": "insect",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Sprint authored intake: same-joint region merge requires a true-alpha master\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/intake-au",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part mandible (mandible) covers 15% paint (reference 60%)"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+  "status": "DIAGNOSTIC_PASS",
+  "diagnostic": true,
+  "sourceCommit": "7572a5cb6e7eae85004ab324c53ba148d5f24787",
+  "dirtyDiagnostic": false,
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "schema": "cf.creature-delivery-proof/v1",
+  "scope": "Desktop native browser executing phone delivery owner; not physical iPhone qualification or visual acceptance",
+  "workers": 0,
+  "gpuRequests": 0,
+  "rows": [
+    {
+      "id": "crab",
+      "retainedSha256": "37f46f61633789d093f9e7a604b5cbf2c27ba3ef3e93e0917907c05dd4302370",
+      "painterSha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655",
+      "retainedPixelsIdentical": true,
+      "fallbackPixelsIdentical": true,
+      "rejectedFinishFallback": true,
+      "missingFallback": true,
+      "wrongHashFallback": true,
+      "inferencePasses": 0
+    },
+    {
+      "id": "freshwater-crab",
+      "retainedSha256": "7918084d8d8b01708771348cb276f06dfc9a62f6539c0d29b48634eff45ab135",
+      "painterSha256": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57",
+      "retainedPixelsIdentical": true,
+      "fallbackPixelsIdentical": true,
+      "rejectedFinishFallback": true,
+      "missingFallback": true,
+      "wrongHashFallback": true,
+      "inferencePasses": 0
+    },
+    {
+      "id": "mud-crab",
+      "retainedSha256": "3b32fbe9f69e5176e4ec837ce2d68803789acddb9ff24722bd607a2fe396c558",
+      "painterSha256": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379",
+      "retainedPixelsIdentical": true,
+      "fallbackPixelsIdentical": true,
+      "rejectedFinishFallback": true,
+      "missingFallback": true,
+      "wrongHashFallback": true,
+      "inferencePasses": 0
+    },
+    {
+      "id": "vent-crab",
+      "retainedSha256": "efe4c113757e3e47174ae0c3237fa1bd597c36c6b45c6ce6e6ac32bd8295037d",
+      "painterSha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c",
+      "retainedPixelsIdentical": true,
+      "fallbackPixelsIdentical": true,
+      "rejectedFinishFallback": true,
+      "missingFallback": true,
+      "wrongHashFallback": true,
+      "inferencePasses": 0
+    },
+    {
+      "id": "coconut-crab",
+      "retainedSha256": "6a41e84fda6886a9c022ff133bd8f2e4386df57d296c1965cd350e72a6ee2208",
+      "painterSha256": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832",
+      "retainedPixelsIdentical": true,
+      "fallbackPixelsIdentical": true,
+      "rejectedFinishFallback": true,
+      "missingFallback": true,
+      "wrongHashFallback": true,
+      "inferencePasses": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "crab-delivery.png",
+      "sha256": "d4c0800f6a2504006ed8f77057e736d8eb86c42ae74d72fdb5e630c6ea7a13e9",
+      "bytes": 81206
+    },
+    {
+      "path": "freshwater-crab-delivery.png",
+      "sha256": "9b784490972212462113b4791a4375131c5e47b4023dc2d52bfd49beaa8e30a1",
+      "bytes": 110167
+    },
+    {
+      "path": "mud-crab-delivery.png",
+      "sha256": "e4f63e341dccfb3247bc017dc2e182afa0f8160ac2e4fe948b6b2db8cc12cafb",
+      "bytes": 113124
+    },
+    {
+      "path": "vent-crab-delivery.png",
+      "sha256": "b5ae062f4e7066af173ac65c34e50631b3fd3afcd962edb3e511ca3f39a3965b",
+      "bytes": 89095
+    },
+    {
+      "path": "coconut-crab-delivery.png",
+      "sha256": "50bad3b2ce6d8884ce852f191259baba66594b0e223e133c3bca4a54d8a6fb96",
+      "bytes": 115550
+    }
+  ],
+  "sources": [
+    {
+      "path": "port/v2/tools/painted-creature/delivery-client.mjs",
+      "sha256": "c18f50409ebaf4ba05453e453d8b366e81866f3f7d9bac78b526caf3d326a432"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-delivery.ts",
+      "sha256": "c3af3ce30c497a68e7cc15b03686c4a1099d6306cdde67bbcc20114c7997a030"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-originals.ts",
+      "sha256": "43745a6278b469acc0c3d1c6840ed9d41048edcc4ace588248051c10eeebbffb"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-content-hash.ts",
+      "sha256": "29b9e762561d03953d1619e0287e31d211684594592720f1469202c18bb55fb7"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-sha256.ts",
+      "sha256": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677"
+    }
+  ]
+}

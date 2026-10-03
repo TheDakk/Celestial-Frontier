@@ -10,6 +10,7 @@ import type {
 interface TestWindow extends Window {
   close: () => void;
   HTMLElement: typeof HTMLElement;
+  Element: typeof Element;
   MouseEvent: typeof MouseEvent;
   KeyboardEvent: typeof KeyboardEvent;
 }
@@ -20,7 +21,7 @@ const { JSDOM } = require('jsdom') as {
   JSDOM: new (html: string, options?: Record<string, unknown>) => TestDom;
 };
 const GLOBAL_KEYS = [
-  'window', 'document', 'HTMLElement', 'MouseEvent', 'getComputedStyle',
+  'window', 'document', 'HTMLElement', 'Element', 'MouseEvent', 'getComputedStyle',
 ] as const;
 const originalGlobals = new Map<string, PropertyDescriptor | undefined>();
 let dom: TestDom;
@@ -33,11 +34,17 @@ function installDom(): void {
   for (const key of GLOBAL_KEYS) originalGlobals.set(key, Object.getOwnPropertyDescriptor(globalThis, key));
   dom = new JSDOM(`<!doctype html><html><body>
     <button id="prior">Prior focus</button>
+    <header id="topbar">
+      <button id="dockinventory"><span id="playerchip">Ada</span></button>
+      <button id="shelfnotifications">Notifications</button>
+    </header>
+    <nav id="sceneactions"><button id="docksurvey">Survey</button><button id="dockcharts">Charts</button></nav>
+    <aside id="notificationpanel"><button data-notification-action>Saved notification</button></aside>
     <div id="dock">
       <button id="dockatlas">Atlas dock</button>
       <button id="dockshipyard">Shipyard dock</button>
       <button id="dockcodex">Compendium dock</button>
-      <button id="dockrecords">Records dock</button>
+      <button id="dockrecords">Records dock</button><button id="docksets">Settings</button>
     </div>
     <div id="raillft"><button id="railcodex">Compendium rail</button></div>
     <div id="railrgt">
@@ -46,7 +53,7 @@ function installDom(): void {
       <button id="railrecords">Records rail</button>
     </div>
     <div id="searchbox"><button>Search</button></div>
-    <div id="setpanel"><button>Settings</button></div>
+    <div id="setpanel" class="panel" aria-label="Settings" aria-hidden="true" style="display:none"><button>Settings</button></div>
     <div id="guidepanel"><button>Guide</button></div>
     <div id="codexpanel">
       <button data-pnx="codex">Close Compendium</button>
@@ -84,6 +91,8 @@ function installDom(): void {
   setGlobal('window', dom.window);
   setGlobal('document', dom.window.document);
   setGlobal('HTMLElement', dom.window.HTMLElement);
+  setGlobal('Element', dom.window.Element);
+  for (const panel of document.querySelectorAll('#atlaspanel,#shipyardpanel,#codexpanel,#recpanel')) panel.classList.add('panel');
   setGlobal('MouseEvent', dom.window.MouseEvent);
   setGlobal('getComputedStyle', dom.window.getComputedStyle.bind(dom.window));
   Object.defineProperty(dom.window.HTMLElement.prototype, 'getClientRects', {
@@ -139,6 +148,10 @@ function driveToGraduation(training: typeof import('../apps/game/src/training.js
   driveToPlanetsideBriefing(training);
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
   training.gameEvent('panel-open', { id: 'shipyard', open: true });
+  expect(training.trainingStepId()).toBe('engineering-forge-practice');
+  training.gameEvent('crafted', { baseId: 'plate', outputCount: 1 });
+  expect(training.trainingStepId()).toBe('engineering-forge-practice');
+  training.gameEvent('training-forge-practice', { schema: 'cf-v2-training-forge-practice-completion/v1', baseId: 'plate', outputCount: 1 });
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
   training.gameEvent('panel-open', { id: 'codex', open: true });
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
@@ -155,7 +168,7 @@ function graduationCopyIsTruthful(html: string): boolean {
     .replace(/\s+([,.;:])/g, '$1').trim();
   return ["On ordinary worlds, it catalogues no species", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"].every((part) => copy.includes(part))
     && !PARAGON_TRAINING_BAD.test(copy)
-    && /short drill stays focused on real navigation/i.test(copy)
+    && /drill teaches real navigation/i.test(copy)
     && /board briefings are read-only/i.test(copy)
     && /survey card’s Share prepares a verified CF1 world code/i.test(copy)
     && /pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it/i.test(copy)
@@ -171,11 +184,11 @@ function graduationCopyIsTruthful(html: string): boolean {
     && /a miss, Sol, repeat, stale tab, or failed write banks nothing/i.test(copy)
     && /genuinely fresh species, the Scout standing before the attempt earns up to \+2 XP in the same capture save, capped at 486/i.test(copy)
     && /If the Discover Life Starter Charter is accepted, that same verified action completes and rewards it/i.test(copy)
-    && /weekly Charters remain protected until their wall-week lifecycle exists/i.test(copy)
+    && /Weekly Charters unlock after the five trades and rotate on expedition active-play time/i.test(copy)
     && /real fauna Compendium detail can Feed, nonlethally Breed, Rename, or select a Field Scout/i.test(copy)
     && /real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(copy)
-    && /This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(copy)
-    && /Companion tastes, Power growth, injury care, bond, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
+    && /This drill performs no live capture, meal, breeding, rename, Field Scout change, persistent engineering action, or combat/i.test(copy)
+    && /Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable/i.test(copy)
     && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
     && !/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(copy)
     && !/miss(?:es)?[^.!?]{0,48}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(copy)
@@ -220,7 +233,7 @@ function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => stri
     && /live exact-instance companion controls after Training/i.test(text('compendium-tour'))
     && /Field Scout can name, switch, or stand down one exact owned companion, intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(text('compendium-tour'))
     && /real Flora detail separately offers <b>Eat 1<\/b> for explorer healing, poison, and stat nourishment/i.test(text('compendium-tour'))
-    && /Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable/i.test(text('compendium-tour'))
+    && /Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable/i.test(text('compendium-tour'))
     && /Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(text('compendium-tour'))
     && /the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(text('compendium-tour'))
     && !/Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Companion Feed grows stats or Power|Companion Feed heals injuries/i.test(text('compendium-tour'))
@@ -228,7 +241,7 @@ function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => stri
     && /26 exact-event achievements appear only after their owning transaction verifies/i.test(text('records-tour'))
     && /only daily and decade still lack event owners/i.test(text('records-tour'))
     && /Expedition Chronicle &amp; Museum[^.!?]{0,160}battle, first-species discovery, Prime-victory, and Legacy Journal galleries/i.test(text('records-tour'))
-    && /losing one of those captured rulers is permanent/i.test(text('horizon'))
+    && /a defeated captured ruler returns after active-play Recovery/i.test(text('horizon'))
     && /battle-log Share changes no expedition fact/i.test(text('horizon'))
     && !/(?:Training|tour)[^.!?]{0,80}(?:rolls?|spends?|crafts?|feeds?|breeds?|renames?|fights?)[^.!?]{0,80}(?:for you|automatically)/i.test(
       steps.map((step) => step.text()).join(' '),
@@ -256,7 +269,7 @@ describe('Field Training completion transaction UI', () => {
     const steps = training.buildSteps(deps);
     expect(steps.map((step) => step.id)).toEqual([
       'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land',
-      'planetside-briefing', 'engineering-open', 'engineering-tour',
+      'planetside-briefing', 'engineering-open', 'engineering-forge-practice', 'engineering-tour',
       'compendium-open', 'compendium-tour', 'records-open', 'records-tour',
       'horizon', 'grad',
     ]);
@@ -396,7 +409,7 @@ describe('Field Training completion transaction UI', () => {
     const compendiumCopy = steps.find((step) => step.id === 'compendium-tour')!.text();
     const changeCompendium = (copy: string) => steps.map((step) => step.id === 'compendium-tour'
       ? { ...step, text: () => copy } : step);
-    for (const anchor of ["Every same-species twin keeps its own level, XP, condition, class, and named innate arts", "the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats", "Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable"]) {
+    for (const anchor of ["Every same-species twin keeps its own level, XP, condition, class, and named innate arts", "the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats", "Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable"]) {
       expect(compendiumCopy.split(anchor), anchor).toHaveLength(2);
       const omitted = compendiumCopy.replace(anchor, 'progression boundary omitted');
       expect(omitted, anchor).not.toBe(compendiumCopy);
@@ -407,6 +420,100 @@ describe('Field Training completion transaction UI', () => {
       expect(curriculumCopyIsTruthful(changeCompendium(compendiumCopy + ' ' + contradiction)), contradiction)
         .toBe(false);
       expect(curriculumCopyIsTruthful(steps), contradiction + ' restored').toBe(true);
+    }
+  });
+
+  it('keeps explicitly opened Settings above the lesson focus scope and uses its real Close for Escape without ascent', async () => {
+    const panels = await import('../apps/game/src/panels.js');
+    const settings = document.getElementById('setpanel')!, opener = document.getElementById('docksets')!;
+    panels.registerPanel({ id: 'set', el: settings, btns: [opener],
+      onOpen: () => panels.fillPanel('set', '<h3>Settings</h3><button id="setting-pref">Preference</button>') });
+    const { training, closePanels } = await boot(async () => ({ kind: 'completed' }));
+    closePanels.mockImplementation(() => panels.closePanels());
+    expect(opener.closest('[inert]')).toBeNull(); expect(settings.closest('[inert]')).toBeNull();
+    expect(document.getElementById('dockrecords')?.closest('[inert]')).not.toBeNull();
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    opener.click(); // Open before the queued find-earth focus callback runs.
+    const close = settings.querySelector<HTMLButtonElement>(':scope > [data-pnx="set"]')!;
+    await turn(); expect(document.activeElement).toBe(close);
+    const preference = document.getElementById('setting-pref')!; preference.focus();
+    training.refreshTrainingScope(); await turn(); expect(document.activeElement).toBe(preference);
+    const ascent = vi.fn(); document.addEventListener('keydown', ascent);
+    preference.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+    expect(panels.openPanelId()).toBeNull(); expect(document.activeElement).toBe(opener);
+    expect(training.trainingStepId()).toBe('find-earth'); expect(ascent).not.toHaveBeenCalled();
+    opener.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+    await turn(); expect(document.activeElement).toBe(document.querySelector('canvas'));
+    expect(ascent).not.toHaveBeenCalled();
+    training.gameEvent('survey', { planetSeed: 133 });
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    training.gameEvent('atlas-add', { id: 'p133' }); training.gameEvent('atlas-open', { open: true });
+    opener.click(); // Land's deferred Atlas close must not close newly opened Settings.
+    await turn(); expect(panels.openPanelId()).toBe('set');
+    expect(document.activeElement).toBe(close); expect(closePanels).not.toHaveBeenCalled();
+  });
+
+  it('marks only current lesson surfaces for stacking and clears marks when Training ends', async () => {
+    const { training } = await boot(async () => ({ kind: 'completed' }));
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    training.gameEvent('survey', { planetSeed: 133 });
+    expect(document.querySelectorAll('.tutpri')).toHaveLength(1);
+    expect(document.getElementById('survey')!.classList.contains('tutpri')).toBe(true);
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    training.gameEvent('atlas-add', { id: 'p133' });
+    expect(document.querySelectorAll('.tutpri')).toHaveLength(1);
+    expect(document.getElementById('atlaspanel')!.classList.contains('tutpri')).toBe(true);
+    training.gameEvent('atlas-open', { open: true });
+    expect(document.querySelectorAll('.tutpri')).toHaveLength(1);
+    expect(document.getElementById('survey')!.classList.contains('tutpri')).toBe(true);
+    expect(document.getElementById('setpanel')!.classList.contains('tutpri')).toBe(false);
+    document.querySelector<HTMLButtonElement>('[data-sel="tutskip"]')!.click();
+    await turn(); expect(document.querySelectorAll('.tutpri')).toHaveLength(0);
+  });
+
+  it('keeps Settings locked while completion is pending and restores admission after refusal', async () => {
+    let settle!: (value: TrainingEndResult) => void;
+    const { training } = await boot(() => new Promise(resolve => { settle = resolve; }));
+    const opener = document.getElementById('docksets')!, settings = document.getElementById('setpanel')!;
+    document.querySelector<HTMLButtonElement>('[data-sel="tutskip"]')!.click();
+    expect(opener.closest('[inert]')).not.toBeNull(); expect(settings.closest('[inert]')).not.toBeNull();
+    settle({ kind: 'refused', reason: 'write-failed' }); await turn();
+    expect(training.trainingActive()).toBe(true);
+    expect(opener.closest('[inert]')).toBeNull(); expect(settings.closest('[inert]')).toBeNull();
+  });
+
+  it('keeps relocated shelf and scene controls locked through Training and restores their prior states', async () => {
+    const complete = vi.fn<TrainingDeps['complete']>(async () => ({ kind: 'completed' }));
+    const { training } = await boot(complete);
+    const roots = ['topbar', 'sceneactions', 'notificationpanel'].map((id) => document.getElementById(id)!);
+    const controls = ['dockinventory', 'shelfnotifications', 'docksurvey', 'dockcharts']
+      .map((id) => document.getElementById(id)!);
+    const locked = (): boolean => roots.every((root) => root.hasAttribute('inert')
+      && root.style.pointerEvents === 'none')
+      && controls.every((control) => control.closest('[inert]') !== null);
+    expect(training.trainingStepId()).toBe('welcome');
+    expect(locked()).toBe(true);
+    for (const control of controls) {
+      control.focus();
+      expect(document.getElementById('tutcard')!.contains(document.activeElement)).toBe(true);
+    }
+    // Removing each actual newly locked root must be observable before restore.
+    for (const root of roots) {
+      root.removeAttribute('inert');
+      root.style.pointerEvents = '';
+      expect(locked(), root.id + ' missing lock').toBe(false);
+      root.setAttribute('inert', '');
+      root.style.pointerEvents = 'none';
+      expect(locked(), root.id + ' restored lock').toBe(true);
+    }
+    document.querySelector<HTMLButtonElement>('[data-sel="tutskip"]')!.click();
+    await turn();
+    expect(complete).toHaveBeenCalledWith('skip');
+    expect(training.trainingActive()).toBe(false);
+    expect(roots.every((root) => !root.hasAttribute('inert') && root.style.pointerEvents === '')).toBe(true);
+    for (const control of controls) {
+      control.focus();
+      expect(document.activeElement).toBe(control);
     }
   });
 
@@ -427,6 +534,10 @@ describe('Field Training completion transaction UI', () => {
       expect(training.trainingStepId()).toBe('engineering-open');
     }
     training.gameEvent('panel-open', { id: 'shipyard', open: true });
+  expect(training.trainingStepId()).toBe('engineering-forge-practice');
+  training.gameEvent('crafted', { baseId: 'plate', outputCount: 1 });
+  expect(training.trainingStepId()).toBe('engineering-forge-practice');
+  training.gameEvent('training-forge-practice', { schema: 'cf-v2-training-forge-practice-completion/v1', baseId: 'plate', outputCount: 1 });
     expect(training.trainingStepId()).toBe('engineering-tour');
     expect(document.querySelector('[data-pnx="shipyard"]')?.closest('[inert]')).toBeNull();
     expect(document.querySelector('#shipyardpanel summary')?.closest('[inert]')).toBeNull();

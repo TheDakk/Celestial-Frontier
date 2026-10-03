@@ -1,0 +1,11 @@
+{
+ "id": "06-wildebeest",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 14% paint (reference 70%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 9% paint (reference 57%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,219 @@
+[
+  {
+    "id": "01-bee",
+    "name": "Bee",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "28fcf047ca7758b1bbfb57c38d771eb1f967d39dc80a714b29637aacca8fbe08",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 201,
+        "y0": 365,
+        "x1": 1082,
+        "y1": 860
+      },
+      "margins": {
+        "left": 201,
+        "right": 171,
+        "top": 365,
+        "bottom": 393
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 2,
+      "top": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "02-dragonfly",
+    "name": "Dragonfly",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "cb1fb7df3a38020c03596f91b1a0edb539ab98d19c7c3dc6b1e1f022c6199dcb",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 209,
+        "y0": 316,
+        "x1": 1025,
+        "y1": 857
+      },
+      "margins": {
+        "left": 209,
+        "right": 228,
+        "top": 316,
+        "bottom": 396
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 2,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 5,
+    "detached": []
+  },
+  {
+    "id": "03-giant-water-bug",
+    "name": "Giant Water Bug",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "3673b6ef31855c5b5292ed781c3ac3c5b6098375efdade0b27b7c35cf5ef87cb",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 129,
+        "y0": 429,
+        "x1": 1198,
+        "y1": 863
+      },
+      "margins": {
+        "left": 129,
+        "right": 55,
+        "top": 429,
+        "bottom": 390
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "limb-down": 4,
+      "rear": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "04-bee-six-legs",
+    "name": "Bee",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "86ebce3660f1464fdb532daf723c998fd70d035aa105790eefed2336cd832396",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 201,
+        "y0": 365,
+        "x1": 1082,
+        "y1": 858
+      },
+      "margins": {
+        "left": 201,
+        "right": 171,
+        "top": 365,
+        "bottom": 395
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "top": 1,
+      "front": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "05-dragonfly-six-legs",
+    "name": "Dragonfly",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8fbfb8117ae9b6b28125bb9ec212a067276c44a0d38fb10968964fc75bc0b87a",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 155,
+        "y0": 310,
+        "x1": 1087,
+        "y1": 879
+      },
+      "margins": {
+        "left": 155,
+        "right": 166,
+        "top": 310,
+        "bottom": 374
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 6,
+    "detached": []
+  },
+  {
+    "id": "06-wasp",
+    "name": "Wasp",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 210,
+        "y0": 423,
+        "x1": 1113,
+        "y1": 830
+      },
+      "margins": {
+        "left": 210,
+        "right": 140,
+        "top": 423,
+        "bottom": 423
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  }
+]

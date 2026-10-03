@@ -1,0 +1,13 @@
+{
+  "id": "21-civet",
+  "name": "Civet",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8c2b31ac-117a-4b69-b78c-883a11f18476.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d2fc02e7ab66ecf07144a2a03e7a7517cfd63b606ed9fc920f09e726e886fcb5",
+  "bytes": 1286684,
+  "promptSha256": "08e173d736c582f6f6a1bd680e51b06ec94c16c0b0b60e9fd35fbda73ae57ed1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

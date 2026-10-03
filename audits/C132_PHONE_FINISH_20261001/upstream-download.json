@@ -1,0 +1,24 @@
+{
+  "model": "IDKiro/sdxs-512-dreamshaper",
+  "revision": "76f720262bb051da75666b22c902a78c8e16c763",
+  "files": [
+    {
+      "path": "scheduler/scheduler_config.json",
+      "bytes": 480,
+      "sha256": "91d57030b1a965f4878c952acaaa84d6956b640697b69fc642a13d3bf83e5e9c",
+      "url": "https://huggingface.co/IDKiro/sdxs-512-dreamshaper/resolve/76f720262bb051da75666b22c902a78c8e16c763/scheduler/scheduler_config.json"
+    },
+    {
+      "path": "tokenizer/tokenizer_config.json",
+      "bytes": 737,
+      "sha256": "19d7b034cb0cc3ce9766c2231373ab8aa8991fc72e2c8f76558bfaae3de0d563",
+      "url": "https://huggingface.co/IDKiro/sdxs-512-dreamshaper/resolve/76f720262bb051da75666b22c902a78c8e16c763/tokenizer/tokenizer_config.json"
+    },
+    {
+      "path": "tokenizer/special_tokens_map.json",
+      "bytes": 472,
+      "sha256": "c4864a9376a8401918425bed71fc14fc0e81f9b59ec45c1cf96cccb2df508eac",
+      "url": "https://huggingface.co/IDKiro/sdxs-512-dreamshaper/resolve/76f720262bb051da75666b22c902a78c8e16c763/tokenizer/special_tokens_map.json"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Gaur",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "98e13608edb58dc2fc574c1bb1165fc178747cf6f282afebb8455c8283a305bc",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "88d86961e85f2744877f1ba4573563698e6206b717603f7ce9a7ac6d8cea593a",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-horned",
+  "authoringCreated": false,
+  "sourceHead": "852c7b2b021652146d0b86a34cb2f095a9a97037",
+  "basePromptSha256": "8e84f5ba1c1e344362e1c20314086da4a3b8385cb614f8906468c033a5a74091",
+  "referenceLayout": "REFERENCE PAINTING: a true adult gaur in side profile, with natural high shoulder ridge, muscular neck, pale forehead, upcurved horns, white stockings on ALL FOUR legs and small cloven hooves. FOUR legs separated from their body roots through knees, hocks, ankles and hooves, all feet level. Natural stride offsets far legs horizontally with clear magenta shaft gaps. Both ears and their tips distinct outside the horns. Natural tail trails clear of the body and legs with its attached tuft visible; no exaggerated hump, mammoth legs or invented bull anatomy.",
+  "referenceCompilerSha256": "d49434e42bb630ceb77b5aadf70424041be89cdb23a7364389092e0cc14683a4",
+  "purpose": "Single targeted framing edit; Gazelle/Gaur additionally expose the natural far ear. Earlier original retained.",
+  "editTarget": "audits/C132_REFERENCES_20261001/02-gaur/master.png",
+  "editTargetSha256": "f3b8e582453d8fce41dc3808f737a58e92622c841f217d310df58bf40d8c7092",
+  "editCompilerSha256": "935a543aa85fadebb5348c042ffb0616f4a83f3bf0f579f5fc218ef23530344d"
+}

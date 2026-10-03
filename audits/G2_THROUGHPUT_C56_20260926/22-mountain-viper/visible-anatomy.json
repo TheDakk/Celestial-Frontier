@@ -1,0 +1,92 @@
+{
+  "id": "22-mountain-viper",
+  "name": "Mountain Viper",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "375aae4dda1155d91a6bbf98c2f258868fe8b4a95d69bfcbcf6d627a494a2287",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13542,
+    "coreRadius": 12,
+    "bodyBox": {
+      "x0": 10,
+      "y0": 177,
+      "x1": 410,
+      "y1": 248
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0107,
+        "pixels": 145,
+        "box": {
+          "x0": 401,
+          "y0": 185,
+          "x1": 407,
+          "y1": 208
+        },
+        "attach": {
+          "x": 403.5,
+          "y": 195.9,
+          "relX": 0.98,
+          "relY": 0.27
+        },
+        "dir": {
+          "x": 0.92,
+          "y": -0.39
+        },
+        "class": "front",
+        "length": 12.6
+      },
+      {
+        "k": 1,
+        "frac": 0.128,
+        "pixels": 1734,
+        "box": {
+          "x0": 12,
+          "y0": 192,
+          "x1": 138,
+          "y1": 234
+        },
+        "attach": {
+          "x": 110.5,
+          "y": 202.5,
+          "relX": 0.25,
+          "relY": 0.36
+        },
+        "dir": {
+          "x": -0.92,
+          "y": 0.39
+        },
+        "class": "rear",
+        "length": 103.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 157,
+        "x1": 214,
+        "cx": 185.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

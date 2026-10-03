@@ -1,0 +1,28 @@
+{
+  "name": "Skink",
+  "masterSha256": "aad336737411ed13050aaef3e3f713650d06d5e95941f96113b613bf8bf3603c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Smooth glossy overlapping scales, long cylindrical trunk, striped sides, short natural limbs and full long tail. Four feet are visible but far hind shaft is almost entirely hidden under the belly; cannot claim four exposed limb chains. Feet sit at different vertical levels. Tail approaches left margin.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 93,
+      "y0": 516,
+      "x1": 1140,
+      "y1": 733
+    },
+    "margins": {
+      "left": 93,
+      "right": 113,
+      "top": 516,
+      "bottom": 520
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

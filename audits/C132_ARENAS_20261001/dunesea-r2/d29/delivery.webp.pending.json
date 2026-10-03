@@ -1,0 +1,37 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "dunesea-r2",
+  "biome": "dunesea",
+  "recipe": "audits/C132_ARENAS_20261001/dunesea-r2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/dunesea-r2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.webp",
+      "runtimeSha256": "699ffa48023c0bbf9291406772fe3b4315e75c1bf33c48f5181b8c0e74559741",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.png",
+        "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-mid.webp",
+      "runtimeSha256": "9cf46d4be12bede3e9aa47c6046fe4bfa88d85d62daa20b9e69959932f56d11e",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-mid.png",
+        "sha256": "e51ba9611228906467c1546c8e3d0e97b9d05129b72cc11d3ecad14437993097"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-near.webp",
+      "runtimeSha256": "5362e9c234bec37aa59d4d8b8f059930453ecdcfa2610f7c9f425bdac73a6441",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-near.png",
+        "sha256": "0cce96b0722a343d39c898de0dbe9b96d1e1986fd95545f12bb9821d66cf08a8"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 q88 WebP runtime candidate copies; lossless alpha; receipt audits/C132_ARENAS_20261001/dunesea-r2/d29/webp-receipt.json"
+}

@@ -1,0 +1,6 @@
+{"index":0,"kind":"guardian","baseline":63,"best":{"policy":{"lowRatio":1000,"phaseHp":0.5,"nextFerRatio":1.2},"wins":89},"edge":20.3125}
+{"index":0,"kind":"titan","baseline":92,"best":{"policy":{"lowRatio":1000,"phaseHp":0,"nextFerRatio":0},"wins":119},"edge":21.09375}
+{"index":1,"kind":"guardian","baseline":61,"best":{"policy":{"lowRatio":1000,"phaseHp":0.5,"nextFerRatio":1.5},"wins":85},"edge":18.75}
+{"index":1,"kind":"titan","baseline":94,"best":{"policy":{"lowRatio":1000,"phaseHp":0,"nextFerRatio":0},"wins":116},"edge":17.1875}
+{"index":2,"kind":"guardian","baseline":61,"best":{"policy":{"lowRatio":1000,"phaseHp":0.5,"nextFerRatio":1.5},"wins":82},"edge":16.40625}
+{"index":2,"kind":"titan","baseline":93,"best":{"policy":{"lowRatio":1000,"phaseHp":0,"nextFerRatio":0},"wins":116},"edge":17.96875}

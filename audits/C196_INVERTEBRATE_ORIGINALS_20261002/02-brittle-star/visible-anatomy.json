@@ -1,0 +1,168 @@
+{
+  "id": "02-brittle-star",
+  "name": "Brittle Star",
+  "family": "radial",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8723,
+    "coreRadius": 11,
+    "bodyBox": {
+      "x0": 189,
+      "y0": 189,
+      "x1": 226,
+      "y1": 224
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.149,
+        "pixels": 1300,
+        "box": {
+          "x0": 198,
+          "y0": 68,
+          "x1": 261,
+          "y1": 190
+        },
+        "attach": {
+          "x": 218.4,
+          "y": 188.1,
+          "relX": 0.79,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": 0.02,
+          "y": -1
+        },
+        "class": "top",
+        "length": 127.5
+      },
+      {
+        "k": 1,
+        "frac": 0.1548,
+        "pixels": 1350,
+        "box": {
+          "x0": 53,
+          "y0": 134,
+          "x1": 204,
+          "y1": 201
+        },
+        "attach": {
+          "x": 192.5,
+          "y": 191,
+          "relX": 0.1,
+          "relY": 0.06
+        },
+        "dir": {
+          "x": -0.98,
+          "y": -0.18
+        },
+        "class": "rear",
+        "length": 150.7
+      },
+      {
+        "k": 2,
+        "frac": 0.1859,
+        "pixels": 1622,
+        "box": {
+          "x0": 227,
+          "y0": 179,
+          "x1": 383,
+          "y1": 244
+        },
+        "attach": {
+          "x": 227,
+          "y": 211,
+          "relX": 1.03,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": 0.99,
+          "y": -0.11
+        },
+        "class": "front",
+        "length": 159.5
+      },
+      {
+        "k": 3,
+        "frac": 0.1626,
+        "pixels": 1418,
+        "box": {
+          "x0": 93,
+          "y0": 206,
+          "x1": 189,
+          "y1": 334
+        },
+        "attach": {
+          "x": 188.1,
+          "y": 214.9,
+          "relX": -0.03,
+          "relY": 0.74
+        },
+        "dir": {
+          "x": -0.5,
+          "y": 0.87
+        },
+        "class": "limb-down",
+        "length": 152.3
+      },
+      {
+        "k": 4,
+        "frac": 0.1819,
+        "pixels": 1587,
+        "box": {
+          "x0": 200,
+          "y0": 225,
+          "x1": 312,
+          "y1": 351
+        },
+        "attach": {
+          "x": 210,
+          "y": 225,
+          "relX": 0.57,
+          "relY": 1.03
+        },
+        "dir": {
+          "x": 0.7,
+          "y": 0.72
+        },
+        "class": "limb-down",
+        "length": 162.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 100,
+        "x1": 114,
+        "cx": 107
+      },
+      {
+        "x0": 291,
+        "x1": 307,
+        "cx": 300
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

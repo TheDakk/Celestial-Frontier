@@ -1,0 +1,13 @@
+{
+  "id": "22-fly",
+  "name": "Fly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f51ce481-d9d2-4773-8ef1-dcf6cbdb0a6f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d8384747e5b7d49642a0eaa2b98066eeac936e64c08d7c08fd2a8d78fd909a54",
+  "bytes": 1284214,
+  "promptSha256": "543d0ecec7288adcfe2fa5222b4392645b127d375cad75018a2406e1230997ca",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

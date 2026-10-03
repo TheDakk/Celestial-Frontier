@@ -1,0 +1,11 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Jaguar",
+  "masterSha256": "0cce5787654722925ae8c27f348db306dffc5dd353a973fb0c87d742c6b9943f",
+  "required": [
+    "rosettes with spots inside them"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "REFUSE",
+  "reason": "Pattern unresolved"
+}

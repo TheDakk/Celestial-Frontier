@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bumblebee",
+  "masterSha256": "3eb05d80e7934cf611378e2bd8a4c7587d54133f2dd84fe359a9b437328cf7bf",
+  "required": [
+    "broad bands of black and yellow fuzz"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "broad bands of black and yellow fuzz",
+      "status": "PRESENT",
+      "observed": "Parent full-size original review: Dense yellow/black fur and pale abdomen tip are visible. Five distinct distal leg silhouettes; sixth chain/root is not independently traceable. Wing roots overlap. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission."
+    }
+  ]
+}

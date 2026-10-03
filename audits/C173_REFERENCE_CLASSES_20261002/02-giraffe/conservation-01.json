@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c173-reference-conservation/v1",
+  "masterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+  "authoringSha256": "2a6688972dccbf5dcf8623e2021d2c7547041761da55b8d99ac904094eec6cab",
+  "recordRecipeHash": "93d8d410785f7571e6b4c85e682dcfc7b77e6364e4c7132c4aa2e2fb5b51dae3",
+  "keyedRgbaSha256": "277aaab014c4e699ec98ea7aa477cb93056a1ba0ac934a5dcdb431b9637d8348",
+  "ownershipSha256": "254f6997101a1d029c545b3b48afd0a97826e2279df45b4b33cade68ab3fa19a",
+  "sourcePixelChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "ownershipReplayMismatch": 0,
+  "controls": [
+    "independent ownership replay equals published raster",
+    "deterministic replay",
+    "unchanged established keyed RGBA",
+    "changed source channel rejected",
+    "paint deletion rejected",
+    "different anatomical owner rejected",
+    "structural remainder control rejected at unchanged 5% cap"
+  ],
+  "islandCap": 0.05,
+  "islandOutcome": {
+    "status": "REFUSED",
+    "reason": "remainder island of 1154 px is 12.7% of the remainder (> 5%): structural, not a sliver"
+  },
+  "automaticIslandTransferApplied": false,
+  "qualityAccepted": false,
+  "nativeRun": false
+}

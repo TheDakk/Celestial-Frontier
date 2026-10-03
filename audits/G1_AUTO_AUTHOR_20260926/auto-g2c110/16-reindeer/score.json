@@ -1,0 +1,10 @@
+{
+ "id": "16-reindeer",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-root (earFarRoot) covers 21% paint (reference 68%)",
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

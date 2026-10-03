@@ -1,0 +1,22 @@
+[
+  {
+    "id": "04-hawk",
+    "exitCode": 0
+  },
+  {
+    "id": "05-cat",
+    "exitCode": 1
+  },
+  {
+    "id": "02-pigeon",
+    "staticExit": 0
+  },
+  {
+    "id": "03-duck",
+    "staticExit": 1
+  },
+  {
+    "id": "04-hawk",
+    "staticExit": 1
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Shark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Great White Shark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tiger Shark",
+    "status": "PASS"
+  },
+  {
+    "name": "Mako Shark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Whale Shark",
+    "status": "PASS"
+  },
+  {
+    "name": "Basking Shark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Reef Shark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hammerhead Shark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Flounder",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Halibut",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Knifefish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Flying Gurnard",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rhea",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Emu",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Cassowary",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Kiwi",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Kakapo",
+    "status": "PASS"
+  },
+  {
+    "name": "Hoatzin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Quetzal",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Seabird",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wolf",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Fox",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Porcupine",
+    "status": "PASS"
+  },
+  {
+    "name": "Lemming",
+    "status": "NOT_REQUIRED"
+  }
+]

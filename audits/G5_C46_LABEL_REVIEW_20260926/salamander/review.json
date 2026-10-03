@@ -1,0 +1,17 @@
+{
+  "id": "salamander",
+  "labelsPath": "audits/G5_DERIVED_LABELS_20260926/salamander/labels.png",
+  "labelsPngSha256": "56052d9264e158d7c6080dc39310675ba07b30ff9c44890d9ea5f60352496520",
+  "labelsRgbaSha256": "ed90461f3f5d6b47a3f9e7ebdc8a2349af77ce9ae5c40adc22d64fc7a34576de",
+  "receiptPath": "audits/G5_DERIVED_LABELS_20260926/salamander/receipt.json",
+  "receiptSha256": "4fb30b325a33ee6c2f1658ebafdf5745f4c8671c4dd81b932d2038cbb6e545fa",
+  "width": 1254,
+  "height": 1254,
+  "labels": 27,
+  "painted": 140137,
+  "unowned": 0,
+  "outside": 0,
+  "overwrites": {},
+  "masterAlphaMismatchPixels": 1432379,
+  "identityConservation": "PASS"
+}

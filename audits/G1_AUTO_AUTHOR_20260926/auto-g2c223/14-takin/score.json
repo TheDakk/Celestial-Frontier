@@ -1,0 +1,10 @@
+{
+ "id": "14-takin",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 39%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,13 @@
+{
+  "id": "10-giant-anteater",
+  "name": "Giant Anteater",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-9b29c176-1c82-4618-a0dd-ee8be6b5c0e4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c09c80a72d781efd8cc835cc0d2316edf7847534f09902e60e6dd1831e06c8bb",
+  "bytes": 1416080,
+  "promptSha256": "b907ac0be0bbbeb0e5a13b1b2def0d2fc64496ce4353925e06f46f62635bea32",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

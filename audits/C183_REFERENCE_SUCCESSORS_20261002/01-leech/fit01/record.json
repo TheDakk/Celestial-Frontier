@@ -1,0 +1,167 @@
+{
+  "kind": "annelid",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Leech\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3343886916\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"21\"]]]]",
+    "seed": 3343886916,
+    "ownerId": "authored:archetype-sprint/c183-reference-leech",
+    "earthName": "Leech"
+  },
+  "template": {
+    "id": "annelid",
+    "version": 1
+  },
+  "clipSetId": "annelid-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3343886916,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 15,
+    "body": 2,
+    "loco": 6,
+    "trait": 21,
+    "size": 0,
+    "diet": 0,
+    "head": 1,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 4,
+    "habitat": 6,
+    "detail": 7,
+    "accent": 1,
+    "temper": 8,
+    "sense": 4,
+    "repro": 4,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Leech"
+  },
+  "geometry": {
+    "cutoutAssetHash": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6674641148325359,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.511164274322169,
+      0.40669856459330145
+    ],
+    "segment0": [
+      0.8716108452950558,
+      0.5861244019138756
+    ],
+    "segment1": [
+      0.8046251993620415,
+      0.5725677830940988
+    ],
+    "segment2": [
+      0.7392344497607656,
+      0.5470494417862839
+    ],
+    "segment3": [
+      0.6754385964912281,
+      0.4984051036682616
+    ],
+    "segment4": [
+      0.6172248803827751,
+      0.43381180223285487
+    ],
+    "segment5": [
+      0.5566188197767146,
+      0.3923444976076555
+    ],
+    "segment6": [
+      0.4904306220095694,
+      0.39314194577352474
+    ],
+    "segment7": [
+      0.43301435406698563,
+      0.42424242424242425
+    ],
+    "segment8": [
+      0.3787878787878788,
+      0.49282296650717705
+    ],
+    "segment9": [
+      0.3141945773524721,
+      0.5446570972886763
+    ],
+    "segment10": [
+      0.24082934609250398,
+      0.5765550239234449
+    ],
+    "segment11": [
+      0.1682615629984051,
+      0.5869218500797448
+    ]
+  },
+  "materials": {
+    "surface": "slick"
+  },
+  "source": "audits/C183_REFERENCE_SUCCESSORS_20261002/01-leech/master.png",
+  "coverage": {
+    "scope": "Independent Leech curve authoring from the complete source-visible body",
+    "limitations": [
+      "Twelve controls sample the visible centreline; they do not claim twelve biological annuli.",
+      "Both terminal sucker rims are visible. The large deep funnel cavities and cylindrical shiny body remain biological/style review holds; no hidden mouth apparatus, eyes or legs are authored.",
+      "The arched body is not claimed to make continuous planar ground contact.",
+      "This is a genuinely different canonical subject from Earthworm, but not a global reference or quality acceptance."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "3de20615d0af6089119c6b4f730bad0d40ab08cdeb3e7623dc13386a252fe400",
+    "subjectSourceSha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "segment0": 0.4026355195760819,
+      "segment1": 0.06834368057756247,
+      "segment2": 0.07019356007867741,
+      "segment3": 0.08022582206078564,
+      "segment4": 0.08695476601935553,
+      "segment5": 0.07343454183873259,
+      "segment6": 0.06619300149743908,
+      "segment7": 0.06529829695672815,
+      "segment8": 0.08742883619563474,
+      "segment9": 0.08281951282275743,
+      "segment10": 0.07999959300787526,
+      "segment11": 0.07330453074501687
+    },
+    "measures": {
+      "body": 0.7033497343646267,
+      "bone-min": 0.06529829695672815,
+      "bone-max": 0.4026355195760819
+    }
+  },
+  "recipeHash": "f7ad928963cae5d32fdcf592c06515ae7c252c43b4ea27a17e132684191dc096"
+}

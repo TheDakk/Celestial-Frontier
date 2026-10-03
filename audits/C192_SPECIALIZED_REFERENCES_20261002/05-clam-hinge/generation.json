@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c192-original-retention/v1",
+  "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-c8accb01-2cb1-4b08-be4c-a8c5ea0c2808.png",
+  "master": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/master.png",
+  "masterSha256": "cfcd71fbf61e3a7bcf20e0f33a1919e8c1295cbd226b3728917b6f74ea7a0823",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "exactOriginalBytesRetained": true,
+  "pixelTransformApplied": false,
+  "inputMasterSha256": "be35c16758d75f1ccc3410d816678d80b986f4c485c6f2af5ac53a1a2bb0aeaa",
+  "exactSentPromptSha256": "01d5585b6124687adf100920f9d5b0f2d1cd4baea870eb71a8fc605683dfb7f1",
+  "canonicalPromptSha256": "708abc37410bc24df7f14f7e9a10d1561ffa2ce2c085c7639e6219f0816b46f9",
+  "frozenBlocks": [
+    {
+      "sha256": "9b206f6df55f30911bbeffa66d1f62fec3b9967608ea8ab3ea61ca2a1e5cf281",
+      "unchanged": true
+    },
+    {
+      "sha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+      "unchanged": true
+    },
+    {
+      "sha256": "caa365666085318ef597819c60c57d7d9945bba18d43054225e884337a938620",
+      "unchanged": true
+    }
+  ],
+  "frozenMutationRejected": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

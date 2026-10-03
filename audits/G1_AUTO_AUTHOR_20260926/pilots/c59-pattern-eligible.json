@@ -1,0 +1,79 @@
+[
+ {
+  "id": "01-elk",
+  "name": "Elk",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/01-elk",
+  "master": "audits/G2_C59_20260926/01-elk/master.png"
+ },
+ {
+  "id": "02-moose",
+  "name": "Moose",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/02-moose",
+  "master": "audits/G2_C59_20260926/02-moose/master.png"
+ },
+ {
+  "id": "03-bison",
+  "name": "Bison",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/03-bison",
+  "master": "audits/G2_C59_20260926/03-bison/master.png"
+ },
+ {
+  "id": "04-raccoon",
+  "name": "Raccoon",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/04-raccoon",
+  "master": "audits/G2_C59_20260926/04-raccoon/master.png"
+ },
+ {
+  "id": "05-badger",
+  "name": "Badger",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/05-badger",
+  "master": "audits/G2_C59_20260926/05-badger/master.png"
+ },
+ {
+  "id": "06-wolverine",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "packet": "audits/G2_C59_20260926/06-wolverine",
+  "master": "audits/G2_C59_20260926/06-wolverine/master.png"
+ },
+ {
+  "id": "07-starling",
+  "name": "Starling",
+  "family": "biped-bird",
+  "packet": "audits/G2_C59_20260926/07-starling",
+  "master": "audits/G2_C59_20260926/07-starling/master.png"
+ },
+ {
+  "id": "08-vulture",
+  "name": "Vulture",
+  "family": "biped-bird",
+  "packet": "audits/G2_C59_20260926/08-vulture",
+  "master": "audits/G2_C59_20260926/08-vulture/master.png"
+ },
+ {
+  "id": "09-kingfisher",
+  "name": "Kingfisher",
+  "family": "biped-bird",
+  "packet": "audits/G2_C59_20260926/09-kingfisher",
+  "master": "audits/G2_C59_20260926/09-kingfisher/master.png"
+ },
+ {
+  "id": "10-water-snake",
+  "name": "Water Snake",
+  "family": "serpent",
+  "packet": "audits/G2_C59_20260926/10-water-snake",
+  "master": "audits/G2_C59_20260926/10-water-snake/master.png"
+ },
+ {
+  "id": "12-ladybug",
+  "name": "Ladybug",
+  "family": "insect",
+  "packet": "audits/G2_C59_20260926/12-ladybug",
+  "master": "audits/G2_C59_20260926/12-ladybug/master.png"
+ }
+]

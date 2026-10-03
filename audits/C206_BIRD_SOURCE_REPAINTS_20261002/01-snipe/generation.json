@@ -1,0 +1,14 @@
+{
+  "id": "01-snipe",
+  "name": "Snipe",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a58e95db-29a5-4235-acbf-0c998938f1d6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "83237c54f8194f7107bbc0f2a522b73a0a2f21eb253b9656fc695cc9b315dfc9",
+  "bytes": 1191498,
+  "promptSha256": "2a991df14c8c38636622a2067acb60daf097eca41cfa3f06581d9c8aa11029bb",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

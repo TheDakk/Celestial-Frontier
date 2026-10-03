@@ -1,0 +1,15 @@
+# C97 — explicit Springtail material classification
+
+The G1 runner previously refused the exact pinned `springtail` profile solely because it had no material vocabulary entry. Its existing chitin list now includes that one profile. No other code path, author parameter, presence declaration, geometry, color, shader, finisher permission or runtime limit changes.
+
+The primary chemical study **The multi-layered protective cuticle of Collembola: a chemical analysis** describes a chitin-rich structural layer beneath protein-rich and lipid-rich outer layers: [PubMed abstract](https://pubmed.ncbi.nlm.nih.gov/25100321/) / [article](https://pmc.ncbi.nlm.nih.gov/articles/PMC4233743/). `chitin` is the project's coarse integument vocabulary, not a claim that the exposed surface is pure chitin or permission to paint armor. The indexed abstract was available; direct page opens encountered a browser-check page. No article text is copied here.
+
+## Outcome and controls
+
+The untouched C95 Springtail uses the same canonical subject, prompt and painting. The current standard author flags now get beyond the material refusal. Rank0 still fails exact landmark inventory at intake. Rank1, the Cricket reference, passes13 static actions, presentation and exact source/rest reconstruction, but semantic presence remains **UNRESOLVED** because `legFrontNear+legFrontFar` share an appendage. No native run follows this unresolved anatomy. C95's antenna segmentation, unclear furcula and framing refusal remain explicit holds; this is not a playable creature or visual admission.
+
+`check-material.mjs` asserts the actual runner's named profile, emitted material, refusal outcome and provenance scope. `negative-control.py` removes the actual mapping, reproduces the old materials-unknown REFUSE, requires the same outcome checker to fail, then restores exact source bytes. Both mutant producer/checker logs and restoration hash are retained. `profile-parity.mjs` evaluates the real before/after classifier: all85 other pinned profile outputs are identical; six unknown/nonexact inputs still return null. No generic insect fallback is introduced.
+
+The source repair is one additional profile id in `audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs`; `change.json` and the exact prior source bind it. Current references are refreshed. Claude can consume the material repair without inheriting wing absence or clearing the unresolved source anatomy. Required root validation and quiet signed-head develop+seven owners precede own-branch delivery. I5 remains OPEN/consumed with no retry. Disk198GiB; proceed to the next broad24-original batch after delivery/merge.
+
+C97 final verification: signed3b4c88c2 unchanged-source develop profile:5,675 pass/I5 sole failure,2 expected failures/2 skipped. All seven remaining owners/root validation PASS; actual removed-mapping negative control and85-profile parity PASS; HEAD/source/log hashes verified.198GiB free/two retained preview directories; PUBLIC/UNFROZEN/five reviewed workflows unchanged. Claude C98 accepts the map and retains the merged-front-leg hold. No native/admission/I5 retry. Own delivery/merge then next24G2.

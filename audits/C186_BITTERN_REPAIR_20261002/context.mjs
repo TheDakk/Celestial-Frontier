@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {registerHooks} from 'node:module';
+import {resolve} from '../../port/v2/tools/effects-proof/resolve-ts-hook.mjs';
+registerHooks({resolve});
+const {compileBodyCard}=await import('../../port/v2/apps/game/src/motion/body-card.ts');
+const {withPaintedContactSupports}=await import('../../port/v2/apps/game/src/motion/painted-supports.ts');
+const {buildTurnPlan,sampleTurn}=await import('../../port/v2/apps/game/src/battle2/choreography.ts');
+const {createPaintPublication}=await import('../C132_FAINT_GROUND_20261002/paint-publication.mjs');
+const json=p=>JSON.parse(fs.readFileSync(p)),sha=b=>createHash('sha256').update(b).digest('hex');
+const base='audits/C183_BITTERN_FOLD_20261002',finishedReport='audits/AI_FINISH_C211_20261002/native-01/07-bittern/report.json',painterReport='audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern/report.json';
+const reports={painter:json(painterReport),finished:json(finishedReport)},e=reports.finished.capture.refusalLog[0],native=reports.finished.gates.turns[e.turn];
+const fitPaths={painter:'audits/C183_BITTERN_FOLD_20261002/painter-input',finished:'audits/AI_FINISH_C211_20261002/rebound-01/07-bittern'};
+const records=Object.fromEntries(Object.entries(fitPaths).map(([k,p])=>[k,json(p+'/record.json')])),bindings=Object.fromEntries(Object.entries(fitPaths).map(([k,p])=>[k,json(p+'/binding.json')]));
+assert.deepEqual(records.painter,records.finished);assert.deepEqual(bindings.painter.paintSkin,bindings.finished.paintSkin);
+const record=records.painter,card=withPaintedContactSupports(compileBodyCard(record,record.genome),record,bindings.painter);
+const local=e.ms-native.offsetMs,perCycle=e.context.stageDisplacement/(e.context.elapsedMs/e.context.durationMs-.5),seed=json('audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json').seed;
+const actor=side=>({side,mass:card.massClass.multiplier,card,seed:side==='left'?1:2,label:'Bittern replay'});
+const raw=buildTurnPlan({seed,attacker:actor('left'),target:actor('right'),delivery:'melee',theme:'wild',outcome:'hit',damage:21,targetFaints:true,effect:null,readyMs:600,commandMs:300,arena:{groundLineY:.78,stands:reports.finished.gates.stands}});
+const plan={...raw,beats:native.beats,runUp:native.runUp,cadence:{cycles:1,gaitMs:e.context.durationMs,perCycle,walked:native.runUp,bodyLength:native.runUp/perCycle}};
+const at=ms=>sampleTurn(plan,ms).attacker;
+assert.deepEqual(at(local).context,e.context);
+
+export {record,bindings,card,plan,at,local,reports,fitPaths};

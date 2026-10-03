@@ -1,0 +1,28 @@
+{
+  "name": "Seahorse",
+  "masterSha256": "a9b37a6c7274b40bc789b1a41a503a147648477c7bcf53e5d8677e43dd80ac86",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: natural upright tube-snouted silhouette, plated/ringed body, coronet and spines, visible near eye, small head-side fin, larger dorsal fin and continuous tightly curled prehensile tail. No legs or artificial horizontal fish stance. The far eye and far head-side fin are not exposed by this profile and are not declared absent. Species-general proportion, fin size and exact coiled-tail ownership remain held for author review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 423,
+      "y0": 196,
+      "x1": 898,
+      "y1": 1051
+    },
+    "margins": {
+      "left": 423,
+      "right": 355,
+      "top": 196,
+      "bottom": 202
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

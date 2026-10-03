@@ -1,0 +1,11 @@
+✔ hash-bound master, corruption, swapped cut-out and unsupported serpent controls (4.994833ms)
+✔ alpha topology refines at silhouette, skips empty regions and shares edges (2.21ms)
+✔ template finite endpoints restore exact rest; curves move jaw, ears, tail and release feet only in attack (46.917417ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123.160917

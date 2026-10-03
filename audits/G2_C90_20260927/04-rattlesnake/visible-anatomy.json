@@ -1,0 +1,92 @@
+{
+  "id": "04-rattlesnake",
+  "name": "Rattlesnake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6b78756fdef1dcde5c8faeaec47e0844a887bcbcd2de3ec5db0048da457fbc4b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 11586,
+    "coreRadius": 11,
+    "bodyBox": {
+      "x0": 99,
+      "y0": 186,
+      "x1": 324,
+      "y1": 255
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1163,
+        "pixels": 1348,
+        "box": {
+          "x0": 25,
+          "y0": 189,
+          "x1": 107,
+          "y1": 238
+        },
+        "attach": {
+          "x": 99.4,
+          "y": 228.1,
+          "relX": 0,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.15
+        },
+        "class": "rear",
+        "length": 84.1
+      },
+      {
+        "k": 1,
+        "frac": 0.1483,
+        "pixels": 1718,
+        "box": {
+          "x0": 311,
+          "y0": 190,
+          "x1": 394,
+          "y1": 237
+        },
+        "attach": {
+          "x": 322.2,
+          "y": 221.8,
+          "relX": 0.99,
+          "relY": 0.52
+        },
+        "dir": {
+          "x": 0.91,
+          "y": -0.42
+        },
+        "class": "front",
+        "length": 78.6
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "front": 1
+    },
+    "ground": [
+      {
+        "x0": 153,
+        "x1": 202,
+        "cx": 177.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

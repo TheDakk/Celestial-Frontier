@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c192-original-retention/v1",
+  "original": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-7da90198-4a86-4279-801a-db648b200696.png",
+  "master": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/master.png",
+  "masterSha256": "8a640473b4b4090d813e2aa7efc3457bdcf50f3a216748f6d06fcc44aed8be70",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "exactOriginalBytesRetained": true,
+  "pixelTransformApplied": false,
+  "inputMasterSha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+  "exactSentPromptSha256": "c40f8371c8e8708bdc1cfa585fbf8facd4d5f2215700a8a907e32f3e6edbd93d",
+  "canonicalPromptSha256": "aebffe16f54e58b8fce00d8270b7833916549881f12624a9141ec50da11c5ad9",
+  "frozenBlocks": [
+    {
+      "sha256": "9b206f6df55f30911bbeffa66d1f62fec3b9967608ea8ab3ea61ca2a1e5cf281",
+      "unchanged": true
+    },
+    {
+      "sha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+      "unchanged": true
+    },
+    {
+      "sha256": "caa365666085318ef597819c60c57d7d9945bba18d43054225e884337a938620",
+      "unchanged": true
+    }
+  ],
+  "frozenMutationRejected": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

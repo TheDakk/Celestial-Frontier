@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "command": "node tools/validate.js",
+  "scope": "legacy source validation; not a develop gate or native epoch"
+}

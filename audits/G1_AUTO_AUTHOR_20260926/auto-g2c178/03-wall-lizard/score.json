@@ -1,0 +1,10 @@
+{
+ "id": "03-wall-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part hind-far-paw (hindFarPaw) covers 15% paint (reference 43%)"
+ ],
+ "semanticPresence": null
+}

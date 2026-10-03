@@ -1,0 +1,20 @@
+{
+  "schema": "cf.claude-review-check/v1",
+  "status": "PASS",
+  "reportLinksChecked": 80,
+  "missingLinks": [],
+  "implementationFilesChecked": 1275,
+  "unchangedImplementationFiles": 1271,
+  "expectedReviewOnlyPointerChanges": [
+    "ROADMAP.md",
+    "audits/ANATOMY_COMPLETION_20260917/README.md",
+    "audits/FAUNA_FULL_PASS_20260916/REVIEW_PROMPT.md",
+    "audits/LONG_SESSION_20260913/LOG.md"
+  ],
+  "unexpectedChanges": [],
+  "targetRosterTotal": 58,
+  "testsRerun": false,
+  "signingRetried": false,
+  "githubWrites": 0,
+  "note": "Report-only verification. Four pre-snapshot document hashes intentionally differ after adding the requested current review pointers; source and other evidence are unchanged."
+}

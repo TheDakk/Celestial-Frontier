@@ -1,0 +1,11 @@
+{
+  "id": "01-tiger",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-05779955-4422-4a11-a2dd-e1cb7b02aa29.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "2748a131c4206e2feeca1b28a636749c3f093dbde243414b2ee7b8b28bf06e09",
+  "bytes": 1200796,
+  "promptSha256": "76d008184596dbd15a6d47c022c76b83b63ce354133643a34ac497da1aa24563",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

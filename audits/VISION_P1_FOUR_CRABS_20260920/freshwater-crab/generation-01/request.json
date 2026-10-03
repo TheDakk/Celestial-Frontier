@@ -1,0 +1,32 @@
+{
+  "status": "PREPARED",
+  "sourceHead": "df296fa40c922a0dbad061fda4ae75ab4301f817",
+  "sourcePacket": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/P1-freshwater-crab-packet",
+  "sourcePacketReceiptSha256": "26069fb6fdef012d28e8d03ea5da9197ce594142bb4c9d0f844c8056c6ce7ba6",
+  "sentPromptSha256": "959342294ed950e43403dc0b1316df5e577f76334965116a00137add87f16ebb",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed by built-in tool",
+  "seed": null,
+  "seedReason": "No seed parameter exposed",
+  "references": [
+    {
+      "role": "approved Discovery Atlas style lock",
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    },
+    {
+      "role": "anatomy guide, not output layout or reusable masks",
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/P1-freshwater-crab-packet/anatomy-guide.png",
+      "sha256": "2978c07f816548db3534ae847252587158eb2d7a44571c303a10b7643503683f"
+    }
+  ],
+  "requestedSize": [
+    1024,
+    1024
+  ],
+  "background": "#FF00FF per exact compiled prompt",
+  "promptModified": false,
+  "retriesAuthorized": false,
+  "sourceLabelsReused": false,
+  "intakeHeld": true
+}

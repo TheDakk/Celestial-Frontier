@@ -1,0 +1,28 @@
+{
+  "name": "Crab",
+  "masterSha256": "73e7cef15eb6d7de50c20054ee5a68b31621c0f3f3712b18e99e538f92ad80cc",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: two clear eye stalks, carapace and two open claws with visible fixed/moving fingers. Four walking-foot tips per side can be counted, but the forward/lower pair passes behind large claw palms and its proximal roots remain occluded; thus eight complete walking chains are not independently visible. Do not infer hidden carapace roots or reinterpret mouthparts as walking legs. Natural source is retained with reference-authoring hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 123,
+      "y0": 360,
+      "x1": 1126,
+      "y1": 908
+    },
+    "margins": {
+      "left": 123,
+      "right": 127,
+      "top": 360,
+      "bottom": 345
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "03-dog",
+  "name": "Dog",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f4086d54-8d79-4c5a-a31f-24658dc4312f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4",
+  "bytes": 1237655,
+  "promptSha256": "0d21a4c9d8463c9dd0ae7faa4f1ba053b9e569f3fbcec5cdb27f8f97266ca336",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

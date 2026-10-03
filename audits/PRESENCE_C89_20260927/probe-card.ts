@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {compileBodyCard} from '../../port/v2/apps/game/src/motion/body-card.ts';
+import {actionsFor} from '../../port/v2/apps/game/src/motion/family-actions.ts';
+const base='audits/PRESENCE_C89_20260927';
+const old=compileBodyCard(JSON.parse(fs.readFileSync(base+'/original-record.json','utf8')));
+const current=compileBodyCard(JSON.parse(fs.readFileSync(base+'/hyrax-fit/record.json','utf8')));
+const tailJoints=(card:ReturnType<typeof compileBodyCard>)=>card.parts.filter(p=>/^tail[0-3]$/.test(p.joint)).map(p=>p.joint);
+assert.equal(tailJoints(old).length,4);assert.deepEqual(tailJoints(current),[]);
+assert.deepEqual(current.weapons,old.weapons);assert.ok(!current.weapons.includes('tail'));
+const oldOthers=old.parts.filter(p=>!/^tail[0-3]$/.test(p.joint));assert.deepEqual(current.parts,oldOthers);
+const result={beforeTailJoints:tailJoints(old),afterTailJoints:tailJoints(current),weapons:current.weapons,retainedBodyPartsExact:true,exhaustiveLibraryStillHasTailClip:!!actionsFor(current.template.id,current.anatomy)?.['melee:tail'],scope:'Actual BodyCard: presence repairs false geometry. Tail diagnostic clip is not a claim that the game selects a tail weapon.'};
+fs.writeFileSync(base+'/card-outcome.json',JSON.stringify(result,null,2)+'\n');console.log(result);

@@ -1,0 +1,47 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "ad048071bcccf8b22fd88812a1646f6573abe3553d752f98e7db8868a8fd75e9",
+  "recordRecipeHash": "039ff438014a6210c2d9fb4c92ca2847ccd69626e3c0a0af9bde6d32af41d3e6",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "ad048071bcccf8b22fd88812a1646f6573abe3553d752f98e7db8868a8fd75e9",
+    "atlasSha256": "942c138ea56374d19dba700b2f719f82ec7229542be595f7cceffdfbf1128237",
+    "parts": 19,
+    "comparedChannels": 9142224,
+    "changedChannels": 0
+  },
+  "vertices": 3975,
+  "partVertices": 5605,
+  "parts": 19,
+  "leaves": 1770,
+  "triangles": 7358,
+  "ownershipEdges": 5880,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "devils-club",
+    "parts": 19,
+    "atlasSize": {
+      "width": 2044,
+      "height": 1927
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "sourceBindingHash": "3f37729b26c7b67c4a1e2cf90bb488259478f0ab84aa1662b048a5c07ffca331",
+    "sourceVertices": 3975,
+    "vertices": 4130,
+    "sharedSupports": 855,
+    "pins": 1680,
+    "independentSurfaceParts": 19,
+    "sourceJoins": 16,
+    "excludedOverlaps": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  },
+  "authoredConfigSha256": "ff043145dc3978baa8715dd4604157921ddceb19d0a23db8a010fc1cf6d8cd92"
+}

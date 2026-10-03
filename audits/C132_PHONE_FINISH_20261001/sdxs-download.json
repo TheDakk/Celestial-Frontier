@@ -1,0 +1,42 @@
+{
+  "model": "skillsafeai/sdxs-512-dreamshaper-onnx-webgpu",
+  "revision": "b23bf8f4f809a0beb6d095bf52b5854e0b66caef",
+  "files": [
+    {
+      "path": "unet.onnx",
+      "bytes": 631766742,
+      "sha256": "f81dc16670944fead5561851a06038a21c23779760065249274801f47896ece7",
+      "url": "https://huggingface.co/skillsafeai/sdxs-512-dreamshaper-onnx-webgpu/resolve/b23bf8f4f809a0beb6d095bf52b5854e0b66caef/unet.onnx"
+    },
+    {
+      "path": "vae_decoder.onnx",
+      "bytes": 2467568,
+      "sha256": "75c5e431703b1d87bcc44f5610b49f6b73594b09857a2263958123afe0be7190",
+      "url": "https://huggingface.co/skillsafeai/sdxs-512-dreamshaper-onnx-webgpu/resolve/b23bf8f4f809a0beb6d095bf52b5854e0b66caef/vae_decoder.onnx"
+    },
+    {
+      "path": "text_encoder.onnx",
+      "bytes": 246275486,
+      "sha256": "73464847bad29badc218bf9f0d285f36b92ddccd6b874643d2a2d31766870e83",
+      "url": "https://huggingface.co/skillsafeai/sdxs-512-dreamshaper-onnx-webgpu/resolve/b23bf8f4f809a0beb6d095bf52b5854e0b66caef/text_encoder.onnx"
+    },
+    {
+      "path": "tokenizer/merges.txt",
+      "bytes": 524619,
+      "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+      "url": "https://huggingface.co/skillsafeai/sdxs-512-dreamshaper-onnx-webgpu/resolve/b23bf8f4f809a0beb6d095bf52b5854e0b66caef/tokenizer/merges.txt"
+    },
+    {
+      "path": "tokenizer/vocab.json",
+      "bytes": 1059962,
+      "sha256": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349",
+      "url": "https://huggingface.co/skillsafeai/sdxs-512-dreamshaper-onnx-webgpu/resolve/b23bf8f4f809a0beb6d095bf52b5854e0b66caef/tokenizer/vocab.json"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2004,
+      "sha256": "951eb1d2799bc5f473f0934619c71b2a5e79d2f6736eb7f868d947a6e1172f0a",
+      "url": "https://huggingface.co/skillsafeai/sdxs-512-dreamshaper-onnx-webgpu/resolve/b23bf8f4f809a0beb6d095bf52b5854e0b66caef/README.md"
+    }
+  ]
+}

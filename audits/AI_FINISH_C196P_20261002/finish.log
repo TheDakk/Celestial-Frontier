@@ -1,0 +1,8 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"13-marine-iguana","rows":[{"id":"13-marine-iguana","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"13-marine-iguana","rows":[{"id":"13-marine-iguana","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"13-marine-iguana","rows":[{"id":"13-marine-iguana","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"13-marine-iguana","rows":[{"id":"13-marine-iguana","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"13-marine-iguana","rows":[{"id":"13-marine-iguana","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"13-marine-iguana","rows":[{"id":"13-marine-iguana","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-anthropic-mac/audits/AI_FINISH_C196P_20261002/finish-01"}

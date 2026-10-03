@@ -1,0 +1,21 @@
+{"id":"idle","samples":121,"drift":0.2474374029468343,"gap":0.00006827906531194058,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"approach","samples":121,"drift":0.24825316265735697,"gap":0.00006907479508240826,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"melee:bite","samples":121,"drift":0.24200035763216673,"gap":0.00006437829363569662,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"alert","samples":121,"drift":0.0000699058561699695,"gap":0.00005711789830729651,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"approach:walk","samples":121,"drift":0.24825316265735697,"gap":0.00006907479508240826,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"approach:trot","samples":121,"drift":0.1953933671367999,"gap":0.00006954229993043092,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"approach:gallop","samples":32,"drift":0.2306512756010533,"gap":0.00005715325620001,"solverCompleted":false,"paintGate":"PASS","error":"Error: Contact: approach:gallop@180.26666666666668 exceeds scale compression bound"}
+{"id":"approach:hop","samples":121,"drift":0,"gap":0.00006527351555241747,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"melee:claw","samples":121,"drift":0.24200035763216673,"gap":0.00006437829363569662,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"melee:gore","samples":121,"drift":0.24200035763216673,"gap":0.00006437829363569662,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"melee:tail","samples":39,"drift":0.19881959211481556,"gap":0.00006615662478706725,"solverCompleted":false,"paintGate":"PASS","error":"Error: Contact: melee:tail@247.86666666666667 exceeds scale compression bound"}
+{"id":"melee:headbutt","samples":121,"drift":0.24200035763216673,"gap":0.00006437829363569662,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"cast","samples":121,"drift":0.2380472661765526,"gap":0.00006839082052872004,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"hit","samples":121,"drift":0.24422874041838716,"gap":0.00006890655920921693,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"dodge","samples":121,"drift":0,"gap":0.000057177135970865547,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"faint","samples":121,"drift":0.05469558989077914,"gap":0.0000700204975499462,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"victory","samples":121,"drift":0.24939523718190687,"gap":0.00006677068097125966,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"tame","samples":121,"drift":0.18879499999979957,"gap":0.0000652838873046673,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"feed","samples":121,"drift":0.06276613807444119,"gap":0.00005940882744729936,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"melee:kick","samples":121,"drift":0,"gap":0.000061007268409244673,"solverCompleted":true,"paintGate":"PASS"}
+{"id":"presentation","samples":601,"drift":0.2495765127496037,"gap":0.00007089904861267076,"solverCompleted":true,"paintGate":"PASS"}

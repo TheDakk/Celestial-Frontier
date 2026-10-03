@@ -1,0 +1,9 @@
+{
+ "id": "11-reindeer",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

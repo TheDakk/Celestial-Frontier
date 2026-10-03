@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Tapir",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "cba5ae1c0072717a4589937ac0b03796977ec0c0c1b9b8cea43668adc4542a35",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "30496d8ee2ffdfaffa88b5b4d05390aacba77b71e376cfbc1e940c3f9bb00aa2",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "tapir",
+  "authoringCreated": false,
+  "sourceHead": "375935b6b3259f9195a722cc5fe26c891c74090e"
+}

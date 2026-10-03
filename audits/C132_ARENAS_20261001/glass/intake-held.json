@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c132-arena-intake-held/v1",
+  "id": "glass",
+  "status": "REFUSED",
+  "stage": "existing intake.mjs",
+  "reason": "Master dimensions differ",
+  "exitCode": 1,
+  "masters": [
+    {
+      "role": "far",
+      "path": "audits/C132_ARENAS_20261001/glass/arena-far.png",
+      "sha256": "322408547856877f07f1d9067e1a8045fb7a9a530c424309b4ed7dd5f6660e7b",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "mid",
+      "path": "audits/C132_ARENAS_20261001/glass/arena-mid.png",
+      "sha256": "15de877b6c21a1da04678350c954c2fe268f4d318396a93f95b85d7ccb66d046",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "near",
+      "path": "audits/C132_ARENAS_20261001/glass/arena-near.png",
+      "sha256": "0f057f2a9e59cf769ffbd43cce675f22d3598cace33e1ac919961321c8bb7cb4",
+      "width": 1983,
+      "height": 793
+    }
+  ],
+  "partialKeyedCopiesRetained": true,
+  "finalizationRun": false,
+  "qualityAccepted": false,
+  "successor": "glass-v2"
+}

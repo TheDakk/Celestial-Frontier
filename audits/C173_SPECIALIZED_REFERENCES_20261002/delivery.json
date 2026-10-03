@@ -1,0 +1,726 @@
+{
+  "schema": "cf.c173-specialized-reference-delivery/v1",
+  "status": "FROZEN_WITH_EXPLICIT_HOLDS",
+  "independentOriginals": [
+    {
+      "name": "Shrimp",
+      "packet": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold",
+      "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e"
+    },
+    {
+      "name": "Brittle Star",
+      "packet": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star",
+      "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090"
+    },
+    {
+      "name": "Fiddler Crab",
+      "packet": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold",
+      "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274"
+    },
+    {
+      "name": "Spider",
+      "packet": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids",
+      "masterSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6"
+    },
+    {
+      "name": "Vampire Bat",
+      "packet": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold",
+      "masterSha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1"
+    }
+  ],
+  "nativeRuns": 0,
+  "qualityAccepted": false,
+  "acceptedReferenceCount": 0,
+  "compiledFits": 1,
+  "technicalOutcome": {
+    "spider": {
+      "packet": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids",
+      "parts": 21,
+      "recordRecipeHash": "8b0e4702daf67312cc9dabce27a68125ac830aaa44a5036951865ef7e1de9e9e",
+      "bindingHash": "0cac8c43318fb1c372e760674ebbc9f35aefe608ec8dd74bb48ce7d24d0cf100",
+      "staticStatus": "PASS_STATIC",
+      "actionRows": 13,
+      "actionSamples": 1573,
+      "presentation": {
+        "id": "presentation",
+        "samples": 895,
+        "attemptedSamples": 895,
+        "status": "PASS",
+        "maxPaintDriftPx": 0.00008366960761660799,
+        "maxGapPx": 0.0000784383240265039,
+        "maxEndpointError": 4.440892098500626e-16,
+        "exactRest": true
+      },
+      "sourceVisibleRgbaChanges": 0,
+      "conservationControls": 7,
+      "islandCap": 0.05,
+      "islandOutcome": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1938 px is 9.1% of the remainder (> 5%): structural, not a sliver"
+      }
+    },
+    "brittleStar": {
+      "status": "GEOMETRY_REFUSED",
+      "attempts": 1,
+      "retuned": false
+    },
+    "anatomicalHolds": [
+      "Shrimp",
+      "Fiddler Crab",
+      "Vampire Bat"
+    ]
+  },
+  "previousDeliveryUnchanged": true,
+  "sourceMastersModified": false,
+  "runtimeModified": false,
+  "registryModified": false,
+  "newLimits": false,
+  "automaticIslandTransfer": false,
+  "sourceEvidenceAndNegativeOutcomesRetained": true,
+  "freeBytes": 129024000000,
+  "freeGiB": 120.16,
+  "files": [
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/master.png",
+      "bytes": 1242234,
+      "sha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/observation-preview.png",
+      "bytes": 487565,
+      "sha256": "2a27a847d57eaf4311f3cb7d62ba820872f82f4d30002f5f2d62f8fed9f37789"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/observation.json",
+      "bytes": 5606,
+      "sha256": "219ffffe1cff4ea678e55dbde9d1bb8a663fc89634a70478500ecdb17db246aa"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/preview-receipt.json",
+      "bytes": 497,
+      "sha256": "629f437b1d1214ee5330fc7d7429e9b46e62d3bdfa23939e153252fd0d1a931f"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/retention-receipt.json",
+      "bytes": 1257,
+      "sha256": "69f240e05b08a5654ded03d963eb68d0894b8f64194eeab552e57e1bd84cf18d"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/generation.json",
+      "bytes": 611,
+      "sha256": "4a334207dee14d73906106197c12a16b31a0535dd59df741f92abfc63567e2c6"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/pattern-check.json",
+      "bytes": 282,
+      "sha256": "791544b9f82b20bcfdd70ba25ee4a2dc1b4bfca025d2c748f569acb1f2eb5ba5"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/prompt.txt",
+      "bytes": 9130,
+      "sha256": "726dba2e2852f7f82a6ea2ac4becedd217fc88088bf08577a69debfe068fbe8c"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/request.json",
+      "bytes": 1266,
+      "sha256": "ed74cea41a0fc2b6e59d3f5072cd4da92c5134e782eb403d251dff07ab245e9f"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/subject-source.json",
+      "bytes": 2382,
+      "sha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/authoring-receipt.json",
+      "bytes": 1518,
+      "sha256": "4fc8cbd9586f45658d138d7e10fe8d9d524a13ec6cdc069ad99e7e83dc9b9d4e"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/authoring.json",
+      "bytes": 13448,
+      "sha256": "7195ecfa60bd1d8648d7c5c7acf92873d901ed0ca716f43e545ab8a09341a93c"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/fit01/intake-provenance.json",
+      "bytes": 3348,
+      "sha256": "599c9b3a594bc57fffcfb8b545a3aedfc0008d3a771dffcec762869d6e7a0c21"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/fit01/refusal.json",
+      "bytes": 752,
+      "sha256": "276f99a5daa219f7118cff53b43f26dac6a1847e4402738ed6b06ad25fdbaf2d"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/intake-01.log",
+      "bytes": 877,
+      "sha256": "8974e52bf648681ae9fad9213f310e388bc19ab5d47da7efe81a5b8dab4074c9"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/intake-execution-01.json",
+      "bytes": 632,
+      "sha256": "c366cda0c19bc3daddd6e94f7379babdf2dea06a8354769839bed256ae5731c3"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/master.png",
+      "bytes": 1211388,
+      "sha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/observation-preview.png",
+      "bytes": 321634,
+      "sha256": "d3904d3e1d4483121540c0fd0264abb97779f47e7d4683db52406ffc00cc6b67"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/observation.json",
+      "bytes": 1687,
+      "sha256": "b09ce975e5044c83f6263387bc16a154efd244275d3872e4d89e1b4062050a12"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/presence.json",
+      "bytes": 126,
+      "sha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/preview-receipt.json",
+      "bytes": 559,
+      "sha256": "1a525e428e7aa7722636e7a12faa149829b01a6984484dd817edfa036e1b1fcf"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/source-evidence/generation.json",
+      "bytes": 623,
+      "sha256": "f66ccb60535d3533a65b3a6596edaf307a35c8bf48576effac9d1d356b063091"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/source-evidence/prompt.txt",
+      "bytes": 9016,
+      "sha256": "7195a2ddd42dcf726e6f26cf95c4fa7a38ac09d974814cb90607bb8a8edf96df"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/source-evidence/request.json",
+      "bytes": 1254,
+      "sha256": "190661db3c2af403c64624f7aee83518af7d82470ddc6abbf725662008fcb51a"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/subject-source.json",
+      "bytes": 2231,
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/master.png",
+      "bytes": 1375093,
+      "sha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/observation-preview.png",
+      "bytes": 780248,
+      "sha256": "ff3139b81e0c4e6624056de9566910b02ec171b60ddc1ad4ad07ed231e5030f3"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/observation.json",
+      "bytes": 6305,
+      "sha256": "72bca97b4e1153be9329fad44aec4357dec421738219b394e8a223f0970201fc"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/preview-receipt.json",
+      "bytes": 497,
+      "sha256": "e2b60c81dc5e4d282002b4fd7d2c0e658f6374b5bfc4ec9222e57a64b9703213"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/retention-receipt.json",
+      "bytes": 1281,
+      "sha256": "57608ce60ed320820710d1327b35ea87144ead8149ebeb772b9849c85c643e18"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/generation.json",
+      "bytes": 623,
+      "sha256": "a6d95d8c0955832774b1fc68f340b56c3329447b4e875d4942b667cddb06c983"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/pattern-check.json",
+      "bytes": 288,
+      "sha256": "46ffb2b21e33a30b31bae0a5b159f19a84525d478e1cd59920562cd12620ecb6"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/prompt.txt",
+      "bytes": 9289,
+      "sha256": "f7d1e6104cbcecdd83d232141f8cbc350dc1a28307c621c96d2160ab88d4cdea"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/request.json",
+      "bytes": 1242,
+      "sha256": "3364811e04a756a3a104dec0233f11d8b60db9d732407969ba8b93a944029246"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/subject-source.json",
+      "bytes": 2270,
+      "sha256": "b77cd66d7844ea3b305ea2e7455815a6b240b0d81da79e62ba9f7be87f3a9df7"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/authoring-receipt.json",
+      "bytes": 1488,
+      "sha256": "641820a56ddbbd4f2daf8d10d135a277b79fa68a65745e45a898ae1bf1b4a23a"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/authoring.json",
+      "bytes": 16164,
+      "sha256": "2c8dbbec427b2bfa545e609646dc91e298d6944615e30bc7041d04601a6b3bf1"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/fit01/declaration.json",
+      "bytes": 20195,
+      "sha256": "63cabe6d3228bf6f7479c2e33ef4ddabafab24608ec4773c372b437bad73c167"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/fit01/intake-provenance.json",
+      "bytes": 3224,
+      "sha256": "81ec3a57148ccd8bfc33796195fc0ecfbc89e83da7dbe001ab5f3d7a65bb469c"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/fit01/record.json",
+      "bytes": 7348,
+      "sha256": "7a48098e11d0a537115456d7e2a931abff256e6d866335c34bf434faa55adc16"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/fit01/refusal.json",
+      "bytes": 606,
+      "sha256": "76c18bc56241caabf289f49634f2cf6942120ebd1948318ff876a07f0b541670"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/intake-01.log",
+      "bytes": 725,
+      "sha256": "e41bd808e06f078acc9d8fa547fd46ae0a758738664ffe96f907def6a03d519b"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/intake-execution-01.json",
+      "bytes": 614,
+      "sha256": "b81d38c8e9d1ad3a6c7e078e0582f6f65d2bd0e98cc66424c1da7523150aebe5"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/master.png",
+      "bytes": 1339094,
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/observation.json",
+      "bytes": 2060,
+      "sha256": "77f1b3e1f626b87089195d818e1fa58d978c449686022a495042d35fecbdfa74"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/presence.json",
+      "bytes": 104,
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/source-evidence/generation.json",
+      "bytes": 611,
+      "sha256": "5a587b0be9b8a849956a4185cb676a1ff83989867234ea5ac45665b8af6f3111"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/source-evidence/prompt.txt",
+      "bytes": 9307,
+      "sha256": "ca4d378d76ce146972b6abe96192891e472cd9c1a3390eef5cdb6f244c7902a8"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/source-evidence/request.json",
+      "bytes": 1237,
+      "sha256": "8ec12084c99626d64907ffb2f5a4daa9466a59d518e996fa49cbbe31527cc919"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/subject-source.json",
+      "bytes": 2221,
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/authoring-receipt.json",
+      "bytes": 1525,
+      "sha256": "95c5a5e0ff57b7cccac98dc84a0520890c7005a17dd13e3f683a251bc5132e04"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/authoring.json",
+      "bytes": 16173,
+      "sha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/conservation-01.json",
+      "bytes": 1187,
+      "sha256": "163b8b0f0a36baf259cb1a26a1e3a07305889fdc3fe713546518b166e5cdf8c9"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/conservation-01.log",
+      "bytes": 173,
+      "sha256": "ff5416ee00380edba31d2e2a1ed15e5d7d4fc69e7ad87bc785739ca134c5fdae"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/conservation-execution-01.json",
+      "bytes": 678,
+      "sha256": "f2d503e29305db5738fe36baf8b829614de1da0158e1b3650421f9e6f4980604"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/binding.json",
+      "bytes": 1449782,
+      "sha256": "8f82492016c1c51f83e86132554c7cd9301d78b96ed860d4d959cc53dd541c94"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/declaration.json",
+      "bytes": 20195,
+      "sha256": "27627efd0f6b30a5a7527787d58babcd65ac1bb50f0201998951dc064196dfa5"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/intake-provenance.json",
+      "bytes": 3446,
+      "sha256": "daf4744cb8eca36cc8be9d053d30946e4ada5c572068de8d1912205652d8cc2b"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/atlas/c173-specialized-spider-part-ids.json",
+      "bytes": 8664,
+      "sha256": "b9ed8952e0e66c62482243cf7243b47b71cbb1b40a42a1f2af13aa108b6a67a2"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/atlas/c173-specialized-spider-part-ids.png",
+      "bytes": 453136,
+      "sha256": "e35d365ef668f767501cd8cca10aff718ac86c287471a15fc78cc7e89734788a"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/atlas/receipt.json",
+      "bytes": 3490,
+      "sha256": "7f27f92ee5d5075844cccff9ed8c40bb7602d12ac20758667d21835f4fc4722c"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/binding.json",
+      "bytes": 7185,
+      "sha256": "233840de5e481b427355a33ee2292abb8ef07d9322a46020036ef8a10bb8b942"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/keyed.png",
+      "bytes": 1630468,
+      "sha256": "816d782bdcbfab54d6949e0b1700a2d4a993863daf444e8d0d427c738f61de89"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/manifest.json",
+      "bytes": 3604,
+      "sha256": "5b58f2166ac9e86a966a9a4dcd4a577dfac3ef4d3221ae11bdebd22b74fd5229"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/ownership.png",
+      "bytes": 19705,
+      "sha256": "44dcf1a6341c14290c84f1333866192063a6f62a1a0c4c2c91e9a7361e0645f8"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/abdomen.png",
+      "bytes": 181874,
+      "sha256": "25b27be663dfc21989d9ab8e96f088e62dcffd45fa291d5b0ecc5bcfc631c6e4"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/cephalothorax.png",
+      "bytes": 75728,
+      "sha256": "3d8580b16a8ebc298380f456ce55380add2c16854ba94d962daf14d98a047560"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/chelicerafar.png",
+      "bytes": 6705,
+      "sha256": "e857bcd738ecd78f2c17447b7792cfe5dd78e8cf83d1c9c76071fec128a3e8ef"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/cheliceranear.png",
+      "bytes": 7616,
+      "sha256": "5e0d7b02aa7477892631f303647dcb55b5b2671347ed7d211e4a532a701cf535"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1farfoot.png",
+      "bytes": 5411,
+      "sha256": "6fd64c8570fbbb7b1a986851081f48e2499b886d6c75fca6af26add02e090791"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1farknee.png",
+      "bytes": 6601,
+      "sha256": "888cda7dfa7a0c9d4bbdcef296891e53980f1fe320c5d41f47ac867a8044187e"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1nearfoot.png",
+      "bytes": 6070,
+      "sha256": "c572eaff55441fee4913ebcf318451f4e7fecbbb77d376c5dfea0177c624a164"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1nearknee.png",
+      "bytes": 6667,
+      "sha256": "e603c1c592ff79644bfcf58f2f7a4b261be54d75434497a2a3aece87eeba0a6f"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2farfoot.png",
+      "bytes": 30998,
+      "sha256": "e40ea03bbf6e9f600272d30c5544881bfd8b89c306d4d073e364858aa8f2083e"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2farknee.png",
+      "bytes": 10641,
+      "sha256": "cc0e0a080046f83f25da1b64a0af08a5723ad9a5e6a2560606f3c511b7680404"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2nearfoot.png",
+      "bytes": 27213,
+      "sha256": "f3d04daa00cb3fb4bd092b35f7ba3fc2b88805d46d266cb1ed5b2fd8b42e9c79"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2nearknee.png",
+      "bytes": 9653,
+      "sha256": "960854750ee58e8965ef991584f5965591f8fff05e7a30002e0236bab51dd860"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3farfoot.png",
+      "bytes": 24443,
+      "sha256": "d60f7aca59c5d7d61fa7f54db6f92d41eaab5c78feca5418c7ea135d3c934d72"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3farknee.png",
+      "bytes": 13889,
+      "sha256": "caab9afd897c2803720a00ede2d7018e59fc3f5050e8b1b6fad9453fa9829a0b"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3nearfoot.png",
+      "bytes": 23752,
+      "sha256": "3dff1aa4ed15843dfd233f7b1a9ed5328289aec7de1ba609f2b828e05bb23d07"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3nearknee.png",
+      "bytes": 16735,
+      "sha256": "3f213d077889e2fa865446c368cab462f4212171ec3b097320138860cb1a6641"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4farfoot.png",
+      "bytes": 12071,
+      "sha256": "96ee371960a0b476a32f3cbbff99cb469ab8f1491c453beaa4b8073d4d4782a4"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4farknee.png",
+      "bytes": 15913,
+      "sha256": "fe1b8ab64dab5e88a5416c1a18c06f2ec340bde0e39f9a3abdeb487dabb43b99"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4nearfoot.png",
+      "bytes": 14595,
+      "sha256": "bbe23311eb7302e1464e5ddf28a2cda8bef06a2dfb87459ea8628846cf0df2fe"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4nearknee.png",
+      "bytes": 9301,
+      "sha256": "d5a66281180604f7beb20cbf2c85099ac86cd30e29b1e4e0da334245963c5c46"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/root.png",
+      "bytes": 328,
+      "sha256": "e5ef3dc3fb51c20eec1b8bf3314dae648b6a4ae199b8f459647ee6c9e7db4af3"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/receipt.json",
+      "bytes": 5687,
+      "sha256": "68d498fd5dfb0dc9de58c8d3f457b42b5e20a549622388dff9f4a50841dd30e2"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/pre-split-binding.json",
+      "bytes": 963186,
+      "sha256": "99629d969080569db2ee73ebc510e7ccad44e748dc387c7b0870642fedf0c6fd"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/receipt.json",
+      "bytes": 3669,
+      "sha256": "1da37779b7e04a0613a1603e937cccd42732d668c13f441bc2cfc60f555e6bab"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/record.json",
+      "bytes": 7366,
+      "sha256": "5ca1e333e777719e214ffd2ce6699925898779fa22b9b94bef0775cf0a9058e1"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/intake-01.log",
+      "bytes": 322,
+      "sha256": "c704fc4932e7dafc6fd2c8da81a5b7ff57adc1d240b133b53bd9caedd6e1fa4a"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/intake-execution-01.json",
+      "bytes": 641,
+      "sha256": "216ca06050101e8a3b77c10471569ac21779733e382b8181f9c6e00b7481908a"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/joint-preview-01.png",
+      "bytes": 530791,
+      "sha256": "9810e52c46cd2224eaced65bf5c3dd4d4b3b0092c0a1ec3007c4780c4fb4fc69"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/master.png",
+      "bytes": 1339094,
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/observation.json",
+      "bytes": 2331,
+      "sha256": "eefa3dc6b3e10cf9a125a5ce48e5349be359465463f07716a96556896756a5bc"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/ownership-preview-01.png",
+      "bytes": 479159,
+      "sha256": "9c98587d91fc304381983bad4558681d33930cdcbe3a964c1d019af6ccb16224"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/part-id-correction-proof.json",
+      "bytes": 1838,
+      "sha256": "4ee30d127f8ad8615b9bdd44fd7c4c72f574fdaa4147d70a437cb1fdba2e2e89"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/presence.json",
+      "bytes": 104,
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/source-evidence/generation.json",
+      "bytes": 611,
+      "sha256": "5a587b0be9b8a849956a4185cb676a1ff83989867234ea5ac45665b8af6f3111"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/source-evidence/prompt.txt",
+      "bytes": 9307,
+      "sha256": "ca4d378d76ce146972b6abe96192891e472cd9c1a3390eef5cdb6f244c7902a8"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/source-evidence/request.json",
+      "bytes": 1237,
+      "sha256": "8ec12084c99626d64907ffb2f5a4daa9466a59d518e996fa49cbbe31527cc919"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/static-01.json",
+      "bytes": 8101,
+      "sha256": "8975c58819662ddda7694f6f2e54c113f48a32c7472f7c159339aa7a81694ed4"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/static-01.json.sources.json",
+      "bytes": 15780,
+      "sha256": "caa0bcfff4c02397348552004af85ea8f8c3371be12c6978d80ecb265d50a63b"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/static-01.log",
+      "bytes": 2085,
+      "sha256": "201049b55d4cf80c473de96cb79287a3134b658f3dd777a7b574d4098cce5add"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/static-execution-01.json",
+      "bytes": 660,
+      "sha256": "167dfd605d49ef2163fbbd2bcdfc3df39cff437e7c1f47282c0ea7ecfebcc7d9"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/subject-source.json",
+      "bytes": 2221,
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/master.png",
+      "bytes": 1392777,
+      "sha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/observation-preview.png",
+      "bytes": 797421,
+      "sha256": "746c3d9f8f6ae3e07dc90176df878113336b25020c75f000d62d3104d73cbba3"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/observation.json",
+      "bytes": 5450,
+      "sha256": "ced17abbcf01237899af881d97c55ac18f641f572effe92cf1adf9a22609dd9d"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/preview-receipt.json",
+      "bytes": 497,
+      "sha256": "8fb286e052a43b07d802a27e600dfea07384690f5ce6790a3336fe5c2b501c81"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/retention-receipt.json",
+      "bytes": 1092,
+      "sha256": "1234a0d1809efe7d7b03ce0c9c7f53bb00cf70aa3880ea17e0bd0b4226987a36"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/source-evidence/generation.json",
+      "bytes": 537,
+      "sha256": "5890f231cb8e1b0cfa9e8d40de8df82ddb61693bf01f2fe17f8b156089345bfc"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/source-evidence/prompt.txt",
+      "bytes": 2308,
+      "sha256": "b337c5efc12ef826d87668de872019cdd6e1c85d44dc78f22004466f2adf1c6e"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/source-evidence/request.json",
+      "bytes": 523,
+      "sha256": "93c6522075cc0310497427d3cf0580fd9c140468cefda835b23bff233537b240"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/05-standing-vampire-bat-hold/subject-source.json",
+      "bytes": 2257,
+      "sha256": "43f0bb8561212252001302d97050d2777b1647d68b8dc0400dcf2d1c8d970426"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/author-brittle-star.mjs",
+      "bytes": 4803,
+      "sha256": "e86ffb2b89b8605605f446127f00d210fddbecfcd0972cc3e10a81289aad9fb6"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/author-spider.mjs",
+      "bytes": 5846,
+      "sha256": "4f7e1b47741297a6c43b725a9769aac7ab412141c2b106dae3e64d35a52b71e2"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/correct-spider-part-ids.mjs",
+      "bytes": 2029,
+      "sha256": "73ed4cd431bb8080579b6582227c1ea44683ee75b8e64879b20ef1613ac24439"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/freeze-delivery.mjs",
+      "bytes": 6196,
+      "sha256": "d363b37a44e815696aba8f3e84f6d989454c15ccd542fdc313891163909324aa"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/full-size-review.json",
+      "bytes": 2870,
+      "sha256": "49bf378c1c562d4cd4e8f4ef2ac2cd22fcb13645a5db2756b9a1c65b37da027e"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/helper-derivation.json",
+      "bytes": 1044,
+      "sha256": "ac406cda193c56590c63fe10b17d084d2ae9eaea17765794d40ad599c3bcc54b"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/radial-bound-observation.json",
+      "bytes": 2184,
+      "sha256": "9aa66950998552740aef8322a51bd81108190552aa385fa955c9cc3fb590d713"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/README.md",
+      "bytes": 5732,
+      "sha256": "5bd358cb084ecab5478240a8ed0c58a5e1a2abc131cf744ae81bdf638a58e2c0"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/render-manual-observations.mjs",
+      "bytes": 2515,
+      "sha256": "133e90d5026aa883f3136ef10e600882d2d04a224861b933f0c789d0b392b1bc"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/retain-anatomical-holds.mjs",
+      "bytes": 8902,
+      "sha256": "6e5a11480c7af1e178a65be32db7402fd8960f16a69e5b4d5be8bfe350a7587c"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/run-stage.mjs",
+      "bytes": 1570,
+      "sha256": "bcd99cffdc1d34804afcd8bd790c0add09e07e22191632afce4d31c494da5bd6"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+      "bytes": 5444,
+      "sha256": "644cae5cb6e9651c027e9afaffddba39a5e469e9882de0525f69051fc5e93565"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/write-observed-packet.mjs",
+      "bytes": 2431,
+      "sha256": "39edac47e2bf64a505b2e745aadfcd5a9c6d988bdffca398290ae4b7fe6eceda"
+    }
+  ],
+  "fileCount": 128,
+  "bytes": 16656290
+}

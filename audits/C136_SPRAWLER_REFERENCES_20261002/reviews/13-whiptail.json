@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Whiptail",
+  "family": "quadruped",
+  "masterSha256": "3a4fe01bce3688e8c71e412adad6f38e85fc5da126c079e519b04b0143a1c383",
+  "subjectSha256": "8a1fbf2efe1303ee958a3dbae661d26969a7c320b2543456d207be81f360a24b",
+  "promptSha256": "d5de9bbb21c53519be990105cbc672ac88e6d800b0347f524103aee9b5c30b49",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: pale longitudinal back stripes over dark flanks, slender pointed snout and very long thin continuous tail. Four foot endpoints are visible; far forelimb is small and its proximal attachment is body-occluded. Toe counts remain unconfirmed. Natural elongated proportions and broad margins preserved.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/13-whiptail/visual-review.json",
+    "sha256": "75ebb231270012b27252474bd804b94df97b148c63c9842b32df83dbc206cbad"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

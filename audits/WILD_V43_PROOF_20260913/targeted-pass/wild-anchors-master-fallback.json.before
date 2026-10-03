@@ -1,0 +1,107 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "wild-maw-proof-v43-master-fallback",
+  "theme": "wild",
+  "abilityId": "maw",
+  "abilityName": "Savage Maw",
+  "canvasSize": {
+    "width": 1254,
+    "height": 1254
+  },
+  "coordinateSpace": "normalized full canvas; top-left origin",
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "direction": "left-to-right",
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "wild-launch.png",
+      "keyedImage": "keyed/wild-launch.png",
+      "imageSha256": "5a46a29eb41a701b428531720251c2fa688777618e824e4297c453edf537a642",
+      "canvasSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "originAnchor": [
+        0.135,
+        0.6
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 31,
+        "y": 299,
+        "width": 690,
+        "height": 654
+      },
+      "qualityAccepted": false
+    },
+    {
+      "phase": "travel",
+      "image": "wild-travel.png",
+      "keyedImage": "second-pass/keyed/wild-travel.png",
+      "imageSha256": "bd62c402b5bdc4929a29943952b29e5736e27f7f3ec325214bc0f5a68fb29679",
+      "canvasSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "originAnchor": [
+        0.12,
+        0.55
+      ],
+      "contactAnchor": [
+        0.95,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 41,
+        "y": 329,
+        "width": 1136,
+        "height": 604
+      },
+      "qualityAccepted": false,
+      "keyedImageSha256": "0998c36886f2fb6f0f8a6c9fcf7938afbac6e4315045805e53af55a69c09ae1a"
+    },
+    {
+      "phase": "impact",
+      "image": "wild-impact.png",
+      "keyedImage": "second-pass/keyed/wild-impact.png",
+      "imageSha256": "978296588ae7ad5694380c92ab7499f34a4a9ec27c654b064b82b7c0a924fc79",
+      "canvasSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.87,
+        0.56
+      ],
+      "alphaBoundsPixels": {
+        "x": 496,
+        "y": 271,
+        "width": 725,
+        "height": 711
+      },
+      "qualityAccepted": false,
+      "keyedImageSha256": "4170164be8efab0311d06492f68aca2ec8d2ea72bb6f888c0c729509ba251beb"
+    }
+  ],
+  "qualityAccepted": false,
+  "registration": "Original master fallback uses visually measured per-phase anchors; common registration is not claimed for these originals."
+}

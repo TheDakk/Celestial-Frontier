@@ -1,0 +1,4504 @@
+{
+ "idle": {
+  "kind": "motion-timeline",
+  "actionId": "idle",
+  "family": "idle",
+  "loop": true,
+  "seed": 1597751321,
+  "recipeHash": "e0ab5eddf4ae443c5adec4bef125d2c9805706b18d2913b6f47246122391c321",
+  "massClass": "huge",
+  "bodyMs": 4287.46374770999,
+  "durationMs": 4287.46374770999,
+  "phases": [
+   [
+    "period",
+    4287.46374770999
+   ]
+  ],
+  "tracks": {
+   "root": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "pelvis": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0.017453292519943295,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": -0.017453292519943295,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "spine": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": -0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "chest": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": -0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "neck": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": -0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "head": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0.017453292519943295,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "jaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindFarKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindFarAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindFarPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreFarKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreFarAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreFarPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindNearKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindNearAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "hindNearPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreNearKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreNearAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "foreNearPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "tail0": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0.06981317007977318,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": -0.06981317007977318,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "tail1": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": -0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "tail2": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "tail3": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "earFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "earFarTip": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": -0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "earNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "earNearTip": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": -0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ]
+  },
+  "root": {
+   "dx": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": 0.008,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": -0.008,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "dy": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 1071.8659369274974,
+     "t": 0.25,
+     "value": -0.004,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2143.731873854995,
+     "t": 0.5,
+     "value": -0.011,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 3215.597810782492,
+     "t": 0.75,
+     "value": -0.004,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 4287.46374770999,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ]
+  },
+  "secondary": [
+   {
+    "partId": "tail",
+    "joint": "tail0",
+    "driver": "pelvis",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 80,
+      "t": 0.018659049896976837,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1151.8659369274974,
+      "t": 0.2686590498969768,
+      "value": 0.08377580409572781,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1199.8659369274974,
+      "t": 0.27985447983516293,
+      "value": 0.06981317007977318,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2223.731873854995,
+      "t": 0.5186590498969769,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3295.597810782492,
+      "t": 0.7686590498969769,
+      "value": -0.08377580409572781,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3343.597810782492,
+      "t": 0.779854479835163,
+      "value": -0.06981317007977318,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 4367.46374770999,
+      "t": 1.0186590498969768,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail1",
+    "driver": "pelvis",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 160,
+      "t": 0.037318099793953674,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1231.8659369274974,
+      "t": 0.2873180997939537,
+      "value": 0.061261056745000965,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1327.8659369274974,
+      "t": 0.30970895967032586,
+      "value": 0.05235987755982989,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2303.731873854995,
+      "t": 0.5373180997939536,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3375.597810782492,
+      "t": 0.7873180997939536,
+      "value": -0.061261056745000965,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3471.597810782492,
+      "t": 0.8097089596703259,
+      "value": -0.05235987755982989,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 4447.46374770999,
+      "t": 1.0373180997939537,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail2",
+    "driver": "pelvis",
+    "order": 2,
+    "lagMs": 240,
+    "overshoot": 0.13999999999999999,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 240,
+      "t": 0.05597714969093051,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1311.8659369274974,
+      "t": 0.3059771496909305,
+      "value": 0.03581415625092364,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1455.8659369274974,
+      "t": 0.33956343950548884,
+      "value": 0.031415926535897934,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2383.731873854995,
+      "t": 0.5559771496909305,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3455.597810782492,
+      "t": 0.8059771496909305,
+      "value": -0.03581415625092364,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3599.597810782492,
+      "t": 0.8395634395054888,
+      "value": -0.031415926535897934,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 4527.46374770999,
+      "t": 1.0559771496909305,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail3",
+    "driver": "pelvis",
+    "order": 3,
+    "lagMs": 320,
+    "overshoot": 0.11000000000000001,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 320,
+      "t": 0.07463619958790735,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1391.8659369274974,
+      "t": 0.32463619958790735,
+      "value": 0.020923007072908024,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1583.8659369274974,
+      "t": 0.36941791934065177,
+      "value": 0.01884955592153876,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2463.731873854995,
+      "t": 0.5746361995879073,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3535.597810782492,
+      "t": 0.8246361995879073,
+      "value": -0.020923007072908024,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3727.597810782492,
+      "t": 0.8694179193406517,
+      "value": -0.01884955592153876,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 4607.46374770999,
+      "t": 1.0746361995879072,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   },
+   {
+    "partId": "earFar",
+    "joint": "earFarRoot",
+    "driver": "head",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 80,
+      "t": 0.018659049896976837,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earFar",
+    "joint": "earFarTip",
+    "driver": "head",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 160,
+      "t": 0.037318099793953674,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1231.8659369274974,
+      "t": 0.2873180997939537,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2303.731873854995,
+      "t": 0.5373180997939536,
+      "value": -0.061261056745000965,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2399.731873854995,
+      "t": 0.5597089596703259,
+      "value": -0.05235987755982989,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3375.597810782492,
+      "t": 0.7873180997939536,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 4447.46374770999,
+      "t": 1.0373180997939537,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   },
+   {
+    "partId": "earNear",
+    "joint": "earNearRoot",
+    "driver": "head",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 80,
+      "t": 0.018659049896976837,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earNear",
+    "joint": "earNearTip",
+    "driver": "head",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 160,
+      "t": 0.037318099793953674,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1231.8659369274974,
+      "t": 0.2873180997939537,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2303.731873854995,
+      "t": 0.5373180997939536,
+      "value": -0.061261056745000965,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2399.731873854995,
+      "t": 0.5597089596703259,
+      "value": -0.05235987755982989,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3375.597810782492,
+      "t": 0.7873180997939536,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 4447.46374770999,
+      "t": 1.0373180997939537,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   }
+  ],
+  "deform": {
+   "squash": 0,
+   "stretch": 0
+  },
+  "hitstopMs": 0,
+  "luminousPulseMs": 1800,
+  "clamped": [],
+  "notes": [
+   "materials: record surface \"fur\" wins over genome skin \"translucent\" (observer disagreement)"
+  ],
+  "hash": "eeeaf790"
+ },
+ "melee:bite": {
+  "kind": "motion-timeline",
+  "actionId": "melee:bite",
+  "family": "melee",
+  "loop": false,
+  "seed": 1597751321,
+  "recipeHash": "e0ab5eddf4ae443c5adec4bef125d2c9805706b18d2913b6f47246122391c321",
+  "massClass": "huge",
+  "bodyMs": 709.3333333333333,
+  "durationMs": 1221.3333333333333,
+  "phases": [
+   [
+    "anticipation",
+    196
+   ],
+   [
+    "strike",
+    125.99999999999999
+   ],
+   [
+    "smear",
+    23.333333333333332
+   ],
+   [
+    "recovery",
+    364
+   ]
+  ],
+  "tracks": {
+   "root": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "pelvis": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "spine": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.20943951023931956,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": -0.03490658503988659,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.05235987755982989,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "chest": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "neck": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.13962634015954636,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "head": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.17453292519943295,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.03490658503988659,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "jaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": -0.4363323129985824,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindFarKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.2617993877991494,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0.5235987755982988,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0.5235987755982988,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.08726646259971647,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindFarAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.5235987755982988,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": -0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.17453292519943295,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindFarPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreFarKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": -0.20943951023931956,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.5235987755982988,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": -0.5235987755982988,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": -0.06981317007977318,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreFarAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": -0.5235987755982988,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": -0.17453292519943295,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreFarPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindNearKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.2617993877991494,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0.5235987755982988,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0.5235987755982988,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.08726646259971647,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindNearAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.5235987755982988,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": -0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.17453292519943295,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "hindNearPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreNearKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": -0.20943951023931956,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.5235987755982988,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": -0.6981317007977318,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": -0.06981317007977318,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreNearAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": -0.5235987755982988,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": -0.17453292519943295,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "foreNearPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "tail0": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": -0.15707963267948966,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": -0.05235987755982989,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "tail1": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "tail2": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "tail3": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "earFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "earFarTip": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "earNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "earNearTip": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ]
+  },
+  "root": {
+   "dx": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": -0.04,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": 0.36,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": 0.4,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.1,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "dy": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 196,
+     "t": 0.27631578947368424,
+     "value": 0.03,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 322,
+     "t": 0.45394736842105265,
+     "value": -0.05,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 345.3333333333333,
+     "t": 0.4868421052631579,
+     "value": -0.01,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 545.5333333333333,
+     "t": 0.7690789473684211,
+     "value": 0.01,
+     "ease": "back-out"
+    },
+    {
+     "ms": 709.3333333333333,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ]
+  },
+  "secondary": [
+   {
+    "partId": "tail",
+    "joint": "tail0",
+    "driver": "pelvis",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 276,
+      "t": 0.3890977443609023,
+      "value": -0.18849555921538758,
+      "ease": "ease-in"
+     },
+     {
+      "ms": 324,
+      "t": 0.45676691729323315,
+      "value": -0.15707963267948966,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 402,
+      "t": 0.5667293233082707,
+      "value": -0.25132741228718347,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 425.3333333333333,
+      "t": 0.599624060150376,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 450,
+      "t": 0.6343984962406015,
+      "value": -0.20943951023931956,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 625.5333333333333,
+      "t": 0.8818609022556392,
+      "value": -0.06283185307179587,
+      "ease": "back-out"
+     },
+     {
+      "ms": 673.5333333333333,
+      "t": 0.94953007518797,
+      "value": -0.05235987755982989,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 789.3333333333333,
+      "t": 1.112781954887218,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 837.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail1",
+    "driver": "pelvis",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 356,
+      "t": 0.5018796992481204,
+      "value": -0.11026990214100173,
+      "ease": "ease-in"
+     },
+     {
+      "ms": 452,
+      "t": 0.637218045112782,
+      "value": -0.09424777960769379,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 482,
+      "t": 0.6795112781954888,
+      "value": -0.14702653618800232,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 505.3333333333333,
+      "t": 0.712406015037594,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 578,
+      "t": 0.8148496240601505,
+      "value": -0.12566370614359174,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 705.5333333333333,
+      "t": 0.9946428571428572,
+      "value": -0.03675663404700058,
+      "ease": "back-out"
+     },
+     {
+      "ms": 801.5333333333333,
+      "t": 1.129981203007519,
+      "value": -0.031415926535897934,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 869.3333333333333,
+      "t": 1.2255639097744362,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 965.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail2",
+    "driver": "pelvis",
+    "order": 2,
+    "lagMs": 240,
+    "overshoot": 0.13999999999999999,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 436,
+      "t": 0.6146616541353385,
+      "value": -0.06446548125166254,
+      "ease": "ease-in"
+     },
+     {
+      "ms": 562,
+      "t": 0.7922932330827068,
+      "value": -0.08595397500221673,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 580,
+      "t": 0.8176691729323309,
+      "value": -0.05654866776461627,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 585.3333333333333,
+      "t": 0.825187969924812,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 706,
+      "t": 0.9953007518796994,
+      "value": -0.07539822368615504,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 785.5333333333333,
+      "t": 1.1074248120300754,
+      "value": -0.021488493750554182,
+      "ease": "back-out"
+     },
+     {
+      "ms": 929.5333333333333,
+      "t": 1.3104323308270678,
+      "value": -0.01884955592153876,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 949.3333333333333,
+      "t": 1.3383458646616542,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1093.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail3",
+    "driver": "pelvis",
+    "order": 3,
+    "lagMs": 320,
+    "overshoot": 0.11000000000000001,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 516,
+      "t": 0.7274436090225564,
+      "value": -0.03766141273123444,
+      "ease": "ease-in"
+     },
+     {
+      "ms": 642,
+      "t": 0.9050751879699249,
+      "value": -0.05021521697497926,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 665.3333333333333,
+      "t": 0.9379699248120301,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 708,
+      "t": 0.9981203007518799,
+      "value": -0.03392920065876976,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 834,
+      "t": 1.1757518796992483,
+      "value": -0.04523893421169302,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 865.5333333333333,
+      "t": 1.2202067669172934,
+      "value": -0.012553804243744814,
+      "ease": "back-out"
+     },
+     {
+      "ms": 1029.3333333333333,
+      "t": 1.4511278195488722,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 1057.5333333333333,
+      "t": 1.4908834586466166,
+      "value": -0.011309733552923255,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1221.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earFar",
+    "joint": "earFarRoot",
+    "driver": "head",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 837.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earFar",
+    "joint": "earFarTip",
+    "driver": "head",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 965.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earNear",
+    "joint": "earNearRoot",
+    "driver": "head",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 837.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earNear",
+    "joint": "earNearTip",
+    "driver": "head",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 965.3333333333333,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   }
+  ],
+  "deform": {
+   "squash": 0,
+   "stretch": 0
+  },
+  "hitstopMs": 98,
+  "luminousPulseMs": 1800,
+  "clamped": [],
+  "notes": [
+   "materials: record surface \"fur\" wins over genome skin \"translucent\" (observer disagreement)"
+  ],
+  "hash": "4adc162e"
+ },
+ "hit": {
+  "kind": "motion-timeline",
+  "actionId": "hit",
+  "family": "hit",
+  "loop": false,
+  "seed": 1597751321,
+  "recipeHash": "e0ab5eddf4ae443c5adec4bef125d2c9805706b18d2913b6f47246122391c321",
+  "massClass": "huge",
+  "bodyMs": 630,
+  "durationMs": 1142,
+  "phases": [
+   [
+    "recoil",
+    154
+   ],
+   [
+    "stagger",
+    224
+   ],
+   [
+    "settle",
+    251.99999999999997
+   ]
+  ],
+  "tracks": {
+   "root": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "pelvis": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": -0.06981317007977318,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "spine": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0.05235987755982989,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "chest": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": -0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "neck": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": -0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": -0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "head": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": -0.3490658503988659,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": -0.13962634015954636,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "jaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": -0.13962634015954636,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindFarKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": -0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindFarAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0.3141592653589793,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindFarPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreFarKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreFarAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreFarPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindNearKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindNearAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "hindNearPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreNearKnee": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreNearAnkle": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "foreNearPaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "tail0": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "tail1": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "tail2": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "tail3": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "earFarRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "earFarTip": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "earNearRoot": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "earNearTip": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ]
+  },
+  "root": {
+   "dx": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": -0.08,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": -0.14,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "dy": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 154,
+     "t": 0.24444444444444444,
+     "value": 0.02,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 378,
+     "t": 0.6,
+     "value": 0.012,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 630,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ]
+  },
+  "secondary": [
+   {
+    "partId": "tail",
+    "joint": "tail0",
+    "driver": "pelvis",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 234,
+      "t": 0.37142857142857144,
+      "value": 0.20943951023931953,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 282,
+      "t": 0.44761904761904764,
+      "value": 0.17453292519943295,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 458,
+      "t": 0.726984126984127,
+      "value": 0.12566370614359174,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 506,
+      "t": 0.8031746031746032,
+      "value": 0.10471975511965978,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 710,
+      "t": 1.126984126984127,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 758,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail1",
+    "driver": "pelvis",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 314,
+      "t": 0.4984126984126984,
+      "value": 0.12252211349000192,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 410,
+      "t": 0.6507936507936508,
+      "value": 0.10471975511965977,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 538,
+      "t": 0.8539682539682539,
+      "value": 0.07351326809400116,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 634,
+      "t": 1.0063492063492063,
+      "value": 0.06283185307179587,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 790,
+      "t": 1.253968253968254,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 886,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail2",
+    "driver": "pelvis",
+    "order": 2,
+    "lagMs": 240,
+    "overshoot": 0.13999999999999999,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 394,
+      "t": 0.6253968253968254,
+      "value": 0.07162831250184727,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 538,
+      "t": 0.8539682539682539,
+      "value": 0.06283185307179585,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 618,
+      "t": 0.9809523809523809,
+      "value": 0.042976987501108364,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 762,
+      "t": 1.2095238095238094,
+      "value": 0.03769911184307752,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 870,
+      "t": 1.380952380952381,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 1014,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "tail3",
+    "driver": "pelvis",
+    "order": 3,
+    "lagMs": 320,
+    "overshoot": 0.11000000000000001,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 474,
+      "t": 0.7523809523809524,
+      "value": 0.04184601414581604,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 666,
+      "t": 1.0571428571428572,
+      "value": 0.03769911184307751,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 698,
+      "t": 1.107936507936508,
+      "value": 0.02510760848748963,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 890,
+      "t": 1.4126984126984128,
+      "value": 0.02261946710584651,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 950,
+      "t": 1.507936507936508,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 1142,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earFar",
+    "joint": "earFarRoot",
+    "driver": "head",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 758,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earFar",
+    "joint": "earFarTip",
+    "driver": "head",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 314,
+      "t": 0.4984126984126984,
+      "value": 0.24504422698000386,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 410,
+      "t": 0.6507936507936508,
+      "value": 0.20943951023931956,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 538,
+      "t": 0.8539682539682539,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 790,
+      "t": 1.253968253968254,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 886,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earNear",
+    "joint": "earNearRoot",
+    "driver": "head",
+    "order": 0,
+    "lagMs": 80,
+    "overshoot": 0.2,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 758,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "earNear",
+    "joint": "earNearTip",
+    "driver": "head",
+    "order": 1,
+    "lagMs": 160,
+    "overshoot": 0.17,
+    "damping": 0.55,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 1800,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 314,
+      "t": 0.4984126984126984,
+      "value": 0.24504422698000386,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 410,
+      "t": 0.6507936507936508,
+      "value": 0.20943951023931956,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 538,
+      "t": 0.8539682539682539,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 790,
+      "t": 1.253968253968254,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 886,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   }
+  ],
+  "deform": {
+   "squash": 0,
+   "stretch": 0
+  },
+  "hitstopMs": 0,
+  "luminousPulseMs": 1800,
+  "clamped": [],
+  "notes": [
+   "materials: record surface \"fur\" wins over genome skin \"translucent\" (observer disagreement)"
+  ],
+  "hash": "8b62cdf7"
+ }
+}

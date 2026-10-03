@@ -1,0 +1,1 @@
+g2c57-05-snow-leopard-side {"schema":"cf.foreleg-side-partition/v1","method":"nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership","changedPixels":12304,"transfers":{"foreNearRoot→foreFarRoot":5873,"foreNearKnee→foreFarRoot":4491,"foreNearKnee→foreFarKnee":441,"foreNearAnkle→foreFarKnee":1499},"otherOwnersChanged":0}

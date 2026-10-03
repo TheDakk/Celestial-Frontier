@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Marsh Rodent",
+  "masterSha256": "c1e0c233125e8040851842e6ef31578d49cdab7626c62db5f58c3257e06f51da",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

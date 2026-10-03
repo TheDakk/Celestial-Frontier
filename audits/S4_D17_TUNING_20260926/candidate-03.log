@@ -1,0 +1,121 @@
+[
+  {
+    id: 'smite',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 50, press: 26, guard: 101, evade: 92 },
+    pass: true
+  },
+  {
+    id: 'aegis',
+    right: 'evade',
+    wrong: 'press',
+    wins: { balanced: 56, press: 16, guard: 129, evade: 134 },
+    pass: true
+  },
+  {
+    id: 'dot',
+    right: 'evade',
+    wrong: 'guard',
+    wins: { balanced: 43, press: 33, guard: 2, evade: 52 },
+    pass: true
+  },
+  {
+    id: 'fury',
+    right: 'evade',
+    wrong: 'guard',
+    wins: { balanced: 63, press: 45, guard: 40, evade: 88 },
+    pass: true
+  },
+  {
+    id: 'ambush',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 79, press: 24, guard: 395, evade: 127 },
+    pass: true
+  },
+  {
+    id: 'eye',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 77, press: 32, guard: 160, evade: 135 },
+    pass: true
+  },
+  {
+    id: 'veil',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 86, press: 20, guard: 203, evade: 167 },
+    pass: true
+  },
+  {
+    id: 'mend',
+    right: 'press',
+    wrong: 'guard',
+    wins: { balanced: 18, press: 23, guard: 0, evade: 21 },
+    pass: true
+  },
+  {
+    id: 'echo',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 110, press: 65, guard: 225, evade: 148 },
+    pass: true
+  },
+  {
+    id: 'thirst',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 138, press: 91, guard: 205, evade: 111 },
+    pass: true
+  },
+  {
+    id: 'thorns',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 74, press: 33, guard: 175, evade: 111 },
+    pass: true
+  },
+  {
+    id: 'rend',
+    right: 'evade',
+    wrong: 'guard',
+    wins: { balanced: 47, press: 42, guard: 22, evade: 116 },
+    pass: true
+  },
+  {
+    id: 'reck',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 80, press: 39, guard: 185, evade: 139 },
+    pass: true
+  },
+  {
+    id: 'bulwark',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 237, press: 59, guard: 464, evade: 191 },
+    pass: true
+  },
+  {
+    id: 'shock',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 113, press: 64, guard: 218, evade: 158 },
+    pass: true
+  },
+  {
+    id: 'roulette',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 103, press: 21, guard: 231, evade: 163 },
+    pass: true
+  },
+  {
+    id: 'enrage',
+    right: 'guard',
+    wrong: 'press',
+    wins: { balanced: 107, press: 40, guard: 217, evade: 123 },
+    pass: true
+  }
+]

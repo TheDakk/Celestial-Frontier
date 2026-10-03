@@ -1,0 +1,14 @@
+{
+  "id": "01-shrimp",
+  "name": "Shrimp",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-6024c5b3-2c78-4634-af04-1934e5309ae7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+  "bytes": 1242234,
+  "promptSha256": "726dba2e2852f7f82a6ea2ac4becedd217fc88088bf08577a69debfe068fbe8c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

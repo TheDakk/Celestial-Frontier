@@ -1,0 +1,13 @@
+{
+  "id": "02-blind-fish",
+  "name": "Blind Fish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-4246f34d-7363-4685-b6a6-5dc94d46e261.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4c069841eace21a8698bfe84bac1103d2c425017302445017911f2c752f752df",
+  "bytes": 1210006,
+  "promptSha256": "64e47f07d9d9eab0195699e8bde11cff0e46cf2aae182a1277c8298214c28a7a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,487 @@
+{
+  "name": "Octopus",
+  "family": "cephalopod",
+  "species": {
+    "name": "Octopus",
+    "aspect": 1.4,
+    "headFrac": 0.35,
+    "eyes": "prominent",
+    "posture": "crawling",
+    "mustRead": [
+      "bulbous sack-like mantle above the eyes",
+      "eight tapering arms lined with suckers",
+      "horizontal slit pupil"
+    ],
+    "note": "The bulb is the mantle, not the head; the eyes sit below it, and there are no tentacles - eight equal arms only."
+  },
+  "genome": {
+    "seed": 6160491,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 13,
+    "body": 8,
+    "loco": 6,
+    "trait": 19,
+    "size": 1,
+    "diet": 3,
+    "head": 1,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 4,
+    "habitat": 3,
+    "detail": 5,
+    "accent": 10,
+    "temper": 4,
+    "sense": 8,
+    "repro": 3,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Octopus"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Octopus\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"6160491\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 326,
+  "contract": {
+    "id": "cephalopod",
+    "version": 1,
+    "clipSetId": "cephalopod-v1",
+    "graph": [
+      [
+        "mantle",
+        "root"
+      ],
+      [
+        "head",
+        "root"
+      ],
+      [
+        "eyeFar",
+        "head"
+      ],
+      [
+        "eyeNear",
+        "head"
+      ],
+      [
+        "siphon",
+        "head"
+      ],
+      [
+        "arm0Seg0",
+        "head"
+      ],
+      [
+        "arm0Seg1",
+        "arm0Seg0"
+      ],
+      [
+        "arm0Seg2",
+        "arm0Seg1"
+      ],
+      [
+        "arm1Seg0",
+        "head"
+      ],
+      [
+        "arm1Seg1",
+        "arm1Seg0"
+      ],
+      [
+        "arm1Seg2",
+        "arm1Seg1"
+      ],
+      [
+        "arm2Seg0",
+        "head"
+      ],
+      [
+        "arm2Seg1",
+        "arm2Seg0"
+      ],
+      [
+        "arm2Seg2",
+        "arm2Seg1"
+      ],
+      [
+        "arm3Seg0",
+        "head"
+      ],
+      [
+        "arm3Seg1",
+        "arm3Seg0"
+      ],
+      [
+        "arm3Seg2",
+        "arm3Seg1"
+      ],
+      [
+        "arm4Seg0",
+        "head"
+      ],
+      [
+        "arm4Seg1",
+        "arm4Seg0"
+      ],
+      [
+        "arm4Seg2",
+        "arm4Seg1"
+      ],
+      [
+        "arm5Seg0",
+        "head"
+      ],
+      [
+        "arm5Seg1",
+        "arm5Seg0"
+      ],
+      [
+        "arm5Seg2",
+        "arm5Seg1"
+      ],
+      [
+        "arm6Seg0",
+        "head"
+      ],
+      [
+        "arm6Seg1",
+        "arm6Seg0"
+      ],
+      [
+        "arm6Seg2",
+        "arm6Seg1"
+      ],
+      [
+        "arm7Seg0",
+        "head"
+      ],
+      [
+        "arm7Seg1",
+        "arm7Seg0"
+      ],
+      [
+        "arm7Seg2",
+        "arm7Seg1"
+      ]
+    ],
+    "bodyAxis": [
+      "head",
+      "mantle"
+    ],
+    "joints": [
+      "root",
+      "mantle",
+      "head",
+      "eyeFar",
+      "eyeNear",
+      "siphon",
+      "arm0Seg0",
+      "arm0Seg1",
+      "arm0Seg2",
+      "arm1Seg0",
+      "arm1Seg1",
+      "arm1Seg2",
+      "arm2Seg0",
+      "arm2Seg1",
+      "arm2Seg2",
+      "arm3Seg0",
+      "arm3Seg1",
+      "arm3Seg2",
+      "arm4Seg0",
+      "arm4Seg1",
+      "arm4Seg2",
+      "arm5Seg0",
+      "arm5Seg1",
+      "arm5Seg2",
+      "arm6Seg0",
+      "arm6Seg1",
+      "arm6Seg2",
+      "arm7Seg0",
+      "arm7Seg1",
+      "arm7Seg2"
+    ],
+    "legs": [],
+    "limitsDeg": {
+      "root": {
+        "min": -30,
+        "max": 30
+      },
+      "mantle": {
+        "min": -25,
+        "max": 25
+      },
+      "head": {
+        "min": -30,
+        "max": 30
+      },
+      "eyeFar": {
+        "min": -20,
+        "max": 20
+      },
+      "eyeNear": {
+        "min": -20,
+        "max": 20
+      },
+      "siphon": {
+        "min": -45,
+        "max": 45
+      },
+      "arm0Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm0Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm0Seg2": {
+        "min": -80,
+        "max": 80
+      },
+      "arm1Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm1Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm1Seg2": {
+        "min": -80,
+        "max": 80
+      },
+      "arm2Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm2Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm2Seg2": {
+        "min": -80,
+        "max": 80
+      },
+      "arm3Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm3Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm3Seg2": {
+        "min": -80,
+        "max": 80
+      },
+      "arm4Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm4Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm4Seg2": {
+        "min": -80,
+        "max": 80
+      },
+      "arm5Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm5Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm5Seg2": {
+        "min": -80,
+        "max": 80
+      },
+      "arm6Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm6Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm6Seg2": {
+        "min": -80,
+        "max": 80
+      },
+      "arm7Seg0": {
+        "min": -55,
+        "max": 55
+      },
+      "arm7Seg1": {
+        "min": -70,
+        "max": 70
+      },
+      "arm7Seg2": {
+        "min": -80,
+        "max": 80
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.05,
+        "max": 0.7,
+        "kind": "distance",
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "arm/body:arm0",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm0Seg0",
+          "arm0Seg1",
+          "arm0Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "arm/body:arm1",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm1Seg0",
+          "arm1Seg1",
+          "arm1Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "arm/body:arm2",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm2Seg0",
+          "arm2Seg1",
+          "arm2Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "arm/body:arm3",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm3Seg0",
+          "arm3Seg1",
+          "arm3Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "arm/body:arm4",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm4Seg0",
+          "arm4Seg1",
+          "arm4Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "arm/body:arm5",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm5Seg0",
+          "arm5Seg1",
+          "arm5Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "arm/body:arm6",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm6Seg0",
+          "arm6Seg1",
+          "arm6Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      },
+      {
+        "id": "arm/body:arm7",
+        "min": 0.3,
+        "max": 6,
+        "kind": "ratio",
+        "bones": [
+          "arm7Seg0",
+          "arm7Seg1",
+          "arm7Seg2"
+        ],
+        "axis": [
+          "head",
+          "mantle"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "fins"
+    ],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "arms": 8,
+      "feedingTentacles": 0
+    }
+  }
+}

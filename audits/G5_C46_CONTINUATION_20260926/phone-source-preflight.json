@@ -1,0 +1,26 @@
+[
+  {
+    "id": "crab",
+    "individualIsVisualKey": true,
+    "individualIdLength": 739,
+    "seed": 1431434066,
+    "modelHash": "640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b",
+    "eligiblePixels": 5128
+  },
+  {
+    "id": "freshwater-crab",
+    "individualIsVisualKey": true,
+    "individualIdLength": 747,
+    "seed": 2150023242,
+    "modelHash": "640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b",
+    "eligiblePixels": 11755
+  },
+  {
+    "id": "mud-crab",
+    "individualIsVisualKey": true,
+    "individualIdLength": 741,
+    "seed": 725465033,
+    "modelHash": "640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b",
+    "eligiblePixels": 11441
+  }
+]

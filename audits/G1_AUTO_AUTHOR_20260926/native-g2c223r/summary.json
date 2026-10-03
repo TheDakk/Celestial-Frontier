@@ -1,0 +1,132 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+ "tag": "g2c223r",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-zebra",
+  "04-eland",
+  "06-hartebeest",
+  "11-reindeer",
+  "16-wild-sheep"
+ ],
+ "refused": [
+  {
+   "id": "02-kudu",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "03-impala",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 3% paint (reference 71%)"
+  },
+  {
+   "id": "05-gazelle",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 6%)"
+  },
+  {
+   "id": "07-oryx",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 62%)"
+  },
+  {
+   "id": "08-gaur",
+   "reason": "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 57%)"
+  },
+  {
+   "id": "09-deer",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 6%)"
+  },
+  {
+   "id": "10-antelope",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 5% paint (reference 6%)"
+  },
+  {
+   "id": "12-caribou",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "13-yak",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "14-takin",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 39%)"
+  },
+  {
+   "id": "15-sheep",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+  },
+  {
+   "id": "17-dromedary-camel",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  },
+  {
+   "id": "18-bactrian-camel",
+   "reason": "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.7%)"
+  },
+  {
+   "id": "19-gibbon",
+   "reason": "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "20-leech",
+   "reason": "wrong-family: serpent matches clearly better (0.0126 < 0.0415)"
+  },
+  {
+   "id": "21-sea-squirt",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 1.1% of the paint; every same-family reference shows at least 2.1%"
+  },
+  {
+   "id": "22-banana-slug",
+   "reason": "no-reference: no other hand-authored subject of family gastropod"
+  },
+  {
+   "id": "23-prawn",
+   "reason": "no-reference: no other hand-authored subject of family crustacean-small"
+  },
+  {
+   "id": "24-crab",
+   "reason": "no-reference: no other hand-authored subject of family brachyuran"
+  }
+ ],
+ "staticRed": [],
+ "native": [
+  {
+   "id": "01-zebra",
+   "name": "Zebra",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-eland",
+   "name": "Eland",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-hartebeest",
+   "name": "Hartebeest",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-reindeer",
+   "name": "Reindeer",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-wild-sheep",
+   "name": "Wild Sheep",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

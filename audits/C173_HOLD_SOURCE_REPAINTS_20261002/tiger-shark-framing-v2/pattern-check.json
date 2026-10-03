@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tiger Shark",
+  "masterSha256": "16983f593fe1b3e24b939e988931e266234424f782c0227bce7be3cc6ee4b9a5",
+  "required": [
+    "dark vertical tiger stripes on the flank"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark vertical tiger stripes on the flank",
+      "status": "PRESENT",
+      "observed": "At full native size, repeated dark near-vertical stripes extend from the blue-grey back down the visible flank; they continue along the tail stalk. Pattern present; the painted near-symmetric tail still needs species/anatomy review and is not accepted by this observation."
+    }
+  ]
+}

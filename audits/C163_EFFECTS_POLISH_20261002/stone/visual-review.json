@@ -1,0 +1,147 @@
+{
+  "schema": "cf.c163-effect-visual-review/v1",
+  "theme": "stone",
+  "selectedPhase": "travel",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "inspectedImages": [
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/travel-master.png",
+      "sha256": "faa5397042c63b9f98dc65e46f531879b2f5ea1bb248b20d53eab4c589519ec4",
+      "bytes": 1522493
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/comparison-static.png",
+      "sha256": "94a2167bf7e4e005e0d0f521bf7674527798f5cfb82d6a1e98e04b09eb96246f",
+      "bytes": 329341
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/registered/launch.png",
+      "sha256": "c2fe80c792ee44c4f89bb3945a91175ef03e31d40b660d1ef1ec927159ecf141",
+      "bytes": 91272
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/registered/travel.png",
+      "sha256": "34f0d7236642bcbf4087584ecf292372c264a4839772a6a75049683fd459c1dd",
+      "bytes": 347955
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/registered/impact.png",
+      "sha256": "7d752451427474c4a952cecbfe906b1767ca4f3333de0bcbd28b2a88c560dd39",
+      "bytes": 191855
+    }
+  ],
+  "comparisonLayout": "Static 768 x 1152 comparison; old LEFT, candidate RIGHT; rows gray (#464c46), dark (#151820), pale (#d6cebb). This is not a native film or arena proof.",
+  "findings": [
+    "Larger pale gray fracture faces make the dominant shards easier to distinguish against the static backgrounds. Several small fragments remain.",
+    "The material remains predominantly neutral charcoal/stone, but travel readability and target overlap need native review; no 60 fps or phone claim."
+  ],
+  "mechanical": {
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "stone",
+    "sequenceId": "stone-c163-polish-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 23951,
+        "edge": 7943,
+        "fringe": 13,
+        "fringeRatio": 0.0016366612111292963,
+        "accentShare": 0.1354014598540146,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 119,
+          "y": 438,
+          "width": 268,
+          "height": 198
+        }
+      },
+      "travel": {
+        "painted": 100146,
+        "edge": 18097,
+        "fringe": 39,
+        "fringeRatio": 0.0021550533237553187,
+        "accentShare": 0.05016489232199376,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 153,
+          "y": 389,
+          "width": 681,
+          "height": 347
+        }
+      },
+      "impact": {
+        "painted": 52182,
+        "edge": 14974,
+        "fringe": 45,
+        "fringeRatio": 0.0030052090289835716,
+        "accentShare": 0.18443645687859153,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 515,
+          "y": 374,
+          "width": 348,
+          "height": 305
+        }
+      }
+    }
+  },
+  "unchanged": {
+    "timingAndMotionSourcesEdited": false,
+    "sourceRegistration": {
+      "sourceAnchor": [
+        0.11,
+        0.5
+      ],
+      "canvasScale": 0.72,
+      "scaled": 737,
+      "left": 124,
+      "top": 195,
+      "sourceAndTargetAnchorsUnchanged": true,
+      "origin": [
+        0.2,
+        0.55
+      ],
+      "contact": [
+        0.8,
+        0.55
+      ]
+    },
+    "phaseOrder": [
+      "launch",
+      "travel",
+      "impact"
+    ],
+    "unselectedPhases": [
+      {
+        "phase": "launch",
+        "source": "audits/C132_EFFECTS_20261001/stone/shards/registered/launch.png",
+        "sha256": "c2fe80c792ee44c4f89bb3945a91175ef03e31d40b660d1ef1ec927159ecf141"
+      },
+      {
+        "phase": "impact",
+        "source": "audits/C132_EFFECTS_20261001/stone/shards/registered/impact.png",
+        "sha256": "7d752451427474c4a952cecbfe906b1767ca4f3333de0bcbd28b2a88c560dd39"
+      }
+    ]
+  },
+  "sourcePreservation": {
+    "target": {
+      "path": "audits/C132_EFFECTS_20261001/stone/travel-shards-master.png",
+      "sha256": "aa9e8fb1fb4398d250580e028ec185afb720f73f4546530ef13574e5871a6f39"
+    },
+    "predecessorAnchors": {
+      "anchors": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+      "sha256": "35dee9b691316117ad134d2de90c331b0abd780cf71ffdff676b1fff353505e2"
+    },
+    "originalPixelsModified": false
+  },
+  "status": "MECHANICAL_PASS_NEW_ART_AWAITING_SCORING_AND_NATIVE_FILM"
+}

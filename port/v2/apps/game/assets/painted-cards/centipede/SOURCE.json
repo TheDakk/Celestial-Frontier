@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Centipede",
+ "fitDir": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6c574f9f0ecfee789ed0259c13293fe5fddeed1ed17dd992c478b24c65e4470a"
+}

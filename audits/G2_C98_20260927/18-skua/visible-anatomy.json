@@ -1,0 +1,168 @@
+{
+  "id": "18-skua",
+  "name": "Skua",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "569ff41118ef546d0c246ce98c8cba1c2ec18a8685e6cbe1d137e28a33778193",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 20512,
+    "coreRadius": 28,
+    "bodyBox": {
+      "x0": 148,
+      "y0": 148,
+      "x1": 305,
+      "y1": 257
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.122,
+        "pixels": 2503,
+        "box": {
+          "x0": 249,
+          "y0": 104,
+          "x1": 338,
+          "y1": 147
+        },
+        "attach": {
+          "x": 276,
+          "y": 147,
+          "relX": 0.82,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.56,
+          "y": -0.83
+        },
+        "class": "top",
+        "length": 75.5
+      },
+      {
+        "k": 1,
+        "frac": 0.0092,
+        "pixels": 189,
+        "box": {
+          "x0": 306,
+          "y0": 153,
+          "x1": 310,
+          "y1": 203
+        },
+        "attach": {
+          "x": 306,
+          "y": 178,
+          "relX": 1.01,
+          "relY": 0.28
+        },
+        "dir": {
+          "x": 0.92,
+          "y": -0.38
+        },
+        "class": "front",
+        "length": 25.3
+      },
+      {
+        "k": 2,
+        "frac": 0.1135,
+        "pixels": 2328,
+        "box": {
+          "x0": 82,
+          "y0": 193,
+          "x1": 147,
+          "y1": 258
+        },
+        "attach": {
+          "x": 147,
+          "y": 220,
+          "relX": -0.01,
+          "relY": 0.66
+        },
+        "dir": {
+          "x": -0.92,
+          "y": 0.38
+        },
+        "class": "rear",
+        "length": 75.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0347,
+        "pixels": 712,
+        "box": {
+          "x0": 187,
+          "y0": 258,
+          "x1": 231,
+          "y1": 315
+        },
+        "attach": {
+          "x": 209,
+          "y": 258,
+          "relX": 0.39,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.13,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 61.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0324,
+        "pixels": 665,
+        "box": {
+          "x0": 230,
+          "y0": 258,
+          "x1": 284,
+          "y1": 313
+        },
+        "attach": {
+          "x": 237,
+          "y": 258,
+          "relX": 0.57,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.33,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 72.3
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 192,
+        "x1": 231,
+        "cx": 208.8
+      },
+      {
+        "x0": 238,
+        "x1": 284,
+        "cx": 258.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

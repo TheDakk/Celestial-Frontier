@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C186_CREATURE_SUPPLY_20261002/05-brittle-star",
+  "masterSha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "fullSizeInspected": true,
+  "visibleAnatomy": [
+    "bounded central disc",
+    "five complete arm roots",
+    "five connected noncrossing arm chains",
+    "five terminal tips"
+  ],
+  "biologicalArms": 5,
+  "walkingLegs": 0,
+  "limitations": [
+    "The five arms and central disc were independently observed on this new painting. No geometry or ownership labels were transferred from the refused long-armed source.",
+    "Legacy bell names the upper visible disc rim, not an invented organ. Centre-to-rim is measured on paint; neither disc size nor ratio limit is altered.",
+    "Three controls per real arm approximate its connected ossicle chain. Marginal spines stay with the enclosing arm; no hidden underside or tube feet are invented.",
+    "The naturally short-armed representative is bound to the source packet primary taxonomy citation. Decorative disc markings and material finish still need identity/style review.",
+    "Dorsal view does not establish coplanar support tips. groundLineY is the observed bottom envelope only; mechanical results and native support remain separate."
+  ],
+  "qualityAccepted": false
+}

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 845694087,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 16,
+    "body": 14,
+    "loco": 7,
+    "trait": 20,
+    "size": 4,
+    "diet": 3,
+    "head": 0,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 5,
+    "detail": 8,
+    "accent": 1,
+    "temper": 3,
+    "sense": 7,
+    "repro": 5,
+    "life": 1,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Crayfish"
+  },
+  "observation": null
+}

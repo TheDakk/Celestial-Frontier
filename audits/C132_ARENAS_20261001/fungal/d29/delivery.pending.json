@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "fungal",
+  "biome": "fungal",
+  "recipe": "audits/C132_ARENAS_20261001/fungal/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/fungal/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/fungal/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/fungal/arena-far.png",
+      "runtimeSha256": "dfca54e328f2926fd5bbbc8b82f4c080622eaa0201e63e3c7e1fa044cd5182cb"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/fungal/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/fungal/keyed/arena-mid.png",
+      "runtimeSha256": "93164fc602d4e153f0250af59d9c7204812683a670d04ad5fe3fff6056e2daa1"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/fungal/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/fungal/keyed/arena-near.png",
+      "runtimeSha256": "1469179e8ad4bc26e07226ef08d4de921d369fc2b415a2cfdff1361c9f7a80ca"
+    }
+  }
+}

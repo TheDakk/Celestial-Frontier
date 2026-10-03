@@ -1,0 +1,14 @@
+{
+  "id": "24-buffalo",
+  "name": "Buffalo",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-bc13e67f-3742-4b04-b24d-fe5d7b57c451.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "621ad155c78f33340abf4d87b550801f21a736e14bebc25a95f0d903196bfed8",
+  "bytes": 1411814,
+  "promptSha256": "9cb65e016b8417a0e540fed55c9328ba7abdc8ed91b2b5ffc0f9e69220431de9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

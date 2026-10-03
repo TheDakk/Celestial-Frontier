@@ -1,0 +1,109 @@
+{
+  "schema": "cf.c183-bird-contour-delta/v1",
+  "id": "21-parrot",
+  "originalAuthoringSha256": "8013fe48088e5bd0fd59a505f0a85789ba04ca019469ef846ab9845b2638b110",
+  "candidateAuthoringSha256": "00fd9b903f09fdfe91ef8f5054a8a0d6d729eedd86ba279b16ae73cce2c4ce84",
+  "sourcePlanSha256": "c3886c366c9894a3e3baaade8cf674527ef34df9af91d409bfcf287c4151793b",
+  "regions": [
+    {
+      "id": "reviewed-posterior-crown",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          642,
+          370
+        ],
+        [
+          744,
+          370
+        ],
+        [
+          746,
+          433
+        ],
+        [
+          642,
+          444
+        ]
+      ],
+      "reason": "Green posterior skull feather edge above the visible nape."
+    },
+    {
+      "id": "reviewed-upper-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          622,
+          431
+        ],
+        [
+          746,
+          430
+        ],
+        [
+          751,
+          483
+        ],
+        [
+          621,
+          488
+        ]
+      ],
+      "reason": "Short green nape above the shoulder, not a far-wing appendage."
+    },
+    {
+      "id": "reviewed-cere-edge",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          883,
+          385
+        ],
+        [
+          927,
+          385
+        ],
+        [
+          927,
+          424
+        ],
+        [
+          883,
+          424
+        ]
+      ],
+      "reason": "Forehead/cere paint at the top of the bill remains skull-owned."
+    },
+    {
+      "id": "reviewed-bill-edge",
+      "joint": "beak",
+      "layer": "near",
+      "polygonPx": [
+        [
+          881,
+          423
+        ],
+        [
+          929,
+          422
+        ],
+        [
+          932,
+          510
+        ],
+        [
+          877,
+          510
+        ]
+      ],
+      "reason": "Visible curved hard beak below the cere."
+    }
+  ],
+  "scope": "Manual source-contour additions after all original anatomical owners and before the original remainder. Only previously remainder-owned paint may move; old landmarks, ground, presence, materials, part regions and prior anatomical ownership remain unchanged.",
+  "originalOrigin": "Automatic same-family reference transfer retained; only the additive contours are manually source-reviewed. This is not an independent family reference.",
+  "sourcePaintChanged": false,
+  "nativeAcceptance": false
+}

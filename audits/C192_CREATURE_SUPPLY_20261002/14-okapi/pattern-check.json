@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Okapi",
+  "masterSha256": "1da73429a2fdc7c2a626a02d4e35fc9aa8ae661b41a2b52707548529fa9cbd33",
+  "required": [
+    "horizontal white stripes on the hindquarters and upper legs"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "horizontal white stripes on the hindquarters and upper legs",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: two clearly separate large ears, four whole hooves and leg shafts, chestnut body, striped hindquarters/upper rear legs, white lower-leg bands and continuous tufted tail. Two short male-like ossicones are visible. Body reads rounded and neck/limb proportions merit biological review. Far proximal limb roots are partially hidden; no claim of complete anatomical fit."
+    }
+  ]
+}

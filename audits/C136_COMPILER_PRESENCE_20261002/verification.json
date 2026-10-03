@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-02",
+  "kind": "focused-node-tool-tests",
+  "command": "node --test port/v2/tools/painted-creature/reviewed-presence.test.mjs port/v2/tools/painted-creature/external-ear-presence.test.mjs port/v2/tools/painted-creature/compile-library-master.test.mjs",
+  "exitCode": 0,
+  "tests": 101,
+  "passed": 101,
+  "failed": 0,
+  "sourceFiles": [
+    {
+      "file": "port/v2/tools/painted-creature/reviewed-presence.mjs",
+      "sha256": "882b604ff1e8797afea878a5cb4289db1fe28a74c8018c74842d9abb664cec7f"
+    },
+    {
+      "file": "port/v2/tools/painted-creature/compile-library-master.mjs",
+      "sha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+    },
+    {
+      "file": "port/v2/tools/painted-creature/reviewed-presence.test.mjs",
+      "sha256": "7fcf8cc3fe5462a243a9678effe21318f64470162436e09e2c1698134b68b035"
+    },
+    {
+      "file": "port/v2/tools/painted-creature/external-ear-presence.test.mjs",
+      "sha256": "f11f616beb157f16be46629a67ad6a4992592094c861f2d77a5559b77a8ed152"
+    },
+    {
+      "file": "port/v2/tools/painted-creature/compile-library-master.test.mjs",
+      "sha256": "777fa13dc678909206a4cff25e6c4de834b378bf060116f5e12c9ce4c9bf2104"
+    }
+  ],
+  "scope": "No native/browser, corpus, gallery, automatic transfer or certificate admission.",
+  "preservedExistingOutcomes": "Angelfish/Roadrunner canonical-note compiled outcomes and actual Meerkat/upright-route guards restored alongside new extension controls."
+}

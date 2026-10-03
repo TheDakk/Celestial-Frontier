@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3",
+  "authoringSha256": "e2b68e4fdb9ff464e8ea1b8292d3a8edac5188108c1ecf41fe2f0f06c3d3de27",
+  "observationSource": "audits/C136_SPRAWLER_REFERENCES_20261002/manual-observations.mjs",
+  "observationSha256": "730000f6486bdadebd2004e0052463b277121903661b7a31fd15c2078b291b8f",
+  "sourcePacket": "audits/G2_C132_QUADRUPEDS_20261001/15-iguana",
+  "origin": "Independent manual observations on the existing original; no coordinates read from any other authoring or fit.",
+  "limitations": "Four feet and low belly are visible, as are the attached dewlap, crest and banded continuous tail. No external pinnae; the round tympanic region is head paint. Far proximal limbs are torso-occluded interpretations. Original hold remains: tail looks too short relative to the canonical identity, toe details unresolved, crest key fringe needs conservation. Claude accepted the original C136 fit, which does not validate this different manual reference partition.",
+  "admission": "UNMEASURED. Existing original acceptance or refusal does not transfer to this new partition."
+}

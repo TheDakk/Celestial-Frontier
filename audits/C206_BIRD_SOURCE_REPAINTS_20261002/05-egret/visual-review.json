@@ -1,0 +1,28 @@
+{
+  "name": "Egret",
+  "masterSha256": "31cd495840806d921a7f95cfa980520c28a523d9823c73968096e7858567039f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: white plumage, S-curved neck, thin spear bill and long dark legs are visible. Both legs emerge separately at the feather margins with distinct full feet. Fine breeding plumes still overlap the wing/rear contour; the short true tail cannot be cleanly separated from every plume by sight alone. No ownership or hidden thigh declaration.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 321,
+      "y0": 264,
+      "x1": 1012,
+      "y1": 967
+    },
+    "margins": {
+      "left": 321,
+      "right": 241,
+      "top": 264,
+      "bottom": 286
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

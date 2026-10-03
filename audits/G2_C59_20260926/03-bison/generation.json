@@ -1,0 +1,11 @@
+{
+  "id": "03-bison",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-dd22f6f9-ce2a-4018-9d57-fe8fc5d5eb11.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5",
+  "bytes": 1646279,
+  "promptSha256": "4169b9332d7df9bda43aaf319c4858ecd6c81ede3b9305dac392d0024a82e5e4",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

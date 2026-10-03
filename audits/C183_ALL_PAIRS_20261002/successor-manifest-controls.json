@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "nativeRuns": 0,
+  "checks": [
+    "fresh manifest validates",
+    "all 1329 source hashes and sizes match",
+    "old manifest refused",
+    "missing helper refused",
+    "stale entry refused",
+    "all 1444 pair scripts/fits/arenas/attacks unchanged"
+  ],
+  "sources": 1329,
+  "pairs": 1444,
+  "manifestSha256": "c925ac15bd9a2ca25a635f6221f0ca9d611466d63d39fe61944a29235efd6d6f"
+}

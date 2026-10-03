@@ -1,0 +1,43 @@
+{
+  "source": "audits/C192_CREATURE_SUPPLY_20261002/provenance.mjs",
+  "sourceSha256": "c16960f6cac12aee063b19ca5feed82827c12869877d91a4da967d4d6a2e94e1",
+  "outputSha256": "96e6794ea371b29e3c5f767978f9bfe5af01ee56c0fc29bf37a47029313db610",
+  "changes": [
+    {
+      "before": "C192_CREATURE_SUPPLY_20261002",
+      "after": "C196_CREATURE_SUPPLY_20261003"
+    },
+    {
+      "before": "controls.controls.length,23",
+      "after": "controls.controls.length,14"
+    },
+    {
+      "before": "['Clam','Snail'].includes(r.name)?'HELD_UNCERTAIN_REQUIRED_LANDMARK':'SOURCE_CANDIDATE_WITH_VISUAL_HOLDS'",
+      "after": "'SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS'"
+    },
+    {
+      "before": "r.purpose==='TARGETED_SOURCE_REPAINT').length,23",
+      "after": "r.purpose==='TARGETED_SOURCE_REPAINT').length,24"
+    },
+    {
+      "before": "r.purpose==='NEW_SOURCE_IDENTITY').length,1",
+      "after": "r.purpose==='NEW_SOURCE_IDENTITY').length,0"
+    },
+    {
+      "before": "r.compiler==='AUDIT_SPECIALIZED_LAYOUT_EXTENSION').length,4",
+      "after": "r.compiler==='AUDIT_SPECIALIZED_LAYOUT_EXTENSION').length,1"
+    },
+    {
+      "before": "Twenty unchanged canonical compiler routes; four explicitly audited named layout extensions.",
+      "after": "Twenty-three unchanged canonical compiler routes; one explicitly audited named Leech layout extension."
+    },
+    {
+      "before": "controls:23",
+      "after": "controls:14"
+    },
+    {
+      "before": "canonicalRoutes:20,auditRoutes:4,explicitLandmarkHolds:['Clam','Snail']",
+      "after": "canonicalRoutes:23,auditRoutes:1"
+    }
+  ]
+}

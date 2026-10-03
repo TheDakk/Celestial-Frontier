@@ -1,0 +1,168 @@
+{
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "spine5",
+    "remainder": "body",
+    "derivedFromRigJoints": true
+  },
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/06-trout/fit",
+  "sourceRecordSha256": "b735d7163a155b058ecec4c3d9e8fbd8b7dd68b526d7c08e09f755bfb114c4d9",
+  "sourceLabelsSha256": "67d9795244850534d3971eea16f8e63075194593244dcdfc01c9af545b77277e",
+  "newLabelsSha256": "280f25a16af73dce9fc92a7db7861c52d817b3b0365a31e8682bfae22ed55864",
+  "newDecodedLabelsSha256": "af613c40c7708712a8091e84dd12114738006c17b17004411ed19bff91224cda",
+  "sourceMasterSha256": "ec01a13926f9b5acc98c91dc041c178cafb0e71cc933c880a6c113e1b4a192b6",
+  "helperSha256": "a6de4391bdb7b2a1a61e9c2d1a0bf9c636f2f98cc4a1ff8aadf1cc37530fd05a",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "schema": "cf.remainder-gap-labels/v1",
+    "tail": 6,
+    "stalk": 7,
+    "remainder": 13,
+    "maxDistance": 148,
+    "components": [
+      93,
+      92,
+      4,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "changedPixels": 725,
+    "requestedRetained": 725,
+    "otherOwnersChanged": 0,
+    "unowned": 0,
+    "sourceRgbaChanges": 0,
+    "contourProjection": false
+  },
+  "intake": {
+    "id": "06-trout",
+    "parts": 13,
+    "atlasSize": {
+      "width": 2008,
+      "height": 1035
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "a246094c9813f05e7ea9248cdb41bc9fdc1ede8baa5b69f4d97ffc826b19ea98",
+    "sourceVertices": 1510,
+    "vertices": 1925,
+    "sharedSupports": 397,
+    "pins": 942,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 10,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "joins": [
+    {
+      "name": "body--far-pectoral",
+      "sourceEdges": 64
+    },
+    {
+      "name": "body--head",
+      "sourceEdges": 452
+    },
+    {
+      "name": "body--near-pectoral",
+      "sourceEdges": 204
+    },
+    {
+      "name": "body--spine0",
+      "sourceEdges": 514
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 195
+    },
+    {
+      "name": "spine1--spine2",
+      "sourceEdges": 280
+    },
+    {
+      "name": "spine2--spine3",
+      "sourceEdges": 27
+    },
+    {
+      "name": "spine3--spine4",
+      "sourceEdges": 255
+    },
+    {
+      "name": "spine4--spine5",
+      "sourceEdges": 230
+    },
+    {
+      "name": "spine5--caudal",
+      "sourceEdges": 355
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|caudal",
+      "sourceEdges": 161
+    },
+    {
+      "name": "body|dorsal",
+      "sourceEdges": 342
+    },
+    {
+      "name": "body|spine1",
+      "sourceEdges": 399
+    },
+    {
+      "name": "body|spine2",
+      "sourceEdges": 294
+    },
+    {
+      "name": "body|spine3",
+      "sourceEdges": 297
+    },
+    {
+      "name": "body|spine4",
+      "sourceEdges": 65
+    },
+    {
+      "name": "body|spine5",
+      "sourceEdges": 92
+    },
+    {
+      "name": "dorsal|spine2",
+      "sourceEdges": 120
+    },
+    {
+      "name": "dorsal|spine3",
+      "sourceEdges": 97
+    },
+    {
+      "name": "far-pectoral|head",
+      "sourceEdges": 4
+    },
+    {
+      "name": "far-pectoral|spine0",
+      "sourceEdges": 19
+    },
+    {
+      "name": "head|spine0",
+      "sourceEdges": 36
+    },
+    {
+      "name": "near-pectoral|spine0",
+      "sourceEdges": 195
+    }
+  ]
+}

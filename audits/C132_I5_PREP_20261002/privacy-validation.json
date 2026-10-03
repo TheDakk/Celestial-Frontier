@@ -1,0 +1,25 @@
+{
+  "tests": 60,
+  "passed": 60,
+  "failed": 0,
+  "v1Changed": false,
+  "scope": "new v2 ledger/log/report string serialization only; no measurement, timing, ceiling, retry or phase changes",
+  "sources": [
+    {
+      "path": "port/v2/tools/compendiummem-v2.mjs",
+      "sha256": "b4adafdb1af0956fc8b78de3945025174c79649c67798417798bf90fb3ca0cac"
+    },
+    {
+      "path": "port/v2/tools/compendiummem-v2-materialize.mjs",
+      "sha256": "65341a1d56ee3eb79808864231d7740720bcb68e83370a812d777b958567e740"
+    },
+    {
+      "path": "port/v2/tools/compendiummem-v2-privacy.mjs",
+      "sha256": "56d3141ffdb9b0f0a33567b3f94ad6478ae3a8a1a644882d564b85e467bec620"
+    },
+    {
+      "path": "port/v2/tools/compendiummem-v2-privacy.test.mjs",
+      "sha256": "f18088dd5e77f8c3ad69948c0963e73dc4935278771e16d17413c32d573ac28d"
+    }
+  ]
+}

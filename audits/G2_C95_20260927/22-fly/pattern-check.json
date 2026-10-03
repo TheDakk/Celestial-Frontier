@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Fly",
+  "masterSha256": "d8384747e5b7d49642a0eaa2b98066eeac936e64c08d7c08fd2a8d78fd909a54",
+  "required": [
+    "bristly grey-striped thorax"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "bristly grey-striped thorax",
+      "status": "PRESENT",
+      "observed": "Full 1254 original reviewed: bristly gray thorax carries clear dark longitudinal stripes; red eye, compact segmented abdomen, two broad offset wing silhouettes and a visible knobbed haltere. Six leg endpoints are visible and separated. Head appendages partly overlap, and small pale wing-base flaps require distinguishing calypters from extra wings at authoring. Pattern present; anatomy/rig acceptance not implied."
+    }
+  ]
+}

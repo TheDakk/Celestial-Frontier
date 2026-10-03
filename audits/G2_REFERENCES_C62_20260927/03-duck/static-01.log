@@ -1,0 +1,12 @@
+file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-skin-audit-z1dzPK/motion.mjs:11130
+	if (!material) throw new MotionCompileError("unsupported-materials", `surface "${surface}" maps to no kit material`);
+	                     ^
+
+MotionCompileError: motion refused (unsupported-materials): surface "mottled warm brown duck plumage, blue speculum with white bars, slate bill and orange webbed feet" maps to no kit material
+    at Module.compileBodyCard (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-skin-audit-z1dzPK/motion.mjs:11130:23)
+    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/skin-audit.mjs:12:153 {
+  reason: 'unsupported-materials',
+  fallback: null
+}
+
+Node.js v26.10.0

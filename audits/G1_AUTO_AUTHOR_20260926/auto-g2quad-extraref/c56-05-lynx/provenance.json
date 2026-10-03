@@ -1,0 +1,124 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c56-05-lynx",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "be8892cdc7aeb4d40aaa971ef72306fe4dc57690a8bcda6b34217cd56a0f1755",
+ "subjectSourceSha256": "e0895d9f03a80e11a80469da94c931dc18551b7e3720b678c3e1e8ad548933c2",
+ "identity": {
+  "name": "Lynx",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Lynx\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3915197780\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 3915197780,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "g2c54-dingo",
+  "authoringSha256": "2fd92fa6f0bda83e761db20fdbe8ba1fbbe7066caef3f6ed2c870839bc70bc83",
+  "masterSha256": "8b130553f51d55c95faeebf22bdd308ff0d8c890fd813fefc8d37c92aed7c84d"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0686,
+     "class": "top",
+     "attach": {
+      "x": 364.7,
+      "y": 125.1,
+      "relX": 0.9,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0388,
+     "class": "limb-down",
+     "attach": {
+      "x": 58.2,
+      "y": 188.2,
+      "relX": 0.11,
+      "relY": 0.44
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0831,
+     "class": "limb-down",
+     "attach": {
+      "x": 65,
+      "y": 272.9,
+      "relX": 0.13,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0628,
+     "class": "limb-down",
+     "attach": {
+      "x": 343.8,
+      "y": 279.8,
+      "relX": 0.84,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0756,
+     "class": "limb-down",
+     "attach": {
+      "x": 159.5,
+      "y": 244,
+      "relX": 0.37,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0645,
+     "class": "limb-down",
+     "attach": {
+      "x": 273.5,
+      "y": 260,
+      "relX": 0.66,
+      "relY": 0.68
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "g2c54-dingo",
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,20 @@
+{
+  "scope": "read-only broad magenta hue classification; no image edited",
+  "previousInstrument": "strict RGB threshold counted nonuniform background as subject at canvas edges; preserve prior receipt",
+  "subjectBounds": {
+    "x0": 70,
+    "y0": 207,
+    "x1": 1212,
+    "y1": 1086
+  },
+  "margins": [
+    0.05582137161084529,
+    0.16507177033492823,
+    0.03269537480063796,
+    0.1331738437001595
+  ],
+  "backgroundPixels": 1100356,
+  "backgroundUniform": false,
+  "qualityAccepted": false,
+  "animationReady": false
+}

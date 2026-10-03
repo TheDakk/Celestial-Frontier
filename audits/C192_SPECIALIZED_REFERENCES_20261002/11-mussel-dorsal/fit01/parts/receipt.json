@@ -1,0 +1,98 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+  "declarationHash": "1682495f51dcddeb888138c6ba81bb6106086c018bc5eb8da3a93431f35afd81",
+  "paintedPixels": 223591,
+  "parts": [
+    {
+      "id": "hinge",
+      "joint": "hinge",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 328,
+        "y": 287,
+        "width": 139,
+        "height": 75
+      },
+      "pixels": 3840
+    },
+    {
+      "id": "foot",
+      "joint": "foot",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 440,
+        "y": 704,
+        "width": 191,
+        "height": 266
+      },
+      "pixels": 7994
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 835,
+        "y": 636,
+        "width": 115,
+        "height": 132
+      },
+      "pixels": 7566
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 388,
+        "y": 336,
+        "width": 561,
+        "height": 446
+      },
+      "pixels": 26890
+    },
+    {
+      "id": "valvefar",
+      "joint": "valveFar",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 343,
+        "y": 283,
+        "width": 624,
+        "height": 466
+      },
+      "pixels": 45934
+    },
+    {
+      "id": "valvenear",
+      "joint": "valveNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 310,
+        "y": 283,
+        "width": 626,
+        "height": 600
+      },
+      "pixels": 131367
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 6190,
+    "despilledPixels": 92,
+    "unresolvedEdgePixels": 87
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

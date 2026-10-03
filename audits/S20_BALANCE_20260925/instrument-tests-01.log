@@ -1,0 +1,30 @@
+✔ positive complete measured-count control is accepted (1.749709ms)
+✔ negative control: missing cohort (0.128541ms)
+✔ negative control: missing threat (0.090291ms)
+✔ negative control: nonfinite (0.085583ms)
+✔ negative control: empty corpus (0.087625ms)
+✔ negative control: overlap seeds (0.069ms)
+✔ negative control: forged policy (0.058042ms)
+✔ negative control: too large easy gap (0.064084ms)
+✔ negative control: too small normal gap (0.064458ms)
+✔ negative control: too large Command edge (0.101167ms)
+✔ negative control: omitted phase (0.067792ms)
+✔ negative control: omitted Withdraw (0.051ms)
+✔ negative control: no swap exercised (0.044417ms)
+✔ negative control: flat stances (0.08825ms)
+✔ negative control: globally best press (0.059458ms)
+✔ negative control: broken replay (0.06425ms)
+✔ negative control: broken parity (0.038916ms)
+✔ plan enumeration is exactly all 384 order/stance combinations with stable ties (0.536375ms)
+✔ a wrong-stance resolver changes selected policy; no evaluation input enters selection (0.191042ms)
+✔ Command visits phase, next-fighter and Withdraw, including branches after finding a win (0.159166ms)
+✔ search refuses a truncated tree which excludes the Auto win (0.146583ms)
+✔ unbounded or unknown Break is an instrument failure, never a green truncated search (0.063791ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.139875

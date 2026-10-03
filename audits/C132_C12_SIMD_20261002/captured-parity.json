@@ -1,0 +1,357 @@
+{
+  "schema": "cf.c132-centipede-simd-captured-parity/v1",
+  "status": "PASS_EXACT_NATIVE_PENDING",
+  "scope": "Same 56 captured/adjacent real Centipede targets after bounded orientation correction; exact output and solver state. No native timing or whole-library claim.",
+  "capture": {
+    "path": "audits/C132_C12_20261001/native-baseline-correct-fit-02/report.json",
+    "sha256": "bc82c1ce0a717a2842d1644d40c4d1321eeda875a8af6b8a56182542670d8a15"
+  },
+  "baselineModuleSha256": "8e59150df463ec99b4c05f614651e21807e5901854bdf24bf0ad8a7ee747d967",
+  "candidateModuleSha256": "a48d554ba386ae1fc9f186a02f25984b307e6ec4bfe8bfc782dc6d79b67efd78",
+  "targets": 56,
+  "paintedParts": 1792,
+  "hardPins": 218736,
+  "controls": [
+    "contradictory pinned fold refuses atomically in both kernels",
+    "nonfinite input refuses in both kernels",
+    "byte comparison distinguishes signed zero and bit mutations"
+  ],
+  "measurements": [
+    {
+      "ms": 4199.7,
+      "targetSha256": "51dd0e79bf97b321c9ee4a572cfaa481d88a9336ee1bd134df2c62dbbcf94540",
+      "outputSha256": "32c71ddc2e2fed4dfe3d60ffb929de710fec69625fdbcc583e50c6f9de99aba0",
+      "visits": 536
+    },
+    {
+      "ms": 4216.500000000001,
+      "targetSha256": "d909d33ae2f73ac129f5b3f9586a3342033d6d79252b88898c6767eeb5b28308",
+      "outputSha256": "f5501489913f3119030c9c157c140a2af04c7c185bbebadb9c2dc994da860d81",
+      "visits": 609
+    },
+    {
+      "ms": 4233.099999999999,
+      "targetSha256": "1a7ec0638a3e6d83d7077dae043e07b07b07f7eed31235657db131f6e91b98ca",
+      "outputSha256": "63f08a75c24e78ce0ecbc2c48b4430e7a09a94c96ec8b6a59dc3e0b2888db703",
+      "visits": 0
+    },
+    {
+      "ms": 4249.7,
+      "targetSha256": "fbdbec2c2c0c47465f6fbab1a5baedb1953e001bee53ba5cd16b6f21a2b835d0",
+      "outputSha256": "82a396e21a5ed7ef2442bf8b70ee527101ca4b4249733907f4bc6c076d918b2c",
+      "visits": 0
+    },
+    {
+      "ms": 4266.400000000001,
+      "targetSha256": "1601b9d39dea80dde34c4fc9c2a93934997a8cfcbdd6285571bf05a7c4d16aa5",
+      "outputSha256": "adbdddd8e99387de60a993c47e59b985c73324a16c4066d1108be9a4c8618a60",
+      "visits": 45997
+    },
+    {
+      "ms": 4283.099999999999,
+      "targetSha256": "48e33d619591c90215d6a1b0daf0db67e0c316814258e38c5a37518d8d1cdc37",
+      "outputSha256": "c608324877d7370b24422b2edddf9eeaec8de7820f01c44732a600487d86fb7f",
+      "visits": 1774
+    },
+    {
+      "ms": 4299.7,
+      "targetSha256": "46addc00b9bfe85223529bfe23b77eaf22db657b6f662147c6c384ad6b4b608a",
+      "outputSha256": "54cb725a00443c6fcd69e4b117a776e9208557b0919feb4350ffee6d09b8c3e1",
+      "visits": 2352
+    },
+    {
+      "ms": 4316.400000000001,
+      "targetSha256": "8476dea1b1465cf9e8563eb374001ab94df3280c30d92b2e1eacd234e430f957",
+      "outputSha256": "ed14e3e445c5443131a75bcb4cb65efde8210e3b541f1f7671d1e022593bea51",
+      "visits": 7863
+    },
+    {
+      "ms": 4333.000000000001,
+      "targetSha256": "84a78d032b08a10988b2d9f7112e22870b2a9ce8695233bb60b01fde9f059339",
+      "outputSha256": "4b6680349fa3966f4d87ad1fc94fcfdbe24b4d8d6993ff86e4cd705b6de52dba",
+      "visits": 1038
+    },
+    {
+      "ms": 4349.7,
+      "targetSha256": "c3a82d871f4392d2aec20bad1ed51d2a0325d2120fcfb8af16322ae0b2c27bcb",
+      "outputSha256": "112cc9053f0082afa476dfb85b912f80f9b41edae0d44df61828c5bdfbeb458f",
+      "visits": 9375
+    },
+    {
+      "ms": 4366.400000000001,
+      "targetSha256": "c68241749132885a336cfcda9fc7ef2a08e21c1a8e82c0f594b2ff35b133a786",
+      "outputSha256": "6c697e709fdc79f0e7285c38749d4fa15f9201814cd771ebb5d73393d1fbfe47",
+      "visits": 1579
+    },
+    {
+      "ms": 4383.099999999999,
+      "targetSha256": "7a1a3ea52f5da3d9ff6bb15b5309ec656e1034a6e1001fd4194d6203b11e749f",
+      "outputSha256": "58c6815427f770a6fb866cef4553c0921c72fdc67d7a4f9d7a597d464f00896f",
+      "visits": 1226
+    },
+    {
+      "ms": 4399.8,
+      "targetSha256": "87e5c1380ec968d14a1bf1fb95bcdbbe24c6c558bd145173cb92af78a035ebd8",
+      "outputSha256": "68d992bb4091a7b625947d3bd10d27597a76d55cf9a96bd8f1f8ff536b98e5f6",
+      "visits": 4956
+    },
+    {
+      "ms": 4416.400000000001,
+      "targetSha256": "a37961d6cd55da55f098d07ce4ad2755cd2d714d1912a1a41195591097854b9e",
+      "outputSha256": "331faaf32c16556bea462082cd1d774f55a8a1ce8f73025f888897fc2ca7189b",
+      "visits": 0
+    },
+    {
+      "ms": 4433.000000000001,
+      "targetSha256": "171f7ab47d023508b56b6fef3135ff324a36353c00d55c066903d87551b2abe9",
+      "outputSha256": "c4196e925db0e36e2f04f08c9fce2806eeccdc0578db02fb54d50483d7d7c27e",
+      "visits": 0
+    },
+    {
+      "ms": 4449.7,
+      "targetSha256": "adfee78aabae7f574c8ea2c3558dc2544df1d7faa2c7bdfd20a22d25afc1f2a3",
+      "outputSha256": "23fc26f44de6847d194556e676b0c918135a9a7d4b0c5bc80bedab71b533de95",
+      "visits": 0
+    },
+    {
+      "ms": 4466.400000000001,
+      "targetSha256": "67206124c64781bcb9915e060202bb002d94f39649532dbed16434be1b50c6eb",
+      "outputSha256": "c79d13ab44c6dccd1d89cf26104b3f7856d7839a702f92a5749b6aeefcbe67bb",
+      "visits": 0
+    },
+    {
+      "ms": 4483.099999999999,
+      "targetSha256": "9444b5bc4a9b0509627ed0bf8eb0e6d5d5fb91dc847ddaa8d78461cdebdc2a1e",
+      "outputSha256": "d4f57ca233efadeeb362d4a1c41d5223740ed982a034a5a91f2f0a502633ce2e",
+      "visits": 1
+    },
+    {
+      "ms": 4499.7,
+      "targetSha256": "ab9fb883444f0b3146c2007d511a5ebee5f8ed57bd6f0ad4a67502a8d9b74229",
+      "outputSha256": "bce76b4811f356029564720844b96e3f121682cc6f95ca1b085789aec849d450",
+      "visits": 14659
+    },
+    {
+      "ms": 4516.400000000001,
+      "targetSha256": "9c774007959bc701bed1fac132b6836c2dd50ea4bece10b73f2e6477ff7727f6",
+      "outputSha256": "cf60be90df3366feb6cfcd101e3d7cfc71a72684e71ef95cd1b40efdb06860c1",
+      "visits": 0
+    },
+    {
+      "ms": 4533.099999999999,
+      "targetSha256": "f3b3ae15a6ccedd126a778720f17f143c54a966e3aca84c7c3124f87ac6b3ad4",
+      "outputSha256": "7faca81bebd34352201117f005b6659837fbea002d0cdf5d3c7ed08dfed38993",
+      "visits": 2153
+    },
+    {
+      "ms": 4549.7,
+      "targetSha256": "6bcb39dd053586ca60bf67ae46353b3c7017466f1baa7e041445b689c6a5ff14",
+      "outputSha256": "2df48375437d4fd920bfa7a396450ec4eebc801b0fd124152eea39635af06a79",
+      "visits": 1011
+    },
+    {
+      "ms": 4566.400000000001,
+      "targetSha256": "395e7cc289abc9169103af132cf0278cb69f7927bbedf789d483fc7e893ca8aa",
+      "outputSha256": "1259661c3f5106ac2cfca1e83a3cd6b2d72d069ad2574e034074f6cd7a49fe0d",
+      "visits": 1896
+    },
+    {
+      "ms": 4583.000000000001,
+      "targetSha256": "81f301852bc80e2e6c0f02f99887e214e176032680e21eceb72d3fc6c9673400",
+      "outputSha256": "0b0efbfa8d5c96e2b1479c2274ff4c94deb94f9c2e84e53c2714aa2b6461c1bf",
+      "visits": 761
+    },
+    {
+      "ms": 4599.7,
+      "targetSha256": "ea37c8b19314acb301a615c60786853266c10080c40517468e70fc59c858d5d7",
+      "outputSha256": "bbca3fc6b76ea819c8ce1a50d20982b9c850b8e9a1c82c45160b8b5cbbf5e539",
+      "visits": 1400
+    },
+    {
+      "ms": 4616.400000000001,
+      "targetSha256": "5bda81c63a01655fbb0a302c23162c273b6321fe6ff818068ccd3554906d6014",
+      "outputSha256": "6ca17b6b409faf4d2f2bfa30fb610207fbaf3dd852b4f892ca29049dc5b13f95",
+      "visits": 1368
+    },
+    {
+      "ms": 4633.000000000001,
+      "targetSha256": "524c9f00b43cdb6d182510ee51e6fa97e92dbd938e6258ad5ca1c8cfd02a3c8b",
+      "outputSha256": "0cca4ab7fe14763e34bc5de00088cb9ec19d6ef2e45568eae02f8f5a22043d2d",
+      "visits": 0
+    },
+    {
+      "ms": 4649.7,
+      "targetSha256": "b2ab450cc0e194891b65e741e70588d8192aec9242e8385bc3d6eb5bef551859",
+      "outputSha256": "0c53fb47e0cf8ccbd136c1f071d9e66af694b774993b34e150bb0efef20dd4c2",
+      "visits": 0
+    },
+    {
+      "ms": 4666.400000000001,
+      "targetSha256": "b2e388f5d65e3843fd3cd7a9171b95fba16bffe0aefcceac2d9282d71cba0879",
+      "outputSha256": "ca792d4b3e40806a8f03ce5c0dd8a2e8e5d6b9c8cbbb441f18f5eccffb728ed2",
+      "visits": 0
+    },
+    {
+      "ms": 4683.000000000001,
+      "targetSha256": "2484915549094ac7db76c331c53c61d8b78124ea616876221dee6bc731e081fd",
+      "outputSha256": "ebde4c119a9d8f3e45a77a2ca2961c031c7a6a4935b36a46636dd0be84a65555",
+      "visits": 1438
+    },
+    {
+      "ms": 4699.7,
+      "targetSha256": "60ea1e4f1a343fa27fad23e088168ae8e6d5cc74e54ededf1c6f335481575f7e",
+      "outputSha256": "bbedb22da6e8c928a06774af7b608cb2533a2c17e2dec075dba2bf0951bf3108",
+      "visits": 470
+    },
+    {
+      "ms": 4716.400000000001,
+      "targetSha256": "2d6c454cb502a98e4b59a39f3e18a57b5773f079783b2cc75a3a662dd16e65d3",
+      "outputSha256": "a8dde07e57ce0d8d39f48d33dd7f6d7480d4bb007ae5c7b1218999769dd19f69",
+      "visits": 3429
+    },
+    {
+      "ms": 4733.099999999999,
+      "targetSha256": "e2a3c15c6b94376f003e54bf3949621ef1e57dba75cd8412591471f187c762af",
+      "outputSha256": "b4b86b81826b84ffda91628259b57dfdef79a3d4c2c9ef7069c75fbae866b225",
+      "visits": 2484
+    },
+    {
+      "ms": 4749.7,
+      "targetSha256": "dfe16c8e40132922182c55a0e9d21e9891aa9b8f81c1dae90121d0c70f9478a2",
+      "outputSha256": "f4b282aa1b76e60a5b510e1081883dab5fa1e1b3a591a90ec4fe814790e4d28a",
+      "visits": 1073
+    },
+    {
+      "ms": 4766.400000000001,
+      "targetSha256": "7ca0f0fc569e08156ce9e43305b55fac713ded1d2680dc4826811f7feaf6d287",
+      "outputSha256": "039efc4cf4990af9e3b41f06a358a565c24a69d84b473c102119fb72b512299f",
+      "visits": 1043
+    },
+    {
+      "ms": 4783.099999999999,
+      "targetSha256": "8c6ac30e752c15a5e321b1947b61aaf12a87ca2314d5f2bc77bbdee9709db315",
+      "outputSha256": "78d1c58e907d7f880855161c839771b6f65423bf9a3029604f62210d399dedcc",
+      "visits": 718
+    },
+    {
+      "ms": 4799.7,
+      "targetSha256": "bcabd3c855a5f1decf7ae5746b13740816b46ea32c07e47dd6fb156faf337c58",
+      "outputSha256": "63d9f82643358b2b1acab51f337af3019e444a7c7089694d62a1559de6057cb5",
+      "visits": 1780
+    },
+    {
+      "ms": 4816.400000000001,
+      "targetSha256": "79095d64b714cec81f54ae4b3b3ba49eb45755b8097f2935a091cefe045016c0",
+      "outputSha256": "370d84013fb0bf9d6ef229aa15a01e9eed57b0666098cb4eb4dc14ef94a46693",
+      "visits": 1489
+    },
+    {
+      "ms": 4833.099999999999,
+      "targetSha256": "71c4b31b87be694095122367084e575836d0a16ebddecc10ff31f3477f3b7db0",
+      "outputSha256": "bc1ce824f66379d75f1028ddcfc0d7b78b8f10b060b7b7a6fd13374ce850e103",
+      "visits": 0
+    },
+    {
+      "ms": 4849.7,
+      "targetSha256": "094a1c467717669f8f48a133f1c8bc9af79300f91f461ef326ec472999178870",
+      "outputSha256": "cb3dc62877765a8b34669faee6a7079d526a0467cab543925c84f71af41415fc",
+      "visits": 0
+    },
+    {
+      "ms": 4866.400000000001,
+      "targetSha256": "eed3f3b89a4f89ce9365a149ea4959130bc6ff6a3d9a2af38d13eb5d279a98f2",
+      "outputSha256": "d4db6633ad46135f53e1deeda464f54eface662c81db78504fb62f39c66124ee",
+      "visits": 0
+    },
+    {
+      "ms": 4883.099999999999,
+      "targetSha256": "4a45dcc9f255b188016c78f2b8eb56eafebe55e4e1636e04b1011e2af89df6ca",
+      "outputSha256": "aa2ffcdcef28e69c05e25e665e34543ad876fcf48184d6b1c13c6ac5a505e8a4",
+      "visits": 0
+    },
+    {
+      "ms": 4899.7,
+      "targetSha256": "1dbbd2f6148de669cd66a192d7d671b3caff71eb06092e4de3142b1cb5f32a9c",
+      "outputSha256": "fb2092a0304c1be283fd4fad6b49ebc84d96762ecde2c28fe395058d2daab850",
+      "visits": 0
+    },
+    {
+      "ms": 4916.400000000001,
+      "targetSha256": "753b4f1f5e0f7111f35170ddf6c0ae1aca978f3427866a759f802ee459372a34",
+      "outputSha256": "f907087749e4de57490d8ce94a000b070e1a1d5cb138ad9bbf65effd26adf7d3",
+      "visits": 2110
+    },
+    {
+      "ms": 4933.099999999999,
+      "targetSha256": "cac53f8663ae3bf76f1757f71d482a49406b1c4d865d1e60b902bd8af796beb3",
+      "outputSha256": "8a8a386ae38b4071014934d49e024e57b5b429a49672583b1605da6b86995289",
+      "visits": 326
+    },
+    {
+      "ms": 4949.7,
+      "targetSha256": "325d57820f8ac96aa8a8b70f4dee3a1e1ccbce5ae81a82a3d869fd1d3407098f",
+      "outputSha256": "d7d64b10216f326273b2eb113e549f03141bd59cacb0e7776b2cebf16d92df04",
+      "visits": 9897
+    },
+    {
+      "ms": 4941.7,
+      "targetSha256": "f461af55047eb35b5c2ed289abcc46f219a2f37834da1c3ce981d7a68fe4eb7d",
+      "outputSha256": "bc72b4a57a1b7f831b5877edb1f7a4967ad0f3334292a6ca0b67bf8d52148044",
+      "visits": 2
+    },
+    {
+      "ms": 4945.7,
+      "targetSha256": "24fc9b64f9abe20b10a274279243a5fc79a021fda3291b87bbb5597cf25c8c03",
+      "outputSha256": "ec73e437cd8a72d991f253d82d92dc80dd8b0bad44197de6286088da6ab54ce9",
+      "visits": 98
+    },
+    {
+      "ms": 4947.7,
+      "targetSha256": "6babc2c3801bcd5d18cabb695a1e09e4670c12e92044225721948ba32248538d",
+      "outputSha256": "acd66b61b17043919430b39d5fc35696249ac6cf91fe3ad42273beedf494773f",
+      "visits": 1614
+    },
+    {
+      "ms": 4948.7,
+      "targetSha256": "7870f41ae9a94a0ed22ae4a30d711aeda55a98714df85b3bbb9a27af6fe9ba14",
+      "outputSha256": "85f25283a3d0c2c35512840ff0172ef427ccb9929f36e51a8f46ac5f68ec81d0",
+      "visits": 10753
+    },
+    {
+      "ms": 4949.45,
+      "targetSha256": "f448f8993ff17d24e5aaaaf519e00d8f93e01d2da1592cb3bfd9e4564322f321",
+      "outputSha256": "57ee182131dcb69e89ba90885f05ccebb8e2a9c36d2e1263f13267e01846be70",
+      "visits": 9402
+    },
+    {
+      "ms": 4949.95,
+      "targetSha256": "c6b354f949ad9e9054d92bc77b39d2953c53f7b2ebcf19eba5abf6a29202476f",
+      "outputSha256": "dc13229eda0d06c3cce184fccc42a79e098f30eca5034d2924ace70cdd1d3da1",
+      "visits": 10776
+    },
+    {
+      "ms": 4950.7,
+      "targetSha256": "5febeb752ac6208ff90d21bbc6e39178625fad1b50ea1381df15ee2860c2e2e7",
+      "outputSha256": "5e6a885f4aba27e559741a37fba36de502bdc1839c91bd80866792013cea98d9",
+      "visits": 38398
+    },
+    {
+      "ms": 4951.7,
+      "targetSha256": "7b528c014cfe19b50c3b847fbcca625c592d03e2460270c209aefed74b672252",
+      "outputSha256": "c8f529ad5665763afe81aba558532239785e5fd2414818a0bf782242446dcc50",
+      "visits": 4575
+    },
+    {
+      "ms": 4953.7,
+      "targetSha256": "fd7c7ee85705f3069bb8465bf5c533bd9330645329d7364e345b6fb187e74512",
+      "outputSha256": "06227c8a1127e4e85ca38edef4877dadf156e02cca5836ac11f37ffd32b1180d",
+      "visits": 2234
+    },
+    {
+      "ms": 4957.7,
+      "targetSha256": "3645a159ae6f996fa3f688ad132b22cf6c4542d344671517f01093ca449fb68d",
+      "outputSha256": "d867d1c16afd2f786597ef1dfdd66880ed3f2211a73df2d38cc122f1a9ab9548",
+      "visits": 1743
+    }
+  ]
+}

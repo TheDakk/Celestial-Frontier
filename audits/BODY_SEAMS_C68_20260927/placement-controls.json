@@ -1,0 +1,50 @@
+[
+  {
+    "id": "trout-axial-01",
+    "changedPixels": 7417,
+    "recordByteIdentical": true,
+    "masterSha256": "ec01a13926f9b5acc98c91dc041c178cafb0e71cc933c880a6c113e1b4a192b6",
+    "protectedOwnersUnchanged": true,
+    "negativeControls": [
+      "foreign-owner edit refused",
+      "alpha edit refused",
+      "unchanged labels do not masquerade as repair"
+    ]
+  },
+  {
+    "id": "herring-axial-01",
+    "changedPixels": 5584,
+    "recordByteIdentical": true,
+    "masterSha256": "a0ce035f462ab4bad53bcf68dee03720850fad4dca3e1682ccb57379e343e9b0",
+    "protectedOwnersUnchanged": true,
+    "negativeControls": [
+      "foreign-owner edit refused",
+      "alpha edit refused",
+      "unchanged labels do not masquerade as repair"
+    ]
+  },
+  {
+    "id": "cod-axial-01",
+    "changedPixels": 23352,
+    "recordByteIdentical": true,
+    "masterSha256": "a3c2fa7823f0b2256dc1569b464401e71ce4efc360f0c2e6cd059a884148b994",
+    "protectedOwnersUnchanged": true,
+    "negativeControls": [
+      "foreign-owner edit refused",
+      "alpha edit refused",
+      "unchanged labels do not masquerade as repair"
+    ]
+  },
+  {
+    "id": "arctic-nape-01",
+    "changedPixels": 10589,
+    "recordByteIdentical": true,
+    "masterSha256": "a280208f10b4781ed3f2eb21530f0e7c7a6076a850dd0dd9b6802d6cb967a246",
+    "protectedOwnersUnchanged": true,
+    "negativeControls": [
+      "foreign-owner edit refused",
+      "alpha edit refused",
+      "unchanged labels do not masquerade as repair"
+    ]
+  }
+]

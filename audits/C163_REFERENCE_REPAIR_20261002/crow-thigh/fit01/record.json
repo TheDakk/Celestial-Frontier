@@ -1,0 +1,198 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Crow\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2214955387\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"14\"]]]]",
+    "seed": 2214955387,
+    "ownerId": "authored:archetype-sprint/19-crow",
+    "earthName": "Crow"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2214955387,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 15,
+    "body": 12,
+    "loco": 13,
+    "trait": 14,
+    "size": 5,
+    "diet": 4,
+    "head": 2,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 14,
+    "detail": 8,
+    "accent": 9,
+    "temper": 8,
+    "sense": 7,
+    "repro": 7,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Crow"
+  },
+  "geometry": {
+    "cutoutAssetHash": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6866348193295027,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5216905901116428,
+      0.483652312599681
+    ],
+    "pelvis": [
+      0.5189792663476873,
+      0.536762360446571
+    ],
+    "spine": [
+      0.5686602870813398,
+      0.4791866028708134
+    ],
+    "chest": [
+      0.6236044657097288,
+      0.4564593301435407
+    ],
+    "neck0": [
+      0.6492822966507178,
+      0.43038277511961726
+    ],
+    "neck1": [
+      0.6716108452950559,
+      0.38803827751196174
+    ],
+    "head": [
+      0.6890749601275917,
+      0.34960127591706536
+    ],
+    "beak": [
+      0.7547049441786283,
+      0.36555023923444974
+    ],
+    "legNearKnee": [
+      0.47360446570972886,
+      0.5893939393939394
+    ],
+    "legNearAnkle": [
+      0.45374800637958534,
+      0.6543859649122807
+    ],
+    "legNearFoot": [
+      0.47224880382775125,
+      0.6696969696969697
+    ],
+    "legFarKnee": [
+      0.5758373205741627,
+      0.620494417862839
+    ],
+    "legFarAnkle": [
+      0.611244019138756,
+      0.6630781499202552
+    ],
+    "legFarFoot": [
+      0.6320574162679427,
+      0.6667464114832536
+    ],
+    "wingNearRoot": [
+      0.5858054226475279,
+      0.45207336523125996
+    ],
+    "wingNearTip": [
+      0.3543062200956938,
+      0.5273524720893141
+    ],
+    "wingFarRoot": [
+      0.5692982456140351,
+      0.4129186602870813
+    ],
+    "wingFarTip": [
+      0.4913875598086125,
+      0.44019138755980863
+    ],
+    "tailFan": [
+      0.3180223285486444,
+      0.5710526315789474
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/C163_REFERENCE_REPAIR_20261002/crow-thigh/candidate/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 02-pigeon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "origin": "Automatic transferred baseline with a manually observed supplemental far-thigh contour. Original polygons/landmarks retained. Only body-owned paint can move; not an independent manual landmark reference.",
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "85d6c77fb44a9a59c2cd4c0275190a45f0d598969aa098d031d5da441a7232dd",
+    "subjectSourceSha256": "9f56be332d6bf379d0d8e8334a763e5133190058f0b57204dd02dbc2e39b410c",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.053179210776880974,
+      "spine": 0.07604716747887467,
+      "chest": 0.05945915985588898,
+      "neck0": 0.03659696331322745,
+      "neck1": 0.04787087384002214,
+      "head": 0.042218460399333205,
+      "beak": 0.0675400935551513,
+      "legFarKnee": 0.10121213252165974,
+      "legFarAnkle": 0.05538057907950935,
+      "legFarFoot": 0.021134181861425485,
+      "legNearKnee": 0.06949068740074128,
+      "legNearAnkle": 0.06795765121092974,
+      "legNearFoot": 0.024014711610486388,
+      "wingFarRoot": 0.06960571436765176,
+      "wingFarTip": 0.08254620897148363,
+      "wingNearRoot": 0.03805265226800727,
+      "wingNearTip": 0.24343135523486176,
+      "tailFan": 0.203861505792291
+    },
+    "measures": {
+      "body": 0.1318901399551776,
+      "bone-min": 0.021134181861425485,
+      "bone-max": 0.24343135523486176,
+      "leg/torso:legFar": 1.3475373786319012,
+      "leg/torso:legNear": 1.2242238144339679,
+      "wing/torso": 1.1536262179329226
+    }
+  },
+  "recipeHash": "305facc14b3c103ffe88d1553e8d6efe8ed4eb9883b6b931688d2ba37d28f016"
+}

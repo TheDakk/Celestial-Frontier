@@ -1,0 +1,13 @@
+{
+  "id": "11-roadrunner",
+  "name": "Roadrunner",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6f4d5cd8-cfc7-4f05-99a0-72617f1d8d63.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2bca779a9e41b3602c8f97ed7ced955bd4d6c4765ad526e154a184101d3f53f9",
+  "bytes": 1224827,
+  "promptSha256": "502464742a23d03a6e74fbbcbc9929cb63d5b9eb3e7da4e59fd5a5756ed4baae",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

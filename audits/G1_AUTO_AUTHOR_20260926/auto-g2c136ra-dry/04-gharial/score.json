@@ -1,0 +1,18 @@
+{
+ "id": "04-gharial",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "reviewedPresence": {
+  "absent": [
+   "external-ears"
+  ],
+  "removedParts": [
+   "ear-near-tip",
+   "ear-near-base",
+   "ear-far-tip",
+   "ear-far-base"
+  ]
+ }
+}

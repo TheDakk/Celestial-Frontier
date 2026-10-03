@@ -1,0 +1,17 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+  "bindingHash": "63ff1d804849d48c4fa61f29d49bd2615795eb75ee2c65e28c7a88283a574cbc",
+  "pairs": [
+    [
+      "body",
+      "far-wing-shoulder"
+    ],
+    [
+      "body",
+      "near-wing-shoulder"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Only two shoulder-root paint boundaries are explicitly continuous; distal wing surfaces remain independent."
+}

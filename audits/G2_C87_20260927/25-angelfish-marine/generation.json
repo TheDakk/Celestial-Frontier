@@ -1,0 +1,13 @@
+{
+  "id": "25-angelfish-marine",
+  "name": "Angelfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-76bce0f5-886e-47d0-aa6f-2f04fd58e527.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4c14c5ac441636af8d8e671b62bfca36c567a0bd1627b19b3c06a1ab54106ef7",
+  "bytes": 1395317,
+  "promptSha256": "57ce254766ab736c1bfbb68810ac8682c0aaa02a35d363bbecedce02d63669f0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

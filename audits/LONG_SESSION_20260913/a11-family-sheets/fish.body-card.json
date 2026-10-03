@@ -1,0 +1,376 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:fish",
+  "seed": 659714,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "fish",
+  "version": 1,
+  "clipSetId": "fish-aquatic-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "swimmers",
+  "gait": "swim",
+  "templateGait": "swim"
+ },
+ "realm": "aquatic",
+ "materials": {
+  "body": "scaled",
+  "head": "scaled",
+  "legs": "scaled",
+  "tail": "scaled",
+  "ears": "scaled",
+  "wings": "scaled",
+  "fins": "scaled",
+  "antennae": "scaled",
+  "fronds": "scaled",
+  "arms": "scaled"
+ },
+ "parts": [
+  {
+   "joint": "head",
+   "parent": "root",
+   "group": "head",
+   "pivot": [
+    0.52,
+    0.5
+   ],
+   "tip": [
+    0.66,
+    0.5
+   ],
+   "boneLength": 0.14
+  },
+  {
+   "joint": "jaw",
+   "parent": "head",
+   "group": "head",
+   "pivot": [
+    0.66,
+    0.5
+   ],
+   "tip": [
+    0.74,
+    0.54
+   ],
+   "boneLength": 0.08944271909999156
+  },
+  {
+   "joint": "spine0",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.52,
+    0.5
+   ],
+   "tip": [
+    0.46,
+    0.5
+   ],
+   "boneLength": 0.06
+  },
+  {
+   "joint": "spine1",
+   "parent": "spine0",
+   "group": "body",
+   "pivot": [
+    0.46,
+    0.5
+   ],
+   "tip": [
+    0.4,
+    0.5
+   ],
+   "boneLength": 0.06
+  },
+  {
+   "joint": "spine2",
+   "parent": "spine1",
+   "group": "body",
+   "pivot": [
+    0.4,
+    0.5
+   ],
+   "tip": [
+    0.34,
+    0.5
+   ],
+   "boneLength": 0.06
+  },
+  {
+   "joint": "spine3",
+   "parent": "spine2",
+   "group": "body",
+   "pivot": [
+    0.34,
+    0.5
+   ],
+   "tip": [
+    0.28,
+    0.5
+   ],
+   "boneLength": 0.06
+  },
+  {
+   "joint": "spine4",
+   "parent": "spine3",
+   "group": "body",
+   "pivot": [
+    0.28,
+    0.5
+   ],
+   "tip": [
+    0.22,
+    0.5
+   ],
+   "boneLength": 0.060000000000000026
+  },
+  {
+   "joint": "spine5",
+   "parent": "spine4",
+   "group": "body",
+   "pivot": [
+    0.22,
+    0.5
+   ],
+   "tip": [
+    0.16,
+    0.5
+   ],
+   "boneLength": 0.06
+  },
+  {
+   "joint": "caudal",
+   "parent": "spine5",
+   "group": "fins",
+   "pivot": [
+    0.16,
+    0.5
+   ],
+   "tip": [
+    0.06,
+    0.5
+   ],
+   "boneLength": 0.1
+  },
+  {
+   "joint": "dorsal",
+   "parent": "spine1",
+   "group": "fins",
+   "pivot": [
+    0.4,
+    0.5
+   ],
+   "tip": [
+    0.4,
+    0.36
+   ],
+   "boneLength": 0.14
+  },
+  {
+   "joint": "pectoralFar",
+   "parent": "root",
+   "group": "fins",
+   "pivot": [
+    0.52,
+    0.5
+   ],
+   "tip": [
+    0.56,
+    0.6
+   ],
+   "boneLength": 0.10770329614269007
+  },
+  {
+   "joint": "pectoralNear",
+   "parent": "root",
+   "group": "fins",
+   "pivot": [
+    0.52,
+    0.5
+   ],
+   "tip": [
+    0.58,
+    0.62
+   ],
+   "boneLength": 0.13416407864998736
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "caudal",
+   "driver": "spine5",
+   "joints": [
+    "caudal"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "scaled",
+   "kind": "fin"
+  },
+  {
+   "id": "dorsal",
+   "driver": "spine1",
+   "joints": [
+    "dorsal"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "scaled",
+   "kind": "fin"
+  },
+  {
+   "id": "pectoralFar",
+   "driver": "root",
+   "joints": [
+    "pectoralFar"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "scaled",
+   "kind": "fin"
+  },
+  {
+   "id": "pectoralNear",
+   "driver": "root",
+   "joints": [
+    "pectoralNear"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "scaled",
+   "kind": "fin"
+  }
+ ],
+ "weapons": [
+  "bite"
+ ],
+ "luminous": false,
+ "bodyLength": 0.30000000000000004,
+ "groundLineY": 0.92,
+ "landmarks": {
+  "root": [
+   0.52,
+   0.5
+  ],
+  "head": [
+   0.66,
+   0.5
+  ],
+  "jaw": [
+   0.74,
+   0.54
+  ],
+  "spine0": [
+   0.46,
+   0.5
+  ],
+  "spine1": [
+   0.4,
+   0.5
+  ],
+  "spine2": [
+   0.34,
+   0.5
+  ],
+  "spine3": [
+   0.28,
+   0.5
+  ],
+  "spine4": [
+   0.22,
+   0.5
+  ],
+  "spine5": [
+   0.16,
+   0.5
+  ],
+  "caudal": [
+   0.06,
+   0.5
+  ],
+  "dorsal": [
+   0.4,
+   0.36
+  ],
+  "pectoralFar": [
+   0.56,
+   0.6
+  ],
+  "pectoralNear": [
+   0.58,
+   0.62
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -30,
+    "max": 30
+   },
+   "head": {
+    "min": -30,
+    "max": 30
+   },
+   "jaw": {
+    "min": -35,
+    "max": 5
+   },
+   "spine0": {
+    "min": -35,
+    "max": 35
+   },
+   "spine1": {
+    "min": -35,
+    "max": 35
+   },
+   "spine2": {
+    "min": -35,
+    "max": 35
+   },
+   "spine3": {
+    "min": -35,
+    "max": 35
+   },
+   "spine4": {
+    "min": -35,
+    "max": 35
+   },
+   "spine5": {
+    "min": -35,
+    "max": 35
+   },
+   "caudal": {
+    "min": -50,
+    "max": 50
+   },
+   "dorsal": {
+    "min": -35,
+    "max": 35
+   },
+   "pectoralFar": {
+    "min": -60,
+    "max": 60
+   },
+   "pectoralNear": {
+    "min": -60,
+    "max": 60
+   }
+  }
+ },
+ "notes": []
+}

@@ -1,0 +1,83 @@
+{
+  "name": "Screamer",
+  "family": "biped-bird",
+  "species": {
+    "name": "Screamer",
+    "aspect": 1.4,
+    "headFrac": 0.18,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "thin curved horn projecting from the forehead",
+      "goose-like bulky body with a small chicken-like bill",
+      "sharp bony spurs on the wing bends"
+    ],
+    "note": "Interpreted as the horned screamer. Despite being related to waterfowl the feet are only partly webbed and the bill is short and hooked, not flat."
+  },
+  "genome": {
+    "seed": 1646153115,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 10,
+    "body": 6,
+    "loco": 8,
+    "trait": 20,
+    "size": 3,
+    "diet": 3,
+    "head": 1,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 14,
+    "detail": 8,
+    "accent": 15,
+    "temper": 1,
+    "sense": 6,
+    "repro": 5,
+    "life": 5,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Screamer"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Screamer\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1646153115\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "index": 612,
+  "profile": {
+    "id": "wading-bird",
+    "names": [
+      "Heron",
+      "Egret",
+      "Ibis",
+      "Stork",
+      "Crane",
+      "Spoonbill",
+      "Flamingo",
+      "Curlew",
+      "Snipe",
+      "Plover",
+      "Sandpiper",
+      "Rail",
+      "Bittern",
+      "Oystercatcher",
+      "Godwit",
+      "Avocet",
+      "Screamer"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

@@ -1,0 +1,1295 @@
+{
+  "schema": "cf.c173-equid-authoring-delta/v1",
+  "id": "horse",
+  "sourcePixelsChanged": false,
+  "groundLineChanged": false,
+  "nonEarLandmarksChanged": false,
+  "sourceLandmarksReused": true,
+  "sourceLabelsReused": false,
+  "coordinateUnit": "pixels of the original 1254-square painting",
+  "earLandmarks": {
+    "earNearRoot": {
+      "original": [
+        907.4,
+        334.9
+      ],
+      "candidate": [
+        952,
+        337
+      ]
+    },
+    "earNearTip": {
+      "original": [
+        906.9,
+        309.3
+      ],
+      "candidate": [
+        969,
+        283
+      ]
+    },
+    "earFarRoot": {
+      "original": [
+        988.5,
+        332.6
+      ],
+      "candidate": [
+        987,
+        330
+      ]
+    },
+    "earFarTip": {
+      "original": [
+        994.5,
+        290.5
+      ],
+      "candidate": [
+        996,
+        285
+      ]
+    }
+  },
+  "parts": [
+    {
+      "id": "ear-near-tip",
+      "joint": "earNearTip",
+      "original": [
+        [
+          869.9,
+          328.7
+        ],
+        [
+          870.8,
+          310.2
+        ],
+        [
+          916,
+          287.5
+        ],
+        [
+          968.2,
+          314.6
+        ]
+      ],
+      "candidate": [
+        [
+          948,
+          310
+        ],
+        [
+          951,
+          293
+        ],
+        [
+          973,
+          274
+        ],
+        [
+          979,
+          287
+        ],
+        [
+          971,
+          316
+        ],
+        [
+          955,
+          329
+        ]
+      ]
+    },
+    {
+      "id": "ear-near-root",
+      "joint": "earNearRoot",
+      "original": [
+        [
+          861.1,
+          327.4
+        ],
+        [
+          961.8,
+          302.9
+        ],
+        [
+          980,
+          362.3
+        ],
+        [
+          870.1,
+          353.8
+        ]
+      ],
+      "candidate": [
+        [
+          940,
+          319
+        ],
+        [
+          968,
+          311
+        ],
+        [
+          977,
+          340
+        ],
+        [
+          956,
+          361
+        ],
+        [
+          935,
+          348
+        ]
+      ]
+    },
+    {
+      "id": "ear-far-tip",
+      "joint": "earFarTip",
+      "original": [
+        [
+          969.8,
+          303.4
+        ],
+        [
+          1009.3,
+          272.1
+        ],
+        [
+          1031.2,
+          307.4
+        ],
+        [
+          1018.6,
+          340.6
+        ]
+      ],
+      "candidate": [
+        [
+          981,
+          307
+        ],
+        [
+          990,
+          286
+        ],
+        [
+          1001,
+          275
+        ],
+        [
+          1007,
+          294
+        ],
+        [
+          998,
+          326
+        ],
+        [
+          984,
+          331
+        ]
+      ]
+    },
+    {
+      "id": "ear-far-root",
+      "joint": "earFarRoot",
+      "original": [
+        [
+          958.6,
+          300.8
+        ],
+        [
+          1017,
+          334.3
+        ],
+        [
+          1024.5,
+          381
+        ],
+        [
+          966.1,
+          350.3
+        ]
+      ],
+      "candidate": [
+        [
+          978,
+          320
+        ],
+        [
+          1001,
+          324
+        ],
+        [
+          1009,
+          359
+        ],
+        [
+          989,
+          379
+        ],
+        [
+          974,
+          350
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "original": [
+        [
+          911.3,
+          403.6
+        ],
+        [
+          1082.7,
+          449.6
+        ],
+        [
+          1039.2,
+          574.3
+        ],
+        [
+          910.7,
+          524.5
+        ],
+        [
+          880.3,
+          442
+        ]
+      ],
+      "candidate": [
+        [
+          970,
+          421
+        ],
+        [
+          1054,
+          446
+        ],
+        [
+          1057,
+          500
+        ],
+        [
+          1010,
+          519
+        ],
+        [
+          955,
+          472
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "original": [
+        [
+          877.7,
+          342.4
+        ],
+        [
+          1065.5,
+          359.7
+        ],
+        [
+          1082.4,
+          457.1
+        ],
+        [
+          903.2,
+          415.7
+        ],
+        [
+          841.2,
+          390.3
+        ]
+      ],
+      "candidate": [
+        [
+          922,
+          323
+        ],
+        [
+          982,
+          322
+        ],
+        [
+          1015,
+          409
+        ],
+        [
+          1058,
+          446
+        ],
+        [
+          1058,
+          486
+        ],
+        [
+          1016,
+          508
+        ],
+        [
+          938,
+          456
+        ],
+        [
+          907,
+          408
+        ],
+        [
+          910,
+          353
+        ]
+      ]
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "original": [
+        [
+          777.1,
+          379
+        ],
+        [
+          879.9,
+          341.3
+        ],
+        [
+          841.2,
+          390.3
+        ],
+        [
+          903.2,
+          415.7
+        ],
+        [
+          910.7,
+          524.5
+        ],
+        [
+          834.8,
+          558.7
+        ],
+        [
+          757.8,
+          457.1
+        ]
+      ],
+      "candidate": [
+        [
+          759,
+          359
+        ],
+        [
+          815,
+          325
+        ],
+        [
+          899,
+          290
+        ],
+        [
+          945,
+          301
+        ],
+        [
+          969,
+          333
+        ],
+        [
+          921,
+          376
+        ],
+        [
+          907,
+          444
+        ],
+        [
+          865,
+          537
+        ],
+        [
+          815,
+          602
+        ],
+        [
+          783,
+          523
+        ],
+        [
+          744,
+          452
+        ]
+      ]
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "original": [
+        [
+          736.5,
+          439.2
+        ],
+        [
+          753.8,
+          423.7
+        ],
+        [
+          834.8,
+          557.7
+        ],
+        [
+          790.3,
+          636.4
+        ],
+        [
+          749.2,
+          582.9
+        ],
+        [
+          721.9,
+          508.1
+        ]
+      ],
+      "candidate": [
+        [
+          631,
+          448
+        ],
+        [
+          701,
+          416
+        ],
+        [
+          764,
+          349
+        ],
+        [
+          791,
+          420
+        ],
+        [
+          802,
+          492
+        ],
+        [
+          824,
+          559
+        ],
+        [
+          825,
+          638
+        ],
+        [
+          780,
+          682
+        ],
+        [
+          695,
+          679
+        ],
+        [
+          657,
+          623
+        ],
+        [
+          617,
+          548
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "original": [
+        [
+          318.9,
+          874.6
+        ],
+        [
+          384.1,
+          882.9
+        ],
+        [
+          409.1,
+          955.6
+        ],
+        [
+          323.8,
+          937.4
+        ]
+      ],
+      "candidate": [
+        [
+          327,
+          884
+        ],
+        [
+          375,
+          881
+        ],
+        [
+          402,
+          946
+        ],
+        [
+          322,
+          949
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-ankle",
+      "joint": "hindNearAnkle",
+      "original": [
+        [
+          340.5,
+          784.8
+        ],
+        [
+          377.2,
+          791.3
+        ],
+        [
+          364.7,
+          884.2
+        ],
+        [
+          325.1,
+          897.5
+        ]
+      ],
+      "candidate": [
+        [
+          317,
+          787
+        ],
+        [
+          364,
+          778
+        ],
+        [
+          380,
+          886
+        ],
+        [
+          339,
+          912
+        ],
+        [
+          318,
+          879
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-knee",
+      "joint": "hindNearKnee",
+      "original": [
+        [
+          378.9,
+          689.6
+        ],
+        [
+          417.7,
+          642.5
+        ],
+        [
+          375.5,
+          808.1
+        ],
+        [
+          341.4,
+          794
+        ]
+      ],
+      "candidate": [
+        [
+          350,
+          696
+        ],
+        [
+          414,
+          668
+        ],
+        [
+          411,
+          731
+        ],
+        [
+          366,
+          808
+        ],
+        [
+          318,
+          820
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-root",
+      "joint": "hindNearRoot",
+      "original": [
+        [
+          395.4,
+          472
+        ],
+        [
+          514.3,
+          463.3
+        ],
+        [
+          485,
+          545.3
+        ],
+        [
+          406.5,
+          674.4
+        ],
+        [
+          377.8,
+          697.7
+        ]
+      ],
+      "candidate": [
+        [
+          391,
+          482
+        ],
+        [
+          493,
+          468
+        ],
+        [
+          512,
+          564
+        ],
+        [
+          451,
+          643
+        ],
+        [
+          398,
+          710
+        ],
+        [
+          354,
+          730
+        ],
+        [
+          348,
+          683
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "original": [
+        [
+          549.1,
+          878.9
+        ],
+        [
+          596.5,
+          871.1
+        ],
+        [
+          614.2,
+          949.4
+        ],
+        [
+          530.6,
+          936.6
+        ]
+      ],
+      "candidate": [
+        [
+          536,
+          878
+        ],
+        [
+          586,
+          868
+        ],
+        [
+          624,
+          943
+        ],
+        [
+          534,
+          948
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-ankle",
+      "joint": "hindFarAnkle",
+      "original": [
+        [
+          543.7,
+          876.2
+        ],
+        [
+          538.6,
+          806.7
+        ],
+        [
+          565.2,
+          866.4
+        ],
+        [
+          544.5,
+          899.1
+        ]
+      ],
+      "candidate": [
+        [
+          489,
+          782
+        ],
+        [
+          535,
+          768
+        ],
+        [
+          567,
+          873
+        ],
+        [
+          579,
+          905
+        ],
+        [
+          529,
+          915
+        ],
+        [
+          495,
+          841
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-knee",
+      "joint": "hindFarKnee",
+      "original": [
+        [
+          459.6,
+          634.5
+        ],
+        [
+          504.8,
+          705.4
+        ],
+        [
+          539.8,
+          808.8
+        ],
+        [
+          545.7,
+          882
+        ]
+      ],
+      "candidate": [
+        [
+          472,
+          681
+        ],
+        [
+          518,
+          663
+        ],
+        [
+          548,
+          786
+        ],
+        [
+          507,
+          820
+        ],
+        [
+          478,
+          762
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-root",
+      "joint": "hindFarRoot",
+      "original": [
+        [
+          479.8,
+          473.3
+        ],
+        [
+          594.8,
+          533.4
+        ],
+        [
+          530.5,
+          683.5
+        ],
+        [
+          518.2,
+          766.9
+        ],
+        [
+          448.1,
+          644.4
+        ]
+      ],
+      "candidate": [
+        [
+          465,
+          559
+        ],
+        [
+          534,
+          552
+        ],
+        [
+          554,
+          620
+        ],
+        [
+          527,
+          701
+        ],
+        [
+          481,
+          740
+        ],
+        [
+          452,
+          678
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "original": [
+        [
+          664.5,
+          857
+        ],
+        [
+          751.6,
+          877.6
+        ],
+        [
+          761.7,
+          940.2
+        ],
+        [
+          663,
+          921
+        ]
+      ],
+      "candidate": [
+        [
+          661,
+          887
+        ],
+        [
+          707,
+          883
+        ],
+        [
+          739,
+          941
+        ],
+        [
+          650,
+          946
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-ankle",
+      "joint": "foreNearAnkle",
+      "original": [
+        [
+          695.6,
+          780.4
+        ],
+        [
+          760.9,
+          757.4
+        ],
+        [
+          717.6,
+          867.4
+        ],
+        [
+          663.1,
+          876.1
+        ]
+      ],
+      "candidate": [
+        [
+          661,
+          789
+        ],
+        [
+          710,
+          778
+        ],
+        [
+          720,
+          885
+        ],
+        [
+          691,
+          913
+        ],
+        [
+          651,
+          897
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-knee",
+      "joint": "foreNearKnee",
+      "original": [
+        [
+          722.1,
+          696.4
+        ],
+        [
+          783.1,
+          666.4
+        ],
+        [
+          755.8,
+          764
+        ],
+        [
+          693.4,
+          787.1
+        ]
+      ],
+      "candidate": [
+        [
+          693,
+          698
+        ],
+        [
+          743,
+          678
+        ],
+        [
+          734,
+          792
+        ],
+        [
+          686,
+          822
+        ],
+        [
+          659,
+          815
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-root",
+      "joint": "foreNearRoot",
+      "original": [
+        [
+          709.6,
+          548.7
+        ],
+        [
+          764.1,
+          557.3
+        ],
+        [
+          785.9,
+          673.2
+        ],
+        [
+          714.3,
+          718.5
+        ]
+      ],
+      "candidate": [
+        [
+          690,
+          622
+        ],
+        [
+          759,
+          602
+        ],
+        [
+          786,
+          653
+        ],
+        [
+          742,
+          718
+        ],
+        [
+          690,
+          760
+        ],
+        [
+          670,
+          711
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "original": [
+        [
+          888.6,
+          880.3
+        ],
+        [
+          954.3,
+          885.2
+        ],
+        [
+          947.4,
+          969.4
+        ],
+        [
+          865.8,
+          953.5
+        ]
+      ],
+      "candidate": [
+        [
+          877,
+          885
+        ],
+        [
+          927,
+          876
+        ],
+        [
+          958,
+          949
+        ],
+        [
+          872,
+          952
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-ankle",
+      "joint": "foreFarAnkle",
+      "original": [
+        [
+          862.4,
+          803.5
+        ],
+        [
+          898.6,
+          798.9
+        ],
+        [
+          932.5,
+          893.6
+        ],
+        [
+          891.2,
+          901.3
+        ]
+      ],
+      "candidate": [
+        [
+          830,
+          776
+        ],
+        [
+          880,
+          771
+        ],
+        [
+          919,
+          888
+        ],
+        [
+          879,
+          911
+        ],
+        [
+          855,
+          881
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-knee",
+      "joint": "foreFarKnee",
+      "original": [
+        [
+          792,
+          666
+        ],
+        [
+          855.8,
+          691.6
+        ],
+        [
+          899.7,
+          808
+        ],
+        [
+          863.8,
+          817.1
+        ]
+      ],
+      "candidate": [
+        [
+          784,
+          670
+        ],
+        [
+          844,
+          655
+        ],
+        [
+          886,
+          784
+        ],
+        [
+          832,
+          808
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-root",
+      "joint": "foreFarRoot",
+      "original": [
+        [
+          773,
+          530.5
+        ],
+        [
+          838.9,
+          511.5
+        ],
+        [
+          857.1,
+          708.7
+        ],
+        [
+          795.1,
+          692.3
+        ]
+      ],
+      "candidate": [
+        [
+          738,
+          548
+        ],
+        [
+          824,
+          530
+        ],
+        [
+          854,
+          604
+        ],
+        [
+          846,
+          677
+        ],
+        [
+          798,
+          731
+        ],
+        [
+          747,
+          677
+        ]
+      ]
+    }
+  ],
+  "partOrder": {
+    "original": [
+      "hind-near-paw",
+      "hind-near-ankle",
+      "hind-near-knee",
+      "hind-near-root",
+      "hind-far-paw",
+      "hind-far-ankle",
+      "hind-far-knee",
+      "hind-far-root",
+      "fore-near-paw",
+      "fore-near-ankle",
+      "fore-near-knee",
+      "fore-near-root",
+      "fore-far-paw",
+      "fore-far-ankle",
+      "fore-far-knee",
+      "fore-far-root",
+      "ear-near-tip",
+      "ear-near-root",
+      "ear-far-tip",
+      "ear-far-root",
+      "jaw",
+      "head",
+      "neck",
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0",
+      "chest",
+      "pelvis",
+      "root",
+      "spine"
+    ],
+    "candidate": [
+      "root",
+      "hind-near-paw",
+      "hind-near-ankle",
+      "hind-near-knee",
+      "hind-near-root",
+      "hind-far-paw",
+      "hind-far-ankle",
+      "hind-far-knee",
+      "hind-far-root",
+      "fore-near-paw",
+      "fore-near-ankle",
+      "fore-near-knee",
+      "fore-near-root",
+      "fore-far-paw",
+      "fore-far-ankle",
+      "fore-far-knee",
+      "fore-far-root",
+      "ear-near-tip",
+      "ear-near-root",
+      "ear-far-tip",
+      "ear-far-root",
+      "jaw",
+      "head",
+      "neck",
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0",
+      "chest",
+      "pelvis",
+      "spine"
+    ],
+    "reason": "Keep the exact fixed interior root contour ahead of the broadened chest; every other relative order stays unchanged."
+  },
+  "reviewedSourceObservation": "The visible near ear is the long pinna around954–972x; the old907x landmark described the crest/mane. The far pinna remains separately visible behind it. Neck and chest contours follow the full crest rather than leaving mane pixels to spine. Leg names retain the existing joint association; physical near/far depth during crossing still requires moving-paint review.",
+  "scope": "Complete source-specific ears, head/neck/mane/chest and sixteen existing limb contours. Remaining original parts and anatomical owner IDs/layers stay exact. No source paint deletion, joint invention, ground shift, runtime change or cap change.",
+  "qualityAccepted": false,
+  "nativeAcceptance": false
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Bumblebee",
+  "masterSha256": "3eb05d80e7934cf611378e2bd8a4c7587d54133f2dd84fe359a9b437328cf7bf",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Parent full-size original review: Dense yellow/black fur and pale abdomen tip are visible. Five distinct distal leg silhouettes; sixth chain/root is not independently traceable. Wing roots overlap. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 248,
+      "y0": 366,
+      "x1": 1027,
+      "y1": 894
+    },
+    "margins": {
+      "left": 248,
+      "right": 226,
+      "top": 366,
+      "bottom": 359
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

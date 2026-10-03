@@ -1,0 +1,13 @@
+# C101 — 24 generated Earth originals, 2026-09-27
+
+12 fish,8 birds,4 quadrupeds; exact `pilot.json` ready for automatic scoring. Built-in image generation, one canonical compiled pattern-first prompt per species, approved Discovery Atlas style reference. Every master is an untouched1254-square original; source copy, prompt and subject hashes are retained and independently checked in `originals-verified.json`. No hand authoring, retouch, keying edits or admission.
+
+Seven pre-generation pose/anatomy context clarifications preserve their prior prompt/request bytes and hashes in `context-clarifications.json`: grounded/resting flight-profile birds, full peacock train, and the Mole's canonical absence of external ears/visible eyes overriding the generic both-ears request. These are requests, not measured absence declarations.
+
+All24 originals inspected at full size; exact notes in `visual-notes.json` and per-subject reviews. Both pattern-requiring species (Pipefish,Civet) PASS;22 NOT_REQUIRED. Clear8% margin:23 PASS, **Deep-Sea Fish REFUSE** (left96/right97 versus required101). Keep its original and refusal; no threshold change. The larger half-canvas/200px request is not claimed achieved.
+
+Anatomy holds stay separate from numeric scoring: Flying Fish appears to have three enlarged shoulder fins; Anglerfish/Fangtooth/Dragonfish/Deep-Sea Fish have exaggerated or extra fin/spine/lure structures; Barreleye dome/fin proportions are stylized. Hummingbird has overly large walking feet; Snow Petrel webbing unclear; Albatross long wing proportions unresolved. Civet reads partly genet-like; Possum toes, Mole forepaw orientation and Beaver long legs/webbing need review. Peacock eyespots, Condor ruff and Snow Petrel white plumage visibly retained. Full notes govern over this summary. No automatic pass clears these holds.
+
+Dakk required art to continue alongside complete I5 repair. All24 are delivered while the independent Back repair and controls proceed. Claude can score without relay; final visual acceptance remains Dakk's one end pass. Quiet signed-source develop battery plus seven owners follows. Disk approximately196GiB, floor40GiB.
+
+Final batch verification: signed8861b8f4e unchanged-source profile5,675PASS/I5solefailure; allseven remaining owners PASS, exact HEAD/source/log hashes verified. Duplicate-bullet preliminary red retained and corrected without changing sealed copy authority. Root validate/smoke/layoutselftest and focused phone+desktop Back/keyboard controls PASS.24exact originals,23framingPASS/1held; C100three motion candidates remain visually scoped.196GiBfree. PUBLIC/UNFROZEN/five unchanged manual-label workflows checked. Proceed one fresh changed-source local I5 proof; never retry a stopped epoch.

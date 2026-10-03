@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Raccoon",
+  "masterSha256": "5f74c15f28ac1d4342eb149985cfc1dc5934a3971514c875743482b439306310",
+  "required": [
+    "ringed banded tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "ringed banded tail",
+      "status": "PRESENT",
+      "observed": "Black eye mask and clearly alternating dark/light rings along the visible complete tail."
+    }
+  ]
+}

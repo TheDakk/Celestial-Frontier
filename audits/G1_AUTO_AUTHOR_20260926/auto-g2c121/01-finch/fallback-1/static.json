@@ -1,0 +1,521 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "RED",
+  "sourceHead": "f307d0a00db43d71e89793c6367b037915824ffc",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.23132274083865198,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.1686419693607992,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:walk",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.2373709207326761,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 3.376611507232129e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:flight",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:peck",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.15355413955475036,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:claw",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.04962991599082326,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.23908321373778685,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00003813975417848554,
+      "maxGapPx": 0.00007183301348993114,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.1517108426398845,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 3.376611507232129e-16,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.05292478888877339,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.058335904448051853,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 2.7755575615628914e-16,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 24,
+      "attemptedSamples": 25,
+      "status": "RED",
+      "maxPaintDriftPx": 0.222756733854862,
+      "maxGapPx": 0.00007046953079060355,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true,
+      "firstRefusal": {
+        "sampleIndex": 24,
+        "sampleNumber": 25,
+        "ms": 166.4,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-WKgV93/run.mjs:26621:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-WKgV93/run.mjs:27098:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-WKgV93/run.mjs:17343:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-WKgV93/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-WKgV93/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-WKgV93/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": 0.104448,
+              "dy": 0.03531308061624307
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck0": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck1": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": -0.060765,
+              "dx": 0,
+              "dy": 0
+            },
+            "beak": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": 0.3761976400288095
+            },
+            "legFarAnkle": {
+              "rotation": -0.7615014100746809
+            },
+            "legFarFoot": {
+              "rotation": 0.3853037700458714
+            },
+            "legNearKnee": {
+              "rotation": -0.14494359517040856
+            },
+            "legNearAnkle": {
+              "rotation": 0.8609305354453682
+            },
+            "legNearFoot": {
+              "rotation": -0.7159869402749597
+            },
+            "wingFarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "wingNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "tailFan": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [
+            {
+              "joint": "legFarAnkle",
+              "target": {
+                "x": 0.5993620414673047,
+                "y": 0.6878787878787879
+              },
+              "endpointTarget": {
+                "x": 0.6037804130800184,
+                "y": 0.6859203765505756
+              },
+              "paintedTarget": {
+                "x": 0.5964912280701754,
+                "y": 0.6754385964912281
+              },
+              "stance": true
+            },
+            {
+              "joint": "legNearAnkle",
+              "target": {
+                "x": 0.4130781499202552,
+                "y": 0.6825358851674641
+              },
+              "endpointTarget": {
+                "x": 0.40354206044652086,
+                "y": 0.6843333101884149
+              },
+              "paintedTarget": {
+                "x": 0.4059011164274322,
+                "y": 0.6706539074960127
+              },
+              "stance": true
+            }
+          ],
+          "maxError": 3.1401849173675503e-16,
+          "compression": 0.009012865078562138,
+          "maxPaintTargetErrorPx": 0.07141414731771298
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0.104448,
+            "dy": 0.03531308061624307
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck0": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck1": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": -0.060765,
+            "dx": 0,
+            "dy": 0
+          },
+          "beak": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": 0.3761976400288095
+          },
+          "legFarAnkle": {
+            "rotation": -0.7615014100746809
+          },
+          "legFarFoot": {
+            "rotation": 0.3853037700458714
+          },
+          "legNearKnee": {
+            "rotation": -0.14494359517040856
+          },
+          "legNearAnkle": {
+            "rotation": 0.8609305354453682
+          },
+          "legNearFoot": {
+            "rotation": -0.7159869402749597
+          },
+          "wingFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "wingFarTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "wingNearRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "wingNearTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "tailFan": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "arapStats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 17.409155474508076,
+          "rmsTargetErrorPx": 1.5020981743919095,
+          "maximumProjectionPx": 5.056381145690728,
+          "flippedTriangles": 2,
+          "minimumAreaRatio": -0.00703480334251907,
+          "orientationPasses": 128
+        }
+      }
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.04967302530502135,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:kick",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007927822204899168,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "5c880dc46e9d80825b766430fa6a412a48133b9d1a4612b51dff2be7e81921c7",
+  "bindingHash": "71acd723f728773afb0653cf6d863ce93a7a9784e9feac535bb70a854e81b040",
+  "family": "biped-bird",
+  "contacts": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:walk",
+    "approach:flight",
+    "melee:peck",
+    "melee:claw",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:kick"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 1043,
+    "attemptedSamples": 1043,
+    "status": "PASS",
+    "maxPaintDriftPx": 0.24216337258947182,
+    "maxGapPx": 0.00007927822204899168,
+    "maxEndpointError": 4.0029660424867215e-16,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 3965.857786796987
+      },
+      {
+        "id": "alert",
+        "startMs": 3965.857786796987,
+        "endMs": 4657.857786796987
+      },
+      {
+        "id": "approach:walk",
+        "startMs": 4657.857786796987,
+        "endMs": 5549.857786796987
+      },
+      {
+        "id": "approach:flight",
+        "startMs": 5549.857786796987,
+        "endMs": 6441.857786796987
+      },
+      {
+        "id": "melee:peck",
+        "startMs": 6441.857786796987,
+        "endMs": 7420.524453463654
+      },
+      {
+        "id": "melee:claw",
+        "startMs": 7420.524453463654,
+        "endMs": 8399.191120130321
+      },
+      {
+        "id": "cast",
+        "startMs": 8399.191120130321,
+        "endMs": 9481.191120130321
+      },
+      {
+        "id": "hit",
+        "startMs": 9481.191120130321,
+        "endMs": 10403.191120130321
+      },
+      {
+        "id": "dodge",
+        "startMs": 10403.191120130321,
+        "endMs": 11155.191120130321
+      },
+      {
+        "id": "faint",
+        "startMs": 11155.191120130321,
+        "endMs": 12147.191120130321
+      },
+      {
+        "id": "victory",
+        "startMs": 12147.191120130321,
+        "endMs": 13219.191120130321
+      },
+      {
+        "id": "tame",
+        "startMs": 13219.191120130321,
+        "endMs": 14331.191120130321
+      },
+      {
+        "id": "feed",
+        "startMs": 14331.191120130321,
+        "endMs": 15383.191120130321
+      },
+      {
+        "id": "melee:kick",
+        "startMs": 15383.191120130321,
+        "endMs": 16361.857786796987
+      }
+    ],
+    "durationMs": 17361.857786796987
+  },
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/01-finch/fallback-1/fit/record.json",
+      "sha256": "5de24fe880a3e83aa9e91845463b98f4e0777131760b9a441ef9e1e8becead48",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/01-finch/fallback-1/fit/binding.json",
+      "sha256": "b87a816e07d4e2490231fcea7765f58a4d62fe033807d245227999bfd44eca9a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/01-finch/fallback-1/fit/parts/manifest.json",
+      "sha256": "f662997d89ef477ca40dca84681219c6bea5a9eaef034f242ed918b6ffb6f8a2",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/01-finch/fallback-1/fit/parts/atlas/01-finch.png",
+      "sha256": "7df2f05b38a7af50854dfe0aa66a16efeeb872f3a2a653b9992ea1db580c8f19",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/01-finch/fallback-1/fit/parts/keyed.png",
+      "sha256": "8ee7e939b7b2d9575e9afb4dd3eb06a70db0be4c1ab197aa7ddabe407d5659bc",
+      "unchanged": true
+    }
+  ]
+}

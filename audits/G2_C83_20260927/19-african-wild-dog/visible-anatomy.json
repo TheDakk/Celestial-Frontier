@@ -1,0 +1,199 @@
+{
+  "id": "19-african-wild-dog",
+  "name": "African Wild Dog",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6c065b50401371701d1c882d948e4adce38400917a614a009085a91a94439f24",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13536,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 151,
+      "y0": 163,
+      "x1": 290,
+      "y1": 220
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1574,
+        "pixels": 2131,
+        "box": {
+          "x0": 263,
+          "y0": 125,
+          "x1": 327,
+          "y1": 194
+        },
+        "attach": {
+          "x": 284.1,
+          "y": 171.9,
+          "relX": 0.96,
+          "relY": 0.16
+        },
+        "dir": {
+          "x": 0.68,
+          "y": -0.74
+        },
+        "class": "top",
+        "length": 63.5
+      },
+      {
+        "k": 1,
+        "frac": 0.087,
+        "pixels": 1178,
+        "box": {
+          "x0": 103,
+          "y0": 176,
+          "x1": 150,
+          "y1": 238
+        },
+        "attach": {
+          "x": 150,
+          "y": 189,
+          "relX": -0.01,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": -0.72,
+          "y": 0.7
+        },
+        "class": "limb-down",
+        "length": 67.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0634,
+        "pixels": 858,
+        "box": {
+          "x0": 172,
+          "y0": 208,
+          "x1": 207,
+          "y1": 282
+        },
+        "attach": {
+          "x": 190.3,
+          "y": 215.5,
+          "relX": 0.28,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -0.13,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 69
+      },
+      {
+        "k": 3,
+        "frac": 0.0725,
+        "pixels": 981,
+        "box": {
+          "x0": 120,
+          "y0": 214,
+          "x1": 175,
+          "y1": 281
+        },
+        "attach": {
+          "x": 161.7,
+          "y": 216.8,
+          "relX": 0.08,
+          "relY": 0.94
+        },
+        "dir": {
+          "x": -0.61,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 76.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0497,
+        "pixels": 673,
+        "box": {
+          "x0": 217,
+          "y0": 217,
+          "x1": 247,
+          "y1": 282
+        },
+        "attach": {
+          "x": 238,
+          "y": 220.5,
+          "relX": 0.63,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.29,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 65
+      },
+      {
+        "k": 5,
+        "frac": 0.0628,
+        "pixels": 850,
+        "box": {
+          "x0": 249,
+          "y0": 221,
+          "x1": 303,
+          "y1": 284
+        },
+        "attach": {
+          "x": 258,
+          "y": 221,
+          "relX": 0.77,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 77.4
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 120,
+        "x1": 137,
+        "cx": 128.8
+      },
+      {
+        "x0": 186,
+        "x1": 207,
+        "cx": 196.3
+      },
+      {
+        "x0": 218,
+        "x1": 235,
+        "cx": 225.8
+      },
+      {
+        "x0": 280,
+        "x1": 303,
+        "cx": 291.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

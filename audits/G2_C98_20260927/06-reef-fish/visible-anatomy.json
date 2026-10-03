@@ -1,0 +1,186 @@
+{
+  "id": "06-reef-fish",
+  "name": "Reef Fish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "9754a6edfb062e8946a9321023641c144d4cd8138956390071f3787298d9c336",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 32774,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 164,
+      "y0": 112,
+      "x1": 325,
+      "y1": 261
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0122,
+        "pixels": 401,
+        "box": {
+          "x0": 205,
+          "y0": 100,
+          "x1": 264,
+          "y1": 111
+        },
+        "attach": {
+          "x": 234.5,
+          "y": 111,
+          "relX": 0.44,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.15,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 31.5
+      },
+      {
+        "k": 1,
+        "frac": 0.0353,
+        "pixels": 1156,
+        "box": {
+          "x0": 139,
+          "y0": 127,
+          "x1": 165,
+          "y1": 184
+        },
+        "attach": {
+          "x": 165,
+          "y": 155,
+          "relX": 0.01,
+          "relY": 0.29
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.05
+        },
+        "class": "rear",
+        "length": 38.9
+      },
+      {
+        "k": 2,
+        "frac": 0.1726,
+        "pixels": 5658,
+        "box": {
+          "x0": 53,
+          "y0": 150,
+          "x1": 163,
+          "y1": 261
+        },
+        "attach": {
+          "x": 163,
+          "y": 205,
+          "relX": -0.01,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -1,
+          "y": 0
+        },
+        "class": "rear",
+        "length": 123.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0267,
+        "pixels": 875,
+        "box": {
+          "x0": 326,
+          "y0": 171,
+          "x1": 349,
+          "y1": 233
+        },
+        "attach": {
+          "x": 326,
+          "y": 202,
+          "relX": 1.01,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.12
+        },
+        "class": "front",
+        "length": 38.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0588,
+        "pixels": 1928,
+        "box": {
+          "x0": 139,
+          "y0": 226,
+          "x1": 226,
+          "y1": 283
+        },
+        "attach": {
+          "x": 183.2,
+          "y": 255.3,
+          "relX": 0.12,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.86,
+          "y": 0.51
+        },
+        "class": "limb-down",
+        "length": 53
+      },
+      {
+        "k": 5,
+        "frac": 0.0309,
+        "pixels": 1013,
+        "box": {
+          "x0": 230,
+          "y0": 262,
+          "x1": 281,
+          "y1": 303
+        },
+        "attach": {
+          "x": 264.5,
+          "y": 262,
+          "relX": 0.62,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.56,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 53.6
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 2,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 230,
+        "x1": 255,
+        "cx": 241.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

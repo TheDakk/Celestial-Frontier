@@ -1,0 +1,16 @@
+{
+  "tool": "image_gen.imagegen",
+  "sourceHead": "2e116b1d684b88e63f9e3aa6b4660a6402c3b24a",
+  "template": "audits/VISION_P1_FOUR_CRABS_20260920/crab/generation-01/sent-prompt.txt",
+  "templateSha256": "b00876e7222ed17a2832e8bbe841c799139d5272c33ed906fade55248b411864",
+  "promptSha256": "0bc699a2234be7201a03b952bdfa9335c320be9e3c5a65d874c344e30759065a",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "model": "not exposed",
+  "seed": "not exposed",
+  "generation": 1
+}

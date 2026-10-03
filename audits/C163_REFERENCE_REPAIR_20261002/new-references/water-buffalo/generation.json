@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c163-reference-generation/v1",
+  "generator": "built-in image_gen",
+  "intent": "one bounded source-specific anatomical reference edit",
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-5ae5deaa-0165-4a8b-a119-bd73c1bf7f9c.png",
+  "sourceOutputSha256": "74f0027c221d38a3b6d70e8068c77b4a97f04ba47d16c6f12c731cf50c00fc35",
+  "retainedMaster": "audits/C163_REFERENCE_REPAIR_20261002/new-references/water-buffalo/master.png",
+  "retainedSha256": "74f0027c221d38a3b6d70e8068c77b4a97f04ba47d16c6f12c731cf50c00fc35",
+  "bytes": 1187416,
+  "nativeCanvas": {
+    "width": 1254,
+    "height": 1254
+  },
+  "actualInput": {
+    "path": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo/master.png",
+    "sha256": "9ee61714939202265479c4603a29802ddc690812ff4ae059b7b45713e59868d8"
+  },
+  "basePrompt": {
+    "path": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo/prompt.txt",
+    "sha256": "47d931d6693a25751a625f72d5067c8f4c05ea2cc6df3742867861188672c532"
+  },
+  "sentPrompt": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/new-references/water-buffalo/prompt.txt",
+    "sha256": "40002e534d337003d7c18076328acfed138290f95671804eb5f58c52ee80a0b4"
+  },
+  "instruction": "TARGETED REFERENCE EDIT: preserve this exact adult Water Buffalo, long sweeping paired horns, sparse dark hide, four separately visible legs, cloven hooves, full natural tufted tail, painted style, scale, framing and native 1254 by 1254 square canvas. Make a small natural head-pose adjustment so its EXISTING far ear becomes clearly visible on the other side of the skull, separately below or behind the far horn, with its complete attachment and tip. Exactly TWO natural ears total; keep the near ear complete and distinct. Keep exactly the original TWO long swept horns with their original shape, no additional horn and no ear substituted for a horn. Leave all four legs and planted hooves unchanged. Preserve the entire connected head, muzzle, nape and tail with no floating paint. All non-subject pixels stay perfectly flat pure #FF00FF. No floor, shadow, scenery, labels or text. Keep generous margins.",
+  "basePromptPreservedVerbatim": true,
+  "originalPixelsModified": false,
+  "originalSourceUnchanged": true,
+  "qualityAccepted": false
+}

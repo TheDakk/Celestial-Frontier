@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c163-effect-generation/v1",
+  "theme": "storm",
+  "phase": "launch",
+  "generator": "built-in image_gen",
+  "intent": "edit",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-637fe3af-9055-4c79-b598-46d2f4e245d2.png",
+  "sourceSha256": "1dcf8034ad4f7b28fa1e21677c9b9fc7dfbcdd6a7b0d2615cdbe02fe324b173f",
+  "master": "audits/C163_EFFECTS_POLISH_20261002/storm/launch-master.png",
+  "masterSha256": "1dcf8034ad4f7b28fa1e21677c9b9fc7dfbcdd6a7b0d2615cdbe02fe324b173f",
+  "prompt": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/storm/launch.prompt.txt",
+    "sha256": "243f5489f1cfd7d4d0e6085f4e9459d4ada0a7f453cd7e75eb24981cea848fad"
+  },
+  "editTarget": {
+    "path": "audits/C132_EFFECTS_20261001/storm/launch-master.png",
+    "sha256": "24b4fbf37a3af504c76e75ea250a1e4674862ad59e6e01a6fcce14d5f26ca56e"
+  },
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "predecessorAnchors": "storm/final/anchors.json",
+  "originalPixelsModified": false,
+  "qualityAccepted": false,
+  "nativeProof": false
+}

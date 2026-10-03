@@ -1,0 +1,65 @@
+[
+  {
+    "id": "01-pike",
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 35,
+      "y0": 440,
+      "x1": 1229,
+      "y1": 804
+    },
+    "margins": {
+      "left": 35,
+      "right": 24,
+      "top": 440,
+      "bottom": 449
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  {
+    "id": "02-bass",
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 52,
+      "y0": 361,
+      "x1": 1208,
+      "y1": 875
+    },
+    "margins": {
+      "left": 52,
+      "right": 45,
+      "top": 361,
+      "bottom": 378
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  {
+    "id": "03-char",
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 43,
+      "y0": 389,
+      "x1": 1217,
+      "y1": 838
+    },
+    "margins": {
+      "left": 43,
+      "right": 36,
+      "top": 389,
+      "bottom": 415
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+]

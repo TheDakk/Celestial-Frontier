@@ -1,0 +1,12 @@
+{
+  "status": "SIGNING_BLOCKED",
+  "base": "33e0c7a03072dc50e8e863fbfe55efdf201a0c4e",
+  "attempts": 2,
+  "error": "1Password: agent returned an error",
+  "diagnosis": "App running and agent socket present; normal and PTY commit attempts both refused. No unsigned fallback. User asked about signing prompt.",
+  "cachedAhead": {
+    "origin/openai/mac": 123,
+    "origin/develop": 234
+  },
+  "workingChanges": "staged; evidence and review files exist locally"
+}

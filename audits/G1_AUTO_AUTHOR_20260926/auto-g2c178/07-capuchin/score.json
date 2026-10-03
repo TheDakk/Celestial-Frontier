@@ -1,0 +1,10 @@
+{
+ "id": "07-capuchin",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 22.2% paint that no reference appendage lands on",
+  "unexplained-anatomy: 17.5% of the paint lies away from the body and in no part (reference 9.6%)"
+ ],
+ "semanticPresence": null
+}

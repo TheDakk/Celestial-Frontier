@@ -1,0 +1,12 @@
+{
+ "id": "22-horned-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-far-paw (hindFarPaw) covers 15% paint (reference 53%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 0% paint (reference 44%)",
+  "missing-anatomy: part fore-far-knee (foreFarKnee) covers 13% paint (reference 59%)",
+  "missing-anatomy: part fore-far-root (foreFarRoot) covers 0% paint (reference 89%)"
+ ],
+ "semanticPresence": null
+}

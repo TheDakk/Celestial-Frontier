@@ -1,0 +1,12 @@
+{
+  "activeConflictingJobs": [],
+  "ownedLock": {
+    "pid": 99526,
+    "token": "ca4e1dbf-1b58-4dc2-9b8e-f5af86c9c8e0",
+    "label": "C205 one fresh combined I5 3+1 first red stop",
+    "startedAt": "2026-10-02T18:39:16.938Z"
+  },
+  "ownProcessCount": 14,
+  "freeGiB": 120.57,
+  "scope": "In-flight isolation verification; sandbox denied ps on precheck, after all three agents and Claude explicitly reported terminal. Shared lock acquired by the one authorized epoch. No timing claim is based on the denied check."
+}

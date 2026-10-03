@@ -1,0 +1,13 @@
+{
+  "id": "10-snipe",
+  "name": "Snipe",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2d406a31-199c-4289-ac8f-36335ba01ac0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "dca3074ee6091a5e9d596142ada7477cf44c9ae0d9da58c2b08d1999a93725dc",
+  "bytes": 1181073,
+  "promptSha256": "81f38d18628a6a14c7f1cbbfda973c8f0348970a4f689479581248c6fbfa0ad8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

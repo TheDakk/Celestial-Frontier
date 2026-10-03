@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c132-exact-evidence-byte-note/v1",
+  "findings": [
+    "effects-agent-encoding-01/run.mjs: final blank line",
+    "develop-corrected-profile.log: Vite reporter trailing space"
+  ],
+  "disposition": "Preserve exact executed audit helper and exact retained gate log. These formatting findings do not alter product code or acceptance checks; log hashes bind the original emitted bytes."
+}

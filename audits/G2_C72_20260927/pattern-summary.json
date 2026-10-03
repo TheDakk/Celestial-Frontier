@@ -1,0 +1,98 @@
+[
+  {
+    "id": "01-grayling",
+    "status": "PASS"
+  },
+  {
+    "id": "02-minnow",
+    "status": "PASS"
+  },
+  {
+    "id": "03-sculpin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "04-walleye",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "05-whitefish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "06-pacu",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "07-cichlid",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "08-tetra",
+    "status": "PASS"
+  },
+  {
+    "id": "09-finch",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "10-lark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "11-chough",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "12-egret",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "13-ibis",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "14-stork",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "15-ptarmigan",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "16-oystercatcher",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "17-water-strider",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "18-cockroach",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "19-carrion-beetle",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "20-stick-insect",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "21-king-snake",
+    "status": "PASS"
+  },
+  {
+    "id": "22-grass-snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "23-whip-snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "24-vine-snake",
+    "status": "NOT_REQUIRED"
+  }
+]

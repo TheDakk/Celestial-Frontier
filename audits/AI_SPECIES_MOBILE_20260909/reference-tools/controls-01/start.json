@@ -1,0 +1,35 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "six species anatomy reference controls",
+    "--",
+    "node",
+    "--test",
+    "tools/local-image-generation/species-references.test.mjs"
+  ],
+  "startedAt": "2026-09-09T16:35:04.458120+00:00",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/species-references.mjs",
+      "bytes": 5802,
+      "sha256": "f2c60e00e28f63d69675693a7bfb4a8969781e26aebbea00e3629a7143f9a667"
+    },
+    {
+      "path": "tools/local-image-generation/species-references.test.mjs",
+      "bytes": 10567,
+      "sha256": "4d6a85ec3ecb5cb9d254ae1cae96bb60a0f99c92ed2a36bf91239b5589de809a"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "bytes": 3190,
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json",
+      "bytes": 42212,
+      "sha256": "4558707f3a21e6990fc2e7e6c40836c9d638cefe97a674ca3ca9356f1ed0e1a1"
+    }
+  ]
+}

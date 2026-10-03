@@ -1,0 +1,14 @@
+✔ 25% boundary admits a real opposite-chain correction; input and other owners conserved (2.526ms)
+✔ one pixel above the movement bound refuses without mutating input (0.792042ms)
+✔ mirror geometry keeps anatomical side identity (0.615375ms)
+✔ missing/duplicate joints fail closed (0.092125ms)
+✔ same-side longitudinal cuts are preserved (0.797084ms)
+✔ large non-foreleg region cannot dilute moved-share denominator (0.380125ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 96.242333

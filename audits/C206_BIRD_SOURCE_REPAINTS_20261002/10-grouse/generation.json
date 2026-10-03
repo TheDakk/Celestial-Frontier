@@ -1,0 +1,14 @@
+{
+  "id": "10-grouse",
+  "name": "Grouse",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e0d4c181-c21c-402b-b745-ccc88a15fbb9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec",
+  "bytes": 1297661,
+  "promptSha256": "8efd9637b32f4743383e429e94323ee268b74de1087a16e15aa89d8a6e1075dd",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

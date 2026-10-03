@@ -1,0 +1,70 @@
+{
+  "sourcePreSplitSha256": "65e35dbe9aee9e740dc0b0bf8ff13e137a161a2c5e67a9b2dcdcc8fd880eedef",
+  "sourceBindingSha256": "862b02df4e39e6a6f97a3b6ca31f9a17364ae54bf28d82c34eb8917ab1be73a3",
+  "candidateHelperSha256": "3237be8de5fa4d8b0fd46c6fab00833024e68830e521ca59796eaa8cce43942c",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingFarRoot",
+      "wingFarTip",
+      "wingNearRoot",
+      "wingNearTip",
+      "tailFan",
+      "chest"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 56,
+        "distancePx": 15.079061265299627,
+        "supports": [
+          85,
+          84
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 44,
+        "distancePx": 4.741307836451938,
+        "supports": [
+          18
+        ]
+      }
+    ],
+    "sourceBindingHash": "f7fda089314c5f98fe454a6bd8d9cccd3f5fa01701c2e4eb2ef64ff6718c9e9c",
+    "sourceVertices": 976,
+    "vertices": 1280,
+    "sharedSupports": 267,
+    "pins": 621,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 18,
+    "observedExcludedBoundaries": 18,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 18,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "candidate": "Five topology rings for observed Foot-joint shape retention; other shape joints keep original three rings. Whole authored weights, no runtime clamp, pin release, solver or gate change."
+}

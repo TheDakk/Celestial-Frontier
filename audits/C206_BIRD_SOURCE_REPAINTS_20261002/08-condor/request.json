@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Condor",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "a4ef4a7e02a16293de4098b74092723da1b1f419f09058b9d15ad8bf7e7628f7",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "0486f0f9779604496000c8e913b6fe38e7612471",
+  "basePromptSha256": "f90b4474c015ae515089979921e28c66e9b171b57c036649825c2e6bdff01a10",
+  "batchCompilerSha256": "2b5f31c02d1299de513811e149a6435e5263e15a98a18d89a72585718ec7f383",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "previousId": "19-condor",
+    "previousMaster": "audits/G2_C101_20260927/19-condor/master.png",
+    "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c101/summary.json",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "missing-anatomy: part far-shin (legFarAnkle) covers 0% paint (reference 75%)"
+    ],
+    "static": null,
+    "previousVisual": "Full1254 original reviewed: bare wrinkled head, hooked bill, white neck ruff, dark folded wings with pale panels, complete tail and two feet. Head has an Andean-male-like comb. Feet nearly touch and wing/tail feathers overlap; giant raptor leg proportions and paint ownership need review.",
+    "correction": "Separate the two real feet and complete visible lower leg chains without changing their natural short proportions. Preserve the bare wrinkled head, white neck ruff, massive folded wings and true complete tail. Keep both contact silhouettes readable and naturally connected."
+  },
+  "layoutOverride": null,
+  "sourceCorrection": "TARGETED SOURCE REPAINT — BIOLOGICAL PRIORITY: Separate the two real feet and complete visible lower leg chains without changing their natural short proportions. Preserve the bare wrinkled head, white neck ruff, massive folded wings and true complete tail. Keep both contact silhouettes readable and naturally connected. Preserve the real species anatomy if a generic pose instruction conflicts. No invented far wing, false leg, disconnected tail, artificial gap through tissue or removal of actual appendages. This request does not establish measured anatomical presence.",
+  "compositionCheck": "COMPOSITION: square native 1254 by 1254 painting. Keep the entire specimen small, inside the central half of the canvas, with generous pure magenta around every bill, toe, plume and tail tip. Preserve real proportions by zooming out, never shortening appendages. No ground, cast shadow, scenery, perch, branch, prop, text, diagram or framing marks.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

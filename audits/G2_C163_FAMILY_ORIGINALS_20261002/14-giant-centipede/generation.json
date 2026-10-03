@@ -1,0 +1,14 @@
+{
+  "id": "14-giant-centipede",
+  "name": "Giant Centipede",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-972c61b0-9b4c-4484-bcf5-06951e69ec7a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "546a1648d5968949326c2e4e7654ecd04b7e6d63f1877098ca0585f3f58d4a9d",
+  "bytes": 1081192,
+  "promptSha256": "fe6dfeb43f0846d03b24e4c7cb31edb462b7435322c3ff6ac583d91ad4435aee",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

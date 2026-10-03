@@ -1,0 +1,133 @@
+{
+  "frames": {
+    "aperture.png": {
+      "frame": {
+        "h": 130,
+        "w": 172,
+        "x": 1335,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 130,
+        "w": 172
+      },
+      "spriteSourceSize": {
+        "h": 130,
+        "w": 172,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "base.png": {
+      "frame": {
+        "h": 203,
+        "w": 396,
+        "x": 929,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 203,
+        "w": 396
+      },
+      "spriteSourceSize": {
+        "h": 203,
+        "w": 396,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body.png": {
+      "frame": {
+        "h": 497,
+        "w": 484,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 497,
+        "w": 484
+      },
+      "spriteSourceSize": {
+        "h": 497,
+        "w": 484,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "crown.png": {
+      "frame": {
+        "h": 216,
+        "w": 420,
+        "x": 499,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 216,
+        "w": 420
+      },
+      "spriteSourceSize": {
+        "h": 216,
+        "w": 420,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "root.png": {
+      "frame": {
+        "h": 8,
+        "w": 7,
+        "x": 1517,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 8,
+        "w": 7
+      },
+      "spriteSourceSize": {
+        "h": 8,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c183-reference-sea-squirt.png",
+    "scale": "1",
+    "size": {
+      "h": 507,
+      "w": 1529
+    }
+  }
+}

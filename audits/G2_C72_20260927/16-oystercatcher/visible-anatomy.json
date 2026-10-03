@@ -1,0 +1,168 @@
+{
+  "id": "16-oystercatcher",
+  "name": "Oystercatcher",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "488c7d281c3b023c8755f1b8ef86f2c44ff60966795177aafed5d7e72cc3cfa6",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 34205,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 13,
+      "y0": 117,
+      "x1": 412,
+      "y1": 260
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1259,
+        "pixels": 4306,
+        "box": {
+          "x0": 256,
+          "y0": 66,
+          "x1": 387,
+          "y1": 152
+        },
+        "attach": {
+          "x": 309.7,
+          "y": 121.3,
+          "relX": 0.74,
+          "relY": 0.03
+        },
+        "dir": {
+          "x": 0.21,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 95.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0082,
+        "pixels": 281,
+        "box": {
+          "x0": 323,
+          "y0": 132,
+          "x1": 330,
+          "y1": 186
+        },
+        "attach": {
+          "x": 323,
+          "y": 159,
+          "relX": 0.78,
+          "relY": 0.29
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.15
+        },
+        "class": "front",
+        "length": 27.9
+      },
+      {
+        "k": 2,
+        "frac": 0.1124,
+        "pixels": 3846,
+        "box": {
+          "x0": 32,
+          "y0": 181,
+          "x1": 129,
+          "y1": 248
+        },
+        "attach": {
+          "x": 105,
+          "y": 217.8,
+          "relX": 0.23,
+          "relY": 0.7
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.16
+        },
+        "class": "rear",
+        "length": 81.8
+      },
+      {
+        "k": 3,
+        "frac": 0.0472,
+        "pixels": 1615,
+        "box": {
+          "x0": 108,
+          "y0": 257,
+          "x1": 179,
+          "y1": 350
+        },
+        "attach": {
+          "x": 168.3,
+          "y": 259.7,
+          "relX": 0.39,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.51,
+          "y": 0.86
+        },
+        "class": "limb-down",
+        "length": 108.5
+      },
+      {
+        "k": 4,
+        "frac": 0.0512,
+        "pixels": 1750,
+        "box": {
+          "x0": 188,
+          "y0": 261,
+          "x1": 324,
+          "y1": 354
+        },
+        "attach": {
+          "x": 219,
+          "y": 261,
+          "relX": 0.52,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.64,
+          "y": 0.77
+        },
+        "class": "limb-down",
+        "length": 140.3
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 117,
+        "x1": 167,
+        "cx": 138.9
+      },
+      {
+        "x0": 257,
+        "x1": 324,
+        "cx": 287.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

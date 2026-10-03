@@ -1,0 +1,29 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Chameleon",
+  "family": "quadruped",
+  "masterSha256": "4b789e99a7d2276b236066e200990d1e7d1868664dcdb5f7a1be6fc75847359a",
+  "subjectSha256": "81fd7ae07b2caa496b73f72055f867c602ea1125a1fabfba83a4dd98f3113b3d",
+  "promptSha256": "8a58b9f9fa6f60dfab4700e59967a7641883360997777a890b1aafe730470c15",
+  "profileId": "special-lizard",
+  "profileSha256": "029802099bca9d725755be2995dc309c4322fff995bb2c9cb0a125868f319b4e",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: green scaled casque and a continuous tooth-edged dorsal crest, independently rotating eye, curled tail and four limb endpoints. No mammalian external pinnae are painted. The casque and jaw fringes remain head tissue. Feet are not reliably natural grasping digit groups and retain their source-anatomy hold; far proximal limb overlap and contact heights remain independent holds.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. External gills, ear openings and all other actual head/neck paint remain present and are not excluded."
+      }
+    ]
+  },
+  "scope": "exact-master-only-no-visual-admission"
+}

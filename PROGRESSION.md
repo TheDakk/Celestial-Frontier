@@ -347,6 +347,14 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > advance the separate galaxy-radius ladder from Solar Reach through the Frontier, and the ninth
 > distinct claim opens the Frontier ending choice.
 >
+> **Travel and tracking (matches code as of 2026-09-25, D16 parity with v1 `data-pgo`/`data-tgo`):** a claimed
+> Signature row offers **Travel there ↗** to the world saved with the claim (`primeFill[id].where`, resolved by
+> `primeClaimWorldAddressV1`); an unclaimed Signature whose resonance is **strong** (the Ascent has opened the galaxy and its
+> minimum region is reached) offers **📡 Track the Titan ↗**, which runs v1's deterministic `nearestTitanWorld` scan
+> (`nearestTitanWorldV1`, `prime-travel.ts`; on tap, never per frame) with the same placement facts the encounter uses. Both
+> fly through the one proven-route owner (`searchTravel.jumpToCanonicalAddress`), so the charter gates are unchanged; an empty
+> scan toasts "The signal scatters". Outcome test: `tests/d16-prime-travel-outcome.test.ts`.
+>
 > The five established one-time legacies are **Sovereign of the Frontier**, **Warden of Life**,
 > **World-Shaper**, **The Unseen Hand**, and **Prismatic Pathfinder**. The first four require all
 > nine Signatures; Prismatic Pathfinder additionally requires at least three conquered worlds, the
@@ -631,8 +639,8 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
 > run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
 > the same Edge `.101`. Raw/gzip SHA-256 are
-> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+> `db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+> `a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
 > is unchanged. SceneMemory now owns its separate version-tolerant Microsoft Edge-family + CDP
 > `1.3` + sealed capability/profile authority; exact `.101` remains historical provenance, the
@@ -1081,3 +1089,31 @@ stayed green through every build in which the friendly duel paid nothing at all.
 
 ⚠ **Only the duel awards have an outcome test today.** The other six deserve the
 same treatment; that work is open. See ROADMAP's 2026-07-30 batch log.
+
+## ADDENDUM 2026-09-26 — Outposts (v2, D14; matches code as of 2026-09-26)
+
+Dakk decided D14 "yes" (Option A of `audits/PROPOSALS_20260925/N4_PROJECTS.md`). The pure domain is
+`port/v2/packages/persistence/src/outposts.ts`:
+- **Kinds (first wave):** Survey Relay, Field Shelter, Companion Sanctuary. Three stages each. Every cost lives in ONE table,
+  `PROJECT_COSTS_V1`: Claude's starting numbers until Codex's P0 table replaces them.
+- **Rules:**
+  - Projects open after Starter Charter `st-comp`.
+  - Two under construction; 24 in total.
+  - One of each kind per world, and one Relay per star system (the Relay needs Deep Scanners, `scan1`).
+  - A stage is all-or-nothing (parts plus Stardust).
+  - A stage's deed counts only since the stage opened: other worlds landed in the system, a landing here proven standing on site,
+    or companion meals.
+  - Abandon refunds every built stage in full.
+  - No Stardust payout, no achievements, no rank, no timers, no decay, no upkeep.
+- **Rewards (consumers read only FINISHED outposts):**
+  - the Relay's system readout (`finishedRelayStarSeedsV1`);
+  - the Shelter's hazard-free bioscan (`finishedShelterPlanetSeedsV1`);
+  - the Sanctuary's display residents (`sanctuaryOnV1`).
+
+- **Consumers (P5, 2026-09-26):**
+  - **Relay:** `engineering-panel-model.ts projectRelayMineralSurveyRowsV1`. The star card (`surveyStar` → `surveyCard` rows) lists each
+    lifeless non-Earth world's orbit readout. It equals the in-orbit Deep Scanner row (test `tests/outposts-relay-readout.test.ts`).
+  - **Shelter:** the bioscan hazard's optional `sheltered` input gives the safe reason `shelter`. The Discover Life commit re-reads the
+    carrier, and Main passes only a preview hint. `settled` (conquest) is unchanged and is never written by Outposts. Test: the A5 bioscan
+    harness shows a hostile world with a finished Shelter wounding nobody; the unfinished Shelter is the control.
+  - **Sanctuary:** the world card lists the chosen residents (display only).

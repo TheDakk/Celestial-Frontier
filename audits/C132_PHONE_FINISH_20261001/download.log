@@ -1,0 +1,12 @@
+sdxs unet.onnx 631766742
+sdxs vae_decoder.onnx 2467568
+sdxs text_encoder.onnx 246275486
+sdxs tokenizer/merges.txt 524619
+sdxs tokenizer/vocab.json 1059962
+sdxs README.md 2004
+taesd taesd_encoder.safetensors 4895600
+taesd README.md 1315
+taesd config.json 597
+upstream scheduler/scheduler_config.json 480
+upstream tokenizer/tokenizer_config.json 737
+upstream tokenizer/special_tokens_map.json 472

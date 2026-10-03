@@ -1,0 +1,63 @@
+{
+  "schema": "cf.source-framing-manual/v1",
+  "name": "Shrimp",
+  "master": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/master.png",
+  "masterSha256": "c2c1275202841abd425cc9114a7665c62997a5c8bae5dce9d91b1eca560a031f",
+  "status": "REFUSE",
+  "scope": "Full native source visual observation; unchanged keyed-mask framing result retained separately",
+  "requiredMargin": 101,
+  "observed": "Fine upper antenna visibly extends beyond x1152 into the forbidden right margin (near x1194,y400); lower antenna also extends into that band. Keyed-mask automatic bounds end at x1124 and omit these fine painted portions. No mask or threshold was changed.",
+  "nativePixelSamples": [
+    {
+      "x": 1194,
+      "y": 400,
+      "rgba": [
+        232,
+        42,
+        129,
+        255
+      ]
+    },
+    {
+      "x": 1196,
+      "y": 400,
+      "rgba": [
+        252,
+        187,
+        197,
+        255
+      ]
+    },
+    {
+      "x": 1190,
+      "y": 401,
+      "rgba": [
+        227,
+        40,
+        130,
+        255
+      ]
+    },
+    {
+      "x": 1174,
+      "y": 877,
+      "rgba": [
+        251,
+        4,
+        249,
+        255
+      ]
+    },
+    {
+      "x": 1178,
+      "y": 899,
+      "rgba": [
+        242,
+        27,
+        207,
+        255
+      ]
+    }
+  ],
+  "acceptance": false
+}

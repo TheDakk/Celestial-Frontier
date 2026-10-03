@@ -1,0 +1,13 @@
+{
+  "id": "22-carrion-beetle",
+  "name": "Carrion Beetle",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-335898e3-3035-43d3-bcee-b0e77c7bbb92.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6b98fa6d2d68b901dac83b916928c93469669e2dbbd1473b5389a125325a1440",
+  "bytes": 1283997,
+  "promptSha256": "84f3a1d0acfcefb3e7e1348b617cefb052047bc4f5b8f20a6e59334a952504fc",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

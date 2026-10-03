@@ -1,0 +1,10 @@
+{
+  "originals": {
+    "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+    "contract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692"
+  },
+  "generated": {
+    "collector.mjs": "001e49c29246089eadf4d285e11a28ab514ef0c996c89832c3787f9bbfb8e45e",
+    "contract.mjs": "4dcc6ed40e574be450ae3749a024938b106a278476a78b72b7f6fd46d0af894c"
+  }
+}

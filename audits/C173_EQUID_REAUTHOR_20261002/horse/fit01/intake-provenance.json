@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "a7dc3342e9783f7fcb47d73d51e62b08deb910cf",
+  "helperSha256": "e344130b19b3f1077f6b14faf457d53a74b0211b54cf89a6d2714fdf20f0f1c0",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/master.png",
+      "sha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/authoring.json",
+      "sha256": "66edd21680fa35043e38c611a2216d43e48fc794a4b5671e5a05d7830db24bc8"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/subject-source.json",
+      "sha256": "ce8242ba0f1b36a708d68c74085852a06482faa4f790dacc79bc65116fd20431"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "c5c723054ccc907da7b5f29af3903174df59734615012ab899ee412f89051d22",
+  "bindingHash": "01177d89d0d2b40884c0a024bd385676faa2dab85ac6ecbabc20ff950a7d3839",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/master.png",
+      "sha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/authoring.json",
+      "sha256": "66edd21680fa35043e38c611a2216d43e48fc794a4b5671e5a05d7830db24bc8",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/subject-source.json",
+      "sha256": "ce8242ba0f1b36a708d68c74085852a06482faa4f790dacc79bc65116fd20431",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/horse/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

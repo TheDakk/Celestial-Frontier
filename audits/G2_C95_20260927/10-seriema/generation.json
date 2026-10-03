@@ -1,0 +1,13 @@
+{
+  "id": "10-seriema",
+  "name": "Seriema",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-7d338b97-20c2-435f-8e16-63ad861a7e29.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8aff741f55623cd58941706f7497d65b063aeeda806981da64a0b78db4da43a6",
+  "bytes": 1178646,
+  "promptSha256": "aad353f16b4db3a6924c0ce3e02144046332bfc6f358eebda1fc7e04883e9d36",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

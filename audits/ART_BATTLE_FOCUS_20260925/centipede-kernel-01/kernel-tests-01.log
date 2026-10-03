@@ -1,0 +1,24 @@
+✔ actual fish cast uses the admitted active leaf with exact full solver and queue bytes (51.27875ms)
+✔ unavailable runtime preserves the actual active fish cast through the original JS path (26.587958ms)
+✔ post-private-active-work runtime trap preserves every live byte before fallback and disables the leaf (30.742291ms)
+✔ all pin masks/signs retain exact positions and the entire queue at multiple budgets (4.621167ms)
+✔ shared-vertex incident traversal preserves duplicates, heap order and repeated seeks (4.933917ms)
+✔ equal priorities use triangle ID order and preserve stale unused heap entries (0.12325ms)
+✔ half-floor stopping retains nonempty queue; degenerate removal and full budget retain original counters (0.28575ms)
+✔ signed-zero-only progress, underflow and overflowing finite coordinates preserve Object.is semantics (0.203708ms)
+✔ shared-corner fixture exercises both unchanged and changed queued priorities and rejects overbroad skipping (2.090208ms)
+✔ equal-priority mutant is rejected by full queue parity even when coordinates do not change (0.487166ms)
+✔ mixed finite/overflowing shared triangles preserve the original unordered-priority behavior (0.959458ms)
+✔ private topology is snapshotted; runtime absence and denied memory give null without caller changes (0.193041ms)
+✔ valid arithmetic mutant and no-op export fail admission before touching caller state (0.379958ms)
+✔ post-admission trap, invalid result, invalid counters and invalid heap are transactional (0.435791ms)
+✔ malformed topology, reset state and call budgets fail closed (0.168833ms)
+✔ artifact admits exactly one thirteen-i32 memory-only leaf and rejects linker inputs (2.229458ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 202.417708

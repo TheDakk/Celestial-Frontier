@@ -1,0 +1,10 @@
+Command: node audits/ARCHETYPE_FINISH_20260923/06-hopper/contact-diagnosis-01.mjs
+{"id":"alert","ms":62.333333333333336,"error":"Error: Contact: alert@62.333333333333336 exceeds scale compression bound","cause":"Error: Contact: alert@62.333333333333336 rigid support exceeds scale compression bound","traceEvents":6}
+{"id":"hit","ms":221.25,"error":"Error: Contact: hit@221.25 exceeds scale compression bound","cause":"Error: Contact: hit@221.25 rigid support exceeds scale compression bound","traceEvents":18}
+{"id":"faint","ms":121.33333333333333,"error":"Error: Contact: joint limit foreFarAnkle faint@121.33333333333333: -60.976671525776624","cause":"Error: Contact: joint limit foreFarAnkle faint@121.33333333333333: -60.9769970658615","traceEvents":25}
+{"id":"tame","ms":80,"error":"Error: Contact: tame@80 hindFar outside accommodatable reach","cause":"Error: Contact: tame@80 hindFar rigid support outside accommodatable reach","traceEvents":9}
+{"id":"presentation","ms":4783.333333333333,"error":"Error: Contact: alert@73.7735287596779 exceeds scale compression bound","cause":"Error: Contact: alert@73.7735287596779 rigid support exceeds scale compression bound","traceEvents":6}
+{"candidate":"hit","ms":221.25,"status":"REFUSED","error":"Error: Contact: joint limit foreFarAnkle hit@221.25: -62.38982480994361","cause":"Error: Contact: joint limit foreFarAnkle hit@221.25: -62.39019311091054"}
+{"candidate":"tame","ms":80,"status":"PASS_CONTACT_SAMPLE_ONLY","error":null,"cause":null}
+
+Exit: 0

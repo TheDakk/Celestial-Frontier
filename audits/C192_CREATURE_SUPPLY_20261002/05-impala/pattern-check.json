@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Impala",
+  "masterSha256": "cbab1175a80359433ec8b2630210f8f3aa882453bd8c4bb38dee90d42d0f1f1e",
+  "required": [
+    "lyre-shaped ringed horns curving out then up",
+    "vertical black stripes down each side of the white rump"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "lyre-shaped ringed horns curving out then up",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: both full ear silhouettes are separately visible in a shallow head turn, two ringed lyre-shaped horns, four distinct hooves/leg shafts and continuous short tufted tail. The white rump carries two dark vertical stripe markings; hind-hoof dark tufts are visible. Far upper foreleg remains partly hidden by the chest. No apparent fifth limb. Improved ear exposure is observed; semantic ownership and motion remain unmeasured."
+    },
+    {
+      "requirement": "vertical black stripes down each side of the white rump",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: both full ear silhouettes are separately visible in a shallow head turn, two ringed lyre-shaped horns, four distinct hooves/leg shafts and continuous short tufted tail. The white rump carries two dark vertical stripe markings; hind-hoof dark tufts are visible. Far upper foreleg remains partly hidden by the chest. No apparent fifth limb. Improved ear exposure is observed; semantic ownership and motion remain unmeasured."
+    }
+  ]
+}

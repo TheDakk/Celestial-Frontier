@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c163-reference-generation/v1",
+  "generator": "built-in image_gen",
+  "intent": "one bounded source-specific anatomical reference edit",
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-13acea18-49c1-4908-b1c2-681bdd392e3d.png",
+  "sourceOutputSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+  "retainedMaster": "audits/C163_REFERENCE_REPAIR_20261002/new-references/reindeer/master.png",
+  "retainedSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+  "bytes": 1174649,
+  "nativeCanvas": {
+    "width": 1254,
+    "height": 1254
+  },
+  "actualInput": {
+    "path": "audits/G2_C136_REPAIRS_20261002/11-reindeer/master.png",
+    "sha256": "640c13419702a65c12e5346f3f8cbbb6f564d323403c1e27573197db6aacb9a4"
+  },
+  "basePrompt": {
+    "path": "audits/G2_C136_REPAIRS_20261002/11-reindeer/prompt.txt",
+    "sha256": "2d9e01a154595f7fec5e334b3c42211d1e1dce95cc9dac5a1b634c3fe278b54b"
+  },
+  "sentPrompt": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/new-references/reindeer/prompt.txt",
+    "sha256": "5b38b5669907d4909ad1010b65b973357a5e6a1599cfd03634f8ab0609fc9228"
+  },
+  "instruction": "TARGETED REFERENCE EDIT: preserve this exact adult Reindeer, coat, branched antlers, short natural tail, four separately visible legs and cloven hooves, painting style, scale, full framing and native 1254 by 1254 square canvas. Make exactly one natural pose adjustment: rotate the head a little toward the viewer and expose the EXISTING far ear behind the head on the far side, separate from the antlers and near ear. Exactly TWO natural ears total, each a complete readable leaf-shaped ear from attachment to tip. Keep the near ear and both existing antlers unchanged. Do not add a third ear, extra antler, invented horn or longer tail. The SHORT natural tail must stay fully visible and connected. Keep all four feet down in the same natural stance. Preserve the connected crown, muzzle, nape and all fur; no detached dabs. Every non-subject pixel remains flat pure #FF00FF. No floor, shadow, scenery, text or labels. Preserve generous margins and every extremity inside the canvas.",
+  "basePromptPreservedVerbatim": true,
+  "originalPixelsModified": false,
+  "originalSourceUnchanged": true,
+  "qualityAccepted": false
+}

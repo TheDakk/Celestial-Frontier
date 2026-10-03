@@ -1,0 +1,1292 @@
+{
+  "schema": "cf.g2-source-delivery/v1",
+  "scope": "24 targeted bird source repaints; canonical compiler unchanged, explicit source holds, no rig/native/gallery admission",
+  "originals": 24,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "framingPass": 23,
+  "framingRefused": [
+    "Godwit"
+  ],
+  "masterBytes": 28947565,
+  "files": [
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/generation.json",
+      "sha256": "ae3c02e4bdd099ef23b0a3cafd51dc6a1ae7406babe26e271c65ecdd02ea76c5",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/master.png",
+      "sha256": "83237c54f8194f7107bbc0f2a522b73a0a2f21eb253b9656fc695cc9b315dfc9",
+      "bytes": 1191498
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/pattern-check.json",
+      "sha256": "97b830f75d9f0463a4d97ecd6f242e8bbc362410adfc8c9f786bd4dd4700b303",
+      "bytes": 833
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/prompt.canonical.txt",
+      "sha256": "02c1099431dbfdbbd5dee5cd25f578f39bea37c4f2892b92f4ae9e2f18be66ad",
+      "bytes": 9862
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/prompt.txt",
+      "sha256": "2a991df14c8c38636622a2067acb60daf097eca41cfa3f06581d9c8aa11029bb",
+      "bytes": 11657
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/request.json",
+      "sha256": "6c358e4bceb382e12813e5fc06dafba5e3f31dd56f8a9662e27f8017469d7b63",
+      "bytes": 3152
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/subject-source.json",
+      "sha256": "287cc9f6f4125b8c8571518c67a963d2178e9dd37f65c3fefa38c6ed765bc24f",
+      "bytes": 2313
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/visible-anatomy.json",
+      "sha256": "48c912848f946e9c96de6724205d6ca384cfeeb6876fcf14ae5325b10c5dc611",
+      "bytes": 2539
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/visual-review.json",
+      "sha256": "5f9b3d1266a6b41aa2cea57e39a512b3760194597fe1c8b49c073371c5e5d35a",
+      "bytes": 1063
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/generation.json",
+      "sha256": "b8fb24c6f6a8a6aebf382695d1b26c3df164ae9841fba4e5e49b489da6419a39",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/master.png",
+      "sha256": "f905ad6b72c05d38c8dfdaa716a9ced613fc20bdf8d3945707885758a940ce56",
+      "bytes": 1209642
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/pattern-check.json",
+      "sha256": "f330823a86d040f31d4c9873dfb3993c1cc4ae9be3456605eec4526c5c0ecd59",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/prompt.canonical.txt",
+      "sha256": "44a4f138ea6bea38fcff551b0dae443ad76497bc35489530d947401110e4099e",
+      "bytes": 9894
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/prompt.txt",
+      "sha256": "6886b2dd1a207800788ca1ca9ad1420f6ce75e3bd450a35a0c303bfa90b38095",
+      "bytes": 11631
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/request.json",
+      "sha256": "262082a16aeb383cef9e46bca96e2cd8ad04d797b2e749218f0d4efc0619a910",
+      "bytes": 3075
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/subject-source.json",
+      "sha256": "ec2f1e0014b2063e640c902975e35d71180650c868002a2772f97aeac9223c1a",
+      "bytes": 2337
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/visible-anatomy.json",
+      "sha256": "3c25555c54a14efc5abfe13da33e4cf156cd75b9794fb8db879b0d53123788c8",
+      "bytes": 2818
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/visual-review.json",
+      "sha256": "aa970f7995797b9649f27f8e78d262fc5f4e6e486eccbff1fbca298083d3566e",
+      "bytes": 1051
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/generation.json",
+      "sha256": "23a22c57937bc9496e73d97c69bc24c4147f84abef1838fb08935192ccf5db62",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/master.png",
+      "sha256": "20d810533b805611a521692c68c1bf17cd781c43d0bf1df4deb23a3608b267c7",
+      "bytes": 1135081
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/pattern-check.json",
+      "sha256": "87c06b11bcbcb5ea191dc7cbfe718b500f7a82f99aa511f522e66eeade720980",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/prompt.canonical.txt",
+      "sha256": "3c7189d04dde013f0361ecb84ec7eb01201259fdfefb451c701e1b1411922368",
+      "bytes": 9933
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/prompt.txt",
+      "sha256": "67d8f7fe91b432537d953151e064c30b86ba2026e9afffc5bfd757473bf94ef9",
+      "bytes": 11690
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/request.json",
+      "sha256": "dea86ba6acdf03d93463ecddbc1e8d39005393a4350fbbe02b33507b95894a52",
+      "bytes": 3255
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/subject-source.json",
+      "sha256": "39364f6fe232589a8cf21b579f0722f508b2eb908f8c0e51455d050d9ffc203f",
+      "bytes": 2369
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/visible-anatomy.json",
+      "sha256": "ace5aa23beeed8a61b86c9058f364ae6341bed861b2c0bfd21813bcbd9883fd3",
+      "bytes": 3267
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/visual-review.json",
+      "sha256": "95032847c7588b7f6df3b150260d9c2439f3b10579ba7906784b8e9c79e76e35",
+      "bytes": 1068
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/generation.json",
+      "sha256": "fd14346ee4b22e24259d9acc9de55c3023242483acb451deac4e32b9af43862a",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/master.png",
+      "sha256": "1f30ab8b7d4da51abc51907e6b00626270d79042292793c75318becd6d693daa",
+      "bytes": 1223871
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/pattern-check.json",
+      "sha256": "29f864559ce77aa3fcc63178792eb4d2e21ba66f412d03244de1d85cc611fcf6",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/prompt.canonical.txt",
+      "sha256": "c059f99252d7d337c909fa352072883f7d5950dd5246c45b3058fd37c6ab1afe",
+      "bytes": 9873
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/prompt.txt",
+      "sha256": "457c189c1ca341c04037a4939587e6920ecb0bfc089dfd605533c201629c7d82",
+      "bytes": 11636
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/request.json",
+      "sha256": "6e6000fa0090437e0f50522fa7de5696cfc2e96ac5b8a9625bf40760ba0c4ec0",
+      "bytes": 3153
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/subject-source.json",
+      "sha256": "d6da1abab53b077a403680b2eff3f4e8f615637c34f4ea69c591123c90a0441d",
+      "bytes": 2245
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/visible-anatomy.json",
+      "sha256": "8395325dd5b145dbc6cfcd65a34c43b91b779899c527fdbcd4b5771c2a22f6c0",
+      "bytes": 3464
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/visual-review.json",
+      "sha256": "a2a245f683bd162acb64ffb79149b437fb9cb6a1385036c7d28dc002850289c5",
+      "bytes": 1034
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/generation.json",
+      "sha256": "594d51f5de8a2f343462adc2864c614f40ef9f918ef09be49d3dbdff4ae899a4",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/master.png",
+      "sha256": "31cd495840806d921a7f95cfa980520c28a523d9823c73968096e7858567039f",
+      "bytes": 1147075
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/pattern-check.json",
+      "sha256": "a488b45509fb41f86a41f43ec6eb6b16047252ad71483cb4c4d794ca34d6147a",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/prompt.canonical.txt",
+      "sha256": "2b136a918acaf56ea6197608c71c9fc0297bfbb9e66291e321049d48ff956d00",
+      "bytes": 9812
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/prompt.txt",
+      "sha256": "ae010b959f61c24097cf016127af915bce932b763532a8172bec32ac8eb71481",
+      "bytes": 11655
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/request.json",
+      "sha256": "fecb52573fb486aaf1b3db6483a71e09f74b2fdaa3aa051ad55029d828fda353",
+      "bytes": 3067
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/subject-source.json",
+      "sha256": "3d46d822247a2e1f6578bbbbd3152436f582afcdcb98817c075c82e00c1be4d3",
+      "bytes": 2257
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/visible-anatomy.json",
+      "sha256": "a3a1173373a66d952492d297c13cf77449d3d840676fbcc0df3223e4abb1a502",
+      "bytes": 3269
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/visual-review.json",
+      "sha256": "37ad3edc9aed119d34f389492cad55fdb523fc36b96e95ec964ad2815dc82420",
+      "bytes": 1055
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/generation.json",
+      "sha256": "6196c1f76b9577c8fadd1bdc4a65df7d73bb61e66f47d1c8e59f29aaef7d387e",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/master.png",
+      "sha256": "049d179d7d7d1ab091c4aebd56aba7f87e91ae0e0a18ea0974f61732588b8b16",
+      "bytes": 1163355
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/pattern-check.json",
+      "sha256": "82b1e227a7a60ea66349eac828d2f0dbf5c4562d229e7e6f49f8eafbc0c412ad",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/prompt.canonical.txt",
+      "sha256": "1a07d66e380daf1ffc39a66d88cd6080b823bed886b2e9be0df8b9a683dc1376",
+      "bytes": 9928
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/prompt.txt",
+      "sha256": "1206865aae00db26c1237d342fb842ee1ebf61cda501982ef71894c7332437e0",
+      "bytes": 11697
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/request.json",
+      "sha256": "6fc80942830197e0a11e0baa26354ffc488adb9516c2aa16675eee0d30b13174",
+      "bytes": 2890
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/subject-source.json",
+      "sha256": "5b5c05a248e6ad3c9c06cf902382cfe76fdc401580ee58f481230349f8f093e6",
+      "bytes": 2364
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/visible-anatomy.json",
+      "sha256": "52a73092127a432df306f8901427fd011dcbbe52a9783868a6e9fb189ea98730",
+      "bytes": 2824
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/visual-review.json",
+      "sha256": "a30e9a4ad179123413d934d9a16cb7d43b336a05592f417d8f9e186acec3204c",
+      "bytes": 1074
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/generation.json",
+      "sha256": "62b53cba861f76804ad71c2f680f9bbf9feb04398e5ecaac50820af1a2d2b619",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+      "bytes": 1239967
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/pattern-check.json",
+      "sha256": "dee64ebc46718d39248e7894b6894d38a273795dffc2982c62c3b2a19fb20139",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/prompt.canonical.txt",
+      "sha256": "b0ad51173e62bdd531912cabf3f9010511f1d0bf38b1c8122dc21acaac314988",
+      "bytes": 9877
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/prompt.txt",
+      "sha256": "66450756ead9cecb94ac30238944f4b31143521e18c83a6509ccdbff2ca0a32e",
+      "bytes": 11776
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/request.json",
+      "sha256": "39aaed5b831ef4c57c9325b2ea8f0b52125f330e413b7083e889724ca244ac1a",
+      "bytes": 3277
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/subject-source.json",
+      "sha256": "71a90368fdada83d7f6cf96e2f65152184abbbda9ea95b95110c675d3410f7a7",
+      "bytes": 2325
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/visible-anatomy.json",
+      "sha256": "5dfb979d4a0302751e611bd59371d92f80ae7a099515d9c85abf4f104ed108fb",
+      "bytes": 3330
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/visual-review.json",
+      "sha256": "e54ad8fa3edb599db0bac773dd667d05dd3658b8b49984d86d5c01565c11705a",
+      "bytes": 1084
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/generation.json",
+      "sha256": "6a7b6d86bfd3d5dbcd293159b1344db6f7a531cdc9ac95b61f14c9b82cb21db4",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/master.png",
+      "sha256": "da14edf1ce0b74a91b68e982d5f97ce28fc8fbf98bc7b00d6148323f2a463f70",
+      "bytes": 1278346
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/pattern-check.json",
+      "sha256": "51678d869309ca14183bd84bdc7bd145128e9a5de2d0cee66d83ec630890eaf1",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/prompt.canonical.txt",
+      "sha256": "f90b4474c015ae515089979921e28c66e9b171b57c036649825c2e6bdff01a10",
+      "bytes": 9877
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/prompt.txt",
+      "sha256": "a4ef4a7e02a16293de4098b74092723da1b1f419f09058b9d15ad8bf7e7628f7",
+      "bytes": 11728
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/request.json",
+      "sha256": "485902be3d4483808ccbc9e5dd1302cea425de790c539ae9090a1270e5e38a35",
+      "bytes": 3303
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/subject-source.json",
+      "sha256": "df14424af62e81c2df17b0a651cf3e29db08df53f147d33b1a4b1bfb491a8f4a",
+      "bytes": 2730
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/visible-anatomy.json",
+      "sha256": "098a6781d64e0245fca0694091a9ed8efbeda9edba7dab7f94e8611760066116",
+      "bytes": 2970
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/visual-review.json",
+      "sha256": "53a9b095bdd85af4bfdae6e014a50d2212dc1c8a0cd22985673058a7a35f27bd",
+      "bytes": 1091
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/generation.json",
+      "sha256": "467c37b5cbb8b50bba61a8c3737c26e19cca9e1fe2f4e10024a91925a80bfe06",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/master.png",
+      "sha256": "d072d2c5af840617df583116581bed9ed0fc10c44421276e2df1aec95d983616",
+      "bytes": 1310369
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/pattern-check.json",
+      "sha256": "bffc976e853e503e4ad7d10c33753382c785089a48b4189ee63510a9ba22e828",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/prompt.canonical.txt",
+      "sha256": "d8a2b8afcf9f3a9763bb9cfc4be60b2cd88e51253dbb66815119af40a1156688",
+      "bytes": 9852
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/prompt.txt",
+      "sha256": "f1db3dbeeaaef14bcc3876b6e2865dabe97f7e4ac87d1fdf1999b1fb591e4f86",
+      "bytes": 11681
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/request.json",
+      "sha256": "1c59aa9b7cdeb6059c4cca73f79f3a5f662d7310504b89e5890f09e59fd436f2",
+      "bytes": 3086
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/subject-source.json",
+      "sha256": "6e2b53b6a0a2636c50fb9fdc43f1316fc1807bb8a981247f8b88e836276d396f",
+      "bytes": 2334
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/visible-anatomy.json",
+      "sha256": "8e744d23a84fa2dbe955fa8fa58952816acc0cbb0c51e350a4f606144aab31ab",
+      "bytes": 3250
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/visual-review.json",
+      "sha256": "a655835742d4c6bec7ff6b1aa5e97fec382a7b686fa3048d23be092a28eeb6ff",
+      "bytes": 1087
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/generation.json",
+      "sha256": "eafb09fa77c8a07c2526942000915b90b127b88a52ebe86396e4a29a2022eff4",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/master.png",
+      "sha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec",
+      "bytes": 1297661
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/pattern-check.json",
+      "sha256": "b6872caeeca841b5c6c927a40c6ec24875ff91bef317ebf44c3cbd3e1f734cf1",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/prompt.canonical.txt",
+      "sha256": "0c142695c8187bfe94f77740ce9a8d7b242290f5f745b5023db482228f92f896",
+      "bytes": 9836
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/prompt.txt",
+      "sha256": "8efd9637b32f4743383e429e94323ee268b74de1087a16e15aa89d8a6e1075dd",
+      "bytes": 11617
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/request.json",
+      "sha256": "2b2f3725700f10644ae7141423e50a89cae85bbb1d8c8df33e9b3a0754a2fca8",
+      "bytes": 3032
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/subject-source.json",
+      "sha256": "e1b26b13b59c5e092027e45ee52588a62068a038c8dc0e0ebf4796e93b71612b",
+      "bytes": 2321
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/visible-anatomy.json",
+      "sha256": "63e0bbb40530b926294a5fc350965d14e961e9834e60e62bbedaf75266148299",
+      "bytes": 3415
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/visual-review.json",
+      "sha256": "8f1a65dfd90cc5377995432ae6ac07e642158fedf277ca389939bebd70a81e9b",
+      "bytes": 1033
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/generation.json",
+      "sha256": "29ab44b7ae9de2e510d4fe6201ac1de6c186b370c637c3373ff58f5bf290fb07",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/master.png",
+      "sha256": "c4efd5e0bc47c31074918f1315d9b90bfceb7cb0511c693b79ef7aaa251dbdf8",
+      "bytes": 1234824
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/pattern-check.json",
+      "sha256": "4e287157f21ad278aecafed33039e3b2c98a5546076483e3f6be01b186f8c22c",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/prompt.canonical.txt",
+      "sha256": "d9bdaf280196043d865b003d8d42a7d452225830d25c25a670f7f730701e05ef",
+      "bytes": 10023
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/prompt.txt",
+      "sha256": "36e52f27a70a418ba4c79974cf97e43dfadf75dca9e41d1e4bdc3956f4271fac",
+      "bytes": 11978
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/request.json",
+      "sha256": "83a1847d52827304fdcf1c93c1e18e74e43896a1a0a19fa5fb07e6f27f55afa3",
+      "bytes": 3322
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/subject-source.json",
+      "sha256": "6915612761d8933750c016bd5994b3287ca004bf434b642e30d1ed8c14941aaa",
+      "bytes": 2499
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/visible-anatomy.json",
+      "sha256": "8a6c0746e276bcf7e6ac0c2be7a1dcba0243a3093a246e393d96f135541a095b",
+      "bytes": 3474
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/visual-review.json",
+      "sha256": "9498a477a52b51d01da295765479157ba6cc284edcc03d1844f2f818b31ec0fd",
+      "bytes": 1107
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/generation.json",
+      "sha256": "23f658cbbcfcf532a0b3e3aa04be8bd5934d9f2d4b16dfcd7ad2ac0ae3d7c5d2",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/master.png",
+      "sha256": "d91a630c7ec76ed5c670a8d4220d8db2c52222cd9895397cb5d1b5aa255d2360",
+      "bytes": 1253957
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/pattern-check.json",
+      "sha256": "db9ca9d073dc1ec2f6afdc8fc6617d3a1ab380288c25614eb7973a1dc41117a2",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/prompt.canonical.txt",
+      "sha256": "2feedcede6055226ecf20401adf62e17a087488591f8bca01a8a2a70ba43294d",
+      "bytes": 9997
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/prompt.txt",
+      "sha256": "0b2f5fd987fe65fb980235971b067e3e22cdfa413c7fbe8bb54cc668d4fd5607",
+      "bytes": 11788
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/request.json",
+      "sha256": "67fd4327955af694b6bf9015e2ab72067d50664aa307f688c0b816d56903032e",
+      "bytes": 2989
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/subject-source.json",
+      "sha256": "876a70a8a3dba8f5d3e26d9e8fdc87a1b4080a016e286c9226a490b7eca2b331",
+      "bytes": 2472
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/visible-anatomy.json",
+      "sha256": "bd84d623b2814e611887af768078d288093adb27b760ac11c5866bcec1a0919d",
+      "bytes": 3244
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/visual-review.json",
+      "sha256": "898c935a9a96cac6c46dc4bcd609fa6da43651b22523e530c9ffa603b8f807bf",
+      "bytes": 1032
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/generation.json",
+      "sha256": "c0748e4c2b5c237d0e6cf168ebf75357b48667fefb5f4b3d0a99b078af6c71aa",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/master.png",
+      "sha256": "f6bc7e401b11939cca3085fb6a354615eecfd8937d7c786aea210d206583658d",
+      "bytes": 1147960
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/pattern-check.json",
+      "sha256": "db34bbdcdf6ae600679794baf86ff99f5fa6a95140df864ff77a69adfce3a43d",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/prompt.canonical.txt",
+      "sha256": "7099b0ef931c72b470b28d8a5777ca8ba7f1b2c6bd71fee8edc915390c420f86",
+      "bytes": 10002
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/prompt.txt",
+      "sha256": "ddc3ab95bc6fa104325f1d0fc2f9164892726dc37c8446849a38126e9ca14aa0",
+      "bytes": 11927
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/request.json",
+      "sha256": "04fb4f68997bad241bb60ab930716e03f1c92d35cda41eefdf64694984874071",
+      "bytes": 3240
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/subject-source.json",
+      "sha256": "1acfdd5570303a04eb76dc9348a2101d69c145ccbe3c903d7f796cbf6ae6e826",
+      "bytes": 2230
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/visible-anatomy.json",
+      "sha256": "c134b4812d9209545f31c13531d20c9761ac1c31070e978f052ab1896b10a8f0",
+      "bytes": 2902
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/visual-review.json",
+      "sha256": "c5323f97dbe978fb37d4a928c0f5b0e3de49e59c6c488e679d15680ab8a7585a",
+      "bytes": 1097
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/generation.json",
+      "sha256": "cf94be77b8f80f32ecd19e5dbce1fed69616704b9c11e84eea39d92091f45bac",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/master.png",
+      "sha256": "c278ce4a029753b1bf168d40026d0c347155c62cdf766c4361c8efb7ad4f9799",
+      "bytes": 1182424
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/pattern-check.json",
+      "sha256": "505de63997855fb5e58dd9f90c640ea49b935aef07e9a69c0c5541126f12b7a9",
+      "bytes": 285
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/prompt.canonical.txt",
+      "sha256": "36442b77f0acf886f63a68f08888d4f2dbd9b7ca841f54ec34dcbb02c6a6a02a",
+      "bytes": 9873
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/prompt.txt",
+      "sha256": "60de98249c2f1f0d49372783594c7fcc051ba8fe267ab93bd755a671e93ffa10",
+      "bytes": 11672
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/request.json",
+      "sha256": "5426d333c5cc5d3911ea3cc755d3e9747ef4e7e56f8e04e2889e166123431c2a",
+      "bytes": 3202
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/subject-source.json",
+      "sha256": "93829443d08e045dd8779b632184810c20fd910d7aeb88bf73af153a526e4d6a",
+      "bytes": 2244
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/visible-anatomy.json",
+      "sha256": "1e0ba5c8fc919e33199fa36977a88dfc215ddf7fb3439de6980ec2b89e3645de",
+      "bytes": 3253
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/visual-review.json",
+      "sha256": "b55ddb9588d94cca44da7eb95d2a9f0d2a3903820ec6ac13b9e176d3a96f6a0c",
+      "bytes": 1084
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/generation.json",
+      "sha256": "02ce8d8f995c322ecd0dab251a3deb8ee29cddf316b02040eaf9e6b60923f0e0",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/master.png",
+      "sha256": "5d572253fbb6512eabdbbeaaa7bd149cd7b2d140356e6929517a559d4b165af4",
+      "bytes": 1215505
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/pattern-check.json",
+      "sha256": "4e9aa9ec0b0363aafced06dbcf933b4cdf2f421ca0f1a1998d23b2a1d3d46723",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/prompt.canonical.txt",
+      "sha256": "7fc85d6c73fd3b2a33a2644bedfc46c36ba3742f18668e2153cb98c4a1e81323",
+      "bytes": 10008
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/prompt.txt",
+      "sha256": "d916dcf814d770f50886f9fa570cc05cb2770f13778c7931050da908f598f6f2",
+      "bytes": 11823
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/request.json",
+      "sha256": "d1b45fdb64e45bd8b86a2f68ae04f41c5c4fb3d582f26466b3b97532769e3224",
+      "bytes": 3182
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/subject-source.json",
+      "sha256": "eb7293b9243fa088661257e86d51547f417880e538bae5eda2dd36fbb0d3455e",
+      "bytes": 2370
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/visible-anatomy.json",
+      "sha256": "346f570a3337589e03dec82f41d948557652e0568ddb6b577727ff0dd2fecb74",
+      "bytes": 2815
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/visual-review.json",
+      "sha256": "c8d9fb2772dc4313655315fcbdf7ae94cf2db7b07203c7656c2ccc8a37395258",
+      "bytes": 1036
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/generation.json",
+      "sha256": "57df218373a8396b42aa7e0e8835f9d74531ceaa7fa16ee871d63fe8c45f7294",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/master.png",
+      "sha256": "3f7acf801540303b2c0c95f3785875262812180e770db57291a4a32ac45f686b",
+      "bytes": 1194936
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/pattern-check.json",
+      "sha256": "063a0e30e3d143643bf227e27c50f65cf41eace5780a4d9d8e3b584f6810a36f",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/prompt.canonical.txt",
+      "sha256": "967a5e62fcd21e95d3040414ed52c21ba47cd477ae4fcd71d3ce5d978bcaa805",
+      "bytes": 9836
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/prompt.txt",
+      "sha256": "efe17aab47c5ae6027b49a2010953f3bf9f2c92317b8ed5e5865850a91552f35",
+      "bytes": 11933
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/request.json",
+      "sha256": "9932f935b34b656212b0e16187ce65051512482c162db15f9c7f95b5e5624791",
+      "bytes": 3597
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/subject-source.json",
+      "sha256": "c64c47b3e45278530fc4c9488200f5fc6af4f1a6b4fd2465265ff752b0a433c5",
+      "bytes": 2209
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/visible-anatomy.json",
+      "sha256": "b86567b88909a4cab2dcf1f47776b4333019fae0ae5b8830c04a87d8f7d1dd0a",
+      "bytes": 3323
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/visual-review.json",
+      "sha256": "48f9c491c027498975128d3c1f7408cd3bdc47056b52824b03088588218f505c",
+      "bytes": 1104
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/generation.json",
+      "sha256": "acd6551e90a37a65cb2c5e1cfc786eed04750230021a1a5f77059fd54b6ae109",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/master.png",
+      "sha256": "20d61d7b9c235f061c1129eaafcb0eca23e832ec47954ab050c4f3b2247f3ee0",
+      "bytes": 1189448
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/pattern-check.json",
+      "sha256": "96d845da0b7d841aa43692c29a5c1c0dca6b700bd3d875c4ae05003b6b998b36",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/prompt.canonical.txt",
+      "sha256": "9495754835c551c77cfbf0695569ca9d959c706119a9d2128baefd9e15a4c183",
+      "bytes": 9888
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/prompt.txt",
+      "sha256": "27f655273201ee2eef6006ba9b7e9842549af279f82864b1dc8732cce8ebab58",
+      "bytes": 11771
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/request.json",
+      "sha256": "16b50a311bf844692e59c2d3a8b54454824f5c4f0e47152b78a0ecc6f757574b",
+      "bytes": 3170
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/subject-source.json",
+      "sha256": "003c9bddd60d62fa81b95970b4608f9fd1cdf77716abf411a7a0bea993510eed",
+      "bytes": 2088
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/visible-anatomy.json",
+      "sha256": "0cac6b4a6bd24c4d5f63c9f745cabad7024493268f59c5ded8ee189745635fee",
+      "bytes": 3238
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/visual-review.json",
+      "sha256": "2610803bd0a79474aac9ec4a5fdb318ee0cb2a2cb78cf68c5ab37d504531129c",
+      "bytes": 1090
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/generation.json",
+      "sha256": "e991285565668f046e6a76074d19f7655456fb94135a3865e32eccb5d58d7cb9",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/master.png",
+      "sha256": "3a24d8d3448f5409f920e5c183e9833e0ffb1cc3dfde4f2bc87f705d56fd35b2",
+      "bytes": 1318013
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/pattern-check.json",
+      "sha256": "283680bf095dc4d214e6eab8da05340d5ba000e7e971334961e3e682bc4fec26",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/prompt.canonical.txt",
+      "sha256": "7d5566fa62ba9f7f9062e18cdbd4734b783f9f2f2eeaa693717e22b5e2ab7d45",
+      "bytes": 9879
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/prompt.txt",
+      "sha256": "070a73bdb296ae2523c576eef0082aa1fb6a4d8a15a976528c35e2d8b6036da4",
+      "bytes": 11896
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/request.json",
+      "sha256": "36236f406282f67b5fe86728f11417a67a4521ebb5ce3d3df61b32ac4794f16c",
+      "bytes": 3357
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/subject-source.json",
+      "sha256": "c6c97d7b7b37e1d769bef47f38f9f0ac2f7e50e5647b55e46d13948e6ae59e25",
+      "bytes": 2728
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/visible-anatomy.json",
+      "sha256": "cfac26eb1bb424928f0e3b20f83231e1e51c28042ee33f6992d1871516b6d3d7",
+      "bytes": 2751
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/visual-review.json",
+      "sha256": "08cb4016e985b01a8d3001f794ecec08ce844a20eca62449cfe4a877fe28a0bb",
+      "bytes": 1080
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/generation.json",
+      "sha256": "1acde0fe47458cbe3349be9c90068a16f8d04be01796f7135d3ad3c1424d86a2",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/master.png",
+      "sha256": "9b9da4dd7e2e3a241c4c9f225b00d0358606d387a317066f8f743391bdc52255",
+      "bytes": 1230267
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/pattern-check.json",
+      "sha256": "de524475ec31ac846679b681acf429ee2ed7f36fab5c58bbf96cf225eff342d4",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/prompt.canonical.txt",
+      "sha256": "9722d1f1520f73c447cb381593de6112ba11233de5c158b68d7caa83de57797b",
+      "bytes": 10062
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/prompt.txt",
+      "sha256": "e026499fce06cc8a0dd9df16140b8f152ccdc2253686ad0456ebb41e2b8ed998",
+      "bytes": 12055
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/request.json",
+      "sha256": "8320b7b03f618ecf0f88a9cb054791576610863d316f2ba820ee4cf12324fbe6",
+      "bytes": 3619
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/subject-source.json",
+      "sha256": "1615b6680a05328263c29ad37147058f0cac8639ba953c70ee40f9f028108186",
+      "bytes": 2498
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/visible-anatomy.json",
+      "sha256": "e12ae7fc3922ae85b0fca3093761d6171f3141d125f8e8283cbe1dfe897e8322",
+      "bytes": 2825
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/visual-review.json",
+      "sha256": "05102b3a37eb2db630c66dc21201682160e99485c756e81a2f6e193fee22eb5c",
+      "bytes": 1089
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/generation.json",
+      "sha256": "8bd6bf5d9e8854cbff0246c5003954f07d3d348fc4a2d9dca5b82e62eb6be743",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/master.png",
+      "sha256": "cc44d4c6f8fcb34ffe1f40b66685895948f2705558ed8af78622f0ca016c1020",
+      "bytes": 1267023
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/pattern-check.json",
+      "sha256": "13601c4f93cffb402b2646d92a7574c3bc4546b64cbfe9151853caa713576435",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/prompt.canonical.txt",
+      "sha256": "b79694beb0e4b91978bc08f7b91175a67585be9eaf8e77fda8fade956c836838",
+      "bytes": 9867
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/prompt.txt",
+      "sha256": "1b5cd88febc7358b4600f3a50391eb319010f0ab9c35a89762504376b6f3df81",
+      "bytes": 11808
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/request.json",
+      "sha256": "2490135d02aa852969b8394e33e815903c6e4441b45103302559fb548ab4c5d5",
+      "bytes": 3362
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/subject-source.json",
+      "sha256": "6ccd8b776aeccbe859e1c2983faac37cdbe59af0d5d470c6341bb97a7ef8c11c",
+      "bytes": 2712
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/visible-anatomy.json",
+      "sha256": "5257fe06dfcb494c6125d93aafa1c849e994646ba0df3aa008885bafe857ef01",
+      "bytes": 2470
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/visual-review.json",
+      "sha256": "4f382055e9eb2fd11082f432d8568cabaec879e797456ffc672401c8f935f68d",
+      "bytes": 1075
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/generation.json",
+      "sha256": "8983e1a656f9bae237bf69b2839df6ddedb76824185d3126b5a63ecb31ac2c8f",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/master.png",
+      "sha256": "27a1f78647d3a7a20e2b203129838b235c1d2b9eebac54875e4a26d11f7d004b",
+      "bytes": 1195735
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/pattern-check.json",
+      "sha256": "5606cd6e401e454d9a388426fb04ea18ecf8deff850cfe227a22545b28e11298",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/prompt.canonical.txt",
+      "sha256": "df99bc5addc39d3f255b6fd248269462507659306381c9bf9d1b3745f0ee23d9",
+      "bytes": 9951
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/prompt.txt",
+      "sha256": "a62837f8ef93d92aee686b494db4c90ee6e83d4c44c9fefec5bcaf7f9a69b149",
+      "bytes": 11912
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/request.json",
+      "sha256": "00e58d2301f13d1f762280509abd3cd395501085a4878daac8ac509b0ee93d5a",
+      "bytes": 3409
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/subject-source.json",
+      "sha256": "2cf03c69e6713b46c37b1389c93946e811449aa91f4d99524598285d70c0e3d1",
+      "bytes": 2788
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/visible-anatomy.json",
+      "sha256": "0593ce0cdb3881a26ed30baced7c02ccb553370744f14f2002c70d5faeee9e44",
+      "bytes": 2886
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/visual-review.json",
+      "sha256": "30a57c2d401ea3ddcf0d28e682515fe2f211154fe189c72f594e694d8ad09f59",
+      "bytes": 1099
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/generation.json",
+      "sha256": "eeded171e6be4321cd8c1d170a01c2c32f84d59b5afd95ed4d1b85ba57d77a36",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/master.png",
+      "sha256": "5391e5a4e53043a866392f2af51d3e62b021f52fee60b728d57e90b7fdd952dd",
+      "bytes": 1112641
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/pattern-check.json",
+      "sha256": "85a0b263ab1f70dd1860c678954642a6cd7522c2a891d31abd3ed0472db5d8be",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/prompt.canonical.txt",
+      "sha256": "0c53208648a2e664fe1afae07bd766242cfe3b8ea1f38de6964046812286dc17",
+      "bytes": 9968
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/prompt.txt",
+      "sha256": "54898808d0a57ec2905cafc565bfe7030d482855650240a5d925d1e001e923cb",
+      "bytes": 12009
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/request.json",
+      "sha256": "fc219afeaf4b33b4ac9f4e9d4b08b54af5dacb4dd8e44cbca13e2cd7be6499f7",
+      "bytes": 3564
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/subject-source.json",
+      "sha256": "023896fcfe8cdf7ababd69ed4acb1320459a9d3978d3767d2f189b6cd36c46c5",
+      "bytes": 2803
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/visible-anatomy.json",
+      "sha256": "d52dc01e9b72d1275aced888233ea8b1c702c1a65b93cda910f6c54d7abe8449",
+      "bytes": 2883
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/visual-review.json",
+      "sha256": "3b8c4cd200c80ccff7aa7c03e7c5235d14a36b7329b74857661d014f7463793d",
+      "bytes": 1129
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/generation.json",
+      "sha256": "d5610ec88d836836c873cd7a35405fc4a902fd816301fe443d534c3625b74479",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/master.png",
+      "sha256": "e4bc60adf1e4101b7b54831189fcd8d8988b6b9dafcbf8a994fa4467d9edaf80",
+      "bytes": 1054752
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/pattern-check.json",
+      "sha256": "b50cb4bf4b54a3b30da23bb7df455662e36114adccc74a669d2d4d4abb02f75d",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/prompt.canonical.txt",
+      "sha256": "93a0a73a1f2365940f46d178d7b6869ba59e22ae536822ef9f66fc9836234053",
+      "bytes": 9844
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/prompt.txt",
+      "sha256": "d0a55ef08160f7ca3ab7041ff41bc5a7b7e4c69c275dd579b0327b65ecf9ad47",
+      "bytes": 11769
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/request.json",
+      "sha256": "e26ca112e80432a2c2648151a37b2fac8ce621dc344d24ad38b04f2f8f1e39d2",
+      "bytes": 3327
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/subject-source.json",
+      "sha256": "5da8d78872a09ae2d78aca21ff2736d6210bff73a226ae557da355ba253ecaf6",
+      "bytes": 2695
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/visible-anatomy.json",
+      "sha256": "17885ad0e3cc32ce445933e1286d3b45f8b463741b748809ecc98c2f1ba7881b",
+      "bytes": 2814
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/visual-review.json",
+      "sha256": "faf7e0bbe2ab26fa613682f62696de37770d714f5e48942b808ddd19ba73b3ea",
+      "bytes": 1095
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/generation.json",
+      "sha256": "946b023a051bf22d354ea81daed90167468b6d91fea44e9d49789493f0016192",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/master.png",
+      "sha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033",
+      "bytes": 1153215
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/pattern-check.json",
+      "sha256": "7fe912e4eb44eebdce3ace4a8d7fea981129c58fd97d418817cee725e75b03c5",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/prompt.canonical.txt",
+      "sha256": "8bcfab6da50e02fb191a050148bbce309504c0f8083427c7707be2f443d78d8e",
+      "bytes": 10009
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/prompt.txt",
+      "sha256": "745cc07b6f8ff85d513a25cf876761dd2eb77e6836d28e7902c401d43ba8180a",
+      "bytes": 11962
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/request.json",
+      "sha256": "1c68a38d72d6783c3e44416508c9e09875666276095acfcdfea19545620f8eed",
+      "bytes": 3489
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/subject-source.json",
+      "sha256": "df04aff66efa4af463f4f67d83a0b355468cd1c63ad731a4e8c9448a36a25203",
+      "bytes": 2848
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/visible-anatomy.json",
+      "sha256": "79c410c5ea16dea875e10ee14e22880051bc66aa0ec09c7ec2677c06fe1163e5",
+      "bytes": 2963
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/visual-review.json",
+      "sha256": "d69c41af9133f70b59f4c9f33a466e99442e2d7d57b3dddfb861d409cebb13e8",
+      "bytes": 1037
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/compile.mjs",
+      "sha256": "2b5f31c02d1299de513811e149a6435e5263e15a98a18d89a72585718ec7f383",
+      "bytes": 12223
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "bytes": 963
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/freeze.mjs",
+      "sha256": "89d2b5c4e421a5a06a1fd39ca1359f01aff60f8cc22878bef9419410c56470ca",
+      "bytes": 3697
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/observations.json",
+      "sha256": "26698444f3086ac5e5e7683e571839aa688924240829ae552bd4496b6b47da02",
+      "bytes": 18741
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "bytes": 2547
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pattern-now.mjs",
+      "sha256": "a880c56356a11e38cd7db606dea5d4941cfde2ff85bfb6d14cdfb60e84068a99",
+      "bytes": 927
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pattern-summary.json",
+      "sha256": "26bb8e8b7a17399a712976661b1300b65b9e87b3ac47def18895bb316648a69a",
+      "bytes": 2300
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pilot.json",
+      "sha256": "24ee751a12d5d4bdac879c98b92d707d7edfdc9e8b1720fb6194b565a2bea1cb",
+      "bytes": 31202
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pipeline-proof.json",
+      "sha256": "a563591768982d3ce5c1d8cc71ace0d54e0dd26b787a5486700d3338766253f7",
+      "bytes": 887
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/README.md",
+      "sha256": "1a37525665ae560d5e1cc79e18676153d0842cb1ba8cf0dc103b72720688be44",
+      "bytes": 2817
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "bytes": 1279
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/review-sheet.png",
+      "sha256": "03ccd917c4fc89cf51b2a7532f7913c08b4e2e1e215bab0691cd399dafdb6d7b",
+      "bytes": 2337015
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/review.mjs",
+      "sha256": "fe6c0e59955fcea65cefafa47ae140b33210818d6e9ce3067fdb8d46f84e18eb",
+      "bytes": 2060
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/selection.json",
+      "sha256": "44e3349f1929d86f36f172052b43f6f4a65816f3cb2ed25c52b1720565c80324",
+      "bytes": 38099
+    },
+    {
+      "path": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/visual-notes.json",
+      "sha256": "b862e590807d268d3ac6fd38048e8b075790c6a85fc984248f542193600d6fee",
+      "bytes": 9357
+    }
+  ],
+  "bytes": 32569864
+}

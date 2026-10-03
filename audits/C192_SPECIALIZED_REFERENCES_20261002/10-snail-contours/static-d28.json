@@ -1,0 +1,230 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "bcc32e3170f8f2e8911c65ab2db3ba1587a2862f",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000900039649589382,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008456343683618003,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:crawl",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000900039649589382,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007945420056514123,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00009513386649094551,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000900039650439088,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00009000396488340877,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000900039649589382,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00009000396488340877,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000852215279881378,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "df7194ebb22419ed9b5bcc28481f69392f2d6ca94354b865985b1dbfd6f37ef3",
+  "bindingHash": "7ea040259adfc023d6845a497cee65e6536c839fe5d719af3bdf038ad8264729",
+  "family": "gastropod",
+  "contacts": [],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:crawl",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 748,
+    "attemptedSamples": 748,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00009513386649094551,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4454.930082261562
+      },
+      {
+        "id": "alert",
+        "startMs": 4454.930082261562,
+        "endMs": 5054.930082261562
+      },
+      {
+        "id": "approach:crawl",
+        "startMs": 5054.930082261562,
+        "endMs": 5754.930082261562
+      },
+      {
+        "id": "cast",
+        "startMs": 5754.930082261562,
+        "endMs": 6644.930082261562
+      },
+      {
+        "id": "hit",
+        "startMs": 6644.930082261562,
+        "endMs": 7374.930082261562
+      },
+      {
+        "id": "dodge",
+        "startMs": 7374.930082261562,
+        "endMs": 7974.930082261562
+      },
+      {
+        "id": "faint",
+        "startMs": 7974.930082261562,
+        "endMs": 8774.930082261562
+      },
+      {
+        "id": "victory",
+        "startMs": 8774.930082261562,
+        "endMs": 9654.930082261562
+      },
+      {
+        "id": "tame",
+        "startMs": 9654.930082261562,
+        "endMs": 10574.930082261562
+      },
+      {
+        "id": "feed",
+        "startMs": 10574.930082261562,
+        "endMs": 11434.930082261562
+      }
+    ],
+    "durationMs": 12434.930082261562
+  },
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/record.json",
+      "sha256": "0fe9b3fa334a8be836cda3cdea5d74f2b0c52443562c8d2d026d14efaef732e8",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/binding.json",
+      "sha256": "5ea867327b9420aa93cb8f61668f929fad9dc87e669ddcf4ac2d5860ea4be4b2",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/manifest.json",
+      "sha256": "cdcb6ffa5b1d1efebd417bb8b800ef4b0fad3402d9114c424a0bd84b08ba093f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/atlas/c192-snail-contours.png",
+      "sha256": "a6065a2f02208266f98143191168eb3caa78de362e2be7771fe81d92ef325159",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/keyed.png",
+      "sha256": "cd9026e52b618746e83c2d08d6be122811ef98b08e89fa44f5d817dc1d839ee2",
+      "unchanged": true
+    }
+  ]
+}

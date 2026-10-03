@@ -1,0 +1,17 @@
+{
+  "kind": "Transcribed independent read-only review; not execution evidence",
+  "recordedAt": "2026-09-09T07:46:46.161968+00:00",
+  "findings": "No actionable findings after pre-run observer corrections",
+  "nativeObserverCorrections": [
+    "Per-mode exact error and injected-operation hits",
+    "Actual visible-canvas pixel/write evidence and mutation controls"
+  ],
+  "conditioningReview": [
+    "Single exact selected Civet reference only",
+    "Default/dual inputs unchanged",
+    "Conflicting flags rejected",
+    "Canonical authority retained",
+    "Expected four-stage single-reference profiling sequence"
+  ],
+  "qualityAccepted": false
+}

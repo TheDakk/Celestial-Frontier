@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c168-membrane-source/v1",
+  "sourcePacket": "audits/G2_C163_FAMILY_ORIGINALS_20261002/22-bat",
+  "mode": "immutable independent C163 original",
+  "copied": [
+    {
+      "file": "master.png",
+      "sha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a"
+    },
+    {
+      "file": "prompt.txt",
+      "sha256": "fa88277b850e61aac73d1134e382b82ad0060deccba600a4c9cf2981d1a7c947"
+    },
+    {
+      "file": "subject-source.json",
+      "sha256": "d8f2ee07dbcb7faa3531173a23f5e55f4ada64830f2c2b686af02503a3c4dea7"
+    }
+  ],
+  "promptSha256": "fa88277b850e61aac73d1134e382b82ad0060deccba600a4c9cf2981d1a7c947",
+  "priorPromptSha256": "fa88277b850e61aac73d1134e382b82ad0060deccba600a4c9cf2981d1a7c947",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "qualityAccepted": false,
+  "nativeAcceptance": false
+}

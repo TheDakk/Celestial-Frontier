@@ -1,0 +1,118 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts (8 tests | 7 failed) 2027ms
+   × authors c54-14-goose hit against the actual painted supports 48ms
+   × authors c54-14-goose tame against the actual painted supports 35ms
+   × authors c54-15-quail tame against the actual painted supports 32ms
+   × authors c56-10-raven hit against the actual painted supports 36ms
+   × authors c59-08-vulture hit against the actual painted supports 30ms
+   × authors c56-15-dove melee:claw against the actual painted supports 31ms
+   × authors 02-pigeon tame against the actual painted supports 41ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c54-14-goose hit against the actual painted supports
+AssertionError: expected 9 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 9
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:20:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c54-14-goose tame against the actual painted supports
+AssertionError: expected 11 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 11
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:20:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c54-15-quail tame against the actual painted supports
+AssertionError: expected 101 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 101
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:20:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c56-10-raven hit against the actual painted supports
+AssertionError: expected 15 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 15
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:20:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c59-08-vulture hit against the actual painted supports
+AssertionError: expected 18 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 18
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:20:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c56-15-dove melee:claw against the actual painted supports
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:20:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors 02-pigeon tame against the actual painted supports
+AssertionError: expected 91 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 91
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:20:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 1 passed (8)
+   Start at  03:40:54
+   Duration  2.34s (transform 149ms, setup 0ms, import 195ms, tests 2.03s, environment 0ms)
+

@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "static",
+  "id": "05-leech-reference",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/static-01.json"
+  ],
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/static-01.log",
+  "logSha256": "f02c2c99d3aa62ce9d654ea8fa12c84e94199c5cb51c376f142a4b6e4a1c1e9c",
+  "nativeRuns": 0
+}

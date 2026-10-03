@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "10-snail-contours",
+  "command": [
+    "node",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01",
+    "01"
+  ],
+  "helperSha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/conservation-01.log",
+  "logSha256": "5556e672c7af98331d9177b535c2eb14cb08efea03113be5664b8855b8ceb6b6",
+  "nativeRuns": 0
+}

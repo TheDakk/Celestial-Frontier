@@ -1,0 +1,9 @@
+# C132 recorded cue candidates — 2026-10-02
+
+`delivery.json` contains all 33 theme phase cues and 16 battle cues. Eleven impacts each have independently retained transient, mass-thud and material-tail stems. All 49 are derived from retained licensed audio files; no runtime oscillator or generated noise is used in this packet. These are existing recorded/designed sources, not newly performed biological recordings.
+
+The selected impact mix is in `layered-impacts-02`; other cues use `candidate-02`. Every source, recipe, master WAV and Opus has a SHA-256. Source licenses and attribution evidence remain in `audio-production/manifests/acquisition.json`; layered impacts use CC0 or public-domain sources. Sources, recipes and old attempts are never overwritten. The first build stopped at an unhandled license label; the first layering attempt stopped on a missing optional source-page field. Both partial attempts and logs remain. The corrected pass resolves the retained item-evidence URL instead.
+
+Technical checks verify finite non-silent PCM, bounded peak, exact cue duration, mono 48 kHz, 24-bit WAV, 96 kbit/s Opus, all 49 distinct IDs and exact output/source hashes. Impact duration is 540 ms; each impact Opus is below 30 KB. Material tails retain the theme source, with a separate close transient and low-passed body thud. The current stack is a mid-mass authoring candidate; runtime mass scaling belongs to the deterministic sound owner.
+
+**Not yet accepted:** headphones/phone listening, measured loudness balance, per-material and mass extremes, actual cue timing in battle, or runtime promotion. No rights manifest, SOUND_KIT, accepted master or shipped synth source was changed. Claude can audition these masters as C3 candidates and wire only after the relevant acceptance. No claim is made that placeholder battle sound has already been replaced.

@@ -1,0 +1,218 @@
+/** G1 run: for each corpus subject, AUTO-author its packet from the OTHER subjects' hand-authored packets (leave-one-subject-out),
+ * run Codex's unchanged intake + the re-rooted static gate, and score against the subject's own hand authoring (which the author
+ * never reads). Run from the worktree root: node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs [--tag=NAME] [id ...]
+ * Writes auto[-TAG]/<id>/{packet/, fit/, static.json, evidence.json, score.json} and auto[-TAG]/summary.json. */
+import fs from 'node:fs';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {summarizeStaticOutcome} from '../../port/v2/tools/anatomy-verify/static-outcome.mjs';
+import {autoAuthor, autoAuthorShop, prepareSubject, mirrorSubject, referenceStats, skeletonStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
+import {serpentAuthor} from '../../port/v2/tools/anatomy-verify/serpent-author.mjs';
+import {reviewedExclusions} from '../../port/v2/tools/anatomy-verify/reviewed-exclusions.mjs';
+import {resolveAnatomyInventory} from '../../port/v2/tools/creature-animation/anatomy-inventory.mjs';
+const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
+const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
+const sharp = createRequire(require.resolve('free-tex-packer-core'))('sharp');
+const { earthFaunaProfile } = await import(path.join(ROOT, 'port/v2/apps/game/src/earth-fauna-profiles.ts'));
+const { speciesVisualKey } = await import(path.join(ROOT, 'port/v2/packages/art/src/speciesidentity.ts'));
+const args = process.argv.slice(2), tag = (args.find((a) => a.startsWith('--tag=')) ?? '').slice(6), only = args.filter((a) => !a.startsWith('--'));
+const skipStatic = args.includes('--no-static');
+const ridgeArg = args.find((x) => x.startsWith('--ridge=')), ridgeFrac = ridgeArg ? Number(ridgeArg.slice(8)) : 0;
+const nudgeArg = args.find((x) => x.startsWith('--nudge=')), nudgeFrac = nudgeArg ? Number(nudgeArg.slice(8)) : 0;
+const useCounter = args.includes('--counter'), thinArg = args.find((x) => x.startsWith('--nudge-thin=')), nudgeThinFrac = thinArg ? Number(thinArg.slice(13)) : null;
+const nudgeSkipChains = args.includes('--nudge-skip-chains');
+const shopArg = args.find((x) => x.startsWith('--shop=')), shopN = shopArg ? Number(shopArg.slice(7)) : 0;
+const fallbackArg = args.find((x) => x.startsWith('--fallback=')), fallbackN = fallbackArg ? Number(fallbackArg.slice(11)) : 0;
+const { familyContract, familyContactChains } = await import(path.join(ROOT, 'port/v2/tools/creature-animation/family-contracts.mjs'));
+const topkArg = args.find((x) => x.startsWith('--topk=')), topK = topkArg ? Number(topkArg.slice(7)) : 3;
+const useChains = args.includes('--chains'); /* --reviewed-presence=<json [{id, review}]> (labelled): a Codex reviewed-presence declaration (cf.reviewed-optional-absence/v1
+ * tail, cf.reviewed-external-ear-absence/v1 pinnae; bound to the exact master/subject/prompt hashes) admitted by admitReviewedPresence.
+ * Since 2026-10-02 (Claude) the admission runs BEFORE the author (reviewed-exclusions.mjs): the joints the admitted inventory removes
+ * go to autoAuthor as `excludedJoints`, which does not author them and exempts ONLY them from the missing-anatomy coverage checks
+ * (every other check, the counter's inventory included, is unchanged). The post-verdict drop (as Codex's C89 Hyrax adapter) is kept
+ * as a consistency pass and is then a no-op. Never infers absence; with no review, or a review whose admission fails (any hash
+ * mismatch), nothing is excluded and author output and verdicts are byte-identical to the runner without this option. */
+const reviewedArg = args.find((x) => x.startsWith('--reviewed-presence=')), reviewedById = new Map(reviewedArg ? JSON.parse(fs.readFileSync(path.join(ROOT, reviewedArg.slice(20)), 'utf8')).map((e) => [e.id, JSON.parse(fs.readFileSync(path.join(ROOT, e.review), 'utf8'))]) : []);
+const useSerpentStrips = args.includes('--serpent-strips'), useTailLabels = args.includes('--tail-labels'), useMergeJoint = args.includes('--merge-joint-labels'); const legMatchArg = args.find((x) => x.startsWith('--leg-match=')), legMatch = legMatchArg ? Number(legMatchArg.slice(12)) : 0;
+const useSkeleton = args.includes('--skeleton'), graphOf = (family) => familyContract(family).graph;
+const terminalsOf = (family) => { try { return new Set(familyContactChains(familyContract(family)).map((c) => c.terminal).filter(Boolean)); } catch { return new Set(); } };
+const OUT = path.join(HERE, 'auto' + (tag ? '-' + tag : ''));
+const corpus = JSON.parse(fs.readFileSync(path.join(HERE, 'corpus.json'), 'utf8')).subjects;
+// materials (Codex G1 review): a family default misdescribes species (a salamander is not fur, an eel is not scales), and the
+// motion kit REFUSES an unclassified surface (body-card `unsupported-materials`), so a neutral string can never pass a gate. The
+// material is therefore the SPECIES GROUP's integument, keyed by the pinned Earth fauna profile id (biology of the group, not a
+// reading of the painting and never permission for a finisher to add texture). A group absent here REFUSES; nothing is guessed.
+/* 2026-10-02 (Claude): specialized families mapped to the closed kit categories, following Codex's C202 references (earthworm =
+ * slick, sponge = warty); exoskeleton crustaceans = chitin. Bivalves map to plated (rigid valves/hinge) per Codex's C220/C228 decision. */
+const SPECIES_MATERIAL = Object.freeze({
+  fur: ['felid', 'canid', 'hyena', 'bear', 'small-clawed-mammal', 'aquatic-pawed-mammal', 'gliding-mammal', 'aardvark', 'rabbit-hopper', 'marsupial-hopper', 'koala', 'primate', 'hoofed-horned', 'hoofed-unhorned', 'tapir', 'suid', 'bat'],
+  scales: ['constricting-snake', 'snake', 'lizard', 'special-lizard', 'marine-iguana', 'crocodilian', 'fish', 'predatory-shark', 'filter-shark', 'tube-snouted-fish'],
+  feathers: ['raptor', 'flightless-bird', 'penguin', 'swimming-bird', 'wading-bird', 'ground-foraging-bird', 'bird', 'pheasant'],
+  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede', 'springtail', 'small-crustacean', 'fiddler-crab', 'observed-crab'],
+  'smooth skin': ['frog', 'salamander', 'caecilian', 'eel', 'jawless-fish', 'cephalopod', 'mudskipper', 'annelid-land', 'land-gastropod', 'annelid-water'],
+  warty: ['echinoderm', 'sponge'], plated: ['bivalve'], translucent: ['cnidarian', 'comb-jelly', 'sessile-tunicate'],
+});
+const materialForProfile = (profileId) => Object.entries(SPECIES_MATERIAL).find(([, ids]) => ids.includes(profileId))?.[0] ?? null;
+// habitat = biological capability from the pinned Earth fauna profile (id, media and its hash retained in the provenance envelope);
+// it says nothing about the painted pose or observed supports. `ground+air` is `land` here and does NOT imply no adult flight.
+const profileHash = (p) => createHash('sha256').update(JSON.stringify(p)).digest('hex');
+const habitatFor = (name) => { const p = earthFaunaProfile(name); if (!p) return null; const m = p.media;
+  const realm = m.includes('water') && m.includes('ground') ? 'amphibious' : m.includes('water') ? 'aquatic' : m.includes('ground') ? 'land' : m.includes('air') ? 'aerial' : null;
+  return realm ? { realm, source: `G1 automatic: Earth fauna profile ${p.id} media ${m.join('+')} (capability, not painted pose; adult flight is a separate declaration)` } : null; };
+const rgbaOf = async (file) => { const { data, info } = await sharp(file).ensureAlpha().raw().toBuffer({ resolveWithObject: true }); return { rgba: new Uint8ClampedArray(data), w: info.width, h: info.height }; };
+
+// prepare every subject once
+const subjects = [];
+for (const s of corpus) {
+  const dir = path.join(ROOT, s.packet), img = await rgbaOf(path.join(dir, 'master.png')), prepared = prepareSubject(img.rgba, img.w, img.h);
+  const authoring = JSON.parse(fs.readFileSync(path.join(dir, 'authoring.json'), 'utf8'));
+  subjects.push({ ...s, dir, img, prepared, authoring, subject: JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8')), stats: referenceStats(prepared, authoring), skeleton: useSkeleton ? skeletonStats(prepared, authoring, graphOf(s.family)) : null });
+}
+// --targets=<pilot.json>: author INDEPENDENT paintings (e.g. the G2 pilot) that have no hand authoring; the 40 corpus packets are the
+// references. Leave-one-SPECIES-out: a corpus packet of the target's own species is never its reference (Codex G1 review).
+const targetsArg = args.find((x) => x.startsWith('--targets=')), targets = [];
+if (targetsArg) for (const t of JSON.parse(fs.readFileSync(path.join(ROOT, targetsArg.slice(10)), 'utf8'))) {
+  const dir = path.join(ROOT, t.packet), img = await rgbaOf(path.join(dir, 'master.png')), subject = JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8'));
+  targets.push({ id: t.id, family: subject.family, packet: t.packet, dir, img, prepared: prepareSubject(img.rgba, img.w, img.h), authoring: null, subject }); }
+// presence (Codex second review): the counter measures appendage/island/ground-contact GEOMETRY; it does not resolve every named limb.
+// presence.json's empty lists are an intake-format necessity (no absence/hidden/folded claim), never an all-visible attestation.
+// Semantic presence is RESOLVED only when every reference appendage is assigned to a target appendage AND no reference appendage
+// merges two contact chains (overlapped near/far limbs); otherwise it is UNRESOLVED and the packet is not play-admissible.
+function semanticPresence(res, family) {
+  if (res.verdict !== 'ADMIT') return { attestation: 'none (refused)' };
+  if (res.evidence?.author === 'serpent-strips/v1') return { lists: 'absent/hidden/folded empty: intake-format necessity', geometric: res.evidence.target,
+    semantic: 'UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed',
+    attestation: 'geometric only: NOT an all-visible attestation', playAdmission: 'blocked until semantic presence is resolved and native + Dakk visual review pass' };
+  const inv = res.evidence?.inventory; if (!inv) return { attestation: 'none', semantic: 'UNRESOLVED: no inventory' };
+  const jointOf = new Map((res.authoring?.parts ?? []).map((p) => [p.id, p.joint]));
+  let chains = []; try { chains = familyContactChains(familyContract(family)); } catch {}
+  const chainOf = (joint) => chains.find((c) => [c.hip, c.knee, c.end, c.terminal].includes(joint))?.id ?? null;
+  const unassigned = [], merged = [];
+  for (const a of inv.assign ?? []) { if (a.target === null || a.target === undefined) unassigned.push(a.owners.join('+'));
+    const cs = new Set(a.owners.map((o) => chainOf(jointOf.get(o))).filter(Boolean)); if (cs.size > 1) merged.push([...cs].join('+')); }
+  const resolved = !unassigned.length && !merged.length;
+  return { lists: 'absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim',
+    geometric: { appendagesByClass: inv.target?.byClass ?? null, groundContacts: inv.target?.ground ?? null, detachedIslands: Array.isArray(inv.target?.detached) ? inv.target.detached.length : null },
+    semantic: resolved ? 'RESOLVED: every reference appendage assigned; no appendage merges two limb chains' : 'UNRESOLVED', unassigned, mergedChains: merged,
+    attestation: resolved ? 'geometric + semantic inventory resolved (still not play admission: native and visual review remain)' : 'geometric only: NOT an all-visible attestation',
+    playAdmission: 'blocked until semantic presence is resolved and native + Dakk visual review pass' };
+}
+/* --extra-refs=<json [{id,family,packet}]> (labelled DIAGNOSTIC, D28): extra reference packets (e.g. native-passing G2 creatures);
+ * references only, never targets; leave-one-species-out applies to them too. */
+const extraRefsArg = args.find((x) => x.startsWith('--extra-refs=')), extras = [];
+if (extraRefsArg) for (const e of JSON.parse(fs.readFileSync(path.join(ROOT, extraRefsArg.slice(13)), 'utf8'))) { const dir = path.join(ROOT, e.packet), img = await rgbaOf(path.join(dir, 'master.png')), prepared = prepareSubject(img.rgba, img.w, img.h), authoring = JSON.parse(fs.readFileSync(path.join(dir, 'authoring.json'), 'utf8'));
+  extras.push({ ...e, dir, img, prepared, authoring, subject: JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8')), stats: referenceStats(prepared, authoring), skeleton: null }); }
+const refOf = (s) => ({ ...s.prepared, family: s.family, subjectId: s.id, authoring: s.authoring, partPaint: s.stats.partPaint, unclaimedFrac: s.stats.unclaimedFrac, skeleton: s.skeleton });
+
+const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
+const ownerAt = (a, x, y) => { const k = a.parts.findIndex((p) => inside(x, y, p.polygonPx)); return k < 0 ? a.remainderPart : a.parts[k].id; };
+function score(auto, hand, prepared) {
+  const pts = Object.values(hand.landmarksPx); let bl = 0; for (const p of pts) for (const q of pts) bl = Math.max(bl, Math.hypot(p[0] - q[0], p[1] - q[1]));
+  const errs = Object.entries(hand.landmarksPx).filter(([k]) => auto.landmarksPx[k]).map(([k, p]) => ({ joint: k, e: Math.hypot(p[0] - auto.landmarksPx[k][0], p[1] - auto.landmarksPx[k][1]) / bl }));
+  let n = 0, same = 0; for (let y = 0; y < prepared.h; y += 6) for (let x = 0; x < prepared.w; x += 6) { if (!prepared.mask[y * prepared.w + x]) continue; n++; if (ownerAt(auto, x + 0.5, y + 0.5) === ownerAt(hand, x + 0.5, y + 0.5)) same++; }
+  const sorted = errs.map((e) => e.e).sort((a, b) => a - b);
+  return { bodyLengthPx: +bl.toFixed(1), landmarkMedian: +(sorted[(sorted.length - 1) >> 1] ?? NaN).toFixed(4), landmarkMax: +(sorted.at(-1) ?? NaN).toFixed(4), worst: errs.sort((a, b) => b.e - a.e).slice(0, 3).map((e) => `${e.joint} ${e.e.toFixed(3)}`), labelAgreement: +(same / Math.max(1, n)).toFixed(4), missingJoints: Object.keys(hand.landmarksPx).filter((k) => !auto.landmarksPx[k]) };
+}
+
+fs.mkdirSync(OUT, { recursive: true });
+const rows = [];
+// one automatic candidate: author from the reference of rank `rank`, then (if admitted) Codex's unchanged intake and the static gate
+function runCandidate(s, rank, dir) {
+  fs.mkdirSync(dir, { recursive: true });
+  const refs = [...subjects, ...extras].filter((o) => o.id !== s.id && o.subject.name !== s.subject.name).map(refOf); // leave-one-subject-out, and leave-one-species-out
+  const mirrored = mirrorSubject(s.img.rgba, s.img.w, s.img.h);
+  // identity (Codex G1 review): subject-source.json is species/genome identity, never anatomy; its name, family, genome and
+  // visualKey must agree with the corpus row and the pinned Earth profile, or the subject refuses before any authoring
+  const profile = earthFaunaProfile(s.subject.name), idReasons = [];
+  if (s.subject.family !== s.family) idReasons.push(`identity: subject-source family ${s.subject.family} ≠ corpus family ${s.family}`);
+  if (!profile) idReasons.push(`identity: no pinned Earth fauna profile for ${s.subject.name}`);
+  if (!(s.subject.genome && Number.isInteger(s.subject.genome.seed))) idReasons.push('identity: subject-source genome has no integer seed');
+  if (!(typeof s.subject.visualKey === 'string' && s.subject.visualKey.length > 5)) idReasons.push('identity: subject-source visualKey missing');
+  // canonical agreement (Codex second review): the visualKey must be the one the genome itself yields, and the genome's own seed
+  let canonicalKey = null; try { canonicalKey = speciesVisualKey({ ...s.subject.genome }); } catch (e) { idReasons.push('identity: genome yields no visualKey (' + String(e).slice(0, 80) + ')'); }
+  if (canonicalKey !== null && canonicalKey !== s.subject.visualKey) idReasons.push('identity: subject-source visualKey is not the genome\'s own visualKey');
+  const material = profile ? materialForProfile(profile.id) : null; if (!material) idReasons.push(`materials-unknown: no species-group material for profile ${profile?.id ?? '(none)'}; the motion kit refuses an unclassified surface`);
+  /* --serpent-strips (labelled, off by default): serpents use the strip author (vertical cuts on the measured centreline) instead of
+   * the contour warp; same identity checks, provenance, intake and gates. References: the other serpent corpus packets, leave-one-species-out. */
+  const serpentRefs = () => refs.map((r) => subjects.find((o) => o.id === r.subjectId)).filter((o) => o && o.family === 'serpent').map((o) => ({ id: o.id, name: o.subject.name, authoring: o.authoring, rgba: o.img.rgba, w: o.img.w, h: o.img.h }));
+  const rx = reviewedById.has(s.id) ? reviewedExclusions({ packetDir: s.dir, review: reviewedById.get(s.id), family: s.family }) : null;
+  const res0 = useSerpentStrips && s.family === 'serpent' ? serpentAuthor({ rgba: s.img.rgba, w: s.img.w, h: s.img.h, id: s.id, refs: serpentRefs(), materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name) }) : (rank === 0 && shopN > 0 ? autoAuthorShop : autoAuthor)({ grow: args.includes('--grow'), shop: shopN, target: s.prepared, mirrored, family: s.family, id: s.id, refs, refRank: rank, legMatch, materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null, excludedJoints: rx?.excludedJoints ?? null });
+  const res = idReasons.length ? { ...res0, verdict: 'REFUSE', reasons: [...idReasons, ...res0.reasons] } : res0;
+  fs.writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify({ verdict: res.verdict, reasons: res.reasons, ...res.evidence }, null, 1) + '\n');
+  // outer provenance envelope (Codex G1 review): intake stays unchanged and still writes manualAuthoring=true and
+  // sourceLandmarksReused=false; this envelope records that the packet is an AUTOMATIC TRANSFER and those inner fields are not an
+  // automatic-origin attestation
+  const sha = (f) => createHash('sha256').update(fs.readFileSync(f)).digest('hex'), ref = [...subjects, ...extras].find((o) => o.id === res.evidence?.bestReference);
+  fs.writeFileSync(path.join(dir, 'provenance.json'), JSON.stringify({ schema: 'cf.g1-auto-provenance/v1', subject: s.id, verdict: res.verdict,
+    origin: 'automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation',
+    intakeLegacyFields: 'intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.',
+    targetMasterSha256: sha(path.join(s.dir, 'master.png')), subjectSourceSha256: sha(path.join(s.dir, 'subject-source.json')),
+    identity: { name: s.subject.name, family: s.subject.family, visualKey: s.subject.visualKey ?? null, seed: s.subject.genome?.seed ?? null, checks: idReasons.length ? idReasons : 'PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)' },
+    reference: ref ? { subject: ref.id, authoringSha256: sha(path.join(ref.dir, 'authoring.json')), masterSha256: sha(path.join(ref.dir, 'master.png')) } : null,
+    habitat: profile ? { profileId: profile.id, media: profile.media, profileSha256: profileHash(profile), meaning: 'capability, not painted pose or observed supports' } : 'unknown',
+    materials: { surface: material, source: profile ? `species group ${profile.id} (Earth fauna profile)` : null, meaning: 'the species group\'s integument; not an observation of the painting, not a finisher permission' },
+    visibleInventory: res.evidence?.inventory ? { measuredBy: 'limb-counter.mjs (paint only)', target: res.evidence.inventory.target, reference: res.evidence.inventory.reference } : 'unmeasured',
+    presence: semanticPresence(res, s.family) }, null, 1) + '\n');
+  const row = { id: s.id, family: s.family, verdict: res.verdict, reasons: res.reasons, semanticPresence: res.verdict === 'ADMIT' ? semanticPresence(res, s.family).semantic : null };
+  if (res.authoring) {
+    if (s.authoring) Object.assign(row, score(res.authoring, s.authoring, s.prepared)); // independent targets have no hand authoring to score against
+    const packet = path.join(dir, 'packet'); fs.mkdirSync(packet, { recursive: true });
+    fs.copyFileSync(path.join(s.dir, 'master.png'), path.join(packet, 'master.png'));
+    fs.copyFileSync(path.join(s.dir, 'subject-source.json'), path.join(packet, 'subject-source.json')); // species metadata, not anatomy
+    let authoringOut = res.authoring, presenceOut = res.presence;
+    if (res.verdict === 'ADMIT' && rx) {
+      try { if (!rx.admitted) throw Error(rx.refused); const admitted = rx.admitted, authorRemoved = res.evidence?.reviewedExclusion?.removedParts ?? [];
+        const allowed = new Set(resolveAnatomyInventory(familyContract(res.authoring.family), admitted).joints);
+        const removed = res.authoring.parts.filter((p) => !allowed.has(p.joint)); if (removed.some((p) => p.id === res.authoring.remainderPart)) throw Error('cannot remove the remainder');
+        authoringOut = { ...res.authoring, landmarksPx: Object.fromEntries(Object.entries(res.authoring.landmarksPx).filter(([j]) => allowed.has(j))), parts: res.authoring.parts.filter((p) => allowed.has(p.joint)) };
+        presenceOut = admitted; row.reviewedPresence = { absent: admitted.absent, removedParts: [...authorRemoved, ...removed.map((p) => p.id)] };
+      } catch (e) { row.reviewedPresence = { refused: String(e.message).slice(0, 160) }; } }
+    fs.writeFileSync(path.join(packet, 'authoring.json'), JSON.stringify(authoringOut, null, 2) + '\n');
+    fs.writeFileSync(path.join(packet, 'presence.json'), JSON.stringify(presenceOut, null, 2) + '\n');
+    if ((res.verdict === 'ADMIT' || args.includes('--diagnostic-static')) && !skipStatic) { if (res.verdict !== 'ADMIT') row.diagnosticOnly = 'static run on a REFUSED author (diagnostic; never an admission)';
+      const fit = path.join(dir, 'fit');
+      if (!fs.existsSync(fit)) { const r = spawnSync(process.execPath, ['port/v2/tools/creature-animation/intake-authored.mjs', packet, fit], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.writeFileSync(path.join(dir, 'intake.log'), (r.stdout || '') + (r.stderr || '')); }
+      /* --tail-labels (labelled, off by default): the checked exact-label tail placement (Codex TAIL_LABELS_C56 + Claude's rig-derived
+       * identity guard) rebuilds the fit with the remainder gap between tail and stalk owned by the stalk; static then runs on that fit.
+       * Skipped (and recorded) when the rig has no tail pair or the placement refuses. */
+      let staticFit = fit;
+      /* --merge-joint-labels (labelled): when intake refused at the source-join probe on shared joints (the hand beetle's three
+       * `thorax` regions), merge them on the label raster exactly as the shipped beetle's intake did (merge-joint-labels-fit.mjs;
+       * control: reproduces shipped fit-04 on every pixel), then run static on that fit. */
+      if (useMergeJoint && !fs.existsSync(path.join(fit, 'binding.json')) && fs.existsSync(path.join(fit, 'refusal.json')) && /unique known source owners/.test(fs.readFileSync(path.join(fit, 'refusal.json'), 'utf8'))) {
+        const mj = path.join(dir, 'merge-joint'); if (!fs.existsSync(path.join(mj, 'fit', 'binding.json'))) { fs.rmSync(mj, { recursive: true, force: true }); const r = spawnSync(process.execPath, [path.join(HERE, 'merge-joint-labels-fit.mjs'), s.id, fit, mj], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.writeFileSync(path.join(dir, 'merge-joint.log'), (r.stdout || '') + (r.stderr || '')); }
+        if (fs.existsSync(path.join(mj, 'fit', 'binding.json'))) { staticFit = path.join(mj, 'fit'); row.mergeJoint = JSON.parse(fs.readFileSync(path.join(mj, 'receipt.json'), 'utf8')).merged; } }
+      if (useTailLabels && fs.existsSync(path.join(fit, 'binding.json'))) { const tl = path.join(dir, 'tail-labels');
+        if (!fs.existsSync(path.join(tl, 'fit', 'binding.json'))) { fs.rmSync(tl, { recursive: true, force: true }); const r = spawnSync(process.execPath, [path.join(HERE, 'tail-labels-fit.mjs'), s.id, fit, tl], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, 'tail-labels.log'), (r.stdout || '') + (r.stderr || '')); }
+        if (fs.existsSync(path.join(tl, 'fit', 'binding.json'))) { staticFit = path.join(tl, 'fit'); try { row.tailLabels = JSON.parse(fs.readFileSync(path.join(tl, 'receipt.json'), 'utf8')).gap.changedPixels; } catch { row.tailLabels = 'receipt missing'; } }
+        else row.tailLabels = 'skipped: ' + ((fs.readFileSync(path.join(dir, 'tail-labels.log'), 'utf8').match(/Error: [^\n]{0,160}/) ?? ['unknown'])[0]); }
+      if (fs.existsSync(path.join(staticFit, 'binding.json'))) {
+        const report = path.join(dir, 'static.json');
+        if (!fs.existsSync(report)) { const r = spawnSync(process.execPath, [path.join(HERE, 'harness/static-runner.mjs'), staticFit, report], { cwd: ROOT, encoding: 'utf8', timeout: 1800000 }); fs.writeFileSync(path.join(dir, 'static.log'), (r.stdout || '') + (r.stderr || '')); }
+        let st = null; try { st = JSON.parse(fs.readFileSync(report, 'utf8')); } catch {}
+        Object.assign(row, summarizeStaticOutcome(st));
+        if (!st) { const log = fs.readFileSync(path.join(dir, 'static.log'), 'utf8'); row.staticError = (log.match(/"error":"([^"]{0,200})/) ?? [])[1] ?? log.slice(-200); }
+      } else { row.static = 'INTAKE_REFUSED'; try { row.intakeError = JSON.parse(fs.readFileSync(path.join(fit, 'refusal.json'), 'utf8')).error.slice(0, 200); } catch {} }
+    }
+  }
+  fs.writeFileSync(path.join(dir, 'score.json'), JSON.stringify(row, null, 1) + '\n');
+  return row;
+}
+
+for (const s of targets.length ? targets : subjects) {
+  if (only.length && !only.includes(s.id)) continue;
+  let row = runCandidate(s, 0, path.join(OUT, s.id));
+  // --fallback=N (labelled): ONLY when the best reference's packet was ADMITTED by the author but refused by intake or static, try the
+  // next-ranked references; each candidate must earn its own ADMIT. A REFUSED author is never shopped to another reference.
+  const tried = [{ rank: 0, verdict: row.verdict, static: row.static ?? null }];
+  for (let k = 1; k <= fallbackN && row.verdict === 'ADMIT' && row.static && row.static !== 'PASS_STATIC'; k++) {
+    const alt = runCandidate(s, k, path.join(OUT, s.id, 'fallback-' + k)); tried.push({ rank: k, verdict: alt.verdict, static: alt.static ?? null, reasons: alt.reasons?.slice(0, 2) });
+    if (alt.verdict === 'ADMIT' && alt.static === 'PASS_STATIC') { row = { ...alt, fallbackFrom: row.static }; break; }
+    if (alt.verdict !== 'ADMIT') break; }
+  if (tried.length > 1) row.candidates = tried;
+  fs.writeFileSync(path.join(OUT, s.id, 'score.json'), JSON.stringify(row, null, 1) + '\n');
+  rows.push(row); console.log(JSON.stringify({ id: row.id, verdict: row.verdict, static: row.static, lm: row.landmarkMedian, lab: row.labelAgreement, reasons: row.reasons?.slice(0, 2), err: row.staticError ?? row.intakeError }));
+}
+fs.writeFileSync(path.join(OUT, 'summary' + (only.length ? '-partial' : '') + '.json'), JSON.stringify(rows, null, 1) + '\n');

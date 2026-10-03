@@ -1,0 +1,200 @@
+{
+  "id": "09-spider-monkey",
+  "name": "Spider Monkey",
+  "family": "primate",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "7bb96d0314e2c6214f4a92f768ef4c2404d2b2320ed3e81cc2cbb23aa2e615b8",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13496,
+    "coreRadius": 16,
+    "bodyBox": {
+      "x0": 171,
+      "y0": 201,
+      "x1": 269,
+      "y1": 255
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2365,
+        "pixels": 3192,
+        "box": {
+          "x0": 115,
+          "y0": 71,
+          "x1": 188,
+          "y1": 218
+        },
+        "attach": {
+          "x": 175,
+          "y": 206.5,
+          "relX": 0.04,
+          "relY": 0.1
+        },
+        "dir": {
+          "x": -0.4,
+          "y": -0.92
+        },
+        "class": "top",
+        "length": 148.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0443,
+        "pixels": 598,
+        "box": {
+          "x0": 255,
+          "y0": 190,
+          "x1": 287,
+          "y1": 221
+        },
+        "attach": {
+          "x": 266.7,
+          "y": 206.8,
+          "relX": 0.98,
+          "relY": 0.11
+        },
+        "dir": {
+          "x": 0.95,
+          "y": -0.3
+        },
+        "class": "front",
+        "length": 26.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0831,
+        "pixels": 1122,
+        "box": {
+          "x0": 260,
+          "y0": 223,
+          "x1": 316,
+          "y1": 324
+        },
+        "attach": {
+          "x": 267.6,
+          "y": 231.6,
+          "relX": 0.99,
+          "relY": 0.57
+        },
+        "dir": {
+          "x": 0.4,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 104.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0997,
+        "pixels": 1345,
+        "box": {
+          "x0": 116,
+          "y0": 230,
+          "x1": 185,
+          "y1": 321
+        },
+        "attach": {
+          "x": 173.2,
+          "y": 245.3,
+          "relX": 0.02,
+          "relY": 0.82
+        },
+        "dir": {
+          "x": -0.55,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 94.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0936,
+        "pixels": 1263,
+        "box": {
+          "x0": 241,
+          "y0": 238,
+          "x1": 281,
+          "y1": 341
+        },
+        "attach": {
+          "x": 251,
+          "y": 238,
+          "relX": 0.82,
+          "relY": 0.69
+        },
+        "dir": {
+          "x": 0.12,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 107.3
+      },
+      {
+        "k": 5,
+        "frac": 0.0931,
+        "pixels": 1257,
+        "box": {
+          "x0": 190,
+          "y0": 256,
+          "x1": 242,
+          "y1": 327
+        },
+        "attach": {
+          "x": 201.5,
+          "y": 256,
+          "relX": 0.31,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.26,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 81.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 205,
+        "x1": 209,
+        "cx": 207
+      },
+      {
+        "x0": 211,
+        "x1": 230,
+        "cx": 222.7
+      },
+      {
+        "x0": 233,
+        "x1": 242,
+        "cx": 238.1
+      },
+      {
+        "x0": 262,
+        "x1": 281,
+        "cx": 273.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

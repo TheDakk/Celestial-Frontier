@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c173-specialized-helper-derivation/v1",
+  "helpers": [
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/run-stage.mjs",
+      "sourceSha256": "6d113a717cd77901557cd8b2c3ead640463fe67ff0562ae881baa1d4e0407269",
+      "derived": "audits/C173_SPECIALIZED_REFERENCES_20261002/run-stage.mjs",
+      "sha256": "bcd99cffdc1d34804afcd8bd790c0add09e07e22191632afce4d31c494da5bd6",
+      "changes": [
+        "owned audit path"
+      ],
+      "acceptanceLogicChanged": false
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+      "sourceSha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+      "derived": "audits/C173_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+      "sha256": "644cae5cb6e9651c027e9afaffddba39a5e469e9882de0525f69051fc5e93565",
+      "changes": [
+        "owned audit path",
+        "default packet"
+      ],
+      "acceptanceLogicChanged": false
+    }
+  ],
+  "islandCap": 0.05,
+  "newLimits": false,
+  "nativeRuns": 0
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Wasp",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "77c978ed8e0643e07f64feb91b322b095e632def129ac7a8febe628f82e42ff1",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "73cbbcdb11dd4d4586eb25c614279010d839dfbf",
+  "basePromptSha256": "ec7a4ff0893fb09c2f53ab0dffaa8ec0d7f1ea094e6d04cc1e863e7064d33e55",
+  "layoutCompilerSha256": "6a17715078ddbc59e968d7f2eca7bf2d975fe8b23fb6298a7d9ddc9d5b4c613c",
+  "layoutClarification": "Species identity features FIRST: pinched thread-thin waist; yellow-and-black banded pointed abdomen; narrow smooth hairless wings. One Earth Wasp. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nHAND-REFERENCE LAYOUT: strict side profile, head RIGHT. Exactly SIX naturally attached legs, three near and three far, deliberately offset front-to-back so EVERY limb can be traced continuously from its thorax attachment through a bent knee to its separate tarsus. Open magenta gaps between the leg shafts, not just the tips. No crossed, fused, duplicated, severed or extremely faint legs. Strong enough readable paint on slender antennae and tarsi, without thickening them into false anatomy. Two antennae, distinct from the legs. Entire real abdomen at LEFT. Wings preserve species-specific resting posture: Bee wings lie back with distinct tips, Dragonfly wings extend naturally at rest (not folded over the abdomen), Giant Water Bug keeps flat folded forewings. For Dragonfly, natural splayed resting wings override the generic no-spread request; retain a horizontal side-profile body. Each wing remains attached to its real thoracic root. Species-specific appendages must stay individually readable. No stand, support, prop or scenery. Do not invent a vertebrate tail or expose hidden anatomy by duplicating it.\n\n",
+  "countLayout": "COUNTED LEG PLAN: draw three clear near-side legs plus three clear far-side legs, SIX in total. Each leg joins the THORAX between the head and the narrow waist. There are ZERO leg attachments on the striped abdomen. The far hind leg must remain connected to the rear thorax in FRONT of the waist, not arise from the abdomen. Splay the limbs at different angles with six isolated feet spread from left to right: hind-far, hind-near, mid-far, mid-near, front-far, front-near. Legs have natural bent knees, never six unjointed spikes. Preserve the true wasp waist and complete abdomen.\n"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "05-gazelle",
+  "name": "Gazelle",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-727f1e76-6a50-4cbb-b46e-00e5bfe3918c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "56349e0398ad3d60adbdf584cd2b394f7fc925d79c09fe6246ee4686f0ab21ed",
+  "bytes": 1418088,
+  "promptSha256": "80542fa6e33a4a19d1e189903e4c2ea0b6ca2c3dc8c104edf70e2e56c4cb49b7",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,36 @@
+{
+  "names": [
+    "Triggerfish",
+    "Parrotfish",
+    "Pufferfish",
+    "Boxfish",
+    "Lionfish",
+    "Archerfish",
+    "Puffin",
+    "Auk",
+    "Swan",
+    "Cormorant",
+    "Bittern",
+    "Grebe",
+    "Giant Otter",
+    "Quoll",
+    "Mouse",
+    "Vole",
+    "Tree Shrew",
+    "Ground Squirrel",
+    "Moth",
+    "Aphid",
+    "Dobsonfly",
+    "Scorpionfly",
+    "Thrips",
+    "Orchid Bee"
+  ],
+  "plannedFamilies": {
+    "fish": 6,
+    "biped-bird": 6,
+    "quadruped": 6,
+    "insect": 6
+  },
+  "status": "PROMPTS_NOT_YET_COMPILED",
+  "priorDistinctPilotNames": 235
+}

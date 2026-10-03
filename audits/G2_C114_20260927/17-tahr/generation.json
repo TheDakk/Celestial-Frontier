@@ -1,0 +1,13 @@
+{
+  "id": "17-tahr",
+  "name": "Tahr",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-91233ba9-f16a-4bf1-be5b-7347d437d5a1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "54ce9418dd0c2d5885fa0ac038cec489f4ee0ab82f4c51a70894addf45940f18",
+  "bytes": 1341044,
+  "promptSha256": "7fd04307ca0e01d2416b8455f96e600ce6bea5650b06b1e0a81279bfab57ef4a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

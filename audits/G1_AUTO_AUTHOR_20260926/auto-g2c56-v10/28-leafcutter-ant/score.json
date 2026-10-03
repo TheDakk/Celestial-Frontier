@@ -1,0 +1,11 @@
+{
+ "id": "28-leafcutter-ant",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part wing-near (wingNear) covers 27% paint (reference 82%)",
+  "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 16% paint (reference 46%)",
+  "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

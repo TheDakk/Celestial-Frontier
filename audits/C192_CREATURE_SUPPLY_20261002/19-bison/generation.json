@@ -1,0 +1,14 @@
+{
+  "id": "19-bison",
+  "name": "Bison",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-5b99643e-5b0a-41a9-8405-a31853b6078c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b774569d4c2e302f0dc8532e29afcb3379f9a6ca62b061c10071651e0f4cc45d",
+  "bytes": 1517698,
+  "promptSha256": "fe29736062583f1e2e365d8d1b5baee58f64be60a7f6833422c87378f9814f6d",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

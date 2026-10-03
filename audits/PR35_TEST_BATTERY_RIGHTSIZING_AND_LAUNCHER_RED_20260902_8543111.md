@@ -160,9 +160,9 @@ clean and byte-identical through every later stage.
 Five deterministic `gzip -n -9` carriers preserve the exact reports/log:
 
 - `ROOT_LAYOUT_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz` — raw **106,958
-  bytes**, SHA-256 `ea59339872b99738bd6b6d4e20832d4d911392f674bf92e38082eb5258ce0272`;
+  bytes**, SHA-256 `e6017c47ec8847cf5fafc6d25f901e14f0a36fd2bd879c8a5147fce184b23e4e`;
   gzip **5,034 bytes**, SHA-256
-  `1df2c2f0b705e2f06ae7b3c90c203704270c4d3ca726b6796f4db6cb791b9a72`.
+  `bf73cf47892b6b69d9deb508248c572f09f0a897bba7c8f024ca71f5cd5d00ff`.
 - `ARC1A_COMPENDIUM_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz` — raw
   **10,836,499 bytes**, SHA-256
   `982ae51835d7b7c0f3bba71c3f4f7bea4cc9715b2d39f51282f7a994ca30f8bc`; gzip **452,500

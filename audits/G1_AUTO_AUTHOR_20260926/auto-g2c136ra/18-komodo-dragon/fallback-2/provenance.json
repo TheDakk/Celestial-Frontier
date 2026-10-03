@@ -1,0 +1,115 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "18-komodo-dragon",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "45a7f88dc0db11fd16c3b657510117ee6035cc621e4ed085ba2785c44ec08e30",
+ "subjectSourceSha256": "a8fdbf942a0833c5cc2aed7a7d8890b5f6dac8e171350340bcfc9c924f9e4f7f",
+ "identity": {
+  "name": "Komodo Dragon",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Komodo Dragon\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1521458378\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 1521458378,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-05-monitor-lizard",
+  "authoringSha256": "da484396b617d4bea8823731e9d52a2498c027f0683f0df206a04485f0638b2e",
+  "masterSha256": "a3b0609ee1433e396e13f0e3d2ec6a559a827478f720d14c708d4620defae18d"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0453,
+     "class": "front",
+     "attach": {
+      "x": 312,
+      "y": 188.5,
+      "relX": 1.01,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2276,
+     "class": "rear",
+     "attach": {
+      "x": 185.1,
+      "y": 211.8,
+      "relX": 0.01,
+      "relY": 0.71
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0486,
+     "class": "limb-down",
+     "attach": {
+      "x": 284.7,
+      "y": 214.7,
+      "relX": 0.79,
+      "relY": 0.78
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0387,
+     "class": "limb-down",
+     "attach": {
+      "x": 255.5,
+      "y": 222,
+      "relX": 0.56,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0351,
+     "class": "limb-down",
+     "attach": {
+      "x": 205,
+      "y": 226,
+      "relX": 0.17,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "c136-sprawler-05-monitor-lizard",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

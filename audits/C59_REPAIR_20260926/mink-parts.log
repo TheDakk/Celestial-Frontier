@@ -1,0 +1,3 @@
+(read-only-producer plugin) [33m[SOURCEMAP_BROKEN] [0mSourcemap is likely to be incorrect: a plugin (read-only-producer) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help: https://rolldown.rs/guide/troubleshooting#warning-sourcemap-is-likely-to-be-incorrect
+
+{"status":"DIAGNOSTIC_ONLY","attacks":{"left":"claw (foreNearPaw)","right":"bite (jaw)"}}

@@ -1,0 +1,9 @@
+{
+ "id": "12-bull",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 84%)"
+ ],
+ "semanticPresence": null
+}

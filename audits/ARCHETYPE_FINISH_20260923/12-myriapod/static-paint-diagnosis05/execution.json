@@ -1,0 +1,75 @@
+{
+  "schema": "cf.bounded-diagnostic-execution/v1",
+  "firstPoseAndTargetScan": {
+    "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/run.mjs",
+    "toolReceipt": "e23814",
+    "exitCode": 0,
+    "arapPoses": 2,
+    "exactRefusalsReproduced": 2,
+    "targetOnlyAttempts": 242,
+    "targetOnlyResolved": 242,
+    "targetOnlyErrors": 0,
+    "fullyPinnedTargetInversions": 0,
+    "loadedSourceCount": 58,
+    "staticSourceCount": 62,
+    "allHashesMatched": true
+  },
+  "laterArap": {
+    "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/later-arap/run.mjs",
+    "startToolReceipt": "7976ed",
+    "sessionId": 26736,
+    "completionToolReceipt": "cc4ab7",
+    "exitCode": 0,
+    "strictNewRanges": {
+      "hit": [
+        5,
+        120
+      ],
+      "dodge": [
+        7,
+        120
+      ]
+    },
+    "attempted": 230,
+    "pass": 225,
+    "errors": 5,
+    "loadedSourceCount": 58,
+    "staticSourceCount": 62,
+    "allHashesMatched": true
+  },
+  "sourceGeometryInspection": {
+    "toolReceipt": "c04725",
+    "exitCode": 0,
+    "scope": "148 existing far3 supports and exact source pixels inside explicit inspection rectangle; no solver execution"
+  },
+  "combinedDistinctFoldedFaces": 33,
+  "combinedFoldedParts": [
+    "leg3-far"
+  ],
+  "hashes": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/report.json",
+      "sha256": "112a3343d4d94f1e7457ad79b520363fb697f3e1460417aaa838624079740f5f"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/sources.json",
+      "sha256": "d093e9031464051e9604df232faca3d2a8e48e1589ec716bd7924d64e1695074"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/later-arap/report.json",
+      "sha256": "3ea5bcbe6d7e9538cd7913e0e5513801863813b3a7e7853e6baaba839b77f9c3"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/later-arap/sources.json",
+      "sha256": "31d7db73fe52fa8077cf354065b233ff3be2000290eab4ed38c1fa1e4f95945d"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/proximal-influences.mjs",
+      "sha256": "9e6caee06d2b704056c584d20e15664caf0e3079c8ade8d3e9f3e9cdbddeeff9"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/proximal-influences.json",
+      "sha256": "82d06ce76bfff63c332b1053d313104693ad5663be3f9b4738d575c49d74c47c"
+    }
+  ]
+}

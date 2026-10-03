@@ -1,0 +1,9 @@
+{
+ "id": "25-dung-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 1.1% of the paint; every same-family reference shows at least 3.8%"
+ ],
+ "semanticPresence": null
+}

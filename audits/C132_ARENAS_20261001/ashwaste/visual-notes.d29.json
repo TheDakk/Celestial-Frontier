@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "ashwaste",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/ashwaste/arena-composed-review.png"
+  ],
+  "findings": [
+    "Native full-size composite inspected at 1672×941. The gray ash floor stays broad and flat, with a distant volcanic plume and no visible resident creatures.",
+    "The MID repeats the distant low rock line and haze, producing a discernible hard contour across the scene; cool green/cyan or pink edge remnants are visible on some side rock tips.",
+    "The NEAR layer makes a distinct cooler foreground band. Its stony corners need moving rig clearance and parallax review; no mask or threshold was changed to hide these seams.",
+    "No visual acceptance, runtime registration, physical-medium admission or performance claim follows from technical intake. qualityAccepted remains false."
+  ]
+}

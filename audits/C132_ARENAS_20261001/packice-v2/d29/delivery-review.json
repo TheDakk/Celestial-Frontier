@@ -1,0 +1,172 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "packice-v2",
+  "biome": "packice",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "packice"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "packice"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "packice"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-far.generation.json",
+      "sha256": "23e390a8dadb555a84f62fc03225b1a72cad1d1731e13df1a70ce9c7b69eacab"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-mid.generation.json",
+      "sha256": "e66e488570c2a018e85cf71913fa276978350242e363501351fb5a4194006a94"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-near.generation.json",
+      "sha256": "fdaab4fb0643e3d3727f9db5ed71304a0019dfa8539ad96b82bb46a3281ea66e"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-composed-review.png",
+      "sha256": "879ae83fed04dfe076aff3b8fb381428bfd8a3f5906423d6334b478df9eebd83"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-far.png",
+      "sha256": "1460297e2d3b3d4f6141ddc784e3b9d12ed5e28669cbbf59ddd62dd2d320c781"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-mid.png",
+      "sha256": "4e6f41035bbdb8177c7b14c945bae93f86c42a54602770d15bd8f9bd8cdd002c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-near.png",
+      "sha256": "f5ad02bfaec031c73dcecf08c2a1a15bf013142d1f205d97e4121cb070086b66"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/visual-notes.d29.json",
+      "sha256": "f5b9d4e488e5a8fc1fba623b020c55bebe17a615d15157b8b5426eb226dff564"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-manifest.json",
+      "sha256": "bf21ce2667f72f7fbd38e002115841be6e12809b8693a49308ec4b663cb577b7"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-recipe.json",
+      "sha256": "a22cbcb13fa01601507575d2ddaa2c22fb1a6abd00d57a420eff690e43c69d70"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-far.generation.json",
+      "sha256": "23e390a8dadb555a84f62fc03225b1a72cad1d1731e13df1a70ce9c7b69eacab"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice/arena-far.prompt.txt",
+      "sha256": "2455db42d416190417e0e15b88678838d40c78df261851b8de478475feec2747"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice/arena-far.png",
+      "sha256": "1460297e2d3b3d4f6141ddc784e3b9d12ed5e28669cbbf59ddd62dd2d320c781"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-mid.generation.json",
+      "sha256": "e66e488570c2a018e85cf71913fa276978350242e363501351fb5a4194006a94"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice/arena-mid.prompt.txt",
+      "sha256": "bc671496e57ff897c08777223f6840713296b93b455adbf5a7c481910bb2742f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice/arena-mid.png",
+      "sha256": "4e6f41035bbdb8177c7b14c945bae93f86c42a54602770d15bd8f9bd8cdd002c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/keyed/arena-mid.png",
+      "sha256": "b1c33e07e1cacb287c3594ed9815337d6009cb088764ed92b676f1b5b2a1520d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-near.generation.json",
+      "sha256": "fdaab4fb0643e3d3727f9db5ed71304a0019dfa8539ad96b82bb46a3281ea66e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-near.prompt.txt",
+      "sha256": "18a3eafe72639a3eb476ff12fa37797261058f208c0cb41e70add81fcf2a9372"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/keyed/arena-near.png",
+      "sha256": "88b97f29942395b9554392fe480fb90cf566609074aef79aa05018030fc297b9"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/packice-v2/visual-notes.d29.json",
+    "findings": [
+      "All three originals and full-size composition inspected at native1672×941. Icy seascape and solid snowy fighting band are identifiable, with clear static stands.",
+      "FAR invents a visible sun disk despite the unbound-star/no-visible-star system card; this is an authoring failure requiring repair.",
+      "NEAR produces a conspicuous lighter horizontal shelf/texture change near the bottom. Repeated ice shelves and layered water boundaries remain visible. No native motion or independent acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "id": "12-hornbill",
+  "name": "Hornbill",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "0cd149f82b95dd913e46f85281661532ceb5372197d14d22aed8f72f6427987b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22600,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 171,
+      "y0": 166,
+      "x1": 290,
+      "y1": 251
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2725,
+        "pixels": 6159,
+        "box": {
+          "x0": 258,
+          "y0": 89,
+          "x1": 382,
+          "y1": 212
+        },
+        "attach": {
+          "x": 287.1,
+          "y": 180.9,
+          "relX": 0.98,
+          "relY": 0.18
+        },
+        "dir": {
+          "x": 0.43,
+          "y": -0.9
+        },
+        "class": "top",
+        "length": 132.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0055,
+        "pixels": 124,
+        "box": {
+          "x0": 222,
+          "y0": 162,
+          "x1": 262,
+          "y1": 165
+        },
+        "attach": {
+          "x": 242,
+          "y": 165,
+          "relX": 0.6,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.66,
+          "y": -0.75
+        },
+        "class": "top",
+        "length": 20.2
+      },
+      {
+        "k": 2,
+        "frac": 0.2394,
+        "pixels": 5410,
+        "box": {
+          "x0": 38,
+          "y0": 198,
+          "x1": 170,
+          "y1": 302
+        },
+        "attach": {
+          "x": 170,
+          "y": 221.5,
+          "relX": -0.01,
+          "relY": 0.65
+        },
+        "dir": {
+          "x": -0.85,
+          "y": 0.52
+        },
+        "class": "limb-down",
+        "length": 154.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0496,
+        "pixels": 1121,
+        "box": {
+          "x0": 175,
+          "y0": 252,
+          "x1": 232,
+          "y1": 309
+        },
+        "attach": {
+          "x": 210.5,
+          "y": 252,
+          "relX": 0.33,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.24,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 67.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0426,
+        "pixels": 963,
+        "box": {
+          "x0": 230,
+          "y0": 252,
+          "x1": 291,
+          "y1": 305
+        },
+        "attach": {
+          "x": 242.5,
+          "y": 252,
+          "relX": 0.6,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.35,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 71.8
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 56,
+        "x1": 100,
+        "cx": 77.8
+      },
+      {
+        "x0": 175,
+        "x1": 232,
+        "cx": 203.9
+      },
+      {
+        "x0": 237,
+        "x1": 291,
+        "cx": 266.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

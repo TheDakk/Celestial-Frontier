@@ -1,0 +1,9 @@
+{
+ "id": "02-elephant",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+ ],
+ "semanticPresence": null
+}

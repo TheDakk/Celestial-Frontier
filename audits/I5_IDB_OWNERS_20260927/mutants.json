@@ -1,0 +1,12 @@
+[
+  {
+    "mutant": "retained-callbacks",
+    "exitCode": 1,
+    "rejected": true
+  },
+  {
+    "mutant": "allocated-dispatchers",
+    "exitCode": 1,
+    "rejected": true
+  }
+]

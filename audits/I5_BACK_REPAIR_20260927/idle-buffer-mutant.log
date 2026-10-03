@@ -1,0 +1,42 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/morph/painted-card-source.test.ts (8 tests | 1 failed | 7 skipped) 34ms
+     × OWNERSHIP (I5 v2 diagnosis 2026-09-25): a painted card's leases, cache, pending renders and resident archetypes are reported truthfully; release and releaseUnowned trim exactly the unleased cards 34ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > OWNERSHIP (I5 v2 diagnosis 2026-09-25): a painted card's leases, cache, pending renders and resident archetypes are reported truthfully; release and releaseUnowned trim exactly the unleased cards
+AssertionError: expected { count: 1, bytes: 2097152, …(4) } to match object { names: [], count: +0, bytes: +0 }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "bytes": 0,
+-   "count": 0,
+-   "names": [],
++   "bytes": 2097152,
++   "count": 1,
++   "names": [
++     "Crab",
++   ],
+  }
+
+ ❯ apps/game/src/morph/painted-card-source.test.ts:17:150
+     15|     await p; const o = s.ownership();
+     16|     expect(o.schema).toBe('cf-v2-painted-card-ownership/v1'); expect(o…
+     17|     expect(o.cacheEntries).toBe(1); expect(o.decodedPixels).toBe(132 *…
+       |                                                                                                                                                      ^
+     18|     const renders = s.renders; expect(await s.card(g, 'thumb')).toBe(a…
+     19|     expect(s.releaseUnowned()).toBe(0); expect(s.ownership().keys.cach…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 skipped (8)
+   Start at  13:02:14
+   Duration  904ms (transform 470ms, setup 0ms, import 719ms, tests 34ms, environment 0ms)
+

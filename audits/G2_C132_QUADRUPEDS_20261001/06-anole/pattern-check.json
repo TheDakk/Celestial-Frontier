@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Anole",
+  "masterSha256": "5e50f89d74593377dd2d9876a0e6a16ec9b1bfdb950b20f86dba280e22dcce43",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

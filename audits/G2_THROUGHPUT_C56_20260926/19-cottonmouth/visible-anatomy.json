@@ -1,0 +1,116 @@
+{
+  "id": "19-cottonmouth",
+  "name": "Cottonmouth",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "7aeecbf0c3b2f7de4a7a5b652cb5c5e2074b4be0607af4387ac6764992c99b72",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15449,
+    "coreRadius": 13,
+    "bodyBox": {
+      "x0": 10,
+      "y0": 168,
+      "x1": 408,
+      "y1": 253
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0249,
+        "pixels": 384,
+        "box": {
+          "x0": 367,
+          "y0": 164,
+          "x1": 406,
+          "y1": 191
+        },
+        "attach": {
+          "x": 390.1,
+          "y": 173.9,
+          "relX": 0.95,
+          "relY": 0.07
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.04
+        },
+        "class": "front",
+        "length": 28.7
+      },
+      {
+        "k": 1,
+        "frac": 0.0135,
+        "pixels": 209,
+        "box": {
+          "x0": 375,
+          "y0": 200,
+          "x1": 401,
+          "y1": 220
+        },
+        "attach": {
+          "x": 387.3,
+          "y": 208.8,
+          "relX": 0.95,
+          "relY": 0.48
+        },
+        "dir": {
+          "x": 0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 17.7
+      },
+      {
+        "k": 2,
+        "frac": 0.1216,
+        "pixels": 1879,
+        "box": {
+          "x0": 13,
+          "y0": 209,
+          "x1": 135,
+          "y1": 246
+        },
+        "attach": {
+          "x": 105.6,
+          "y": 229.2,
+          "relX": 0.24,
+          "relY": 0.72
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.09
+        },
+        "class": "rear",
+        "length": 94.7
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 215,
+        "x1": 282,
+        "cx": 248.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

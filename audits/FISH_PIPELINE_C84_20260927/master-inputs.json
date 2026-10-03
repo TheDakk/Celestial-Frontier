@@ -1,0 +1,74 @@
+[
+  {
+    "id": "02-minnow",
+    "canonicalMaster": "audits/G2_C72_20260927/02-minnow/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/packet/master.png",
+    "masterSha256": "64ffa5e67b247924e54c0c04dd079ffe30c5c779fda6014e6eafc9e79b0fb2ba"
+  },
+  {
+    "id": "05-whitefish",
+    "canonicalMaster": "audits/G2_C72_20260927/05-whitefish/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/packet/master.png",
+    "masterSha256": "1fc80461d7256851d91c64fdfff4e57be4b02e8248b7524406beebee66487489"
+  },
+  {
+    "id": "07-cichlid",
+    "canonicalMaster": "audits/G2_C72_20260927/07-cichlid/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/packet/master.png",
+    "masterSha256": "ec492a9ac3de8ec668c5a7b09e47b6023d35c3d1e8e25cb7a4a53e17ffcf6b58"
+  },
+  {
+    "id": "08-tetra",
+    "canonicalMaster": "audits/G2_C72_20260927/08-tetra/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/packet/master.png",
+    "masterSha256": "e37cca43ef8138bb0546c394a49eb7907d0d75658df157ec829b8d8b14aa9b78"
+  },
+  {
+    "id": "01-pike",
+    "canonicalMaster": "audits/G2_C76_20260927/01-pike/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/packet/master.png",
+    "masterSha256": "62ca805efbe04e722347fc1fef7926b17dff6a6b3319e1eb4d2240f75b6a87e0"
+  },
+  {
+    "id": "02-bass",
+    "canonicalMaster": "audits/G2_C76_20260927/02-bass/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/packet/master.png",
+    "masterSha256": "5624fe6743f1f98c655b81e9bf2e33b1a731e233f6d8f83630731073a247942a"
+  },
+  {
+    "id": "03-char",
+    "canonicalMaster": "audits/G2_C76_20260927/03-char/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/packet/master.png",
+    "masterSha256": "f4da50fc81c70faddd0d1fa7e4074564b6caddd1c80e06cdb660bf85cb4afc87"
+  },
+  {
+    "id": "04-sturgeon",
+    "canonicalMaster": "audits/G2_C76_20260927/04-sturgeon/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/packet/master.png",
+    "masterSha256": "27659622bdfc4ac4bab8fd5d577a911a46878f91bb14f42df9ba0213310934fb"
+  },
+  {
+    "id": "08-goldfish",
+    "canonicalMaster": "audits/G2_C76_20260927/08-goldfish/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/packet/master.png",
+    "masterSha256": "e0ef0d72729a713d503e8047452943ab13270cd2589b55c7b34a4da451e57ab0"
+  },
+  {
+    "id": "02-haddock",
+    "canonicalMaster": "audits/G2_C81_20260927/02-haddock/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/packet/master.png",
+    "masterSha256": "5b021ce12e532886dcc39d347374981e885282633eeb642f5ca3e1712550b8c7"
+  },
+  {
+    "id": "03-pollock",
+    "canonicalMaster": "audits/G2_C81_20260927/03-pollock/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/packet/master.png",
+    "masterSha256": "21eef82976955aeac3f463fac5d9f06b76cc560b6fce7e2e0e1d4220ea1166ab"
+  },
+  {
+    "id": "05-anchovy",
+    "canonicalMaster": "audits/G2_C81_20260927/05-anchovy/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/packet/master.png",
+    "masterSha256": "6d0edf55957889606fa01673e0f1ab61e7ff9461762ad90870520403e5be14ef"
+  }
+]

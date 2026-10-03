@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wild Pig",
+  "masterSha256": "5d8cf6c0dc0f8c7831db2a5f915226ef001c756dd9423c614186806157d12f48",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

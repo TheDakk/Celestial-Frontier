@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Stonefly",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "da00a684231f52eb60bbfe95d025e43223c543a730e864b2f59dd8305182027e",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "48c225b1de6dc5d8269478c17dc5d74c38913c13",
+  "basePromptSha256": "0b58272a2f4d4fba7fa666384ab94b7d8fcc032cd1f465e516b94b3bdedc42d4",
+  "layoutCompilerSha256": "c51024b78d65a0497013a724c921fb78ea6148ff682ef3c2c1bfa47e731bd72b",
+  "layoutClarification": "Species identity features FIRST: wings folded flat and overlapping down the back; two short stout tail cerci; long antennae on a flat squarish head. One Earth Stonefly. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: strict side profile, head RIGHT. All SIX thoracic legs visible in three near/far pairs, each pair offset so the shafts and tarsi are readable from their real attachments. Preserve the full natural abdomen at LEFT. Natural adult wing resting position overrides a generic folded-wing request: dragonfly wings held out flat, damselfly wings closed over back, mayfly wings upright. No invented vertebrate tail, extra legs or hidden-paint declaration.\n\n"
+}

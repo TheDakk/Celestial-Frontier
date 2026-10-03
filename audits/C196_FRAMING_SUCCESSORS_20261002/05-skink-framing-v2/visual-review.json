@@ -1,0 +1,28 @@
+{
+  "name": "Skink",
+  "masterSha256": "fca7b544d2ac1edd855d7766a9269a5cf13aebc775d19a177485e4afd770b339",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Smaller centered skink retains glossy overlapping scales, striped elongated trunk, complete long tapering tail and four small distal feet. Generous margins; far hind limb remains mostly hidden beneath the body. Contact heights still differ. Fine scale/foot geometry regenerated, so no semantic preservation or fit claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 296,
+      "y0": 559,
+      "x1": 951,
+      "y1": 687
+    },
+    "margins": {
+      "left": 296,
+      "right": 302,
+      "top": 559,
+      "bottom": 566
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

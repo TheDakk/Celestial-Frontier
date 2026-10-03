@@ -1,0 +1,28 @@
+{
+  "name": "Penguin",
+  "masterSha256": "20d61d7b9c235f061c1129eaafcb0eca23e832ec47954ab050c4f3b2247f3ee0",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: fully upright black-back/white-belly body with yellow neck patches, near stiff flipper, short stiff feather tail and two short rear-set webbed feet are visible. Long flowing tail fronds are absent. The far flipper is not separately visible in this side view; no second-wing presence is fabricated. Feet differ in image height, so common-plane contact remains unproven.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 425,
+      "y0": 287,
+      "x1": 843,
+      "y1": 958
+    },
+    "margins": {
+      "left": 425,
+      "right": 410,
+      "top": 287,
+      "bottom": 295
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

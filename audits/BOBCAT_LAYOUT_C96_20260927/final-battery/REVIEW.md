@@ -1,0 +1,3 @@
+# Exact-head local verification
+
+C96 final verification: signedcf89f956 unchanged-source develop profile:5,675 pass/I5 sole failure,2 expected failures/2 skipped. All seven remaining owners and root validation PASS; HEAD/source/log hashes verified.198GiB free; PUBLIC/UNFROZEN/five reviewed workflows unchanged. Replacement Bobcat native933frames/0refusals; visual holds remain. Claude C96 reports11C95 natives and selects Bobcat with holds; Bonefish/Coelacanth anatomy and all prior caveats remain despite native greens. Short tails must stay natural, not lengthened to force authoring. After delivery/merge, fix explicit Springtail material routing, then more24G2. No I5 retry.

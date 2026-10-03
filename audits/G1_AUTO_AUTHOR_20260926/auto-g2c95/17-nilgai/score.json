@@ -1,0 +1,24 @@
+{
+ "id": "17-nilgai",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Part masks: empty authored part: tail0\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at file:///Use",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 38%)"
+   ]
+  }
+ ]
+}

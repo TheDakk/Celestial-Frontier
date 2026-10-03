@@ -1,0 +1,14 @@
+{
+  "id": "06-orangutan",
+  "name": "Orangutan",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3241cb63-b0e0-45fb-844e-f839ab64b3be.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e93e3cd5cda0420dd95d51d7c4dd8a05ec9671284cd6dfaf2a404426d451f5cd",
+  "bytes": 1477481,
+  "promptSha256": "98d342386ae0bb8ec7ef8d3d9f81b864492859681e77725042821f7975a15cff",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

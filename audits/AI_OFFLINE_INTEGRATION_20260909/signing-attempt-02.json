@@ -1,0 +1,14 @@
+{
+  "schema": "cf.local-signing-attempt.v1",
+  "attempt": 2,
+  "baseCommit": "8c10463a7b0330e12f5ca42f958c85ab9b7eb6a3",
+  "status": "FAIL",
+  "exitCode": 128,
+  "error": "Couldn't sign message (signer): communication with agent failed?; fatal: failed to write commit object",
+  "precedingConfiguredAgentListProbePassed": true,
+  "unsignedFallback": false,
+  "headUnchanged": true,
+  "additionalRetryMade": false,
+  "handoffState": "Completed source/docs/evidence staged locally; signature still required before Git transport",
+  "hostedWrites": 0
+}

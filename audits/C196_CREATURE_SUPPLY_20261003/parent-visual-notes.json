@@ -1,0 +1,77 @@
+{
+  "reviewer": "OpenAI/Codex parent",
+  "rows": {
+    "Bee": {
+      "id": "13-bee",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/13-bee/master.png",
+      "sha256": "90d94766ef43d77f393c5dd057432f3df990c010d518f130f49a8899bc06e413",
+      "review": "full-size original at native dimensions",
+      "finding": "Gold/black abdomen bands, hairy thorax, paired antennae and distinct mouthpart tips are visible. Six continuous leg chains and their separate roots are not all independently traceable; five distal leg silhouettes are obvious, with overlap at rear/middle roots. Far wings overlap.",
+      "status": "HELD_ANATOMY_VISIBILITY",
+      "wholeOriginalFraming": "All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met.",
+      "pattern": "Observed named pigment/material features only; not pattern-instrument acceptance.",
+      "native": false,
+      "qualityAccepted": false
+    },
+    "Honeybee": {
+      "id": "14-honeybee",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/14-honeybee/master.png",
+      "sha256": "116fcac6e33cf5384113705dfdfbc4172c9acd1efd6cb90340d5baac7f5a089d",
+      "review": "full-size original at native dimensions",
+      "finding": "Striped amber/black abdomen and pollen-bearing hind tibia are visible. Five distal leg silhouettes are obvious; a complete sixth chain/root cannot be verified from this source. Far wing pair overlaps the near pair.",
+      "status": "HELD_ANATOMY_VISIBILITY",
+      "wholeOriginalFraming": "All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met.",
+      "pattern": "Observed named pigment/material features only; not pattern-instrument acceptance.",
+      "native": false,
+      "qualityAccepted": false
+    },
+    "Bumblebee": {
+      "id": "15-bumblebee",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/15-bumblebee/master.png",
+      "sha256": "3eb05d80e7934cf611378e2bd8a4c7587d54133f2dd84fe359a9b437328cf7bf",
+      "review": "full-size original at native dimensions",
+      "finding": "Dense yellow/black fur and pale abdomen tip are visible. Five distinct distal leg silhouettes; sixth chain/root is not independently traceable. Wing roots overlap.",
+      "status": "HELD_ANATOMY_VISIBILITY",
+      "wholeOriginalFraming": "All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met.",
+      "pattern": "Observed named pigment/material features only; not pattern-instrument acceptance.",
+      "native": false,
+      "qualityAccepted": false
+    },
+    "Dragonfly": {
+      "id": "16-dragonfly",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/16-dragonfly/master.png",
+      "sha256": "0350fe20c53d3e4110c83d4b01599cb1da51352b10c6c015bd34775113e90b1d",
+      "review": "full-size original at native dimensions",
+      "finding": "Long segmented blue/black abdomen, separate distal leg chains and veined wings. Six distal leg tips appear visible, but paired roots overlap. Only three full wing outlines are readily separable; fourth wing ownership and the relatively long antenna-like strokes need species/anatomy review.",
+      "status": "HELD_WING_ROOT_REVIEW",
+      "wholeOriginalFraming": "All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met.",
+      "pattern": "Observed named pigment/material features only; not pattern-instrument acceptance.",
+      "native": false,
+      "qualityAccepted": false
+    },
+    "Damselfly": {
+      "id": "17-damselfly",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/17-damselfly/master.png",
+      "sha256": "1e51ec300a93eee25a1cf007bec7bfd29595a8ecf725c292893d7aca754a88de",
+      "review": "full-size original at native dimensions",
+      "finding": "Slender blue/black abdomen and closed narrow veined wings. Five distal leg tips are clearly visible; sixth chain/root is not independently traceable. Four individual overlapping wings cannot be authoritatively partitioned from this view. Antenna-like strokes need species review.",
+      "status": "HELD_ANATOMY_VISIBILITY",
+      "wholeOriginalFraming": "All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met.",
+      "pattern": "Observed named pigment/material features only; not pattern-instrument acceptance.",
+      "native": false,
+      "qualityAccepted": false
+    },
+    "Water Beetle": {
+      "id": "18-water-beetle",
+      "master": "audits/C196_CREATURE_SUPPLY_20261003/18-water-beetle/master.png",
+      "sha256": "705a1278a5ad70f3fe73b2cfbecb52685db4e970fe1689c34920d21af4d1774d",
+      "review": "full-size original at native dimensions",
+      "finding": "Oval closed wing cases, clubbed antennae and fringed paddle-like rear limbs. Five independently visible distal leg silhouettes; sixth chain/root unresolved. Rear appendage insertion under abdomen requires source-anatomy review; do not invent thoracic roots.",
+      "status": "HELD_ANATOMY_VISIBILITY",
+      "wholeOriginalFraming": "All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met.",
+      "pattern": "Observed named pigment/material features only; not pattern-instrument acceptance.",
+      "native": false,
+      "qualityAccepted": false
+    }
+  }
+}

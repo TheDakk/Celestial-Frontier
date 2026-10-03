@@ -1,0 +1,30 @@
+{
+  "changedLabels": 52115,
+  "changesFromNonBody": 0,
+  "counts": {
+    "2": 1963,
+    "3": 2657,
+    "4": 3778,
+    "5": 1758,
+    "6": 3290,
+    "7": 3116,
+    "8": 3189,
+    "9": 1811,
+    "10": 3803,
+    "11": 2495,
+    "12": 2097,
+    "13": 3136,
+    "14": 632,
+    "15": 747,
+    "16": 2260,
+    "17": 4141,
+    "18": 2177,
+    "19": 2865,
+    "20": 1888,
+    "21": 2919,
+    "22": 446,
+    "23": 947
+  },
+  "sourcePixelsChanged": 0,
+  "reason": "Remove body-owned fringes outside observed body outline; existing limb labels unchanged"
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "10-antelope-tail",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/10-antelope/master.png",
+  "sourceSha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/10-antelope/packet/authoring.json",
+  "priorAuthoringSha256": "0c3ebf42252a42fb1cb118c091fd708327438c0d6ffba62544853f671bbf9328",
+  "changedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "changedParts": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "addedParts": [],
+  "priorityChanged": {
+    "tailBeforeInheritedOwners": true,
+    "distalPawBeforeAnkle": false
+  },
+  "findings": [
+    "The short black-and-white tail ends near x240/y700 and remains attached to rump. Manual regions stop at this real tip; they do not lengthen it."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation evidence pending; no quality admission.",
+    "Unedited automatic geometry remains subject to full-size review."
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "07e6de60e889a8ef5ef337beb5623d1398e0258a48aaa73f2e2a4b762ca05ae1",
+  "declarationHash": "fa25bad47cd2a265c115af31ddb79fc69f422601c61c19a899a16d4c18a0c663",
+  "paintedPixels": 174377,
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 637,
+        "y": 558,
+        "width": 9,
+        "height": 9
+      },
+      "pixels": 81
+    },
+    {
+      "id": "arm-near-hand",
+      "joint": "armNearHand",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 750,
+        "y": 832,
+        "width": 101,
+        "height": 82
+      },
+      "pixels": 4122
+    },
+    {
+      "id": "arm-far-hand",
+      "joint": "armFarHand",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 907,
+        "y": 813,
+        "width": 83,
+        "height": 82
+      },
+      "pixels": 3121
+    },
+    {
+      "id": "leg-near-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 350,
+        "y": 793,
+        "width": 73,
+        "height": 89
+      },
+      "pixels": 3637
+    },
+    {
+      "id": "leg-far-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 567,
+        "y": 805,
+        "width": 154,
+        "height": 68
+      },
+      "pixels": 4329
+    },
+    {
+      "id": "arm-near-elbow",
+      "joint": "armNearElbow",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 700,
+        "y": 691,
+        "width": 95,
+        "height": 177
+      },
+      "pixels": 9249
+    },
+    {
+      "id": "arm-far-elbow",
+      "joint": "armFarElbow",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 831,
+        "y": 697,
+        "width": 98,
+        "height": 140
+      },
+      "pixels": 6309
+    },
+    {
+      "id": "leg-near-knee",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 351,
+        "y": 687,
+        "width": 199,
+        "height": 121
+      },
+      "pixels": 11717
+    },
+    {
+      "id": "leg-far-knee",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 566,
+        "y": 670,
+        "width": 114,
+        "height": 162
+      },
+      "pixels": 8828
+    },
+    {
+      "id": "arm-near-shoulder",
+      "joint": "armNearShoulder",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 699,
+        "y": 544,
+        "width": 118,
+        "height": 170
+      },
+      "pixels": 12736
+    },
+    {
+      "id": "arm-far-shoulder",
+      "joint": "armFarShoulder",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 805,
+        "y": 582,
+        "width": 86,
+        "height": 146
+      },
+      "pixels": 8698
+    },
+    {
+      "id": "leg-near-hip",
+      "joint": "legNearHip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 469,
+        "y": 514,
+        "width": 122,
+        "height": 193
+      },
+      "pixels": 15581
+    },
+    {
+      "id": "leg-far-hip",
+      "joint": "legFarHip",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 574,
+        "y": 601,
+        "width": 103,
+        "height": 87
+      },
+      "pixels": 4872
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 846,
+        "y": 539,
+        "width": 71,
+        "height": 43
+      },
+      "pixels": 2267
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 755,
+        "y": 416,
+        "width": 171,
+        "height": 135
+      },
+      "pixels": 17061
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 739,
+        "y": 491,
+        "width": 119,
+        "height": 102
+      },
+      "pixels": 3278
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 259,
+        "y": 351,
+        "width": 186,
+        "height": 133
+      },
+      "pixels": 13687
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 256,
+        "y": 461,
+        "width": 197,
+        "height": 179
+      },
+      "pixels": 12996
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 433,
+        "y": 550,
+        "width": 57,
+        "height": 81
+      },
+      "pixels": 2138
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 544,
+        "y": 476,
+        "width": 93,
+        "height": 93
+      },
+      "pixels": 3879
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 655,
+        "y": 478,
+        "width": 103,
+        "height": 172
+      },
+      "pixels": 10527
+    },
+    {
+      "id": "body",
+      "joint": "spine",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 303,
+        "y": 395,
+        "width": 654,
+        "height": 499
+      },
+      "pixels": 15264
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 6747,
+    "despilledPixels": 700,
+    "unresolvedEdgePixels": 2
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

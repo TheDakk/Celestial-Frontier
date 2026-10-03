@@ -1,0 +1,176 @@
+{
+  "id": "01-dingo",
+  "name": "Dingo",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8b130553f51d55c95faeebf22bdd308ff0d8c890fd813fefc8d37c92aed7c84d",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 44603,
+    "coreRadius": 31,
+    "bodyBox": {
+      "x0": 10,
+      "y0": 60,
+      "x1": 414,
+      "y1": 279
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1253,
+        "pixels": 5587,
+        "box": {
+          "x0": 286,
+          "y0": 58,
+          "x1": 388,
+          "y1": 192
+        },
+        "attach": {
+          "x": 353,
+          "y": 131.6,
+          "relX": 0.85,
+          "relY": 0.33
+        },
+        "dir": {
+          "x": 0.14,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 99.5
+      },
+      {
+        "k": 1,
+        "frac": 0.098,
+        "pixels": 4370,
+        "box": {
+          "x0": 31,
+          "y0": 161,
+          "x1": 109,
+          "y1": 273
+        },
+        "attach": {
+          "x": 76.7,
+          "y": 215.4,
+          "relX": 0.17,
+          "relY": 0.71
+        },
+        "dir": {
+          "x": -0.36,
+          "y": 0.93
+        },
+        "class": "limb-down",
+        "length": 73.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0562,
+        "pixels": 2505,
+        "box": {
+          "x0": 150,
+          "y0": 215,
+          "x1": 207,
+          "y1": 340
+        },
+        "attach": {
+          "x": 186.2,
+          "y": 236.2,
+          "relX": 0.44,
+          "relY": 0.8
+        },
+        "dir": {
+          "x": -0.22,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 109.9
+      },
+      {
+        "k": 3,
+        "frac": 0.1185,
+        "pixels": 5285,
+        "box": {
+          "x0": 248,
+          "y0": 235,
+          "x1": 363,
+          "y1": 344
+        },
+        "attach": {
+          "x": 288,
+          "y": 235,
+          "relX": 0.69,
+          "relY": 0.8
+        },
+        "dir": {
+          "x": 0.12,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 132.3
+      },
+      {
+        "k": 4,
+        "frac": 0.063,
+        "pixels": 2808,
+        "box": {
+          "x0": 72,
+          "y0": 242,
+          "x1": 158,
+          "y1": 342
+        },
+        "attach": {
+          "x": 135,
+          "y": 242,
+          "relX": 0.31,
+          "relY": 0.83
+        },
+        "dir": {
+          "x": -0.6,
+          "y": 0.8
+        },
+        "class": "limb-down",
+        "length": 118.2
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 72,
+        "x1": 101,
+        "cx": 85.3
+      },
+      {
+        "x0": 172,
+        "x1": 207,
+        "cx": 189.9
+      },
+      {
+        "x0": 252,
+        "x1": 283,
+        "cx": 266.4
+      },
+      {
+        "x0": 327,
+        "x1": 363,
+        "cx": 344.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

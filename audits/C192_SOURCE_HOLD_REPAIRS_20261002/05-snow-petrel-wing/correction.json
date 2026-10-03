@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c192-source-observed-correction/v1",
+  "id": "05-snow-petrel-wing",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/snow-petrel/packet/master.png",
+  "sourceSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/snow-petrel/packet/authoring.json",
+  "priorAuthoringSha256": "8578d697ee878b5a4fbc0e9c6e39de4ded52a896752bebe4391bab17a4ca3c37",
+  "changedJoints": [
+    "wingNearRoot",
+    "wingNearTip"
+  ],
+  "changedParts": [
+    "near-wing-root",
+    "near-wing-flight"
+  ],
+  "addedParts": [],
+  "priorityChanges": [],
+  "findings": [
+    "The visible folded near wing forms a rounded shoulder near x789/y570 and a continuous feather fan tapering left to x364/y631. The transferred root x696.7/y541.3 lies well left of that shoulder and its mask claims the upper back instead.",
+    "Near-wing root and flight envelopes follow the actual visible folded feather surface. The shoulder root is set on the visible hinge; the distal point lies within the tapered left-pointing primaries. Pixels and appearance remain exact.",
+    "Far-wing visibility remains an inherited unresolved interpretation. This correction does not assert unseen articulation, confer whole-family reference eligibility or demonstrate flight from a folded reference."
+  ],
+  "sourcePixelsChanged": 0,
+  "presenceChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

@@ -1,0 +1,13 @@
+{
+  "id": "10-barreleye",
+  "name": "Barreleye",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-515a4ad5-2c5b-49df-b5ae-4192fc7d5f51.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1754c18ecc4870ce8d443698d0f1c4d9b158084045a4553fcd9e721fc38edbf0",
+  "bytes": 1318272,
+  "promptSha256": "ed63ad13ca0576c7ec1b121b162d893b8f1de7f815c88f33466fd4c05dca77da",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

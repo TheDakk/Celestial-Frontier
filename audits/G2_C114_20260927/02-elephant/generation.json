@@ -1,0 +1,13 @@
+{
+  "id": "02-elephant",
+  "name": "Elephant",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-92e3e895-1587-4301-a5ad-598ef922175a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b3ecb68e096c5ad004935ebb316f46bfe5bab5fbb83f2cdb94a072452cdccc1a",
+  "bytes": 1438485,
+  "promptSha256": "18e6a181381b00444e232b1d60f32a8902e4a02fd08a7a9687e90ac15d4a56c2",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

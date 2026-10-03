@@ -1,0 +1,18 @@
+{
+  "scope": "Sheets produced once and inspected; exact available/unavailable evidence",
+  "sheets": [
+    {
+      "path": "review-sheet-02.png",
+      "sourceMaster": "master.png",
+      "fit": "fit-02",
+      "sha256": "83d42fada2e94fab7deddddc8a47dad8997a2a173a3dc2d3e96d2038f8ffa8bc"
+    },
+    {
+      "path": "candidate-03/review-sheet.png",
+      "sourceMaster": "candidate-03/master.png",
+      "fit": null,
+      "sha256": "96b866503036ac1c293bc786c4388d7d95c1a2318c6a5002c358daa0647704a0"
+    }
+  ],
+  "noFilmInvented": true
+}

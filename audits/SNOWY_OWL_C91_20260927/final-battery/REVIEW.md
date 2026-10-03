@@ -1,0 +1,3 @@
+# C91 unchanged-source battery
+
+C91 final verification: signed4030c57d unchanged-source develop profile:5,675 pass/I5 sole failure,2 expected failures/2 skipped. All seven remaining owners, root validation and four exact-pose outcome controls PASS; HEAD/source/log hashes verified.199GiB free; PUBLIC/UNFROZEN/five reviewed workflows unchanged. Snowy Owl remains RED; rejected collar candidates are evidence only, no runtime default or limit change. Hyrax exhaustive tail diagnostic retained. No I5 retry, native rerun or admission. Own-branch delivery then signed Claude scoring merge and G2_C92 generation continue.

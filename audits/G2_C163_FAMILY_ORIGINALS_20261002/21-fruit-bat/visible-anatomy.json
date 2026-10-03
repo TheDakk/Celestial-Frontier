@@ -1,0 +1,162 @@
+{
+  "id": "21-fruit-bat",
+  "name": "Fruit Bat",
+  "family": "flyer-membrane",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "3b8118dbdacac31b663e30f4b7a50503b4fcd9ee2cdb7c43901c52d747bbbe83",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22919,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 94,
+      "y0": 93,
+      "x1": 259,
+      "y1": 260
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0279,
+        "pixels": 640,
+        "box": {
+          "x0": 69,
+          "y0": 82,
+          "x1": 136,
+          "y1": 114
+        },
+        "attach": {
+          "x": 107.3,
+          "y": 95.8,
+          "relX": 0.08,
+          "relY": 0.02
+        },
+        "dir": {
+          "x": -0.79,
+          "y": -0.62
+        },
+        "class": "top",
+        "length": 42.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0287,
+        "pixels": 657,
+        "box": {
+          "x0": 239,
+          "y0": 186,
+          "x1": 283,
+          "y1": 223
+        },
+        "attach": {
+          "x": 255.1,
+          "y": 204.9,
+          "relX": 0.98,
+          "relY": 0.67
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.05
+        },
+        "class": "front",
+        "length": 33.7
+      },
+      {
+        "k": 2,
+        "frac": 0.2293,
+        "pixels": 5256,
+        "box": {
+          "x0": 216,
+          "y0": 225,
+          "x1": 357,
+          "y1": 335
+        },
+        "attach": {
+          "x": 247.6,
+          "y": 252.1,
+          "relX": 0.93,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": 0.95,
+          "y": 0.32
+        },
+        "class": "front",
+        "length": 137.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0078,
+        "pixels": 178,
+        "box": {
+          "x0": 133,
+          "y0": 241,
+          "x1": 153,
+          "y1": 267
+        },
+        "attach": {
+          "x": 153,
+          "y": 249.5,
+          "relX": 0.36,
+          "relY": 0.94
+        },
+        "dir": {
+          "x": -0.75,
+          "y": 0.66
+        },
+        "class": "limb-down",
+        "length": 26.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0235,
+        "pixels": 538,
+        "box": {
+          "x0": 159,
+          "y0": 261,
+          "x1": 201,
+          "y1": 294
+        },
+        "attach": {
+          "x": 180,
+          "y": 261,
+          "relX": 0.52,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.39,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 39.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 2,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 348,
+        "x1": 357,
+        "cx": 353.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

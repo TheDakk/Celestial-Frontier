@@ -168,7 +168,8 @@ function contractErrors(
     'arc5OwnershipEvidence = attempt.ownershipV2Evidence;',
     'arc5OwnershipProtection = null;',
   ]) if (!commit.includes(marker)) errors.push(`verified-publication:${marker}`);
-  if (/\barc4OwnershipState\s*=|\bsave\.[A-Za-z0-9_$]+\s*=/u.test(commit)) {
+  // the ONE sanctioned publication beside ownership (D13 care XP): the companion's own Compendium mirror row, by the shared rule
+  if (/\barc4OwnershipState\s*=|\bsave\.[A-Za-z0-9_$]+\s*=/u.test(commit.replace('save.codex = mirrorCompanionCodexXpV1(save.codex, attempt.transaction.state.codex);', ''))) {
     errors.push('cross-owner-publication');
   }
   if (/\b(?:for|while)\s*\([^)]*\)[\s\S]{0,600}commitArc5FeedActionV1\(/u.test(commit)) {

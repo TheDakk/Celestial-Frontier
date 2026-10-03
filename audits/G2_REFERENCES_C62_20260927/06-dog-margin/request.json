@@ -1,0 +1,12 @@
+{
+  "schema": "cf.g2-master-edit/v1",
+  "purpose": "framing repair for hand reference",
+  "sourcePacket": "audits/G2_REFERENCES_C62_20260927/06-dog",
+  "sourceMasterSha256": "def3517a227c224e1f5142ec4ffe88523e9f9d983b57948df985acef387368e9",
+  "promptSha256": "d6b6096199eb336811f90d1b82e8edc702dfbfce503aeb5cba30f6532b9b5470",
+  "tool": "image_gen.imagegen",
+  "requestedSize": [
+    1254,
+    1254
+  ]
+}

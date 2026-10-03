@@ -1,0 +1,226 @@
+{
+  "schema": "cf.c132-arena-prompt-amendments/v1",
+  "frozenBlocksVerified": true,
+  "amendments": [
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/savanna/original-far.prompt.txt",
+        "sha256": "42d4a5625e9eb0175d176a5518828f67f162446030106fa540fc627f26e68fc9"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/savanna/arena-far.prompt.txt",
+        "sha256": "98f3b5645ed30fff5b7e7af40095b6f6a5281c733dc646b80c5032d8ac56c972"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/savanna/original-near.prompt.txt",
+        "sha256": "6c2d378dae2f6364cedb7267348f022ace2a11ab21627f5dcdf953adfab3787b"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/savanna/arena-near.prompt.txt",
+        "sha256": "94fa8949f69e7055bfa4303923ee98025073f4f873095b536522ea44d8f419e5"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/jungle/original-far.prompt.txt",
+        "sha256": "71414a9083d4729022e435057faef6c98748b333437beb0df01157206ec1894f"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/jungle/arena-far.prompt.txt",
+        "sha256": "ff3edef185a260e78fbd937ebd02f1862c625baa70bc31f25954925544959679"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/jungle/original-near.prompt.txt",
+        "sha256": "31a2ef0cc510a3708bd02e7704c77cb546d91be14aa42959b318965969ec15bd"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/jungle/arena-near.prompt.txt",
+        "sha256": "c66ed1ff08b86ce62def3c59231f2b8c294dfe3d4267291239fb98f39a322a77"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/marsh/original-far.prompt.txt",
+        "sha256": "09e958aabd96e8d2c438f777a72291458ab3b98258b2ac89b8adfc6bb75bbefe"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/marsh/arena-far.prompt.txt",
+        "sha256": "13199b8c2d78ac16763c2a15d4528f906a458b89add244fece45802778b28375"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/marsh/original-near.prompt.txt",
+        "sha256": "07249961fa9f7a3db266cf484227c829e5d247fdc5f4758962679aeb8eee339f"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/marsh/arena-near.prompt.txt",
+        "sha256": "a67c3725fb32c5a32f4598c1d5d3bcb45e7f19fcd80dbabe70ed0f2b4b871142"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/tundra/original-far.prompt.txt",
+        "sha256": "578001a58550e4cc126e922e63e2a5d59398e614ea0ef41c2c5a9f1a3fc91515"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/tundra/arena-far.prompt.txt",
+        "sha256": "09f73fed83bbad3550401f415cf2cc46352d255670d4388a58dea87095e571d8"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/tundra/original-near.prompt.txt",
+        "sha256": "7d7550681c53552dfab9d196de11cf4338fcc7eb7054200ebf4b0b32e64c769c"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/tundra/arena-near.prompt.txt",
+        "sha256": "5040e9ce9f7de16b9add4e5a106601ffdd94fddaab7ace019c353e7ee510e6cd"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/coral/original-far.prompt.txt",
+        "sha256": "dc3ba0a4b111a7aeff67f2f7db47b7f5d22194527912071ea0a37602b81c7220"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/coral/arena-far.prompt.txt",
+        "sha256": "fe07f0161d18e1375a83ab63e0b6bc02a5bafd3b0a09cad07da5fc4b7eb2c518"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/coral/original-near.prompt.txt",
+        "sha256": "bd3264f09bcb1773aafbffd88acddcbe553d352f6f1d222c6acb3509de657712"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/coral/arena-near.prompt.txt",
+        "sha256": "dbba11ca97e830efd322272b997c13c2125357c8458c562eff0e0bd083d48546"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/original-far.prompt.txt",
+        "sha256": "12d98453e31625da116102a5d3c781e8db1779a2b9b92f5ead6e7da9e962c69f"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.prompt.txt",
+        "sha256": "40f86f28a19e1cf0b3eb979b7a409d6a6c2fb7e044e61817ef73eb8b3f590c51"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/original-near.prompt.txt",
+        "sha256": "bb255b84dfb84238ec1c45c41d3deeb2d3dd6d61069f440b285a415d52957258"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.prompt.txt",
+        "sha256": "fc273efa4114c8c39adec1ea80e4c05869caee502f4e37864d8b68681ceb1a06"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/karst-cave/original-far.prompt.txt",
+        "sha256": "cdeafb0f9929e152cc369077945267d9839c5c7f33a250c5865f6e50212ed029"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/karst-cave/arena-far.prompt.txt",
+        "sha256": "8e145352977018cfad2b59fc6b5cb7a53879eb6782da8229ccc37b49f2f7f9ab"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/karst-cave/original-near.prompt.txt",
+        "sha256": "b6c993e7e7c75c65b196630c31538e3445eceda3669076804c70b75be0e1ae1b"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/karst-cave/arena-near.prompt.txt",
+        "sha256": "57ccac94e73728b763883f6b0aa3bb0a7916056497fc40a9c129919ffa81f32e"
+      },
+      "scope": "SUBJECT only; frozen reference, style, accuracy, layout, technical and negative blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/savanna/arena-mid.prompt.txt",
+        "sha256": "3096bff14adea35a92f2504d7d557f17834af97306d73804517f8b8307423134"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/savanna/arena-mid-repair.prompt.txt",
+        "sha256": "887594c55294aa121e7bab9fa610863ccf910ccb11504399b693cf45521c587a"
+      },
+      "scope": "repair SUBJECT only; frozen blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/jungle/arena-mid.prompt.txt",
+        "sha256": "c27e5868cb8f414632dc11033e941566477c430be0bb4f6218f66078d12c34b5"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/jungle/arena-mid-repair.prompt.txt",
+        "sha256": "b7ee61983d3e19aab4b49cf09c58dfa65829e7371bee77219363d70b3e714b12"
+      },
+      "scope": "repair SUBJECT only; frozen blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/tundra/arena-mid.prompt.txt",
+        "sha256": "1dafbd695b870dd5bcc30ff7b002247d81cec6bcd6a36dc3f5d2db628e5e2934"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/tundra/arena-mid-repair.prompt.txt",
+        "sha256": "b84685604d5babfb92da63370cf2787c79b5619f94126740542a2c27ad8622b5"
+      },
+      "scope": "repair SUBJECT only; frozen blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.prompt.txt",
+        "sha256": "40f86f28a19e1cf0b3eb979b7a409d6a6c2fb7e044e61817ef73eb8b3f590c51"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-far-repair.prompt.txt",
+        "sha256": "2c84aaf68b9c1d7b439dcb8fff8e8a53f3059beb8a0db124f5459bde017340c0"
+      },
+      "scope": "repair SUBJECT only; frozen blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-near.prompt.txt",
+        "sha256": "3b16a914cfdfe0c094a9345ab8c62f679391159094bc1a558732b415ab77a35c"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-near-repair.prompt.txt",
+        "sha256": "4f001b409579fa95787809a235200658a8f5e12e07435de610e2cdeecf546d95"
+      },
+      "scope": "repair SUBJECT only; frozen blocks unchanged"
+    },
+    {
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/karst-cave/arena-near.prompt.txt",
+        "sha256": "57ccac94e73728b763883f6b0aa3bb0a7916056497fc40a9c129919ffa81f32e"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/karst-cave/arena-near-repair.prompt.txt",
+        "sha256": "73df66243318264c19b9612efb05d084de382e043bf739a5b6a215c68067399a"
+      },
+      "scope": "repair SUBJECT only; frozen blocks unchanged"
+    }
+  ]
+}

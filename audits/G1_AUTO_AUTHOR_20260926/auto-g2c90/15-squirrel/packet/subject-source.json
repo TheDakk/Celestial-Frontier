@@ -1,0 +1,103 @@
+{
+  "name": "Squirrel",
+  "family": "quadruped",
+  "species": {
+    "name": "Squirrel",
+    "aspect": 0.9,
+    "headFrac": 0.25,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "bushy plumed tail arched up over the back",
+      "sitting on the haunches holding food in the forepaws",
+      "large dark eye and rounded ears"
+    ],
+    "note": "generic representative: a tree squirrel; the arched tail makes it read taller than long"
+  },
+  "genome": {
+    "seed": 2347186175,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 12,
+    "body": 11,
+    "loco": 2,
+    "trait": 16,
+    "size": 5,
+    "diet": 2,
+    "head": 1,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 16,
+    "detail": 5,
+    "accent": 7,
+    "temper": 9,
+    "sense": 1,
+    "repro": 1,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Squirrel"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Squirrel\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2347186175\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "index": 55,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

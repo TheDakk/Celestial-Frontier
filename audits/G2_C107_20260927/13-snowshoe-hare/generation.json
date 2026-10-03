@@ -1,0 +1,13 @@
+{
+  "id": "13-snowshoe-hare",
+  "name": "Snowshoe Hare",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-adba7f24-d80c-4cb1-a231-9ba1fd74beaa.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cf1b19430756aeb19968e95fc34ecb68d7535feac6641326830643a8bee93a76",
+  "bytes": 1213053,
+  "promptSha256": "be24172573dbad352fa3f9e4b974aba8a2869dc0d58721e6903d35113adbdcf8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

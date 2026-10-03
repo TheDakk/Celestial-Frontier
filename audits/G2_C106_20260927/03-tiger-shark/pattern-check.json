@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tiger Shark",
+  "masterSha256": "7cec373702fb865ff31213d50adfa79be5ffbcb8bf6079bb6f8610a7c79f2056",
+  "required": [
+    "dark vertical tiger stripes on the flank"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark vertical tiger stripes on the flank",
+      "status": "PRESENT",
+      "observed": "Full original: dark vertical tiger bands on flanks and upper tail, broad blunt-ish snout, longer upper caudal lobe, gill slits. Complete but oversized in canvas; both lateral margins look too small. Rear fins require semantic review. Not admitted."
+    }
+  ]
+}

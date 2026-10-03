@@ -1,0 +1,14 @@
+{
+  "id": "10-antelope",
+  "name": "Antelope",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f05ef0de-7926-49d9-87d8-c41d2539718a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+  "bytes": 1444705,
+  "promptSha256": "e078da81652313de64d2daf1e222ce1d0fd2c49efee3989009d2ba7216ac75df",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

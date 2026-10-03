@@ -1,0 +1,154 @@
+{
+  "kind": "gastropod",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snail\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"450526374\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"14\"]]]]",
+    "seed": 450526374,
+    "ownerId": "authored:archetype-sprint/c192-independent-snail",
+    "earthName": "Snail"
+  },
+  "template": {
+    "id": "gastropod",
+    "version": 1
+  },
+  "clipSetId": "gastropod-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 450526374,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 7,
+    "body": 5,
+    "loco": 2,
+    "trait": 14,
+    "size": 0,
+    "diet": 5,
+    "head": 4,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 7,
+    "accent": 6,
+    "temper": 5,
+    "sense": 8,
+    "repro": 1,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Snail"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6562998405103668,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.49521531100478466,
+      0.6244019138755981
+    ],
+    "foot0": [
+      0.18899521531100477,
+      0.6196172248803827
+    ],
+    "foot1": [
+      0.3763955342902711,
+      0.6291866028708134
+    ],
+    "foot2": [
+      0.5582137161084529,
+      0.6259968102073366
+    ],
+    "foot3": [
+      0.6690590111642744,
+      0.5829346092503987
+    ],
+    "head": [
+      0.7097288676236044,
+      0.5430622009569378
+    ],
+    "mouth": [
+      0.7280701754385965,
+      0.5853269537480064
+    ],
+    "eyeFar": [
+      0.8444976076555024,
+      0.41467304625199364
+    ],
+    "eyeNear": [
+      0.7623604465709729,
+      0.36762360446570974
+    ],
+    "shell": [
+      0.386762360446571,
+      0.45933014354066987
+    ]
+  },
+  "materials": {
+    "surface": "slick"
+  },
+  "source": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/master.png",
+  "coverage": {
+    "scope": "Independent visible-mouth Snail reference candidate",
+    "limitations": [
+      "Independent source-coordinate Snail reference, a distinct canonical subject from the retained Banana Slug. No Slug landmarks or owners were transferred.",
+      "The targeted source successor has two upper ocular tentacles, two lower sensory tentacles and a separate small ventral oral opening at [913,734]. The lower tips remain plain painted sensory tips, not declared eyes.",
+      "The coarse gastropod template owns the two lower sensory tentacles with the head. It does not contain independent controls for them; all visible paint is retained.",
+      "The shell follows the existing rigid shell control. Four foot controls sample a continuous muscular foot, not four biological legs.",
+      "The edited eyes and mouth remain stylized and the shell has strong glossy highlights. Source visibility is not style or moving-paint acceptance.",
+      "No native run, reference-pool registration, family-wide admission or quality acceptance."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "261c816490f69bded9af45dab7042091d0c615cacd91758d9a6ff6e0cfdae7e4",
+    "subjectSourceSha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "foot0": 0.3062574737953159,
+      "foot1": 0.18764448446105342,
+      "foot2": 0.18184616030289283,
+      "foot3": 0.11891607371279883,
+      "head": 0.05695477300053935,
+      "mouth": 0.046072908534782436,
+      "eyeFar": 0.18613540323010933,
+      "eyeNear": 0.18316327208615,
+      "shell": 0.1701725238125346
+    },
+    "measures": {
+      "body": 0.4814632513271463,
+      "bone-min": 0.046072908534782436,
+      "bone-max": 0.3062574737953159
+    }
+  },
+  "recipeHash": "cb4f0827aaaf2534d857ae384ba83355513ee48fb50402e50ccb662b1e57c05e"
+}

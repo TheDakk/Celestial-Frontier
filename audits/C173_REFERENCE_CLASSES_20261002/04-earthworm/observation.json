@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C196_SIMPLE_ORIGINALS_20261002/01-earthworm",
+  "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "fullSizeInspected": true,
+  "visibleAnatomy": [
+    "complete uninterrupted tube",
+    "clitellum near the right anterior end",
+    "both terminal tips"
+  ],
+  "jointsAreCurveControls": true,
+  "biologicalSegmentCountClaim": null,
+  "physicalGroundClaim": false,
+  "limitations": [
+    "The 12 shared deforming segments sample the observed centreline; they are control regions, not a claim that the animal has only 12 biological annuli.",
+    "Both terminal ends and the clitellum are visible. No eyes, feet, mandibles or unpainted head structures are invented.",
+    "The curved body has no individually observed foot contacts. groundLineY is the painted lower envelope, not a claim that the whole tube lies on one plane.",
+    "Wet highlights and body thickness remain visual/style review questions; no native movement or quality acceptance."
+  ],
+  "qualityAccepted": false
+}

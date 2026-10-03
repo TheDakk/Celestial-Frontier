@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c196-bounded-execution/v1",
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin",
+    "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedMs": 1690.626334,
+  "error": null,
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "nodeVersion": "v26.10.0",
+  "native": false
+}

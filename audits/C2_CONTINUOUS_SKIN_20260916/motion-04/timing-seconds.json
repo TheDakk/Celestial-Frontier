@@ -1,0 +1,75 @@
+{
+  "purpose": "Locate paced CPU cost; not an alternate acceptance statistic. Full-run strict p95 remains the admission.",
+  "rows": [
+    {
+      "second": 0,
+      "samples": 60,
+      "meanMs": 1.4349999996523062,
+      "p95Ms": 2.1000000089406967,
+      "maxMs": 2.4000000059604645
+    },
+    {
+      "second": 1,
+      "samples": 61,
+      "meanMs": 1.0622950819183568,
+      "p95Ms": 1.5,
+      "maxMs": 1.5999999940395355
+    },
+    {
+      "second": 2,
+      "samples": 60,
+      "meanMs": 1.3083333330849807,
+      "p95Ms": 1.5,
+      "maxMs": 1.5
+    },
+    {
+      "second": 3,
+      "samples": 60,
+      "meanMs": 1.6500000009934108,
+      "p95Ms": 1.9000000059604645,
+      "maxMs": 2
+    },
+    {
+      "second": 4,
+      "samples": 60,
+      "meanMs": 1.103333333134651,
+      "p95Ms": 1.8999999910593033,
+      "maxMs": 1.9000000059604645
+    },
+    {
+      "second": 5,
+      "samples": 60,
+      "meanMs": 1.4783333336313567,
+      "p95Ms": 1.9000000059604645,
+      "maxMs": 2.1000000089406967
+    },
+    {
+      "second": 6,
+      "samples": 60,
+      "meanMs": 1.6316666670143605,
+      "p95Ms": 2,
+      "maxMs": 2.300000011920929
+    },
+    {
+      "second": 7,
+      "samples": 60,
+      "meanMs": 1.513333334028721,
+      "p95Ms": 1.800000011920929,
+      "maxMs": 2
+    },
+    {
+      "second": 8,
+      "samples": 60,
+      "meanMs": 1.8766666680574418,
+      "p95Ms": 2.1000000089406967,
+      "maxMs": 2.3999999910593033
+    },
+    {
+      "second": 9,
+      "samples": 60,
+      "meanMs": 2.1750000012417634,
+      "p95Ms": 2.5,
+      "maxMs": 2.6000000089406967
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6",
+  "authoringSha256": "bcc478f689fd86d03c47958bf8fc1652cc1bfe944f947d2792b3f4a44eb6983c",
+  "observationSource": "audits/C136_BIRD_INSECT_REFERENCES_20261002/manual-observations.mjs",
+  "observationSha256": "65ea4a827827add2b77a6acd84743354f4d20216d751c4768c15776905a86d98",
+  "sourcePacket": "audits/G2_C136_REPAIRS_20261002/24-water-strider",
+  "origin": "Independent manual full-size observation; no coordinates read from another authoring, fit or reference.",
+  "limitations": [
+    "INCOMPLETE: the piercing mouthpart is not independently identifiable as the template mandible. That landmark is deliberately omitted; no absence, hidden-part claim or painted surrogate is fabricated. This packet must fail complete intake until the anatomy mapping is resolved.",
+    "Two short forelegs and four long middle/hind legs have six separate visible tips. Their near/far depth and closely overlapping thoracic roots are interpreted, not validated.",
+    "The legs are spread through a perspective water-surface pose with unequal tip heights; one detached keyed component remains in the unmodified source. This is not a grounded standing admission."
+  ],
+  "admission": "INCOMPLETE_HOLD: no complete intake or reference-pool admission."
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [
+    "tail",
+    "external-ears"
+  ],
+  "hidden": [],
+  "folded": [
+    "hindFar",
+    "hindNear"
+  ]
+}

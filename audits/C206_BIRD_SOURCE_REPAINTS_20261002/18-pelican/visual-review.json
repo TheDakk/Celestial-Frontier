@@ -1,0 +1,28 @@
+{
+  "name": "Pelican",
+  "masterSha256": "3a24d8d3448f5409f920e5c183e9833e0ffb1cc3dfde4f2bc87f705d56fd35b2",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: enormous long bill with hanging throat pouch, folded kinked neck, heavy body on two short legs, and two clearly webbed feet are visible. Short rear tail/wing feather layers remain overlapping. Pouch is prominent and crest wisps remain; exact proportions and ownership need independent review. Feet are vertically offset, not asserted as the same ground line.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 275,
+      "y0": 282,
+      "x1": 985,
+      "y1": 941
+    },
+    "margins": {
+      "left": 275,
+      "right": 268,
+      "top": 282,
+      "bottom": 312
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

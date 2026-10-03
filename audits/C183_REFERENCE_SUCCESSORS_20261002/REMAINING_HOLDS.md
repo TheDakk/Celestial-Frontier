@@ -1,0 +1,15 @@
+# Remaining reference and source holds
+
+This inventory follows the latest read-only C183 mailbox evidence. It does not turn earlier static or conservation results into acceptance. The new C213 paintings are a separate pending scoring batch; their existence does not close these older holds.
+
+| Group | Last measured obstruction | Existing evidence / concrete dependency |
+| --- | --- | --- |
+| C196 framing reptile successors | Caiman unexplained paint13.9%; Crocodile one contact; Monitor jaw; Anole far root; Skink tail3; Whiptail appendage | C183 mailbox and corresponding `auto-g2c196`/framing successor score packets. New source-specific reference authoring must follow the actual visible jaw, roots and tail; unseen contacts cannot be inserted. C213 supplies new candidate originals for later scoring. |
+| Other C136/C196 reptiles | Gila/Frilled/Chameleon paint or tail, Mountain Lizard/Agama intake or contacts, Lizard hind ankle | C167/C177 refusals remain unless a later named result supersedes them. Marine Iguana is superseded by C183 acceptance through the source-bound reviewed pinna absence. No blanket reptile claim. |
+| Primates | Thin posture references; unassigned tails/raised limbs; contact counts differ by source | C168/C177: Tamarin/Aye-aye one contact, Langur/Monkey tail appendages, Marmoset/Proboscis family read, Mandrill intake. Capuchin's shared spike is fixed but the source join at the neck remains held (C179). Source-specific new originals need full root/tail visibility and independently authored landmarks. |
+| Membrane fliers | Folded standing sources hide shoulder/digit/wingtip identities | Spread Bat is accepted (C173 corrected the earlier crop-only staging hold). Standing Vampire Bat successor remains source-observation only; do not promote it to a full independent reference or invent folded membrane rays. |
+| Older seams | Hawk belly opening; Snowy Owl shoulder/neck seam; Capuchin neck seam; Snow Petrel shoulder; Flounder body/tail cracks | C179 exact films. The shared faint fix removed spikes but did not close these paint joins. No current audit changes runtime seams or paints over the gaps. |
+| Equids | Source ownership/coverage and moving joins | `C173_EQUID_REAUTHOR_20261002` stays held: unchanged cap refusals and source-dependent mane/limb gaps. No new equid attempt in this disjoint C183 queue. |
+| Cephalopods | Independent landmarks cannot be supported by overlapping arms/membranes | Existing `C168_CEPHALOPOD_REFERENCE_REVIEW_20261002` no-reference decision remains. The source must expose the required anatomy before complete authoring. |
+
+This batch prioritizes the requested second specialized sources and four C211 head islands, then the existing Spider manual component. Brittle Star is explicitly a radial geometry-contract dependency, documented separately in `C183_ISLAND_AUTHORING_20261002/BRITTLE_STAR_BOUND.md`. All further runtime, family-template and native decisions remain with the parent lane and Claude's source-bound scoring.

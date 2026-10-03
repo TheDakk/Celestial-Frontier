@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "tools/local-image-generation/mobile-pack.mjs",
+    "verify",
+    "--output=/private/tmp/cf-mobile-pack-20260909-species-03",
+    "--sha256=bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0"
+  ],
+  "exitCode": 0
+}

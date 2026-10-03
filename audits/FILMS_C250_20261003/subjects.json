@@ -1,0 +1,74 @@
+[
+ {
+  "id": "wild-ass",
+  "fit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/axial-joins-02/fit",
+  "name": "Wild Ass",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "horse",
+  "fit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03b-horse-pinnae/axial-joins-02/fit",
+  "name": "Horse",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "serval",
+  "fit": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit",
+  "name": "Serval",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "tortoise",
+  "fit": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01",
+  "name": "Tortoise",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "snail",
+  "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit",
+  "name": "Snail",
+  "family": "gastropod",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "prawn",
+  "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01",
+  "name": "Prawn",
+  "family": "crustacean-small",
+  "media": [
+   "water"
+  ]
+ },
+ {
+  "id": "leech",
+  "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01",
+  "name": "Leech",
+  "family": "annelid",
+  "media": [
+   "water"
+  ]
+ },
+ {
+  "id": "mussel",
+  "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit",
+  "name": "Mussel",
+  "family": "bivalve",
+  "media": [
+   "water"
+  ]
+ }
+]

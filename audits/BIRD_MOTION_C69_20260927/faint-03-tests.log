@@ -1,0 +1,127 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/stance-envelope-bird.test.ts (3 tests | 1 failed) 207ms
+   × preserves the shipped Goose faint exactly when it already fits original endpoint limits 22ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/stance-envelope-bird.test.ts > preserves the shipped Goose faint exactly when it already fits original endpoint limits
+AssertionError: expected { kind: 'motion-timeline', …(20) } to deeply equal { kind: 'motion-timeline', …(19) }
+
+- Expected
++ Received
+
+@@ -6,11 +6,11 @@
+      "squash": 0,
+      "stretch": 0,
+    },
+    "durationMs": 712,
+    "family": "faint",
+-   "hash": "93a10b9f",
++   "hash": "6e6963c1",
+    "hitstopMs": 0,
+    "kind": "motion-timeline",
+    "limitsRad": {
+      "beak": {
+        "max": 0.08726646259971647,
+@@ -121,11 +121,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": -0.02,
++         "value": -0.0149951171875,
+        },
+      ],
+      "dy": [
+        {
+          "ease": "ease-out",
+@@ -135,17 +135,17 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 234,
+          "t": 0.45,
+-         "value": 0.08,
++         "value": 0.05998046875,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.2,
++         "value": 0.149951171875,
+        },
+      ],
+    },
+    "secondary": [
+      {
+@@ -393,10 +393,16 @@
+        "stretch": 0,
+        "wobbleMs": 0,
+      },
+    ],
+    "seed": 3293194866,
++   "stanceEnvelope": {
++     "angleReserve": 0.9,
++     "samples": 129,
++     "schema": "cf.motion.stance-envelope/v1",
++     "torsoGain": 0.749755859375,
++   },
+    "tracks": {
+      "beak": [
+        {
+          "ease": "ease-out",
+          "ms": 0,
+@@ -651,11 +657,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.24434609527920614,
++         "value": 0.18319991665098684,
+        },
+      ],
+      "spine": [
+        {
+          "ease": "ease-out",
+@@ -665,17 +671,17 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 234,
+          "t": 0.45,
+-         "value": 0.13962634015954636,
++         "value": 0.10468566665770676,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.17453292519943295,
++         "value": 0.13085708332213344,
+        },
+      ],
+      "tailFan": [
+        {
+          "ease": "ease-out",
+
+ ❯ apps/game/src/motion/stance-envelope-bird.test.ts:40:59
+     38|  const r=read('audits/ART_BATTLE_FOCUS_20260925/15-goose/fit-02/record…
+     39|  const spy=vi.spyOn(envelopes,'faintStanceEnvelope').mockReturnValue(n…
+     40|  try{const old=compileBodyCard(r,r.genome);expect(actual).toEqual(buil…
+       |                                                           ^
+     41| });
+     42|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  02:35:13
+   Duration  909ms (transform 422ms, setup 0ms, import 535ms, tests 207ms, environment 0ms)
+

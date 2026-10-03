@@ -1,0 +1,14 @@
+{
+  "id": "07-capuchin",
+  "name": "Capuchin",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-39c4a271-e89c-4a88-9a26-c044e0e9c851.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+  "bytes": 1227360,
+  "promptSha256": "43ab60c469cd5dbf61a34ab63be73653d035535692803ef6c8c70875afcdec81",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

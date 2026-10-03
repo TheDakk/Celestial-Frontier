@@ -1,0 +1,17 @@
+✔ 1254 master pads to1264 without moving, scaling, relabeling or mutating original pixels (1538.897ms)
+✔ aligned old dimensions remain byte-identical; invalid dimensions/crop/source shapes refuse (1.958917ms)
+✔ transferred buffers retain exact SHA/byte checks and old URL transport stays supported (8.259ms)
+✔ corrupt, detached, ambiguous, shared, resized or wrong-size references fail closed (1.085125ms)
+✔ actual worker dispatch validates transferred bytes before constructing model engine (5.348583ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (352.736958ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (327.444541ms)
+✔ precomputed accepted text loads only three sessions; ignoring the embedding is rejected (565.655916ms)
+✔ precomputed embedding refuses wrong prompt, revision, shape, bytes and nonfinite data (31.786417ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1650.488583

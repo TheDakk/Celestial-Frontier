@@ -1,0 +1,7 @@
+{
+  "command": "npx vitest run apps/game/src/motion/stance-envelope-bird.test.ts apps/game/src/motion/stance-envelope-insect.test.ts apps/game/src/motion/grounded-bird.test.ts apps/game/src/motion/stance-envelope.test.ts",
+  "exitCode": 0,
+  "filesPassed": 4,
+  "testsPassed": 24,
+  "evidence": "Observed direct command output; complete suite will run again in required develop profile."
+}

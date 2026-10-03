@@ -1,0 +1,6 @@
+*/fit/
+*/native/
+pairs/*/fit/
+pairs/*/native/*.webm
+pairs/*/native/*.png
+!pairs/*-final/native/turn1-hit-reaction-50.png

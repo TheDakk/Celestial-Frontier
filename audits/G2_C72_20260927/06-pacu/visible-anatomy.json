@@ -1,0 +1,139 @@
+{
+  "id": "06-pacu",
+  "name": "Pacu",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f99c5c9f4d11c99170d51a0ceccd6293b1c0c4fb3bde2a3e5337ba0e5767afd6",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 59541,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 8,
+      "y0": 105,
+      "x1": 411,
+      "y1": 302
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0416,
+        "pixels": 2479,
+        "box": {
+          "x0": 149,
+          "y0": 69,
+          "x1": 240,
+          "y1": 140
+        },
+        "attach": {
+          "x": 196.8,
+          "y": 110.3,
+          "relX": 0.47,
+          "relY": 0.03
+        },
+        "dir": {
+          "x": -0.71,
+          "y": -0.71
+        },
+        "class": "top",
+        "length": 63.2
+      },
+      {
+        "k": 1,
+        "frac": 0.1204,
+        "pixels": 7168,
+        "box": {
+          "x0": 32,
+          "y0": 121,
+          "x1": 103,
+          "y1": 278
+        },
+        "attach": {
+          "x": 57.3,
+          "y": 205.6,
+          "relX": 0.12,
+          "relY": 0.51
+        },
+        "dir": {
+          "x": 0.52,
+          "y": -0.86
+        },
+        "class": "other",
+        "length": 96.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0152,
+        "pixels": 905,
+        "box": {
+          "x0": 111,
+          "y0": 283,
+          "x1": 163,
+          "y1": 308
+        },
+        "attach": {
+          "x": 137,
+          "y": 283,
+          "relX": 0.32,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": -0.52,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 36.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0194,
+        "pixels": 1155,
+        "box": {
+          "x0": 191,
+          "y0": 295,
+          "x1": 245,
+          "y1": 333
+        },
+        "attach": {
+          "x": 221.7,
+          "y": 302.3,
+          "relX": 0.53,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.45,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 43.5
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "other": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 191,
+        "x1": 235,
+        "cx": 210.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

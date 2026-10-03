@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Godwit",
+  "masterSha256": "f905ad6b72c05d38c8dfdaa716a9ced613fc20bdf8d3945707885758a940ce56",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

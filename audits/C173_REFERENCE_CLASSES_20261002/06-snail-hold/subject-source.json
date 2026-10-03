@@ -1,0 +1,65 @@
+{
+  "name": "Snail",
+  "family": "gastropod",
+  "species": {
+    "name": "Snail",
+    "aspect": 1.6,
+    "headFrac": 0.22,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "coiled spiral shell carried on the back",
+      "two long eye tentacles plus two short feelers",
+      "flat muscular gliding foot"
+    ]
+  },
+  "genome": {
+    "seed": 450526374,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 7,
+    "body": 5,
+    "loco": 2,
+    "trait": 14,
+    "size": 0,
+    "diet": 5,
+    "head": 4,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 7,
+    "accent": 6,
+    "temper": 5,
+    "sense": 8,
+    "repro": 1,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Snail"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snail\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"450526374\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 426,
+  "profile": {
+    "needsObservedFit": true,
+    "id": "land-gastropod",
+    "names": [
+      "Land Snail",
+      "Banana Slug",
+      "Snail"
+    ],
+    "candidateTemplates": [
+      "gastropod"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [],
+    "notes": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution."
+  }
+}

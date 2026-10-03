@@ -1,0 +1,605 @@
+{
+  "status": "REVIEW",
+  "source": "5e1ff758115987e3534001ebaf2f4e282a07e13d",
+  "worktreeStatus": [
+    "M MOTION_KIT.md",
+    " M SOUND_KIT.md",
+    " M audits/LONG_SESSION_20260913/LOG-B.md",
+    " M audits/LONG_SESSION_20260913/LOG.md",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/build-manifest.json",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/build.log",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/civet-vs-platypus-10s.mp4",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-approach.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-command.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-flash-fade.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-hitstop.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-impact+170.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-impact+40.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-number.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-ready.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-return.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-strike.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-impact+170.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-impact+40.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-launch.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-strike.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn1-wild-impact+190.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-impact+180.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-launch+80.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/report.json",
+    " M port/v2/apps/game/src/battle2-wiring.ts",
+    " M port/v2/apps/game/src/battle2/README.md",
+    " M port/v2/apps/game/src/battle2/stage.ts",
+    " M port/v2/apps/game/src/effects/pixi-adapter.ts",
+    " M port/v2/apps/game/src/effects/sequencer.ts",
+    " M port/v2/apps/game/src/main.ts",
+    " M port/v2/apps/game/src/tame-greeting-audio.ts",
+    " M port/v2/tests/effects-sequencer.test.ts",
+    " M port/v2/tests/effects-theme-library.test.ts",
+    " M port/v2/tests/tame-greeting-audio.test.ts"
+  ],
+  "errors": [],
+  "captures": [
+    {
+      "durationMs": 10000,
+      "frames": 602,
+      "updateP95Ms": 0.30000001192092896,
+      "updateMaxMs": 1,
+      "phases": [
+        {
+          "phase": "ready",
+          "atMs": 0
+        },
+        {
+          "phase": "command",
+          "atMs": 900
+        },
+        {
+          "phase": "approach",
+          "atMs": 1300
+        },
+        {
+          "phase": "action",
+          "atMs": 1666.6000000000001
+        },
+        {
+          "phase": "hitstop",
+          "atMs": 1866.7
+        },
+        {
+          "phase": "impact",
+          "atMs": 1916.6000000000001
+        },
+        {
+          "phase": "return",
+          "atMs": 2666.6000000000004
+        },
+        {
+          "phase": "idle",
+          "atMs": 2983.2
+        },
+        {
+          "phase": "ready",
+          "atMs": 3583.2
+        },
+        {
+          "phase": "command",
+          "atMs": 4483.2
+        },
+        {
+          "phase": "approach",
+          "atMs": 4883.1
+        },
+        {
+          "phase": "action",
+          "atMs": 5249.8
+        },
+        {
+          "phase": "hitstop",
+          "atMs": 5583.2
+        },
+        {
+          "phase": "impact",
+          "atMs": 5633.2
+        },
+        {
+          "phase": "return",
+          "atMs": 5833.1
+        },
+        {
+          "phase": "idle",
+          "atMs": 6149.8
+        },
+        {
+          "phase": "done",
+          "atMs": 7133
+        }
+      ],
+      "plans": [
+        {
+          "startMs": 0,
+          "beats": {
+            "readyEnd": 900,
+            "commandEnd": 1300,
+            "actionStart": 1657,
+            "impactAt": 1852.5,
+            "hitstopEnd": 1912,
+            "flashEnd": 2005.8333333333333,
+            "shakeEnd": 2032.5,
+            "numbersEnd": 2362.5,
+            "reactionStart": 1912,
+            "reactionEnd": 2294.5,
+            "actionEnd": 2659.1666666666665,
+            "returnEnd": 2982.1666666666665,
+            "idleStart": 2982.1666666666665,
+            "end": 3582.1666666666665
+          },
+          "hitstopMs": 59.5,
+          "attacker": "Civet",
+          "delivery": "melee",
+          "theme": "wild",
+          "effect": "wild-maw-proof-v1"
+        },
+        {
+          "startMs": 3582.1666666666665,
+          "beats": {
+            "readyEnd": 900,
+            "commandEnd": 1300,
+            "actionStart": 1657,
+            "impactAt": 1988.5,
+            "hitstopEnd": 2048,
+            "flashEnd": 2141.833333333333,
+            "shakeEnd": 2168.5,
+            "numbersEnd": 2498.5,
+            "reactionStart": 2048,
+            "reactionEnd": 2942.5,
+            "actionEnd": 2235,
+            "returnEnd": 2558,
+            "idleStart": 2942.5,
+            "end": 3542.5
+          },
+          "hitstopMs": 59.5,
+          "attacker": "Platypus",
+          "delivery": "cast",
+          "theme": "tide",
+          "effect": "procedural-tide-v1"
+        }
+      ],
+      "cuePlans": [
+        {
+          "cues": [
+            "battle:turn-ready@0",
+            "battle:cursor@900",
+            "battle:confirm@1300",
+            "battle:approach-start@1300",
+            "creature:attack-vocal@1657",
+            "ability:wild:launch@1657",
+            "ability:wild:travel@1776",
+            "ability:wild:impact@1853",
+            "battle:flash-sting@1853",
+            "battle:shake-rumble@1853",
+            "creature:hurt@1912",
+            "battle:damage-tick@1943"
+          ],
+          "dropped": [
+            "battle:hitstop-thump: concurrency:impact"
+          ]
+        },
+        {
+          "cues": [
+            "battle:turn-ready@0",
+            "battle:cursor@900",
+            "battle:confirm@1300",
+            "battle:approach-start@1300",
+            "creature:attack-vocal@1657",
+            "ability:tide:launch@1657",
+            "ability:tide:travel@1912",
+            "ability:tide:impact@1989",
+            "battle:flash-sting@1989",
+            "battle:shake-rumble@1989",
+            "creature:hurt@2048",
+            "battle:damage-tick@2079"
+          ],
+          "dropped": [
+            "battle:hitstop-thump: concurrency:impact"
+          ]
+        }
+      ],
+      "cues": [
+        {
+          "turn": 0,
+          "cueId": "battle:turn-ready",
+          "atMs": 0,
+          "lateMs": 0,
+          "source": "battle",
+          "beat": "ready"
+        },
+        {
+          "turn": 0,
+          "cueId": "battle:cursor",
+          "atMs": 900,
+          "lateMs": 0,
+          "source": "battle",
+          "beat": "command"
+        },
+        {
+          "turn": 0,
+          "cueId": "battle:confirm",
+          "atMs": 1300,
+          "lateMs": 0,
+          "source": "battle",
+          "beat": "command"
+        },
+        {
+          "turn": 0,
+          "cueId": "battle:approach-start",
+          "atMs": 1300,
+          "lateMs": 0,
+          "source": "battle",
+          "beat": "approach"
+        },
+        {
+          "turn": 0,
+          "cueId": "creature:attack-vocal",
+          "atMs": 1657,
+          "lateMs": 9.6,
+          "source": "left",
+          "beat": "action"
+        },
+        {
+          "turn": 0,
+          "cueId": "ability:wild:launch",
+          "atMs": 1657,
+          "lateMs": 9.6,
+          "source": "left",
+          "beat": "launch"
+        },
+        {
+          "turn": 0,
+          "cueId": "ability:wild:travel",
+          "atMs": 1776,
+          "lateMs": 7.2,
+          "source": "left",
+          "beat": "travel"
+        },
+        {
+          "turn": 0,
+          "cueId": "ability:wild:impact",
+          "atMs": 1852.5,
+          "lateMs": 14.2,
+          "source": "left",
+          "beat": "impact"
+        },
+        {
+          "turn": 0,
+          "cueId": "battle:flash-sting",
+          "atMs": 1852.5,
+          "lateMs": 14.2,
+          "source": "battle",
+          "beat": "impact"
+        },
+        {
+          "turn": 0,
+          "cueId": "battle:shake-rumble",
+          "atMs": 1852.5,
+          "lateMs": 14.2,
+          "source": "battle",
+          "beat": "impact"
+        },
+        {
+          "turn": 0,
+          "cueId": "creature:hurt",
+          "atMs": 1912,
+          "lateMs": 4.6,
+          "source": "right",
+          "beat": "reaction"
+        },
+        {
+          "turn": 0,
+          "cueId": "battle:damage-tick",
+          "atMs": 1942.5,
+          "lateMs": 7.4,
+          "source": "battle",
+          "beat": "number"
+        },
+        {
+          "turn": 1,
+          "cueId": "battle:turn-ready",
+          "atMs": 0,
+          "lateMs": 0,
+          "source": "battle",
+          "beat": "ready"
+        },
+        {
+          "turn": 1,
+          "cueId": "battle:cursor",
+          "atMs": 900,
+          "lateMs": 1.03,
+          "source": "battle",
+          "beat": "command"
+        },
+        {
+          "turn": 1,
+          "cueId": "battle:confirm",
+          "atMs": 1300,
+          "lateMs": 0.93,
+          "source": "battle",
+          "beat": "command"
+        },
+        {
+          "turn": 1,
+          "cueId": "battle:approach-start",
+          "atMs": 1300,
+          "lateMs": 0.93,
+          "source": "battle",
+          "beat": "approach"
+        },
+        {
+          "turn": 1,
+          "cueId": "creature:attack-vocal",
+          "atMs": 1657,
+          "lateMs": 10.63,
+          "source": "right",
+          "beat": "action"
+        },
+        {
+          "turn": 1,
+          "cueId": "ability:tide:launch",
+          "atMs": 1657,
+          "lateMs": 10.63,
+          "source": "right",
+          "beat": "launch"
+        },
+        {
+          "turn": 1,
+          "cueId": "ability:tide:travel",
+          "atMs": 1912,
+          "lateMs": 5.63,
+          "source": "right",
+          "beat": "travel"
+        },
+        {
+          "turn": 1,
+          "cueId": "ability:tide:impact",
+          "atMs": 1988.5,
+          "lateMs": 12.53,
+          "source": "right",
+          "beat": "impact"
+        },
+        {
+          "turn": 1,
+          "cueId": "battle:flash-sting",
+          "atMs": 1988.5,
+          "lateMs": 12.53,
+          "source": "battle",
+          "beat": "impact"
+        },
+        {
+          "turn": 1,
+          "cueId": "battle:shake-rumble",
+          "atMs": 1988.5,
+          "lateMs": 12.53,
+          "source": "battle",
+          "beat": "impact"
+        },
+        {
+          "turn": 1,
+          "cueId": "creature:hurt",
+          "atMs": 2048,
+          "lateMs": 3.03,
+          "source": "left",
+          "beat": "reaction"
+        },
+        {
+          "turn": 1,
+          "cueId": "battle:damage-tick",
+          "atMs": 2078.5,
+          "lateMs": 5.73,
+          "source": "battle",
+          "beat": "number"
+        }
+      ],
+      "effects": {
+        "left": "wild: painted sequence",
+        "right": "tide: procedural emitter effect (labelled; no painted sequence for this theme yet)"
+      },
+      "mimeType": "video/webm;codecs=vp9",
+      "bytes": 8829568,
+      "sha256": "60c31907730712b5d43a77e69d4398233b9476cf7a043293ea3f182cc061cbc4",
+      "encodedMedia": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "codec_type": "video"
+          }
+        ],
+        "format": {
+          "duration": "10.104144",
+          "size": "8829568"
+        }
+      },
+      "mp4": {
+        "path": "civet-vs-platypus-10s.mp4",
+        "bytes": 4586796,
+        "sha256": "e15f9b6b5fcca47841d18974da8ce735b96684e7338ca3a6a3e298ac5026c817"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "label": "ready",
+      "ms": 400,
+      "file": "frame-ready.png",
+      "sha256": "2629a3640d4c9feff678f1e6e5e99f8175248b1055a85da30161360a0d7a411a"
+    },
+    {
+      "label": "command",
+      "ms": 1020,
+      "file": "frame-command.png",
+      "sha256": "3d40a065727f828ad04c60b2fa42cbcd6a8cf1c5741d27d0d855a11fb592c00f"
+    },
+    {
+      "label": "approach",
+      "ms": 1450,
+      "file": "frame-approach.png",
+      "sha256": "00d68865c7c5479ffc34e1e2dd73595c52cdcc69b9eb962b2d98df63a8b0acf9"
+    },
+    {
+      "label": "strike",
+      "ms": 1852.5,
+      "file": "frame-strike.png",
+      "sha256": "ed81de84aa22ecaec7c40b73ed24703bcdcaa6e19786b318324411716ba3e4d7"
+    },
+    {
+      "label": "hitstop",
+      "ms": 1872.5,
+      "file": "frame-hitstop.png",
+      "sha256": "9e052e5612ff8cde5073a8fb883e682d87a6d1aa0838a700e57df30db193cd08"
+    },
+    {
+      "label": "flash-fade",
+      "ms": 1932.5,
+      "file": "frame-flash-fade.png",
+      "sha256": "b30f7517a060823353f8b3474414d6d2837c94ed17d459370c2aeba1968a2586"
+    },
+    {
+      "label": "impact+40",
+      "ms": 1892.5,
+      "file": "frame-impact+40.png",
+      "sha256": "1b95c3995c35945a3dd38a48e2549c07ae7265b1ed95edc3c0322417ea4c3930"
+    },
+    {
+      "label": "impact+170",
+      "ms": 2022.5,
+      "file": "frame-impact+170.png",
+      "sha256": "717730ebcf962dec65e449987898de0a089acf064cfbcb5f2eed0bbbf2c3c0ad"
+    },
+    {
+      "label": "number",
+      "ms": 2152.5,
+      "file": "frame-number.png",
+      "sha256": "dcf17b669b3682e59d5f707b4186a7d7054148f9d50009ca8d1004eea7aa1358"
+    },
+    {
+      "label": "return",
+      "ms": 2759.1666666666665,
+      "file": "frame-return.png",
+      "sha256": "8950aafb8a86216b109c8199bcbcccc8c03d9c807d90373394e063067573dbf5"
+    },
+    {
+      "label": "turn2-strike",
+      "ms": 5571.166666666666,
+      "file": "frame-turn2-strike.png",
+      "sha256": "adbb6117e6612768976eb1fa4ee6a0ae7023b96e20665e7967b0edaed174545b"
+    },
+    {
+      "label": "turn2-launch",
+      "ms": 5299.166666666666,
+      "file": "frame-turn2-launch.png",
+      "sha256": "add0cd4fbef06d6e1cd5c9bb0c8347829018fb0ec3f51b9d45bb21cf008442b6"
+    },
+    {
+      "label": "turn2-impact+40",
+      "ms": 5610.666666666666,
+      "file": "frame-turn2-impact+40.png",
+      "sha256": "f5700f997854815ff5ac5c139f5c1e175abfab8772ffecb72d4036e1e63cf794"
+    },
+    {
+      "label": "turn2-impact+170",
+      "ms": 5740.666666666666,
+      "file": "frame-turn2-impact+170.png",
+      "sha256": "ed86e54344474aee139e3e039696f096d299491792f7c8266fff1627057ff1a7"
+    }
+  ],
+  "origin": "http://127.0.0.1:61323",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "observation": {
+    "status": "READY",
+    "errors": [],
+    "labels": {
+      "left": "fixture rig (landmark-derived parts)",
+      "right": "whole-portrait fallback (no landmark record; hit pose approximated by root offsets)",
+      "parts": 19,
+      "alphaPixels": 516758,
+      "effects": {
+        "left": "wild: painted sequence",
+        "right": "tide: procedural emitter effect (labelled; no painted sequence for this theme yet)"
+      }
+    },
+    "plans": [
+      {
+        "startMs": 0,
+        "beats": {
+          "readyEnd": 900,
+          "commandEnd": 1300,
+          "actionStart": 1657,
+          "impactAt": 1852.5,
+          "hitstopEnd": 1912,
+          "flashEnd": 2005.8333333333333,
+          "shakeEnd": 2032.5,
+          "numbersEnd": 2362.5,
+          "reactionStart": 1912,
+          "reactionEnd": 2294.5,
+          "actionEnd": 2659.1666666666665,
+          "returnEnd": 2982.1666666666665,
+          "idleStart": 2982.1666666666665,
+          "end": 3582.1666666666665
+        },
+        "hitstopMs": 59.5,
+        "attacker": "Civet",
+        "delivery": "melee",
+        "theme": "wild",
+        "effect": "wild-maw-proof-v1"
+      }
+    ],
+    "cuePlans": [
+      {
+        "cues": [
+          "battle:turn-ready@0",
+          "battle:cursor@900",
+          "battle:confirm@1300",
+          "battle:approach-start@1300",
+          "creature:attack-vocal@1657",
+          "ability:wild:launch@1657",
+          "ability:wild:travel@1776",
+          "ability:wild:impact@1853",
+          "battle:flash-sting@1853",
+          "battle:shake-rumble@1853",
+          "creature:hurt@1912",
+          "battle:damage-tick@1943"
+        ],
+        "dropped": [
+          "battle:hitstop-thump: concurrency:impact"
+        ]
+      }
+    ],
+    "cues": [
+      {
+        "turn": 0,
+        "cueId": "battle:turn-ready",
+        "atMs": 0,
+        "lateMs": 0,
+        "source": "battle",
+        "beat": "ready"
+      }
+    ],
+    "captures": [],
+    "cutMs": 34.099999994039536
+  },
+  "canvasRect": {
+    "x": 0,
+    "y": 81,
+    "width": 1024,
+    "height": 576
+  },
+  "closed": true
+}

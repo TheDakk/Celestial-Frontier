@@ -1,0 +1,10 @@
+prepared ability:fire:launch
+prepared ability:fire:travel
+prepared ability:fire:impact
+prepared ability:frost:launch
+prepared ability:frost:travel
+prepared ability:frost:impact
+Traceback (most recent call last):
+  File "~/Projects/celestial-frontier-openai-mac/audits/C132_SOUND_20261001/build.py", line 36, in <module>
+    assert m['licenseId'] in ['CC0-1.0','CC-BY-4.0','CC-BY-3.0','Public-Domain','public-domain'],m['licenseId']
+AssertionError: Public-domain-NPS-statement

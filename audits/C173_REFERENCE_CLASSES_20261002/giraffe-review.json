@@ -1,0 +1,344 @@
+{
+  "schema": "cf.c173-giraffe-review/v1",
+  "selectedPacket": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour",
+  "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe",
+  "inspectedFullSize": [
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/master.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/ownership-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/ownership-preview-01.png",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/joint-preview-01.png"
+  ],
+  "masterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+  "status": "TECHNICAL_REFERENCE_WITH_VISUAL_HOLDS",
+  "parts": 31,
+  "static": {
+    "status": "PASS_STATIC",
+    "actionRows": 19,
+    "actionSamples": 2299,
+    "presentationSamples": 1707,
+    "sourcePixelChanges": 0
+  },
+  "d28": {
+    "status": "PASS",
+    "remainderPixels": 7286,
+    "movablePixels": 1264,
+    "islands": [
+      {
+        "pixels": 192,
+        "to": 18,
+        "border": {
+          "18": 46,
+          "19": 9,
+          "28": 17
+        }
+      },
+      {
+        "pixels": 8,
+        "to": 20,
+        "border": {
+          "20": 7,
+          "23": 3
+        }
+      },
+      {
+        "pixels": 14,
+        "to": 23,
+        "border": {
+          "21": 1,
+          "23": 7
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 22,
+        "border": {
+          "22": 5,
+          "28": 1
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 22,
+        "border": {
+          "22": 3
+        }
+      },
+      {
+        "pixels": 97,
+        "to": 16,
+        "border": {
+          "16": 31,
+          "28": 15
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 16,
+        "border": {
+          "16": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 16,
+        "border": {
+          "16": 3
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 16,
+        "border": {
+          "16": 3
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 27,
+        "border": {
+          "27": 2
+        }
+      },
+      {
+        "pixels": 123,
+        "to": 26,
+        "border": {
+          "26": 37,
+          "27": 31
+        }
+      },
+      {
+        "pixels": 30,
+        "to": 14,
+        "border": {
+          "14": 12,
+          "15": 3,
+          "27": 6
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 29,
+        "border": {
+          "17": 2,
+          "29": 6
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 25,
+        "border": {
+          "24": 2,
+          "25": 4
+        }
+      },
+      {
+        "pixels": 148,
+        "to": 17,
+        "border": {
+          "16": 19,
+          "17": 42
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 14,
+        "border": {
+          "14": 3,
+          "15": 3
+        }
+      },
+      {
+        "pixels": 275,
+        "to": 15,
+        "border": {
+          "11": 6,
+          "14": 15,
+          "15": 83
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 17,
+        "border": {
+          "17": 3
+        }
+      },
+      {
+        "pixels": 28,
+        "to": 10,
+        "border": {
+          "10": 15,
+          "14": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 11,
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 11,
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 134,
+        "to": 11,
+        "border": {
+          "7": 9,
+          "11": 69
+        }
+      },
+      {
+        "pixels": 42,
+        "to": 7,
+        "border": {
+          "7": 31
+        }
+      },
+      {
+        "pixels": 37,
+        "to": 9,
+        "border": {
+          "9": 26
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 8,
+        "border": {
+          "8": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 6,
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 12,
+        "to": 6,
+        "border": {
+          "6": 14,
+          "10": 1
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 8,
+        "border": {
+          "8": 3
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 6,
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 8,
+        "border": {
+          "8": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 7,
+        "border": {
+          "7": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 5,
+        "border": {
+          "5": 1,
+          "9": 1
+        }
+      },
+      {
+        "pixels": 68,
+        "to": 4,
+        "border": {
+          "4": 43,
+          "8": 5
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 3,
+        "border": {
+          "3": 10,
+          "7": 1
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 5,
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 5,
+        "border": {
+          "5": 7
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 3,
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 5,
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 3,
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 2,
+        "border": {
+          "2": 1
+        }
+      }
+    ]
+  },
+  "cap": 0.05,
+  "sourceAndLandmarksPreserved": true,
+  "priorAnatomyOwnersChanged": 0,
+  "automaticPlacementApplied": false,
+  "findings": [
+    "Two true ears and both ossicones are present. Ear tips and roots own actual ear paint, while ossicones remain part of the head.",
+    "One neck-outline correction moves 1,813 body remainder pixels to existing neck owner; no other old anatomical owners change.",
+    "Four hooves and a full tufted tail are separately visible. Far foreleg root identifies surface emergence and does not infer its occluded internal attachment.",
+    "Unequal perspective hoof levels remain unchanged; no coplanar physical contact claim.",
+    "Long-neck curvature is represented by a coarse shared owner and requires moving-paint/native scoring.",
+    "1264 small-island pixels remain unplaced; static geometry and conservation do not constitute visual acceptance."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "performanceClaim": null
+}

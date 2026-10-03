@@ -1,0 +1,646 @@
+{
+  "status": "FAIL",
+  "restDifferentChannels": {
+    "disc-only": 0,
+    "bands": 0
+  },
+  "cuts": [
+    {
+      "ancestor": "head",
+      "descendant": "ear-far",
+      "joint": "earFarTip",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 3010,
+          "bandDelta": 4867
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 2231,
+          "bandDelta": 3690
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 4702,
+          "bandDelta": 5341
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4877,
+          "bandDelta": 5760
+        }
+      ]
+    },
+    {
+      "ancestor": "head",
+      "descendant": "ear-near",
+      "joint": "earNearTip",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 3711,
+          "bandDelta": 3729
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 126,
+          "bandDelta": -198
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 3676,
+          "bandDelta": 3336
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4333,
+          "bandDelta": 4150
+        }
+      ]
+    },
+    {
+      "ancestor": "torso",
+      "descendant": "chest",
+      "joint": "chest",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 277,
+          "bandDelta": 7
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 1097,
+          "bandDelta": 1097
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 2410,
+          "bandDelta": 1966
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 1696,
+          "bandDelta": 1341
+        }
+      ]
+    },
+    {
+      "ancestor": "chest",
+      "descendant": "head",
+      "joint": "head",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 1771,
+          "bandDelta": 0
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 2010,
+          "bandDelta": 1032
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 1302,
+          "bandDelta": 49
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 57,
+          "bandDelta": 2
+        }
+      ]
+    },
+    {
+      "ancestor": "head",
+      "descendant": "jaw",
+      "joint": "jaw",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 2350,
+          "bandDelta": 1478
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 718,
+          "bandDelta": 0
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 19,
+          "bandDelta": 0
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 22,
+          "bandDelta": 0
+        }
+      ]
+    },
+    {
+      "ancestor": "chest",
+      "descendant": "neck",
+      "joint": "neck",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 1473,
+          "bandDelta": 912
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 5069,
+          "bandDelta": 4682
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 2767,
+          "bandDelta": 867
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 584,
+          "bandDelta": 68
+        }
+      ]
+    },
+    {
+      "ancestor": "neck",
+      "descendant": "head",
+      "joint": "head",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 1771,
+          "bandDelta": 0
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 2010,
+          "bandDelta": 1032
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 1302,
+          "bandDelta": 49
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 57,
+          "bandDelta": 2
+        }
+      ]
+    },
+    {
+      "ancestor": "neck",
+      "descendant": "jaw",
+      "joint": "jaw",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 2350,
+          "bandDelta": 1478
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 718,
+          "bandDelta": 0
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 19,
+          "bandDelta": 0
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 22,
+          "bandDelta": 0
+        }
+      ]
+    },
+    {
+      "ancestor": "chest",
+      "descendant": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 1075,
+          "bandDelta": 0
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 5751,
+          "bandDelta": 8760
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 4782,
+          "bandDelta": 1827
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 3343,
+          "bandDelta": 2160
+        }
+      ]
+    },
+    {
+      "ancestor": "chest",
+      "descendant": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 7334,
+          "bandDelta": 5662
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 7519,
+          "bandDelta": 7209
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 7765,
+          "bandDelta": 2638
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4266,
+          "bandDelta": 2337
+        }
+      ]
+    },
+    {
+      "ancestor": "tail-root",
+      "descendant": "tail-middle",
+      "joint": "tail2",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 11836,
+          "bandDelta": 11764
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": -287,
+          "bandDelta": -283
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": -42,
+          "bandDelta": -46
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": -1226,
+          "bandDelta": -1283
+        }
+      ]
+    },
+    {
+      "ancestor": "hind-far-upper",
+      "descendant": "hind-far-lower",
+      "joint": "hindFarAnkle",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 16670,
+          "bandDelta": 17441
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 8679,
+          "bandDelta": 8560
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 13070,
+          "bandDelta": 12879
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 11985,
+          "bandDelta": 11927
+        }
+      ]
+    },
+    {
+      "ancestor": "torso",
+      "descendant": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 7334,
+          "bandDelta": 5662
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 7519,
+          "bandDelta": 7209
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 7765,
+          "bandDelta": 2638
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4266,
+          "bandDelta": 2337
+        }
+      ]
+    },
+    {
+      "ancestor": "hind-near-upper",
+      "descendant": "hind-near-lower",
+      "joint": "hindNearAnkle",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 8318,
+          "bandDelta": 8123
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": -1644,
+          "bandDelta": -1695
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 6250,
+          "bandDelta": 6135
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 5676,
+          "bandDelta": 5339
+        }
+      ]
+    },
+    {
+      "ancestor": "fore-far-upper",
+      "descendant": "fore-far-lower",
+      "joint": "foreFarAnkle",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 5915,
+          "bandDelta": 5477
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 9321,
+          "bandDelta": 6557
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 5679,
+          "bandDelta": 6983
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4464,
+          "bandDelta": 3568
+        }
+      ]
+    },
+    {
+      "ancestor": "fore-near-upper",
+      "descendant": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 14598,
+          "bandDelta": 10935
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 2583,
+          "bandDelta": 8390
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 11281,
+          "bandDelta": 9614
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 15446,
+          "bandDelta": 11408
+        }
+      ]
+    },
+    {
+      "ancestor": "torso",
+      "descendant": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 1075,
+          "bandDelta": 0
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 5751,
+          "bandDelta": 8760
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 4782,
+          "bandDelta": 1827
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 3343,
+          "bandDelta": 2160
+        }
+      ]
+    },
+    {
+      "ancestor": "torso",
+      "descendant": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 14598,
+          "bandDelta": 10935
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 2583,
+          "bandDelta": 8390
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 11281,
+          "bandDelta": 9614
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 15446,
+          "bandDelta": 11408
+        }
+      ]
+    },
+    {
+      "ancestor": "hind-far-lower",
+      "descendant": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 12116,
+          "bandDelta": 13904
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 6957,
+          "bandDelta": 6916
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 13792,
+          "bandDelta": 14040
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 8340,
+          "bandDelta": 8307
+        }
+      ]
+    },
+    {
+      "ancestor": "tail-middle",
+      "descendant": "tail-tip",
+      "joint": "tail3",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 8203,
+          "bandDelta": 7959
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": -49,
+          "bandDelta": -49
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 3964,
+          "bandDelta": 3939
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4541,
+          "bandDelta": 4487
+        }
+      ]
+    },
+    {
+      "ancestor": "fore-far-lower",
+      "descendant": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 3200,
+          "bandDelta": 3666
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 6118,
+          "bandDelta": 5030
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 2792,
+          "bandDelta": 4481
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4598,
+          "bandDelta": 4616
+        }
+      ]
+    },
+    {
+      "ancestor": "hind-near-lower",
+      "descendant": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 6190,
+          "bandDelta": 6075
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": 3659,
+          "bandDelta": 5236
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 4786,
+          "bandDelta": 4614
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 6081,
+          "bandDelta": 5939
+        }
+      ]
+    },
+    {
+      "ancestor": "fore-near-lower",
+      "descendant": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "frames": [
+        {
+          "frame": "hit-recoil",
+          "discOnlyDelta": 5360,
+          "bandDelta": 5067
+        },
+        {
+          "frame": "strike",
+          "discOnlyDelta": -333,
+          "bandDelta": -235
+        },
+        {
+          "frame": "approach-quarter",
+          "discOnlyDelta": 3945,
+          "bandDelta": 3391
+        },
+        {
+          "frame": "approach-three-quarter",
+          "discOnlyDelta": 4247,
+          "bandDelta": 4410
+        }
+      ]
+    }
+  ],
+  "negativeControlFails": true,
+  "rimTolerance": "No positive delta accepted as rim without proof; strict zero-increase gate",
+  "source": "2ec4f4be",
+  "captureCount": 0,
+  "failedCutEntries": 23,
+  "sharedDiscCaution": "Cuts with the same descendant joint use the same oracle disc; counts must not be added across cut entries.",
+  "neckRimDiagnostic": {
+    "image": "bands-hit-recoil.png",
+    "x": 1080,
+    "yInclusive": [
+      663,
+      676
+    ],
+    "zeroAlphaRunPixels": 14,
+    "allowedRimPixels": 2
+  }
+}

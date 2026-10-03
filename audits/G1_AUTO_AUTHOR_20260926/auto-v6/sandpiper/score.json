@@ -1,0 +1,37 @@
+{
+ "id": "sandpiper",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 954.9,
+ "landmarkMedian": 0.1465,
+ "landmarkMax": 0.3565,
+ "worst": [
+  "legFarFoot 0.356",
+  "legFarAnkle 0.323",
+  "wingFarTip 0.270"
+ ],
+ "labelAgreement": 0.4777,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "cast",
+  "victory"
+ ],
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part far-shin (legFarAnkle) covers 20% paint (reference 60%)",
+    "missing-anatomy: part near-thigh (legNearKnee) covers 20% paint (reference 79%)"
+   ]
+  }
+ ]
+}

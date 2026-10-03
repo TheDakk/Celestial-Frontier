@@ -1,0 +1,7 @@
+{
+  "id": "horse",
+  "status": "REFUSED",
+  "qualityAccepted": false,
+  "nativeAcceptance": false,
+  "reason": "AssertionError [ERR_ASSERTION]: ownership changed outside recorded contour scope\n\n3 !== 0\n\n    at compare (file://~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/conservation.mjs:76:14)\n    at file://~/Projects/celestial-frontier-openai-mac/audits/C173_EQUID_REAUTHOR_20261002/conservation.mjs:79:19"
+}

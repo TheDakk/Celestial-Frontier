@@ -1,0 +1,137 @@
+[
+  {
+    "file": "port/v2/tools/slicesmoke.mjs",
+    "replacements": [
+      {
+        "old": "['combat', 'duels', 'unavailable']",
+        "new": "['combat', 'duels', 'partial']",
+        "count": 1
+      },
+      {
+        "old": "['stardust-progression', 'harvest', 'unavailable']",
+        "new": "['stardust-progression', 'harvest', 'partial']",
+        "count": 1
+      },
+      {
+        "old": "(?:duels?|creature combat|passive evolution|companion missions?|missions?)",
+        "new": "(?:passive evolution|companion missions?|missions?)",
+        "count": 1
+      },
+      {
+        "old": "/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i",
+        "new": "/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i",
+        "count": 2
+      },
+      {
+        "old": "Stats are now increased by feeding.",
+        "new": "Feed can heal without consuming flora.",
+        "count": 2
+      },
+      {
+        "old": "Companion Feed grows stats or Power",
+        "new": "Feed can heal without consuming flora",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed heals injuries",
+        "new": "Rest advances while the game is closed",
+        "count": 1
+      },
+      {
+        "old": "Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable",
+        "new": "Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "file": "port/v2/tools/glassmatrix.mjs",
+    "replacements": [
+      {
+        "old": "(?:duels?|creature combat|passive evolution|companion missions?|missions?)",
+        "new": "(?:passive evolution|companion missions?|missions?)",
+        "count": 1
+      },
+      {
+        "old": "Stats are now increased by feeding.",
+        "new": "Feed can heal without consuming flora.",
+        "count": 2
+      },
+      {
+        "old": "Stats are now increased by feeding",
+        "new": "Feed can heal without consuming flora",
+        "count": 1
+      },
+      {
+        "old": "Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable",
+        "new": "Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "file": "port/v2/tests/guide-release.test.ts",
+    "replacements": [
+      {
+        "old": "toContain('healing, broader care')",
+        "new": "toContain('Rest heals a wounded companion')",
+        "count": 1
+      },
+      {
+        "old": "(?:duels?|passive evolution|companion missions?|missions?)",
+        "new": "(?:passive evolution|companion missions?|missions?)",
+        "count": 1
+      },
+      {
+        "old": "/(?:companion Feed|feeding a companion)[^.!?]{0,96}(?:discovers? tastes?|grows? (?:stats?|Power)|heals? injuries?|applies? poison|builds? bond)/i",
+        "new": "/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i",
+        "count": 1
+      },
+      {
+        "old": "/Stats?[^.!?]{0,48}(?:is|are) (?:now )?(?:increased|raised|grown) by (?:companion )?feeding/i",
+        "new": "/Feed can heal without consuming flora/i",
+        "count": 1
+      },
+      {
+        "old": "/(?:Captured )?(?:Guardians?|Titans?)[^.!?]{0,96}(?:can|may) (?:recover|return)[^.!?]{0,48}(?:after|from) defeat/i",
+        "new": "/(?:Captured )?(?:Guardians?|Titans?)[^.!?]{0,96}(?:are|become) permanently lost after defeat/i",
+        "count": 1
+      },
+      {
+        "old": "(?:care|breed|mission|Recovery)",
+        "new": "(?:care|breed|mission)",
+        "count": 1
+      },
+      {
+        "old": "Stats are now increased by feeding.",
+        "new": "Feed can heal without consuming flora.",
+        "count": 1
+      },
+      {
+        "old": "immutable tombstone",
+        "new": "temporary Recovery lock",
+        "count": 4
+      },
+      {
+        "old": "/(?:not bred|lineage is not bred)[^.!?]{0,96}defeat (?:can )?permanently/i",
+        "new": "/Regardless of lineage, defeat assigns a temporary Recovery lock/i",
+        "count": 1
+      },
+      {
+        "old": "/absent from (?:both )?the (?:combat )?roster and (?:the )?composite Compendium[^.!?]{0,160}reload[^.!?]{0,96}Training restore[^.!?]{0,96}capture reconciliation/i",
+        "new": "/remains in the composite Compendium[^.!?]{0,200}reload[^.!?]{0,96}Training restore[^.!?]{0,96}capture reconciliation/i",
+        "count": 1
+      },
+      {
+        "old": "/(?:gain|have) no Arc 5 care, breeding, mission, or Recovery fields/i",
+        "new": "/(?:gain|have) no Arc 5 care, breeding or missions; a combat-only Recovery overlay controls their availability/i",
+        "count": 1
+      },
+      {
+        "old": "Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable",
+        "new": "Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable",
+        "count": 1
+      }
+    ]
+  }
+]

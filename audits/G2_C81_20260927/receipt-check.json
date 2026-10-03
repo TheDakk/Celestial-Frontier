@@ -1,0 +1,151 @@
+{
+  "sourceHead": "48c225b1de6dc5d8269478c17dc5d74c38913c13",
+  "status": "PASS",
+  "masters": [
+    {
+      "id": "01-mackerel",
+      "masterSha256": "f4cfc6e1ee5a177417e1e007b92e5befcbb502a30564b5d01c724cc7af4bc6c5",
+      "promptSha256": "4e008d9bc804e75c966093e08d022e85028db43d08484c5cd4814b2b7c866bb1",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "02-haddock",
+      "masterSha256": "5b021ce12e532886dcc39d347374981e885282633eeb642f5ca3e1712550b8c7",
+      "promptSha256": "8e3a9c1e844cbc7094ba62bcd1d49ce7cd9507c3114cac77e537d1a6c9bae351",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "03-pollock",
+      "masterSha256": "21eef82976955aeac3f463fac5d9f06b76cc560b6fce7e2e0e1d4220ea1166ab",
+      "promptSha256": "75bdb0c69d66a7d95a4afe940201ab2b5a6131250b269508fd89159c87dd57f0",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "04-sardine",
+      "masterSha256": "03458b7f3fa484345c94357b289127ea26349a1bce99c907dfa67a3d9d5333fc",
+      "promptSha256": "ae3b575f6cdb46b549fb974c1ee0aa3d22d1c63b0c312b6d54df98a36f13daba",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "05-anchovy",
+      "masterSha256": "6d0edf55957889606fa01673e0f1ab61e7ff9461762ad90870520403e5be14ef",
+      "promptSha256": "b78981156f3e7959186000275c41ae06f0e859870930e0bfc3d8092f9289943f",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "06-mullet",
+      "masterSha256": "c92434e699b7d49b94ee1a1e8a281ca8cb3d5ffdee7147fb79d6d4fb74043aa0",
+      "promptSha256": "380a1b79dc17816723586175c58e4bc45885c01f95786e1779b5b32b6d772e1a",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "07-tarpon",
+      "masterSha256": "4cbce40d5e35b24168fdcc2b96f35ff21b3cc74c80c1cea39b84f73dd5962b40",
+      "promptSha256": "4ada77c59acc4bc42cc4d9b0c8939d2a8539528bc7efc60ed6ccccd0022139bf",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "08-snapper",
+      "masterSha256": "f42ad70bc6476109b0566ebcd30d154d1491c12dcfd8045523c3b617b3d1353c",
+      "promptSha256": "46b5946c396bf4bedefa6438ead2da8d43874c94f5232ac50d1254e09bc639a8",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "09-curlew",
+      "masterSha256": "7bb4d4fa9243cf3ba6fc17e4ecf25521213fc23e055fb4b474f6ccb3a2456963",
+      "promptSha256": "4e692f0a81cd6ded9b22adf7bc417ba11fa75870d3aa86a6c15da9bc66d7f246",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "10-snipe",
+      "masterSha256": "dca3074ee6091a5e9d596142ada7477cf44c9ae0d9da58c2b08d1999a93725dc",
+      "promptSha256": "81f38d18628a6a14c7f1cbbfda973c8f0348970a4f689479581248c6fbfa0ad8",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "11-plover",
+      "masterSha256": "1c06ec5e8e525dc18c5673e8b9431b77cd1e32e8b13afdcb3ade1c05ae2c0942",
+      "promptSha256": "977696cb45f794ddaeb9bee3d3418198b543ea525be87e9f8fc14749f7a22734",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "12-godwit",
+      "masterSha256": "0e8cdf09205b50921a596af3b8fbba9a68e39474dc948c98efa8b5f2a2846400",
+      "promptSha256": "dde64c3360169595bbf7bddfad76bd33fb8feebb8aed03217da7d874d84886c1",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "13-avocet",
+      "masterSha256": "aaf34d932b5b31055a337ab537f37faf794fc3e447230954623dcab4fffffbd7",
+      "promptSha256": "92430a2303795536d36154e2f031bf492ca4c0bd7e3916805497a94ae1f8efa0",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "14-coot",
+      "masterSha256": "eb91f1edf108c7d682d8fec496163b10492fd43bc27313c8b9d9f3e17677f939",
+      "promptSha256": "dc40eb86a39da64e3404f8c7a4b1dad280991a16d8dec692bffb4dd15291716a",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "15-moorhen",
+      "masterSha256": "570ec9195a70b82471d97649653624906bc6be56374584631f683beb65116aed",
+      "promptSha256": "72722d495850ca2cbb69ae647c1ecf18e13b4764526da61d64a150c8d889a05f",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "16-rail",
+      "masterSha256": "4d7b111d411d2317ac196dc8d7fdb42931885ab1fb65a62fe7551a9daeec7d69",
+      "promptSha256": "8c41ffef7ea530c336025d05300db657d1270d1223ac699e089ed3eed6b3e29b",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "17-bee",
+      "masterSha256": "29effb7362d75a4d569b495f3fe6a153dc3002cf33bee49d9377df94c3e2593b",
+      "promptSha256": "61361f5e4f9a4c8fb6c2f1c970a225db8780b4e9abdcc67f181864e1656df6ec",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "18-wasp",
+      "masterSha256": "5d02375c2ff62ad538a6a5253d3b5b2bd626fd7e18001152058d325fa8bcf27d",
+      "promptSha256": "8ce679ebcb146361345f1a1111c3ff0a448d44715027096774613e08eb26c406",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "19-dragonfly",
+      "masterSha256": "d5542f73fa88652023f3e92bf73147c2931d4199d76d56969f2de9bb2e4fac38",
+      "promptSha256": "1bcb537d8a5271672cd2ca4cfd40c457e15ce5210b59bb6d4fef9062ae05a380",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "20-damselfly",
+      "masterSha256": "08f6125e2093f3df188bc7608d9e05ef997ce0820d64991568acb040338e8f9e",
+      "promptSha256": "94a53a511fd18a71c9723eabd2780a1eb064c8ebcfef98fd9d46795310cfca04",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "21-caddisfly",
+      "masterSha256": "be301b56fb826b1f84690a389f4d62b58f79d8713e6cba23b50ade600fe356fb",
+      "promptSha256": "bc3e558da107bbfaf0b5a839e6b8b5040c43206f83aa21843acb4f7b3d130b70",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "22-mayfly",
+      "masterSha256": "dbac85ac57471aae694f4118f53ac130e4ef57d9ed2a97fcfd133efdcab758e3",
+      "promptSha256": "ea19eb61c7e9a03cc7c7b410281ec6610290ee17c2495084f2e86751082ed0dd",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "23-stonefly",
+      "masterSha256": "7ded4b8e0dc39b4d96bc6c6400db4de3fd83302a9a6632f7a995c8f96f796ba9",
+      "promptSha256": "da00a684231f52eb60bbfe95d025e43223c543a730e864b2f59dd8305182027e",
+      "retainedOriginalByteIdentical": true
+    },
+    {
+      "id": "24-giant-water-bug",
+      "masterSha256": "acd618f800c08d91249c34afde64cd5aff4f9012638ebc36b8edd382b6c82171",
+      "promptSha256": "1efd13c0f20541a3d978ff04e8f81caab16a0cdc63df7b49b40ad7ab7c95ee95",
+      "retainedOriginalByteIdentical": true
+    }
+  ],
+  "scope": "exact prompt/output preservation only; not anatomy or admission"
+}

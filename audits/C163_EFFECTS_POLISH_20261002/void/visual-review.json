@@ -1,0 +1,147 @@
+{
+  "schema": "cf.c163-effect-visual-review/v1",
+  "theme": "void",
+  "selectedPhase": "launch",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "inspectedImages": [
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/launch-master.png",
+      "sha256": "f0ecfc456e91b3b7894334fcec4bc162830896f07b1fc86e7ecea6f660b388e6",
+      "bytes": 1647802
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/comparison-static.png",
+      "sha256": "7bd3adf0483ae07395a60a0b2b112d525133f5dbb2195ef9a976355ffc6fdd83",
+      "bytes": 141987
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/registered/launch.png",
+      "sha256": "69b21583556a8a7e782158746ed19b49a834191b1e8a8093c58bcf510efc452c",
+      "bytes": 166679
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/registered/travel.png",
+      "sha256": "2fd346d7688b50d0111d9cb94a4bde26667a248f2d995afadf201911afa62e17",
+      "bytes": 209149
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/registered/impact.png",
+      "sha256": "46e7b1a5fe12bc454e3e4e22f6d55fe28ae648ce8b3e407cc25f88e5040da288",
+      "bytes": 130645
+    }
+  ],
+  "comparisonLayout": "Static 768 x 1152 comparison; old LEFT, candidate RIGHT; rows gray (#464c46), dark (#151820), pale (#d6cebb). This is not a native film or arena proof.",
+  "findings": [
+    "The dark crescent is larger, with broader neutral gray lit debris and torn facets. Its edges read more clearly against the dark static background.",
+    "Dark interior remains intentionally low-contrast. Actual occupied paint grew with registration unchanged; scale and attacker occlusion require new native review."
+  ],
+  "mechanical": {
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "void",
+    "sequenceId": "void-c163-polish-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 47785,
+        "edge": 15708,
+        "fringe": 31,
+        "fringeRatio": 0.0019735166793990325,
+        "accentShare": 0.004766031195840554,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 115,
+          "y": 389,
+          "width": 327,
+          "height": 360
+        }
+      },
+      "travel": {
+        "painted": 65324,
+        "edge": 18045,
+        "fringe": 0,
+        "fringeRatio": 0,
+        "accentShare": 0.006307494894363015,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 110,
+          "y": 430,
+          "width": 705,
+          "height": 256
+        }
+      },
+      "impact": {
+        "painted": 37525,
+        "edge": 15859,
+        "fringe": 39,
+        "fringeRatio": 0.0024591714483889276,
+        "accentShare": 0.001470124960621653,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 580,
+          "y": 392,
+          "width": 287,
+          "height": 333
+        }
+      }
+    }
+  },
+  "unchanged": {
+    "timingAndMotionSourcesEdited": false,
+    "sourceRegistration": {
+      "sourceAnchor": [
+        0.24,
+        0.49
+      ],
+      "canvasScale": 0.43,
+      "scaled": 440,
+      "left": 99,
+      "top": 348,
+      "sourceAndTargetAnchorsUnchanged": true,
+      "origin": [
+        0.2,
+        0.55
+      ],
+      "contact": [
+        0.8,
+        0.55
+      ]
+    },
+    "phaseOrder": [
+      "launch",
+      "travel",
+      "impact"
+    ],
+    "unselectedPhases": [
+      {
+        "phase": "travel",
+        "source": "audits/C132_EFFECTS_20261001/void/final/registered/travel.png",
+        "sha256": "2fd346d7688b50d0111d9cb94a4bde26667a248f2d995afadf201911afa62e17"
+      },
+      {
+        "phase": "impact",
+        "source": "audits/C132_EFFECTS_20261001/void/final/registered/impact.png",
+        "sha256": "46e7b1a5fe12bc454e3e4e22f6d55fe28ae648ce8b3e407cc25f88e5040da288"
+      }
+    ]
+  },
+  "sourcePreservation": {
+    "target": {
+      "path": "audits/C132_EFFECTS_20261001/void/launch-master.png",
+      "sha256": "13a42772d5c9ea22485dcd288248c109893dc3124b5cbf70526e09a45413f0f0"
+    },
+    "predecessorAnchors": {
+      "anchors": "audits/C132_EFFECTS_20261001/void/final/anchors.json",
+      "sha256": "cb8e04be607a3b416b1a21489482ab29c474f43cec75565844cca8617ff62e24"
+    },
+    "originalPixelsModified": false
+  },
+  "status": "MECHANICAL_PASS_NEW_ART_AWAITING_SCORING_AND_NATIVE_FILM"
+}

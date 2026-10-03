@@ -1,0 +1,13 @@
+{
+  "schema": "cf-local-batch-checkpoint-intent/v1",
+  "previousRecovery": "port/v2/apps/game/smoke/painted-mars-staged-20260908.json",
+  "previousManifest": "audits/AV_PAINTED_MARS_20260908/manifest.json",
+  "nextRecovery": "port/v2/apps/game/smoke/painted-mars-composition-staged-20260908.json",
+  "sourceState": "owned-staged-plus-local-composition-edits",
+  "signing": "No new 1Password restoration evidence; do not retry or commit unsigned",
+  "hostedAttempts": 0,
+  "deadline": "2026-09-09T03:11:15Z",
+  "review": "Thursday2026-09-10",
+  "nativeFirstFailure": "native-phone/review.json",
+  "nativeCurrentState": "Awaiting corrected landing-outcome observer; no later modes run"
+}

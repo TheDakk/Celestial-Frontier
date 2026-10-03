@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Frilled Lizard",
+  "masterSha256": "7383537e8a389ca9963f5131850847deedf3593d196983e89194af43bd2a2147",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

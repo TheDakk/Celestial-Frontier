@@ -1,0 +1,12 @@
+{
+  "schema": "cf.c168-builtin-generation/v1",
+  "tool": "image_gen.imagegen",
+  "intent": "generate one new original",
+  "original": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-3b29608c-d232-4c33-8199-68e42cb290af.png",
+  "masterSha256": "e3fb8cd445248ab4f31f8b0ca43e558d86c4933dd8f92f90b3cc146853bb44ae",
+  "promptSha256": "219300a65b7e88042a80a8381225f3cf90940085fa82a5dae842c45834db16a9",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "noResampling": true,
+  "qualityAccepted": false
+}

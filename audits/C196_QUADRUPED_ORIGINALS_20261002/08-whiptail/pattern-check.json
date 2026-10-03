@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Whiptail",
+  "masterSha256": "b382a570d15152f738fc8073d59e5ceb5ad879c4db404da56ea356046e427f77",
+  "required": [
+    "pale stripes running the length of the back"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale stripes running the length of the back",
+      "status": "PRESENT",
+      "observed": "Slender striped body with very long complete whip tail, pointed snout and four separate feet. Near/far distal shafts are distinct, though far attachments remain behind the trunk. Contacts at differing heights; tail tip near left margin. Natural tail length retained rather than shortened."
+    }
+  ]
+}

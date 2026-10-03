@@ -1,0 +1,13 @@
+{
+  "id": "23-springtail",
+  "name": "Springtail",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-18ad6fe3-2bd7-4756-b294-f814cc669859.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd",
+  "bytes": 1337107,
+  "promptSha256": "4d8939be10b916c5de2297dd391a717906225802e3a974cb58638e950c656966",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

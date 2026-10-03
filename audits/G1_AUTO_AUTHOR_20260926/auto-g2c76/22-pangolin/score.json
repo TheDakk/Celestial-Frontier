@@ -1,0 +1,11 @@
+{
+ "id": "22-pangolin",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+  "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 1.9%)"
+ ],
+ "semanticPresence": null
+}

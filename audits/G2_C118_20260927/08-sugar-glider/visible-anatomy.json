@@ -1,0 +1,167 @@
+{
+  "id": "08-sugar-glider",
+  "name": "Sugar Glider",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "40217da629c208d251d99e877e499cf2bf994b2792c4c4bce81e61c5fbdf7787",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16799,
+    "coreRadius": 17,
+    "bodyBox": {
+      "x0": 186,
+      "y0": 168,
+      "x1": 329,
+      "y1": 235
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1173,
+        "pixels": 1971,
+        "box": {
+          "x0": 300,
+          "y0": 146,
+          "x1": 370,
+          "y1": 210
+        },
+        "attach": {
+          "x": 322.8,
+          "y": 185.2,
+          "relX": 0.96,
+          "relY": 0.26
+        },
+        "dir": {
+          "x": 0.95,
+          "y": -0.31
+        },
+        "class": "front",
+        "length": 61.3
+      },
+      {
+        "k": 1,
+        "frac": 0.2769,
+        "pixels": 4652,
+        "box": {
+          "x0": 46,
+          "y0": 182,
+          "x1": 185,
+          "y1": 251
+        },
+        "attach": {
+          "x": 185,
+          "y": 195.5,
+          "relX": -0.01,
+          "relY": 0.41
+        },
+        "dir": {
+          "x": -0.94,
+          "y": 0.35
+        },
+        "class": "rear",
+        "length": 149.7
+      },
+      {
+        "k": 2,
+        "frac": 0.0481,
+        "pixels": 808,
+        "box": {
+          "x0": 165,
+          "y0": 211,
+          "x1": 219,
+          "y1": 264
+        },
+        "attach": {
+          "x": 196.7,
+          "y": 224.3,
+          "relX": 0.07,
+          "relY": 0.84
+        },
+        "dir": {
+          "x": -0.7,
+          "y": 0.72
+        },
+        "class": "limb-down",
+        "length": 50.8
+      },
+      {
+        "k": 3,
+        "frac": 0.0299,
+        "pixels": 503,
+        "box": {
+          "x0": 223,
+          "y0": 227,
+          "x1": 254,
+          "y1": 258
+        },
+        "attach": {
+          "x": 235.5,
+          "y": 227,
+          "relX": 0.35,
+          "relY": 0.88
+        },
+        "dir": {
+          "x": 0.02,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 36.1
+      },
+      {
+        "k": 4,
+        "frac": 0.05,
+        "pixels": 840,
+        "box": {
+          "x0": 278,
+          "y0": 234,
+          "x1": 340,
+          "y1": 266
+        },
+        "attach": {
+          "x": 295.4,
+          "y": 235.9,
+          "relX": 0.77,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.62,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 53.8
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 166,
+        "x1": 186,
+        "cx": 175.9
+      },
+      {
+        "x0": 315,
+        "x1": 340,
+        "cx": 328.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

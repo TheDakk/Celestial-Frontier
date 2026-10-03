@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-phone-route-controls/v1",
+  "status": "PASS_PREPARATION_ONLY",
+  "tests": 3,
+  "command": "node --test audits/C132_PHONE_FINISH_20261001/phone-route.test.mjs",
+  "scope": "Node-only finite loopback transport controls; no browser, device, model session or inference",
+  "initialSandboxResult": "EPERM binding127.0.0.1;2pure cases passed and HTTP case could not start",
+  "loopbackEnabledResult": {
+    "exitCode": 0,
+    "output": "✔ actual phone route closure has only three image graphs, fixed embedding and bounded exact bytes (1.095875ms)\n✔ forbidden routes and path variants cannot resolve to a pinned file or permitted output (0.121542ms)\n✔ actual HTTP handler serves exact embedding bytes and rejects text/tokenizer, unknown, query, range and duplicate writes (13.91775ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 109.396083\n"
+  },
+  "visualVerdict": "REJECTED",
+  "qualityAccepted": false,
+  "deviceQualified": false,
+  "nativeRun": false,
+  "phoneInferenceRun": false
+}

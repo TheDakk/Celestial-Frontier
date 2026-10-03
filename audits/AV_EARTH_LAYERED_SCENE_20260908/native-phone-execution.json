@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-layered-native-phone",
+    "--",
+    "node",
+    "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-source-runner.mjs",
+    "port/v2/apps/game/smoke/earth-layered-evidence-dist-20260908",
+    "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone",
+    "phone"
+  ],
+  "startedAt": "2026-09-08T16:44:31.450835+00:00",
+  "status": "FAIL",
+  "exitCode": 1,
+  "seconds": 4.676
+}

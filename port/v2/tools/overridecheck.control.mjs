@@ -50,7 +50,7 @@
    implementations; BY/BZ prove imports resolve through the exact exported
    table/helper binding; CA binds shadow precedence to selector order; CB proves
    .mts sources and their .mjs imports cannot escape recursive discovery; CC
-   rejects a route re-export whose owner escapes that discovered graph; CD
+   discovers an outside-art re-export and rejects its duplicate route owner; CD
    rejects route-name laundering through an export alias; CE/CF pin the
    allowlisted executable art inputs and live catalog wrapper by byte identity;
    CG rejects an unscanned bare side-effect dependency; CH rejects namespace
@@ -91,6 +91,8 @@ const VERBATIM = path.join(SRC, 'hdart.verbatim.js');
 const WORKER_VERBATIM = path.join(SRC, 'hdportrait.worker.verbatim.js');
 const BIOME_PROFILE_COMPAT = path.join(SRC, 'biome-visual-profile.ts');
 const CATALOG_WRAPPER = path.join(root, 'packages/domain/descriptors/src/apphooks.ts');
+const EARTH_RESIDENT = path.join(SRC, 'earth-resident-layer.ts');
+const EARTH_PLAN = path.join(SRC, 'earth-resident-plan.ts');
 const orig = fs.readFileSync(VICTIM, 'utf8');
 const routerOrig = fs.readFileSync(ROUTER, 'utf8');
 const compatOrig = fs.readFileSync(COMPAT, 'utf8');
@@ -101,6 +103,8 @@ const verbatimOrig = fs.readFileSync(VERBATIM, 'utf8');
 const workerVerbatimOrig = fs.readFileSync(WORKER_VERBATIM, 'utf8');
 const biomeProfileCompatOrig = fs.readFileSync(BIOME_PROFILE_COMPAT, 'utf8');
 const catalogWrapperOrig = fs.readFileSync(CATALOG_WRAPPER, 'utf8');
+const earthResidentOrig = fs.readFileSync(EARTH_RESIDENT, 'utf8');
+const earthPlanOrig = fs.readFileSync(EARTH_PLAN, 'utf8');
 let victimExpected = orig;
 let routerExpected = routerOrig;
 let compatExpected = compatOrig;
@@ -112,6 +116,8 @@ let verbatimExpected = verbatimOrig;
 let workerVerbatimExpected = workerVerbatimOrig;
 let biomeProfileCompatExpected = biomeProfileCompatOrig;
 let catalogWrapperExpected = catalogWrapperOrig;
+let earthResidentExpected = earthResidentOrig;
+let earthPlanExpected = earthPlanOrig;
 let tmpExpected = null;
 let nestedExpected = null;
 let mtsExpected = null;
@@ -146,6 +152,25 @@ const writeVictim = (next) => {
   assertCurrent(VICTIM, victimExpected, 'faunaoverrides2.ts');
   fs.writeFileSync(VICTIM, next);
   victimExpected = next;
+};
+const replaceEarthControlSource = (file, expected, next, label) => {
+  assertCurrent(file, expected, label);
+  const temporary = `${file}.earth-control-${process.pid}.tmp`;
+  fs.writeFileSync(temporary, next, { encoding: 'utf8', flag: 'wx' });
+  try {
+    assertCurrent(file, expected, label);
+    fs.renameSync(temporary, file);
+  } finally {
+    if (fs.existsSync(temporary)) fs.unlinkSync(temporary);
+  }
+};
+const writeEarthPlan = (next) => {
+  replaceEarthControlSource(EARTH_PLAN, earthPlanExpected, next, 'earth-resident-plan.ts');
+  earthPlanExpected = next;
+};
+const writeEarthResident = (next) => {
+  replaceEarthControlSource(EARTH_RESIDENT, earthResidentExpected, next, 'earth-resident-layer.ts');
+  earthResidentExpected = next;
 };
 const writeRouter = (next) => {
   assertCurrent(ROUTER, routerExpected, 'speciesoverrides.ts');
@@ -259,6 +284,8 @@ const restore = () => {
   try { writeWorkerVerbatim(workerVerbatimOrig); } catch (error) { errors.push(error); }
   try { writeBiomeProfileCompat(biomeProfileCompatOrig); } catch (error) { errors.push(error); }
   try { writeCatalogWrapper(catalogWrapperOrig); } catch (error) { errors.push(error); }
+  try { writeEarthResident(earthResidentOrig); } catch (error) { errors.push(error); }
+  try { writeEarthPlan(earthPlanOrig); } catch (error) { errors.push(error); }
   if (errors.length) throw new AggregateError(errors, 'override controls could not safely restore owned files');
 };
 const replaceOnce = (source, anchor, replacement, label) => {
@@ -499,8 +526,8 @@ try {
   removeTmp();
 
   writeRouter(replaceOnce(routerOrig,
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
-    "    if (fp) return resolveProcedural(g);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    paintWithTopology(ink,()=>{if (fp) return resolveProcedural(g);",
     'control AJ'));
   check('AJ: an intact selector disconnected from dispatch fails closed', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
@@ -587,11 +614,11 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    'export function resolveOverrideCanvas(g: G, fitInk: (src: ArtCanvas, dst: Ctx, who: string) => void = () => {}): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver, fitInk: (src: ArtCanvas, dst: Ctx, who: string) => void = () => {}): ArtCanvas | null {',
     'control AV'));
   check('AV: a resolver parameter cannot shadow the canvas compositor', run(), 'parser-fail',
-    /resolver selector\/consumer contract changed: resolveOverrideCanvas must have only its audited g parameter[\s\S]*PARSER is broken/);
+    /resolver selector\/consumer contract changed: paintOverrideCanvas must have only its audited g and optional observeTopology parameters[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeVictim(replaceOnce(orig, PYTHON, "  'Python': null!,", 'control AW'));
@@ -608,16 +635,16 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    const ink = newInk();\n    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
-    "    const ink = newCanvas();\n    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    const ink = newInk();\n    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    const ink = newCanvas();\n    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
     'control AY'));
   check('AY: the detached painter surface must originate from newInk', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
-    "    if (fp) fp(c, g, palette(g) as Pal, name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(c, g, palette(g) as Pal, name);",
     'control AZ'));
   check('AZ: the selected painter must draw into ink.c', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
@@ -680,32 +707,32 @@ try {
   writeVictim(orig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "fitInk = (_src: ArtCanvas, _dst: Ctx, _who: string): void => {};\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "fitInk = (_src: ArtCanvas, _dst: Ctx, _who: string): void => {};\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BG'));
   check('BG: a reassigned canvas helper fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper fitInk is not its stable exact function binding[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "const String = (_value: unknown): string => '';\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "const String = (_value: unknown): string => '';\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BH'));
   check('BH: a local binding cannot shadow the built-in String resolver input', run(), 'parser-fail',
     /shadowing the built-in String binding is unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "const Boolean = (_value: unknown): boolean => false;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "const Boolean = (_value: unknown): boolean => false;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BI'));
   check('BI: a local binding cannot shadow the built-in Boolean route probe', run(), 'parser-fail',
     /shadowing the built-in Boolean binding is unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "lineageRenderKingdom = (_g: G): EarthKingdom => 'fauna';\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "lineageRenderKingdom = (_g: G): EarthKingdom => 'fauna';\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BJ'));
   check('BJ: a reassigned lineage route helper fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper lineageRenderKingdom is not its stable exact function binding[\s\S]*PARSER is broken/);
@@ -728,16 +755,16 @@ try {
   writeQuad(quadOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    'newCanvas = newCanvas;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    'newCanvas = newCanvas;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
     'control BM'));
   check('BM: a reassigned canvas allocator fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper newCanvas is not its stable exact function binding[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    'newInk = newInk;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    'newInk = newInk;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
     'control BN'));
   check('BN: a reassigned ink allocator fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper newInk is not its stable exact function binding[\s\S]*PARSER is broken/);
@@ -771,32 +798,32 @@ try {
   writeCatalog(catalogOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "(Object as any).keys = (_value: object): string[] => [];\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "(Object as any).keys = (_value: object): string[] => [];\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BR'));
   check('BR: Object.keys cannot be monkeypatched around the route audit', run(), 'parser-fail',
     /trusted built-in Object member escapes its approved direct-call context[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "globalThis.String = ((_value?: unknown): string => '') as StringConstructor;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "globalThis.String = ((_value?: unknown): string => '') as StringConstructor;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BS'));
   check('BS: a global-object write cannot poison the String route input', run(), 'parser-fail',
     /globalThis global-object access is outside its exact audited context[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "void import('./faunaoverrides2.js');\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "void import('./faunaoverrides2.js');\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BT'));
   check('BT: dynamic imports cannot acquire a route table outside static provenance', run(), 'parser-fail',
     /dynamic imports are unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    const { cv, c } = newCanvas();\n    vignette(c, false);\n    floorFade(c);\n    const ink = newInk();\n    if (fp)",
-    "    const { cv, c } = newCanvas();\n    cv.toDataURL = () => '';\n    floorFade(c);\n    const ink = newInk();\n    if (fp)",
+    "    const { cv, c } = newCanvas();\n    vignette(c, false);\n    floorFade(c);\n    const ink = newInk();\n    paintWithTopology(ink,()=>{if (fp)",
+    "    const { cv, c } = newCanvas();\n    cv.toDataURL = () => '';\n    floorFade(c);\n    const ink = newInk();\n    paintWithTopology(ink,()=>{if (fp)",
     'control BU'));
   check('BU: generic furniture syntax cannot poison the returned canvas', run(), 'parser-fail',
     /fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
@@ -870,8 +897,8 @@ try {
     'export const FAUNA2_NAME: Record<string, Painter2> = {',
     `export { FAUNA2_NAME } from '../${path.basename(ESCAPE, '.ts')}.js';\nconst FAUNA2_NAME: Record<string, Painter2> = {`,
     'control CC'));
-  check('CC: a route re-export cannot escape the recursively scanned owner graph', run(), 'parser-fail',
-    /re-export "\.\.\/routeescape-control-[0-9]+\.js" is outside recursive art-source discovery[\s\S]*PARSER is broken/);
+  check('CC: an outside-art re-export is scanned and cannot hide a second route owner', run(), 'parser-fail',
+    /FAUNA2_NAME route table has multiple declaration owners:[\s\S]*PARSER is broken/);
   writeVictim(orig);
   removeEscape();
 
@@ -982,16 +1009,16 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    canon(ink.c, g, palette(g) as Pal);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, kingdom + ':' + name);",
-    "    canon(ink.c, g, palette(g) as Pal);\n    void name;\n    fitInk(ink.cv, c, kingdom + ':' + name);",
+    "    paintWithTopology(ink,()=>canon(ink.c, g, palette(g) as Pal),observeTopology);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, kingdom + ':' + name);",
+    "    paintWithTopology(ink,()=>canon(ink.c, g, palette(g) as Pal),observeTopology);\n    void name;\n    fitInk(ink.cv, c, kingdom + ':' + name);",
     'control CT'));
   check('CT: canonical fauna must apply reviewed drift before fitInk', run(), 'parser-fail',
     /canon lookup is not the guarded painter that feeds the returned canvas[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, 'fauna:' + name);",
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);\n    void name;\n    fitInk(ink.cv, c, 'fauna:' + name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);},observeTopology);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, 'fauna:' + name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);},observeTopology);\n    void name;\n    fitInk(ink.cv, c, 'fauna:' + name);",
     'control CU'));
   check('CU: fauna-table painters must apply reviewed drift before fitInk', run(), 'parser-fail',
     /fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
@@ -1066,6 +1093,77 @@ try {
   check('AA: a fake local table cannot impersonate the imported owner', run(), 'parser-fail',
     /FAUNA2_NAME route table has multiple declaration owners:[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
+
+  // The exact Earth auxiliary consumer admits four table reads for six
+  // unchanged names. None of the existing global/source mutants is removed.
+  check('EL0: unchanged six-name Earth dispatcher is accepted', run(), 'pass');
+  const earthBodyFailure = /Earth resident dispatcher changed from its exact six-name body contract[\s\S]*PARSER is broken/;
+  const earthBodyMutants = [
+    ['EL1: exact Civet table/species cannot change', 'QUAD2_SPEC.Civet!', 'QUAD2_SPEC.Mongoose!'],
+    ['EL2: Platypus painter cannot change', "case 'Platypus': faunaMonotreme(context, genome, palette, 'Platypus'); return;", "case 'Platypus': faunaQuadruped(context, genome, palette, QUAD2_SPEC.Civet!, 'Platypus'); return;"],
+    ['EL3: Frog painter cannot receive another species name', "FAUNA2_NAME.Frog!(context, genome, palette, 'Frog')", "FAUNA2_NAME.Frog!(context, genome, palette, 'Toad')"],
+    ["EL4: Devil's Club owner cannot fall back to another table", "FLORA_ICONIC[\"Devil's Club\"]!", "FLORA2_SPEC[\"Devil's Club\"]!"],
+    ['EL5: a required Persimmon case cannot disappear', "case 'Persimmon': case 'Cranberry':", "case 'Cranberry':"],
+    ['EL6: source genome arguments cannot be replaced', 'const genome = { ...resident.genome };', 'const genome = {};'],
+    ['EL7: extra reads inside the dispatcher are not admitted', 'const palette = speciesGenomePalette(genome);', 'const palette = speciesGenomePalette(genome); void QUAD2_SPEC.Mongoose;'],
+  ];
+  for (const [label, anchor, replacement] of earthBodyMutants) {
+    writeEarthResident(replaceOnce(earthResidentOrig, anchor, replacement, label));
+    check(label, run(), 'parser-fail', earthBodyFailure);
+    writeEarthResident(earthResidentOrig);
+  }
+  writeEarthResident(replaceOnce(earthResidentOrig,
+    "import { QUAD2_SPEC } from './mammaloverrides.js';",
+    "import { QUAD2_SPEC } from './quadrupedoverrides.js';", 'EL8 import owner'));
+  check('EL8: direct table import provenance is exact', run(), 'parser-fail',
+    /Earth resident dispatcher import QUAD2_SPEC changed from its exact owner[\s\S]*PARSER is broken/);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(replaceOnce(earthResidentOrig,
+    "import { FAUNA2_NAME } from './faunaoverrides2.js';",
+    "import { FAUNA2_NAME as otherName } from './faunaoverrides2.js';", 'EL9 import alias'));
+  check('EL9: the auxiliary dispatcher cannot acquire an aliased route table', run(), 'parser-fail',
+    /Earth resident dispatcher import FAUNA2_NAME changed from its exact owner[\s\S]*PARSER is broken/);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(earthResidentOrig + '\nvoid QUAD2_SPEC.Civet;\n');
+  check('EL10: extra table reads outside the sealed function remain forbidden', run(), 'parser-fail',
+    /QUAD2_SPEC route table uses unsupported member Civet[\s\S]*PARSER is broken/);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(replaceOnce(earthResidentOrig,
+    'function paintNamedResident(', 'function renamedResident(', 'EL12 missing helper'));
+  check('EL12: the exact dispatcher cannot disappear under a helper rename', run(), 'parser-fail', earthBodyFailure);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(earthResidentOrig + '\nfunction extraScope() { function paintNamedResident() {} }\n');
+  check('EL13: a nested same-name dispatcher cannot share the exception', run(), 'parser-fail', earthBodyFailure);
+  writeEarthResident(earthResidentOrig);
+  check('EL11: restored six-name Earth dispatcher is accepted', run(), 'pass');
+
+  check('EP0: unchanged detached snapshot contract is accepted', run(), 'pass');
+  const earthSnapshotFailure = /Earth resident snapshot changed from its exact detached descriptor contract[\s\S]*PARSER is broken/;
+  const earthSnapshotMutants = [
+    ["EP1: prototype admission cannot invert", "prototype !== Object.prototype", "prototype === Object.prototype"],
+    ["EP2: setPrototypeOf cannot mutate original input", "Object.setPrototypeOf([], null)", "Object.setPrototypeOf(value, null)"],
+    ["EP3: detached records cannot inherit Object hooks", "Object.create(null)", "Object.create(Object.prototype)"],
+    ["EP4: defineProperty cannot mutate original input", "Object.defineProperty(snapshot, key, {", "Object.defineProperty(value, key, {"],
+    ["EP5: getters cannot replace descriptor reads", "const descriptor = Object.getOwnPropertyDescriptor(value, key);", "const descriptor = { value: value[key], enumerable: true };"],
+    ["EP6: export cannot disappear under a helper rename", "export function snapshotEarthLayerDataV1(", "export function renamedSnapshot("],
+  ];
+  for (const [label, anchor, replacement] of earthSnapshotMutants) {
+    writeEarthPlan(replaceOnce(earthPlanOrig, anchor, replacement, label));
+    check(label, run(), 'parser-fail', earthSnapshotFailure);
+    writeEarthPlan(earthPlanOrig);
+  }
+  writeEarthPlan(earthPlanOrig + '\nvoid Object.setPrototypeOf({}, null);\n');
+  check('EP7: fresh-output capability does not permit an outside mutation call', run(), 'parser-fail',
+    /trusted built-in Object member escapes its approved direct-call context[\s\S]*PARSER is broken/);
+  writeEarthPlan(earthPlanOrig);
+  writeEarthPlan(earthPlanOrig + '\nconst prototypeAlias = Object.prototype;\n');
+  check('EP8: prototype identity permission does not allow an escaping outside alias', run(), 'parser-fail',
+    /trusted built-in Object member escapes its approved direct-call context[\s\S]*PARSER is broken/);
+  writeEarthPlan(earthPlanOrig);
+  writeEarthPlan(earthPlanOrig + '\nfunction extraScope() { function snapshotEarthLayerDataV1() {} }\n');
+  check('EP9: nested same-name snapshot cannot share the exception', run(), 'parser-fail', earthSnapshotFailure);
+  writeEarthPlan(earthPlanOrig);
+  check('EP10: restored detached snapshot contract is accepted', run(), 'pass');
 
   check('restored: clean tables again', run(), 'pass');
 } finally { restore(); }

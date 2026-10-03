@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c132-develop-gate/v1",
+  "head": "8d69e67bfe7c45a2f8cffc9a5c4ec7f4fafe4af0",
+  "command": [
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 138.445,
+  "optionalLocalAiRuntimeRenamedAside": true,
+  "optionalLocalAiRuntimeRestored": true,
+  "logSha256": "3b362dfc228946b524d3b84a9aaa02537b922cc76f8bcc9c882047d4a1f5c77f",
+  "supersedesRedBySpecificRepair": "release-copy-oracle-repair.json"
+}

@@ -1,0 +1,164 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "sulfurdeck",
+  "biome": "sulfurdeck",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "sulfurdeck"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "sulfurdeck"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "sulfurdeck"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.generation.json",
+      "sha256": "21d4d6ebe5a7dc81a22d14db39a675fe18c61f0a6e728456f5475f9ffb094129"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.generation.json",
+      "sha256": "826da28cee49f4755f62d692e4e9b67bcce46b048c730e432540b1a6f5221da0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.generation.json",
+      "sha256": "fca390a5dab0cbf3186049009053d9d217c9f393551a624814ba07796c39db95"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-composed-review.png",
+      "sha256": "efd3c441e44e2f1c0da9be57bc3041eec0153eb2e12d0499b2785dc0503de253"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+      "sha256": "e6d234ccb0e9e8c3d4caec3cd0cfc88618f719afffb0d7ba6bf72076a016d5ee"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.png",
+      "sha256": "68890bbd9dcde741683e55e3b42e80038e3b0ac8584f3af20b77f8b1902b3b04"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.png",
+      "sha256": "5a3302c01a136b3df82f70c091487b01a759db9bb8cd63f4a0883d53d8d4d4e4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/visual-notes.d29.json",
+      "sha256": "6c2a7162698120d0d3804496fdfd45c52b899ef82a2fd51f0de885bdd2cc4373"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-manifest.json",
+      "sha256": "021286ea67ee4056d54c5ee24356fbfa3eaa4e81f8cd5bd092bd36f285021d13"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-recipe.json",
+      "sha256": "4a7be6c8e6ecacf57e312f61905e32b8b77671be02a8a47499e528f196f8208b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.generation.json",
+      "sha256": "21d4d6ebe5a7dc81a22d14db39a675fe18c61f0a6e728456f5475f9ffb094129"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/authoring-prompts/arena-far.prompt.txt",
+      "sha256": "dee96a1724026cb3a87a486e0a2b84bc53e67f68a22d6d1410ed14ad18e2f3c4"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.generation.json",
+      "sha256": "826da28cee49f4755f62d692e4e9b67bcce46b048c730e432540b1a6f5221da0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/authoring-prompts/arena-mid.prompt.txt",
+      "sha256": "6947da44fa05b83259e3e013474041b73077cdad31f33bd8d9ccd7568c96c800"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-mid.png",
+      "sha256": "dcb6b948ef8c54c216b71292c85ab96d04e45c4d553334110e1abf9691e8b507"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.generation.json",
+      "sha256": "fca390a5dab0cbf3186049009053d9d217c9f393551a624814ba07796c39db95"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/authoring-prompts/arena-near.prompt.txt",
+      "sha256": "67d6c1c64b85d33a2fd5e700c59bcb9faadf4660c833e43e03ea3c26069aafa4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-near.png",
+      "sha256": "7bbeb8deecfc2990f734411b554921053fc7e103040bac2bef7ebd01d92d9c15"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/sulfurdeck/visual-notes.d29.json",
+    "findings": [
+      "All originals and native1672×941 composition inspected. Gold-green mineral crust and storm atmosphere produce a distinct family, with open static stands and no painted flora or celestial bodies observed.",
+      "The NEAR strip shifts toward a cooler gray-green tone and introduces a visible lower-frame boundary. MID side formations are more saturated than distant material; fine chroma remnants remain at some ridge edges.",
+      "Independent full-size scoring, combatant readability under the yellow atmosphere and native battle appearance remain untested. No visual acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

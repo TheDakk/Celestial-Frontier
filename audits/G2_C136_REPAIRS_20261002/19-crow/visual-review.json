@@ -1,0 +1,28 @@
+{
+  "name": "Crow",
+  "masterSha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: connected dark crown/nape and bill, complete tail and two separated feet at one level. Bill and throat look heavy and raven-like; Crow identity requires review. Fine chest/neck feather fringes need conservative partitioning and actual head-down film inspection.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 304,
+      "y0": 407,
+      "x1": 979,
+      "y1": 861
+    },
+    "margins": {
+      "left": 304,
+      "right": 274,
+      "top": 407,
+      "bottom": 392
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

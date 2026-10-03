@@ -1,0 +1,32 @@
+[
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/10-raven/fit/record.json",
+    "copy": "audits/REPAIR_FOLLOWUP_C82_20260927/bird-inputs/raven/record.json",
+    "sha256": "b4730bbd828370fa723bbb53df6168fc7f93711ddf61dd4d6f1638511712ef9e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/10-raven/fit/declaration.json",
+    "copy": "audits/REPAIR_FOLLOWUP_C82_20260927/bird-inputs/raven/declaration.json",
+    "sha256": "0952138627067c2c0fbbd1d63dda8d7890f5164711594ed52c9ebb065cc52949"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/10-raven/fit/labels.png",
+    "copy": "audits/REPAIR_FOLLOWUP_C82_20260927/bird-inputs/raven/labels.png",
+    "sha256": "5cc1d3d1dee278ec4f478168070e2ee00aeb0379bb73e9e518a78f16a2f54bd9"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c59-v10s/08-vulture/fit/record.json",
+    "copy": "audits/REPAIR_FOLLOWUP_C82_20260927/bird-inputs/vulture/record.json",
+    "sha256": "ac693c98f8b44621ca07413b0ec0f8dda5aa0765a4ad3c742c79dd07b06e612d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c59-v10s/08-vulture/fit/declaration.json",
+    "copy": "audits/REPAIR_FOLLOWUP_C82_20260927/bird-inputs/vulture/declaration.json",
+    "sha256": "bdbddb77758af0dc129e623038b8c8afffade406fed49bf2845777d4507ce617"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c59-v10s/08-vulture/fit/labels.png",
+    "copy": "audits/REPAIR_FOLLOWUP_C82_20260927/bird-inputs/vulture/labels.png",
+    "sha256": "4823341e718136e99b0ae9175252ea071659259866032f37807c5a10266366ab"
+  }
+]

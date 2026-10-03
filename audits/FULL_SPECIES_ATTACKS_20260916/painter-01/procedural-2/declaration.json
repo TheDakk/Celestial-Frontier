@@ -1,0 +1,110 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "0971e433da9ce11b993822e6641e4aa3764054db37fb82b6192bca42ada22b1e",
+  "cutoutSha256": "f4389be3fab67d91bcba54e20d1c94f7a6d1476a3c98766227e74d0d22d437d0",
+  "labelsFile": "labels.png",
+  "labelsSha256": "694f8db93e412476cb328484ed860976c5547213453a56f171e94368e820e45f",
+  "parts": [
+    {
+      "id": "torso",
+      "joint": "spine",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "hindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "hindFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-lower",
+      "joint": "foreFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "hindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "hindNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "near"
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail3",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "e239d4cab3e858f5809f7578251d8880a6459c7288814e364775ca55b0edc046"
+}

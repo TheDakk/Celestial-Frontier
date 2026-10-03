@@ -1,0 +1,27 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "a508c9fa386cfa919af66bcc120b1377953c985a3d4dac15268162b24a5037d4",
+  "bindingHash": "121cef83b718ba7fe4c0347566ae0f670f5c8c71c3f300d7fe540b4f84f2160f",
+  "pairs": [
+    [
+      "root-patch",
+      "torso"
+    ],
+    [
+      "root-patch",
+      "chest"
+    ],
+    [
+      "torso",
+      "far-wing-shoulder"
+    ],
+    [
+      "torso",
+      "near-wing-shoulder"
+    ],
+    [
+      "torso",
+      "near-wing-flight"
+    ]
+  ]
+}

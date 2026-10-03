@@ -1,0 +1,17 @@
+# Explicit compact swing lift
+
+Implemented after the exact two-pose diagnosis and the parent's explicit authorization. The historical unimplemented proposal and both original refusal receipts remain unchanged.
+
+`myriapod-anatomy.mjs` now declares `contactStance.swingLift: 'toward-socket'` only for the expanded rigid-trunk model. `family-contracts.d.mts` declares the optional field. The contact constructor rejects any present invalid value, foreign family/model or unresolved fixed sockets. The declared mode signs the existing vertical swing amplitude toward the source socket. Source-horizontal legs have zero vertical projection. Missing declaration executes the exact previous screen-up expression.
+
+No action key, source-step time, stride, stance owner, .15 lower-length vertical amplitude, .10 horizontal retraction, joint limit, compression cap, endpoint tolerance or painted-point tolerance changed. Direction comes from immutable source geometry, not from a failed pose or solver search. Exact pre-change bytes and hashes of all three owned files are in `swing-lift-before-01/`.
+
+The separately authorized selector extraction imports the shared `selectPaintedContactVertex` helper into `observedContactSupports`. Normal-input normalized per-corner arithmetic and strict first-on-equal-distance selection remain unchanged; the selected triangle's support interpolation mapping is preserved. Immediately pre-extraction runtime bytes, before/after hashes and the exact invertible replacement are retained in `swing-selector-before-01/`. The other agent owns helper/writer implementation and its focused tests. This runtime extraction does not edit old bindings or the static paint observer.
+
+One targeted execution passed **12/12 tests**, **31ms test execution /275ms Vitest duration**. `swing-lift-tests-01.log` and `.sources.json` retain the command and53 explicit source/input hashes, all unchanged during execution. Command: `npx vitest run apps/game/src/creature-rig-contact-swing-lift.test.ts` from `port/v2`.
+
+The controls independently reconstruct upper/lower-side swing direction and amplitude for both alternating groups and two weights; preserve stance, endpoint and stage-owned targets; exercise a horizontal source span; reject explicit invalid/foreign/unbound declarations; preserve impossible external translation and original joint-limit refusals; and validate every actual contact, length, angle, endpoint and painted residual for the two retained fit04 hit/dodge attempted poses. Both now pass contact resolution. Omitting the declaration reproduces their exact historical refusal strings. All original family definitions lack the field.
+
+This is focused contact evidence only. No ARAP, full static, S2, browser, native film, CPU certificate or TypeScript run was performed by this subtask. Parent-owned fresh intake, complete static, shared-source/S2 and native qualification remain necessary. Existing bindings and source art are unchanged by this implementation.
+
+The parent's TypeScript04 check subsequently identified only the intentionally invalid mock's type annotation. `changed as any` now marks that negative-control contract explicitly. Pre-change test bytes match the passing test receipt and remain in `swing-lift-before-types-02.ts`; Node26 strip output is identical ignoring horizontal whitespace, with exact source equality outside the added assertion. `swing-lift-type-repair-02.json` retains the proof. No production change or behavioral rerun followed; the parent owns the changed TypeScript check.

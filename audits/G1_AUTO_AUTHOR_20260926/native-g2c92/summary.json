@@ -1,0 +1,149 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C92_20260927",
+ "tag": "g2c92",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "02-parrotfish",
+  "04-boxfish",
+  "06-archerfish",
+  "07-puffin",
+  "09-swan",
+  "10-cormorant",
+  "15-mouse",
+  "17-tree-shrew",
+  "18-ground-squirrel"
+ ],
+ "refused": [
+  {
+   "id": "01-triggerfish",
+   "reason": "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "03-pufferfish",
+   "reason": "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "05-lionfish",
+   "reason": "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "08-auk",
+   "reason": "unexplained-anatomy: 10.7% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "11-bittern",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+  },
+  {
+   "id": "12-grebe",
+   "reason": "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "13-giant-otter",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 13% paint (reference 38%)"
+  },
+  {
+   "id": "14-quoll",
+   "reason": "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "16-vole",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)"
+  },
+  {
+   "id": "20-aphid",
+   "reason": "facing: the mirrored painting matches insect better (0.0271 < 0.3103)"
+  },
+  {
+   "id": "21-dobsonfly",
+   "reason": "facing: the mirrored painting matches insect better (0.0420 < 0.2998)"
+  },
+  {
+   "id": "22-scorpionfly",
+   "reason": "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 15% paint (reference 49%)"
+  },
+  {
+   "id": "24-orchid-bee",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "19-moth",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "23-thrips",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "02-parrotfish",
+   "name": "Parrotfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-boxfish",
+   "name": "Boxfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-archerfish",
+   "name": "Archerfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-puffin",
+   "name": "Puffin",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-swan",
+   "name": "Swan",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-cormorant",
+   "name": "Cormorant",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "15-mouse",
+   "name": "Mouse",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "17-tree-shrew",
+   "name": "Tree Shrew",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-ground-squirrel",
+   "name": "Ground Squirrel",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

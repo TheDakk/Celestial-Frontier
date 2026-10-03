@@ -1,0 +1,154 @@
+{
+  "id": "23-dromedary-camel",
+  "name": "Dromedary Camel",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "1e2f12ddda621ed39e604e7e0a2b483b2b13b63758e21c0535485ab2ce2b7e60",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 20301,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 136,
+      "y0": 132,
+      "x1": 248,
+      "y1": 215
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2261,
+        "pixels": 4591,
+        "box": {
+          "x0": 249,
+          "y0": 102,
+          "x1": 355,
+          "y1": 208
+        },
+        "attach": {
+          "x": 249,
+          "y": 183,
+          "relX": 1.01,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": 0.88,
+          "y": -0.48
+        },
+        "class": "front",
+        "length": 133.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0238,
+        "pixels": 484,
+        "box": {
+          "x0": 164,
+          "y0": 116,
+          "x1": 209,
+          "y1": 131
+        },
+        "attach": {
+          "x": 186.5,
+          "y": 131,
+          "relX": 0.45,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.08,
+          "y": -1
+        },
+        "class": "top",
+        "length": 27
+      },
+      {
+        "k": 2,
+        "frac": 0.2249,
+        "pixels": 4565,
+        "box": {
+          "x0": 83,
+          "y0": 154,
+          "x1": 179,
+          "y1": 312
+        },
+        "attach": {
+          "x": 138.7,
+          "y": 184.3,
+          "relX": 0.02,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": -0.22,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 139.3
+      },
+      {
+        "k": 3,
+        "frac": 0.1306,
+        "pixels": 2652,
+        "box": {
+          "x0": 185,
+          "y0": 216,
+          "x1": 286,
+          "y1": 311
+        },
+        "attach": {
+          "x": 219,
+          "y": 216,
+          "relX": 0.74,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.23,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 116.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 83,
+        "x1": 106,
+        "cx": 94.2
+      },
+      {
+        "x0": 154,
+        "x1": 179,
+        "cx": 165.1
+      },
+      {
+        "x0": 185,
+        "x1": 209,
+        "cx": 196.3
+      },
+      {
+        "x0": 260,
+        "x1": 286,
+        "cx": 271.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

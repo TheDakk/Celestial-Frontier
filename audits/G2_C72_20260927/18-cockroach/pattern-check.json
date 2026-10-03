@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cockroach",
+  "masterSha256": "03930afd9479407de3f2234da624bc259ccc2edce4635170e6f17e414e6c5c23",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

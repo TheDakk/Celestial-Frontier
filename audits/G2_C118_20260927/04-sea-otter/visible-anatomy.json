@@ -1,0 +1,176 @@
+{
+  "id": "04-sea-otter",
+  "name": "Sea Otter",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "18d6a156cad0bf7d2edaac85a11b3e3f885620909ecf9587650d9bc34b30709c",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 23534,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 122,
+      "y0": 156,
+      "x1": 314,
+      "y1": 251
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1071,
+        "pixels": 2521,
+        "box": {
+          "x0": 268,
+          "y0": 128,
+          "x1": 356,
+          "y1": 204
+        },
+        "attach": {
+          "x": 303.3,
+          "y": 167.3,
+          "relX": 0.94,
+          "relY": 0.12
+        },
+        "dir": {
+          "x": 0.66,
+          "y": -0.75
+        },
+        "class": "top",
+        "length": 65.8
+      },
+      {
+        "k": 1,
+        "frac": 0.1333,
+        "pixels": 3136,
+        "box": {
+          "x0": 58,
+          "y0": 186,
+          "x1": 158,
+          "y1": 279
+        },
+        "attach": {
+          "x": 129.2,
+          "y": 220.3,
+          "relX": 0.04,
+          "relY": 0.68
+        },
+        "dir": {
+          "x": -0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 92.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0421,
+        "pixels": 991,
+        "box": {
+          "x0": 160,
+          "y0": 238,
+          "x1": 209,
+          "y1": 274
+        },
+        "attach": {
+          "x": 177,
+          "y": 238,
+          "relX": 0.29,
+          "relY": 0.86
+        },
+        "dir": {
+          "x": 0.12,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 48.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0269,
+        "pixels": 632,
+        "box": {
+          "x0": 235,
+          "y0": 240,
+          "x1": 267,
+          "y1": 279
+        },
+        "attach": {
+          "x": 249.9,
+          "y": 249.6,
+          "relX": 0.67,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.16,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 34
+      },
+      {
+        "k": 4,
+        "frac": 0.0397,
+        "pixels": 934,
+        "box": {
+          "x0": 266,
+          "y0": 241,
+          "x1": 327,
+          "y1": 281
+        },
+        "attach": {
+          "x": 283.9,
+          "y": 250.3,
+          "relX": 0.84,
+          "relY": 0.99
+        },
+        "dir": {
+          "x": 0.64,
+          "y": 0.77
+        },
+        "class": "limb-down",
+        "length": 52.9
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 101,
+        "x1": 144,
+        "cx": 122.4
+      },
+      {
+        "x0": 180,
+        "x1": 205,
+        "cx": 193.3
+      },
+      {
+        "x0": 235,
+        "x1": 267,
+        "cx": 250
+      },
+      {
+        "x0": 288,
+        "x1": 327,
+        "cx": 307.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

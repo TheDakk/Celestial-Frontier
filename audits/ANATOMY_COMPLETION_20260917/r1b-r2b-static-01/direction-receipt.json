@@ -1,0 +1,16 @@
+{
+  "reviewPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1R2_REVIEW.md",
+  "reviewSha256": "121dbb8338ea451ca3d4c095b3956515e702145835e0a8fd92b301ff759901e2",
+  "approval": "Dakk: Direction block is here; Q4 is approved.",
+  "scope": [
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N6",
+    "approved Q4 paragraph only"
+  ],
+  "pending": "N1: preserve observed pivots and bound declared scale span versus raising the old body-axis floor and refusing incompatible records",
+  "head": "57dfe112cf5a584193afa17ae91d779da694f0e7",
+  "sourceState": "uncommitted prepared correction; no native capture"
+}

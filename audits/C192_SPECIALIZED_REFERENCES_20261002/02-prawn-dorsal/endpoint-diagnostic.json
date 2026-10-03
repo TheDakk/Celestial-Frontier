@@ -1,0 +1,269 @@
+{
+  "schema": "cf.c192-endpoint-diagnostic/v1",
+  "masterSha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+  "keyedRgbaSha256": "3d34ebd556a48a748eaacc07794f9920a29d355817017efe64ccbff5e366d413",
+  "rows": [
+    {
+      "joint": "antennaFarBase",
+      "declared": [
+        793,
+        590
+      ],
+      "nearestKeyedPaint": [
+        {
+          "point": [
+            793,
+            590
+          ],
+          "distance": 0
+        },
+        {
+          "point": [
+            793,
+            589
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            792,
+            590
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            794,
+            590
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            793,
+            591
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            792,
+            589
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            794,
+            589
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            792,
+            591
+          ],
+          "distance": 1.4142135623730951
+        }
+      ]
+    },
+    {
+      "joint": "antennaFarTip",
+      "declared": [
+        1088,
+        506
+      ],
+      "nearestKeyedPaint": [
+        {
+          "point": [
+            1048,
+            466
+          ],
+          "distance": 56.568542494923804
+        },
+        {
+          "point": [
+            1042,
+            465
+          ],
+          "distance": 61.61980201201558
+        },
+        {
+          "point": [
+            1041,
+            465
+          ],
+          "distance": 62.36986451805071
+        },
+        {
+          "point": [
+            1040,
+            465
+          ],
+          "distance": 63.12685640834651
+        },
+        {
+          "point": [
+            1039,
+            465
+          ],
+          "distance": 63.89053137985315
+        },
+        {
+          "point": [
+            1026,
+            465
+          ],
+          "distance": 74.33034373659252
+        },
+        {
+          "point": [
+            1025,
+            465
+          ],
+          "distance": 75.16648189186454
+        },
+        {
+          "point": [
+            1024,
+            465
+          ],
+          "distance": 76.00657866263946
+        }
+      ]
+    },
+    {
+      "joint": "antennaNearBase",
+      "declared": [
+        793,
+        650
+      ],
+      "nearestKeyedPaint": [
+        {
+          "point": [
+            793,
+            650
+          ],
+          "distance": 0
+        },
+        {
+          "point": [
+            793,
+            649
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            792,
+            650
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            794,
+            650
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            793,
+            651
+          ],
+          "distance": 1
+        },
+        {
+          "point": [
+            792,
+            649
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            794,
+            649
+          ],
+          "distance": 1.4142135623730951
+        },
+        {
+          "point": [
+            792,
+            651
+          ],
+          "distance": 1.4142135623730951
+        }
+      ]
+    },
+    {
+      "joint": "antennaNearTip",
+      "declared": [
+        1088,
+        737
+      ],
+      "nearestKeyedPaint": [
+        {
+          "point": [
+            1087,
+            748
+          ],
+          "distance": 11.045361017187261
+        },
+        {
+          "point": [
+            1045,
+            778
+          ],
+          "distance": 59.413803110051795
+        },
+        {
+          "point": [
+            1040,
+            779
+          ],
+          "distance": 63.7808748764079
+        },
+        {
+          "point": [
+            1039,
+            779
+          ],
+          "distance": 64.53681120105021
+        },
+        {
+          "point": [
+            1038,
+            779
+          ],
+          "distance": 65.29931086925804
+        },
+        {
+          "point": [
+            1037,
+            779
+          ],
+          "distance": 66.06814663663573
+        },
+        {
+          "point": [
+            1036,
+            779
+          ],
+          "distance": 66.84309986827361
+        },
+        {
+          "point": [
+            1035,
+            779
+          ],
+          "distance": 67.62396025078685
+        }
+      ]
+    }
+  ],
+  "sourceMasterChanged": false,
+  "automaticCorrectionApplied": false
+}

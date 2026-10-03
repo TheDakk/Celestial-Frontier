@@ -1,0 +1,92 @@
+{
+  "id": "15-tree-snake",
+  "name": "Tree Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "1f701019e36cac9d002e539c5595cf5603d37799add58dd6b35d740e5ebcd17d",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8499,
+    "coreRadius": 6,
+    "bodyBox": {
+      "x0": 121,
+      "y0": 182,
+      "x1": 330,
+      "y1": 274
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2527,
+        "pixels": 2148,
+        "box": {
+          "x0": 319,
+          "y0": 146,
+          "x1": 410,
+          "y1": 222
+        },
+        "attach": {
+          "x": 327.8,
+          "y": 213.8,
+          "relX": 0.99,
+          "relY": 0.35
+        },
+        "dir": {
+          "x": 0.54,
+          "y": -0.84
+        },
+        "class": "top",
+        "length": 106.6
+      },
+      {
+        "k": 1,
+        "frac": 0.1547,
+        "pixels": 1315,
+        "box": {
+          "x0": 9,
+          "y0": 162,
+          "x1": 129,
+          "y1": 269
+        },
+        "attach": {
+          "x": 122,
+          "y": 260.5,
+          "relX": 0.01,
+          "relY": 0.85
+        },
+        "dir": {
+          "x": -0.78,
+          "y": -0.62
+        },
+        "class": "rear",
+        "length": 150
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 116,
+        "x1": 173,
+        "cx": 143.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

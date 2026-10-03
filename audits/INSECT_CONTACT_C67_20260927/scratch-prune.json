@@ -1,0 +1,306 @@
+{
+  "reason": "Retain named final film, approach, lethal reaction and late reaction frames; other diagnostic still hashes retained",
+  "bytes": 90761628,
+  "files": [
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn2-dodge-reaction-50.png",
+      "bytes": 1571887,
+      "sha256": "fece95183cf07bf19f205e8e76f024cbaa8a63ea9fdc2d3908dc044a2542c2da"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn0-hit-return-end.png",
+      "bytes": 1568974,
+      "sha256": "8c935ca432b6a14dd647ca5d954a160241ee4f19f0a6c2545d3ef12e083d7471"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn3-hit-approach-50.png",
+      "bytes": 1569732,
+      "sha256": "352aacd273135b0bce30b22fcf43195fa95412b81e82b6c97a5463f3d0c37c01"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn1-hit-approach-50.png",
+      "bytes": 1569479,
+      "sha256": "417d717aac016af2480a5645024afb8fbea22cdfcdc377cd46b7e49c94747eef"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn3-hit-return-end.png",
+      "bytes": 1568077,
+      "sha256": "659b26bce05536083089d0a2d914dfae08fa57ecb802d7cadc36c1838f957404"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn1-hit-reaction-50.png",
+      "bytes": 1568503,
+      "sha256": "7529b28de7f96a46fd71df228911f1c45a5b803aa7789e9d2baf5c65786e2610"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn0-hit-reaction-50.png",
+      "bytes": 1573456,
+      "sha256": "200d9e7de8cacc94c255daa89600c2e03d7f1a3ded9bdecc1ab8103cfaeb691a"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn2-dodge-return-end.png",
+      "bytes": 1569018,
+      "sha256": "a7a602a5244319adbe0950825f7f8800f914501816f06cbd3f1480654b01da69"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn1-hit-impact.png",
+      "bytes": 1569454,
+      "sha256": "0b6d1b4b40774edd97a64a95bb22bbeae1559afab1c2f597808392c37d2ce8c6"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn0-hit-impact.png",
+      "bytes": 1005919,
+      "sha256": "95abf9edc3d492b3f34939f3c464c5dcf3f8dc104faa5d4ebd1f7eb4fd120f6c"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn1-hit-return-end.png",
+      "bytes": 1569079,
+      "sha256": "c6f7ef3526d5f3903503ac1548d732b3db7ca931d114fe69144b81ab8544821d"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn2-dodge-impact.png",
+      "bytes": 1571920,
+      "sha256": "00e5ab53858031ae4fe94d98c734f7d00060ea797ab8bec4f645c048bbbf4d64"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn2-dodge-approach-50.png",
+      "bytes": 1569732,
+      "sha256": "352aacd273135b0bce30b22fcf43195fa95412b81e82b6c97a5463f3d0c37c01"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn3-hit-impact.png",
+      "bytes": 1568757,
+      "sha256": "c7a4b7978483e62891e7b183a0c86eaba9199dfd257241dd927cdc04559e8798"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-beetle/turn3-hit-idle-90.png",
+      "bytes": 1567190,
+      "sha256": "a972faa7d4dfc342166b31c3865ec6ba154e1d6b6aaa6981c4475a59fc285670"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn2-dodge-reaction-50.png",
+      "bytes": 1549343,
+      "sha256": "9dfabf4c410d93723d8bf5e8f8ef44e402c6be5853ea2e2a6d3de42f4d4ba638"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn0-hit-return-end.png",
+      "bytes": 1541351,
+      "sha256": "22d351ac11c64e4cb7abbc1b070c2b218738793bf8d4521c3308596fa4bddc45"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn3-hit-approach-50.png",
+      "bytes": 1542372,
+      "sha256": "f15e3c1f59543a6e4a0ef25ac2f64ccea5099f4ac082e755acfd7b197978eb7f"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn1-hit-approach-50.png",
+      "bytes": 1542277,
+      "sha256": "a68fa19dd9b3e17e111372e0868818503520babb71c7d928a64cfe65ecc6aac8"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn3-hit-return-end.png",
+      "bytes": 1541716,
+      "sha256": "201e286e34bd56263cf4b8c187c15f70655f72a71c3f11bf682009cf941f7297"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn1-hit-reaction-50.png",
+      "bytes": 1541317,
+      "sha256": "77d83ad51649deb039f31c9585eb06d6037cf511170a3d197e44f80aadb1678e"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn0-hit-reaction-50.png",
+      "bytes": 1551707,
+      "sha256": "d7b6402b93e91bfed2f3444405ddd9456abd610ad63ba55a9b88a7a13d9ff259"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn2-dodge-return-end.png",
+      "bytes": 1541767,
+      "sha256": "77eda87eb399f20259c6a00f3c8a2515a8106b2e59df5bd64f6ecba54d395a17"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn1-hit-impact.png",
+      "bytes": 1542280,
+      "sha256": "a6ad2d35c0d90299a98e5c0280d608c6182192671526308c530b166e43d5bed1"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn0-hit-impact.png",
+      "bytes": 983067,
+      "sha256": "198e99a68ee3f975dc02b4e9d95c8f10d90f9059667cd3be3ad2ce99aa6d96a2"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn1-hit-return-end.png",
+      "bytes": 1541456,
+      "sha256": "47c1ca58ec46bb200b90f97c21a9a2960dcae39d6c846f9a554c864538b91d3b"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn2-dodge-impact.png",
+      "bytes": 1547529,
+      "sha256": "d04f254714cbfabd630a9dec8eef69332ffa0c10f4c63a74064df87bc7754929"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn2-dodge-approach-50.png",
+      "bytes": 1542372,
+      "sha256": "f15e3c1f59543a6e4a0ef25ac2f64ccea5099f4ac082e755acfd7b197978eb7f"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn3-hit-impact.png",
+      "bytes": 1542360,
+      "sha256": "d792b14f46e832877e2af11bebd0aa10a4f461968d6a7bf53f1d245f187f672e"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-cricket/turn3-hit-idle-90.png",
+      "bytes": 1541591,
+      "sha256": "a506e9d6afcbabd4d56746d28f4fb1f93b72cbfc572d0cd1aa01b17144418481"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn2-dodge-reaction-50.png",
+      "bytes": 1561458,
+      "sha256": "6e6b6e7bdc3e327bf1390faf6bfb44584577a41871c0a193a6fdd75964a75858"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn0-hit-return-end.png",
+      "bytes": 1546399,
+      "sha256": "a072147d860a58dbdc9f0a499d2fa5108d01c27d839215d07fc092b0d23cae6b"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn3-hit-approach-50.png",
+      "bytes": 1548941,
+      "sha256": "94198b514756ea18e077ec123d5905ee5f48806dc95e46d633b1534839b47081"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn1-hit-approach-50.png",
+      "bytes": 1547065,
+      "sha256": "c31d8c3ed08b2ca07b0871f34c6d1f551c047a65374b65a69297079d64d28c95"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn3-hit-return-end.png",
+      "bytes": 1545413,
+      "sha256": "5c67fae16260d1b095d5819faacd5f6e8d3a522e626f5a32903601242cc49e41"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn1-hit-reaction-50.png",
+      "bytes": 1547481,
+      "sha256": "42e12195d9bd16d54cafc6748c79e096f7c60029cda0ef4b252af297c683cb0d"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn0-hit-reaction-50.png",
+      "bytes": 1564937,
+      "sha256": "24dbd5c69b1f0acd04cf08011d0c6e00031811144a3bc134c4a4a925a196ee8f"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn2-dodge-return-end.png",
+      "bytes": 1546733,
+      "sha256": "40d458e8ebb2ee8ec8723697a86e3bc7196b6a5efe14d0b599eeb076c10b3f75"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn1-hit-impact.png",
+      "bytes": 1546064,
+      "sha256": "3655852b228b4387445e61cdaa0a528a3afe7aa499c29e2706e4d2359d157c7a"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn0-hit-impact.png",
+      "bytes": 990675,
+      "sha256": "edfb058b9d5dc780c7b266ee7352d931b73cac680776a397b46253314fd1a58a"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn1-hit-return-end.png",
+      "bytes": 1546426,
+      "sha256": "81651dafec09b8e6cff395947bd5d28340edbb7780d0d1e1bf1fa58fad737bdf"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn2-dodge-impact.png",
+      "bytes": 1557717,
+      "sha256": "be59c15ef8464a9be47eb6635de23ca83ddcbc19832ea776226c00401c3b0d52"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn2-dodge-approach-50.png",
+      "bytes": 1548941,
+      "sha256": "94198b514756ea18e077ec123d5905ee5f48806dc95e46d633b1534839b47081"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn3-hit-impact.png",
+      "bytes": 1545438,
+      "sha256": "d62ae17f7305e2674a56626186e12e2f33d2a7df557ad291f23c082ac5b8c617"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-ant/turn3-hit-idle-90.png",
+      "bytes": 1545093,
+      "sha256": "e69389392d76ed95a0e66ceb8c9c3c863f2dac0a4ea928779e7d63964d53386a"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn2-dodge-reaction-50.png",
+      "bytes": 1544079,
+      "sha256": "2ed5ca546b40b5a256e9e1eb9b7f113c11faa36e773fae5486638ef4f9acbfc4"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn0-hit-return-end.png",
+      "bytes": 1534669,
+      "sha256": "fba92314e079b6236607ffd808225f0e6f87714ddddea6ce2399ab802fc3834b"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn3-hit-approach-50.png",
+      "bytes": 1535965,
+      "sha256": "83b8bd6285e9fa2ece093d866fd0f0d50d855d400826d6ca7e7932cd42f45258"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn1-hit-approach-50.png",
+      "bytes": 1535000,
+      "sha256": "fca6228d3147ee19a7c20e42ccb1dce99d8eaa6e74c0efab0b29888b86087ed3"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn3-hit-return-end.png",
+      "bytes": 1535860,
+      "sha256": "34eff00fd63007cfd92cb25351fb20302c0d4ef8d38c25199418a29b01805419"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn1-hit-reaction-50.png",
+      "bytes": 1532626,
+      "sha256": "123798d2f98d478b7d8a0f0fc8adc2250eb150c3376017503004e71359f19533"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn0-hit-reaction-50.png",
+      "bytes": 1547363,
+      "sha256": "1bcf5ce701db24ffd955bb3344410aae03bf6935c49971bf271dd24bd735e174"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn2-dodge-return-end.png",
+      "bytes": 1534705,
+      "sha256": "f8dc3fa58be83ea4dbd269b66d2d7d4603ad0715a39cf00fef3301fc82aedabc"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn1-hit-impact.png",
+      "bytes": 1534846,
+      "sha256": "91a17f93d81417f4100b72b5a15f70d8389f005b66c870889f515cb5646247fd"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn0-hit-impact.png",
+      "bytes": 980233,
+      "sha256": "59672c59aba6212e2422c672b47bbda1939fa6269d2a72678465fd84b25ab0cf"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn1-hit-return-end.png",
+      "bytes": 1534440,
+      "sha256": "a81a5501f33f7384c712f476055abbce6e24772be6e1a77dca1ffe9176b91231"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn2-dodge-impact.png",
+      "bytes": 1542741,
+      "sha256": "13522674630bb124d1e37beca3d5da7f0ee7cbc2d3d55cc36e403e58f303b36b"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn2-dodge-approach-50.png",
+      "bytes": 1535965,
+      "sha256": "83b8bd6285e9fa2ece093d866fd0f0d50d855d400826d6ca7e7932cd42f45258"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn3-hit-impact.png",
+      "bytes": 1534600,
+      "sha256": "1ea69cb92783e675576bf52c20a66d3807a0e7ca9783c9b69e91cbf470bfb394"
+    },
+    {
+      "path": "audits/INSECT_CONTACT_C67_20260927/native-termite/turn3-hit-idle-90.png",
+      "bytes": 1536073,
+      "sha256": "953adf20b5a4d89a51321eea56ece8deb7376cc8987bc3b0535ff4094c4d29c5"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "id": "22-giant-squid",
+  "name": "Giant Squid",
+  "family": "cephalopod",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "cb07009c82606a8d92a95f57b227a7bb6485ad13baaab75419701c2ad76046f8",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15707,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 92,
+      "y0": 165,
+      "x1": 245,
+      "y1": 234
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2662,
+        "pixels": 4181,
+        "box": {
+          "x0": 241,
+          "y0": 133,
+          "x1": 376,
+          "y1": 285
+        },
+        "attach": {
+          "x": 245.7,
+          "y": 216.6,
+          "relX": 1,
+          "relY": 0.75
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.08
+        },
+        "class": "front",
+        "length": 154.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0768,
+        "pixels": 1206,
+        "box": {
+          "x0": 213,
+          "y0": 141,
+          "x1": 283,
+          "y1": 192
+        },
+        "attach": {
+          "x": 231.7,
+          "y": 183.3,
+          "relX": 0.91,
+          "relY": 0.27
+        },
+        "dir": {
+          "x": 0.78,
+          "y": -0.63
+        },
+        "class": "top",
+        "length": 66.5
+      },
+      {
+        "k": 2,
+        "frac": 0.1108,
+        "pixels": 1741,
+        "box": {
+          "x0": 43,
+          "y0": 150,
+          "x1": 101,
+          "y1": 218
+        },
+        "attach": {
+          "x": 91.9,
+          "y": 177.9,
+          "relX": 0,
+          "relY": 0.19
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.25
+        },
+        "class": "rear",
+        "length": 63.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0229,
+        "pixels": 360,
+        "box": {
+          "x0": 207,
+          "y0": 235,
+          "x1": 233,
+          "y1": 270
+        },
+        "attach": {
+          "x": 212,
+          "y": 235,
+          "relX": 0.78,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.18,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 40.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0439,
+        "pixels": 689,
+        "box": {
+          "x0": 219,
+          "y0": 235,
+          "x1": 269,
+          "y1": 277
+        },
+        "attach": {
+          "x": 228.5,
+          "y": 235,
+          "relX": 0.89,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.52,
+          "y": 0.86
+        },
+        "class": "limb-down",
+        "length": 58.3
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 250,
+        "x1": 265,
+        "cx": 257.7
+      },
+      {
+        "x0": 352,
+        "x1": 376,
+        "cx": 366
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

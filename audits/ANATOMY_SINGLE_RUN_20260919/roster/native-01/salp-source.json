@@ -1,0 +1,281 @@
+{
+  "genome": {
+    "seed": 1436071313,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 15,
+    "body": 5,
+    "loco": 7,
+    "trait": 22,
+    "size": 0,
+    "diet": 0,
+    "head": 4,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 7,
+    "habitat": 5,
+    "detail": 7,
+    "accent": 14,
+    "temper": 4,
+    "sense": 6,
+    "repro": 4,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Salp"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaSalp",
+    "family": "colonial-filter",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "translucent",
+      "paletteSource": "genome"
+    },
+    "features": [
+      {
+        "id": "barrel0",
+        "kind": "body",
+        "points": [
+          [
+            77.71704891298242,
+            336.8399875136557
+          ],
+          [
+            114.4,
+            316.8
+          ],
+          [
+            151.0829510870176,
+            296.76001248634435
+          ]
+        ],
+        "widths": [
+          83.6,
+          61.60000000000001
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel0ApertureIn",
+        "kind": "body",
+        "points": [
+          [
+            83.58632108690524,
+            333.6335895114708
+          ]
+        ],
+        "widths": [
+          12.54,
+          36.96
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel0ApertureOut",
+        "kind": "body",
+        "points": [
+          [
+            145.21367891309478,
+            299.9664104885292
+          ]
+        ],
+        "widths": [
+          12.54,
+          36.96
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel1",
+        "kind": "body",
+        "points": [
+          [
+            158.4468235310295,
+            266.65278222969016
+          ],
+          [
+            195.9074169994642,
+            252.26666666666662
+          ],
+          [
+            233.3680104678989,
+            237.88055110364309
+          ]
+        ],
+        "widths": [
+          80.25599999999999,
+          59.136
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel1ApertureIn",
+        "kind": "body",
+        "points": [
+          [
+            164.44051848597908,
+            264.3510037396064
+          ]
+        ],
+        "widths": [
+          12.038399999999998,
+          35.4816
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel1ApertureOut",
+        "kind": "body",
+        "points": [
+          [
+            227.37431551294932,
+            240.18232959372685
+          ]
+        ],
+        "widths": [
+          12.038399999999998,
+          35.4816
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel2",
+        "kind": "body",
+        "points": [
+          [
+            229.78884279069473,
+            196.6251990908059
+          ],
+          [
+            267.202726034099,
+            187.73333333333332
+          ],
+          [
+            304.61660927750324,
+            178.84146757586075
+          ]
+        ],
+        "widths": [
+          76.91199999999999,
+          56.67200000000001
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel2ApertureIn",
+        "kind": "body",
+        "points": [
+          [
+            235.7750641096394,
+            195.2025005696103
+          ]
+        ],
+        "widths": [
+          11.536799999999998,
+          34.00320000000001
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel2ApertureOut",
+        "kind": "body",
+        "points": [
+          [
+            298.6303879585586,
+            180.26416609705635
+          ]
+        ],
+        "widths": [
+          11.536799999999998,
+          34.00320000000001
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel3",
+        "kind": "body",
+        "points": [
+          [
+            290.86255089080333,
+            126.87227239793691
+          ],
+          [
+            327.46278410639025,
+            123.19999999999999
+          ],
+          [
+            364.06301732197716,
+            119.52772760206307
+          ]
+        ],
+        "widths": [
+          73.568,
+          54.208000000000006
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel3ApertureIn",
+        "kind": "body",
+        "points": [
+          [
+            296.71858820529724,
+            126.284708814267
+          ]
+        ],
+        "widths": [
+          11.0352,
+          32.5248
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "barrel3ApertureOut",
+        "kind": "body",
+        "points": [
+          [
+            358.20698000748325,
+            120.11529118573297
+          ]
+        ],
+        "widths": [
+          11.0352,
+          32.5248
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "Four actual barrels and eight apertures; bands are surface marks",
+      "Painted inter-barrel contact, individual tube masks and jet motion unqualified"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

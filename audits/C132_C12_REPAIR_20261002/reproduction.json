@@ -1,0 +1,93 @@
+{
+  "schema": "cf.c132-centipede-reproduction/v1",
+  "scope": "Deterministic captured-time pose/contact/skin reconstruction; Node timing is diagnostic only, not native60fps.",
+  "capture": "audits/C132_C12_20261001/native-baseline-correct-fit-02/report.json",
+  "captureSha256": "bc82c1ce0a717a2842d1644d40c4d1321eeda875a8af6b8a56182542670d8a15",
+  "fit": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11",
+  "seed": 593405467,
+  "vertices": 5334,
+  "triangles": 9353,
+  "rows": [
+    {
+      "name": "previous",
+      "globalMs": 4933.099999999999,
+      "localMs": 1636.433333333333,
+      "context": {
+        "actionId": "approach:crawl",
+        "elapsedMs": 316.43333333333294,
+        "durationMs": 420,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.05078152901785695
+      },
+      "error": null,
+      "elapsedMs": 3.6991250000000093,
+      "targetSha256": "cac53f8663ae3bf76f1757f71d482a49406b1c4d865d1e60b902bd8af796beb3",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 7.866832510484143,
+        "rmsTargetErrorPx": 0.45276220008654733,
+        "maximumProjectionPx": 6.952849874381704,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06078833322371954,
+        "orientationPasses": 65
+      },
+      "orientationQueue": {
+        "size": 30,
+        "projections": 326,
+        "visits": 326,
+        "stalled": false
+      },
+      "folded": []
+    },
+    {
+      "name": "refusal",
+      "globalMs": 4949.7,
+      "localMs": 1653.0333333333333,
+      "context": {
+        "actionId": "approach:crawl",
+        "elapsedMs": 333.0333333333333,
+        "durationMs": 420,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.05870172991071427
+      },
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "elapsedMs": 120.82220799999999,
+      "targetSha256": "325d57820f8ac96aa8a8b70f4dee3a1e1ccbce5ae81a82a3d869fd1d3407098f",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 13.568229850815678,
+        "rmsTargetErrorPx": 0.5761304382634271,
+        "maximumProjectionPx": 12.439204532092381,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.0004970841538493014,
+        "orientationPasses": 128
+      },
+      "orientationQueue": {
+        "size": 48,
+        "projections": 598592,
+        "visits": 598592,
+        "stalled": false
+      },
+      "folded": [
+        {
+          "triangle": 2300,
+          "ratio": -0.0004970841538493014,
+          "vertices": [
+            1364,
+            1365,
+            1357
+          ],
+          "pins": [
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

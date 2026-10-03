@@ -1,0 +1,71 @@
+{
+  "name": "Kiwi",
+  "family": "biped-bird",
+  "species": {
+    "name": "Kiwi",
+    "aspect": 1.4,
+    "headFrac": 0.35,
+    "eyes": "small",
+    "posture": "biped",
+    "mustRead": [
+      "extremely long slender probing bill",
+      "round tailless body of shaggy hair-like feathers",
+      "stout short legs set far back"
+    ],
+    "note": "The bill can be a third of the body length and nostrils sit at its very tip; wings are invisible under the plumage."
+  },
+  "genome": {
+    "seed": 2436946984,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 5,
+    "body": 15,
+    "loco": 9,
+    "trait": 19,
+    "size": 4,
+    "diet": 4,
+    "head": 1,
+    "limbs": 3,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 6,
+    "detail": 6,
+    "accent": 15,
+    "temper": 5,
+    "sense": 2,
+    "repro": 1,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Kiwi"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Kiwi\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2436946984\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 587,
+  "profile": {
+    "id": "flightless-bird",
+    "names": [
+      "Ostrich",
+      "Rhea",
+      "Emu",
+      "Cassowary",
+      "Kiwi",
+      "Kakapo"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "peck"
+    ],
+    "notes": "No aerial attack. Wings do not imply flight."
+  }
+}

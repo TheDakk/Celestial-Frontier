@@ -1,0 +1,361 @@
+{
+  "schema": "cf.c163-fixed-rotations-independent-native-review/v1",
+  "status": "CORRECTNESS_EVIDENCE_UNCHANGED_PERFORMANCE_RED",
+  "productionPromotion": false,
+  "newNativeRun": false,
+  "candidateReport": {
+    "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/report.json",
+    "sha256": "1e22601a4fb7c1a240f3cba393613cbc92b136692264b4287a71b926aec3914b"
+  },
+  "currentBaselineReport": {
+    "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/report.json",
+    "sha256": "a40498ba349ae911c86832b0de740d26747553197f32508f8ee1973f9477fccf"
+  },
+  "comparison": "Current baseline is sampled/profiler-on; candidate is unprofiled. Its p95 reduction is not an isolated causal timing measurement.",
+  "stills": [
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn0-hit-approach-50.png",
+        "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn0-hit-approach-50.png",
+        "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn0-hit-impact.png",
+        "sha256": "031ccde3f3f262411077198ea53dd1de9a4fadee821483bdfd63eabe6f980158"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn0-hit-impact.png",
+        "sha256": "031ccde3f3f262411077198ea53dd1de9a4fadee821483bdfd63eabe6f980158"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn0-hit-reaction-50.png",
+        "sha256": "ebbeff302a2fdff74894379cd9fbe21204115f38b235e3325e282cfbb13f4875"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn0-hit-reaction-50.png",
+        "sha256": "ebbeff302a2fdff74894379cd9fbe21204115f38b235e3325e282cfbb13f4875"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn0-hit-return-end.png",
+        "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn0-hit-return-end.png",
+        "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-approach-50.png",
+        "sha256": "2419ff55e60bd0713f0857321d22d8f83b7d4099b9b2ac3350bab683fa780028"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn1-hit-approach-50.png",
+        "sha256": "2419ff55e60bd0713f0857321d22d8f83b7d4099b9b2ac3350bab683fa780028"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-impact.png",
+        "sha256": "25fb7f5a15d4259f5ba8bb4b587a2e8251a8161741c6bbfd11ea5b6efe67ed1c"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn1-hit-impact.png",
+        "sha256": "25fb7f5a15d4259f5ba8bb4b587a2e8251a8161741c6bbfd11ea5b6efe67ed1c"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-reaction-50.png",
+        "sha256": "32c80d584cacbad21a06e67d3f8050966c619064908e244ff4fb0ab12417be9b"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn1-hit-reaction-50.png",
+        "sha256": "32c80d584cacbad21a06e67d3f8050966c619064908e244ff4fb0ab12417be9b"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-return-end.png",
+        "sha256": "68073fe050af3413f5fbf2052e65e7e9b20d25f95ee6816cd45a5db77edc47d0"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn1-hit-return-end.png",
+        "sha256": "68073fe050af3413f5fbf2052e65e7e9b20d25f95ee6816cd45a5db77edc47d0"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn2-dodge-approach-50.png",
+        "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn2-dodge-approach-50.png",
+        "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn2-dodge-impact.png",
+        "sha256": "7c12e57f717990c6657b772699199da3bf663730703b811f6aa736675128ad34"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn2-dodge-impact.png",
+        "sha256": "7c12e57f717990c6657b772699199da3bf663730703b811f6aa736675128ad34"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn2-dodge-reaction-50.png",
+        "sha256": "dcd98073feec3244622fad7c1029b76d6665ce112af6a828a80c91e6c846bd2f"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn2-dodge-reaction-50.png",
+        "sha256": "dcd98073feec3244622fad7c1029b76d6665ce112af6a828a80c91e6c846bd2f"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn2-dodge-return-end.png",
+        "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn2-dodge-return-end.png",
+        "sha256": "c08ed3085312b4d6bcc91e86cc40776c0d917f726afd78757b70516bde2acfe5"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-approach-50.png",
+        "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn3-hit-approach-50.png",
+        "sha256": "85c436cd4a053c4f1e76dadfa92d19386273096489014942d8cdfccce5e4a000"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-idle-50.png",
+        "sha256": "f98eb5515e8d1395d2820bb45f4d22f5bc627267208d4a7b8a43709ba661c3f0"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn3-hit-idle-50.png",
+        "sha256": "f98eb5515e8d1395d2820bb45f4d22f5bc627267208d4a7b8a43709ba661c3f0"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-idle-90.png",
+        "sha256": "08ef15bbcf0545f335c4bdb5ebf643c694b22b7f21a7f755893b95f8a43fdbd7"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn3-hit-idle-90.png",
+        "sha256": "08ef15bbcf0545f335c4bdb5ebf643c694b22b7f21a7f755893b95f8a43fdbd7"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-impact.png",
+        "sha256": "a901bf38dd7be30f0c857ec7dc69e45a8bb781bdd1c54db5007dd152c8b0e9f4"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn3-hit-impact.png",
+        "sha256": "a901bf38dd7be30f0c857ec7dc69e45a8bb781bdd1c54db5007dd152c8b0e9f4"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-reaction-50.png",
+        "sha256": "1e58e64c367dcdcbb98ae36053613dcadf316eb928d19b858fdbec8407b8c8e7"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn3-hit-reaction-50.png",
+        "sha256": "1e58e64c367dcdcbb98ae36053613dcadf316eb928d19b858fdbec8407b8c8e7"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": false
+    },
+    {
+      "candidate": {
+        "path": "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-return-end.png",
+        "sha256": "6f030f458fc4cb8da4a59efa2f61f66f4afc8eacc45c9b352569f9a5836c6c9d"
+      },
+      "currentBaseline": {
+        "path": "audits/C163_C12_PERFORMANCE_20261002/profile-01/turn3-hit-return-end.png",
+        "sha256": "6f030f458fc4cb8da4a59efa2f61f66f4afc8eacc45c9b352569f9a5836c6c9d"
+      },
+      "byteIdentical": true,
+      "oldSimdByteIdentical": true
+    }
+  ],
+  "sourceComparison": {
+    "allCommonBindingsEqual": true,
+    "candidateOnly": [
+      "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-skin.mjs",
+      "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep-bytes.mjs",
+      "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-arap-sweep.mjs",
+      "audits/C163_C12_FIXED_ROTATIONS_20261002/source-overrides.json"
+    ],
+    "baselineOnly": [
+      "port/v2/tools/battle2-proof/cpu-profile.mjs",
+      "port/v2/tools/creature-animation/arap-skin.mjs",
+      "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "port/v2/tools/creature-animation/wasm-arap-sweep.mjs"
+    ]
+  },
+  "slowFrames": [
+    {
+      "candidate": {
+        "ms": 3299.9,
+        "turn": 1,
+        "localMs": 3.233333333333576,
+        "phase": "ready",
+        "cpuMs": 20.400000005960464,
+        "refusals": 0
+      },
+      "nearestBaseline": {
+        "ms": 3299.8999999999996,
+        "turn": 1,
+        "localMs": 3.233333333333121,
+        "phase": "ready",
+        "cpuMs": 24.30000000447035,
+        "refusals": 0
+      },
+      "nextIntervalMs": 16.600000000000364
+    },
+    {
+      "candidate": {
+        "ms": 4266.4,
+        "turn": 1,
+        "localMs": 969.7333333333331,
+        "phase": "approach",
+        "cpuMs": 55.100000001490116,
+        "refusals": 0
+      },
+      "nearestBaseline": {
+        "ms": 4266.5,
+        "turn": 1,
+        "localMs": 969.8333333333335,
+        "phase": "approach",
+        "cpuMs": 14.299999997019768,
+        "refusals": 0
+      },
+      "nextIntervalMs": 50.0
+    },
+    {
+      "candidate": {
+        "ms": 4316.4,
+        "turn": 1,
+        "localMs": 1019.7333333333331,
+        "phase": "approach",
+        "cpuMs": 16.899999998509884,
+        "refusals": 0
+      },
+      "nearestBaseline": {
+        "ms": 4316.5,
+        "turn": 1,
+        "localMs": 1019.8333333333335,
+        "phase": "approach",
+        "cpuMs": 25.5,
+        "refusals": 0
+      },
+      "nextIntervalMs": 16.700000000000728
+    },
+    {
+      "candidate": {
+        "ms": 4499.799999999999,
+        "turn": 1,
+        "localMs": 1203.1333333333328,
+        "phase": "approach",
+        "cpuMs": 18.30000000447035,
+        "refusals": 0
+      },
+      "nearestBaseline": {
+        "ms": 4499.799999999999,
+        "turn": 1,
+        "localMs": 1203.1333333333328,
+        "phase": "approach",
+        "cpuMs": 19.899999998509884,
+        "refusals": 0
+      },
+      "nextIntervalMs": 16.700000000000728
+    }
+  ],
+  "findings": [
+    "All 18 retained candidate PNGs are byte-identical to the current C163 profiled baseline. The eight differences from the older SIMD epoch are the impact/reaction frames affected by the intervening effect-anchor change, not this candidate.",
+    "Candidate completed 787 live frames with zero refusals, CPU p95 8.3 ms and frame interval p95 16.8 ms. Four CPU frames exceed 1000/60 ms; strict performance remains RED.",
+    "The new observed worst outlier is 55.1 ms at global 4266.4/local 969.733 ms, turn 1 approach. Nearest baseline time is only 0.1 ms later and costs 14.3 ms; candidate next-frame interval is 50 ms. Unprofiled evidence cannot attribute this to JIT, GC, scheduling or a particular algorithmic phase, and cannot justify dismissing it.",
+    "Other slow phases align with existing hotspots: turn 1 ready 20.4 versus 24.3 ms; approach 16.9 versus 25.5 ms; approach 18.3 versus 19.9 ms. These are approximate-time comparisons, not identical sampled targets.",
+    "The turn boundary already calls stage.play(), whose final operation is tick(), then stageAt() calls tick() again. Effect-player setup also occurs there. This establishes an existing doubled-work path at ready, without assigning the whole 20.4 ms to it.",
+    "ARAP scratch and admission are constructed during creature-rig loading before READY. The new extra subset admission check is not constructed at the 4266.4 ms approach frame. Runtime compilation/tiering is not measured here.",
+    "Full-size Centipede approach/impact/reaction/return and final idle-labelled frames retain the same anatomy and placement. The Chimpanzee overhead pose at turn3-hit-idle-50 exposes a pre-existing hard flat chest/neck card edge; its PNG is exactly the baseline. Visual equivalence does not declare that pose artistically accepted."
+  ],
+  "fullSizeInspected": [
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-approach-50.png",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-impact.png",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-reaction-50.png",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn1-hit-return-end.png",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-idle-50.png",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01/turn3-hit-idle-90.png"
+  ],
+  "sourceReferences": [
+    {
+      "path": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "line": 108,
+      "purpose": "stage.play at turn boundary then stage.tick at line112"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/stage.ts",
+      "line": 194,
+      "purpose": "play constructs effect player and invokes tick before returning"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig.ts",
+      "line": 175,
+      "purpose": "createArapScratch during rig loading"
+    }
+  ],
+  "next": "Retain performance hold and candidate isolation. No automatic retry, JIT attribution, native acceptance or production promotion."
+}

@@ -1,0 +1,9 @@
+# C141 recorded-cue admission review — 2026-10-02
+
+All 49 original candidates remain immutable and unadmitted. `measurement.json` runs the actual current runtime loudness instrument on each exact WAV and decoded Opus; 32 of 49 pass, 17 fail its existing quietness floor. No target or allowance changed. In particular Storm launch/travel measure about −51.74/−50.61 LUFS momentary. This is a source/authoring blocker, not a reason to boost automatically during playback.
+
+Seven groups have byte-identical decoded master PCM: Frost/Psionic in all three phases, Venom/Chem in all three phases, and five distinct battle events (approach, thump, flash, rumble, dodge). Separate IDs therefore do not establish separate audible theme or cause. These source selections need a listening-led authoring decision before admission. The present Opus packet totals 422,141 bytes; its 96 kb/s cue encoding differs from SOUND_KIT's 64 kb/s mono cue contract. All masters are preserved.
+
+`audition.html` provides every exact master/Opus pair without normalization and a concrete headphones/phone review rubric. `admission-plan.json` names the real runtime injection point, each cue's measured blocker, the no-fetch/no-decode turn boundary, recorded material/mass work, strict timing/concurrency and outcome tests. The existing sound owner uses original procedural combat synthesis today, so a recorded bank must replace both the supplied cue and the synthetic material-tail path as a reviewed product change.
+
+Headphone/phone-speaker listening has **not** been performed in this text-only tool session; no subjective listening claim is made. Tiny/titanic impact derivations and actual in-battle timing remain pending. A numerical pass cannot replace SOUND_KIT §7's listening acceptance. No runtime, rights manifest, existing master, SOUND_KIT rule or active I5 certificate changed.

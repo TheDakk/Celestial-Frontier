@@ -1,0 +1,13 @@
+{
+  "id": "24-bumblebee",
+  "name": "Bumblebee",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-024c5139-3b9d-433e-bf19-4fd8d6b6e380.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2b46b9f9b1240eff2026b19f637409d81aca663b19378ec5377fdc0e7a71bd2b",
+  "bytes": 1278219,
+  "promptSha256": "51075b0f3e20d306a0bf2b5fc5ce2d7a9c33b7d10af9fd8561ddecb15657d71f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

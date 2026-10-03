@@ -1,0 +1,210 @@
+{
+  "id": "wild-pony",
+  "motionChanged": false,
+  "results": [
+    {
+      "mode": "original",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/fit01",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0023879345062919966,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5168,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "spine",
+            "joint": "spine",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 162,
+            "vertices": [
+              119,
+              104,
+              103
+            ],
+            "published": [
+              0.7401473177106757,
+              0.40052332689887593
+            ],
+            "stage": [
+              434.01005537684784,
+              287.84593690983024
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0009371143778363424,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5168,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5168,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "spine",
+            "joint": "spine",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 162,
+            "vertices": [
+              119,
+              104,
+              103
+            ],
+            "published": [
+              0.7401473177106757,
+              0.40052332689887593
+            ],
+            "stage": [
+              589.9899446231522,
+              287.84593690983024
+            ]
+          },
+          "distanceToObservedOriginalTip": 0.15439088819035532
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "mode": "candidate",
+      "fit": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0023879345062919966,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5150,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5150,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5150,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "ear-near-tip",
+            "joint": "earNearTip",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 14,
+            "vertices": [
+              13,
+              5,
+              4
+            ],
+            "published": [
+              0.8186768260164526,
+              0.539344239345645
+            ],
+            "stage": [
+              473.47092257731214,
+              357.603072907411
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0009371143778363424,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5150,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5150,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1691.9999999999995,
+              "coordinates": 5150,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "ear-near-tip",
+            "joint": "earNearTip",
+            "source": [
+              871,
+              353
+            ],
+            "alpha": 255,
+            "face": 14,
+            "vertices": [
+              13,
+              5,
+              4
+            ],
+            "published": [
+              0.8186768260164526,
+              0.539344239345645
+            ],
+            "stage": [
+              550.5290774226878,
+              357.603072907411
+            ]
+          },
+          "distanceToObservedOriginalTip": 80.01588271873618
+        }
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "nativeRun": false,
+  "qualityAccepted": false
+}

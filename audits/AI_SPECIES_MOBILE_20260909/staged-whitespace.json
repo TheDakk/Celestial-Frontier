@@ -1,0 +1,181 @@
+{
+  "schema": "cf.exact-evidence-whitespace-exceptions.v1",
+  "firstFullStagedCheckExit": 2,
+  "firstCheckLog": "audits/AI_SPECIES_MOBILE_20260909/staged-whitespace-first.log",
+  "exceptions": [
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-01/build.stderr.log",
+      "sha256": "351b524197fb492920789369e7f1a271420c757633fbb553b280a181ac4c31a4",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-01/build.stdout.log",
+      "sha256": "63f300a287de5577cac50f4c2274b657cc951860b151d364d97d43994d29152c",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-01/verify.stdout.log",
+      "sha256": "43330bdc47a4ede699ed370be12bd65dc0810633f41be444a178a36fd423a1f8",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-02/build.stderr.log",
+      "sha256": "351b524197fb492920789369e7f1a271420c757633fbb553b280a181ac4c31a4",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-02/build.stdout.log",
+      "sha256": "9570709a8539cf1892837ee484bac9caa6afa5bfc483d4e51e643950bf280a2f",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-02/verify.stdout.log",
+      "sha256": "dc2d76d795f18f151032348a547d63e6f04dec5d6343a2230fc0de4fe864c415",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-03/build.stderr.log",
+      "sha256": "351b524197fb492920789369e7f1a271420c757633fbb553b280a181ac4c31a4",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-03/verify.stdout.log",
+      "sha256": "36be69f9c35f91f342e9380b748d33b08b07c862655d232cb760d0cf1b3e2210",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-runner-controls-02/0-stdout.log",
+      "sha256": "02c4dce255c2d7a2bbab947b2dec490b675c57e4397e11f92adb61c9e99c057b",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/preview-transport/LICENSE-VITE.md",
+      "sha256": "3dc7a1f261771c2a2899f077d16ec82bf0e054febe218612bb037ab1a0228a33",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/prompt-preflight-01/prompt.txt",
+      "sha256": "e85278b44e339bd586d2446b4c4a7dcd044f7ff7ac536ac00da88360a148ee7e",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/prompt-preflight-02/prompt.txt",
+      "sha256": "e85278b44e339bd586d2446b4c4a7dcd044f7ff7ac536ac00da88360a148ee7e",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/runtime-tools-02/runtime-build.stdout.log",
+      "sha256": "85da1f1cbc8e4d09ffb2be241db9ccbcd12d429a90c1873648ca31370c7fce4b",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/runtime-tools-02/runtime-verify.stdout.log",
+      "sha256": "7448f7852e6f3d57d5657f4675bbe42a9bc8877716da6a0d8e667f937ab82093",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-01/stderr.log",
+      "sha256": "ed45f6c776836a1792d9c25d76201aaf5ef4638cd75f6bcd5abf6b118c621256",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-01/stdout.log",
+      "sha256": "3c44466331590c0bbea7daeac58d6f88386051b822d095671bcfc103c49d15ca",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-02/0-stdout.log",
+      "sha256": "722dc0bdbba8d4239baf0eb6357a3650721d31a5422632d2d091cf3e479ec4f7",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-02/1-stdout.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-03/stdout.log",
+      "sha256": "ef7d38eff1d1cc6610fc34c30e1b6224a55ff4bd77c2057ffab98ccbf778667d",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-04/0-stdout.log",
+      "sha256": "cd05d913d13d0527088b908ef08da882479a655172c40ca5ce9bb7ba64d21b33",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-05/0-stdout.log",
+      "sha256": "7b2b55f6f8239cd7b0dfa72d1db98d5332d02761130b4f5e1e9cfc6a7da81de8",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-05/1-stdout.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/validation-01/owners.stdout.log",
+      "sha256": "e6bc566c191f92c1b593db2f99cb50c4f1ec5dd634608e82e2249eb637b2da6a",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/validation-01/typescript.stdout.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/worker-import-controls-01/pwa.log",
+      "sha256": "1263a6fd169ff7957cc1593f27fe0b0c63f641d00df2359f6eb41f63d081d736",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/worker-import-controls-01/typecheck.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/staged-whitespace-first.log",
+      "sha256": "d4a95ac7b0e88cad12857354c8940b92f04032929d6509fe79867b35b02cadd8",
+      "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
+    }
+  ],
+  "authoredSourceAndDocsCheck": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-01/build.stderr.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-01/build.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-01/verify.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-02/build.stderr.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-02/build.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-02/verify.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-03/build.stderr.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-03/verify.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/mobile-runner-controls-02/0-stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/preview-transport/LICENSE-VITE.md",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/prompt-preflight-01/prompt.txt",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/prompt-preflight-02/prompt.txt",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/runtime-tools-02/runtime-build.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/runtime-tools-02/runtime-verify.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-01/stderr.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-01/stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-02/0-stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-02/1-stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-03/stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-04/0-stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-05/0-stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-05/1-stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/validation-01/owners.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/validation-01/typescript.stdout.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/worker-import-controls-01/pwa.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/worker-import-controls-01/typecheck.log",
+      ":(exclude,literal)audits/AI_SPECIES_MOBILE_20260909/staged-whitespace-first.log"
+    ],
+    "exitCode": 0
+  },
+  "scope": "Only exact listed evidence files excluded; no product source or authored Markdown excluded. No captured evidence normalized."
+}

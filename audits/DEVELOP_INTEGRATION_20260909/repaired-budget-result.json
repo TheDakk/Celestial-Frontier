@@ -1,0 +1,22 @@
+{
+  "command": [
+    "node",
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+    "--label",
+    "develop-integration-budget-20260909",
+    "--",
+    "npm",
+    "exec",
+    "--",
+    "vitest",
+    "run",
+    "tests/compendium-budget.test.ts"
+  ],
+  "exitCode": 1,
+  "endedAt": "2026-09-09T03:56:36.779766+00:00",
+  "logSha256": "8bb541e26e30bfa8d941e0dc8ada15b018a3b948a1c53074f83147505542168b",
+  "sourceFiles": {
+    "port/v2/budgets/compendium-memory-v1.json": "df4f6f0794268a3ee251d63781e67e2b96ecb013ae24d6aee059a69770755399",
+    "port/v2/tests/compendium-budget.test.ts": "0a9144003463f56af85a7fc880b76007c6258276a3a4fae8ff722c17efa3eef2"
+  }
+}

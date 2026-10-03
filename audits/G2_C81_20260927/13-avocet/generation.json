@@ -1,0 +1,13 @@
+{
+  "id": "13-avocet",
+  "name": "Avocet",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1f62f963-aca5-4d86-937d-f387dbe5318b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "aaf34d932b5b31055a337ab537f37faf794fc3e447230954623dcab4fffffbd7",
+  "bytes": 1072282,
+  "promptSha256": "92430a2303795536d36154e2f031bf492ca4c0bd7e3916805497a94ae1f8efa0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

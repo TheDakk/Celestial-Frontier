@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2416079038,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 9,
+    "body": 7,
+    "loco": 15,
+    "trait": 9,
+    "size": 5,
+    "diet": 1,
+    "head": 5,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 3,
+    "detail": 6,
+    "accent": 6,
+    "temper": 8,
+    "sense": 1,
+    "repro": 5,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Earthworm"
+  },
+  "observation": null
+}

@@ -1,0 +1,226 @@
+/** Presentation notices use the existing bounded save shape. No receipt or
+ * gameplay outcome is created by reading a message. */
+import type { SaveStateV2 } from '@cf/persistence';
+export type NotificationEntry = SaveStateV2['notifications'][number];
+export const NOTIFICATION_HISTORY_LIMIT = 50; // matches the existing export cap
+const escapeText = (text: string): string => text.replace(/[&<>"']/g, (char) => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+})[char]!);
+
+export function appendNotification(
+  history: readonly NotificationEntry[], title: string, message: string, now: number,
+): NotificationEntry[] {
+  const occupied = new Set(history.map((entry) => entry.id));
+  let id = ((history[0]?.id ?? 0) + 1) | 0;
+  while (occupied.has(id)) id = (id + 1) | 0;
+  return [{ id, tt: title.slice(0, 200), ms: message.slice(0, 400),
+    t: Math.max(0, Math.min(4e12, Number.isFinite(now) ? now : 0)), read: false },
+  ...history].slice(0, NOTIFICATION_HISTORY_LIMIT);
+}
+
+export interface NotificationHistoryOptions {
+  panel: HTMLElement;
+  buttons: readonly HTMLElement[];
+  history: () => readonly NotificationEntry[];
+  replace: (history: NotificationEntry[]) => void;
+  mayWrite: () => boolean;
+  mayRecord: () => boolean;
+  deferRecord: () => boolean;
+  persist: () => Promise<boolean>;
+  fill: (html: string) => void;
+}
+export function createNotificationHistory(options: NotificationHistoryOptions): {
+  record(title: string, message: string, now: number): void;
+  render(): void;
+  refreshBadge(): void;
+  flushPending(): void;
+} {
+  let sessionOnly: NotificationEntry[] = [];
+  let pendingNotices: NotificationEntry[] = [];
+  let pending = false;
+  let status = '';
+  /* v1.8.9 parity (2026-09-25): "Mark all read", and "Clear all", which ARMS on the first tap and fires on the second (v1 FLEET
+     v1.7.2: an instant destroyer next to a safe action). v1's "opening the tray marks everything read" stays dropped by design
+     (v2: opening this panel leaves unread messages unread). */
+  let clearArmed = false;
+  let clearDisarm: ReturnType<typeof setTimeout> | null = null;
+  const CLEAR_ARM_MS = 4000;
+  const unreadCount = (): number => [...options.history(), ...sessionOnly, ...pendingNotices]
+    .filter((entry) => !entry.read).length;
+  function refreshBadge(): void {
+    const unread = unreadCount();
+    for (const button of options.buttons) {
+      button.setAttribute('aria-label', `Notifications${unread ? `, ${unread} unread` : ', all read'}`);
+      button.dataset.unread = String(unread);
+      let badge = button.querySelector<HTMLElement>('[data-notification-count]');
+      if (!badge) {
+        badge = button.ownerDocument.createElement('span');
+        badge.dataset.notificationCount = '';
+        badge.setAttribute('aria-hidden', 'true');
+        button.append(badge);
+      }
+      badge.textContent = unread > 99 ? '99+' : String(unread);
+      badge.hidden = unread === 0;
+    }
+  }
+  function row(entry: NotificationEntry, session: boolean, awaitingCheckpoint = false): string {
+    const read = entry.read;
+    return `<li class="notification-entry${read ? ' is-read' : ''}"${awaitingCheckpoint ? ' data-notification-pending' : ''}><div class="notification-heading"><strong>${escapeText(entry.tt)}</strong><span>${read ? 'Read' : 'Unread'}${awaitingCheckpoint ? ' · Awaiting checkpoint' : session ? ' · This session' : ''}</span></div><p>${escapeText(entry.ms)}</p>${!read && !awaitingCheckpoint ? `<button type="button" data-notification-read="${entry.id}" data-notification-session="${session}"${pending || (!session && !options.mayRecord()) ? ' disabled' : ''}>Mark read</button>` : ''}</li>`;
+  }
+  function render(): void {
+    const active = options.panel.ownerDocument.activeElement;
+    const ownedFocus = active instanceof HTMLElement && options.panel.contains(active);
+    const actionId = ownedFocus ? active.dataset.notificationRead : undefined;
+    const bulkAction = ownedFocus ? active.dataset.notificationBulk : undefined;
+    const actionSession = ownedFocus ? active.dataset.notificationSession : undefined;
+    refreshBadge();
+    const history = options.history();
+    const entries = pendingNotices.map((entry) => row(entry, false, true)).join('')
+      + sessionOnly.map((entry) => row(entry, true)).join('')
+      + history.map((entry) => row(entry, false)).join('');
+    const anyUnread = [...history, ...sessionOnly].some((entry) => !entry.read);
+    const anyEntries = history.length + sessionOnly.length > 0;
+    const bulk = anyEntries ? `<div class="notification-actions">${anyUnread ? `<button type="button" data-notification-bulk="read-all"${pending ? ' disabled' : ''}>Mark all read</button>` : ''}<button type="button" data-notification-bulk="clear"${clearArmed ? ' data-armed="1"' : ''}${pending ? ' disabled' : ''}>${clearArmed ? 'Clear all? — confirm' : 'Clear all'}</button></div>` : '';
+    options.fill(`<h2>Notifications</h2><p class="dim">Recent messages · up to 50 saved. Opening this panel leaves unread messages unread.</p><p class="notification-save-status" role="status">${escapeText(status || (!options.mayWrite() ? 'History is read-only while save authority is unavailable.' : 'Read state is saved with your expedition.'))}</p>${bulk}${entries ? `<ol class="notification-list">${entries}</ol>` : '<p class="notification-empty">No messages yet.</p>'}`);
+    if (ownedFocus && bulkAction) {
+      (options.panel.querySelector<HTMLElement>(`[data-notification-bulk="${bulkAction}"]:not([disabled])`)
+        ?? options.panel.querySelector<HTMLElement>('[data-pnx]'))?.focus({ preventScroll: true });
+    } else if (ownedFocus) {
+      const candidate = [...options.panel.querySelectorAll<HTMLButtonElement>('[data-notification-read]')]
+        .find((button) => button.dataset.notificationRead === actionId
+          && button.dataset.notificationSession === actionSession && !button.disabled);
+      (candidate ?? options.panel.querySelector<HTMLElement>('[data-pnx]'))?.focus({ preventScroll: true });
+    }
+  }
+  function refreshOpen(): void {
+    refreshBadge();
+    if (options.panel.style.display !== 'none') render();
+  }
+  function flushPending(): void {
+    if (!options.mayRecord() || pendingNotices.length === 0) return;
+    let history = [...options.history()];
+    // Replay oldest first so the newest deferred notice remains first. IDs are
+    // assigned against the settled history, never the in-flight product copy.
+    for (const entry of [...pendingNotices].reverse()) {
+      history = appendNotification(history, entry.tt, entry.ms, entry.t);
+    }
+    options.replace(history);
+    pendingNotices = [];
+    refreshOpen();
+  }
+  function disarmClear(): void {
+    clearArmed = false;
+    if (clearDisarm !== null) { clearTimeout(clearDisarm); clearDisarm = null; }
+  }
+  /** One saved-history write with the module's refusal contract: nothing changes when the save is busy or read-only, and a refused
+   *  write restores exactly what it changed (notices that arrived meanwhile are kept). */
+  async function commitSaved(
+    apply: (history: readonly NotificationEntry[]) => NotificationEntry[],
+    undo: (history: readonly NotificationEntry[]) => NotificationEntry[],
+    saving: string, saved: string, refused: string,
+  ): Promise<void> {
+    if (!options.mayWrite()) {
+      status = options.mayRecord()
+        ? 'Another action or save is settling. Try again shortly.'
+        : 'History is read-only while save authority is unavailable.';
+      render(); return;
+    }
+    options.replace(apply(options.history()));
+    pending = true; status = saving; render();
+    let committed = false;
+    try { committed = await options.persist(); } catch { /* keep the prior state on refusal */ }
+    if (!committed) options.replace(undo(options.history()));
+    pending = false;
+    status = committed ? saved : refused;
+    render();
+  }
+  options.panel.addEventListener('click', async (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const bulkButton = target.closest<HTMLButtonElement>('[data-notification-bulk]');
+    if (bulkButton) {
+      if (bulkButton.disabled || pending) return;
+      if (bulkButton.dataset.notificationBulk === 'read-all') {
+        disarmClear();
+        sessionOnly = sessionOnly.map((entry) => entry.read ? entry : { ...entry, read: true });
+        const unreadIds = new Set(options.history().filter((entry) => !entry.read).map((entry) => entry.id));
+        if (unreadIds.size === 0) { render(); return; }
+        await commitSaved(
+          (history) => history.map((entry) => unreadIds.has(entry.id) ? { ...entry, read: true } : entry),
+          (history) => history.map((entry) => unreadIds.has(entry.id) ? { ...entry, read: false } : entry),
+          'Saving read state…', 'All messages marked read.', 'Read state was not saved. Messages remain unread.',
+        );
+        return;
+      }
+      if (bulkButton.dataset.notificationBulk === 'clear') {
+        if (!clearArmed) {
+          clearArmed = true;
+          clearDisarm = setTimeout(() => { clearArmed = false; clearDisarm = null; refreshOpen(); }, CLEAR_ARM_MS);
+          render(); return;
+        }
+        disarmClear();
+        sessionOnly = [];
+        const removed = [...options.history()];
+        if (removed.length === 0) { render(); return; }
+        const removedIds = new Set(removed.map((entry) => entry.id));
+        await commitSaved(
+          (history) => history.filter((entry) => !removedIds.has(entry.id)),
+          (history) => [...history, ...removed.filter((entry) => !history.some((kept) => kept.id === entry.id))]
+            .slice(0, NOTIFICATION_HISTORY_LIMIT),
+          'Clearing messages…', 'Messages cleared.', 'Messages were not cleared.',
+        );
+      }
+      return;
+    }
+    const button = target.closest<HTMLButtonElement>('[data-notification-read]');
+    if (!button || button.disabled || pending) return;
+    const id = Number(button.dataset.notificationRead);
+    if (button.dataset.notificationSession === 'true') {
+      sessionOnly = sessionOnly.map((entry) => entry.id === id ? { ...entry, read: true } : entry);
+      render(); return;
+    }
+    if (!options.mayWrite()) {
+      status = options.mayRecord()
+        ? 'Another action or save is settling. Try Mark read again shortly.'
+        : 'History is read-only while save authority is unavailable.';
+      render(); return;
+    }
+    const before = options.history();
+    if (!before.some((entry) => entry.id === id && !entry.read)) return;
+    options.replace(before.map((entry) => entry.id === id ? { ...entry, read: true } : entry));
+    pending = true; status = 'Saving read state…'; render();
+    let committed = false;
+    try { committed = await options.persist(); } catch { /* keep the unread state on refusal */ }
+    if (!committed) {
+      // New notices arriving during the write are retained; only this read is undone.
+      options.replace(options.history().map((entry) => entry.id === id ? { ...entry, read: false } : entry));
+    }
+    pending = false;
+    status = committed ? 'Read state saved.' : 'Read state was not saved. This message remains unread.';
+    render();
+  });
+  return {
+    record(title, message, now) {
+      if (options.deferRecord() || (options.mayRecord() && pendingNotices.length > 0)) {
+        pendingNotices = appendNotification(pendingNotices, title, message, now);
+      } else if (options.mayRecord()) {
+        options.replace(appendNotification(options.history(), title, message, now));
+      } else {
+        sessionOnly = appendNotification(sessionOnly, title, message, now);
+      }
+      refreshOpen();
+    },
+    render, refreshBadge, flushPending,
+  };
+}
+
+export const NOTIFICATION_HISTORY_CSS = `
+#notificationpanel{left:auto;right:calc(var(--safe-right) + 12px);width:min(380px,calc(100vw - 24px));box-sizing:border-box;overflow:auto;padding:14px 58px 14px 14px;font:var(--cf-type-body)/1.5 var(--ui);z-index:var(--cf-layer-utility-panel)}
+@media(max-width:900px) and (orientation:landscape){body.panel-open #notificationpanel{left:calc(var(--safe-left) + 8px);right:auto;top:calc(var(--safe-top) + 6px);width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 30px)}}
+#notificationpanel h2{margin:0 44px 8px 0;font-size:var(--cf-type-section)}
+.notification-list{padding:0;margin:12px 0 0;list-style:none}.notification-entry{padding:12px 0;border-top:1px solid var(--cf-color-border)}
+.notification-heading{display:flex;gap:8px;align-items:baseline;justify-content:space-between}.notification-heading strong{min-width:0;overflow-wrap:anywhere}.notification-heading span{font-size:11px;color:var(--cf-color-accent-gold);white-space:nowrap}.notification-entry.is-read .notification-heading span{color:var(--dim)}
+.notification-entry p{margin:4px 0 8px;overflow-wrap:anywhere}.notification-entry button{min-width:44px;min-height:44px;padding:8px 12px;border-radius:var(--cf-radius-small);border:1px solid var(--cf-color-border);background:var(--cf-color-elevated);color:var(--ink);font:inherit}.notification-entry button:disabled{opacity:.6}.notification-entry button:focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
+.notification-actions{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}.notification-actions button{min-width:44px;min-height:44px;padding:8px 12px;border-radius:var(--cf-radius-small);border:1px solid var(--cf-color-border);background:var(--cf-color-elevated);color:var(--ink);font:inherit}.notification-actions button[data-armed]{border-color:var(--cf-color-accent-gold);color:var(--cf-color-accent-gold)}.notification-actions button:disabled{opacity:.6}.notification-actions button:focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
+.notification-save-status{font-size:11px;color:var(--dim);margin:8px 0}.dock-utility{position:relative}[data-notification-count]{position:absolute;top:0;right:0;min-width:14px;padding:1px 3px;border-radius:8px;background:var(--cf-color-accent-gold);color:#131b28;font:700 9px/12px var(--ui);text-align:center;pointer-events:none}[data-notification-count][hidden]{display:none}
+`;

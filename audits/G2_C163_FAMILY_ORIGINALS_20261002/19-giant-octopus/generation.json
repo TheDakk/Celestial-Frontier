@@ -1,0 +1,14 @@
+{
+  "id": "19-giant-octopus",
+  "name": "Giant Octopus",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c2bae414-d4b1-4e4d-b954-91f48d98771f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ed746451e5751a2189ccb630bb5d8d37fdc3ff6145d3df24b89d88ef36afccc2",
+  "bytes": 1438350,
+  "promptSha256": "7a0abce068f7a3c33e0da1bc02a58b9713bd5192a5fb32cdd973c4a30d221762",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

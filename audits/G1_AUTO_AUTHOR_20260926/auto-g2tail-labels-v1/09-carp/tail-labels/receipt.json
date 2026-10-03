@@ -1,0 +1,187 @@
+{
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "body-5",
+    "remainder": "body",
+    "derivedFromRigJoints": true
+  },
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/09-carp/fit",
+  "sourceRecordSha256": "3248c5901a888f59d792917d4bd14ee1618d5b1250a490e6265f73a53b6e9c4a",
+  "sourceLabelsSha256": "7e0356af2ed02a0c74d24e622418e0dc6b76e2a116107ab1b7c970efb68500d9",
+  "newLabelsSha256": "4af86423ec4cfc8d96c6c84cfa9f2c213422ac0b7e0ce38b254073fde32a5658",
+  "newDecodedLabelsSha256": "913c57449471e7ead6c298d01b3a0c1d7de3bc813330be7fc2245e9539fce861",
+  "sourceMasterSha256": "ce3c2a8a31998a84eaea13ea31fbb34a86053096c042a4400cc28a05187f4bc1",
+  "helperSha256": "a6de4391bdb7b2a1a61e9c2d1a0bf9c636f2f98cc4a1ff8aadf1cc37530fd05a",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "schema": "cf.remainder-gap-labels/v1",
+    "tail": 6,
+    "stalk": 13,
+    "remainder": 7,
+    "maxDistance": 103,
+    "components": [
+      19,
+      11,
+      9,
+      8,
+      8,
+      7,
+      4,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "changedPixels": 109,
+    "requestedRetained": 109,
+    "otherOwnersChanged": 0,
+    "unowned": 0,
+    "sourceRgbaChanges": 0,
+    "contourProjection": false
+  },
+  "intake": {
+    "id": "09-carp",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1997,
+      "height": 1480
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "4b1b58e1094f382456561a71401ab01a92cf22c6c3328e983a08d3d9ce5f0ac1",
+    "sourceVertices": 2254,
+    "vertices": 2582,
+    "sharedSupports": 677,
+    "pins": 1351,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "joins": [
+    {
+      "name": "body--body-0",
+      "sourceEdges": 509
+    },
+    {
+      "name": "body--far-pectoral",
+      "sourceEdges": 250
+    },
+    {
+      "name": "body--head",
+      "sourceEdges": 771
+    },
+    {
+      "name": "body--near-pectoral",
+      "sourceEdges": 853
+    },
+    {
+      "name": "body-0--body-1",
+      "sourceEdges": 410
+    },
+    {
+      "name": "body-1--body-2",
+      "sourceEdges": 420
+    },
+    {
+      "name": "body-1--dorsal",
+      "sourceEdges": 138
+    },
+    {
+      "name": "body-2--body-3",
+      "sourceEdges": 418
+    },
+    {
+      "name": "body-3--body-4",
+      "sourceEdges": 375
+    },
+    {
+      "name": "body-4--body-5",
+      "sourceEdges": 160
+    },
+    {
+      "name": "body-5--caudal",
+      "sourceEdges": 205
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 262
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body-0|dorsal",
+      "sourceEdges": 74
+    },
+    {
+      "name": "body-0|far-pectoral",
+      "sourceEdges": 114
+    },
+    {
+      "name": "body-2|dorsal",
+      "sourceEdges": 107
+    },
+    {
+      "name": "body-3|body-5",
+      "sourceEdges": 12
+    },
+    {
+      "name": "body-3|dorsal",
+      "sourceEdges": 182
+    },
+    {
+      "name": "body-4|dorsal",
+      "sourceEdges": 181
+    },
+    {
+      "name": "body-5|dorsal",
+      "sourceEdges": 28
+    },
+    {
+      "name": "body|body-1",
+      "sourceEdges": 547
+    },
+    {
+      "name": "body|body-2",
+      "sourceEdges": 71
+    },
+    {
+      "name": "body|caudal",
+      "sourceEdges": 80
+    },
+    {
+      "name": "body|dorsal",
+      "sourceEdges": 90
+    },
+    {
+      "name": "body|jaw",
+      "sourceEdges": 66
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 53
+    }
+  ]
+}

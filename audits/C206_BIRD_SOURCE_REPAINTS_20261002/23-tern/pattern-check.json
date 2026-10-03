@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tern",
+  "masterSha256": "e4bc60adf1e4101b7b54831189fcd8d8988b6b9dafcbf8a994fa4467d9edaf80",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

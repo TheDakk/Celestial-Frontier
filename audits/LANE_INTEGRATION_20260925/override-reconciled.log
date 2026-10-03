@@ -1,0 +1,31 @@
+✔ static dependency closure follows real JS, TS fallbacks, re-exports and cycles beyond art (3.442292ms)
+✔ dependency discovery rejects missing dependency (1.165917ms)
+✔ dependency discovery rejects ambiguous runtime and typed files (1.261791ms)
+✔ dependency discovery rejects source boundary escape (1.2015ms)
+✔ dependency discovery rejects symlink directory escape (1.862416ms)
+✔ dependency discovery rejects declaration-only dependency (1.382833ms)
+✔ dependency discovery rejects malformed transitive JS (1.629417ms)
+▶ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy
+  ✔ transitive route mutation (310.455292ms)
+  ✔ arbitrary Object.create prototype (349.124417ms)
+  ✔ Object.create property descriptors (315.999625ms)
+  ✔ aliased Object.create (315.17125ms)
+  ✔ outside-art re-export cannot hide a second route owner (CC) (416.6315ms)
+  ✔ private route function reassignment (709.428ms)
+  ✔ public ordinary branch disconnects (708.047541ms)
+  ✔ public capture branch returns replay ink (788.127208ms)
+  ✔ selected painter bypasses ink (755.484083ms)
+  ✔ topology helper skips painting (710.340792ms)
+  ✔ topology callback loses the painter (710.985167ms)
+  ✔ topology callback receives the wrong ink (712.484125ms)
+  ✔ topology callback changes painter genome (718.363708ms)
+  ✔ route precedence remains enforced (712.542416ms)
+✔ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy (9674.619583ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9782.514

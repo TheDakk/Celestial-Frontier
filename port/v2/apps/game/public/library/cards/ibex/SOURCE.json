@@ -1,0 +1,8 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ibex",
+ "fitDir": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/",
+ "markingsDir": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4f9131360086d036e678f8caf8e9efc3ed808055e7b18cfa599afd230583d823"
+}

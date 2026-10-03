@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "03-spider-palp",
+  "command": [
+    "node",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/03-spider-palp",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/03-spider-palp/fit01",
+    "01"
+  ],
+  "helperSha256": "5fb70eb9e7d911e33717b08123211f1a1e299526d61608e4a8df1b999eba5855",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C186_SPECIALIZED_REFERENCES_20261002/03-spider-palp/conservation-01.log",
+  "logSha256": "7f4c1deacde3fe3cdbb968a3a534deecded30fed4d3d3e22cf9d11b9a6e63e3d",
+  "nativeRuns": 0
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "cf.c183-painted-bird-check/v1",
+  "tag": "corrected-01",
+  "sourceHead": "5cc190cd31ac22b466785351bba854c5219431d8",
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "apps/game/src/motion/painted-bird-author.test.ts",
+    "apps/game/src/motion/axial-faint.test.ts",
+    "--reporter=verbose"
+  ],
+  "workingDirectory": "port/v2",
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_PAINTED_BIRD_FAINT_20261002/corrected-01.log",
+  "logSha256": "2bfa3943391152e9528eacc44a38d84b53495f02faf7a78d1cf97bd47eba5f90",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/motion/painted-bird-author.test.ts",
+      "sha256": "9b3186cf4b254a0e24d0095b235ef0ee3266a9270494f6a82da8afa39a5fc821",
+      "unchanged": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/axial-faint.ts",
+      "sha256": "dc1f130d8b2e2442c7a778cb05788b63b01173f3ab4560996d7211a5fd45ff58",
+      "unchanged": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/axial-faint.test.ts",
+      "sha256": "d1cbcdab11bf7faf934ec7063e49c767496ccf328bb008ca5673708ce81f3bdf",
+      "unchanged": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "0865a05c2e5d767acf0c406776b3325493b264d49138259941ea417d3a8782b8",
+      "unchanged": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.ts",
+      "sha256": "7dfec38b2f458f0031a4c9126d2ea4cb721172455e4ebccddcf6d75fa56c3148",
+      "unchanged": true
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/painted-supports.ts",
+      "sha256": "685981c31ef67838b6d52f0b80b126077c6ef2f8f11a4f985ce58c284d309695",
+      "unchanged": true
+    }
+  ],
+  "nativeRuns": 0
+}

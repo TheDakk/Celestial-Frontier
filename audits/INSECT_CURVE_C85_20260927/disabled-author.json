@@ -1,0 +1,7 @@
+{
+  "mutation": "actual candidate selector disabled",
+  "exitCode": 1,
+  "sourceSha256": "9360b1fc980a526800ce7b9e05d51829f038cd99e84635cae52b0ffee470471d",
+  "mutantSha256": "8aa8a981f24e6bc52d325c1606aaa724e472ca9a4ab11e28da12e0d539d998ba",
+  "sourceRestoredExactly": true
+}

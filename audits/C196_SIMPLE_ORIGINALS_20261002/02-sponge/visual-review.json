@@ -1,0 +1,28 @@
+{
+  "name": "Sponge",
+  "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Single irregular golden porous vase with large open osculum and continuous basal tissue; no head, limbs or invented face. Fine pitted texture reads more photographic than the approved brushwork in places, so style remains a hold. Basal projections are tissue, not declared feet; no seabed painted.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 390,
+      "y0": 235,
+      "x1": 864,
+      "y1": 1018
+    },
+    "margins": {
+      "left": 390,
+      "right": 389,
+      "top": 235,
+      "bottom": 235
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

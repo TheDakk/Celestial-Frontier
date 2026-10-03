@@ -1,0 +1,27 @@
+[
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "sha256": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d",
+    "identicalTo": "fb1922a0"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-stance-reach.test.ts",
+    "sha256": "f6251bbd836ce8144b2edeb517860696071cff4706583d8785bb53f5fb85022b",
+    "identicalTo": "fb1922a0"
+  },
+  {
+    "path": "port/v2/tools/overridecheck.mjs",
+    "sha256": "fe25b86c46287db9aa7f8930faacf82d8709ff1f2d216698c74729f56b35380a",
+    "identicalTo": "fb1922a0"
+  },
+  {
+    "path": "port/v2/tools/overridecheck.control.mjs",
+    "sha256": "7a96119ef6d1ba0eed0240cc11f750251f414a768e0cb700311893770ad5d517",
+    "identicalTo": "fb1922a0"
+  },
+  {
+    "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+    "sha256": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf",
+    "identicalTo": "fb1922a0"
+  }
+]

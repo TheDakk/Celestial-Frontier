@@ -1,0 +1,28 @@
+✔ keyed labels reproduce every original Sculpin part without changing any pixel or label (158.736042ms)
+✖ a changed keyed colour refuses even though original PNG and record still match (111.104916ms)
+✔ keyed declaration, original identity, missing pixels and background ownership fail closed (168.11325ms)
+✔ file builder keys the unchanged opaque master and verifies the exact label file (1118.80225ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1946.406083
+
+✖ failing tests:
+
+test at port/v2/tools/creature-animation/keyed-part-labels.test.mjs:15:1
+✖ a changed keyed colour refuses even though original PNG and record still match (111.104916ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/keyed-part-labels.test.mjs:17:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /changed keyed RGBA/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

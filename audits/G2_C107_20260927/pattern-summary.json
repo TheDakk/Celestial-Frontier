@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Juvenile Shark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Eel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Electric Eel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Moray Eel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gulper Eel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Oarfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gull",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Frigatebird",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tropicbird",
+    "status": "PASS"
+  },
+  {
+    "name": "Giant Anteater",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mountain Tapir",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Panda",
+    "status": "PASS"
+  },
+  {
+    "name": "Snowshoe Hare",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mountain Goat",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Ibex",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Chamois",
+    "status": "PASS"
+  },
+  {
+    "name": "Otter",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Jackrabbit",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gopher",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hamster",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Guinea Pig",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Armadillo",
+    "status": "PASS"
+  },
+  {
+    "name": "Wild Pony",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wild Ass",
+    "status": "NOT_REQUIRED"
+  }
+]

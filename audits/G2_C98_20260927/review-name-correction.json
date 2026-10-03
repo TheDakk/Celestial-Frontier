@@ -1,0 +1,5 @@
+{
+  "failure": "review.mjs refused Secretary Bird because review note used SecretaryBird",
+  "fix": "canonical name key corrected; note text and all input bytes unchanged",
+  "rerunReason": "corrected missing review metadata, not a gate or source change"
+}

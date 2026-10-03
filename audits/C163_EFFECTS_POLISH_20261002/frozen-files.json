@@ -1,0 +1,792 @@
+{
+  "schema": "cf.c163-effects-arena-frozen-files/v1",
+  "files": [
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-composed-review.png",
+      "sha256": "02ffe29f4dacd353d8663e15d99ecce3c9fd024ce64cb499a2049e6ba1d35aea",
+      "bytes": 3835783
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-composed-webp-review.png",
+      "sha256": "0ae0270ece7866407b4a7e4c4950931f17f3eaf0c320980753825e13dcf5ad25",
+      "bytes": 2949931
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.generation.json",
+      "sha256": "49055973091b598460c5540895a03ce721827564fa5a339ce7ede62e49fe09bf",
+      "bytes": 946
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.png",
+      "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418",
+      "bytes": 2485454
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.webp",
+      "sha256": "699ffa48023c0bbf9291406772fe3b4315e75c1bf33c48f5181b8c0e74559741",
+      "bytes": 332238
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-manifest.json",
+      "sha256": "384d466193def194f6c51cb15aab3d9327ec8e343022f0fd03787fa2d37bab58",
+      "bytes": 1448
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid-c163.prompt.txt",
+      "sha256": "1f076f48b68e6ebcc81679bbcbcf95737066600f8b6dbeffcad984339ec2c8e0",
+      "bytes": 8064
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.generation.json",
+      "sha256": "8d2286403c337bd68fda49a03fdc6722573511820631c804ecc93514503b1efa",
+      "bytes": 848
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.png",
+      "sha256": "e5a5391e33f5535a5e500c033a604552d97f18b21239f9393bc30c0f88354e13",
+      "bytes": 1466641
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-attempt-1.generation.json",
+      "sha256": "b7e02811f82439784e8100f27c9ad97dde16d6b2b8e13f80c02a5ea7a8b12c35",
+      "bytes": 874
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-attempt-1.png",
+      "sha256": "a367f2093d6d119166be7d39f932ac8318faea1b0805b9b795aaba55e59b39bd",
+      "bytes": 1150468
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-c163-second.prompt.txt",
+      "sha256": "be1a95472ec617ea718390b929f34e6db7ffbcca4dd8a59eaeadb5081365bd9d",
+      "bytes": 8127
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-c163.prompt.txt",
+      "sha256": "0640ef03b48aac8779f70f5c7848f273586998c429943dd2eba12f453ce2d643",
+      "bytes": 7969
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.generation.json",
+      "sha256": "9cea726efd90410f8d9fa61bac6509c4fcbf063d2369cbb7332dad9ca64d4bcf",
+      "bytes": 857
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.png",
+      "sha256": "eb3a66bd6460b690a4caa845bd53e3aa81b53fdb0e051688a646259ec0f97545",
+      "bytes": 1173618
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-plates-review.png",
+      "sha256": "2557f4bf4462e336b269d13c4a30eb902a443aa78051cb2cd5ffadd7e89e33f4",
+      "bytes": 2480195
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-recipe.json",
+      "sha256": "e0bec0bcf8de10d8c79610b09c8006d58025493e2c693d7afb8bbf5348ec4a2d",
+      "bytes": 4149
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/acceptance.pending.json",
+      "sha256": "8722e72ae2489a703bbc8ad1bbb7a74259f8ed2f02a028a5bdc761ca436c1449",
+      "bytes": 794
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/arena-delivery-recipe.json",
+      "sha256": "4798ce8f38105f4eaac7924de3d04b5e184076173fdee357b3456821337e1ca5",
+      "bytes": 4267
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/delivery-review.json",
+      "sha256": "4b208aa20cb488a055092b972f2b3a4ffdc54a249d2da97d156cdcd146ba7dfe",
+      "bytes": 7053
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/delivery.pending.json",
+      "sha256": "c40681b99453aae25d668e362ec4be5275b45569afbaaee3987db73f8d299de6",
+      "bytes": 1052
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/delivery.webp.pending.json",
+      "sha256": "82f667b95cd2bd25f9e889d4fee3a3f35356ba1e3546d0b56ee7b2f33e033dac",
+      "bytes": 1789
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/webp-receipt.json",
+      "sha256": "e13238296aa14c5f87b1c3b2753d81677a7becba3346a3882a9213987030827f",
+      "bytes": 3476
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/edit-provenance.json",
+      "sha256": "0bb0c4164a76cd7c5905dddf33d80db7f1cd9fb54c16fc81cefb8bc6e9a18d68",
+      "bytes": 4327
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/intake.json",
+      "sha256": "6b2ed22b7a8ce749439883ee9e1d8154b2703f9f25c2ae097c468472cc66222e",
+      "bytes": 5424
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-mid.png",
+      "sha256": "e51ba9611228906467c1546c8e3d0e97b9d05129b72cc11d3ecad14437993097",
+      "bytes": 1960493
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-mid.webp",
+      "sha256": "9cf46d4be12bede3e9aa47c6046fe4bfa88d85d62daa20b9e69959932f56d11e",
+      "bytes": 129194
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-near.png",
+      "sha256": "0cce96b0722a343d39c898de0dbe9b96d1e1986fd95545f12bb9821d66cf08a8",
+      "bytes": 1442485
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-near.webp",
+      "sha256": "5362e9c234bec37aa59d4d8b8f059930453ecdcfa2610f7c9f425bdac73a6441",
+      "bytes": 65482
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/recipe.pending.json",
+      "sha256": "596820992f428cf242cf523dd5393404af7373ae2d84bf50d04f768a484c225e",
+      "bytes": 3497
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/visual-notes.d29.json",
+      "sha256": "e41d76c32f0b37473238ca9bea55100799b94a9d4cf56a3688d35484347bbe2d",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/webp-visual-review.json",
+      "sha256": "7b2d4ca59be097538714496495d92c1112563d39c1e46768ec9ac9b26d880c38",
+      "bytes": 1772
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/effects-agent-repaint-c163.json",
+      "sha256": "5ee01e64c0908105d5bf89a0cdbce650b32b6a10152a71d24cecab815ce8e4ed",
+      "bytes": 4699
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-composed-review.png",
+      "sha256": "1465bf7d5dc970303909d507702baa5bf4333ad3a5b85fba416f860068b0f866",
+      "bytes": 4471349
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-composed-webp-review.png",
+      "sha256": "aef24bd8a34ac32f6b920e5feee8353dbac910c7c7d2105e04dfad2956492983",
+      "bytes": 3721593
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.generation.json",
+      "sha256": "c8049c1e34a50c1d715655120ba7c9b32580e5d417655bb22ec20a15012f95fd",
+      "bytes": 977
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.png",
+      "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38",
+      "bytes": 2874963
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.webp",
+      "sha256": "49c4e63ba0f728788baa0bd3095734277b21938d694c4ce0de5bd8f82b1b57c3",
+      "bytes": 431454
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-manifest.json",
+      "sha256": "48151c0a083db3f8da758d0abe5a8c35d69d89259ecd5476aaf2bebc22ccf091",
+      "bytes": 1504
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-mid.generation.json",
+      "sha256": "d920971011d635119d38af6c18f0471e7acd17da1d10a791eff417b4544e71d6",
+      "bytes": 966
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-mid.png",
+      "sha256": "ba5ac07fc6b02781d2525b78ef1350a882fa2b94eb6fb960ed2709d45d62c9bf",
+      "bytes": 1987031
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-attempt-1.generation.json",
+      "sha256": "f83d9e97704815cf0f97600a7d4f179cf9362747d978dcd8a67a95d8381cd80b",
+      "bytes": 890
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-attempt-1.png",
+      "sha256": "c18f8a7136d764ba6017442a7e4576bbb38ffc3274dc0d8007929833b8d8105d",
+      "bytes": 1235960
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-c163-second.prompt.txt",
+      "sha256": "a2b7d57406646591d4ca329cee157bf1c794dfa044f23e1f3c555d7e40692d8c",
+      "bytes": 8150
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-c163.prompt.txt",
+      "sha256": "a61da4c8f84a288a7a024f581d842954f76862133ed1c9583de0afa27e1b887c",
+      "bytes": 7999
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near.generation.json",
+      "sha256": "e3023f9c5e35f8163d0a97169737d04ad5fff06f1c81b5c2564e35031c2c9c45",
+      "bytes": 873
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near.png",
+      "sha256": "b59b6d0d4305f72ad1492d7615bb0d2d347af692818d094152795cb9777b3191",
+      "bytes": 1223314
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-plates-review.png",
+      "sha256": "b37a548bafc567ef08524ebd642ee245a5cc01d18bb886828e3a04ace452348f",
+      "bytes": 2909084
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-recipe.json",
+      "sha256": "b558d7fe315af26ee07006263035250740a343fc38368cce5bb30346cfba39a0",
+      "bytes": 4246
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/acceptance.pending.json",
+      "sha256": "5ce005e47c1e157348ba20b6b4ca2daad3e3ab199466d9769702f44aee511438",
+      "bytes": 794
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/arena-delivery-recipe.json",
+      "sha256": "c80f0ffe1a6a7ab7774d5d4fe69fc7ead9a56e9872b2365035f2203502c37450",
+      "bytes": 4364
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/delivery-review.json",
+      "sha256": "e6c589b806d30e8fae1e633e8a7638c701a2a5773e68855825ad60934e522e38",
+      "bytes": 7179
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/delivery.pending.json",
+      "sha256": "db26ada40299d62006fee66413dc2475d0630da262f6fe54575fcdba926e2b3c",
+      "bytes": 1126
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/delivery.webp.pending.json",
+      "sha256": "7c90df7b17778c929b27d8faaddfbac2811e3412b0ce0c6ae5bda4a679001e63",
+      "bytes": 1895
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/webp-receipt.json",
+      "sha256": "2b845f3531af53c22881977c0928e950caaee10f1a8e5d6ce8a448267a144e6c",
+      "bytes": 3543
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/edit-provenance.json",
+      "sha256": "186ef5da9f3e6a0af57e98f17bd5de9a63b311e4350974fe7589472d20a90630",
+      "bytes": 3702
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/intake.json",
+      "sha256": "8b36a478eb27f6978f733690d3a6f95a73d5d189ac99d74482e0a0ba2252f475",
+      "bytes": 38227
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-mid.png",
+      "sha256": "7172142d0763d33a55731aaeea0827461e342ea7b955e5ad5cbaaf66445b2b3a",
+      "bytes": 2619819
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-mid.webp",
+      "sha256": "0113f9426370f5d135498e0a1de56e58179441cb6340cddfd9bf5f49b58ad84e",
+      "bytes": 243884
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-near.png",
+      "sha256": "5748b01064525b8f959de4426ba5db8f2d18054eedf1a87bf8e33e2eef562d11",
+      "bytes": 1484016
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/keyed/arena-near.webp",
+      "sha256": "c80a2c4902d6f23b32eff5d271233100c97dbd00a0dc3e909f631f1eae7ddeeb",
+      "bytes": 75344
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/recipe.pending.json",
+      "sha256": "22c66ceba6b56fdcb87d69ff89aeedce85a6102fe0e2096a5d729dbe5f439bc8",
+      "bytes": 3594
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/visual-notes.d29.json",
+      "sha256": "02ea9d8c517162b264d97dc2e88250eb9d6853a25ae97f8ec43b437544a12b96",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/webp-visual-review.json",
+      "sha256": "e48ed5e4d470173d5443be777ace5e495e6f4ccc0824c7d34cc3403e81581391",
+      "bytes": 1811
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-composed-review.png",
+      "sha256": "5c97a673d1612cc4a39e838b748601686b31c63962e05cd4f7d9232c715c8378",
+      "bytes": 4161945
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-composed-webp-review.png",
+      "sha256": "a373d953fbd95b6a9eb8fb300f8242bca249d3e2001f3b50cb539096f2c97489",
+      "bytes": 3372362
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.generation.json",
+      "sha256": "fc1aab32bb42e0b5ec73c218f1c0847214c0bd783275c39c08bebfc2d38b572d",
+      "bytes": 933
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.png",
+      "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989",
+      "bytes": 2464395
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.webp",
+      "sha256": "40ac702c61cb4482dbd1a95aad4dd0b0de96788f2a684ab404d2cdbc3a9196ce",
+      "bytes": 308618
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-manifest.json",
+      "sha256": "0cc0aca3686ebb266317bc9bcb68dbbedf36c961517e8c073bb1f48dad7b4aa0",
+      "bytes": 1434
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid-c163.prompt.txt",
+      "sha256": "88eb276e43cfdbf897f9c064c3bc2e5762d90c085cf4b22f9f7f350dd5f5572f",
+      "bytes": 8147
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.generation.json",
+      "sha256": "270fa0cdc078551001fe6073083cc770c9b083e721b429d31f3ce42d7cbc59c3",
+      "bytes": 844
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-mid.png",
+      "sha256": "6a5d7d927f7751a57527e771e03f42e15f2de806734dd389b022c8e33153f848",
+      "bytes": 1957960
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-attempt-1.generation.json",
+      "sha256": "03538745916abb44f241839b8bd521db0c1c21b675c3e7b04f469dfb2ce0ab8f",
+      "bytes": 870
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-attempt-1.png",
+      "sha256": "5a344de0b5e58a802407af7b8570f1f0eddce4fec420ed9f305dd34ca46d1971",
+      "bytes": 1402279
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-c163-second.prompt.txt",
+      "sha256": "ea5ca14dbc954b275ab90fcbc547db73122a299aca3077642797689ad05ec1db",
+      "bytes": 8087
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near-c163.prompt.txt",
+      "sha256": "7126830b031d99a145e71ad0ebb3361f11987e41721cda12ab327e512740ba96",
+      "bytes": 7930
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.generation.json",
+      "sha256": "6d0c9b3f61e50d126cc86e55abc4ab4eb56deeb1777d0805989304c5198cd049",
+      "bytes": 853
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-near.png",
+      "sha256": "29da6b08ff6ba7429cb55574dc0dd2fd9d6211fb652f14e0996f057aa91e4bff",
+      "bytes": 1267655
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-plates-review.png",
+      "sha256": "9d4a769ce9506970218ed8e96161076016b999caa44e0d3d9a1ebd209cdc146f",
+      "bytes": 2744368
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-recipe.json",
+      "sha256": "1aab77db034348bc5ac1ef8749024d647eec7eaf624d3df85040bbb207c165c8",
+      "bytes": 4102
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/acceptance.pending.json",
+      "sha256": "93564a7251506e0d7ba94b5d9fcc2f9c3d94215f67d90379697507e087e20b79",
+      "bytes": 794
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/arena-delivery-recipe.json",
+      "sha256": "b56beb15e4130aeaed65d3b8145d9a36bcac2df047bf24d5e59def21ceebbc5c",
+      "bytes": 4220
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/delivery-review.json",
+      "sha256": "c874f583fb2707bd79c1171549cd885df44609e40d43fb32c61abbb1810ef4e5",
+      "bytes": 6997
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/delivery.pending.json",
+      "sha256": "4b785076490181bad2c900bbd9bca6f35b6d9862af2671a6fe93631cf8d43161",
+      "bytes": 1032
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/delivery.webp.pending.json",
+      "sha256": "b9d978f7f7e30038c3d2a1f8aea60b3ec81e17d1dd1d1c5cda7e1b04ebf60b35",
+      "bytes": 1761
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/webp-receipt.json",
+      "sha256": "d413c262dbcdbb8491827e6d8d07c438c3bb83aebd0f448dd759ef891b4493af",
+      "bytes": 3456
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/edit-provenance.json",
+      "sha256": "45325e5f8fde28ec27a24559906557cf4c4fdaece1c0647baabe0f386b750e7b",
+      "bytes": 4297
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/intake.json",
+      "sha256": "cd27dd7a03cdfcd9495ebd3605cc5cf479d66470f8a001d550abeb9f9982f628",
+      "bytes": 35944
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-mid.png",
+      "sha256": "77c92492184e4ed2acf8b6cf03818cb0d9e6ce379a71e981d4340d13939ac453",
+      "bytes": 2553334
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-mid.webp",
+      "sha256": "cece0e7ac7304141baced44630b9c4fad7cc80b26141c75816ad9d7dd25912d7",
+      "bytes": 248228
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-near.png",
+      "sha256": "15d551091c076234b4fd19e45e50fa9a47fbd2977dcc3529f304b134ec76bedf",
+      "bytes": 1536025
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-near.webp",
+      "sha256": "756b3ea5899e2e0340ff4ecb63993e386263f1683f95a5c7781e7e1061022e20",
+      "bytes": 90292
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/recipe.pending.json",
+      "sha256": "bb78aded4af43fafb474aae585b36a0b6f60e1ce6a54dceb7e4fb12c14eada24",
+      "bytes": 3450
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/visual-notes.d29.json",
+      "sha256": "cd56809e4e0cdcde7482be89d347980aa656774cc6bf69cb00fd6ed2e6a36059",
+      "bytes": 1442
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/webp-visual-review.json",
+      "sha256": "512f4b61c13bc8b7f686e5dfd8f87c5c591ae87663de5224e7d75f8d960d8a4a",
+      "bytes": 1762
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/README.md",
+      "sha256": "679f44e44b879fb6f2a051b370a14b5ea2a792ef89202714675a4de8fff886ed",
+      "bytes": 3176
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/adopt.mjs",
+      "sha256": "6cff063d21f2e3ad91961ebcfbefe105c12bf41a7f1ce2f7b4377a8834c3db8f",
+      "bytes": 1623
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/delivery.json",
+      "sha256": "1dafb234978d8e07fbd19c4c5b5704a31a6a713c634536fe67cf88742ee92c56",
+      "bytes": 3480
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/encode-arena-candidates.mjs",
+      "sha256": "ded79ec400e0a127a63a877dc38017706b9f8311230396e499606c094ea58162",
+      "bytes": 3078
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/freeze-packet.py",
+      "sha256": "5ee1283c3a3a09ec37d7074cb0527da29b8b46b4367db891f42c90abed3fec77",
+      "bytes": 7803
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/intake-summary.json",
+      "sha256": "a28f51ca8f57d9617e9fe78e330db1138674800aaa6a12dc53dcb422c99d8e56",
+      "bytes": 6007
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/intake.mjs",
+      "sha256": "cae8e55c6ecebfc19bb59c575d914ca0b4070eb982d60acad4db59fe4c77db74",
+      "bytes": 5272
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/anchors.json",
+      "sha256": "b3262db06422dc2789d988d666744cb6c593e1df54ffe2d743c4c6a1d376ccb4",
+      "bytes": 1995
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/comparison-static.png",
+      "sha256": "d23e0c2f3c5c144c0f20975155e0287bcff20517980cfe6c29dfa459daeaaaa2",
+      "bytes": 365188
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/delivery.json",
+      "sha256": "01751fa9884511c53584caa9b35632e490aa8ef6a8f95d554bcc0f35a616941b",
+      "bytes": 640
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/generation.json",
+      "sha256": "5cd80ee588d151508301b5a474ecda5135a6bd4db8ea9529e25d0bcf98622ae8",
+      "bytes": 1186
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/intake.json",
+      "sha256": "8d9a79361e3ef02e38120bddf2ca96f5d8cad9f192afa24434a67a2b729f933b",
+      "bytes": 42659
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/registered/impact.png",
+      "sha256": "75d5ad014f93b494d8b377fe12fc99af10d7e482906e10565c81a4b4f9771ff6",
+      "bytes": 145804
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/registered/launch.png",
+      "sha256": "258a217973f61a36065885c8bca3543fe66211a8c98101aeb6b634833a2baf2d",
+      "bytes": 102596
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/registered/travel.png",
+      "sha256": "88b85babb7eeb880ec5d1114f61efedf3d06e3f24668d664fa83a5051b49f2f5",
+      "bytes": 390714
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/travel-keyed.png",
+      "sha256": "f18c325f71bd113053c4b0734a9a1671893776b0867ec9ab2e63734f0aef8ee4",
+      "bytes": 2095553
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/travel-master.png",
+      "sha256": "ef10a0bd399e39fdc2ed70b370b57b87034822b66cfbafc0aa2eb936e36df9af",
+      "bytes": 1596883
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/travel.prompt.txt",
+      "sha256": "e2e04aefc80b37b502c9245c7b0351541e3d4f0231a35be98ac6460c041b34b0",
+      "bytes": 7728
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/validation.log",
+      "sha256": "1a076eb2dc1384ab8ef6a45ccf774f1dceb592961bc506db3f33f5b0968239a8",
+      "bytes": 194
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/visual-review.json",
+      "sha256": "9c61d5467c1e10c686e3d7c3bf27cc26fbf6a3a31c148bd190bee6c0920db47a",
+      "bytes": 4380
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/anchors.json",
+      "sha256": "4fd6c534eaffa055723341ef86b295ec5189354b44221fe1a5874de3499e9484",
+      "bytes": 2001
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/comparison-static.png",
+      "sha256": "94a2167bf7e4e005e0d0f521bf7674527798f5cfb82d6a1e98e04b09eb96246f",
+      "bytes": 329341
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/delivery.json",
+      "sha256": "970a54e4cd6d5dca5a27c4c503f7cf584f1eb297d3b2228a9b449d439c0c8f5d",
+      "bytes": 644
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/generation.json",
+      "sha256": "d3e19e92884b4f7296fee42123b9ffbc0d471b22fc06db5bbe9c89a05c44f497",
+      "bytes": 1199
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/intake.json",
+      "sha256": "68ad8fed97fc4a60efec62c975a8f4d4251624e10fdaf344769f2c7e17416bb7",
+      "bytes": 5586
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/registered/impact.png",
+      "sha256": "7d752451427474c4a952cecbfe906b1767ca4f3333de0bcbd28b2a88c560dd39",
+      "bytes": 191855
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/registered/launch.png",
+      "sha256": "c2fe80c792ee44c4f89bb3945a91175ef03e31d40b660d1ef1ec927159ecf141",
+      "bytes": 91272
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/registered/travel.png",
+      "sha256": "34f0d7236642bcbf4087584ecf292372c264a4839772a6a75049683fd459c1dd",
+      "bytes": 347955
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/travel-keyed.png",
+      "sha256": "d7460418751943cf4c85490a03027098d7fc9d47ac064397489361ea0434e5e3",
+      "bytes": 1933416
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/travel-master.png",
+      "sha256": "faa5397042c63b9f98dc65e46f531879b2f5ea1bb248b20d53eab4c589519ec4",
+      "bytes": 1522493
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/travel.prompt.txt",
+      "sha256": "ef156dc2daa36732542874a82972755059469eec973f2b7f57fbb46d830f5856",
+      "bytes": 8442
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/validation.log",
+      "sha256": "e7df0306419e94c9c7ef4103c2b5f530a2104d196d05591bb2712938896d9ae8",
+      "bytes": 194
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/stone/visual-review.json",
+      "sha256": "5118a60dcc887fd89c192d37dd750bce1deb393fdd6eff23fee50c3d5d8653ae",
+      "bytes": 4462
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/anchors.json",
+      "sha256": "7e99d6930027a8c1e898b9fc6a7cb212c5938852c7cdcff7203da8d91d3caa55",
+      "bytes": 2002
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/comparison-static.png",
+      "sha256": "6fdff47e7ef8527c57352f1e928ec53807d2df6737161f73b7edde6f8d3cdbb4",
+      "bytes": 160406
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/delivery.json",
+      "sha256": "2a45ea6a82cdb562d7e1882813990712ab1311f386a712284d6458a8a8c3f322",
+      "bytes": 644
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/generation.json",
+      "sha256": "4296e2a07bdcbb71fa2af7f009216ab2f89d81e421cbb7843c372feda0a4706b",
+      "bytes": 1191
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/intake.json",
+      "sha256": "410a4dc1876757737a07c739d851ba09f0a6698d8c070793eef61135edc6099f",
+      "bytes": 27768
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/launch-keyed.png",
+      "sha256": "2fc9d1543cd0e495acfc435d61873232ded7922fd9ad5621a3427a9748da7013",
+      "bytes": 2541634
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/launch-master.png",
+      "sha256": "1dcf8034ad4f7b28fa1e21677c9b9fc7dfbcdd6a7b0d2615cdbe02fe324b173f",
+      "bytes": 1825773
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/launch.prompt.txt",
+      "sha256": "243f5489f1cfd7d4d0e6085f4e9459d4ada0a7f453cd7e75eb24981cea848fad",
+      "bytes": 7750
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/registered/impact.png",
+      "sha256": "3cdfa440d457cbb7b4fe4cf740c0e7cf76b8931fe1ff40d16daa8eda3afe0634",
+      "bytes": 122331
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/registered/launch.png",
+      "sha256": "174577a4fb40e286eae28c197526870db486d10758efca7eb5bc735eda7a0bcc",
+      "bytes": 190230
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/registered/travel.png",
+      "sha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0",
+      "bytes": 174769
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/validation.log",
+      "sha256": "dd969cb02bd5d93d127228fc175de83fcac3d54aa6da7a58a488ee384cc829a2",
+      "bytes": 194
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/visual-review.json",
+      "sha256": "ae59972b76c2a894acc7746a4f46d4878a1d091fe2e52fb3477540529187872a",
+      "bytes": 4461
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/validation.json",
+      "sha256": "656e2e3ea7b2f6e4b8211758eb08be6eda649d4c761ffc91e4510cec7c4fa0a7",
+      "bytes": 2689
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/verify.mjs",
+      "sha256": "cae8eee794b6e8c69d87282c3258d317a46d6bb3f55ac7b46295c7116fda8dde",
+      "bytes": 2112
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/anchors.json",
+      "sha256": "1686432301df33d6b2814c2f126469cc42ce2de5b4b6af2444407710083efd0d",
+      "bytes": 1999
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/comparison-static.png",
+      "sha256": "7bd3adf0483ae07395a60a0b2b112d525133f5dbb2195ef9a976355ffc6fdd83",
+      "bytes": 141987
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/delivery.json",
+      "sha256": "18beef7c6e0aae4e99339adbf1d9339419759b913cb7c035ebfc1c5c01acabd6",
+      "bytes": 640
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/generation.json",
+      "sha256": "c6877c77dd608f7e676794d7ed8874b464d8097422da8bcdabebf36f81c57ca9",
+      "bytes": 1186
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/intake.json",
+      "sha256": "00b25260437f9efe557f75bf9ea1c184c7f9a6a5384e864977bada37030ac5ec",
+      "bytes": 174458
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/launch-keyed.png",
+      "sha256": "6107398cf5314a753d483d800f2347f056599976d70bdf6dbfd74a2be328a6f6",
+      "bytes": 2167610
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/launch-master.png",
+      "sha256": "f0ecfc456e91b3b7894334fcec4bc162830896f07b1fc86e7ecea6f660b388e6",
+      "bytes": 1647802
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/launch.prompt.txt",
+      "sha256": "27b2721cc7de384816a0f084efb2f534fd486c73c957be243e8aa6566a981546",
+      "bytes": 7797
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/registered/impact.png",
+      "sha256": "46e7b1a5fe12bc454e3e4e22f6d55fe28ae648ce8b3e407cc25f88e5040da288",
+      "bytes": 130645
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/registered/launch.png",
+      "sha256": "69b21583556a8a7e782158746ed19b49a834191b1e8a8093c58bcf510efc452c",
+      "bytes": 166679
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/registered/travel.png",
+      "sha256": "2fd346d7688b50d0111d9cb94a4bde26667a248f2d995afadf201911afa62e17",
+      "bytes": 209149
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/validation.log",
+      "sha256": "f666daf024db19ac539716bbb4a96647a8aec16925ecb5b56d2ffa2130039888",
+      "bytes": 194
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/void/visual-review.json",
+      "sha256": "079c9e887d8c34d90bb939e67d132b026b23b1fe5c08b5b244862ce1a0283b10",
+      "bytes": 4443
+    }
+  ],
+  "fileCount": 157,
+  "bytes": 84065151
+}

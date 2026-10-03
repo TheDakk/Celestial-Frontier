@@ -1,0 +1,77 @@
+[
+  {
+    "path": "port/v2/tools/battle-facing/prepare-platypus.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/family-review/prepare-beetle.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/family-review/prepare-bird.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/family-review/prepare-fish.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/family-review/prepare-flora.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/family-review/prepare-observed-crabs.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/family-review/prepare-p1-hidden.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/family-review/prepare-skink.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/habitat-battle/prepare-airbird.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/habitat-battle/prepare-frog.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/habitat-battle/prepare-painted-variation.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/override-source-graph.test.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "path": "port/v2/tools/creature-animation/portable-record-writer.mjs",
+    "exit": 0,
+    "output": ""
+  }
+]

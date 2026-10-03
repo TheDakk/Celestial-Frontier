@@ -1,0 +1,18 @@
+{
+ "id": "18-damselfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+  "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 6% paint (reference 29%)",
+  "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 4% paint (reference 25%)",
+  "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 8% paint (reference 32%)",
+  "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 11% paint (reference 44%)",
+  "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 11% paint (reference 56%)",
+  "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 18% paint (reference 52%)",
+  "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 67%)",
+  "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 0% paint (reference 75%)",
+  "unexplained-anatomy: 13.5% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

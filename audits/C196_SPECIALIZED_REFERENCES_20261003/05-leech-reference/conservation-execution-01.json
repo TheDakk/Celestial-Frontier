@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "05-leech-reference",
+  "command": [
+    "node",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/verify-and-preview.mjs",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01",
+    "01"
+  ],
+  "helperSha256": "02622a8451a730e44945753340791e3b784af33f5558e3c942f25121730c361b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/conservation-01.log",
+  "logSha256": "4d84403d70c0e7595a296cf838ce04e7291ee2c990d6138488856ff87b72d5b9",
+  "nativeRuns": 0
+}

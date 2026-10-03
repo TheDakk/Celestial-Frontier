@@ -1,0 +1,13 @@
+{
+  "id": "03-electric-eel",
+  "name": "Electric Eel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-15c34650-c8ec-434f-be8e-03534badf126.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5000405f795b63fc567e51fda5f7a608e54cd868b2ee56a4a326677f958c4aa7",
+  "bytes": 1107945,
+  "promptSha256": "dd4947623f8b06569baf029168f35d9df76f0f1bead7fa42d9b29c1772e1c10b",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

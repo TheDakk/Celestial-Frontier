@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Coastal Lizard",
+  "family": "quadruped",
+  "masterSha256": "5db624cdd2993284581f6e1c5514152569e30919f9e83b82c85f784d49eaf580",
+  "subjectSha256": "d00ad2a7dd3a2b565e4c3db1779f870a36cb8d7fa806f6186ce138a8c2a9d485",
+  "promptSha256": "b2081f60a2d4816835040ffd9e546e809810fd73e8cebdfe80561e63334a74b5",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: scaly wedge head with visible dark ear opening, long tapering banded tail and four separated foot endpoints. Near elbows and hind knees bend naturally; far upper limbs remain body-occluded. Toe counts unconfirmed. No external ears or invented structures. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/17-coastal-lizard/visual-review.json",
+    "sha256": "e04f21cbaaad991330b538fc8732543ae7d266d7f7ab632b0e716607020b2155"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

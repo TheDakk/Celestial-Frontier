@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "08-prawn-opaque",
+  "command": [
+    "node",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01",
+    "01"
+  ],
+  "helperSha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/conservation-01.log",
+  "logSha256": "d493e4268358261f6271201739ba3e99c3dad3649d6b690063bc97b78f6b9f99",
+  "nativeRuns": 0
+}

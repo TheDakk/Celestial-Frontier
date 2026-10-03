@@ -1,0 +1,9 @@
+{
+  "firstStatus": "FAIL",
+  "firstRunnerSha256": "7a91fb6c3bb2c9224e995d531b48f48769bb4ae21cb776660623fe9f50ce9e37",
+  "retainedResultUnchanged": true,
+  "finding": "Inspect target was not a unique visible hit target; first helper omitted geometry from its exception and cleanup retained only AI state. Precise final visibility cause is not proven.",
+  "sourceDiagnosis": "Wait only required mounted=true, which can already be true before async View read closes Notifications; following toggle could race that completion.",
+  "correction": "Require mounted original and Notifications closed before reopening; require revealed entry and two completed frames. Persist raw control geometry and failure screenshot/UI on any later failure. Include release-content source explicitly.",
+  "notClaimed": "No product defect repaired or native success inferred; distinct changed observer run required."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Bactrian Camel",
+  "masterSha256": "c5ce49555bd9eef8b5a4266450231691eda3fb003f8b4feb3a900934f00632d3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: two distinct humps, shaggy neck/body, four separate padded two-toed foot ends and lower limbs, and short attached hairy tail. The near ear is visible but the far ear is obscured by the crown. Hanging neck/chest coat still obscures proximal forelimbs. No extra hump or limb is apparent; exact limb root ownership and foot proportions remain for author review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 243,
+      "y0": 304,
+      "x1": 1051,
+      "y1": 952
+    },
+    "margins": {
+      "left": 243,
+      "right": 202,
+      "top": 304,
+      "bottom": 301
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

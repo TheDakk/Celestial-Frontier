@@ -1,0 +1,17 @@
+[
+  {
+    "name": "worker-handlers-retained",
+    "exitCode": 1,
+    "sourceSha256": "cd9dcac73ee2796c6f10259348a4ee7d0ac20d3b7051aa143c9a00e3970c4ce3"
+  },
+  {
+    "name": "yield-callback-retained",
+    "exitCode": 1,
+    "sourceSha256": "a470fda71d94c12337ff51c45075ff7106ad0012acba0681b1ae8ea18cc3cc91"
+  },
+  {
+    "name": "yield-peer-open",
+    "exitCode": 1,
+    "sourceSha256": "a470fda71d94c12337ff51c45075ff7106ad0012acba0681b1ae8ea18cc3cc91"
+  }
+]

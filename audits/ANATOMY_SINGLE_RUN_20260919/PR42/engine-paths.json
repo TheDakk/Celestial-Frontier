@@ -1,0 +1,2377 @@
+[
+  {
+    "path": "AUDIO.md",
+    "before": [
+      "100644",
+      "1b90932b5cbe973a566c9ea6fb98c73d88d2c006"
+    ],
+    "after": [
+      "100644",
+      "03ad834feb7d1b297afed5a66b998d021370b6fb"
+    ]
+  },
+  {
+    "path": "CREATURE_ANIMATION.md",
+    "before": null,
+    "after": [
+      "100644",
+      "0e1335c5dafcaf739482663f2e4559a3a66b5baa"
+    ]
+  },
+  {
+    "path": "LOCAL_AI_GENERATION.md",
+    "before": null,
+    "after": [
+      "100644",
+      "7803384ff16427fdf4ad6cabf4472f92d4a55128"
+    ]
+  },
+  {
+    "path": "SPECIES_AND_GENOME.md",
+    "before": [
+      "100644",
+      "1b4e66f9d31174bd95c0e11d05db516df6b5d7a4"
+    ],
+    "after": [
+      "100644",
+      "6d4c5e6aaebe9f96b292f78235b8d6a8d9ed36a9"
+    ]
+  },
+  {
+    "path": "UI_TOOLCHAIN.md",
+    "before": null,
+    "after": [
+      "100644",
+      "7d4e0cb0ec7e23abf592dbf96ae992bdfb84c923"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/ai-landfall-jobs.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "e583bd8efd62d21fa49a321fc42273d753d97ea9"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/ai-landfall-originals.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "cd107200793563d130e36d51fdd6c9ca8016996f"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/ai-presentation.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "dca86ef87c0cadb9d90216ae5d23a3a6aeb78b22"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/anatomy-attacks.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "75e77d4f81ab8a972315b91079d6584c5b22b31d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/anatomy-attacks.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "e505bf7709d02e52cbdaa87e71437d9a2e718c94"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/assets/painted/earth-civet-landing-v1.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "15010f7739effa3ad524df59e0ecd60fb254f2d2"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/assets/painted/earth-riverbank-v1.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "00585f56302a5d00c6b1052243fdbb0b320c9f6a"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-anatomy.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8b1385edab88b1b9454f49e9d90f0d6b750e4908"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-anatomy.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "01e56a4ad2fd3b4103aae32602ac438b0c038839"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-mix.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "523837daa9bd002d73ebd49fe092e4e0b443244b"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-mix.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "748d26f3c681e7f0bfbb8e79bd61ea10d4a7c868"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-plan.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "175a91bbe4068bd69b3d6a738da990df5b73b697"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-plan.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "4938200456996dc17715b62721f2c8c041160d36"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-review.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "52f7abe092ff8b8a7e13ac21c8a660c90bb38f30"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-review.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "3564e2138d502278a8dba0620e139a80a2ac57d8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audio-production-routing.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "9e6d8e54f132a7434522c418c5378ceb21a1698b"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/audiovisual-pilot.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "d16883f5ff526a87f6c50d5e18a74f388b192145"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/battle-habitat.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b2e1e3bf01c100b0eaf216a16a5cc3e360059e6e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/battle-habitat.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "7b0e77cae03e057f41297fb547d4bda113abbce8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/battle-presentation-clock.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "bd0a9dd5824aad585320f6e8a9899a2d0b06f86a"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/battle-presentation-clock.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "45d5be422224d8e55aabe088f106f6dad36e7989"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-delivery.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "a290f950b56dab62c182f57548de5da510871183"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-originals.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "45438445f7ba0b852f649ec583f0d918ff11cdd6"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-aim.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b51371b7b3db29f8969656bedfe35bbb566f82b5"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-aim.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "283394a537668891076c3d240c1ede3a2f936190"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact-family.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b4065ad0d0885cf821e49c240afe76292ee95ecc"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact-limits.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8fbaf9bf591ccf8db81a0da3b9577e553ee356dd"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact-weighted.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "193f23878035cfe28ff1a0988ce5e92c1bec7ea7"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "45de55f196609f0ae369239d10907c527b6d2444"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "f76b63ab15add72ef3e2a92a1f18226778ca04e0"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-families.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "0476556c070f246c470761bc01787a28f4506a0c"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-frame.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "9edc8134ff868357f3bf2ca2d160de5c542c0de7"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-frame.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b6edf7d6e8e9906e165648afe1e92f7cc0d72de4"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-performance.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "ac2e89b774175bb9dd73e43121cc1c1881669082"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-performance.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "1d7691f0405b0fdd8018ef23e12b77756e585e16"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-r3.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "c623f4fcbbfdfb90331a1e769ef94bdc138e9724"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-stance.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "bbb982dae6a5e90b8cfd905efbbd65ca4a4a545d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-texture.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "afe4c1a5a28955ef95ef005b70669a6b74f34648"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "149b2a529cb07ba92f870277e75a2c973eb65d91"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "06b235700e49c4ef49ee20d538f3499c7fd0a794"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-stage-travel.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "ff3117e06f379860a7c506458794de7b7d91373d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-fauna-profiles.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "a9a75659dcfb5f2e0833d1f28f56aad3225b6716"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "2510fd1702dbcdc866431435068621eb0080f610"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-layout.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "90a081b468a000b221b34209d1c2f0e6c1445411"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-layout.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "eb322b1900f63bf5d997b9518fd97fdad5d00cce"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-load.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "80422cff15dd873a952204ceb2849bb2991b75a5"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-load.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "4da66aa2a50584531c7580c8981ea3b64c3640b6"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-protocol.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "a188886af53e3b1da0f2f009b203210e157c5c39"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-protocol.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "5da874fc52f080cfcd0fc81fe1ccc26bf04dc08e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-recipe.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "5438822ad486479c820febea1a17c600b24b98c6"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-resources.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "54cf82df942bf46d289522b3a69f7a69cc8ca61d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-resources.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "44ec219e758af84f16aabfc9e2331cdb61bb82bf"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-resident.worker.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "f140ae2b6f1b37e5e7cb6b557d1e218b2055baf8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/kit-earth-assets.json",
+    "before": null,
+    "after": [
+      "100644",
+      "16a77cfed6317f78b7b90afafc3d6dc83985cd1e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/kit-earth-baseline.json",
+    "before": null,
+    "after": [
+      "100644",
+      "ce00aa15171bd2f828102c2ebe364eba4d6b1680"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/landfall-appearance-snapshot.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "c6f1b7d405fe0c69e500b45e1093c0f72e3a627f"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "f51160beb11c80ed8e2dee6b60a0d76c9a0f2b54"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/landfall-content-hash.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "4d8cc0128c9548cf81f685737e87a83ce8028fb4"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/landfall-fidelity.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "e9251763f2a84891074267f576f95dc2fe058190"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/landfall-viewer.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "7b75eb7a0993060820c3a98eeef112a94608571a"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/local-ai-game.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "352e6aabcf21f3b3daf2677c338e6406367b90cc"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/local-ai-kit-runtime.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "54a80d0392a5a81ac0149d4131717342916f5335"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/local-model-delivery.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "309a2eea41229f3fe981ea47b2476cfe2ece5479"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/local-model-manifest.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "efd69eefceb8decd0a99af05730321203c9253fe"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/local-model-sha256.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "dc8fe666a7fe85e7d94db0dc5ba8631cda7035bf"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/missing-body-structures.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8acc4b86cd032a77e0428f3535e409876d09c092"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion-pose-blend.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "2075e88d05ae7370195adfa0b75367a580e7d6e7"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion-pose-blend.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "e1acc3bb7423c580f99544df615e126db5c3e0dc"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/actions.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "3b88c5eadea6ee9517c943e1f37b94d32e212a32"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/additional-actions.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "fde51f6224fb97807663605b9c1355f310f5d525"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/amplitude-profile.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "de6285a0d595ff35fa4735a290c27fc3d40b41d2"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/amplitude-profile.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b356d25e599be4f86d861b54c0ee70497a85a1ce"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/anatomy-fixtures.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "ddeb879830b9ae651ff6c7d4a691698dfd9b3a0d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/animation-completion.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "dcd869b0a01f5269cd9af3c0cd7e7a690e6ac65e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/body-card-presence.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8c1eebea78e8219c75dbe7fcffdf06a4ae8a80be"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/body-card.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "17be45738e84821d716a8a35bb693e577ae10e52"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/budget.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "eea87749a21ae689f9d09ae3413d5b207420b9d4"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/family-actions.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "aa660e0ffd9c98dc4c22e2872b71e6a8cb0e5674"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/family-templates.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "7b8c67de408dd30ecee9f5f15db3a5dc395b3c1a"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/coconut-crab.json",
+    "before": null,
+    "after": [
+      "100644",
+      "cc8b982c6c605a59f60651222a13a78ba6f1125d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/crab.json",
+    "before": null,
+    "after": [
+      "100644",
+      "83e87373ee71604f6a856a6d9d1e3b1157ada550"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/cranberry.json",
+    "before": null,
+    "after": [
+      "100644",
+      "1958499fb7e8b23df7690ab597f09c13be112213"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/devils-club.json",
+    "before": null,
+    "after": [
+      "100644",
+      "20a19a20db3e294bb57615c69c2b39e3d7c0c829"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/freshwater-crab.json",
+    "before": null,
+    "after": [
+      "100644",
+      "d4ced0d7b11fdb8b90ce7ad006cb9a1848bc26ab"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/manifest.json",
+    "before": null,
+    "after": [
+      "100644",
+      "10e1dcc5e0ca33d69ddfee91ed3bdd9a23df818e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/mud-crab.json",
+    "before": null,
+    "after": [
+      "100644",
+      "da70d0bef428584d1da1735d17967a9dc47184e7"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/persimmon.json",
+    "before": null,
+    "after": [
+      "100644",
+      "3a18dac58517c4c28d9f0ff3fbff760a7a95c39e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/read.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "51e1b2fdd744340f7de59ebb2abb403247f81cea"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/fixtures/anatomy/vent-crab.json",
+    "before": null,
+    "after": [
+      "100644",
+      "e0033194e871523621de90ef5464820bf1151092"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/flora-observed.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b7bcadd5f8df552836bea2ecc29d6e5f3fb208c3"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/gsap-adapter.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "2bd3fe285f2f667dccebea06d0cfa5428d092295"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/index.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "126acbc1d70182753e8a08c5644411c3fbb7d5de"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/overlay.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "5b53eb0978930ff8032538e3fcd332cbb6bc1846"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/repeated-anatomy.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "014cc7b24aaa88de8e71ef42267876876cfaa364"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/secondary.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "7d01111614a8df4edb0ce6cb9be19c73193f7d83"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/source-pincer.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "908541da64fa8dbf4edf331c2d63aa20ad35e6e8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/specialized-actions.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8b16b513cf8f0553a897caa168b1ddb18c9f0580"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/specialized-anatomy.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "30e7f273af567fd6b81325a2a3de657b5b234aa2"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/templates.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "80df32464501ea3559a4752f73df52e00c976f5b"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/timeline.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "715f76ab13c2e55a4f74d2f5c762777ba162b49b"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/timing.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b7a5ef2427e39f071fa0e26302071060e0512bed"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/painted-earth-landing-recipe.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "3058cb23de7a1ad94ea26cb3dcddf0bd922052f5"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/painted-mars-binding.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "26c4e138957a5441ad0d655481b59bb8434279f6"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/painted-vista-load.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "dd7580b6a7775cb73c2460d5b985c0cf07880283"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/painted-vista-load.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "9aab7bd867687fc383892da736c41dc3c89df860"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/package.json",
+    "before": [
+      "100644",
+      "46a345a65b308cf28267095da59e3b9124fcb410"
+    ],
+    "after": [
+      "100644",
+      "1a5d87a599ba7cc5bd1b02b52b16ea8e7cceba61"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/earth-resident-layer.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "2cf71e882e53ef0a2e3c8d2436de1aad6a5a5907"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/earth-resident-plan.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "2af0db9183717872298e49bc1b8386e690c1b04b"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/faunaoverrides.ts",
+    "before": [
+      "100644",
+      "f60db129448238a66f3b6ceedc1d970f6fd8e1ac"
+    ],
+    "after": [
+      "100644",
+      "16729152b42cad760627e973af994ba2355e7b57"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/faunaoverrides4.ts",
+    "before": [
+      "100644",
+      "5368750d93f0009c95630288ff18598ef1dbe444"
+    ],
+    "after": [
+      "100644",
+      "08162b6989b2d4ae3641e543bf81d31b5c94e08b"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/faunaoverrides5.ts",
+    "before": [
+      "100644",
+      "a3ef3bf2c2f5be3665f64b1b974abe1dbda5059f"
+    ],
+    "after": [
+      "100644",
+      "775f3695876c13ed20f6f98f3b03e1d8950b8293"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/fungioverrides2.ts",
+    "before": [
+      "100644",
+      "c19ae1816c6fa804501621b582b5583227e137c1"
+    ],
+    "after": [
+      "100644",
+      "ffc62ba662ffc170a011aa5a1378f54c279ade4b"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/invertoverrides.ts",
+    "before": [
+      "100644",
+      "cbf6c3eb1bf7f95e9526a984fbe5f480b4456f3f"
+    ],
+    "after": [
+      "100644",
+      "9a8d2800f0b2260664aaf6c63fdf880ca022477e"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/mammaloverrides.ts",
+    "before": [
+      "100644",
+      "3566f1b09694a9558dd8d48462204a0e8ba4fa95"
+    ],
+    "after": [
+      "100644",
+      "0255c1c2145b11fcfe61ee9540a6082da9ece6e2"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/painter-capture-parity.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "544e1d9a78fba34b7a27ea16016404ea3980a273"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/painter-part-capture.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "6456f1ffd64a8ae8b1b41911231e845d1abf13da"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/painter-prefix-replay.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "a8b11b9aab7b5a7584dcd0c0d3501b3972f41dbe"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/painter-topology.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "054502bbdc4df3b602e9bcaa0dcf8e439d6f21e3"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/proceduralfamilies.ts",
+    "before": [
+      "100644",
+      "d3578a7d2c7ed81bc15f69304771b0dd8bd8ccc3"
+    ],
+    "after": [
+      "100644",
+      "f3e8ebeff713499750a6ef01acbecfe9c1a2bdd8"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/quadruped-anatomy.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "6fb49c50d95a1ca9186ea5a22c9239e2f8ff69b1"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+    "before": [
+      "100644",
+      "74965855f62abb46db5d47e2319c0a6a3c7f394b"
+    ],
+    "after": [
+      "100644",
+      "a6fdc3f764ad561e26024d42f0e99128b6bf7eb8"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/speciesoverrides.ts",
+    "before": [
+      "100644",
+      "6190e3f9d8a8be4c24e13e91ca4aea4c41b97729"
+    ],
+    "after": [
+      "100644",
+      "c60537a7a1baf1d0223cd0b4972089ec54d4213a"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/src/topology-part-capture.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "c265babad50d8226e3924c1384e3f5e29801fb1e"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/test/earth-resident-layer.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "5f3fb9081489e9aeac4842ef9e876e79e4671441"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/test/missing-fauna-observation.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "35d4332259426ef8f25f2ad252f4be7cfee46bc9"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/test/painter-part-capture.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8dec3b1fb68ac249dcf0d65c3cdcdebc68390137"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/test/painter-prefix-replay.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "49e8fdbe043249fcd43aef7084b0132defd079bf"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/test/painter-topology.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "e8205329c5789f865f979a6e835a5196448b014b"
+    ]
+  },
+  {
+    "path": "port/v2/packages/art/test/quadruped-material-observer.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "7423f42696487c5db7ec342b09fdf418d4b5914a"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/package.json",
+    "before": [
+      "100644",
+      "58e21c942c950cc613dfca31abeaba759e5ebc0d"
+    ],
+    "after": [
+      "100644",
+      "a1fef411e3bcda08df892f18ba98f68521a2a237"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/src/combat-cues.ts",
+    "before": [
+      "100644",
+      "b3ab3c74fe7c415cc106018b5d7ad05aba03f151"
+    ],
+    "after": [
+      "100644",
+      "b6022a31de8c029aea2959e3e6594f97cd38cddb"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/src/combat-gameplay-voice.ts",
+    "before": [
+      "100644",
+      "f21e5d35087ba9ccf9aa4fb75dbf4169e21aa1b4"
+    ],
+    "after": [
+      "100644",
+      "9736462f2c693569b6a992cca6617db893254f58"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/src/pilot-rights-data.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "e8a58f4cb76cdb6feebdd8876bc6b89ca08892ad"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/src/rights.ts",
+    "before": [
+      "100644",
+      "4637a710cca5009d6a725078eae1380679d34e84"
+    ],
+    "after": [
+      "100644",
+      "4e3fd4c00a547a7f3209d328defa925a70373ae6"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/src/runtime.ts",
+    "before": [
+      "100644",
+      "364c52cb7076b796e5d643c75718ca59c02c37e7"
+    ],
+    "after": [
+      "100644",
+      "7ec633c05c38fbd42b229c67df40f3afdf645dba"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/test/combat-cues.test.ts",
+    "before": [
+      "100644",
+      "f2fadd88fb5c55368ee2a3aa0be00235a6ce07ff"
+    ],
+    "after": [
+      "100644",
+      "fa1587c2a8e14cadafc199820a46fb99d113e671"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/test/combat-gameplay-voice.test.ts",
+    "before": [
+      "100644",
+      "22d9e74e80cb5868a8537c1ddcfaf06ba89c4675"
+    ],
+    "after": [
+      "100644",
+      "f358f2771ff5e524b4290cb2dc22abd5d4dc6f0c"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/test/rights.test.ts",
+    "before": [
+      "100644",
+      "c5f2d5ba85ec0a49ae769b124e86a596c2968269"
+    ],
+    "after": [
+      "100644",
+      "cf3a015ce870f20122d1b09f175715f61730e9e6"
+    ]
+  },
+  {
+    "path": "port/v2/packages/audio/test/runtime.test.ts",
+    "before": [
+      "100644",
+      "2a20f8718744220f5c11e7685d64a7ae8beb1070"
+    ],
+    "after": [
+      "100644",
+      "8ec8443d3c7fb23a01235c0393e8e60dbaddfb94"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "484ecbcb9678f85599dc1836df3ba6e6cf539fb2"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "3cc90635618810ecab98f849408b554da6294cd0"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/arap-skin.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "a4e8fdc716e9fc204f86aa3b000f0e44a3feff14"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "4324d4178488ea705857e3448a5186122d3c156d"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/arap-sweep-build.json",
+    "before": null,
+    "after": [
+      "100644",
+      "3217424515189da76c96a49007cc3521aea66c56"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "c88f9802bea3c8cd608ad2ec5e3a30f1294f8409"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/arap-sweep.c",
+    "before": null,
+    "after": [
+      "100644",
+      "0d76435df107cb58a913aa6bd68ed969d9a1616c"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/arap-sweep.wasm",
+    "before": null,
+    "after": [
+      "100644",
+      "45f9baa17a331e0dec68bf891faf09f322fc6f48"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/attachment-coverage.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "970b955148831a120f0985dd000bec5616f83b8f"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/audit-cut-seams.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "5583647302adfc678b56a1ff458b776bc593e1e8"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/audit-ear-support.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "7a0e1dc6a0211116f90580597670f25ece9f9949"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/authored-intake.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "f663eb93c4fd4eab5b815355ceee9528dba14cbd"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/band-patches.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "59918ab7c4e7ca6a455ad786dc278af4a1f169a0"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/body-card-probe.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "27599c0350a38eb48e875ad47308d08711ad1c32"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/build-arap-sweep.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "ee580baf407ebb3500fea3ce2e1fd80c5bf8fdef"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/build-authored-parts.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "0beb08e8565e4cdd081a861a19d2194e108d451c"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "69b56edf74aa5dd99c8ccc373bcbc05be290c3c5"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/build-seam-bridges.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "572a6d29f6f51b41b90ead5cdefd605f637c5a05"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/c2-review-repair.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "10663381335b523ca88ecf66680e415563f5bdc8"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/compiled-skin-field.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "9989b096c8275f861b3dbf4222f5cedaf95250cf"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/compiled-skin-field.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "56ec4cd237da8a1a1e590a115c23e5de9b07eb5c"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/coverage-ledger.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "9be403d0f1e7fffb86ec9e5cd688300a0d30f7fd"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/crab-observation-record.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "7991958aca5d7c8d89c26841357e29013eed1fc3"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/crab-observation-record.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "c770be3b3c9bb33f74d21a383a7e04be8c04d904"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/cut-seam.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "1a17bc38a5913a87e07e32a91e3e3e72af968e78"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/deformation-quality.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "60dc762e9f45e31ab86d9dd374ed7a6222dff7d7"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-atlas-probe.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "d85096cda51e9df08e515b259a5518359300d249"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-contract-probe.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "35aa7892c4a3bfec115d0522d0f88ba8ee151928"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "e954748d035f57b5b2861ef376d6b3fa4387b4f2"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "d0c8eadd735df684130ba11d419d53f0094c510d"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-pose-probe.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "1cb2358badb52f9c40bdc8e779106ea78d919397"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-record.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "1a8389f29f8ca83ebdbed40a8e0e891333f1639c"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-record.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "fe08b2e1cb2bbf4f922af506a2a669c5f0a27570"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/joint-patches.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "95418c6459274c0b9c72af68a9028fb52da5d7f3"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/kinematics.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8190988e1c5eeb4669b6bf040de5d7891f440718"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/limb-islands.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "d59be4e43ae38455ef3400c772ae19561873ca9b"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/motion-interop-probe.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "942b9d08efc84f34d5634a14ef4a048fe719f66b"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/motion-scale.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "df0d0140e8c48dc0e66fc2d828b51f20b1212bb0"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/motion-scale.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "c94f5cf04a64fc4eebf947794a99c7fc118fc003"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/orientation-projector.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "d5c63a8b86b3727fe81d5223e2d7ad7751317a60"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/ownership-junctions.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "46f6e03f08d1c42fbcd35f9213b62b73f886e5b6"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/pack-staged-review.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "00a607f6532de56098b831928a0cbbd52df465a5"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/paint-skin.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "851f4cf5531d16e67d431b68dbc593f6c161bfe7"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "28d63a4171c08ee6188782f6ed2daf1db43ed4a7"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/part-masks.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "acba10bb4552447355ee99bf272a650395524a2a"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/paw-contact-pins.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "4b6db952ac68e97e88f8e7513cfecd8cbd654c6b"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/performance-probe.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "88932a093d9bd88a98bded124e375eadc5ebbd9a"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/plant-anatomy.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "b39cb9c306fb82b3bf2768d40454227132a0fe93"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/plant-anatomy.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "0428f1d68aede8de9da619e2796282adc9aefcdf"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/pose-projection.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "fb8e109e9cb7a12af04bca88316458ca5b444015"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/pose-projection.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "05fe8796fc2968bfc354f4b5a81fcbf2b8bf4f9a"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/pose-refusal.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "404fe742b2d9a6d9107c7b64b9ecf6ba3c7d3fb3"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/pose-refusal.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "795be82bfbb46457e283b6f3e45a7d54f62f9813"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/prepare-continuous-skin.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "0f0b74ca5341c791207134efbe4a551ef90d24d5"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/prepare-seam-proof.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "4c2858ac54ea18143eceadb07018bffde436a72a"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/quadruped-template.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "7e0f40fd98844ea9550323bdfba406bb111088ef"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "5f8d011da0de97659022656d62aacb0bb9f7460a"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/qualify-continuous-skin.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "53beb5e484e736e0f0e8e6b3b83a191f237f6e15"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/repeated-anatomy.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "af5b869e90d2d01de52feb1ec1469801d0161ef2"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "aa070e748b37eef797096804d85867272ca5d3fe"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/rig-atlas.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "3fc32ad0f812c4dcb070e8cbfbd25b838a794ec1"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/rigid-parent-frame.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "34744b0e8b3faf863b425c6323202c4a5c284578"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/rigid-parent-frame.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "36cf30ad8ba3a848babc45d8f5739630f1388001"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/seam-bridge.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "6aa1fcec8258011fee6424b3100d6569a2a59f5b"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/seam-bridge.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "00970fa11938cb0c5f44b911984f13ed0627373d"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/seam-oracle-audit.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "83bda531d67d1c38780caac204320141ad330cc5"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/seam-sampling-guard.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "21ba39d748d2306c13215570c4dc7f39207d93b4"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/seam-sampling-guard.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "fd0156345653c9ba65d5536705ad21feb6adcc2f"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "950169ecdcf8c1095fd14ee15fc9d0a239cbe0c5"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "b309b27e4664bee4a7f7b80b2eeb30be796fec12"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/smooth-skin-weights.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "c4f976ef05cabf63357db88898ee30362d0945b8"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "f65f89507a8720048b4152ac11708f36c262354e"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "0910b84e2f93609b4580eedf7cf409869b5c9c49"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "47d99bf442da42409b344b594a3c47d46d128285"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/split-skin-branches.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "92430027395b28f48fd0a6bbf4e68157af59fdd3"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/test-fixtures/family-records.json",
+    "before": null,
+    "after": [
+      "100644",
+      "7b886de5ecd32ceed6e796cd5bcf6a7840920c0e"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/test-fixtures/fish-cast-orientation.json",
+    "before": null,
+    "after": [
+      "100644",
+      "458493479b1a46ed8f36946da5d2738de9972c19"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/texture-hinges.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "ffa2f103f425c263405681928ed3aa84261f113b"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/underlap-support.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "f54f3a8108b525831de92ee350e129eb7a015c8a"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/verify-parts.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "2369b7b65b03c586e17b62b9f1adcaa3897564d2"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/wasm-arap-sweep.d.mts",
+    "before": null,
+    "after": [
+      "100644",
+      "d1eb5c4dd886752d3d7b5b86f384dc284da091ac"
+    ]
+  },
+  {
+    "path": "port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "72d50bf9febeb463ea881f90c8501e4768641c9e"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/README.md",
+    "before": null,
+    "after": [
+      "100644",
+      "4bf90f16d37d7ffa10f0b2e91e5b55375de452f5"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/THIRD_PARTY_NOTICES.md",
+    "before": null,
+    "after": [
+      "100644",
+      "d89b52f27eb1185c526a78fe980af03dcac7bd76"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/browser-proof.html",
+    "before": null,
+    "after": [
+      "100644",
+      "5c5c78930ddf93a8c3e7d4491812aa16956409b3"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/browser-proof.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "492626769826c03b3df6a1a2235be97729efed7c"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/browser-variant-plan.json",
+    "before": null,
+    "after": [
+      "100644",
+      "6c0ffb3e4a8a0ee81db261c13e46ee92ef64e24e"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/browser-variant-plan.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "7988551c95e3b24d434d8d85bd28537ee46a1216"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/browser-variant-source.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "50f1d17f900debe1d82f2a4b80b096dd3b0515f7"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/compile-delivery-diagnostic.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "3b31d63402c5bd251eb695d51d1cc3f1df643248"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/creature-finish-math.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "a8aaff4f6920ecf3b700a3733dcfb4ec6ff9fd8f"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/denoiser-shapes.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "9c2f4af301e72e49f69d53c72cbac271e263cde4"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/edge-despill.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "a31ded5af7fdd47fcae9749984315bd3cdbc6784"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/fetch-model.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "b3856313d943592a59e50e7ce32f53d63da5c028"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/first-step-harness.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "2a2988c404d42b1f8a020db730cc5a4d208309ec"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/fringe-targets.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "ddc173eebe538ca41ca1b5b57e59dbfef88d1fe3"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/frozen-preview-client.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "49f003558fcd5e0f2ec43d6dac6acc56cee13f3e"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/game-preview-server.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "d637ea6c431cbf796fe8c761c5ee202e62ee27c9"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/gpu-profile.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "cc418184b2ca755849eb18d1b4b6deb18e1a42f1"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/installed-proof-state.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "ce8046b239bdc83fffcb0e5294d440f9a52c6de2"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/iphone-navigation-contract.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "526a292eece5ff1d0dd14b2dd7c5d4980dc7fb70"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/iphone-probe-contract.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "93af9f4d0d5d855e0c706c2fb7339ad4779911f9"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-contact-math.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "8757b980982be75f6db891c4b340886c237d6e17"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-contact-review.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "2426c51c85bbf788bf90f4a1cc8901d4fbc333e5"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-engine-math.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "a54481dc4f2cbcf0bc81cc2e5954e51be89574eb"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-phone-stage-worker.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "41cb83596d6eca321dea3f810cb89326122b1de2"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-proof-client.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "8b62a4da0d6c75430b0a53222f84c7e1e4f69e69"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-stage-worker.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "9ae35cf44ddd09566e232e449187d1816517ee33"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-tracked-inputs.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "04746722618b8e0b0352eadddd1ed7f8e288e68b"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-weather-details.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "1197604a70cd28510529eecd48155ad95d43a6a9"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-weather-math.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "20290bb47332aba12a162656c75bba91a3d6f652"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-worker-engine.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "a0722d6c6af2b31e9c6eaa2499b37668434b8afb"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/kit-worker-expansion.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "159e5eb5d7f99b37e398becc2eb5c72fb13bf1ce"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/landing-progress.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "3e75da1e7b66aed50c453a92fb8de090099d056e"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/landing-ui-evidence.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "fd3050860b4092a169a987cec58603f97c6df62d"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/licenses/flux2-klein-4b-LICENSE.md",
+    "before": null,
+    "after": [
+      "100644",
+      "0afa7632c1a195ea6627a3c53e6ebf18d1be3aa5"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/licenses/onnxruntime-1.29.0-LICENSE",
+    "before": null,
+    "after": [
+      "100644",
+      "48bc6bb4996ac924359e8e28b9ae88970e5ed3fc"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/licenses/onnxruntime-web-1.29.0-installed-banner.txt",
+    "before": null,
+    "after": [
+      "100644",
+      "6e3f2b200ea7d8086d1052b607819e262e98051a"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/licenses/provenance.json",
+    "before": null,
+    "after": [
+      "100644",
+      "f6cd8dd7f2515d76b8a9d4edc052481c16cf488d"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/licenses/qwen3-4b-LICENSE",
+    "before": null,
+    "after": [
+      "100644",
+      "6634c8cc3133b3848ec74b9f275acaaa1ea618ab"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/licenses/tokenizers-0.2.0-LICENSE",
+    "before": null,
+    "after": [
+      "100644",
+      "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/manual-iphone-probe-client.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "f0f7e8c2929c500a28b8a60b82af43b3319988e0"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/manual-iphone-probe-contract.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "e389617830b3406dc998d7a747d7fe223ef64589"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/mobile-pack.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "9d0529f1192a14ccc1a0d43b5813423c66ecdc03"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/model-manifest.json",
+    "before": null,
+    "after": [
+      "100644",
+      "c96b8ee7170d56d4834372246de6736f9eed08cc"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/native-model-mirror.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "c2fd4c2142bbd8eefa30490a5ef9c68ce07df334"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/offline-landfall-proof.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "708e295fa27921a9aae8401cea150efb8760b9bd"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/offline-variant-proof.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "dd987e90d419ab11a87fb3ed5de1733dd11eaf32"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/package-lock.json",
+    "before": null,
+    "after": [
+      "100644",
+      "0b64cace450d1a6475b73482e26b1c9bc5b66f93"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/package.json",
+    "before": null,
+    "after": [
+      "100644",
+      "dbc0ca7fea7a6bc6b63c7724af8b31e548e75907"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/pipeline-math.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "cf740c99b63953fed4972d89dbf620804813d330"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/prepare-kit-engine.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "7ad869b65c2b30a7e0b7f2fb62f66484bebd5880"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/probe-webgpu.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "26083ac472f437370740180c4a24ab934bd1474f"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/proof-server.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "556e517288ab2740850db03d16c9b72d36a32b8b"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/q8-block32-manifest.json",
+    "before": null,
+    "after": [
+      "100644",
+      "5bc782d94b4d48c14fcad891b610fb1f62dd489e"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/q8-block32.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "d6bc40817f87bd4c6fb590dc6c16c05fc8465fe2"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/render-weather-details.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "89c5f93214ff0e7710cb20d231c83390dbe0d9dc"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/review-kit-contact.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "23e7cf65069d5a3d028b7e253f8b318f32330f24"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/runtime-pack-source-pins.json",
+    "before": null,
+    "after": [
+      "100644",
+      "f16776258e6edb01a5e9112a50762e616c424384"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/runtime-pack.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "7b580eb68939d04d0337fd6a2a418281c1367a7c"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/serve-iphone-trust-setup.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "3e0b2c6322b385fbd9cc020d6a1c53db36e949f8"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/source-contract.md",
+    "before": null,
+    "after": [
+      "100644",
+      "86683a19fc658cbe79aa74f0b7376afa6813db38"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/source-integrity.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "970e2bb1634e69c5cf6e791915e105a32cd66e44"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/species-references.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "2b9320a8b92d6cb7c10d01206d7f7a82d1c55bb0"
+    ]
+  },
+  {
+    "path": "tools/local-image-generation/stage-worker.mjs",
+    "before": null,
+    "after": [
+      "100644",
+      "ef7495475b34915ec019a53e68d429a8c2bbfcfb"
+    ]
+  }
+]

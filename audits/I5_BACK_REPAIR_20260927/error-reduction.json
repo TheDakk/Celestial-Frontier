@@ -1,0 +1,13 @@
+{
+  "scope": "non-certifying offline reduction of stopped evidence",
+  "shape": true,
+  "cold": true,
+  "coldObservations": true,
+  "publication": false,
+  "recovery": true,
+  "balances": {
+    "preArm": true,
+    "publication": true,
+    "recovery": true
+  }
+}

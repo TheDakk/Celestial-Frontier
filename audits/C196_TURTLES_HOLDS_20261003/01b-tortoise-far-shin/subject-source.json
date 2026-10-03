@@ -1,0 +1,66 @@
+{
+  "name": "Tortoise",
+  "family": "quadruped",
+  "species": {
+    "name": "Tortoise",
+    "aspect": 1.6,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "tall domed shell with pyramid-growth scutes",
+      "columnar elephantine scaly legs",
+      "blunt beaked head on a wrinkled retractable neck"
+    ],
+    "note": "the feet are stumpy and clubbed with no webbing, unlike a turtle's"
+  },
+  "genome": {
+    "seed": 474501407,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 9,
+    "body": 11,
+    "loco": 6,
+    "trait": 19,
+    "size": 2,
+    "diet": 4,
+    "head": 2,
+    "limbs": 5,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 9,
+    "habitat": 5,
+    "detail": 9,
+    "accent": 13,
+    "temper": 1,
+    "sense": 2,
+    "repro": 4,
+    "life": 0,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tortoise"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tortoise\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"474501407\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 78,
+  "profile": {
+    "id": "tortoise",
+    "names": [
+      "Tortoise",
+      "Box Turtle"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Shell and retracted limbs need actual observed topology."
+  }
+}

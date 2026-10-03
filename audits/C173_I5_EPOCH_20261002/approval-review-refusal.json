@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c173-approval-review-refusal/v1",
+  "action": "python3 audits/C173_I5_EPOCH_20261002/run-develop-after-retirement.py",
+  "executed": false,
+  "reason": "This is a rerun after the prior develop profile exited nonzero (143) without a test verdict; trusted project instructions require stopping after any nonzero result and prohibit automatic retries.",
+  "disposition": "No workaround or indirect retry. Explicit Dakk authorization requested asynchronously. Native continuation and own-branch push remain held; unaffected art delivery continues.",
+  "replacementProfileRuns": 0,
+  "allPairNativeRuns": 0
+}

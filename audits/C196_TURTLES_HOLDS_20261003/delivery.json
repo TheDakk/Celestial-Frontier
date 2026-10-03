@@ -1,0 +1,2178 @@
+{
+  "schema": "cf.c196-turtles-holds-delivery/v1",
+  "status": "FROZEN_AUDIT_ONLY_VISUAL_HOLDS",
+  "owner": "Dakk",
+  "sourceRoot": "~/Projects/celestial-frontier-openai-mac",
+  "files": [
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/authoring.json",
+      "bytes": 15344,
+      "sha256": "ed853afe60fb74cb0beb9db43e66e3d90059295e98de6e0247f897872aa237f7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/correction.json",
+      "bytes": 1772,
+      "sha256": "eb61d9e72ac54dc007eff8ac68c72d610e5a4b7283ce3a32094372c0b1106870"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/binding.json",
+      "bytes": 1601600,
+      "sha256": "deeb4e6ebdc93936217016f4233a6ffbfc01afc82f9f157e8bf4f7a0be21a309"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/declaration.json",
+      "bytes": 2726,
+      "sha256": "f4171f44c53a50851b81c73808d504787e85a8eeed791133efd8fea5723c600f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/intake-provenance.json",
+      "bytes": 3298,
+      "sha256": "df6c9e835b37109d4a233089d87cf192f6cd3fd97ebbb4f5f2c679d70f262bb8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/label-authoring-receipt.json",
+      "bytes": 3411,
+      "sha256": "1d3ef5d3e1fc1e31afec1f15215cb63f3bd790fb55925aef0c67de629e055423"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/labels.png",
+      "bytes": 42545,
+      "sha256": "ef153787ec31a3c14628326023060adfb71d5e9d952a4486e62173a6cd7d095e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/atlas/c196-tortoise-observed.json",
+      "bytes": 9899,
+      "sha256": "11b286c4a54646a5f63e2f7806921ddbc888fa05ec2a489ecb44471a393b273c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/atlas/c196-tortoise-observed.png",
+      "bytes": 873660,
+      "sha256": "edce4dc4d63189afb1271f98225d406625ca7f70f316edc6041acbcf33c47613"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/atlas/receipt.json",
+      "bytes": 3911,
+      "sha256": "d541b6db04d0c879ce9a943dc686f27f432afd58551ac6e21efcb0d9ded26889"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/binding.json",
+      "bytes": 8150,
+      "sha256": "465658dc6809c7b1965bdbc1fa744dff6afb45ed0ca8e863a8a2e459702ed65f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/keyed.png",
+      "bytes": 1924929,
+      "sha256": "ab4258dc5c41a09fdf238334b29554f839d436f744e9b4240cfbfadf894322f7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/manifest.json",
+      "bytes": 4186,
+      "sha256": "2d4ab29fbfaa6af6364be4ff10524f4c65f305e0391ed7cf63f6e870d5f09156"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/ownership.png",
+      "bytes": 19928,
+      "sha256": "86c0931d1747fd9f3509a60b7695d2229d7d29c798c4c979ad75a2f2668f1ddb"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/beak.png",
+      "bytes": 8873,
+      "sha256": "905c176df7d0243dc6f545665d1e5fe6d431dc2bb07b22a382dddfddb52f55e9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-front-ankle.png",
+      "bytes": 5289,
+      "sha256": "a7a378229e78a3984b6f0fa9ca92970a57f07b074633542fab3f4cfb9e038bd6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-front-emergence.png",
+      "bytes": 8576,
+      "sha256": "18994ecfdb1e51e2f2c1114319548548df85d25c0b6a776a49486022401e745c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-front-paw.png",
+      "bytes": 16962,
+      "sha256": "df7f3eea5d995ad197018d878a5544352cb39ad9aa854d08056c67725901d531"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-front-shin.png",
+      "bytes": 18137,
+      "sha256": "9bd80f66d31f177c499ef25168237a6a264407c9c73b74d765f06989351868e8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-hind-ankle.png",
+      "bytes": 4840,
+      "sha256": "392f6b9e9a90efd3e272871a61e7a930fb8756b883eeb3be0e9c3f107ccbac4d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-hind-emergence.png",
+      "bytes": 4190,
+      "sha256": "0a7ac738fcd5336439ec49d7632f38c7373bfab492acdcc23b94a61e45cebd5b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-hind-paw.png",
+      "bytes": 14179,
+      "sha256": "280b8a3d16db5fb4051be3c737a49dc57bea1f7fa32030e0d537ab4ae146cb0a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/far-hind-shin.png",
+      "bytes": 12008,
+      "sha256": "00ae8bc4c4f5b233b4540801825fa74d988aed0ffb21892c4d805194e1b8bb43"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/head.png",
+      "bytes": 34092,
+      "sha256": "fff0fbdd8a5ea789b831857b8fcdb03d10eb3ff46d004db7a91b8c849d44ebaf"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-front-ankle.png",
+      "bytes": 14164,
+      "sha256": "987dbbf55e4523e870fbf95c66956eef5f3148ad9ba9661f5fe2ea5e91ef2309"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-front-emergence.png",
+      "bytes": 31948,
+      "sha256": "f6006ec0eef2e678a1f33d318a05cbac29c62599ee660e6532bd3896287ebb56"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-front-paw.png",
+      "bytes": 22366,
+      "sha256": "01d801fefd796a003789ae7bb0e2bb63b67f33000bffd4a66a0a1edc802399c5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-front-shin.png",
+      "bytes": 36574,
+      "sha256": "7ffe841aac1909b4612ca4e1485c4706ffd86f506adc05cb1ea87f3e02138903"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-hind-ankle.png",
+      "bytes": 13005,
+      "sha256": "9d759267c7d44b081b9c557fe86352e5823319c863682dad5b767155ff9961fe"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-hind-emergence.png",
+      "bytes": 35864,
+      "sha256": "dc4e07b90dbd6b9fba8636e96e853a21d936d7ec15a79a56f7bfc0c97f86710b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-hind-paw.png",
+      "bytes": 20637,
+      "sha256": "cee4a45b5e0582668abd799204a2f4678ff246a67c90c1212440513c8262168a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/near-hind-shin.png",
+      "bytes": 22129,
+      "sha256": "91a41c8c4496e7d7457d31d6ef20411fbb1252c0b3a69f0d0055c5c4806f6b73"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/neck.png",
+      "bytes": 55523,
+      "sha256": "62a68d0b2f524fedf4bece5675d40d15e3773af802ae78b58a39176963303513"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/plate-remainder.png",
+      "bytes": 618483,
+      "sha256": "7872c48d9ed96379c1ecf0009c18ce994eb8692745bd05ec8f5b4a6292e4c1c7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/tail-base.png",
+      "bytes": 2331,
+      "sha256": "6b2231da6b984e179f4e732b8173d1fabf2b2a69391aa675523df7896e34f22d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/tail-distal.png",
+      "bytes": 1679,
+      "sha256": "cb37d34110e1ddc91b2214b0bb8f85c3293766fe9ae969ef99384909f8b90b50"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/tail-middle.png",
+      "bytes": 2655,
+      "sha256": "9b2c95cfc51dc33a384eae0e4c12bfb47824056b98466f946cc6bf4681b7db27"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/parts/tail-tip.png",
+      "bytes": 990,
+      "sha256": "17ae64fb26129000252012b08b1fe9aa07a69dcd166d8939846c87c79b362583"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/parts/receipt.json",
+      "bytes": 6572,
+      "sha256": "5c318f3ddc5abeb160b68155c89b5a8ebca3ff22f84789091d88b947e5d225ac"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/pre-split-binding.json",
+      "bytes": 1167382,
+      "sha256": "c7d721c457bc6d3465d06c82f36197d4e09dd62b6cd975015a225e312dcf4cce"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/receipt.json",
+      "bytes": 2884,
+      "sha256": "4114af449afb47be6ac90af2a41f2d6eb58dfc31b51bc40ac30b89bf3ee71cb9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01/record.json",
+      "bytes": 7820,
+      "sha256": "2b742c2a8b206d30b6058283416bec0b51c060d80e999bbab10e9817fba68602"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fold-diagnosis.json",
+      "bytes": 20886,
+      "sha256": "1e7d3d1d644bfdfb1a76595bdde351abec9623a8f514c350b8293bfaebb5ed98"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/intake-execution.json",
+      "bytes": 452,
+      "sha256": "1b2dd45dce28ef8fb5981168853b6bff0718bf91af53ac2f8e713ee7a964c4a7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/intake.log",
+      "bytes": 306,
+      "sha256": "bf847b15cffc22bb88c8708859b01ef6054b3f8151b3fa03551fde0dab37eac4"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/master.png",
+      "bytes": 1552562,
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/presence.json",
+      "bytes": 112,
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/approach-walk-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/approach-walk-0p9.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/approach-walk-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/faint-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/faint-0p2.png",
+      "bytes": 852217,
+      "sha256": "03b6aab253120555ec7f39b22c468368112d2e25d6a9a997a8dc1736f8e2d3d6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/faint-0p9.png",
+      "bytes": 848827,
+      "sha256": "d2b274c1f49cadfc2bae9464c92a6bccf90e8307ca4699229c07b77073a5ac41"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/faint-1.png",
+      "bytes": 848804,
+      "sha256": "68619eaf5dec0dd13066de722c8a8535a993abedc009127d9e2f61d34f1c26e2"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/idle-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/idle-0p2.png",
+      "bytes": 852881,
+      "sha256": "a9647ef42bce519db53d9c7b380b53c44ebc863cc519dc374cf75e8e53e752d0"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/idle-0p9.png",
+      "bytes": 852877,
+      "sha256": "750ca8e80f876e61283a6ec4b1407882c699d6687a3953406bf5cfff57073ec1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/idle-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/melee-tail-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/melee-tail-0p9.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/melee-tail-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/review-01/review.json",
+      "bytes": 5474,
+      "sha256": "1dddc495b44483939c089bfd4e9df119e1f9d3ab5655fbc2ba6753ff6ffb46ee"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/static-01.json",
+      "bytes": 126032,
+      "sha256": "8ac43204c3e17481dbab2a09257ff17bea27d8d39b3410709fd94946cffc59af"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/static-01.json.sources.json",
+      "bytes": 15993,
+      "sha256": "6c0854f870e54510b513168b712ae36d6de1b6d5dbc8877154be9a80f2af32a6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/static-execution.json",
+      "bytes": 474,
+      "sha256": "e414921b07ffde9b94c206de1814f5a2e0db153cd9120c3af659f6bc84de6bbc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/static.log",
+      "bytes": 4288,
+      "sha256": "c0cf47865a8e26c62d4e956c1f26083efeed9b361d5bcb7a9eae1f83d2dadce1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/subject-source.json",
+      "bytes": 2190,
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/authoring.json",
+      "bytes": 15394,
+      "sha256": "f91107506a162acf0e29664a748253d239add4df3e87bb8422d2a494ca61a142"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/correction.json",
+      "bytes": 1551,
+      "sha256": "94be2376fc2220eeb5fb9e3881ac3f35d46bb578276890c866e1fa11a091a78e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/binding.json",
+      "bytes": 1605541,
+      "sha256": "03fc01e2bba9e1ca76ecbcbc17afba32f99477b27b814113d1bfd5c40898eb7e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/declaration.json",
+      "bytes": 2726,
+      "sha256": "b604ac4186335077f19830cd94eecb4d8d29baa72e89a25dcaa5b58e2fef4f2a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/intake-provenance.json",
+      "bytes": 3378,
+      "sha256": "df66b0f039ff017efcff65650882554958a848360fd788d08c586d04b41d8077"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/label-authoring-receipt.json",
+      "bytes": 3411,
+      "sha256": "344dbae4d4b5e91e0b48936dae5f61ba612f9ed45b697f409553271e8141c4f1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/labels.png",
+      "bytes": 42506,
+      "sha256": "99c343ee7371fd2a86578c8d6fc2e127c1fc31c062ffbcdff60fb7f73d165625"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/atlas/c196-tortoise-far-shin.json",
+      "bytes": 9901,
+      "sha256": "047bb7eb0d3249471709ba70ac9b38683463c624d295e522f09fd997d8f45fc3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/atlas/c196-tortoise-far-shin.png",
+      "bytes": 873456,
+      "sha256": "c617e1037bc5c0fed8103863cd03f125ba8072698f34f52896aae5fc448dca29"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/atlas/receipt.json",
+      "bytes": 3911,
+      "sha256": "dc5c3238b919b5c29b59069a3d9186e99945e9677d2e0ca08fda6b068777d508"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/binding.json",
+      "bytes": 8152,
+      "sha256": "c66a1050a7b5d2de0216e3fc60c2977e6dcd51687e3dca1769f719040d6f5c26"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/keyed.png",
+      "bytes": 1924929,
+      "sha256": "ab4258dc5c41a09fdf238334b29554f839d436f744e9b4240cfbfadf894322f7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/manifest.json",
+      "bytes": 4186,
+      "sha256": "c202c3460eed74c9d919c6f2fec5eff24b33555a3dcb72838ce157c6b9867085"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/ownership.png",
+      "bytes": 19936,
+      "sha256": "8f7b76cd54b2b2a464a16ed5238c3801aef3de61fcfe6065e88850257b021130"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/beak.png",
+      "bytes": 8873,
+      "sha256": "905c176df7d0243dc6f545665d1e5fe6d431dc2bb07b22a382dddfddb52f55e9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-front-ankle.png",
+      "bytes": 5289,
+      "sha256": "a7a378229e78a3984b6f0fa9ca92970a57f07b074633542fab3f4cfb9e038bd6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-front-emergence.png",
+      "bytes": 8402,
+      "sha256": "7b5250c197973979ad167acde2a0e6944ebaf29459bb5354c4bddacb2a6ee76f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-front-paw.png",
+      "bytes": 16962,
+      "sha256": "df7f3eea5d995ad197018d878a5544352cb39ad9aa854d08056c67725901d531"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-front-shin.png",
+      "bytes": 19578,
+      "sha256": "e26548f6828cae6587975d615acee6ddc8f294a37eeab8fb623a1b6417e66823"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-hind-ankle.png",
+      "bytes": 4840,
+      "sha256": "392f6b9e9a90efd3e272871a61e7a930fb8756b883eeb3be0e9c3f107ccbac4d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-hind-emergence.png",
+      "bytes": 4190,
+      "sha256": "0a7ac738fcd5336439ec49d7632f38c7373bfab492acdcc23b94a61e45cebd5b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-hind-paw.png",
+      "bytes": 14179,
+      "sha256": "280b8a3d16db5fb4051be3c737a49dc57bea1f7fa32030e0d537ab4ae146cb0a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/far-hind-shin.png",
+      "bytes": 12008,
+      "sha256": "00ae8bc4c4f5b233b4540801825fa74d988aed0ffb21892c4d805194e1b8bb43"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/head.png",
+      "bytes": 34092,
+      "sha256": "fff0fbdd8a5ea789b831857b8fcdb03d10eb3ff46d004db7a91b8c849d44ebaf"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-front-ankle.png",
+      "bytes": 14164,
+      "sha256": "987dbbf55e4523e870fbf95c66956eef5f3148ad9ba9661f5fe2ea5e91ef2309"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-front-emergence.png",
+      "bytes": 31948,
+      "sha256": "f6006ec0eef2e678a1f33d318a05cbac29c62599ee660e6532bd3896287ebb56"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-front-paw.png",
+      "bytes": 22366,
+      "sha256": "01d801fefd796a003789ae7bb0e2bb63b67f33000bffd4a66a0a1edc802399c5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-front-shin.png",
+      "bytes": 36574,
+      "sha256": "7ffe841aac1909b4612ca4e1485c4706ffd86f506adc05cb1ea87f3e02138903"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-hind-ankle.png",
+      "bytes": 13005,
+      "sha256": "9d759267c7d44b081b9c557fe86352e5823319c863682dad5b767155ff9961fe"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-hind-emergence.png",
+      "bytes": 35864,
+      "sha256": "dc4e07b90dbd6b9fba8636e96e853a21d936d7ec15a79a56f7bfc0c97f86710b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-hind-paw.png",
+      "bytes": 20637,
+      "sha256": "cee4a45b5e0582668abd799204a2f4678ff246a67c90c1212440513c8262168a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/near-hind-shin.png",
+      "bytes": 22129,
+      "sha256": "91a41c8c4496e7d7457d31d6ef20411fbb1252c0b3a69f0d0055c5c4806f6b73"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/neck.png",
+      "bytes": 55523,
+      "sha256": "62a68d0b2f524fedf4bece5675d40d15e3773af802ae78b58a39176963303513"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/plate-remainder.png",
+      "bytes": 616982,
+      "sha256": "87e128cd3f76c5f544dc7e7aeea19b015f1214e94b3f923a60b51d81a3b95b43"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/tail-base.png",
+      "bytes": 2331,
+      "sha256": "6b2231da6b984e179f4e732b8173d1fabf2b2a69391aa675523df7896e34f22d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/tail-distal.png",
+      "bytes": 1679,
+      "sha256": "cb37d34110e1ddc91b2214b0bb8f85c3293766fe9ae969ef99384909f8b90b50"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/tail-middle.png",
+      "bytes": 2655,
+      "sha256": "9b2c95cfc51dc33a384eae0e4c12bfb47824056b98466f946cc6bf4681b7db27"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/parts/tail-tip.png",
+      "bytes": 990,
+      "sha256": "17ae64fb26129000252012b08b1fe9aa07a69dcd166d8939846c87c79b362583"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/parts/receipt.json",
+      "bytes": 6572,
+      "sha256": "e3fca2beb10f521dbf738803800d4e3325445103289153bbf918630268b256bc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/pre-split-binding.json",
+      "bytes": 1166468,
+      "sha256": "d8793debf6f72719dc862c73caa541595fd6e1bec87f21ad845ec2a4d911a264"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/receipt.json",
+      "bytes": 2884,
+      "sha256": "f79819ef16ed765af1ae0e9e6baaf1c69df26a6f23bd71270064fe2ceca99d67"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01/record.json",
+      "bytes": 7830,
+      "sha256": "c9ad5f346f84313e85017e2c449d298c66b2a8a76ad5be4e804a44963da7496b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fold-diagnosis.json",
+      "bytes": 21487,
+      "sha256": "d322a95de58c5cacf7e8d6ff537d9f513f179db6a2b73c989d22ef19e32cd38b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/intake-execution.json",
+      "bytes": 472,
+      "sha256": "2b9282c635d3512df5973fe9628e46b7053fa40b19776e45cbff824ea837932a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/intake.log",
+      "bytes": 316,
+      "sha256": "92d3fc94f689eeaefcf37ed65ca99912886e7058110302a3cd9d270aa31fa3cf"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/master.png",
+      "bytes": 1552562,
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/presence.json",
+      "bytes": 112,
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/approach-walk-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/approach-walk-0p2.png",
+      "bytes": 850629,
+      "sha256": "fd4bea0347275990d9973f7f7220ed156e7c2c17bb9f345c57428aad01ebfe5b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/approach-walk-0p9.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/approach-walk-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/faint-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/faint-0p2.png",
+      "bytes": 852544,
+      "sha256": "2e5eaac87815b9cbb4445c1908ab044965b984f3e496b3c4c74200bd80cdb96c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/faint-0p9.png",
+      "bytes": 850493,
+      "sha256": "ee00b65d5e188dd5409fe09d7e0da399b07d7b560522bc3e9d1c295d679e536f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/faint-1.png",
+      "bytes": 850452,
+      "sha256": "19b0cb8421af336b0613d1bce6a5bec4cf3d560a343af41657d4e785cd5d0a33"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/idle-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/idle-0p2.png",
+      "bytes": 852881,
+      "sha256": "a9647ef42bce519db53d9c7b380b53c44ebc863cc519dc374cf75e8e53e752d0"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/idle-0p9.png",
+      "bytes": 852877,
+      "sha256": "750ca8e80f876e61283a6ec4b1407882c699d6687a3953406bf5cfff57073ec1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/idle-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/melee-tail-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/melee-tail-0p2.png",
+      "bytes": 855946,
+      "sha256": "ff91b1661f91ca2904f292a4eeb773976362e59015b00c2b807ab5b5f150e016"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/melee-tail-0p9.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/melee-tail-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/review.json",
+      "bytes": 5659,
+      "sha256": "e9a9db16febd6d831378dfa7e79b7edb4719f00ba1efecc6df67b1626cca84c1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/static-01.json",
+      "bytes": 26855,
+      "sha256": "0eb194ae8415ed96f8698b4928a2c446e7d192c2e1b9d71326789ef4c9411fc4"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/static-01.json.sources.json",
+      "bytes": 15993,
+      "sha256": "e1bf30f16e53ff8eb05363abb7fc3cd9906ea5c7f985e28d839400486905d425"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/static-execution.json",
+      "bytes": 494,
+      "sha256": "f82ecafaed1fadf0ea41b06a147b33237535fc72af247aaf90a83cb459586cc3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/static.log",
+      "bytes": 2993,
+      "sha256": "2094d34761261d59ecbe425c300d6b8b04afb1dc8db022decb0effdcc2fce53a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/subject-source.json",
+      "bytes": 2190,
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/authoring.json",
+      "bytes": 15978,
+      "sha256": "2dd7eceb19646b145ae3403a7461058cef10a2bfb62575d481d63db8976dbe32"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/correction.json",
+      "bytes": 1648,
+      "sha256": "ad60ab7191dafc0106bfa7a43ae02cc9c72b2f9c2db94c7cf5d97fa8eed392dd"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/binding.json",
+      "bytes": 1605528,
+      "sha256": "4d434d310c76478ed379c52931bf4ccff52ecefae32dfc0228eadf65e0898705"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/declaration.json",
+      "bytes": 2726,
+      "sha256": "e8307969081d2526a6839343c1d118b84fecf64f4e60bcf48faf867eabd8e1c4"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/intake-provenance.json",
+      "bytes": 3386,
+      "sha256": "2ff46a294a646973568d90610a7e0fd5c1af0550ed00a7125d5ac8ee748aba99"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/label-authoring-receipt.json",
+      "bytes": 3530,
+      "sha256": "b2d9e1c011c24c924244a0607d87bf42ad345236c510c1981b98fcb665734653"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/labels.png",
+      "bytes": 42518,
+      "sha256": "181a123da1fb414801e3d5522a658e1d40a0629ebaac3250564e7b83b6433364"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/atlas/c196-tortoise-near-shin.json",
+      "bytes": 9902,
+      "sha256": "3934fc657d1b29c4f4193ad461dfd9cf5518558f5399269fd3697176df978e7b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/atlas/c196-tortoise-near-shin.png",
+      "bytes": 873466,
+      "sha256": "92d63124b7591950b60726e5630fb6fcea594f9adff8ccd00719b16ad4105488"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/atlas/receipt.json",
+      "bytes": 3912,
+      "sha256": "d551a5dd542198e80093485899c14270a5babec0a13559bd5742b260cf823c55"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/binding.json",
+      "bytes": 8152,
+      "sha256": "14824b050a20e8b1f36da2184fb960eb6f97e08d05e3ff71338ca72166345482"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/keyed.png",
+      "bytes": 1924929,
+      "sha256": "ab4258dc5c41a09fdf238334b29554f839d436f744e9b4240cfbfadf894322f7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/manifest.json",
+      "bytes": 4187,
+      "sha256": "d344a92459d95ba138a149914d9817e36b5a3398357506141f0ebabe62ec8702"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/ownership.png",
+      "bytes": 19952,
+      "sha256": "ec9dde6ef8626423c4dfaf892676edcaae594765619d31bfdf723e89dc978d01"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/beak.png",
+      "bytes": 8873,
+      "sha256": "905c176df7d0243dc6f545665d1e5fe6d431dc2bb07b22a382dddfddb52f55e9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-front-ankle.png",
+      "bytes": 5289,
+      "sha256": "a7a378229e78a3984b6f0fa9ca92970a57f07b074633542fab3f4cfb9e038bd6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-front-emergence.png",
+      "bytes": 8402,
+      "sha256": "7b5250c197973979ad167acde2a0e6944ebaf29459bb5354c4bddacb2a6ee76f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-front-paw.png",
+      "bytes": 16962,
+      "sha256": "df7f3eea5d995ad197018d878a5544352cb39ad9aa854d08056c67725901d531"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-front-shin.png",
+      "bytes": 19578,
+      "sha256": "e26548f6828cae6587975d615acee6ddc8f294a37eeab8fb623a1b6417e66823"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-hind-ankle.png",
+      "bytes": 4840,
+      "sha256": "392f6b9e9a90efd3e272871a61e7a930fb8756b883eeb3be0e9c3f107ccbac4d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-hind-emergence.png",
+      "bytes": 4190,
+      "sha256": "0a7ac738fcd5336439ec49d7632f38c7373bfab492acdcc23b94a61e45cebd5b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-hind-paw.png",
+      "bytes": 14179,
+      "sha256": "280b8a3d16db5fb4051be3c737a49dc57bea1f7fa32030e0d537ab4ae146cb0a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/far-hind-shin.png",
+      "bytes": 12008,
+      "sha256": "00ae8bc4c4f5b233b4540801825fa74d988aed0ffb21892c4d805194e1b8bb43"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/head.png",
+      "bytes": 34092,
+      "sha256": "fff0fbdd8a5ea789b831857b8fcdb03d10eb3ff46d004db7a91b8c849d44ebaf"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-front-ankle.png",
+      "bytes": 14164,
+      "sha256": "987dbbf55e4523e870fbf95c66956eef5f3148ad9ba9661f5fe2ea5e91ef2309"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-front-emergence.png",
+      "bytes": 31948,
+      "sha256": "f6006ec0eef2e678a1f33d318a05cbac29c62599ee660e6532bd3896287ebb56"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-front-paw.png",
+      "bytes": 22366,
+      "sha256": "01d801fefd796a003789ae7bb0e2bb63b67f33000bffd4a66a0a1edc802399c5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-front-shin.png",
+      "bytes": 37018,
+      "sha256": "76bc1c7de6f2ba82504513b14e32e576ee2e2f498053efa8b1752012ddfad723"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-hind-ankle.png",
+      "bytes": 13005,
+      "sha256": "9d759267c7d44b081b9c557fe86352e5823319c863682dad5b767155ff9961fe"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-hind-emergence.png",
+      "bytes": 35864,
+      "sha256": "dc4e07b90dbd6b9fba8636e96e853a21d936d7ec15a79a56f7bfc0c97f86710b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-hind-paw.png",
+      "bytes": 20637,
+      "sha256": "cee4a45b5e0582668abd799204a2f4678ff246a67c90c1212440513c8262168a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/near-hind-shin.png",
+      "bytes": 22129,
+      "sha256": "91a41c8c4496e7d7457d31d6ef20411fbb1252c0b3a69f0d0055c5c4806f6b73"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/neck.png",
+      "bytes": 55523,
+      "sha256": "62a68d0b2f524fedf4bece5675d40d15e3773af802ae78b58a39176963303513"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/plate-remainder.png",
+      "bytes": 616560,
+      "sha256": "d400008ee6496fe74e929547b271b009b4bdb3a14bcb8ecef049678907042b8f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/tail-base.png",
+      "bytes": 2331,
+      "sha256": "6b2231da6b984e179f4e732b8173d1fabf2b2a69391aa675523df7896e34f22d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/tail-distal.png",
+      "bytes": 1679,
+      "sha256": "cb37d34110e1ddc91b2214b0bb8f85c3293766fe9ae969ef99384909f8b90b50"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/tail-middle.png",
+      "bytes": 2655,
+      "sha256": "9b2c95cfc51dc33a384eae0e4c12bfb47824056b98466f946cc6bf4681b7db27"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/parts/tail-tip.png",
+      "bytes": 990,
+      "sha256": "17ae64fb26129000252012b08b1fe9aa07a69dcd166d8939846c87c79b362583"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/receipt.json",
+      "bytes": 6572,
+      "sha256": "addf40a24ccbd25c30be86f7475690c55fd915e87ad06f5248d78d40514a16be"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/pre-split-binding.json",
+      "bytes": 1162711,
+      "sha256": "a8fb79c7b76f6104511e1b474ee2960688b244308cfb9cab819b139084328493"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/receipt.json",
+      "bytes": 2885,
+      "sha256": "f0cde9f4d0035d016b9804474e80dfe5298f857f7b4e4f31c4fcc8da95380e0e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/record.json",
+      "bytes": 7832,
+      "sha256": "5ae7be808a4d663a43f48f851f14f218fd613401a9c4c5fceaa8ee35fab582a5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/intake-execution.json",
+      "bytes": 474,
+      "sha256": "2808ecf8d2a56f9a94f3ba5f6ddd39a4fba7add343f743fbaa44ddeba3a8c563"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/intake.log",
+      "bytes": 317,
+      "sha256": "393223813841bcddc4b61c3123acd7d401ff00e017e90ddd7c6d962b3725f99c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/master.png",
+      "bytes": 1552562,
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/presence.json",
+      "bytes": 112,
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/approach-walk-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/approach-walk-0p2.png",
+      "bytes": 850667,
+      "sha256": "4dd64b83ac45347501cba8b22b57d352e069a98fe8b79728f983d33ad9c1cef5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/approach-walk-0p9.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/approach-walk-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/faint-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/faint-0p2.png",
+      "bytes": 852581,
+      "sha256": "5e3199b4ccba6721e92e3e1df429f597d8961773bc75bb56429b9865d1f17fec"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/faint-0p9.png",
+      "bytes": 850485,
+      "sha256": "657e6913d7e039a0392721423743d362f79f36e48b111e2be3466213cbe1aeba"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/faint-1.png",
+      "bytes": 850377,
+      "sha256": "3b542343ca862318c330f8e502e2c9765bf630d4d7cd4a9d39e2c54350c5f7e4"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/idle-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/idle-0p2.png",
+      "bytes": 852881,
+      "sha256": "a9647ef42bce519db53d9c7b380b53c44ebc863cc519dc374cf75e8e53e752d0"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/idle-0p9.png",
+      "bytes": 852877,
+      "sha256": "750ca8e80f876e61283a6ec4b1407882c699d6687a3953406bf5cfff57073ec1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/idle-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-claw-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-claw-0p2.png",
+      "bytes": 854723,
+      "sha256": "7a3eca9c7a348368a800749d06153d665932421073982ac5e5e9106feced68af"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-claw-0p9.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-claw-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-claw-null.png",
+      "bytes": 833007,
+      "sha256": "b90cb3d6bcfd19617aa382b566f6c3f865b3968c1e51a6181a3a2fbf86ef3d31"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-tail-0.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-tail-0p2.png",
+      "bytes": 856238,
+      "sha256": "c16b935133f50f43d901a81c1c96ee2d5777eecb2748ea426c0415176faa9d86"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-tail-0p9.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-tail-1.png",
+      "bytes": 852879,
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/review.json",
+      "bytes": 6951,
+      "sha256": "278722362124b107bd3a579fb444a187ef9a99b1282c5c07e79a727a92ebc660"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/static-01.json",
+      "bytes": 10396,
+      "sha256": "77fd67e49353cc16bc3f0c5d217288a55e9a0c7eb7768762850f80fdaa2b9595"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/static-01.json.sources.json",
+      "bytes": 15993,
+      "sha256": "b891fecce7441f82476492bec6dccdafdfc09ed560d1cf95afb13d3c2f07bc1b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/static-execution.json",
+      "bytes": 500,
+      "sha256": "83927fec67ad5ea675f3c6766dd38589c83977ae4d09adf4014264996f79ddf1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/static.log",
+      "bytes": 2888,
+      "sha256": "af368cbe39801032262daa257e2728101d7b1ddac57632c77a465d38d0dd20d6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/subject-source.json",
+      "bytes": 2190,
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/authoring.json",
+      "bytes": 15968,
+      "sha256": "ee06e594e3c5f3c0eb0d5c4c4e9f2446b004a613561db65a1310da6ac5efec0b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/binding.json",
+      "bytes": 2056950,
+      "sha256": "b9014439ddee588e4e4215e2200e3e52d29a110aff8b3b98e4a87e446f4960a2"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/declaration.json",
+      "bytes": 3279,
+      "sha256": "d7d759d4a8f248a05287c4f2bf14f1df3b4227b9a354fec67a868754b5db30ba"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/labels.png",
+      "bytes": 46213,
+      "sha256": "a2d1bc7431dbdf89bdaf16d104d686a89219c3ddaa6f840e9445899dd724099e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/atlas/c196-islands-02-serval-ear-base.json",
+      "bytes": 12643,
+      "sha256": "ec177f23f6f460192a5ae6cc513dcb84155667f761b2941305f21573b42c94c7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/atlas/c196-islands-02-serval-ear-base.png",
+      "bytes": 573757,
+      "sha256": "313099be31870db4a19f21e6862c0c7740a8451b0fd35b950d6fe18b96875257"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/atlas/receipt.json",
+      "bytes": 4751,
+      "sha256": "120d13ef64645b619c2d9c41fac6b001137714830a7375c12813cc811f362c5c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/binding.json",
+      "bytes": 10313,
+      "sha256": "71146c5ff464ff7548059d005ea82301ae1fe28c1004f064c9e1d9076aa52c8c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/keyed.png",
+      "bytes": 1724849,
+      "sha256": "624ce7fe299a1ded15f2629545ff003480e3483fd405dad794008d1d316f0e50"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/manifest.json",
+      "bytes": 5227,
+      "sha256": "e8ea19dfb5fc6b01e97aae723f83ab4d6adb188354574767833dc6056f68d16f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/ownership.png",
+      "bytes": 20492,
+      "sha256": "edfea2dc0f111338cceb880182c0f1428d4e97191e5f913ea41858e86859341e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/chest.png",
+      "bytes": 20315,
+      "sha256": "98ed96ddda959df32b94c375f888576a093e7025a087fa015e1badb5649a46c3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/ear-far-root.png",
+      "bytes": 7138,
+      "sha256": "99a4076fb668e3317eadfeb087e937f196c692c11cad107f1fc634a24fcb01d2"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/ear-far-tip.png",
+      "bytes": 5492,
+      "sha256": "e8895a325b8ca7b789c5acdc7282ee25fecaade0e5be22dd705dde2f8d27d322"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/ear-near-root.png",
+      "bytes": 20731,
+      "sha256": "a40bf5d413dc3e7d70979c4e1faee95c8b7710761c295d74699deaef3333fa00"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/ear-near-tip.png",
+      "bytes": 17141,
+      "sha256": "4725a1fa4c076bf0dadf1071f2a46bd00d397c467ba9b1af538b8ac8a7b01ad9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-far-ankle.png",
+      "bytes": 8860,
+      "sha256": "4cd158d5adc04681e15f1f6db78b30a950b2755374722d809aa8f1fffa69b144"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-far-knee.png",
+      "bytes": 29640,
+      "sha256": "9d68b9e8691b7122aa627a10549c8d06b75673d5ed19f9f2429235d71ad9e1fc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-far-paw.png",
+      "bytes": 6576,
+      "sha256": "18f3b8553a13fe7bb59d2978641035770587a0ab1793409ef18dfbd892a6d496"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-far-root.png",
+      "bytes": 15936,
+      "sha256": "6b6f494129030125addfdb43ab8cad9581b505ef1e108af62102dd4c646fea32"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-near-ankle.png",
+      "bytes": 13148,
+      "sha256": "cad005e9ee84b08c55bfcb96b036437a9b7efa19044b54d7c127a78a8027ef1c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-near-knee.png",
+      "bytes": 36123,
+      "sha256": "19a7847cbfdd7c64605632f6ba3b943dbab0c10b9e2fcc3f753cf531b3cae3ae"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-near-paw.png",
+      "bytes": 7979,
+      "sha256": "bd509253ec38f99f31f5d9c6e7f982ac1693017e01fd919c77814d7f31389fd8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/fore-near-root.png",
+      "bytes": 46936,
+      "sha256": "1b9cc21a41abc95525724253ebb507d09296bc6909d880f0bb0c572b705c91c5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/head.png",
+      "bytes": 21589,
+      "sha256": "99cfeb1d70544820a0fd988b2eea445e67e62f68f9be1cb2a5cd1804630e4d18"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-far-ankle.png",
+      "bytes": 18616,
+      "sha256": "b99016eacefb3d67717e0c624e36e620ca96a0cbd26f465a4fc9eba4a151e3f3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-far-knee.png",
+      "bytes": 32967,
+      "sha256": "6114490ce533fd496c046f31bfd8a658e3f26aba16cdec91e080df140a4b333b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-far-paw.png",
+      "bytes": 7112,
+      "sha256": "2a9d304ae210bbe8a9bd3accf00668b9882d6a3857df8ebd6f678aa73e698b29"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-far-root.png",
+      "bytes": 12400,
+      "sha256": "15e258392e82ad89cb4c81037362f19c274374f0ac187b18bec3a35558bf96a7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-near-ankle.png",
+      "bytes": 8260,
+      "sha256": "d9d184a8709e88f91809df587b6b046bb792920a8deb5d89fa730b90c7d31627"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-near-knee.png",
+      "bytes": 78910,
+      "sha256": "6fc3f8e96d0d2fc080256c346924bcc504cb85f9aeb61cc7caa39c5247011370"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-near-paw.png",
+      "bytes": 8100,
+      "sha256": "59d366b85d478a3f495c2597f16844fdcda911eba6f35d9c4a4ad729511c3724"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/hind-near-root.png",
+      "bytes": 92685,
+      "sha256": "7eff3bf3da06a9e908c9074b2bcf3e0671828d035a6d3877a31c4c09e437804b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/jaw.png",
+      "bytes": 8719,
+      "sha256": "db0e1e4effe75281426bca5bb2124509bb0d3e58dcba7d9f39ddc4e481abc2cc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/neck.png",
+      "bytes": 40408,
+      "sha256": "1134f5ce535bf617bcd66902f978e4cdb8f86d359f947411d8b703bdb3ef24c6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/pelvis.png",
+      "bytes": 10523,
+      "sha256": "01edc91785ec4e9e9ea44486d1f42199569bf9d34cc9804a46169d382d7059aa"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/root.png",
+      "bytes": 579,
+      "sha256": "c409d67e2f8038102cb4821337d6f36e123cc04b216f6814f585b2d145c865d5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/spine.png",
+      "bytes": 84328,
+      "sha256": "e2810118788a76c263d7828d0b93b661d49aa96785ee3a9dcf8ca55cdd676a9d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/tail0.png",
+      "bytes": 5108,
+      "sha256": "ba622cf99545974c2a47090fc075f3adaab9c5bd56a1e1e94b6e67636f81789b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/tail1.png",
+      "bytes": 4831,
+      "sha256": "8b73f1f9f018d28a174207ddc425c4573ac6baf80849857af358cc2938893408"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/tail2.png",
+      "bytes": 3728,
+      "sha256": "0aaeb2357b384a2b70c068ae39a1cf71b9207a2b9f091fc5ab321ddc0067fb58"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/parts/tail3.png",
+      "bytes": 2615,
+      "sha256": "7dfd9fa01c91230f9d5182954b00fa869a3ce820d4000824388f14666f7c14f8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/parts/receipt.json",
+      "bytes": 8156,
+      "sha256": "dd7505ef9564e8313b14e233df0babdb53a8e64bcf422188f1730ea53a22d744"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/pre-split-binding.json",
+      "bytes": 1188081,
+      "sha256": "8825128edbf257f06f5c1fa38afb46318473bab81d15dc80d543bc3f1a332387"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit/record.json",
+      "bytes": 7396,
+      "sha256": "6d2b46804b9fdfb119251cfdbcf01bdcad8e708acad5c43f3e1a19e24047a792"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/recipe.json",
+      "bytes": 2652,
+      "sha256": "1679528a5d8f39ca4f06e386e6ff793f9acd01ebf0ab942ed3f5df0b172b9aa5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/static-execution.json",
+      "bytes": 428,
+      "sha256": "372f8d21d50d0a23e9dbcc8757c139a0757baedf2c7ba165984d050726ad4003"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/static.json",
+      "bytes": 10481,
+      "sha256": "3191e1f1f7beaa18d6b4e2e7b54691339ee3f4d9d9d83f090b697f4b8c3613b8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/static.json.sources.json",
+      "bytes": 15993,
+      "sha256": "42333ea7c75ccfad40c7491cc054964c5d2a532d6b759960956b2569d970a6fe"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/static.log",
+      "bytes": 2892,
+      "sha256": "17fc1871d137ec4bcddce711eab95ba40bc7d951de0f77120860cfd1de2d7a03"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/conservation.json",
+      "bytes": 10583,
+      "sha256": "6b18b408e4d06e4d77ef7bce4091a6daeadb06f30a68bb03d41339ff2c129146"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/correction.json",
+      "bytes": 1312,
+      "sha256": "ce607cf5651e327f3abf592daa1a640de76fc67a54aeecfe05e88073823c04b3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/binding.json",
+      "bytes": 2162077,
+      "sha256": "7c16050ec459d8f4a54382d47f1321d524b7d61929ac9aff557a70305c8d9806"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/declaration.json",
+      "bytes": 3279,
+      "sha256": "4920f832fd3f306ab9bcebc94da9d6cb069500462f624ac8b6313659ced1d010"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/intake-provenance.json",
+      "bytes": 3466,
+      "sha256": "e8377d0ab147ce9ac31039c08921f7f42b8c531b3ac6307a38deb715bfe14bf4"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/label-authoring-receipt.json",
+      "bytes": 4030,
+      "sha256": "fbb2e0f6fedf0ed2e20445694cb90a36a373de4c787f27e8cc513cb83093aea7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/labels.png",
+      "bytes": 46408,
+      "sha256": "468b3531584eeb1a04cbfffa13ddc0f151a6f4b6b551a3295c4396e4d129f277"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/atlas/c196-serval-ear-base.json",
+      "bytes": 12662,
+      "sha256": "3487f05d9aa92d81cb07a9fe286d368f5cc316dc0973abcad667ddbf2fd4cd20"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/atlas/c196-serval-ear-base.png",
+      "bytes": 581759,
+      "sha256": "aad42bad78ab21d297394521b906dbf999b6d8f2d04135742b2b1329a2b97527"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/atlas/receipt.json",
+      "bytes": 4740,
+      "sha256": "aff597d490b0acb55938151ce0d61ecec61313358e82822e07ad91f51f8ab77b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/binding.json",
+      "bytes": 10343,
+      "sha256": "ab7fb56dd681060e6ac134ad090a0c94feba4007e256d89aed2e6c97a81a905c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/keyed.png",
+      "bytes": 1724849,
+      "sha256": "624ce7fe299a1ded15f2629545ff003480e3483fd405dad794008d1d316f0e50"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/manifest.json",
+      "bytes": 5216,
+      "sha256": "3e281ecd045afb1429b37d3b746ab5a4b16a4e6b6971826b088875d2b510e39e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/ownership.png",
+      "bytes": 20809,
+      "sha256": "ad878ff4e60355ea058c79791f9968999762c7887a528dd95051f9803daf5c9f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/chest.png",
+      "bytes": 20315,
+      "sha256": "98ed96ddda959df32b94c375f888576a093e7025a087fa015e1badb5649a46c3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/ear-far-root.png",
+      "bytes": 7138,
+      "sha256": "99a4076fb668e3317eadfeb087e937f196c692c11cad107f1fc634a24fcb01d2"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/ear-far-tip.png",
+      "bytes": 5492,
+      "sha256": "e8895a325b8ca7b789c5acdc7282ee25fecaade0e5be22dd705dde2f8d27d322"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/ear-near-root.png",
+      "bytes": 20731,
+      "sha256": "d01256ab9ba271db0d9504c57ee5d7f873ef83c573989c6a1307800b24e90665"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/ear-near-tip.png",
+      "bytes": 16076,
+      "sha256": "15ab6fc7a4b57cf0d3fd341b39e97838eb728f4b49589425acb74d5d322301c9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-far-ankle.png",
+      "bytes": 8772,
+      "sha256": "c5749d9fe4a3cf56c201a25ed46b76071350c148b767bcec27570af4597e3a8b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-far-knee.png",
+      "bytes": 28453,
+      "sha256": "05c792e6d5589134052eb4f80216711ed0bb808ffc5b4e14587d2dfed1d7eeed"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-far-paw.png",
+      "bytes": 6576,
+      "sha256": "18f3b8553a13fe7bb59d2978641035770587a0ab1793409ef18dfbd892a6d496"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-far-root.png",
+      "bytes": 15936,
+      "sha256": "6b6f494129030125addfdb43ab8cad9581b505ef1e108af62102dd4c646fea32"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-near-ankle.png",
+      "bytes": 13148,
+      "sha256": "cad005e9ee84b08c55bfcb96b036437a9b7efa19044b54d7c127a78a8027ef1c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-near-knee.png",
+      "bytes": 36093,
+      "sha256": "5ed06b14a948df6abf5affd56e85bd0c65bc6f79f26386c87c83a4f8d527217e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-near-paw.png",
+      "bytes": 7979,
+      "sha256": "bd509253ec38f99f31f5d9c6e7f982ac1693017e01fd919c77814d7f31389fd8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/fore-near-root.png",
+      "bytes": 46936,
+      "sha256": "1b9cc21a41abc95525724253ebb507d09296bc6909d880f0bb0c572b705c91c5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/head.png",
+      "bytes": 21589,
+      "sha256": "99cfeb1d70544820a0fd988b2eea445e67e62f68f9be1cb2a5cd1804630e4d18"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-far-ankle.png",
+      "bytes": 18616,
+      "sha256": "b99016eacefb3d67717e0c624e36e620ca96a0cbd26f465a4fc9eba4a151e3f3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-far-knee.png",
+      "bytes": 32967,
+      "sha256": "6114490ce533fd496c046f31bfd8a658e3f26aba16cdec91e080df140a4b333b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-far-paw.png",
+      "bytes": 7112,
+      "sha256": "2a9d304ae210bbe8a9bd3accf00668b9882d6a3857df8ebd6f678aa73e698b29"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-far-root.png",
+      "bytes": 12400,
+      "sha256": "15e258392e82ad89cb4c81037362f19c274374f0ac187b18bec3a35558bf96a7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-near-ankle.png",
+      "bytes": 8256,
+      "sha256": "4e3380aa660d4eabe44a26444090f8ffe85a344896254ede967dc6ab0fd34ff0"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-near-knee.png",
+      "bytes": 71936,
+      "sha256": "f806c1bcb78c21ccf9d70e374b6f05be29f3fae5930878dbcc4cf57fd22dee49"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-near-paw.png",
+      "bytes": 7981,
+      "sha256": "486066d3321aa76b14a35f7b3f2d762bf462344fd77c50a919e94f6311d35484"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/hind-near-root.png",
+      "bytes": 89400,
+      "sha256": "8a7027137d5d27b2dc8fcdc8cda41b87622d04363933e1656558d5a4c1929370"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/jaw.png",
+      "bytes": 8719,
+      "sha256": "db0e1e4effe75281426bca5bb2124509bb0d3e58dcba7d9f39ddc4e481abc2cc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/neck.png",
+      "bytes": 40368,
+      "sha256": "870b903386ef941735bb4caccde3409c1b083b1e957803fcbfa9dfd11f21395a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/pelvis.png",
+      "bytes": 10523,
+      "sha256": "01edc91785ec4e9e9ea44486d1f42199569bf9d34cc9804a46169d382d7059aa"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/root.png",
+      "bytes": 579,
+      "sha256": "c409d67e2f8038102cb4821337d6f36e123cc04b216f6814f585b2d145c865d5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/spine.png",
+      "bytes": 104371,
+      "sha256": "23c735df29edb0279677a521a45203649a2071107810caad06f255ce3e42e721"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/tail0.png",
+      "bytes": 5108,
+      "sha256": "ba622cf99545974c2a47090fc075f3adaab9c5bd56a1e1e94b6e67636f81789b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/tail1.png",
+      "bytes": 4831,
+      "sha256": "8b73f1f9f018d28a174207ddc425c4573ac6baf80849857af358cc2938893408"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/tail2.png",
+      "bytes": 3715,
+      "sha256": "379c0bb1ff76dc99c092861a0b4e5c3aaa0147b551b91e3f15f057f6959d4dbc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/parts/tail3.png",
+      "bytes": 2615,
+      "sha256": "7dfd9fa01c91230f9d5182954b00fa869a3ce820d4000824388f14666f7c14f8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/parts/receipt.json",
+      "bytes": 8156,
+      "sha256": "74b7cb31d344067a714a5d712b8e0132b22fdc962800d49af1faae59e9c063cf"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/pre-split-binding.json",
+      "bytes": 1246377,
+      "sha256": "87ad843affdc8a117abfa5d6025cff5d10cf5e19ae30c076d7637794611066f1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/receipt.json",
+      "bytes": 2836,
+      "sha256": "22fd64077b5ed064da6c2dad8d129e69269ea791b5754449a761eb8c79aebdc0"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01/record.json",
+      "bytes": 7396,
+      "sha256": "6d2b46804b9fdfb119251cfdbcf01bdcad8e708acad5c43f3e1a19e24047a792"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/intake-execution.json",
+      "bytes": 473,
+      "sha256": "c54a9e4645163af2b06c5f4b25c21f4fe64ab32256b3e19d5a3776c3771543fd"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/intake.log",
+      "bytes": 313,
+      "sha256": "2e102afdec733887307db58769ca6c32cfd2abfc467fec339451010dcc119385"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/binding.json",
+      "bytes": 2072751,
+      "sha256": "5a4b88b35ef105a3d8a48594b92a4153a0c7fefac7351614f27e2a96a01fa92b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/declaration.json",
+      "bytes": 3279,
+      "sha256": "d7d759d4a8f248a05287c4f2bf14f1df3b4227b9a354fec67a868754b5db30ba"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/labels.png",
+      "bytes": 46213,
+      "sha256": "a2d1bc7431dbdf89bdaf16d104d686a89219c3ddaa6f840e9445899dd724099e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/atlas/c196-islands-02-serval-ear-base.json",
+      "bytes": 12643,
+      "sha256": "ec177f23f6f460192a5ae6cc513dcb84155667f761b2941305f21573b42c94c7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/atlas/c196-islands-02-serval-ear-base.png",
+      "bytes": 573757,
+      "sha256": "313099be31870db4a19f21e6862c0c7740a8451b0fd35b950d6fe18b96875257"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 4751,
+      "sha256": "120d13ef64645b619c2d9c41fac6b001137714830a7375c12813cc811f362c5c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/binding.json",
+      "bytes": 10313,
+      "sha256": "71146c5ff464ff7548059d005ea82301ae1fe28c1004f064c9e1d9076aa52c8c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/keyed.png",
+      "bytes": 1724849,
+      "sha256": "624ce7fe299a1ded15f2629545ff003480e3483fd405dad794008d1d316f0e50"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/manifest.json",
+      "bytes": 5227,
+      "sha256": "e8ea19dfb5fc6b01e97aae723f83ab4d6adb188354574767833dc6056f68d16f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/ownership.png",
+      "bytes": 20492,
+      "sha256": "edfea2dc0f111338cceb880182c0f1428d4e97191e5f913ea41858e86859341e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/chest.png",
+      "bytes": 20315,
+      "sha256": "98ed96ddda959df32b94c375f888576a093e7025a087fa015e1badb5649a46c3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/ear-far-root.png",
+      "bytes": 7138,
+      "sha256": "99a4076fb668e3317eadfeb087e937f196c692c11cad107f1fc634a24fcb01d2"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/ear-far-tip.png",
+      "bytes": 5492,
+      "sha256": "e8895a325b8ca7b789c5acdc7282ee25fecaade0e5be22dd705dde2f8d27d322"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/ear-near-root.png",
+      "bytes": 20731,
+      "sha256": "a40bf5d413dc3e7d70979c4e1faee95c8b7710761c295d74699deaef3333fa00"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/ear-near-tip.png",
+      "bytes": 17141,
+      "sha256": "4725a1fa4c076bf0dadf1071f2a46bd00d397c467ba9b1af538b8ac8a7b01ad9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-far-ankle.png",
+      "bytes": 8860,
+      "sha256": "4cd158d5adc04681e15f1f6db78b30a950b2755374722d809aa8f1fffa69b144"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-far-knee.png",
+      "bytes": 29640,
+      "sha256": "9d68b9e8691b7122aa627a10549c8d06b75673d5ed19f9f2429235d71ad9e1fc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-far-paw.png",
+      "bytes": 6576,
+      "sha256": "18f3b8553a13fe7bb59d2978641035770587a0ab1793409ef18dfbd892a6d496"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-far-root.png",
+      "bytes": 15936,
+      "sha256": "6b6f494129030125addfdb43ab8cad9581b505ef1e108af62102dd4c646fea32"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-near-ankle.png",
+      "bytes": 13148,
+      "sha256": "cad005e9ee84b08c55bfcb96b036437a9b7efa19044b54d7c127a78a8027ef1c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-near-knee.png",
+      "bytes": 36123,
+      "sha256": "19a7847cbfdd7c64605632f6ba3b943dbab0c10b9e2fcc3f753cf531b3cae3ae"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-near-paw.png",
+      "bytes": 7979,
+      "sha256": "bd509253ec38f99f31f5d9c6e7f982ac1693017e01fd919c77814d7f31389fd8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/fore-near-root.png",
+      "bytes": 46936,
+      "sha256": "1b9cc21a41abc95525724253ebb507d09296bc6909d880f0bb0c572b705c91c5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/head.png",
+      "bytes": 21589,
+      "sha256": "99cfeb1d70544820a0fd988b2eea445e67e62f68f9be1cb2a5cd1804630e4d18"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-far-ankle.png",
+      "bytes": 18616,
+      "sha256": "b99016eacefb3d67717e0c624e36e620ca96a0cbd26f465a4fc9eba4a151e3f3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-far-knee.png",
+      "bytes": 32967,
+      "sha256": "6114490ce533fd496c046f31bfd8a658e3f26aba16cdec91e080df140a4b333b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-far-paw.png",
+      "bytes": 7112,
+      "sha256": "2a9d304ae210bbe8a9bd3accf00668b9882d6a3857df8ebd6f678aa73e698b29"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-far-root.png",
+      "bytes": 12400,
+      "sha256": "15e258392e82ad89cb4c81037362f19c274374f0ac187b18bec3a35558bf96a7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-near-ankle.png",
+      "bytes": 8260,
+      "sha256": "d9d184a8709e88f91809df587b6b046bb792920a8deb5d89fa730b90c7d31627"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-near-knee.png",
+      "bytes": 78910,
+      "sha256": "6fc3f8e96d0d2fc080256c346924bcc504cb85f9aeb61cc7caa39c5247011370"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-near-paw.png",
+      "bytes": 8100,
+      "sha256": "59d366b85d478a3f495c2597f16844fdcda911eba6f35d9c4a4ad729511c3724"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/hind-near-root.png",
+      "bytes": 92685,
+      "sha256": "7eff3bf3da06a9e908c9074b2bcf3e0671828d035a6d3877a31c4c09e437804b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/jaw.png",
+      "bytes": 8719,
+      "sha256": "db0e1e4effe75281426bca5bb2124509bb0d3e58dcba7d9f39ddc4e481abc2cc"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/neck.png",
+      "bytes": 40408,
+      "sha256": "1134f5ce535bf617bcd66902f978e4cdb8f86d359f947411d8b703bdb3ef24c6"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/pelvis.png",
+      "bytes": 10523,
+      "sha256": "01edc91785ec4e9e9ea44486d1f42199569bf9d34cc9804a46169d382d7059aa"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/root.png",
+      "bytes": 579,
+      "sha256": "c409d67e2f8038102cb4821337d6f36e123cc04b216f6814f585b2d145c865d5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/spine.png",
+      "bytes": 84328,
+      "sha256": "e2810118788a76c263d7828d0b93b661d49aa96785ee3a9dcf8ca55cdd676a9d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/tail0.png",
+      "bytes": 5108,
+      "sha256": "ba622cf99545974c2a47090fc075f3adaab9c5bd56a1e1e94b6e67636f81789b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/tail1.png",
+      "bytes": 4831,
+      "sha256": "8b73f1f9f018d28a174207ddc425c4573ac6baf80849857af358cc2938893408"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/tail2.png",
+      "bytes": 3728,
+      "sha256": "0aaeb2357b384a2b70c068ae39a1cf71b9207a2b9f091fc5ab321ddc0067fb58"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/parts/tail3.png",
+      "bytes": 2615,
+      "sha256": "7dfd9fa01c91230f9d5182954b00fa869a3ce820d4000824388f14666f7c14f8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/parts/receipt.json",
+      "bytes": 8156,
+      "sha256": "dd7505ef9564e8313b14e233df0babdb53a8e64bcf422188f1730ea53a22d744"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/pre-split-binding.json",
+      "bytes": 1188081,
+      "sha256": "8825128edbf257f06f5c1fa38afb46318473bab81d15dc80d543bc3f1a332387"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit/record.json",
+      "bytes": 7396,
+      "sha256": "6d2b46804b9fdfb119251cfdbcf01bdcad8e708acad5c43f3e1a19e24047a792"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/receipt.json",
+      "bytes": 5197,
+      "sha256": "835d2bb35540bbd7783acffabffc1ed240122ff7e72543d13d694170a19d9172"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/static-execution.json",
+      "bytes": 327,
+      "sha256": "41fd22c1e872dcc84cd832218845852e4a4b309efee87eb3c596ba9bf1c6d0f0"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/static.json",
+      "bytes": 10461,
+      "sha256": "e8c1b545468b722c1a9564c5cbd886635da9861183a2a7c3411df5bc1494b393"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/static.json.sources.json",
+      "bytes": 15993,
+      "sha256": "bfe58566bbf1ce3d7752d1f78ad728987a1885de9e4c70e7f6aa356e5334d2b7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/static.log",
+      "bytes": 2892,
+      "sha256": "64d57247811bd247e9e0dc256f0d556b3255aaa1f260dcfd1415366043b2cb42"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/master.png",
+      "bytes": 1373589,
+      "sha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/approach-walk-0.png",
+      "bytes": 556556,
+      "sha256": "ff402a4c9438dfdf597041f97214e5ab0b9863679aa6108144e4d50d1add7a65"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/approach-walk-0p2.png",
+      "bytes": 558191,
+      "sha256": "e573426a0e41a13b9ae9cf5230d5140e61814b86f1b734652b08663038cb0f40"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/approach-walk-0p9.png",
+      "bytes": 556556,
+      "sha256": "ff402a4c9438dfdf597041f97214e5ab0b9863679aa6108144e4d50d1add7a65"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/approach-walk-1.png",
+      "bytes": 556556,
+      "sha256": "ff402a4c9438dfdf597041f97214e5ab0b9863679aa6108144e4d50d1add7a65"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/faint-0.png",
+      "bytes": 556556,
+      "sha256": "ff402a4c9438dfdf597041f97214e5ab0b9863679aa6108144e4d50d1add7a65"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/faint-0p2.png",
+      "bytes": 555865,
+      "sha256": "00758240eed610a5063e10a7777b0d64132cfc249bc2cd880344fa359e60f7d8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/faint-0p9.png",
+      "bytes": 542267,
+      "sha256": "4d2bcda8881efab28ba085499282db07fdd903b16fec6ae2918207ff93915e13"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/faint-1.png",
+      "bytes": 542589,
+      "sha256": "f9ca2f2b92485ca65942813e721d77a719f90e529fd1ecbc246f218259165042"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/idle-0.png",
+      "bytes": 556620,
+      "sha256": "005a91980d09d2d944b13d68e6568828c62d27cd18fcb238fd626fb7744fb555"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/idle-0p2.png",
+      "bytes": 559091,
+      "sha256": "8803051d56e4bf6b1ace95334be7139b8645d58d85a8246efc29ac49bea30445"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/idle-0p9.png",
+      "bytes": 557053,
+      "sha256": "484ec47c9f883360c78bc02e3b1abfa23cb34420ad705a648a634f772d42d900"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/idle-1.png",
+      "bytes": 556620,
+      "sha256": "005a91980d09d2d944b13d68e6568828c62d27cd18fcb238fd626fb7744fb555"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/melee-tail-0.png",
+      "bytes": 556556,
+      "sha256": "ff402a4c9438dfdf597041f97214e5ab0b9863679aa6108144e4d50d1add7a65"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/melee-tail-0p2.png",
+      "bytes": 557489,
+      "sha256": "b9b9824ecfe83b20fe19bcae2c5e2bb5588a11401808168d59f82cb51c45b664"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/melee-tail-0p9.png",
+      "bytes": 556556,
+      "sha256": "ff402a4c9438dfdf597041f97214e5ab0b9863679aa6108144e4d50d1add7a65"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/melee-tail-1.png",
+      "bytes": 556556,
+      "sha256": "ff402a4c9438dfdf597041f97214e5ab0b9863679aa6108144e4d50d1add7a65"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/review.json",
+      "bytes": 5737,
+      "sha256": "f73fc50df4168cabd1b875ec912ef15f8fa51a64e95f01d3a2ee652191abe596"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/static-01.json",
+      "bytes": 10408,
+      "sha256": "b31d0e0219280e9d7470cd3b840504fda4c4b391323844e832970958ca550f9c"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/static-01.json.sources.json",
+      "bytes": 15993,
+      "sha256": "f56bd9cbe831ae61a98d31d91d83ce5bfad34a9ebc3f13321fba395a56d5e1d8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/static-execution.json",
+      "bytes": 492,
+      "sha256": "5fafe0be435a7d3273613ec5898f5790160a4ef657981bed94b39dd88b36c539"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/static.log",
+      "bytes": 2894,
+      "sha256": "4240f18047e9515effaae386f181860b53a4f341b239138373878c1fdad53dbe"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/subject-source.json",
+      "bytes": 2417,
+      "sha256": "95c18144eec22f1c7639223716c5fbcf62bf85abe116f37d4646e97fc689db78"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial/master.png",
+      "bytes": 1323696,
+      "sha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial/ownership-preview.png",
+      "bytes": 16671,
+      "sha256": "97448a420d9e7743c1a565af876ab60e818642fd592e8d1be1cdd7caf956b05a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial/partial-labels.png",
+      "bytes": 14855,
+      "sha256": "868533bc0386f55d0f379f68bd283fb32cec966ccc6a792ed3696264b1ead3de"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial/source-partition.json",
+      "bytes": 7278,
+      "sha256": "18c65d545ae3c0d71c4d92dc7e38d58e0bead15a2d30819872cd5038ee6ad237"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial/subject-source.json",
+      "bytes": 2076,
+      "sha256": "10abc6bf68fe4e2e9a1f296f226a945b27d0e41472df30d96fb6e78efb8d5f6e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial/master.png",
+      "bytes": 1297453,
+      "sha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial/ownership-preview.png",
+      "bytes": 17296,
+      "sha256": "44a34fe6408990374b9f251a47e5c9547ecb44393c9fe5bbb33f8e7c00bc377f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial/partial-labels.png",
+      "bytes": 15188,
+      "sha256": "45b631845aa5ddcfda4a2dc472249947c54921320650486d169d0eced403dfd4"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial/source-partition.json",
+      "bytes": 7413,
+      "sha256": "3e5416e056fd3e60c8d3f24143415feebaafb50297c83222731983c620ef0245"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial/subject-source.json",
+      "bytes": 2249,
+      "sha256": "87d4e6d6eb702355cd1a01d74734e06ab913a1d380050f16cdec4fb87c250bb8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial/master.png",
+      "bytes": 1389792,
+      "sha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial/ownership-preview.png",
+      "bytes": 20090,
+      "sha256": "01e7b7e2c00ad27d8f2a4c509a5e289e3bf0f379caf3b836c9bb7c2676b7d288"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial/partial-labels.png",
+      "bytes": 18143,
+      "sha256": "60d9aa264fcf5d928ec36224f42c9108a7180b7afc38fc90d7658fd067d6ebcf"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial/source-partition.json",
+      "bytes": 8817,
+      "sha256": "b593fa20134f3b07eeef995eb1a8a3f366e72f8b84b14175062fd76c16bf871d"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial/subject-source.json",
+      "bytes": 2144,
+      "sha256": "97524cd57b379e83072a96e37887ac871c7c4e34f699001fcbb6d73de8ab4818"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial/master.png",
+      "bytes": 1368396,
+      "sha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial/ownership-preview.png",
+      "bytes": 17552,
+      "sha256": "a66797f9846158e24d57df9fb843e0a6a6632c89c45a41c15d56471495306768"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial/partial-labels.png",
+      "bytes": 15469,
+      "sha256": "e0abb956b7b58adc49e3bad83dc4582b641875a8a8caf5c93b4f3b8084d7d5c3"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial/source-partition.json",
+      "bytes": 7477,
+      "sha256": "5605332b040af49512375176e1a4839e9f553d33878f379e7526c6406e71ce97"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial/subject-source.json",
+      "bytes": 2311,
+      "sha256": "eb9766c2b58c9a42f4c995f5c4f3944b5ed81f5d270b4a31d09508354a5ce990"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/README.md",
+      "bytes": 6392,
+      "sha256": "f4b39cfd3ca05ae1ebd2f031cf339ca1aca25e4077f0dc17b0bcaf4cc69bab44"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/attempts.json",
+      "bytes": 6200,
+      "sha256": "d396678b5221c69819989c98c47c190199b85c6e04bde6dcdd08c83b4d2d5443"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/author.mjs",
+      "bytes": 8159,
+      "sha256": "684e36c7526c8551791bbb358e96ba28b77a2bbe571523f28004372446b7dad8"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/bundle-review-near-shin.mjs",
+      "bytes": 1240,
+      "sha256": "d0014a0f34101fabc0e6ab0a37812d871bf80fde7868095a3d33dab12cd071ad"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/bundle-review.mjs",
+      "bytes": 1218,
+      "sha256": "751399a8e0175da51b274f7202e0bc95e2698b2a73c39778913b94653d5cb430"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/compile-axial-joins.mjs",
+      "bytes": 3068,
+      "sha256": "f190697000032cd211ac3e4fb4acc03975aff9c4479b1c1878d63dbc753dede9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/conserve.mjs",
+      "bytes": 6324,
+      "sha256": "d9a3a3b429e493d9f0d00b0bebf9a07565363a45731541c800473740cc49b95a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/diagnose-tortoise-successor.mjs",
+      "bytes": 2876,
+      "sha256": "a291b1bbd4c62d640299c95d1cd02f808c5dc357f2cb644f90f98d92470a115a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/diagnose-tortoise.mjs",
+      "bytes": 2866,
+      "sha256": "39ba6b707b281a7574ccff2c2a908c9fc26d9e22b4e973f526ed7ed13da71168"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/freeze-checks.json",
+      "bytes": 954,
+      "sha256": "0ac1cd38d18ce8fd95f8da4201948581a3abcc67ae24fe10fb7d8e5ab7c03c6f"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/freeze-delivery.mjs",
+      "bytes": 3103,
+      "sha256": "ee909ec6d6831d2e19adeeee0cc50bcc2ecc540b2d224291edd5b3f5a76bfc44"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/near-shin-verification.json",
+      "bytes": 2757,
+      "sha256": "b4624205242c9965314554506d8db89589e769d5c3a920443ebc3d335ce8ec2a"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/near-shin-verifier-first-refusal.json",
+      "bytes": 651,
+      "sha256": "fed0454e9870e4e90b4ea863fcb2ac2ccb9f8ea629314587707aa00928dd99c9"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/partial-partitions.mjs",
+      "bytes": 9612,
+      "sha256": "6fa770b274380fdad43c9ee7376e8b43d73a9376dd9c11ce676f13249f204386"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/place-eligible.mjs",
+      "bytes": 6238,
+      "sha256": "8f99be198d2c3110bf2fa2acd971fa121ed9baebdf270526b2f24c727f673fd2"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/review-bundle-receipt.json",
+      "bytes": 178502,
+      "sha256": "b7758321131469c9b3683dabb92f3f15f7d63a989f47cc23a7d420884e62e44e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/review-near-shin-bundle-receipt.json",
+      "bytes": 178514,
+      "sha256": "0f2f0ecf20525aa8a2894cc4f2cba7416d0caf4d7dc85a2641b32f66347d54f2"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/review-near-shin.bundle.mjs",
+      "bytes": 1352477,
+      "sha256": "369b2e3b2fbaac6d038f6b1f6e801f78af3e130ca4986d5f0e02f26aa2c4b59b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/review-near-shin.mjs",
+      "bytes": 4487,
+      "sha256": "7ff8ca939dde590177a0766e4b474252880e9894a94933b582bf9a9a3f1b7532"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/review-rig.bundle.mjs",
+      "bytes": 1352288,
+      "sha256": "0af46a7f879bc20754396da496b983713ee80bea3cb55de94789b2102c688a88"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/review-rig.mjs",
+      "bytes": 4344,
+      "sha256": "1ed88634689a0217bde7b6855b462c363e9ebc693f72a383a96a995b3b9fa4db"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/run-candidates.mjs",
+      "bytes": 1284,
+      "sha256": "3c6bebf7692ff2a39f6b2aec5045c2e69953f41b58a5f1c6cb2be19599bf9106"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/selected.json",
+      "bytes": 3173,
+      "sha256": "bd93e0e9620079e2c5538fadffe0a33bf7bc89f4d4e0cfe56d4a19828df6c357"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/source-verification.json",
+      "bytes": 14857,
+      "sha256": "ebf096ce97323e3ba2b6b29b26b7823e37064845e523c82a8ce42900a884cceb"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/verify-near-shin-first.mjs",
+      "bytes": 5915,
+      "sha256": "1b7132ef44d2ec6478c418c45ecfbfa3cbf2f0f51c07897692ede59ef24c0dfd"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/verify-near-shin.mjs",
+      "bytes": 5993,
+      "sha256": "89e1dc212c9624973755fbfc5b90b7aeeac24167bf9eba16928d64baae98848b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/verify-sources.mjs",
+      "bytes": 6976,
+      "sha256": "ed95adf50792080ed2068f728944a498d6cc3d0301c3cf934ed6e1113bf2bde1"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/visual-review.json",
+      "bytes": 5861,
+      "sha256": "a2b8ef50e65753d954927e3657fd9135f26227fc7cad308c8a3be2126f98dd52"
+    }
+  ],
+  "fileCount": 431,
+  "totalBytes": 106874609,
+  "selected": "selected.json",
+  "attempts": "attempts.json",
+  "visualReview": "visual-review.json",
+  "verification": [
+    "source-verification.json",
+    "near-shin-verification.json",
+    "freeze-checks.json"
+  ],
+  "qualityAccepted": false,
+  "native": false,
+  "productChanges": false,
+  "limitsChanged": false,
+  "cpuStatus": "TERMINAL"
+}

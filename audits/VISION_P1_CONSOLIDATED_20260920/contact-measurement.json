@@ -1,0 +1,112 @@
+{
+  "subjects": [
+    {
+      "id": "painter-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painter-coconut-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painter-freshwater-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painter-mud-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painter-vent-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painted-coconut-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painted-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painted-freshwater-crab",
+      "samples": 2047
+    },
+    {
+      "id": "painted-mud-crab",
+      "samples": 2053
+    },
+    {
+      "id": "painted-vent-crab",
+      "samples": 2053
+    }
+  ],
+  "maxima": {
+    "Knee": {
+      "subject": "painted-freshwater-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg3NearKnee",
+      "deg": -63.456792093604356,
+      "limit": {
+        "min": -30,
+        "max": 30
+      },
+      "exceeded": true
+    },
+    "Foot": {
+      "subject": "painted-freshwater-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg3NearFoot",
+      "deg": 93.94604092342806,
+      "limit": {
+        "min": -65,
+        "max": 65
+      },
+      "exceeded": true
+    }
+  },
+  "proposed": {
+    "Knee": 75,
+    "Foot": 105
+  },
+  "failures": [
+    {
+      "subject": "painted-freshwater-crab",
+      "action": "cast",
+      "ms": 462.5833333333333,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+    },
+    {
+      "subject": "painted-freshwater-crab",
+      "action": "faint",
+      "ms": 307.6666666666667,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+    },
+    {
+      "subject": "painted-freshwater-crab",
+      "action": "victory",
+      "ms": 245,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6"
+    },
+    {
+      "subject": "painted-freshwater-crab",
+      "action": "victory",
+      "ms": 485,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+    },
+    {
+      "subject": "painted-freshwater-crab",
+      "action": "presentation",
+      "ms": 2600,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"
+    },
+    {
+      "subject": "painted-freshwater-crab",
+      "action": "presentation",
+      "ms": 2850,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+    }
+  ]
+}

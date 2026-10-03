@@ -1,0 +1,15 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.24045748953044108,"gap":0.00007195693981894702,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.00004215062219327116,"gap":0.00006646842037266799,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.19734636282296386,"gap":0.0000649921897827814,"exactRest":true,"firstRefusal":null}
+{"id":"approach:flight","status":"PASS","samples":121,"drift":0,"gap":0.00007407685197274496,"exactRest":true,"firstRefusal":null}
+{"id":"melee:peck","status":"PASS","samples":121,"drift":0.24602756039102366,"gap":0.00007482254532231628,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.24165469845882803,"gap":0.00006726467531642256,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.21415282649612766,"gap":0.00007357234999689315,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.00004215062219327116,"gap":0.0000721142023054078,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0.2367157668343461,"gap":0.00006876548896019729,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.24896520536483777,"gap":0.00007960575129044391,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.18266278624782192,"gap":0.00006368493468926488,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.2108276350448125,"gap":0.0000721142023054078,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.192084859470119,"gap":0.00006211022927523632,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"RED","samples":37,"drift":0,"gap":0.00007277800949914587,"exactRest":true,"firstRefusal":{"ms":215.4222222222222,"sampleNumber":38,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"}}
+{"status":"RED","rows":14,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

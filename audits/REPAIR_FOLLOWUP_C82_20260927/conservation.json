@@ -1,0 +1,32 @@
+[
+  {
+    "name": "bobcat",
+    "id": "bobcat-side-01",
+    "moved": 800,
+    "foreignChanges": 0,
+    "recordBytesIdentical": true,
+    "sourceLabelSha256": "dee97541d4086f78f5a1e2e4f5e091c7b62201d88a9bc0d059d849cf816ebeb4",
+    "candidateLabelSha256": "3301d866b225227bf5ac4ce3362b983373cfe54b248e9d45c7f621971c181015",
+    "admission": "DIAGNOSTIC_ONLY"
+  },
+  {
+    "name": "donkey",
+    "id": "donkey-side-01",
+    "moved": 19318,
+    "foreignChanges": 0,
+    "recordBytesIdentical": true,
+    "sourceLabelSha256": "4823bb566f3536e1f076b5a7a8958c3ca890a6e55c6c006c9ce64d8bfde76e97",
+    "candidateLabelSha256": "e3fb445b4a3e63feb82daee70ac0b0cdbe01db4dc47438804ad00afa14048eec",
+    "admission": "DIAGNOSTIC_ONLY"
+  },
+  {
+    "name": "bobcat",
+    "id": "bobcat-chain-02",
+    "moved": 36830,
+    "foreignChanges": 0,
+    "recordBytesIdentical": true,
+    "sourceLabelSha256": "dee97541d4086f78f5a1e2e4f5e091c7b62201d88a9bc0d059d849cf816ebeb4",
+    "candidateLabelSha256": "66a2a88725f69bd4fe8dbde02de9eba500331f8a0d51e86bec5b0fe4729b1806",
+    "admission": "REJECTED_STATIC_FOLDS"
+  }
+]

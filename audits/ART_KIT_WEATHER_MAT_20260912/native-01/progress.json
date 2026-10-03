@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "error": null,
+  "last": {
+    "phase": "landing-complete",
+    "landing": 1,
+    "elapsedMs": 23561.939999997616,
+    "sessionCreates": {
+      "text": 1,
+      "encode": 1,
+      "denoise": 1,
+      "decode": 1
+    },
+    "atMs": 30085,
+    "sequence": 246
+  },
+  "eventCount": 246,
+  "partialCount": 1
+}

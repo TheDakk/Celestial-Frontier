@@ -1,0 +1,67 @@
+[
+  {
+    "category": "Under the Hood",
+    "text": "🌐 READY FOR OTHER LANGUAGES: the Settings panel now draws its words from a translation table (English unchanged); more screens follow.",
+    "source": "audits/H1_L10N_20260926/README.md"
+  },
+  {
+    "category": "Under the Hood",
+    "text": "📱 DEVICE CHECK: a hidden page (?deviceProbe=1) measures how smoothly the painted battles run on your phone, over a longer stretch as it warms up, and what the painted art keeps in memory, and gives you one block to copy. It sends nothing anywhere.",
+    "source": "audits/H1_L10N_20260926/README.md"
+  },
+  {
+    "category": "UI Enhancements",
+    "text": "⚔️ PAINTED BATTLES BY DEFAULT — every fight now plays out on the painted battle stage, with painted creature art and motion, above the Combat Chronicle. Add `?battle2=0` to the address to watch the Chronicle alone.",
+    "source": "audits/A4_BATTLE2_DEFAULT_20260926/README.md"
+  },
+  {
+    "category": "New Features & Systems",
+    "text": "🧭 COMPANION MISSIONS — send a companion to a world you've landed on: Prospect brings back that world's materials, Survey brings a little Stardust and a story. 10, 25 or 60 minutes of play; the risk is shown before it leaves, and you can recall it any time. Two at once.",
+    "source": "audits/N3_MISSIONS_20260926/README.md"
+  },
+  {
+    "category": "Gameplay",
+    "text": "A returning companion earns XP and bond memories; its first long mission to a world leaves a memento.",
+    "source": "audits/N3_MISSIONS_20260926/README.md"
+  },
+  {
+    "category": "UI Enhancements",
+    "text": "📚 COMPENDIUM FILTERS AND SHELVES — sift the Compendium by kingdom (Fauna, Flora, Fungi, Microbes) and rarity (Rare+, Legendary+, Mythic+), or turn on ▦ Shelves to fold it by habitat.",
+    "source": "audits/D16_FINAL_20260926/README.md"
+  },
+  {
+    "category": "New Features & Systems",
+    "text": "✨ SPECIMEN REVEALS — every new Compendium page is revealed with its painted portrait; several at once queue up, with Continue and Skip all.",
+    "source": "audits/D16_FINAL_20260926/README.md"
+  },
+  {
+    "category": "UI Enhancements",
+    "text": "↗ ORIGIN TRAVEL — a wild catch's page flies you back to the world where you first catalogued it.",
+    "source": "audits/D16_FINAL_20260926/README.md"
+  },
+  {
+    "category": "New Features & Systems",
+    "text": "⇪ VISTA POSTCARDS — step into a landing vista with ⛶ Vista, then save or share it as a postcard with the world's name and share code.",
+    "source": "audits/D16_FINAL_20260926/README.md"
+  },
+  {
+    "category": "New Features & Systems",
+    "text": "🎵 A LIVING SOUNDSCAPE — every world now has its own bed of wind, water, insects and weather, from 43 biomes; music is sparse and melodic — a calm piece, then minutes of only the world — and battles carry their own theme, with stings for victory and defeat.",
+    "source": "audits/AUDIO_STAGES_1_3_20260926/README.md"
+  },
+  {
+    "category": "New Features & Systems",
+    "text": "🦎 EVERY CREATURE HAS ITS OWN VOICE — thirteen body plans voiced from throat, breath and body (croaks, chirps, hisses, clicks, hoots, bubbles), one voice per creature, the same everywhere; every ability theme and impact has its own material sound.",
+    "source": "audits/AUDIO_STAGES_1_3_20260926/README.md"
+  },
+  {
+    "category": "Under the Hood",
+    "text": "🎧 All sound is original and generated on the device — nothing downloaded, no recordings, no AI audio; the hidden Listening page now reviews every sound in the game.",
+    "source": "audits/AUDIO_STAGES_1_3_20260926/README.md"
+  },
+  {
+    "category": "New Features & Systems",
+    "text": "🏗 OUTPOSTS — Build a Survey Relay, a Field Shelter or a Companion Sanctuary on a world you chose: three stages each, paid in parts and Stardust, with no timers or upkeep. Finished outposts change their world for good and join the Museum.",
+    "source": "audits/N4_OUTPOSTS_20260926/README.md"
+  }
+]

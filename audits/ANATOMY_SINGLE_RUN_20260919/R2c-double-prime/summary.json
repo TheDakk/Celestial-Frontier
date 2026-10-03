@@ -1,0 +1,75 @@
+{
+  "status": "S2_STOP",
+  "runtime": "v26.9.0",
+  "implementationProducer": "766e0917f2f280c5fbc88b8c317a5a916e217be7",
+  "auditProducer": "224086c9cb1bbfdd3d91ecbeea3ee4be97b66850",
+  "subject": "civet",
+  "phase": "family solver construction before native rest",
+  "error": "Contact: invalid support weights foreNearAnkle",
+  "diagnosis": {
+    "part": "fore-near-lower",
+    "partVertex": 112,
+    "fieldVertex": 442,
+    "barycentric": -8.975276662232845e-16,
+    "barycentricUnchangedFromCandidate10": true,
+    "weightSum": 1,
+    "rejectingPredicate": "v.barycentric < 0",
+    "owner": "new per-vertex support constructor validation",
+    "nativeRestChanged": null,
+    "kinematicResidual": null,
+    "arapResidual": null,
+    "motionSamples": 0
+  },
+  "controls": {
+    "unitTests": {
+      "contact": 24,
+      "splitAndProbe": 8,
+      "status": "PASS"
+    },
+    "syntheticDiffusedMutant": "expected FAIL at 2.6479415184820128 px; pinned control PASS at 0.000025206430117890014 px",
+    "realUnpinnedControl": "UNRUN after S2",
+    "sixSubjectCovariance": "UNRUN after S2",
+    "fiveCrabBitIdentity": "UNRUN after S2",
+    "civetAllRowsAndPresentation": "UNRUN after S2"
+  },
+  "leafReds": [
+    {
+      "item": "pose export integration",
+      "diagnosis": "Local reserved battle2/choreography.ts and effects/anchors.ts absent; 5 pass, 2 fail; no sibling copy."
+    },
+    {
+      "item": "split preservation unit fixture",
+      "diagnosis": "Initial fixture omitted geometry; corrected fixture passed, both logs retained."
+    },
+    {
+      "item": "native-rest-01 invocation",
+      "diagnosis": "Requested nonexistent quadruped melee:body; failed before measurement. Corrected argument in native-rest-02 exposed S2; no further retry."
+    },
+    {
+      "item": "R1c CPU and persimmon fold",
+      "diagnosis": "Earlier recorded results unchanged; see ../R1c/CPU_TABLE.md and earlier stop packet."
+    }
+  ],
+  "unrun": [
+    "native exact rest proof",
+    "unpinned candidate10 negative control",
+    "R2c double-prime six-subject static sweep",
+    "R2d",
+    "R3/T1/travel/contactJoint/pinch/crustacean profile",
+    "R4",
+    "one full-row native recapture",
+    "R9/Q1 and arena composite",
+    "R5/R6/R7",
+    "R8 phone delivery",
+    "58-species roster",
+    "local PR42 split"
+  ],
+  "newFilms": 0,
+  "newSheets": 0,
+  "rosterAttempted": 0,
+  "rosterFitRefusals": 0,
+  "rosterRemaining": 58,
+  "signingBlockResolved": true,
+  "noThirdVariant": true,
+  "remoteWrites": 0
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "cf.phone-preparation-snapshot/v1",
+  "reason": "Preserve pre-review source and derived bundle/manifest before correctness repair",
+  "files": [
+    {
+      "file": "client.ts",
+      "sha256": "3108aa2e6b94e5f03ca0924db4b0e363e0751c5c87321dcf88700f2b9e22c8f2",
+      "bytes": 8428
+    },
+    {
+      "file": "prepare.mjs",
+      "sha256": "481e802a1807774993dae340d6b854c53136ba5290684db9095257fc561cb1eb",
+      "bytes": 4821
+    },
+    {
+      "file": "run.mjs",
+      "sha256": "c306f7d214b8fbeacc1f01bcfc6e728129c7c9cb4f6e1cbd89a07d4604770fdb",
+      "bytes": 8026
+    },
+    {
+      "file": "prepared-manifest.json",
+      "sha256": "e106e5b3cf32b36e6f88adc4a4071817867bcdcf9995e8c943af2ec757e67d26",
+      "bytes": 13891
+    },
+    {
+      "file": "prepared/client.mjs",
+      "sha256": "ba2cf3693c7ab4ee59f67dd60438b0e2a59013efed8239d042e46cb05ba69907",
+      "bytes": 198756
+    },
+    {
+      "file": "prepared/inputs.json",
+      "sha256": "c8aa68e952199aa8491b667fd75b25a7a0edbae6e875e70d6eea2e02a44d09c0",
+      "bytes": 4873
+    }
+  ]
+}

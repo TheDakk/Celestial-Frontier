@@ -1,0 +1,698 @@
+{
+  "schema": "cf.c168-membrane-delivery/v1",
+  "status": "REFERENCE_CANDIDATES_WITH_HOLDS",
+  "uniqueSourceCandidates": 2,
+  "newGeneratedOriginals": 1,
+  "selectedSpreadPacket": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours",
+  "standingPacket": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire",
+  "sourceMastersUnchanged": true,
+  "sourceLabelsOrLandmarksTransferred": false,
+  "predecessorStatic": "PASS_STATIC",
+  "selectedStatic": {
+    "status": "PASS_STATIC",
+    "actionRows": 13,
+    "actionSamples": 1573,
+    "presentationSamples": 1035,
+    "realm": "aerial",
+    "sourcePixelRest": "PASS"
+  },
+  "d28": {
+    "cap": 0.05,
+    "predecessor": "REFUSED_618px_5.5pct",
+    "selected": "PASS",
+    "residualIslandsNotApplied": true
+  },
+  "standingStatus": "ANATOMICAL_HOLD_NO_FIT",
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "performanceClaim": null,
+  "globalReferencePoolChanged": false,
+  "productChanged": false,
+  "files": [
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/README.md",
+      "sha256": "b80d7072654378735ce25fa35e70723ba2b70368fcaa59a82fe925cc9b3357ce",
+      "bytes": 5261
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/author-references.mjs",
+      "sha256": "2b166d306ad47a11708fc16c5d32a48eb346ac292475e5a5226189ac21721b0d",
+      "bytes": 9193
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/authoring-provenance.json",
+      "sha256": "78607b37b696c9eae25dcb4ad43921ce2bd4f4b0e0f8f80285ca2c7c5ad78345",
+      "bytes": 948
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/complete-observed-contours.mjs",
+      "sha256": "64e3f7c882f4a3184d825a603fe84169444989cb9ac69f0cb16853b70d101199",
+      "bytes": 3128
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/contour-delta-proof.json",
+      "sha256": "42014395f7cf8ec59ef9c97b50d13d65ba25b192b8c87c44f173288161a2a7e9",
+      "bytes": 1337
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/freeze-delivery.mjs",
+      "sha256": "d0689bfec2d573fa584f14387c626b5793529dbda2341ae33a2a1096375a7387",
+      "bytes": 3795
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/instrument-correction.json",
+      "sha256": "471ed825ac361d7aedbe2607a7c17c4e3e4c9240c712f14ab6bf2c05d90d2a42",
+      "bytes": 1092
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/prepare-inputs.mjs",
+      "sha256": "b6263b31e766fa32fda2629c845f1b0139d4e94d3209461e0389376a7df586a0",
+      "bytes": 3230
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/preview-standing-hold.mjs",
+      "sha256": "db324b832914e7dbe50889420ebcf1fb04a84144cb15ca04a54e6816b860735d",
+      "bytes": 2168
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/repair-preview-instrument.mjs",
+      "sha256": "0bd624bacfa7db24bee486f9790eaf41c0c3cbc593c6820af9c93c6571edb5fe",
+      "bytes": 1285
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/authoring.json",
+      "sha256": "b637b3646b288efe7f4f49096c1ec1e364d91be8678e4a06fed48046e2b8d253",
+      "bytes": 22402
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/conservation-01.json",
+      "sha256": "6f1f7119561390eabcc9ddc6a0bb5ab3cf1fbda087dcb984d440984cfd7ce60d",
+      "bytes": 3101
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/contour-provenance.json",
+      "sha256": "36c16b0d646908be34fb7d6bfdb0239ea9502cc22b51caa84410afc0d0be7f46",
+      "bytes": 1816
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/binding.json",
+      "sha256": "566b242d1dd2fc3dc0395c02bf816471de29bf4d77f3a51f4b5437550b0c782e",
+      "bytes": 1361169
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/declaration.json",
+      "sha256": "bfaa2aab80797fe4817ea66329d278f102f40a693eba7c734053e54066c53e54",
+      "bytes": 2463
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/intake-provenance.json",
+      "sha256": "13fb21f6ea8dd7fcec0cc135b0b259143684023d9c5b6822bb2535ca949a05ec",
+      "bytes": 3321
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/label-authoring-receipt.json",
+      "sha256": "5285cd17e4b4e61153a5c0d6d8f605a37c4a3449ef14e7c0f52edc70fdd6a945",
+      "bytes": 3988
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/labels.png",
+      "sha256": "fde98442fc445df8452a86c233a6d1477f13e4bf6ad4f008a0495e772ea39e9d",
+      "bytes": 41543
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/atlas/c168-reference-spread-bat.json",
+      "sha256": "04c32c41c3440b92dc7ab36756e5330d4357305a7674aacfb7861d61610f9c92",
+      "bytes": 9021
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/atlas/c168-reference-spread-bat.png",
+      "sha256": "2ee464f39dc38667ff2abccd921fdad4e808ca3888ec3171c6576fe91a17e0f9",
+      "bytes": 405161
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/atlas/receipt.json",
+      "sha256": "a41871e78d04124bf3af420f3495d89588ca6bdf80a377aa2afe7bb29fcd808f",
+      "bytes": 3578
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/binding.json",
+      "sha256": "80b5d73ec6ab11b9befd12a24003fbd0ba75312c485c09a38378685d6a39f40a",
+      "bytes": 7424
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/keyed.png",
+      "sha256": "1417be244befd6ee3950dd04861adedfda9affcff33a7a37fa4d351743d93786",
+      "bytes": 1492307
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/manifest.json",
+      "sha256": "afb7edf5432cf6797ffddbc5a39de3c30783dc29a71bc99db58458d118688ebd",
+      "bytes": 3697
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/ownership.png",
+      "sha256": "63c8aba6109730f155cf728ee04728ca21c2220f5655b2651c02ae7d9bfb4de9",
+      "bytes": 15742
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/chest.png",
+      "sha256": "e69034ff1f992d2dd4c42b83ad1e909fe2663c310dcffc7f639613092d8206ad",
+      "bytes": 9663
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/ear-far.png",
+      "sha256": "3c8bd0623b9ed1b96b29dc7675897ee7973c4e139b733eb9df0e15c3dea7f420",
+      "bytes": 8458
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/ear-near.png",
+      "sha256": "8a5d2e20f61a9292a85272202b29fb6278d0aeeb34c638e68e1f5bfb01134788",
+      "bytes": 18645
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/head.png",
+      "sha256": "3654e20a2be8a5ee004ffe2dc1f77f1be8b4a21a298cff06b98c4082518487e5",
+      "bytes": 7151
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/jaw.png",
+      "sha256": "f318213c3838ebfea3abe1a742f2842ea2e6a57312ce25538e9397a6a8a049ae",
+      "bytes": 2541
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/leg-far-foot.png",
+      "sha256": "f2ee6c28e429a770053938928254e228f1b2989b07095fc7cd0db7266b2b9b74",
+      "bytes": 1508
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/leg-far-knee.png",
+      "sha256": "428c0ea66ec051e21215b9d5b011d8a83a0efda94212ad745470b662489f38b5",
+      "bytes": 6494
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/leg-near-foot.png",
+      "sha256": "effc3f11f45a48e6b97777a9b8cf2fcc4a769ddfe4e0a6e7a0f0a292e336100b",
+      "bytes": 1769
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/leg-near-knee.png",
+      "sha256": "10de8388ce074f0af6ef3301bb354762c03ca9cf6e0352bb41d340268be7e916",
+      "bytes": 4992
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/neck.png",
+      "sha256": "9f5c4821134a70b154c5a3295660831483c8c8cae716f4f04f7fa66108343a0f",
+      "bytes": 7579
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/pelvis.png",
+      "sha256": "d7447c1df31d2657e3e5bd4aad281859b1ebe2b43048bd3b3621047e3d4a8b4d",
+      "bytes": 11625
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/root.png",
+      "sha256": "fa92dc23e2a3800728707f60bda0afeb63276f6e4af86eb323c7dcd7c0f7189d",
+      "bytes": 328
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/spine.png",
+      "sha256": "871096d8a9bbb186152ead7319dc83bb2bb63dd5640a64d281e5c6c025765d56",
+      "bytes": 8828
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/tail.png",
+      "sha256": "a047e5df46619715daf3a8e315f145c39de0c0c90373733313f5b416071b5b23",
+      "bytes": 22649
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-far-elbow.png",
+      "sha256": "f9fc19d48bcccf266b4db519d66d9bbd4f0ceb6c8ace369c3a53616f89080749",
+      "bytes": 64638
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-far-root.png",
+      "sha256": "46ab130aa8449fea8b862846162c3b8bd5e089c515a5801a85c520fd4705dc2e",
+      "bytes": 8923
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-far-tip.png",
+      "sha256": "c002b36c607854b403036a3988e0cf2558999a008793e8be0b0a2cfddb600cfd",
+      "bytes": 103367
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-far-wrist.png",
+      "sha256": "295e6afa3b57b85c50d1041a90824fcab3930382c289f62ec2aa79f1fa55ecf7",
+      "bytes": 51785
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-near-elbow.png",
+      "sha256": "d1d78d66ea57392a1ce9a0421c19bb487bc37bbf8109c5fb291f203c84e002fb",
+      "bytes": 36254
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-near-root.png",
+      "sha256": "53683cfdba162f3176c991a4b46352ad620f5cb84967eb146448fa462f27b847",
+      "bytes": 6911
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-near-tip.png",
+      "sha256": "b5a8823f925ea86378a993acc7cc7510d145f12ba08ef385be332da9af49018f",
+      "bytes": 58260
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/parts/wing-near-wrist.png",
+      "sha256": "1e47915d9a976965eda6a7a7a98c90947d6ea3966fe04546e150100800ce0731",
+      "bytes": 26297
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/parts/receipt.json",
+      "sha256": "ae83ca429c07c850db31a2d391fe116152e2763991b78c37de4a7ca1a74a3d85",
+      "bytes": 6014
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/pre-split-binding.json",
+      "sha256": "c4ed6d68af031865ddbc28a7ce1f7c2aa04513a533b4cb409b81dcc50d082f93",
+      "bytes": 825666
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/receipt.json",
+      "sha256": "2c00d202195a7ca45e721e11d5dafa9844c55ff48a43263d3f6b0604091e73b3",
+      "bytes": 2440
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/fit01/record.json",
+      "sha256": "141a9c0709482e28aaf2d68dfb5ffcb5f26612dcabf6a4ff6960babf39cd9f86",
+      "bytes": 7044
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/intake-01.log",
+      "sha256": "1e64d1ddbdecaa901b1e0676df89c07d3c906d6225dfdb531a3949235c398aa1",
+      "bytes": 320
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/joint-preview-01.png",
+      "sha256": "e98fbf91be8daf971039291bbaea04f8a6858b210e6dbdbc64448b8199b7e1b9",
+      "bytes": 494942
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/master.png",
+      "sha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+      "bytes": 1230591
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/observation.json",
+      "sha256": "09c8187923c09cdec91c8c066c21975f33bbc7903cc180580bc056df0cd119e3",
+      "bytes": 10550
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/ownership-preview-01.png",
+      "sha256": "79d52e62f9a7c9426e22dba65b033c5c0785cac73eb9a05beaf69302da543915",
+      "bytes": 447935
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/prompt.txt",
+      "sha256": "fa88277b850e61aac73d1134e382b82ad0060deccba600a4c9cf2981d1a7c947",
+      "bytes": 10303
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/static-01.json",
+      "sha256": "8ceda6ff3b99bd95158cb62766f0fb08adab13185076828a5dc74e1046f6a439",
+      "bytes": 7446
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/static-01.json.sources.json",
+      "sha256": "c55db135ad738aa041470151af5b245980952eeefca3d02a61842369c9eb9f8c",
+      "bytes": 15567
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/static-01.log",
+      "sha256": "6c9f0a33c6609ed68cfbc6d76a97bc78cf437c0ad702cb104f4ea64f34f9d083",
+      "bytes": 1834
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/subject-source.json",
+      "sha256": "d8f2ee07dbcb7faa3531173a23f5e55f4ada64830f2c2b686af02503a3c4dea7",
+      "bytes": 2320
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/verify-01.log",
+      "sha256": "38d12b9a2cda1b44ced96bb88ae430a69851a3f2c7b629de059518c7a897b472",
+      "bytes": 866
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/authoring.json",
+      "sha256": "8eb5833b06d5e1885ca92a9df3fc6dc481dbeb692791a1493f448b4dabee027b",
+      "bytes": 17110
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/conservation-01.json",
+      "sha256": "63906f48ce0f93fb24e0d53e18bf6e85e39b15c0fee121643583a8dbef4c8f19",
+      "bytes": 1186
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/binding.json",
+      "sha256": "12e0d6968277c42b5549ca1facfff4d6b7601252f25b511cd3a9a9824b5f552c",
+      "bytes": 1460679
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/declaration.json",
+      "sha256": "c9ffe377f925e26cc7d4945543ba298fdc52fd596ef9033a26afd997ccd3ab5e",
+      "bytes": 22500
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/intake-provenance.json",
+      "sha256": "5a41aebbd82f98d710460c96d7983adbc69b34c4fd83efac8bca01e73977833b",
+      "bytes": 3205
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/atlas/c168-reference-spread-bat.json",
+      "sha256": "6bd9586a5efe95650b33b3e0dd2ecd943b5e3f26638a3ef8d4bd3d974300c679",
+      "bytes": 9005
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/atlas/c168-reference-spread-bat.png",
+      "sha256": "de4a8a4c4b6822d2b5ac0f61b99da75856309f0aad11dbe227cf32da58cdc126",
+      "bytes": 412776
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/atlas/receipt.json",
+      "sha256": "3929ae5829a19a24338b137d8f18d91cff7498e9d58842b2b8d5ec8c1536a7a6",
+      "bytes": 3578
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/binding.json",
+      "sha256": "1eaadfc34d6cc5a919efce4b25345fa36605471f2b0a41fbba4558a82e011561",
+      "bytes": 7409
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/keyed.png",
+      "sha256": "1417be244befd6ee3950dd04861adedfda9affcff33a7a37fa4d351743d93786",
+      "bytes": 1492307
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/manifest.json",
+      "sha256": "4c778a4afbc9195f551fd478bd3d1fc6f1ee08570f4dbc1dd35fdb76ac4f30d5",
+      "bytes": 3697
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/ownership.png",
+      "sha256": "3825dd59a91d989473b1a04a31a9b016c5ee80d83a74b0adcda0fe9c25f78bdf",
+      "bytes": 15935
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/chest.png",
+      "sha256": "e69034ff1f992d2dd4c42b83ad1e909fe2663c310dcffc7f639613092d8206ad",
+      "bytes": 9663
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/ear-far.png",
+      "sha256": "4177ad74a79b532bba9c02cdc23f457ae630d0a82cf3f56b1c1bd24c6cc90ad4",
+      "bytes": 7425
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/ear-near.png",
+      "sha256": "8ec70b61546c15eb1a32c72f63a4e981cc8d8f123ba58fc53612618864b15498",
+      "bytes": 18100
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/head.png",
+      "sha256": "3654e20a2be8a5ee004ffe2dc1f77f1be8b4a21a298cff06b98c4082518487e5",
+      "bytes": 7151
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/jaw.png",
+      "sha256": "f318213c3838ebfea3abe1a742f2842ea2e6a57312ce25538e9397a6a8a049ae",
+      "bytes": 2541
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/leg-far-foot.png",
+      "sha256": "f2ee6c28e429a770053938928254e228f1b2989b07095fc7cd0db7266b2b9b74",
+      "bytes": 1508
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/leg-far-knee.png",
+      "sha256": "428c0ea66ec051e21215b9d5b011d8a83a0efda94212ad745470b662489f38b5",
+      "bytes": 6494
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/leg-near-foot.png",
+      "sha256": "effc3f11f45a48e6b97777a9b8cf2fcc4a769ddfe4e0a6e7a0f0a292e336100b",
+      "bytes": 1769
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/leg-near-knee.png",
+      "sha256": "10de8388ce074f0af6ef3301bb354762c03ca9cf6e0352bb41d340268be7e916",
+      "bytes": 4992
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/neck.png",
+      "sha256": "2a9b51a1bfd8369fb21fdc204e647576a08fd7f535b83017562f1238a2410d35",
+      "bytes": 5418
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/pelvis.png",
+      "sha256": "71fb505d72fd0714cca130672c0a4838b53c1fa432322235e1e54598f4166060",
+      "bytes": 10673
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/root.png",
+      "sha256": "fa92dc23e2a3800728707f60bda0afeb63276f6e4af86eb323c7dcd7c0f7189d",
+      "bytes": 328
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/spine.png",
+      "sha256": "682811a485223e40e912f50ab9d9e7ef53a71f32cdf43419f9421195f135fbf2",
+      "bytes": 42499
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/tail.png",
+      "sha256": "a047e5df46619715daf3a8e315f145c39de0c0c90373733313f5b416071b5b23",
+      "bytes": 22649
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-far-elbow.png",
+      "sha256": "ec44840def6054d977e1db83586a8d92bc4b16a878b9b4af7e360bb5b0232a84",
+      "bytes": 55511
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-far-root.png",
+      "sha256": "46ab130aa8449fea8b862846162c3b8bd5e089c515a5801a85c520fd4705dc2e",
+      "bytes": 8923
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-far-tip.png",
+      "sha256": "c002b36c607854b403036a3988e0cf2558999a008793e8be0b0a2cfddb600cfd",
+      "bytes": 103367
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-far-wrist.png",
+      "sha256": "bfbe3d6321a779ccf9d9f1a1231b6a9cd2dd6cb7ca047bd0bc4a6bff4b699a22",
+      "bytes": 47977
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-near-elbow.png",
+      "sha256": "e403a828c2a950e8967cbf3b4f7d7a09b003b783b15b45874f666cdf3e563408",
+      "bytes": 33295
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-near-root.png",
+      "sha256": "53683cfdba162f3176c991a4b46352ad620f5cb84967eb146448fa462f27b847",
+      "bytes": 6911
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-near-tip.png",
+      "sha256": "45ef996fe116827603e97ec1147ab7f3d3020c5d9e2bdf0cc6f421ecdad6dbe8",
+      "bytes": 50190
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/parts/wing-near-wrist.png",
+      "sha256": "6add146e7fe87eece3dd9d9aea801c73330008054958bc3d14c4e6509520d66b",
+      "bytes": 24331
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/parts/receipt.json",
+      "sha256": "2ac8d35eb31000e41be82cc9a854ba8781d5fa5e858ac3c037559f115151bdd6",
+      "bytes": 5835
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/pre-split-binding.json",
+      "sha256": "889b3192caf6ae662b2d7d596fa788674d7211b2c7af196f5a30245bd977391a",
+      "bytes": 894890
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/receipt.json",
+      "sha256": "45378e3d76d003a72c431a05bd7e175300ef386b77ea8daf41869b0537163e7a",
+      "bytes": 2440
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/fit01/record.json",
+      "sha256": "9c4c072242524ab01e4c5ea4f91b1e496bc2464b27670222ae8ce5ad08187261",
+      "bytes": 6792
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/intake-01.log",
+      "sha256": "a157e881b1cdba34108456bb513ce46373e1ca83470e0a5bbfdf95270150519e",
+      "bytes": 311
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/joint-preview-01.png",
+      "sha256": "e98fbf91be8daf971039291bbaea04f8a6858b210e6dbdbc64448b8199b7e1b9",
+      "bytes": 494942
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/master.png",
+      "sha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+      "bytes": 1230591
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/observation.json",
+      "sha256": "09c8187923c09cdec91c8c066c21975f33bbc7903cc180580bc056df0cd119e3",
+      "bytes": 10550
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/ownership-preview-01.png",
+      "sha256": "7c006371b286d4ecfd5194625c86581d5e1d67e399da6aa173a940653ae6d283",
+      "bytes": 449756
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/prompt.txt",
+      "sha256": "fa88277b850e61aac73d1134e382b82ad0060deccba600a4c9cf2981d1a7c947",
+      "bytes": 10303
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/remainder-components-01.json",
+      "sha256": "1d7fc15d17b87e35a2607e413b074b3234946f480f034613fbf7105fab2b04fc",
+      "bytes": 3389
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/source-evidence/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/source-evidence/generation.json",
+      "sha256": "348c2f09d1d8f056a997841dc9c0954bae99ebb1cc55b4eef824af6976cc3871",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/source-evidence/request.json",
+      "sha256": "05664258fe79b7c3eb9e0aa2e3691109681f16de2f4067f9f097c7265108885a",
+      "bytes": 1780
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/source-evidence/visible-anatomy.json",
+      "sha256": "8049d70e674a8e755bf84e805c5016bbd691daa0d96af280bf151b420ce011d1",
+      "bytes": 3624
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/source-evidence/visual-review.json",
+      "sha256": "bdcf8b12df87916fa036fae28c518ee00586e403f20881e5bddea157252698eb",
+      "bytes": 1072
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/source-provenance.json",
+      "sha256": "230fcc4586e5842eb947ac44599c72f8e848437629cb1dce84b24f0259db7cb2",
+      "bytes": 974
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/static-01.json",
+      "sha256": "f67535c69f5c051fd3983291f8e5db194569b07120a99c906fda863c26fb8424",
+      "bytes": 7402
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/static-01.json.sources.json",
+      "sha256": "c3e6b339e80a4099d9f0880ca140de6f8a2d3653c2d9780cea253d8ffa811049",
+      "bytes": 15567
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/static-01.log",
+      "sha256": "edd8f2a996c21f0c6e0443e4d6ce57ab707a90ee561eac1c7ce2848ac6f3651c",
+      "bytes": 1835
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/subject-source.json",
+      "sha256": "d8f2ee07dbcb7faa3531173a23f5e55f4ada64830f2c2b686af02503a3c4dea7",
+      "bytes": 2320
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/anatomical-hold.json",
+      "sha256": "43c20bed11c3089698695c5e8a140fe174da62790cb6fbed83e674ca91ee0f6c",
+      "bytes": 881
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/generation-receipt.json",
+      "sha256": "9246f4406a30e219fdd443a6fcc4a06781a539706a75aec20efe425fc846b5a7",
+      "bytes": 639
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/master.png",
+      "sha256": "e3fb8cd445248ab4f31f8b0ca43e558d86c4933dd8f92f90b3cc146853bb44ae",
+      "bytes": 1416542
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/observation-preview.png",
+      "sha256": "298aa39d82286e20a902d95fa25a4e04b99d031a817a5dfef89ac426f1ff65c1",
+      "bytes": 1709895
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/observation.json",
+      "sha256": "5177835d5774b7ddf3e00957fd4deb271a09c1baafae462387eb9313275b4aad",
+      "bytes": 4646
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/preview-receipt.json",
+      "sha256": "5e0ef0e558b329a1621772f9e039511859568f96fad849756b5e2dca68fb0a8a",
+      "bytes": 593
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/prompt.txt",
+      "sha256": "219300a65b7e88042a80a8381225f3cf90940085fa82a5dae842c45834db16a9",
+      "bytes": 11289
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/source-provenance.json",
+      "sha256": "13fec571d71b191c8ca0d4bf5bb85705e7f7c284d1b2b7771e691634523e0417",
+      "bytes": 766
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/subject-source.json",
+      "sha256": "43f0bb8561212252001302d97050d2777b1647d68b8dc0400dcf2d1c8d970426",
+      "bytes": 2257
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/verify-and-preview-v2.mjs",
+      "sha256": "af5b9234129833b132eefe741c7a32d038c2863671cbf647a55e3f877bcae307",
+      "bytes": 5442
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/verify-and-preview.mjs",
+      "sha256": "d26795c45b9b6f7f897cf79ae0ba1f78addfca4c38722c52f97dd8aa25d260b4",
+      "bytes": 5410
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/verify-contour-delta.mjs",
+      "sha256": "514a9b72fc3f24b856d59d2ba40eb724cd1d7f0801e9ef254f61d308e2e8a587",
+      "bytes": 3201
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/verify-v2.log",
+      "sha256": "f51145d06dfabc715dc0c59d4507b1a8b46bd96ea235a30dd9149c9625c92774",
+      "bytes": 172
+    },
+    {
+      "path": "audits/C168_MEMBRANE_REFERENCES_20261002/visual-review.json",
+      "sha256": "ea28fba3f3f76ff0bb0cebbbc7f5bd7b429410784b1507309d22fb68999306f5",
+      "bytes": 1524
+    }
+  ]
+}

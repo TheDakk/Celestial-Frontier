@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Swan",
+    "before": "d8988be653d5f7ba24e08c7675df6b7f394443a2b813b0c5fbde7ffdff3fdc6f",
+    "after": "4749d78c73d9ec36332663981b2eafaa2f954e03d4fa6beb875281f09ef30b23",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "large white body floating high on the water",
+        "large white body standing naturally on both webbed feet for this isolated reference, no water",
+        2
+      ]
+    ]
+  },
+  {
+    "name": "Cormorant",
+    "before": "02d6816ddfdcd6a5b49c58194a8fe6ec87e273b37600d2ce85dbd7d98e43235d",
+    "after": "81f6689f29dad8aebafb6e1ebf98a637dae13ff3fc6d9e3dc79b7e57cbd47333",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "wings held open to dry in a heraldic pose",
+        "long wings folded naturally above the stiff wedge tail for this standing reference, not the habitual drying display",
+        2
+      ]
+    ]
+  },
+  {
+    "name": "Bittern",
+    "before": "910187593f8e137e9926c414758534a473e09c90bfe6a75d1671bcc2a27aa169",
+    "after": "ea0084e9c51afa43663650ee633b5826e186fcc8a5e784834a39931cd759cef6",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "dagger bill pointed straight up in the reed-mimic freeze pose",
+        "dagger bill held level and pointing right for this standing side-profile reference, not the habitual reed-mimic freeze pose",
+        2
+      ]
+    ]
+  },
+  {
+    "name": "Aphid",
+    "before": "e2b6d567ab61e60fccaf23fd8378d97d0eb7ce53e43a588cd592095c1ecb3499",
+    "after": "6b43be9a6f088faaf3b8e7376ed6f50991da09e702e28da3f3047afdb6e564d4",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "needle beak stuck into a stem",
+        "needle beak clearly present beneath the head, without a stem or other prop in this isolated reference",
+        2
+      ]
+    ]
+  }
+]

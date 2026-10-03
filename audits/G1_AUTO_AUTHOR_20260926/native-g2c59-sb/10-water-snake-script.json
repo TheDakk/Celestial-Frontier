@@ -1,0 +1,42 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "wild",
+  "B": "stone"
+ },
+ "rows": [
+  {
+   "side": "A",
+   "an": "Water Snake",
+   "dn": "Water Snake",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "side": "B",
+   "an": "Water Snake",
+   "dn": "Water Snake",
+   "dmg": 6,
+   "crit": false,
+   "hpA": 24,
+   "hpB": 21
+  },
+  {
+   "an": "Water Snake",
+   "dn": "Water Snake",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Water Snake",
+   "dn": "Water Snake",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 24,
+   "hpB": 0
+  }
+ ]
+}

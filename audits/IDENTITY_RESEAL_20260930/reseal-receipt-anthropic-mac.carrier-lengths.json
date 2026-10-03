@@ -1,0 +1,26 @@
+{
+ "updated": [
+  {
+   "file": "port/v2/tests/pr35-d611-arc4-ledger-evidence-replay.test.ts",
+   "key": "gzipBytes",
+   "old": 44965,
+   "new": 44966,
+   "carrier": "audits/ARC1C_SCENEMEM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz"
+  },
+  {
+   "file": "port/v2/tests/pr35-d611-arc4-ledger-evidence-replay.test.ts",
+   "key": "gzipBytes",
+   "old": 45066,
+   "new": 45067,
+   "carrier": "audits/ARC1C_SCENEMEM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz"
+  },
+  {
+   "file": "port/v2/tests/scenemem-budget.test.ts",
+   "key": "gzipBytes",
+   "old": 49762,
+   "new": 45062,
+   "carrier": "audits/ARC1C_SCENEMEM_PR35_FIXED_SECOND_CERTIFICATION_20260830_2046000.json.gz"
+  }
+ ],
+ "refused": []
+}

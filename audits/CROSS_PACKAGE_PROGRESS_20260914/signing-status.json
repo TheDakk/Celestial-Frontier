@@ -1,0 +1,14 @@
+{
+  "attemptUtc": "2026-09-14T20:06:36.608Z",
+  "lastSignedHead": "61512b3a92c25582167e6f7b5dbcf11f5f80eec9",
+  "gitResult": "1Password: agent returned an error; commit not created",
+  "relevantApplicationEvents": [
+    "Secure enclave challenge failed: could not create the private key",
+    "System unlock failed: SystemAuthError(FailedSystemAuthenticationChallenge)",
+    "Failed to authorize using system biometry",
+    "failed to get private key from session"
+  ],
+  "scope": "Only the failed commit authentication; no full logs, keys or vault contents copied",
+  "securitySettingsChanged": false,
+  "requestedRecovery": "Unlock using account password inside 1Password, then retry configured signed commit"
+}

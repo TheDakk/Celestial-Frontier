@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Ladybug",
+  "masterSha256": "70428d19ac82eb19657cd5fc1f35cab048b3d997bdddbe6ab7f06c0fedcd1ed9",
+  "required": [
+    "spotted red wing cases split down the middle"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "spotted red wing cases split down the middle",
+      "status": "PRESENT",
+      "observed": "Clearly visible round black spots on the red domed divided wing cases."
+    }
+  ]
+}

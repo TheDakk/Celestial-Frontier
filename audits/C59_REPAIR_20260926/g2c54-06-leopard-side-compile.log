@@ -1,0 +1,1 @@
+g2c54-06-leopard-side {"schema":"cf.foreleg-side-partition/v1","method":"nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership","changedPixels":11053,"transfers":{"foreNearRoot→foreFarRoot":4354,"foreNearKnee→foreFarRoot":5532,"foreNearKnee→foreFarKnee":486,"foreNearAnkle→foreFarKnee":681},"otherOwnersChanged":0}

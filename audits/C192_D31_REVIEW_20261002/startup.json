@@ -1,0 +1,19 @@
+{
+  "branch": "openai/mac",
+  "workspace": "~/Projects/celestial-frontier-openai-mac",
+  "claudeRows": [
+    "C187",
+    "C188",
+    "C189",
+    "C190",
+    "C191",
+    "C192"
+  ],
+  "decisions": "D28 default0.5 with full-size acceptance; D31 cast built by Claude; D29/D30 native WebP arenas retained",
+  "toolchainReceipt": "audits/C163_SPRAWLER_MOTION_20261002/toolchain-check.log",
+  "uninterruptedSession": true,
+  "node": "v26.10.0",
+  "freeGiB": 133.13,
+  "head": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "sweep": "HOLD; no invocation authorized"
+}

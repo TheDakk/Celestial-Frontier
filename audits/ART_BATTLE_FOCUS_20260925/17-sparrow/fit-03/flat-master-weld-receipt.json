@@ -1,0 +1,93 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "bc98510812a8013c90f8f740fe2f0ad135888420cfce8197f8b5160f72878a24",
+  "sourceBindingSha256": "dbaac3bf90b63957f1ff34b90154da31cd77951fb66e4ab1535177db9bfc491d",
+  "sourceAtlasSha256": "74e4ac71a6225e9d7941b522cccb50ebfbcec207378ff1e5e39aa1a02d6c5d2e",
+  "helperSha256": "24da25e6be109a479fb402ca2fa42d89b5b43812407f51e6e6096c3431027148",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingNearRoot",
+      "wingNearTip",
+      "wingFarRoot",
+      "wingFarTip",
+      "tailFan",
+      "chest"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "far-wing-shoulder"
+      ],
+      [
+        "body",
+        "near-wing-shoulder"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 50,
+        "distancePx": 8.944271909999227,
+        "supports": [
+          111
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 39,
+        "distancePx": 12.04159457879229,
+        "supports": [
+          11
+        ]
+      }
+    ],
+    "sourceBindingHash": "61a8f74e30b1ae630309a9a7fd0d4f11ef20261b3c6002e64d24c78d618e74f5",
+    "sourceVertices": 2369,
+    "vertices": 2789,
+    "sharedSupports": 600,
+    "pins": 1896,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 14,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 2,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "far-wing-shoulder"
+      ],
+      [
+        "body",
+        "near-wing-shoulder"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "63ff1d804849d48c4fa61f29d49bd2615795eb75ee2c65e28c7a88283a574cbc",
+  "scope": "Only this unadmitted Sparrow candidate. Manually declared body/wing source continuity at two observed shoulder boundaries, matching visible wing-root holes. No between-wing or leg boundary added. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
+}

@@ -1,0 +1,64 @@
+{
+  "name": "Sea Squirt",
+  "family": "sessile-filter",
+  "species": {
+    "name": "Sea Squirt",
+    "aspect": 0.7,
+    "headFrac": 0,
+    "eyes": "hidden",
+    "posture": "sessile",
+    "mustRead": [
+      "barrel-shaped leathery sac cemented to rock",
+      "two raised nozzle siphons at the top",
+      "translucent tunic showing internal basket"
+    ],
+    "note": "Has no head, limbs or eyes as an adult - it is a fixed bag with two openings."
+  },
+  "genome": {
+    "seed": 3057975812,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 11,
+    "body": 13,
+    "loco": 8,
+    "trait": 4,
+    "size": 0,
+    "diet": 5,
+    "head": 1,
+    "limbs": 1,
+    "skin": 5,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 5,
+    "habitat": 5,
+    "detail": 8,
+    "accent": 6,
+    "temper": 0,
+    "sense": 2,
+    "repro": 3,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Squirt"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sea Squirt\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3057975812\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "index": 620,
+  "profile": {
+    "needsObservedFit": true,
+    "id": "sessile-tunicate",
+    "names": [
+      "Sea Squirt"
+    ],
+    "candidateTemplates": [
+      "sessile-filter"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [],
+    "notes": "Sessile or colonial suspension feeders; no invented jaws, legs or arms."
+  }
+}

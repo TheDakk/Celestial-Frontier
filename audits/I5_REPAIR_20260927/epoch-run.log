@@ -1,0 +1,5 @@
+prepare-build: 0
+edge-preflight: 0
+calibration-1: 2
+calibration-1-verify: 1
+calibration-1 refused; epoch stops without retry

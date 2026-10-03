@@ -1,0 +1,28 @@
+{
+  "name": "Impala",
+  "masterSha256": "c44ccc6e081abd0cc9cac9e9027ccde3b0a94f93c54086582797615c65033c51",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: four actual hoof endpoints/two forelegs and two hindlegs; former fifth leg is not apparent. Two ringed lyre-shaped horns, black rump-side stripes and hind-hoof tufts present. Near ear is complete; far ear is only a small sliver behind horn/head, not a fully readable ear chain. Upper foreleg roots still partially overlap chest. Real tufted tail is continuous. Four ends are not a claim of completed authoring or static motion.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 265,
+      "y0": 138,
+      "x1": 1018,
+      "y1": 1028
+    },
+    "margins": {
+      "left": 265,
+      "right": 235,
+      "top": 138,
+      "bottom": 225
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

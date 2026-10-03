@@ -1,0 +1,13 @@
+{
+  "id": "04-sunfish",
+  "name": "Sunfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e219c2e1-2205-47d5-b40a-b7542b0ac70a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b4386003e8d6c39d6a3c2eab4e607474d864adff45a916631e098b0f70580830",
+  "bytes": 1540033,
+  "promptSha256": "6b6b693706b231cb94130d17529e4dfed64fcc4eecddf871108a9b7a107be4d4",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

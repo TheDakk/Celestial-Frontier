@@ -1,0 +1,79 @@
+{
+  "name": "Turkey",
+  "family": "biped-bird",
+  "species": {
+    "name": "Turkey",
+    "aspect": 1.2,
+    "headFrac": 0.2,
+    "eyes": "small",
+    "posture": "biped",
+    "mustRead": [
+      "bare warty blue-and-red head with dangling wattle",
+      "broad fanned tail",
+      "bristly beard hanging from the breast"
+    ]
+  },
+  "genome": {
+    "seed": 226656350,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 17,
+    "body": 6,
+    "loco": 16,
+    "trait": 7,
+    "size": 1,
+    "diet": 0,
+    "head": 5,
+    "limbs": 1,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 13,
+    "temper": 7,
+    "sense": 8,
+    "repro": 4,
+    "life": 0,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Turkey"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Turkey\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"226656350\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 131,
+  "profile": {
+    "id": "ground-foraging-bird",
+    "names": [
+      "Peacock",
+      "Guineafowl",
+      "Turkey",
+      "Grouse",
+      "Ptarmigan",
+      "Bustard",
+      "Sandgrouse",
+      "Quail",
+      "Partridge",
+      "Roadrunner",
+      "Chicken",
+      "Rooster",
+      "Secretary Bird",
+      "Seriema"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": "Flight-capable does not require every move to be airborne."
+  }
+}

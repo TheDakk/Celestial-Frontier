@@ -1,0 +1,115 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c136-reference-18-wasp",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "55c50c5fe0fb6a8ee343ea0dc3834c7b674767297d93a8f3beea5e85332bcb11",
+    "pngSha256": "9ff759434028821eac5cd9444d95c7eb54fb3a83a0bc9379ef3ef84172939591"
+  },
+  "parts": [
+    {
+      "name": "abdomen.png",
+      "sha256": "0b339379dde08a7ec41d4886f37597df88994eff106ed915ee23299a28f5a9fd"
+    },
+    {
+      "name": "antenna-far.png",
+      "sha256": "109849222017a1714074c3471a81b7606f3d646169a30ba260a0812dcc9eb8ba"
+    },
+    {
+      "name": "antenna-near.png",
+      "sha256": "f8fba620babbeb1f53cb3c43171813144f8d482a01093fd43bcf61493cb0a18a"
+    },
+    {
+      "name": "head.png",
+      "sha256": "0bb640cd4d70c78bd79bcdb9dc028f69d68d9280b0ccb3983296a810d4662985"
+    },
+    {
+      "name": "leg-front-far-foot.png",
+      "sha256": "429e97befc3b3cbea8e25f7f7aa3a9eeffab54c4e311930bd5480de087b98de0"
+    },
+    {
+      "name": "leg-front-far-knee.png",
+      "sha256": "eaa4b48cd8b65934d02240c685316270b362a58ca351f0ec94b1116325105189"
+    },
+    {
+      "name": "leg-front-near-foot.png",
+      "sha256": "3055e93ec32d1d493b44a8f10f3678fc34d11995bb3b536857d5e7bf88a01087"
+    },
+    {
+      "name": "leg-front-near-knee.png",
+      "sha256": "8c8ea014e19ff3f027d027214761932b769af5098c6a84e5e9f2f23f3605380e"
+    },
+    {
+      "name": "leg-hind-far-foot.png",
+      "sha256": "9c9a30fdb250dc66de8ae0d9d68f9744e933a8f8731e512a0d2eacfae6d0a008"
+    },
+    {
+      "name": "leg-hind-far-knee.png",
+      "sha256": "264af7f43dfce9ca796df5f307b0416ec4da775870b935ecf28cada668a59b8d"
+    },
+    {
+      "name": "leg-hind-near-foot.png",
+      "sha256": "67c90e6a9abed04d954a3497a0b73809ff4989df557ce99557fb11f0a276fbcd"
+    },
+    {
+      "name": "leg-hind-near-knee.png",
+      "sha256": "1a55396474ed50ebc32de56284bc4836201591db27cb40114937db1405e63445"
+    },
+    {
+      "name": "leg-mid-far-foot.png",
+      "sha256": "d9747f03768ab3cd51cec7ebcb0785a4621dd9885e146ec86845c20d7e6dc389"
+    },
+    {
+      "name": "leg-mid-far-knee.png",
+      "sha256": "6d31769f0fbf03dfde9fd7b802581b228c88fea9c2ca1ed19bb65bf739f2e348"
+    },
+    {
+      "name": "leg-mid-near-foot.png",
+      "sha256": "9d75fa4e2cd984655f3a1f0e9b4b7c2dc7a57d46c58580edd87bbe6baaf11cd4"
+    },
+    {
+      "name": "leg-mid-near-knee.png",
+      "sha256": "60c86287f5209f71e945c4d807f42b3d0d867b86823e7267c5d99ad2b81cbd75"
+    },
+    {
+      "name": "mandible.png",
+      "sha256": "b8a59370f38c1f36f139a29795f79ba95e6b5846f86e60ca596fbcc9ea84c4ad"
+    },
+    {
+      "name": "root.png",
+      "sha256": "008820cc93bf72e121572611f95696a9e71cd48327e8e384cc45d0fdb5ea3d9c"
+    },
+    {
+      "name": "thorax.png",
+      "sha256": "b59efabb1a1a61b459a3772e0f273765f0a2a911c9aa9b79afeb3acbbe03cfd6"
+    },
+    {
+      "name": "wing-far.png",
+      "sha256": "5f77a8aafefbbaf716ef7174811f4d3abb97f551c301e06bdaeb998f4e90c4d6"
+    },
+    {
+      "name": "wing-near.png",
+      "sha256": "b948aaa4d43f1a746312539359a842cf22348323fe333240169dec6073df7f69"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Raccoon",
+  "family": "quadruped",
+  "species": {
+    "name": "Raccoon",
+    "aspect": 2.1,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "black bandit mask across the eyes",
+      "ringed banded tail",
+      "hunched arched back with rump higher than shoulders"
+    ]
+  },
+  "genome": {
+    "seed": 2338628088,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 17,
+    "body": 12,
+    "loco": 3,
+    "trait": 17,
+    "size": 5,
+    "diet": 1,
+    "head": 0,
+    "limbs": 0,
+    "skin": 1,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 2,
+    "habitat": 5,
+    "detail": 8,
+    "accent": 12,
+    "temper": 1,
+    "sense": 9,
+    "repro": 2,
+    "life": 5,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Raccoon"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Raccoon\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2338628088\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "index": 111
+}

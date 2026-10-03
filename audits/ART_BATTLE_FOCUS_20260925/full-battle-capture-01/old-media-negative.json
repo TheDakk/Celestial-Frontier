@@ -1,0 +1,8 @@
+{
+  "source": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/native-phone4x-02/report.json",
+  "sha256": "556597a4d61090956d3d6b41199ee724f93348bdfb689975b8fb9745bffeaa74",
+  "oldSeconds": "10.101003",
+  "requiredMs": 15532.666666666666,
+  "expected": "REFUSED",
+  "refusal": "Error: Encoded capture does not cover the complete row schedule"
+}

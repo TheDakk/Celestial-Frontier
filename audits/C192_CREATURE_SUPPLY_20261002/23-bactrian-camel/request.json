@@ -1,0 +1,49 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Bactrian Camel",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "f8b300947fb3357d8f39f01531883a1aa5b9ae8810562b35877a776e7e3e2b97",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-unhorned",
+  "authoringCreated": false,
+  "sourceHead": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "basePromptSha256": "ed6764ead441851b6b4451e31c644fc4b7ce171a9de596e4ff7009638a5fe3c1",
+  "batchCompilerSha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Previous source has unexplained paint. Preserve two real humps, shaggy neck, true two-toed padded feet and naturally short tail. Separate four actual limb silhouettes and feet from hanging hair, ears and tail visible as far as natural anatomy permits; no third hump or extra limb.",
+    "priorSources": [
+      {
+        "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+        "id": "18-bactrian-camel",
+        "master": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel/master.png",
+        "packet": "audits/C213_CREATURE_SUPPLY_20261002/18-bactrian-camel"
+      },
+      {
+        "pilot": "audits/G2_C110_20260927/pilot.json",
+        "id": "24-bactrian-camel",
+        "master": "audits/G2_C110_20260927/24-bactrian-camel/master.png",
+        "packet": "audits/G2_C110_20260927/24-bactrian-camel"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+    "audits/G2_C110_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Previous source has unexplained paint. Preserve two real humps, shaggy neck, true two-toed padded feet and naturally short tail. Separate four actual limb silhouettes and feet from hanging hair, ears and tail visible as far as natural anatomy permits; no third hump or extra limb.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

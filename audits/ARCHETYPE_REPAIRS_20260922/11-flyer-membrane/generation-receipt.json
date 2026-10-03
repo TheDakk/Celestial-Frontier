@@ -1,0 +1,28 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "sourceFile": "/Users/dakk/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a7aadb9d-b76a-405a-8262-51a3408de1cc.png",
+  "promptSha256": "9046f8bdb5185d9bdc893366d79d3d68fb647b3871eeea82a8e2a290310000cd",
+  "masterSha256": "9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd",
+  "measuredMetadata": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "positiveAlpha": {
+    "count": 488822,
+    "bounds": {
+      "minX": 0,
+      "minY": 13,
+      "maxX": 1253,
+      "maxY": 1205
+    },
+    "edgePixels": {
+      "left": 33,
+      "right": 9,
+      "top": 0,
+      "bottom": 0
+    }
+  }
+}

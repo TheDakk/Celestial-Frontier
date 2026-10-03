@@ -1,0 +1,393 @@
+{
+  "id": "12-flying-gurnard",
+  "family": "fish",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "landmarksPx": {
+    "root": [
+      938.8,
+      578.9
+    ],
+    "head": [
+      966.5,
+      646.5
+    ],
+    "jaw": [
+      973.5,
+      739.5
+    ],
+    "spine0": [
+      921.4,
+      538.6
+    ],
+    "spine1": [
+      783.2,
+      611.7
+    ],
+    "spine2": [
+      631.8,
+      645
+    ],
+    "spine3": [
+      508.2,
+      564
+    ],
+    "spine4": [
+      427.4,
+      556.4
+    ],
+    "spine5": [
+      331.4,
+      594.5
+    ],
+    "caudal": [
+      163.1,
+      613.1
+    ],
+    "dorsal": [
+      641.1,
+      456
+    ],
+    "pectoralNear": [
+      906.9,
+      724.5
+    ],
+    "pectoralFar": [
+      956.8,
+      764.5
+    ]
+  },
+  "groundLineY": 0.987022148794305,
+  "materials": {
+    "surface": "scales"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          902.1,
+          675.8
+        ],
+        [
+          914.8,
+          635
+        ],
+        [
+          936.6,
+          637.1
+        ],
+        [
+          908.8,
+          752
+        ],
+        [
+          854.5,
+          834.9
+        ],
+        [
+          854.1,
+          819.8
+        ]
+      ]
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "polygonPx": [
+        [
+          929.8,
+          690.1
+        ],
+        [
+          959,
+          707.7
+        ],
+        [
+          965.2,
+          773.4
+        ],
+        [
+          952.6,
+          808.9
+        ],
+        [
+          939,
+          757.1
+        ]
+      ]
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "far",
+      "polygonPx": [
+        [
+          566.8,
+          479.5
+        ],
+        [
+          634.6,
+          389.1
+        ],
+        [
+          722.9,
+          497.1
+        ],
+        [
+          714.1,
+          518.7
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          965.9,
+          676.6
+        ],
+        [
+          970.9,
+          698.8
+        ],
+        [
+          1162.1,
+          659.4
+        ],
+        [
+          1062,
+          800
+        ],
+        [
+          981.9,
+          761.7
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          976.2,
+          513.1
+        ],
+        [
+          1221.2,
+          572.5
+        ],
+        [
+          1048.2,
+          857.5
+        ],
+        [
+          965.5,
+          735
+        ],
+        [
+          940.2,
+          613.6
+        ],
+        [
+          954.3,
+          539.9
+        ]
+      ]
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "far",
+      "polygonPx": [
+        [
+          112.7,
+          445.4
+        ],
+        [
+          268.8,
+          549.4
+        ],
+        [
+          283.4,
+          621.8
+        ],
+        [
+          102.5,
+          732.7
+        ]
+      ]
+    },
+    {
+      "id": "spine5",
+      "joint": "spine5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          268.2,
+          533.1
+        ],
+        [
+          387.2,
+          518.7
+        ],
+        [
+          407,
+          717.6
+        ],
+        [
+          280.8,
+          711.5
+        ]
+      ]
+    },
+    {
+      "id": "spine4",
+      "joint": "spine4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          388.3,
+          486
+        ],
+        [
+          515,
+          442.4
+        ],
+        [
+          532.1,
+          882.6
+        ],
+        [
+          417.6,
+          786.3
+        ]
+      ]
+    },
+    {
+      "id": "spine3",
+      "joint": "spine3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          515,
+          442.4
+        ],
+        [
+          614.8,
+          495.4
+        ],
+        [
+          589.7,
+          978.9
+        ],
+        [
+          531.9,
+          884.9
+        ]
+      ]
+    },
+    {
+      "id": "spine2",
+      "joint": "spine2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          614.8,
+          495.4
+        ],
+        [
+          727.2,
+          520.1
+        ],
+        [
+          685.6,
+          971.3
+        ],
+        [
+          589,
+          953.6
+        ]
+      ]
+    },
+    {
+      "id": "spine1",
+      "joint": "spine1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          727.2,
+          520.1
+        ],
+        [
+          756.8,
+          427.5
+        ],
+        [
+          861.8,
+          807.7
+        ],
+        [
+          681.9,
+          957.5
+        ]
+      ]
+    },
+    {
+      "id": "spine0",
+      "joint": "spine0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          754.6,
+          423.8
+        ],
+        [
+          988,
+          356.4
+        ],
+        [
+          940.9,
+          699.8
+        ],
+        [
+          906.4,
+          682.1
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from salmon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

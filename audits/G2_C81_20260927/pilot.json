@@ -1,0 +1,170 @@
+[
+  {
+    "id": "01-mackerel",
+    "name": "Mackerel",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/01-mackerel",
+    "master": "audits/G2_C81_20260927/01-mackerel/master.png"
+  },
+  {
+    "id": "02-haddock",
+    "name": "Haddock",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/02-haddock",
+    "master": "audits/G2_C81_20260927/02-haddock/master.png"
+  },
+  {
+    "id": "03-pollock",
+    "name": "Pollock",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/03-pollock",
+    "master": "audits/G2_C81_20260927/03-pollock/master.png"
+  },
+  {
+    "id": "04-sardine",
+    "name": "Sardine",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/04-sardine",
+    "master": "audits/G2_C81_20260927/04-sardine/master.png"
+  },
+  {
+    "id": "05-anchovy",
+    "name": "Anchovy",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/05-anchovy",
+    "master": "audits/G2_C81_20260927/05-anchovy/master.png"
+  },
+  {
+    "id": "06-mullet",
+    "name": "Mullet",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/06-mullet",
+    "master": "audits/G2_C81_20260927/06-mullet/master.png"
+  },
+  {
+    "id": "07-tarpon",
+    "name": "Tarpon",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/07-tarpon",
+    "master": "audits/G2_C81_20260927/07-tarpon/master.png"
+  },
+  {
+    "id": "08-snapper",
+    "name": "Snapper",
+    "family": "fish",
+    "packet": "audits/G2_C81_20260927/08-snapper",
+    "master": "audits/G2_C81_20260927/08-snapper/master.png"
+  },
+  {
+    "id": "09-curlew",
+    "name": "Curlew",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/09-curlew",
+    "master": "audits/G2_C81_20260927/09-curlew/master.png"
+  },
+  {
+    "id": "10-snipe",
+    "name": "Snipe",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/10-snipe",
+    "master": "audits/G2_C81_20260927/10-snipe/master.png"
+  },
+  {
+    "id": "11-plover",
+    "name": "Plover",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/11-plover",
+    "master": "audits/G2_C81_20260927/11-plover/master.png"
+  },
+  {
+    "id": "12-godwit",
+    "name": "Godwit",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/12-godwit",
+    "master": "audits/G2_C81_20260927/12-godwit/master.png"
+  },
+  {
+    "id": "13-avocet",
+    "name": "Avocet",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/13-avocet",
+    "master": "audits/G2_C81_20260927/13-avocet/master.png"
+  },
+  {
+    "id": "14-coot",
+    "name": "Coot",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/14-coot",
+    "master": "audits/G2_C81_20260927/14-coot/master.png"
+  },
+  {
+    "id": "15-moorhen",
+    "name": "Moorhen",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/15-moorhen",
+    "master": "audits/G2_C81_20260927/15-moorhen/master.png"
+  },
+  {
+    "id": "16-rail",
+    "name": "Rail",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/16-rail",
+    "master": "audits/G2_C81_20260927/16-rail/master.png"
+  },
+  {
+    "id": "17-bee",
+    "name": "Bee",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/17-bee",
+    "master": "audits/G2_C81_20260927/17-bee/master.png"
+  },
+  {
+    "id": "18-wasp",
+    "name": "Wasp",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/18-wasp",
+    "master": "audits/G2_C81_20260927/18-wasp/master.png"
+  },
+  {
+    "id": "19-dragonfly",
+    "name": "Dragonfly",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/19-dragonfly",
+    "master": "audits/G2_C81_20260927/19-dragonfly/master.png"
+  },
+  {
+    "id": "20-damselfly",
+    "name": "Damselfly",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/20-damselfly",
+    "master": "audits/G2_C81_20260927/20-damselfly/master.png"
+  },
+  {
+    "id": "21-caddisfly",
+    "name": "Caddisfly",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/21-caddisfly",
+    "master": "audits/G2_C81_20260927/21-caddisfly/master.png"
+  },
+  {
+    "id": "22-mayfly",
+    "name": "Mayfly",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/22-mayfly",
+    "master": "audits/G2_C81_20260927/22-mayfly/master.png"
+  },
+  {
+    "id": "23-stonefly",
+    "name": "Stonefly",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/23-stonefly",
+    "master": "audits/G2_C81_20260927/23-stonefly/master.png"
+  },
+  {
+    "id": "24-giant-water-bug",
+    "name": "Giant Water Bug",
+    "family": "insect",
+    "packet": "audits/G2_C81_20260927/24-giant-water-bug",
+    "master": "audits/G2_C81_20260927/24-giant-water-bug/master.png"
+  }
+]

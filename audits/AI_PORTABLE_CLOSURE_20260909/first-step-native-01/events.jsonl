@@ -1,0 +1,86 @@
+{"kind":"worker-created","slot":0,"stage":"text","url":"/__local_ai/stage-worker.mjs","atMs":143.6100001335144}
+{"kind":"stage-dispatched","slot":0,"stage":"text","atMs":143.8600001335144}
+{"kind":"worker-message","slot":0,"stage":"text","message":{"type":"progress","phase":"loading","graph":"text_encoder_q4.onnx"},"atMs":160.3600001335144}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":0,"total":12,"etaMs":null},"atMs":160.44000005722046}
+{"kind":"worker-message","slot":0,"stage":"text","message":{"type":"progress","phase":"loaded","graph":"text_encoder_q4.onnx","inputNames":["input_ids","attention_mask"],"outputNames":["prompt_embeds"],"elapsedMs":4566.670000076294},"atMs":4723.350000143051}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":0,"total":12,"etaMs":null},"atMs":4724.6449999809265}
+{"kind":"worker-message","slot":0,"stage":"text","message":{"type":"complete","dims":[1,512,7680],"tokenCount":452,"elapsedMs":10297.494999885559},"dataType":"Uint16Array","dataElements":3932160,"atMs":10453.28500008583}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":1,"total":12,"etaMs":null},"atMs":10453.365000009537}
+{"kind":"worker-terminated","slot":0,"stage":"text","atMs":10454.795000076294}
+{"kind":"worker-created","slot":1,"stage":"encode","url":"/__local_ai/stage-worker.mjs","atMs":10542.775000095367}
+{"kind":"stage-dispatched","slot":1,"stage":"encode","atMs":10542.990000009537}
+{"kind":"worker-message","slot":1,"stage":"encode","message":{"type":"progress","phase":"loading","graph":"vae_encoder.onnx"},"atMs":10576.289999961853}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":1,"total":12,"etaMs":null},"atMs":10576.330000162125}
+{"kind":"worker-message","slot":1,"stage":"encode","message":{"type":"progress","phase":"loaded","graph":"vae_encoder.onnx","inputNames":["sample"],"outputNames":["packed_latent"],"elapsedMs":435.585000038147},"atMs":10994.725000143051}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":1,"total":12,"etaMs":null},"atMs":10994.769999980927}
+{"kind":"worker-message","slot":1,"stage":"encode","message":{"type":"complete","elapsedMs":821.835000038147},"dataType":"Float32Array","dataElements":76800,"atMs":11380.975000143051}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":2,"total":12,"etaMs":null},"atMs":11381.02999997139}
+{"kind":"worker-terminated","slot":1,"stage":"encode","atMs":11381.05999994278}
+{"kind":"worker-created","slot":2,"stage":"encode","url":"/__local_ai/stage-worker.mjs","atMs":11404.930000066757}
+{"kind":"stage-dispatched","slot":2,"stage":"encode","atMs":11404.985000133514}
+{"kind":"worker-message","slot":2,"stage":"encode","message":{"type":"progress","phase":"loading","graph":"vae_encoder.onnx"},"atMs":11414.980000019073}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":2,"total":12,"etaMs":null},"atMs":11415.025000095367}
+{"kind":"worker-message","slot":2,"stage":"encode","message":{"type":"progress","phase":"loaded","graph":"vae_encoder.onnx","inputNames":["sample"],"outputNames":["packed_latent"],"elapsedMs":513.9049999713898},"atMs":11927.170000076294}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":2,"total":12,"etaMs":null},"atMs":11927.215000152588}
+{"kind":"worker-message","slot":2,"stage":"encode","message":{"type":"complete","elapsedMs":896.25},"dataType":"Float32Array","dataElements":76800,"atMs":12309.53500008583}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":3,"total":12,"etaMs":null},"atMs":12309.580000162125}
+{"kind":"worker-terminated","slot":2,"stage":"encode","atMs":12309.610000133514}
+{"kind":"worker-created","slot":3,"stage":"encode","url":"/__local_ai/stage-worker.mjs","atMs":12332.22000002861}
+{"kind":"stage-dispatched","slot":3,"stage":"encode","atMs":12332.27999997139}
+{"kind":"worker-message","slot":3,"stage":"encode","message":{"type":"progress","phase":"loading","graph":"vae_encoder.onnx"},"atMs":12344.625}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":3,"total":12,"etaMs":null},"atMs":12344.66000008583}
+{"kind":"worker-message","slot":3,"stage":"encode","message":{"type":"progress","phase":"loaded","graph":"vae_encoder.onnx","inputNames":["sample"],"outputNames":["packed_latent"],"elapsedMs":461.31500005722046},"atMs":12804.225000143051}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":3,"total":12,"etaMs":null},"atMs":12804.31500005722}
+{"kind":"worker-message","slot":3,"stage":"encode","message":{"type":"complete","elapsedMs":846.75},"dataType":"Float32Array","dataElements":76800,"atMs":13189.644999980927}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":4,"total":12,"etaMs":null},"atMs":13189.69000005722}
+{"kind":"worker-terminated","slot":3,"stage":"encode","atMs":13189.72000002861}
+{"kind":"worker-created","slot":4,"stage":"encode","url":"/__local_ai/stage-worker.mjs","atMs":13221.759999990463}
+{"kind":"stage-dispatched","slot":4,"stage":"encode","atMs":13221.80999994278}
+{"kind":"worker-message","slot":4,"stage":"encode","message":{"type":"progress","phase":"loading","graph":"vae_encoder.onnx"},"atMs":13232.975000143051}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":4,"total":12,"etaMs":null},"atMs":13233.005000114441}
+{"kind":"worker-message","slot":4,"stage":"encode","message":{"type":"progress","phase":"loaded","graph":"vae_encoder.onnx","inputNames":["sample"],"outputNames":["packed_latent"],"elapsedMs":524.5699999332428},"atMs":13755.725000143051}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":4,"total":12,"etaMs":null},"atMs":13755.769999980927}
+{"kind":"worker-message","slot":4,"stage":"encode","message":{"type":"complete","elapsedMs":917.4199998378754},"dataType":"Float32Array","dataElements":76800,"atMs":14148.600000143051}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":5,"total":12,"etaMs":null},"atMs":14148.644999980927}
+{"kind":"worker-terminated","slot":4,"stage":"encode","atMs":14148.68499994278}
+{"kind":"worker-created","slot":5,"stage":"encode","url":"/__local_ai/stage-worker.mjs","atMs":14173.825000047684}
+{"kind":"stage-dispatched","slot":5,"stage":"encode","atMs":14173.880000114441}
+{"kind":"worker-message","slot":5,"stage":"encode","message":{"type":"progress","phase":"loading","graph":"vae_encoder.onnx"},"atMs":14185.009999990463}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":5,"total":12,"etaMs":null},"atMs":14185.045000076294}
+{"kind":"worker-message","slot":5,"stage":"encode","message":{"type":"progress","phase":"loaded","graph":"vae_encoder.onnx","inputNames":["sample"],"outputNames":["packed_latent"],"elapsedMs":492.74500012397766},"atMs":14675.975000143051}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":5,"total":12,"etaMs":null},"atMs":14676.009999990463}
+{"kind":"worker-message","slot":5,"stage":"encode","message":{"type":"complete","elapsedMs":880.8800001144409},"dataType":"Float32Array","dataElements":76800,"atMs":15064.134999990463}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":6,"total":12,"etaMs":null},"atMs":15064.18499994278}
+{"kind":"worker-terminated","slot":5,"stage":"encode","atMs":15064.22000002861}
+{"kind":"worker-created","slot":6,"stage":"encode","url":"/__local_ai/stage-worker.mjs","atMs":15086.555000066757}
+{"kind":"stage-dispatched","slot":6,"stage":"encode","atMs":15086.610000133514}
+{"kind":"worker-message","slot":6,"stage":"encode","message":{"type":"progress","phase":"loading","graph":"vae_encoder.onnx"},"atMs":15097.5}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":6,"total":12,"etaMs":null},"atMs":15097.53500008583}
+{"kind":"worker-message","slot":6,"stage":"encode","message":{"type":"progress","phase":"loaded","graph":"vae_encoder.onnx","inputNames":["sample"],"outputNames":["packed_latent"],"elapsedMs":454.7850000858307},"atMs":15550.460000038147}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":6,"total":12,"etaMs":null},"atMs":15550.53500008583}
+{"kind":"worker-message","slot":6,"stage":"encode","message":{"type":"complete","elapsedMs":845.1400001049042},"dataType":"Float32Array","dataElements":76800,"atMs":15940.825000047684}
+{"kind":"product-progress","progress":{"phase":"Preparing the painting","completed":7,"total":12,"etaMs":null},"atMs":15940.870000123978}
+{"kind":"worker-terminated","slot":6,"stage":"encode","atMs":15940.900000095367}
+{"kind":"worker-created","slot":7,"stage":"denoise","url":"/__local_ai/stage-worker.mjs","atMs":15941}
+{"kind":"stage-dispatched","slot":7,"stage":"denoise","q8Block32":false,"width":1024,"height":576,"seed":133,"steps":4,"references":[{"width":480,"height":320,"elements":76800},{"width":480,"height":320,"elements":76800},{"width":480,"height":320,"elements":76800},{"width":480,"height":320,"elements":76800},{"width":480,"height":320,"elements":76800},{"width":480,"height":320,"elements":76800}],"embeddingElements":3932160,"atMs":15941.049999952316}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":1,"phase":"admitted","elapsedMs":32.21499991416931,"width":1024,"height":576,"referenceCount":6,"imageTokens":5904,"textTokens":512,"seed":133,"plannedSteps":4},"atMs":15991.125}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":2,"phase":"device-ready","elapsedMs":34.28999996185303},"atMs":15993.180000066757}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"progress","phase":"loading","graph":"transformer_q8.onnx"},"atMs":15993.215000152588}
+{"kind":"product-progress","progress":{"phase":"Loading local model","completed":7,"total":12,"etaMs":null},"atMs":15993.230000019073}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":3,"phase":"session-create-start","elapsedMs":34.359999895095825,"graph":"transformer_q8.onnx"},"atMs":15993.245000123978}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":4,"phase":"session-create-complete","elapsedMs":6848.3099999427795,"graph":"transformer_q8.onnx"},"atMs":22808.485000133514}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"progress","phase":"loaded","graph":"transformer_q8.onnx","inputNames":["hidden_states","encoder_hidden_states","timestep","img_ids","txt_ids"],"outputNames":["noise_pred"],"elapsedMs":6848.5},"atMs":22808.75}
+{"kind":"product-progress","progress":{"phase":"Drawing the landfall","completed":7,"total":12,"etaMs":null},"atMs":22808.91000008583}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":5,"phase":"run-start","elapsedMs":6900.844999790192,"step":1},"atMs":22860}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":6,"phase":"run-complete","elapsedMs":91913.90999984741,"step":1},"atMs":107882.8900001049}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":7,"phase":"readback-start","elapsedMs":91916.99499988556,"step":1},"atMs":107888.52999997139}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":8,"phase":"readback-complete","elapsedMs":91917.26999998093,"step":1},"atMs":107888.56999993324}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"progress","phase":"step","step":1,"steps":4,"elapsedMs":91979.25499987602},"atMs":107938.42499995232}
+{"kind":"product-progress","progress":{"phase":"Drawing 1 of 4","completed":8,"total":12,"etaMs":null},"atMs":107940.99000000954}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":9,"phase":"first-step-complete","elapsedMs":91979.28499984741,"step":1,"plannedSteps":4},"atMs":107943.875}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":10,"phase":"session-release-start","elapsedMs":92016.92499995232},"atMs":107975.81999993324}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":11,"phase":"session-release-complete","elapsedMs":92080.86999988556},"atMs":108039.76999998093}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic","schema":"cf.denoise-first-step.v1","sequence":12,"phase":"device-destroyed","elapsedMs":92080.90499997139},"atMs":108039.81500005722}
+{"kind":"worker-message","slot":7,"stage":"denoise","message":{"type":"diagnostic-complete","schema":"cf.denoise-first-step.v1","completedSteps":1,"plannedSteps":4,"sigmas":[1,0.9622336779129861,0.89465780804073,0.7389686527095128,0],"dims":[1,128,36,64],"elapsedMs":92080.92999982834,"dataBytes":1179648,"dataSha256":"5b20674cb9e6eb96e23981a9353bf8d7344e79e3da538992f4ffd32d3e42d698"},"atMs":108048.7650001049}
+{"kind":"worker-terminated","slot":7,"stage":"denoise","atMs":108053.12000012398}
+{"kind":"harness-cleanup","activeWorkers":0,"workerConstructorRestored":true,"atMs":108056.17499995232}

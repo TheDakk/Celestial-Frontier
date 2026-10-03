@@ -1,0 +1,31 @@
+{
+ "id": "brown-bear",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1008.3,
+ "landmarkMedian": 0.0381,
+ "landmarkMax": 0.2917,
+ "worst": [
+  "tail2 0.292",
+  "tail3 0.265",
+  "tail1 0.195"
+ ],
+ "labelAgreement": 0.3173,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "approach:trot",
+  "approach:gallop",
+  "melee:bite",
+  "melee:claw",
+  "melee:gore",
+  "melee:tail",
+  "melee:headbutt",
+  "cast",
+  "hit",
+  "faint",
+  "victory",
+  "tame"
+ ]
+}

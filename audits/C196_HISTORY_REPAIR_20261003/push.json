@@ -1,0 +1,9 @@
+{
+  "head": "c85de35e1bd93d6c9dae2168673fa7c47b52c89c",
+  "remote": "c85de35e1bd93d6c9dae2168673fa7c47b52c89c",
+  "branch": "openai/mac",
+  "normalPush": true,
+  "guardUnchanged": true,
+  "force": false,
+  "hostedWorkflowTriggeredByPush": false
+}

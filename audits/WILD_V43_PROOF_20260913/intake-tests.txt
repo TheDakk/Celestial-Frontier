@@ -1,0 +1,17 @@
+✔ one pass changes only contaminated edge RGB, preserves original/alpha and refuses no-clean-neighbour success (4.704917ms)
+✔ explicit target set leaves other pink pixels unchanged and refuses unknown targets (1.190833ms)
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (2.102333ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.182208ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (3.052833ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (1.410875ms)
+✔ 8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion (2.4495ms)
+✔ two low runner instances share one organism mask; single-instance control fails (7.019042ms)
+✔ arena terrain opt-in permits full-width ground but refuses opaque-scene extraction (4.638458ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.364417

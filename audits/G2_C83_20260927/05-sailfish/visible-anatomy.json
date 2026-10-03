@@ -1,0 +1,150 @@
+{
+  "id": "05-sailfish",
+  "name": "Sailfish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "a7fb5ac2b596a7c6ae9ce83da134e4bb02eb6e44a44eae93c00bb0f124fba7bd",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16841,
+    "coreRadius": 29,
+    "bodyBox": {
+      "x0": 161,
+      "y0": 137,
+      "x1": 284,
+      "y1": 236
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.021,
+        "pixels": 353,
+        "box": {
+          "x0": 183,
+          "y0": 126,
+          "x1": 236,
+          "y1": 136
+        },
+        "attach": {
+          "x": 210,
+          "y": 136,
+          "relX": 0.4,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.56,
+          "y": -0.83
+        },
+        "class": "top",
+        "length": 28.8
+      },
+      {
+        "k": 1,
+        "frac": 0.216,
+        "pixels": 3637,
+        "box": {
+          "x0": 47,
+          "y0": 160,
+          "x1": 178,
+          "y1": 266
+        },
+        "attach": {
+          "x": 162.3,
+          "y": 213.7,
+          "relX": 0.01,
+          "relY": 0.77
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.05
+        },
+        "class": "rear",
+        "length": 127.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0694,
+        "pixels": 1169,
+        "box": {
+          "x0": 285,
+          "y0": 181,
+          "x1": 382,
+          "y1": 233
+        },
+        "attach": {
+          "x": 285,
+          "y": 207,
+          "relX": 1.01,
+          "relY": 0.71
+        },
+        "dir": {
+          "x": 0.94,
+          "y": 0.35
+        },
+        "class": "front",
+        "length": 100.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0132,
+        "pixels": 222,
+        "box": {
+          "x0": 212,
+          "y0": 237,
+          "x1": 266,
+          "y1": 268
+        },
+        "attach": {
+          "x": 263,
+          "y": 237,
+          "relX": 0.83,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.82,
+          "y": 0.57
+        },
+        "class": "limb-down",
+        "length": 59.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 47,
+        "x1": 61,
+        "cx": 54.2
+      },
+      {
+        "x0": 212,
+        "x1": 222,
+        "cx": 217
+      },
+      {
+        "x0": 224,
+        "x1": 239,
+        "cx": 232.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

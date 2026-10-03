@@ -1,0 +1,9 @@
+{"id":"01-grass-snake","verdict":"REFUSE","reasons":["extra-anatomy (unassigned): a front appendage of 16.5% paint that no reference appendage lands on","extra-anatomy (unassigned): a rear appendage of 13.9% paint that no reference appendage lands on"]}
+{"id":"02-rat-snake","verdict":"REFUSE","reasons":["extra-anatomy (unassigned): a front appendage of 15.1% paint that no reference appendage lands on","extra-anatomy (unassigned): a rear appendage of 15.3% paint that no reference appendage lands on"]}
+{"id":"03-king-snake","verdict":"REFUSE","reasons":["extra-anatomy (unassigned): a front appendage of 12.4% paint that no reference appendage lands on","extra-anatomy (unassigned): a rear appendage of 11.4% paint that no reference appendage lands on"]}
+{"id":"04-heron","verdict":"REFUSE","reasons":["missing-anatomy: part far-thigh (legFarKnee) covers 16% paint (reference 55%)"]}
+{"id":"05-pheasant","verdict":"REFUSE","reasons":["unexplained-anatomy: 6.6% of the paint lies away from the body and in no part (reference 1.2%)"]}
+{"id":"06-robin","verdict":"ADMIT","static":"PASS_STATIC","reasons":[]}
+{"id":"07-ant","verdict":"REFUSE","reasons":["facing: the mirrored painting matches insect better (0.0257 < 0.0320)"]}
+{"id":"08-cricket","verdict":"REFUSE","reasons":["missing-anatomy: part antenna-near (antennaNear) covers 9% paint (reference 31%)"]}
+{"id":"09-mantis","verdict":"REFUSE","reasons":["missing-anatomy (family floor): the largest rear appendage is 2.3% of the paint; every same-family reference shows at least 3.8%","missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%)"]}

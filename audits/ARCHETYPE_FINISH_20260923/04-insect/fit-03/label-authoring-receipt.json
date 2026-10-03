@@ -1,0 +1,154 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "hind-near-lower",
+      "joint": "legHindNearFoot",
+      "owner": "hind-near-lower"
+    },
+    {
+      "region": "mid-near-lower",
+      "joint": "legMidNearFoot",
+      "owner": "mid-near-lower"
+    },
+    {
+      "region": "front-near-lower",
+      "joint": "legFrontNearFoot",
+      "owner": "front-near-lower"
+    },
+    {
+      "region": "hind-near-upper",
+      "joint": "legHindNearKnee",
+      "owner": "hind-near-upper"
+    },
+    {
+      "region": "mid-near-upper",
+      "joint": "legMidNearKnee",
+      "owner": "mid-near-upper"
+    },
+    {
+      "region": "front-near-upper",
+      "joint": "legFrontNearKnee",
+      "owner": "front-near-upper"
+    },
+    {
+      "region": "hind-far-lower",
+      "joint": "legHindFarFoot",
+      "owner": "hind-far-lower"
+    },
+    {
+      "region": "mid-far-lower",
+      "joint": "legMidFarFoot",
+      "owner": "mid-far-lower"
+    },
+    {
+      "region": "front-far-lower",
+      "joint": "legFrontFarFoot",
+      "owner": "front-far-lower"
+    },
+    {
+      "region": "front-far-upper",
+      "joint": "legFrontFarKnee",
+      "owner": "front-far-upper"
+    },
+    {
+      "region": "mid-far-upper",
+      "joint": "legMidFarKnee",
+      "owner": "mid-far-upper"
+    },
+    {
+      "region": "hind-far-upper",
+      "joint": "legHindFarKnee",
+      "owner": "hind-far-upper"
+    },
+    {
+      "region": "antenna-far",
+      "joint": "antennaFar",
+      "owner": "antenna-far"
+    },
+    {
+      "region": "antenna-near",
+      "joint": "antennaNear",
+      "owner": "antenna-near"
+    },
+    {
+      "region": "mandible",
+      "joint": "mandible",
+      "owner": "mandible"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "elytron-near",
+      "joint": "thorax",
+      "owner": "thorax"
+    },
+    {
+      "region": "elytron-far",
+      "joint": "thorax",
+      "owner": "thorax"
+    },
+    {
+      "region": "membrane-far",
+      "joint": "wingFar",
+      "owner": "membrane-far"
+    },
+    {
+      "region": "membrane-near",
+      "joint": "wingNear",
+      "owner": "membrane-near"
+    },
+    {
+      "region": "thorax",
+      "joint": "thorax",
+      "owner": "thorax"
+    },
+    {
+      "region": "abdomen",
+      "joint": "abdomen",
+      "owner": "abdomen"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    28763,
+    17347,
+    18251,
+    6758,
+    7231,
+    4198,
+    4863,
+    7854,
+    7794,
+    3000,
+    4098,
+    1288,
+    7434,
+    6505,
+    3532,
+    10820,
+    111117,
+    57652,
+    58603,
+    22131,
+    31838
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "body"
+}

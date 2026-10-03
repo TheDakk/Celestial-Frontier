@@ -1,0 +1,146 @@
+{
+  "schema": "cf.c186-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/10-antelope-tail/fit01",
+  "sourceConservationSha256": "beee1fba79182dd153563f5c96e4c91021832fb57ba5d091acdc722cb3814ffc",
+  "sourceMasterSha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+  "sourceBindingSha256": "965a8cd289f7b660f6d9a9288824af7cf41b860d5d0d458a5a34678a04c81d9a",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.05,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374",
+  "movedPixels": 529,
+  "remainderPixels": 39665,
+  "islands": [
+    {
+      "pixels": 50,
+      "to": "ear-near-tip",
+      "border": {
+        "22": 22,
+        "23": 7
+      }
+    },
+    {
+      "pixels": 34,
+      "to": "neck",
+      "border": {
+        "23": 6,
+        "28": 16
+      }
+    },
+    {
+      "pixels": 161,
+      "to": "tail1",
+      "border": {
+        "3": 22,
+        "4": 17,
+        "9": 12
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "tail1",
+      "border": {
+        "3": 3
+      }
+    },
+    {
+      "pixels": 89,
+      "to": "tail1",
+      "border": {
+        "2": 4,
+        "3": 44
+      }
+    },
+    {
+      "pixels": 189,
+      "to": "hind-near-ankle",
+      "border": {
+        "6": 42,
+        "7": 41
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-paw",
+      "border": {
+        "15": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "hind-far-paw",
+      "border": {
+        "15": 4
+      }
+    }
+  ],
+  "intake": {
+    "id": "c186-islands-10-antelope-tail",
+    "parts": 31,
+    "atlasSize": {
+      "width": 760,
+      "height": 1749
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 51,
+        "distancePx": 4.501110973970821,
+        "supports": [
+          886
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 33,
+        "distancePx": 2.3259406699226424,
+        "supports": [
+          1046
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 34,
+        "distancePx": 3.4481879299133418,
+        "supports": [
+          111
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 45,
+        "distancePx": 4.8020828814173,
+        "supports": [
+          525
+        ]
+      }
+    ],
+    "sourceBindingHash": "bb25f9ebb1304cfb279a3ff6033b88753771b455f038a7a744527852e219e461",
+    "sourceVertices": 1613,
+    "vertices": 1781,
+    "sharedSupports": 457,
+    "pins": 320,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 36,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

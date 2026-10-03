@@ -1,0 +1,112 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part body-segment-7 (seg7) covers 8% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 5% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 0% paint (reference 2%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "chains": [],
+ "nudged": [],
+ "detour": {
+  "target": 0.0667,
+  "ref": 0.1167
+ },
+ "bestReference": "python",
+ "costs": [
+  {
+   "ref": "python",
+   "cost": 0.02058
+  },
+  {
+   "ref": "racer",
+   "cost": 0.02371
+  }
+ ],
+ "mirrorBest": 0.01758,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.01734
+ },
+ "coverage": [
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.5,
+   "area": 7.680000000000291
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.10531107738998483,
+   "area": 52694.60999999994
+  },
+  {
+   "id": "body-segment-0",
+   "joint": "seg0",
+   "paint": 0.13028764805414553,
+   "area": 28379.520000000055
+  },
+  {
+   "id": "body-segment-1",
+   "joint": "seg1",
+   "paint": 0.1151803187028236,
+   "area": 57267.98499999994
+  },
+  {
+   "id": "body-segment-2",
+   "joint": "seg2",
+   "paint": 0.10709743067921648,
+   "area": 62906.54999999993
+  },
+  {
+   "id": "body-segment-3",
+   "joint": "seg3",
+   "paint": 0.1045101842870999,
+   "area": 65976.84000000007
+  },
+  {
+   "id": "body-segment-4",
+   "joint": "seg4",
+   "paint": 0.11879049676025918,
+   "area": 66740.66499999996
+  },
+  {
+   "id": "body-segment-5",
+   "joint": "seg5",
+   "paint": 0.1758926431823628,
+   "area": 66708.56499999997
+  },
+  {
+   "id": "body-segment-6",
+   "joint": "seg6",
+   "paint": 0.11482799525504152,
+   "area": 67475.92500000006
+  },
+  {
+   "id": "body-segment-7",
+   "joint": "seg7",
+   "paint": 0.07687074829931972,
+   "area": 76119.19
+  },
+  {
+   "id": "body-segment-8",
+   "joint": "seg8",
+   "paint": 0.05021046301864101,
+   "area": 72855.28499999999
+  },
+  {
+   "id": "body-segment-9",
+   "joint": "seg9",
+   "paint": 0,
+   "area": 75584.78999999995
+  },
+  {
+   "id": "neck-root",
+   "joint": "root",
+   "paint": 0.13592233009708737,
+   "area": 26372.98999999997
+  }
+ ],
+ "unclaimedFrac": 0.07
+}

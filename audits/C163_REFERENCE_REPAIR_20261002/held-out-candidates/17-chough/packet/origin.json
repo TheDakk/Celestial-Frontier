@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c163-held-out-authoring-candidate/v1",
+  "origin": "Automatic transfer from the expanded unregistered reference candidate pool. Existing author, topK=1, chains+counter, rank0; no manual coordinate changes.",
+  "reference": "c136-bird-insect-02-egret",
+  "targetSource": "audits/G2_C136_REPAIRS_20261002/17-chough",
+  "sourceEvidence": "audits/C163_REFERENCE_REPAIR_20261002/reference-comparison/17-chough/expanded.json",
+  "sameSpeciesReferenceExcluded": true,
+  "qualityAccepted": false,
+  "playAdmission": false,
+  "intakeLegacyFields": "Legacy manualAuthoring/sourceLandmarksReused fields inside intake are not origin attestations. This packet is automatically transferred."
+}

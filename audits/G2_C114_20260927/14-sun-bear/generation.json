@@ -1,0 +1,13 @@
+{
+  "id": "14-sun-bear",
+  "name": "Sun Bear",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e30add1c-9548-4bf7-adc7-34ce31301881.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8684ba3d39fb047961aaf44d7f11abe7ae7410f28ca32daf3d224a86d90deadc",
+  "bytes": 1250771,
+  "promptSha256": "31d8d2a77f09219eea193058cf9ec153a2488f8c629fdfa6b2527b301617f38a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

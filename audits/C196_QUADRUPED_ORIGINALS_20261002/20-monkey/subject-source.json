@@ -1,0 +1,82 @@
+{
+  "name": "Monkey",
+  "family": "primate",
+  "species": {
+    "name": "Monkey",
+    "aspect": 1.6,
+    "headFrac": 0.25,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "long curling tail as long as the body",
+      "grasping hands and feet with opposable thumbs",
+      "flat forward-facing face with round eyes"
+    ],
+    "note": "Generic name - interpreted as a macaque/capuchin-type monkey (tailed, not an ape)."
+  },
+  "genome": {
+    "seed": 1247892711,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 3,
+    "body": 9,
+    "loco": 17,
+    "trait": 24,
+    "size": 4,
+    "diet": 3,
+    "head": 3,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 1,
+    "behavior": 10,
+    "habitat": 5,
+    "detail": 8,
+    "accent": 6,
+    "temper": 0,
+    "sense": 5,
+    "repro": 6,
+    "life": 1,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Monkey"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Monkey\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1247892711\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 331,
+  "profile": {
+    "id": "primate",
+    "names": [
+      "Gorilla",
+      "Chimpanzee",
+      "Orangutan",
+      "Capuchin",
+      "Howler Monkey",
+      "Spider Monkey",
+      "Tamarin",
+      "Macaque",
+      "Langur",
+      "Baboon",
+      "Monkey",
+      "Lemur",
+      "Gibbon",
+      "Mandrill",
+      "Marmoset",
+      "Aye-Aye",
+      "Proboscis Monkey"
+    ],
+    "candidateTemplates": [
+      "primate"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "punch",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

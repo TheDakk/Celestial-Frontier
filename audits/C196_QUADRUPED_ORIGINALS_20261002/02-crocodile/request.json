@@ -1,0 +1,32 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Crocodile",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "4ab57e27da20d1639dda8a31b6412e8886304adeaf4d6027396cf0793f5a9e81",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "crocodilian",
+  "authoringCreated": false,
+  "sourceHead": "de255a6de69c4f03f68cdd0643246190e24987ee",
+  "basePromptSha256": "22435669c18f440fb6d18488834c2ecac628eda789367c001e98efe196a24f5e",
+  "batchCompilerSha256": "903bc2252997eeddee9dc9a1193fad3a1af50808491b43f54c7314516aaa253f",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 unexplained-paint refusal; expose connected four-limb contours and tail root.",
+  "priorPilotPaths": [
+    "audits/G2_C132_QUADRUPEDS_20261001/pilot.json"
+  ],
+  "layoutOverride": "Strict side profile facing RIGHT, head right and full natural tail left. One adult reptile with exactly FOUR true legs, two forelegs and two hindlegs. Keep its trunk naturally LOW and its real elbows and knees sprawled outward, never mammal-like straight pillars. Use a quiet grounded walking stance in which all four actual limb chains are visible from shoulder or hip through elbow or knee, ankle and complete foot. Offset near and far limbs naturally, preserving separate contours and clear magenta between shafts; do not merely split toes below merged upper legs. Every foot rests on the same level. Head and jaw remain naturally level and visibly above the foot contact level, not dipped into it. Preserve real toe/claw anatomy and full tail continuously from its biological root to tip, with no crossing of limbs. Reptiles have no mammalian external ear pinnae: do not invent ears, fur, hooves or horns. Retain actual species scales, crests, dewlaps, frills and markings. No scenery, floor, shadow, branch, props or labels. Keep every structure inside the canvas with generous clear margin.",
+  "additionalSourceReadability": null,
+  "compositionCheck": "FINAL COMPOSITION CHECK: the 1254 by 1254 canvas is mostly empty pure magenta. Zoom the complete specimen OUT. Every arm, leg, wing, antenna, tail, tentacle and other part must fit within the central rectangle x=314 through x=940, y=314 through y=940. The rectangle is only an invisible placement guide: DO NOT paint a frame, line, ruler, label or grid. Make the entire animal smaller, never shorten its natural appendages to fit. Preserve detailed painted surfaces.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

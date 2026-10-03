@@ -1,0 +1,28 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Dog",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "0d21a4c9d8463c9dd0ae7faa4f1ba053b9e569f3fbcec5cdb27f8f97266ca336",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "88d86961e85f2744877f1ba4573563698e6206b717603f7ce9a7ac6d8cea593a",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "canid",
+  "authoringCreated": false,
+  "sourceHead": "852c7b2b021652146d0b86a34cb2f095a9a97037",
+  "basePromptSha256": "6b9ebf960d34e7c9e7afb8d89700322225aaa227e7041b6f7ae6422d96bf923f",
+  "referenceLayout": "REFERENCE PAINTING: one medium-sized domestic dog of no particular breed, strict side profile with a black nose and two separately visible natural ears. Use erect ears so BOTH tips are observable. A calm planted walking stride exposes FOUR separate limb shafts from natural attachment to paws, not merely four offset toes. The far foreleg is ahead of the near foreleg and the far hindleg ahead of the near hindleg; clear background gaps, no limb crossings. The long plumed tail is naturally carried above the back but visibly separated from the body contour, continuously attached, complete tip inside frame. Every paw on the same horizontal level.",
+  "referenceCompilerSha256": "d49434e42bb630ceb77b5aadf70424041be89cdb23a7364389092e0cc14683a4",
+  "purpose": "Single targeted framing edit; Gazelle/Gaur additionally expose the natural far ear. Earlier original retained.",
+  "editTarget": "audits/C132_REFERENCES_20261001/03-dog/master.png",
+  "editTargetSha256": "6ddb7124bb11a2df6d4e2dc88d2443eddc6450e1ec4db0b42605d68360351184",
+  "editCompilerSha256": "935a543aa85fadebb5348c042ffb0616f4a83f3bf0f579f5fc218ef23530344d"
+}

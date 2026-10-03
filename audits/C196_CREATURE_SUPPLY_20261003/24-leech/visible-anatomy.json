@@ -1,0 +1,92 @@
+{
+  "id": "24-leech",
+  "name": "Leech",
+  "family": "annelid",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13836,
+    "coreRadius": 16,
+    "bodyBox": {
+      "x0": 92,
+      "y0": 154,
+      "x1": 265,
+      "y1": 245
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2052,
+        "pixels": 2839,
+        "box": {
+          "x0": 236,
+          "y0": 185,
+          "x1": 354,
+          "y1": 251
+        },
+        "attach": {
+          "x": 258.6,
+          "y": 208.6,
+          "relX": 0.96,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": 0.94,
+          "y": 0.34
+        },
+        "class": "front",
+        "length": 104.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0789,
+        "pixels": 1091,
+        "box": {
+          "x0": 67,
+          "y0": 214,
+          "x1": 121,
+          "y1": 262
+        },
+        "attach": {
+          "x": 98.4,
+          "y": 237.6,
+          "relX": 0.04,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -0.95,
+          "y": 0.31
+        },
+        "class": "rear",
+        "length": 39.7
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 75,
+        "x1": 102,
+        "cx": 89
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

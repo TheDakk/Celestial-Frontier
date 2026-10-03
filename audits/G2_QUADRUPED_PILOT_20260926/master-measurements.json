@@ -1,0 +1,1384 @@
+{
+  "status": "COMPLETE",
+  "count": 20,
+  "rows": [
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "01-coyote",
+      "masterSha256": "d789b6c572a7e9eab0ce5ba03be64d1b24c253c54f16b760b6ebbb993345698b",
+      "bytes": 1397740,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            532,
+            1026
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            997,
+            1038
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1117,
+            199
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            865,
+            1056
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            286,
+            1052
+          ]
+        }
+      ],
+      "unusedStrong": 2,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "2 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1065484,
+        "partial": 506801
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 460354
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "02-red-fox",
+      "masterSha256": "f45478fccdfb399188fe3eb17dece1cbb50eb90f3519dc436697dc6788636ec4",
+      "bytes": 1273042,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            639,
+            1006
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            904,
+            1041
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1141,
+            209
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            963,
+            1034
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            435,
+            1025
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1081030,
+        "partial": 491373
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 455006
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "03-arctic-fox",
+      "masterSha256": "a280208f10b4781ed3f2eb21530f0e7c7a6076a850dd0dd9b6802d6cb967a246",
+      "bytes": 1201427,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            608,
+            961
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            430,
+            982
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            984,
+            986
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            916,
+            991
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1066201,
+        "partial": 506159
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 419051
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "04-fennec-fox",
+      "masterSha256": "681f2a3d3bb9a70fd5fe1a9b0ddac5d4b018d3ff906ccad31187caf3edfa8db6",
+      "bytes": 1225650,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            627,
+            1028
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            377,
+            1049
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1027,
+            1039
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            883,
+            1049
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1093620,
+        "partial": 478780
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 446451
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "05-caracal",
+      "masterSha256": "ad142d1404f22dbaa8dfc0129366c6de852cac93449a3267e8b7b9d1fc7de2f2",
+      "bytes": 1359512,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            82,
+            828
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            558,
+            1066
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            993,
+            122
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            1136,
+            138
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            218,
+            1084
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1064648,
+        "partial": 507675
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 432551
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "06-lynx",
+      "masterSha256": "17a2640ae3cf7e98cacf844925cfed0dca4508d396e48c638a2545b651eeeffa",
+      "bytes": 1651307,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "touch",
+          "master": [
+            998,
+            1022
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            573,
+            1074
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1136,
+            104
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            1005,
+            104
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 957019,
+        "partial": 615410
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 489502
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "07-cougar",
+      "masterSha256": "3d7ddbd36eebaaa2bdf1e8329da9514f0ce46b8892175fa45fc8cae99cf1acff",
+      "bytes": 1069423,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            634,
+            918
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            413,
+            939
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1038,
+            932
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            879,
+            946
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1185509,
+        "partial": 386665
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 342394
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "08-mongoose",
+      "masterSha256": "9f7d439cdd2f9c7984b1ab38251f1fc5135ab228fa6d8071382909a1ce0383c3",
+      "bytes": 738261,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            50,
+            839
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            669,
+            848
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1072,
+            851
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            983,
+            863
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            518,
+            858
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1324489,
+        "partial": 247870
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 282341
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "09-badger",
+      "masterSha256": "35c2bc9d8623bfc0335f60ce15cfeccf4d1f7acac275ded5875e6d6b31eb2210",
+      "bytes": 1140849,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 3,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            589,
+            864
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            394,
+            883
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "loop",
+          "master": [
+            714,
+            778
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            841,
+            904
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            49,
+            825
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "visible foreFar not found"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1163936,
+        "partial": 408394
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 351328
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "10-raccoon",
+      "masterSha256": "bc48bbea647c1cc879732724fd4faf8765764ca6a335b0871c93e585f0a6d5be",
+      "bytes": 1432491,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            702,
+            943
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            471,
+            961
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1087,
+            943
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            916,
+            971
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            56,
+            904
+          ]
+        }
+      ],
+      "unusedStrong": 1,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "1 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1063055,
+        "partial": 509202
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 454873
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "11-marmot",
+      "masterSha256": "9921ec0d37bc5a3b6faef946500c38563ec513454e2281436c097a25235b13dc",
+      "bytes": 1437160,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "touch",
+          "master": [
+            131,
+            722
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            401,
+            930
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            576,
+            958
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            1005,
+            960
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1057404,
+        "partial": 514840
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 402390
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "12-brown-bear",
+      "masterSha256": "fd9e23b0f2c79d2a3000648e723a2e9750aa6e358de680405fd81b7e713fdd5f",
+      "bytes": 1726374,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            540,
+            991
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            233,
+            1007
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1072,
+            998
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            893,
+            1019
+          ]
+        }
+      ],
+      "unusedStrong": 2,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "2 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 907652,
+        "partial": 664576
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 469499
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "13-cattle",
+      "masterSha256": "b69bb1d3c6918217337a2b541aee923df279d5b8b3996ae5f5f68848ccbf31bb",
+      "bytes": 1366460,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            374,
+            1012
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            760,
+            1012
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1222,
+            195
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            1096,
+            199
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1022476,
+        "partial": 549344
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 397599
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "14-bison",
+      "masterSha256": "a6e7dec8d65b19b2676dfb66dddf72e5e140436afd4fb8d5239308a010040085",
+      "bytes": 1779005,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 3,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "loop",
+          "master": [
+            469,
+            743
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            150,
+            1055
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            592,
+            872
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            875,
+            1045
+          ]
+        }
+      ],
+      "unusedStrong": 1,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "visible hindFar not found",
+        "1 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 872069,
+        "partial": 700183
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 548990
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "15-donkey",
+      "masterSha256": "8bb69939a28d17298009055f58049dc51543ca6bd6ebc2aff9fd1d410dc4bbe8",
+      "bytes": 1447928,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            942,
+            1136
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            763,
+            1153
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1082,
+            111
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            1165,
+            130
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            409,
+            1130
+          ]
+        }
+      ],
+      "unusedStrong": 3,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "3 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1034390,
+        "partial": 537791
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 483583
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "16-wild-horse",
+      "masterSha256": "4c1e9ce7882b9ed33cec287ff2f0e0c3f9460fbed34396f6d441240e30b5ba5b",
+      "bytes": 1426272,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            172,
+            879
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            244,
+            1083
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            758,
+            1071
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            884,
+            1083
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            47,
+            842
+          ]
+        }
+      ],
+      "unusedStrong": 2,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "2 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1012256,
+        "partial": 559858
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 490223
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "17-camel",
+      "masterSha256": "28e70ec00184733df2ecdf5ef3244983b0026e6c3384d888af6105f2a7795f7d",
+      "bytes": 1525054,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            73,
+            803
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            463,
+            1131
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            163,
+            1145
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            718,
+            1154
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            62,
+            727
+          ]
+        }
+      ],
+      "unusedStrong": 2,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "2 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 995239,
+        "partial": 576260
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 457449
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "18-tapir",
+      "masterSha256": "56f534417e8305b540143c231aa54936b66f3b578ab6041fa9e9ae3a7b4bb634",
+      "bytes": 1380176,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            926,
+            988
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            362,
+            1000
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            1044,
+            306
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            743,
+            1002
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            184,
+            979
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "ADMIT",
+      "reasons": [],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1030366,
+        "partial": 541564
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 351350
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "19-wild-boar",
+      "masterSha256": "23e2181e9e811049cba56ee4c52530658c45ebd6c5600eb56a744e0f4a5dc038",
+      "bytes": 1602224,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 2,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "loop",
+          "master": [
+            866,
+            257
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            932,
+            1013
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "loop",
+          "master": [
+            925,
+            293
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            1209,
+            591
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            764,
+            1020
+          ]
+        }
+      ],
+      "unusedStrong": 0,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "visible hindFar not found",
+        "visible foreFar not found"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 1008296,
+        "partial": 563864
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 452451
+    },
+    {
+      "schema": "cf.g2-master-observation/v1",
+      "id": "20-goat",
+      "masterSha256": "b6ea8fec507b52945a7553c6d727e4414a934727ea03cbf98a9e58633730eaad",
+      "bytes": 1623801,
+      "width": 1254,
+      "height": 1254,
+      "formatValid": true,
+      "requestedVisibleLegs": 4,
+      "observedVisibleLegs": 4,
+      "assigned": [
+        {
+          "slot": "hindFarPaw",
+          "kind": "end",
+          "master": [
+            875,
+            1129
+          ]
+        },
+        {
+          "slot": "hindNearPaw",
+          "kind": "end",
+          "master": [
+            767,
+            1154
+          ]
+        },
+        {
+          "slot": "foreFarPaw",
+          "kind": "end",
+          "master": [
+            846,
+            152
+          ]
+        },
+        {
+          "slot": "foreNearPaw",
+          "kind": "end",
+          "master": [
+            723,
+            195
+          ]
+        },
+        {
+          "slot": "tail3",
+          "kind": "appendage",
+          "master": [
+            136,
+            296
+          ]
+        }
+      ],
+      "unusedStrong": 1,
+      "verifierVerdict": "REFUSE",
+      "reasons": [
+        "1 unused endpoint leg candidates"
+      ],
+      "scope": "existing IC4 strict graph verifier; visible-leg estimates, not a trusted full anatomy/placement certificate; G1 mutation leaks remain open",
+      "alpha": {
+        "zero": 966030,
+        "partial": 605992
+      },
+      "authoringCreated": false,
+      "qualityAccepted": false,
+      "verifierSources": {
+        "assign.mjs": "bfec3c4298a2c9a0babfe9db493225aab1b2cbc7ea74f8d84570bbdd39895291",
+        "ic4.mjs": "20bcfbd3e2fdbdf5212b412a419f858f940bf88e5a3c2ebf88300688b9a4b1bc",
+        "template-rest.mjs": "1aa846651fbec886ad5c7370fb60ed8711610b1af6e2b18aff7476b57bce9c72",
+        "ridge.mjs": "cf7b0a00a1ce4faf9922ff35a57ce0bff51a7083c84289db7b5b322dc677f3f4",
+        "tips.mjs": "88c77336951d2bf8b04e74f0bacc6fa91abf007a72edaeb9ea50283c36535a00"
+      },
+      "maskBytes": 496980
+    }
+  ]
+}

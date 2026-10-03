@@ -1,0 +1,302 @@
+{
+  "scope": "Exact retained first-refusal poses, diagnosis only; no gate/solver mutation",
+  "rows": [
+    {
+      "id": "hit",
+      "error": null,
+      "folded": []
+    },
+    {
+      "id": "faint",
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "folded": [
+        {
+          "triangle": 6,
+          "vertices": [
+            {
+              "i": 9,
+              "xy": [
+                617,
+                714.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  0.3240902402123607
+                ],
+                [
+                  "hindNearAnkle",
+                  0.19589312683142623
+                ],
+                [
+                  "hindNearPaw",
+                  0.17448020496989639
+                ],
+                [
+                  "hindNearKnee",
+                  0.15759594417486048
+                ],
+                [
+                  "tail0",
+                  0.11929884634951973
+                ],
+                [
+                  "hindNearRoot",
+                  0.025456807543619498
+                ],
+                [
+                  "hindFarRoot",
+                  0.002289487719469874
+                ],
+                [
+                  "pelvis",
+                  0.0008953421988469535
+                ]
+              ],
+              "pinned": false
+            },
+            {
+              "i": 7,
+              "xy": [
+                607,
+                705
+              ],
+              "weights": [
+                [
+                  "tail0",
+                  0.27665628225571487
+                ],
+                [
+                  "root",
+                  0.22363423289306633
+                ],
+                [
+                  "hindNearKnee",
+                  0.1788105728239328
+                ],
+                [
+                  "hindNearAnkle",
+                  0.1621008574790621
+                ],
+                [
+                  "hindNearPaw",
+                  0.11916936893746535
+                ],
+                [
+                  "hindNearRoot",
+                  0.03703675848135183
+                ],
+                [
+                  "hindFarRoot",
+                  0.0015747389352757702
+                ],
+                [
+                  "pelvis",
+                  0.0010171881941309702
+                ]
+              ],
+              "pinned": false
+            },
+            {
+              "i": 10,
+              "xy": [
+                627,
+                705
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true
+            }
+          ]
+        },
+        {
+          "triangle": 7,
+          "vertices": [
+            {
+              "i": 9,
+              "xy": [
+                617,
+                714.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  0.3240902402123607
+                ],
+                [
+                  "hindNearAnkle",
+                  0.19589312683142623
+                ],
+                [
+                  "hindNearPaw",
+                  0.17448020496989639
+                ],
+                [
+                  "hindNearKnee",
+                  0.15759594417486048
+                ],
+                [
+                  "tail0",
+                  0.11929884634951973
+                ],
+                [
+                  "hindNearRoot",
+                  0.025456807543619498
+                ],
+                [
+                  "hindFarRoot",
+                  0.002289487719469874
+                ],
+                [
+                  "pelvis",
+                  0.0008953421988469535
+                ]
+              ],
+              "pinned": false
+            },
+            {
+              "i": 10,
+              "xy": [
+                627,
+                705
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true
+            },
+            {
+              "i": 11,
+              "xy": [
+                627,
+                724
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true
+            }
+          ]
+        },
+        {
+          "triangle": 153,
+          "vertices": [
+            {
+              "i": 97,
+              "xy": [
+                617,
+                695
+              ],
+              "weights": [
+                [
+                  "root",
+                  0.3309825094615272
+                ],
+                [
+                  "tail0",
+                  0.2807181245780829
+                ],
+                [
+                  "hindNearKnee",
+                  0.1743531568381978
+                ],
+                [
+                  "hindNearAnkle",
+                  0.0828896024934117
+                ],
+                [
+                  "hindNearPaw",
+                  0.06631120410833681
+                ],
+                [
+                  "hindNearRoot",
+                  0.05939978981258679
+                ],
+                [
+                  "hindFarRoot",
+                  0.0027896198009689714
+                ],
+                [
+                  "pelvis",
+                  0.002555992906888065
+                ]
+              ],
+              "pinned": false
+            },
+            {
+              "i": 10,
+              "xy": [
+                627,
+                705
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true
+            },
+            {
+              "i": 7,
+              "xy": [
+                607,
+                705
+              ],
+              "weights": [
+                [
+                  "tail0",
+                  0.27665628225571487
+                ],
+                [
+                  "root",
+                  0.22363423289306633
+                ],
+                [
+                  "hindNearKnee",
+                  0.1788105728239328
+                ],
+                [
+                  "hindNearAnkle",
+                  0.1621008574790621
+                ],
+                [
+                  "hindNearPaw",
+                  0.11916936893746535
+                ],
+                [
+                  "hindNearRoot",
+                  0.03703675848135183
+                ],
+                [
+                  "hindFarRoot",
+                  0.0015747389352757702
+                ],
+                [
+                  "pelvis",
+                  0.0010171881941309702
+                ]
+              ],
+              "pinned": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tame",
+      "error": null,
+      "folded": []
+    }
+  ]
+}

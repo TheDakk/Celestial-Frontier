@@ -1,0 +1,25 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+  "bindingHash": "40917765f2a1511fb70e760ed96a9d356f7bcd916aa679a1095a7e28762c6198",
+  "pairs": [
+    [
+      "body",
+      "far-wing-flight"
+    ],
+    [
+      "body",
+      "far-wing-shoulder"
+    ],
+    [
+      "body",
+      "near-wing-flight"
+    ],
+    [
+      "body",
+      "near-wing-shoulder"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "These four source cuts within the flat continuous feather master must not open into visible holes. No independent between-wing or leg seam is declared here."
+}

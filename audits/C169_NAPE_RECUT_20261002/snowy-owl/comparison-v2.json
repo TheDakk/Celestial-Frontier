@@ -1,0 +1,210 @@
+{
+  "id": "snowy-owl",
+  "motionChanged": false,
+  "results": [
+    {
+      "mode": "original",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.009804187841951714,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 3960,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 3960,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 3960,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "neck-upper",
+            "joint": "neck1",
+            "source": [
+              670,
+              461
+            ],
+            "alpha": 255,
+            "face": 27,
+            "vertices": [
+              25,
+              19,
+              18
+            ],
+            "published": [
+              0.734927674578993,
+              0.38773221993132645
+            ],
+            "stage": [
+              456.06787747621945,
+              282.9393668124901
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.009804187841951714,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 3960,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 3960,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 3960,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "neck-upper",
+            "joint": "neck1",
+            "source": [
+              670,
+              461
+            ],
+            "alpha": 255,
+            "face": 27,
+            "vertices": [
+              25,
+              19,
+              18
+            ],
+            "published": [
+              0.734927674578993,
+              0.38773221993132645
+            ],
+            "stage": [
+              567.9321225237805,
+              282.9393668124901
+            ]
+          },
+          "distanceToObservedOriginalTip": 0.09101502736104601
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "mode": "candidate",
+      "fit": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit",
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.009804187841951714,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 3982,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 3982,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 3982,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "chest",
+            "joint": "chest",
+            "source": [
+              670,
+              461
+            ],
+            "alpha": 255,
+            "face": 23,
+            "vertices": [
+              20,
+              8,
+              7
+            ],
+            "published": [
+              0.629216206073761,
+              0.43049954313196637
+            ],
+            "stage": [
+              405.48196834973623,
+              303.4047331119227
+            ]
+          },
+          "distanceToObservedOriginalTip": null
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.009804187841951714,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 3982,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 356,
+              "coordinates": 3982,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 1371.9999999999993,
+              "coordinates": 3982,
+              "byteParity": true
+            }
+          ],
+          "attributedSourcePixel": {
+            "part": "chest",
+            "joint": "chest",
+            "source": [
+              670,
+              461
+            ],
+            "alpha": 255,
+            "face": 23,
+            "vertices": [
+              20,
+              8,
+              7
+            ],
+            "published": [
+              0.629216206073761,
+              0.43049954313196637
+            ],
+            "stage": [
+              618.5180316502638,
+              303.4047331119227
+            ]
+          },
+          "distanceToObservedOriginalTip": 54.48325114368495
+        }
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "nativeRun": false,
+  "qualityAccepted": false
+}

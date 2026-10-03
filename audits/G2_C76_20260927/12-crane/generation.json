@@ -1,0 +1,13 @@
+{
+  "id": "12-crane",
+  "name": "Crane",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b028b77c-85cd-4e73-a06e-e0f347fcc217.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "979b8b9914f2cdd02149903b3ffce1d7ef55d862e670a8cfc2a5c2264d705b9e",
+  "bytes": 1177333,
+  "promptSha256": "39e41d67cc013f548ee757a080206d0b68d7d7ab2b9d9fbb2ff2f3060a782c7e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

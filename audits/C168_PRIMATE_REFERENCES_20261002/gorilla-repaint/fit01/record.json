@@ -1,0 +1,205 @@
+{
+  "kind": "primate",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gorilla\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3633000217\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+    "seed": 3633000217,
+    "ownerId": "authored:archetype-sprint/c168-reference-gorilla-repaint",
+    "earthName": "Gorilla"
+  },
+  "template": {
+    "id": "primate",
+    "version": 1
+  },
+  "clipSetId": "primate-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3633000217,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 15,
+    "body": 7,
+    "loco": 15,
+    "trait": 10,
+    "size": 3,
+    "diet": 3,
+    "head": 3,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 4,
+    "detail": 1,
+    "accent": 3,
+    "temper": 8,
+    "sense": 2,
+    "repro": 7,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Gorilla"
+  },
+  "geometry": {
+    "cutoutAssetHash": "9b32d6750423bf8b570d539a808acacd305f1b5366d5c27b82b06996a63f52bc",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7543859649122807,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5143540669856459,
+      0.4984051036682616
+    ],
+    "pelvis": [
+      0.3748006379585327,
+      0.4864433811802233
+    ],
+    "spine": [
+      0.48564593301435405,
+      0.43779904306220097
+    ],
+    "chest": [
+      0.5933014354066986,
+      0.4649122807017544
+    ],
+    "neck": [
+      0.6188197767145136,
+      0.37320574162679426
+    ],
+    "head": [
+      0.6626794258373205,
+      0.34290271132376393
+    ],
+    "jaw": [
+      0.6913875598086124,
+      0.4154704944178628
+    ],
+    "armNearShoulder": [
+      0.5271132376395534,
+      0.4194577352472089
+    ],
+    "armNearElbow": [
+      0.5231259968102073,
+      0.5717703349282297
+    ],
+    "armNearHand": [
+      0.5614035087719298,
+      0.7368421052631579
+    ],
+    "armFarShoulder": [
+      0.6610845295055822,
+      0.4625199362041467
+    ],
+    "armFarElbow": [
+      0.7009569377990431,
+      0.5725677830940988
+    ],
+    "armFarHand": [
+      0.7288676236044657,
+      0.733652312599681
+    ],
+    "legNearHip": [
+      0.34768740031897927,
+      0.4944178628389155
+    ],
+    "legNearKnee": [
+      0.3317384370015949,
+      0.6212121212121212
+    ],
+    "legNearFoot": [
+      0.31259968102073366,
+      0.7240829346092504
+    ],
+    "legFarHip": [
+      0.44019138755980863,
+      0.562200956937799
+    ],
+    "legFarKnee": [
+      0.4433811802232855,
+      0.6291866028708134
+    ],
+    "legFarFoot": [
+      0.45454545454545453,
+      0.7057416267942583
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C168_PRIMATE_REFERENCES_20261002/gorilla-repaint/master.png",
+  "coverage": {
+    "scope": "One manually observed bounded new pose painting",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "qualityAccepted": false,
+    "nativeAcceptance": false,
+    "declarations": "The single new painting separates the previously merged far foot and near hand. The unchanged geometric counter now measures four limb-down appendages and four ground clusters. It is still an observation, not proof of four coplanar supports. Near knuckles finish around y940, right fingers around y940, left foot around y924 and far foot around y901. The right hand remains partly curled/open despite the requested folded knuckles; no contact plane or finger shape is invented. Far thigh and shoulder roots remain partly occluded; selected attachment points are explicit rig hypotheses. Gorilla stays tailless under the existing primate presence contract. Head/nape, hand and foot skin need full moving-paint review.",
+    "limitations": [
+      "The single new painting separates the previously merged far foot and near hand. The unchanged geometric counter now measures four limb-down appendages and four ground clusters. It is still an observation, not proof of four coplanar supports.",
+      "Near knuckles finish around y940, right fingers around y940, left foot around y924 and far foot around y901. The right hand remains partly curled/open despite the requested folded knuckles; no contact plane or finger shape is invented.",
+      "Far thigh and shoulder roots remain partly occluded; selected attachment points are explicit rig hypotheses. Gorilla stays tailless under the existing primate presence contract. Head/nape, hand and foot skin need full moving-paint review."
+    ]
+  },
+  "provenance": {
+    "authoringSha256": "f37be282ed0f819024e54eec560a492af343f0995205c994cb71b4acd6cf0211",
+    "subjectSourceSha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048",
+    "presenceSha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.14006513612639787,
+      "spine": 0.12104937450045983,
+      "chest": 0.11101727275810279,
+      "neck": 0.09519072986488404,
+      "head": 0.053309872131924244,
+      "jaw": 0.0780399903850957,
+      "armFarShoulder": 0.06782529880371589,
+      "armFarElbow": 0.1170484410329108,
+      "armFarHand": 0.16348465380017718,
+      "armNearShoulder": 0.0802931704825638,
+      "armNearElbow": 0.1523647797590444,
+      "armNearHand": 0.1694516370044476,
+      "legFarHip": 0.1000757733823806,
+      "legFarKnee": 0.06706155037202119,
+      "legFarFoot": 0.07736480277917,
+      "legNearHip": 0.028261635002662436,
+      "legNearKnee": 0.1277934011884437,
+      "legNearFoot": 0.10463601784033037
+    },
+    "measures": {
+      "body": 0.21955907353898707,
+      "bone-min": 0.028261635002662436,
+      "bone-max": 0.1694516370044476,
+      "arm/torso:armFar": 1.5866271797459828,
+      "arm/torso:armNear": 1.8314414465528943,
+      "leg/torso:legFar": 1.1136052024292933,
+      "leg/torso:legNear": 1.1873390146417502
+    }
+  },
+  "recipeHash": "9e76c7ec14b45d06de9fa42a9b426e109bd8c24d9cf70f1e5e445b85e4f63b77"
+}

@@ -1,0 +1,830 @@
+[
+  {
+    "id": "grouse",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-v10/grouse/packet",
+    "master": "audits/ART_BATTLE_FOCUS_20260925/22-grouse/master.png",
+    "masterSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8",
+    "authorSha256": "89209a688dd82523f8569525d12f93eb12dc60ef02d67a94d546e97c02989eff",
+    "points": [
+      {
+        "chain": "legFar",
+        "role": "knee",
+        "joint": "legFarKnee",
+        "point": [
+          701.2,
+          788.2
+        ],
+        "expectedPart": "far-thigh",
+        "actualPart": "body",
+        "alphaAtPoint": 252,
+        "ownedPixels": 6100,
+        "nearestOwnedPixel": [
+          698.5,
+          830.5
+        ],
+        "nearestOwnedDistancePx": 42.38608262153978
+      },
+      {
+        "chain": "legFar",
+        "role": "end",
+        "joint": "legFarAnkle",
+        "point": [
+          744,
+          874.6
+        ],
+        "expectedPart": "far-shin",
+        "actualPart": "far-thigh",
+        "alphaAtPoint": 252,
+        "ownedPixels": 4002,
+        "nearestOwnedPixel": [
+          743.5,
+          881.5
+        ],
+        "nearestOwnedDistancePx": 6.918092222571167
+      },
+      {
+        "chain": "legFar",
+        "role": "terminal",
+        "joint": "legFarFoot",
+        "point": [
+          825.5,
+          960.5
+        ],
+        "expectedPart": "far-foot",
+        "actualPart": "far-foot",
+        "alphaAtPoint": 129,
+        "ownedPixels": 10744,
+        "nearestOwnedPixel": [
+          825.5,
+          960.5
+        ],
+        "nearestOwnedDistancePx": 0
+      },
+      {
+        "chain": "legNear",
+        "role": "knee",
+        "joint": "legNearKnee",
+        "point": [
+          558,
+          881.3
+        ],
+        "expectedPart": "near-thigh",
+        "actualPart": "body",
+        "alphaAtPoint": 253,
+        "ownedPixels": 3334,
+        "nearestOwnedPixel": [
+          532.5,
+          873.5
+        ],
+        "nearestOwnedDistancePx": 26.66627083039545
+      },
+      {
+        "chain": "legNear",
+        "role": "end",
+        "joint": "legNearAnkle",
+        "point": [
+          555,
+          941.3
+        ],
+        "expectedPart": "near-shin",
+        "actualPart": "near-shin",
+        "alphaAtPoint": 252,
+        "ownedPixels": 4765,
+        "nearestOwnedPixel": [
+          554.5,
+          941.5
+        ],
+        "nearestOwnedDistancePx": 0.5385164807134672
+      },
+      {
+        "chain": "legNear",
+        "role": "terminal",
+        "joint": "legNearFoot",
+        "point": [
+          586.5,
+          995.6
+        ],
+        "expectedPart": "near-foot",
+        "actualPart": "near-foot",
+        "alphaAtPoint": 252,
+        "ownedPixels": 11604,
+        "nearestOwnedPixel": [
+          586.5,
+          995.5
+        ],
+        "nearestOwnedDistancePx": 0.10000000000002274
+      }
+    ]
+  },
+  {
+    "id": "sparrow",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-v10/sparrow/packet",
+    "master": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/master.png",
+    "masterSha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91",
+    "authorSha256": "c3c8e734f57e78b5f021144a8cd33a8ec956e091393b613fbc074258b76fedfb",
+    "points": [
+      {
+        "chain": "legFar",
+        "role": "knee",
+        "joint": "legFarKnee",
+        "point": [
+          655.7,
+          866.7
+        ],
+        "expectedPart": "far-thigh",
+        "actualPart": "body",
+        "alphaAtPoint": 252,
+        "ownedPixels": 7634,
+        "nearestOwnedPixel": [
+          650.5,
+          868.5
+        ],
+        "nearestOwnedDistancePx": 5.502726596879069
+      },
+      {
+        "chain": "legFar",
+        "role": "end",
+        "joint": "legFarAnkle",
+        "point": [
+          751.3,
+          998.3
+        ],
+        "expectedPart": "far-shin",
+        "actualPart": "far-foot",
+        "alphaAtPoint": 250,
+        "ownedPixels": 853,
+        "nearestOwnedPixel": [
+          750.5,
+          985.5
+        ],
+        "nearestOwnedDistancePx": 12.82497563350507
+      },
+      {
+        "chain": "legFar",
+        "role": "terminal",
+        "joint": "legFarFoot",
+        "point": [
+          818.5,
+          1020.5
+        ],
+        "expectedPart": "far-foot",
+        "actualPart": "far-foot",
+        "alphaAtPoint": 193,
+        "ownedPixels": 7744,
+        "nearestOwnedPixel": [
+          818.5,
+          1020.5
+        ],
+        "nearestOwnedDistancePx": 0
+      },
+      {
+        "chain": "legNear",
+        "role": "knee",
+        "joint": "legNearKnee",
+        "point": [
+          524,
+          951.9
+        ],
+        "expectedPart": "near-thigh",
+        "actualPart": "body",
+        "alphaAtPoint": 250,
+        "ownedPixels": 7062,
+        "nearestOwnedPixel": [
+          521.5,
+          953.5
+        ],
+        "nearestOwnedDistancePx": 2.968164415931178
+      },
+      {
+        "chain": "legNear",
+        "role": "end",
+        "joint": "legNearAnkle",
+        "point": [
+          555.9,
+          1039.9
+        ],
+        "expectedPart": "near-shin",
+        "actualPart": "near-foot",
+        "alphaAtPoint": 252,
+        "ownedPixels": 914,
+        "nearestOwnedPixel": [
+          545.5,
+          1020.5
+        ],
+        "nearestOwnedDistancePx": 22.01181500921728
+      },
+      {
+        "chain": "legNear",
+        "role": "terminal",
+        "joint": "legNearFoot",
+        "point": [
+          595.5,
+          1047.5
+        ],
+        "expectedPart": "near-foot",
+        "actualPart": "near-foot",
+        "alphaAtPoint": 148,
+        "ownedPixels": 5045,
+        "nearestOwnedPixel": [
+          595.5,
+          1047.5
+        ],
+        "nearestOwnedDistancePx": 0
+      }
+    ]
+  },
+  {
+    "id": "08-mongoose",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/08-mongoose/packet",
+    "master": "audits/G2_QUADRUPED_PILOT_20260926/08-mongoose/master.png",
+    "masterSha256": "9f7d439cdd2f9c7984b1ab38251f1fc5135ab228fa6d8071382909a1ce0383c3",
+    "authorSha256": "22a1ecab8f0e4a8b18b44a6b79b5f71efc7e99404c984732bb9e45420f9c01a9",
+    "points": [
+      {
+        "chain": "hindFar",
+        "role": "hip",
+        "joint": "hindFarRoot",
+        "point": [
+          581.8,
+          687.8
+        ],
+        "expectedPart": "hind-far-root",
+        "actualPart": "hind-far-root",
+        "alphaAtPoint": 252,
+        "ownedPixels": 4171,
+        "nearestOwnedPixel": [
+          581.5,
+          687.5
+        ],
+        "nearestOwnedDistancePx": 0.42426406871186423
+      },
+      {
+        "chain": "hindFar",
+        "role": "knee",
+        "joint": "hindFarKnee",
+        "point": [
+          609,
+          744.7
+        ],
+        "expectedPart": "hind-far-knee",
+        "actualPart": "hind-far-knee",
+        "alphaAtPoint": 252,
+        "ownedPixels": 3930,
+        "nearestOwnedPixel": [
+          608.5,
+          744.5
+        ],
+        "nearestOwnedDistancePx": 0.5385164807134672
+      },
+      {
+        "chain": "hindFar",
+        "role": "end",
+        "joint": "hindFarAnkle",
+        "point": [
+          600,
+          778.3
+        ],
+        "expectedPart": "hind-far-ankle",
+        "actualPart": "hind-far-ankle",
+        "alphaAtPoint": 253,
+        "ownedPixels": 1478,
+        "nearestOwnedPixel": [
+          599.5,
+          778.5
+        ],
+        "nearestOwnedDistancePx": 0.5385164807134672
+      },
+      {
+        "chain": "hindFar",
+        "role": "terminal",
+        "joint": "hindFarPaw",
+        "point": [
+          645.2,
+          835.8
+        ],
+        "expectedPart": "hind-far-paw",
+        "actualPart": "hind-far-paw",
+        "alphaAtPoint": 252,
+        "ownedPixels": 3034,
+        "nearestOwnedPixel": [
+          645.5,
+          835.5
+        ],
+        "nearestOwnedDistancePx": 0.42426406871186423
+      },
+      {
+        "chain": "foreFar",
+        "role": "hip",
+        "joint": "foreFarRoot",
+        "point": [
+          1009.2,
+          674.7
+        ],
+        "expectedPart": "fore-far-root",
+        "actualPart": "fore-far-root",
+        "alphaAtPoint": 252,
+        "ownedPixels": 5181,
+        "nearestOwnedPixel": [
+          1009.5,
+          674.5
+        ],
+        "nearestOwnedDistancePx": 0.3605551275463863
+      },
+      {
+        "chain": "foreFar",
+        "role": "knee",
+        "joint": "foreFarKnee",
+        "point": [
+          1001,
+          726.5
+        ],
+        "expectedPart": "fore-far-knee",
+        "actualPart": "fore-far-knee",
+        "alphaAtPoint": 252,
+        "ownedPixels": 3199,
+        "nearestOwnedPixel": [
+          1000.5,
+          726.5
+        ],
+        "nearestOwnedDistancePx": 0.5
+      },
+      {
+        "chain": "foreFar",
+        "role": "end",
+        "joint": "foreFarAnkle",
+        "point": [
+          1023.7,
+          799.7
+        ],
+        "expectedPart": "fore-far-ankle",
+        "actualPart": "fore-far-ankle",
+        "alphaAtPoint": 252,
+        "ownedPixels": 1070,
+        "nearestOwnedPixel": [
+          1023.5,
+          799.5
+        ],
+        "nearestOwnedDistancePx": 0.28284271247468334
+      },
+      {
+        "chain": "foreFar",
+        "role": "terminal",
+        "joint": "foreFarPaw",
+        "point": [
+          1062.7,
+          838.2
+        ],
+        "expectedPart": "fore-far-paw",
+        "actualPart": "fore-far-paw",
+        "alphaAtPoint": 253,
+        "ownedPixels": 2882,
+        "nearestOwnedPixel": [
+          1062.5,
+          838.5
+        ],
+        "nearestOwnedDistancePx": 0.3605551275463863
+      },
+      {
+        "chain": "hindNear",
+        "role": "hip",
+        "joint": "hindNearRoot",
+        "point": [
+          541.2,
+          639
+        ],
+        "expectedPart": "hind-near-root",
+        "actualPart": "hind-near-root",
+        "alphaAtPoint": 252,
+        "ownedPixels": 16744,
+        "nearestOwnedPixel": [
+          541.5,
+          638.5
+        ],
+        "nearestOwnedDistancePx": 0.5830951894845067
+      },
+      {
+        "chain": "hindNear",
+        "role": "knee",
+        "joint": "hindNearKnee",
+        "point": [
+          557,
+          701.1
+        ],
+        "expectedPart": "hind-near-knee",
+        "actualPart": "hind-near-knee",
+        "alphaAtPoint": 253,
+        "ownedPixels": 8088,
+        "nearestOwnedPixel": [
+          556.5,
+          701.5
+        ],
+        "nearestOwnedDistancePx": 0.6403124237432707
+      },
+      {
+        "chain": "hindNear",
+        "role": "end",
+        "joint": "hindNearAnkle",
+        "point": [
+          493,
+          773
+        ],
+        "expectedPart": "hind-near-ankle",
+        "actualPart": "hind-near-ankle",
+        "alphaAtPoint": 252,
+        "ownedPixels": 2067,
+        "nearestOwnedPixel": [
+          492.5,
+          772.5
+        ],
+        "nearestOwnedDistancePx": 0.7071067811865476
+      },
+      {
+        "chain": "hindNear",
+        "role": "terminal",
+        "joint": "hindNearPaw",
+        "point": [
+          487.9,
+          832.2
+        ],
+        "expectedPart": "hind-near-paw",
+        "actualPart": "hind-near-paw",
+        "alphaAtPoint": 252,
+        "ownedPixels": 3570,
+        "nearestOwnedPixel": [
+          487.5,
+          832.5
+        ],
+        "nearestOwnedDistancePx": 0.49999999999995454
+      },
+      {
+        "chain": "foreNear",
+        "role": "hip",
+        "joint": "foreNearRoot",
+        "point": [
+          941.5,
+          630.5
+        ],
+        "expectedPart": "fore-near-root",
+        "actualPart": "fore-near-root",
+        "alphaAtPoint": 253,
+        "ownedPixels": 11695,
+        "nearestOwnedPixel": [
+          941.5,
+          630.5
+        ],
+        "nearestOwnedDistancePx": 0
+      },
+      {
+        "chain": "foreNear",
+        "role": "knee",
+        "joint": "foreNearKnee",
+        "point": [
+          936,
+          715.8
+        ],
+        "expectedPart": "fore-near-knee",
+        "actualPart": "fore-near-knee",
+        "alphaAtPoint": 252,
+        "ownedPixels": 7054,
+        "nearestOwnedPixel": [
+          935.5,
+          715.5
+        ],
+        "nearestOwnedDistancePx": 0.5830951894845067
+      },
+      {
+        "chain": "foreNear",
+        "role": "end",
+        "joint": "foreNearAnkle",
+        "point": [
+          939,
+          784.4
+        ],
+        "expectedPart": "fore-near-ankle",
+        "actualPart": "fore-near-ankle",
+        "alphaAtPoint": 253,
+        "ownedPixels": 2379,
+        "nearestOwnedPixel": [
+          938.5,
+          784.5
+        ],
+        "nearestOwnedDistancePx": 0.509901951359283
+      },
+      {
+        "chain": "foreNear",
+        "role": "terminal",
+        "joint": "foreNearPaw",
+        "point": [
+          957,
+          842.3
+        ],
+        "expectedPart": "fore-near-paw",
+        "actualPart": "fore-near-paw",
+        "alphaAtPoint": 252,
+        "ownedPixels": 3607,
+        "nearestOwnedPixel": [
+          956.5,
+          842.5
+        ],
+        "nearestOwnedDistancePx": 0.5385164807134672
+      }
+    ]
+  },
+  {
+    "id": "18-tapir",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/18-tapir/packet",
+    "master": "audits/G2_QUADRUPED_PILOT_20260926/18-tapir/master.png",
+    "masterSha256": "56f534417e8305b540143c231aa54936b66f3b578ab6041fa9e9ae3a7b4bb634",
+    "authorSha256": "a2fcdfeb1ed8cba77eae7cbb0f5d5d2f279ae1428f31880e802a8b021a23bf7e",
+    "points": [
+      {
+        "chain": "hindFar",
+        "role": "hip",
+        "joint": "hindFarRoot",
+        "point": [
+          453.9,
+          602.9
+        ],
+        "expectedPart": "hind-far-root",
+        "actualPart": "hind-far-root",
+        "alphaAtPoint": 253,
+        "ownedPixels": 41666,
+        "nearestOwnedPixel": [
+          453.5,
+          602.5
+        ],
+        "nearestOwnedDistancePx": 0.5656854249492059
+      },
+      {
+        "chain": "hindFar",
+        "role": "knee",
+        "joint": "hindFarKnee",
+        "point": [
+          277,
+          654
+        ],
+        "expectedPart": "hind-far-knee",
+        "actualPart": "hind-near-root",
+        "alphaAtPoint": 252,
+        "ownedPixels": 19994,
+        "nearestOwnedPixel": [
+          290.5,
+          722.5
+        ],
+        "nearestOwnedDistancePx": 69.8176195526602
+      },
+      {
+        "chain": "hindFar",
+        "role": "end",
+        "joint": "hindFarAnkle",
+        "point": [
+          271,
+          835.9
+        ],
+        "expectedPart": "hind-far-ankle",
+        "actualPart": "hind-far-knee",
+        "alphaAtPoint": 253,
+        "ownedPixels": 7812,
+        "nearestOwnedPixel": [
+          271.5,
+          841.5
+        ],
+        "nearestOwnedDistancePx": 5.622277118748262
+      },
+      {
+        "chain": "hindFar",
+        "role": "terminal",
+        "joint": "hindFarPaw",
+        "point": [
+          336.3,
+          970
+        ],
+        "expectedPart": "hind-far-paw",
+        "actualPart": "hind-far-paw",
+        "alphaAtPoint": 253,
+        "ownedPixels": 8682,
+        "nearestOwnedPixel": [
+          336.5,
+          969.5
+        ],
+        "nearestOwnedDistancePx": 0.5385164807134462
+      },
+      {
+        "chain": "foreFar",
+        "role": "hip",
+        "joint": "foreFarRoot",
+        "point": [
+          874.5,
+          548
+        ],
+        "expectedPart": "fore-far-root",
+        "actualPart": "fore-far-root",
+        "alphaAtPoint": 252,
+        "ownedPixels": 15741,
+        "nearestOwnedPixel": [
+          874.5,
+          547.5
+        ],
+        "nearestOwnedDistancePx": 0.5
+      },
+      {
+        "chain": "foreFar",
+        "role": "knee",
+        "joint": "foreFarKnee",
+        "point": [
+          794,
+          695.7
+        ],
+        "expectedPart": "fore-far-knee",
+        "actualPart": "fore-far-knee",
+        "alphaAtPoint": 253,
+        "ownedPixels": 19018,
+        "nearestOwnedPixel": [
+          793.5,
+          695.5
+        ],
+        "nearestOwnedDistancePx": 0.5385164807134672
+      },
+      {
+        "chain": "foreFar",
+        "role": "end",
+        "joint": "foreFarAnkle",
+        "point": [
+          836,
+          841.9
+        ],
+        "expectedPart": "fore-far-ankle",
+        "actualPart": "fore-far-knee",
+        "alphaAtPoint": 252,
+        "ownedPixels": 4195,
+        "nearestOwnedPixel": [
+          835.5,
+          843.5
+        ],
+        "nearestOwnedDistancePx": 1.6763054614240427
+      },
+      {
+        "chain": "foreFar",
+        "role": "terminal",
+        "joint": "foreFarPaw",
+        "point": [
+          874.6,
+          943.5
+        ],
+        "expectedPart": "fore-far-paw",
+        "actualPart": "fore-far-paw",
+        "alphaAtPoint": 253,
+        "ownedPixels": 6298,
+        "nearestOwnedPixel": [
+          874.5,
+          943.5
+        ],
+        "nearestOwnedDistancePx": 0.10000000000002274
+      },
+      {
+        "chain": "hindNear",
+        "role": "hip",
+        "joint": "hindNearRoot",
+        "point": [
+          266.8,
+          573.6
+        ],
+        "expectedPart": "hind-near-root",
+        "actualPart": "hind-near-root",
+        "alphaAtPoint": 253,
+        "ownedPixels": 59784,
+        "nearestOwnedPixel": [
+          266.5,
+          573.5
+        ],
+        "nearestOwnedDistancePx": 0.31622776601685587
+      },
+      {
+        "chain": "hindNear",
+        "role": "knee",
+        "joint": "hindNearKnee",
+        "point": [
+          210.2,
+          694.8
+        ],
+        "expectedPart": "hind-near-knee",
+        "actualPart": "hind-near-knee",
+        "alphaAtPoint": 253,
+        "ownedPixels": 18293,
+        "nearestOwnedPixel": [
+          210.5,
+          694.5
+        ],
+        "nearestOwnedDistancePx": 0.42426406871190436
+      },
+      {
+        "chain": "hindNear",
+        "role": "end",
+        "joint": "hindNearAnkle",
+        "point": [
+          130,
+          846.7
+        ],
+        "expectedPart": "hind-near-ankle",
+        "actualPart": "hind-near-knee",
+        "alphaAtPoint": 253,
+        "ownedPixels": 2591,
+        "nearestOwnedPixel": [
+          133.5,
+          850.5
+        ],
+        "nearestOwnedDistancePx": 5.1662365412357625
+      },
+      {
+        "chain": "hindNear",
+        "role": "terminal",
+        "joint": "hindNearPaw",
+        "point": [
+          120.2,
+          926.3
+        ],
+        "expectedPart": "hind-near-paw",
+        "actualPart": "hind-near-paw",
+        "alphaAtPoint": 253,
+        "ownedPixels": 6933,
+        "nearestOwnedPixel": [
+          120.5,
+          926.5
+        ],
+        "nearestOwnedDistancePx": 0.3605551275464218
+      },
+      {
+        "chain": "foreNear",
+        "role": "hip",
+        "joint": "foreNearRoot",
+        "point": [
+          789.2,
+          542.6
+        ],
+        "expectedPart": "fore-near-root",
+        "actualPart": "fore-near-root",
+        "alphaAtPoint": 253,
+        "ownedPixels": 45118,
+        "nearestOwnedPixel": [
+          789.5,
+          542.5
+        ],
+        "nearestOwnedDistancePx": 0.316227766016802
+      },
+      {
+        "chain": "foreNear",
+        "role": "knee",
+        "joint": "foreNearKnee",
+        "point": [
+          727,
+          709.5
+        ],
+        "expectedPart": "fore-near-knee",
+        "actualPart": "fore-near-knee",
+        "alphaAtPoint": 252,
+        "ownedPixels": 20912,
+        "nearestOwnedPixel": [
+          726.5,
+          709.5
+        ],
+        "nearestOwnedDistancePx": 0.5
+      },
+      {
+        "chain": "foreNear",
+        "role": "end",
+        "joint": "foreNearAnkle",
+        "point": [
+          694,
+          853.9
+        ],
+        "expectedPart": "fore-near-ankle",
+        "actualPart": "fore-near-ankle",
+        "alphaAtPoint": 253,
+        "ownedPixels": 6468,
+        "nearestOwnedPixel": [
+          693.5,
+          853.5
+        ],
+        "nearestOwnedDistancePx": 0.6403124237432707
+      },
+      {
+        "chain": "foreNear",
+        "role": "terminal",
+        "joint": "foreNearPaw",
+        "point": [
+          678.2,
+          946
+        ],
+        "expectedPart": "fore-near-paw",
+        "actualPart": "fore-near-paw",
+        "alphaAtPoint": 253,
+        "ownedPixels": 6013,
+        "nearestOwnedPixel": [
+          678.5,
+          945.5
+        ],
+        "nearestOwnedDistancePx": 0.5830951894845067
+      }
+    ]
+  }
+]

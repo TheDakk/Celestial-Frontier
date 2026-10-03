@@ -1,0 +1,134 @@
+{
+  "schema": "cf.c169-source-contour-recut/v1",
+  "id": "snowy-owl",
+  "originalAuthoringSha256": "7915d259b21efcaf64821a2ba5a3e12dedc2670cadf71519c476d04c9fd475f0",
+  "candidateAuthoringSha256": "112b5f6aec227b60bef3ff01b202146f42f6e20182b8a3cba5f2a94effe481cf",
+  "sourceMasterSha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+  "scope": {
+    "kind": "nape-only",
+    "originalRegion": {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          637,
+          381
+        ],
+        [
+          776,
+          381
+        ],
+        [
+          776,
+          472
+        ],
+        [
+          637,
+          472
+        ]
+      ]
+    },
+    "sourceAttribution": {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        670,
+        461
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.734927674578993,
+        0.38773221993132645
+      ],
+      "stage": [
+        567.9321225237805,
+        282.9393668124901
+      ],
+      "distance": 0.09101502736104601
+    },
+    "reason": "Positive-alpha spike originates at posterior dorsal neck/withers paint, far behind the upper-neck pivot. Source-specific oblique bands assign the posterior shoulder contour to chest, central lower nape to neck0, and retain its short upper collar on neck1. All original non-patch polygons and crown/bill corrections remain exact.",
+    "regions": [
+      {
+        "id": "reviewed-nape-shoulder",
+        "joint": "chest",
+        "layer": "near",
+        "polygonPx": [
+          [
+            637,
+            447
+          ],
+          [
+            686,
+            430
+          ],
+          [
+            706,
+            472
+          ],
+          [
+            637,
+            472
+          ]
+        ]
+      },
+      {
+        "id": "reviewed-nape-lower",
+        "joint": "neck0",
+        "layer": "near",
+        "polygonPx": [
+          [
+            637,
+            381
+          ],
+          [
+            740,
+            381
+          ],
+          [
+            758,
+            472
+          ],
+          [
+            637,
+            472
+          ]
+        ]
+      },
+      {
+        "id": "reviewed-nape-upper",
+        "joint": "neck1",
+        "layer": "near",
+        "polygonPx": [
+          [
+            637,
+            381
+          ],
+          [
+            776,
+            381
+          ],
+          [
+            776,
+            472
+          ],
+          [
+            637,
+            472
+          ]
+        ]
+      }
+    ]
+  },
+  "landmarksChanged": false,
+  "sourcePixelsChanged": false,
+  "runtimeChanged": false,
+  "unchangedCap": 0.05,
+  "qualityAccepted": false
+}

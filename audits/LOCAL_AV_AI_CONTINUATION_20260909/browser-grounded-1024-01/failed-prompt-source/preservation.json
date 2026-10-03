@@ -1,0 +1,6 @@
+{
+  "scope": "Exact source used by both larger prompt/reference controls, preserved before restoring earlier prompt default. No failed result rewritten.",
+  "failedSourceSha256": "2f49c26a5c83b3de53f06cd369f012dbb2a5dc6fdfdfca4132a89ef52ef2d950",
+  "restoredSourceCommit": "5dcd6e64801cf44c0c55da47c41fbcc9d8408e99",
+  "restoredSourceSha256": "4afc08aba3915ee9ba00398e97244cf7999edf1428735e995b8bc29afd7223a8"
+}

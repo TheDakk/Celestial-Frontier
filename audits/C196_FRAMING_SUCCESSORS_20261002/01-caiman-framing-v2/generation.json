@@ -1,0 +1,17 @@
+{
+  "id": "01-caiman-framing-v2",
+  "name": "Caiman",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-358dbb2b-8a97-4c03-b1c2-e608a240ece8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f608f2a1c58310cc8c35038ccdd5c4430694c805ecc084298d02a8c25191c461",
+  "bytes": 1039359,
+  "promptSha256": "2a206989f961d0b63c06377dbbe6652a1b63b822bfc59e6f31be41f08a907ae2",
+  "intent": "edit",
+  "editTarget": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman/master.png",
+  "editTargetSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

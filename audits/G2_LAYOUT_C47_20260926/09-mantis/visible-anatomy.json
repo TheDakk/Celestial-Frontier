@@ -1,0 +1,190 @@
+{
+  "id": "09-mantis",
+  "name": "Mantis",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "1f9719843af3db14aeef8b7fb1831e84f4ec56c241f3d6e205b582d66e3c6f72",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 25294,
+    "coreRadius": 17,
+    "bodyBox": {
+      "x0": 46,
+      "y0": 14,
+      "x1": 404,
+      "y1": 311
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.3587,
+        "pixels": 9072,
+        "box": {
+          "x0": 225,
+          "y0": 17,
+          "x1": 402,
+          "y1": 271
+        },
+        "attach": {
+          "x": 298.3,
+          "y": 212.4,
+          "relX": 0.7,
+          "relY": 0.67
+        },
+        "dir": {
+          "x": 0.85,
+          "y": -0.52
+        },
+        "class": "front",
+        "length": 221.2
+      },
+      {
+        "k": 1,
+        "frac": 0.1011,
+        "pixels": 2558,
+        "box": {
+          "x0": 229,
+          "y0": 251,
+          "x1": 366,
+          "y1": 370
+        },
+        "attach": {
+          "x": 242.5,
+          "y": 255,
+          "relX": 0.55,
+          "relY": 0.81
+        },
+        "dir": {
+          "x": 0.79,
+          "y": 0.62
+        },
+        "class": "limb-down",
+        "length": 168.8
+      },
+      {
+        "k": 2,
+        "frac": 0.0234,
+        "pixels": 592,
+        "box": {
+          "x0": 17,
+          "y0": 268,
+          "x1": 45,
+          "y1": 310
+        },
+        "attach": {
+          "x": 45,
+          "y": 288.3,
+          "relX": 0,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -0.92,
+          "y": 0.4
+        },
+        "class": "rear",
+        "length": 35.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0134,
+        "pixels": 339,
+        "box": {
+          "x0": 176,
+          "y0": 276,
+          "x1": 208,
+          "y1": 293
+        },
+        "attach": {
+          "x": 191.5,
+          "y": 278.4,
+          "relX": 0.41,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": 0.17,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 22
+      },
+      {
+        "k": 4,
+        "frac": 0.0125,
+        "pixels": 317,
+        "box": {
+          "x0": 148,
+          "y0": 283,
+          "x1": 174,
+          "y1": 339
+        },
+        "attach": {
+          "x": 171.5,
+          "y": 283,
+          "relX": 0.35,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": -0.27,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 60.7
+      },
+      {
+        "k": 5,
+        "frac": 0.0222,
+        "pixels": 561,
+        "box": {
+          "x0": 74,
+          "y0": 302,
+          "x1": 136,
+          "y1": 375
+        },
+        "attach": {
+          "x": 133,
+          "y": 302,
+          "relX": 0.24,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": -0.5,
+          "y": 0.87
+        },
+        "class": "limb-down",
+        "length": 93.9
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 4,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 74,
+        "x1": 109,
+        "cx": 92.4
+      },
+      {
+        "x0": 337,
+        "x1": 366,
+        "cx": 351.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

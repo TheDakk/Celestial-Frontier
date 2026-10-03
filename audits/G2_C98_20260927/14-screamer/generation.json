@@ -1,0 +1,13 @@
+{
+  "id": "14-screamer",
+  "name": "Screamer",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-23b5dce8-8ad4-4612-95d9-8bfd4437bbeb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "17fed7ce9924b40343db91c341bd786977dbf70cd53bae698d2abe04da671cde",
+  "bytes": 1302581,
+  "promptSha256": "3eba5d89d8040e0450f316ae0f879ff66b065a5a40ba5640cc438fb0ff373007",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

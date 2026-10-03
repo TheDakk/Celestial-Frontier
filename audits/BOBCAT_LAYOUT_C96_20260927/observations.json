@@ -1,0 +1,38 @@
+[
+  {
+    "id": "01-bobcat",
+    "name": "Bobcat",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b40c42f9a8316356273a11c952e668c0f82dd5b136bb9cbcc8a82f4dcbc3fa2f",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 241,
+        "y0": 333,
+        "x1": 1004,
+        "y1": 864
+      },
+      "margins": {
+        "left": 241,
+        "right": 249,
+        "top": 333,
+        "bottom": 389
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  }
+]

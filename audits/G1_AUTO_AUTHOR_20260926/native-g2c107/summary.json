@@ -1,0 +1,145 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C107_20260927",
+ "tag": "g2c107",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-juvenile-shark",
+  "02-eel",
+  "03-electric-eel",
+  "12-panda",
+  "14-mountain-goat",
+  "19-gopher",
+  "23-wild-pony",
+  "24-wild-ass"
+ ],
+ "refused": [
+  {
+   "id": "04-moray-eel",
+   "reason": "wrong family: length/thickness 7.96 < 8"
+  },
+  {
+   "id": "05-gulper-eel",
+   "reason": "missing-anatomy: part segment-7 owns 1.79 % of the paint (reference 8.64 %)"
+  },
+  {
+   "id": "06-oarfish",
+   "reason": "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 3.5%)"
+  },
+  {
+   "id": "09-tropicbird",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 16% paint (reference 48%)"
+  },
+  {
+   "id": "10-giant-anteater",
+   "reason": "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "11-mountain-tapir",
+   "reason": "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "13-snowshoe-hare",
+   "reason": "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "15-ibex",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)"
+  },
+  {
+   "id": "16-chamois",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 6%)"
+  },
+  {
+   "id": "17-otter",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 38%)"
+  },
+  {
+   "id": "18-jackrabbit",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+  },
+  {
+   "id": "21-guinea-pig",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 29% paint (reference 88%)"
+  },
+  {
+   "id": "22-armadillo",
+   "reason": "materials-unknown: no species-group material for profile xenarthran; the motion kit refuses an unclassified surface"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "07-gull",
+   "static": "RED"
+  },
+  {
+   "id": "08-frigatebird",
+   "static": "RED"
+  },
+  {
+   "id": "20-hamster",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-juvenile-shark",
+   "name": "Juvenile Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-eel",
+   "name": "Eel",
+   "family": "serpent",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "03-electric-eel",
+   "name": "Electric Eel",
+   "family": "serpent",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "12-panda",
+   "name": "Panda",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-mountain-goat",
+   "name": "Mountain Goat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "19-gopher",
+   "name": "Gopher",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "23-wild-pony",
+   "name": "Wild Pony",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "24-wild-ass",
+   "name": "Wild Ass",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

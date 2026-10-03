@@ -1,0 +1,16 @@
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (5.055875ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (0.801833ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (1.049875ms)
+✔ flat source ownership boundaries weld only when explicitly requested (0.908208ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (0.338959ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (0.83625ms)
+✔ existing-field contact refresh preserves every non-contact weight, pin and triangle (0.608083ms)
+✔ contact conflict repair releases only neighbouring non-contact pins without changing weights (0.537209ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 129.1825

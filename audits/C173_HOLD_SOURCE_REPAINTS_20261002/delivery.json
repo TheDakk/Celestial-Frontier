@@ -1,0 +1,611 @@
+{
+  "schema": "cf.c173-held-repaint-delivery/v1",
+  "selected": "pilot-v2.json",
+  "selectedCount": 9,
+  "generatedAttempts": 13,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFramingPassed": 9,
+  "originalsModified": false,
+  "newFits": 0,
+  "runtimeAdmitted": false,
+  "files": [
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/README.md",
+      "sha256": "2a16a033092c583aadaed706103a10d308f4f835fe320459c808784ed9be6dc4",
+      "bytes": 1782
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/all-attempts.json",
+      "sha256": "e2805a7d0432e92f4257dc1993e465c3f826d16a52ad1696827a9d48aba6f878",
+      "bytes": 2092
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/correction.json",
+      "sha256": "9768cb41f77ae2f093a49d4c40c3b74e947c1d657218e7d87e5c81ae87623592",
+      "bytes": 1573
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/generation.json",
+      "sha256": "6cf6cdbbbeb3096363cad4f448abbfe81c8efb5fa88252f5c7ef58bf598646ff",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/master.png",
+      "sha256": "89632bf56c93071aac6ef503266e51ace5bb0fb9be99440b01f74267ac9fa5f4",
+      "bytes": 1215517
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/prompt.txt",
+      "sha256": "09575f0190cacdf7a03a0279e3e2653e7a8534908c2793f030df2fa7ad2f0869",
+      "bytes": 11391
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/request.json",
+      "sha256": "19b57b687bb782e838c4d7c593446a79a23c8f6a56e65c613378f19cbff99b58",
+      "bytes": 2312
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/subject-source.json",
+      "sha256": "9ec80b5cccc6652e7de69ac88c44fe9f5b8c87531e85c4aa51079438dbf3053a",
+      "bytes": 2145
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/visible-anatomy.json",
+      "sha256": "13b657c776778367b6bce36565f6d808b1faa3a5039f140d8fdc730139673db7",
+      "bytes": 4049
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/visual-review.json",
+      "sha256": "fc6f2bc96c4a3c42e2004c5c615cfefefa4d9427b9b0dd03ccfa46c85df09620",
+      "bytes": 999
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/correction.json",
+      "sha256": "26a4053b3d7c6c996d78c4a687bb1cccb67ca95c1eafb92618cfdccfd445932c",
+      "bytes": 1627
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/generation.json",
+      "sha256": "db70c4adea6c2ebc02e4f60771f6f56dd0d70b6ba3db37876154bcb12c8fb1d7",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/master.png",
+      "sha256": "2c2e53c4b47e375798c471615aab12cb72fe5424d2754ebcafcf13c9589d0a29",
+      "bytes": 1360387
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/prompt.txt",
+      "sha256": "09a095a4fe1415f8944bf094499646fee29d1c61cbc8dd8a89e705a18da2c5f7",
+      "bytes": 11854
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/request.json",
+      "sha256": "d89ff56709860267a39bfa319b7c6504e96b20a0b38e4d9eb02def308c11f147",
+      "bytes": 2627
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/subject-source.json",
+      "sha256": "ae633f805749aec9874dee6f6b0d64393c9b2b16c06d5978ba6ced5871964dd1",
+      "bytes": 3913
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/visible-anatomy.json",
+      "sha256": "bf426cc4ba106cf7729a8c1d9133653c9e251e213a1efdb0a273a84880a45bc7",
+      "bytes": 3195
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/visual-review.json",
+      "sha256": "de93813f38fd4ac69f4ef092172ba4e9a07ff61a778cf87751f4fb1d6e054a74",
+      "bytes": 1010
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/correction.json",
+      "sha256": "08290592036f36aad38961fbbb29e2e3e8b74243e369bde617ae0697172426ab",
+      "bytes": 1581
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/generation.json",
+      "sha256": "c1d60847d1a86f25b4879ccc2ffafd86cc427e68bd67214ecda24c00be009c77",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/master.png",
+      "sha256": "14651cc12b99d38cd7c3ea82423506773b717b900a66ef8c81d27dd403f1640d",
+      "bytes": 1219382
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/prompt.txt",
+      "sha256": "cc5468b9e3c90cf41dcda5a6e4c45a940c05c8768b273051c6fc09792f6cb540",
+      "bytes": 11421
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/request.json",
+      "sha256": "a1d705bacdf06a7132845069dd6e7f9197de942bc22dd68807e3d56e226011ab",
+      "bytes": 2333
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/subject-source.json",
+      "sha256": "78604f62847c45c97d5185b2a7c79810eda2fd2629edfadf74a217a769cfb8ce",
+      "bytes": 2232
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark/visible-anatomy.json",
+      "sha256": "67bc2bd31035b62d341d9df228159804b9f23dd0da818ff0cad841a6e0f7de76",
+      "bytes": 3283
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/generation.json",
+      "sha256": "a3ad954c8c9d79c83e1ea68a9e4b5557322716d0dcd2726da915a96e4f81b29e",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/master.png",
+      "sha256": "6b1efdd9e85eda1dc65518737e6b17ab52f23be5a95593d63aa8fbaa8c64bf78",
+      "bytes": 1069988
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/prompt.txt",
+      "sha256": "223c1b4210e45e6c280d9bc1f691c5b6d691814bec3dbff60f9f511e9e948632",
+      "bytes": 1368
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/request.json",
+      "sha256": "1bf3457935a6eb90546690af9813850d8d0a68944472438cefb3af4edc1dfd57",
+      "bytes": 2609
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/subject-source.json",
+      "sha256": "78604f62847c45c97d5185b2a7c79810eda2fd2629edfadf74a217a769cfb8ce",
+      "bytes": 2232
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/visible-anatomy.json",
+      "sha256": "041b6165a7361ade449fbce1ec80f403824fb74dd016791b8031d72e7ff1cbb1",
+      "bytes": 3289
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/visual-review.json",
+      "sha256": "2731284e714621aa712f8614ccc4c8b8aca2d6cc4615a34489878042fb4ed6dd",
+      "bytes": 995
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/correction.json",
+      "sha256": "b54965178fa48d15be31db5a1fee89809f609a1e803b139890332bb10af03d2e",
+      "bytes": 1567
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/generation.json",
+      "sha256": "0cdc2e566a5304cd066c5601ad2e1be76afdaa73d6706f86263e71f580513a7d",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/master.png",
+      "sha256": "d5c0048ba150e62b5995e634574fb971c15a139fa81610bbbc5c038997567b83",
+      "bytes": 1177462
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/prompt.txt",
+      "sha256": "a0e3be5397e3f192bb1b28be00ea486d2c9b07ede48384825d471720257ff511",
+      "bytes": 11319
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/request.json",
+      "sha256": "a064a5d3638676f54225700416097ab16c692fc18e6cb8310c40ba603344b68b",
+      "bytes": 2277
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/subject-source.json",
+      "sha256": "6a6e1eeb56f942ee1c08210e1b93deb9fea1363873928244768432a2aaabb81f",
+      "bytes": 2179
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark/visible-anatomy.json",
+      "sha256": "b1b9ded33330fb1e6fe08a512e4c1925b06c46ec6239d68ca6b609bd475ae7d8",
+      "bytes": 3627
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/generation.json",
+      "sha256": "c6f0efd08ae8cb8e33a092b45d567f8ec85a2617d1388db30bf3d788ba5dae69",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/master.png",
+      "sha256": "c3bcbf2ddc10e18e2f25b1f3b1042f865916e23d991969e4ecb0032bedcdb0c8",
+      "bytes": 1010890
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/prompt.txt",
+      "sha256": "22f6be20b7148ae7057d5378d594b4e2d5a9b025fcf04069d5a8dc4142e7d8b6",
+      "bytes": 1361
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/request.json",
+      "sha256": "6d55dde2db83ad603002b4824c77a99d58eeafdae8fb0aa66da4fd0c7338edf5",
+      "bytes": 2539
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/subject-source.json",
+      "sha256": "6a6e1eeb56f942ee1c08210e1b93deb9fea1363873928244768432a2aaabb81f",
+      "bytes": 2179
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/visible-anatomy.json",
+      "sha256": "b4d54ed0c14428f989d572eeed3e47fc720d71f74594f0919169b7246101fcfe",
+      "bytes": 3197
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/visual-review.json",
+      "sha256": "aac1efee94e41a9ad3ebbd48e707d05c861a38d6219b121f859bb33a501cdcb4",
+      "bytes": 954
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/observations-v2.json",
+      "sha256": "9dadd1242669ffd201d70da4dbd94a678d6c75b181f95e0decb350678d166f63",
+      "bytes": 10367
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/observations.json",
+      "sha256": "c0bee05288181efc0fe1a807a289cb11b92eadd637c1ccf623bf4664622a3426",
+      "bytes": 7116
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/observe-v2.mjs",
+      "sha256": "edbca37cad13db2980e6edb1aedbeb96ec07667ea6bdaa1934941e06ff803c59",
+      "bytes": 2832
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/observe.mjs",
+      "sha256": "cac56e40c80e06ff72c08f11a3843bb00b42dbdf2abaeb0e861ebbf99f7da34a",
+      "bytes": 2582
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/pilot-v2.json",
+      "sha256": "e9b60c734b460971a418c787fa58fd4b3c4679e9298d3c1ce7cbe7f17b452ce9",
+      "bytes": 1465
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/pilot.json",
+      "sha256": "537b321401c8fb891f6d4fa829a325ad2b9ba19c206353d04994d6430a228b14",
+      "bytes": 1377
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/review-sheet-v2.png",
+      "sha256": "70302abebe2f02f74a7d7189f3a18bc07d60b88eb2d7b9f2577442f086697672",
+      "bytes": 1248296
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/review-sheet.png",
+      "sha256": "b3aac433b6d537f613fb209a63497dff06a2557fb96d733ef906bf1bb837597a",
+      "bytes": 894616
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/correction.json",
+      "sha256": "9150ad0e73473f07a36f33bda012ab1689aaee1fcb0e51411f2b21d507a3e8f0",
+      "bytes": 1614
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/generation.json",
+      "sha256": "4a0224784b7cede427d633e8eeabe23666af0076d8b4544855e10c23438acf19",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/master.png",
+      "sha256": "1e1a1a15c937a0646cba6ad93b89f62bddebdbc036f58840f428700add32a216",
+      "bytes": 1210196
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/prompt.txt",
+      "sha256": "598cefb304602daa049aa03537f7ff4295aabac001aebbbf9e763347c5552100",
+      "bytes": 13114
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/request.json",
+      "sha256": "3918d34d621154a14533e5f3595de8a09898580a03d78ebc7a141b2c919441e1",
+      "bytes": 2910
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/subject-source.json",
+      "sha256": "77d635ee271f4c4ac4e36a1304a8359a763c87b53b49de43c56568ecf6c5a68d",
+      "bytes": 2264
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/visible-anatomy.json",
+      "sha256": "c7a0974c6585c336ae45a7b3d6947f554c17d061f9464f1121a2eab73061f654",
+      "bytes": 2818
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/visual-review.json",
+      "sha256": "4b1883bd2c652b083c5aad04a56fda49866479d633988c7f77f6a1bd3c9e9c4c",
+      "bytes": 1031
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/correction.json",
+      "sha256": "9cef23d7bb99af0c8c7a60ffcd6978b2be44410d2ded3200392230ce051ee8a9",
+      "bytes": 1489
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/generation.json",
+      "sha256": "dca38c21388ac5c6d5c52e4d132d50c0edc9a36d285cc0479dba0cc308ee4c73",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/master.png",
+      "sha256": "45f66b5e3cfe9530be6693c67ceb22f705f23ae67bb435c61fda4f72431f76d8",
+      "bytes": 1062486
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/prompt.txt",
+      "sha256": "20e4090475fdaf9384adc35fc95ebe905e2897dfc0cb6e4f14fb0e5e6fcad3e2",
+      "bytes": 11113
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/request.json",
+      "sha256": "09e16e0b6c9760fdee1a2384db7d0ed76ba3f8f5f360b9e342b0910fcd6c3d66",
+      "bytes": 2238
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/subject-source.json",
+      "sha256": "c178a9e66dc744d4a8068baea987497499edddcf6b642f4e807723810005fdc0",
+      "bytes": 3776
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/visible-anatomy.json",
+      "sha256": "cc58aa7ec5773b6319c66576f963a176959452a9db855f627549a232bbeeb70d",
+      "bytes": 3676
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/visual-review.json",
+      "sha256": "419ca93aa6c4dc7b52d67c71e4d5c0837fc79e574c0a65787ef2171ff8df85e7",
+      "bytes": 1011
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/correction.json",
+      "sha256": "f095773852edd70a34c0ef987dfb56f2a9eab3212dfa5040d8ed6a6d856a4791",
+      "bytes": 1647
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/generation.json",
+      "sha256": "7a7ae78c43283ea96abf2bd12984282cc65b1a004e3c80ad16033a1f3c4cb068",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/master.png",
+      "sha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+      "bytes": 1081796
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/prompt.txt",
+      "sha256": "a1103a0167c6e2a3aeb491dcd7d55bfc2282e1047d46c6b109be47ca0ce71526",
+      "bytes": 13038
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/request.json",
+      "sha256": "ab26f42767f043a0f6ea1e6619c20ab8bbf9460ea46485e3106aca0b96bd080e",
+      "bytes": 2908
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/subject-source.json",
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a",
+      "bytes": 2718
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/visible-anatomy.json",
+      "sha256": "2f402d85bb53086bd3902d7e51e2df06a09afe6fa732aac20b1f9ee0a0aa034d",
+      "bytes": 2396
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/visual-review.json",
+      "sha256": "fb0878d199e04ce7c4e8217842e7be1d78a8b6febcc9ecac5192dd505618fefd",
+      "bytes": 1006
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/correction.json",
+      "sha256": "d63797b24477d081860c29ee4b3f82a1f96f38e402c4a9331752c76917230df4",
+      "bytes": 1569
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/generation.json",
+      "sha256": "402ecdb543adf6e11ac32e5db7b8f95af7a2c71fccb3045d8f412396b1c96d2a",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/master.png",
+      "sha256": "41ccafea22bd86c6debf882915b2e901c7727f4eb787613d7074ce8dc9b6ab94",
+      "bytes": 1237114
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/prompt.txt",
+      "sha256": "a1b18bcd9a3efe66068195ed8b98e11e7d1f8df1a1be19153a0364d91cbe4d5b",
+      "bytes": 11265
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/request.json",
+      "sha256": "9a931704537e9920383890e26eff0e60f09bea4d2fb12b98f14f7d154040030b",
+      "bytes": 2251
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/subject-source.json",
+      "sha256": "e3db084f45d3e7175088d1849e94370e003fa3cfd2587ae8e1bb9b50ebd35dbd",
+      "bytes": 2149
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark/visible-anatomy.json",
+      "sha256": "eb6f7f91c9e65b85ce47e7fc8e01ddd3cab5b701593f78a6ab6938da16c93abc",
+      "bytes": 3261
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/generation.json",
+      "sha256": "1f29d7f57cdff76733c5f1b2320417039306bbd758b547691bb003feb2d300d4",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/master.png",
+      "sha256": "16983f593fe1b3e24b939e988931e266234424f782c0227bce7be3cc6ee4b9a5",
+      "bytes": 1074885
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/prompt.txt",
+      "sha256": "c95dc22ebb43a27f64afd69021881c8a623d4179589afb27aa5b58f3b881a6b8",
+      "bytes": 1362
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/request.json",
+      "sha256": "b2e7428f51955f0155463f2f95b3157b885f95eac97cdfcc41d032664c043d63",
+      "bytes": 2515
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/subject-source.json",
+      "sha256": "e3db084f45d3e7175088d1849e94370e003fa3cfd2587ae8e1bb9b50ebd35dbd",
+      "bytes": 2149
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/visible-anatomy.json",
+      "sha256": "d07598066b7910e235d09012a8c0af964ed647eaa8bce836ed8c1811ca081adb",
+      "bytes": 3279
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/visual-review.json",
+      "sha256": "76520b57db8b2b1ef8152da80405f96920acadd29c89ed2679fbbb082a1f6eea",
+      "bytes": 902
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/correction.json",
+      "sha256": "b8c0895bb0f05bd3eba12133b97ee761506a6e75b9d611203ed31604e871ea5b",
+      "bytes": 1569
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/generation.json",
+      "sha256": "9a771855da4b7b0ca22cd4211878ceabc6e512e37ebc7bdd4e0829e66228d493",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/master.png",
+      "sha256": "80cabe2bde4db80180ae264024898a7fa05fc4e58f2a99bc55e9a1b8a9892e70",
+      "bytes": 1283598
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/prompt.txt",
+      "sha256": "07d71349f6d3d18509487317001725a76451d422cd4ca69409111c3a999c3ed5",
+      "bytes": 11507
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/request.json",
+      "sha256": "6e9c363173cee725d5814c5f31793a592693146a3d097ff389f9f8b85e213e98",
+      "bytes": 2295
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/subject-source.json",
+      "sha256": "1d65d07115c7902fefb6a45e56b340ba5e7cbe3db1edee1d64cb6f624a6fe8c5",
+      "bytes": 2263
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark/visible-anatomy.json",
+      "sha256": "ea57d1b0d1e533230d37375dec1fcdf90a6ebca6be3b69b53459e7ebeb2c9a27",
+      "bytes": 3621
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/compiler-inputs.json",
+      "sha256": "98d41caac55b7fc1a1da853a884a0aa1469b54172036106822a983e4d33e66b9",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/generation.json",
+      "sha256": "8b94f16f9d63ad41ebcddcea9c84edebf78219d962b7bdf1cb940b9a23d29794",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/master.png",
+      "sha256": "d426cbcae3dd5e3749af7aa43e823eb892e97d1908c1db7f3fa7f07d01748c2c",
+      "bytes": 1122231
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/prompt.txt",
+      "sha256": "d44e8c25e79f69c11b018b88cfe509a98a6f8808ec960252231bc234846122d8",
+      "bytes": 1362
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/request.json",
+      "sha256": "eb573f4ba085dc0e9ac2ce711f25ffe66c656094363a8c0f247734e35283c377",
+      "bytes": 2559
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/subject-source.json",
+      "sha256": "1d65d07115c7902fefb6a45e56b340ba5e7cbe3db1edee1d64cb6f624a6fe8c5",
+      "bytes": 2263
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/visible-anatomy.json",
+      "sha256": "6e353d6a1f316feede639d2a05d605b4b06da187b6956e6e06e22c3fa6951cff",
+      "bytes": 3634
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/visual-review.json",
+      "sha256": "5f7788aae9962e3659038fcd113896cc585265896cf7365698842b40de453947",
+      "bytes": 944
+    }
+  ]
+}

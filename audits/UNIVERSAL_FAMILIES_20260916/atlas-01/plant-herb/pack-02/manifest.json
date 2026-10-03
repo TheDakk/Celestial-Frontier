@@ -1,0 +1,90 @@
+{
+  "creatureId": "plant-herb",
+  "parts": [
+    {
+      "name": "part-00.png",
+      "path": "parts/part-00.png",
+      "sha256": "05fb81b05caeeae6b2a68d95d4a1df422721fa2fbd749b02c8db77f3a0420dcb"
+    },
+    {
+      "name": "part-01.png",
+      "path": "parts/part-01.png",
+      "sha256": "af4847b07e3ef4e079bcc0bd6f484caef36a3d44dbdb38d706e965414e8e2d44"
+    },
+    {
+      "name": "part-02.png",
+      "path": "parts/part-02.png",
+      "sha256": "839973c944b2100ddec597082cf9fb0d73a3ccf141a395883c328d61da0cf85e"
+    },
+    {
+      "name": "part-03.png",
+      "path": "parts/part-03.png",
+      "sha256": "73714e1e4e1ab2d22344f7109a80fc4e93ba7c04aaa5bc1e4e81e9305af98dfd"
+    },
+    {
+      "name": "part-04.png",
+      "path": "parts/part-04.png",
+      "sha256": "db865423e5958aa0ac0250d2dc33d7a7be59d3df5dd47e21b1fa3b1b967eca72"
+    },
+    {
+      "name": "part-05.png",
+      "path": "parts/part-05.png",
+      "sha256": "1fa4ca0ba07ac5595dcc84fead9803b637c8789753e32513ce8cfb64ededcbcf"
+    },
+    {
+      "name": "part-06.png",
+      "path": "parts/part-06.png",
+      "sha256": "7deb26664f67eaf1256a03db12596f7152d99c8e25321f2183a310abae425705"
+    },
+    {
+      "name": "part-07.png",
+      "path": "parts/part-07.png",
+      "sha256": "5bece11c7fc7f6ec51a36f70829ea3d1c1d83fc6a76462a2186711920edd7f27"
+    },
+    {
+      "name": "part-08.png",
+      "path": "parts/part-08.png",
+      "sha256": "e2f683991cd6be7793baa2f153ff6e5d37acc40b062b2b5b48704fc9ec87f320"
+    },
+    {
+      "name": "part-09.png",
+      "path": "parts/part-09.png",
+      "sha256": "1e87877309fe70f96f39132a52e2aa2332cf2c2364a0f4323b9aab155743501b"
+    },
+    {
+      "name": "part-10.png",
+      "path": "parts/part-10.png",
+      "sha256": "9b45681c33deb46460117333cfd058f322f29d377301568cc4531a122e1bc08f"
+    },
+    {
+      "name": "part-11.png",
+      "path": "parts/part-11.png",
+      "sha256": "1ee7c79cc604659f7ad7b3dc168701decfde79a25ce3181a67e71c59ffcebc33"
+    },
+    {
+      "name": "part-12.png",
+      "path": "parts/part-12.png",
+      "sha256": "af31d3917d1310ddd3c2277db314de706216d3cf0af81d7f66da0d1e3e9153ef"
+    },
+    {
+      "name": "part-13.png",
+      "path": "parts/part-13.png",
+      "sha256": "226ff2cfbf919da46193761608519c6eb580e1c69e2c1302c79e6bf29a05da64"
+    },
+    {
+      "name": "part-14.png",
+      "path": "parts/part-14.png",
+      "sha256": "f11e9e554e6cdfc86790316b7a6087ef9ae03a56f1e0437ecbb65be7995fee6c"
+    },
+    {
+      "name": "part-15.png",
+      "path": "parts/part-15.png",
+      "sha256": "f02f74bfd5a44f5a57313c1b14c28218b111ed2d61cf1c6199a55467f19f0ef3"
+    },
+    {
+      "name": "part-16.png",
+      "path": "parts/part-16.png",
+      "sha256": "4d5408595ac224121bbd4101789c2f33744e81ba51baaabacba3fae1a4934382"
+    }
+  ]
+}

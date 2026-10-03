@@ -1,0 +1,149 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "01-triggerfish",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f551eae31ae56d54e7588b2348287a927994e89e78151f32ecd0f1ff983eebc4",
+ "subjectSourceSha256": "455378de5b4d212240d8ca98d34d5bf4f99d09686f08bf10f6871feafd697db7",
+ "identity": {
+  "name": "Triggerfish",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Triggerfish\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2229886792\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 2229886792,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "bass",
+  "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
+  "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0223,
+     "class": "top",
+     "attach": {
+      "x": 211,
+      "y": 122,
+      "relX": 0.31,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0048,
+     "class": "top",
+     "attach": {
+      "x": 307.5,
+      "y": 139,
+      "relX": 0.79,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0083,
+     "class": "rear",
+     "attach": {
+      "x": 148,
+      "y": 168.5,
+      "relX": 0,
+      "relY": 0.31
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.156,
+     "class": "rear",
+     "attach": {
+      "x": 146,
+      "y": 205.5,
+      "relX": 0,
+      "relY": 0.56
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0301,
+     "class": "front",
+     "attach": {
+      "x": 352,
+      "y": 204.5,
+      "relX": 1,
+      "relY": 0.55
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0098,
+     "class": "rear",
+     "attach": {
+      "x": 146,
+      "y": 243,
+      "relX": 0,
+      "relY": 0.82
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0209,
+     "class": "limb-down",
+     "attach": {
+      "x": 265.5,
+      "y": 269,
+      "relX": 0.58,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0305,
+     "class": "limb-down",
+     "attach": {
+      "x": 185.5,
+      "y": 271,
+      "relX": 0.19,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 3,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "bass",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "conservation",
+  "command": [
+    "node",
+    "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01",
+    "01"
+  ],
+  "helperSha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/conservation-01.log",
+  "logSha256": "c4a0981160c0cb47cb4722fe96f3f1694da4666b72b736c549cf596bc6d22058",
+  "nativeRuns": 0
+}

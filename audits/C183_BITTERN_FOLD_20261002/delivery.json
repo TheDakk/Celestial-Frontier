@@ -1,0 +1,102 @@
+{
+  "schema": "cf.c183-bittern-diagnosis-delivery/v1",
+  "nativeRuns": 0,
+  "runtimeChanges": 0,
+  "publicationSeeks": 282,
+  "loadedRigPublications": 14,
+  "textureAndSeekOrderIndependent": true,
+  "refusalAtomic": true,
+  "disposition": "Both textures share narrow deterministic approach fold; hold until geometric/source repair, no film retry",
+  "files": [
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/README.md",
+      "sha256": "37e9254de1b30fcd72db22fd4c6eccc82a36d556e3205f768dfe42a82a1a6b53",
+      "bytes": 2375
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/authorization.json",
+      "sha256": "74fc901142de7b4b361d9dbf473ed0aeb92aadf7097a9243bd3d22aad9c8c6c2",
+      "bytes": 513
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/painter-input/binding.json",
+      "sha256": "a474aed551b4a23551f27d8c0533d2dbade00ce317d94dfd2d6470351ae13d0f",
+      "bytes": 1167598
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/painter-input/record.json",
+      "sha256": "1d8266aff4cac0d555a8974b651d69d0f0b3a4cdfdb9a643e0b8cbe44ac057d3",
+      "bytes": 5952
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/painter-inputs.json",
+      "sha256": "f83d195d7e659288bd417d17fc905790422baf129edda49408f664ee13412363",
+      "bytes": 601
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/preparation-refusal.json",
+      "sha256": "d66505b917cc5d10aec70b246043ea712279aa04062a679de4dfe9dfe8701916",
+      "bytes": 268
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/replay.json",
+      "sha256": "87f6ba9f91bb6e6277f51b0018d9efc659e2b1732132c8bbb36472bb3c91abca",
+      "bytes": 132108
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/replay.log",
+      "sha256": "34683b077d8f20ee4440cf176f72be0313009bc66f354ec94a7a5d23cbba8ca1",
+      "bytes": 182
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/replay.mjs",
+      "sha256": "eb2ae2051552e4b5ffdbeaadcfb958c71c3e345fd70c43f60b10bf1c0005e15e",
+      "bytes": 4886
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/runtime-parity.json",
+      "sha256": "e5d1d11cc847351458a933c663cc72fe62102bb2e46ed7873167cb86194930ad",
+      "bytes": 4343
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/runtime-parity.log",
+      "sha256": "7c1f0022906fe4881ef58cc8c4cdc55da8fc65fb1db4e12d9b17dff73d216ec9",
+      "bytes": 85
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/runtime-parity.mjs",
+      "sha256": "ee47492646692183df461851970251b94262ab02a323d297d4134ecb0f0bdd17",
+      "bytes": 5770
+    }
+  ],
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "sha256": "a47c4f0123eb3cec3c0fd3804ecc5db2300186b9f9859bd4716ddbef7423d272"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "51d71ae6a485dc79821ab102a1187a313b84d0434fcd58d2c8ec015076256a35"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    }
+  ]
+}

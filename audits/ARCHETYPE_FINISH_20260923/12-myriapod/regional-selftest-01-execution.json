@@ -1,0 +1,35 @@
+{
+  "schema": "cf.packet-regional-selftest-execution/v1",
+  "toolReceipt": "2c6528",
+  "command": [
+    "node",
+    "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-selftest-01.mjs"
+  ],
+  "cwd": "/Users/dakk/Projects/celestial-frontier-openai-mac",
+  "exitCode": 0,
+  "unchangedRetry": false,
+  "realIntakeExecuted": false,
+  "nativeExecuted": false,
+  "files": [
+    {
+      "path": "regional-selftest-01.mjs",
+      "sha256": "dba0994cebaaa4ffa68e5e287c95636e2bc1ee856b47ace3e6878186cdc6af18"
+    },
+    {
+      "path": "regional-selftest-01.log",
+      "sha256": "d14698449469c4be17dcead4de23a5f29d45337372f6ea20d9e586e44341ffc3"
+    },
+    {
+      "path": "regional-selftest-01/report.json",
+      "sha256": "f04c8574ea1f710914523524e03a52de2e36e802316466ed47a8acef2093204d"
+    },
+    {
+      "path": "regional-influences.mjs",
+      "sha256": "25a65459ce82a31c810bb2500778dcd975c67981b66e3f58b83c0fe72179501e"
+    },
+    {
+      "path": "intake-01.mjs",
+      "sha256": "66cc5dcf89ecf1f8a7c4bc88c2cb3e7f853d3782a0f892fcc2a78cbc98f3f821"
+    }
+  ]
+}

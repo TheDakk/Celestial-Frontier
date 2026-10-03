@@ -1,0 +1,517 @@
+{
+  "frames": {
+    "branch-0-foliage.png": {
+      "frame": {
+        "h": 171,
+        "w": 170,
+        "x": 1291,
+        "y": 1081
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 171,
+        "w": 170
+      },
+      "spriteSourceSize": {
+        "h": 171,
+        "w": 170,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-1-foliage.png": {
+      "frame": {
+        "h": 158,
+        "w": 181,
+        "x": 1291,
+        "y": 913
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 158,
+        "w": 181
+      },
+      "spriteSourceSize": {
+        "h": 158,
+        "w": 181,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-10-foliage.png": {
+      "frame": {
+        "h": 356,
+        "w": 359,
+        "x": 1336,
+        "y": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 356,
+        "w": 359
+      },
+      "spriteSourceSize": {
+        "h": 356,
+        "w": 359,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-10-wood.png": {
+      "frame": {
+        "h": 116,
+        "w": 118,
+        "x": 1208,
+        "y": 225
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 116,
+        "w": 118
+      },
+      "spriteSourceSize": {
+        "h": 116,
+        "w": 118,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-2-foliage.png": {
+      "frame": {
+        "h": 166,
+        "w": 126,
+        "x": 1874,
+        "y": 170
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 166,
+        "w": 126
+      },
+      "spriteSourceSize": {
+        "h": 166,
+        "w": 126,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-3-foliage.png": {
+      "frame": {
+        "h": 318,
+        "w": 376,
+        "x": 822,
+        "y": 225
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 318,
+        "w": 376
+      },
+      "spriteSourceSize": {
+        "h": 318,
+        "w": 376,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-3-wood.png": {
+      "frame": {
+        "h": 203,
+        "w": 211,
+        "x": 1657,
+        "y": 794
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 203,
+        "w": 211
+      },
+      "spriteSourceSize": {
+        "h": 203,
+        "w": 211,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-4-foliage.png": {
+      "frame": {
+        "h": 251,
+        "w": 486,
+        "x": 1378,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 251,
+        "w": 486
+      },
+      "spriteSourceSize": {
+        "h": 251,
+        "w": 486,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-4-wood.png": {
+      "frame": {
+        "h": 72,
+        "w": 114,
+        "x": 1180,
+        "y": 579
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 72,
+        "w": 114
+      },
+      "spriteSourceSize": {
+        "h": 72,
+        "w": 114,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-5-foliage.png": {
+      "frame": {
+        "h": 234,
+        "w": 348,
+        "x": 822,
+        "y": 553
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 234,
+        "w": 348
+      },
+      "spriteSourceSize": {
+        "h": 234,
+        "w": 348,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-5-wood.png": {
+      "frame": {
+        "h": 128,
+        "w": 88,
+        "x": 1180,
+        "y": 661
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 88
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 88,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-6-foliage.png": {
+      "frame": {
+        "h": 239,
+        "w": 333,
+        "x": 1705,
+        "y": 346
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 239,
+        "w": 333
+      },
+      "spriteSourceSize": {
+        "h": 239,
+        "w": 333,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-6-wood.png": {
+      "frame": {
+        "h": 117,
+        "w": 76,
+        "x": 1878,
+        "y": 794
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 117,
+        "w": 76
+      },
+      "spriteSourceSize": {
+        "h": 117,
+        "w": 76,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-7-foliage.png": {
+      "frame": {
+        "h": 189,
+        "w": 269,
+        "x": 1705,
+        "y": 595
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 189,
+        "w": 269
+      },
+      "spriteSourceSize": {
+        "h": 189,
+        "w": 269,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-7-wood.png": {
+      "frame": {
+        "h": 155,
+        "w": 160,
+        "x": 1874,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 155,
+        "w": 160
+      },
+      "spriteSourceSize": {
+        "h": 155,
+        "w": 160,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-8-foliage.png": {
+      "frame": {
+        "h": 197,
+        "w": 228,
+        "x": 822,
+        "y": 797
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 197,
+        "w": 228
+      },
+      "spriteSourceSize": {
+        "h": 197,
+        "w": 228,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-8-wood.png": {
+      "frame": {
+        "h": 218,
+        "w": 117,
+        "x": 1208,
+        "y": 351
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 218,
+        "w": 117
+      },
+      "spriteSourceSize": {
+        "h": 218,
+        "w": 117,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-9-foliage.png": {
+      "frame": {
+        "h": 271,
+        "w": 343,
+        "x": 1304,
+        "y": 632
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 271,
+        "w": 343
+      },
+      "spriteSourceSize": {
+        "h": 271,
+        "w": 343,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "branch-9-wood.png": {
+      "frame": {
+        "h": 236,
+        "w": 221,
+        "x": 1060,
+        "y": 799
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 236,
+        "w": 221
+      },
+      "spriteSourceSize": {
+        "h": 236,
+        "w": 221,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "root.png": {
+      "frame": {
+        "h": 210,
+        "w": 546,
+        "x": 822,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 210,
+        "w": 546
+      },
+      "spriteSourceSize": {
+        "h": 210,
+        "w": 546,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "trunk.png": {
+      "frame": {
+        "h": 901,
+        "w": 807,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 901,
+        "w": 807
+      },
+      "spriteSourceSize": {
+        "h": 901,
+        "w": 807,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "persimmon.png",
+    "scale": "1",
+    "size": {
+      "h": 1257,
+      "w": 2043
+    }
+  }
+}

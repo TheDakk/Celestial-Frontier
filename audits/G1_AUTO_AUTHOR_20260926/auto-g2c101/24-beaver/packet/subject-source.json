@@ -1,0 +1,73 @@
+{
+  "name": "Beaver",
+  "family": "quadruped",
+  "species": {
+    "name": "Beaver",
+    "aspect": 2.2,
+    "headFrac": 0.24,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "flat scaly paddle tail",
+      "big orange chisel incisors",
+      "stocky humped body on short legs"
+    ]
+  },
+  "genome": {
+    "seed": 2594475211,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 7,
+    "body": 4,
+    "loco": 3,
+    "trait": 18,
+    "size": 1,
+    "diet": 3,
+    "head": 5,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 12,
+    "detail": 9,
+    "accent": 3,
+    "temper": 5,
+    "sense": 4,
+    "repro": 2,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Beaver"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Beaver\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2594475211\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 141,
+  "profile": {
+    "id": "aquatic-pawed-mammal",
+    "names": [
+      "River Otter",
+      "Otter",
+      "Giant Otter",
+      "Sea Otter",
+      "Beaver",
+      "Capybara",
+      "Water Vole",
+      "Marsh Rodent"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

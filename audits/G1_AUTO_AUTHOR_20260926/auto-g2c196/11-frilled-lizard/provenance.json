@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "11-frilled-lizard",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "60e76002fdb29fe53a40f293d5b05906ff4ceb4b120b839c6e20ba778e5090d1",
+ "subjectSourceSha256": "00dca4d080078fa1508a157abbc955c31794149eba399a23891ff5acd946254b",
+ "identity": {
+  "name": "Frilled Lizard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Frilled Lizard\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1273174726\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 1273174726,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wall-lizard",
+  "authoringSha256": "f1afa2d0fcd9a04fe75ba9c794f46d8bec1f7765518f3f6d48357d86853ed9ca",
+  "masterSha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0236,
+     "class": "top",
+     "attach": {
+      "x": 278.5,
+      "y": 134,
+      "relX": 0.35,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.02,
+     "class": "top",
+     "attach": {
+      "x": 329.5,
+      "y": 156,
+      "relX": 0.79,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0176,
+     "class": "rear",
+     "attach": {
+      "x": 237,
+      "y": 176.5,
+      "relX": -0.01,
+      "relY": 0.37
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.2898,
+     "class": "rear",
+     "attach": {
+      "x": 257.6,
+      "y": 240.9,
+      "relX": 0.17,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.014,
+     "class": "front",
+     "attach": {
+      "x": 355,
+      "y": 201.5,
+      "relX": 1.01,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.009,
+     "class": "limb-down",
+     "attach": {
+      "x": 327.5,
+      "y": 241,
+      "relX": 0.77,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0235,
+     "class": "limb-down",
+     "attach": {
+      "x": 303.5,
+      "y": 249,
+      "relX": 0.56,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "wall-lizard",
+   "byClass": {
+    "front": 3,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

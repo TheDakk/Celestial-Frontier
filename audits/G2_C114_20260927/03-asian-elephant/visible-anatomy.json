@@ -1,0 +1,199 @@
+{
+  "id": "03-asian-elephant",
+  "name": "Asian Elephant",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "74309ea2c80c39df43590e5eaee0d11199596f133d122fbfc7e726cac96581d6",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 27124,
+    "coreRadius": 31,
+    "bodyBox": {
+      "x0": 119,
+      "y0": 127,
+      "x1": 310,
+      "y1": 235
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0113,
+        "pixels": 306,
+        "box": {
+          "x0": 176,
+          "y0": 119,
+          "x1": 236,
+          "y1": 126
+        },
+        "attach": {
+          "x": 206,
+          "y": 126,
+          "relX": 0.46,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.61,
+          "y": -0.79
+        },
+        "class": "top",
+        "length": 30.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0067,
+        "pixels": 181,
+        "box": {
+          "x0": 261,
+          "y0": 122,
+          "x1": 301,
+          "y1": 130
+        },
+        "attach": {
+          "x": 281,
+          "y": 130,
+          "relX": 0.85,
+          "relY": 0.03
+        },
+        "dir": {
+          "x": -0.81,
+          "y": -0.58
+        },
+        "class": "top",
+        "length": 21.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0753,
+        "pixels": 2042,
+        "box": {
+          "x0": 273,
+          "y0": 139,
+          "x1": 328,
+          "y1": 279
+        },
+        "attach": {
+          "x": 303.7,
+          "y": 181.7,
+          "relX": 0.97,
+          "relY": 0.51
+        },
+        "dir": {
+          "x": 0.28,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 102.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0176,
+        "pixels": 477,
+        "box": {
+          "x0": 93,
+          "y0": 174,
+          "x1": 118,
+          "y1": 255
+        },
+        "attach": {
+          "x": 118,
+          "y": 193,
+          "relX": -0.01,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 66.9
+      },
+      {
+        "k": 4,
+        "frac": 0.1124,
+        "pixels": 3048,
+        "box": {
+          "x0": 96,
+          "y0": 222,
+          "x1": 181,
+          "y1": 298
+        },
+        "attach": {
+          "x": 140,
+          "y": 234.5,
+          "relX": 0.11,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.02,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 77.3
+      },
+      {
+        "k": 5,
+        "frac": 0.1249,
+        "pixels": 3389,
+        "box": {
+          "x0": 201,
+          "y0": 223,
+          "x1": 286,
+          "y1": 300
+        },
+        "attach": {
+          "x": 241.3,
+          "y": 230.3,
+          "relX": 0.64,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 82.8
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 96,
+        "x1": 124,
+        "cx": 111.8
+      },
+      {
+        "x0": 149,
+        "x1": 181,
+        "cx": 164.8
+      },
+      {
+        "x0": 201,
+        "x1": 229,
+        "cx": 215.3
+      },
+      {
+        "x0": 255,
+        "x1": 286,
+        "cx": 269.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

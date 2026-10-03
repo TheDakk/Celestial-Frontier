@@ -1,0 +1,15 @@
+{
+  "reason": "Explicit source pin refresh for reviewed opt-in stage-worker diagnostic; runtime imports, dependency versions, installed binaries, default recipe, resolution and step count unchanged. Old static packages retain their exact previous worker.",
+  "before": {
+    "source": "tools/local-image-generation/stage-worker.mjs",
+    "target": "__local_ai/stage-worker.mjs",
+    "bytes": 11212,
+    "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+  },
+  "after": {
+    "source": "tools/local-image-generation/stage-worker.mjs",
+    "target": "__local_ai/stage-worker.mjs",
+    "bytes": 15755,
+    "sha256": "21901fad78ef6ed2473a85f0538426f946e625859fe1d7976dec838122cf02b5"
+  }
+}

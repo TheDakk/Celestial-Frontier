@@ -1,0 +1,11 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Clouded Leopard",
+  "masterSha256": "497e2fcf22bb4a4713a3cbfb9cc03850371807b857b5df0dbe6093bd400166ca",
+  "required": [
+    "large cloud-shaped dark-edged blotches"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "REFUSE",
+  "reason": "Flat coat on patterned species"
+}

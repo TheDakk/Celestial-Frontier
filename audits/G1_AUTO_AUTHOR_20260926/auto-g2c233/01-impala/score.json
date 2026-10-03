@@ -1,0 +1,9 @@
+{
+ "id": "01-impala",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)"
+ ],
+ "semanticPresence": null
+}

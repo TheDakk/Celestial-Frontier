@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c163-effect-generation/v1",
+  "theme": "stone",
+  "phase": "travel",
+  "generator": "built-in image_gen",
+  "intent": "edit",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-779a4618-ca98-4852-86d4-962fc3ca77eb.png",
+  "sourceSha256": "faa5397042c63b9f98dc65e46f531879b2f5ea1bb248b20d53eab4c589519ec4",
+  "master": "audits/C163_EFFECTS_POLISH_20261002/stone/travel-master.png",
+  "masterSha256": "faa5397042c63b9f98dc65e46f531879b2f5ea1bb248b20d53eab4c589519ec4",
+  "prompt": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/stone/travel.prompt.txt",
+    "sha256": "ef156dc2daa36732542874a82972755059469eec973f2b7f57fbb46d830f5856"
+  },
+  "editTarget": {
+    "path": "audits/C132_EFFECTS_20261001/stone/travel-shards-master.png",
+    "sha256": "aa9e8fb1fb4398d250580e028ec185afb720f73f4546530ef13574e5871a6f39"
+  },
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "predecessorAnchors": "stone/shards/anchors.json",
+  "originalPixelsModified": false,
+  "qualityAccepted": false,
+  "nativeProof": false
+}

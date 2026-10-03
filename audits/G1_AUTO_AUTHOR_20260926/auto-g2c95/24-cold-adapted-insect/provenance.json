@@ -1,0 +1,150 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "24-cold-adapted-insect",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "82ffc711884e3d509cacac22d3249640400d6e6d9260a4214ed3afafb85e0c07",
+ "subjectSourceSha256": "53e30589f0f9a93138fc70305784ebe0087cc9e3fa94d2ee83072ba391485dd0",
+ "identity": {
+  "name": "Cold-Adapted Insect",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cold-Adapted Insect\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1547230462\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "seed": 1547230462,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "08-ant",
+  "authoringSha256": "0ef6659dc3425e1ae001566a0cdf15903f83327f7e8aee8a4df08f75017e9d34",
+  "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754"
+ },
+ "habitat": {
+  "profileId": "soft-mouth-insect",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "62522b378c939b2fa7bfd76c74cbc2b0f32e407c5a6cb2897a536de41ba2f7ed",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group soft-mouth-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0058,
+     "class": "top",
+     "attach": {
+      "x": 235,
+      "y": 158,
+      "relX": 0.78,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1064,
+     "class": "front",
+     "attach": {
+      "x": 274,
+      "y": 192.5,
+      "relX": 1.01,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0057,
+     "class": "top",
+     "attach": {
+      "x": 170.5,
+      "y": 170,
+      "relX": 0.41,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0571,
+     "class": "rear",
+     "attach": {
+      "x": 102.2,
+      "y": 221.8,
+      "relX": 0.02,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0748,
+     "class": "limb-down",
+     "attach": {
+      "x": 214.5,
+      "y": 217,
+      "relX": 0.66,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0737,
+     "class": "limb-down",
+     "attach": {
+      "x": 258,
+      "y": 216,
+      "relX": 0.91,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0329,
+     "class": "limb-down",
+     "attach": {
+      "x": 170,
+      "y": 222,
+      "relX": 0.41,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.004,
+     "class": "limb-down",
+     "attach": {
+      "x": 148,
+      "y": 227,
+      "relX": 0.28,
+      "relY": 0.94
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "08-ant",
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

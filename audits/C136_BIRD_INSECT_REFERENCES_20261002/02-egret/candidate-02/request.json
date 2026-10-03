@@ -1,0 +1,31 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Egret",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "985426a9e6550a761ec754e30c509704da7c8857061c8f17216d369b318320db",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "wading-bird",
+  "authoringCreated": false,
+  "sourceHead": "6bd5b337d1865910b1a5a18d7f82bf3fa06e6fee",
+  "basePromptSha256": "54bbbccda767ce511b1788d006c063457ac780d2cd33347a9ea2928b9dae7b09",
+  "layoutCompilerSha256": "fd9da3e6774546031e16e913d03ead973a4272ab9807469f84e2aab98cbec640",
+  "layoutClarification": "Species identity features FIRST: pure white plumage; S-curved neck; thin spear bill and long dark legs. One Earth Egret. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
+  "editSource": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/master.png",
+  "editSourceSha256": "7eff1a96c9b49c707c8169a95277e8395e0e57380d6e46c4b879c96fbb4d763b",
+  "editInstruction": "TARGETED ANATOMICAL REFERENCE EDIT: preserve this exact Egret painting, its species identity, long neck, bill, feather colours, natural tail, both legs, toes and two grounded feet. Keep the near wing naturally folded against the body. Expose the bird's EXISTING far wing by lifting it slightly upward and back, enough that its continuous shoulder attachment, folded elbow and complete tip are visibly distinct above the near wing. Exactly TWO wings total, never an added third wing. No invented feathers, no flying pose and no raised foot. The far wing is physically present but concealed in the input; repaint only that natural pose adjustment. This controlled reference pose overrides the ordinary both-wings-folded request below. Keep generous magenta margins on every edge; no floor, scenery, labels, grid or cast shadow. Retain a fully connected crown, beak and nape without floating feather dabs. Preserve 1254 by 1254 output size.",
+  "requestedVisibleWings": 2,
+  "observedVisibleWings": null,
+  "purpose": "Manual standing/long-legged bird reference candidate, not coverage or a hidden-wing policy change.",
+  "editCompilerSha256": "6c1a67e364f25e65c77fb3f6c1f64a15aa76f3dddb0649ebf5931b05d7ccbb6a"
+}

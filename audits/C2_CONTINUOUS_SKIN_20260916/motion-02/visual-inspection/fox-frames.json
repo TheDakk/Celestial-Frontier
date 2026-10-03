@@ -1,0 +1,162 @@
+[
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-00-0.50.png",
+    "mediaSeconds": 0.5,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-01-1.43.png",
+    "mediaSeconds": 1.43,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-02-1.53.png",
+    "mediaSeconds": 1.53,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-03-1.80.png",
+    "mediaSeconds": 1.8,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-04-1.95.png",
+    "mediaSeconds": 1.95,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-05-2.08.png",
+    "mediaSeconds": 2.08,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-06-2.16.png",
+    "mediaSeconds": 2.16,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-07-2.25.png",
+    "mediaSeconds": 2.25,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-08-2.84.png",
+    "mediaSeconds": 2.84,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-09-3.18.png",
+    "mediaSeconds": 3.18,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-10-4.97.png",
+    "mediaSeconds": 4.97,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-11-5.07.png",
+    "mediaSeconds": 5.07,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-12-7.18.png",
+    "mediaSeconds": 7.18,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-13-7.35.png",
+    "mediaSeconds": 7.35,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-14-7.48.png",
+    "mediaSeconds": 7.48,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/fox-15-7.72.png",
+    "mediaSeconds": 7.72,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  }
+]

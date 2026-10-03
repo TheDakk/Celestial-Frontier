@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Octopus",
+  "masterSha256": "45f1f54d41aaed9aaf618817e9dff7880ecdff1fc60eac0203477e6c4915264e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

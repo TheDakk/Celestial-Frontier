@@ -1,0 +1,28 @@
+{
+  "name": "Chough",
+  "masterSha256": "f0169a110876a1f3abeac0a968c33a7da10a09cbca0ea61ea862f16023a0dfb3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: smooth connected crown/nape, red curved attached bill, red separated legs and two feet on one level. No obvious detached crown paint in this original. Folded wing feathers overlap the tail root, and far wing is occluded; actual island conservation and finished-rig motion remain unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 315,
+      "y0": 403,
+      "x1": 952,
+      "y1": 854
+    },
+    "margins": {
+      "left": 315,
+      "right": 301,
+      "top": 403,
+      "bottom": 399
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

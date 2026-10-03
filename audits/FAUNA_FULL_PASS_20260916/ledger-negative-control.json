@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "negativeControl": "tampered source hash must refuse and publish no coverage ledger",
+  "exit": 1,
+  "refusedBeforePublication": true
+}

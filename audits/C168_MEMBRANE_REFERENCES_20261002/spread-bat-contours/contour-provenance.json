@@ -1,0 +1,59 @@
+{
+  "schema": "cf.c168-contour-completion/v1",
+  "predecessor": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat",
+  "predecessorAuthoringSha256": "8eb5833b06d5e1885ca92a9df3fc6dc481dbeb692791a1493f448b4dabee027b",
+  "masterSha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+  "authoringSha256": "b637b3646b288efe7f4f49096c1ec1e364d91be8678e4a06fed48046e2b8d253",
+  "basis": [
+    "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/ownership-preview-01.png",
+    "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat/remainder-components-01.json"
+  ],
+  "observations": "Upper far patagium follows observed wrist and elbow; lower near web and distal rim follow their existing wing owners; throat/ear/fur contours follow source paint. Large wing patches were incorrectly left to the body remainder. These are manual contour decisions, not the automatic island mover.",
+  "addedParts": [
+    {
+      "id": "far-patagium-upper",
+      "joint": "wingFarWrist"
+    },
+    {
+      "id": "far-patagium-lower",
+      "joint": "wingFarElbow"
+    },
+    {
+      "id": "near-distal-rim",
+      "joint": "wingNearTip"
+    },
+    {
+      "id": "near-proximal-web-edge",
+      "joint": "wingNearElbow"
+    },
+    {
+      "id": "near-distal-web-edge",
+      "joint": "wingNearWrist"
+    },
+    {
+      "id": "throat-fur",
+      "joint": "neck"
+    },
+    {
+      "id": "far-ear-rim",
+      "joint": "earFarTip"
+    },
+    {
+      "id": "near-ear-rim",
+      "joint": "earNearTip"
+    },
+    {
+      "id": "far-web-scallop-edge",
+      "joint": "wingFarElbow"
+    },
+    {
+      "id": "pelvic-fur-edge",
+      "joint": "pelvis"
+    }
+  ],
+  "landmarksChanged": false,
+  "previousPriorityRegionsChanged": false,
+  "sourcePixelsChanged": false,
+  "qualityAccepted": false,
+  "nativeAcceptance": false
+}

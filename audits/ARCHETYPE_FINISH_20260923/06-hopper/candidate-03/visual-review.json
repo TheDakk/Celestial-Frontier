@@ -1,0 +1,24 @@
+{
+  "status": "REJECTED_PAINT",
+  "reason": "Repeated high Z hind-leg pose and hidden far upper chain; four feet are visible but requested open bends not delivered.",
+  "nearVisibleChainApproxPx": [
+    [
+      438,
+      699
+    ],
+    [
+      294,
+      405
+    ],
+    [
+      119,
+      722
+    ],
+    [
+      227,
+      901
+    ]
+  ],
+  "note": "Visual estimates only, not admitted landmarks. Tall apex plausibly hock; true hip occluded. Parent and independent review agree.",
+  "intakeAttempted": false
+}

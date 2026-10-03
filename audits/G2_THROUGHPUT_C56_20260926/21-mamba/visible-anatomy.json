@@ -1,0 +1,92 @@
+{
+  "id": "21-mamba",
+  "name": "Mamba",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "22df527b751fcfd2b3c0317fd228a8cc07b5d24098217a2ae563c4746121de01",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8523,
+    "coreRadius": 8,
+    "bodyBox": {
+      "x0": 137,
+      "y0": 195,
+      "x1": 329,
+      "y1": 253
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2246,
+        "pixels": 1914,
+        "box": {
+          "x0": 315,
+          "y0": 188,
+          "x1": 410,
+          "y1": 236
+        },
+        "attach": {
+          "x": 326.3,
+          "y": 224.3,
+          "relX": 0.99,
+          "relY": 0.5
+        },
+        "dir": {
+          "x": 0.88,
+          "y": -0.47
+        },
+        "class": "front",
+        "length": 91.3
+      },
+      {
+        "k": 1,
+        "frac": 0.1924,
+        "pixels": 1640,
+        "box": {
+          "x0": 10,
+          "y0": 204,
+          "x1": 151,
+          "y1": 240
+        },
+        "attach": {
+          "x": 139.8,
+          "y": 215.8,
+          "relX": 0.01,
+          "relY": 0.36
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.23
+        },
+        "class": "rear",
+        "length": 132
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 238,
+        "x1": 306,
+        "cx": 272.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

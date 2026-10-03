@@ -1,0 +1,11 @@
+{
+ "id": "20-leech",
+ "family": "annelid",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: serpent matches clearly better (0.0126 < 0.0415)",
+  "missing-anatomy (family floor): the largest rear appendage is 1.0% of the paint; every same-family reference shows at least 28.6%",
+  "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 5.9%)"
+ ],
+ "semanticPresence": null
+}

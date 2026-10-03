@@ -1,0 +1,9 @@
+{
+ "id": "17-water-buffalo",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 9% paint (reference 57%)"
+ ],
+ "semanticPresence": null
+}

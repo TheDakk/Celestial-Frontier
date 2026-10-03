@@ -1,0 +1,13 @@
+{
+  "id": "07-catfish",
+  "name": "Catfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-5175bcf5-ae03-40b9-97b9-5cbfe9c06b4b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e71ba6a44655bc830909a6e9999787e8ac0d949bfc91a511101a5e49209e5f9f",
+  "bytes": 1344009,
+  "promptSha256": "5a0eaeea0b240a7b302d20c0fcd030337bf24061493991ef154019e468e9d99c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

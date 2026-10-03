@@ -1,0 +1,185 @@
+{
+  "id": "02-alpine-salamander",
+  "name": "Alpine Salamander",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5558d9b412c372da88815ec8722603260740d8e6ef05eda7261d738507917977",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 7686,
+    "coreRadius": 11,
+    "bodyBox": {
+      "x0": 159,
+      "y0": 177,
+      "x1": 314,
+      "y1": 224
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0144,
+        "pixels": 111,
+        "box": {
+          "x0": 315,
+          "y0": 178,
+          "x1": 322,
+          "y1": 198
+        },
+        "attach": {
+          "x": 315,
+          "y": 188,
+          "relX": 1.01,
+          "relY": 0.23
+        },
+        "dir": {
+          "x": 0.91,
+          "y": 0.42
+        },
+        "class": "front",
+        "length": 12.2
+      },
+      {
+        "k": 1,
+        "frac": 0.1483,
+        "pixels": 1140,
+        "box": {
+          "x0": 101,
+          "y0": 199,
+          "x1": 158,
+          "y1": 235
+        },
+        "attach": {
+          "x": 158,
+          "y": 209.5,
+          "relX": -0.01,
+          "relY": 0.69
+        },
+        "dir": {
+          "x": -0.98,
+          "y": 0.19
+        },
+        "class": "rear",
+        "length": 62.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0319,
+        "pixels": 245,
+        "box": {
+          "x0": 272,
+          "y0": 215,
+          "x1": 304,
+          "y1": 233
+        },
+        "attach": {
+          "x": 278.6,
+          "y": 219.1,
+          "relX": 0.77,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": 0.84,
+          "y": 0.54
+        },
+        "class": "limb-down",
+        "length": 29
+      },
+      {
+        "k": 3,
+        "frac": 0.0459,
+        "pixels": 353,
+        "box": {
+          "x0": 160,
+          "y0": 223,
+          "x1": 185,
+          "y1": 243
+        },
+        "attach": {
+          "x": 175.5,
+          "y": 223,
+          "relX": 0.11,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.4,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 25.3
+      },
+      {
+        "k": 4,
+        "frac": 0.0182,
+        "pixels": 140,
+        "box": {
+          "x0": 193,
+          "y0": 223,
+          "x1": 216,
+          "y1": 231
+        },
+        "attach": {
+          "x": 198.5,
+          "y": 223,
+          "relX": 0.25,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": 0.81,
+          "y": 0.59
+        },
+        "class": "limb-down",
+        "length": 19.2
+      },
+      {
+        "k": 5,
+        "frac": 0.0402,
+        "pixels": 309,
+        "box": {
+          "x0": 247,
+          "y0": 225,
+          "x1": 275,
+          "y1": 247
+        },
+        "attach": {
+          "x": 253,
+          "y": 225,
+          "relX": 0.61,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.52,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 31.1
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 257,
+        "x1": 269,
+        "cx": 263.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

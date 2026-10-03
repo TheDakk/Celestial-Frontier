@@ -1,0 +1,219 @@
+{
+  "kind": "flyer-membrane",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bat\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"135514800\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"7\"]]]]",
+    "seed": 135514800,
+    "ownerId": "authored:archetype-sprint/c168-reference-spread-bat",
+    "earthName": "Bat"
+  },
+  "template": {
+    "id": "flyer-membrane",
+    "version": 1
+  },
+  "clipSetId": "flyer-membrane-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 135514800,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 14,
+    "body": 9,
+    "loco": 0,
+    "trait": 7,
+    "size": 0,
+    "diet": 5,
+    "head": 3,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 4,
+    "detail": 0,
+    "accent": 8,
+    "temper": 3,
+    "sense": 0,
+    "repro": 6,
+    "life": 1,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Bat"
+  },
+  "geometry": {
+    "cutoutAssetHash": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6834130781499203,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4984051036682616,
+      0.543859649122807
+    ],
+    "pelvis": [
+      0.4625199362041467,
+      0.569377990430622
+    ],
+    "spine": [
+      0.49521531100478466,
+      0.5502392344497608
+    ],
+    "chest": [
+      0.5263157894736842,
+      0.5303030303030303
+    ],
+    "neck": [
+      0.5566188197767146,
+      0.5159489633173844
+    ],
+    "head": [
+      0.5861244019138756,
+      0.5159489633173844
+    ],
+    "jaw": [
+      0.6076555023923444,
+      0.5303030303030303
+    ],
+    "wingFarRoot": [
+      0.49282296650717705,
+      0.5063795853269537
+    ],
+    "wingFarElbow": [
+      0.4314194577352472,
+      0.4768740031897927
+    ],
+    "wingFarWrist": [
+      0.44019138755980863,
+      0.36363636363636365
+    ],
+    "wingFarTip": [
+      0.21291866028708134,
+      0.2511961722488038
+    ],
+    "wingNearRoot": [
+      0.5478468899521531,
+      0.5486443381180224
+    ],
+    "wingNearElbow": [
+      0.5717703349282297,
+      0.5669856459330144
+    ],
+    "wingNearWrist": [
+      0.6610845295055822,
+      0.5566188197767146
+    ],
+    "wingNearTip": [
+      0.7783094098883573,
+      0.7376395534290271
+    ],
+    "legFarKnee": [
+      0.4003189792663477,
+      0.5845295055821371
+    ],
+    "legFarFoot": [
+      0.3444976076555024,
+      0.6092503987240829
+    ],
+    "legNearKnee": [
+      0.4784688995215311,
+      0.6259968102073366
+    ],
+    "legNearFoot": [
+      0.48086124401913877,
+      0.6634768740031898
+    ],
+    "earFarTip": [
+      0.6068580542264753,
+      0.4354066985645933
+    ],
+    "earNearTip": [
+      0.5454545454545454,
+      0.4178628389154705
+    ],
+    "tail0": [
+      0.3939393939393939,
+      0.6738437001594896
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C168_MEMBRANE_REFERENCES_20261002/spread-bat-contours/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Independently observed pixel landmarks and priority anatomical polygons on the unchanged C163 Bat original. No coordinate transfer or self-reference. Wings are the forelimbs; membrane fans remain connected to their observed arm chains.",
+    "limitations": [
+      "Airborne source: neither hind foot is an observed ground contact; groundLineY is the lower painted foot envelope, not an asserted support plane.",
+      "Far shoulder attachment and pelvis centre lie beneath fur/membrane overlap and remain anatomical interpretation holds.",
+      "Coarse four-joint wing contract cannot represent every visible finger strut independently; manual polygons record fan ownership without adding bones.",
+      "Tail0 represents the visible inter-femoral membrane apex; its short internal tail-bone identity is not proven by surface paint.",
+      "No full moving-paint or native acceptance."
+    ],
+    "nativeAcceptance": false,
+    "qualityAccepted": false,
+    "contourSuccessor": "One bounded source-observed completion after full-size ownership review: only previously unclaimed remainder pixels can enter existing anatomical owners. Joint positions and previous priority polygons are unchanged."
+  },
+  "provenance": {
+    "authoringSha256": "b637b3646b288efe7f4f49096c1ec1e364d91be8678e4a06fed48046e2b8d253",
+    "subjectSourceSha256": "d8f2ee07dbcb7faa3531173a23f5e55f4ada64830f2c2b686af02503a3c4dea7",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.04403329407425365,
+      "spine": 0.037885082999105896,
+      "chest": 0.03694173786890102,
+      "neck": 0.03353077518601064,
+      "head": 0.029505582137161035,
+      "jaw": 0.025877162264095553,
+      "wingFarRoot": 0.04115945103848144,
+      "wingFarElbow": 0.06812466709465245,
+      "wingFarWrist": 0.11357688921818271,
+      "wingFarTip": 0.25356594645427954,
+      "wingNearRoot": 0.02828412735401636,
+      "wingNearElbow": 0.030145228343597754,
+      "wingNearWrist": 0.08991382784397578,
+      "wingNearTip": 0.2156621862839599,
+      "legFarKnee": 0.06401974269992439,
+      "legFarFoot": 0.06105037335063223,
+      "legNearKnee": 0.05882227625489647,
+      "legNearFoot": 0.03755633760547561,
+      "earFarTip": 0.08316814744677474,
+      "earNearTip": 0.10618344986206771,
+      "tail0": 0.12496549638393617
+    },
+    "measures": {
+      "body": 0.07481151918896739,
+      "bone-min": 0.025877162264095553,
+      "bone-max": 0.25356594645427954,
+      "wing/torso:wingFar": 6.368363575162578,
+      "wing/torso:wingNear": 4.865632642830095,
+      "leg/torso:legFar": 1.6718029176047127,
+      "leg/torso:legNear": 1.2882857467033664
+    }
+  },
+  "recipeHash": "c4fd5091d6d027275b44fe33dbc4d5c4720bfa75b258052f27efeac2be4a18cd"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Civet",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "08e173d736c582f6f6a1bd680e51b06ec94c16c0b0b60e9fd35fbda73ae57ed1",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "small-clawed-mammal",
+  "authoringCreated": false,
+  "sourceHead": "d178132067c125b2ac9034135fb412fcf7079acb",
+  "basePromptSha256": "cfd51715255a770f920c6aae7f24b6638df76530e661b11af6f8b22d347b235f",
+  "layoutCompilerSha256": "41cfea38d3f29bf02c2dfca1153b01836d98e05ad20d603dc1451f914b3a7a55",
+  "layoutClarification": "Species identity features FIRST: masked face with dark bands through the eyes; long ringed or banded tail; low elongated body on short legs. One Earth Civet. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: quiet planted walking STRIDE, all FOUR legs clearly APART from their body attachments down to each foot, with visible background gaps. Offset near and far forelegs and near and far hindlegs naturally. Keep the real species tail visibly attached and continuous; preserve a naturally short tail. No rearing, seated pose, crossed legs or duplicate limb. Choose a natural side-view head pose exposing BOTH ears as separate complete silhouettes, including BOTH ear tips; offset the far ear visibly above or beside the near ear. The true tail must sit clear of the body and legs from its visible root to its tip. Do not invent an ear, lengthen a short tail, or add a tail to a naturally tailless animal.\n\n"
+}

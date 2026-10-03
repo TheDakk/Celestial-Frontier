@@ -1,0 +1,67 @@
+{
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "species": {
+    "name": "Giant Water Bug",
+    "aspect": 1.8,
+    "headFrac": 0.12,
+    "eyes": "prominent",
+    "posture": "crawling",
+    "mustRead": [
+      "flat oval brown leaf-shaped body",
+      "raptorial hooked grasping front legs",
+      "short piercing beak tucked under the head"
+    ]
+  },
+  "genome": {
+    "seed": 3911532801,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 17,
+    "body": 6,
+    "loco": 15,
+    "trait": 23,
+    "size": 5,
+    "diet": 2,
+    "head": 9,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 14,
+    "detail": 8,
+    "accent": 2,
+    "temper": 4,
+    "sense": 2,
+    "repro": 7,
+    "life": 5,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Giant Water Bug"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Water Bug\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3911532801\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "index": 389,
+  "profile": {
+    "id": "aquatic-insect",
+    "names": [
+      "Water Strider",
+      "Giant Water Bug"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "water",
+      "ground",
+      "air"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "Surface/piercing mouthparts need observation; no submerged fish pose."
+  }
+}

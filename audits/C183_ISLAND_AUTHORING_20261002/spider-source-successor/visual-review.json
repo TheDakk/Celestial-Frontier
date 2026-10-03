@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c183-painting-review/v1",
+  "fullSizeInspected": true,
+  "status": "HELD_SOURCE_CANDIDATE",
+  "observations": [
+    "Two short mouth-adjacent pedipalps remain and are not counted as walking legs.",
+    "The front walking-leg pose is shifted and the short palp bases appear more continuously exposed; exact source segmentation and independent ownership have not been authored.",
+    "Eight walking legs, two chelicerae and the original two-part body identity remain visually present.",
+    "The requested middle-half framing is not met; the subject still spans substantially more than half of the1254canvas.",
+    "The source has been repainted by the generator; exact RGBA conservation with the predecessor is not claimed."
+  ],
+  "remaining": [
+    "independent source-specific authoring and cap test",
+    "full movement and contact review",
+    "pattern/framing observer and biological/style scoring"
+  ],
+  "attempts": 1,
+  "furtherRetry": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

@@ -1,0 +1,4726 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "63dab22e74ea6da19e6be6977703403c9573580436eeed5260659fb97c75507f",
+  "atlasSha256": "c420e2b0ca3d57df72f2dab2c56589ccbdd2fbb9c7888eed07a3c3453f6a1230",
+  "atlasSize": {
+    "width": 256,
+    "height": 256
+  },
+  "parts": [
+    {
+      "id": "body",
+      "joint": "root",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 32,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 32,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg0-far",
+      "joint": "leg0FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 64,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 64,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg0-near",
+      "joint": "leg0NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 96,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 96,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg1-far",
+      "joint": "leg1FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 128,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 128,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg1-near",
+      "joint": "leg1NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 160,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 160,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg2-far",
+      "joint": "leg2FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 192,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 192,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg2-near",
+      "joint": "leg2NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 224,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 224,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg3-far",
+      "joint": "leg3FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 0,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 0,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg3-near",
+      "joint": "leg3NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 32,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 32,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg4-far",
+      "joint": "leg4FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 64,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 64,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg4-near",
+      "joint": "leg4NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 96,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 96,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg5-far",
+      "joint": "leg5FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 128,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 128,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg5-near",
+      "joint": "leg5NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 160,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 160,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg6-far",
+      "joint": "leg6FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 192,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 192,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg6-near",
+      "joint": "leg6NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 224,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 224,
+        "y": 32,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg7-far",
+      "joint": "leg7FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 0,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 0,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg7-near",
+      "joint": "leg7NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 32,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 32,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg8-far",
+      "joint": "leg8FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 64,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 64,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg8-near",
+      "joint": "leg8NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 96,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 96,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg9-far",
+      "joint": "leg9FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 128,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 128,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg9-near",
+      "joint": "leg9NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 160,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 160,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg10-far",
+      "joint": "leg10FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 192,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 192,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg10-near",
+      "joint": "leg10NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 224,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 224,
+        "y": 64,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg11-far",
+      "joint": "leg11FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 0,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 0,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg11-near",
+      "joint": "leg11NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 32,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 32,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg12-far",
+      "joint": "leg12FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 64,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 64,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg12-near",
+      "joint": "leg12NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 96,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 96,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg13-far",
+      "joint": "leg13FarFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 128,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 128,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "leg13-near",
+      "joint": "leg13NearFoot",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 160,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 160,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "ultimate-far",
+      "joint": "ultimateFar",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 192,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 192,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "ultimate-near",
+      "joint": "ultimateNear",
+      "kind": "part",
+      "layer": "near",
+      "cutout": {
+        "x": 224,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      },
+      "frame": {
+        "x": 224,
+        "y": 96,
+        "width": 24,
+        "height": 24
+      }
+    }
+  ],
+  "paintSkin": {
+    "schema": "cf.paint-skin/v1",
+    "vertices": [
+      {
+        "x": 4,
+        "y": 4,
+        "weights": [
+          [
+            "root",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 4,
+        "weights": [
+          [
+            "root",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 4,
+        "y": 20,
+        "weights": [
+          [
+            "root",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 20,
+        "weights": [
+          [
+            "root",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 4,
+        "weights": [
+          [
+            "head",
+            0.806200140682211
+          ],
+          [
+            "antennaFar",
+            0.07818365511127849
+          ],
+          [
+            "mandible",
+            0.07818365511127849
+          ],
+          [
+            "antennaNear",
+            0.03743254909523207
+          ]
+        ]
+      },
+      {
+        "x": 44,
+        "y": 4,
+        "weights": [
+          [
+            "head",
+            0.7857769477382907
+          ],
+          [
+            "antennaFar",
+            0.09629736259314486
+          ],
+          [
+            "mandible",
+            0.0765296657944011
+          ],
+          [
+            "antennaNear",
+            0.04139602387416344
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 4,
+        "weights": [
+          [
+            "antennaFar",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 12,
+        "weights": [
+          [
+            "head",
+            0.7857769477382907
+          ],
+          [
+            "mandible",
+            0.09629736259314486
+          ],
+          [
+            "antennaFar",
+            0.0765296657944011
+          ],
+          [
+            "antennaNear",
+            0.04139602387416344
+          ]
+        ]
+      },
+      {
+        "x": 44,
+        "y": 12,
+        "weights": [
+          [
+            "head",
+            0.7670214037037197
+          ],
+          [
+            "mandible",
+            0.09042807977771396
+          ],
+          [
+            "antennaFar",
+            0.09042807977771394
+          ],
+          [
+            "antennaNear",
+            0.05212243674085232
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 12,
+        "weights": [
+          [
+            "head",
+            0.7478644038399239
+          ],
+          [
+            "antennaFar",
+            0.09629736259314488
+          ],
+          [
+            "antennaNear",
+            0.07930856777253019
+          ],
+          [
+            "mandible",
+            0.07652966579440107
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 20,
+        "weights": [
+          [
+            "mandible",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 44,
+        "y": 20,
+        "weights": [
+          [
+            "head",
+            0.7478644038399239
+          ],
+          [
+            "mandible",
+            0.09629736259314485
+          ],
+          [
+            "antennaNear",
+            0.07930856777253016
+          ],
+          [
+            "antennaFar",
+            0.0765296657944011
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 20,
+        "weights": [
+          [
+            "antennaNear",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 4,
+        "weights": [
+          [
+            "leg0FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 4,
+        "weights": [
+          [
+            "leg0FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 20,
+        "weights": [
+          [
+            "leg0FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg0FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 20,
+        "weights": [
+          [
+            "leg0FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 4,
+        "weights": [
+          [
+            "leg0NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 4,
+        "weights": [
+          [
+            "leg0NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 20,
+        "weights": [
+          [
+            "leg0NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg0NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 20,
+        "weights": [
+          [
+            "leg0NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 4,
+        "weights": [
+          [
+            "leg1FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 4,
+        "weights": [
+          [
+            "leg1FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 20,
+        "weights": [
+          [
+            "leg1FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg1FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 20,
+        "weights": [
+          [
+            "leg1FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 4,
+        "weights": [
+          [
+            "leg1NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 4,
+        "weights": [
+          [
+            "leg1NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 20,
+        "weights": [
+          [
+            "leg1NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg1NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 20,
+        "weights": [
+          [
+            "leg1NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 4,
+        "weights": [
+          [
+            "leg2FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 4,
+        "weights": [
+          [
+            "leg2FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 20,
+        "weights": [
+          [
+            "leg2FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg2FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 20,
+        "weights": [
+          [
+            "leg2FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 4,
+        "weights": [
+          [
+            "leg2NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 4,
+        "weights": [
+          [
+            "leg2NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 20,
+        "weights": [
+          [
+            "leg2NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg2NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 20,
+        "weights": [
+          [
+            "leg2NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 4,
+        "y": 36,
+        "weights": [
+          [
+            "leg3FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 36,
+        "weights": [
+          [
+            "leg3FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 4,
+        "y": 52,
+        "weights": [
+          [
+            "leg3FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg3FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 52,
+        "weights": [
+          [
+            "leg3FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 36,
+        "weights": [
+          [
+            "leg3NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 36,
+        "weights": [
+          [
+            "leg3NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 52,
+        "weights": [
+          [
+            "leg3NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg3NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 52,
+        "weights": [
+          [
+            "leg3NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 36,
+        "weights": [
+          [
+            "leg4FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 36,
+        "weights": [
+          [
+            "leg4FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 52,
+        "weights": [
+          [
+            "leg4FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg4FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 52,
+        "weights": [
+          [
+            "leg4FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 36,
+        "weights": [
+          [
+            "leg4NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 36,
+        "weights": [
+          [
+            "leg4NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 52,
+        "weights": [
+          [
+            "leg4NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg4NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 52,
+        "weights": [
+          [
+            "leg4NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 36,
+        "weights": [
+          [
+            "leg5FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 36,
+        "weights": [
+          [
+            "leg5FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 52,
+        "weights": [
+          [
+            "leg5FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg5FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 52,
+        "weights": [
+          [
+            "leg5FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 36,
+        "weights": [
+          [
+            "leg5NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 36,
+        "weights": [
+          [
+            "leg5NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 52,
+        "weights": [
+          [
+            "leg5NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg5NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 52,
+        "weights": [
+          [
+            "leg5NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 36,
+        "weights": [
+          [
+            "leg6FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 36,
+        "weights": [
+          [
+            "leg6FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 52,
+        "weights": [
+          [
+            "leg6FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg6FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 52,
+        "weights": [
+          [
+            "leg6FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 36,
+        "weights": [
+          [
+            "leg6NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 36,
+        "weights": [
+          [
+            "leg6NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 52,
+        "weights": [
+          [
+            "leg6NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg6NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 52,
+        "weights": [
+          [
+            "leg6NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 4,
+        "y": 68,
+        "weights": [
+          [
+            "leg7FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 68,
+        "weights": [
+          [
+            "leg7FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 4,
+        "y": 84,
+        "weights": [
+          [
+            "leg7FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg7FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 84,
+        "weights": [
+          [
+            "leg7FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 68,
+        "weights": [
+          [
+            "leg7NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 68,
+        "weights": [
+          [
+            "leg7NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 84,
+        "weights": [
+          [
+            "leg7NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg7NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 84,
+        "weights": [
+          [
+            "leg7NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 68,
+        "weights": [
+          [
+            "leg8FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 68,
+        "weights": [
+          [
+            "leg8FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 84,
+        "weights": [
+          [
+            "leg8FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg8FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 84,
+        "weights": [
+          [
+            "leg8FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 68,
+        "weights": [
+          [
+            "leg8NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 68,
+        "weights": [
+          [
+            "leg8NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 84,
+        "weights": [
+          [
+            "leg8NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg8NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 84,
+        "weights": [
+          [
+            "leg8NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 68,
+        "weights": [
+          [
+            "leg9FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 68,
+        "weights": [
+          [
+            "leg9FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 84,
+        "weights": [
+          [
+            "leg9FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg9FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 84,
+        "weights": [
+          [
+            "leg9FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 68,
+        "weights": [
+          [
+            "leg9NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 68,
+        "weights": [
+          [
+            "leg9NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 84,
+        "weights": [
+          [
+            "leg9NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg9NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 84,
+        "weights": [
+          [
+            "leg9NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 68,
+        "weights": [
+          [
+            "leg10FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 68,
+        "weights": [
+          [
+            "leg10FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 84,
+        "weights": [
+          [
+            "leg10FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg10FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 84,
+        "weights": [
+          [
+            "leg10FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 68,
+        "weights": [
+          [
+            "leg10NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 68,
+        "weights": [
+          [
+            "leg10NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 84,
+        "weights": [
+          [
+            "leg10NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg10NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 84,
+        "weights": [
+          [
+            "leg10NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 4,
+        "y": 100,
+        "weights": [
+          [
+            "leg11FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 100,
+        "weights": [
+          [
+            "leg11FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 4,
+        "y": 116,
+        "weights": [
+          [
+            "leg11FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg11FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 20,
+        "y": 116,
+        "weights": [
+          [
+            "leg11FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 100,
+        "weights": [
+          [
+            "leg11NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 100,
+        "weights": [
+          [
+            "leg11NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 36,
+        "y": 116,
+        "weights": [
+          [
+            "leg11NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg11NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 52,
+        "y": 116,
+        "weights": [
+          [
+            "leg11NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 100,
+        "weights": [
+          [
+            "leg12FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 100,
+        "weights": [
+          [
+            "leg12FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 68,
+        "y": 116,
+        "weights": [
+          [
+            "leg12FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg12FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 84,
+        "y": 116,
+        "weights": [
+          [
+            "leg12FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 100,
+        "weights": [
+          [
+            "leg12NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 100,
+        "weights": [
+          [
+            "leg12NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 100,
+        "y": 116,
+        "weights": [
+          [
+            "leg12NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg12NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 116,
+        "y": 116,
+        "weights": [
+          [
+            "leg12NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 100,
+        "weights": [
+          [
+            "leg13FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 100,
+        "weights": [
+          [
+            "leg13FarKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 132,
+        "y": 116,
+        "weights": [
+          [
+            "leg13FarFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg13FarKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 148,
+        "y": 116,
+        "weights": [
+          [
+            "leg13FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 100,
+        "weights": [
+          [
+            "leg13NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 100,
+        "weights": [
+          [
+            "leg13NearKnee",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 164,
+        "y": 116,
+        "weights": [
+          [
+            "leg13NearFoot",
+            0.5365853658536586
+          ],
+          [
+            "leg13NearKnee",
+            0.4634146341463414
+          ]
+        ]
+      },
+      {
+        "x": 180,
+        "y": 116,
+        "weights": [
+          [
+            "leg13NearFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 100,
+        "weights": [
+          [
+            "ultimateFar",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 100,
+        "weights": [
+          [
+            "ultimateFar",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 196,
+        "y": 116,
+        "weights": [
+          [
+            "ultimateFar",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 212,
+        "y": 116,
+        "weights": [
+          [
+            "ultimateFar",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 100,
+        "weights": [
+          [
+            "ultimateNear",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 100,
+        "weights": [
+          [
+            "ultimateNear",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 228,
+        "y": 116,
+        "weights": [
+          [
+            "ultimateNear",
+            1
+          ]
+        ]
+      },
+      {
+        "x": 244,
+        "y": 116,
+        "weights": [
+          [
+            "ultimateNear",
+            1
+          ]
+        ]
+      }
+    ],
+    "triangles": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      4,
+      5,
+      7,
+      5,
+      8,
+      7,
+      5,
+      6,
+      8,
+      6,
+      9,
+      8,
+      7,
+      8,
+      10,
+      8,
+      11,
+      10,
+      8,
+      9,
+      11,
+      9,
+      12,
+      11,
+      13,
+      14,
+      15,
+      14,
+      16,
+      15,
+      17,
+      18,
+      19,
+      18,
+      20,
+      19,
+      21,
+      22,
+      23,
+      22,
+      24,
+      23,
+      25,
+      26,
+      27,
+      26,
+      28,
+      27,
+      29,
+      30,
+      31,
+      30,
+      32,
+      31,
+      33,
+      34,
+      35,
+      34,
+      36,
+      35,
+      37,
+      38,
+      39,
+      38,
+      40,
+      39,
+      41,
+      42,
+      43,
+      42,
+      44,
+      43,
+      45,
+      46,
+      47,
+      46,
+      48,
+      47,
+      49,
+      50,
+      51,
+      50,
+      52,
+      51,
+      53,
+      54,
+      55,
+      54,
+      56,
+      55,
+      57,
+      58,
+      59,
+      58,
+      60,
+      59,
+      61,
+      62,
+      63,
+      62,
+      64,
+      63,
+      65,
+      66,
+      67,
+      66,
+      68,
+      67,
+      69,
+      70,
+      71,
+      70,
+      72,
+      71,
+      73,
+      74,
+      75,
+      74,
+      76,
+      75,
+      77,
+      78,
+      79,
+      78,
+      80,
+      79,
+      81,
+      82,
+      83,
+      82,
+      84,
+      83,
+      85,
+      86,
+      87,
+      86,
+      88,
+      87,
+      89,
+      90,
+      91,
+      90,
+      92,
+      91,
+      93,
+      94,
+      95,
+      94,
+      96,
+      95,
+      97,
+      98,
+      99,
+      98,
+      100,
+      99,
+      101,
+      102,
+      103,
+      102,
+      104,
+      103,
+      105,
+      106,
+      107,
+      106,
+      108,
+      107,
+      109,
+      110,
+      111,
+      110,
+      112,
+      111,
+      113,
+      114,
+      115,
+      114,
+      116,
+      115,
+      117,
+      118,
+      119,
+      118,
+      120,
+      119,
+      121,
+      122,
+      123,
+      122,
+      124,
+      123,
+      125,
+      126,
+      127,
+      126,
+      128,
+      127,
+      129,
+      130,
+      131,
+      130,
+      132,
+      131
+    ],
+    "parts": [
+      {
+        "id": "body",
+        "vertices": [
+          {
+            "triangle": [
+              0,
+              1,
+              2
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              0,
+              1,
+              2
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              0,
+              1,
+              2
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              1,
+              3,
+              2
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ]
+      },
+      {
+        "id": "head",
+        "vertices": [
+          {
+            "triangle": [
+              4,
+              5,
+              7
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              4,
+              5,
+              7
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              5,
+              6,
+              8
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              4,
+              5,
+              7
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              5,
+              8,
+              7
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              6,
+              9,
+              8
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              7,
+              8,
+              10
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              8,
+              11,
+              10
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              9,
+              12,
+              11
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          3,
+          1,
+          4,
+          3,
+          1,
+          2,
+          4,
+          2,
+          5,
+          4,
+          3,
+          4,
+          6,
+          4,
+          7,
+          6,
+          4,
+          5,
+          7,
+          5,
+          8,
+          7
+        ],
+        "fieldTriangles": [
+          4,
+          5,
+          7,
+          5,
+          8,
+          7,
+          5,
+          6,
+          8,
+          6,
+          9,
+          8,
+          7,
+          8,
+          10,
+          8,
+          11,
+          10,
+          8,
+          9,
+          11,
+          9,
+          12,
+          11
+        ]
+      },
+      {
+        "id": "leg0-far",
+        "vertices": [
+          {
+            "triangle": [
+              13,
+              14,
+              15
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              13,
+              14,
+              15
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              13,
+              14,
+              15
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              14,
+              16,
+              15
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          13,
+          14,
+          15,
+          14,
+          16,
+          15
+        ]
+      },
+      {
+        "id": "leg0-near",
+        "vertices": [
+          {
+            "triangle": [
+              17,
+              18,
+              19
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              17,
+              18,
+              19
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              17,
+              18,
+              19
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              18,
+              20,
+              19
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          17,
+          18,
+          19,
+          18,
+          20,
+          19
+        ]
+      },
+      {
+        "id": "leg1-far",
+        "vertices": [
+          {
+            "triangle": [
+              21,
+              22,
+              23
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              21,
+              22,
+              23
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              21,
+              22,
+              23
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              22,
+              24,
+              23
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          21,
+          22,
+          23,
+          22,
+          24,
+          23
+        ]
+      },
+      {
+        "id": "leg1-near",
+        "vertices": [
+          {
+            "triangle": [
+              25,
+              26,
+              27
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              25,
+              26,
+              27
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              25,
+              26,
+              27
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              26,
+              28,
+              27
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          25,
+          26,
+          27,
+          26,
+          28,
+          27
+        ]
+      },
+      {
+        "id": "leg2-far",
+        "vertices": [
+          {
+            "triangle": [
+              29,
+              30,
+              31
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              29,
+              30,
+              31
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              29,
+              30,
+              31
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              30,
+              32,
+              31
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          29,
+          30,
+          31,
+          30,
+          32,
+          31
+        ]
+      },
+      {
+        "id": "leg2-near",
+        "vertices": [
+          {
+            "triangle": [
+              33,
+              34,
+              35
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              33,
+              34,
+              35
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              33,
+              34,
+              35
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              34,
+              36,
+              35
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          33,
+          34,
+          35,
+          34,
+          36,
+          35
+        ]
+      },
+      {
+        "id": "leg3-far",
+        "vertices": [
+          {
+            "triangle": [
+              37,
+              38,
+              39
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              37,
+              38,
+              39
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              37,
+              38,
+              39
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              38,
+              40,
+              39
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          37,
+          38,
+          39,
+          38,
+          40,
+          39
+        ]
+      },
+      {
+        "id": "leg3-near",
+        "vertices": [
+          {
+            "triangle": [
+              41,
+              42,
+              43
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              41,
+              42,
+              43
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              41,
+              42,
+              43
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              42,
+              44,
+              43
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          41,
+          42,
+          43,
+          42,
+          44,
+          43
+        ]
+      },
+      {
+        "id": "leg4-far",
+        "vertices": [
+          {
+            "triangle": [
+              45,
+              46,
+              47
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              45,
+              46,
+              47
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              45,
+              46,
+              47
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              46,
+              48,
+              47
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          45,
+          46,
+          47,
+          46,
+          48,
+          47
+        ]
+      },
+      {
+        "id": "leg4-near",
+        "vertices": [
+          {
+            "triangle": [
+              49,
+              50,
+              51
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              49,
+              50,
+              51
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              49,
+              50,
+              51
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              50,
+              52,
+              51
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          49,
+          50,
+          51,
+          50,
+          52,
+          51
+        ]
+      },
+      {
+        "id": "leg5-far",
+        "vertices": [
+          {
+            "triangle": [
+              53,
+              54,
+              55
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              53,
+              54,
+              55
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              53,
+              54,
+              55
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              54,
+              56,
+              55
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          53,
+          54,
+          55,
+          54,
+          56,
+          55
+        ]
+      },
+      {
+        "id": "leg5-near",
+        "vertices": [
+          {
+            "triangle": [
+              57,
+              58,
+              59
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              57,
+              58,
+              59
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              57,
+              58,
+              59
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              58,
+              60,
+              59
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          57,
+          58,
+          59,
+          58,
+          60,
+          59
+        ]
+      },
+      {
+        "id": "leg6-far",
+        "vertices": [
+          {
+            "triangle": [
+              61,
+              62,
+              63
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              61,
+              62,
+              63
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              61,
+              62,
+              63
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              62,
+              64,
+              63
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          61,
+          62,
+          63,
+          62,
+          64,
+          63
+        ]
+      },
+      {
+        "id": "leg6-near",
+        "vertices": [
+          {
+            "triangle": [
+              65,
+              66,
+              67
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              65,
+              66,
+              67
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              65,
+              66,
+              67
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              66,
+              68,
+              67
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          65,
+          66,
+          67,
+          66,
+          68,
+          67
+        ]
+      },
+      {
+        "id": "leg7-far",
+        "vertices": [
+          {
+            "triangle": [
+              69,
+              70,
+              71
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              69,
+              70,
+              71
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              69,
+              70,
+              71
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              70,
+              72,
+              71
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          69,
+          70,
+          71,
+          70,
+          72,
+          71
+        ]
+      },
+      {
+        "id": "leg7-near",
+        "vertices": [
+          {
+            "triangle": [
+              73,
+              74,
+              75
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              73,
+              74,
+              75
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              73,
+              74,
+              75
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              74,
+              76,
+              75
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          73,
+          74,
+          75,
+          74,
+          76,
+          75
+        ]
+      },
+      {
+        "id": "leg8-far",
+        "vertices": [
+          {
+            "triangle": [
+              77,
+              78,
+              79
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              77,
+              78,
+              79
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              77,
+              78,
+              79
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              78,
+              80,
+              79
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          77,
+          78,
+          79,
+          78,
+          80,
+          79
+        ]
+      },
+      {
+        "id": "leg8-near",
+        "vertices": [
+          {
+            "triangle": [
+              81,
+              82,
+              83
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              81,
+              82,
+              83
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              81,
+              82,
+              83
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              82,
+              84,
+              83
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          81,
+          82,
+          83,
+          82,
+          84,
+          83
+        ]
+      },
+      {
+        "id": "leg9-far",
+        "vertices": [
+          {
+            "triangle": [
+              85,
+              86,
+              87
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              85,
+              86,
+              87
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              85,
+              86,
+              87
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              86,
+              88,
+              87
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          85,
+          86,
+          87,
+          86,
+          88,
+          87
+        ]
+      },
+      {
+        "id": "leg9-near",
+        "vertices": [
+          {
+            "triangle": [
+              89,
+              90,
+              91
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              89,
+              90,
+              91
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              89,
+              90,
+              91
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              90,
+              92,
+              91
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          89,
+          90,
+          91,
+          90,
+          92,
+          91
+        ]
+      },
+      {
+        "id": "leg10-far",
+        "vertices": [
+          {
+            "triangle": [
+              93,
+              94,
+              95
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              93,
+              94,
+              95
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              93,
+              94,
+              95
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              94,
+              96,
+              95
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          93,
+          94,
+          95,
+          94,
+          96,
+          95
+        ]
+      },
+      {
+        "id": "leg10-near",
+        "vertices": [
+          {
+            "triangle": [
+              97,
+              98,
+              99
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              97,
+              98,
+              99
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              97,
+              98,
+              99
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              98,
+              100,
+              99
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          97,
+          98,
+          99,
+          98,
+          100,
+          99
+        ]
+      },
+      {
+        "id": "leg11-far",
+        "vertices": [
+          {
+            "triangle": [
+              101,
+              102,
+              103
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              101,
+              102,
+              103
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              101,
+              102,
+              103
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              102,
+              104,
+              103
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          101,
+          102,
+          103,
+          102,
+          104,
+          103
+        ]
+      },
+      {
+        "id": "leg11-near",
+        "vertices": [
+          {
+            "triangle": [
+              105,
+              106,
+              107
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              105,
+              106,
+              107
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              105,
+              106,
+              107
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              106,
+              108,
+              107
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          105,
+          106,
+          107,
+          106,
+          108,
+          107
+        ]
+      },
+      {
+        "id": "leg12-far",
+        "vertices": [
+          {
+            "triangle": [
+              109,
+              110,
+              111
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              109,
+              110,
+              111
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              109,
+              110,
+              111
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              110,
+              112,
+              111
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          109,
+          110,
+          111,
+          110,
+          112,
+          111
+        ]
+      },
+      {
+        "id": "leg12-near",
+        "vertices": [
+          {
+            "triangle": [
+              113,
+              114,
+              115
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              113,
+              114,
+              115
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              113,
+              114,
+              115
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              114,
+              116,
+              115
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          113,
+          114,
+          115,
+          114,
+          116,
+          115
+        ]
+      },
+      {
+        "id": "leg13-far",
+        "vertices": [
+          {
+            "triangle": [
+              117,
+              118,
+              119
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              117,
+              118,
+              119
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              117,
+              118,
+              119
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              118,
+              120,
+              119
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          117,
+          118,
+          119,
+          118,
+          120,
+          119
+        ]
+      },
+      {
+        "id": "leg13-near",
+        "vertices": [
+          {
+            "triangle": [
+              121,
+              122,
+              123
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              121,
+              122,
+              123
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              121,
+              122,
+              123
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              122,
+              124,
+              123
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          121,
+          122,
+          123,
+          122,
+          124,
+          123
+        ]
+      },
+      {
+        "id": "ultimate-far",
+        "vertices": [
+          {
+            "triangle": [
+              125,
+              126,
+              127
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              125,
+              126,
+              127
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              125,
+              126,
+              127
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              126,
+              128,
+              127
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          125,
+          126,
+          127,
+          126,
+          128,
+          127
+        ]
+      },
+      {
+        "id": "ultimate-near",
+        "vertices": [
+          {
+            "triangle": [
+              129,
+              130,
+              131
+            ],
+            "barycentric": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              129,
+              130,
+              131
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "triangle": [
+              129,
+              130,
+              131
+            ],
+            "barycentric": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "triangle": [
+              130,
+              132,
+              131
+            ],
+            "barycentric": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          1,
+          3,
+          2
+        ],
+        "fieldTriangles": [
+          129,
+          130,
+          131,
+          130,
+          132,
+          131
+        ]
+      }
+    ],
+    "solver": {
+      "iterations": 4,
+      "globalIterations": 4,
+      "targetWeight": 0.35,
+      "pins": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        10,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        20,
+        21,
+        22,
+        24,
+        25,
+        26,
+        28,
+        29,
+        30,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38,
+        40,
+        41,
+        42,
+        44,
+        45,
+        46,
+        48,
+        49,
+        50,
+        52,
+        53,
+        54,
+        56,
+        57,
+        58,
+        60,
+        61,
+        62,
+        64,
+        65,
+        66,
+        68,
+        69,
+        70,
+        72,
+        73,
+        74,
+        76,
+        77,
+        78,
+        80,
+        81,
+        82,
+        84,
+        85,
+        86,
+        88,
+        89,
+        90,
+        92,
+        93,
+        94,
+        96,
+        97,
+        98,
+        100,
+        101,
+        102,
+        104,
+        105,
+        106,
+        108,
+        109,
+        110,
+        112,
+        113,
+        114,
+        116,
+        117,
+        118,
+        120,
+        121,
+        122,
+        124
+      ]
+    }
+  },
+  "sourceJoinTopology": {
+    "remainderPartId": "body"
+  },
+  "bindingHash": "68dc9191e3fcb9164f434dee0361af2554cf28a89c432ae93ce12eb9cd7a8301"
+}

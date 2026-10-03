@@ -1,0 +1,525 @@
+{
+  "kind": "myriapod",
+  "template": {
+    "id": "myriapod",
+    "version": 1
+  },
+  "clipSetId": "myriapod-v1",
+  "identity": {
+    "speciesVisualKey": "synthetic-regional-selftest",
+    "seed": 1,
+    "ownerId": "packet-selftest",
+    "earthName": "Synthetic compiler fixture"
+  },
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "walkingLegPairs": 14,
+      "ultimateLegPairs": 1
+    }
+  },
+  "geometry": {
+    "width": 256,
+    "height": 256,
+    "cutoutAssetHash": "c420e2b0ca3d57df72f2dab2c56589ccbdd2fbb9c7888eed07a3c3453f6a1230",
+    "groundLineY": 1,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ],
+    "fixedAttachments": {
+      "head": [
+        0.1328125,
+        0.046875
+      ],
+      "leg0FarKnee": [
+        0.296875,
+        0.0078125
+      ],
+      "leg0NearKnee": [
+        0.421875,
+        0.0078125
+      ],
+      "leg1FarKnee": [
+        0.546875,
+        0.0078125
+      ],
+      "leg1NearKnee": [
+        0.671875,
+        0.0078125
+      ],
+      "leg2FarKnee": [
+        0.796875,
+        0.0078125
+      ],
+      "leg2NearKnee": [
+        0.921875,
+        0.0078125
+      ],
+      "leg3FarKnee": [
+        0.046875,
+        0.1328125
+      ],
+      "leg3NearKnee": [
+        0.171875,
+        0.1328125
+      ],
+      "leg4FarKnee": [
+        0.296875,
+        0.1328125
+      ],
+      "leg4NearKnee": [
+        0.421875,
+        0.1328125
+      ],
+      "leg5FarKnee": [
+        0.546875,
+        0.1328125
+      ],
+      "leg5NearKnee": [
+        0.671875,
+        0.1328125
+      ],
+      "leg6FarKnee": [
+        0.796875,
+        0.1328125
+      ],
+      "leg6NearKnee": [
+        0.921875,
+        0.1328125
+      ],
+      "leg7FarKnee": [
+        0.046875,
+        0.2578125
+      ],
+      "leg7NearKnee": [
+        0.171875,
+        0.2578125
+      ],
+      "leg8FarKnee": [
+        0.296875,
+        0.2578125
+      ],
+      "leg8NearKnee": [
+        0.421875,
+        0.2578125
+      ],
+      "leg9FarKnee": [
+        0.546875,
+        0.2578125
+      ],
+      "leg9NearKnee": [
+        0.671875,
+        0.2578125
+      ],
+      "leg10FarKnee": [
+        0.796875,
+        0.2578125
+      ],
+      "leg10NearKnee": [
+        0.921875,
+        0.2578125
+      ],
+      "leg11FarKnee": [
+        0.046875,
+        0.3828125
+      ],
+      "leg11NearKnee": [
+        0.171875,
+        0.3828125
+      ],
+      "leg12FarKnee": [
+        0.296875,
+        0.3828125
+      ],
+      "leg12NearKnee": [
+        0.421875,
+        0.3828125
+      ],
+      "leg13FarKnee": [
+        0.546875,
+        0.3828125
+      ],
+      "leg13NearKnee": [
+        0.671875,
+        0.3828125
+      ],
+      "ultimateFar": [
+        0.7578125,
+        0.3828125
+      ],
+      "ultimateNear": [
+        0.8828125,
+        0.3828125
+      ]
+    }
+  },
+  "landmarks": {
+    "root": [
+      0.046875,
+      0.046875
+    ],
+    "head": [
+      0.171875,
+      0.046875
+    ],
+    "mandible": [
+      0.140625,
+      0.078125
+    ],
+    "antennaFar": [
+      0.203125,
+      0.015625
+    ],
+    "antennaNear": [
+      0.203125,
+      0.078125
+    ],
+    "leg0FarKnee": [
+      0.296875,
+      0.046875
+    ],
+    "leg0FarFoot": [
+      0.328125,
+      0.078125
+    ],
+    "leg0NearKnee": [
+      0.421875,
+      0.046875
+    ],
+    "leg0NearFoot": [
+      0.453125,
+      0.078125
+    ],
+    "leg1FarKnee": [
+      0.546875,
+      0.046875
+    ],
+    "leg1FarFoot": [
+      0.578125,
+      0.078125
+    ],
+    "leg1NearKnee": [
+      0.671875,
+      0.046875
+    ],
+    "leg1NearFoot": [
+      0.703125,
+      0.078125
+    ],
+    "leg2FarKnee": [
+      0.796875,
+      0.046875
+    ],
+    "leg2FarFoot": [
+      0.828125,
+      0.078125
+    ],
+    "leg2NearKnee": [
+      0.921875,
+      0.046875
+    ],
+    "leg2NearFoot": [
+      0.953125,
+      0.078125
+    ],
+    "leg3FarKnee": [
+      0.046875,
+      0.171875
+    ],
+    "leg3FarFoot": [
+      0.078125,
+      0.203125
+    ],
+    "leg3NearKnee": [
+      0.171875,
+      0.171875
+    ],
+    "leg3NearFoot": [
+      0.203125,
+      0.203125
+    ],
+    "leg4FarKnee": [
+      0.296875,
+      0.171875
+    ],
+    "leg4FarFoot": [
+      0.328125,
+      0.203125
+    ],
+    "leg4NearKnee": [
+      0.421875,
+      0.171875
+    ],
+    "leg4NearFoot": [
+      0.453125,
+      0.203125
+    ],
+    "leg5FarKnee": [
+      0.546875,
+      0.171875
+    ],
+    "leg5FarFoot": [
+      0.578125,
+      0.203125
+    ],
+    "leg5NearKnee": [
+      0.671875,
+      0.171875
+    ],
+    "leg5NearFoot": [
+      0.703125,
+      0.203125
+    ],
+    "leg6FarKnee": [
+      0.796875,
+      0.171875
+    ],
+    "leg6FarFoot": [
+      0.828125,
+      0.203125
+    ],
+    "leg6NearKnee": [
+      0.921875,
+      0.171875
+    ],
+    "leg6NearFoot": [
+      0.953125,
+      0.203125
+    ],
+    "leg7FarKnee": [
+      0.046875,
+      0.296875
+    ],
+    "leg7FarFoot": [
+      0.078125,
+      0.328125
+    ],
+    "leg7NearKnee": [
+      0.171875,
+      0.296875
+    ],
+    "leg7NearFoot": [
+      0.203125,
+      0.328125
+    ],
+    "leg8FarKnee": [
+      0.296875,
+      0.296875
+    ],
+    "leg8FarFoot": [
+      0.328125,
+      0.328125
+    ],
+    "leg8NearKnee": [
+      0.421875,
+      0.296875
+    ],
+    "leg8NearFoot": [
+      0.453125,
+      0.328125
+    ],
+    "leg9FarKnee": [
+      0.546875,
+      0.296875
+    ],
+    "leg9FarFoot": [
+      0.578125,
+      0.328125
+    ],
+    "leg9NearKnee": [
+      0.671875,
+      0.296875
+    ],
+    "leg9NearFoot": [
+      0.703125,
+      0.328125
+    ],
+    "leg10FarKnee": [
+      0.796875,
+      0.296875
+    ],
+    "leg10FarFoot": [
+      0.828125,
+      0.328125
+    ],
+    "leg10NearKnee": [
+      0.921875,
+      0.296875
+    ],
+    "leg10NearFoot": [
+      0.953125,
+      0.328125
+    ],
+    "leg11FarKnee": [
+      0.046875,
+      0.421875
+    ],
+    "leg11FarFoot": [
+      0.078125,
+      0.453125
+    ],
+    "leg11NearKnee": [
+      0.171875,
+      0.421875
+    ],
+    "leg11NearFoot": [
+      0.203125,
+      0.453125
+    ],
+    "leg12FarKnee": [
+      0.296875,
+      0.421875
+    ],
+    "leg12FarFoot": [
+      0.328125,
+      0.453125
+    ],
+    "leg12NearKnee": [
+      0.421875,
+      0.421875
+    ],
+    "leg12NearFoot": [
+      0.453125,
+      0.453125
+    ],
+    "leg13FarKnee": [
+      0.546875,
+      0.421875
+    ],
+    "leg13FarFoot": [
+      0.578125,
+      0.453125
+    ],
+    "leg13NearKnee": [
+      0.671875,
+      0.421875
+    ],
+    "leg13NearFoot": [
+      0.703125,
+      0.453125
+    ],
+    "ultimateFar": [
+      0.828125,
+      0.453125
+    ],
+    "ultimateNear": [
+      0.953125,
+      0.453125
+    ]
+  },
+  "materials": {
+    "surface": "chitin"
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.0390625,
+      "mandible": 0.04419417382415922,
+      "antennaFar": 0.04419417382415922,
+      "antennaNear": 0.04419417382415922,
+      "leg0FarKnee": 0.0390625,
+      "leg0FarFoot": 0.04419417382415922,
+      "leg0NearKnee": 0.0390625,
+      "leg0NearFoot": 0.04419417382415922,
+      "leg1FarKnee": 0.0390625,
+      "leg1FarFoot": 0.04419417382415922,
+      "leg1NearKnee": 0.0390625,
+      "leg1NearFoot": 0.04419417382415922,
+      "leg2FarKnee": 0.0390625,
+      "leg2FarFoot": 0.04419417382415922,
+      "leg2NearKnee": 0.0390625,
+      "leg2NearFoot": 0.04419417382415922,
+      "leg3FarKnee": 0.0390625,
+      "leg3FarFoot": 0.04419417382415922,
+      "leg3NearKnee": 0.0390625,
+      "leg3NearFoot": 0.04419417382415922,
+      "leg4FarKnee": 0.0390625,
+      "leg4FarFoot": 0.04419417382415922,
+      "leg4NearKnee": 0.0390625,
+      "leg4NearFoot": 0.04419417382415922,
+      "leg5FarKnee": 0.0390625,
+      "leg5FarFoot": 0.04419417382415922,
+      "leg5NearKnee": 0.0390625,
+      "leg5NearFoot": 0.04419417382415922,
+      "leg6FarKnee": 0.0390625,
+      "leg6FarFoot": 0.04419417382415922,
+      "leg6NearKnee": 0.0390625,
+      "leg6NearFoot": 0.04419417382415922,
+      "leg7FarKnee": 0.0390625,
+      "leg7FarFoot": 0.04419417382415922,
+      "leg7NearKnee": 0.0390625,
+      "leg7NearFoot": 0.04419417382415922,
+      "leg8FarKnee": 0.0390625,
+      "leg8FarFoot": 0.04419417382415922,
+      "leg8NearKnee": 0.0390625,
+      "leg8NearFoot": 0.04419417382415922,
+      "leg9FarKnee": 0.0390625,
+      "leg9FarFoot": 0.04419417382415922,
+      "leg9NearKnee": 0.0390625,
+      "leg9NearFoot": 0.04419417382415922,
+      "leg10FarKnee": 0.0390625,
+      "leg10FarFoot": 0.04419417382415922,
+      "leg10NearKnee": 0.0390625,
+      "leg10NearFoot": 0.04419417382415922,
+      "leg11FarKnee": 0.0390625,
+      "leg11FarFoot": 0.04419417382415922,
+      "leg11NearKnee": 0.0390625,
+      "leg11NearFoot": 0.04419417382415922,
+      "leg12FarKnee": 0.0390625,
+      "leg12FarFoot": 0.04419417382415922,
+      "leg12NearKnee": 0.0390625,
+      "leg12NearFoot": 0.04419417382415922,
+      "leg13FarKnee": 0.0390625,
+      "leg13FarFoot": 0.04419417382415922,
+      "leg13NearKnee": 0.0390625,
+      "leg13NearFoot": 0.04419417382415922,
+      "ultimateFar": 0.09943689110435826,
+      "ultimateNear": 0.09943689110435826
+    },
+    "measures": {
+      "body": 0.125,
+      "bone-min": 0.0390625,
+      "bone-max": 0.09943689110435826,
+      "leg/body:leg0Far": 0.6660533905932737,
+      "leg/body:leg0Near": 0.6660533905932737,
+      "leg/body:leg1Far": 0.6660533905932737,
+      "leg/body:leg1Near": 0.6660533905932737,
+      "leg/body:leg2Far": 0.6660533905932737,
+      "leg/body:leg2Near": 0.6660533905932737,
+      "leg/body:leg3Far": 0.6660533905932737,
+      "leg/body:leg3Near": 0.6660533905932737,
+      "leg/body:leg4Far": 0.6660533905932737,
+      "leg/body:leg4Near": 0.6660533905932737,
+      "leg/body:leg5Far": 0.6660533905932737,
+      "leg/body:leg5Near": 0.6660533905932737,
+      "leg/body:leg6Far": 0.6660533905932737,
+      "leg/body:leg6Near": 0.6660533905932737,
+      "leg/body:leg7Far": 0.6660533905932737,
+      "leg/body:leg7Near": 0.6660533905932737,
+      "leg/body:leg8Far": 0.6660533905932737,
+      "leg/body:leg8Near": 0.6660533905932737,
+      "leg/body:leg9Far": 0.6660533905932737,
+      "leg/body:leg9Near": 0.6660533905932737,
+      "leg/body:leg10Far": 0.6660533905932737,
+      "leg/body:leg10Near": 0.6660533905932737,
+      "leg/body:leg11Far": 0.6660533905932737,
+      "leg/body:leg11Near": 0.6660533905932737,
+      "leg/body:leg12Far": 0.6660533905932737,
+      "leg/body:leg12Near": 0.6660533905932737,
+      "leg/body:leg13Far": 0.6660533905932737,
+      "leg/body:leg13Near": 0.6660533905932737
+    }
+  },
+  "recipeHash": "63dab22e74ea6da19e6be6977703403c9573580436eeed5260659fb97c75507f"
+}

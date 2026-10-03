@@ -1,0 +1,9 @@
+{
+ "id": "08-cricket",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-near (antennaNear) covers 9% paint (reference 31%)"
+ ],
+ "semanticPresence": null
+}

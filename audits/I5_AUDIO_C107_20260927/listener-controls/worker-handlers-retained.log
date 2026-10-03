@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/species-art-worker.test.ts (21 tests | 1 failed | 20 skipped) 5ms
+     × detaches every worker callback on ordinary disposal, suspension and fatal termination 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/species-art-worker.test.ts > species art worker protocol > detaches every worker callback on ordinary disposal, suspension and fatal termination
+AssertionError: expected [ [Function onMessage], …(2) ] to have a length of +0 but got 3
+
+- Expected
++ Received
+
+- 0
++ 3
+
+ ❯ tests/species-art-worker.test.ts:83:53
+     81|       else worker.emitEvent('error');
+     82|       expect(worker.terminated).toBe(1);
+     83|       expect([...worker.listeners.values()].flat()).toHaveLength(0);
+       |                                                     ^
+     84|       const after = loader.diagnostics();
+     85|       worker.emitEvent('error'); worker.emitEvent('messageerror'); wor…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 20 skipped (21)
+   Start at  13:55:39
+   Duration  316ms (transform 154ms, setup 0ms, import 193ms, tests 5ms, environment 0ms)
+

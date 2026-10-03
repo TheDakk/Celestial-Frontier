@@ -1,0 +1,218 @@
+{
+  "schema": "cf.creature-finish-conservation/v1",
+  "status": "PASS",
+  "gates": {
+    "alpha": {
+      "status": "PASS",
+      "differingAlphaBytes": 0,
+      "changedTransparentPixels": 0,
+      "changedOpaquePixels": 6272
+    },
+    "counts": {
+      "status": "PASS",
+      "structural": true,
+      "labels": 26,
+      "components": {
+        "1": 1,
+        "2": 2,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": 1,
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 1,
+        "20": 1,
+        "21": 1,
+        "22": 1,
+        "23": 1,
+        "24": 1,
+        "25": 1,
+        "26": 1
+      }
+    },
+    "gradient": {
+      "status": "PASS",
+      "masterMeanStep": 30.93539628252789,
+      "finishedMeanStep": 30.841688475836435,
+      "ratio": 0.9969708548151238,
+      "minRatio": 0.6,
+      "boundaryPairs": 269,
+      "perLabelRatio": {
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": 1,
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 0.9677459317806771,
+        "20": 0.9667223836087722,
+        "21": 1,
+        "22": 0.9889882969428138,
+        "23": 0.9885492558744009,
+        "24": 1.003029586610048,
+        "25": 1.00302395062258,
+        "26": 1.0274286272430444
+      }
+    },
+    "binding": {
+      "status": "SKIPPED"
+    }
+  },
+  "reported": {
+    "deltaE": {
+      "1": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 4099
+      },
+      "2": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 381
+      },
+      "3": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 431
+      },
+      "4": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 379
+      },
+      "5": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 440
+      },
+      "6": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 421
+      },
+      "7": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 464
+      },
+      "8": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 544
+      },
+      "9": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 496
+      },
+      "10": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 386
+      },
+      "11": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 424
+      },
+      "12": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 379
+      },
+      "13": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 421
+      },
+      "14": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 421
+      },
+      "15": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 463
+      },
+      "16": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 538
+      },
+      "17": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 500
+      },
+      "18": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 133
+      },
+      "19": {
+        "meanDeltaE": 0.23112281782734087,
+        "maxDeltaE": 12.969233998554046,
+        "pixels": 604
+      },
+      "20": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 111
+      },
+      "21": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 134
+      },
+      "22": {
+        "meanDeltaE": 0.26885057553058417,
+        "maxDeltaE": 10.644286552448833,
+        "pixels": 559
+      },
+      "23": {
+        "meanDeltaE": 0,
+        "maxDeltaE": 0,
+        "pixels": 97
+      },
+      "24": {
+        "meanDeltaE": 0.6954766016107699,
+        "maxDeltaE": 3.3847188068941305,
+        "pixels": 8388
+      },
+      "25": {
+        "meanDeltaE": 0.45161452774641997,
+        "maxDeltaE": 7.093846282273615,
+        "pixels": 76
+      },
+      "26": {
+        "meanDeltaE": 0.4688782715490003,
+        "maxDeltaE": 6.810675368699216,
+        "pixels": 76
+      }
+    },
+    "ssim": 0.9972871167802645
+  }
+}

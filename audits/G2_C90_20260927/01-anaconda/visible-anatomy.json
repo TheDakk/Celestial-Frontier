@@ -1,0 +1,92 @@
+{
+  "id": "01-anaconda",
+  "name": "Anaconda",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "595659a83fa7373ac9c9329221556dd5438da69bc31865b2637c4523bf727f9b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 12382,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 12,
+      "y0": 174,
+      "x1": 304,
+      "y1": 244
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2288,
+        "pixels": 2833,
+        "box": {
+          "x0": 15,
+          "y0": 184,
+          "x1": 177,
+          "y1": 232
+        },
+        "attach": {
+          "x": 152,
+          "y": 205.5,
+          "relX": 0.48,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.15
+        },
+        "class": "rear",
+        "length": 139.6
+      },
+      {
+        "k": 1,
+        "frac": 0.2261,
+        "pixels": 2800,
+        "box": {
+          "x0": 281,
+          "y0": 188,
+          "x1": 400,
+          "y1": 237
+        },
+        "attach": {
+          "x": 299.5,
+          "y": 215.5,
+          "relX": 0.98,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": 0.98,
+          "y": -0.22
+        },
+        "class": "front",
+        "length": 104.1
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "front": 1
+    },
+    "ground": [
+      {
+        "x0": 238,
+        "x1": 294,
+        "cx": 266
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

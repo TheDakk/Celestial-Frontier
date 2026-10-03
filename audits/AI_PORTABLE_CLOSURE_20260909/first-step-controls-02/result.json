@@ -1,0 +1,15 @@
+{
+  "schema": "cf.first-step-controls.v1",
+  "command": [
+    "node",
+    "--test",
+    "tools/local-image-generation/stage-worker-first-step.test.mjs",
+    "tools/local-image-generation/first-step-harness.test.mjs"
+  ],
+  "exitCode": 0,
+  "sourceCount": 8,
+  "sourcesUnchanged": true,
+  "changed": [],
+  "status": "PASS",
+  "reviewCorrection": "Independent review found first-step terminal/step/cleanup chronology gaps in first passing controls. Corrected fixture order to actual worker; added reorder mutations; previous PASS remains scoped and preserved."
+}

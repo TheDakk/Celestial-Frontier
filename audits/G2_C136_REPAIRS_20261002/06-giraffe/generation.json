@@ -1,0 +1,14 @@
+{
+  "id": "06-giraffe",
+  "name": "Giraffe",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-eda013be-3635-4c50-916a-785dca3ec64c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9ac84c0f0d1dda6ec7fc530968824f6f1aabc06a0417ed3ba30722cfae1d0bca",
+  "bytes": 1098311,
+  "promptSha256": "a7c62985d27dcb0f10ede8d20f4e4f355bd1ff11eb824387e44172dd044f3c43",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

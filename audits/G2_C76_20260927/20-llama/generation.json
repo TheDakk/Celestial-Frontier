@@ -1,0 +1,13 @@
+{
+  "id": "20-llama",
+  "name": "Llama",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f77542a6-8241-4bc3-b9d7-a9b980eb74ee.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "69670282790169f2dac084fd02ed709181bf1e2d0773e67447a89d2b5a435a08",
+  "bytes": 1244992,
+  "promptSha256": "81d44474c8c78fab1baee3b3874c62236e5eeae4bd1fc15d5fd447df9b09eb0d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

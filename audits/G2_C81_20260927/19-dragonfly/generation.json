@@ -1,0 +1,13 @@
+{
+  "id": "19-dragonfly",
+  "name": "Dragonfly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-cc536e2e-ea75-4e24-932a-af018e233b9c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d5542f73fa88652023f3e92bf73147c2931d4199d76d56969f2de9bb2e4fac38",
+  "bytes": 1291103,
+  "promptSha256": "1bcb537d8a5271672cd2ca4cfd40c457e15ce5210b59bb6d4fef9062ae05a380",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,49 @@
+{
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/13-cattle/packet",
+  "sourceMasterSha256": "b69bb1d3c6918217337a2b541aee923df279d5b8b3996ae5f5f68848ccbf31bb",
+  "sourceAuthorSha256": "b74f7400532d2c98ad93323d7121ab41e5401eac3c0c1e81f849c22914561cc0",
+  "moves": [
+    {
+      "joint": "foreFarKnee",
+      "from": [
+        780,
+        792.7
+      ],
+      "to": [
+        805.5,
+        818.5
+      ],
+      "fromOwner": "fore-near-root",
+      "toOwner": "fore-far-knee",
+      "distancePx": 36.27519813867317
+    },
+    {
+      "joint": "hindNearKnee",
+      "from": [
+        221,
+        690.2
+      ],
+      "to": [
+        218.5,
+        714.5
+      ],
+      "fromOwner": "hind-near-root",
+      "toOwner": "hind-near-knee",
+      "distancePx": 24.428262320517145
+    },
+    {
+      "joint": "foreNearKnee",
+      "from": [
+        762.5,
+        809.5
+      ],
+      "to": [
+        759.5,
+        812.5
+      ],
+      "fromOwner": "fore-near-root",
+      "toOwner": "fore-near-knee",
+      "distancePx": 4.242640687119286
+    }
+  ]
+}

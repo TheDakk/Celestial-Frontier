@@ -1,0 +1,13 @@
+{
+  "id": "09-macaw",
+  "name": "Macaw",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e4919838-edbd-4043-8330-3e458702039f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "426bfc3f6a96e3917735492f8da1b04338d4535fb9c3ba6da9c86b069735ac51",
+  "bytes": 1110296,
+  "promptSha256": "1b7f56acabf4b8e71aacf0ce939730ef51b20c1cc89fb62985ecfafccb9d4485",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

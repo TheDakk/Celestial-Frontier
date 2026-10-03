@@ -1,0 +1,1747 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v4.environment.wind",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.wind"
+      ],
+      "notes": "Designed environment component wind. Ingredients: Wind Soundscape from Gem Lake. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 0,
+      "master": "masters/ecology-environments/v4.environment.wind.wav",
+      "masterSha256": "70b6f9f262d70841a26eabafd7ea228fb5869873e5b633e81fc64e1695db5c74",
+      "opus": "masters/ecology-environments/v4.environment.wind.opus",
+      "opusSha256": "1e99c1884d4a4a9d80bc17e31f7905512b8a9518b977b0070272055a2fb7b3da",
+      "previewSha256": "2e9491f06dbf5af9ead1233bd73a25432ea6a04f7f3ab7b2f8f0860144882353",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.wind.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.foliage",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/oga_foley/0efaa7a0397061cd-320141__owlstorm__blanket-movement-3.wav",
+          "sha256": "0efaa7a0397061cd1aa38a66bfed01fd7d8cee31c2f07d572a08d4143d5bfcab",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 3.161655
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.foliage"
+      ],
+      "notes": "Designed environment component foliage. Ingredients: Wind Soundscape from Gem Lake; Cloth, Rustle/320141__owlstorm__blanket-movement-3.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 17,
+      "master": "masters/ecology-environments/v4.environment.foliage.wav",
+      "masterSha256": "df257926063aedf0a6d30c46106c965a64efabe5909e4d33d616232c08570bea",
+      "opus": "masters/ecology-environments/v4.environment.foliage.opus",
+      "opusSha256": "c7123a4617736021680f954945ea5d9fc254c8c0b0366fac05cdaffd17b5cd53",
+      "previewSha256": "8e9d0223b17bffc17fbcb4040613f600eb0dedb20165e7c0f3f2463420047bad",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.foliage.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.grass",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/kenney_impacts/0546e1d8ab2def71-footstep_grass_003.ogg",
+          "sha256": "0546e1d8ab2def714425701a18bd34c5ee2794b12e858e5b595aabcf38a34137",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.66932
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.grass"
+      ],
+      "notes": "Designed environment component grass. Ingredients: Wind Soundscape from Gem Lake; Audio/footstep_grass_003.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 34,
+      "master": "masters/ecology-environments/v4.environment.grass.wav",
+      "masterSha256": "41dc70041419e6c4f8e2010a0fcd580ae1568e38a1be44419f8cb55fe98b16ac",
+      "opus": "masters/ecology-environments/v4.environment.grass.opus",
+      "opusSha256": "f7da3e3cc17df011cd3646602cfb04879d570f3abc1fcf14a7135fe4f59c621d",
+      "previewSha256": "9c50397703e2905c437297acc5cc4ef326c968fefa169512aca53873466f845e",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.grass.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.canopy",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 5.078417
+        },
+        {
+          "path": "source-audio/oga_foley/0efaa7a0397061cd-320141__owlstorm__blanket-movement-3.wav",
+          "sha256": "0efaa7a0397061cd1aa38a66bfed01fd7d8cee31c2f07d572a08d4143d5bfcab",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 1.2,
+          "duration": 3.161655
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.canopy"
+      ],
+      "notes": "Designed environment component canopy. Ingredients: Wind Soundscape from Gem Lake; Stream; Cloth, Rustle/320141__owlstorm__blanket-movement-3.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 51,
+      "master": "masters/ecology-environments/v4.environment.canopy.wav",
+      "masterSha256": "1da4e1cf8f8b630a2029c8b2f3ed804098a952c81e059b8df37f6f2448ce7dd7",
+      "opus": "masters/ecology-environments/v4.environment.canopy.opus",
+      "opusSha256": "c0842236f4f9df6a9810b6d7a160fa7a0c1c0391a57a2053419d56013e2abad6",
+      "previewSha256": "83fbba295dd8f459d83f22fc65c903b2b121393e72cd0383bef5876426a0eb5c",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.canopy.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.wetland",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 5.078417
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/8f349402462580e1-nri-RainDEPO.mp3",
+          "sha256": "8f349402462580e1faca6a51bc13fea4655698624966e976195d2b2fd08a5337",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 4.97125
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.wetland"
+      ],
+      "notes": "Designed environment component wetland. Ingredients: Stream; Rain. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 68,
+      "master": "masters/ecology-environments/v4.environment.wetland.wav",
+      "masterSha256": "abc6bd0d63d00f41b0c6c354e42a7fb6a1dd8462e29e7910f8d21cdffc17bc65",
+      "opus": "masters/ecology-environments/v4.environment.wetland.opus",
+      "opusSha256": "1452f3e727d4461c23827e42d913cd9ad0877fdd9e607eab9c54257a5adc5ecd",
+      "previewSha256": "57cd322fbd7f588fc3a5bbb81aa6a41cdb70e04956d7c6ecc2b4b8ca6d00a5f8",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.wetland.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.4,
+      "opusDbTP": -10.2
+    },
+    {
+      "id": "v4.environment.estuary",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 6.627286
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.estuary"
+      ],
+      "notes": "Designed environment component estuary. Ingredients: Ocean; Stream. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 85,
+      "master": "masters/ecology-environments/v4.environment.estuary.wav",
+      "masterSha256": "8e20de3685a77b131ce8192f72809da2d6ed84855704125a847b38d047029f6e",
+      "opus": "masters/ecology-environments/v4.environment.estuary.opus",
+      "opusSha256": "defb682b39626dc62574238a2cad8a126612ed59cae0f88587273a82efbb4d10",
+      "previewSha256": "7e4ea70690fccbe79c53a32212d9cf83916762064d69367d4a8e2d7f41617875",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.estuary.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.3,
+      "opusDbTP": -11.3
+    },
+    {
+      "id": "v4.environment.tundra",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/kenney_impacts/68272e3f1cabcabd-footstep_snow_003.ogg",
+          "sha256": "68272e3f1cabcabd02d328fd344454d7c04cb58b5a86972fcdd858f845e3d007",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.tundra"
+      ],
+      "notes": "Designed environment component tundra. Ingredients: Wind Soundscape from Gem Lake; Audio/footstep_snow_003.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 102,
+      "master": "masters/ecology-environments/v4.environment.tundra.wav",
+      "masterSha256": "c100823047c8ecf87328ac8781053d250c9b1550fe2f72d1b270fb6c8951c1cc",
+      "opus": "masters/ecology-environments/v4.environment.tundra.opus",
+      "opusSha256": "19be9814d7864f9a936a40529e060946e9831aa83575380a6c1a100d812fc1a0",
+      "previewSha256": "81f135e4c3d512092960e2ce09dca44da94d52a15b6bc92bef1cfdf3ea0f0408",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.tundra.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.cave",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 5.078417
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/090c20e5496977cd-nri-RockslideYOSE.mp3",
+          "sha256": "090c20e5496977cd627d2bfff45006ebcae7da246c3599abf56994c283cd0588",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 9.9345
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.cave"
+      ],
+      "notes": "Designed environment component cave. Ingredients: Stream; Rockfall. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 119,
+      "master": "masters/ecology-environments/v4.environment.cave.wav",
+      "masterSha256": "2b706d761f02fb11a153d6d72a79f3febfcfc880f293676a08dcf083ed83c9e3",
+      "opus": "masters/ecology-environments/v4.environment.cave.opus",
+      "opusSha256": "e4cc43f056452844786c0f3cbbdb67d2e4d66b71a47d642a3c123802f3d09d5f",
+      "previewSha256": "a5692ff9d8919d6a031d6344d9c5cca5b49fd941c8d6ed2a09b45c27f591d874",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.cave.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.4,
+      "opusDbTP": -10.2
+    },
+    {
+      "id": "v4.environment.salt",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.salt"
+      ],
+      "notes": "Designed environment component salt. Ingredients: Wind Soundscape from Gem Lake; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 136,
+      "master": "masters/ecology-environments/v4.environment.salt.wav",
+      "masterSha256": "94eb69632174bc40030449175abaacc0a397c522be0e9f4073c223f15dc08360",
+      "opus": "masters/ecology-environments/v4.environment.salt.opus",
+      "opusSha256": "9bf5b7fe2985d412d0a84dc599cdc168254f77611740b6f0b0ef63ce2b1cc331",
+      "previewSha256": "cd7e554b93db0fc384b810dc1c6c82d6d6ee0ed0eaee254da8ec6e1ee0eecd29",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.salt.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.spore",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0efaa7a0397061cd-320141__owlstorm__blanket-movement-3.wav",
+          "sha256": "0efaa7a0397061cd1aa38a66bfed01fd7d8cee31c2f07d572a08d4143d5bfcab",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 3.161655
+        },
+        {
+          "path": "source-audio/oga_water/5ae25a9734a05f60-loop_bubbles_1.ogg",
+          "sha256": "5ae25a9734a05f60e57a1b1db2fa9afaddf972c1a2927c1e743e720fcdaaccfe",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 4.407
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.spore"
+      ],
+      "notes": "Designed environment component spore. Ingredients: Cloth, Rustle/320141__owlstorm__blanket-movement-3.wav; loop_bubbles_1.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 153,
+      "master": "masters/ecology-environments/v4.environment.spore.wav",
+      "masterSha256": "32758604ac36546d28ca3adfba5dbfa28f28beaeb837719f69195940bd48ac35",
+      "opus": "masters/ecology-environments/v4.environment.spore.opus",
+      "opusSha256": "12dcb2b6748c37ff7e7f6a68d780630267a4383e9a6b36b15174f58ec9b5939f",
+      "previewSha256": "4a5cbf5d398e1a0dda2a0c216b9639f1ccfe96f73f9d92fb565dc3850e3cea65",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.spore.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.4,
+      "opusDbTP": -25.4
+    },
+    {
+      "id": "v4.environment.crystal",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.crystal"
+      ],
+      "notes": "Designed environment component crystal. Ingredients: Wind Soundscape from Gem Lake; Audio/impactGlass_light_001.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 170,
+      "master": "masters/ecology-environments/v4.environment.crystal.wav",
+      "masterSha256": "a62fd3980ba67e8984b113458e4459d20becbbb939dee51f3a628642bac056b1",
+      "opus": "masters/ecology-environments/v4.environment.crystal.opus",
+      "opusSha256": "67ffb28bc0f173a14f2daec12d9db049dd9c41d0e43da786363572ccb6b762a1",
+      "previewSha256": "21955b8f0ad09a09517990fe104b4023096f39182ee7025ef81f0a2908a3245c",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.crystal.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.reef",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/5ae25a9734a05f60-loop_bubbles_1.ogg",
+          "sha256": "5ae25a9734a05f60e57a1b1db2fa9afaddf972c1a2927c1e743e720fcdaaccfe",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 4.407
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/4d55ce7e299b7d2d-nri-StreamMUWO.mp3",
+          "sha256": "4d55ce7e299b7d2d9ab50aee2d28233f05662886cbb57e792aa210d39dd73744",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 5.078417
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.reef"
+      ],
+      "notes": "Designed environment component reef. Ingredients: loop_bubbles_1.ogg; Stream. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 187,
+      "master": "masters/ecology-environments/v4.environment.reef.wav",
+      "masterSha256": "60f6a68a5a02f74c81fbfc4e2465680ea8a80a9215002fcef1002ae9f417d295",
+      "opus": "masters/ecology-environments/v4.environment.reef.opus",
+      "opusSha256": "69507271760579b9ebac9085af9ef3e75f417d734e4cdd21c2e64cf1b0546be3",
+      "previewSha256": "935f48c5cda536e8a008e640f284efafba949d8ee113f35b849adda917475ca4",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.reef.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.9,
+      "opusDbTP": -20.9
+    },
+    {
+      "id": "v4.environment.bioluminescent",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/5ae25a9734a05f60-loop_bubbles_1.ogg",
+          "sha256": "5ae25a9734a05f60e57a1b1db2fa9afaddf972c1a2927c1e743e720fcdaaccfe",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 4.407
+        },
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.bioluminescent"
+      ],
+      "notes": "Designed environment component bioluminescent. Ingredients: loop_bubbles_1.ogg; Audio/impactGlass_light_001.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 204,
+      "master": "masters/ecology-environments/v4.environment.bioluminescent.wav",
+      "masterSha256": "c7566eaba244c012fba27e6732ae2fe2720b25d8801e0f00cd4b6ec9ad63558c",
+      "opus": "masters/ecology-environments/v4.environment.bioluminescent.opus",
+      "opusSha256": "fd0843b697769307dcdc7ff57b0942aa3dfcd022f5e57d3074625edc44a37a92",
+      "previewSha256": "4d04950ae3c394b8006ec1c47ba3ae2d364cbb80771d85b8ec35124898fb9871",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.bioluminescent.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.2,
+      "opusDbTP": -21.1
+    },
+    {
+      "id": "v4.environment.glacier",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/nps_yellowstone/ad9c91c02385666c-yell-YellowstoneLakeSings.mp3",
+          "sha256": "ad9c91c02385666c0c284da4526d7784d764d440251b46355f1f1b228de795fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 133.334292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.glacier"
+      ],
+      "notes": "Designed environment component glacier. Ingredients: Wind Soundscape from Gem Lake; Yellowstone Lake (singing). Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 221,
+      "master": "masters/ecology-environments/v4.environment.glacier.wav",
+      "masterSha256": "1387943268d8d6eb135c1e713bdcf6d66cb0cbdbe67e31ad3960839ae9b470e0",
+      "opus": "masters/ecology-environments/v4.environment.glacier.opus",
+      "opusSha256": "46daaecdc465e7b69c10d893b6549bfb1020f3d6b86ba2b5bebc33770c5df265",
+      "previewSha256": "136d9be8c13b6f7dce125fbd2bcce2284a09ac2f1ee88ace08d955e308fb1a3a",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.glacier.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.packice",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/ad9c91c02385666c-yell-YellowstoneLakeSings.mp3",
+          "sha256": "ad9c91c02385666c0c284da4526d7784d764d440251b46355f1f1b228de795fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 133.334292
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.packice"
+      ],
+      "notes": "Designed environment component packice. Ingredients: Yellowstone Lake (singing); Ocean. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 238,
+      "master": "masters/ecology-environments/v4.environment.packice.wav",
+      "masterSha256": "ddc82a4888a31dc577b7bd5fcf3d5ec9c00a3b2701723369281680d147cb6938",
+      "opus": "masters/ecology-environments/v4.environment.packice.opus",
+      "opusSha256": "3e00fba772827dabb9cd8a2eded8a3989d52cfca83dd74465c80147b6d2446f9",
+      "previewSha256": "0c0daa47cb0ba92c618276c48332f77e7804935284348b249a9402836efc23ef",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.packice.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.7,
+      "opusDbTP": -20.6
+    },
+    {
+      "id": "v4.environment.ice-jet",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 171.946667
+        },
+        {
+          "path": "source-audio/nps_yellowstone/ad9c91c02385666c-yell-YellowstoneLakeSings.mp3",
+          "sha256": "ad9c91c02385666c0c284da4526d7784d764d440251b46355f1f1b228de795fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 133.334292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.ice-jet"
+      ],
+      "notes": "Designed environment component ice-jet. Ingredients: Black Growler Steam Vent; Yellowstone Lake (singing). Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 255,
+      "master": "masters/ecology-environments/v4.environment.ice-jet.wav",
+      "masterSha256": "f6559f5b47dd081beade397a5930c473d37262064a96dc751a52ecd48cdf1da0",
+      "opus": "masters/ecology-environments/v4.environment.ice-jet.opus",
+      "opusSha256": "89196fbb09d4a593d280ea0e34903a537fe80e54bd73d9135c8d0aca1d1fec27",
+      "previewSha256": "831144cdf4ffcf346c086ca408cf76738765559695681b5d9b76c8e3c9a98fca",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.ice-jet.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.6,
+      "opusDbTP": -19.3
+    },
+    {
+      "id": "v4.environment.blueice",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/ad9c91c02385666c-yell-YellowstoneLakeSings.mp3",
+          "sha256": "ad9c91c02385666c0c284da4526d7784d764d440251b46355f1f1b228de795fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 133.334292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.blueice"
+      ],
+      "notes": "Designed environment component blueice. Ingredients: Yellowstone Lake (singing). Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 272,
+      "master": "masters/ecology-environments/v4.environment.blueice.wav",
+      "masterSha256": "f5079b0f09cd36c47a96f709d9c532f7b5071b53687f6646322a5fefaa3f1a1d",
+      "opus": "masters/ecology-environments/v4.environment.blueice.opus",
+      "opusSha256": "176090edcb3a8e473589e1931d290541063ec58853d6acc74ed5cc056f178112",
+      "previewSha256": "56694c35d1939f09010c1011c31714677e5ec76e7e2d9eddc7221bae837b4756",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.blueice.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.2,
+      "opusDbTP": -23.2
+    },
+    {
+      "id": "v4.environment.dunes",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.dunes"
+      ],
+      "notes": "Designed environment component dunes. Ingredients: Wind Soundscape from Gem Lake; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 289,
+      "master": "masters/ecology-environments/v4.environment.dunes.wav",
+      "masterSha256": "94eb69632174bc40030449175abaacc0a397c522be0e9f4073c223f15dc08360",
+      "opus": "masters/ecology-environments/v4.environment.dunes.opus",
+      "opusSha256": "fc15ce051f9c9379a7e0d7e94d43a7defc15db4f8f2a7240c13311c35f41081c",
+      "previewSha256": "cd7e554b93db0fc384b810dc1c6c82d6d6ee0ed0eaee254da8ec6e1ee0eecd29",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.dunes.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.canyon",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/090c20e5496977cd-nri-RockslideYOSE.mp3",
+          "sha256": "090c20e5496977cd627d2bfff45006ebcae7da246c3599abf56994c283cd0588",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 9.9345
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.canyon"
+      ],
+      "notes": "Designed environment component canyon. Ingredients: Wind Soundscape from Gem Lake; Rockfall. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 306,
+      "master": "masters/ecology-environments/v4.environment.canyon.wav",
+      "masterSha256": "6cd5e465ea2a75aafa88c295af19fa50ef9178bd518ecbacf268b3aedb3244fe",
+      "opus": "masters/ecology-environments/v4.environment.canyon.opus",
+      "opusSha256": "8024fdf32ee2c8632d4365ee3192da55588cb7090ebf0804c40c9f5400dd6c99",
+      "previewSha256": "1c7a7dd4b12fdca7c151d3152e7a19c1d47588a366ec4567f8e3f83783fcfe18",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.canyon.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.5,
+      "opusDbTP": -15.5
+    },
+    {
+      "id": "v4.environment.glass",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 1.2,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.glass"
+      ],
+      "notes": "Designed environment component glass. Ingredients: Wind Soundscape from Gem Lake; Audio/impactGlass_light_001.ogg; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 323,
+      "master": "masters/ecology-environments/v4.environment.glass.wav",
+      "masterSha256": "8d4753dfad66b375a8cf2dc766eb06958c35397a9a52c965806ef43d1ab14553",
+      "opus": "masters/ecology-environments/v4.environment.glass.opus",
+      "opusSha256": "1af18eb09220c9dbdebe3cfddba55d5fd57f39662c5d31f0c8f8f00891ace006",
+      "previewSha256": "e7a2570dfc8b1f6beef16cfeb3bd3978bb347e773375975b3701f82a858ff5bb",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.glass.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.fault",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/090c20e5496977cd-nri-RockslideYOSE.mp3",
+          "sha256": "090c20e5496977cd627d2bfff45006ebcae7da246c3599abf56994c283cd0588",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 9.9345
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.fault"
+      ],
+      "notes": "Designed environment component fault. Ingredients: Rockfall. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 340,
+      "master": "masters/ecology-environments/v4.environment.fault.wav",
+      "masterSha256": "3fee9d592efa2c37182746885422750f6eb617687cd438169940ccec1e12fe4f",
+      "opus": "masters/ecology-environments/v4.environment.fault.opus",
+      "opusSha256": "4a124aa5c1b40e38dcf4fddfc6898c7bc295d9ec6bbc664241d696490c83ca79",
+      "previewSha256": "f9557d7d7e63ebc56dc08832e0bca63b547bb638d821b15a9016cf1c4487e0b9",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.fault.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.7
+    },
+    {
+      "id": "v4.environment.carbon",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/090c20e5496977cd-nri-RockslideYOSE.mp3",
+          "sha256": "090c20e5496977cd627d2bfff45006ebcae7da246c3599abf56994c283cd0588",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 9.9345
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.carbon"
+      ],
+      "notes": "Designed environment component carbon. Ingredients: Rockfall; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 357,
+      "master": "masters/ecology-environments/v4.environment.carbon.wav",
+      "masterSha256": "ff4129b3d5b09af740731afbe52f221cb9e2e0e1525ba95080c1dba17b155751",
+      "opus": "masters/ecology-environments/v4.environment.carbon.opus",
+      "opusSha256": "a31713dcd8f55b33d3cc7d80c96610a3f33f55a136753e163cb6fdc37039032e",
+      "previewSha256": "74a2cf1dfefe679efb5b7994bc8c9292415068cf462e3f0fdbe8fafd9daf2ebb",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.carbon.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.8
+    },
+    {
+      "id": "v4.environment.sulfur",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 171.946667
+        },
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 271.434021
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.sulfur"
+      ],
+      "notes": "Designed environment component sulfur. Ingredients: Black Growler Steam Vent; Wind Soundscape from Gem Lake. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 374,
+      "master": "masters/ecology-environments/v4.environment.sulfur.wav",
+      "masterSha256": "3c76abdff6954178c763477d72a4ede7dbe7418e9f037ad50d077c2c3e1dda7f",
+      "opus": "masters/ecology-environments/v4.environment.sulfur.opus",
+      "opusSha256": "b56f43b1189a3035602adc2848ae19274d111c53fff3287bdca9e5d9e550b6dd",
+      "previewSha256": "be33257f9c267b771909db9bb944ea72c81c2b46354a9736fb396e7e5cd9cae1",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.sulfur.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.8,
+      "opusDbTP": -19.8
+    },
+    {
+      "id": "v4.environment.acid",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 171.946667
+        },
+        {
+          "path": "source-audio/oga_water/5ae25a9734a05f60-loop_bubbles_1.ogg",
+          "sha256": "5ae25a9734a05f60e57a1b1db2fa9afaddf972c1a2927c1e743e720fcdaaccfe",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 4.407
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.acid"
+      ],
+      "notes": "Designed environment component acid. Ingredients: Black Growler Steam Vent; loop_bubbles_1.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 391,
+      "master": "masters/ecology-environments/v4.environment.acid.wav",
+      "masterSha256": "a7f68ec3fc7b2e14881df4e50169f9fef090a1cd0484d23617499a1fd18de581",
+      "opus": "masters/ecology-environments/v4.environment.acid.opus",
+      "opusSha256": "d8446879b4150d2aa0056043ddd2ad61cb40548878ec2804c8b00d7785c69c10",
+      "previewSha256": "950a424a78630166640b550a9891e396d910e512322609f3d12909648fee79f1",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.acid.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.6,
+      "opusDbTP": -19.7
+    },
+    {
+      "id": "v4.environment.pressure",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 171.946667
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.pressure"
+      ],
+      "notes": "Designed environment component pressure. Ingredients: Wind Soundscape from Gem Lake; Black Growler Steam Vent. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 408,
+      "master": "masters/ecology-environments/v4.environment.pressure.wav",
+      "masterSha256": "380a49dc9405ac65cba204e7c163fb1047c11ac3a6dee71792bc08468bf0b987",
+      "opus": "masters/ecology-environments/v4.environment.pressure.opus",
+      "opusSha256": "af7d8f6ba6efcebbcbfeee1c6168634a0a1b7d9debe2a7704ca26ee96ca5245b",
+      "previewSha256": "9c99d92fe858908b90335c9c93631789865f97b15d93821819adf1a101f3c7c9",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.pressure.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.7,
+      "opusDbTP": -15.4
+    },
+    {
+      "id": "v4.environment.ash",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.ash"
+      ],
+      "notes": "Designed environment component ash. Ingredients: Wind Soundscape from Gem Lake; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 425,
+      "master": "masters/ecology-environments/v4.environment.ash.wav",
+      "masterSha256": "94eb69632174bc40030449175abaacc0a397c522be0e9f4073c223f15dc08360",
+      "opus": "masters/ecology-environments/v4.environment.ash.opus",
+      "opusSha256": "df0035c3fff6e9d3e4d8e18665d575f0d1cd9489c82d1a72299869154c0a769c",
+      "previewSha256": "cd7e554b93db0fc384b810dc1c6c82d6d6ee0ed0eaee254da8ec6e1ee0eecd29",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.ash.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.embers",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 171.946667
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.embers"
+      ],
+      "notes": "Designed environment component embers. Ingredients: Black Growler Steam Vent; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 442,
+      "master": "masters/ecology-environments/v4.environment.embers.wav",
+      "masterSha256": "913df055bd54281aafc7f6f47bce52650ce9738ce26ade5a95e4fbcac2ea08e9",
+      "opus": "masters/ecology-environments/v4.environment.embers.opus",
+      "opusSha256": "764097d968c1e845d3558cd0de275d792052a914b60f437be0a52d79dfc70951",
+      "previewSha256": "cbf41e7b68dfd1252d5f04b9cf644e291e1454e6931c61fc5e31a947a9602564",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.embers.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.6,
+      "opusDbTP": -19.7
+    },
+    {
+      "id": "v4.environment.magma",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 171.946667
+        },
+        {
+          "path": "source-audio/oga_water/5ae25a9734a05f60-loop_bubbles_1.ogg",
+          "sha256": "5ae25a9734a05f60e57a1b1db2fa9afaddf972c1a2927c1e743e720fcdaaccfe",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 4.407
+        },
+        {
+          "path": "source-audio/nps_natural_sounds/090c20e5496977cd-nri-RockslideYOSE.mp3",
+          "sha256": "090c20e5496977cd627d2bfff45006ebcae7da246c3599abf56994c283cd0588",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 1.2,
+          "duration": 9.9345
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.magma"
+      ],
+      "notes": "Designed environment component magma. Ingredients: Black Growler Steam Vent; loop_bubbles_1.ogg; Rockfall. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 459,
+      "master": "masters/ecology-environments/v4.environment.magma.wav",
+      "masterSha256": "042cb31f983de30e331be14fc2c8d6a746b878dbf59a38fcc242eefdf890ec59",
+      "opus": "masters/ecology-environments/v4.environment.magma.opus",
+      "opusSha256": "51d561ff38dbfd9a3bcca88078e8fde42b251e808c313152c48d1699450cb5b3",
+      "previewSha256": "8154d358e05cd39f7d4061e3d08414eca3b2c9d21fc5ffaf35eb420ebbbb2e01",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.magma.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.6,
+      "opusDbTP": -19.7
+    },
+    {
+      "id": "v4.environment.ice-cloud",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/nps_yellowstone/ad9c91c02385666c-yell-YellowstoneLakeSings.mp3",
+          "sha256": "ad9c91c02385666c0c284da4526d7784d764d440251b46355f1f1b228de795fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 133.334292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.ice-cloud"
+      ],
+      "notes": "Designed environment component ice-cloud. Ingredients: Wind Soundscape from Gem Lake; Yellowstone Lake (singing). Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 476,
+      "master": "masters/ecology-environments/v4.environment.ice-cloud.wav",
+      "masterSha256": "1387943268d8d6eb135c1e713bdcf6d66cb0cbdbe67e31ad3960839ae9b470e0",
+      "opus": "masters/ecology-environments/v4.environment.ice-cloud.opus",
+      "opusSha256": "13f3719feb15a77d547818ee3f390fd55f31f998132992d25682bf6c5aeb8f17",
+      "previewSha256": "136d9be8c13b6f7dce125fbd2bcce2284a09ac2f1ee88ace08d955e308fb1a3a",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.ice-cloud.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.underwater",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/5ae25a9734a05f60-loop_bubbles_1.ogg",
+          "sha256": "5ae25a9734a05f60e57a1b1db2fa9afaddf972c1a2927c1e743e720fcdaaccfe",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 4.407
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.underwater"
+      ],
+      "notes": "Designed environment component underwater. Ingredients: loop_bubbles_1.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 493,
+      "master": "masters/ecology-environments/v4.environment.underwater.wav",
+      "masterSha256": "b3ce237b151532ef0cc8a6bbcafd156165a7be6631ef9b7002e09390ba2928d5",
+      "opus": "masters/ecology-environments/v4.environment.underwater.opus",
+      "opusSha256": "aa7a9845f167fbc66d15b575ba802f32491d311a2e702e4e64975f6b852a1daa",
+      "previewSha256": "64c5fc95213294c23dda1328442e5244e5a02f8378c6b45f2939b3847e7590e4",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.underwater.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.2,
+      "opusDbTP": -21.1
+    },
+    {
+      "id": "v4.environment.cold",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/nps_yellowstone/ad9c91c02385666c-yell-YellowstoneLakeSings.mp3",
+          "sha256": "ad9c91c02385666c0c284da4526d7784d764d440251b46355f1f1b228de795fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 133.334292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.cold"
+      ],
+      "notes": "Designed environment component cold. Ingredients: Wind Soundscape from Gem Lake; Yellowstone Lake (singing). Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 510,
+      "master": "masters/ecology-environments/v4.environment.cold.wav",
+      "masterSha256": "1387943268d8d6eb135c1e713bdcf6d66cb0cbdbe67e31ad3960839ae9b470e0",
+      "opus": "masters/ecology-environments/v4.environment.cold.opus",
+      "opusSha256": "de23c6636773a619c8e34842c2dd08f82609fd8fff2f996afe020bfad018296c",
+      "previewSha256": "136d9be8c13b6f7dce125fbd2bcce2284a09ac2f1ee88ace08d955e308fb1a3a",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.cold.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.dry",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.dry"
+      ],
+      "notes": "Designed environment component dry. Ingredients: Wind Soundscape from Gem Lake; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 527,
+      "master": "masters/ecology-environments/v4.environment.dry.wav",
+      "masterSha256": "94eb69632174bc40030449175abaacc0a397c522be0e9f4073c223f15dc08360",
+      "opus": "masters/ecology-environments/v4.environment.dry.opus",
+      "opusSha256": "0827a52a5237a5a5a12a5d9b33c7f6634a82461da55bd605f361bd87845d9c03",
+      "previewSha256": "cd7e554b93db0fc384b810dc1c6c82d6d6ee0ed0eaee254da8ec6e1ee0eecd29",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.dry.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.rain",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/8f349402462580e1-nri-RainDEPO.mp3",
+          "sha256": "8f349402462580e1faca6a51bc13fea4655698624966e976195d2b2fd08a5337",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 4.97125
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.rain"
+      ],
+      "notes": "Designed environment component rain. Ingredients: Rain. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 544,
+      "master": "masters/ecology-environments/v4.environment.rain.wav",
+      "masterSha256": "5100ae63bbf80d2860029a40cc753cf53d9de79121e2151ab26a334bf530db7b",
+      "opus": "masters/ecology-environments/v4.environment.rain.opus",
+      "opusSha256": "044d33823a1d05f420609b4d07747e463ce7163cad75ea5ab27540d4722cde69",
+      "previewSha256": "a55e4d0a18b022010149de6008e8c31d6908d83e81a1ca944f6082e9a692f8c2",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.rain.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -38.9,
+      "opusDbTP": -38.7
+    },
+    {
+      "id": "v4.environment.snow",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/kenney_impacts/68272e3f1cabcabd-footstep_snow_003.ogg",
+          "sha256": "68272e3f1cabcabd02d328fd344454d7c04cb58b5a86972fcdd858f845e3d007",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.snow"
+      ],
+      "notes": "Designed environment component snow. Ingredients: Wind Soundscape from Gem Lake; Audio/footstep_snow_003.ogg. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 561,
+      "master": "masters/ecology-environments/v4.environment.snow.wav",
+      "masterSha256": "6a4e4c9280577cd62ae5dc0a9fec2a964dcb38af77250f2fb0524e201225c9a8",
+      "opus": "masters/ecology-environments/v4.environment.snow.opus",
+      "opusSha256": "82a5fe0b2715d13e9471d741af9996f29d3bb0e65b99c3dd3c26bfa9e233b113",
+      "previewSha256": "81f135e4c3d512092960e2ce09dca44da94d52a15b6bc92bef1cfdf3ea0f0408",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.snow.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.dust",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/aa4bd8042d04eb6b-romo-WindAmbientGemLakeROMO52516Final1.mp3",
+          "sha256": "aa4bd8042d04eb6b956bc1721fe6856145526bda5ff89edd8bc78559cd38451c",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 271.434021
+        },
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.08,
+          "delay": 0.6,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.dust"
+      ],
+      "notes": "Designed environment component dust. Ingredients: Wind Soundscape from Gem Lake; Paper/pageturn1.wav. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 578,
+      "master": "masters/ecology-environments/v4.environment.dust.wav",
+      "masterSha256": "94eb69632174bc40030449175abaacc0a397c522be0e9f4073c223f15dc08360",
+      "opus": "masters/ecology-environments/v4.environment.dust.opus",
+      "opusSha256": "5389909aeb626dddb4a12ea977383a9010ac060fed8f4ef781845132f7ab9c7c",
+      "previewSha256": "cd7e554b93db0fc384b810dc1c6c82d6d6ee0ed0eaee254da8ec6e1ee0eecd29",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.dust.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.6,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.environment.thermal",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 171.946667
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.thermal"
+      ],
+      "notes": "Designed environment component thermal. Ingredients: Black Growler Steam Vent. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 595,
+      "master": "masters/ecology-environments/v4.environment.thermal.wav",
+      "masterSha256": "15f2d1d404da8513d3c0807ec0163d4079cfd0e05a5901c5e3b945435f2f7f83",
+      "opus": "masters/ecology-environments/v4.environment.thermal.opus",
+      "opusSha256": "8849a303db50ac038f9aa96ff35598271eecaeda2288b8e51cf7c86239a7a1b8",
+      "previewSha256": "93d584f0286584b0c57b54f78e14877ccb3ba1fb9a5b3614eb3b1917056989b1",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.thermal.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.6,
+      "opusDbTP": -19.7
+    },
+    {
+      "id": "v4.environment.coast",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.coast"
+      ],
+      "notes": "Designed environment component coast. Ingredients: Ocean. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 612,
+      "master": "masters/ecology-environments/v4.environment.coast.wav",
+      "masterSha256": "f5d6410f2ade4583e8c96b66ccfc90799bc81c6128879b2ce665437a4945f847",
+      "opus": "masters/ecology-environments/v4.environment.coast.opus",
+      "opusSha256": "d12806661404e23ae000431c6c7ed8de8f31ffc91ab01c5e34d7999e421d2ede",
+      "previewSha256": "179752ffe44b7d245d30e5306bd8e4495dd7da5ffc4c684ac2ec0ec9cc95cf7b",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.coast.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.3,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v4.environment.rock",
+      "group": "ecology-environments",
+      "kind": "environment_design",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/090c20e5496977cd-nri-RockslideYOSE.mp3",
+          "sha256": "090c20e5496977cd627d2bfff45006ebcae7da246c3599abf56994c283cd0588",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0,
+          "duration": 9.9345
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "environment.rock"
+      ],
+      "notes": "Designed environment component rock. Ingredients: Rockfall. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "start": 629,
+      "master": "masters/ecology-environments/v4.environment.rock.wav",
+      "masterSha256": "3fee9d592efa2c37182746885422750f6eb617687cd438169940ccec1e12fe4f",
+      "opus": "masters/ecology-environments/v4.environment.rock.opus",
+      "opusSha256": "23a605972ad480c77577dfe18b6ac81b9597dd35b9d80b8cb26d27c306b5ce30",
+      "previewSha256": "f9557d7d7e63ebc56dc08832e0bca63b547bb638d821b15a9016cf1c4487e0b9",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v4.environment.rock.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.7
+    }
+  ],
+  "listeningAccepted": false
+}

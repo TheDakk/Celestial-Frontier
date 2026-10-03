@@ -1,0 +1,9 @@
+{
+ "id": "18-tamarin",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,14 @@
+{
+  "id": "04-blind-salamander",
+  "name": "Blind Salamander",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-dca294e1-a156-4c78-b432-c7d9f16f9518.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e9b6b1c67854e873ac998afb711e829a61413e450cfcb0ba3afd632980d24c3a",
+  "bytes": 1002376,
+  "promptSha256": "8ffbc8f36245e17117e05adaa20ada4d8dc2d060bdc5a378e95a2649ed27499b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

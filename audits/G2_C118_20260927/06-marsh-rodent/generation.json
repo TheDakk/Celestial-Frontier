@@ -1,0 +1,13 @@
+{
+  "id": "06-marsh-rodent",
+  "name": "Marsh Rodent",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0f757786-7fc2-4557-af83-ce07ea4a7ed6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c1e0c233125e8040851842e6ef31578d49cdab7626c62db5f58c3257e06f51da",
+  "bytes": 1269710,
+  "promptSha256": "0ce9651278abeacd648cdcf5454f602deae02c6046216ef25690e99109f95d71",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

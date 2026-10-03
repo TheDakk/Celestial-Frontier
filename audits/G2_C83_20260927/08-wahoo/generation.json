@@ -1,0 +1,13 @@
+{
+  "id": "08-wahoo",
+  "name": "Wahoo",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0a6a0517-40d4-4ab3-9cbc-1e5cea6d4255.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0c8295ddfa46c33598557f91f67494b8808314126e0ece37e4c8bbefb9c98baf",
+  "bytes": 1140078,
+  "promptSha256": "1336ccfc2b1e7956dcdf09e8b82a0f26bd71caf85247fb74452f856151461915",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

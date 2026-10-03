@@ -1,0 +1,28 @@
+{
+  "name": "Condor",
+  "masterSha256": "da14edf1ce0b74a91b68e982d5f97ce28fc8fbf98bc7b00d6148323f2a463f70",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: bare wrinkled pink head, pale hooked bill, white neck ruff, broad black-and-white folded wing surfaces and complete feather tail are visible. Two feet now have a clear gap with two independent short leg shafts. Toe/claw proportions look strongly raptorial and remain an anatomical review hold; concealed upper legs and overlapping rear feathers are not declared proven.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 226,
+      "y0": 332,
+      "x1": 1030,
+      "y1": 896
+    },
+    "margins": {
+      "left": 226,
+      "right": 223,
+      "top": 332,
+      "bottom": 357
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

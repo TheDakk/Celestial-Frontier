@@ -1,0 +1,10 @@
+{
+  "audits/G1_FIT_CONTINUATION_C50_20260926/project-contact.mjs": "333d692ba0c7ed4f966f725a9259650606a5de2c69f7f4a734a4fd3195f2fa30",
+  "audits/G1_FIT_CONTINUATION_C50_20260926/run-candidates.mjs": "c52d0fe22c57bc44d532ebea9795010fe69d10405eff190397907cd5c3d368db",
+  "audits/G1_FIT_CONTINUATION_C50_20260926/contact-ownership.mjs": "3c2c78c74cde1bc6ab3252aabcc57500c862476b0e2e2dcb3f0ec22e0ecf27ff",
+  "audits/G1_FIT_CONTINUATION_C50_20260926/project-contact.test.mjs": "654234a28ecf4d6d13cced7bcdc6e65db6c6e189dcfb4cb128c726a5fde32f1f",
+  "port/v2/tools/creature-animation/intake-authored.mjs": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "port/v2/tools/creature-animation/split-observed-surfaces.mjs": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "port/v2/apps/game/src/creature-rig-contact.ts": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+  "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts": "9bc8989236eaec1fe1362626d2212e1e187bc0bb65eea9ff698626495bb51203"
+}

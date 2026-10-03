@@ -1,0 +1,10 @@
+{
+ "id": "23-tern",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-shin (legFarAnkle) covers 12% paint (reference 50%)",
+  "missing-anatomy: part tail (tailFan) covers 9% paint (reference 61%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,9 @@
+{
+ "id": "q20-20-goat",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 9.0% of the paint lies away from the body and in no part (reference 4.7%)"
+ ],
+ "semanticPresence": null
+}

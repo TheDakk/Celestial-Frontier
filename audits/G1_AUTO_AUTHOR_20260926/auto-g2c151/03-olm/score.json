@@ -1,0 +1,15 @@
+{
+ "id": "03-olm",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: biped-bird matches clearly better (0.0168 < 0.0243)",
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 53%)",
+  "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 0% paint (reference 81%)",
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 0% paint (reference 57%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 12% paint (reference 44%)",
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Octopus",
+  "masterSha256": "45f1f54d41aaed9aaf618817e9dff7880ecdff1fc60eac0203477e6c4915264e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Mottled orange-brown soft mantle and sucker-bearing arms are visible, with one horizontal-pupil eye. ANATOMY HOLD: nine distinct curled arm tips are readable around the fan, rather than the required eight. Several roots overlap beneath the head, so no valid eight-arm ownership declaration is supplied. No added fins or feeding-tentacle clubs; complete silhouette inside frame.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 206,
+      "y0": 317,
+      "x1": 1042,
+      "y1": 947
+    },
+    "margins": {
+      "left": 206,
+      "right": 211,
+      "top": 317,
+      "bottom": 306
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

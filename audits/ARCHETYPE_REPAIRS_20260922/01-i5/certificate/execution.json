@@ -1,0 +1,40 @@
+{
+  "head": "89b5da95c185a1e8f08080ed3f42bab8a0494ec7",
+  "runId": "20260922-i5-focus-89b5da95c185",
+  "browser": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  "gitExclude": "/.DS_Store",
+  "steps": [
+    {
+      "name": "edge-preflight",
+      "command": [
+        "node",
+        "tools/compendiummem-browser-preflight.mjs"
+      ],
+      "startedAt": "2026-09-22T19:58:56Z",
+      "durationMs": 1824.0480830000001,
+      "exitCode": 0
+    },
+    {
+      "name": "certificate",
+      "command": [
+        "node",
+        "tools/compendiummem.mjs"
+      ],
+      "startedAt": "2026-09-22T19:58:58Z",
+      "durationMs": 56956.183083,
+      "exitCode": 0
+    },
+    {
+      "name": "named-verify",
+      "command": [
+        "node",
+        "tools/compendiummem.mjs",
+        "--verify-run=20260922-i5-focus-89b5da95c185"
+      ],
+      "startedAt": "2026-09-22T19:59:54Z",
+      "durationMs": 949.5080000000016,
+      "exitCode": 0
+    }
+  ],
+  "automaticRetries": 0
+}

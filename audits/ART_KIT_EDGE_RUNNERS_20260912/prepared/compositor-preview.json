@@ -1,0 +1,132 @@
+{
+  "boxes": [
+    {
+      "name": "Civet",
+      "x": 616.9814354066986,
+      "y": 270.72,
+      "width": 240.59712918660284,
+      "height": 172.79999999999995,
+      "instances": [
+        {
+          "x": 616.9814354066986,
+          "y": 270.72,
+          "width": 240.59712918660284,
+          "height": 172.79999999999998
+        }
+      ],
+      "keying": {
+        "erodedPixels": 1863,
+        "despilledPixels": 85,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Persimmon",
+      "x": 17.097142857142856,
+      "y": 207.36000000000004,
+      "width": 232.04571428571433,
+      "height": 241.92,
+      "instances": [
+        {
+          "x": 17.097142857142856,
+          "y": 207.36000000000004,
+          "width": 232.0457142857143,
+          "height": 241.92
+        }
+      ],
+      "keying": {
+        "erodedPixels": 6287,
+        "despilledPixels": 360,
+        "unresolvedEdgePixels": 25
+      }
+    },
+    {
+      "name": "Platypus",
+      "x": 354.2179310344828,
+      "y": 391.68,
+      "width": 172.2041379310345,
+      "height": 103.68,
+      "instances": [
+        {
+          "x": 354.2179310344828,
+          "y": 391.68,
+          "width": 172.20413793103447,
+          "height": 103.67999999999999
+        }
+      ],
+      "keying": {
+        "erodedPixels": 1425,
+        "despilledPixels": 1,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Frog",
+      "x": 174.08,
+      "y": 406.78299212598426,
+      "width": 122.88000000000002,
+      "height": 94.33700787401574,
+      "instances": [
+        {
+          "x": 174.08,
+          "y": 406.78299212598426,
+          "width": 122.88,
+          "height": 94.33700787401574
+        }
+      ],
+      "keying": {
+        "erodedPixels": 1993,
+        "despilledPixels": 0,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Devil's Club",
+      "x": 808.96,
+      "y": 337.8295406360424,
+      "width": 163.84000000000003,
+      "height": 169.0504593639576,
+      "instances": [
+        {
+          "x": 808.96,
+          "y": 337.8295406360424,
+          "width": 163.84,
+          "height": 169.0504593639576
+        }
+      ],
+      "keying": {
+        "erodedPixels": 5605,
+        "despilledPixels": 502,
+        "unresolvedEdgePixels": 2
+      }
+    },
+    {
+      "name": "Cranberry",
+      "x": 281.6,
+      "y": 487.3923344947735,
+      "width": 199.68,
+      "height": 48.287665505226585,
+      "instances": [
+        {
+          "x": 281.6,
+          "y": 487.3923344947735,
+          "width": 92.16,
+          "height": 36.76766550522648
+        },
+        {
+          "x": 399.36,
+          "y": 502.997630662021,
+          "width": 81.92,
+          "height": 32.6823693379791
+        }
+      ],
+      "keying": {
+        "erodedPixels": 5944,
+        "despilledPixels": 941,
+        "unresolvedEdgePixels": 76
+      }
+    }
+  ],
+  "pixelSha256": "f4850a93540a32a2d35374785fcd3c5621a0c2cccfc2043560e6cdca1214bc96",
+  "note": "Static compositor only; no inference. Native composite must match pixels."
+}

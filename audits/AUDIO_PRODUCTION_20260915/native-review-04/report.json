@@ -1,0 +1,81 @@
+{
+  "schema": "cf.audio-review-native/v1",
+  "scope": "DIRTY LOCAL DEVELOPMENT DIAGNOSTIC; not admission or listening approval",
+  "head": "b95c4dc03259dc85f1e345a60e241c01154da069",
+  "status": "PASS",
+  "errors": [],
+  "checks": [
+    {
+      "name": "actual game dialog and catalogue",
+      "value": 790
+    },
+    {
+      "name": "explicit gesture playback or enforced game policy",
+      "value": "Playing selected candidate."
+    }
+  ],
+  "sourceBefore": {
+    "port/v2/apps/game/src/main.ts": "f088fcc81d3e2d203afffa051e11e8d90b8e10ea2665296cab106b81261c9bfc",
+    "port/v2/apps/game/src/audio-production-review.ts": "2b902db9816be7dc3d23a233a8897880a2461360dbdd19c7651d0fe6d872c3f3",
+    "port/v2/apps/game/audio-production-assets.ts": "5ed9e69acd839e7062d52ce624c8ee7438d607cef4ea1adc4b4641afe56569e9",
+    "audio-production/audition/catalog.json": "c45e86665c7da47c97de99221d2c0c058e14caaaa8581c796e5ac6a98df8f2d7"
+  },
+  "origin": "http://127.0.0.1:5173/",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "activeBeforeStop": 1,
+  "playStatus": "Playing selected candidate.",
+  "staleStatusControl": {
+    "status": "Stopped.",
+    "active": 1
+  },
+  "activeAfterStop": 0,
+  "mobile": {
+    "left": 3,
+    "right": 387,
+    "width": 390,
+    "scrollWidth": 382,
+    "clientWidth": 382
+  },
+  "codecs": {
+    "rows": [
+      {
+        "id": "civet-fictional",
+        "wavFrames": 32198,
+        "opusFrames": 32198,
+        "channels": 1,
+        "rate": 48000
+      },
+      {
+        "id": "biome.temperate",
+        "wavFrames": 768000,
+        "opusFrames": 768000,
+        "channels": 2,
+        "rate": 48000
+      },
+      {
+        "id": "music.original.calm",
+        "wavFrames": 1152000,
+        "opusFrames": 1152000,
+        "channels": 2,
+        "rate": 48000
+      }
+    ],
+    "corruptRejected": true
+  },
+  "sourceAfter": {
+    "port/v2/apps/game/src/main.ts": "f088fcc81d3e2d203afffa051e11e8d90b8e10ea2665296cab106b81261c9bfc",
+    "port/v2/apps/game/src/audio-production-review.ts": "2b902db9816be7dc3d23a233a8897880a2461360dbdd19c7651d0fe6d872c3f3",
+    "port/v2/apps/game/audio-production-assets.ts": "5ed9e69acd839e7062d52ce624c8ee7438d607cef4ea1adc4b4641afe56569e9",
+    "audio-production/audition/catalog.json": "c45e86665c7da47c97de99221d2c0c058e14caaaa8581c796e5ac6a98df8f2d7"
+  },
+  "listeningAccepted": false,
+  "browserClosed": true,
+  "serverClosed": true
+}

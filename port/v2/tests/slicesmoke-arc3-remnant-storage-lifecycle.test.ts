@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
-import { assessArc3RemnantRejectedSearchControl, assessArc3RemnantSkimRoutePrecondition } from '../tools/engineering-browser-contract.mjs';
+import { ENGINEERING_ACTION_CONTROL_COUNT, assessArc3RemnantRejectedSearchControl, assessArc3RemnantSkimRoutePrecondition } from '../tools/engineering-browser-contract.mjs';
 
 const sliceSource = readFileSync(
   fileURLToPath(new URL('../tools/slicesmoke.mjs', import.meta.url)),
@@ -203,6 +203,10 @@ function withCurrentShipyardPreviewIdentity(
   surface.previewStateKeys = [shipVisual.stateKey];
   diagnostics.stateKey = shipVisual.stateKey;
   engineering.previewStateKey = shipVisual.stateKey;
+  /* The preserved capture predates the Fabricator's ×5 (D16, e1882e49): it rendered 70 action controls where the current
+     product renders ENGINEERING_ACTION_CONTROL_COUNT (70 + 15 batch). Only that exact historical count is brought current. */
+  expect(engineering.actionControlCount, 'preserved pre-×5 control count').toBe(70);
+  engineering.actionControlCount = ENGINEERING_ACTION_CONTROL_COUNT;
   return evidence;
 }
 

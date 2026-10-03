@@ -1,0 +1,30 @@
+==> Downloading bottle manifests
+✔︎ Bottle Manifest gh (2.101.0)
+==> Fetching downloads for: gh
+==> Would upgrade 1 requested outdated package
+gh 2.100.0 -> 2.101.0 (14MB)
+✔︎ Bottle gh (2.101.0)
+==> Upgrading gh
+  2.100.0 -> 2.101.0 
+==> Pouring gh--2.101.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/gh/2.101.0: 238 files, 40.3MB
+==> Caveats
+zsh completions have been installed to:
+  /opt/homebrew/share/zsh/site-functions
+==> Upgraded 1 requested outdated package
+gh 2.100.0 -> 2.101.0
+==> Would upgrade 1 requested outdated package
+blender 5.2.1 -> 5.2.2
+==> Fetching downloads for: blender
+✔︎ Cask blender (5.2.2)
+==> Upgrading blender
+  5.2.1 -> 5.2.2
+==> Backing up App 'Blender.app' to '/opt/homebrew/Caskroom/blender/5.2.1/Blender.app'
+==> Removing App '/Applications/Blender.app'
+==> Unlinking Command Wrapper '/opt/homebrew/bin/blender'
+==> Moving App 'Blender.app' to '/Applications/Blender.app'
+==> Linking Command Wrapper 'blender' to '/opt/homebrew/bin/blender'
+==> Purging files for version 5.2.1 of Cask blender
+🍺  blender was successfully upgraded!
+==> Upgraded 1 requested outdated package
+blender 5.2.1 -> 5.2.2

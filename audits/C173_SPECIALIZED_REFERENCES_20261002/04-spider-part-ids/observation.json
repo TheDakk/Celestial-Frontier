@@ -1,0 +1,38 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider",
+  "masterSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "fullSizeInspected": true,
+  "visibleAnatomy": [
+    "abdomen",
+    "cephalothorax",
+    "eight walking chains",
+    "two chelicerae",
+    "two smaller mouth-adjacent pedipalps"
+  ],
+  "walkingLegs": 8,
+  "pedipalpsAreWalkingLegs": false,
+  "biologicallyAbsent": [
+    "sting"
+  ],
+  "sideLabelMeaning": "screen-left Far and screen-right Near; does not infer unseen anatomy",
+  "limitations": [
+    "Eight walking chains are visible. The two short mouth-adjacent pedipalps are retained with the cephalothorax; they are not counted or labelled as extra walking legs.",
+    "Two chelicerae are observed independently. Sting is declared biologically absent for the canonical Spider; no tail or stinger landmark is invented.",
+    "The template supplies a single knee and foot control per leg although several real segment articulations are visible. Each authored region is a coarse deforming section rather than a claim of two biological leg segments.",
+    "Proximal legs overlap at the cephalothorax and the pedicel is partly occluded. No hidden internal attachment is inferred; this coarse template uses the shared cephalothorax driver.",
+    "Front walking legs overlap rear legs in the painted projection. Polygon priority follows those visible crossings; a numerical conservation result alone will not prove moving depth or attachment quality.",
+    "Perspective endpoints have different image heights. groundLineY is the source lower envelope; eight coplanar ground contacts are not claimed.",
+    "Canonical Spider is broad; the strongly patterned hairy original still needs species/style scoring. Full-stage moving paint and native acceptance remain unmeasured."
+  ],
+  "qualityAccepted": false,
+  "predecessor": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider",
+  "correction": "Part identifiers made lowercase to satisfy the existing mask-id syntax. Joint names, pixel polygons, priority order, source bytes, ground line, materials and presence unchanged."
+}

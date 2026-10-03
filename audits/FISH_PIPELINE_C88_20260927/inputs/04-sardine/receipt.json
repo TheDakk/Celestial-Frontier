@@ -1,0 +1,58 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "04-sardine",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1190,
+      "height": 500
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "fb2334ff83ce6457645581e1a592ee82722288549356c2fa2604fe10ffcf6917",
+    "recordRecipeHash": "e782a9e964160b0cffa1a3708579c226603c613335884a4e1f1b41d3241651fd",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "fb2334ff83ce6457645581e1a592ee82722288549356c2fa2604fe10ffcf6917",
+      "atlasSha256": "ffbeebfeab6fe89ff29e6988b882f14e9e92df98939a7bd60de28fae3fd9a21e",
+      "parts": 13,
+      "comparedChannels": 1281680,
+      "changedChannels": 0
+    },
+    "vertices": 965,
+    "partVertices": 1729,
+    "parts": 13,
+    "leaves": 418,
+    "triangles": 1748,
+    "ownershipEdges": 2568,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "0d33908923a8f2cbb9f3d27882610ffdab91c1218913d616bbe5374958c091b7",
+    "sourceVertices": 965,
+    "vertices": 1074,
+    "sharedSupports": 298,
+    "pins": 287,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 7,
+    "observedExcludedBoundaries": 7,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 7,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "e782a9e964160b0cffa1a3708579c226603c613335884a4e1f1b41d3241651fd",
+  "bindingHash": "ac6dab0fac0ee355f15ee3126b7e6c05bc4c70c99f06003210c0f19028332db4",
+  "masterSha256": "03458b7f3fa484345c94357b289127ea26349a1bce99c907dfa67a3d9d5333fc",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

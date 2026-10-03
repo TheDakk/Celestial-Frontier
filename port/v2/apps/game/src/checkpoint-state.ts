@@ -1,8 +1,9 @@
 /* Receipt-free checkpoint projection.
 
    A checkpoint starts from the last durable SaveState and may overlay only
-   route/profile/preferences/Guide/release fields. Product, progression,
-   ownership, economy, Atlas, and naming state always comes from the durable
+   route/profile/preferences/Guide/release fields plus bounded notification
+   history and its read flags. Product, progression, ownership, economy, Atlas,
+   and naming state always comes from the durable
    parent, so an unrelated receipt-free write cannot smuggle optimistic live
    state across the F4 lease/revision boundary. */
 import { checkedEcologyEpoch } from '@cf/domain-ecology';
@@ -117,6 +118,7 @@ export const CHECKPOINT_STATE_OVERLAY_FIELDS = Object.freeze([
   'glassTint',
   'motionMode',
   'cardExpand',
+  'notifications',
   'seenGuide',
   'rnSeen',
   'voiceOn',
@@ -143,6 +145,7 @@ export const CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS = Object.freeze([
   'glassTint',
   'motionMode',
   'cardExpand',
+  'notifications',
   'seenGuide',
   'rnSeen',
   'voiceOn',
@@ -190,11 +193,20 @@ export type CheckpointStateRefusalDetail =
   | `live-field:${(typeof CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS)[number]}:invalid`
   | `training-field:${(typeof CHECKPOINT_STATE_TRAINING_REPLACEMENT_FIELDS)[number]}:invalid`;
 
+/** K22: a presentation-only overlay field that could not be projected. The
+ * checkpoint still carries route, epoch and preferences; the durable parent's
+ * copy of the dropped field is retained and the reason travels with the result. */
+export type CheckpointStateDroppedFieldV1 = Readonly<{
+  field: 'notifications';
+  detail: 'live-field:notifications:invalid';
+}>;
+
 export type CheckpointStateProjection =
   | Readonly<{
     kind: 'projected';
     state: SaveStateV2;
     appliedFields: readonly (keyof SaveStateV2)[];
+    droppedFields: readonly CheckpointStateDroppedFieldV1[];
   }>
   | Readonly<{ kind: 'refused'; detail: CheckpointStateRefusalDetail }>;
 
@@ -325,11 +337,41 @@ function checkedSaveTopLevel(value: unknown): Readonly<Record<string, unknown>> 
   return Object.freeze(fields);
 }
 
+/** Refuse oversized/sparse or decorated arrays before detachment. Field values
+ * are never read here: the shared clone rejects accessors, cycles and custom
+ * prototypes before the bounded notification row validator examines them. */
+function boundedNotificationArray(value: unknown): boolean {
+  if (!Array.isArray(value)) return false;
+  const length = Object.getOwnPropertyDescriptor(value, 'length');
+  if (!length || !('value' in length) || !Number.isInteger(length.value)
+    || length.value < 0 || length.value > 60) return false;
+  const expected = new Set(['length', ...Array.from({ length: length.value as number }, (_, index) => String(index))]);
+  const keys = Reflect.ownKeys(value);
+  return keys.length === expected.size && keys.every((key) => typeof key === 'string' && expected.has(key));
+}
+
+function validNotificationHistory(value: unknown): boolean {
+  if (!Array.isArray(value) || value.length > 60) return false;
+  return value.every((entry: unknown) => {
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return false;
+    const row = entry as Record<string, unknown>;
+    const keys = Object.keys(row).sort();
+    if (keys.join(',') !== 'id,ms,read,t,tt') return false;
+    return typeof row.id === 'number' && Number.isInteger(row.id)
+      && row.id >= -2_147_483_648 && row.id <= 2_147_483_647
+      && typeof row.tt === 'string' && row.tt.length <= 200
+      && typeof row.ms === 'string' && row.ms.length <= 400
+      && typeof row.t === 'number' && Number.isFinite(row.t) && row.t >= 0 && row.t <= 4e12
+      && typeof row.read === 'boolean';
+  });
+}
+
 function validLiveField(field: keyof SaveStateV2, value: unknown): boolean {
   if (STRING_LIVE_FIELDS.has(field)) return typeof value === 'string';
   if (BOOLEAN_LIVE_FIELDS.has(field)) return typeof value === 'boolean';
   if (NUMBER_LIVE_FIELDS.has(field)) return typeof value === 'number' && Number.isFinite(value);
   if (field === 'pinnedRecipe') return value === null || typeof value === 'string';
+  if (field === 'notifications') return validNotificationHistory(value);
   return false;
 }
 
@@ -377,22 +419,37 @@ export function projectCheckpointState(inputValue: CheckpointStateInput): Checkp
       return refused('saved-view:invalid');
     }
 
+    const droppedFields: CheckpointStateDroppedFieldV1[] = [];
     for (const field of CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS) {
       const value = liveFields[field];
-      if (!validLiveField(field, value)) return refused(`live-field:${field}:invalid`);
-      /* All ordinary live fields are primitives. Clone anyway so this stays
-         correct if a later reviewed inventory adds bounded structured data. */
-      (state as unknown as Record<string, unknown>)[field] = clonePlainData(
-        value,
-        new Set<object>(),
-        { nodes: 0 },
-        0,
-      );
+      let detached: unknown;
+      let valid = true;
+      try {
+        if (field === 'notifications' && !boundedNotificationArray(value)) valid = false;
+        // Inspect only detached plain data; no live notification accessor runs.
+        else detached = clonePlainData(value, new Set<object>(), { nodes: 0 }, 0);
+      } catch {
+        valid = false;
+      }
+      if (valid && !validLiveField(field, detached)) valid = false;
+      if (!valid) {
+        /* K22: one malformed notification row must not refuse the route,
+           epoch and preference checkpoint (a refusal forces a convergence
+           reload). Presentation history degrades to the durable parent's
+           rows and the reason is recorded on the projection. */
+        if (field === 'notifications') {
+          droppedFields.push(Object.freeze({ field, detail: 'live-field:notifications:invalid' }));
+          continue;
+        }
+        return refused(`live-field:${field}:invalid`);
+      }
+      (state as unknown as Record<string, unknown>)[field] = detached;
     }
     state.EPOCH_BASE = epoch;
     state.savedView = savedView;
 
-    const appliedFields: (keyof SaveStateV2)[] = [...CHECKPOINT_STATE_OVERLAY_FIELDS];
+    const appliedFields: (keyof SaveStateV2)[] = CHECKPOINT_STATE_OVERLAY_FIELDS
+      .filter((field) => !droppedFields.some((dropped) => dropped.field === field));
     if (input.trainingReplacement) {
       if (typeof liveFields.tutDone !== 'boolean') {
         return refused('training-field:tutDone:invalid');
@@ -417,6 +474,7 @@ export function projectCheckpointState(inputValue: CheckpointStateInput): Checkp
       kind: 'projected',
       state,
       appliedFields: Object.freeze(appliedFields),
+      droppedFields: Object.freeze(droppedFields),
     });
   } catch {
     return refused('input:invalid');

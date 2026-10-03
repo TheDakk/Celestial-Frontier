@@ -1,0 +1,30 @@
+✔ compiled solve rows and guarded numerics retain machine-scale agreement across valences and pin partitions (14.646041ms)
+✔ norm scaling fallback retains finite large-scale and near-collapsed targets without changing refusal semantics (0.7475ms)
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (4.034375ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (1.410834ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (1.193333ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.364458ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.323792ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.183375ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.286542ms)
+✔ real admitted Wasm leaf matches the current JS solver exactly and shares fixed scratch memory (4.479791ms)
+✔ absent Wasm and denied memory use the actual JS fallback with exact outputs (3.251416ms)
+✔ a real add-to-subtract binary mutant is rejected by admission and the runtime falls back (0.597709ms)
+✔ leaf snapshots all invariants and refuses malformed rows instead of silently accepting them (0.288458ms)
+✔ normal-range refusal precedes every position and RHS write, then robust JS preserves exact results (0.773208ms)
+✔ strict artifact admission rejects relocation/global/data/table/function-import controls (1.613292ms)
+✔ a late disconnected-component norm refusal cannot publish an earlier component update (0.289042ms)
+✔ whole synchronous pose uses full first pass and compiled dynamic subset only later; default runPass stays full (5.917875ms)
+✔ fresh calls recompute from changed public pose/rotation buffers and never reuse previous solve rotations (0.729833ms)
+✔ rotation membership and topology are snapshots; mutating caller sources cannot change later reuse (0.619875ms)
+✔ invalid counts fail before any pose writes, and no cache-capable remaining-pass API is exposed (0.902708ms)
+✔ real late norm failure stops the synchronous block before position/RHS publication and next call starts full (0.556333ms)
+✔ admission rejects a subset-only corrupting runtime even when its full first-pass result is exact (0.384417ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 144.859875

@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c192-source-edit/v1",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/master.png",
+    "sha256": "9675e29fd6daaa32eb8592e22f0ce999c51951124f32c77084d0b2735a226d18",
+    "snapshot": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/prompt.txt",
+    "sha256": "392dc8c2ed6bea9856d5f16c1c1ae47b46f7f0d4bcfdea52114275978bbea539"
+  },
+  "exactSentPromptSha256": "0b7e2d20a7656c3b76fa1bb81a99b65a1e4b17405e0466117d4301744b1cf9a0",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceEditsOnly": true,
+  "nativeRuns": 0
+}

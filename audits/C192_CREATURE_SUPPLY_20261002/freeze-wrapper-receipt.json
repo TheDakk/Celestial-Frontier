@@ -1,0 +1,17 @@
+{
+  "scope": "Add whole-original Shrimp framing refusal without changing or replacing keyed-mask observations; exact source binding required. Original freeze helper retained unchanged.",
+  "source": "audits/C192_CREATURE_SUPPLY_20261002/freeze.mjs",
+  "sourceSha256": "fef11c6a3620cb4050a8f0a3a800cadd18b1bfbeec8989cdbca7c00a74ea1b76",
+  "output": "audits/C192_CREATURE_SUPPLY_20261002/freeze-reviewed.mjs",
+  "outputSha256": "d8ee285373888cc33a62427a6ebbd9c32e5f04df9f4845fd476239dab8f99b8a",
+  "transforms": [
+    {
+      "before": "const files=[];function walk(d)",
+      "after": "const manual=JSON.parse(fs.readFileSync(base+'/manual-framing.json'));if(manual.name!=='Shrimp'||manual.status!=='REFUSE'||manual.masterSha256!==sha(fs.readFileSync(root+'/'+manual.master)))throw Error('Exact source-bound manual framing refusal required');\nconst files=[];function walk(d)"
+    },
+    {
+      "before": "framingPass:observations.filter(o=>o.framing.status==='PASS_FRAMING_ONLY').length,framingRefused:observations.filter(o=>o.framing.status==='REFUSE').map(o=>o.name),",
+      "after": "framingScope:'Automatic keyed-mask result plus explicit master-bound whole-original visual refusal; original mask evidence retained',framingPass:observations.filter(o=>o.framing.status==='PASS_FRAMING_ONLY'&&o.name!==manual.name).length,framingRefused:[...new Set([...observations.filter(o=>o.framing.status==='REFUSE').map(o=>o.name),manual.name])],automaticKeyedMask:{pass:observations.filter(o=>o.framing.status==='PASS_FRAMING_ONLY').length,refused:observations.filter(o=>o.framing.status==='REFUSE').map(o=>o.name)},manualFraming:{path:'audits/C192_CREATURE_SUPPLY_20261002/manual-framing.json',sha256:sha(fs.readFileSync(base+'/manual-framing.json'))},"
+    }
+  ]
+}

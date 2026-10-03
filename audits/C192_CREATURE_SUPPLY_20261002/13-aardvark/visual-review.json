@@ -1,0 +1,28 @@
+{
+  "name": "Aardvark",
+  "masterSha256": "c1ce128614ecea72959cbc9afd3b5397d8d2c93973354ccc945432aaa63a30a3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: two long attached ears, tubular pig-like snout, thick continuous tapering tail and four separate feet with digging claws. Exact fore/hind toe counts are not all equally visible; do not infer hidden digits. Fur and body still occlude far upper limb roots. Tail/snout leave relatively narrow side margins for measurement. Proportions, digits and independent limb ownership remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 116,
+      "y0": 318,
+      "x1": 1135,
+      "y1": 891
+    },
+    "margins": {
+      "left": 116,
+      "right": 118,
+      "top": 318,
+      "bottom": 362
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

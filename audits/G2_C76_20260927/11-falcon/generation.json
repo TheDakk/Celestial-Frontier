@@ -1,0 +1,13 @@
+{
+  "id": "11-falcon",
+  "name": "Falcon",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-253a9dc0-116b-4926-a9ff-f758ae47a19b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7b79aae0b3727faf36aa8bf41668a7dd3842368a7c845094800f5a72e0af70d1",
+  "bytes": 1185527,
+  "promptSha256": "f41773d2f74cf2243fff8f470c6fcec952420c58f5c322ad125a2d9b3ffec505",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

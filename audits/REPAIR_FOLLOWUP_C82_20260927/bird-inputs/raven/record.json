@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Raven\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4004810646\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"18\"]]]]",
+    "seed": 4004810646,
+    "ownerId": "authored:archetype-sprint/10-raven",
+    "earthName": "Raven"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4004810646,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 8,
+    "body": 11,
+    "loco": 0,
+    "trait": 18,
+    "size": 0,
+    "diet": 5,
+    "head": 4,
+    "limbs": 0,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 9,
+    "habitat": 12,
+    "detail": 8,
+    "accent": 6,
+    "temper": 7,
+    "sense": 5,
+    "repro": 6,
+    "life": 5,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Raven"
+  },
+  "geometry": {
+    "cutoutAssetHash": "d27628f43b32ca2ba8374f9178feafa7af2fff367b3f8cf35fbed956b3fb59b7",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8827737017802983,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5535087719298246,
+      0.5288676236044657
+    ],
+    "pelvis": [
+      0.5447368421052632,
+      0.6307017543859649
+    ],
+    "spine": [
+      0.6476874003189793,
+      0.4814992025518341
+    ],
+    "chest": [
+      0.7716905901116428,
+      0.40885167464114835
+    ],
+    "neck0": [
+      0.8003987240829347,
+      0.3311004784688995
+    ],
+    "neck1": [
+      0.7823763955342903,
+      0.25598086124401914
+    ],
+    "head": [
+      0.8275119617224881,
+      0.19242424242424244
+    ],
+    "beak": [
+      0.9342105263157895,
+      0.23253588516746412
+    ],
+    "legNearKnee": [
+      0.4464114832535885,
+      0.6971291866028708
+    ],
+    "legNearAnkle": [
+      0.42615629984051034,
+      0.8088516746411483
+    ],
+    "legNearFoot": [
+      0.543859649122807,
+      0.8185805422647527
+    ],
+    "legFarKnee": [
+      0.6386762360446571,
+      0.5780701754385965
+    ],
+    "legFarAnkle": [
+      0.6921850079744817,
+      0.7320574162679426
+    ],
+    "legFarFoot": [
+      0.7656299840510367,
+      0.8181818181818182
+    ],
+    "wingNearRoot": [
+      0.6613237639553429,
+      0.40271132376395535
+    ],
+    "wingNearTip": [
+      0.08899521531100478,
+      0.6365231259968103
+    ],
+    "wingFarRoot": [
+      0.6527113237639554,
+      0.32727272727272727
+    ],
+    "wingFarTip": [
+      0.26275917065390747,
+      0.5083732057416268
+    ],
+    "tailFan": [
+      0.08724082934609251,
+      0.7179425837320573
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/10-raven/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from gull. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "18944bc9cf11b24ce4708be4d3d7d67743da8a97aeeed661ea306e44fabf0340",
+    "subjectSourceSha256": "70e9945ffbc1447f72fd90f7b92827e954dd27f0dfdc0009ff54df93a919f964",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.10221123688161936,
+      "spine": 0.1812738781797649,
+      "chest": 0.14371657660231535,
+      "neck0": 0.0828818765613398,
+      "neck1": 0.07725128619206172,
+      "head": 0.07795295460039715,
+      "beak": 0.1139891554922255,
+      "legFarKnee": 0.10767865543455538,
+      "legFarAnkle": 0.16301919829171357,
+      "legFarFoot": 0.11318823753336082,
+      "legNearKnee": 0.11866119814093501,
+      "legNearAnkle": 0.11354376596079803,
+      "legNearFoot": 0.11810473867507582,
+      "wingFarRoot": 0.14426084179143542,
+      "wingFarTip": 0.42995356146545244,
+      "wingNearRoot": 0.11053750596385811,
+      "wingNearTip": 0.6182458462915139,
+      "tailFan": 0.4657398028894817
+    },
+    "measures": {
+      "body": 0.3173727486992617,
+      "bone-min": 0.07725128619206172,
+      "bone-max": 0.6182458462915139,
+      "leg/torso:legFar": 1.209574838523377,
+      "leg/torso:legNear": 1.1037800321941245,
+      "wing/torso": 1.809274443411668
+    }
+  },
+  "recipeHash": "0b86dd46a9c2a8aecda9831b3c9d45a6d3c7f605fe984381d5f3fc398891f4e7"
+}

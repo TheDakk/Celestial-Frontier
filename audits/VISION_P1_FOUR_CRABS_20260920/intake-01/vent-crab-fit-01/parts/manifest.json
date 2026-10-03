@@ -1,0 +1,130 @@
+{
+  "creatureId": "p1-vent-crab",
+  "parts": [
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "547168a2e860b8938648ac81cd9632d3be63ab6bc29ef689bb74cb5a53615e7c"
+    },
+    {
+      "name": "leg0far-upper.png",
+      "path": "parts/leg0far-upper.png",
+      "sha256": "0509af4a2df6333b220586f1575cc9c12d06e5ef48d2a28b87b8c7d173ae04d2"
+    },
+    {
+      "name": "leg0far-lower.png",
+      "path": "parts/leg0far-lower.png",
+      "sha256": "ebf9bc798a9625e28788380ac2c461c13cc373e5d9d5bdb421e23f189e5f010e"
+    },
+    {
+      "name": "leg1far-upper.png",
+      "path": "parts/leg1far-upper.png",
+      "sha256": "9246b0e3f4505794c750ed98bf8403574e4ea5734e45b34ed131705da7a6aaee"
+    },
+    {
+      "name": "leg1far-lower.png",
+      "path": "parts/leg1far-lower.png",
+      "sha256": "aea6d3031867de5c701dc508307a1bc1cb5a3ea1e2d09b404b854e006e99f15e"
+    },
+    {
+      "name": "leg2far-upper.png",
+      "path": "parts/leg2far-upper.png",
+      "sha256": "96da096dc2446ac2b706744ad72a82ea10c74e686f68335cd17749180323ed56"
+    },
+    {
+      "name": "leg2far-lower.png",
+      "path": "parts/leg2far-lower.png",
+      "sha256": "5c2fed0e98d45912fc305fcdfe3a7e366c65a9735cac611cf5de37dd49c3c151"
+    },
+    {
+      "name": "leg3far-upper.png",
+      "path": "parts/leg3far-upper.png",
+      "sha256": "ad7b5514ffbc4132131684ec026d001739bb45b0e2d16091b934e4a8fa7dd480"
+    },
+    {
+      "name": "leg3far-lower.png",
+      "path": "parts/leg3far-lower.png",
+      "sha256": "c795881df3104d58403ecb755bf00fd68c680556eb4a9933838312ba9d111dc6"
+    },
+    {
+      "name": "leg0near-upper.png",
+      "path": "parts/leg0near-upper.png",
+      "sha256": "ba7a9722ed29d405b2ef440c76f2950db248cafa6a88503223da708173eebfe9"
+    },
+    {
+      "name": "leg0near-lower.png",
+      "path": "parts/leg0near-lower.png",
+      "sha256": "5d5027d654e424389a01bdc823cd4962026e174c1fffa954acfe89696ceb29c4"
+    },
+    {
+      "name": "leg1near-upper.png",
+      "path": "parts/leg1near-upper.png",
+      "sha256": "232545ebafa5125a09be97814be98d027625cc0b45aaf563f7031c26763ffee6"
+    },
+    {
+      "name": "leg1near-lower.png",
+      "path": "parts/leg1near-lower.png",
+      "sha256": "64368824d799779aa520461254224d930aba99233ade558e460a0bd671935b8f"
+    },
+    {
+      "name": "leg2near-upper.png",
+      "path": "parts/leg2near-upper.png",
+      "sha256": "6d364d38620d6ba5b910e1d9869b1b89b2912f27a8ac54df9a4ae63320309876"
+    },
+    {
+      "name": "leg2near-lower.png",
+      "path": "parts/leg2near-lower.png",
+      "sha256": "778ab6415ae93d0199677860f4ef5517938ddba6c9dfcb7462e36590ebd45df5"
+    },
+    {
+      "name": "leg3near-upper.png",
+      "path": "parts/leg3near-upper.png",
+      "sha256": "12b4d06cf510d5edc1f8465c1f73f65e2a5c06d9322da154809c4df4abf8983c"
+    },
+    {
+      "name": "leg3near-lower.png",
+      "path": "parts/leg3near-lower.png",
+      "sha256": "c43a32828023378178dab852a520ad7a055fdeec8a21b711f058adadd6314b1e"
+    },
+    {
+      "name": "claw-far-arm.png",
+      "path": "parts/claw-far-arm.png",
+      "sha256": "df11caa125ac29504530598aa7c6343f62b708e69c11d39a13e741deea2e62ab"
+    },
+    {
+      "name": "claw-far-palm.png",
+      "path": "parts/claw-far-palm.png",
+      "sha256": "656472b7332814c285cd2f0f57b6d9c0ba519561b046d52dd5c068a5591a0ed1"
+    },
+    {
+      "name": "claw-far-finger.png",
+      "path": "parts/claw-far-finger.png",
+      "sha256": "9683d5114e692d1f588f57e62e11191abee82a5fb6faeec38069c7cc9f36d0a3"
+    },
+    {
+      "name": "claw-near-arm.png",
+      "path": "parts/claw-near-arm.png",
+      "sha256": "660c02e271082fc2efe9783420bc83bf455337bd592d25096ab0be5ad3126b80"
+    },
+    {
+      "name": "claw-near-palm.png",
+      "path": "parts/claw-near-palm.png",
+      "sha256": "8c2a5dac6a28fcd8ca6034a83883612fc8ea0d0059e485d31da72d5ba6da5b03"
+    },
+    {
+      "name": "claw-near-finger.png",
+      "path": "parts/claw-near-finger.png",
+      "sha256": "08aab7cf5081ec3d7d1ccb87ee51b3f8f3c5187fda042149d087df06e36848f2"
+    },
+    {
+      "name": "eye-far.png",
+      "path": "parts/eye-far.png",
+      "sha256": "6e318a575c68d0e396601e6b23892e7af212bdc06271afb0c04cd571a4f2afbb"
+    },
+    {
+      "name": "eye-near.png",
+      "path": "parts/eye-near.png",
+      "sha256": "3af202b904da32b427b970678c85667180e005d76d29b3ca154b62f689c5170d"
+    }
+  ]
+}

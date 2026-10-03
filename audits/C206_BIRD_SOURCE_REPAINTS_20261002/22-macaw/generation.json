@@ -1,0 +1,14 @@
+{
+  "id": "22-macaw",
+  "name": "Macaw",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3e0f6821-15f1-4b08-a9c3-1dae3e211ba8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5391e5a4e53043a866392f2af51d3e62b021f52fee60b728d57e90b7fdd952dd",
+  "bytes": 1112641,
+  "promptSha256": "54898808d0a57ec2905cafc565bfe7030d482855650240a5d925d1e001e923cb",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c168-generated-successor/v1",
+  "id": "capuchin",
+  "name": "Capuchin",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-68df39cd-aac2-4c43-a67c-6235a22949a3.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "bytes": 1275823,
+  "promptSha256": "78cba8bd2d16feccdae723b6cf68671a39b6f2af36a0f895623f1974576e22ef",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "editTargetSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+  "transparentBackground": false,
+  "outputModified": false,
+  "generationAttempts": 1,
+  "predecessorRetained": true
+}

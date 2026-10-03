@@ -1,0 +1,26 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Spectacled Bear",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "dce5379b5c461b07682247649459e0dc13fd4547bf07b448b02d171b96fdd7f7",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "bear",
+  "authoringCreated": false,
+  "sourceHead": "36fe9633c9efbe6d915a63a751cfe9aa2ee5429a",
+  "basePromptSha256": "5df3871a55c2dc7e83310c1f4fa00680afe6e922ca375b0b26342ff50b31e684",
+  "layoutCompilerSha256": "81a982bac26e9844354b448d5d8a8d8bc89122768db072c3fbcb0e668505640d",
+  "layoutClarification": "Species identity features FIRST: pale cream rings or patches around the eyes; shaggy blackish coat; short rounded face with a heavy muzzle. One Earth Spectacled Bear. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: quiet planted walking STRIDE, all FOUR legs clearly APART from their body attachments down to each foot, with visible background gaps. Offset near and far forelegs and near and far hindlegs naturally. Keep the real species tail visibly attached and continuous; preserve a naturally short tail. No rearing, seated pose, crossed legs or duplicate limb. Choose a natural side-view head pose exposing BOTH ears as separate complete silhouettes, including BOTH ear tips; offset the far ear visibly above or beside the near ear. The true tail must sit clear of the body and legs from its visible root to its tip. Do not invent an ear, lengthen a short tail, or add a tail to a naturally tailless animal.\n\n",
+  "addedCanonicalIdentityNote": "the 'spectacle' markings vary and may extend down the chest; some individuals have almost none",
+  "previousNotePromptSha256": "1f8a0dff22e7f0b4bf58536330c21d51f018e5396a77be4a9a363ddc53fe3339"
+}

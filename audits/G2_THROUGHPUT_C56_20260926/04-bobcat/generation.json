@@ -1,0 +1,11 @@
+{
+  "id": "04-bobcat",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f5df70e7-19ec-475a-a1cf-a88d0db2e72f.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "3dcb12fc477dc4798e058fec0211b5d652cec3fcbd1645255f78a78f9aba0fad",
+  "bytes": 1450480,
+  "promptSha256": "f1c12000dc8c3b2bcfd5711455a2e3bba1202706d169677cf2711803ca129afe",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

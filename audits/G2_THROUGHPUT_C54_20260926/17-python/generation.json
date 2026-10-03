@@ -1,0 +1,15 @@
+{
+  "id": "17-python",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-55528bdc-2cc1-461f-9bf7-ab8e97b9dc20.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "1ee03834909e67ffbd734e77ebe93c7ee66d7139a69821952dab639cade319a6",
+  "bytes": 366072,
+  "promptSha256": "545dff6283b0a61631346c303fe5159ec6e609168b38204d74316411f4aff0dc",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

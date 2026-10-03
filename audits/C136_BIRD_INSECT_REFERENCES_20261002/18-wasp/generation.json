@@ -1,0 +1,15 @@
+{
+  "id": "18-wasp",
+  "name": "Wasp",
+  "sourcePath": "~/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-83686da5-b1c3-4ace-8184-323865cf1010.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+  "bytes": 1141845,
+  "promptSha256": "758a35209a076ddba0a3267391693e1d238cd1d4445c3bb5f0cedb90c32a2951",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true,
+  "inheritedReceiptSha256": "1fd7e223dcf57842127bc1743511c0c9b3568aab4aaa324e81fcf98b4cdd7f24",
+  "pathNormalization": "Inherited receipt source path normalized to ~/; image bytes unchanged."
+}

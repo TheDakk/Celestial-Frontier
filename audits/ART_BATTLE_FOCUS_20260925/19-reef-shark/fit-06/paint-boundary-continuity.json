@@ -1,0 +1,45 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "ffdf1a047c756cfbbdc18b4ee77c373ab9c2bbe3e66a4bf84e17772c7c36f345",
+  "bindingHash": "3782e627ca7966977e88b6dbe4749456ab0cb03aafd954fa15b3642e6521a255",
+  "pairs": [
+    [
+      "body",
+      "caudal"
+    ],
+    [
+      "body",
+      "dorsal"
+    ],
+    [
+      "body",
+      "far-pectoral"
+    ],
+    [
+      "body",
+      "head"
+    ],
+    [
+      "body",
+      "near-pectoral"
+    ],
+    [
+      "body",
+      "tail-peduncle"
+    ],
+    [
+      "dorsal",
+      "mid-body"
+    ],
+    [
+      "far-pectoral",
+      "near-pectoral"
+    ],
+    [
+      "front-body",
+      "near-pectoral"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "This flat connected shark master shows continuous paint across these enumerated ownership cuts, including source fringe assigned to body. All observed boundaries are manually declared continuous; no hidden pixels invented. Fins remain articulated by the existing fish joints."
+}

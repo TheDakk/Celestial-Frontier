@@ -1,0 +1,9 @@
+{
+ "id": "04-gorilla",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,13 @@
+{
+  "id": "08-gar",
+  "name": "Gar",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1fd50e61-7c07-459e-9ff3-87b6b1eb1059.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ac6b8b40de8153a37c8929262f5f8a1236842e92c2c7e775dd1eb883c95e6fcb",
+  "bytes": 1173009,
+  "promptSha256": "2722545e35564ad45bc6858616cf5fb387f051b4ff50e5b226bcfc99744de60f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

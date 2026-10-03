@@ -1,0 +1,4371 @@
+{
+  "schema": "cf.c169-source-adjacency-residual/v1",
+  "scope": "Independent existing source-join instrument: required nearest attachments remain separate from observation-only ancestral/sibling silhouette boundaries. Observation-only does not imply visually acceptable.",
+  "rows": [
+    {
+      "id": "hawk",
+      "modes": [
+        {
+          "mode": "original",
+          "fit": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/fit02",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 130,
+                  "samples": 141,
+                  "maxGapPx": 118.69269950737022,
+                  "violations": 141,
+                  "worst": {
+                    "source": [
+                      641,
+                      499
+                    ],
+                    "ancestor": [
+                      701.9517647198268,
+                      543.5522668361664
+                    ],
+                    "descendant": [
+                      811.4259924888611,
+                      497.68996891379356
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 6,
+                  "samples": 8,
+                  "maxGapPx": 40.48697309362569,
+                  "violations": 8,
+                  "worst": {
+                    "source": [
+                      734,
+                      516
+                    ],
+                    "ancestor": [
+                      784.1058769226074,
+                      590.3358276486397
+                    ],
+                    "descendant": [
+                      824.5924118757247,
+                      590.5241830945014
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 63,
+                  "maxGapPx": 33.50941653344367,
+                  "violations": 57,
+                  "worst": {
+                    "source": [
+                      734,
+                      522
+                    ],
+                    "ancestor": [
+                      783.2482046484947,
+                      595.3464562296867
+                    ],
+                    "descendant": [
+                      816.7332690954208,
+                      594.0691718459129
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 130,
+                  "samples": 141,
+                  "maxGapPx": 118.69269950737022,
+                  "violations": 141,
+                  "worst": {
+                    "source": [
+                      641,
+                      499
+                    ],
+                    "ancestor": [
+                      701.9517647198268,
+                      543.5522668361664
+                    ],
+                    "descendant": [
+                      811.4259924888611,
+                      497.68996891379356
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 6,
+                  "samples": 8,
+                  "maxGapPx": 40.48697309362569,
+                  "violations": 8,
+                  "worst": {
+                    "source": [
+                      734,
+                      516
+                    ],
+                    "ancestor": [
+                      784.1058769226074,
+                      590.3358276486397
+                    ],
+                    "descendant": [
+                      824.5924118757247,
+                      590.5241830945014
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 63,
+                  "maxGapPx": 33.50941653344367,
+                  "violations": 57,
+                  "worst": {
+                    "source": [
+                      734,
+                      522
+                    ],
+                    "ancestor": [
+                      783.2482046484947,
+                      595.3464562296867
+                    ],
+                    "descendant": [
+                      816.7332690954208,
+                      594.0691718459129
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "first",
+          "fit": "audits/C169_NAPE_RECUT_20261002/hawk/fit",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 47,
+                  "samples": 52,
+                  "maxGapPx": 42.425848372953574,
+                  "violations": 52,
+                  "worst": {
+                    "source": [
+                      716,
+                      497
+                    ],
+                    "ancestor": [
+                      781.7139476537704,
+                      568.2201599121094
+                    ],
+                    "descendant": [
+                      824.1362927198411,
+                      567.6749542077383
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 47,
+                  "samples": 52,
+                  "maxGapPx": 42.42584759016915,
+                  "violations": 45,
+                  "worst": {
+                    "source": [
+                      716,
+                      497
+                    ],
+                    "ancestor": [
+                      781.7139476537704,
+                      568.2201599121094
+                    ],
+                    "descendant": [
+                      824.1362919330597,
+                      567.6749539017677
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 63,
+                  "maxGapPx": 26.162749477523995,
+                  "violations": 46,
+                  "worst": {
+                    "source": [
+                      734,
+                      522
+                    ],
+                    "ancestor": [
+                      786.0455446243286,
+                      595.4194626510143
+                    ],
+                    "descendant": [
+                      812.2080039381981,
+                      595.5426814556122
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 47,
+                  "samples": 52,
+                  "maxGapPx": 42.425848372953574,
+                  "violations": 52,
+                  "worst": {
+                    "source": [
+                      716,
+                      497
+                    ],
+                    "ancestor": [
+                      781.7139476537704,
+                      568.2201599121094
+                    ],
+                    "descendant": [
+                      824.1362927198411,
+                      567.6749542077383
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 47,
+                  "samples": 52,
+                  "maxGapPx": 42.42584759016915,
+                  "violations": 45,
+                  "worst": {
+                    "source": [
+                      716,
+                      497
+                    ],
+                    "ancestor": [
+                      781.7139476537704,
+                      568.2201599121094
+                    ],
+                    "descendant": [
+                      824.1362919330597,
+                      567.6749539017677
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 63,
+                  "maxGapPx": 26.162749477523995,
+                  "violations": 46,
+                  "worst": {
+                    "source": [
+                      734,
+                      522
+                    ],
+                    "ancestor": [
+                      786.0455446243286,
+                      595.4194626510143
+                    ],
+                    "descendant": [
+                      812.2080039381981,
+                      595.5426814556122
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "successor",
+          "fit": "audits/C169_NAPE_RECUT_20261002/hawk/fit-v2",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.000059554107919652116,
+              "excluded": [
+                {
+                  "name": "chest|head",
+                  "sourceEdges": 53,
+                  "samples": 61,
+                  "maxGapPx": 120.30162947055712,
+                  "violations": 61,
+                  "worst": {
+                    "source": [
+                      715,
+                      454
+                    ],
+                    "ancestor": [
+                      786.6664081811906,
+                      525.5404370427132
+                    ],
+                    "descendant": [
+                      902.7468748887379,
+                      557.1285250226656
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "head"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "chest|neck-upper",
+                  "sourceEdges": 25,
+                  "samples": 26,
+                  "maxGapPx": 69.8910759940465,
+                  "violations": 26,
+                  "worst": {
+                    "source": [
+                      732,
+                      489
+                    ],
+                    "ancestor": [
+                      791.142502784729,
+                      564.1922786235809
+                    ],
+                    "descendant": [
+                      859.8200973987579,
+                      577.159564447403
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "neck-upper"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 37,
+                  "samples": 41,
+                  "maxGapPx": 63.102798025900555,
+                  "violations": 41,
+                  "worst": {
+                    "source": [
+                      721,
+                      502
+                    ],
+                    "ancestor": [
+                      776.4638571977616,
+                      572.8258269071579
+                    ],
+                    "descendant": [
+                      839.5560902684927,
+                      571.6711646854877
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 6,
+                  "samples": 8,
+                  "maxGapPx": 39.887404628736654,
+                  "violations": 8,
+                  "worst": {
+                    "source": [
+                      734,
+                      516
+                    ],
+                    "ancestor": [
+                      784.1058769226074,
+                      590.3358276486397
+                    ],
+                    "descendant": [
+                      823.9909451007843,
+                      589.9041050076484
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 63,
+                  "maxGapPx": 29.653643398803037,
+                  "violations": 46,
+                  "worst": {
+                    "source": [
+                      734,
+                      522
+                    ],
+                    "ancestor": [
+                      785.9571595788002,
+                      595.3185018897057
+                    ],
+                    "descendant": [
+                      815.5590097904205,
+                      593.5666369199753
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.000059554107919652116,
+              "excluded": [
+                {
+                  "name": "chest|head",
+                  "sourceEdges": 53,
+                  "samples": 61,
+                  "maxGapPx": 120.30162947055712,
+                  "violations": 61,
+                  "worst": {
+                    "source": [
+                      715,
+                      454
+                    ],
+                    "ancestor": [
+                      786.6664081811906,
+                      525.5404370427132
+                    ],
+                    "descendant": [
+                      902.7468748887379,
+                      557.1285250226656
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "head"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "chest|neck-upper",
+                  "sourceEdges": 25,
+                  "samples": 26,
+                  "maxGapPx": 69.8910759940465,
+                  "violations": 26,
+                  "worst": {
+                    "source": [
+                      732,
+                      489
+                    ],
+                    "ancestor": [
+                      791.142502784729,
+                      564.1922786235809
+                    ],
+                    "descendant": [
+                      859.8200973987579,
+                      577.159564447403
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "neck-upper"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 37,
+                  "samples": 41,
+                  "maxGapPx": 63.102798025900555,
+                  "violations": 41,
+                  "worst": {
+                    "source": [
+                      721,
+                      502
+                    ],
+                    "ancestor": [
+                      776.4638571977616,
+                      572.8258269071579
+                    ],
+                    "descendant": [
+                      839.5560902684927,
+                      571.6711646854877
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 6,
+                  "samples": 8,
+                  "maxGapPx": 39.887404628736654,
+                  "violations": 8,
+                  "worst": {
+                    "source": [
+                      734,
+                      516
+                    ],
+                    "ancestor": [
+                      784.1058769226074,
+                      590.3358276486397
+                    ],
+                    "descendant": [
+                      823.9909451007843,
+                      589.9041050076484
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 63,
+                  "maxGapPx": 29.653643398803037,
+                  "violations": 46,
+                  "worst": {
+                    "source": [
+                      734,
+                      522
+                    ],
+                    "ancestor": [
+                      785.9571595788002,
+                      595.3185018897057
+                    ],
+                    "descendant": [
+                      815.5590097904205,
+                      593.5666369199753
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crow",
+      "modes": [
+        {
+          "mode": "original",
+          "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/fit01",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005656016806296097,
+              "excluded": [
+                {
+                  "name": "far-wing-flight|neck-upper",
+                  "sourceEdges": 1,
+                  "samples": 3,
+                  "maxGapPx": 117.41923711829473,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      662,
+                      475
+                    ],
+                    "ancestor": [
+                      730.8844175291061,
+                      534.9013414907456
+                    ],
+                    "descendant": [
+                      841.0224827528,
+                      494.1965035200119
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-flight",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 132,
+                  "samples": 143,
+                  "maxGapPx": 116.62907323730849,
+                  "violations": 143,
+                  "worst": {
+                    "source": [
+                      663,
+                      475
+                    ],
+                    "ancestor": [
+                      731.7979266388076,
+                      535.3080779186316
+                    ],
+                    "descendant": [
+                      841.29812194705,
+                      495.1577609628439
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 7,
+                  "samples": 10,
+                  "maxGapPx": 41.60097093511351,
+                  "violations": 10,
+                  "worst": {
+                    "source": [
+                      755,
+                      485
+                    ],
+                    "ancestor": [
+                      811.776747914723,
+                      581.8632814969336
+                    ],
+                    "descendant": [
+                      853.2260273694992,
+                      585.4126498103142
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 66,
+                  "maxGapPx": 33.07947558008584,
+                  "violations": 53,
+                  "worst": {
+                    "source": [
+                      756,
+                      491
+                    ],
+                    "ancestor": [
+                      812.4809762388467,
+                      587.2785309478639
+                    ],
+                    "descendant": [
+                      845.5112424373627,
+                      589.0821992956103
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005656016806296097,
+              "excluded": [
+                {
+                  "name": "far-wing-flight|neck-upper",
+                  "sourceEdges": 1,
+                  "samples": 3,
+                  "maxGapPx": 117.41923711829473,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      662,
+                      475
+                    ],
+                    "ancestor": [
+                      730.8844175291061,
+                      534.9013414907456
+                    ],
+                    "descendant": [
+                      841.0224827528,
+                      494.1965035200119
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-flight",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 132,
+                  "samples": 143,
+                  "maxGapPx": 116.62907323730849,
+                  "violations": 143,
+                  "worst": {
+                    "source": [
+                      663,
+                      475
+                    ],
+                    "ancestor": [
+                      731.7979266388076,
+                      535.3080779186316
+                    ],
+                    "descendant": [
+                      841.29812194705,
+                      495.1577609628439
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 7,
+                  "samples": 10,
+                  "maxGapPx": 41.60097093511351,
+                  "violations": 10,
+                  "worst": {
+                    "source": [
+                      755,
+                      485
+                    ],
+                    "ancestor": [
+                      811.776747914723,
+                      581.8632814969336
+                    ],
+                    "descendant": [
+                      853.2260273694992,
+                      585.4126498103142
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 66,
+                  "maxGapPx": 33.07947558008584,
+                  "violations": 53,
+                  "worst": {
+                    "source": [
+                      756,
+                      491
+                    ],
+                    "ancestor": [
+                      812.4809762388467,
+                      587.2785309478639
+                    ],
+                    "descendant": [
+                      845.5112424373627,
+                      589.0821992956103
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "first",
+          "fit": "audits/C169_NAPE_RECUT_20261002/crow/fit",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005909049787895602,
+              "excluded": [
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 48,
+                  "samples": 59,
+                  "maxGapPx": 48.03122269373567,
+                  "violations": 54,
+                  "worst": {
+                    "source": [
+                      734,
+                      465
+                    ],
+                    "ancestor": [
+                      807.3718501776457,
+                      556.4582087472081
+                    ],
+                    "descendant": [
+                      855.2496151328087,
+                      560.2946102321148
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 45,
+                  "samples": 48,
+                  "maxGapPx": 47.64204902622411,
+                  "violations": 48,
+                  "worst": {
+                    "source": [
+                      737,
+                      467
+                    ],
+                    "ancestor": [
+                      808.3697609424592,
+                      559.4358700990676
+                    ],
+                    "descendant": [
+                      855.824487912655,
+                      563.6565008103848
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 65,
+                  "maxGapPx": 29.281789033292377,
+                  "violations": 52,
+                  "worst": {
+                    "source": [
+                      756,
+                      491
+                    ],
+                    "ancestor": [
+                      812.5679790079593,
+                      587.299946397543
+                    ],
+                    "descendant": [
+                      841.6245510220527,
+                      590.924693530798
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 1,
+                  "samples": 3,
+                  "maxGapPx": 0.00002570837291093278,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      662,
+                      475
+                    ],
+                    "ancestor": [
+                      737.6276639699937,
+                      532.8294584155083
+                    ],
+                    "descendant": [
+                      737.6276441431046,
+                      532.8294420504569
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005909049787895602,
+              "excluded": [
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 48,
+                  "samples": 59,
+                  "maxGapPx": 48.03122269373567,
+                  "violations": 54,
+                  "worst": {
+                    "source": [
+                      734,
+                      465
+                    ],
+                    "ancestor": [
+                      807.3718501776457,
+                      556.4582087472081
+                    ],
+                    "descendant": [
+                      855.2496151328087,
+                      560.2946102321148
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 45,
+                  "samples": 48,
+                  "maxGapPx": 47.64204902622411,
+                  "violations": 48,
+                  "worst": {
+                    "source": [
+                      737,
+                      467
+                    ],
+                    "ancestor": [
+                      808.3697609424592,
+                      559.4358700990676
+                    ],
+                    "descendant": [
+                      855.824487912655,
+                      563.6565008103848
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 65,
+                  "maxGapPx": 29.281789033292377,
+                  "violations": 52,
+                  "worst": {
+                    "source": [
+                      756,
+                      491
+                    ],
+                    "ancestor": [
+                      812.5679790079593,
+                      587.299946397543
+                    ],
+                    "descendant": [
+                      841.6245510220527,
+                      590.924693530798
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 1,
+                  "samples": 3,
+                  "maxGapPx": 0.00002570837291093278,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      662,
+                      475
+                    ],
+                    "ancestor": [
+                      737.6276639699937,
+                      532.8294584155083
+                    ],
+                    "descendant": [
+                      737.6276441431046,
+                      532.8294420504569
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "successor",
+          "fit": "audits/C169_NAPE_RECUT_20261002/crow/fit-v2",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00006035726796098723,
+              "excluded": [
+                {
+                  "name": "chest|head",
+                  "sourceEdges": 58,
+                  "samples": 69,
+                  "maxGapPx": 126.94167559273099,
+                  "violations": 69,
+                  "worst": {
+                    "source": [
+                      731,
+                      422
+                    ],
+                    "ancestor": [
+                      815.4760643541813,
+                      514.5482344552875
+                    ],
+                    "descendant": [
+                      936.1933623552322,
+                      553.8104677796364
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "head"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "chest|neck-upper",
+                  "sourceEdges": 21,
+                  "samples": 30,
+                  "maxGapPx": 71.5974123895712,
+                  "violations": 30,
+                  "worst": {
+                    "source": [
+                      752,
+                      459
+                    ],
+                    "ancestor": [
+                      819.611259073019,
+                      556.8909009486437
+                    ],
+                    "descendant": [
+                      888.9810854991276,
+                      574.6114156842232
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "neck-upper"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 34,
+                  "samples": 38,
+                  "maxGapPx": 65.78542048379703,
+                  "violations": 38,
+                  "worst": {
+                    "source": [
+                      743,
+                      471
+                    ],
+                    "ancestor": [
+                      806.5084963917733,
+                      564.1928103893995
+                    ],
+                    "descendant": [
+                      872.1597776055337,
+                      568.391717773676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 7,
+                  "samples": 10,
+                  "maxGapPx": 42.33050904302848,
+                  "violations": 10,
+                  "worst": {
+                    "source": [
+                      755,
+                      485
+                    ],
+                    "ancestor": [
+                      811.776747914723,
+                      581.8632814969336
+                    ],
+                    "descendant": [
+                      854.0006017684937,
+                      584.8663069009781
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 66,
+                  "maxGapPx": 33.568980094489746,
+                  "violations": 53,
+                  "worst": {
+                    "source": [
+                      756,
+                      491
+                    ],
+                    "ancestor": [
+                      812.4842104017732,
+                      587.268127977848
+                    ],
+                    "descendant": [
+                      846.0229535445571,
+                      588.6926043681801
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 1,
+                  "samples": 3,
+                  "maxGapPx": 0.000037012186513093155,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      662.3157894736843,
+                      475
+                    ],
+                    "ancestor": [
+                      731.1728648543359,
+                      535.0297857820989
+                    ],
+                    "descendant": [
+                      731.1729018330575,
+                      535.0297842085362
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00006035726796098723,
+              "excluded": [
+                {
+                  "name": "chest|head",
+                  "sourceEdges": 58,
+                  "samples": 69,
+                  "maxGapPx": 126.94167559273099,
+                  "violations": 69,
+                  "worst": {
+                    "source": [
+                      731,
+                      422
+                    ],
+                    "ancestor": [
+                      815.4760643541813,
+                      514.5482344552875
+                    ],
+                    "descendant": [
+                      936.1933623552322,
+                      553.8104677796364
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "head"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "chest|neck-upper",
+                  "sourceEdges": 21,
+                  "samples": 30,
+                  "maxGapPx": 71.5974123895712,
+                  "violations": 30,
+                  "worst": {
+                    "source": [
+                      752,
+                      459
+                    ],
+                    "ancestor": [
+                      819.611259073019,
+                      556.8909009486437
+                    ],
+                    "descendant": [
+                      888.9810854991276,
+                      574.6114156842232
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "neck-upper"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 34,
+                  "samples": 38,
+                  "maxGapPx": 65.78542048379703,
+                  "violations": 38,
+                  "worst": {
+                    "source": [
+                      743,
+                      471
+                    ],
+                    "ancestor": [
+                      806.5084963917733,
+                      564.1928103893995
+                    ],
+                    "descendant": [
+                      872.1597776055337,
+                      568.391717773676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 7,
+                  "samples": 10,
+                  "maxGapPx": 42.33050904302848,
+                  "violations": 10,
+                  "worst": {
+                    "source": [
+                      755,
+                      485
+                    ],
+                    "ancestor": [
+                      811.776747914723,
+                      581.8632814969336
+                    ],
+                    "descendant": [
+                      854.0006017684937,
+                      584.8663069009781
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 60,
+                  "samples": 66,
+                  "maxGapPx": 33.568980094489746,
+                  "violations": 53,
+                  "worst": {
+                    "source": [
+                      756,
+                      491
+                    ],
+                    "ancestor": [
+                      812.4842104017732,
+                      587.268127977848
+                    ],
+                    "descendant": [
+                      846.0229535445571,
+                      588.6926043681801
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 1,
+                  "samples": 3,
+                  "maxGapPx": 0.000037012186513093155,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      662.3157894736843,
+                      475
+                    ],
+                    "ancestor": [
+                      731.1728648543359,
+                      535.0297857820989
+                    ],
+                    "descendant": [
+                      731.1729018330575,
+                      535.0297842085362
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "snowy-owl",
+      "modes": [
+        {
+          "mode": "original",
+          "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.0000527899324523604,
+              "excluded": [
+                {
+                  "name": "far-wing-flight|neck-upper",
+                  "sourceEdges": 3,
+                  "samples": 4,
+                  "maxGapPx": 182.97548945866347,
+                  "violations": 4,
+                  "worst": {
+                    "source": [
+                      639,
+                      470
+                    ],
+                    "ancestor": [
+                      741.2550798654556,
+                      540.4422284960747
+                    ],
+                    "descendant": [
+                      904.7460254430771,
+                      458.27933871746063
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-flight",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 205,
+                  "samples": 223,
+                  "maxGapPx": 180.73333650396674,
+                  "violations": 223,
+                  "worst": {
+                    "source": [
+                      642,
+                      469
+                    ],
+                    "ancestor": [
+                      744.4024604693054,
+                      540.748876389116
+                    ],
+                    "descendant": [
+                      906.5341939917631,
+                      460.8874970568078
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 12,
+                  "samples": 17,
+                  "maxGapPx": 62.015566045954046,
+                  "violations": 17,
+                  "worst": {
+                    "source": [
+                      787,
+                      476
+                    ],
+                    "ancestor": [
+                      874.019390140261,
+                      606.1205051881927
+                    ],
+                    "descendant": [
+                      935.9676597118378,
+                      603.2321961522102
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 88,
+                  "samples": 94,
+                  "maxGapPx": 51.508755065147156,
+                  "violations": 79,
+                  "worst": {
+                    "source": [
+                      789,
+                      486
+                    ],
+                    "ancestor": [
+                      871.9316894916387,
+                      616.0192368534895
+                    ],
+                    "descendant": [
+                      923.1013278961182,
+                      610.1183933615685
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.0000527899324523604,
+              "excluded": [
+                {
+                  "name": "far-wing-flight|neck-upper",
+                  "sourceEdges": 3,
+                  "samples": 4,
+                  "maxGapPx": 182.97548945866347,
+                  "violations": 4,
+                  "worst": {
+                    "source": [
+                      639,
+                      470
+                    ],
+                    "ancestor": [
+                      741.2550798654556,
+                      540.4422284960747
+                    ],
+                    "descendant": [
+                      904.7460254430771,
+                      458.27933871746063
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-flight",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 205,
+                  "samples": 223,
+                  "maxGapPx": 180.73333650396674,
+                  "violations": 223,
+                  "worst": {
+                    "source": [
+                      642,
+                      469
+                    ],
+                    "ancestor": [
+                      744.4024604693054,
+                      540.748876389116
+                    ],
+                    "descendant": [
+                      906.5341939917631,
+                      460.8874970568078
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 12,
+                  "samples": 17,
+                  "maxGapPx": 62.015566045954046,
+                  "violations": 17,
+                  "worst": {
+                    "source": [
+                      787,
+                      476
+                    ],
+                    "ancestor": [
+                      874.019390140261,
+                      606.1205051881927
+                    ],
+                    "descendant": [
+                      935.9676597118378,
+                      603.2321961522102
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 88,
+                  "samples": 94,
+                  "maxGapPx": 51.508755065147156,
+                  "violations": 79,
+                  "worst": {
+                    "source": [
+                      789,
+                      486
+                    ],
+                    "ancestor": [
+                      871.9316894916387,
+                      616.0192368534895
+                    ],
+                    "descendant": [
+                      923.1013278961182,
+                      610.1183933615685
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "first",
+          "fit": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.000054389656917355633,
+              "excluded": [
+                {
+                  "name": "head|neck-lower",
+                  "sourceEdges": 56,
+                  "samples": 61,
+                  "maxGapPx": 86.3247465204703,
+                  "violations": 53,
+                  "worst": {
+                    "source": [
+                      731,
+                      383
+                    ],
+                    "ancestor": [
+                      1043.9054082036018,
+                      535.6409502923489
+                    ],
+                    "descendant": [
+                      960.6250412911177,
+                      512.9177826270461
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "head",
+                    "neck-lower"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 66,
+                  "samples": 72,
+                  "maxGapPx": 80.70187238953896,
+                  "violations": 72,
+                  "worst": {
+                    "source": [
+                      762,
+                      457
+                    ],
+                    "ancestor": [
+                      860.6812000393868,
+                      578.912628570199
+                    ],
+                    "descendant": [
+                      941.2904561698438,
+                      575.0473946481943
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 81,
+                  "samples": 93,
+                  "maxGapPx": 79.26920356082753,
+                  "violations": 85,
+                  "worst": {
+                    "source": [
+                      754,
+                      453
+                    ],
+                    "ancestor": [
+                      856.4778617978096,
+                      572.0634907275438
+                    ],
+                    "descendant": [
+                      935.6011372447015,
+                      567.2557973384858
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 88,
+                  "samples": 94,
+                  "maxGapPx": 48.63084121082339,
+                  "violations": 79,
+                  "worst": {
+                    "source": [
+                      789,
+                      486
+                    ],
+                    "ancestor": [
+                      872.7847798237434,
+                      615.8442951211562
+                    ],
+                    "descendant": [
+                      921.2157068252563,
+                      611.4392949342728
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 3,
+                  "samples": 4,
+                  "maxGapPx": 0.00002127585269635528,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      639,
+                      470
+                    ],
+                    "ancestor": [
+                      745.5752094984055,
+                      538.395617544651
+                    ],
+                    "descendant": [
+                      745.5752213001251,
+                      538.3956352472305
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.000054389656917355633,
+              "excluded": [
+                {
+                  "name": "head|neck-lower",
+                  "sourceEdges": 56,
+                  "samples": 61,
+                  "maxGapPx": 86.3247465204703,
+                  "violations": 53,
+                  "worst": {
+                    "source": [
+                      731,
+                      383
+                    ],
+                    "ancestor": [
+                      1043.9054082036018,
+                      535.6409502923489
+                    ],
+                    "descendant": [
+                      960.6250412911177,
+                      512.9177826270461
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "head",
+                    "neck-lower"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 66,
+                  "samples": 72,
+                  "maxGapPx": 80.70187238953896,
+                  "violations": 72,
+                  "worst": {
+                    "source": [
+                      762,
+                      457
+                    ],
+                    "ancestor": [
+                      860.6812000393868,
+                      578.912628570199
+                    ],
+                    "descendant": [
+                      941.2904561698438,
+                      575.0473946481943
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 81,
+                  "samples": 93,
+                  "maxGapPx": 79.26920356082753,
+                  "violations": 85,
+                  "worst": {
+                    "source": [
+                      754,
+                      453
+                    ],
+                    "ancestor": [
+                      856.4778617978096,
+                      572.0634907275438
+                    ],
+                    "descendant": [
+                      935.6011372447015,
+                      567.2557973384858
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 88,
+                  "samples": 94,
+                  "maxGapPx": 48.63084121082339,
+                  "violations": 79,
+                  "worst": {
+                    "source": [
+                      789,
+                      486
+                    ],
+                    "ancestor": [
+                      872.7847798237434,
+                      615.8442951211562
+                    ],
+                    "descendant": [
+                      921.2157068252563,
+                      611.4392949342728
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 3,
+                  "samples": 4,
+                  "maxGapPx": 0.00002127585269635528,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      639,
+                      470
+                    ],
+                    "ancestor": [
+                      745.5752094984055,
+                      538.395617544651
+                    ],
+                    "descendant": [
+                      745.5752213001251,
+                      538.3956352472305
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "successor",
+          "fit": "audits/C169_NAPE_RECUT_20261002/snowy-owl/fit-v2",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.0000527899324523604,
+              "excluded": [
+                {
+                  "name": "chest|head",
+                  "sourceEdges": 101,
+                  "samples": 108,
+                  "maxGapPx": 204.76811886577954,
+                  "violations": 108,
+                  "worst": {
+                    "source": [
+                      731,
+                      383
+                    ],
+                    "ancestor": [
+                      860.6873508989811,
+                      498.38352524489164
+                    ],
+                    "descendant": [
+                      1061.257167816162,
+                      539.6355681717396
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "head"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "chest|neck-upper",
+                  "sourceEdges": 28,
+                  "samples": 29,
+                  "maxGapPx": 107.96355333679341,
+                  "violations": 29,
+                  "worst": {
+                    "source": [
+                      774,
+                      441
+                    ],
+                    "ancestor": [
+                      876.3790674448013,
+                      568.858859539032
+                    ],
+                    "descendant": [
+                      983.8345338106155,
+                      579.3207712769508
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "neck-upper"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 52,
+                  "samples": 59,
+                  "maxGapPx": 95.55694855291281,
+                  "violations": 59,
+                  "worst": {
+                    "source": [
+                      763,
+                      458
+                    ],
+                    "ancestor": [
+                      859.4155517578125,
+                      579.9150177597999
+                    ],
+                    "descendant": [
+                      954.7756984233856,
+                      573.785348546505
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 12,
+                  "samples": 17,
+                  "maxGapPx": 62.14990370380235,
+                  "violations": 17,
+                  "worst": {
+                    "source": [
+                      787,
+                      476
+                    ],
+                    "ancestor": [
+                      874.019390140261,
+                      606.1205051881927
+                    ],
+                    "descendant": [
+                      936.0997327566147,
+                      603.1808468699455
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 88,
+                  "samples": 94,
+                  "maxGapPx": 50.66379295679365,
+                  "violations": 79,
+                  "worst": {
+                    "source": [
+                      789,
+                      486
+                    ],
+                    "ancestor": [
+                      872.7849638095269,
+                      615.8421706603124
+                    ],
+                    "descendant": [
+                      923.1299405097961,
+                      610.1673809885979
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 3,
+                  "samples": 4,
+                  "maxGapPx": 0.000011964509695758892,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      639,
+                      470
+                    ],
+                    "ancestor": [
+                      741.255068063736,
+                      540.4422265291214
+                    ],
+                    "descendant": [
+                      741.2550798654556,
+                      540.4422284960747
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.0000527899324523604,
+              "excluded": [
+                {
+                  "name": "chest|head",
+                  "sourceEdges": 101,
+                  "samples": 108,
+                  "maxGapPx": 204.76811886577954,
+                  "violations": 108,
+                  "worst": {
+                    "source": [
+                      731,
+                      383
+                    ],
+                    "ancestor": [
+                      860.6873508989811,
+                      498.38352524489164
+                    ],
+                    "descendant": [
+                      1061.257167816162,
+                      539.6355681717396
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "head"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "chest|neck-upper",
+                  "sourceEdges": 28,
+                  "samples": 29,
+                  "maxGapPx": 107.96355333679341,
+                  "violations": 29,
+                  "worst": {
+                    "source": [
+                      774,
+                      441
+                    ],
+                    "ancestor": [
+                      876.3790674448013,
+                      568.858859539032
+                    ],
+                    "descendant": [
+                      983.8345338106155,
+                      579.3207712769508
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "neck-upper"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-upper",
+                  "sourceEdges": 52,
+                  "samples": 59,
+                  "maxGapPx": 95.55694855291281,
+                  "violations": 59,
+                  "worst": {
+                    "source": [
+                      763,
+                      458
+                    ],
+                    "ancestor": [
+                      859.4155517578125,
+                      579.9150177597999
+                    ],
+                    "descendant": [
+                      954.7756984233856,
+                      573.785348546505
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-upper"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "far-wing-root|neck-lower",
+                  "sourceEdges": 12,
+                  "samples": 17,
+                  "maxGapPx": 62.14990370380235,
+                  "violations": 17,
+                  "worst": {
+                    "source": [
+                      787,
+                      476
+                    ],
+                    "ancestor": [
+                      874.019390140261,
+                      606.1205051881927
+                    ],
+                    "descendant": [
+                      936.0997327566147,
+                      603.1808468699455
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "far-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "near-wing-root|neck-lower",
+                  "sourceEdges": 88,
+                  "samples": 94,
+                  "maxGapPx": 50.66379295679365,
+                  "violations": 79,
+                  "worst": {
+                    "source": [
+                      789,
+                      486
+                    ],
+                    "ancestor": [
+                      872.7849638095269,
+                      615.8421706603124
+                    ],
+                    "descendant": [
+                      923.1299405097961,
+                      610.1673809885979
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "near-wing-root",
+                    "neck-lower"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "chest|far-wing-flight",
+                  "sourceEdges": 3,
+                  "samples": 4,
+                  "maxGapPx": 0.000011964509695758892,
+                  "violations": 0,
+                  "worst": {
+                    "source": [
+                      639,
+                      470
+                    ],
+                    "ancestor": [
+                      741.255068063736,
+                      540.4422265291214
+                    ],
+                    "descendant": [
+                      741.2550798654556,
+                      540.4422284960747
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "chest",
+                    "far-wing-flight"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wild-pony",
+      "modes": [
+        {
+          "mode": "original",
+          "fit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/fit01",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "ear-far-tip|spine",
+                  "sourceEdges": 23,
+                  "samples": 28,
+                  "maxGapPx": 227.37236536581892,
+                  "violations": 28,
+                  "worst": {
+                    "source": [
+                      936,
+                      351
+                    ],
+                    "ancestor": [
+                      1050.4464848041534,
+                      736.6104347705841
+                    ],
+                    "descendant": [
+                      990.9489133358002,
+                      517.1605964899063
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-tip",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-tip|spine",
+                  "sourceEdges": 10,
+                  "samples": 14,
+                  "maxGapPx": 214.75863735707708,
+                  "violations": 14,
+                  "worst": {
+                    "source": [
+                      922,
+                      358
+                    ],
+                    "ancestor": [
+                      1039.1377382159233,
+                      725.2853353917599
+                    ],
+                    "descendant": [
+                      975.5837194919586,
+                      520.1459705114364
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-tip",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-ankle|spine",
+                  "sourceEdges": 109,
+                  "samples": 146,
+                  "maxGapPx": 124.30589164260105,
+                  "violations": 146,
+                  "worst": {
+                    "source": [
+                      697,
+                      876
+                    ],
+                    "ancestor": [
+                      700.1157131195068,
+                      863.8670203685759
+                    ],
+                    "descendant": [
+                      619.8026327490807,
+                      958.744645857811
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-paw|spine",
+                  "sourceEdges": 8,
+                  "samples": 9,
+                  "maxGapPx": 122.94665495020145,
+                  "violations": 9,
+                  "worst": {
+                    "source": [
+                      662,
+                      899
+                    ],
+                    "ancestor": [
+                      674.4510880763713,
+                      892.9026271269872
+                    ],
+                    "descendant": [
+                      579.9134929776192,
+                      971.5062089562416
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-paw",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-tip|neck",
+                  "sourceEdges": 17,
+                  "samples": 23,
+                  "maxGapPx": 84.08025885708038,
+                  "violations": 23,
+                  "worst": {
+                    "source": [
+                      899,
+                      371
+                    ],
+                    "ancestor": [
+                      1019.2700979709625,
+                      707.0881055934088
+                    ],
+                    "descendant": [
+                      1010.9044253826141,
+                      623.4250584840775
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-tip",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-root|neck",
+                  "sourceEdges": 79,
+                  "samples": 90,
+                  "maxGapPx": 74.1556895771682,
+                  "violations": 71,
+                  "worst": {
+                    "source": [
+                      895,
+                      382
+                    ],
+                    "ancestor": [
+                      1007.431410074234,
+                      705.9151100715001
+                    ],
+                    "descendant": [
+                      1001.2427211602528,
+                      632.0181113084157
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-root",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "hind-near-paw|spine",
+                  "sourceEdges": 53,
+                  "samples": 65,
+                  "maxGapPx": 71.36658651401586,
+                  "violations": 65,
+                  "worst": {
+                    "source": [
+                      353,
+                      887
+                    ],
+                    "ancestor": [
+                      356.35699907938636,
+                      885.2968399524688
+                    ],
+                    "descendant": [
+                      285.4735036837427,
+                      877.0071022510529
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-paw",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-near-ankle|spine",
+                  "sourceEdges": 67,
+                  "samples": 76,
+                  "maxGapPx": 65.86413864963224,
+                  "violations": 76,
+                  "worst": {
+                    "source": [
+                      336,
+                      865
+                    ],
+                    "ancestor": [
+                      339.2157299011945,
+                      865.9051742076873
+                    ],
+                    "descendant": [
+                      275.00240296125406,
+                      851.2513895988465
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "fore-far-root|fore-near-root",
+                  "sourceEdges": 181,
+                  "samples": 201,
+                  "maxGapPx": 12.956733884454328,
+                  "violations": 197,
+                  "worst": {
+                    "source": [
+                      723,
+                      723
+                    ],
+                    "ancestor": [
+                      682.0678074359894,
+                      809.5135120153427
+                    ],
+                    "descendant": [
+                      672.7842836380005,
+                      800.4750863313676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-far-root",
+                    "fore-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-far-root|hind-near-root",
+                  "sourceEdges": 98,
+                  "samples": 117,
+                  "maxGapPx": 1.0423452414205439,
+                  "violations": 93,
+                  "worst": {
+                    "source": [
+                      470,
+                      700
+                    ],
+                    "ancestor": [
+                      456.15575252473354,
+                      729.6760478317738
+                    ],
+                    "descendant": [
+                      456.97777082026005,
+                      730.3169608712196
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-far-root",
+                    "hind-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-tip|ear-near-tip",
+                  "sourceEdges": 30,
+                  "samples": 39,
+                  "maxGapPx": 0.3320943807783023,
+                  "violations": 39,
+                  "worst": {
+                    "source": [
+                      926,
+                      364
+                    ],
+                    "ancestor": [
+                      1034.9119211733341,
+                      731.3368497490883
+                    ],
+                    "descendant": [
+                      1034.7996457099914,
+                      731.0243103146553
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-tip",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-tip",
+                  "sourceEdges": 13,
+                  "samples": 16,
+                  "maxGapPx": 0.16241266489971543,
+                  "violations": 16,
+                  "worst": {
+                    "source": [
+                      930,
+                      386
+                    ],
+                    "ancestor": [
+                      1015.4453238844872,
+                      741.9388656020164
+                    ],
+                    "descendant": [
+                      1015.3907356858253,
+                      741.7859015464783
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-root",
+                  "sourceEdges": 19,
+                  "samples": 23,
+                  "maxGapPx": 0.027260446207761295,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      926,
+                      395
+                    ],
+                    "ancestor": [
+                      1005.6696598529816,
+                      740.7414309978486
+                    ],
+                    "descendant": [
+                      1005.6569317919868,
+                      740.7173243931362
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "ear-far-tip|spine",
+                  "sourceEdges": 23,
+                  "samples": 28,
+                  "maxGapPx": 227.37236536581892,
+                  "violations": 28,
+                  "worst": {
+                    "source": [
+                      936,
+                      351
+                    ],
+                    "ancestor": [
+                      1050.4464848041534,
+                      736.6104347705841
+                    ],
+                    "descendant": [
+                      990.9489133358002,
+                      517.1605964899063
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-tip",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-tip|spine",
+                  "sourceEdges": 10,
+                  "samples": 14,
+                  "maxGapPx": 214.75863735707708,
+                  "violations": 14,
+                  "worst": {
+                    "source": [
+                      922,
+                      358
+                    ],
+                    "ancestor": [
+                      1039.1377382159233,
+                      725.2853353917599
+                    ],
+                    "descendant": [
+                      975.5837194919586,
+                      520.1459705114364
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-tip",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-ankle|spine",
+                  "sourceEdges": 109,
+                  "samples": 146,
+                  "maxGapPx": 124.30589164260105,
+                  "violations": 146,
+                  "worst": {
+                    "source": [
+                      697,
+                      876
+                    ],
+                    "ancestor": [
+                      700.1157131195068,
+                      863.8670203685759
+                    ],
+                    "descendant": [
+                      619.8026327490807,
+                      958.744645857811
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-paw|spine",
+                  "sourceEdges": 8,
+                  "samples": 9,
+                  "maxGapPx": 122.94665495020145,
+                  "violations": 9,
+                  "worst": {
+                    "source": [
+                      662,
+                      899
+                    ],
+                    "ancestor": [
+                      674.4510880763713,
+                      892.9026271269872
+                    ],
+                    "descendant": [
+                      579.9134929776192,
+                      971.5062089562416
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-paw",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-tip|neck",
+                  "sourceEdges": 17,
+                  "samples": 23,
+                  "maxGapPx": 84.08025885708038,
+                  "violations": 23,
+                  "worst": {
+                    "source": [
+                      899,
+                      371
+                    ],
+                    "ancestor": [
+                      1019.2700979709625,
+                      707.0881055934088
+                    ],
+                    "descendant": [
+                      1010.9044253826141,
+                      623.4250584840775
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-tip",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-root|neck",
+                  "sourceEdges": 79,
+                  "samples": 90,
+                  "maxGapPx": 74.1556895771682,
+                  "violations": 71,
+                  "worst": {
+                    "source": [
+                      895,
+                      382
+                    ],
+                    "ancestor": [
+                      1007.431410074234,
+                      705.9151100715001
+                    ],
+                    "descendant": [
+                      1001.2427211602528,
+                      632.0181113084157
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-root",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "hind-near-paw|spine",
+                  "sourceEdges": 53,
+                  "samples": 65,
+                  "maxGapPx": 71.36658651401586,
+                  "violations": 65,
+                  "worst": {
+                    "source": [
+                      353,
+                      887
+                    ],
+                    "ancestor": [
+                      356.35699907938636,
+                      885.2968399524688
+                    ],
+                    "descendant": [
+                      285.4735036837427,
+                      877.0071022510529
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-paw",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-near-ankle|spine",
+                  "sourceEdges": 67,
+                  "samples": 76,
+                  "maxGapPx": 65.86413864963224,
+                  "violations": 76,
+                  "worst": {
+                    "source": [
+                      336,
+                      865
+                    ],
+                    "ancestor": [
+                      339.2157299011945,
+                      865.9051742076873
+                    ],
+                    "descendant": [
+                      275.00240296125406,
+                      851.2513895988465
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "fore-far-root|fore-near-root",
+                  "sourceEdges": 181,
+                  "samples": 201,
+                  "maxGapPx": 12.956733884454328,
+                  "violations": 197,
+                  "worst": {
+                    "source": [
+                      723,
+                      723
+                    ],
+                    "ancestor": [
+                      682.0678074359894,
+                      809.5135120153427
+                    ],
+                    "descendant": [
+                      672.7842836380005,
+                      800.4750863313676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-far-root",
+                    "fore-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-far-root|hind-near-root",
+                  "sourceEdges": 98,
+                  "samples": 117,
+                  "maxGapPx": 1.0423452414205439,
+                  "violations": 93,
+                  "worst": {
+                    "source": [
+                      470,
+                      700
+                    ],
+                    "ancestor": [
+                      456.15575252473354,
+                      729.6760478317738
+                    ],
+                    "descendant": [
+                      456.97777082026005,
+                      730.3169608712196
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-far-root",
+                    "hind-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-tip|ear-near-tip",
+                  "sourceEdges": 30,
+                  "samples": 39,
+                  "maxGapPx": 0.3320943807783023,
+                  "violations": 39,
+                  "worst": {
+                    "source": [
+                      926,
+                      364
+                    ],
+                    "ancestor": [
+                      1034.9119211733341,
+                      731.3368497490883
+                    ],
+                    "descendant": [
+                      1034.7996457099914,
+                      731.0243103146553
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-tip",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-tip",
+                  "sourceEdges": 13,
+                  "samples": 16,
+                  "maxGapPx": 0.16241266489971543,
+                  "violations": 16,
+                  "worst": {
+                    "source": [
+                      930,
+                      386
+                    ],
+                    "ancestor": [
+                      1015.4453238844872,
+                      741.9388656020164
+                    ],
+                    "descendant": [
+                      1015.3907356858253,
+                      741.7859015464783
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-root",
+                  "sourceEdges": 19,
+                  "samples": 23,
+                  "maxGapPx": 0.027260446207761295,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      926,
+                      395
+                    ],
+                    "ancestor": [
+                      1005.6696598529816,
+                      740.7414309978486
+                    ],
+                    "descendant": [
+                      1005.6569317919868,
+                      740.7173243931362
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "first",
+          "fit": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "fore-near-ankle|spine",
+                  "sourceEdges": 109,
+                  "samples": 146,
+                  "maxGapPx": 124.30589164260105,
+                  "violations": 146,
+                  "worst": {
+                    "source": [
+                      697,
+                      876
+                    ],
+                    "ancestor": [
+                      700.1157131195068,
+                      863.8670203685759
+                    ],
+                    "descendant": [
+                      619.8026327490807,
+                      958.744645857811
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-paw|spine",
+                  "sourceEdges": 8,
+                  "samples": 9,
+                  "maxGapPx": 122.94665495020145,
+                  "violations": 9,
+                  "worst": {
+                    "source": [
+                      662,
+                      899
+                    ],
+                    "ancestor": [
+                      674.4510880763713,
+                      892.9026271269872
+                    ],
+                    "descendant": [
+                      579.9134929776192,
+                      971.5062089562416
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-paw",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-tip|neck",
+                  "sourceEdges": 39,
+                  "samples": 48,
+                  "maxGapPx": 86.22808738395348,
+                  "violations": 48,
+                  "worst": {
+                    "source": [
+                      884,
+                      360
+                    ],
+                    "ancestor": [
+                      1024.6043131828308,
+                      690.0303797006607
+                    ],
+                    "descendant": [
+                      1006.6971458584071,
+                      605.6821941107512
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-tip",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-root|neck",
+                  "sourceEdges": 79,
+                  "samples": 90,
+                  "maxGapPx": 74.64778667111695,
+                  "violations": 71,
+                  "worst": {
+                    "source": [
+                      895,
+                      382
+                    ],
+                    "ancestor": [
+                      1007.3680020570755,
+                      706.4181054830551
+                    ],
+                    "descendant": [
+                      1001.2434602975845,
+                      632.0219897031783
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-root",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "hind-near-paw|spine",
+                  "sourceEdges": 53,
+                  "samples": 65,
+                  "maxGapPx": 71.36658651401586,
+                  "violations": 65,
+                  "worst": {
+                    "source": [
+                      353,
+                      887
+                    ],
+                    "ancestor": [
+                      356.35699907938636,
+                      885.2968399524688
+                    ],
+                    "descendant": [
+                      285.4735036837427,
+                      877.0071022510529
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-paw",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-near-ankle|spine",
+                  "sourceEdges": 67,
+                  "samples": 76,
+                  "maxGapPx": 65.86413864963224,
+                  "violations": 76,
+                  "worst": {
+                    "source": [
+                      336,
+                      865
+                    ],
+                    "ancestor": [
+                      339.2157299011945,
+                      865.9051742076873
+                    ],
+                    "descendant": [
+                      275.00240296125406,
+                      851.2513895988465
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "fore-far-root|fore-near-root",
+                  "sourceEdges": 181,
+                  "samples": 201,
+                  "maxGapPx": 12.956733884454328,
+                  "violations": 197,
+                  "worst": {
+                    "source": [
+                      723,
+                      723
+                    ],
+                    "ancestor": [
+                      682.0678074359894,
+                      809.5135120153427
+                    ],
+                    "descendant": [
+                      672.7842836380005,
+                      800.4750863313676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-far-root",
+                    "fore-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-far-root|hind-near-root",
+                  "sourceEdges": 98,
+                  "samples": 117,
+                  "maxGapPx": 1.0423452414205439,
+                  "violations": 93,
+                  "worst": {
+                    "source": [
+                      470,
+                      700
+                    ],
+                    "ancestor": [
+                      456.15575252473354,
+                      729.6760478317738
+                    ],
+                    "descendant": [
+                      456.97777082026005,
+                      730.3169608712196
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-far-root",
+                    "hind-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-tip|ear-near-tip",
+                  "sourceEdges": 40,
+                  "samples": 49,
+                  "maxGapPx": 0.2526012143786595,
+                  "violations": 49,
+                  "worst": {
+                    "source": [
+                      922,
+                      358
+                    ],
+                    "ancestor": [
+                      1039.2556306421757,
+                      725.6572406888008
+                    ],
+                    "descendant": [
+                      1039.1231447339057,
+                      725.4421712636947
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-tip",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-tip",
+                  "sourceEdges": 13,
+                  "samples": 16,
+                  "maxGapPx": 0.1265409303627393,
+                  "violations": 16,
+                  "worst": {
+                    "source": [
+                      930,
+                      386
+                    ],
+                    "ancestor": [
+                      1015.4442027211189,
+                      742.0286707878113
+                    ],
+                    "descendant": [
+                      1015.3896892666817,
+                      741.9144740700722
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-root",
+                  "sourceEdges": 19,
+                  "samples": 23,
+                  "maxGapPx": 0.023544581051461694,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      926,
+                      395
+                    ],
+                    "ancestor": [
+                      1005.664674282074,
+                      740.8647065162659
+                    ],
+                    "descendant": [
+                      1005.6518463747841,
+                      740.8449633632388
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00005285214803266112,
+              "excluded": [
+                {
+                  "name": "fore-near-ankle|spine",
+                  "sourceEdges": 109,
+                  "samples": 146,
+                  "maxGapPx": 124.30589164260105,
+                  "violations": 146,
+                  "worst": {
+                    "source": [
+                      697,
+                      876
+                    ],
+                    "ancestor": [
+                      700.1157131195068,
+                      863.8670203685759
+                    ],
+                    "descendant": [
+                      619.8026327490807,
+                      958.744645857811
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-paw|spine",
+                  "sourceEdges": 8,
+                  "samples": 9,
+                  "maxGapPx": 122.94665495020145,
+                  "violations": 9,
+                  "worst": {
+                    "source": [
+                      662,
+                      899
+                    ],
+                    "ancestor": [
+                      674.4510880763713,
+                      892.9026271269872
+                    ],
+                    "descendant": [
+                      579.9134929776192,
+                      971.5062089562416
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-paw",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-tip|neck",
+                  "sourceEdges": 39,
+                  "samples": 48,
+                  "maxGapPx": 86.22808738395348,
+                  "violations": 48,
+                  "worst": {
+                    "source": [
+                      884,
+                      360
+                    ],
+                    "ancestor": [
+                      1024.6043131828308,
+                      690.0303797006607
+                    ],
+                    "descendant": [
+                      1006.6971458584071,
+                      605.6821941107512
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-tip",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "ear-near-root|neck",
+                  "sourceEdges": 79,
+                  "samples": 90,
+                  "maxGapPx": 74.64778667111695,
+                  "violations": 71,
+                  "worst": {
+                    "source": [
+                      895,
+                      382
+                    ],
+                    "ancestor": [
+                      1007.3680020570755,
+                      706.4181054830551
+                    ],
+                    "descendant": [
+                      1001.2434602975845,
+                      632.0219897031783
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-near-root",
+                    "neck"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "hind-near-paw|spine",
+                  "sourceEdges": 53,
+                  "samples": 65,
+                  "maxGapPx": 71.36658651401586,
+                  "violations": 65,
+                  "worst": {
+                    "source": [
+                      353,
+                      887
+                    ],
+                    "ancestor": [
+                      356.35699907938636,
+                      885.2968399524688
+                    ],
+                    "descendant": [
+                      285.4735036837427,
+                      877.0071022510529
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-paw",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-near-ankle|spine",
+                  "sourceEdges": 67,
+                  "samples": 76,
+                  "maxGapPx": 65.86413864963224,
+                  "violations": 76,
+                  "worst": {
+                    "source": [
+                      336,
+                      865
+                    ],
+                    "ancestor": [
+                      339.2157299011945,
+                      865.9051742076873
+                    ],
+                    "descendant": [
+                      275.00240296125406,
+                      851.2513895988465
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "fore-far-root|fore-near-root",
+                  "sourceEdges": 181,
+                  "samples": 201,
+                  "maxGapPx": 12.956733884454328,
+                  "violations": 197,
+                  "worst": {
+                    "source": [
+                      723,
+                      723
+                    ],
+                    "ancestor": [
+                      682.0678074359894,
+                      809.5135120153427
+                    ],
+                    "descendant": [
+                      672.7842836380005,
+                      800.4750863313676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-far-root",
+                    "fore-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-far-root|hind-near-root",
+                  "sourceEdges": 98,
+                  "samples": 117,
+                  "maxGapPx": 1.0423452414205439,
+                  "violations": 93,
+                  "worst": {
+                    "source": [
+                      470,
+                      700
+                    ],
+                    "ancestor": [
+                      456.15575252473354,
+                      729.6760478317738
+                    ],
+                    "descendant": [
+                      456.97777082026005,
+                      730.3169608712196
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-far-root",
+                    "hind-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-tip|ear-near-tip",
+                  "sourceEdges": 40,
+                  "samples": 49,
+                  "maxGapPx": 0.2526012143786595,
+                  "violations": 49,
+                  "worst": {
+                    "source": [
+                      922,
+                      358
+                    ],
+                    "ancestor": [
+                      1039.2556306421757,
+                      725.6572406888008
+                    ],
+                    "descendant": [
+                      1039.1231447339057,
+                      725.4421712636947
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-tip",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-tip",
+                  "sourceEdges": 13,
+                  "samples": 16,
+                  "maxGapPx": 0.1265409303627393,
+                  "violations": 16,
+                  "worst": {
+                    "source": [
+                      930,
+                      386
+                    ],
+                    "ancestor": [
+                      1015.4442027211189,
+                      742.0286707878113
+                    ],
+                    "descendant": [
+                      1015.3896892666817,
+                      741.9144740700722
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|ear-near-root",
+                  "sourceEdges": 19,
+                  "samples": 23,
+                  "maxGapPx": 0.023544581051461694,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      926,
+                      395
+                    ],
+                    "ancestor": [
+                      1005.664674282074,
+                      740.8647065162659
+                    ],
+                    "descendant": [
+                      1005.6518463747841,
+                      740.8449633632388
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "ear-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "successor",
+          "fit": "audits/C169_NAPE_RECUT_20261002/wild-pony/fit-v2",
+          "facings": [
+            {
+              "side": "left",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00008595733985981171,
+              "excluded": [
+                {
+                  "name": "reviewed-contiguous-near-ear-tip|spine",
+                  "sourceEdges": 2,
+                  "samples": 4,
+                  "maxGapPx": 213.80550176926087,
+                  "violations": 4,
+                  "worst": {
+                    "source": [
+                      882,
+                      341
+                    ],
+                    "ancestor": [
+                      1041.7292923927307,
+                      681.9508327245712
+                    ],
+                    "descendant": [
+                      941.614585876465,
+                      493.03328953186667
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "reviewed-contiguous-near-ear-tip",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-ankle|spine",
+                  "sourceEdges": 109,
+                  "samples": 146,
+                  "maxGapPx": 124.30589164260105,
+                  "violations": 146,
+                  "worst": {
+                    "source": [
+                      697,
+                      876
+                    ],
+                    "ancestor": [
+                      700.1157131195068,
+                      863.8670203685759
+                    ],
+                    "descendant": [
+                      619.8026327490807,
+                      958.744645857811
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-paw|spine",
+                  "sourceEdges": 8,
+                  "samples": 9,
+                  "maxGapPx": 122.94665495020145,
+                  "violations": 9,
+                  "worst": {
+                    "source": [
+                      662,
+                      899
+                    ],
+                    "ancestor": [
+                      674.4510880763713,
+                      892.9026271269872
+                    ],
+                    "descendant": [
+                      579.9134929776192,
+                      971.5062089562416
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-paw",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "neck|reviewed-contiguous-near-ear-tip",
+                  "sourceEdges": 51,
+                  "samples": 59,
+                  "maxGapPx": 84.49901820688062,
+                  "violations": 59,
+                  "worst": {
+                    "source": [
+                      899,
+                      371
+                    ],
+                    "ancestor": [
+                      1010.8947833776474,
+                      623.3175015449524
+                    ],
+                    "descendant": [
+                      1019.0579477012158,
+                      707.4212875843048
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "neck",
+                    "reviewed-contiguous-near-ear-tip"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "neck|reviewed-contiguous-near-ear-root",
+                  "sourceEdges": 132,
+                  "samples": 154,
+                  "maxGapPx": 77.73798696843359,
+                  "violations": 134,
+                  "worst": {
+                    "source": [
+                      895,
+                      382
+                    ],
+                    "ancestor": [
+                      1000.702278892199,
+                      629.0717604160309
+                    ],
+                    "descendant": [
+                      1007.2875606616338,
+                      706.5303214788437
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "neck",
+                    "reviewed-contiguous-near-ear-root"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "hind-near-paw|spine",
+                  "sourceEdges": 53,
+                  "samples": 65,
+                  "maxGapPx": 71.36658651401586,
+                  "violations": 65,
+                  "worst": {
+                    "source": [
+                      353,
+                      887
+                    ],
+                    "ancestor": [
+                      356.35699907938636,
+                      885.2968399524688
+                    ],
+                    "descendant": [
+                      285.4735036837427,
+                      877.0071022510529
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-paw",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-near-ankle|spine",
+                  "sourceEdges": 67,
+                  "samples": 76,
+                  "maxGapPx": 65.86413864963224,
+                  "violations": 76,
+                  "worst": {
+                    "source": [
+                      336,
+                      865
+                    ],
+                    "ancestor": [
+                      339.2157299011945,
+                      865.9051742076873
+                    ],
+                    "descendant": [
+                      275.00240296125406,
+                      851.2513895988465
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "fore-far-root|fore-near-root",
+                  "sourceEdges": 181,
+                  "samples": 201,
+                  "maxGapPx": 12.956733884454328,
+                  "violations": 197,
+                  "worst": {
+                    "source": [
+                      723,
+                      723
+                    ],
+                    "ancestor": [
+                      682.0678074359894,
+                      809.5135120153427
+                    ],
+                    "descendant": [
+                      672.7842836380005,
+                      800.4750863313676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-far-root",
+                    "fore-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-far-root|hind-near-root",
+                  "sourceEdges": 98,
+                  "samples": 117,
+                  "maxGapPx": 1.0423452414205439,
+                  "violations": 93,
+                  "worst": {
+                    "source": [
+                      470,
+                      700
+                    ],
+                    "ancestor": [
+                      456.15575252473354,
+                      729.6760478317738
+                    ],
+                    "descendant": [
+                      456.97777082026005,
+                      730.3169608712196
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-far-root",
+                    "hind-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "reviewed-contiguous-far-ear-tip|reviewed-contiguous-near-ear-tip",
+                  "sourceEdges": 55,
+                  "samples": 60,
+                  "maxGapPx": 0.7546485142964969,
+                  "violations": 60,
+                  "worst": {
+                    "source": [
+                      909,
+                      381
+                    ],
+                    "ancestor": [
+                      1013.2093504071236,
+                      720.8338994979858
+                    ],
+                    "descendant": [
+                      1013.0197616815566,
+                      720.1034540891648
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "reviewed-contiguous-far-ear-tip",
+                    "reviewed-contiguous-near-ear-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|reviewed-contiguous-near-ear-tip",
+                  "sourceEdges": 10,
+                  "samples": 12,
+                  "maxGapPx": 0.13288623960937643,
+                  "violations": 12,
+                  "worst": {
+                    "source": [
+                      929,
+                      388
+                    ],
+                    "ancestor": [
+                      1013.2099627348093,
+                      741.808600792518
+                    ],
+                    "descendant": [
+                      1013.1588357686998,
+                      741.6859436035156
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "reviewed-contiguous-near-ear-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|reviewed-contiguous-near-ear-root",
+                  "sourceEdges": 19,
+                  "samples": 23,
+                  "maxGapPx": 0.022074567402539793,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      926,
+                      395
+                    ],
+                    "ancestor": [
+                      1005.6368799209595,
+                      741.0373092889786
+                    ],
+                    "descendant": [
+                      1005.6252143893923,
+                      741.0185689074652
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "reviewed-contiguous-near-ear-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "requiredJoinStatus": "PASS",
+              "requiredMaximumGapNativePx": 0.00008595733985981171,
+              "excluded": [
+                {
+                  "name": "reviewed-contiguous-near-ear-tip|spine",
+                  "sourceEdges": 2,
+                  "samples": 4,
+                  "maxGapPx": 213.80550176926087,
+                  "violations": 4,
+                  "worst": {
+                    "source": [
+                      882,
+                      341
+                    ],
+                    "ancestor": [
+                      1041.7292923927307,
+                      681.9508327245712
+                    ],
+                    "descendant": [
+                      941.614585876465,
+                      493.03328953186667
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "reviewed-contiguous-near-ear-tip",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-ankle|spine",
+                  "sourceEdges": 109,
+                  "samples": 146,
+                  "maxGapPx": 124.30589164260105,
+                  "violations": 146,
+                  "worst": {
+                    "source": [
+                      697,
+                      876
+                    ],
+                    "ancestor": [
+                      700.1157131195068,
+                      863.8670203685759
+                    ],
+                    "descendant": [
+                      619.8026327490807,
+                      958.744645857811
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "fore-near-paw|spine",
+                  "sourceEdges": 8,
+                  "samples": 9,
+                  "maxGapPx": 122.94665495020145,
+                  "violations": 9,
+                  "worst": {
+                    "source": [
+                      662,
+                      899
+                    ],
+                    "ancestor": [
+                      674.4510880763713,
+                      892.9026271269872
+                    ],
+                    "descendant": [
+                      579.9134929776192,
+                      971.5062089562416
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-near-paw",
+                    "spine"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "neck|reviewed-contiguous-near-ear-tip",
+                  "sourceEdges": 51,
+                  "samples": 59,
+                  "maxGapPx": 84.49901820688062,
+                  "violations": 59,
+                  "worst": {
+                    "source": [
+                      899,
+                      371
+                    ],
+                    "ancestor": [
+                      1010.8947833776474,
+                      623.3175015449524
+                    ],
+                    "descendant": [
+                      1019.0579477012158,
+                      707.4212875843048
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "neck",
+                    "reviewed-contiguous-near-ear-tip"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "neck|reviewed-contiguous-near-ear-root",
+                  "sourceEdges": 132,
+                  "samples": 154,
+                  "maxGapPx": 77.73798696843359,
+                  "violations": 134,
+                  "worst": {
+                    "source": [
+                      895,
+                      382
+                    ],
+                    "ancestor": [
+                      1000.702278892199,
+                      629.0717604160309
+                    ],
+                    "descendant": [
+                      1007.2875606616338,
+                      706.5303214788437
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "neck",
+                    "reviewed-contiguous-near-ear-root"
+                  ],
+                  "reason": "non-nearest ancestral silhouette adjacency"
+                },
+                {
+                  "name": "hind-near-paw|spine",
+                  "sourceEdges": 53,
+                  "samples": 65,
+                  "maxGapPx": 71.36658651401586,
+                  "violations": 65,
+                  "worst": {
+                    "source": [
+                      353,
+                      887
+                    ],
+                    "ancestor": [
+                      356.35699907938636,
+                      885.2968399524688
+                    ],
+                    "descendant": [
+                      285.4735036837427,
+                      877.0071022510529
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-paw",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-near-ankle|spine",
+                  "sourceEdges": 67,
+                  "samples": 76,
+                  "maxGapPx": 65.86413864963224,
+                  "violations": 76,
+                  "worst": {
+                    "source": [
+                      336,
+                      865
+                    ],
+                    "ancestor": [
+                      339.2157299011945,
+                      865.9051742076873
+                    ],
+                    "descendant": [
+                      275.00240296125406,
+                      851.2513895988465
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-near-ankle",
+                    "spine"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "fore-far-root|fore-near-root",
+                  "sourceEdges": 181,
+                  "samples": 201,
+                  "maxGapPx": 12.956733884454328,
+                  "violations": 197,
+                  "worst": {
+                    "source": [
+                      723,
+                      723
+                    ],
+                    "ancestor": [
+                      682.0678074359894,
+                      809.5135120153427
+                    ],
+                    "descendant": [
+                      672.7842836380005,
+                      800.4750863313676
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "fore-far-root",
+                    "fore-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "hind-far-root|hind-near-root",
+                  "sourceEdges": 98,
+                  "samples": 117,
+                  "maxGapPx": 1.0423452414205439,
+                  "violations": 93,
+                  "worst": {
+                    "source": [
+                      470,
+                      700
+                    ],
+                    "ancestor": [
+                      456.15575252473354,
+                      729.6760478317738
+                    ],
+                    "descendant": [
+                      456.97777082026005,
+                      730.3169608712196
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "hind-far-root",
+                    "hind-near-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "reviewed-contiguous-far-ear-tip|reviewed-contiguous-near-ear-tip",
+                  "sourceEdges": 55,
+                  "samples": 60,
+                  "maxGapPx": 0.7546485142964969,
+                  "violations": 60,
+                  "worst": {
+                    "source": [
+                      909,
+                      381
+                    ],
+                    "ancestor": [
+                      1013.2093504071236,
+                      720.8338994979858
+                    ],
+                    "descendant": [
+                      1013.0197616815566,
+                      720.1034540891648
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "reviewed-contiguous-far-ear-tip",
+                    "reviewed-contiguous-near-ear-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|reviewed-contiguous-near-ear-tip",
+                  "sourceEdges": 10,
+                  "samples": 12,
+                  "maxGapPx": 0.13288623960937643,
+                  "violations": 12,
+                  "worst": {
+                    "source": [
+                      929,
+                      388
+                    ],
+                    "ancestor": [
+                      1013.2099627348093,
+                      741.808600792518
+                    ],
+                    "descendant": [
+                      1013.1588357686998,
+                      741.6859436035156
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "reviewed-contiguous-near-ear-tip"
+                  ],
+                  "reason": "independent sibling adjacency"
+                },
+                {
+                  "name": "ear-far-root|reviewed-contiguous-near-ear-root",
+                  "sourceEdges": 19,
+                  "samples": 23,
+                  "maxGapPx": 0.022074567402539793,
+                  "violations": 3,
+                  "worst": {
+                    "source": [
+                      926,
+                      395
+                    ],
+                    "ancestor": [
+                      1005.6368799209595,
+                      741.0373092889786
+                    ],
+                    "descendant": [
+                      1005.6252143893923,
+                      741.0185689074652
+                    ]
+                  },
+                  "status": "OBSERVATION_ONLY",
+                  "parts": [
+                    "ear-far-root",
+                    "reviewed-contiguous-near-ear-root"
+                  ],
+                  "reason": "independent sibling adjacency"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "qualityAccepted": false
+}

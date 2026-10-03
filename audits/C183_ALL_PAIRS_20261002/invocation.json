@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c183-sweep-invocation/v1",
+  "head": "62900f601c229f0ee2a42eb802ea8cf92e389ccb",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C213 full1444 ordered-pair native sweep",
+    "--",
+    "node",
+    "audits/C173_ALL_PAIRS_20261002/run-sweep-v2.mjs",
+    "~/Projects/celestial-frontier-openai-mac/audits/C173_ALL_PAIRS_20261002/prepared-0727fe9c/manifest.json",
+    "~/Projects/celestial-frontier-openai-mac/audits/C183_ALL_PAIRS_20261002/native-01"
+  ],
+  "manifestSha256": "a5049258dc7bb133e794eaedee78069fce17e546932f1697080f89304fe68476",
+  "startedAt": "2026-10-02T23:13:53.752394+00:00",
+  "exitCode": 1,
+  "automaticRetries": 0,
+  "durationSeconds": 25.928,
+  "finishedAt": "2026-10-02T23:14:19.680914+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "21-monkfish",
+  "name": "Monkfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b62446f3-cecf-4723-8036-c74319192edf.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "29301339103a396b6860d8fb681bf851934a9278b9653385b441cc1cfbb5ba15",
+  "bytes": 1342669,
+  "promptSha256": "cc5704f66575fcd5f108ec47ac6da57cc5d0d4f3a1a4b562f845eb897827926c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,5 @@
+{"id":"easy","baselineWins":256,"plannedWins":256,"commandWins":256,"oracleWins":256,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":0,"commandEdgePp":0}
+{"id":"normal","baselineWins":132,"plannedWins":168,"commandWins":168,"oracleWins":168,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":14.0625,"commandEdgePp":0}
+{"id":"guardian","baselineWins":62,"plannedWins":98,"commandWins":151,"oracleWins":153,"phaseNodes":472,"withdrawnTerminals":1853,"swapEdges":517,"solo":{"v1Wins":42,"phaseWins":34},"planningGapPp":14.0625,"commandEdgePp":20.703125}
+{"id":"titan","baselineWins":97,"plannedWins":152,"commandWins":205,"oracleWins":206,"phaseNodes":640,"withdrawnTerminals":2199,"swapEdges":730,"solo":{"v1Wins":17,"phaseWins":10},"planningGapPp":21.484375,"commandEdgePp":20.703125}
+{"status":"RED","findings":["titan: planning gap 21.484375"]}

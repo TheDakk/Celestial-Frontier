@@ -1,0 +1,51 @@
+{
+  "schema": "cf.c163-arena-webp-review/v1",
+  "id": "marsh-r3",
+  "qualityAccepted": false,
+  "inspected": [
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-composed-review.png",
+      "sha256": "5c97a673d1612cc4a39e838b748601686b31c63962e05cd4f7d9232c715c8378",
+      "bytes": 4161945
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh-r3/arena-composed-webp-review.png",
+      "sha256": "a373d953fbd95b6a9eb8fb300f8242bca249d3e2001f3b50cb539096f2c97489",
+      "bytes": 3372362
+    }
+  ],
+  "findings": [
+    "Native-size PNG and decoded WebP compositions reviewed. The WebP preserves the observed composition and the same visible texture joins and plant-edge holds; it does not repair them.",
+    "No additional obvious composition change was seen at native size. RGB is lossy q88; this observation is not pixel identity or independent scoring. All nine plate alpha planes are independently checked byte-identical to PNG runtimes."
+  ],
+  "metrics": {
+    "far": {
+      "psnr": 39.223,
+      "ssim": 0.98634,
+      "ssimMinBlock": 0.90953,
+      "alphaIdentical": true
+    },
+    "mid": {
+      "psnr": 35.365,
+      "ssim": 0.99332,
+      "ssimMinBlock": 0.90634,
+      "alphaIdentical": true
+    },
+    "near": {
+      "psnr": 36.041,
+      "ssim": 0.99361,
+      "ssimMinBlock": 0.90941,
+      "alphaIdentical": true
+    }
+  },
+  "d29Review": {
+    "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/delivery-review.json",
+    "sha256": "c874f583fb2707bd79c1171549cd885df44609e40d43fb32c61abbb1810ef4e5",
+    "bytes": 6997
+  },
+  "webpReceipt": {
+    "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/webp-receipt.json",
+    "sha256": "d413c262dbcdbb8491827e6d8d07c438c3bb83aebd0f448dd759ef891b4493af",
+    "bytes": 3456
+  }
+}

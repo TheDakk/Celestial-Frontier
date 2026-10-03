@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Earthworm",
+  "family": "annelid",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "2439990c3aa05babbf7d93c4cd2a4a3704920727d0b76db09eb8e365dfa20a66",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9bab0cd545bec2c4eb21632290ae4891efe99e7a7fcfeeaab6ccf52d26780a6e",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "one continuous segmented annelid tube, actual clitellum, no legs, eyes, antennae or invented head parts",
+  "profileId": "annelid-land",
+  "authoringCreated": false,
+  "sourceHead": "de255a6de69c4f03f68cdd0643246190e24987ee",
+  "basePromptSha256": "65e7100ddee0a97ad917fa9aeda512e9f582f903ecfbb815a33e097b9c755064",
+  "auditCompilerExtension": true,
+  "purpose": "NEW_SPECIALIZED_SOURCE",
+  "templateStatus": "Existing canonical family; audit-only painting vocabulary. No measured semantic presence or admission."
+}

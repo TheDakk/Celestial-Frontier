@@ -1,0 +1,42 @@
+{
+  "schema": "cf.c163-reviewed-authoring-regions/v1",
+  "id": "wild-pony",
+  "sourceAuthoring": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/original/authoring.json",
+    "sha256": "bcd9522c773ca5c066f585e5529cbb56980d7aa1a29282e2157c31fabad1ea98"
+  },
+  "candidateAuthoringSha256": "6600e471495ca21c0e76b6ae3c5730c8db96bf0854acbdfcefa27d70b866d0a3",
+  "sourceMasterSha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+  "additions": [
+    {
+      "id": "reviewed-cheek",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          864,
+          517
+        ],
+        [
+          919,
+          517
+        ],
+        [
+          919,
+          582
+        ],
+        [
+          864,
+          582
+        ]
+      ],
+      "reason": "Visible rear lower cheek between original head, jaw and neck polygons. Jaw ownership has prior priority."
+    }
+  ],
+  "landmarksChanged": false,
+  "existingPolygonsChanged": false,
+  "sourcePixelsChanged": false,
+  "repairCapUnchanged": 0.05,
+  "qualityAccepted": false,
+  "remaining": "Exact ownership conservation, deterministic replay, unchanged intake/static and actual moving-paint/native review still required."
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "0630a2c6d662c82502f8110d761e9f59ad56b51619637a5ebefaef85b628a359",
+  "sourceBindingSha256": "3f3e101bc96a2493620fc54b825cf7e737b4a1301cadb3948b793772edcc12af",
+  "sourceAtlasSha256": "bed07e94bc40f692eabe0caad4fe4f9a0b36674014d8716bc4a04cddfc5095e5",
+  "helperSha256": "9576d26fd387772c3171a3fb41e842fcabd57574907c45e242a280d600d03d9a",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingNearRoot",
+      "wingNearTip",
+      "wingFarRoot",
+      "wingFarTip",
+      "tailFan",
+      "chest",
+      "spine"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "root-patch",
+        "torso"
+      ],
+      [
+        "torso",
+        "far-wing-shoulder"
+      ],
+      [
+        "torso",
+        "near-wing-shoulder"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 64,
+        "distancePx": 7.427510013456632,
+        "supports": [
+          159
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 83,
+        "distancePx": 7.655219722516162,
+        "supports": [
+          45
+        ]
+      }
+    ],
+    "sourceBindingHash": "d2d92ad068227dc63c0f17845dec26f9a85d3b8c410554596559ea1ba7d8e980",
+    "sourceVertices": 2457,
+    "vertices": 2884,
+    "sharedSupports": 593,
+    "pins": 1140,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 14,
+    "excludedOverlaps": 20,
+    "observedExcludedBoundaries": 20,
+    "weldedExcludedBoundaries": 3,
+    "independentExcludedBoundaries": 17,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "root-patch",
+        "torso"
+      ],
+      [
+        "torso",
+        "far-wing-shoulder"
+      ],
+      [
+        "torso",
+        "near-wing-shoulder"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "46e7bfd6f39bcabba957e27f5f4dc0cc068849a3dfcbb3e457cd6e68c5444eb7",
+  "scope": "Only this new unadmitted Grouse candidate: tiny root/torso interior and both proximal wing/torso feather junctions. Independent wings/legs remain separate. No source paint, solver, contract or limits change. Prior intake receipts describe inherited fit-01 inputs; this receipt owns the new split."
+}

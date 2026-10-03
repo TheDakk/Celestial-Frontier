@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Stonefly",
+  "masterSha256": "7ded4b8e0dc39b4d96bc6c6400db4de3fd83302a9a6632f7a995c8f96f796ba9",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

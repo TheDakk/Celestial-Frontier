@@ -1,0 +1,161 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C90_20260927",
+ "tag": "g2c90",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-anaconda",
+  "03-viper",
+  "05-sand-boa",
+  "06-cave-snake",
+  "08-gar",
+  "10-tilapia",
+  "11-piranha",
+  "12-killifish",
+  "13-arctic-cod",
+  "14-viperfish",
+  "18-hare",
+  "21-meerkat-v2"
+ ],
+ "refused": [
+  {
+   "id": "02-cobra",
+   "reason": "not x-monotone: the dominant column run holds 94.4 % (coil or overlap; vertical strips cannot separate it)"
+  },
+  {
+   "id": "04-rattlesnake",
+   "reason": "tail not tapered: tip 56px vs median 89px (truncated tail?)"
+  },
+  {
+   "id": "07-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 15% paint (reference 86%)"
+  },
+  {
+   "id": "09-bowfin",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "15-squirrel",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0202 < 0.0270)"
+  },
+  {
+   "id": "16-chipmunk",
+   "reason": "extra-anatomy (unassigned): a other appendage of 15.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "17-rabbit",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 38%)"
+  },
+  {
+   "id": "19-pika",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)"
+  },
+  {
+   "id": "20-hedgehog",
+   "reason": "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "22-kinkajou",
+   "reason": "unexplained-anatomy: 16.6% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "23-sloth-bear",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "24-river-otter",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-anaconda",
+   "name": "Anaconda",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-viper",
+   "name": "Viper",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-sand-boa",
+   "name": "Sand Boa",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-cave-snake",
+   "name": "Cave Snake",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-gar",
+   "name": "Gar",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-tilapia",
+   "name": "Tilapia",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-piranha",
+   "name": "Piranha",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "12-killifish",
+   "name": "Killifish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-arctic-cod",
+   "name": "Arctic Cod",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-viperfish",
+   "name": "Viperfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-hare",
+   "name": "Hare",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-meerkat-v2",
+   "name": "Meerkat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

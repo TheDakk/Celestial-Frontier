@@ -1,0 +1,116 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/pilots/g2c197-eligible.json",
+  "author": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197",
+  "rows": [
+    {
+      "id": "basking-shark",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Basking Shark",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/basking-shark/fit",
+      "sourceMasterSha256": "89632bf56c93071aac6ef503266e51ace5bb0fb9be99440b01f74267ac9fa5f4",
+      "sourceStaticSha256": "f2dfa3d23fa6fb166f6f61541e2a5360e2c8f08097c367e620424408038f4226",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/basking-shark/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/basking-shark/native"
+    },
+    {
+      "id": "flounder",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Flounder",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/flounder/fit",
+      "sourceMasterSha256": "2c2e53c4b47e375798c471615aab12cb72fe5424d2754ebcafcf13c9589d0a29",
+      "sourceStaticSha256": "0cf63fbfc638377fcc9dc0a7e1b2eb36eb357be406c1bd2e90438407fb08c6bc",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/flounder/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/flounder/native"
+    },
+    {
+      "id": "great-white-shark-framing-v2",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Great White Shark",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/great-white-shark-framing-v2/fit",
+      "sourceMasterSha256": "6b1efdd9e85eda1dc65518737e6b17ab52f23be5a95593d63aa8fbaa8c64bf78",
+      "sourceStaticSha256": "62c7ef57d531dd7962024a42b820ba0fb0fccc6df7ce19f1ea786822ab0471e5",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/great-white-shark-framing-v2/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/great-white-shark-framing-v2/native"
+    },
+    {
+      "id": "mako-shark-framing-v2",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Mako Shark",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/mako-shark-framing-v2/fit",
+      "sourceMasterSha256": "c3bcbf2ddc10e18e2f25b1f3b1042f865916e23d991969e4ecb0032bedcdb0c8",
+      "sourceStaticSha256": "d94e06f150ff1a4e05959227af3e8d672caaa165e5322c43bac0424e577798d9",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/mako-shark-framing-v2/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/mako-shark-framing-v2/native"
+    },
+    {
+      "id": "rhea",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rhea"
+    },
+    {
+      "id": "snailfish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Snailfish",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/snailfish/fallback-1/fit",
+      "sourceMasterSha256": "45f66b5e3cfe9530be6693c67ceb22f705f23ae67bb435c61fda4f72431f76d8",
+      "sourceStaticSha256": "45cef6582b6b6377e479c715dc887fbc483556038987ec2b55a71e265807b583",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/native"
+    },
+    {
+      "id": "snow-petrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snow Petrel"
+    },
+    {
+      "id": "tiger-shark-framing-v2",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Tiger Shark",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/tiger-shark-framing-v2/fit",
+      "sourceMasterSha256": "16983f593fe1b3e24b939e988931e266234424f782c0227bce7be3cc6ee4b9a5",
+      "sourceStaticSha256": "6b4d873bfb645ab039f1862a81b419e16e3e777b3cd5d6e81b396de4b9224bf0",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/tiger-shark-framing-v2/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/tiger-shark-framing-v2/native"
+    },
+    {
+      "id": "whale-shark-framing-v2",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Whale Shark",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/whale-shark-framing-v2/fit",
+      "sourceMasterSha256": "d426cbcae3dd5e3749af7aa43e823eb892e97d1908c1db7f3fa7f07d01748c2c",
+      "sourceStaticSha256": "2f9b799d4f63a60f297ceb67ee13fd3511e599d05d792d2fa8cfabff1a8382eb",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/native"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

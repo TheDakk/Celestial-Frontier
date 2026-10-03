@@ -1,0 +1,28 @@
+{
+  "name": "Snail",
+  "masterSha256": "9675e29fd6daaa32eb8592e22f0ce999c51951124f32c77084d0b2735a226d18",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: coiled spiral shell, complete broad foot, exactly two long upper stalks and two shorter lower projections. Dark tips appear on the lower feelers as well as the upper eyes and require anatomical review. A small dark crease beneath the head may be an oral slit, but the mouth boundary is not independently unambiguous at this angle; reference admission remains held pending inspection. No third lower projection or large cartoon circular mouth is apparent.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 228,
+      "y0": 405,
+      "x1": 1050,
+      "y1": 824
+    },
+    "margins": {
+      "left": 228,
+      "right": 203,
+      "top": 405,
+      "bottom": 429
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

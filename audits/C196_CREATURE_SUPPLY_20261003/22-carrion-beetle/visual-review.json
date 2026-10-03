@@ -1,0 +1,28 @@
+{
+  "name": "Carrion Beetle",
+  "masterSha256": "72dd929bf46f911018c632b3bfa971f483d733a142b11de575a0ed020f17f9e4",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: black elytra with two irregular orange bands, orange-marked pronotum, paired orange-clubbed antennae, exposed segmented abdominal end and clearly separated dark mandible tips. Four complete distal leg silhouettes are independently visible, not six; remaining roots/legs are obscured or absent in the rendered view, so the requested six-chain source correction is NOT achieved and the source is held. The four existing limbs are crisply separated from the body but that cannot substitute for the missing two. No leg pixels or hidden anatomical joints may be invented. Larger scale and glossy hard surfaces require painting-style review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 199,
+      "y0": 395,
+      "x1": 1071,
+      "y1": 873
+    },
+    "margins": {
+      "left": 199,
+      "right": 182,
+      "top": 395,
+      "bottom": 380
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

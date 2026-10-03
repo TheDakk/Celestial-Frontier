@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "04-snail-mouth",
+  "command": [
+    "node",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01",
+    "01"
+  ],
+  "helperSha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/conservation-01.log",
+  "logSha256": "621f5eab8b436ce8c785ef55eb4f46aeaf05060c457f6a321dd62850a558f7d4",
+  "nativeRuns": 0
+}

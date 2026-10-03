@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Mackerel",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.399999976158142,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  },
+  {
+    "name": "Sardine",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.0999999046325684,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  },
+  {
+    "name": "Mullet",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.100000023841858,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  },
+  {
+    "name": "Tarpon",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.1999999284744263,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  },
+  {
+    "name": "Grouper",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 703,
+    "cpuP95Ms": 4.5,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  },
+  {
+    "name": "Barracuda",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.100000023841858,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  },
+  {
+    "name": "Sailfish",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.399999976158142,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  },
+  {
+    "name": "Mahi-Mahi",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "cpuP95Ms": 3.399999976158142,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "competingJobsAtEnd": []
+  }
+]

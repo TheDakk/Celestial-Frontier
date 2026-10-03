@@ -1,0 +1,7 @@
+{
+  "originalHelper": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+  "originalSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "uniqueOriginal": " for(const [i,j]of shape)if(!collar.has(i))locked.set(i,j);",
+  "candidate": " const footCollar=new Set([...boundary,...[...boundary].flatMap(j=>[...near[j]])]);\n for(const [i,j]of shape)if(!(contactEndpoints.includes(j)?footCollar:collar).has(i))locked.set(i,j);",
+  "importsRebasedOnly": true
+}

@@ -1,0 +1,262 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "a670690927ddcacbb95d4f477eb3de896ed9474f",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007944779204540271,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000793325781379612,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:slither",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007577522807313965,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:strike",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007197179068470728,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:constrict",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00012457431584913793,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0001006509256567492,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008270247261197706,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007446340611696813,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008567090641605086,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00012202862869782472,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00011679489942174279,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006899064202937135,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "4da8727feaafa062bb66794cd7755bb4d5ff425150e15e3307c1e0e259b5d296",
+  "bindingHash": "2088908c7117a6747b9c8fecd1a5fc10a2edd9b7da69cd8f578994edc0e3ac16",
+  "family": "serpent",
+  "contacts": [],
+  "realm": "amphibious",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:slither",
+    "melee:strike",
+    "melee:constrict",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 989,
+    "attemptedSamples": 989,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00009966437276271342,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4650.156590640545
+      },
+      {
+        "id": "alert",
+        "startMs": 4650.156590640545,
+        "endMs": 5390.156590640545
+      },
+      {
+        "id": "approach:slither",
+        "startMs": 5390.156590640545,
+        "endMs": 6090.156590640545
+      },
+      {
+        "id": "melee:strike",
+        "startMs": 6090.156590640545,
+        "endMs": 7116.823257307211
+      },
+      {
+        "id": "melee:constrict",
+        "startMs": 7116.823257307211,
+        "endMs": 8143.489923973877
+      },
+      {
+        "id": "cast",
+        "startMs": 8143.489923973877,
+        "endMs": 9273.489923973877
+      },
+      {
+        "id": "hit",
+        "startMs": 9273.489923973877,
+        "endMs": 10243.489923973877
+      },
+      {
+        "id": "dodge",
+        "startMs": 10243.489923973877,
+        "endMs": 11043.489923973877
+      },
+      {
+        "id": "faint",
+        "startMs": 11043.489923973877,
+        "endMs": 12083.489923973877
+      },
+      {
+        "id": "victory",
+        "startMs": 12083.489923973877,
+        "endMs": 13203.489923973877
+      },
+      {
+        "id": "tame",
+        "startMs": 13203.489923973877,
+        "endMs": 14363.489923973877
+      },
+      {
+        "id": "feed",
+        "startMs": 14363.489923973877,
+        "endMs": 15463.489923973877
+      }
+    ],
+    "durationMs": 16463.489923973877
+  },
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/24-vine-snake/fit/record.json",
+      "sha256": "7d95443df31c1c9b12a66b78e927c34475a63a22e92aee6597188598048a83c4",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/24-vine-snake/fit/binding.json",
+      "sha256": "79e2c452dd683bec4eec994c5a8eb901483254258ebb3f95d634b8c07ba6f645",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/24-vine-snake/fit/parts/manifest.json",
+      "sha256": "1fabae5a9f2eaa5d394a0fa40262e9db4143d56d10d7612cd1d86de28b1bcf18",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/24-vine-snake/fit/parts/atlas/24-vine-snake.png",
+      "sha256": "356457fd39eb900bd1c3a2951fced1a7223451d904d4582f354f339a92588894",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/24-vine-snake/fit/parts/keyed.png",
+      "sha256": "0592e9a03f313ef083d4efa48b8cf4eb9716679c7b8c78c612363d51a8063a5b",
+      "unchanged": true
+    }
+  ]
+}

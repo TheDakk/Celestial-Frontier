@@ -1,0 +1,44 @@
+{
+ "id": "jellyfish",
+ "family": "radial",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a other appendage of 23.2% paint that no reference appendage lands on",
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 15% paint (reference 55%)",
+  "missing-anatomy: part arm3-middle (arm3Seg1) covers 15% paint (reference 48%)",
+  "missing-anatomy: part arm3-tip (arm3Seg2) covers 6% paint (reference 22%)",
+  "unexplained-anatomy: 35.7% of the paint lies away from the body and in no part (reference 0.0%)"
+ ],
+ "bodyLengthPx": 1048.1,
+ "landmarkMedian": 0.1847,
+ "landmarkMax": 1.0553,
+ "worst": [
+  "arm0Seg2 1.055",
+  "arm0Seg1 0.695",
+  "arm4Seg2 0.619"
+ ],
+ "labelAgreement": 0,
+ "missingJoints": [
+  "arm8Seg0",
+  "arm8Seg1",
+  "arm8Seg2",
+  "arm9Seg0",
+  "arm9Seg1",
+  "arm9Seg2",
+  "arm10Seg0",
+  "arm10Seg1",
+  "arm10Seg2",
+  "arm11Seg0",
+  "arm11Seg1",
+  "arm11Seg2",
+  "arm5Seg0",
+  "arm5Seg1",
+  "arm5Seg2",
+  "arm6Seg0",
+  "arm6Seg1",
+  "arm6Seg2",
+  "arm7Seg0",
+  "arm7Seg1",
+  "arm7Seg2"
+ ]
+}

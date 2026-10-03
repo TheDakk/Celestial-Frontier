@@ -1,0 +1,13 @@
+{
+  "id": "16-chamois",
+  "name": "Chamois",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-4ab6f7d4-4ddc-4459-ab11-500ba851174d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b89c8bb84eadea00443c3d20351731a494e6f0bf712453cc74bce037972da147",
+  "bytes": 1297697,
+  "promptSha256": "31042a980f4d6e08ad583ea537d9898f51be9b6925a91cc5a1c604d0497d0568",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

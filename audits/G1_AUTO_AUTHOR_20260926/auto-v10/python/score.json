@@ -1,0 +1,32 @@
+{
+ "id": "python",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 10.0% paint that no reference appendage lands on",
+  "missing-anatomy: part segment-5 (seg5) was transferred off the canvas (area < 1 px²)",
+  "missing-anatomy: part segment-6 (seg6) was transferred off the canvas (area < 1 px²)",
+  "missing-anatomy: part segment-7 (seg7) was transferred off the canvas (area < 1 px²)",
+  "missing-anatomy: part segment-8 (seg8) was transferred off the canvas (area < 1 px²)",
+  "missing-anatomy: part segment-9 (seg9) was transferred off the canvas (area < 1 px²)",
+  "missing-anatomy: part segment-3 (seg3) covers 7% paint (reference 4%)",
+  "missing-anatomy: part segment-4 (seg4) covers 7% paint (reference 3%)",
+  "missing-anatomy: part segment-5 (seg5) covers 0% paint (reference 4%)",
+  "missing-anatomy: part segment-6 (seg6) covers 0% paint (reference 3%)",
+  "missing-anatomy: part segment-7 (seg7) covers 0% paint (reference 3%)",
+  "missing-anatomy: part segment-8 (seg8) covers 0% paint (reference 2%)",
+  "missing-anatomy: part segment-9 (seg9) covers 0% paint (reference 0%)",
+  "unexplained-anatomy: 45.1% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null,
+ "bodyLengthPx": 1151.8,
+ "landmarkMedian": 0.0585,
+ "landmarkMax": 0.1461,
+ "worst": [
+  "seg5 0.146",
+  "seg6 0.094",
+  "seg7 0.089"
+ ],
+ "labelAgreement": 0.016,
+ "missingJoints": []
+}

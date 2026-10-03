@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Zebra",
+  "masterSha256": "194639a6088f341d1762f377a481bed3e08d9a8767facda025f34d6e15cd08e8",
+  "required": [
+    "bold black-and-white stripes continuing onto the legs and belly"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "bold black-and-white stripes continuing onto the legs and belly",
+      "status": "PRESENT",
+      "observed": "Full original: bold black-white stripes over body, belly and all four separate legs; upright brush mane, complete dark-tufted tail and both ears. Upper near/far forelegs partially overlap; exact authoring review remains."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Bittern",
+  "masterSha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: brown-and-buff streaked camouflage, thick compressed neck and level dagger bill are visible. Two complete separate leg/foot silhouettes emerge from the feather margins; short rear feathers remain continuous under the folded wing. Upward reed-freeze posture is deliberately absent in this quiet source. Far-wing and hidden proximal ownership are not established.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 293,
+      "y0": 360,
+      "x1": 1015,
+      "y1": 882
+    },
+    "margins": {
+      "left": 293,
+      "right": 238,
+      "top": 360,
+      "bottom": 371
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

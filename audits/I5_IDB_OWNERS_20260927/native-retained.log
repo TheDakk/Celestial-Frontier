@@ -1,0 +1,36 @@
+[
+  {
+    name: 'old',
+    listeners: 50,
+    outcomes: [
+      'real read',
+      'atomic compare commit',
+      'committed bytes',
+      'stale compare refused',
+      'stale write did not mutate',
+      'native abort rejected',
+      'abort left prior data',
+      'delete committed',
+      'clear committed',
+      'terminal callback ownership'
+    ],
+    dom: undefined
+  },
+  {
+    name: 'new',
+    listeners: 0,
+    outcomes: [
+      'real read',
+      'atomic compare commit',
+      'committed bytes',
+      'stale compare refused',
+      'stale write did not mutate',
+      'native abort rejected',
+      'abort left prior data',
+      'delete committed',
+      'clear committed',
+      'terminal callback ownership'
+    ],
+    dom: undefined
+  }
+]

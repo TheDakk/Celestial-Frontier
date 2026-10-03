@@ -1,0 +1,13 @@
+{
+  "id": "16-chipmunk",
+  "name": "Chipmunk",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-827020a6-0bbc-45ea-8a64-253c43ef12f0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f19ed6d4620fd0de36d00cdabc6dd89661caaa978222c4e37b0534918034864d",
+  "bytes": 1296248,
+  "promptSha256": "ed4ea569b44eff19b1706e8f541be3992d5667031c755a289ad079c36c6ca0b5",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

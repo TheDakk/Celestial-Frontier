@@ -1,0 +1,97 @@
+{
+  "id": "19-racer",
+  "name": "Racer",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "a932fea97b7c736d80fbb920cd2b52addbb577706ebb8f3f5fe4fa7fcd6087e9",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 7062,
+    "coreRadius": 7,
+    "bodyBox": {
+      "x0": 171,
+      "y0": 191,
+      "x1": 333,
+      "y1": 235
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2134,
+        "pixels": 1507,
+        "box": {
+          "x0": 322,
+          "y0": 184,
+          "x1": 407,
+          "y1": 226
+        },
+        "attach": {
+          "x": 331.1,
+          "y": 215.9,
+          "relX": 0.99,
+          "relY": 0.57
+        },
+        "dir": {
+          "x": 0.91,
+          "y": -0.42
+        },
+        "class": "front",
+        "length": 82.3
+      },
+      {
+        "k": 1,
+        "frac": 0.2699,
+        "pixels": 1906,
+        "box": {
+          "x0": 12,
+          "y0": 197,
+          "x1": 183,
+          "y1": 237
+        },
+        "attach": {
+          "x": 173.3,
+          "y": 223.3,
+          "relX": 0.01,
+          "relY": 0.73
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.03
+        },
+        "class": "rear",
+        "length": 163.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 120,
+        "x1": 166,
+        "cx": 142.7
+      },
+      {
+        "x0": 282,
+        "x1": 315,
+        "cx": 298.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,30 @@
+{
+  "positive": "Exactly three observed body/fin pairs; fin-fin, tail and head pairs stay independent",
+  "negativeControls": [
+    {
+      "name": "nonfish",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "stale probe",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "unknown owner",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "zero source edge",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "no sample",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "duplicate reverse boundary",
+      "status": "REFUSED_EXPECTED"
+    }
+  ],
+  "status": "PASS"
+}

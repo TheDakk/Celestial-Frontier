@@ -1,0 +1,22 @@
+[
+ {
+  "id": "04-moorhen",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/04-moorhen/fit"
+ },
+ {
+  "id": "07-bittern",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/07-bittern/fit"
+ },
+ {
+  "id": "08-condor",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/08-condor/fit"
+ },
+ {
+  "id": "12-guineafowl",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/12-guineafowl/fit"
+ },
+ {
+  "id": "09-turkey",
+  "fit": "audits/ISLANDS_C211_20261002/09-turkey/fit"
+ }
+]

@@ -1,0 +1,205 @@
+{
+  "schema": "cf.c183-native-inventory/v1",
+  "files": [
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/battle-full.webm",
+      "sha256": "8ac9afeec08c8ca46b044dc9ac2c29843af831abe00eb4c935526e05e4140404",
+      "bytes": 10750795
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/frame-samples.json",
+      "sha256": "1be982e05b1663e399995ea2dbf1971473d106240f1c89cd33b0c01b079ea212",
+      "bytes": 174476
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/report.json",
+      "sha256": "6c5f10a8f851a8b0921c0df7d1b9ddb37cc4baa67a1b667b253303accd4e32cd",
+      "bytes": 542871
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn0-hit-approach-50.png",
+      "sha256": "8a88d1abaa8a6606ce8d0250fc718d6c3793d23aecdbf025c10244a79bba1005",
+      "bytes": 1497962
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn0-hit-impact.png",
+      "sha256": "bbdee5a136769932ffe591212481bec35304362a5fbfc4f90ec6d1e4a84e42a3",
+      "bytes": 934239
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn0-hit-launch-plus-40.png",
+      "sha256": "cd357fb32da2505f9eace9c0653179afd19ba4b70bf06a6230ef38b66800a99f",
+      "bytes": 1498239
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn0-hit-launch.png",
+      "sha256": "31628615f9ab5d0330726d1fcaae59c1b169395e64d0de8a069a188ecc0d75b3",
+      "bytes": 1475566
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn0-hit-reaction-50.png",
+      "sha256": "f89c7e8d4bcbb8cdd78bec69c8e6d49483f735942e75ca7f787a1fb6023d599c",
+      "bytes": 1497660
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn0-hit-return-end.png",
+      "sha256": "6120a6fbad1ccbc900869387cbc617e433ef156120df3452eb300df3991c9cc5",
+      "bytes": 1474955
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn1-hit-approach-50.png",
+      "sha256": "d92be60a6cdb294e98818bafa89abe38b19bd0529813b393e2c681d0cea0b70b",
+      "bytes": 1493224
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn1-hit-impact.png",
+      "sha256": "973fa3912e41eed04fec8ee6c7d0a2bfabbfb5310ae91ef6550bc5627c81cef3",
+      "bytes": 1475815
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn1-hit-launch-plus-40.png",
+      "sha256": "dba340b6032f398bbed7a307c89dbd3457872218a0368be326465560153dd2a5",
+      "bytes": 1491788
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn1-hit-launch.png",
+      "sha256": "f2f0a2624602bd524cf5c78e175ea4e69027200daf6eff769ad069956087894f",
+      "bytes": 1476349
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn1-hit-reaction-50.png",
+      "sha256": "4b43e1b2fa574bcbe9addc841f67dfa0f9c9a730907f43c754a1561c914ee15c",
+      "bytes": 1496133
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn1-hit-return-end.png",
+      "sha256": "7e7dffc0b2ed5561e9a4e4389ae8a566282678f3a5ba54a2a1f529f4cd5f8668",
+      "bytes": 1474789
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn2-dodge-approach-50.png",
+      "sha256": "8a88d1abaa8a6606ce8d0250fc718d6c3793d23aecdbf025c10244a79bba1005",
+      "bytes": 1497962
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn2-dodge-impact.png",
+      "sha256": "c2209104deacab5261e9746459c0aca4f7059911845e7d03c38f3d23029d3eaf",
+      "bytes": 1476536
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn2-dodge-launch-plus-40.png",
+      "sha256": "cd357fb32da2505f9eace9c0653179afd19ba4b70bf06a6230ef38b66800a99f",
+      "bytes": 1498239
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn2-dodge-launch.png",
+      "sha256": "f44608d8d2ea797a9bf9ddb8da5a95f7f69e2fc3515a4214482a25aa8f34104d",
+      "bytes": 1476123
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn2-dodge-reaction-50.png",
+      "sha256": "e7ab17f07848b4208e64d9a9a3e3391f62f3e0b9608ac85662e4b748da12c49e",
+      "bytes": 1494442
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn2-dodge-return-end.png",
+      "sha256": "6120a6fbad1ccbc900869387cbc617e433ef156120df3452eb300df3991c9cc5",
+      "bytes": 1474955
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn3-dodge-approach-50.png",
+      "sha256": "87b024cade168a0253fb269572a97d3bf8d42b931276b0b43783d25412332398",
+      "bytes": 1492468
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn3-dodge-impact.png",
+      "sha256": "b7a6cc2289ae3084c14ecbe4195665c0486408d99a3f786cbc6a970a560b49f5",
+      "bytes": 1491116
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn3-dodge-launch-plus-40.png",
+      "sha256": "dba340b6032f398bbed7a307c89dbd3457872218a0368be326465560153dd2a5",
+      "bytes": 1491788
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn3-dodge-launch.png",
+      "sha256": "6f42fd2a6a6d950b407b093952a95de918c67c5a56660bd7bfb1a831faba2d52",
+      "bytes": 1475648
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn3-dodge-reaction-50.png",
+      "sha256": "190014bef7cddc711d67c3a2bf25600de0179774e9163fc549eb9e3354e8902b",
+      "bytes": 1493463
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn3-dodge-return-end.png",
+      "sha256": "7e7dffc0b2ed5561e9a4e4389ae8a566282678f3a5ba54a2a1f529f4cd5f8668",
+      "bytes": 1474789
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-approach-50.png",
+      "sha256": "8a88d1abaa8a6606ce8d0250fc718d6c3793d23aecdbf025c10244a79bba1005",
+      "bytes": 1497962
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-idle-50.png",
+      "sha256": "17d87b2d1ecb37a86de40e1da05a1f52ff373f24684e6913be15f24e9588e31a",
+      "bytes": 1475985
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-idle-90.png",
+      "sha256": "444a3d59de740175e9ff1b83476fb39101462b97b6731f3236989a40ef7c9b82",
+      "bytes": 1475264
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-impact.png",
+      "sha256": "bbdee5a136769932ffe591212481bec35304362a5fbfc4f90ec6d1e4a84e42a3",
+      "bytes": 934239
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-launch-plus-40.png",
+      "sha256": "cd357fb32da2505f9eace9c0653179afd19ba4b70bf06a6230ef38b66800a99f",
+      "bytes": 1498239
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-launch.png",
+      "sha256": "31628615f9ab5d0330726d1fcaae59c1b169395e64d0de8a069a188ecc0d75b3",
+      "bytes": 1475566
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-reaction-50.png",
+      "sha256": "b683736bd1c7b127e4d6d363f807a41ae2a9f7f18df76205bb295b04c3dd82af",
+      "bytes": 1495221
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/turn4-hit-return-end.png",
+      "sha256": "53cc90128a3b49362a317c51a5bac8cc677dcb6d83d177110efdbf38a9965476",
+      "bytes": 1474887
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab-input/arena.json",
+      "sha256": "016c40088346b7d4eb5a993e1a64f16d7886530b00322635f4c233bfabc514f1",
+      "bytes": 379
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab-input/case.json",
+      "sha256": "fce8b5fd47f3757d55bc79468c2133d2d5c65ed7e2df496ee58e4577f90d75ef",
+      "bytes": 272486
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab-input/runner.log",
+      "sha256": "7c6644f2669aa2dcb4d372dd32538bf11016970a9214add9eaec45ac25b5ef15",
+      "bytes": 647
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab-input/script.json",
+      "sha256": "a2082a97a7506725dfc48d5d02a9b4e96a43b65da551b2fefcee521aba1b22c8",
+      "bytes": 1358
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/summary.json",
+      "sha256": "d4e8c17e43ce1d0643cb59bc15df387f6100b404686c7593edf38e169b68aa0c",
+      "bytes": 554
+    }
+  ]
+}

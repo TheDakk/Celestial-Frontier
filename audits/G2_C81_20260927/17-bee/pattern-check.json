@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bee",
+  "masterSha256": "29effb7362d75a4d569b495f3fe6a153dc3002cf33bee49d9377df94c3e2593b",
+  "required": [
+    "furry thorax with banded amber-and-black abdomen"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "furry thorax with banded amber-and-black abdomen",
+      "status": "PRESENT",
+      "observed": "Amber-and-black abdominal bands, dense golden thorax fur, veined translucent wings and a pollen-loaded hind leg are visible. Two antennae and broad border. Only five tarsal endpoints are clearly separable in this view; near/far wing and leg counts remain unresolved, and feet are not on one level."
+    }
+  ]
+}

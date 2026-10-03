@@ -1,0 +1,14 @@
+{
+  "id": "09-pond-turtle",
+  "name": "Pond Turtle",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0803a6a7-b9aa-4bae-a829-7c7c3f761beb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984",
+  "bytes": 1297453,
+  "promptSha256": "fb5eefd5932b22e055c9e13f482ea42d56cbcd2428ef3cc06f2b2f4d51d36881",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

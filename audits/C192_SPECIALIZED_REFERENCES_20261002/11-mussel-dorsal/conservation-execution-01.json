@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "11-mussel-dorsal",
+  "command": [
+    "node",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01",
+    "01"
+  ],
+  "helperSha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/conservation-01.log",
+  "logSha256": "e1eec6cf301213e5069eee7fc455d52d77d09430d5ed4bdf7ce97dd864175cb1",
+  "nativeRuns": 0
+}

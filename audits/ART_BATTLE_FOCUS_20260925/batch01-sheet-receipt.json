@@ -1,0 +1,59 @@
+{
+  "inputs": {
+    "01-jellyfish/master.png": "c5e7c5230b6864ea759c5fedeab17c2a2dfb9f3a68a33a46f93477bed2bdacfb",
+    "02-dragonfly/master.png": "d261b6375b7d4c133b00c4a3bbd06d5500ee56c578f81ed93f20bb734ea2e7c8",
+    "03-sturgeon/review-sheet.png": "4f518b13a22e8727a5c8b1f0a2c58c265e5d32b7d4982641bfaf925c5285cc58",
+    "04-wall-lizard/review-sheet.png": "38fe2c59164f75b720f18a03f110129964fd6eb3855df7cb86a52d687f77bb6e",
+    "05-cougar/review-sheet.png": "5f4f23cbcc74a7d025afeefcc5492cec45f7c4f44a2fe3ed2383615cbdbff6b4",
+    "06-impala/review-sheet.png": "3cf7bd1812351d3d5db4441245abca4c2054383fece172ce758fac4d869b3fd8",
+    "07-marmot/review-sheet.png": "16aeb4f76df5abced42f2963e257d078df5d8bb5f55f28dd0dcd7284876747b2",
+    "08-bass/review-sheet.png": "cc4d17aa586b4b82e52091cf03af3600caae11e13d1e8741f19d992d2de9a8b5",
+    "09-cattle/review-sheet.png": "4256acb2a27d2cbff4ff41d005ae0b87961373027088ffee225e0c6509f7ea8b",
+    "10-tang/review-sheet.png": "166bec5fea5b328706637a6708bb39d6d53e37d357dfe02b47ae7b5bda71194f"
+  },
+  "rows": [
+    [
+      "01-jellyfish",
+      "ANATOMY OPEN: tentacle count / separation"
+    ],
+    [
+      "02-dragonfly",
+      "ANATOMY OPEN: sixth visible leg"
+    ],
+    [
+      "03-sturgeon",
+      "FACING OPEN: outward-facing film"
+    ],
+    [
+      "04-wall-lizard",
+      "MOTION OPEN: contact / fold refusals"
+    ],
+    [
+      "05-cougar",
+      "MOTION OPEN: contact / fold refusals"
+    ],
+    [
+      "06-impala",
+      "MOTION OPEN: faint / walk contact"
+    ],
+    [
+      "07-marmot",
+      "MOTION OPEN: faint / gallop contact"
+    ],
+    [
+      "08-bass",
+      "CANDIDATE PASS: wiring / picker pending"
+    ],
+    [
+      "09-cattle",
+      "MOTION + CAPTURE OPEN: not admitted"
+    ],
+    [
+      "10-tang",
+      "CANDIDATE PASS: wiring / picker pending"
+    ]
+  ],
+  "scope": "Thumbnails only; all master, rig and native evidence retains its original bytes in each item packet.",
+  "helperSha256": "2b990164eec71dc11c891143b09e020b5aede0b35384bf4e8610a66c07d9c2fb",
+  "outputSha256": "b95024b728271260a73bc0c04caee2749ed9f62c8f1260aef6fa5bd58fa9ba58"
+}

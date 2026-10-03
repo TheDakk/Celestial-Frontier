@@ -1,0 +1,11 @@
+{
+  "id": "21-mamba",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-722d10fd-4dba-47c9-9f93-3835c15e5ae0.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "22df527b751fcfd2b3c0317fd228a8cc07b5d24098217a2ae563c4746121de01",
+  "bytes": 255174,
+  "promptSha256": "ec1f4fd814bbc2428ce514aa3db61cecc2fc6789c605eced21f73662979a7fa7",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

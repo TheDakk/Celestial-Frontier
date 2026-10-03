@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Loon",
+  "masterSha256": "f5e6fe941887a7039ac0f3f80d7e3d5703c45549633d6c1741d08ce0b90258a7",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

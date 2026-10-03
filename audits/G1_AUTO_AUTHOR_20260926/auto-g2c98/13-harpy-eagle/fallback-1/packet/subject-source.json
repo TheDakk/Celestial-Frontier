@@ -1,0 +1,75 @@
+{
+  "name": "Harpy Eagle",
+  "family": "biped-bird",
+  "species": {
+    "name": "Harpy Eagle",
+    "aspect": 0.85,
+    "headFrac": 0.25,
+    "eyes": "prominent",
+    "posture": "upright",
+    "mustRead": [
+      "split double crest raised on the grey head",
+      "enormous grey talons thicker than a human finger",
+      "black chest band over a white belly"
+    ],
+    "note": "Wings are broad and short for forest flight, not long and soaring; the head is owl-like and pale."
+  },
+  "genome": {
+    "seed": 3531212565,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 6,
+    "body": 9,
+    "loco": 5,
+    "trait": 6,
+    "size": 4,
+    "diet": 3,
+    "head": 8,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 4,
+    "habitat": 4,
+    "detail": 3,
+    "accent": 5,
+    "temper": 5,
+    "sense": 8,
+    "repro": 4,
+    "life": 1,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Harpy Eagle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Harpy Eagle\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3531212565\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "index": 607,
+  "profile": {
+    "id": "raptor",
+    "names": [
+      "Eagle",
+      "Owl",
+      "Hawk",
+      "Falcon",
+      "Snowy Owl",
+      "Osprey",
+      "Kestrel",
+      "Desert Owl",
+      "Harpy Eagle"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "peck"
+    ],
+    "notes": ""
+  }
+}

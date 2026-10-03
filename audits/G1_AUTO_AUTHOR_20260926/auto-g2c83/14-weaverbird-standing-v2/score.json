@@ -1,0 +1,10 @@
+{
+ "id": "14-weaverbird-standing-v2",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-thigh (legNearKnee) covers 19% paint (reference 73%)",
+  "missing-anatomy: part far-thigh (legFarKnee) covers 7% paint (reference 80%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c186-authoring-schema/v1",
+  "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star",
+  "sourceMasterSha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+  "priorAuthoringSha256": "7b58fde651bb4e6d1d8b2ab402d10571acf4294e4960f4ededbbce77117f413a",
+  "priorPresence": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "arms": 5
+    }
+  },
+  "fix": "lowercase part IDs",
+  "geometryChanges": 0,
+  "priorLabelsTransferred": true,
+  "firstIndependentObservation": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/authoring.json",
+  "sourceLabelsFromAnotherSubject": false,
+  "sourceRgbaChanges": 0,
+  "limitChanges": 0,
+  "qualityAccepted": false
+}

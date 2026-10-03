@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2105067737,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 8,
+    "body": 12,
+    "loco": 8,
+    "trait": 18,
+    "size": 4,
+    "diet": 2,
+    "head": 2,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 1,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 8,
+    "habitat": 16,
+    "detail": 6,
+    "accent": 13,
+    "temper": 8,
+    "sense": 9,
+    "repro": 4,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Limpet"
+  },
+  "observation": null
+}

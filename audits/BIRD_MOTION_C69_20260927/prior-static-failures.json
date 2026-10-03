@@ -1,0 +1,103 @@
+[
+  {
+    "id": "c54-14-goose",
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-14-goose/static.json",
+    "status": "RED",
+    "failures": [
+      {
+        "action": "hit",
+        "error": "Error: Contact: hit@224.7 exceeds scale compression bound"
+      },
+      {
+        "action": "tame",
+        "error": "Error: Contact: tame@208 exceeds scale compression bound"
+      }
+    ]
+  },
+  {
+    "id": "c54-15-quail",
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-15-quail/static.json",
+    "status": "RED",
+    "failures": [
+      {
+        "action": "faint",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 19"
+      },
+      {
+        "action": "tame",
+        "error": "Error: Contact: tame@138.66666666666666 exceeds scale compression bound"
+      }
+    ]
+  },
+  {
+    "id": "c56-10-raven",
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-10-raven/static.json",
+    "status": "RED",
+    "failures": [
+      {
+        "action": "hit",
+        "error": "Error: Contact: hit@197.95 exceeds scale compression bound"
+      }
+    ]
+  },
+  {
+    "id": "c59-08-vulture",
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/static.json",
+    "status": "RED",
+    "failures": [
+      {
+        "action": "hit",
+        "error": "Error: Contact: hit@181.9 exceeds scale compression bound"
+      },
+      {
+        "action": "faint",
+        "error": "Error: Contact: joint limit legNearFoot faint@314.46666666666664: 45.27130025317366"
+      }
+    ]
+  },
+  {
+    "id": "c56-09-crow",
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-09-crow/static.json",
+    "status": "RED",
+    "failures": [
+      {
+        "action": "hit",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 23"
+      },
+      {
+        "action": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"
+      },
+      {
+        "action": "melee:kick",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 14"
+      }
+    ]
+  },
+  {
+    "id": "c56-13-magpie",
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-13-magpie/static.json",
+    "status": "RED",
+    "failures": [
+      {
+        "action": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 75"
+      }
+    ]
+  },
+  {
+    "id": "c56-15-dove",
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-15-dove/static.json",
+    "status": "RED",
+    "failures": [
+      {
+        "action": "melee:claw",
+        "error": "Error: Contact: melee:claw@244.53333333333333 exceeds scale compression bound"
+      },
+      {
+        "action": "faint",
+        "error": "Error: Contact: joint limit legNearAnkle faint@450.93333333333334: 85.09472671818861"
+      }
+    ]
+  }
+]

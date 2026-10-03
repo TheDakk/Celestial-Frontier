@@ -1,0 +1,13 @@
+{
+  "id": "12-panda",
+  "name": "Panda",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8a4ceb63-ccbe-44f2-acab-daeb4f60e0e1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "17f620611d282ca00eb7c8077d579297680c75f5af05a41515f2c8112d4a964a",
+  "bytes": 1258504,
+  "promptSha256": "5b1bda9cd897e6ce205611a64add26ad0da22a17732ecb20a184f16d408e67e5",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

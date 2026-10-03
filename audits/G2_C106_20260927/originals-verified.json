@@ -1,0 +1,194 @@
+[
+  {
+    "id": "01-shark",
+    "masterSha256": "4410ca6defba82051d37c35b2cdca1ec0b304a784d23dd951ee5fabaeac1f8ad",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "02-great-white-shark",
+    "masterSha256": "a88ed058aebc70fc143a1fb70884cb87537a28f75a5a757433b4924528b664fb",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "03-tiger-shark",
+    "masterSha256": "7cec373702fb865ff31213d50adfa79be5ffbcb8bf6079bb6f8610a7c79f2056",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "04-mako-shark",
+    "masterSha256": "d1b58864dbeb90f2dbd3b764eda126bdfe9bc0f3fb822a991b513c2452785c57",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "05-whale-shark",
+    "masterSha256": "98dd87e3792819b89eede904750255caf338f38b3cfeb997482bd69c3b608338",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "06-basking-shark",
+    "masterSha256": "fc00b2f50fa2a8b129002b1ef284187fbbbd94ba916d817e3801a5137c435ce1",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "07-reef-shark",
+    "masterSha256": "badb70cfb18a3b14197d905d3259febcfb835d2c5adc20a6ab146490a2fc5e97",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "08-hammerhead-shark",
+    "masterSha256": "1b262215ce20cd6f53e4f343d90c2a9f71bec0b6cc9b526ac582315778714b47",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "09-flounder",
+    "masterSha256": "117599652edff0cc1a9bc00d9728a20e28d2bae62b013a5322430ce0888b7d61",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "10-halibut",
+    "masterSha256": "b37ea349e5a4e1449f1abcd01ae3c383be430122f489ad3d61a6a76e25e625e0",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "11-knifefish",
+    "masterSha256": "ac04c75913d0bc7caf6ee945b6b964f0273f4e02e4e9b4acac22f81f1bd3a4ec",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "12-flying-gurnard",
+    "masterSha256": "33ec2f4f75d52b0c8a137433e79daaa19fdddf883cbbb1971b77349e16a1af54",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "13-rhea",
+    "masterSha256": "4586524601e4e7084752c32e786a5cc42c1025c24fb8228b6cb9009b1eb0216c",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "14-emu",
+    "masterSha256": "27d2310aee6e0d2e7129ff7958b2221f22fc222884fff8b012383b3a5495724e",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "15-cassowary",
+    "masterSha256": "b6e9c3584ed65c8024cde9854e06eb7658c9dad2eec119d58d50eee3a8aad296",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "16-kiwi",
+    "masterSha256": "452e75b43bd207c29b93c9e66a429648772a12f41ae1c6c0b7a6b17ba6b4edb4",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "17-kakapo",
+    "masterSha256": "986fa51bbadcec81a68085c5e0b5b986d7588052606f8d950e1acf9e580ffe1e",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "18-hoatzin",
+    "masterSha256": "9159c9493e848f0faf22dba3a9eef36003fe12a84bafd5d5a7bf4c9d78a5dd49",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "19-quetzal",
+    "masterSha256": "f631bce566c12a1c917a05a08ad41cec769693a881b3c2fae3de7c09c558e1c4",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "20-seabird",
+    "masterSha256": "5753b0e68473c1f86bdc6987fce788a89bb62c2cbe79384d4e9d3e2c94f8d9a3",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "21-wolf",
+    "masterSha256": "20fd90b4593b3a02d499483c177ebc029b7696ddd602fd5e2c32167a56adea50",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "22-fox",
+    "masterSha256": "2f371e15b590ee50cd7e31d32ba604ecf098ccf225ba904aef14f329320b7d81",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "23-porcupine",
+    "masterSha256": "cc5bf5a5ee20999f92675ce9da8867a5971246bc82b6f0f83dd6fdd5f1889aa4",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "24-lemming",
+    "masterSha256": "0010645e88524412d9e308adde258d81727571a0ebd6ce4095a1d0283f7e77b2",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  }
+]

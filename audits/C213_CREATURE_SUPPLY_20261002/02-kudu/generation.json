@@ -1,0 +1,14 @@
+{
+  "id": "02-kudu",
+  "name": "Kudu",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ebd28e6b-18ee-412b-8310-84c8d28c1c7b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867",
+  "bytes": 1589871,
+  "promptSha256": "8920d7b31ffcec7c47c058111ea04782c24acecac98757211a4a7ca351fd81e9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

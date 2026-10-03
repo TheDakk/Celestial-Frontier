@@ -1,0 +1,20 @@
+{
+  "schema": "cf.local-concept-recipe.v1",
+  "width": 1024,
+  "height": 576,
+  "steps": 4,
+  "seed": 7331,
+  "prompt": "Create a cohesive richly painted natural-history landscape on an alien fungal world, using image 1 for composition, material detail and shared lighting. A vast forest of ivory and warm copper mushroom canopies rises above moss-covered limestone ledges, delicate ferns, tiny violet ground flowers and a shallow clear stream. Distant slender rock spires recede into pale blue mist under a softly luminous sky. Three distinct creatures belong naturally in this ecosystem: left foreground, one large brown spiral-shelled snail with a low moist muscular foot and two long upper eyestalks; upper-left mossy ledge, one bronze-and-teal beetle with six jointed legs, two antennae and a hard paired wing case; middle-right, one squat charcoal-and-ochre salamander-like amphibian with four short legs, a broad head and a long tapering tail. Keep complete bodies inside the frame, with plausible anatomy and each subject separate. Root plants into damp soil and crevices. Ground the animals with soft contact shadows, reflected green light and foliage overlapping their feet. Warm canopy-filtered sunlight, cool atmospheric fill, realistic wet stone, textured shells, fine brushwork, painterly depth and natural scale. Wide immersive landfall painting, not a collection sheet. No Earth riverbank animals, no text, interface, frame, neon glow, plastic CGI or extra limbs.",
+  "chatPrompt": "<|im_start|>user\nCreate a cohesive richly painted natural-history landscape on an alien fungal world, using image 1 for composition, material detail and shared lighting. A vast forest of ivory and warm copper mushroom canopies rises above moss-covered limestone ledges, delicate ferns, tiny violet ground flowers and a shallow clear stream. Distant slender rock spires recede into pale blue mist under a softly luminous sky. Three distinct creatures belong naturally in this ecosystem: left foreground, one large brown spiral-shelled snail with a low moist muscular foot and two long upper eyestalks; upper-left mossy ledge, one bronze-and-teal beetle with six jointed legs, two antennae and a hard paired wing case; middle-right, one squat charcoal-and-ochre salamander-like amphibian with four short legs, a broad head and a long tapering tail. Keep complete bodies inside the frame, with plausible anatomy and each subject separate. Root plants into damp soil and crevices. Ground the animals with soft contact shadows, reflected green light and foliage overlapping their feet. Warm canopy-filtered sunlight, cool atmospheric fill, realistic wet stone, textured shells, fine brushwork, painterly depth and natural scale. Wide immersive landfall painting, not a collection sheet. No Earth riverbank animals, no text, interface, frame, neon glow, plastic CGI or extra limbs.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "q8Block32": true,
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall.png",
+    "width": 512,
+    "height": 288,
+    "transform": "Canvas2D full-image scale 1672x941 to512x288; opaque planar RGB[-1,1], no retouch",
+    "sha256": "c808c6fe442d5827c4c0f56649115de60266f3863b057d2e65c3231c32b6e116"
+  },
+  "canonicalEncounter": false,
+  "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+  "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131"
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mountain Viper",
+  "masterSha256": "d7567e69864b69824eecb8478f52f19f50131ace16944cc1d624cf7fd18d1a7c",
+  "required": [
+    "thick stocky body with a zigzag dorsal band"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "REFUSE",
+  "reason": "Pattern unresolved"
+}

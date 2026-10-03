@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c132-arena-intake-held/v1",
+  "id": "magmasea",
+  "status": "REFUSED",
+  "stage": "existing intake.mjs",
+  "reason": "NEAR covers fighting path",
+  "exitCode": 1,
+  "masters": [
+    {
+      "role": "far",
+      "path": "audits/C132_ARENAS_20261001/magmasea/arena-far.png",
+      "sha256": "3121c0e6c38e806279a9023ffa1eb681152a9f41a0f3ebeffd7806c71612054f",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "mid",
+      "path": "audits/C132_ARENAS_20261001/magmasea/arena-mid.png",
+      "sha256": "692c3a0fecf585d47282dac521091de8719d17c022933af14badb342613df6d5",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "near",
+      "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.png",
+      "sha256": "b44cb97de22a0a7867b0d6bf38c1449b671a95f581b98b4622ebc642032fcdbb",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "partialKeyedCopiesRetained": true,
+  "finalizationRun": false,
+  "qualityAccepted": false,
+  "successor": "magmasea-v2"
+}

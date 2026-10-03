@@ -1,0 +1,306 @@
+{
+ "id": "07-gecko",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "reviewedPresence": {
+  "absent": [
+   "external-ears"
+  ],
+  "removedParts": []
+ },
+ "static": "RED",
+ "staticFails": [
+  "hit",
+  "presentation"
+ ],
+ "staticRefusals": [
+  {
+   "id": "hit",
+   "samples": 38,
+   "firstRefusal": {
+    "sampleIndex": 38,
+    "sampleNumber": 39,
+    "ms": 243.83333333333334,
+    "error": "Error: Contact: hit@243.83333333333334 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27158:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27259:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27259:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27376:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+    "contact": null,
+    "pose": {
+     "root": {
+      "rotation": 0,
+      "dx": -0.118866,
+      "dy": 0.08973501840364441
+     },
+     "pelvis": {
+      "rotation": -0.002503,
+      "dx": 0,
+      "dy": 0
+     },
+     "spine": {
+      "rotation": 0.047137,
+      "dx": 0,
+      "dy": 0
+     },
+     "chest": {
+      "rotation": -0.003754,
+      "dx": 0,
+      "dy": 0
+     },
+     "neck": {
+      "rotation": -0.109063,
+      "dx": 0,
+      "dy": 0
+     },
+     "head": {
+      "rotation": -0.148312,
+      "dx": 0,
+      "dy": 0
+     },
+     "jaw": {
+      "rotation": -0.005791,
+      "dx": 0,
+      "dy": 0
+     },
+     "hindFarRoot": {
+      "rotation": 0
+     },
+     "hindFarKnee": {
+      "rotation": -1.3642733059980015
+     },
+     "hindFarAnkle": {
+      "rotation": 0.9277932160398479
+     },
+     "hindFarPaw": {
+      "rotation": 0.43898308995815355
+     },
+     "foreFarRoot": {
+      "rotation": 0
+     },
+     "foreFarKnee": {
+      "rotation": -0.9308063613841401
+     },
+     "foreFarAnkle": {
+      "rotation": 0.577716225150266
+     },
+     "foreFarPaw": {
+      "rotation": 0.31221013623387406
+     },
+     "hindNearRoot": {
+      "rotation": 0
+     },
+     "hindNearKnee": {
+      "rotation": -1.0154578396949479
+     },
+     "hindNearAnkle": {
+      "rotation": 1.781267311010598
+     },
+     "hindNearPaw": {
+      "rotation": -0.7633064713156501
+     },
+     "foreNearRoot": {
+      "rotation": 0
+     },
+     "foreNearKnee": {
+      "rotation": 0.28350950524494334
+     },
+     "foreNearAnkle": {
+      "rotation": -0.8655553368706386
+     },
+     "foreNearPaw": {
+      "rotation": 0.5411658316256953
+     },
+     "tail0": {
+      "rotation": 0.13601591044374362,
+      "dx": 0,
+      "dy": 0
+     },
+     "tail1": {
+      "rotation": 0.10724513298936589,
+      "dx": 0,
+      "dy": 0
+     },
+     "tail2": {
+      "rotation": 0.06454034299960618,
+      "dx": 0,
+      "dy": 0
+     },
+     "tail3": {
+      "rotation": 0.03661228307467561,
+      "dx": 0,
+      "dy": 0
+     }
+    },
+    "arapStats": {
+     "rigid": false,
+     "maximumTargetErrorPx": 6.1578079868435625,
+     "rmsTargetErrorPx": 0.8610676755994275,
+     "maximumProjectionPx": 1.7327748858490999,
+     "flippedTriangles": 0,
+     "minimumAreaRatio": 0.11999999999999635,
+     "orientationPasses": 33
+    }
+   }
+  },
+  {
+   "id": "presentation",
+   "samples": 480,
+   "firstRefusal": {
+    "sampleIndex": 480,
+    "sampleNumber": 481,
+    "ms": 8000,
+    "error": "Error: Contact: approach:gallop@818.4718460217118 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27158:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27335:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27335:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-2eLEgf/run.mjs:27376:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+    "contact": null,
+    "pose": {
+     "root": {
+      "rotation": 0,
+      "dx": 0.00900574329441939,
+      "dy": 0.0002600958378053418
+     },
+     "pelvis": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+     },
+     "spine": {
+      "rotation": -0.199142,
+      "dx": 0,
+      "dy": 0
+     },
+     "chest": {
+      "rotation": -0.099103,
+      "dx": 0,
+      "dy": 0
+     },
+     "neck": {
+      "rotation": -0.167044,
+      "dx": 0,
+      "dy": 0
+     },
+     "head": {
+      "rotation": -0.101911,
+      "dx": 0,
+      "dy": 0
+     },
+     "jaw": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+     },
+     "hindFarRoot": {
+      "rotation": 0
+     },
+     "hindFarKnee": {
+      "rotation": 0.007145840003524473
+     },
+     "hindFarAnkle": {
+      "rotation": -0.007179681148758221
+     },
+     "hindFarPaw": {
+      "rotation": 0.00003384114523374837
+     },
+     "foreFarRoot": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+     },
+     "foreFarKnee": {
+      "rotation": -0.602108,
+      "dx": 0,
+      "dy": 0
+     },
+     "foreFarAnkle": {
+      "rotation": -0.079174,
+      "dx": 0,
+      "dy": 0
+     },
+     "foreFarPaw": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+     },
+     "hindNearRoot": {
+      "rotation": 0
+     },
+     "hindNearKnee": {
+      "rotation": -0.030645521904349764
+     },
+     "hindNearAnkle": {
+      "rotation": 0.06481554731561534
+     },
+     "hindNearPaw": {
+      "rotation": -0.03417002541126557
+     },
+     "foreNearRoot": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+     },
+     "foreNearKnee": {
+      "rotation": -0.498324,
+      "dx": 0,
+      "dy": 0
+     },
+     "foreNearAnkle": {
+      "rotation": -0.079174,
+      "dx": 0,
+      "dy": 0
+     },
+     "foreNearPaw": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+     },
+     "tail0": {
+      "rotation": 0.11749352578205313,
+      "dx": 0,
+      "dy": 0
+     },
+     "tail1": {
+      "rotation": 0.00092839259918015,
+      "dx": 0,
+      "dy": 0
+     },
+     "tail2": {
+      "rotation": -0.0896217969771986,
+      "dx": 0,
+      "dy": 0
+     },
+     "tail3": {
+      "rotation": -0.05375729598260331,
+      "dx": 0,
+      "dy": 0
+     }
+    },
+    "arapStats": {
+     "rigid": false,
+     "maximumTargetErrorPx": 4.4612226476253865,
+     "rmsTargetErrorPx": 0.5893615127487084,
+     "maximumProjectionPx": 0,
+     "flippedTriangles": 0,
+     "minimumAreaRatio": 0.3360228281593669,
+     "orientationPasses": 1
+    },
+    "action": "approach:gallop"
+   }
+  }
+ ],
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "RED",
+   "reasons": []
+  },
+  {
+   "rank": 2,
+   "verdict": "ADMIT",
+   "static": "RED",
+   "reasons": []
+  }
+ ]
+}

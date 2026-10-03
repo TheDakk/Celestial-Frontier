@@ -1,0 +1,156 @@
+{
+  "schema": "cf.c132-centipede-promotion/v1",
+  "status": "LEAF_PROMOTED_FOCUSED_TESTS_PASS",
+  "nativeProofSourceHead": "615e755c8a38e61eeeef0400b02310bdb96cf684",
+  "nativeProofStatus": "DIAGNOSTIC_PASS",
+  "nativeReportSha256": "16556fa6a2c6c23d3cc82807ff05de105db5a1aea571a72b7512d819790afdcf",
+  "nativeFrames": 789,
+  "nativeRefusals": {
+    "left": 0,
+    "right": 0
+  },
+  "nativeCpuP95Ms": 9,
+  "nativeFrameDeltaP95Ms": 16.799999999999272,
+  "strict60fpsAccepted": false,
+  "wholePairVisualAccepted": false,
+  "leaves": [
+    {
+      "path": "port/v2/tools/creature-animation/orientation-projector.mjs",
+      "sha256": "bf84208615f7f9f29d1f3d51c6431166f408e4c399036966b1cae29a844bb6ad",
+      "candidatePath": "audits/C132_C12_REPAIR_20261002/orientation-projector.mjs",
+      "byteIdenticalToNativeCandidate": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "sha256": "1274932542fcef86d150e7fd645ff641d4daaaaf401b0aba0830c926323d5081",
+      "candidatePath": "audits/C132_C12_REPAIR_20261002/orientation-active-reference.mjs",
+      "byteIdenticalToNativeCandidate": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active.c",
+      "sha256": "5ef877836c58140ce32d9607c58e9c0068e00c6787887789ac6a52f299b2906b",
+      "candidatePath": "audits/C132_C12_REPAIR_20261002/orientation-active.c",
+      "byteIdenticalToNativeCandidate": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active.wasm",
+      "sha256": "5df772043f97422cbdbd02505e156ee0fafb1ddbf2c791ca00ee41518420dd7c",
+      "candidatePath": "audits/C132_C12_REPAIR_20261002/orientation-active.wasm",
+      "byteIdenticalToNativeCandidate": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "sha256": "7824324f2b3343f9df805cdecda7cbd874a721351163b13e631ccf58f569053a",
+      "candidatePath": "audits/C132_C12_REPAIR_20261002/orientation-active-bytes.mjs",
+      "byteIdenticalToNativeCandidate": true
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-build.json",
+      "sha256": "a98c24e204e0b334b28d944f8956e372d16845e8d24a8371aad5038710ecde3b",
+      "candidatePath": "audits/C132_C12_REPAIR_20261002/orientation-active-build.json",
+      "byteIdenticalToNativeCandidate": true
+    }
+  ],
+  "unchangedGuards": [
+    "ARAP local/global counts and target weight",
+    "orientationIterations ceiling64 and topology*iterations active visit ceiling",
+    "triangle minimum-area targets and half-target hysteresis",
+    "hard pins and final ARAP orientation refusal",
+    "actual Float32 published-paint orientation refusal",
+    "joint/contact constraints and all motion/choreography",
+    "WASM admission ABI and transactional fallback"
+  ],
+  "targetFixture": {
+    "path": "port/v2/tools/creature-animation/test-fixtures/centipede-approach-orientation.json",
+    "sha256": "38759083d222e37593eb7bde4cc70234c5cdca4853222d266b632a298cb5e8cf",
+    "bytes": 120827
+  },
+  "test": {
+    "commandPowerShell": "node --test port/v2/tools/creature-animation/centipede-approach-orientation.test.mjs port/v2/tools/creature-animation/arap-skin.test.mjs port/v2/tools/creature-animation/orientation-projector.test.mjs port/v2/tools/creature-animation/wasm-orientation-active.test.mjs port/v2/tools/creature-animation/orientation-active-integration.test.mjs port/v2/tools/creature-animation/orientation-forward-integration.test.mjs",
+    "exitCode": 0,
+    "tests": 34,
+    "passed": 34,
+    "failed": 0,
+    "newRegressionTests": 3,
+    "testSource": "port/v2/tools/creature-animation/centipede-approach-orientation.test.mjs",
+    "testSourceSha256": "4e39c058a252c80cbc9a16cae1255d491c7c74e870b021d17b4cfa81988132f9",
+    "outcomes": [
+      "Actual captured target produces exact measured candidate Float32 output and complete WASM/JS solver/queue parity",
+      "All32 renderer-published paint parts remain positively oriented after rigid parent publication",
+      "Original undamped scalar reproduces one fold and exhausts598592 visits with atomic refusal",
+      "Prior safe target output remains byte-identical, including after an intervening repaired pose",
+      "Contradictory hard pins, nonfinite input and a reflected actual paint part still refuse"
+    ]
+  },
+  "rootValidationAndDevelopProfile": "Owned by parent batch; not run by this subagent",
+  "freeDiskGiB": 151,
+  "visualReview": "audits/C132_C12_REPAIR_20261002/native-review.json",
+  "alligatorDiagnosis": "audits/C132_C12_REPAIR_20261002/ALLIGATOR_FAINT_DIAGNOSIS.md",
+  "i5Rebound": false,
+  "currentReference": {
+    "path": "CREATURE_ANIMATION.md",
+    "sha256": "27cfb7c3e19be598cf71a9e7d97a2e681e98d2aae96ddd7cbea323721b165ac2"
+  },
+  "libraryOwner": {
+    "commandPowerShell": "Set-Location ~/Projects/celestial-frontier-openai-mac/port/v2\nnpx vitest run apps/game/src/battle2/library-arena.test.ts",
+    "exitCode": 0,
+    "tests": 9,
+    "passed": 9,
+    "failed": 0,
+    "durationSeconds": 92.14,
+    "archetypes": [
+      "Crab",
+      "Coconut Crab",
+      "Freshwater Crab",
+      "Mud Crab",
+      "Vent Crab",
+      "Civet",
+      "Salmon",
+      "Eagle",
+      "Beetle",
+      "Python",
+      "Tree Frog",
+      "Chimpanzee",
+      "Starfish",
+      "Tarantula",
+      "Octopus",
+      "Fruit Bat",
+      "Centipede",
+      "Bass",
+      "Tang",
+      "Dragonfly",
+      "Sturgeon",
+      "Wolf",
+      "Impala",
+      "River Otter",
+      "Heron",
+      "Marmot",
+      "Wall Lizard",
+      "Cougar",
+      "Ibex",
+      "Pike",
+      "Goose",
+      "Gull",
+      "Racer",
+      "Eel",
+      "Salamander",
+      "Rat",
+      "Reef Shark",
+      "Jellyfish"
+    ],
+    "archetypeCount": 38,
+    "scaleCases": 114,
+    "scales": [
+      0.85,
+      1,
+      1.15
+    ],
+    "sampleRateHz": 30,
+    "rigRefusals": 0,
+    "ownerSha256": "90f4df89390c62bd186a8ebf5482a303d1eba1dd677698753154d1f1f5ea2ced",
+    "registrySha256": "d821ca6cc157f80e49ab7032055fb287d905c744bd01f46e399f83662495c315",
+    "testEdited": false,
+    "interpretation": "Actual real-rig contact and painted-mesh publication pass through the unchanged refusal owner. Existing positive zero-refusal expectation already present; stale reference corrected. No new native measurement or visual acceptance."
+  },
+  "freeDiskStartGiB": 133
+}

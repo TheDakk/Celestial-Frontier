@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Reindeer",
+  "masterSha256": "c57d8c7059c0e9c9f84df0a35119da72ba417cccd64a71870962f03b00e5c2b0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

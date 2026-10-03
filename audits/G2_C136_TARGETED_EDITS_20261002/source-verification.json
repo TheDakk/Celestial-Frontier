@@ -1,0 +1,33 @@
+{
+  "scope": "Exact unchanged source painting, canonical base prompt and request, and targeted-edit compiler binding; no admission.",
+  "verified": [
+    {
+      "id": "01-giant-salamander",
+      "sourceMasterSha256": "86a3b41704ac12cbccd253bc658076b949147b84ba999325a0d399a96315df31",
+      "basePromptSha256": "d6ba7eec688404300fb6b6a915f57577eb1618d5e198b771b5c0c378b43ef423",
+      "baseRequestSha256": "c8d425f5f3b4c1fc9cd699bb77f2aae294314e48cb9c1d6c3da2bb650bb577bc",
+      "sourceOriginalUnchanged": true
+    },
+    {
+      "id": "06-giraffe",
+      "sourceMasterSha256": "9ac84c0f0d1dda6ec7fc530968824f6f1aabc06a0417ed3ba30722cfae1d0bca",
+      "basePromptSha256": "a7c62985d27dcb0f10ede8d20f4e4f355bd1ff11eb824387e44172dd044f3c43",
+      "baseRequestSha256": "029c58f5e40da50095952b6753c6c715b0eb5dd9e6840973dab3e25b2c30ba73",
+      "sourceOriginalUnchanged": true
+    },
+    {
+      "id": "07-buffalo",
+      "sourceMasterSha256": "5e66328d99c1ac8bd959cdd5ee9f394e5fe3bc6a36f25f7ff53931e15018ad0b",
+      "basePromptSha256": "761dedaacd52427544ce5f722c9032c144a2f099c8a7e934a9e2e86e37787b94",
+      "baseRequestSha256": "8f7564831352e488a67aec4a41ee73873bb39f9130c10ed65aa632c2b55105a2",
+      "sourceOriginalUnchanged": true
+    },
+    {
+      "id": "21-bee",
+      "sourceMasterSha256": "240299d6a6d01d759c7cd50b5a3673aa1755e5994bc6a389c13598cf38335056",
+      "basePromptSha256": "59a59a7a2476e13e09362f7bdaf6334cc4a8c9ef6acd479dcd161bb4f8d82cd5",
+      "baseRequestSha256": "db407699555aacb8fa963af668df6076b3beb6ecc3f87311cfde9502bcfc5f49",
+      "sourceOriginalUnchanged": true
+    }
+  ]
+}

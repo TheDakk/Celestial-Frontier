@@ -1,0 +1,17 @@
+[
+  {
+    "path": "audits/I5_CARD_SCRATCH_20260927/epoch/instrument/shared",
+    "oldTargetSha256": "48184c729823a719f8ef92444b8c98be7932660f65d75a610cedc27b77c6f6a6",
+    "action": "remove inherited dangling absolute symlink; historical regular evidence unchanged"
+  },
+  {
+    "path": "audits/I5_IDB_OWNERS_20260927/epoch/instrument/shared",
+    "oldTargetSha256": "48184c729823a719f8ef92444b8c98be7932660f65d75a610cedc27b77c6f6a6",
+    "action": "remove inherited dangling absolute symlink; historical regular evidence unchanged"
+  },
+  {
+    "path": "audits/I5_NATIVE_KEYS_20260927/epoch/instrument/shared",
+    "oldTargetSha256": "48184c729823a719f8ef92444b8c98be7932660f65d75a610cedc27b77c6f6a6",
+    "action": "remove inherited dangling absolute symlink; historical regular evidence unchanged"
+  }
+]

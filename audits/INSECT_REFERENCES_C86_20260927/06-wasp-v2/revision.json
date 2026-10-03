@@ -1,0 +1,4 @@
+{
+  "sourcePacket": "audits/INSECT_REFERENCES_C86_20260927/06-wasp",
+  "change": "Presence folded list is reserved for complete folded leg declarations; wing resting pose belongs in coverage, not folded inventory. No anatomy, source pixels, labels or landmarks changed."
+}

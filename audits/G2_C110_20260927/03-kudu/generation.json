@@ -1,0 +1,13 @@
+{
+  "id": "03-kudu",
+  "name": "Kudu",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-9b5836e7-8f2e-4aa1-a7ad-5765e8067f2c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c63de9105ce6324e847b7fb9904b7728de93a0fe46f1a6f58fc9f9f9d8de97e1",
+  "bytes": 1365049,
+  "promptSha256": "b6aefd8b3af7195e09e460d94d9910ae7b99864884c63aa4633dc104e90c9316",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "12-turtle",
+  "name": "Turtle",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ac79fe04-68b2-448f-8711-add94362a352.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150",
+  "bytes": 1368396,
+  "promptSha256": "cb143db0e83879379f53fcd60c9b6408a2d0a5463d916ca0b8fc7158b012278c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

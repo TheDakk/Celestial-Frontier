@@ -1,0 +1,10 @@
+{
+  "schema": "cf.kit-proof-retention.v4",
+  "nativeArtifactsVerified": 14,
+  "allServedSourceHashesVerified": true,
+  "turnaround4EApprovedCommit": "6f5c396e",
+  "turnaround4ESha256": "d65a294ea8d91371b83ce302719f7f117b942409c11f872ad4b8d7f95c732140",
+  "turnaround4EUnchanged": true,
+  "nativeRuns": 1,
+  "qualityAccepted": false
+}

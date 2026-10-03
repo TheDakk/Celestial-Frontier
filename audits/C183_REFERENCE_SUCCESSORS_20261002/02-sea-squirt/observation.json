@@ -1,0 +1,30 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt",
+  "masterSha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "fullSizeInspected": true,
+  "visibleAnatomy": [
+    "anchored basal tissue",
+    "continuous tunic body",
+    "large terminal siphon",
+    "smaller lateral siphon"
+  ],
+  "distinctSiphons": 2,
+  "independentSiphonControls": 1,
+  "sourceSubjectDistinctFrom": "Sponge",
+  "inventedFeet": false,
+  "limitations": [
+    "Both real siphon openings are retained. The larger top opening is the aperture control; the smaller lateral opening remains attached to the coarse crown region. The current template cannot independently animate both siphons.",
+    "Basal anchoring tissue is not invented feet or locomotor limbs.",
+    "The unusually prominent internal basket lattice, highly glossy translucent surface and root-like basal tissue remain biological/style review holds.",
+    "Hidden channels or internal anatomy are not reconstructed. A different canonical subject from Sponge does not by itself establish reference admission."
+  ],
+  "qualityAccepted": false
+}

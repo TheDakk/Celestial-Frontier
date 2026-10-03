@@ -1,0 +1,16 @@
+{
+  "steps": [
+    {
+      "name": "typecheck",
+      "exitCode": 0,
+      "logSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "name": "root-validate",
+      "exitCode": 0,
+      "logSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
+    }
+  ],
+  "legacyHtmlUnchanged": true,
+  "finishedAt": "2026-09-09T05:31:49.112204+00:00"
+}

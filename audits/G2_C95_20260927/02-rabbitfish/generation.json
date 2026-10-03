@@ -1,0 +1,13 @@
+{
+  "id": "02-rabbitfish",
+  "name": "Rabbitfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2842d045-06a1-4a3d-8120-e468f43d3c7f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2603bd0296f72f50119280e3b62214e716af6e77e73628839bde92f2d51c09db",
+  "bytes": 1404864,
+  "promptSha256": "18e0026088286c4786972b09059af38e1b155321756ae991acae2ca25e8cedba",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

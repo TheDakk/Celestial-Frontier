@@ -1,0 +1,20 @@
+{
+  "head": "235d68d36b557455d1da3034a6b0e59e56407ef2",
+  "endHead": "235d68d36b557455d1da3034a6b0e59e56407ef2",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C174 C12 CPU profile diagnostic",
+    "--",
+    "node",
+    "audits/C132_EFFECTS_20261001/native-runner.mjs",
+    "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02",
+    "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11",
+    "audits/C163_C12_PERFORMANCE_20261002/profile-01",
+    "audits/C132_C12_20261001/battle-script.json"
+  ],
+  "exitCode": 0,
+  "seconds": 20.768335416,
+  "automaticRetries": 0
+}

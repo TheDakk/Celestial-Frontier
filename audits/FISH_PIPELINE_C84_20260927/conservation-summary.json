@@ -1,0 +1,101 @@
+[
+  {
+    "id": "02-minnow",
+    "changedLabels": 5257,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 3,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "05-whitefish",
+    "changedLabels": 10314,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 3,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "07-cichlid",
+    "changedLabels": 36810,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 9,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "08-tetra",
+    "changedLabels": 30279,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 7,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "01-pike",
+    "changedLabels": 5993,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 5,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "03-char",
+    "changedLabels": 6355,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 6,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "04-sturgeon",
+    "changedLabels": 12648,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 4,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "08-goldfish",
+    "changedLabels": 23581,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 10,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "02-haddock",
+    "changedLabels": 9551,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 5,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "03-pollock",
+    "changedLabels": 6611,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 6,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  },
+  {
+    "id": "05-anchovy",
+    "changedLabels": 2779,
+    "originalPartDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "weldedBoundaries": 6,
+    "sourceCoordinateChanges": 0,
+    "recipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar"
+  }
+]

@@ -1,0 +1,1 @@
+{"status":"FAIL","cases":[{"id":"01-cancel-current","status":"PASS"},{"id":"02-cancel-without-signal","status":"EXPECTED_REJECTION"}],"result":"audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/result.json"}

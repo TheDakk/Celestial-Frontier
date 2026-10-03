@@ -1,0 +1,28 @@
+{
+  "name": "Impala",
+  "masterSha256": "f1d5c74e0ef6e7a6dd87402affc1a20913065e6e2a94938b864fac279a38d9ab",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: ringed lyre horns, black rump stripes, white belly and real black hind-hoof tufts are visible. ANATOMY REFUSAL: five full leg/hoof endpoints are painted, including three foreleg-like shafts below the chest, despite the four-leg request. Do not remove or relabel the extra leg locally or admit this source. Horn tips also approach the top margin. The failed one-attempt original is retained unchanged.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 223,
+      "y0": 81,
+      "x1": 1103,
+      "y1": 1074
+    },
+    "margins": {
+      "left": 223,
+      "right": 150,
+      "top": 81,
+      "bottom": 179
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

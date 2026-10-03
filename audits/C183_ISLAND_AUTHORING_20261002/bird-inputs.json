@@ -1,0 +1,1855 @@
+{
+  "schema": "cf.c183-island-inputs/v1",
+  "rows": [
+    {
+      "id": "10-grouse",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit",
+      "actualNativeFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit",
+      "nativeReport": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-native.json",
+      "nativeSourceBound": true,
+      "inputs": [
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/packet/master.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/master.png",
+          "sha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec",
+          "bytes": 1297661
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/packet/authoring.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/authoring.json",
+          "sha256": "7725cdaea0b76b3938dd57bf042d3e32cfea64f5dd34ca5dc22d532fea0ce176",
+          "bytes": 8900
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/packet/subject-source.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/subject-source.json",
+          "sha256": "e1b26b13b59c5e092027e45ee52588a62068a038c8dc0e0ebf4796e93b71612b",
+          "bytes": 2321
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/packet/presence.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+          "bytes": 89
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/record.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/record.json",
+          "sha256": "391ca4a6e7c37925e221ae8d2964f495abdcab51788660bc68d4556594437a73",
+          "bytes": 5961
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/binding.json",
+          "sha256": "e16ea49b44009a1daa98ef9e4e468f1c2793abf7ecd470739286e9eced8ac9b2",
+          "bytes": 1270649
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/pre-split-binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/pre-split-binding.json",
+          "sha256": "0d7585cb59f87c3348233c3d24c7c1e4c9e5e013c76c8a2d4333923b5fbda904",
+          "bytes": 860747
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/declaration.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/declaration.json",
+          "sha256": "5353d66e32842b4f2fcaa33d596abe48f805c7b993041e83c70b7508c0e80c20",
+          "bytes": 10087
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/atlas/10-grouse.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/atlas/10-grouse.json",
+          "sha256": "3d0a0817dde36480fb60ab6d03d087f4d20e102a971c103bc5c74ebc84655a6b",
+          "bytes": 6994
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/atlas/10-grouse.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/atlas/10-grouse.png",
+          "sha256": "2ad6154e5a0b12017ad4f3ef87b912cd570a66bbbb7f2c5851fc4b18f794a0fd",
+          "bytes": 497310
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/atlas/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/atlas/receipt.json",
+          "sha256": "23ee8087737d5834783c626e24ba45e80c49dfd41c6e3d5199b506ef3bd00908",
+          "bytes": 2914
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/binding.json",
+          "sha256": "8b694df593b27d5724e96bca47bd9867945b627587feb5a9813433f49aa5c23e",
+          "bytes": 5811
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/keyed.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/keyed.png",
+          "sha256": "396762b27e2f328ab1439276b8a0d6fe5d7504317fbe94866d182fa4167f51b3",
+          "bytes": 1561584
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/manifest.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/manifest.json",
+          "sha256": "ac6b570d6b38d1426f374c81498c8ad9c83177817e77cc6ee64e1a8c87c71ba1",
+          "bytes": 2835
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/ownership.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/ownership.png",
+          "sha256": "82af21188156889f36232409e972c017f4619feec5aef45dceaab1f0ab982812",
+          "bytes": 15315
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/beak.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/beak.png",
+          "sha256": "bcec63e2b35a6ecdb43b999dc6d7efff1495efc68035696aa7a8feb414bd9ebf",
+          "bytes": 5326
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/body.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/body.png",
+          "sha256": "2a147094a2b0309f3902c5931566d571a4c157f1242e66ec7582484b4f37a831",
+          "bytes": 61974
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/chest.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/chest.png",
+          "sha256": "5548918e7c5c6edf30f3cffb78de6b72a9ea20369be8781464aa0db4e098b115",
+          "bytes": 20575
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/far-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-foot.png",
+          "sha256": "45225cb2215fbb27d1be211d53537f6fb89797d35eeaa586f188b12e93c18d86",
+          "bytes": 14085
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/far-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-shin.png",
+          "sha256": "ca6f6194e57ca80caff96fb3f222c0a93d12b5ea0f5fb2c8dfbe4da0e28310ab",
+          "bytes": 7338
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/far-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-thigh.png",
+          "sha256": "aba92f99bf185d2f535539fb7847128af78f7edc8dbd105389fd70d24d296872",
+          "bytes": 12941
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/far-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-wing-flight.png",
+          "sha256": "33291deeafb7db151fb80e9f5c8b6b1de470ec8db6668729d56cbf9851b532b7",
+          "bytes": 32769
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/far-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/far-wing-root.png",
+          "sha256": "859f1a13e76e13abbaec9634d8fa856d1207b29433e0048be48ae1f2a6665bb3",
+          "bytes": 19445
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/head.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/head.png",
+          "sha256": "b0665ed7e238ab57f378d407f4601bc09641a5b84e8d060d66fbe4565bc84790",
+          "bytes": 28848
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/near-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-foot.png",
+          "sha256": "56f9bdedc9bf62bed85eb4d1e66367c4dd63892f0fbf213eb247a95df0d5d106",
+          "bytes": 14351
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/near-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-shin.png",
+          "sha256": "54db8251a5359aa9948589fc5fb030528c7ca47cc310d6877a176720d9587b52",
+          "bytes": 5318
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/near-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-thigh.png",
+          "sha256": "a5717ca99da3a82da5749e404b6d2ed3bf15e0d3e7df9f9bff4b4d58cc6fc9cf",
+          "bytes": 23860
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/near-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-wing-flight.png",
+          "sha256": "a0766ff3dfbc679c19c32fde9a9a922551e943d733194fc833923ee50468fcd4",
+          "bytes": 168816
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/near-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/near-wing-root.png",
+          "sha256": "a2193dbb1fce6661b1dad52ad0a600f6632cb50729d3b05aaff6afe4b71c1b6b",
+          "bytes": 48122
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/neck-lower.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/neck-lower.png",
+          "sha256": "40e026bb4d37d18fc2017c829f43e7802b482bdf08726b7b134b7da8b3b3496e",
+          "bytes": 25703
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/neck-upper.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/neck-upper.png",
+          "sha256": "fca044dd0551cc5237e6c5c05e60515e7a77d93f5a13213a23c1dd7993fd7c84",
+          "bytes": 10502
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/parts/tail.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/parts/tail.png",
+          "sha256": "72f41d645d17c42ac1c0ffd01da7d38455b6cebd0874a142dee49452994758cb",
+          "bytes": 67721
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/10-grouse/fit/parts/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit/parts/receipt.json",
+          "sha256": "af0824d78d9778861b7a20c6f806b645ab26ff471402ab3e9d23549976a5dc30",
+          "bytes": 4656
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/10-grouse/report.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-native.json",
+          "sha256": "3ce1b886758ace11ff5ec45f5e818aa27396596d2aa4ce9ffe21fa01f20717ca",
+          "bytes": 363975
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/10-grouse/turn3-hit-idle-90.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original-native.png",
+          "sha256": "764bea36d652d402a6a765c5e5a874cd76d1003dc73334f03f66f94e02dfafe8",
+          "bytes": 1531227
+        }
+      ],
+      "unchangedCap": 0.05,
+      "cap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2111 px is 11.7% of the remainder (> 5%): structural, not a sliver"
+      },
+      "remainderPixels": 18079,
+      "components": [
+        {
+          "pixels": 15606,
+          "bounds": [
+            568,
+            579,
+            895,
+            772
+          ],
+          "border": {
+            "near-wing-flight": 312,
+            "near-thigh": 158,
+            "far-thigh": 150,
+            "chest": 142,
+            "near-wing-root": 97,
+            "tail": 42
+          },
+          "largest": true,
+          "share": 0.8632114608108855
+        },
+        {
+          "pixels": 2111,
+          "bounds": [
+            764,
+            348,
+            833,
+            443
+          ],
+          "border": {
+            "head": 75,
+            "far-wing-root": 66,
+            "neck-upper": 49,
+            "neck-lower": 5
+          },
+          "largest": false,
+          "share": 0.11676530781569777
+        },
+        {
+          "pixels": 136,
+          "bounds": [
+            723,
+            816,
+            744,
+            828
+          ],
+          "border": {
+            "far-thigh": 27,
+            "far-shin": 15,
+            "far-foot": 10
+          },
+          "largest": false,
+          "share": 0.007522539963493556
+        },
+        {
+          "pixels": 92,
+          "bounds": [
+            903,
+            409,
+            922,
+            427
+          ],
+          "border": {
+            "head": 32,
+            "neck-upper": 6,
+            "beak": 3
+          },
+          "largest": false,
+          "share": 0.005088777034127994
+        },
+        {
+          "pixels": 71,
+          "bounds": [
+            790,
+            865,
+            813,
+            870
+          ],
+          "border": {
+            "far-foot": 26
+          },
+          "largest": false,
+          "share": 0.00392720836329443
+        },
+        {
+          "pixels": 25,
+          "bounds": [
+            815,
+            867,
+            823,
+            876
+          ],
+          "border": {
+            "far-foot": 6
+          },
+          "largest": false,
+          "share": 0.0013828198462304331
+        },
+        {
+          "pixels": 10,
+          "bounds": [
+            740,
+            861,
+            746,
+            862
+          ],
+          "border": {
+            "far-foot": 7
+          },
+          "largest": false,
+          "share": 0.0005531279384921732
+        },
+        {
+          "pixels": 8,
+          "bounds": [
+            626,
+            870,
+            628,
+            875
+          ],
+          "border": {
+            "near-foot": 2
+          },
+          "largest": false,
+          "share": 0.00044250235079373857
+        },
+        {
+          "pixels": 7,
+          "bounds": [
+            570,
+            876,
+            571,
+            880
+          ],
+          "border": {
+            "near-foot": 2
+          },
+          "largest": false,
+          "share": 0.0003871895569445213
+        },
+        {
+          "pixels": 4,
+          "bounds": [
+            784,
+            864,
+            787,
+            864
+          ],
+          "border": {
+            "far-foot": 5
+          },
+          "largest": false,
+          "share": 0.00022125117539686928
+        },
+        {
+          "pixels": 3,
+          "bounds": [
+            715,
+            820,
+            717,
+            820
+          ],
+          "border": {},
+          "largest": false,
+          "share": 0.00016593838154765198
+        },
+        {
+          "pixels": 3,
+          "bounds": [
+            770,
+            863,
+            772,
+            863
+          ],
+          "border": {
+            "far-foot": 3
+          },
+          "largest": false,
+          "share": 0.00016593838154765198
+        },
+        {
+          "pixels": 3,
+          "bounds": [
+            870,
+            863,
+            871,
+            864
+          ],
+          "border": {
+            "far-foot": 1
+          },
+          "largest": false,
+          "share": 0.00016593838154765198
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "id": "20-hornbill",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit",
+      "actualNativeFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit",
+      "nativeReport": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-native.json",
+      "nativeSourceBound": true,
+      "inputs": [
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/packet/master.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/master.png",
+          "sha256": "cc44d4c6f8fcb34ffe1f40b66685895948f2705558ed8af78622f0ca016c1020",
+          "bytes": 1267023
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/packet/authoring.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/authoring.json",
+          "sha256": "abd3995abd4f15b954ad802f307041b0273d24b68b5743d4056f30b0c5e6409f",
+          "bytes": 8430
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/packet/subject-source.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/subject-source.json",
+          "sha256": "6ccd8b776aeccbe859e1c2983faac37cdbe59af0d5d470c6341bb97a7ef8c11c",
+          "bytes": 2712
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/packet/presence.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+          "bytes": 89
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/record.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/record.json",
+          "sha256": "3debdc485933e3297e04ade4b2a2439072f18165874310e0bc540180b0ae4711",
+          "bytes": 5949
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/binding.json",
+          "sha256": "59187cc42c787f301605cc2e3a1c13066f17cdc35182bffae901e48a8802ef70",
+          "bytes": 1277224
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/pre-split-binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/pre-split-binding.json",
+          "sha256": "ed5df32bcf179b4257a462317fd84f8f698d53ffbc416a72884dd41e6c15bcc5",
+          "bytes": 867516
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/declaration.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/declaration.json",
+          "sha256": "1505af19c86b7cc8768018df3372a4f0bcf07b49a5f17c637a5d0f3dea1d0987",
+          "bytes": 9367
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/atlas/20-hornbill.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/atlas/20-hornbill.json",
+          "sha256": "2faac2a9c571453d83bd9cd316dabfd2c8b7ed74a5c085337f0b388b213c8d68",
+          "bytes": 7006
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/atlas/20-hornbill.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/atlas/20-hornbill.png",
+          "sha256": "464f1be8cf916555705bc245f4f562162b4d2c61b0b4cb4e43b6448045138483",
+          "bytes": 437942
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/atlas/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/atlas/receipt.json",
+          "sha256": "557cf5f9258ef59a61da70df94d8ddb55612472696a7a055e68d55bf465a8a06",
+          "bytes": 2916
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/binding.json",
+          "sha256": "1446db8098c002f0c6da445ee527cff761b6a4661b8f2a54f13cf2cc2bd1561d",
+          "bytes": 5821
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/keyed.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/keyed.png",
+          "sha256": "95d002cedff4729681b82ba42295fef0858746952a7d8225f55dc1da46eed550",
+          "bytes": 1511510
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/manifest.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/manifest.json",
+          "sha256": "7851f9eca5f9c5926cd857ebf60b2154326d188bad4c14d3f50870315fc894d5",
+          "bytes": 2837
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/ownership.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/ownership.png",
+          "sha256": "c2124a0d88a311ea625da036bf32f41a129a8d86d5281bd41d0a84c98fd461bb",
+          "bytes": 16062
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/beak.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/beak.png",
+          "sha256": "313e629c60265f8058b576167cb66c3f67a43284b723248de6923b2de16d8af2",
+          "bytes": 16443
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/body.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/body.png",
+          "sha256": "1c772e95ccfb40cb917dfee85d75560fa5f3ad296d78268c727505a4a29f9448",
+          "bytes": 92942
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/chest.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/chest.png",
+          "sha256": "fff902589dd41b9232113472a530dffa6c4ee68a610ffafcc9e2d2480a249d95",
+          "bytes": 52730
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/far-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-foot.png",
+          "sha256": "921a815c7e6c48c35b72f42ea92c374980df65c56e31e096a44e4ae43b571888",
+          "bytes": 7167
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/far-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-shin.png",
+          "sha256": "a41f0f70d7d810c8e8c928fb3a246c16bd33a47efa106f000ec705677e0c8c02",
+          "bytes": 8030
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/far-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-thigh.png",
+          "sha256": "0a33e36e0b7f8de39f9283fd5426762d3c7314e604b41da0e065d6a5c318c8a1",
+          "bytes": 6471
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/far-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-wing-flight.png",
+          "sha256": "7fc8e07f8a56712d1db28ccbf8a5b478cfc7dc5e51c4652990a247aac6e21a7e",
+          "bytes": 13839
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/far-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/far-wing-root.png",
+          "sha256": "d670e380de45f5f7aaa5f8b0808cc3ca25848db6e9e7654f04c83fdcd5d830dc",
+          "bytes": 6248
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/head.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/head.png",
+          "sha256": "04ad86ba1e6af35209e4d3a9b568b00cf2d4cf749d06c99907931cc387ee4d69",
+          "bytes": 83246
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/near-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-foot.png",
+          "sha256": "4d7fbd015dd203b8d09ffcdb229ef3125b664327b852ab41047fd9d37f09d86d",
+          "bytes": 8700
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/near-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-shin.png",
+          "sha256": "0af232a78abacf0d958c44c8f4c8722d148c466e8bcc43f7651a9df98ea96e96",
+          "bytes": 2123
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/near-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-thigh.png",
+          "sha256": "267d5cfebd4cc6675d65849b146426ae18be39d1eefa329988a06d588acaf447",
+          "bytes": 6959
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/near-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-wing-flight.png",
+          "sha256": "b5c18704a8cefe58f4012ec577048b8b7c81aef81edb2ebc01f0d8c2440fe861",
+          "bytes": 60821
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/near-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/near-wing-root.png",
+          "sha256": "4e14dd8c55e515e327ca092bba0b75887ba7305687b92eef6fe45f6c915f9053",
+          "bytes": 15597
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/neck-lower.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/neck-lower.png",
+          "sha256": "c1f8f5565738227bb8ae95585c21fcdc42e25ba36ad7140ffc3080dd08fea1b4",
+          "bytes": 11424
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/neck-upper.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/neck-upper.png",
+          "sha256": "33aed50b31fa3c8d78d3acef4d880d703d5b3eed2a75ca160c2cfd565091a626",
+          "bytes": 7932
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/parts/tail.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/parts/tail.png",
+          "sha256": "3958401995bf8c2eb98c443aca705db57624bbe218ad3bfb3cbdf1a3816ab977",
+          "bytes": 95864
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/fit/parts/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit/parts/receipt.json",
+          "sha256": "a52f284346e54372fac334147148d440493441656590140c55d27828cc63f4c8",
+          "bytes": 4657
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/20-hornbill/report.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-native.json",
+          "sha256": "25870b5c0ab213d1f105306679d389db8da3d906064585c65ea83e0b0953dc22",
+          "bytes": 360399
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/20-hornbill/turn3-hit-idle-90.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original-native.png",
+          "sha256": "80a6bf57c9b1811030a3fab9dc67dc5db098bf584d550687945b6879828422e6",
+          "bytes": 1515440
+        }
+      ],
+      "unchangedCap": 0.05,
+      "cap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2687 px is 9.6% of the remainder (> 5%): structural, not a sliver"
+      },
+      "remainderPixels": 27918,
+      "components": [
+        {
+          "pixels": 20457,
+          "bounds": [
+            503,
+            566,
+            819,
+            792
+          ],
+          "border": {
+            "chest": 390,
+            "near-wing-flight": 302,
+            "far-thigh": 201,
+            "tail": 149,
+            "near-wing-root": 120,
+            "near-thigh": 119,
+            "far-shin": 10
+          },
+          "largest": true,
+          "share": 0.7327530625402966
+        },
+        {
+          "pixels": 3308,
+          "bounds": [
+            205,
+            842,
+            336,
+            892
+          ],
+          "border": {
+            "tail": 152
+          },
+          "largest": false,
+          "share": 0.11848986317071424
+        },
+        {
+          "pixels": 2687,
+          "bounds": [
+            736,
+            388,
+            801,
+            501
+          ],
+          "border": {
+            "head": 132,
+            "far-wing-root": 29,
+            "neck-upper": 28
+          },
+          "largest": false,
+          "share": 0.0962461494376388
+        },
+        {
+          "pixels": 854,
+          "bounds": [
+            1004,
+            398,
+            1060,
+            467
+          ],
+          "border": {
+            "beak": 113,
+            "head": 14
+          },
+          "largest": false,
+          "share": 0.030589583781073144
+        },
+        {
+          "pixels": 366,
+          "bounds": [
+            829,
+            481,
+            903,
+            489
+          ],
+          "border": {
+            "neck-upper": 90,
+            "neck-lower": 76
+          },
+          "largest": false,
+          "share": 0.013109821620459918
+        },
+        {
+          "pixels": 134,
+          "bounds": [
+            903,
+            445,
+            941,
+            451
+          ],
+          "border": {
+            "head": 52
+          },
+          "largest": false,
+          "share": 0.004799770757217566
+        },
+        {
+          "pixels": 61,
+          "bounds": [
+            689,
+            862,
+            696,
+            879
+          ],
+          "border": {
+            "far-foot": 8
+          },
+          "largest": false,
+          "share": 0.002184970270076653
+        },
+        {
+          "pixels": 28,
+          "bounds": [
+            189,
+            838,
+            203,
+            840
+          ],
+          "border": {
+            "tail": 17
+          },
+          "largest": false,
+          "share": 0.001002937173149939
+        },
+        {
+          "pixels": 9,
+          "bounds": [
+            753,
+            379,
+            758,
+            382
+          ],
+          "border": {
+            "head": 2
+          },
+          "largest": false,
+          "share": 0.0003223726627981947
+        },
+        {
+          "pixels": 5,
+          "bounds": [
+            707,
+            515,
+            711,
+            515
+          ],
+          "border": {
+            "far-wing-flight": 6
+          },
+          "largest": false,
+          "share": 0.00017909592377677485
+        },
+        {
+          "pixels": 5,
+          "bounds": [
+            742,
+            845,
+            746,
+            848
+          ],
+          "border": {
+            "far-shin": 7,
+            "far-foot": 2
+          },
+          "largest": false,
+          "share": 0.00017909592377677485
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            694,
+            516,
+            694,
+            516
+          ],
+          "border": {
+            "far-wing-flight": 2
+          },
+          "largest": false,
+          "share": 0.00003581918475535497
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            808,
+            862,
+            808,
+            862
+          ],
+          "border": {
+            "far-foot": 2
+          },
+          "largest": false,
+          "share": 0.00003581918475535497
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            811,
+            863,
+            811,
+            863
+          ],
+          "border": {
+            "far-foot": 2
+          },
+          "largest": false,
+          "share": 0.00003581918475535497
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            340,
+            867,
+            340,
+            867
+          ],
+          "border": {
+            "tail": 1
+          },
+          "largest": false,
+          "share": 0.00003581918475535497
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "id": "21-parrot",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit",
+      "actualNativeFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit",
+      "nativeReport": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-native.json",
+      "nativeSourceBound": true,
+      "inputs": [
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/packet/master.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/master.png",
+          "sha256": "27a1f78647d3a7a20e2b203129838b235c1d2b9eebac54875e4a26d11f7d004b",
+          "bytes": 1195735
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/packet/authoring.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/authoring.json",
+          "sha256": "8013fe48088e5bd0fd59a505f0a85789ba04ca019469ef846ab9845b2638b110",
+          "bytes": 8410
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/packet/subject-source.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/subject-source.json",
+          "sha256": "2cf03c69e6713b46c37b1389c93946e811449aa91f4d99524598285d70c0e3d1",
+          "bytes": 2788
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/packet/presence.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+          "bytes": 89
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/record.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/record.json",
+          "sha256": "e95eef3571e9866f79901ec54faead7657342002a1eab62e5bcf5e8e91fc2a23",
+          "bytes": 5952
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/binding.json",
+          "sha256": "719c046dd1a83fbf2c994d754804694c43f4ccc8274890fea535388c165b04cd",
+          "bytes": 1166133
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/pre-split-binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/pre-split-binding.json",
+          "sha256": "c43cd23a49cb879fbd971d88fc41b125535fbaaa456a9920d8e41a2fbf031071",
+          "bytes": 790058
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/declaration.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/declaration.json",
+          "sha256": "6b88e23131489d267195fc05eeefc9289f1e8d7e2b49bc403947920f04cd3b23",
+          "bytes": 9363
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/atlas/21-parrot.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/atlas/21-parrot.json",
+          "sha256": "3fa2629c44139134822f1b26af426d32e6345ba9b1989b6e4c5e8125f250e6b6",
+          "bytes": 6990
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/atlas/21-parrot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/atlas/21-parrot.png",
+          "sha256": "ef5fc2defc1b7bb24e9c9215e4603e6aafa20e23ef43f096fa2d66d25da9c96a",
+          "bytes": 377196
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/atlas/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/atlas/receipt.json",
+          "sha256": "297bc512a1d77f4b9601f5bf904d12a86008c7dcab9424d76317c543afa940cb",
+          "bytes": 2914
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/binding.json",
+          "sha256": "3f5e00f3e8e18b3acbfd742a721de5a967ef3a7b7ed8ecbecd6db4c03e8d8389",
+          "bytes": 5808
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/keyed.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/keyed.png",
+          "sha256": "e47fb7254c91cf6acaa7fe2a07a959d92445c586653904d0b6a23297d2cbd4ae",
+          "bytes": 1442259
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/manifest.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/manifest.json",
+          "sha256": "78d6470914afb754c8be74198d2e1b73aaa2e7d6ee5791cf61b8b4eecf6ef3ca",
+          "bytes": 2835
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/ownership.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/ownership.png",
+          "sha256": "0113a1148d70f956a45899de09e7fa4942dc774a13cb47393ae586aba1dc5480",
+          "bytes": 14724
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/beak.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/beak.png",
+          "sha256": "55ee14f3ca9296199e5910a028d215195c6128e23c36848614ba0835ca23d214",
+          "bytes": 7935
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/body.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/body.png",
+          "sha256": "757aeae347a937b343a0309a984c7a03ac3af32f1a282b6f05609aef1f3cae5a",
+          "bytes": 91446
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/chest.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/chest.png",
+          "sha256": "c04e247ed234a8dfc2a4a86fdf23877be5310a263951adc909b99a233ab2ca6b",
+          "bytes": 39216
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/far-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-foot.png",
+          "sha256": "c1db4978743bd3ef2e45a3110892bc8bbac1dfc4087ae7d5945b65208e3be99d",
+          "bytes": 9177
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/far-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-shin.png",
+          "sha256": "98db68793e53510edb0b0fd9833f488d8cce6a4ddd041b26f2aa11136694ecc9",
+          "bytes": 3521
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/far-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-thigh.png",
+          "sha256": "277d223c8a20800e40c02ffd6bfd68fee944c4e8915ac00d69701bb0d88e9086",
+          "bytes": 7098
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/far-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-wing-flight.png",
+          "sha256": "2da3499495c3bc849801c4dc5365a3385f7e6eecca0eafca69306e61acf2a975",
+          "bytes": 13141
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/far-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/far-wing-root.png",
+          "sha256": "a6b1d2f0e868a1f1b5536e558fbf995a587af7a011b2ace905f61e87e12df823",
+          "bytes": 14231
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/head.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/head.png",
+          "sha256": "87a87be7818ad5ad16339e8bb121e38e011b1d9e6a081a5acf4f42b6260e0722",
+          "bytes": 70322
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/near-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-foot.png",
+          "sha256": "71061e7b0ce02c1c71a465af40b23816a0f521d4b0526b66ab8ce2829f16f4aa",
+          "bytes": 11532
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/near-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-shin.png",
+          "sha256": "fbdf5c745710b79271c5c9fab393bec11ab315a2823ff927e7b4c10a2d103c08",
+          "bytes": 5771
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/near-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-thigh.png",
+          "sha256": "f1964adf257ec59efa939c3eee4186a1588029c17b126c03ec098a6ec9cabcab",
+          "bytes": 7215
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/near-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-wing-flight.png",
+          "sha256": "b398ea3ddb0d6be306158a6be1b3436ae015790741d0177b966d830454ce783d",
+          "bytes": 73162
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/near-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/near-wing-root.png",
+          "sha256": "c2fa3d36c77b2488ce1c25c2599373452b89fe4d9450371db539d156c8b8282c",
+          "bytes": 28016
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/neck-lower.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/neck-lower.png",
+          "sha256": "0e7570777f96ec51b28258763b26fe3b1b1488f870ada4b05ee0a247dafa5033",
+          "bytes": 10252
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/neck-upper.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/neck-upper.png",
+          "sha256": "4b0b17bb3fb244bc0fa66e2317818c2e40756f0d31a44819dde2ada64a280027",
+          "bytes": 13950
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/parts/tail.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/parts/tail.png",
+          "sha256": "09bbfcb1a7ce93d165607603a9db286a7a3e0d4c5adf3548a6eba4799b6b7a27",
+          "bytes": 53570
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/21-parrot/fallback-2/fit/parts/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit/parts/receipt.json",
+          "sha256": "531e0bdf18c9300b52f43a47eb457ef122b456c56fc851456d01eb2ae823b24e",
+          "bytes": 4655
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/21-parrot/report.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-native.json",
+          "sha256": "dfdfa0bf5f0cdce97fa63fa0e0794a2abf5fff23e26a56c22c7e786dec62a37a",
+          "bytes": 362858
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/21-parrot/turn3-hit-idle-90.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original-native.png",
+          "sha256": "56f362b61a797534e6cf91fc7d73abdd432a013cad99ddbc29817dc68c93692b",
+          "bytes": 1511549
+        }
+      ],
+      "unchangedCap": 0.05,
+      "cap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2291 px is 8.3% of the remainder (> 5%): structural, not a sliver"
+      },
+      "remainderPixels": 27600,
+      "components": [
+        {
+          "pixels": 23381,
+          "bounds": [
+            467,
+            580,
+            747,
+            801
+          ],
+          "border": {
+            "near-wing-flight": 271,
+            "chest": 244,
+            "tail": 185,
+            "far-thigh": 162,
+            "near-thigh": 117,
+            "near-wing-root": 98,
+            "far-shin": 11
+          },
+          "largest": true,
+          "share": 0.8471376811594203
+        },
+        {
+          "pixels": 2291,
+          "bounds": [
+            635,
+            404,
+            732,
+            475
+          ],
+          "border": {
+            "far-wing-root": 107,
+            "head": 91,
+            "neck-upper": 25
+          },
+          "largest": false,
+          "share": 0.08300724637681159
+        },
+        {
+          "pixels": 1075,
+          "bounds": [
+            893,
+            395,
+            917,
+            482
+          ],
+          "border": {
+            "beak": 67,
+            "head": 51
+          },
+          "largest": false,
+          "share": 0.03894927536231884
+        },
+        {
+          "pixels": 282,
+          "bounds": [
+            318,
+            786,
+            355,
+            802
+          ],
+          "border": {
+            "tail": 47
+          },
+          "largest": false,
+          "share": 0.010217391304347826
+        },
+        {
+          "pixels": 241,
+          "bounds": [
+            684,
+            791,
+            729,
+            824
+          ],
+          "border": {
+            "far-shin": 80,
+            "far-foot": 10
+          },
+          "largest": false,
+          "share": 0.008731884057971014
+        },
+        {
+          "pixels": 170,
+          "bounds": [
+            362,
+            798,
+            381,
+            810
+          ],
+          "border": {
+            "tail": 23
+          },
+          "largest": false,
+          "share": 0.006159420289855073
+        },
+        {
+          "pixels": 42,
+          "bounds": [
+            679,
+            839,
+            683,
+            854
+          ],
+          "border": {
+            "far-foot": 6
+          },
+          "largest": false,
+          "share": 0.0015217391304347826
+        },
+        {
+          "pixels": 40,
+          "bounds": [
+            388,
+            804,
+            398,
+            809
+          ],
+          "border": {
+            "tail": 14
+          },
+          "largest": false,
+          "share": 0.0014492753623188406
+        },
+        {
+          "pixels": 39,
+          "bounds": [
+            800,
+            857,
+            805,
+            868
+          ],
+          "border": {
+            "far-foot": 5
+          },
+          "largest": false,
+          "share": 0.0014130434782608696
+        },
+        {
+          "pixels": 16,
+          "bounds": [
+            699,
+            824,
+            709,
+            825
+          ],
+          "border": {
+            "far-foot": 11
+          },
+          "largest": false,
+          "share": 0.0005797101449275362
+        },
+        {
+          "pixels": 7,
+          "bounds": [
+            675,
+            788,
+            677,
+            791
+          ],
+          "border": {
+            "far-thigh": 4
+          },
+          "largest": false,
+          "share": 0.0002536231884057971
+        },
+        {
+          "pixels": 6,
+          "bounds": [
+            638,
+            851,
+            642,
+            855
+          ],
+          "border": {
+            "near-foot": 10
+          },
+          "largest": false,
+          "share": 0.0002173913043478261
+        },
+        {
+          "pixels": 5,
+          "bounds": [
+            825,
+            854,
+            826,
+            856
+          ],
+          "border": {
+            "far-foot": 2
+          },
+          "largest": false,
+          "share": 0.00018115942028985507
+        },
+        {
+          "pixels": 2,
+          "bounds": [
+            619,
+            772,
+            620,
+            773
+          ],
+          "border": {
+            "near-shin": 4
+          },
+          "largest": false,
+          "share": 0.00007246376811594203
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            698,
+            399,
+            698,
+            399
+          ],
+          "border": {},
+          "largest": false,
+          "share": 0.000036231884057971014
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            657,
+            766,
+            657,
+            766
+          ],
+          "border": {
+            "far-thigh": 2
+          },
+          "largest": false,
+          "share": 0.000036231884057971014
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            510,
+            869,
+            510,
+            869
+          ],
+          "border": {
+            "near-foot": 1
+          },
+          "largest": false,
+          "share": 0.000036231884057971014
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "id": "24-weaverbird",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit",
+      "actualNativeFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit",
+      "nativeReport": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-native.json",
+      "nativeSourceBound": true,
+      "inputs": [
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/packet/master.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/master.png",
+          "sha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033",
+          "bytes": 1153215
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/packet/authoring.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/authoring.json",
+          "sha256": "b06773512d417d504ecc9632977fd83d5b17ee4d873612dc273484293e590737",
+          "bytes": 8408
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/packet/subject-source.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/subject-source.json",
+          "sha256": "df04aff66efa4af463f4f67d83a0b355468cd1c63ad731a4e8c9448a36a25203",
+          "bytes": 2848
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/packet/presence.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+          "bytes": 89
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/record.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/record.json",
+          "sha256": "a1dfad5a8aeeed82ffcb06b140cce2bd99c9e04ef4bb9635ab7a202406d0aee3",
+          "bytes": 5963
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/binding.json",
+          "sha256": "09e397793028036ec1fc1e74086bcc7a45ec4909d86f1057bd482ec2da8f3d0e",
+          "bytes": 1059000
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/pre-split-binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/pre-split-binding.json",
+          "sha256": "0d0e9bddd260d1c91c29319ba35dc6e39ce1440edb5d924a96af45f2143304a1",
+          "bytes": 700330
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/declaration.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/declaration.json",
+          "sha256": "f3a8e04c001586db1b2ac1729344e616bdf96125459415f892fa1c66dcd87960",
+          "bytes": 9350
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/atlas/24-weaverbird.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/atlas/24-weaverbird.json",
+          "sha256": "e329652e9676016f998254ece0ff996186aa8267233ba14fda66b2e7b645dc0e",
+          "bytes": 6988
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/atlas/24-weaverbird.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/atlas/24-weaverbird.png",
+          "sha256": "bea3a53c89af1764eaf54100bb26fb4d299bfbefaaabc0df3b8e91446e552ab4",
+          "bytes": 292384
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/atlas/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/atlas/receipt.json",
+          "sha256": "250f14feb75bd84b4f5a51344120124b77e841975dbdd0f4f6632d7b1cf512b5",
+          "bytes": 2918
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/binding.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/binding.json",
+          "sha256": "730791a1b4848cf54a08981e710b1c28b49794f0dad6e601fbbce9b4fa261ec4",
+          "bytes": 5804
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/keyed.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/keyed.png",
+          "sha256": "e7d650fbf82d7897ff573641aa4217c41d2045f09a53c72a9d769a1f1e6ec9a9",
+          "bytes": 1368625
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/manifest.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/manifest.json",
+          "sha256": "142904998a553ed2782cbad974d76bb048e195c91223076833dc2e1b10d32fff",
+          "bytes": 2839
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/ownership.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/ownership.png",
+          "sha256": "36d0100aa641eaa8697028038f8edd8183089e3f09c74543f686b363d6d62a0e",
+          "bytes": 13384
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/beak.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/beak.png",
+          "sha256": "f26b921b87bf5bd94d9ab2093c13c75d88e0a08b0a49939668f79b5ccc450f08",
+          "bytes": 6988
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/body.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/body.png",
+          "sha256": "eaace47b1752c324c89a8747aea9b573d46e4595538111cc73edac2582baf948",
+          "bytes": 65610
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/chest.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/chest.png",
+          "sha256": "bfd7585ee5422ea8c9145140535eb0c4294f97841b15fb33807178242d23db17",
+          "bytes": 36424
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/far-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-foot.png",
+          "sha256": "ae7e9cb522edd88ebf13609fb08967aa89a6d93f626d78a5ffc28b10b98fa932",
+          "bytes": 6237
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/far-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-shin.png",
+          "sha256": "cdd96242ae566bf0485717c5f368367d7f99802656f3f5f19920b61b44615b15",
+          "bytes": 4696
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/far-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-thigh.png",
+          "sha256": "cb98d808d3d1146712734691f4aad06659b3bd6740997d47442e0e197cf9bf80",
+          "bytes": 4409
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/far-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-wing-flight.png",
+          "sha256": "c69ed20822e997d79b1c908fce2eeef4636d414f0a1a25e1ebc63c9836690d55",
+          "bytes": 11178
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/far-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/far-wing-root.png",
+          "sha256": "9aa65a2fb6b9499d62ec350637bb8e0f5cb76a20d9ec4bc331bb730a13e7262e",
+          "bytes": 12803
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/head.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/head.png",
+          "sha256": "78971415b8a27204532b1ba987d984b1b365aa3162ca75cafe148ea67cf8f3b9",
+          "bytes": 35822
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/near-foot.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-foot.png",
+          "sha256": "1adb1971c8fe5a1376d82bfe572e2f7458b9ac04896c30b9106a00ba311d5d0b",
+          "bytes": 6837
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/near-shin.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-shin.png",
+          "sha256": "07c11f826f079ceb7eda95dc03bb029ece4ea8baa3daf141e4709b3cbba8f617",
+          "bytes": 2448
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/near-thigh.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-thigh.png",
+          "sha256": "afd9fa0726d1de3738f55c3f9babbdcd91a67c8974de8839332b5de021f7b7c9",
+          "bytes": 4000
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/near-wing-flight.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-wing-flight.png",
+          "sha256": "68456ce215c5c2a476b8743b68a453203d3afa60fac17e24428c379502f344e8",
+          "bytes": 58489
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/near-wing-root.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/near-wing-root.png",
+          "sha256": "0c812281b9c8a60f20c72940cd891f4a7c4d6c45860281590df0c6d4abd178d9",
+          "bytes": 27232
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/neck-lower.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/neck-lower.png",
+          "sha256": "f6c3cb849ebb95b43e65d82aa591611214019cfdb755d768a9b4bf70867806b9",
+          "bytes": 13304
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/neck-upper.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/neck-upper.png",
+          "sha256": "277b2e88a30c9143f6c060912fccba9c5fb47b52d2017e80e5ff758e4465c06a",
+          "bytes": 14632
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/parts/tail.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/parts/tail.png",
+          "sha256": "1a6d632e51ff06e9f36b438da0b15f6beaef588294caaf7e67aff7f3c1d0eb0d",
+          "bytes": 39682
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/24-weaverbird/fit/parts/receipt.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit/parts/receipt.json",
+          "sha256": "f7d78fd073885aef364889dd68113a4805555b28503b8eee031e6555fddfca1a",
+          "bytes": 4653
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/24-weaverbird/report.json",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-native.json",
+          "sha256": "4eb1f4ebbcaf96c07384ff8c664b4892f4b9b074c58daa0962daa2fb31d1559a",
+          "bytes": 362811
+        },
+        {
+          "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c211/24-weaverbird/turn3-hit-idle-90.png",
+          "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original-native.png",
+          "sha256": "307f44d9292e431c8799176d2a848d404fec6a1f5d2649fc09ac8a5bef2e77ab",
+          "bytes": 1513617
+        }
+      ],
+      "unchangedCap": 0.05,
+      "cap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2065 px is 10.0% of the remainder (> 5%): structural, not a sliver"
+      },
+      "remainderPixels": 20753,
+      "components": [
+        {
+          "pixels": 18300,
+          "bounds": [
+            472,
+            569,
+            734,
+            757
+          ],
+          "border": {
+            "near-wing-flight": 265,
+            "chest": 246,
+            "tail": 172,
+            "far-thigh": 144,
+            "near-wing-root": 93,
+            "near-thigh": 91,
+            "far-shin": 8
+          },
+          "largest": true,
+          "share": 0.8818002216547005
+        },
+        {
+          "pixels": 2065,
+          "bounds": [
+            626,
+            400,
+            721,
+            477
+          ],
+          "border": {
+            "far-wing-root": 111,
+            "head": 78,
+            "neck-upper": 27
+          },
+          "largest": false,
+          "share": 0.09950368621404135
+        },
+        {
+          "pixels": 193,
+          "bounds": [
+            346,
+            785,
+            370,
+            799
+          ],
+          "border": {
+            "tail": 26
+          },
+          "largest": false,
+          "share": 0.00929986026116706
+        },
+        {
+          "pixels": 87,
+          "bounds": [
+            653,
+            845,
+            686,
+            857
+          ],
+          "border": {
+            "near-foot": 27
+          },
+          "largest": false,
+          "share": 0.004192164988194478
+        },
+        {
+          "pixels": 34,
+          "bounds": [
+            687,
+            827,
+            698,
+            838
+          ],
+          "border": {
+            "far-foot": 7
+          },
+          "largest": false,
+          "share": 0.0016383173517081867
+        },
+        {
+          "pixels": 32,
+          "bounds": [
+            599,
+            815,
+            606,
+            828
+          ],
+          "border": {
+            "near-shin": 17,
+            "near-foot": 5
+          },
+          "largest": false,
+          "share": 0.0015419457427841758
+        },
+        {
+          "pixels": 18,
+          "bounds": [
+            329,
+            788,
+            336,
+            792
+          ],
+          "border": {
+            "tail": 4
+          },
+          "largest": false,
+          "share": 0.0008673444803160989
+        },
+        {
+          "pixels": 8,
+          "bounds": [
+            533,
+            837,
+            537,
+            841
+          ],
+          "border": {
+            "near-foot": 2
+          },
+          "largest": false,
+          "share": 0.00038548643569604396
+        },
+        {
+          "pixels": 4,
+          "bounds": [
+            306,
+            790,
+            309,
+            791
+          ],
+          "border": {
+            "tail": 3
+          },
+          "largest": false,
+          "share": 0.00019274321784802198
+        },
+        {
+          "pixels": 2,
+          "bounds": [
+            686,
+            840,
+            686,
+            841
+          ],
+          "border": {},
+          "largest": false,
+          "share": 0.00009637160892401099
+        },
+        {
+          "pixels": 2,
+          "bounds": [
+            555,
+            846,
+            556,
+            846
+          ],
+          "border": {
+            "near-foot": 2
+          },
+          "largest": false,
+          "share": 0.00009637160892401099
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            828,
+            444,
+            828,
+            444
+          ],
+          "border": {
+            "head": 2,
+            "neck-upper": 2
+          },
+          "largest": false,
+          "share": 0.000048185804462005495
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            832,
+            445,
+            832,
+            445
+          ],
+          "border": {
+            "head": 2,
+            "neck-upper": 2
+          },
+          "largest": false,
+          "share": 0.000048185804462005495
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            624,
+            478,
+            624,
+            478
+          ],
+          "border": {
+            "far-wing-flight": 2
+          },
+          "largest": false,
+          "share": 0.000048185804462005495
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            740,
+            693,
+            740,
+            693
+          ],
+          "border": {
+            "chest": 2
+          },
+          "largest": false,
+          "share": 0.000048185804462005495
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            738,
+            694,
+            738,
+            694
+          ],
+          "border": {
+            "chest": 2
+          },
+          "largest": false,
+          "share": 0.000048185804462005495
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            736,
+            695,
+            736,
+            695
+          ],
+          "border": {
+            "chest": 2
+          },
+          "largest": false,
+          "share": 0.000048185804462005495
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            598,
+            812,
+            598,
+            812
+          ],
+          "border": {
+            "near-shin": 2
+          },
+          "largest": false,
+          "share": 0.000048185804462005495
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            687,
+            859,
+            687,
+            859
+          ],
+          "border": {},
+          "largest": false,
+          "share": 0.000048185804462005495
+        }
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "nativeRun": false,
+  "source": "Exact C211 native-bound painter fits, not another fallback or stale authoring."
+}

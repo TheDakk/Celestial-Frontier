@@ -1,0 +1,13 @@
+{
+  "id": "01-salmon",
+  "name": "Salmon",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6bf49d50-4948-47d3-b402-b91b0ca1396c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "889beac81608069e3fb46ef8afe9ae1be2547eb23842cc6c619150ba484cb704",
+  "bytes": 1276568,
+  "promptSha256": "a615f74fb6aa2716c5f015a45a14ac700a21b2440667d8ad569e6173d862065a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "static",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01",
+    "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/static-01.json"
+  ],
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/static-01.log",
+  "logSha256": "36c0a4c763896d9258fb89ea0cd06686238080468ac1da2bd0158727422cea3b",
+  "nativeRuns": 0
+}

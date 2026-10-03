@@ -1,0 +1,158 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "16dfa172cba5d252f5d467b86cc5991ec54eb995b6dbe2a5840cb43d50008647",
+  "sourceBindingSha256": "f9d4c3eadbdf65d35e414715da9e4c15b00ae3f9b7df69e4aa673cd6082d17fd",
+  "sourceAtlasSha256": "beebd483ec2eefc46cebe2a70007681f0eb860a5cf628b043fa89472a347f941",
+  "helperSha256": "273d01a74c5e4237ee92ac3dbcdef3d07af98816febbc3e179f86c68b2b930f6",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingNearRoot",
+      "wingNearTip",
+      "wingFarRoot",
+      "wingFarTip",
+      "tailFan",
+      "chest",
+      "spine"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "root-patch",
+        "torso"
+      ],
+      [
+        "root-patch",
+        "chest"
+      ],
+      [
+        "torso",
+        "near-wing-shoulder"
+      ],
+      [
+        "torso",
+        "far-wing-shoulder"
+      ],
+      [
+        "torso",
+        "near-wing-flight"
+      ],
+      [
+        "torso",
+        "far-wing-flight"
+      ],
+      [
+        "torso",
+        "neck-lower"
+      ],
+      [
+        "torso",
+        "neck-upper"
+      ],
+      [
+        "torso",
+        "head"
+      ],
+      [
+        "torso",
+        "beak"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 11,
+        "distancePx": 4.588504113542837,
+        "supports": [
+          272
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 12,
+        "distancePx": 5.589189923414728,
+        "supports": [
+          217
+        ]
+      }
+    ],
+    "sourceBindingHash": "daa6ca9b54832e51500dc3dbd68a85bb1d1dc1489ea22c64d5a7bf7e8637fee2",
+    "sourceVertices": 1923,
+    "vertices": 2103,
+    "sharedSupports": 477,
+    "pins": 780,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 14,
+    "excludedOverlaps": 17,
+    "observedExcludedBoundaries": 17,
+    "weldedExcludedBoundaries": 10,
+    "independentExcludedBoundaries": 7,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "root-patch",
+        "torso"
+      ],
+      [
+        "root-patch",
+        "chest"
+      ],
+      [
+        "torso",
+        "near-wing-shoulder"
+      ],
+      [
+        "torso",
+        "far-wing-shoulder"
+      ],
+      [
+        "torso",
+        "near-wing-flight"
+      ],
+      [
+        "torso",
+        "far-wing-flight"
+      ],
+      [
+        "torso",
+        "neck-lower"
+      ],
+      [
+        "torso",
+        "neck-upper"
+      ],
+      [
+        "torso",
+        "head"
+      ],
+      [
+        "torso",
+        "beak"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "93f165ba505e7a719866a046230d8b86e8f135487aef725c21d928949f16590a",
+  "scope": "Only this new unadmitted Sandpiper candidate: explicitly observed torso/root/chest, head/neck/bill and wing/body junctions. Between-wing and wing/tail sibling boundaries remain independent; no incidental toe/torso flecks welded. No source paint, solver, contract or limits change. Prior intake receipts describe inherited fit-01 inputs; this receipt owns the new split."
+}

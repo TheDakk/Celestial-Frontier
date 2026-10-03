@@ -1,0 +1,13 @@
+{
+  "id": "15-ostrich",
+  "name": "Ostrich",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-671c96e7-5afb-483d-bfa3-e6d4bc8efdef.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9611d51057bf6bc72e50251eaea1570ea850cdd6d278d3c6fc81e6edddae291b",
+  "bytes": 1231059,
+  "promptSha256": "23fb3e39c4bf4c36bd2ef7d79890e8fce41aa473bebb36df34bd403ab65b3360",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

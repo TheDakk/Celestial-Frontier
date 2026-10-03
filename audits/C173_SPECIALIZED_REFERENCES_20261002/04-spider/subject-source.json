@@ -1,0 +1,66 @@
+{
+  "name": "Spider",
+  "family": "arachnid",
+  "species": {
+    "name": "Spider",
+    "aspect": 1.4,
+    "headFrac": 0.35,
+    "eyes": "small",
+    "posture": "sprawling",
+    "mustRead": [
+      "two-part body: small front section and large round abdomen",
+      "eight jointed legs arching up then down",
+      "legs all attached to the front section only"
+    ],
+    "note": "Generic name read as a representative orb-weaver/house spider. Legs must all spring from the front body part, never from the abdomen."
+  },
+  "genome": {
+    "seed": 1305681744,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 16,
+    "body": 6,
+    "loco": 7,
+    "trait": 4,
+    "size": 5,
+    "diet": 1,
+    "head": 8,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 4,
+    "detail": 9,
+    "accent": 5,
+    "temper": 4,
+    "sense": 5,
+    "repro": 7,
+    "life": 1,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Spider"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Spider\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1305681744\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "index": 227,
+  "profile": {
+    "id": "spider",
+    "names": [
+      "Tarantula",
+      "Spider"
+    ],
+    "candidateTemplates": [
+      "arachnid"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "No scorpion stinger."
+  }
+}

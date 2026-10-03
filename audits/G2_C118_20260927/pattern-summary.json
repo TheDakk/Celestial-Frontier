@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Wombat",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tasmanian Devil",
+    "status": "PASS"
+  },
+  {
+    "name": "Quoll",
+    "status": "PASS"
+  },
+  {
+    "name": "Sea Otter",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Water Vole",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Marsh Rodent",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Flying Squirrel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sugar Glider",
+    "status": "PASS"
+  },
+  {
+    "name": "Colugo",
+    "status": "PASS"
+  },
+  {
+    "name": "Echidna",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Koala",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Platypus",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Penguin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Water Beetle",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Diving Beetle",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Dragonfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Damselfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mayfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Flounder",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Halibut",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Loon",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rhinoceros",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hummingbird",
+    "status": "NOT_REQUIRED"
+  }
+]

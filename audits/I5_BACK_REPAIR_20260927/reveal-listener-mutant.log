@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 skipped (1)
+      Tests  8 skipped (8)
+   Start at  13:17:08
+   Duration  439ms (transform 20ms, setup 0ms, import 327ms, tests 0ms, environment 0ms)
+

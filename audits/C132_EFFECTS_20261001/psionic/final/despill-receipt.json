@@ -1,0 +1,270 @@
+{
+  "schema": "cf.c132-targeted-despill/v1",
+  "passes": 1,
+  "radius": 8,
+  "alphaUnchanged": true,
+  "erosionPixels": 0,
+  "qualityAccepted": false,
+  "rows": [
+    {
+      "phase": "launch",
+      "input": "psionic/neutral/registered/launch.png",
+      "inputSha256": "86b8b725e3a2000f4ab4f0adf47ff3a6aadba761965dedad74247eb54daa7c62",
+      "output": "registered/launch.png",
+      "outputSha256": "993e9adaa07f0ed351018c88ea8dcee203392413c618f72072643ecc1e42f6e5",
+      "alphaUnchanged": true,
+      "changesOutsideTargets": 0,
+      "changedRgbPixels": 56,
+      "selection": "Key-tinted pixels on the delivery-contract edge, intersected with the existing conservative fringe selector; pale and umber protections retained",
+      "pass": {
+        "passes": 1,
+        "radius": 8,
+        "targets": 56,
+        "corrected": [
+          {
+            "index": 481621,
+            "sourceIndex": 479575
+          },
+          {
+            "index": 482585,
+            "sourceIndex": 485657
+          },
+          {
+            "index": 482586,
+            "sourceIndex": 485658
+          },
+          {
+            "index": 483670,
+            "sourceIndex": 479575
+          },
+          {
+            "index": 484697,
+            "sourceIndex": 484699
+          },
+          {
+            "index": 486745,
+            "sourceIndex": 484699
+          },
+          {
+            "index": 488797,
+            "sourceIndex": 486751
+          },
+          {
+            "index": 524597,
+            "sourceIndex": 525620
+          },
+          {
+            "index": 525618,
+            "sourceIndex": 525620
+          },
+          {
+            "index": 530805,
+            "sourceIndex": 526711
+          },
+          {
+            "index": 531675,
+            "sourceIndex": 533721
+          },
+          {
+            "index": 531777,
+            "sourceIndex": 532799
+          },
+          {
+            "index": 547017,
+            "sourceIndex": 545990
+          },
+          {
+            "index": 548170,
+            "sourceIndex": 549197
+          },
+          {
+            "index": 549062,
+            "sourceIndex": 545990
+          },
+          {
+            "index": 552267,
+            "sourceIndex": 551246
+          },
+          {
+            "index": 561359,
+            "sourceIndex": 561356
+          },
+          {
+            "index": 562377,
+            "sourceIndex": 562379
+          },
+          {
+            "index": 564616,
+            "sourceIndex": 564619
+          },
+          {
+            "index": 565538,
+            "sourceIndex": 564515
+          },
+          {
+            "index": 587982,
+            "sourceIndex": 585932
+          },
+          {
+            "index": 587983,
+            "sourceIndex": 585932
+          },
+          {
+            "index": 589006,
+            "sourceIndex": 585932
+          },
+          {
+            "index": 589007,
+            "sourceIndex": 585932
+          },
+          {
+            "index": 592122,
+            "sourceIndex": 593150
+          },
+          {
+            "index": 594170,
+            "sourceIndex": 596221
+          },
+          {
+            "index": 594171,
+            "sourceIndex": 596221
+          },
+          {
+            "index": 595147,
+            "sourceIndex": 596167
+          },
+          {
+            "index": 595151,
+            "sourceIndex": 600270
+          },
+          {
+            "index": 596163,
+            "sourceIndex": 596161
+          },
+          {
+            "index": 597188,
+            "sourceIndex": 595141
+          },
+          {
+            "index": 598222,
+            "sourceIndex": 600270
+          },
+          {
+            "index": 599237,
+            "sourceIndex": 597191
+          },
+          {
+            "index": 600261,
+            "sourceIndex": 597191
+          },
+          {
+            "index": 600262,
+            "sourceIndex": 598216
+          },
+          {
+            "index": 601285,
+            "sourceIndex": 603330
+          },
+          {
+            "index": 601286,
+            "sourceIndex": 600265
+          },
+          {
+            "index": 602312,
+            "sourceIndex": 600265
+          },
+          {
+            "index": 604496,
+            "sourceIndex": 605521
+          },
+          {
+            "index": 608444,
+            "sourceIndex": 609467
+          },
+          {
+            "index": 609501,
+            "sourceIndex": 608476
+          },
+          {
+            "index": 618783,
+            "sourceIndex": 617756
+          },
+          {
+            "index": 624908,
+            "sourceIndex": 623888
+          },
+          {
+            "index": 625931,
+            "sourceIndex": 629005
+          },
+          {
+            "index": 636277,
+            "sourceIndex": 633206
+          },
+          {
+            "index": 645443,
+            "sourceIndex": 647491
+          },
+          {
+            "index": 646457,
+            "sourceIndex": 645432
+          },
+          {
+            "index": 646465,
+            "sourceIndex": 647491
+          },
+          {
+            "index": 647426,
+            "sourceIndex": 647424
+          },
+          {
+            "index": 649533,
+            "sourceIndex": 651583
+          },
+          {
+            "index": 654697,
+            "sourceIndex": 657768
+          },
+          {
+            "index": 670034,
+            "sourceIndex": 665935
+          },
+          {
+            "index": 672079,
+            "sourceIndex": 669004
+          },
+          {
+            "index": 676182,
+            "sourceIndex": 671063
+          },
+          {
+            "index": 677195,
+            "sourceIndex": 678222
+          },
+          {
+            "index": 679250,
+            "sourceIndex": 677199
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      }
+    },
+    {
+      "phase": "travel",
+      "input": "psionic/neutral/registered/travel.png",
+      "inputSha256": "27233e950914e65f7c62937d7ea649f512b7474b3806ba44de2809ef68f7bee5",
+      "output": "registered/travel.png",
+      "outputSha256": "27233e950914e65f7c62937d7ea649f512b7474b3806ba44de2809ef68f7bee5",
+      "unchanged": true
+    },
+    {
+      "phase": "impact",
+      "input": "psionic/neutral/registered/impact.png",
+      "inputSha256": "9d3b74bb6bcfb48264416d36c7b7dfa6b7384a471cbb13a141958ad24219335a",
+      "output": "registered/impact.png",
+      "outputSha256": "9d3b74bb6bcfb48264416d36c7b7dfa6b7384a471cbb13a141958ad24219335a",
+      "unchanged": true
+    }
+  ]
+}

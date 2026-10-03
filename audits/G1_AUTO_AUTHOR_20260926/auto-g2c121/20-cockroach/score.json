@@ -1,0 +1,9 @@
+{
+ "id": "20-cockroach",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 8% paint (reference 19%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wahoo",
+  "masterSha256": "0c8295ddfa46c33598557f91f67494b8808314126e0ece37e4c8bbefb9c98baf",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

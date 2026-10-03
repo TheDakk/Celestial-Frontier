@@ -1,0 +1,218 @@
+{
+  "rows": [
+    {
+      "id": "approved",
+      "rig": "rig-approved-05",
+      "native": "native-approved-05",
+      "seed": 10271,
+      "master": "audits/PROCEDURAL_PAINTED_DIRECTION_20260916/procedural-10271-candidate-02.png",
+      "masterSha256": "aba05f55102c5e0a23c9a02c3d120675905f09fdb517223505d80326eb84e158",
+      "status": "DIAGNOSTIC_PASS",
+      "restChanged": 0,
+      "finalRestChanged": 0,
+      "singleClipSamples": 484,
+      "presentation": {
+        "samples": 601,
+        "maxGapPx": 0.0001162114714909935,
+        "status": "PASS"
+      },
+      "framing": {
+        "samples": 602,
+        "fullMotionBox": {
+          "minX": -0.03520626947283745,
+          "minY": 0.07145684212446213,
+          "maxX": 1.14040207862854,
+          "maxY": 0.9039753079414368
+        },
+        "view": {
+          "x": 745,
+          "y": 90,
+          "width": 610,
+          "height": 540
+        },
+        "fit": {
+          "scale": 518.8802894987585,
+          "x": 763.2678392962372,
+          "y": 52.922453071792006
+        },
+        "inside": true,
+        "oldRestOnlyInside": false
+      },
+      "negative": {
+        "status": "FAIL",
+        "maxGapPx": 12.5400179386138
+      },
+      "capture": {
+        "rigUpdateP95Ms": 1.300000011920929,
+        "frames": 602,
+        "fps": 60.002795471336434,
+        "wholeFrameCpuP95Ms": 1.5,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.099035"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "qualityAccepted": false,
+      "universalProductionQualified": false
+    },
+    {
+      "id": "broad",
+      "rig": "rig-broad-02",
+      "native": "native-broad-03",
+      "seed": 10271,
+      "master": "audits/PAINTED_VARIATION_MOTION_20260916/masters/rosette-10271-variation.png",
+      "masterSha256": "34de782ea903e7c275e1d9b88b2a4fee3ecf0c1b0d64affb4c399e4e40017ae0",
+      "status": "DIAGNOSTIC_PASS",
+      "restChanged": 0,
+      "finalRestChanged": 0,
+      "singleClipSamples": 484,
+      "presentation": {
+        "samples": 601,
+        "maxGapPx": 0.00012886171309644067,
+        "status": "PASS"
+      },
+      "framing": {
+        "samples": 602,
+        "fullMotionBox": {
+          "minX": -0.055980928242206573,
+          "minY": -0.023859592154622078,
+          "maxX": 1.2188674211502075,
+          "maxY": 0.9266083836555481
+        },
+        "view": {
+          "x": 745,
+          "y": 90,
+          "width": 610,
+          "height": 540
+        },
+        "fit": {
+          "scale": 478.4882847365514,
+          "x": 771.7862183325734,
+          "y": 101.4165353245788
+        },
+        "inside": true,
+        "oldRestOnlyInside": false
+      },
+      "negative": {
+        "status": "FAIL",
+        "maxGapPx": 12.540017938614028
+      },
+      "capture": {
+        "rigUpdateP95Ms": 1.5999999940395355,
+        "frames": 602,
+        "fps": 60.002795471336434,
+        "wholeFrameCpuP95Ms": 1.699999988079071,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.098657"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "qualityAccepted": false,
+      "universalProductionQualified": false
+    },
+    {
+      "id": "crystalline",
+      "rig": "rig-crystalline-02",
+      "native": "native-crystalline-02",
+      "seed": 10032,
+      "master": "audits/PAINTED_VARIATION_MOTION_20260916/masters/crystalline-10032.png",
+      "masterSha256": "dadcce22d2e76d0f7ea5e44bf2acd55a95effba26fa17bb4b2f205577a48d5e3",
+      "status": "DIAGNOSTIC_PASS",
+      "restChanged": 0,
+      "finalRestChanged": 0,
+      "singleClipSamples": 484,
+      "presentation": {
+        "samples": 601,
+        "maxGapPx": 0.00010504977401901657,
+        "status": "PASS"
+      },
+      "framing": {
+        "samples": 602,
+        "fullMotionBox": {
+          "minX": -0.09865450859069824,
+          "minY": -0.038432084023952484,
+          "maxX": 1.1337542533874512,
+          "maxY": 1.0276225805282593
+        },
+        "view": {
+          "x": 745,
+          "y": 90,
+          "width": 610,
+          "height": 540
+        },
+        "fit": {
+          "scale": 494.9656468044612,
+          "x": 793.8305926547712,
+          "y": 109.02256132695904
+        },
+        "inside": true,
+        "oldRestOnlyInside": false
+      },
+      "negative": {
+        "status": "FAIL",
+        "maxGapPx": 12.539995515346504
+      },
+      "capture": {
+        "rigUpdateP95Ms": 1.7000000178813934,
+        "frames": 602,
+        "fps": 60.00339453479897,
+        "wholeFrameCpuP95Ms": 1.9000000059604645,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.100039"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "qualityAccepted": false,
+      "universalProductionQualified": false
+    }
+  ],
+  "scope": "Three paintings, two source genomes, one shared quadruped template; authored observations, not an automatic production pipeline."
+}

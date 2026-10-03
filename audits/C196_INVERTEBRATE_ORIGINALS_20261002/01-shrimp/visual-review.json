@@ -1,0 +1,28 @@
+{
+  "name": "Shrimp",
+  "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Curved segmented abdomen, complete tail fan, serrated rostrum, two stalked eyes, two long antennae and natural shorter head appendages; feathery swimmerets remain under abdomen. Near walking legs are readable but far thoracic chains overlap roots/shafts, so all ten complete walking-leg paths are not unambiguously countable. Fine extra mouthparts/swimmerets cannot be deleted to fit a coarse graph. Right antenna approaches margin.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 156,
+      "y0": 288,
+      "x1": 1174,
+      "y1": 868
+    },
+    "margins": {
+      "left": 156,
+      "right": 79,
+      "top": 288,
+      "bottom": 385
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

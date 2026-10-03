@@ -1,0 +1,17 @@
+✔ one CLI atlas is byte-stable across input order; original pixels and hashes survive (699.171083ms)
+✔ scope is frozen and rejects action modes before performing work (1.181875ms)
+✔ version metadata distinguishes upgrades, older remote metadata and nonnumeric labels (0.147042ms)
+✔ reads real PCM bytes and rejects truncated or incompatible carriers (3.749666ms)
+✔ audio verdict rejects silence, clipping, wrong frequency/format and absent loudness (1.538708ms)
+✔ PNG verdict requires both identical and exactly one changed pixel outcomes (0.074625ms)
+✔ existing audio venv rejects stale Python base/version/architecture and mismatched SSL (0.191417ms)
+✔ ImageMagick metric accepts the optional normalized suffix and rejects junk or nonfinite values (0.313208ms)
+✔ optional PNG CLI versions are observed; missing/broken tools warn without failing (464.682958ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 773.532541

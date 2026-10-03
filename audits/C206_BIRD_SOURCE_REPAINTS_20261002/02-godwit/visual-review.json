@@ -1,0 +1,28 @@
+{
+  "name": "Godwit",
+  "masterSha256": "f905ad6b72c05d38c8dfdaa716a9ced613fc20bdf8d3945707885758a940ce56",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: very long pale pink-based dark-tipped bill, cinnamon breast with dark chevrons and two separate dark leg/foot chains are visible. Short barred tail lies beneath the folded wing. Bill is nearly straight with only a subtle upward impression, and its tip approaches the right margin; framing remains pending and no length correction is applied.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 171,
+      "y0": 294,
+      "x1": 1171,
+      "y1": 950
+    },
+    "margins": {
+      "left": 171,
+      "right": 82,
+      "top": 294,
+      "bottom": 303
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

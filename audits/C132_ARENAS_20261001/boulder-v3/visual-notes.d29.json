@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "boulder-v3",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/boulder-v3/arena-composed-review.png"
+  ],
+  "findings": [
+    "Native full-size composite inspected at 1672×941. The new FAR has clouds without visible planets or moons; all original and refused successor canvases remain intact.",
+    "The level ochre fighting band stays clear through the stand line. Tall side boulders remain outside the center run-up, but their silhouette pressure needs finished-rig review.",
+    "The MID creates a second low rock contour in front of the FAR; the NEAR creates a conspicuous warm strip and horizontal texture transition along the lower edge. Small green/key-color edge remnants remain around side stones and plants.",
+    "Candidate mechanics do not establish visual acceptance, physical ground contact, parallax seams or performance. qualityAccepted remains false."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+ "id": "23-whip-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong family: length/thickness 1 < 8",
+  "facing: the right (head) end is not thicker than the left (tail) end (1254 vs 1254)",
+  "head end blunt: snout ratio 1 > 0.72 (no tapering snout; a cut-off head?)",
+  "tail not tapered: tip 1254px vs median 1254px (truncated tail?)"
+ ],
+ "semanticPresence": null
+}

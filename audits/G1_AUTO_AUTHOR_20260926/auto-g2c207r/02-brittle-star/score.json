@@ -1,0 +1,24 @@
+{
+ "id": "02-brittle-star",
+ "family": "radial",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 14.9% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 15.5% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a front appendage of 18.6% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a limb-down appendage of 18.2% paint that no reference appendage lands on",
+  "missing-anatomy: part arm0-base (arm0Seg0) covers 15% paint (reference 63%)",
+  "missing-anatomy: part arm0-middle (arm0Seg1) covers 5% paint (reference 29%)",
+  "missing-anatomy: part arm0-tip (arm0Seg2) covers 4% paint (reference 8%)",
+  "missing-anatomy: part arm4-middle (arm4Seg1) covers 10% paint (reference 30%)",
+  "missing-anatomy: part arm4-tip (arm4Seg2) covers 7% paint (reference 17%)",
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 18% paint (reference 55%)",
+  "missing-anatomy: part arm2-tip (arm2Seg2) covers 1% paint (reference 29%)",
+  "missing-anatomy: part arm3-base (arm3Seg0) covers 23% paint (reference 79%)",
+  "missing-anatomy: part arm3-middle (arm3Seg1) covers 15% paint (reference 48%)",
+  "missing-anatomy: part arm1-middle (arm1Seg1) covers 5% paint (reference 21%)",
+  "missing-anatomy: part arm1-tip (arm1Seg2) covers 4% paint (reference 16%)",
+  "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 0.0%)"
+ ],
+ "semanticPresence": null
+}

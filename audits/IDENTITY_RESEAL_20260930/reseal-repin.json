@@ -1,0 +1,11 @@
+{
+ "schema": "cf.identity-reseal-repin/v1",
+ "pairs": [
+  {
+   "round": 1,
+   "file": "certification-report.json",
+   "old": "8abdad0830361c5ff17beb0e6ae134426635b4a25665a2ed785407cfd4d7ea91",
+   "new": "035c1c0faaab80bd32d233192c7fd0cbec63b78943de71e059af934890513a81"
+  }
+ ]
+}

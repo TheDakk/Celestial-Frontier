@@ -1,0 +1,26 @@
+{
+  "intake": {
+    "id": "freshwater-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 667,
+      "height": 275
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "sourceBindingHash": "5cfebe66256c6b1d8c6c8b0f806a15d9a7df2f3fe3aa6d7acfe6205d227846b0",
+    "sourceVertices": 1460,
+    "vertices": 1600,
+    "sharedSupports": 178,
+    "pins": 734,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 24,
+    "excludedOverlaps": 2,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "nativeAcceptance": false
+}

@@ -1,0 +1,8 @@
+{
+ "id": "02-red-fox",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

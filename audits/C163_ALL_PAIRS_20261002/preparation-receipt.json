@@ -1,0 +1,45 @@
+{
+  "schema": "cf.c163-all-pairs-preparation/v1",
+  "status": "PASS",
+  "sourceHead": "55c04b88318d0a159be21bc8e6b79a0aaba0413b",
+  "fits": 38,
+  "orderedPairs": 1444,
+  "mirrorPairs": 38,
+  "sharedSourceFiles": 1319,
+  "nativeRuns": 0,
+  "preparedOnly": true,
+  "manifestSha256": "19a810e06906cb8cbbee2d94379c32d538afa79a4946a3f9aaec656a3792afb7",
+  "nativeBundleSha256": "efef3bde2c81703ba977db267e8985f2f32229428dd97f36b277553970f018d3",
+  "arenaCounts": {
+    "freshwater-lake-v2": 106,
+    "earth-temperate-v1": 1248,
+    "coral": 90
+  },
+  "mediumCounts": {
+    "water/water": 196,
+    "water/ground": 294,
+    "water/air": 42,
+    "ground/water": 294,
+    "ground/ground": 441,
+    "ground/air": 63,
+    "air/water": 42,
+    "air/ground": 63,
+    "air/air": 9
+  },
+  "observedSupports": [
+    "Heron",
+    "Goose",
+    "Gull"
+  ],
+  "declarationFits": [
+    "Jellyfish"
+  ],
+  "syntheticControls": {
+    "file": "audits/C163_ALL_PAIRS_20261002/controls.json",
+    "status": "PASS",
+    "passed": 36,
+    "total": 36
+  },
+  "qualification": "UNMEASURED",
+  "performanceClaim": null
+}

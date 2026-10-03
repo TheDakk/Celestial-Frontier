@@ -1,0 +1,34 @@
+[
+ {
+  "id": "03-alligator",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/03-alligator/fallback-1/fit"
+ },
+ {
+  "id": "04-gharial",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/04-gharial/fit"
+ },
+ {
+  "id": "07-gecko",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/07-gecko/fit"
+ },
+ {
+  "id": "09-alligator-lizard",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/09-alligator-lizard/fit"
+ },
+ {
+  "id": "11-tegu",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/11-tegu/fit"
+ },
+ {
+  "id": "17-coastal-lizard",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/17-coastal-lizard/fit"
+ },
+ {
+  "id": "18-komodo-dragon",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/18-komodo-dragon/fit"
+ },
+ {
+  "id": "24-newt",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/24-newt/fit"
+ }
+]

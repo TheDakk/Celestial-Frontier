@@ -1,0 +1,72 @@
+{
+  "name": "Blind Salamander",
+  "family": "quadruped",
+  "species": {
+    "name": "Blind Salamander",
+    "aspect": 5.5,
+    "headFrac": 0.19,
+    "eyes": "hidden",
+    "posture": "sprawling",
+    "mustRead": [
+      "blood-red feathery external gills",
+      "chalk-white unpigmented skin",
+      "spindly toothpick legs"
+    ],
+    "note": "Interpreted as the Texas blind salamander / olm type. Eyes are absent or buried under skin - never draw open eyes; the head is broad and flat, not pointed."
+  },
+  "genome": {
+    "seed": 1514633582,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 6,
+    "body": 6,
+    "loco": 13,
+    "trait": 24,
+    "size": 2,
+    "diet": 2,
+    "head": 2,
+    "limbs": 0,
+    "skin": 1,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 2,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 13,
+    "temper": 7,
+    "sense": 4,
+    "repro": 5,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Blind Salamander"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Blind Salamander\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1514633582\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 530,
+  "profile": {
+    "id": "salamander",
+    "names": [
+      "Salamander",
+      "Newt",
+      "Giant Salamander",
+      "Alpine Salamander",
+      "Olm",
+      "Blind Salamander",
+      "Axolotl"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Preserve tail and optional external gills; no mammalian ears."
+  }
+}

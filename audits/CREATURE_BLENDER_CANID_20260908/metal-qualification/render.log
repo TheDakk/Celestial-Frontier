@@ -1,0 +1,8 @@
+/private/tmp/cf-creature-metal-20260908/qualify_metal.py:19: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name); m.diffuse_color=(*color,1); m.use_nodes=True
+02:32.018  render           | Saved: '/private/tmp/cf-creature-metal-20260908/metal-qualification.png'
+{"schema": "cf-metal-render-qualification/v1", "blenderVersion": "5.2.1 LTS", "buildHash": "9e2066aef7ef", "backend": "METAL", "sceneDevice": "GPU", "enabledDevices": [{"name": "Apple M4 Pro (GPU - 16 cores)", "type": "METAL", "id": "METAL_Apple M4 Pro (GPU - 16 cores)"}], "cpuEnabled": false, "samples": 16, "resolution": [192, 192], "renderSeconds": 151.113, "output": {"path": "metal-qualification.png", "bytes": 36148, "sha256": "7f6244d69b3bd8064e3ca9f64c608e00110b1ceb6cb4148a68be6422f8f3df54"}, "scope": "Bounded actual synthetic material/lighting render; not candidate anatomy or performance comparison."}
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit
+192x192 srgba 4.0 colors=2292

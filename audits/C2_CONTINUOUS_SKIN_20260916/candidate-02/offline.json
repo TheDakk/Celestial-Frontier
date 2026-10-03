@@ -1,0 +1,167 @@
+[
+  {
+    "id": "civet",
+    "poses": [
+      {
+        "name": "rest",
+        "flips": 0,
+        "total": 5755,
+        "min": 0.9999200051969368,
+        "max": 1.000065756031377,
+        "rigid": false,
+        "maximumTargetErrorPx": 0.00003719016915128825,
+        "rmsTargetErrorPx": 0.000017748324038712665
+      },
+      {
+        "name": "hit-recoil",
+        "flips": 0,
+        "total": 5755,
+        "min": 0.2017929600747034,
+        "max": 1.9815256282936389,
+        "rigid": false,
+        "maximumTargetErrorPx": 7.6023749816751955,
+        "rmsTargetErrorPx": 0.7231537201930857
+      },
+      {
+        "name": "strike",
+        "flips": 7,
+        "total": 5755,
+        "min": -0.9803834777233691,
+        "max": 1.7188853780063853,
+        "rigid": false,
+        "maximumTargetErrorPx": 8.979325592843129,
+        "rmsTargetErrorPx": 1.3305680966204714
+      },
+      {
+        "name": "approach-quarter",
+        "flips": 1,
+        "total": 5755,
+        "min": -0.04872076875658422,
+        "max": 1.8382845865200579,
+        "rigid": false,
+        "maximumTargetErrorPx": 5.543252609307063,
+        "rmsTargetErrorPx": 0.6809670100554732
+      },
+      {
+        "name": "approach-three-quarter",
+        "flips": 0,
+        "total": 5755,
+        "min": 0.008669064326172347,
+        "max": 2.019241557259269,
+        "rigid": false,
+        "maximumTargetErrorPx": 6.068774817806818,
+        "rmsTargetErrorPx": 0.6932204372748698
+      }
+    ]
+  },
+  {
+    "id": "fox",
+    "poses": [
+      {
+        "name": "rest",
+        "flips": 0,
+        "total": 6444,
+        "min": 0.9999312160260558,
+        "max": 1.0001405049474896,
+        "rigid": false,
+        "maximumTargetErrorPx": 0.000038004777742087926,
+        "rmsTargetErrorPx": 0.000018185436645700116
+      },
+      {
+        "name": "hit-recoil",
+        "flips": 0,
+        "total": 6444,
+        "min": 0.3462577708885233,
+        "max": 1.6034781808566436,
+        "rigid": false,
+        "maximumTargetErrorPx": 9.248172250337104,
+        "rmsTargetErrorPx": 0.8801034396251974
+      },
+      {
+        "name": "strike",
+        "flips": 184,
+        "total": 6444,
+        "min": -2.1556919720505725,
+        "max": 2.0531746187638307,
+        "rigid": false,
+        "maximumTargetErrorPx": 15.947195743934778,
+        "rmsTargetErrorPx": 1.9700248965467033
+      },
+      {
+        "name": "approach-quarter",
+        "flips": 7,
+        "total": 6444,
+        "min": -0.6366474844042548,
+        "max": 2.4985612022200234,
+        "rigid": false,
+        "maximumTargetErrorPx": 9.388829836626961,
+        "rmsTargetErrorPx": 1.2485918875639828
+      },
+      {
+        "name": "approach-three-quarter",
+        "flips": 46,
+        "total": 6444,
+        "min": -0.8077650880599989,
+        "max": 2.805745127552117,
+        "rigid": false,
+        "maximumTargetErrorPx": 18.350399357099317,
+        "rmsTargetErrorPx": 1.5748443128276968
+      }
+    ]
+  },
+  {
+    "id": "procedural",
+    "poses": [
+      {
+        "name": "rest",
+        "flips": 0,
+        "total": 1678,
+        "min": 0.999912278123402,
+        "max": 1.000242882582294,
+        "rigid": false,
+        "maximumTargetErrorPx": 0.00002515717560670699,
+        "rmsTargetErrorPx": 0.000013463902135612267
+      },
+      {
+        "name": "hit-recoil",
+        "flips": 0,
+        "total": 1678,
+        "min": 0.7741991230207302,
+        "max": 1.4203715999799562,
+        "rigid": false,
+        "maximumTargetErrorPx": 2.2677380034420294,
+        "rmsTargetErrorPx": 0.51339622553973
+      },
+      {
+        "name": "strike",
+        "flips": 0,
+        "total": 1678,
+        "min": 0.0652920635350044,
+        "max": 1.9324335568744666,
+        "rigid": false,
+        "maximumTargetErrorPx": 3.636225724721185,
+        "rmsTargetErrorPx": 1.2136042803563538
+      },
+      {
+        "name": "approach-quarter",
+        "flips": 0,
+        "total": 1678,
+        "min": 0.15659957025491167,
+        "max": 1.683107423289704,
+        "rigid": false,
+        "maximumTargetErrorPx": 4.477388476013778,
+        "rmsTargetErrorPx": 1.048950956709719
+      },
+      {
+        "name": "approach-three-quarter",
+        "flips": 0,
+        "total": 1678,
+        "min": 0.268003734880745,
+        "max": 1.7471037475248892,
+        "rigid": false,
+        "maximumTargetErrorPx": 3.657845589452867,
+        "rmsTargetErrorPx": 1.0803296414280341
+      }
+    ]
+  }
+]

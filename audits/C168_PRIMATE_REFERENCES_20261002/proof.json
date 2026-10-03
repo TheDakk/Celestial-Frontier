@@ -1,0 +1,146 @@
+{
+  "schema": "cf.c168-primate-reference-proof/v1",
+  "status": "CONSERVATION_CONTROLS_PASS_CANDIDATES_HELD",
+  "rows": [
+    {
+      "id": "gorilla",
+      "name": "Gorilla",
+      "masterSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230",
+      "sourceMasterUnchanged": true,
+      "authoringSha256": "a9178f8cc6be74b4df0752135292f494f43f6fb07b38fa67063c5be8798613a6",
+      "recordRecipeHash": "55c061b46557030d05facbf02321d1a70e58a0146c264922c1b40dac4cf9eeb5",
+      "bindingHash": "aec45609717a0fd509b3650876f77a40a23b5de76ded89411204c9eda0b99c2c",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "sourceRgbaChanges": 0,
+      "exactKeyedRgba": true,
+      "exactOwnershipReplay": true,
+      "deterministicRepeat": true,
+      "exactPartReconstruction": true,
+      "controls": [
+        "deleted paint refused",
+        "duplicate paint refused",
+        "recolored paint refused",
+        "changed master refused",
+        "corrupt declaration refused",
+        "invented joint refused"
+      ],
+      "unchangedIslandCap": 0.05,
+      "islands": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2094 px is 9.5% of the remainder (> 5%): structural, not a sliver",
+        "applied": false
+      },
+      "staticStatus": "RED",
+      "actionRows": 13,
+      "redRows": [
+        {
+          "id": "approach:walk",
+          "ms": 63,
+          "error": "Error: Contact: approach:walk@63 exceeds scale compression bound"
+        },
+        {
+          "id": "hit",
+          "ms": 221.25,
+          "error": "Error: Contact: joint limit legNearFoot hit@221.25: -50.23702514246587"
+        },
+        {
+          "id": "faint",
+          "ms": 195,
+          "error": "Error: Contact: joint limit legFarFoot faint@195: 50.721667783853285"
+        }
+      ],
+      "presentation": {
+        "status": "RED",
+        "action": "approach:walk",
+        "ms": 4933.333333333333,
+        "error": "Error: Contact: approach:walk@86.79497038324644 exceeds scale compression bound"
+      },
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "capuchin",
+      "name": "Capuchin",
+      "masterSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+      "sourceMasterUnchanged": true,
+      "authoringSha256": "48654c55f7d4698b10739aee1484092c0139619a3c3a54c290ef7ff438c38c6a",
+      "recordRecipeHash": "9bf2a6ff810346633cb6dbabb4fdb9443469c37e2b57be0dd2420547f285e1ee",
+      "bindingHash": "fa7709a7a17ca07519008a64027378375175adfda5b800bfbcc0cdad18ec4198",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "sourceRgbaChanges": 0,
+      "exactKeyedRgba": true,
+      "exactOwnershipReplay": true,
+      "deterministicRepeat": true,
+      "exactPartReconstruction": true,
+      "controls": [
+        "deleted paint refused",
+        "duplicate paint refused",
+        "recolored paint refused",
+        "changed master refused",
+        "corrupt declaration refused",
+        "invented joint refused"
+      ],
+      "unchangedIslandCap": 0.05,
+      "islands": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1006 px is 5.2% of the remainder (> 5%): structural, not a sliver",
+        "applied": false
+      },
+      "staticStatus": "RED",
+      "actionRows": 13,
+      "redRows": [
+        {
+          "id": "faint",
+          "ms": 339,
+          "error": "Error: Contact: faint@339 exceeds scale compression bound"
+        }
+      ],
+      "presentation": {
+        "status": "RED",
+        "action": "approach:walk",
+        "ms": 5766.666666666667,
+        "error": "Error: Contact: approach:walk@728.8516312191887 exceeds scale compression bound"
+      },
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    }
+  ],
+  "capControls": [
+    "2/62 pixels moves under unchanged 5%",
+    "4/64 pixels refuses under unchanged 5%"
+  ],
+  "helpers": [
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+      "sha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+      "sha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/static.ts",
+      "sha256": "9682c04d3e441f6c0fc5053bf8e34d80ff195bdb29be71a2fbe69883ea9f6cf3"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/part-masks.mjs",
+      "sha256": "52250c55eedb50ae0ad757c4d5764ed357d2799ba275f2ffe4db24a633cebc3e"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/authored-intake.mjs",
+      "sha256": "0ac7085e295bc7110496f44778113c3981f6d8805de8ab998e38650c11ece9a7"
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+      "sha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374"
+    }
+  ],
+  "nativeRuns": 0,
+  "globalPoolChanged": false
+}

@@ -1,0 +1,13 @@
+{
+  "id": "16-gerenuk",
+  "name": "Gerenuk",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-36d865e4-69fd-4341-8008-aafcb3c7954a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a04b3c1e37a0b5072e24da11e0a47a952a39422bf3e47b249ab5e5d50178270e",
+  "bytes": 1144531,
+  "promptSha256": "c3ce9bd9fd066cc59ec1c0b5e64da03b9c012da5c7cc500d249f1b6c44f24155",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

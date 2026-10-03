@@ -1,0 +1,9 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/creature-rig-contact.ts(85,9): error TS2538: Type '{ x: number; y: number; }' cannot be used as an index type.
+apps/game/src/creature-rig-contact.ts(88,32): error TS2538: Type '{ x: number; y: number; }' cannot be used as an index type.
+apps/game/src/creature-rig-contact.ts(88,45): error TS2538: Type '{ x: number; y: number; }' cannot be used as an index type.
+apps/game/src/creature-rig-contact.ts(94,57): error TS2538: Type '{ x: number; y: number; }' cannot be used as an index type.
+apps/game/src/creature-rig-contact.ts(94,90): error TS2538: Type '{ x: number; y: number; }' cannot be used as an index type.

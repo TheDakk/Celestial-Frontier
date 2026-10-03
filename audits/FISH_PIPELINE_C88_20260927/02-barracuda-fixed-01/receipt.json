@@ -1,0 +1,231 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_PIPELINE_C88_20260927/inputs/02-barracuda",
+  "sourceRecordSha256": "bc7a93aa67039489d03cbad530ec1dd3e09fa3d1812ea79ed3aa38fff5b589a8",
+  "sourceLabelsSha256": "7760fd01bb2c07afe71b7c2ce1ef2efa6fa79291c20247f7831c15e233d52af4",
+  "newLabelsSha256": "92a318c328791870c146d936b8b6f407b52c3ba35f772078de5f08221d9540f2",
+  "newDecodedLabelsSha256": "6cfc2ef5cfc992a4d839eb9310006cfb4a0195eb83a140ae1e6c1a5e3dbcc329",
+  "sourceMasterSha256": "03aaf1eaf0a89cd5ddc1eadcf125e17f15090b5a5cfc2b2fa3d4388e4abf3d3e",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "spine5",
+    "tailOwner": 6,
+    "stalkOwner": 7,
+    "sharedEdges": 103
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 4985,
+    "phases": [
+      {
+        "phase": "tail",
+        "schema": "cf.remainder-gap-labels/v1",
+        "tail": 6,
+        "stalk": 7,
+        "remainder": 13,
+        "maxDistance": 217,
+        "components": [
+          136,
+          112,
+          1
+        ],
+        "changedPixels": 2125,
+        "requestedRetained": 2125,
+        "otherOwnersChanged": 0,
+        "unowned": 0,
+        "sourceRgbaChanges": 0,
+        "contourProjection": false
+      },
+      {
+        "phase": "axial",
+        "moved": 2860,
+        "protectedOwners": 1564633,
+        "counts": {
+          "9": 1222,
+          "10": 90,
+          "11": 1239,
+          "12": 309
+        },
+        "anchor": [
+          916,
+          657
+        ],
+        "rootAnchorRadiusPx": 8,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.7096491228070175,
+            0.5085326953748007
+          ],
+          [
+            0.6710526315789473,
+            0.49896331738437005
+          ],
+          [
+            0.5782296650717703,
+            0.4885167464114833
+          ],
+          [
+            0.46044657097288677,
+            0.4751993620414673
+          ],
+          [
+            0.35103668261563,
+            0.4685805422647528
+          ],
+          [
+            0.28524720893141947,
+            0.4869218500797448
+          ],
+          [
+            0.19912280701754384,
+            0.5015151515151515
+          ]
+        ],
+        "scope": "Diagnostic placement, not anatomy or visual admission"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "65a69308c4e511ca0e52a41a5a01a9a343a8c9690b00bb5b8c3667ff02d3af3e",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "02-barracuda-fixed-01",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1110,
+      "height": 620
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "b834c276ea8a5403b5c32c905c2466e24580e94a2a873fb0498ddc36353c5b64",
+    "sourceVertices": 930,
+    "vertices": 1000,
+    "sharedSupports": 393,
+    "pins": 135,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 8,
+    "observedExcludedBoundaries": 8,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 3,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "dorsal",
+        "spine2"
+      ],
+      [
+        "dorsal",
+        "spine3"
+      ],
+      [
+        "far-pectoral",
+        "spine0"
+      ],
+      [
+        "near-pectoral",
+        "spine0"
+      ],
+      [
+        "near-pectoral",
+        "spine1"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "565282bd692f541478bbeefb0e6656eda820de54e90a4ff78fe0f4e2c3daabfe"
+  },
+  "joins": [
+    {
+      "name": "body--far-pectoral",
+      "sourceEdges": 93
+    },
+    {
+      "name": "body--head",
+      "sourceEdges": 413
+    },
+    {
+      "name": "body--spine0",
+      "sourceEdges": 106
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 71
+    },
+    {
+      "name": "spine0--spine1",
+      "sourceEdges": 194
+    },
+    {
+      "name": "spine1--dorsal",
+      "sourceEdges": 129
+    },
+    {
+      "name": "spine1--spine2",
+      "sourceEdges": 261
+    },
+    {
+      "name": "spine2--spine3",
+      "sourceEdges": 149
+    },
+    {
+      "name": "spine3--spine4",
+      "sourceEdges": 109
+    },
+    {
+      "name": "spine4--spine5",
+      "sourceEdges": 110
+    },
+    {
+      "name": "spine5--caudal",
+      "sourceEdges": 502
+    }
+  ],
+  "excluded": [
+    {
+      "name": "dorsal|spine2",
+      "sourceEdges": 80
+    },
+    {
+      "name": "dorsal|spine3",
+      "sourceEdges": 130
+    },
+    {
+      "name": "far-pectoral|head",
+      "sourceEdges": 6
+    },
+    {
+      "name": "far-pectoral|spine0",
+      "sourceEdges": 81
+    },
+    {
+      "name": "head|spine0",
+      "sourceEdges": 74
+    },
+    {
+      "name": "near-pectoral|spine0",
+      "sourceEdges": 204
+    },
+    {
+      "name": "near-pectoral|spine1",
+      "sourceEdges": 138
+    },
+    {
+      "name": "spine3|spine5",
+      "sourceEdges": 29
+    }
+  ]
+}

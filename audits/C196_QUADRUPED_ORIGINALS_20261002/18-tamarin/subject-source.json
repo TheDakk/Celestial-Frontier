@@ -1,0 +1,82 @@
+{
+  "name": "Tamarin",
+  "family": "primate",
+  "species": {
+    "name": "Tamarin",
+    "aspect": 1.2,
+    "headFrac": 0.28,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "squirrel-sized body with a long thin tail",
+      "facial mane, crest or drooping moustache",
+      "clawed fingers gripping a thin branch"
+    ],
+    "note": "generic representative: a cotton-top / emperor tamarin type. The tail is long but NOT prehensile"
+  },
+  "genome": {
+    "seed": 1098576234,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 14,
+    "body": 5,
+    "loco": 3,
+    "trait": 1,
+    "size": 2,
+    "diet": 1,
+    "head": 2,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 5,
+    "behavior": 0,
+    "habitat": 4,
+    "detail": 9,
+    "accent": 1,
+    "temper": 4,
+    "sense": 7,
+    "repro": 3,
+    "life": 5,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tamarin"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tamarin\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1098576234\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 18,
+  "profile": {
+    "id": "primate",
+    "names": [
+      "Gorilla",
+      "Chimpanzee",
+      "Orangutan",
+      "Capuchin",
+      "Howler Monkey",
+      "Spider Monkey",
+      "Tamarin",
+      "Macaque",
+      "Langur",
+      "Baboon",
+      "Monkey",
+      "Lemur",
+      "Gibbon",
+      "Mandrill",
+      "Marmoset",
+      "Aye-Aye",
+      "Proboscis Monkey"
+    ],
+    "candidateTemplates": [
+      "primate"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "punch",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

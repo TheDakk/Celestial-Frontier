@@ -1,0 +1,120 @@
+{
+  "schema": "cf.c163-arena-edit-provenance/v1",
+  "id": "dunesea-r2",
+  "qualityAccepted": false,
+  "originalsModified": false,
+  "edits": [
+    {
+      "role": "mid",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.png",
+        "sha256": "e5a5391e33f5535a5e500c033a604552d97f18b21239f9393bc30c0f88354e13",
+        "bytes": 1466641
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.generation.json",
+        "sha256": "8d2286403c337bd68fda49a03fdc6722573511820631c804ecc93514503b1efa",
+        "bytes": 848
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-mid.png",
+        "sha256": "97c84060c150881327008a751881733fd4a33a6111032ff057cd5f9e993b9355",
+        "bytes": 1652785
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": true,
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid-c163.prompt.txt",
+        "sha256": "1f076f48b68e6ebcc81679bbcbcf95737066600f8b6dbeffcad984339ec2c8e0"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    },
+    {
+      "role": "near",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-attempt-1.png",
+        "sha256": "a367f2093d6d119166be7d39f932ac8318faea1b0805b9b795aaba55e59b39bd",
+        "bytes": 1150468
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-attempt-1.generation.json",
+        "sha256": "b7e02811f82439784e8100f27c9ad97dde16d6b2b8e13f80c02a5ea7a8b12c35",
+        "bytes": 874
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-near.png",
+        "sha256": "bc1b1b7fd0ef21d4c04a1e8cd379c026806f13cc966d5789b08a323b19418422",
+        "bytes": 1221503
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": false,
+      "hold": "Preserved too much predecessor shelf/plant/color texture; immutable predecessor retained.",
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-c163.prompt.txt",
+        "sha256": "0640ef03b48aac8779f70f5c7848f273586998c429943dd2eba12f453ce2d643"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    },
+    {
+      "role": "near",
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.png",
+        "sha256": "eb3a66bd6460b690a4caa845bd53e3aa81b53fdb0e051688a646259ec0f97545",
+        "bytes": 1173618
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.generation.json",
+        "sha256": "9cea726efd90410f8d9fa61bac6509c4fcbf063d2369cbb7332dad9ca64d4bcf",
+        "bytes": 857
+      },
+      "editTarget": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.png",
+        "sha256": "e5a5391e33f5535a5e500c033a604552d97f18b21239f9393bc30c0f88354e13",
+        "bytes": 1466641
+      },
+      "reference": {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+        "bytes": 3014976
+      },
+      "selected": true,
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-c163-second.prompt.txt",
+        "sha256": "be1a95472ec617ea718390b929f34e6db7ffbcca4dd8a59eaeadb5081365bd9d"
+      },
+      "inputOrder": [
+        "editTarget",
+        "reference"
+      ]
+    }
+  ],
+  "reused": [
+    {
+      "role": "far",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+        "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418",
+        "bytes": 2485454
+      },
+      "copy": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.png",
+        "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418",
+        "bytes": 2485454
+      }
+    }
+  ]
+}

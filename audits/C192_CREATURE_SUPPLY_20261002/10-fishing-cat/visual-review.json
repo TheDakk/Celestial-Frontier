@@ -1,0 +1,28 @@
+{
+  "name": "Fishing Cat",
+  "masterSha256": "5292968cfe7a53d7d2daf4e0db70ab9e347a82caba8b7688449f8b1e1479b9c9",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: stocky short-legged spotted cat, four separate paw endpoints/lower legs, neck stripes and short banded tail. Near ear is clear but far ear is a partial tip. Tail reads very short and merits species-proportion review. Far proximal roots remain hidden beneath body fur; no fifth limb apparent, and no fit or motion claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 188,
+      "y0": 366,
+      "x1": 1060,
+      "y1": 875
+    },
+    "margins": {
+      "left": 188,
+      "right": 193,
+      "top": 366,
+      "bottom": 378
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

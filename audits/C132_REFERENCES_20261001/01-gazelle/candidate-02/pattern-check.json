@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gazelle",
+  "masterSha256": "a9843c0dfff014482e6aa6ef1939ad8cf7e05ddb93ed8c87c7e9c34ba1719032",
+  "required": [
+    "slender ringed lyre-curved horns",
+    "dark band along the flank between tan and white"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "slender ringed lyre-curved horns",
+      "status": "PRESENT",
+      "observed": "Tan and white coat with dark continuous flank band; two complete ringed horns and two separate ears; natural short tail; four complete slender lower legs and cloven hooves. The two far upper attachments remain partly occluded. No gore effector has been authored. Four thin hoofed lower limbs and both ear tips are separately visible. Far upper attachments are partly torso-occluded; their centres are manual authoring interpretations, not visible internal joints. Horns remain head-owned, with no independent gore effector. The short continuous tail is not stretched to imitate long-tail references. Post-edit ear visibility and framing improved; head/horn profile and native motion still need review."
+    },
+    {
+      "requirement": "dark band along the flank between tan and white",
+      "status": "PRESENT",
+      "observed": "Tan and white coat with dark continuous flank band; two complete ringed horns and two separate ears; natural short tail; four complete slender lower legs and cloven hooves. The two far upper attachments remain partly occluded. No gore effector has been authored. Four thin hoofed lower limbs and both ear tips are separately visible. Far upper attachments are partly torso-occluded; their centres are manual authoring interpretations, not visible internal joints. Horns remain head-owned, with no independent gore effector. The short continuous tail is not stretched to imitate long-tail references. Post-edit ear visibility and framing improved; head/horn profile and native motion still need review."
+    }
+  ]
+}

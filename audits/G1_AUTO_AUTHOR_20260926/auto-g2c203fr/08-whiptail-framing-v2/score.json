@@ -1,0 +1,11 @@
+{
+ "id": "08-whiptail-framing-v2",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+  "missing-anatomy: part hind-far-knee (hindFarKnee) covers 27% paint (reference 83%)",
+  "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 20%)"
+ ],
+ "semanticPresence": null
+}

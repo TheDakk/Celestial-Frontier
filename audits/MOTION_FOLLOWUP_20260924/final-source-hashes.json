@@ -1,0 +1,26 @@
+{
+  "head": "1e9f5920fc6a6899b558fea3eb9d40dbc5c4e033",
+  "scope": "Working source identities, not a build producer or certificate",
+  "files": [
+    {
+      "path": "port/v2/apps/game/pwa-build.ts",
+      "sha256": "c3ae6649e905c33c8ba10ee1f8d743b373855883ad94534f3f964d7e8f5cbe62"
+    },
+    {
+      "path": "port/v2/apps/game/pwa-battle2-assets.ts",
+      "sha256": "c04970a9073e245c91e76a27b7e8bbc4dd38c624277bd7bc72325e58db4ac18d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "3c8e8c7c5ab5f86a870175f13f5a0ec16bf24be5f396872b5c264a1e15842054"
+    },
+    {
+      "path": "port/v2/apps/game/src/missing-body-structures.ts",
+      "sha256": "bf0990c4587aacbc561e29e137b27ff641685ef0188b299494541272251c6c7a"
+    }
+  ]
+}

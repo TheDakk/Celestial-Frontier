@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "19e2808af0348a3cd53783b4c56a1e342cbcf4f4",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/master.png",
+      "sha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/authoring.json",
+      "sha256": "f575f17d63146cfd5fb669c54c5bfce1d2db8d87abb9c2b030d77388d971407b"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/subject-source.json",
+      "sha256": "ce8242ba0f1b36a708d68c74085852a06482faa4f790dacc79bc65116fd20431"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "bd7c2323a8f57b7a4aaa76fd7cc63b3b4f87e938322e68c4b74fb3b9f21285cc",
+  "bindingHash": "185d9cea8886f8df6b6cd117feb5995e09e38be82340c11a35296c44e8ed2493",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/master.png",
+      "sha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/authoring.json",
+      "sha256": "f575f17d63146cfd5fb669c54c5bfce1d2db8d87abb9c2b030d77388d971407b",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/subject-source.json",
+      "sha256": "ce8242ba0f1b36a708d68c74085852a06482faa4f790dacc79bc65116fd20431",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+ "id": "15-dove",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-shin (legNearAnkle) covers 24% paint (reference 78%)",
+  "missing-anatomy: part far-shin (legFarAnkle) covers 14% paint (reference 85%)"
+ ],
+ "semanticPresence": null
+}

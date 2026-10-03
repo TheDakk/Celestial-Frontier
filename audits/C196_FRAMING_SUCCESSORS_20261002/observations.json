@@ -1,0 +1,218 @@
+[
+  {
+    "id": "01-caiman-framing-v2",
+    "name": "Caiman",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "f608f2a1c58310cc8c35038ccdd5c4430694c805ecc084298d02a8c25191c461",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 292,
+        "y0": 553,
+        "x1": 960,
+        "y1": 708
+      },
+      "margins": {
+        "left": 292,
+        "right": 293,
+        "top": 553,
+        "bottom": 545
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "02-crocodile-framing-v2",
+    "name": "Crocodile",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "0dae1e031d97a14fdc912797eb19846994cfa8edf4bd13208b001c9cfaef5131",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 231,
+        "y0": 558,
+        "x1": 1009,
+        "y1": 725
+      },
+      "margins": {
+        "left": 231,
+        "right": 244,
+        "top": 558,
+        "bottom": 528
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "03-monitor-lizard-framing-v2",
+    "name": "Monitor Lizard",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "960470726168b75e3ea0041ffa98eb43b3117adb56585a852b7b669488022963",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 250,
+        "y0": 536,
+        "x1": 993,
+        "y1": 722
+      },
+      "margins": {
+        "left": 250,
+        "right": 260,
+        "top": 536,
+        "bottom": 531
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "04-anole-framing-v2",
+    "name": "Anole",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9824c6e1b1da6dc6253d6d6c4419c247ef09137834ff9a0c2379a1bca72d41e9",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 271,
+        "y0": 528,
+        "x1": 954,
+        "y1": 727
+      },
+      "margins": {
+        "left": 271,
+        "right": 299,
+        "top": 528,
+        "bottom": 526
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "front": 2,
+      "limb-down": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "05-skink-framing-v2",
+    "name": "Skink",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "fca7b544d2ac1edd855d7766a9269a5cf13aebc775d19a177485e4afd770b339",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 296,
+        "y0": 559,
+        "x1": 951,
+        "y1": 687
+      },
+      "margins": {
+        "left": 296,
+        "right": 302,
+        "top": 559,
+        "bottom": 566
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "08-whiptail-framing-v2",
+    "name": "Whiptail",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8bcbedfd2b38bb3e8654a71eb19065a710f8540fd154eaad0a164ad71314c089",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 365,
+        "y0": 566,
+        "x1": 925,
+        "y1": 673
+      },
+      "margins": {
+        "left": 365,
+        "right": 328,
+        "top": 566,
+        "bottom": 580
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C196_SIMPLE_ORIGINALS_20261002/02-sponge",
+  "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "fullSizeInspected": true,
+  "visibleAnatomy": [
+    "irregular basal tissue",
+    "continuous porous vase body",
+    "rim",
+    "visible osculum"
+  ],
+  "inventedFeet": false,
+  "hiddenInteriorReconstructed": false,
+  "limitations": [
+    "Single observed porous vase has a visible osculum and irregular basal tissue; basal projections are not feet or independent limbs.",
+    "Only the outer surface and visible opening are authored. The full hidden interior cavity and internal filtering channels are not reconstructed.",
+    "Root and base remain anchored by the specialized sessile template. This source does not authorize locomotor legs or translating attacks.",
+    "The surface reads photographic with dense pores rather than the preferred painted finish; art scoring and native movement remain held."
+  ],
+  "qualityAccepted": false
+}

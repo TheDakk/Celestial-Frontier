@@ -1,0 +1,136 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/05-chough/fit",
+  "sourceMasterSha256": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+  "keyedRgbaSha256": "1e9db6c94ddef68ae37f102fd0aaf31aa9093e60d1113638257136bbb979f775",
+  "remainder": "body",
+  "remainderPixels": 22978,
+  "movedPixels": 2369,
+  "islands": [
+    {
+      "pixels": 828,
+      "to": "beak",
+      "border": {
+        "beak": 122,
+        "head": 11
+      }
+    },
+    {
+      "pixels": 1355,
+      "to": "far-wing-root",
+      "border": {
+        "head": 52,
+        "neck-upper": 26,
+        "far-wing-root": 107
+      }
+    },
+    {
+      "pixels": 67,
+      "to": "far-thigh",
+      "border": {
+        "far-thigh": 27
+      }
+    },
+    {
+      "pixels": 12,
+      "to": "tail",
+      "border": {
+        "tail": 7
+      }
+    },
+    {
+      "pixels": 50,
+      "to": "tail",
+      "border": {
+        "tail": 15
+      }
+    },
+    {
+      "pixels": 29,
+      "to": "tail",
+      "border": {
+        "tail": 12
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 1
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 8
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "05-chough",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1402,
+      "height": 348
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 40,
+        "distancePx": 5.720139858430027,
+        "supports": [
+          56,
+          58
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 47,
+        "distancePx": 5.707889277132167,
+        "supports": [
+          17,
+          19
+        ]
+      }
+    ],
+    "sourceBindingHash": "d427d94dc62c77c854be95bb4d169a5f638b86c4abfedb96aa385d68e8ab3121",
+    "sourceVertices": 878,
+    "vertices": 1051,
+    "sharedSupports": 234,
+    "pins": 484,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

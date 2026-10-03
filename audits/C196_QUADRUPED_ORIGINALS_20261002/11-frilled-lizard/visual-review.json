@@ -1,0 +1,28 @@
+{
+  "name": "Frilled Lizard",
+  "masterSha256": "60e76002fdb29fe53a40f293d5b05906ff4ceb4b120b839c6e20ba778e5090d1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Large orange/brown spread neck frill, open mouth, long complete curved tail and four visible feet. Frill is displayed rather than relaxed and hides shoulder roots; far hind root also obscured. Unequal foot heights persist. This is a display-pose source hold, not the requested quiet planted stance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 125,
+      "y0": 362,
+      "x1": 1084,
+      "y1": 888
+    },
+    "margins": {
+      "left": 125,
+      "right": 169,
+      "top": 362,
+      "bottom": 365
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

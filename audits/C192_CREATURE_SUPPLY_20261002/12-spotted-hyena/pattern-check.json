@@ -1,0 +1,11 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Spotted Hyena",
+  "masterSha256": "310ae3f17fe9f77c30ddf830953303df75b882688bc851c86d65b34662ff36fc",
+  "required": [
+    "rounded ears and blotchy spots"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "REFUSE",
+  "reason": "Pattern unresolved"
+}

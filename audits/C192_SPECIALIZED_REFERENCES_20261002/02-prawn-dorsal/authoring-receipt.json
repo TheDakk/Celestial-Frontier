@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c192-manual-reference/v1",
+  "writer": "audits/C192_SPECIALIZED_REFERENCES_20261002/author-crustaceans.mjs",
+  "writerSha256": "26f6258c187842f438ed9d39e7a582c1cd021cea52dacd8584bddff1a241eaf3",
+  "masterSha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+  "authoringSha256": "8b83997309e80c0ab6a0d6b98023c14305e8e88b922eddf40759fb9991442afa",
+  "fullSizeInspected": true,
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "observedWalkingChains": 10,
+  "parts": 32,
+  "landmarks": 44,
+  "limitations": [
+    "Independent manual Prawn landmarks and priority ownership on the retained dorsal master. Five real walking chains are observed separately on each side; no hidden legs are inferred.",
+    "Far/Near are stable upper/lower image-side identifiers in this dorsal projection, not a claim that the camera sees lateral depth. Leg root/knee/foot are coarse controls at observed attachment, bend and terminal paint.",
+    "The full leg painting is retained. The three-joint template does not represent every biological segment; painted additional bends remain on their source chain.",
+    "The actual two eyes, short antennules, swimmerets and small rostral structures remain painted under the continuous head/abdominal owners. No extra template joint, appendage deletion or absent declaration is invented.",
+    "The dorsal view exposes the anatomical chains but does not provide a common ground-contact line. groundLineY records the painted lower walking-tip envelope only; swimming and crawling motion require full-size review.",
+    "Long antennae cross anterior structures in the source; visibility at crossings is limited to the painted topmost contour. The declared owners and software motion review must retain any cut-gap hold.",
+    "All originals and painting-side framing successors remain separate; source preservation is exact to this selected successor, not an assertion that the generator preserved predecessor pixels.",
+    "No reference-pool, native or family-wide admission."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

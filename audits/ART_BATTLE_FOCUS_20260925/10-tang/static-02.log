@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0,"gap":0.00007046953095138103,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0,"gap":0.00007046953103176976,"exactRest":true,"firstRefusal":null}
+{"id":"approach:swim","status":"PASS","samples":121,"drift":0,"gap":0.00007161567111932351,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0,"gap":0.00007150858236936034,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"RED","samples":18,"drift":0,"gap":0.00007046953071021482,"exactRest":true,"firstRefusal":{"ms":103.5,"sampleNumber":19,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 10"}}
+{"id":"hit","status":"PASS","samples":121,"drift":0,"gap":0.00007297138167357706,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00007090859747272268,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0,"gap":0.00007441025660852271,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0,"gap":0.00007529241481052994,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0,"gap":0.00007916834232138796,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0,"gap":0.00007046953095138103,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"RED","samples":74,"drift":0,"gap":0.0000704695308709923,"exactRest":true,"firstRefusal":{"ms":361.7777777777777,"sampleNumber":75,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"}}
+{"id":"melee:tail","status":"PASS","samples":121,"drift":0,"gap":0.00007071379331649785,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

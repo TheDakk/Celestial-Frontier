@@ -1,0 +1,55 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Jaguar",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "d0e8afa1c49ad5540f7a7fc116aa375801240b5decbb37432f17124d93155ed0",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "felid",
+  "authoringCreated": false,
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "basePromptSha256": "f8e4a162b38441dbcac20cbae253da22ee17b771d2748ffba73ff96225af977d",
+  "batchCompilerSha256": "217d164bd9b882cfb517865862c3d29cd67457de72b6db41000d5890d140b586",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Preserve the stocky powerful real Jaguar and mandatory rosettes with dark central spots. Four short real legs must be independently traceable from visible torso emergence to full paws, with a quiet natural level stance; no long-legged leopard substitute and no extra fringe-shaped leg. Prior source authoring reported unassigned limb-down paint.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+        "id": "07-jaguar",
+        "master": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar/master.png",
+        "packet": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar"
+      },
+      {
+        "pilot": "audits/G2_PATTERN_C57_20260926/pilot.json",
+        "id": "03-jaguar",
+        "master": "audits/G2_PATTERN_C57_20260926/03-jaguar/master.png",
+        "packet": "audits/G2_PATTERN_C57_20260926/03-jaguar"
+      },
+      {
+        "pilot": "audits/G2_PATTERN_C57_20260926/pilot.json",
+        "id": "07-jaguar-pattern-first",
+        "master": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first/master.png",
+        "packet": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+    "audits/G2_PATTERN_C57_20260926/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Preserve the stocky powerful real Jaguar and mandatory rosettes with dark central spots. Four short real legs must be independently traceable from visible torso emergence to full paws, with a quiet natural level stance; no long-legged leopard substitute and no extra fringe-shaped leg. Prior source authoring reported unassigned limb-down paint.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

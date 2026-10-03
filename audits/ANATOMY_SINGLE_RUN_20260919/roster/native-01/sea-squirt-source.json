@@ -1,0 +1,238 @@
+{
+  "genome": {
+    "seed": 3057975812,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 11,
+    "body": 13,
+    "loco": 8,
+    "trait": 4,
+    "size": 0,
+    "diet": 5,
+    "head": 1,
+    "limbs": 1,
+    "skin": 5,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 5,
+    "habitat": 5,
+    "detail": 8,
+    "accent": 6,
+    "temper": 0,
+    "sense": 2,
+    "repro": 3,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Squirt"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaSeaSquirt",
+    "family": "sessile-filter",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "translucent",
+      "paletteSource": "genome"
+    },
+    "features": [
+      {
+        "id": "tunic0Left",
+        "kind": "body",
+        "structureId": "tunic0",
+        "points": [
+          [
+            251.13000000000002,
+            349.80000000000007
+          ],
+          [
+            255.99200000000002,
+            257.73
+          ],
+          [
+            267.21200000000005,
+            229.812
+          ],
+          [
+            279.18,
+            231.00000000000003
+          ]
+        ],
+        "curve": "cubic",
+        "layer": "far"
+      },
+      {
+        "id": "tunic0Right",
+        "kind": "body",
+        "structureId": "tunic0",
+        "points": [
+          [
+            306.10800000000006,
+            235.752
+          ],
+          [
+            322.564,
+            260.70000000000005
+          ],
+          [
+            327.052,
+            284.46000000000004
+          ],
+          [
+            329.6700000000001,
+            349.80000000000007
+          ]
+        ],
+        "curve": "cubic",
+        "layer": "far"
+      },
+      {
+        "id": "tunic0Siphon0",
+        "kind": "opening",
+        "points": [
+          [
+            281.0842225891216,
+            248.79070944851307
+          ],
+          [
+            278.5452591369595,
+            223.48576351716233
+          ]
+        ],
+        "widths": [
+          25.432000000000006,
+          10.681440000000002
+        ],
+        "curve": "ellipse",
+        "layer": "far"
+      },
+      {
+        "id": "tunic0Siphon1",
+        "kind": "opening",
+        "points": [
+          [
+            299.7990067947506,
+            256.5117036743766
+          ],
+          [
+            310.20566440174986,
+            238.33609877520786
+          ]
+        ],
+        "widths": [
+          20.944000000000006,
+          8.796480000000003
+        ],
+        "curve": "ellipse",
+        "layer": "far"
+      },
+      {
+        "id": "tunic1Left",
+        "kind": "body",
+        "structureId": "tunic1",
+        "points": [
+          [
+            135.85,
+            349.8
+          ],
+          [
+            143,
+            216.81
+          ],
+          [
+            159.5,
+            176.48399999999998
+          ],
+          [
+            177.1,
+            178.2
+          ]
+        ],
+        "curve": "cubic",
+        "layer": "near"
+      },
+      {
+        "id": "tunic1Right",
+        "kind": "body",
+        "structureId": "tunic1",
+        "points": [
+          [
+            216.7,
+            185.064
+          ],
+          [
+            240.89999999999998,
+            221.1
+          ],
+          [
+            247.5,
+            255.42
+          ],
+          [
+            251.35,
+            349.8
+          ]
+        ],
+        "curve": "cubic",
+        "layer": "near"
+      },
+      {
+        "id": "tunic1Siphon0",
+        "kind": "opening",
+        "points": [
+          [
+            179.90032733694352,
+            204.3938668360486
+          ],
+          [
+            176.16655755435215,
+            167.18071105465043
+          ]
+        ],
+        "widths": [
+          37.400000000000006,
+          15.708000000000002
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "tunic1Siphon1",
+        "kind": "opening",
+        "points": [
+          [
+            207.4220688158097,
+            215.40662305055372
+          ],
+          [
+            222.72597706139678,
+            188.6777923164821
+          ]
+        ],
+        "widths": [
+          30.800000000000004,
+          12.936000000000002
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "Two actual attached bodies, each with inhalant and exhalant siphons",
+      "The painted rock is scenery, not an organism joint",
+      "Separate tunic and rim masks, rooted motion and aperture closure unqualified"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{"id":"hawk","moved":{"neck1->chest":1595},"cap":"PASS"}
+{"id":"crow","moved":{"neck1->chest":1423},"cap":"PASS"}
+{"id":"snowy-owl","moved":{"neck1->chest":3389},"cap":"PASS"}
+{"id":"wild-pony","moved":{"spine->earNearTip":251,"spine->earFarTip":45,"earNearTip->earFarTip":430,"neck->earNearTip":698,"neck->earNearRoot":1499,"earFarRoot->earFarTip":1},"cap":"PASS"}

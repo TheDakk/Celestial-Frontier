@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "African Elephant",
+  "masterSha256": "608f005600fb90d1fee484ee03ec83c74a980c59fa953baa98c546abe1438a5b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1360550678,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 0,
+    "body": 0,
+    "loco": 4,
+    "trait": 5,
+    "size": 5,
+    "diet": 4,
+    "head": 4,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 1,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 17,
+    "detail": 1,
+    "accent": 6,
+    "temper": 5,
+    "sense": 1,
+    "repro": 3,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fly Larvae"
+  },
+  "observation": null
+}

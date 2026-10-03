@@ -1,0 +1,75 @@
+{
+  "scope": "Decoded-frame visual inspection only; no painting, inference, runtime changes or acceptance",
+  "films": [
+    {
+      "file": "../civet-10s.webm",
+      "sha256": "1f2568c0e9d855fae6a58a22ec3cde20098d5d921e89de70b3935d42449bd2f7"
+    },
+    {
+      "file": "../fox-10s.webm",
+      "sha256": "5fbed49f570f9823561614583ab2cfdd4bfcdd381e617e87d0cd781af8ff32dc"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "civet-detail-sheet.png",
+      "sha256": "f536c88f613dd4e830d12f1886d5965af2d27819de033e7f7ee6dbdb40f529a7"
+    },
+    {
+      "file": "fox-detail-sheet.png",
+      "sha256": "13122e91435fe27dc2bd8c9d776b4fbeb6f0cc732f58293f03b7d13aba071025"
+    },
+    {
+      "file": "civet-07-2.25.png",
+      "sha256": "16dfc1ffedeb0e8ba14ba8e503d37132a6d171bf7b21c5efa20919b7cb7745c1"
+    },
+    {
+      "file": "civet-13-7.35.png",
+      "sha256": "6b257c1bab17b1b9a652bf3e1589770b7cf7a1b8b928ad99ac19e1caadb8fbe7"
+    },
+    {
+      "file": "fox-06-2.16.png",
+      "sha256": "c22eccbb6fdd383d16199562bb9070839465e1c133aa2af27e1e8f447e70c2fc"
+    },
+    {
+      "file": "fox-13-7.35.png",
+      "sha256": "1acb697f26486d6de268dd16fe9d5171f781a83bd0345ad97b00c0cb20066606"
+    },
+    {
+      "file": "civet-frames.json",
+      "sha256": "a97cd814cba41c35636e3644d14f252fff4de508df2dc441593bedcfb76b4b22"
+    },
+    {
+      "file": "fox-frames.json",
+      "sha256": "12d29e7156b9bc0a3036f65b66ba0685bd281efffed8666cd55377533eccdfe7"
+    }
+  ],
+  "extraction": {
+    "tool": "ffmpeg",
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    },
+    "mediaSeconds": [
+      0.5,
+      1.43,
+      1.53,
+      1.8,
+      1.95,
+      2.08,
+      2.16,
+      2.25,
+      2.84,
+      3.18,
+      4.97,
+      5.07,
+      7.18,
+      7.35,
+      7.48,
+      7.72
+    ],
+    "sheet": "4 columns \u00d7 4 rows, chronological row-major order; 4 px margin/padding, no rescaling"
+  }
+}

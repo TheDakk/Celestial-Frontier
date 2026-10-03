@@ -1,0 +1,34 @@
+[
+  {
+    "path": "tools/local-image-generation/stage-worker.mjs",
+    "sha256": "21901fad78ef6ed2473a85f0538426f946e625859fe1d7976dec838122cf02b5"
+  },
+  {
+    "path": "tools/local-image-generation/stage-worker-first-step.test.mjs",
+    "sha256": "db41e97038b17e160b0c15bb91006ee190a19f4416c59662d150f2b841417d0c"
+  },
+  {
+    "path": "tools/local-image-generation/first-step-harness.mjs",
+    "sha256": "4bcc09881a5d9816140d4fbf5e97431a7972c63f8f29cc6a97e625918b6c4e52"
+  },
+  {
+    "path": "tools/local-image-generation/first-step-harness.test.mjs",
+    "sha256": "42a51e7cd35e6aeb100f969fa03ab1e3759620a3d9da28978405b539786082d0"
+  },
+  {
+    "path": "tools/local-image-generation/run-first-step-diagnostic.mjs",
+    "sha256": "e02b172c451327ec405469b27de19d157807a7918c13835cc214d4c37e6f40b6"
+  },
+  {
+    "path": "tools/local-image-generation/pipeline-math.mjs",
+    "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+  },
+  {
+    "path": "tools/local-image-generation/denoiser-shapes.mjs",
+    "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+  },
+  {
+    "path": "tools/local-image-generation/gpu-profile.mjs",
+    "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+  }
+]

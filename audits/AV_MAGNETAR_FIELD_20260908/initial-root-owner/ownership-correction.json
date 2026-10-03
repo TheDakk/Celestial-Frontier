@@ -1,0 +1,36 @@
+{
+  "scope": "Move actual-Pixi tests to their existing app TypeScript owner; preserve failing root-owned bytes.",
+  "failure": "Root TypeScript traversal of new static Pixi test import exposed upstream @webgpu/types/lib.dom and Pixi declaration collisions.",
+  "from": "port/v2/tests/system-star-field.test.ts",
+  "to": "port/v2/apps/game/src/system-star-field.test.ts",
+  "archivedFile": "system-star-field.test.ts.txt",
+  "archivedSha256": "9771bf04c8b6c90519d26f8148c8fa9bdea4d7f98eb2a0c3c9a792ceebdbd6cd",
+  "correctedSha256": "c4d0a5ef480e1e8992242e6e98a99921c5a0990ab11e0b2e7d72c9cfe5da5bdc",
+  "onlyTestChange": "Relative helper import becomes ./system-star-field.js; all test bodies and actual Pixi imports remain unchanged.",
+  "discovery": "Workspace vitest run uses default **/*.{test,spec}.?(c|m)[jt]s?(x); no include configuration change required.",
+  "existingConventions": [
+    "port/v2/apps/game/src/scene-text.test.ts",
+    "port/v2/apps/game/src/pixi-batch-texture-array.test.ts"
+  ],
+  "typeCoverage": "App src/**/*.ts includes the relocated test. Root stays fully strict. Existing app-only dependency declaration skipLibCheck remains unchanged; authored test/helper calls remain typechecked.",
+  "bundle": "Test is not a Vite entry or imported by product modules.",
+  "unchangedConfigHashes": [
+    {
+      "path": "port/v2/tsconfig.json",
+      "sha256": "d345415ed7ce8ee346b346161c75a2f34db48ccd604ddb77b9cc949f1e56d291"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.json",
+      "sha256": "f67ed5604d17ef604f4460c2195a88da847a50bc6020d53f5c70de4da0e6fc65"
+    },
+    {
+      "path": "port/v2/package.json",
+      "sha256": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7"
+    },
+    {
+      "path": "port/v2/apps/game/vite.config.ts",
+      "sha256": "417c3878a7256ffea85d4321e459f944fcdfdc979f724f063df6b0e52d0efda0"
+    }
+  ],
+  "jobsRun": []
+}

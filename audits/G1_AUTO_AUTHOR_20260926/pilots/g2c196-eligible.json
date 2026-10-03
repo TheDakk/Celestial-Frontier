@@ -1,0 +1,218 @@
+[
+ {
+  "id": "01-caiman",
+  "name": "Caiman",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 unexplained-paint refusal; expose connected four-limb contours and tail root."
+ },
+ {
+  "id": "02-crocodile",
+  "name": "Crocodile",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/02-crocodile",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/02-crocodile/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 unexplained-paint refusal; expose connected four-limb contours and tail root."
+ },
+ {
+  "id": "03-monitor-lizard",
+  "name": "Monitor Lizard",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/03-monitor-lizard",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/03-monitor-lizard/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 jaw refusal; separate true jaw contour, naturally level head and all four limbs."
+ },
+ {
+  "id": "04-anole",
+  "name": "Anole",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/04-anole",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/04-anole/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 far-limb refusal; expose both real far limb chains."
+ },
+ {
+  "id": "05-skink",
+  "name": "Skink",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 hind-paw refusal; expose full hind ankle and foot without changing its short natural limbs."
+ },
+ {
+  "id": "06-mountain-lizard",
+  "name": "Mountain Lizard",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/06-mountain-lizard",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/06-mountain-lizard/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 hind-paw refusal; expose hind ankle and complete foot."
+ },
+ {
+  "id": "07-lizard",
+  "name": "Lizard",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/07-lizard",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/07-lizard/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 hind-ankle refusal; preserve readable natural joint bends."
+ },
+ {
+  "id": "08-whiptail",
+  "name": "Whiptail",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 far-limb refusal; expose both real far limb chains."
+ },
+ {
+  "id": "09-agama",
+  "name": "Agama",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/09-agama",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/09-agama/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 single-contact refusal; four grounded, separately readable feet."
+ },
+ {
+  "id": "10-gila-monster",
+  "name": "Gila Monster",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/10-gila-monster",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/10-gila-monster/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 unexplained-paint refusal; keep scales inside continuous anatomical contours."
+ },
+ {
+  "id": "11-frilled-lizard",
+  "name": "Frilled Lizard",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/11-frilled-lizard",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/11-frilled-lizard/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 unexplained-paint refusal; natural relaxed folded frill and leg roots."
+ },
+ {
+  "id": "12-chameleon",
+  "name": "Chameleon",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/12-chameleon",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/12-chameleon/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 unexplained-paint refusal; preserve actual grasping feet and tail contours."
+ },
+ {
+  "id": "13-marine-iguana",
+  "name": "Marine Iguana",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/13-marine-iguana",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/13-marine-iguana/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "C167 far-limb refusal; expose both real far limb chains."
+ },
+ {
+  "id": "14-giraffe",
+  "name": "Giraffe",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/14-giraffe",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/14-giraffe/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "Prior C110/C136 far-ear/crown source limitation; show both actual ears and all four hoof chains."
+ },
+ {
+  "id": "15-buffalo",
+  "name": "Buffalo",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "Prior C110/C136 far-ear and proximal foreleg overlap; show natural ear/horn boundaries and separate upper limb contours."
+ },
+ {
+  "id": "16-banteng",
+  "name": "Banteng",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/16-banteng",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/16-banteng/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "Prior C110/C136 far-ear and upper foreleg overlap; show natural ear/horn boundaries and separate upper limb contours."
+ },
+ {
+  "id": "17-water-buffalo",
+  "name": "Water Buffalo",
+  "family": "quadruped",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/17-water-buffalo",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/17-water-buffalo/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": "Prior C110/C136 far-ear and upper foreleg overlap; show natural ear/horn boundaries and separate upper limb contours."
+ },
+ {
+  "id": "18-tamarin",
+  "name": "Tamarin",
+  "family": "primate",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/18-tamarin",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/18-tamarin/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": null
+ },
+ {
+  "id": "19-langur",
+  "name": "Langur",
+  "family": "primate",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/19-langur",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/19-langur/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": null
+ },
+ {
+  "id": "20-monkey",
+  "name": "Monkey",
+  "family": "primate",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/20-monkey",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/20-monkey/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": null
+ },
+ {
+  "id": "21-mandrill",
+  "name": "Mandrill",
+  "family": "primate",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/21-mandrill",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/21-mandrill/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": null
+ },
+ {
+  "id": "22-marmoset",
+  "name": "Marmoset",
+  "family": "primate",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": null
+ },
+ {
+  "id": "23-aye-aye",
+  "name": "Aye-Aye",
+  "family": "primate",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/23-aye-aye",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/23-aye-aye/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": null
+ },
+ {
+  "id": "24-proboscis-monkey",
+  "name": "Proboscis Monkey",
+  "family": "primate",
+  "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/24-proboscis-monkey",
+  "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/24-proboscis-monkey/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": null
+ }
+]

@@ -1,0 +1,113 @@
+{
+  "schema": "cf.c183-contour-conservation/v1",
+  "id": "10-grouse",
+  "masterSha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec",
+  "originalAuthoringSha256": "7725cdaea0b76b3938dd57bf042d3e32cfea64f5dd34ca5dc22d532fea0ce176",
+  "candidateAuthoringSha256": "a4b814ffc412fd7d8cfc2760fec3ed0d84746bc68b26db15d25cf5df19e80790",
+  "sourceRgbaChangedChannels": 0,
+  "sourcePaintAdded": 0,
+  "sourcePaintDeleted": 0,
+  "priorAnatomicalOwnersChanged": 0,
+  "landmarksChanged": false,
+  "presenceChanged": false,
+  "groundChanged": false,
+  "movedFromRemainderByJoint": {
+    "head": 998,
+    "neck1": 1205
+  },
+  "originalCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 2111 px is 11.7% of the remainder (> 5%): structural, not a sliver"
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "remainderPixels": 15876,
+    "moved": 267,
+    "islands": [
+      {
+        "pixels": 136,
+        "to": 6,
+        "border": {
+          "2": 10,
+          "4": 15,
+          "6": 27
+        }
+      },
+      {
+        "pixels": 3,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 10,
+        "to": 2,
+        "border": {
+          "2": 7
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 2,
+        "border": {
+          "2": 3
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 2,
+        "border": {
+          "2": 1
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 2,
+        "border": {
+          "2": 5
+        }
+      },
+      {
+        "pixels": 71,
+        "to": 2,
+        "border": {
+          "2": 26
+        }
+      },
+      {
+        "pixels": 25,
+        "to": 2,
+        "border": {
+          "2": 6
+        }
+      },
+      {
+        "pixels": 8,
+        "to": 1,
+        "border": {
+          "1": 2
+        }
+      },
+      {
+        "pixels": 7,
+        "to": 1,
+        "border": {
+          "1": 2
+        }
+      }
+    ]
+  },
+  "unchangedCap": 0.05,
+  "automaticIslandTransferApplied": false,
+  "controls": [
+    "original independent replay equals published labels",
+    "candidate independent replay equals published labels",
+    "deterministic replay",
+    "source key and RGBA conservation",
+    "prior anatomical ownership theft rejected",
+    "paint deletion rejected",
+    "source channel mutation rejected",
+    "structural island rejected at unchanged5%"
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

@@ -1,0 +1,167 @@
+{
+  "kind": "arachnid",
+  "identity": {
+    "speciesVisualKey": "synthetic:arachnid",
+    "seed": 659717,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "arachnid",
+    "version": 1
+  },
+  "family": "arachnid",
+  "geometry": {
+    "cutoutAssetHash": "29e66081d0886722efe4cd553a231121f47466b82a9aa988da01f162d3074ed7",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.74,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.55
+    ],
+    "cephalothorax": [
+      0.56,
+      0.54
+    ],
+    "abdomen": [
+      0.4,
+      0.56
+    ],
+    "sting": [
+      0.3,
+      0.5
+    ],
+    "leg1FarKnee": [
+      0.68,
+      0.48
+    ],
+    "leg1FarFoot": [
+      0.76,
+      0.7
+    ],
+    "leg2FarKnee": [
+      0.62,
+      0.44
+    ],
+    "leg2FarFoot": [
+      0.68,
+      0.72
+    ],
+    "leg3FarKnee": [
+      0.5,
+      0.44
+    ],
+    "leg3FarFoot": [
+      0.44,
+      0.72
+    ],
+    "leg4FarKnee": [
+      0.44,
+      0.5
+    ],
+    "leg4FarFoot": [
+      0.34,
+      0.74
+    ],
+    "cheliceraFar": [
+      0.64,
+      0.58
+    ],
+    "leg1NearKnee": [
+      0.7,
+      0.5
+    ],
+    "leg1NearFoot": [
+      0.78,
+      0.72
+    ],
+    "leg2NearKnee": [
+      0.64,
+      0.46
+    ],
+    "leg2NearFoot": [
+      0.7,
+      0.74
+    ],
+    "leg3NearKnee": [
+      0.52,
+      0.46
+    ],
+    "leg3NearFoot": [
+      0.46,
+      0.74
+    ],
+    "leg4NearKnee": [
+      0.46,
+      0.52
+    ],
+    "leg4NearFoot": [
+      0.36,
+      0.76
+    ],
+    "cheliceraNear": [
+      0.66,
+      0.6
+    ]
+  },
+  "materials": {
+    "surface": "chitinous",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "arachnid-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "cephalothorax": 0.06082762530298224,
+      "abdomen": 0.16124515496597103,
+      "sting": 0.11661903789690606,
+      "cheliceraFar": 0.08944271909999152,
+      "cheliceraNear": 0.11661903789690595,
+      "leg1FarKnee": 0.13416407864998742,
+      "leg1FarFoot": 0.23409399821439247,
+      "leg1NearKnee": 0.1456021977856103,
+      "leg1NearFoot": 0.23409399821439247,
+      "leg2FarKnee": 0.11661903789690602,
+      "leg2FarFoot": 0.286356421265527,
+      "leg2NearKnee": 0.11313708498984758,
+      "leg2NearFoot": 0.286356421265527,
+      "leg3FarKnee": 0.11661903789690606,
+      "leg3FarFoot": 0.286356421265527,
+      "leg3NearKnee": 0.08944271909999163,
+      "leg3NearFoot": 0.286356421265527,
+      "leg4FarKnee": 0.12649110640673522,
+      "leg4FarFoot": 0.25999999999999995,
+      "leg4NearKnee": 0.10198039027185574,
+      "leg4NearFoot": 0.25999999999999995
+    },
+    "measures": {
+      "body": 0.16124515496597103,
+      "bone-min": 0.06082762530298224,
+      "bone-max": 0.286356421265527,
+      "leg/body:leg1Far": 2.283839641210284,
+      "leg/body:leg1Near": 2.35477584476962,
+      "leg/body:leg2Far": 2.499147706158839,
+      "leg/body:leg2Near": 2.4775535509248834,
+      "leg/body:leg3Far": 2.499147706158839,
+      "leg/body:leg3Near": 2.3306073317044893,
+      "leg/body:leg4Far": 2.3969160902124456,
+      "leg/body:leg4Near": 2.2449070816933854
+    }
+  },
+  "recipeHash": "08f78e9447ae6f942fbaa150ea8ae0f4d221d37cccd53ebbb6025069080b9329"
+}

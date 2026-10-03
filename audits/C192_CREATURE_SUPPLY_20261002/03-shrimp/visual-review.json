@@ -1,0 +1,28 @@
+{
+  "name": "Shrimp",
+  "masterSha256": "c2c1275202841abd425cc9114a7665c62997a5c8bae5dce9d91b1eca560a031f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: dorsal-looking shrimp with five visible walking-leg endpoints and thoracic emergence on each side, two stalked eyes, serrated rostrum, short antennules, long antennae, abdomen sections, swimmerets and intact tail fan. Fine roots and exact swimmeret counts need independent source tracing; no biological completeness is inferred. The right antenna tips lie very close to the edge, likely failing the margin. Long straightened dorsal posture differs from the canonical curved-abdomen cue; retain that identity/view hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 116,
+      "y0": 359,
+      "x1": 1124,
+      "y1": 877
+    },
+    "margins": {
+      "left": 116,
+      "right": 129,
+      "top": 359,
+      "bottom": 376
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

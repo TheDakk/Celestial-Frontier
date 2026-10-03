@@ -1,0 +1,14 @@
+{
+  "id": "11-african-wild-dog",
+  "name": "African Wild Dog",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-9efe8a0d-73c1-44c5-9fba-207fdb50a333.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "35fa47ca0ca969e1b446b54493747fe7364ea34142dd021f6b6073217eac0d8e",
+  "bytes": 1345654,
+  "promptSha256": "f7fb94aa53ddb3d0fa2859ce3c7420e9d5b197b220e3832662c48e79fd0530b2",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

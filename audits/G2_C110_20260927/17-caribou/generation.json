@@ -1,0 +1,13 @@
+{
+  "id": "17-caribou",
+  "name": "Caribou",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f473a684-a019-4d86-9141-ab8cacb6f4a2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d50180c7f247c38da4f7d88bb04265a621416b6ef58971354239afaa8d7b75ee",
+  "bytes": 1296207,
+  "promptSha256": "47e2ef10ee2c60ac43296aa1e3568b7be3029d36db16e20d7b6d7f12bd9a5db4",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

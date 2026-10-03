@@ -1,0 +1,52 @@
+[
+  {
+    "id": "01-robin",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-65a6e617-baed-4db2-80d9-29c77af9874b.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "02-pigeon",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-de1c0c79-6603-4699-8027-5671cd9803b7.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "03-duck",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f9bbfd47-76fd-4a54-8644-8321c53f13eb.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "04-hawk",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-06d990db-bc20-4933-95ab-4a10dcb8e6fa.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "05-cat",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f6106609-3474-444f-90c3-d26f2ec99e46.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "06-dog",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-753f2616-be31-4503-a5fe-9689454f4382.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "07-weasel",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-14ad7427-0233-40f6-8f7a-74c41b07d410.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "08-ant",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-792759b2-d436-49fb-b4de-37a90e46b0e8.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "09-cricket",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-3fdcb871-e471-4b41-9b37-73882474fc05.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "06-dog-margin",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-17e1fe89-3772-4386-bcea-7ee5f97781dc.png",
+    "tool": "image_gen.imagegen"
+  }
+]

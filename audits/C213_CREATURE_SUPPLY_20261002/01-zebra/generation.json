@@ -1,0 +1,14 @@
+{
+  "id": "01-zebra",
+  "name": "Zebra",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-02a1c9a1-1fbd-4b26-803a-c1ac88e7aae3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+  "bytes": 1525128,
+  "promptSha256": "9375b5b19e87866f6564b3faac65e7a9c9c7e67783141fa75ca7a93b04cff10f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

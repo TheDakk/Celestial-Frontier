@@ -1,0 +1,14 @@
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (5.139333ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (0.59625ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (1.154083ms)
+✔ flat source ownership boundaries weld only when explicitly requested (1.005958ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (0.32575ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (1.10425ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.311083

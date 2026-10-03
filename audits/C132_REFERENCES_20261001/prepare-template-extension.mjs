@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const base=import.meta.dirname,source='port/v2/tools/painted-creature/compile-library-master.mjs';
+const original=fs.readFileSync(source,'utf8'),sha=b=>createHash('sha256').update(b).digest('hex');
+const once=(text,from,to)=>{if(text.split(from).length!==2)throw Error('Unique exact source boundary required');return text.replace(from,to);};
+let code=once(original,"import {familyContract} from '../creature-animation/family-contracts.mjs';","import {familyContract} from '../../port/v2/tools/creature-animation/family-contracts.mjs';\nimport {controlledFamilyLayout,EXTENSION_FAMILIES} from './layout-extensions.mjs';");
+code=once(code,"import {patternRequirements} from './pattern-observation.mjs';","import {patternRequirements} from '../../port/v2/tools/painted-creature/pattern-observation.mjs';");
+code=once(code,"import {rolldown} from 'rolldown';","import {rolldown} from '../../port/v2/node_modules/rolldown/dist/index.mjs';");
+code=once(code,' const candidates=profile?.candidateTemplates??[];',' const candidates=profile?.candidateTemplates??[];\n const extended=candidates.filter(f=>EXTENSION_FAMILIES.includes(f));\n if(extended.length===1)return extended[0];\n if(extended.length>1)throw Error(\'Ambiguous audit family\');');
+code=once(code,'export function controlledLibraryLayout(family){','export function controlledLibraryLayout(family,name){\n if(EXTENSION_FAMILIES.includes(family))return controlledFamilyLayout(family,name);');
+code=once(code,"path.resolve(import.meta.dirname,'../../../..')","path.resolve(import.meta.dirname,'../..')");
+code=once(code,'const request=controlledLibraryLayout(family);','const request=controlledLibraryLayout(family,name);');
+fs.writeFileSync(base+'/compile-controlled-master.mjs',code,{flag:'wx'});
+fs.writeFileSync(base+'/template-extension-authority.json',JSON.stringify({schema:'cf.c132-audit-template-extension/v1',source,sourceSha256:sha(original),auditCompiler:'audits/C132_REFERENCES_20261001/compile-controlled-master.mjs',auditCompilerSha256:sha(code),layoutSource:'audits/C132_REFERENCES_20261001/layout-extensions.mjs',layoutSha256:sha(fs.readFileSync(base+'/layout-extensions.mjs')),scope:'Audit-only controlled painting requests. Existing canonical compiler identity/kit/style/provenance code retained; production source unchanged. No anatomy, rig, motion or admission claim.'},null,2)+'\n',{flag:'wx'});

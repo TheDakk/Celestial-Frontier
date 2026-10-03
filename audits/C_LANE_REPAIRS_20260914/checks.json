@@ -1,0 +1,48 @@
+{
+  "baseCommit": "a1cdeeb62a2e753e1b5e53c70377c463bfa005de",
+  "vitest": {
+    "exit": 0,
+    "files": 369,
+    "passed": 4342,
+    "skipped": 1,
+    "failed": 0
+  },
+  "nodeTools": {
+    "passed": 22,
+    "failed": 0
+  },
+  "typecheck": {
+    "exit": 0
+  },
+  "rootValidate": {
+    "exit": 0,
+    "renders": 1010,
+    "fingerprintProbes": 50,
+    "baselineUnchanged": true
+  },
+  "compendiumAuthority": {
+    "devExit": 0,
+    "measurementMatches": true,
+    "producerMatches": true,
+    "historyAndCeilingsUnchanged": true,
+    "nativeCertificate": false
+  },
+  "c2": {
+    "status": "STOP_HEAD_EAR_FAR",
+    "newCaptures": 0,
+    "bandStrideUncovered": [
+      3,
+      3
+    ],
+    "originalGateChanged": false
+  },
+  "modelRuns": 0,
+  "kitEdits": 0,
+  "githubWrites": 0,
+  "historyRewrites": 0,
+  "protectedLaneEdits": 0,
+  "notes": [
+    "Final full suite after runtime/diagnostic changes; subsequent edits are documentation and evidence only.",
+    "Two unintended root npm chains were stopped before the browser stage; their partial results are not counted. Root validate was then explicitly completed."
+  ]
+}

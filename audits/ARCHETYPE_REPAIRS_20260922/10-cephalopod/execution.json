@@ -1,0 +1,171 @@
+{
+  "schema": "cf.archetype-repair-execution/v1",
+  "sourceHead": "7a6f45980eeb5c1c400a55be188cd16a0f3faf63",
+  "status": "PASS_LOCAL_NATIVE",
+  "scope": "Evidence index compiled from retained reports; no added execution or replay",
+  "originalFit": {
+    "path": "../../ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01",
+    "authorityManifest": "retained-fit-authorities.json",
+    "recordRecipeHash": "4037fc76c52ee9abeda2721b60e887902cb29cd2a29b09778df54ba5d006703b",
+    "bindingHash": "3274ebacae477a4e9758f2772eb351e8ff66225e1f6bcb8bd9cf424709e5db32"
+  },
+  "sourceQualification": {
+    "comparison": "source-delta.json",
+    "findings": "source-delta.md",
+    "staticReport": "static-02.json",
+    "status": "PASS_STATIC",
+    "scope": "First current-source qualification of unchanged original fit after executed orientation-backend source changed"
+  },
+  "meshChange": {
+    "receipt": "mesh-repair-02.json",
+    "boundaryStep": {
+      "from": 24,
+      "to": 40
+    },
+    "interiorStep": {
+      "from": 56,
+      "to": 80
+    },
+    "fit": "fit-02",
+    "recordRecipeHash": "bdcf8dae4435cc5150843da6a1ec475ebb2b4edf85e3b7a0d68cf4334e0059cb",
+    "bindingHash": "f5665b16ad400e1390ba1a0225c5eddedd91575cad942e1c7aaa0159c6d8fa58"
+  },
+  "currentStatic": {
+    "report": "static-03.json",
+    "sourceReceipt": "static-03.json.sources.json",
+    "status": "PASS_STATIC",
+    "actions": 13,
+    "samplesPerAction": [
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121
+    ],
+    "presentationSamples": 1110,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "nativeAttempts": [
+    {
+      "runId": "20260922-octopus-native-02",
+      "report": "native-02/report.json",
+      "status": "FAIL",
+      "fit": "original fit-01",
+      "error": "Error: Desktop painted tier exceeded: {\"limitMs\":3.5,\"scope\":\"Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes.\",\"perRig\":{\"left\":2,\"right\":5.100000023841858}}",
+      "film": "native-02/battle-10s.webm",
+      "scriptMs": 9376,
+      "denseRefusals": {
+        "left": 0,
+        "right": 0
+      },
+      "liveRefusals": {
+        "left": 0,
+        "right": 0
+      },
+      "liveFrames": 598,
+      "durationMs": 10016.2,
+      "encodedFrames": {
+        "frames": 601,
+        "width": 1024,
+        "height": 576
+      },
+      "encodedDurationSeconds": "10.100343",
+      "perRigUpdateP95Ms": {
+        "left": 2,
+        "right": 5.100000023841858
+      },
+      "wholeStageP95Ms": 6.299999952316284,
+      "timingScope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes.",
+      "sourceFiles": 842
+    },
+    {
+      "runId": "20260922-octopus-native-03",
+      "report": "native-03/report.json",
+      "status": "DIAGNOSTIC_PASS",
+      "fit": "fit-02",
+      "error": null,
+      "film": "native-03/battle-10s.webm",
+      "scriptMs": 9376,
+      "denseRefusals": {
+        "left": 0,
+        "right": 0
+      },
+      "liveRefusals": {
+        "left": 0,
+        "right": 0
+      },
+      "liveFrames": 602,
+      "durationMs": 10016.3,
+      "encodedFrames": {
+        "frames": 605,
+        "width": 1024,
+        "height": 576
+      },
+      "encodedDurationSeconds": "10.083894",
+      "perRigUpdateP95Ms": {
+        "left": 1,
+        "right": 1.3000000715255737
+      },
+      "wholeStageP95Ms": 2.399999976158142,
+      "timingScope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes.",
+      "sourceFiles": 842
+    }
+  ],
+  "cpuInspection": {
+    "file": "native-02-cpu-inspection.json",
+    "scope": "Read-only arithmetic over retained native frame timings, turn beats, script and immutable binding. No replay, test, browser or new CPU measurement. Phase labels follow unchanged choreography; no solver-subphase or part-cost attribution is inferred."
+  },
+  "reviewSheet": "review-sheet-03.png",
+  "next": "Sign current PASS packet before Fruit Bat",
+  "evidenceHashes": [
+    {
+      "path": "static-02.json",
+      "sha256": "4947e85ba8a0ed4e7b39cf5d69086aec98ca9adfa78700d4f33c05ed8054cca0"
+    },
+    {
+      "path": "static-03.json",
+      "sha256": "151bce0aec7fbf29b08a4e4125d3d0810a1f5283b6cf4ebd2ac6d67906136a00"
+    },
+    {
+      "path": "native-02/report.json",
+      "sha256": "e484d83cd69ee1567de34bbfbd88d774b7468f1d0bd2e4426e71e3ae8ffafb63"
+    },
+    {
+      "path": "native-03/report.json",
+      "sha256": "505ec416371f47a7b43386eebe2f4b19c59b1cd5eb2b583abdf0d1062917a2b0"
+    },
+    {
+      "path": "mesh-repair-02.json",
+      "sha256": "b8c376bc2e3bc69468be555c6250f2b4c245d505b4cad2d469a5a67f9f4d6bd2"
+    },
+    {
+      "path": "source-delta.json",
+      "sha256": "c62d49fc590819d43b419200740bc6dfd2efc570835c3aafdbba8efc93b6fd40"
+    },
+    {
+      "path": "native-02-cpu-inspection.json",
+      "sha256": "bc92f2daefc5a0e3fb874e4eecb2efa490073ba819a25550e4baa468c57f182c"
+    },
+    {
+      "path": "retained-fit-authorities.json",
+      "sha256": "dde5292759aac0ebf22f303f37d900186b465af081cec81156e86e42be8496f9"
+    }
+  ],
+  "sourceVerification": {
+    "file": "source-check-03.json",
+    "sha256": "d77be63b114a8f79c05f2c8d93427ba33c62b76ef4342d59187572769d2ad6e1"
+  }
+}

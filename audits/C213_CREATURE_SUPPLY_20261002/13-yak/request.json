@@ -1,0 +1,44 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Yak",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "90464d5c973ce633c91ed97905dc1667b0db9eeb6bc4b80b1688baba1c685b55",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-horned",
+  "authoringCreated": false,
+  "sourceHead": "5cc190cd31ac22b466785351bba854c5219431d8",
+  "basePromptSha256": "4c50541e4183a9a38e8f67a762121885aa46ea956baedbc39127cea8ac0f74d1",
+  "batchCompilerSha256": "6bd18d0ed83c86c1dfbf8251c56b98c9636e569835d891dacfdc16d0deb8f8fb",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "previousId": "19-yak",
+    "previousMaster": "audits/G2_C110_20260927/19-yak/master.png",
+    "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c110/summary.json",
+    "reasons": [
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+    ],
+    "previousVisual": "Full original: shaggy long brown coat, curved horns, long bushy tail, four separate hooves. HOLD near ear visible but far ear obscured, upper legs hidden by long coat; no absence claim.",
+    "correction": "Preserve the real long flank-hair curtain, low head, humped shoulders and bushy tail plume. A slight natural head turn may expose the actual far ear; never add it. Separate all four hoof contacts and visible ankle contours without shaving the coat or inventing hidden upper legs."
+  },
+  "priorPilotPaths": [
+    "audits/G2_C110_20260927/pilot.json",
+    "audits/G2_C136_REPAIRS_20261002/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "SOURCE VISIBILITY: use a quiet natural grounded stance with four true leg chains and four distinct complete feet. Separate near/far silhouettes from their actual visible shoulder/hip emergence through the real joints, not merely the toe tips. Preserve true short tails, shaggy hair, horns, ears and feet; never remove anatomy, expose fictitious hidden segments or lengthen a part to match a generic rig. A very slight natural head turn may reveal both existing ears, with body still facing RIGHT in side profile. If genuine occlusion remains, keep it rather than inventing a part.\nTARGETED SOURCE CORRECTION: Preserve the real long flank-hair curtain, low head, humped shoulders and bushy tail plume. A slight natural head turn may expose the actual far ear; never add it. Separate all four hoof contacts and visible ankle contours without shaving the coat or inventing hidden upper legs.",
+  "compositionCheck": "COMPOSITION PRIORITY: whole natural specimen fits within the central HALF of a native 1254-square pure magenta canvas with roughly 300 pixels clear around all tips. Zoom out to preserve real proportions. No crop, ground, shadow, branch, prop, text or framing marks.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, fit, reference pool or native admission"
+}

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 486502480,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 3,
+    "body": 6,
+    "loco": 2,
+    "trait": 20,
+    "size": 0,
+    "diet": 5,
+    "head": 0,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 0,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 8,
+    "detail": 8,
+    "accent": 4,
+    "temper": 6,
+    "sense": 8,
+    "repro": 6,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Water Snail"
+  },
+  "observation": null
+}

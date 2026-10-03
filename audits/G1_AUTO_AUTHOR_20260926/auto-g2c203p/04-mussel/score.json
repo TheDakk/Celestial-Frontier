@@ -1,0 +1,9 @@
+{
+ "id": "04-mussel",
+ "family": "bivalve",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family bivalve"
+ ],
+ "semanticPresence": null
+}

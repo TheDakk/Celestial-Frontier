@@ -1,0 +1,1 @@
+{"status":"NO_SAMPLED_ADMISSIBLE_CANDIDATE","phase":{"actionId":"victory","elapsedMs":120,"durationMs":600,"realm":"land"},"oldRefusal":{"error":"Error: Contact: victory@120 exceeds scale compression bound","cause":"Error: Contact: victory@120 rigid support exceeds scale compression bound"},"boundPx":23.31090731824911,"candidates":1,"attempts":1}

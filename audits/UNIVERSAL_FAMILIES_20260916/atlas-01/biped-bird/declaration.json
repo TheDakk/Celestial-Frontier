@@ -1,0 +1,105 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "2dae54193e5786fa965c0be39deb7a8dd719720fc25a0d8152de7ea58ac26a5b",
+  "cutoutSha256": "0c12f02b39f0d855a4a9fa8d704c17cf20b0d26384d808777f69309bdb84b954",
+  "labelsFile": "labels.png",
+  "labelsSha256": "83eec6f5dd922f1d730cca8b37a71a767d19aac70cc0e1b22b8a07eb161c3966",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "spine",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "neck0",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "head",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "legFarAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-11",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-12",
+      "joint": "legNearAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "part-13",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-14",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-15",
+      "joint": "wingFarTip",
+      "layer": "near"
+    },
+    {
+      "id": "part-16",
+      "joint": "wingNearRoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-17",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "part-18",
+      "joint": "tailFan",
+      "layer": "far"
+    }
+  ],
+  "declarationHash": "da3ba1d9539305d63aecd6e69fb94517cc4f49fd504694e2cac772a58af58c46"
+}

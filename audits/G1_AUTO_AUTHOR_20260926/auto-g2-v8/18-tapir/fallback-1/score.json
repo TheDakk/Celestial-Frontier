@@ -1,0 +1,9 @@
+{
+ "id": "18-tapir",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 23%)"
+ ],
+ "semanticPresence": null
+}

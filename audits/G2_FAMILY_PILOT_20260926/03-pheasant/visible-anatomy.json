@@ -1,0 +1,121 @@
+{
+  "id": "03-pheasant",
+  "name": "Pheasant",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "daa0c691174bff36ee8e962832992179a132f4c985a0548db40ff9674313b89f",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22654,
+    "coreRadius": 27,
+    "bodyBox": {
+      "x0": 9,
+      "y0": 96,
+      "x1": 404,
+      "y1": 305
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1318,
+        "pixels": 2986,
+        "box": {
+          "x0": 329,
+          "y0": 88,
+          "x1": 392,
+          "y1": 208
+        },
+        "attach": {
+          "x": 371.8,
+          "y": 159.4,
+          "relX": 0.92,
+          "relY": 0.3
+        },
+        "dir": {
+          "x": -0.12,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 83.3
+      },
+      {
+        "k": 1,
+        "frac": 0.2597,
+        "pixels": 5884,
+        "box": {
+          "x0": 27,
+          "y0": 205,
+          "x1": 264,
+          "y1": 292
+        },
+        "attach": {
+          "x": 225.6,
+          "y": 243,
+          "relX": 0.55,
+          "relY": 0.7
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.04
+        },
+        "class": "front",
+        "length": 204.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0797,
+        "pixels": 1805,
+        "box": {
+          "x0": 257,
+          "y0": 268,
+          "x1": 373,
+          "y1": 330
+        },
+        "attach": {
+          "x": 306.4,
+          "y": 268,
+          "relX": 0.75,
+          "relY": 0.82
+        },
+        "dir": {
+          "x": 0.05,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 91
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 269,
+        "x1": 303,
+        "cx": 284.2
+      },
+      {
+        "x0": 315,
+        "x1": 373,
+        "cx": 341.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

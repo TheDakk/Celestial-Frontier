@@ -1,0 +1,60 @@
+{
+  "description": "Seed 10032 · long neck, huge ears and two horns",
+  "native": "native-crystalline-02",
+  "rig": "rig-crystalline-02",
+  "rest": 0,
+  "finalRest": 0,
+  "presentation": {
+    "samples": 601,
+    "maxGapPx": 0.00010504977401901657,
+    "status": "PASS"
+  },
+  "framing": {
+    "samples": 602,
+    "fullMotionBox": {
+      "minX": -0.09865450859069824,
+      "minY": -0.038432084023952484,
+      "maxX": 1.1337542533874512,
+      "maxY": 1.0276225805282593
+    },
+    "view": {
+      "x": 745,
+      "y": 90,
+      "width": 610,
+      "height": 540
+    },
+    "fit": {
+      "scale": 494.9656468044612,
+      "x": 793.8305926547712,
+      "y": 109.02256132695904
+    },
+    "inside": true,
+    "oldRestOnlyInside": false
+  },
+  "capture": {
+    "rigUpdateP95Ms": 1.7000000178813934,
+    "frames": 602,
+    "fps": 60.00339453479897,
+    "wholeFrameCpuP95Ms": 1.9000000059604645,
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1400,
+          "height": 800,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.100039"
+      }
+    },
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1400,
+      "height": 800
+    }
+  }
+}

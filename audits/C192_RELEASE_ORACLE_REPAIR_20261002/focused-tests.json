@@ -1,0 +1,13 @@
+{
+  "scope": "Three changed release-oracle test files only; no profile/native retry",
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/guide-release.test.ts",
+    "tests/slicesmoke-sixth-red-contract.test.ts",
+    "tests/exceptional-crafting-evidence-contract.test.ts"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 2.895
+}

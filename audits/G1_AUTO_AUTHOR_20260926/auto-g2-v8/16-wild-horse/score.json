@@ -1,0 +1,9 @@
+{
+ "id": "16-wild-horse",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 7.5% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

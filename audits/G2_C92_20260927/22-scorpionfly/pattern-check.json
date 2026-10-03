@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Scorpionfly",
+  "masterSha256": "0274e0580dad342a521dc0f5cfbdcf7f0bed9161ce06855370b29d736b6daaa3",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

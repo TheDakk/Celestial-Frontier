@@ -1,0 +1,5 @@
+codex-original 07-perch: Error: Requested gap pixels lost during contour rasterization: 9 packetWritten=no
+codex-original 09-carp: Error: Requested gap pixels lost during contour rasterization: 28 packetWritten=no
+bridged 06-trout: Error: Earlier ownership changed packetWritten=no
+bridged 10-herring: Error: Earlier ownership changed packetWritten=no
+bridged 03-arctic-fox tail3->tail2: Error: Earlier ownership changed packetWritten=no

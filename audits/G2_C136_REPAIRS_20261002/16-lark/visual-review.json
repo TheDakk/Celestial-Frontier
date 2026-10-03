@@ -1,0 +1,28 @@
+{
+  "name": "Lark",
+  "masterSha256": "ed62d06bbddbfbe101a6ed6a43003e90904a218c0a3b764281633f114e39b335",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: attached crest/crown, streaked breast, connected narrow bill, complete tail and two separate feet on approximately one level. No obvious floating crown specks in the original; rig partition and head-down islands remain UNMEASURED. Far folded wing is naturally occluded; no all-visible wing attestation.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 324,
+      "y0": 409,
+      "x1": 929,
+      "y1": 845
+    },
+    "margins": {
+      "left": 324,
+      "right": 324,
+      "top": 409,
+      "bottom": 408
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

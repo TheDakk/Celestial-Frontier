@@ -1,0 +1,9 @@
+{
+ "id": "06-oarfish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 3.5%)"
+ ],
+ "semanticPresence": null
+}

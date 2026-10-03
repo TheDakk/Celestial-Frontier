@@ -1,0 +1,28 @@
+{
+  "name": "Whiptail",
+  "masterSha256": "3a4fe01bce3688e8c71e412adad6f38e85fc5da126c079e519b04b0143a1c383",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: pale longitudinal back stripes over dark flanks, slender pointed snout and very long thin continuous tail. Four foot endpoints are visible; far forelimb is small and its proximal attachment is body-occluded. Toe counts remain unconfirmed. Natural elongated proportions and broad margins preserved.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 317,
+      "y0": 568,
+      "x1": 972,
+      "y1": 689
+    },
+    "margins": {
+      "left": 317,
+      "right": 281,
+      "top": 568,
+      "bottom": 564
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

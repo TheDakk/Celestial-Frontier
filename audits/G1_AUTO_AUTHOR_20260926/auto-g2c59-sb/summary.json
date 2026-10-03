@@ -1,0 +1,111 @@
+[
+ {
+  "id": "01-elk",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-root (earFarRoot) covers 19% paint (reference 68%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-moose",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-bison",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 10.1% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-raccoon",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-badger",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+   "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+   "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "06-wolverine",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on",
+   "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "07-starling",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches biped-bird better (0.0180 < 0.0218)",
+   "wrong-family: quadruped matches clearly better (0.0147 < 0.0218)",
+   "extra-anatomy (unassigned): a rear appendage of 7.8% paint that no reference appendage lands on",
+   "missing-anatomy: part near-thigh (legNearKnee) covers 14% paint (reference 57%)",
+   "missing-anatomy: part tail (tailFan) covers 13% paint (reference 61%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-vulture",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "09-kingfisher",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 13.2% of the paint lies away from the body and in no part (reference 4.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "10-water-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "12-ladybug",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (family floor): the largest rear appendage is 0.9% of the paint; every same-family reference shows at least 3.8%"
+  ],
+  "semanticPresence": null
+ }
+]

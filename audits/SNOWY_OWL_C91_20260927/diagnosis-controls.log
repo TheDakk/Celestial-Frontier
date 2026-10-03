@@ -1,0 +1,12 @@
+✔ actual native composition reproduces two folds while rest and same-time standalone pass (1.289667ms)
+✔ standalone substituted for stage cannot pass the outcome check (4.022458ms)
+✔ old triangle-index owner lookup is rejected (0.736417ms)
+✔ missing target time refuses instead of choosing nearest sample (0.291459ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.733209

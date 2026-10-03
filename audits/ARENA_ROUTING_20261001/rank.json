@@ -1,0 +1,737 @@
+{
+ "schema": "cf.arena-painting-order/v1",
+ "roster": 631,
+ "accepted": 179,
+ "unmappedProfileGroups": [
+  "annelid-land",
+  "annelid-water",
+  "tardigrade"
+ ],
+ "worldTypes": [
+  {
+   "type": "terran",
+   "biomes": 11,
+   "faunaFamilies": [
+    "amphibian",
+    "arachnid",
+    "bird",
+    "crust",
+    "fish",
+    "gastropod",
+    "insect",
+    "mammal",
+    "primate",
+    "reptile"
+   ],
+   "roster": 570,
+   "accepted": 179
+  },
+  {
+   "type": "ice",
+   "biomes": 4,
+   "faunaFamilies": [
+    "bird",
+    "crust",
+    "fish",
+    "mammal",
+    "marine"
+   ],
+   "roster": 439,
+   "accepted": 157
+  },
+  {
+   "type": "ocean",
+   "biomes": 7,
+   "faunaFamilies": [
+    "bird",
+    "ceph",
+    "crust",
+    "fish",
+    "gastropod",
+    "jelly",
+    "marine",
+    "reptile",
+    "sessile"
+   ],
+   "roster": 357,
+   "accepted": 124
+  },
+  {
+   "type": "desert",
+   "biomes": 5,
+   "faunaFamilies": [
+    "arachnid",
+    "bird",
+    "insect",
+    "mammal",
+    "reptile"
+   ],
+   "roster": 385,
+   "accepted": 107
+  },
+  {
+   "type": "rocky",
+   "biomes": 5,
+   "faunaFamilies": [
+    "arachnid",
+    "insect",
+    "mammal",
+    "reptile"
+   ],
+   "roster": 283,
+   "accepted": 71
+  },
+  {
+   "type": "lava",
+   "biomes": 4,
+   "faunaFamilies": [
+    "arachnid",
+    "insect"
+   ],
+   "roster": 54,
+   "accepted": 6
+  },
+  {
+   "type": "venus",
+   "biomes": 3,
+   "faunaFamilies": [
+    "insect"
+   ],
+   "roster": 45,
+   "accepted": 6
+  },
+  {
+   "type": "gas",
+   "biomes": 4,
+   "faunaFamilies": [
+    "ceph",
+    "jelly"
+   ],
+   "roster": 15,
+   "accepted": 0
+  }
+ ],
+ "biomes": [
+  {
+   "rank": 1,
+   "biome": "archipelago",
+   "name": "Archipelago world",
+   "type": "ocean",
+   "weight": 14,
+   "rare": false,
+   "fauna": [
+    "bird",
+    "crust",
+    "fish",
+    "reptile"
+   ],
+   "roster": 294,
+   "accepted": 124
+  },
+  {
+   "rank": 2,
+   "biome": "mangrove",
+   "name": "Mangrove world",
+   "type": "terran",
+   "weight": 5,
+   "rare": false,
+   "fauna": [
+    "crust",
+    "fish",
+    "bird",
+    "reptile"
+   ],
+   "roster": 294,
+   "accepted": 124
+  },
+  {
+   "rank": 3,
+   "biome": "marsh",
+   "name": "Marsh world",
+   "type": "terran",
+   "weight": 8,
+   "rare": false,
+   "fauna": [
+    "bird",
+    "amphibian",
+    "insect",
+    "fish"
+   ],
+   "roster": 279,
+   "accepted": 114
+  },
+  {
+   "rank": 4,
+   "biome": "volcisle",
+   "name": "Volcanic-Archipelago world",
+   "type": "ocean",
+   "weight": 5,
+   "rare": false,
+   "fauna": [
+    "crust",
+    "fish",
+    "bird"
+   ],
+   "roster": 242,
+   "accepted": 108
+  },
+  {
+   "rank": 5,
+   "biome": "packice",
+   "name": "Pack-Ice world",
+   "type": "ice",
+   "weight": 12,
+   "rare": false,
+   "fauna": [
+    "marine",
+    "bird",
+    "fish"
+   ],
+   "roster": 238,
+   "accepted": 108
+  },
+  {
+   "rank": 6,
+   "biome": "stormsea",
+   "name": "Storm-Sea world",
+   "type": "ocean",
+   "weight": 8,
+   "rare": false,
+   "fauna": [
+    "fish",
+    "marine",
+    "bird"
+   ],
+   "roster": 238,
+   "accepted": 108
+  },
+  {
+   "rank": 7,
+   "biome": "canyon",
+   "name": "Canyon world",
+   "type": "desert",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "reptile",
+    "bird",
+    "mammal"
+   ],
+   "roster": 331,
+   "accepted": 101
+  },
+  {
+   "rank": 8,
+   "biome": "swamp",
+   "name": "Swamp world",
+   "type": "terran",
+   "weight": 7,
+   "rare": false,
+   "fauna": [
+    "reptile",
+    "amphibian",
+    "insect",
+    "fish"
+   ],
+   "roster": 229,
+   "accepted": 94
+  },
+  {
+   "rank": 9,
+   "biome": "temperate",
+   "name": "Temperate world",
+   "type": "terran",
+   "weight": 24,
+   "rare": false,
+   "fauna": [
+    "mammal",
+    "bird",
+    "insect",
+    "amphibian"
+   ],
+   "roster": 340,
+   "accepted": 91
+  },
+  {
+   "rank": 10,
+   "biome": "savanna",
+   "name": "Savanna world",
+   "type": "terran",
+   "weight": 12,
+   "rare": false,
+   "fauna": [
+    "mammal",
+    "bird",
+    "insect"
+   ],
+   "roster": 324,
+   "accepted": 91
+  },
+  {
+   "rank": 11,
+   "biome": "glacier",
+   "name": "Glacier world",
+   "type": "ice",
+   "weight": 18,
+   "rare": false,
+   "fauna": [
+    "marine",
+    "bird",
+    "mammal"
+   ],
+   "roster": 299,
+   "accepted": 85
+  },
+  {
+   "rank": 12,
+   "biome": "tundra",
+   "name": "Tundra world",
+   "type": "terran",
+   "weight": 12,
+   "rare": false,
+   "fauna": [
+    "mammal",
+    "bird"
+   ],
+   "roster": 279,
+   "accepted": 85
+  },
+  {
+   "rank": 13,
+   "biome": "coral",
+   "name": "Coral-Shallows world",
+   "type": "ocean",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "fish",
+    "sessile",
+    "crust",
+    "ceph",
+    "gastropod"
+   ],
+   "roster": 176,
+   "accepted": 72
+  },
+  {
+   "rank": 14,
+   "biome": "opensea",
+   "name": "Open-Sea world",
+   "type": "ocean",
+   "weight": 20,
+   "rare": false,
+   "fauna": [
+    "fish",
+    "marine",
+    "jelly",
+    "ceph"
+   ],
+   "roster": 151,
+   "accepted": 72
+  },
+  {
+   "rank": 15,
+   "biome": "abyssal",
+   "name": "Abyssal world",
+   "type": "ocean",
+   "weight": 7,
+   "rare": false,
+   "fauna": [
+    "fish",
+    "ceph",
+    "jelly",
+    "sessile"
+   ],
+   "roster": 147,
+   "accepted": 72
+  },
+  {
+   "rank": 16,
+   "biome": "cryogeyser",
+   "name": "Cryogeyser world",
+   "type": "ice",
+   "weight": 8,
+   "rare": false,
+   "fauna": [
+    "crust",
+    "fish"
+   ],
+   "roster": 140,
+   "accepted": 72
+  },
+  {
+   "rank": 17,
+   "biome": "blueice",
+   "name": "Blue-Ice world",
+   "type": "ice",
+   "weight": 2,
+   "rare": true,
+   "fauna": [
+    "marine",
+    "fish"
+   ],
+   "roster": 136,
+   "accepted": 72
+  },
+  {
+   "rank": 18,
+   "biome": "milksea",
+   "name": "Milk-Sea world",
+   "type": "ocean",
+   "weight": 1.4,
+   "rare": true,
+   "fauna": [
+    "jelly",
+    "ceph",
+    "fish"
+   ],
+   "roster": 131,
+   "accepted": 72
+  },
+  {
+   "rank": 19,
+   "biome": "dunesea",
+   "name": "Dune-Sea world",
+   "type": "desert",
+   "weight": 18,
+   "rare": false,
+   "fauna": [
+    "reptile",
+    "arachnid",
+    "insect",
+    "mammal"
+   ],
+   "roster": 283,
+   "accepted": 71
+  },
+  {
+   "rank": 20,
+   "biome": "boulder",
+   "name": "Boulder-Field world",
+   "type": "rocky",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "reptile",
+    "arachnid",
+    "mammal"
+   ],
+   "roster": 238,
+   "accepted": 65
+  },
+  {
+   "rank": 21,
+   "biome": "jungle",
+   "name": "Jungle world",
+   "type": "terran",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "primate",
+    "bird",
+    "reptile",
+    "insect",
+    "amphibian"
+   ],
+   "roster": 232,
+   "accepted": 58
+  },
+  {
+   "rank": 22,
+   "biome": "karst",
+   "name": "Karst world",
+   "type": "terran",
+   "weight": 5,
+   "rare": false,
+   "fauna": [
+    "mammal",
+    "arachnid",
+    "insect"
+   ],
+   "roster": 231,
+   "accepted": 55
+  },
+  {
+   "rank": 23,
+   "biome": "crystalsteppe",
+   "name": "Crystal Steppe world",
+   "type": "terran",
+   "weight": 1.4,
+   "rare": true,
+   "fauna": [
+    "insect",
+    "arachnid",
+    "mammal"
+   ],
+   "roster": 231,
+   "accepted": 55
+  },
+  {
+   "rank": 24,
+   "biome": "saltflat",
+   "name": "Salt-Flat world",
+   "type": "terran",
+   "weight": 8,
+   "rare": false,
+   "fauna": [
+    "insect",
+    "arachnid",
+    "bird"
+   ],
+   "roster": 156,
+   "accepted": 42
+  },
+  {
+   "rank": 25,
+   "biome": "saltpan",
+   "name": "Salt-Pan world",
+   "type": "desert",
+   "weight": 8,
+   "rare": false,
+   "fauna": [
+    "insect",
+    "bird"
+   ],
+   "roster": 147,
+   "accepted": 42
+  },
+  {
+   "rank": 26,
+   "biome": "oxide",
+   "name": "Oxide-Waste world",
+   "type": "desert",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "arachnid",
+    "insect",
+    "reptile"
+   ],
+   "roster": 106,
+   "accepted": 22
+  },
+  {
+   "rank": 27,
+   "biome": "graben",
+   "name": "Graben-Canyon world",
+   "type": "rocky",
+   "weight": 8,
+   "rare": false,
+   "fauna": [
+    "arachnid",
+    "reptile"
+   ],
+   "roster": 61,
+   "accepted": 16
+  },
+  {
+   "rank": 28,
+   "biome": "fungal",
+   "name": "Fungal world",
+   "type": "terran",
+   "weight": 1.6,
+   "rare": true,
+   "fauna": [
+    "insect",
+    "gastropod",
+    "amphibian"
+   ],
+   "roster": 73,
+   "accepted": 6
+  },
+  {
+   "rank": 29,
+   "biome": "cratered",
+   "name": "Cratered world",
+   "type": "rocky",
+   "weight": 18,
+   "rare": false,
+   "fauna": [
+    "arachnid",
+    "insect"
+   ],
+   "roster": 54,
+   "accepted": 6
+  },
+  {
+   "rank": 30,
+   "biome": "ashwaste",
+   "name": "Ash-Waste world",
+   "type": "lava",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "arachnid",
+    "insect"
+   ],
+   "roster": 54,
+   "accepted": 6
+  },
+  {
+   "rank": 31,
+   "biome": "geode",
+   "name": "Geode world",
+   "type": "rocky",
+   "weight": 2.4,
+   "rare": true,
+   "fauna": [
+    "insect",
+    "arachnid"
+   ],
+   "roster": 54,
+   "accepted": 6
+  },
+  {
+   "rank": 32,
+   "biome": "carbon",
+   "name": "Carbon world",
+   "type": "rocky",
+   "weight": 1.6,
+   "rare": true,
+   "fauna": [
+    "arachnid",
+    "insect"
+   ],
+   "roster": 54,
+   "accepted": 6
+  },
+  {
+   "rank": 33,
+   "biome": "glass",
+   "name": "Glass-Desert world",
+   "type": "desert",
+   "weight": 1.6,
+   "rare": true,
+   "fauna": [
+    "arachnid",
+    "insect"
+   ],
+   "roster": 54,
+   "accepted": 6
+  },
+  {
+   "rank": 34,
+   "biome": "emberfield",
+   "name": "Ember-Field world",
+   "type": "lava",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "insect"
+   ],
+   "roster": 45,
+   "accepted": 6
+  },
+  {
+   "rank": 35,
+   "biome": "sulfurdeck",
+   "name": "Sulfur-Storm world",
+   "type": "venus",
+   "weight": 10,
+   "rare": false,
+   "fauna": [
+    "insect"
+   ],
+   "roster": 45,
+   "accepted": 6
+  },
+  {
+   "rank": 36,
+   "biome": "banded",
+   "name": "Banded giant",
+   "type": "gas",
+   "weight": 16,
+   "rare": false,
+   "fauna": [
+    "jelly",
+    "ceph"
+   ],
+   "roster": 15,
+   "accepted": 0
+  },
+  {
+   "rank": 37,
+   "biome": "stormeye",
+   "name": "Storm-Eye giant",
+   "type": "gas",
+   "weight": 4,
+   "rare": false,
+   "fauna": [
+    "jelly",
+    "ceph"
+   ],
+   "roster": 15,
+   "accepted": 0
+  },
+  {
+   "rank": 38,
+   "biome": "obsidian",
+   "name": "Obsidian world",
+   "type": "lava",
+   "weight": 7,
+   "rare": false,
+   "fauna": [
+    "arachnid"
+   ],
+   "roster": 9,
+   "accepted": 0
+  },
+  {
+   "rank": 39,
+   "biome": "ammonia",
+   "name": "Pastel-Ammonia giant",
+   "type": "gas",
+   "weight": 8,
+   "rare": false,
+   "fauna": [
+    "jelly"
+   ],
+   "roster": 7,
+   "accepted": 0
+  },
+  {
+   "rank": 40,
+   "biome": "acidhaze",
+   "name": "Acid-Haze world",
+   "type": "venus",
+   "weight": 12,
+   "rare": false,
+   "fauna": [],
+   "roster": 0,
+   "accepted": 0
+  },
+  {
+   "rank": 41,
+   "biome": "abyssgreen",
+   "name": "Greenhouse-Abyss world",
+   "type": "venus",
+   "weight": 4,
+   "rare": false,
+   "fauna": [],
+   "roster": 0,
+   "accepted": 0
+  },
+  {
+   "rank": 42,
+   "biome": "magmasea",
+   "name": "Magma-Sea world",
+   "type": "lava",
+   "weight": 4,
+   "rare": false,
+   "fauna": [],
+   "roster": 0,
+   "accepted": 0
+  },
+  {
+   "rank": 43,
+   "biome": "hotglow",
+   "name": "Ember giant",
+   "type": "gas",
+   "weight": 3,
+   "rare": true,
+   "fauna": [],
+   "roster": 0,
+   "accepted": 0
+  }
+ ]
+}

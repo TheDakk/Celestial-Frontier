@@ -1,0 +1,51 @@
+{
+  "schema": "cf.c163-arena-webp-review/v1",
+  "id": "freshwater-lake-v3",
+  "qualityAccepted": false,
+  "inspected": [
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-composed-review.png",
+      "sha256": "1465bf7d5dc970303909d507702baa5bf4333ad3a5b85fba416f860068b0f866",
+      "bytes": 4471349
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-composed-webp-review.png",
+      "sha256": "aef24bd8a34ac32f6b920e5feee8353dbac910c7c7d2105e04dfad2956492983",
+      "bytes": 3721593
+    }
+  ],
+  "findings": [
+    "Native-size PNG and decoded WebP compositions reviewed. The WebP preserves the observed composition and the same visible texture joins and plant-edge holds; it does not repair them.",
+    "No additional obvious composition change was seen at native size. RGB is lossy q88; this observation is not pixel identity or independent scoring. All nine plate alpha planes are independently checked byte-identical to PNG runtimes."
+  ],
+  "metrics": {
+    "far": {
+      "psnr": 38.22,
+      "ssim": 0.98756,
+      "ssimMinBlock": 0.90924,
+      "alphaIdentical": true
+    },
+    "mid": {
+      "psnr": 35.543,
+      "ssim": 0.99279,
+      "ssimMinBlock": 0.90288,
+      "alphaIdentical": true
+    },
+    "near": {
+      "psnr": 36.514,
+      "ssim": 0.99333,
+      "ssimMinBlock": 0.93941,
+      "alphaIdentical": true
+    }
+  },
+  "d29Review": {
+    "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/delivery-review.json",
+    "sha256": "e6c589b806d30e8fae1e633e8a7638c701a2a5773e68855825ad60934e522e38",
+    "bytes": 7179
+  },
+  "webpReceipt": {
+    "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/webp-receipt.json",
+    "sha256": "2b845f3531af53c22881977c0928e950caaee10f1a8e5d6ce8a448267a144e6c",
+    "bytes": 3543
+  }
+}

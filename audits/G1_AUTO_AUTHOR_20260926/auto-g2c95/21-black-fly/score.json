@@ -1,0 +1,9 @@
+{
+ "id": "21-black-fly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+ ],
+ "semanticPresence": null
+}

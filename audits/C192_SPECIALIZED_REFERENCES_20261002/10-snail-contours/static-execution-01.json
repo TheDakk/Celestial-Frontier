@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "static",
+  "id": "10-snail-contours",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-01.json"
+  ],
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-01.log",
+  "logSha256": "65dac02856eb995d98ab99f1829744be7e75223ed45bc73b83cdb5225e5fc1f6",
+  "nativeRuns": 0
+}

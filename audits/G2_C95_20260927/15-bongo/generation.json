@@ -1,0 +1,13 @@
+{
+  "id": "15-bongo",
+  "name": "Bongo",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-7dfa5dce-b948-442b-a20e-3378e699c2b0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "438c51be55328e8e8e6a0c49182643bb9b99d8338357898285a98627974c4538",
+  "bytes": 1293662,
+  "promptSha256": "93890c926ef3cebed5323f4d5f6588413e687ebda124fe769e03feb27881980e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

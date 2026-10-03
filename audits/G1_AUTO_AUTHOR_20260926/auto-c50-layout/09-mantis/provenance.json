@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "09-mantis",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1f9719843af3db14aeef8b7fb1831e84f4ec56c241f3d6e205b582d66e3c6f72",
+ "subjectSourceSha256": "895ebe6da5c8eb47d27677cb9c4ea018856ff3c037722bcf6849740d68429489",
+ "identity": {
+  "name": "Mantis",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mantis\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3978992523\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 3978992523,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "dragonfly",
+  "authoringSha256": "df6b9a783fd35bd1b3ce1d2a79b4018677392ec4d02a8fd60e88d204121a5c0f",
+  "masterSha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.3587,
+     "class": "front",
+     "attach": {
+      "x": 298.3,
+      "y": 212.4,
+      "relX": 0.7,
+      "relY": 0.67
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1011,
+     "class": "limb-down",
+     "attach": {
+      "x": 242.5,
+      "y": 255,
+      "relX": 0.55,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0234,
+     "class": "rear",
+     "attach": {
+      "x": 45,
+      "y": 288.3,
+      "relX": 0,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0134,
+     "class": "limb-down",
+     "attach": {
+      "x": 191.5,
+      "y": 278.4,
+      "relX": 0.41,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0125,
+     "class": "limb-down",
+     "attach": {
+      "x": 171.5,
+      "y": 283,
+      "relX": 0.35,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0222,
+     "class": "limb-down",
+     "attach": {
+      "x": 133,
+      "y": 302,
+      "relX": 0.24,
+      "relY": 0.97
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 4,
+    "rear": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "dragonfly",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

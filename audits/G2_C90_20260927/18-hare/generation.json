@@ -1,0 +1,13 @@
+{
+  "id": "18-hare",
+  "name": "Hare",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-eea10a52-bcf7-4eec-bf54-335e31d8f2c6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "81f48a9ae40764a98124c162962aff5763ad27e0b05bbc6469a1071a760f9a4d",
+  "bytes": 1324984,
+  "promptSha256": "af78ec59aa39d7594e00019d1bb16c6b9410f9abe5219f5ffe99e893fc0d091d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,49 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/landfall-fidelity.ts(99,38): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+apps/game/src/landfall-fidelity.ts(108,50): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(110,49): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(111,62): error TS2339: Property 'recipe' does not exist on type 'LandfallConditioningResultV1'.
+  Property 'recipe' does not exist on type 'Readonly<{ ok: false; reason: "unproven-roster" | "unsupported-schema" | "unsupported-snapshot" | "unsupported-species"; }>'.
+apps/game/src/landfall-fidelity.ts(117,100): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(118,17): error TS18046: 'references' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(120,16): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(122,44): error TS2339: Property 'recipe' does not exist on type 'LandfallConditioningResultV1'.
+  Property 'recipe' does not exist on type 'Readonly<{ ok: false; reason: "unproven-roster" | "unsupported-schema" | "unsupported-snapshot" | "unsupported-species"; }>'.
+apps/game/src/landfall-fidelity.ts(123,10): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(123,52): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(124,10): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(124,52): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(125,58): error TS18046: 'image' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(125,79): error TS18046: 'image' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(128,90): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+apps/game/src/landfall-fidelity.ts(129,46): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(129,113): error TS2339: Property 'recipe' does not exist on type 'LandfallConditioningResultV1'.
+  Property 'recipe' does not exist on type 'Readonly<{ ok: false; reason: "unproven-roster" | "unsupported-schema" | "unsupported-snapshot" | "unsupported-species"; }>'.
+apps/game/src/landfall-fidelity.ts(131,21): error TS18046: 'recipe' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(136,5): error TS2322: Type 'Readonly<{ ok: true; contract: { schema: "cf.landfall-fidelity.v1"; recipeJson: unknown; recipeSha256: string; conditioningSha256: string; snapshotSha256: string; referenceSetSha256: string; image: LandfallImageBindingV1; ... 5 more ...; contractSha256: string; }; }>' is not assignable to type 'Readonly<{ ok: false; reason: Reason; }> | Readonly<{ ok: true; contract: LandfallFidelityContractV1; }>'.
+  Type 'Readonly<{ ok: true; contract: { schema: "cf.landfall-fidelity.v1"; recipeJson: unknown; recipeSha256: string; conditioningSha256: string; snapshotSha256: string; referenceSetSha256: string; image: LandfallImageBindingV1; ... 5 more ...; contractSha256: string; }; }>' is not assignable to type 'Readonly<{ ok: true; contract: LandfallFidelityContractV1; }>'.
+    The types of 'contract.recipeJson' are incompatible between these types.
+      Type 'unknown' is not assignable to type 'string'.
+apps/game/src/landfall-fidelity.ts(162,9): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(162,59): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(163,10): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(163,56): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(164,9): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(164,64): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(165,16): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(165,76): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(166,74): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(167,18): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(168,19): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(172,25): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(172,46): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(176,23): error TS18046: 'review' is of type 'unknown'.
+apps/game/src/landfall-fidelity.ts(181,26): error TS18048: 'resident' is possibly 'undefined'.
+apps/game/src/landfall-fidelity.ts(181,101): error TS18048: 'resident' is possibly 'undefined'.
+apps/game/src/landfall-fidelity.ts(187,11): error TS18048: 'resident' is possibly 'undefined'.
+apps/game/src/landfall-fidelity.ts(189,73): error TS18048: 'resident' is possibly 'undefined'.
+apps/game/src/landfall-fidelity.ts(193,15): error TS18048: 'resident' is possibly 'undefined'.
+apps/game/src/landfall-fidelity.ts(209,67): error TS18046: 'review' is of type 'unknown'.

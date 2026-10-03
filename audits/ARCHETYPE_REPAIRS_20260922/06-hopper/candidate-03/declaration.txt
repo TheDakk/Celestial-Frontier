@@ -1,0 +1,1 @@
+Parent-authored presence after inspecting the corrected image: absent tail and external ears; four visible limb chains and four pad-bearing feet; no hidden whole chain; both hind legs remain visibly folded, so folded=[hindFar,hindNear]. Rejected posture correction; no fresh landmarks, labels or binding are asserted. This declaration is explicit and not inferred by software.

@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-02T15:41:22.715883+00:00",
+  "deliveryHeadBeforeHandoff": "db3cc11bf905082f55e8d2932f391067c9b6c817",
+  "branch": "openai/mac",
+  "remoteBeforePush": "2739157428d11513444d2f4fe34f1a3be68c2286",
+  "aheadCommitsVerifiedG": 74,
+  "nonGCommits": [],
+  "latestClaudeRead": "C171",
+  "claudeContentMergedThrough": "683d6d58e",
+  "claudeEchoMerge": "818ba677f",
+  "claudeEchoTreeIdentical": true,
+  "claudeRoadmapPrefixSha256": "cc1d240eff7bd6aed31d9e46330ae1d5f981cd3b01d1cc6cb559ee091d3c639c",
+  "greenGateHead": "08ddca65fe9ad360cc2ee6192bb2e4e67b04d3fb",
+  "productOrToolChangesAfterGate": [],
+  "optionalRuntimeRestored": true,
+  "activeNativeReservation": false,
+  "freeBytes": 134758400000,
+  "nextGitAction": "Normal push of openai/mac only; pre-push guard required, no bypass.",
+  "scope": "Signed delivery checkpoint; this record does not pre-claim push success or visual/performance acceptance."
+}

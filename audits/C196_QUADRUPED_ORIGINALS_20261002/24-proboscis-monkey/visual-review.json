@@ -1,0 +1,28 @@
+{
+  "name": "Proboscis Monkey",
+  "masterSha256": "cdd39cb9749eb0880b3db4f448309cf861b7a57bf7a3c334ad30b12acbaae38b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Pendulous male nose, orange-brown back, pale grey limbs/tail and rounded belly present. Four hand/foot endpoints visible, but forearms cross/overlap and the far hand is behind the near wrist rather than separately exposed from its shoulder. Unequal contact heights and hidden far ear remain holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 220,
+      "y0": 336,
+      "x1": 1000,
+      "y1": 921
+    },
+    "margins": {
+      "left": 220,
+      "right": 253,
+      "top": 336,
+      "bottom": 332
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

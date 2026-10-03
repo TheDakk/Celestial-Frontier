@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "storm",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "chain",
+  "abilityName": "Chain Lightning",
+  "material": "forked arcs, charged dust, cloud rupture",
+  "accent": "#ffe06a",
+  "anchors": "storm/final/anchors.json",
+  "anchorsSha256": "4a40b1579f0b341e178deea305b87395fb01839490f82dbf5eb1d22d260c3409",
+  "reviewSheet": "storm/final/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "storm/final/registered/launch.png",
+      "imageSha256": "cf1e1ddc66b11df2391400ebca3295c5a916143ed8cee45f125a3c847682431e",
+      "master": "storm/launch-master.png",
+      "masterSha256": "24b4fbf37a3af504c76e75ea250a1e4674862ad59e6e01a6fcce14d5f26ca56e",
+      "prompt": "storm/launch.prompt.txt",
+      "promptSha256": "3e9a8e0913ce9f7fd0b874e9ca6548f9eaeff449d99c7b1d524275af2b9f193a",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 141,
+        "y": 464,
+        "width": 256,
+        "height": 214
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "storm/final/registered/travel.png",
+      "imageSha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0",
+      "master": "storm/travel-master.png",
+      "masterSha256": "1d0161a236494fcb8bd2637293e89cea7594cb4ee243cd3815f9fb478d1017ee",
+      "prompt": "storm/travel.prompt.txt",
+      "promptSha256": "c28fec6fc561f1eac46a6e52291df0b9f4b835114dfdddefee3722948274625c",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 107,
+        "y": 455,
+        "width": 688,
+        "height": 280
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "storm/final/registered/impact.png",
+      "imageSha256": "3cdfa440d457cbb7b4fe4cf740c0e7cf76b8931fe1ff40d16daa8eda3afe0634",
+      "master": "storm/impact-master.png",
+      "masterSha256": "3bcb16645825ae2179785ce8a632453190b0bbf202ab4197c29425c89074e129",
+      "prompt": "storm/impact.prompt.txt",
+      "promptSha256": "fa02560fb35bfec2dad764e32a74b9bbd06c8a61213d2954831bb8aed2080db2",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 459,
+        "y": 430,
+        "width": 446,
+        "height": 243
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "storm",
+    "sequenceId": "storm-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 23506,
+        "edge": 7932,
+        "fringe": 28,
+        "fringeRatio": 0.0035300050428643467,
+        "accentShare": 0.013144536468073738,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 141,
+          "y": 464,
+          "width": 256,
+          "height": 214
+        }
+      },
+      "travel": {
+        "painted": 50000,
+        "edge": 16567,
+        "fringe": 59,
+        "fringeRatio": 0.003561296553389268,
+        "accentShare": 0.00533109558950564,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 107,
+          "y": 455,
+          "width": 688,
+          "height": 280
+        }
+      },
+      "impact": {
+        "painted": 33540,
+        "edge": 11750,
+        "fringe": 4,
+        "fringeRatio": 0.00034042553191489364,
+        "accentShare": 0.012455516014234875,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 459,
+          "y": 430,
+          "width": 446,
+          "height": 243
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "storm",
+    "anchors": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+    "exitCode": 0,
+    "log": "tests/storm.txt"
+  },
+  "manifestRow": {
+    "theme": "storm",
+    "anchors": "../C132_EFFECTS_20261001/storm/final/anchors.json",
+    "contract": "v4.3"
+  }
+}

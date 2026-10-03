@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.chem.cast.1",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.6,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 76,
+      "requirements": [
+        "ability.chem.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-chem/ability.chem.cast.1.wav",
+      "masterSha256": "0485a38fbc8ed118689f08c503c389c78ee175c248acebdd61ba1e3123c8bcf4",
+      "opus": "masters/ability-chem/ability.chem.cast.1.opus",
+      "opusSha256": "74f799b1ac9deab3efb745e21d346bc312549c755bba7be52abb49c078ddeb86",
+      "previewSha256": "db325839f2b7fb435fc6f242f93c8dc865e3d449a97009254c6cb995fd1d7608",
+      "previewBytes": 57714,
+      "previewUrl": "/__cf-audio-review/ability.chem.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.chem.cast.2",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 77,
+      "requirements": [
+        "ability.chem.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1.6,
+      "master": "masters/ability-chem/ability.chem.cast.2.wav",
+      "masterSha256": "42e77b1afebfa51b6694c562052932551a043c973a845dc10c34ff3e80367a49",
+      "opus": "masters/ability-chem/ability.chem.cast.2.opus",
+      "opusSha256": "d97f7c27a9e4e768a2f53af094ee9abd3eab9b0c39e50db73c4a4120d9e1235d",
+      "previewSha256": "0ee20d0f5643f6410854df0c9d4277af98afeb1224cdd811b13aca1d616639f8",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.chem.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.5,
+      "opusDbTP": -6.5
+    },
+    {
+      "id": "ability.chem.cast.3",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.6374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 78,
+      "requirements": [
+        "ability.chem.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 6.6,
+      "master": "masters/ability-chem/ability.chem.cast.3.wav",
+      "masterSha256": "1e8412c725da3981db5bae973152d0861505cc51785553ff6ebe37e8efddde43",
+      "opus": "masters/ability-chem/ability.chem.cast.3.opus",
+      "opusSha256": "94b0cc0488bb780e007349428bcd149da906b1dea2b88a3df147ce5499e9f3cd",
+      "previewSha256": "040f1509978d89bd5e1ac63b71b1b4bfec1141e59cafa3d8d609cf03acf8e576",
+      "previewBytes": 61304,
+      "previewUrl": "/__cf-audio-review/ability.chem.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.7,
+      "opusDbTP": -5.7
+    },
+    {
+      "id": "ability.chem.impact.1",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.6,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 64,
+      "requirements": [
+        "ability.chem.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 8.2374,
+      "master": "masters/ability-chem/ability.chem.impact.1.wav",
+      "masterSha256": "918520187be7c4078de819cda7456d867c2232073c7067788e75aa4a32d3a2e2",
+      "opus": "masters/ability-chem/ability.chem.impact.1.opus",
+      "opusSha256": "a949da10c895e4650b6c24059afe1efe38d94bf04d76348e1c2281fb6d91280e",
+      "previewSha256": "55a189e80a28efa5bef6f860278101b13264760551442f4d8e0c7df367824ec5",
+      "previewBytes": 57714,
+      "previewUrl": "/__cf-audio-review/ability.chem.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.chem.impact.2",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 65,
+      "requirements": [
+        "ability.chem.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 9.837399999999999,
+      "master": "masters/ability-chem/ability.chem.impact.2.wav",
+      "masterSha256": "71d8f18cb2ab8000117f0d7f576f463cc391c4513f1c67dd744e916022b817ad",
+      "opus": "masters/ability-chem/ability.chem.impact.2.opus",
+      "opusSha256": "fa696648d2f3493864e115373b73ea03fe683170de89042eaa78d19aea2db56d",
+      "previewSha256": "9e6fbf214f1f6ba612749c6e3f05822f2ff8f494415ddfcd9c855ccc0e4350c5",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.chem.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.7,
+      "opusDbTP": -6.7
+    },
+    {
+      "id": "ability.chem.impact.3",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.6374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 66,
+      "requirements": [
+        "ability.chem.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 14.837399999999999,
+      "master": "masters/ability-chem/ability.chem.impact.3.wav",
+      "masterSha256": "b2cc9e2d42949dd36269159ed479e8fa7d74591552ff5b738ec4fb7bee5580b1",
+      "opus": "masters/ability-chem/ability.chem.impact.3.opus",
+      "opusSha256": "f998cb633d9a53cc75767db01a784ecf1c03a106ec00e43b3710c4567ffadf5b",
+      "previewSha256": "ffc1ec6a3266782cc7fd882b5feda048cd4228e84bfe50f8e92377ce26ac09ee",
+      "previewBytes": 61304,
+      "previewUrl": "/__cf-audio-review/ability.chem.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "ability.chem.sustain.1",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.5,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 64,
+      "requirements": [
+        "ability.chem.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 16.4748,
+      "master": "masters/ability-chem/ability.chem.sustain.1.wav",
+      "masterSha256": "db8d9c54a9bf130e4b683372f8cc8701e4c9cc467c84b6fae1e991394a6d5d1f",
+      "opus": "masters/ability-chem/ability.chem.sustain.1.opus",
+      "opusSha256": "3fcf6147795403f680e1c06ff04acb0dbe58cefcc45264795fdfe6d42c5f4a18",
+      "previewSha256": "5240d9397c183cb1affaab8b6bda634fc76823e9385b85ba1a3035b1ee1a7ffb",
+      "previewBytes": 48114,
+      "previewUrl": "/__cf-audio-review/ability.chem.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.chem.sustain.2",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 4.7098,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 65,
+      "requirements": [
+        "ability.chem.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 17.9748,
+      "master": "masters/ability-chem/ability.chem.sustain.2.wav",
+      "masterSha256": "abb551184ad01709aede6bd518d430d3c41186e8bc2985be7990e6a3c8942a06",
+      "opus": "masters/ability-chem/ability.chem.sustain.2.opus",
+      "opusSha256": "2526c4b7b17fe5fed7f07535ba65313424616f1ac5f8990b837bbac388cc8405",
+      "previewSha256": "d504083e990fbf0ee2fc5ad5a62f337ebcc5c2d88ac111292111e52a333bda64",
+      "previewBytes": 452254,
+      "previewUrl": "/__cf-audio-review/ability.chem.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.chem.sustain.3",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.5374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 66,
+      "requirements": [
+        "ability.chem.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 23.6846,
+      "master": "masters/ability-chem/ability.chem.sustain.3.wav",
+      "masterSha256": "2a8dd63661b4e08af3cb72411be3d3fd007564234dde9e5a036c92b52e6f3121",
+      "opus": "masters/ability-chem/ability.chem.sustain.3.opus",
+      "opusSha256": "8b009a9f310cc47c439cfd46feafe6eeb70f08c1f85f075f975b0148f856e33e",
+      "previewSha256": "26ccc9da7fe79be9ee5fd80d1beb1ad6672c973e160358f58d3ec0472a0ecf6b",
+      "previewBytes": 51704,
+      "previewUrl": "/__cf-audio-review/ability.chem.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "ability.chem.release.1",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.6,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 64,
+      "requirements": [
+        "ability.chem.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 25.222,
+      "master": "masters/ability-chem/ability.chem.release.1.wav",
+      "masterSha256": "e70076bb6e6f33a9739f33ab6af05b63e6841d7ecb78c5392ee6e7eb1a1f7edb",
+      "opus": "masters/ability-chem/ability.chem.release.1.opus",
+      "opusSha256": "792ba26d1805f1e722d078d13524a5a112c688432218e3942892ab38717a1d09",
+      "previewSha256": "95dc9bc1bf097f4db1c41e247a68dd324418bc58cf3c6cd95cf494231ce8c546",
+      "previewBytes": 57714,
+      "previewUrl": "/__cf-audio-review/ability.chem.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.chem.release.2",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 65,
+      "requirements": [
+        "ability.chem.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 26.822000000000003,
+      "master": "masters/ability-chem/ability.chem.release.2.wav",
+      "masterSha256": "039fc5a0c6e8384a8317cb7ef18b3c70e05912d75cf052c8b40a8fe9f0b11d38",
+      "opus": "masters/ability-chem/ability.chem.release.2.opus",
+      "opusSha256": "f53905cc8ae3a8755035008380a860fe3def83b43add32c7e3e5924b80185509",
+      "previewSha256": "39ab91307a2ce20f77be873bdc2384cfbb0f67b2f27771b43448ef3b139adad0",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.chem.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.7,
+      "opusDbTP": -6.8
+    },
+    {
+      "id": "ability.chem.release.3",
+      "group": "ability-chem",
+      "kind": "designed",
+      "duration": 0.6374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 66,
+      "requirements": [
+        "ability.chem.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 31.822000000000003,
+      "master": "masters/ability-chem/ability.chem.release.3.wav",
+      "masterSha256": "f30016477d013386666289dab615a2925c583b0d2930e3cd3faf9a60cde3217d",
+      "opus": "masters/ability-chem/ability.chem.release.3.opus",
+      "opusSha256": "429d419fc887789d1c89c5109213ca3b88d20df1ebf393cfaae0f6c23949584e",
+      "previewSha256": "0209a34c0d88a5e08d5d415d3864ef0ca74f9c80836321f214db2ae8a6f31d3b",
+      "previewBytes": 61304,
+      "previewUrl": "/__cf-audio-review/ability.chem.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.9
+    }
+  ],
+  "listeningAccepted": false
+}

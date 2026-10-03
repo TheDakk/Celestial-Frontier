@@ -1,0 +1,25 @@
+{
+  "scope": "Unchanged candidate-10 Civet assets for N6 current-source sentinel; path adapter only",
+  "files": [
+    {
+      "destination": "record.json",
+      "source": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "destination": "binding.json",
+      "source": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/civet.binding.json",
+      "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178"
+    },
+    {
+      "destination": "parts/keyed.png",
+      "source": "audits/C2_PARTS_ATLAS_20260913/civet-v2/keyed.png",
+      "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+    },
+    {
+      "destination": "parts/atlas/civet.png",
+      "source": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/atlas/civet.png",
+      "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+    }
+  ]
+}

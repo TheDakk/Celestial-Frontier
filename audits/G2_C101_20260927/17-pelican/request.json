@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Pelican",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "d39deffb2854bccf7818ce987467da1c4db85adcb83d3d14e0759e8da3fb5098",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "d178132067c125b2ac9034135fb412fcf7079acb",
+  "basePromptSha256": "d9a17e12f5ccef69a06260e88ad3546e9bcf186476604546404ed3098b8a561f",
+  "layoutCompilerSha256": "41cfea38d3f29bf02c2dfca1153b01836d98e05ad20d603dc1451f914b3a7a55",
+  "layoutClarification": "Species identity features FIRST: enormous bill with a stretchy throat pouch slung beneath; heavy body on very short legs; long neck kinked back onto the shoulders. One Earth Pelican. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
+  "contextClarification": "POSE CONTEXT: resting on land with both short webbed feet visible, wings folded and enormous pouched bill intact. Swimming profile is canonical natural behavior; this isolated authoring pose is grounded, no water or scenery."
+}

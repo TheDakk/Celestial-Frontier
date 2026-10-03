@@ -1,0 +1,11 @@
+✔ weather is repeatable by recipe seed, darkens/desaturates fur, preserves inputs/alpha, and covers the entire frame (8.94425ms)
+✔ system-card weather, water, time and light control effects; missing/ambiguous cards fail (2.497958ms)
+✔ weather recipe keeps the accepted finisher and five placements; mat is16% wide and remains one organism (26.771625ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 77.473583

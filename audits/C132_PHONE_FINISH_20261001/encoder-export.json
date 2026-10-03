@@ -1,0 +1,11 @@
+{
+  "schema": "cf.taesd-audit-export/v1",
+  "sourceSha256": "160d90c61c3a5ce50fe2cbe6404b3429f5763772d61b38523cc37e1525b4e19f",
+  "modelSha256": "bd6fb129ea4c75935c2263b931b569e29111ade644207145e65134d189bb92a8",
+  "bytes": 4896003,
+  "nodes": 76,
+  "tensors": 67,
+  "architectureSource": "https://github.com/madebyollin/taesd/blob/main/taesd.py",
+  "license": "MIT",
+  "scope": "Explicit Conv/Relu/Add encoder export; architecture review complete, runtime/reconstruction checks pending."
+}

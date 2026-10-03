@@ -1,0 +1,7 @@
+{
+  "schema": "cf.c186-privacy-correction/v1",
+  "reason": "Parent review caught a literal home path in the local intake stdout log. It was normalized to ~/ before any commit. No authoring, geometry, measurements or code changed. delivery.json is retained as a historical inventory; delivery-v2.json pins final privacy-safe bytes.",
+  "file": "intake01.log",
+  "priorBytesSha256": "969533b64bb3001f58e817af190e3c7ce3ff1ec549b9d5ad692dcc15cc8b1f85",
+  "sanitizedBytesSha256": "789c7f3c040029d60b4dd5cc5f4c31dfd2aac131fec5f7536c3cf4dcec59489f"
+}

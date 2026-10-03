@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Shrimp",
+  "family": "crustacean-small",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "726dba2e2852f7f82a6ea2ac4becedd217fc88088bf08577a69debfe068fbe8c",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "08a9e24c6206f51f43c0bfca71f8b8749faaf1935af2f1ccb4b8268c63637902",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 10,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "one actual shrimp with five pairs of thoracic walking legs, natural abdominal swimmerets, real short antennules and long antennae; no lobster claws or invented appendages",
+  "profileId": "small-crustacean",
+  "authoringCreated": false,
+  "sourceHead": "58506c8d456eec30720953e6fd5c8f358b7d64b7",
+  "basePromptSha256": "b4e46b9cdcb9504982fe65de2509f1bb065a27e8fe21088cc363b04a3388dd7b",
+  "auditCompilerExtension": true,
+  "purpose": "NEW_SPECIALIZED_SOURCE",
+  "templateStatus": "Existing canonical family; audit-only painting vocabulary. No measured semantic presence or admission."
+}

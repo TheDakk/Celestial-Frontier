@@ -1,0 +1,8 @@
+{
+  "signedCommit": "f1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2",
+  "item": "Starfish",
+  "toolReceipt": "a7431b",
+  "verification": "Good git signature; ED25519 SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+  "session": 72509,
+  "rootCauseOfPreviousRefusals": "Unknown; subsequent explicitly requested retry succeeded with unchanged security settings."
+}

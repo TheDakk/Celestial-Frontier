@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tasmanian Devil",
+  "masterSha256": "562041acaf1c4df471239b7921bbd007de68ef868ddbc09106bb236c9736f967",
+  "required": [
+    "black fur with a white chest band"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black fur with a white chest band",
+      "status": "PRESENT",
+      "observed": "Full original: black coat, clear white chest band, paired rounded ears, true tail and four paws. HOLD far forepaw raised and exaggerated open-jaw canine scale; not quiet planted stride."
+    }
+  ]
+}

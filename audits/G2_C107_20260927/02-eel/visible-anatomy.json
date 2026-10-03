@@ -1,0 +1,92 @@
+{
+  "id": "02-eel",
+  "name": "Eel",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "e91d3ccbdf9c4d828715391a4a8cd061c9694c4cf881dfa48e489fa6ad49b44b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 11210,
+    "coreRadius": 12,
+    "bodyBox": {
+      "x0": 92,
+      "y0": 179,
+      "x1": 357,
+      "y1": 239
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0338,
+        "pixels": 379,
+        "box": {
+          "x0": 358,
+          "y0": 191,
+          "x1": 380,
+          "y1": 214
+        },
+        "attach": {
+          "x": 358,
+          "y": 202.5,
+          "relX": 1,
+          "relY": 0.39
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.06
+        },
+        "class": "front",
+        "length": 24.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0695,
+        "pixels": 779,
+        "box": {
+          "x0": 40,
+          "y0": 192,
+          "x1": 91,
+          "y1": 226
+        },
+        "attach": {
+          "x": 91,
+          "y": 214.5,
+          "relX": 0,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": -0.91,
+          "y": -0.41
+        },
+        "class": "rear",
+        "length": 55.7
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 238,
+        "x1": 293,
+        "cx": 265.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

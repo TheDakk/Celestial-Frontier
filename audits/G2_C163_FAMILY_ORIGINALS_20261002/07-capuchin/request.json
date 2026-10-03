@@ -1,0 +1,28 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Capuchin",
+  "family": "primate",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "43ab60c469cd5dbf61a34ab63be73653d035535692803ef6c8c70875afcdec81",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two natural arms with hands and two natural legs with feet, one head, species-correct tail or natural taillessness",
+  "profileId": "primate",
+  "authoringCreated": false,
+  "sourceHead": "1ced0a1fdcecc620779465d1edb434bff201ebee",
+  "basePromptSha256": "553438caa3f38dc067dcb348e2099d64d4ebe95c2e78bb42ff3b7fcc7c00cd19",
+  "batchCompilerSha256": "29b0f44864d164bea7636f71f588dff8ce2313a36c373832002f288bf36d3478",
+  "purpose": "NEW_ORIGINAL",
+  "layoutOverride": null,
+  "layoutOverridePrecedent": null,
+  "compositionCheck": "FINAL COMPOSITION CHECK: the 1254 by 1254 canvas is mostly empty pure magenta. Zoom the complete specimen OUT. Every arm, leg, wing, antenna, tail, tentacle and other part must fit within the central rectangle x=314 through x=940, y=314 through y=940. The rectangle is only an invisible placement guide: DO NOT paint a frame, line, ruler, label or grid. Make the entire animal smaller, never shorten its natural appendages to fit. Preserve detailed painted surfaces.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

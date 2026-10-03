@@ -1,0 +1,95 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "a7dc3342e9783f7fcb47d73d51e62b08deb910cf",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/master.png",
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/authoring.json",
+      "sha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/subject-source.json",
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/presence.json",
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "8b0e4702daf67312cc9dabce27a68125ac830aaa44a5036951865ef7e1de9e9e",
+  "bindingHash": "0cac8c43318fb1c372e760674ebbc9f35aefe608ec8dd74bb48ce7d24d0cf100",
+  "contactEndpoints": [
+    "leg1FarFoot",
+    "leg1NearFoot",
+    "leg2FarFoot",
+    "leg2NearFoot",
+    "leg3FarFoot",
+    "leg3NearFoot",
+    "leg4FarFoot",
+    "leg4NearFoot"
+  ],
+  "shapeJoints": [
+    "cheliceraFar",
+    "cheliceraNear",
+    "leg1FarFoot",
+    "leg1FarKnee",
+    "leg1NearFoot",
+    "leg1NearKnee",
+    "leg2FarFoot",
+    "leg2FarKnee",
+    "leg2NearFoot",
+    "leg2NearKnee",
+    "leg3FarFoot",
+    "leg3FarKnee",
+    "leg3NearFoot",
+    "leg3NearKnee",
+    "leg4FarFoot",
+    "leg4FarKnee",
+    "leg4NearFoot",
+    "leg4NearKnee",
+    "abdomen",
+    "cephalothorax"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/master.png",
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/authoring.json",
+      "sha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/subject-source.json",
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/presence.json",
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+      "unchanged": true
+    }
+  ]
+}

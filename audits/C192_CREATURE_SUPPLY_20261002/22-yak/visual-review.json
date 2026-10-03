@@ -1,0 +1,28 @@
+{
+  "name": "Yak",
+  "masterSha256": "31368a7d864635fa150fcf17d3ac36d46aac7c83cc9921d2197d94440c266840",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separate hoof endpoints below the genuine long dense coat, two curved horns, heavy shoulder profile and full long bushy tail. The coat hides most upper/lower leg paths; four complete leg chains cannot be asserted merely from four hooves. Only the near ear is clear. Natural hair was preserved; reference ownership and any unassigned-paint repair are unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 142,
+      "y0": 315,
+      "x1": 1108,
+      "y1": 905
+    },
+    "margins": {
+      "left": 142,
+      "right": 145,
+      "top": 315,
+      "bottom": 348
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

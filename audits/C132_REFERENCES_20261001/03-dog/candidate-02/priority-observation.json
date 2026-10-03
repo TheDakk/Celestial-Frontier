@@ -1,0 +1,164 @@
+{
+  "id": "03-dog",
+  "masterSha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4",
+  "authoringSha256": "bccf32b4794c4a9b4146f9d059529fd246f2253f01ea7d9a22b5d9c4f13047f4",
+  "scope": "Observed keyed raster occupancy of manual priority polygons; not intake or anatomy/skin/contact/native validation.",
+  "parts": [
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "pixels": 1117
+    },
+    {
+      "id": "hind-near-ankle",
+      "joint": "hindNearAnkle",
+      "pixels": 1207
+    },
+    {
+      "id": "hind-near-knee",
+      "joint": "hindNearKnee",
+      "pixels": 3011
+    },
+    {
+      "id": "hind-near-root",
+      "joint": "hindNearRoot",
+      "pixels": 10849
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "pixels": 921
+    },
+    {
+      "id": "hind-far-ankle",
+      "joint": "hindFarAnkle",
+      "pixels": 1231
+    },
+    {
+      "id": "hind-far-knee",
+      "joint": "hindFarKnee",
+      "pixels": 1290
+    },
+    {
+      "id": "hind-far-root",
+      "joint": "hindFarRoot",
+      "pixels": 5258
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "pixels": 1337
+    },
+    {
+      "id": "fore-near-ankle",
+      "joint": "foreNearAnkle",
+      "pixels": 1847
+    },
+    {
+      "id": "fore-near-knee",
+      "joint": "foreNearKnee",
+      "pixels": 2550
+    },
+    {
+      "id": "fore-near-root",
+      "joint": "foreNearRoot",
+      "pixels": 7568
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "pixels": 1030
+    },
+    {
+      "id": "fore-far-ankle",
+      "joint": "foreFarAnkle",
+      "pixels": 1036
+    },
+    {
+      "id": "fore-far-knee",
+      "joint": "foreFarKnee",
+      "pixels": 1607
+    },
+    {
+      "id": "fore-far-root",
+      "joint": "foreFarRoot",
+      "pixels": 3113
+    },
+    {
+      "id": "ear-near-tip",
+      "joint": "earNearTip",
+      "pixels": 1018
+    },
+    {
+      "id": "ear-near-root",
+      "joint": "earNearRoot",
+      "pixels": 2225
+    },
+    {
+      "id": "ear-far-tip",
+      "joint": "earFarTip",
+      "pixels": 521
+    },
+    {
+      "id": "ear-far-root",
+      "joint": "earFarRoot",
+      "pixels": 1095
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "pixels": 2163
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "pixels": 5661
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "pixels": 14377
+    },
+    {
+      "id": "tail3",
+      "joint": "tail3",
+      "pixels": 7830
+    },
+    {
+      "id": "tail2",
+      "joint": "tail2",
+      "pixels": 5546
+    },
+    {
+      "id": "tail1",
+      "joint": "tail1",
+      "pixels": 6355
+    },
+    {
+      "id": "tail0",
+      "joint": "tail0",
+      "pixels": 2852
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "pixels": 12360
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "pixels": 8342
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "pixels": 324
+    },
+    {
+      "id": "spine",
+      "joint": "spine",
+      "pixels": 41539
+    }
+  ],
+  "empty": []
+}

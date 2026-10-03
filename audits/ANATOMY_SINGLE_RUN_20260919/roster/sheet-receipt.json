@@ -1,0 +1,477 @@
+{
+  "sourceCommit": "29c1b5488088e0eac5a0e763007dafee1db4dbe5",
+  "maximumSubjectsPerSheet": 12,
+  "subjects": 58,
+  "sheets": [
+    {
+      "file": "sheets/clawed-crustacean-01.png",
+      "sha256": "9c11b73ecfcf319614aded4810be585758c1c1f4fce8acac69e97d662760ff01",
+      "profile": "clawed-crustacean",
+      "subjects": [
+        "crab",
+        "crayfish",
+        "fiddler-crab",
+        "freshwater-crab",
+        "hermit-crab",
+        "lobster",
+        "mud-crab",
+        "vent-crab"
+      ],
+      "count": 8
+    },
+    {
+      "file": "sheets/terrestrial-crab-01.png",
+      "sha256": "a1289f3b97ae878f15450dd744d822f19ac311af9f3447da11fb7b2b0a096dc8",
+      "profile": "terrestrial-crab",
+      "subjects": [
+        "coconut-crab"
+      ],
+      "count": 1
+    },
+    {
+      "file": "sheets/small-crustacean-01.png",
+      "sha256": "d57d7c5a3131362b495753dc3c6857250bd4d9b6b75dc9df17d3708295768550",
+      "profile": "small-crustacean",
+      "subjects": [
+        "amphipod",
+        "brine-shrimp",
+        "cave-shrimp",
+        "copepod",
+        "fairy-shrimp",
+        "freshwater-shrimp",
+        "giant-isopod",
+        "isopod",
+        "krill",
+        "prawn",
+        "shrimp",
+        "tadpole-shrimp"
+      ],
+      "count": 12
+    },
+    {
+      "file": "sheets/small-crustacean-02.png",
+      "sha256": "86160c5c9a160be55199387fbeea2c3a83c286b33ee1afa3d69c2aed84967cd9",
+      "profile": "small-crustacean",
+      "subjects": [
+        "vent-shrimp",
+        "water-flea"
+      ],
+      "count": 2
+    },
+    {
+      "file": "sheets/horseshoe-crab-01.png",
+      "sha256": "8d856e431ea1767005f80718e9f6e0aea946889fd0dda4b5530535d349c2e9a0",
+      "profile": "horseshoe-crab",
+      "subjects": [
+        "horseshoe-crab"
+      ],
+      "count": 1
+    },
+    {
+      "file": "sheets/barnacle-01.png",
+      "sha256": "24987bb8c34eba45cc337d2691792402170dbb8ba1ac50f994cdef8d34493ec1",
+      "profile": "barnacle",
+      "subjects": [
+        "barnacle"
+      ],
+      "count": 1
+    },
+    {
+      "file": "sheets/tardigrade-01.png",
+      "sha256": "94b06a130bfa0b1dc1e166fa75a93f1aa31b81eff3190996c1fbfd740df5f839",
+      "profile": "tardigrade",
+      "subjects": [
+        "tardigrade"
+      ],
+      "count": 1
+    },
+    {
+      "file": "sheets/larva-01.png",
+      "sha256": "5eb0fdbb6dbdd371afcddeb0b1baf0f985e00344157cc597b5863d939e70facc",
+      "profile": "larva",
+      "subjects": [
+        "fly-larvae"
+      ],
+      "count": 1
+    },
+    {
+      "file": "sheets/bivalve-01.png",
+      "sha256": "7d11138cc2152edbf610aff1301a5b22a0179fc4453c2fe08e15792549d624a0",
+      "profile": "bivalve",
+      "subjects": [
+        "clam",
+        "giant-clam",
+        "mussel",
+        "oyster",
+        "razor-clam",
+        "scallop"
+      ],
+      "count": 6
+    },
+    {
+      "file": "sheets/land-gastropod-01.png",
+      "sha256": "a461b43fae2ba3afb1288d8b3739543a3fcbb803dd4443405db247d924081643",
+      "profile": "land-gastropod",
+      "subjects": [
+        "banana-slug",
+        "land-snail",
+        "snail"
+      ],
+      "count": 3
+    },
+    {
+      "file": "sheets/water-gastropod-01.png",
+      "sha256": "58fef0f6a00de6585ff8577a799d738f6637b881a554b635ce9e00381649e9c8",
+      "profile": "water-gastropod",
+      "subjects": [
+        "abalone",
+        "chiton",
+        "conch",
+        "cowrie",
+        "freshwater-snail",
+        "limpet",
+        "nudibranch",
+        "sea-snail",
+        "water-snail"
+      ],
+      "count": 9
+    },
+    {
+      "file": "sheets/annelid-land-01.png",
+      "sha256": "e79b43f6fe317fb609e985875437148c226abd9cdb5cb2647e0d6a5a1243d964",
+      "profile": "annelid-land",
+      "subjects": [
+        "earthworm",
+        "ice-worm"
+      ],
+      "count": 2
+    },
+    {
+      "file": "sheets/annelid-water-01.png",
+      "sha256": "cc8c456b26d7ca96c199c6ca87ba0345ac33f9102311292b8ed2a9d3990b1edc",
+      "profile": "annelid-water",
+      "subjects": [
+        "flatworm",
+        "giant-tube-worm",
+        "leech",
+        "marine-worm",
+        "polychaete-worm",
+        "scale-worm",
+        "tube-worm"
+      ],
+      "count": 7
+    },
+    {
+      "file": "sheets/sponge-01.png",
+      "sha256": "ec02887a0ad89e29644afd32e1d38500f03789f63df94597c3ed43ef5b360336",
+      "profile": "sponge",
+      "subjects": [
+        "sponge"
+      ],
+      "count": 1
+    },
+    {
+      "file": "sheets/tunicate-01.png",
+      "sha256": "6e6d0d1d09571b248b3550c9584737e807da554c0ab52f256e8d2b6b3d35962e",
+      "profile": "tunicate",
+      "subjects": [
+        "pyrosome",
+        "salp",
+        "sea-squirt"
+      ],
+      "count": 3
+    }
+  ],
+  "sources": [
+    {
+      "id": "crab",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+      "sha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655"
+    },
+    {
+      "id": "crayfish",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/crayfish.png",
+      "sha256": "82bd837f92af9d977d94b2415708ddeb839ea3384db51680fbe9cba4c293febc"
+    },
+    {
+      "id": "fiddler-crab",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/fiddler-crab.png",
+      "sha256": "c0d34e2d2a7cc64434f28492c4e26c108831141ed3cb129de3b84b2046004b20"
+    },
+    {
+      "id": "freshwater-crab",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/freshwater-crab-master.png",
+      "sha256": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57"
+    },
+    {
+      "id": "hermit-crab",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/hermit-crab.png",
+      "sha256": "be7facae28d244edb34897d7096c9a984e3bfa2abe8613842ac6f0c3033da4e9"
+    },
+    {
+      "id": "lobster",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/lobster.png",
+      "sha256": "d8ac7120b1171eb8e391523beb64df9d990c1314d11df49558524da795b3ac8f"
+    },
+    {
+      "id": "mud-crab",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png",
+      "sha256": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379"
+    },
+    {
+      "id": "vent-crab",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-master.png",
+      "sha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c"
+    },
+    {
+      "id": "coconut-crab",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/coconut-crab-master.png",
+      "sha256": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832"
+    },
+    {
+      "id": "amphipod",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/amphipod.png",
+      "sha256": "80414abffe2007fa63a7ce00ed493ceb52e1ae75797170971807096ba074a4bf"
+    },
+    {
+      "id": "brine-shrimp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/brine-shrimp.png",
+      "sha256": "37786e4b3de0a77449b540cda21928e8222aee82ba4b1569581325b181e4fd91"
+    },
+    {
+      "id": "cave-shrimp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/cave-shrimp.png",
+      "sha256": "062f223c53992999dcd8a12cf12153cc46eb67083c54bd8097905462642ba875"
+    },
+    {
+      "id": "copepod",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/copepod.png",
+      "sha256": "50823932d8a2d53c90b36c67fcd3add5988d913cfdafaea5ec5f4e6b4c2fdbc8"
+    },
+    {
+      "id": "fairy-shrimp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/fairy-shrimp.png",
+      "sha256": "fb95e7a62d5f3feed986d946ab5faf68e815321a00c4f8d5c68516c822b440cf"
+    },
+    {
+      "id": "freshwater-shrimp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/freshwater-shrimp.png",
+      "sha256": "d7c577970a7ef513d44132f1e744cfb5d596fa09f663682e5388badf11a94159"
+    },
+    {
+      "id": "giant-isopod",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/giant-isopod.png",
+      "sha256": "db6ab89c3a3843fc8067e307f357b007fca35741b3aedc9b749ab105bbac11bf"
+    },
+    {
+      "id": "isopod",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/isopod.png",
+      "sha256": "9c76afa79fad2cb0f6e929166471734640777a5cc9674e63ac5f3a5720250706"
+    },
+    {
+      "id": "krill",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/krill.png",
+      "sha256": "155a26a027656499e43213a8405434f3ac9d12fe6cd12d425eb4ca5efb921704"
+    },
+    {
+      "id": "prawn",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/prawn.png",
+      "sha256": "f4f643fe73894114d60cf0ef059f32df185daa1ff40a896b65cad67c6cd58ccc"
+    },
+    {
+      "id": "shrimp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/shrimp.png",
+      "sha256": "39abe6cd3851b0d53e05562d5e5070e676f095c9db38fe5aaa2b3de79a2f8fb7"
+    },
+    {
+      "id": "tadpole-shrimp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/tadpole-shrimp.png",
+      "sha256": "9b00a622cb4d07c9e81133ff9aadcb8f7f95453727f317dcda1a029dd028a6aa"
+    },
+    {
+      "id": "vent-shrimp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/vent-shrimp.png",
+      "sha256": "e8e9a86d34189df9f25fa875409de2b29d140bc9702cb8c494df4a93e688b4c0"
+    },
+    {
+      "id": "water-flea",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/water-flea.png",
+      "sha256": "d49dce271bb9abaa7e87f61945014a237451400e466630efca01c63f7c49c7c5"
+    },
+    {
+      "id": "horseshoe-crab",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/horseshoe-crab.png",
+      "sha256": "566ef5401849e0000822df646b8db0912d221198aa8cb4394d31a7cd637d7715"
+    },
+    {
+      "id": "barnacle",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/barnacle.png",
+      "sha256": "9751b473cd2cf1bfd4fe2835a948272fab8f62cad480d73bf8210dcafab9d84c"
+    },
+    {
+      "id": "tardigrade",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/tardigrade.png",
+      "sha256": "149951bec568c588982711437ea2563c49508f122ae826fa59cfca2156849e46"
+    },
+    {
+      "id": "fly-larvae",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/fly-larvae.png",
+      "sha256": "c9ddcf3b26009df42b79e08cb8fc5ee764912017c0ee33c8d1213d3b69e53369"
+    },
+    {
+      "id": "clam",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/clam.png",
+      "sha256": "2853b7c221452577a26047dc89a4bb7f44b3b384343956b4dc860beebe2796e8"
+    },
+    {
+      "id": "giant-clam",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/giant-clam.png",
+      "sha256": "34890cbd677ed908c6cc83f724dbc2a4a55dfb66493581f608fe76be7d323862"
+    },
+    {
+      "id": "mussel",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/mussel.png",
+      "sha256": "e9517c0330341deebcc93ec8c0d765fe4e1d6cc5144b2158e4d81a0593dd0fad"
+    },
+    {
+      "id": "oyster",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/oyster.png",
+      "sha256": "65fa29cf055422791b253922ce24efbf458329c4443ff12af2f5677b2167f85a"
+    },
+    {
+      "id": "razor-clam",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/razor-clam.png",
+      "sha256": "1df74e18fa777adbd0fe34debd316966e24578b949e34e9e8a37bad22bae2df3"
+    },
+    {
+      "id": "scallop",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/scallop.png",
+      "sha256": "dca5c962bae8ac8d914d841b8fe2784f82e32e0804e6122fea5e6428f361c837"
+    },
+    {
+      "id": "banana-slug",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/banana-slug.png",
+      "sha256": "016132565eaee36861fd0ea9ff909eb360b6f8e25605f7376a04acb8c73c4a9d"
+    },
+    {
+      "id": "land-snail",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/land-snail.png",
+      "sha256": "c4dd033e66fc9a3b53257cfcbccb5c68822dbb69ca2cfc70daffbf997e730760"
+    },
+    {
+      "id": "snail",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/snail.png",
+      "sha256": "d9a5d3c5f0bec1155de0f2d6ac21285f2cb6d791c353cb68df270a97839c702a"
+    },
+    {
+      "id": "abalone",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/abalone.png",
+      "sha256": "d6183fd04a439b860b4f5d64c4beb4bd668d59f75ebd9989cb143771b34478b2"
+    },
+    {
+      "id": "chiton",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/chiton.png",
+      "sha256": "a6a2c33a9217409afeaa50714f3a09763c04c576f9a17ba158abd10685b99c43"
+    },
+    {
+      "id": "conch",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/conch.png",
+      "sha256": "4043fada5a7c9e9b9637a1767fc1812c11f4482d7b204f3567867c305f1330c3"
+    },
+    {
+      "id": "cowrie",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/cowrie.png",
+      "sha256": "dbd85583ea6ecf218ad7297f9aaa87abb1165101d537a3b0bc5c002f64f54806"
+    },
+    {
+      "id": "freshwater-snail",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/freshwater-snail.png",
+      "sha256": "48965baedd3c2d8b04e6b0dd86974d8a55040b1c888c4142a2ff954d85f7b88b"
+    },
+    {
+      "id": "limpet",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/limpet.png",
+      "sha256": "ca64a7695c0c0c84a3828527baa521313a6acb5bab8437b8717a5413c0df43ba"
+    },
+    {
+      "id": "nudibranch",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/nudibranch.png",
+      "sha256": "b2d222f765e12a49a7eee76cfb5658d795bc82ac39d4acb2724e763cd954ba7f"
+    },
+    {
+      "id": "sea-snail",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/sea-snail.png",
+      "sha256": "9e1855d2b8ac2fd1760ff27a5b11caf1d1108d5bc74a69d2e317f9cbff8f6d4c"
+    },
+    {
+      "id": "water-snail",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/water-snail.png",
+      "sha256": "87cb8878704e3e2314cfd375c78b335e250e317d8534decdb35b86018a013477"
+    },
+    {
+      "id": "earthworm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/earthworm.png",
+      "sha256": "4a961fc97b998d9578e3eb27bcc726124b42c5a54c11ad670b4fb5b0bd1dfed7"
+    },
+    {
+      "id": "ice-worm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/ice-worm.png",
+      "sha256": "c67586ebafd1c19fbcdd5841c061ddeaea956a91c6695ef5ca27608e476fa606"
+    },
+    {
+      "id": "flatworm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/flatworm.png",
+      "sha256": "35324a83337a0d97c50cc7df0017a99f03a1a941f2a126834782da613c9fd293"
+    },
+    {
+      "id": "giant-tube-worm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/giant-tube-worm.png",
+      "sha256": "e66f26aff6096c8244fa3fa4c7d5fdf41b94f0e5bf2c16d97099919850951422"
+    },
+    {
+      "id": "leech",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/leech.png",
+      "sha256": "e9e192ce9fb29e1ed59154a7bacd465cb721e28e6083b7f485663cac0434baf7"
+    },
+    {
+      "id": "marine-worm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/marine-worm.png",
+      "sha256": "58bdc087753cdd9ea7ef4e5ced9f535248077ab73a3ca2476583aabd9093928a"
+    },
+    {
+      "id": "polychaete-worm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/polychaete-worm.png",
+      "sha256": "b6d2b610ae1ce37124a676a312089d1e3c54748ae3a2c1425d627e0122f0700c"
+    },
+    {
+      "id": "scale-worm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/scale-worm.png",
+      "sha256": "a984d3f430233fbd0158a7c68bfcea3178ebf92e887731d31e9e264df6b30e42"
+    },
+    {
+      "id": "tube-worm",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/tube-worm.png",
+      "sha256": "195f0b81232453233d6b84e8493a546b19fd69a756b7709c99e20dbbc859a59e"
+    },
+    {
+      "id": "sponge",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/sponge.png",
+      "sha256": "a26787f11855fd61694ce017375c6cc3272846a0ddbfffe5af2759a62658a663"
+    },
+    {
+      "id": "pyrosome",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/pyrosome.png",
+      "sha256": "62ded78dae879f6e9d6a2393aa9aef6e0f665171c1cc812a52227110e36cb749"
+    },
+    {
+      "id": "salp",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/salp.png",
+      "sha256": "38b267ed763abe42002e3bcde7b070688a6e39e9c54593f84a0e5342e922d296"
+    },
+    {
+      "id": "sea-squirt",
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/sea-squirt.png",
+      "sha256": "ac2f0f6fe9d9f20ef071e8b9e1ccc3681a29c1b91a340e26457dfbec216747a4"
+    }
+  ]
+}

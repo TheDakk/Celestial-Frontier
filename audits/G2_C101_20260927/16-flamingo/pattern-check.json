@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Flamingo",
+  "masterSha256": "27eb3be5bbbcc3908a9b8c93f49081f83f0fa3e2f8a65b0a60007a1d8394120c",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

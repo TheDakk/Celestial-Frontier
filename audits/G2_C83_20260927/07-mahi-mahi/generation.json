@@ -1,0 +1,13 @@
+{
+  "id": "07-mahi-mahi",
+  "name": "Mahi-Mahi",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1a6e0046-1362-40be-961f-261afc272c1d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d4582b15b20e2a84c19c6c5bbb23e7923e77119b7a468843523ddef69dcad25a",
+  "bytes": 1299423,
+  "promptSha256": "34e16046e997bb8eff9b5e5d1f12b68eb40cc6b06d3f0cde068e4066ac4e132e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,116 @@
+{
+  "id": "04-pipefish",
+  "name": "Pipefish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f4999c189e177676a7bc8ff7e5a1dbeac7ca5599e5e7a380a2e67959a66c7061",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 4947,
+    "coreRadius": 7,
+    "bodyBox": {
+      "x0": 202,
+      "y0": 188,
+      "x1": 346,
+      "y1": 212
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.394,
+        "pixels": 1949,
+        "box": {
+          "x0": 36,
+          "y0": 190,
+          "x1": 201,
+          "y1": 227
+        },
+        "attach": {
+          "x": 201,
+          "y": 204.5,
+          "relX": -0.01,
+          "relY": 0.69
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.06
+        },
+        "class": "rear",
+        "length": 166.5
+      },
+      {
+        "k": 1,
+        "frac": 0.0465,
+        "pixels": 230,
+        "box": {
+          "x0": 347,
+          "y0": 190,
+          "x1": 384,
+          "y1": 204
+        },
+        "attach": {
+          "x": 347,
+          "y": 196.5,
+          "relX": 1.01,
+          "relY": 0.35
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.15
+        },
+        "class": "front",
+        "length": 37.8
+      },
+      {
+        "k": 2,
+        "frac": 0.0152,
+        "pixels": 75,
+        "box": {
+          "x0": 308,
+          "y0": 210,
+          "x1": 321,
+          "y1": 217
+        },
+        "attach": {
+          "x": 315.2,
+          "y": 210,
+          "relX": 0.79,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -0.17,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 10
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 42,
+        "x1": 55,
+        "cx": 48.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,9 @@
+{
+ "id": "18-boa",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 10.1% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Banteng",
+  "masterSha256": "77104268838f9507fa23a637d5f548730e3fae6fdde38fe837859673fd27187e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: both actual ears separately visible beside the horn roots, four white-stockinged legs, rump patch and full tail. Far-ear repair appears visibly improved. Head turns toward the viewer, and high shoulder ridge/horn proportions need species review. Upper foreleg roots still overlap the torso; no static or native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 300,
+      "y0": 384,
+      "x1": 953,
+      "y1": 869
+    },
+    "margins": {
+      "left": 300,
+      "right": 300,
+      "top": 384,
+      "bottom": 384
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

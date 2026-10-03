@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Gulper Eel",
+  "family": "serpent",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "8933b9c032aefc092ee6290e3f62feb1f2c97dbe617836f42d898e5c84ad6ce5",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs and zero wings; one head, one uninterrupted body and one natural terminal tail tip",
+  "profileId": "eel",
+  "authoringCreated": false,
+  "sourceHead": "4f1742e25cd337f0347909ba8c28a092c587262a",
+  "basePromptSha256": "2119d0b662b8ac3afdf86446dc71277db57364b496adbd9949f545dfc5b348a5",
+  "layoutCompilerSha256": "d86f835ac7feecb6b202613d4ec540ae2ab2f9a386f4f181794a6a6c8025d186",
+  "layoutClarification": "Species identity features FIRST: enormous loose pelican pouch mouth far bigger than the body; whip-thin tail tapering to a luminous tip; pinhead eyes right at the tip of the snout. One Earth Gulper Eel. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: side-on, head RIGHT and true tapering tail LEFT. One low shallow horizontal S-curve whose centreline advances monotonically from tail to head in x. No coils, knots, crossing, U-turn, raised head or hooked terminal tail. Preserve natural trunk thickness, scale patterns, head shape and true tail; expose a rattlesnake rattle only when this species has one. The continuous body stays within the same low ground band.\n\n",
+  "contextClarification": "ANATOMY/POSE CONTEXT: This is an AQUATIC GULPER, not a land snake. Preserve the enormous natural pouch mouth and pinhead eyes, complete whip-thin tail with tiny luminous tip. Scale the whole subject down to fit its full tail; no coils or invented limbs. This prompt is not a measured absence declaration."
+}

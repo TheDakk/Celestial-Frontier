@@ -1,0 +1,13 @@
+{
+  "id": "06-swordfish",
+  "name": "Swordfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-94f2238c-bc92-44f5-b4b8-a39b7e9ed97b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "25cfd6dd1374dffef67cbc81718a4a61f071de2b2fce951f77f275fa6c6a4ecc",
+  "bytes": 1112548,
+  "promptSha256": "59da2ab739ef1cc247d25fdf652cf7e9f0acf152d7630286073d0e6361e0666b",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

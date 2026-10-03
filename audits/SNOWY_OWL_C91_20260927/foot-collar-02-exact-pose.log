@@ -1,0 +1,513 @@
+[
+  {
+    "label": "rest",
+    "error": null,
+    "folds": []
+  },
+  {
+    "label": "stage -0.05",
+    "error": null,
+    "folds": []
+  },
+  {
+    "label": "stage 0",
+    "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7",
+    "folds": [
+      {
+        "triangle": 10,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            617,
+            831.5
+          ],
+          [
+            627,
+            822
+          ],
+          [
+            627,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "triangle": 11,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            617,
+            831.5
+          ],
+          [
+            627,
+            841
+          ],
+          [
+            607,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 12,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            597,
+            851
+          ],
+          [
+            587,
+            841
+          ],
+          [
+            607,
+            841
+          ]
+        ],
+        "pinned": [
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 73,
+        "parts": [
+          "near-foot"
+        ],
+        "xy": [
+          [
+            617,
+            851
+          ],
+          [
+            627,
+            861
+          ],
+          [
+            607,
+            861
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 206,
+        "parts": [
+          "near-shin"
+        ],
+        "xy": [
+          [
+            577,
+            831.5
+          ],
+          [
+            587,
+            822
+          ],
+          [
+            587,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 208,
+        "parts": [
+          "near-shin"
+        ],
+        "xy": [
+          [
+            617,
+            831.5
+          ],
+          [
+            607,
+            822
+          ],
+          [
+            627,
+            822
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          true
+        ]
+      },
+      {
+        "triangle": 210,
+        "parts": [
+          "near-shin"
+        ],
+        "xy": [
+          [
+            597,
+            851
+          ],
+          [
+            607,
+            861
+          ],
+          [
+            587,
+            861
+          ]
+        ],
+        "pinned": [
+          true,
+          false,
+          false
+        ]
+      }
+    ]
+  },
+  {
+    "label": "stage 0.05",
+    "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 8",
+    "folds": [
+      {
+        "triangle": 7,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            597,
+            831.5
+          ],
+          [
+            607,
+            822
+          ],
+          [
+            607,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 9,
+        "parts": [
+          "near-foot"
+        ],
+        "xy": [
+          [
+            597,
+            831.5
+          ],
+          [
+            587,
+            841
+          ],
+          [
+            587,
+            822
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 11,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            617,
+            831.5
+          ],
+          [
+            627,
+            841
+          ],
+          [
+            607,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 12,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            597,
+            851
+          ],
+          [
+            587,
+            841
+          ],
+          [
+            607,
+            841
+          ]
+        ],
+        "pinned": [
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 15,
+        "parts": [
+          "near-foot"
+        ],
+        "xy": [
+          [
+            617,
+            851
+          ],
+          [
+            627,
+            841
+          ],
+          [
+            627,
+            861
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 73,
+        "parts": [
+          "near-foot"
+        ],
+        "xy": [
+          [
+            617,
+            851
+          ],
+          [
+            627,
+            861
+          ],
+          [
+            607,
+            861
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 74,
+        "parts": [
+          "near-foot"
+        ],
+        "xy": [
+          [
+            617,
+            851
+          ],
+          [
+            607,
+            861
+          ],
+          [
+            607,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 208,
+        "parts": [
+          "near-shin"
+        ],
+        "xy": [
+          [
+            617,
+            831.5
+          ],
+          [
+            607,
+            822
+          ],
+          [
+            627,
+            822
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "label": "standalone same-time faint",
+    "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4",
+    "folds": [
+      {
+        "triangle": 15,
+        "parts": [
+          "near-foot"
+        ],
+        "xy": [
+          [
+            617,
+            851
+          ],
+          [
+            627,
+            841
+          ],
+          [
+            627,
+            861
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 69,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            577,
+            851
+          ],
+          [
+            567,
+            861
+          ],
+          [
+            567,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 70,
+        "parts": [
+          "near-foot",
+          "near-shin"
+        ],
+        "xy": [
+          [
+            617,
+            831.5
+          ],
+          [
+            607,
+            841
+          ],
+          [
+            607,
+            822
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "triangle": 74,
+        "parts": [
+          "near-foot"
+        ],
+        "xy": [
+          [
+            617,
+            851
+          ],
+          [
+            607,
+            861
+          ],
+          [
+            607,
+            841
+          ]
+        ],
+        "pinned": [
+          false,
+          false,
+          false
+        ]
+      }
+    ]
+  }
+]

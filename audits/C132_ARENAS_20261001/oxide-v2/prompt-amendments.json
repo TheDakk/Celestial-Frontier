@@ -1,0 +1,17 @@
+{
+  "reason": "Bounded explicit forbidden-element/framing repair; no source-pixel editing",
+  "amendments": [
+    {
+      "scope": "SUBJECT only; every frozen kit block byte-identical",
+      "original": {
+        "path": "audits/C132_ARENAS_20261001/oxide/arena-far.prompt.txt",
+        "sha256": "b48bd6f670e36de940e6baea6968d200a16b027c119ff33259a33a9d7455bf4d"
+      },
+      "current": {
+        "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.prompt.txt",
+        "sha256": "05518d773628e47801044f1f24dd56108763a98c2c07195e96295e86e69ad62d"
+      },
+      "exactSentPromptVerified": true
+    }
+  ]
+}

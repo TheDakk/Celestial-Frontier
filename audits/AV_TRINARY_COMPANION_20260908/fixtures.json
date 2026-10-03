@@ -1,0 +1,91 @@
+{
+  "schema": "cf-trinary-fixtures/v1",
+  "visited": 32,
+  "cellRange": [
+    -5,
+    5
+  ],
+  "sources": {
+    "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff",
+    "port/v2/packages/domain/starcatalog/src/index.ts": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13",
+    "port/v2/packages/domain/rand/src/index.ts": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+  },
+  "fixtures": {
+    "binary": {
+      "galaxy": {
+        "seed": 999,
+        "x": 90,
+        "y": -60
+      },
+      "star": {
+        "seed": 875741432,
+        "x": -209.28883330570534,
+        "y": -130.69015520671383
+      },
+      "cell": {
+        "x": -5,
+        "y": -4
+      },
+      "system": {
+        "kind": "M",
+        "starR": 16,
+        "starCol": "#ff9a6a",
+        "binary": {
+          "sep": 52.63956475216895,
+          "col2": "#ffd9a0",
+          "r2": 8.8
+        },
+        "trinary": null,
+        "planets": 3
+      }
+    },
+    "trinary": {
+      "galaxy": {
+        "seed": 999,
+        "x": 90,
+        "y": -60
+      },
+      "star": {
+        "seed": 2166531614,
+        "x": -145.99268755456433,
+        "y": 22.470132764428854
+      },
+      "cell": {
+        "x": -4,
+        "y": 0
+      },
+      "system": {
+        "kind": "M",
+        "starR": 16,
+        "starCol": "#ff9a6a",
+        "binary": {
+          "sep": 38.8,
+          "col2": "#ffd9a0",
+          "r2": 8.8
+        },
+        "trinary": {
+          "sep": 60.8,
+          "col2": "#ff9a6a",
+          "r2": 6.4
+        },
+        "planets": 4
+      }
+    },
+    "sol": {
+      "galaxy": {
+        "seed": 999,
+        "x": 90,
+        "y": -60
+      },
+      "star": {
+        "seed": 424242,
+        "x": 560,
+        "y": 170
+      },
+      "system": {
+        "binary": null,
+        "trinary": null
+      }
+    }
+  }
+}

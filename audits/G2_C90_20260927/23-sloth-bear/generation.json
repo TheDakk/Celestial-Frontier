@@ -1,0 +1,13 @@
+{
+  "id": "23-sloth-bear",
+  "name": "Sloth Bear",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a629f7ac-0839-4c11-90db-127a3bff395d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5a6816131d62943a1bb0f6b6f89744c0beb3b9b402b10ca6635a0008df38d938",
+  "bytes": 1459584,
+  "promptSha256": "119bf1ffb2485315a953ebb152e23babc3387499026a9f0bf97ab86385b54366",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

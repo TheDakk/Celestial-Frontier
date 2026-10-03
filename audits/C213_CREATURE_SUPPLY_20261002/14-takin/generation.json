@@ -1,0 +1,14 @@
+{
+  "id": "14-takin",
+  "name": "Takin",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-edefe5e9-30b2-47a4-8efd-ed6e51b4b012.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "dca8074553c08211b7b13d133286c1798d15bfc0b7b8834256bdacbd7f7c249e",
+  "bytes": 1727277,
+  "promptSha256": "8375f74573f01b4bea65a69c3b77492553d832735cfc9d50c38f848f59762a89",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

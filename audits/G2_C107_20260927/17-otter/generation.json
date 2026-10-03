@@ -1,0 +1,13 @@
+{
+  "id": "17-otter",
+  "name": "Otter",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-995739a1-f081-495b-b384-e6fbd7750f2a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "27ca21d3c2dbb8d015312ea27d0cc63b8d0490297d4d7de72f5d3a41fdc966e6",
+  "bytes": 1186446,
+  "promptSha256": "fc0cd4ddda125720c5a9ffee43b684d0eb7832091954c03c78107fc3cbc33275",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

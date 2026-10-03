@@ -1,0 +1,57 @@
+{
+  "schema": "cf-u2-post-close-preparation/v1",
+  "baseSource": "ea74425c1c3737d8081d7c4de8e454912812ffd7",
+  "productSource": "3f1578e2e416cf5e566e1f799c16ea0a081ae037",
+  "status": "PASS_PREPARATION_NATIVE_PENDING",
+  "focusedFiles": 7,
+  "focusedTests": 99,
+  "typeScriptPrograms": 3,
+  "legacyFingerprints": 50,
+  "independentSourceReview": "CLEAR, no execution by reviewer",
+  "retainedFailures": [
+    "missing geometry helpers in call-site VM (98/99)",
+    "unchecked fixture indices rejected by TypeScript after99/99 passed"
+  ],
+  "sourceFileSha256": {
+    "port/v2/tools/glassmatrix.mjs": "641eec2704be1068ab2edf09bd81178500f58d252e72be1942b2f32f023752d5",
+    "port/v2/tests/glass-survey-post-close.test.ts": "724b77165dffd2f411488bf781aecc7cb80d322e8866a8640686ce47cfeaa4cf",
+    "port/v2/tests/glass-post-close-geometry.test.ts": "efdf6fdacb874cc927d0d0c8dbe07e6f3d7ed455d6a04080c3db9e0bb90f9450"
+  },
+  "files": [
+    {
+      "file": "cf-u2-post-close-checks-20260907.cjs.gz",
+      "rawBytes": 876,
+      "rawSha256": "775833959c82732f873e785f80a5c75099e674d884d1c3fa93bcdfc3da77b66a",
+      "bytes": 443,
+      "sha256": "2c405a23168f9aef3a5b60ac7c9a9b66679f85086ccc8ad8829dbb70e3740196"
+    },
+    {
+      "file": "cf-u2-run-post-close-20260907.cjs.gz",
+      "rawBytes": 4885,
+      "rawSha256": "408b0130231e80ea5fdf4ff5b697804a8710bf9966dba092ac8c256761c70b57",
+      "bytes": 2042,
+      "sha256": "e15f9370db40ec3f361921cb60fceac69162e480dd8f79ac043ec82b8dac0b98"
+    },
+    {
+      "file": "cf-u2-post-close-checks-20260907.log.gz",
+      "rawBytes": 1711,
+      "rawSha256": "8b5b4ce5617c3a8dfbd9172adfbad343ee4f0576780aab5d657bcb8191d0d7bc",
+      "bytes": 807,
+      "sha256": "14a12f2419dc45af8d56bbb625c427dd1602652f2bf670b0789b38b4f9a8625c"
+    },
+    {
+      "file": "cf-u2-post-close-checks-fixed-20260907.log.gz",
+      "rawBytes": 1421,
+      "rawSha256": "08d3d2061a5f6eb01873deacf82e977957a151100dcd7bd4187b36f36f0b3e07",
+      "bytes": 518,
+      "sha256": "5ebe19a6d5d1c61b96d2fa7c67c3433d818236b999a246b879636b4ab4fa4919"
+    },
+    {
+      "file": "cf-u2-post-close-checks-final-20260907.log.gz",
+      "rawBytes": 1893,
+      "rawSha256": "51ea87b7d856bccc074f8eb8600b1276926ff78c272b4286bd51ed5e2fa06c4c",
+      "bytes": 1036,
+      "sha256": "0be4210d05ca9fe402a4573cbbcc10df64a188820ed1f211852c2a3327ddaa38"
+    }
+  ]
+}

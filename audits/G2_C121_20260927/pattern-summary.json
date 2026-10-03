@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Finch",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Egret",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Stork",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Lark",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Chough",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Ptarmigan",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Raven",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Vulture",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hawk",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Crow",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sparrow",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sandpiper",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Grouse",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Snowy Owl",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Peacock",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Turkey",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bee",
+    "status": "PASS"
+  },
+  {
+    "name": "Wasp",
+    "status": "PASS"
+  },
+  {
+    "name": "Giant Water Bug",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Cockroach",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Stick Insect",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Carrion Beetle",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Water Strider",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Termite",
+    "status": "NOT_REQUIRED"
+  }
+]

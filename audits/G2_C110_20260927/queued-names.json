@@ -1,0 +1,29 @@
+{
+  "names": [
+    "Giraffe",
+    "Zebra",
+    "Kudu",
+    "Impala",
+    "Buffalo",
+    "Wildebeest",
+    "Eland",
+    "Gazelle",
+    "Hartebeest",
+    "Oryx",
+    "Gaur",
+    "Banteng",
+    "Water Buffalo",
+    "Deer",
+    "Antelope",
+    "Reindeer",
+    "Caribou",
+    "Saiga",
+    "Yak",
+    "Takin",
+    "Sheep",
+    "Wild Sheep",
+    "Dromedary Camel",
+    "Bactrian Camel"
+  ],
+  "intent": "Pattern-first new broad Earth quadruped batch; four separate legs, complete natural horns/antlers and true tails; no per-creature approval pause"
+}

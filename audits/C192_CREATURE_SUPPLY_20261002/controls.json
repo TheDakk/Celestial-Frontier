@@ -1,0 +1,99 @@
+{
+  "scope": "Audit extension only; no native execution or biological admission",
+  "sourceSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "auditCompilerSha256": "f2e948709d21fc05c0b88ca79d2186a7cc2eac8ffc7f2d3ba6574126de82bffb",
+  "controls": [
+    {
+      "name": "Production bytes unchanged and exact transform replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Clam exact canonical route, truthful requested leg count and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Clam mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Clam wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Prawn exact canonical route, truthful requested leg count and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Prawn mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Prawn wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Shrimp exact canonical route, truthful requested leg count and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Shrimp mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Shrimp wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Snail exact canonical route, truthful requested leg count and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Snail mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Snail wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged quadruped",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged biped-bird",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged serpent",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged insect",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged fish",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged primate",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged myriapod",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged cephalopod",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged flyer-membrane",
+      "status": "PASS"
+    },
+    {
+      "name": "Production compiler continues refusing specialized source route",
+      "status": "PASS"
+    }
+  ]
+}

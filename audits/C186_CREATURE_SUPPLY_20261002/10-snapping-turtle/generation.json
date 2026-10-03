@@ -1,0 +1,14 @@
+{
+  "id": "10-snapping-turtle",
+  "name": "Snapping Turtle",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-332c0437-44e6-43d4-837e-ceb6892d05a4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff",
+  "bytes": 1389792,
+  "promptSha256": "0f0f4e7eed70eff79a8b369f6e782e409b9b69295b04245d5d6472f10fb711c2",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

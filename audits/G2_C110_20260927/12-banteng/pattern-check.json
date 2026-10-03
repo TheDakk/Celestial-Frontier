@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Banteng",
+  "masterSha256": "1b08beb7f1762eed8ba898c27fd25cee401e45c8b8a7442bd29f21fd29915a0c",
+  "required": [
+    "white band above the muzzle"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white band above the muzzle",
+      "status": "PRESENT",
+      "observed": "Full original: white rump, white lower legs, white muzzle band, crescent horns and bald forehead plate, complete short tufted tail, four hooves. HOLD far ear hidden behind horns and upper foreleg overlap; no absence declaration."
+    }
+  ]
+}

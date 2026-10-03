@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c168-primate-repaint-request/v1",
+  "id": "capuchin",
+  "tool": "image_gen.imagegen",
+  "purpose": "ONE_BOUNDED_SOURCE_POSE_REPAIR",
+  "editTarget": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/master.png",
+  "editTargetSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "basePrompt": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/prompt.txt",
+  "basePromptSha256": "43ab60c469cd5dbf61a34ab63be73653d035535692803ef6c8c70875afcdec81",
+  "promptSha256": "78cba8bd2d16feccdae723b6cf68671a39b6f2af36a0f895623f1974576e22ef",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "transparentBackground": false,
+  "maxGenerations": 1,
+  "noNative": true,
+  "qualityAccepted": false
+}

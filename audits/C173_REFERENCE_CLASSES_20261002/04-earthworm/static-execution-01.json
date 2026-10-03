@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "static",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01",
+    "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/static-01.json"
+  ],
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "helperUnchanged": true,
+  "exitCode": 1,
+  "signal": null,
+  "log": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/static-01.log",
+  "logSha256": "d35922bbeb3d028982fdcdf4b23c04bb09bf9f64bee845471a8ae44b5f7546e8",
+  "nativeRuns": 0
+}

@@ -1,0 +1,10 @@
+{
+ "id": "04-anole-framing-v2",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-far-root (hindFarRoot) covers 25% paint (reference 100%)",
+  "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+ ],
+ "semanticPresence": null
+}

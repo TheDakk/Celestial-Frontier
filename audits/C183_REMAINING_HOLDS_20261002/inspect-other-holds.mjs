@@ -1,0 +1,9 @@
+import fs from 'node:fs';import {createHash} from 'node:crypto';import {setup} from '../C172_SHARED_HEAD_SPIKE_20261002/publication.mjs';import {createSourceJoinProbe,assessSourceJoinContinuity} from '../../port/v2/tools/quadruped-proof/source-join-continuity.mjs';
+const base='audits/C183_REMAINING_HOLDS_20261002',json=p=>JSON.parse(fs.readFileSync(p)),sha=b=>createHash('sha256').update(b).digest('hex'),rows=[];
+for(const input of json('audits/C172_SHARED_HEAD_SPIKE_20261002/inputs.json').rows.filter(r=>r.id!=='crow')){
+ const reportPath='audits/SPIKE_REFILM_20261002/'+input.id+'/report.json',report=json(reportPath),native={...report.gates,turn:report.gates.turns[3],stillTime:report.stills.find(s=>s.file==='turn3-hit-idle-90.png').ms},s=setup({fit:input.fit,native}),probe=createSourceJoinProbe({record:s.record,binding:s.binding,atlas:{width:s.atlas.width,height:s.atlas.height,rgba:s.atlas.data}}),sides=[];
+ for(const side of ['left','right']){const frame=s.publish(side,native.stillTime-native.turn.offsetMs-native.turn.beats.reactionStart);const m=assessSourceJoinContinuity(probe,frame.positions);sides.push({side,joins:m.joins,excluded:m.excluded});}
+ rows.push({id:input.id,fit:input.fit,report:reportPath,reportSha256:sha(fs.readFileSync(reportPath)),source:s.record.source,recordSha256:sha(fs.readFileSync(input.fit+'/record.json')),bindingSha256:sha(fs.readFileSync(input.fit+'/binding.json')),sides});
+ console.log(JSON.stringify({id:input.id,largest:sides.map(s=>({side:s.side,rows:s.excluded.slice().sort((a,b)=>b.maxGapPx-a.maxGapPx).slice(0,5)}))}));
+}
+fs.writeFileSync(base+'/other-holds-measurement.json',JSON.stringify({schema:'cf.c183-other-boundary-observation/v1',scope:'Current-motion browser-free target held-pose composition for both sides; left is a mirrored target comparison, not the actual left attacker idle. No native validation or source correction.',rows},null,2)+'\n',{flag:'wx'});

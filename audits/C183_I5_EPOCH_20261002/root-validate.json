@@ -1,0 +1,5 @@
+{
+  "command": "node tools/validate.js",
+  "exitCode": 0,
+  "durationSeconds": 11.995
+}

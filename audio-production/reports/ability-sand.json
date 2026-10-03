@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.sand.cast.1",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/1c230f2b1c7461d4-nri-SandhillCranesDENA.mp3",
+          "sha256": "1c230f2b1c7461d43b5d5eeef105305b0695d1f1c37f6c9afc69528feff89f03",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.3035
+        }
+      ],
+      "synthNote": 73,
+      "requirements": [
+        "ability.sand.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-sand/ability.sand.cast.1.wav",
+      "masterSha256": "a1c25302718cd4617fb796e8c6539bdc4a5ec04d3a42dd799d28b26ee2713e32",
+      "opus": "masters/ability-sand/ability.sand.cast.1.opus",
+      "opusSha256": "8b9928a766cc68ac37886633e9b5e41b931989ed3777ecfe1c915a28097580af",
+      "previewSha256": "58870702cf6066cfb7ce442358ea9c6e5fd37fe225df5bbb8296c4b318cbbf7a",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.4,
+      "opusDbTP": -19.6
+    },
+    {
+      "id": "ability.sand.cast.2",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/23371e93ed2dc6c4-yell-YELLFLBCSACR20075171.mp3",
+          "sha256": "23371e93ed2dc6c43cfe8ada4125a2f15bcff19946e9efe969c8ca03caa60df8",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 24.011563
+        }
+      ],
+      "synthNote": 74,
+      "requirements": [
+        "ability.sand.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 5,
+      "master": "masters/ability-sand/ability.sand.cast.2.wav",
+      "masterSha256": "7254cb9efa2338881e0aa7ef5727adfe25c8c05e1a115c62b393077ed46b627f",
+      "opus": "masters/ability-sand/ability.sand.cast.2.opus",
+      "opusSha256": "565c20a50050b9447623b972a96b24a63df1643058c42746d03e70e2d5d1b452",
+      "previewSha256": "490b31c0cdb474653481c183759c6327a82fdf9e19815e02eb2ddba7873ee090",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.5,
+      "opusDbTP": -20.6
+    },
+    {
+      "id": "ability.sand.cast.3",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/68e523c632291677-yell-020102BlackSandBasinBlackSandPoolImplodingBubblesBinaural0101.mp3",
+          "sha256": "68e523c632291677a19534689b004b9aebceb4ce4c739b000daf495107455bef",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 41.76475
+        }
+      ],
+      "synthNote": 75,
+      "requirements": [
+        "ability.sand.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 10,
+      "master": "masters/ability-sand/ability.sand.cast.3.wav",
+      "masterSha256": "5b493b0dcfdbb1ff54d10f5ca00500523d02c731989ebd3d7f17d114c9a1f472",
+      "opus": "masters/ability-sand/ability.sand.cast.3.opus",
+      "opusSha256": "f4b6c7838784606ea995c60c72195ef03995443e3361bd32b679f9f63774465a",
+      "previewSha256": "b73dff7c29bf3976f57f14bd2186f7dce8f7b9b0e7cdaeacaa10e4a5d3931bb9",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.4,
+      "opusDbTP": -34.5
+    },
+    {
+      "id": "ability.sand.impact.1",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/1c230f2b1c7461d4-nri-SandhillCranesDENA.mp3",
+          "sha256": "1c230f2b1c7461d43b5d5eeef105305b0695d1f1c37f6c9afc69528feff89f03",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.3035
+        }
+      ],
+      "synthNote": 61,
+      "requirements": [
+        "ability.sand.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 15,
+      "master": "masters/ability-sand/ability.sand.impact.1.wav",
+      "masterSha256": "9f16133e6a7329b5a770235225d0876032e03b0ed9c28a7968c956c7239eecca",
+      "opus": "masters/ability-sand/ability.sand.impact.1.opus",
+      "opusSha256": "463e0343d1943f058db5a8d91f1a9bf400c25ca6e66c9b8d084a380a3ba590e9",
+      "previewSha256": "4b97350212e0d631cb19372ac648807ac91c718eab81696621d9a83dc827704b",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.8,
+      "opusDbTP": -18.7
+    },
+    {
+      "id": "ability.sand.impact.2",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/23371e93ed2dc6c4-yell-YELLFLBCSACR20075171.mp3",
+          "sha256": "23371e93ed2dc6c43cfe8ada4125a2f15bcff19946e9efe969c8ca03caa60df8",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 24.011563
+        }
+      ],
+      "synthNote": 62,
+      "requirements": [
+        "ability.sand.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 20,
+      "master": "masters/ability-sand/ability.sand.impact.2.wav",
+      "masterSha256": "be82836779746be180f3c0a38d6e8eca69ed1749e2719ccdebbea40046e4c222",
+      "opus": "masters/ability-sand/ability.sand.impact.2.opus",
+      "opusSha256": "73edb4f3fea746900efba4057b83c37a8f912745fd4bab1d602d649627057ce8",
+      "previewSha256": "82881af5ea99513ca5f46e6e0eaadd6a979a4f16cb36aefee03712d37ba7b2a1",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.5,
+      "opusDbTP": -20.6
+    },
+    {
+      "id": "ability.sand.impact.3",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/68e523c632291677-yell-020102BlackSandBasinBlackSandPoolImplodingBubblesBinaural0101.mp3",
+          "sha256": "68e523c632291677a19534689b004b9aebceb4ce4c739b000daf495107455bef",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 41.76475
+        }
+      ],
+      "synthNote": 63,
+      "requirements": [
+        "ability.sand.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 25,
+      "master": "masters/ability-sand/ability.sand.impact.3.wav",
+      "masterSha256": "6907d73ee405673ba786f13f31df96fed9e0062889c8e04260a5f94cdde71f97",
+      "opus": "masters/ability-sand/ability.sand.impact.3.opus",
+      "opusSha256": "14188be214fc6311785cd16c2ff6f601066f125fcfb72696f4e263360e5bac90",
+      "previewSha256": "a364e3b9d070c52cd19e878d40fc00f6113cae5fffe84f3b57f7dde3a9a02dde",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.2,
+      "opusDbTP": -34.3
+    },
+    {
+      "id": "ability.sand.sustain.1",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 6.3035,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/1c230f2b1c7461d4-nri-SandhillCranesDENA.mp3",
+          "sha256": "1c230f2b1c7461d43b5d5eeef105305b0695d1f1c37f6c9afc69528feff89f03",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.3035
+        }
+      ],
+      "synthNote": 61,
+      "requirements": [
+        "ability.sand.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 30,
+      "master": "masters/ability-sand/ability.sand.sustain.1.wav",
+      "masterSha256": "ef7cfe181bd7b1abc74f54ac7117dfa35ac60fc5686e2c19be76f6c970d4e5d5",
+      "opus": "masters/ability-sand/ability.sand.sustain.1.opus",
+      "opusSha256": "08bc10aecfaa4fae0a88289e96273fd7e80bf379f054528ee7f6a5006fba7f83",
+      "previewSha256": "b2b98e28c0f6ae70a069be912bf76f4134744f79c85eca717b90a21d16462833",
+      "previewBytes": 605250,
+      "previewUrl": "/__cf-audio-review/ability.sand.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.8,
+      "opusDbTP": -18.7
+    },
+    {
+      "id": "ability.sand.sustain.2",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/23371e93ed2dc6c4-yell-YELLFLBCSACR20075171.mp3",
+          "sha256": "23371e93ed2dc6c43cfe8ada4125a2f15bcff19946e9efe969c8ca03caa60df8",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 24.011563
+        }
+      ],
+      "synthNote": 62,
+      "requirements": [
+        "ability.sand.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 37.3035,
+      "master": "masters/ability-sand/ability.sand.sustain.2.wav",
+      "masterSha256": "81f793ce3ef0c08f01df6f8d37e72b3afeb673ebf591009568b26baecfe790de",
+      "opus": "masters/ability-sand/ability.sand.sustain.2.opus",
+      "opusSha256": "287c5934c0cf638fbff3bdf442d5728fc218c6f0580d290f38bd2f883ad955fd",
+      "previewSha256": "35d3c9d48b6655cc1d248622d5c1db1fdf249afd35eee049c206b2e6f07a770c",
+      "previewBytes": 768114,
+      "previewUrl": "/__cf-audio-review/ability.sand.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.4,
+      "opusDbTP": -16.3
+    },
+    {
+      "id": "ability.sand.sustain.3",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/68e523c632291677-yell-020102BlackSandBasinBlackSandPoolImplodingBubblesBinaural0101.mp3",
+          "sha256": "68e523c632291677a19534689b004b9aebceb4ce4c739b000daf495107455bef",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 41.76475
+        }
+      ],
+      "synthNote": 63,
+      "requirements": [
+        "ability.sand.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 46.3035,
+      "master": "masters/ability-sand/ability.sand.sustain.3.wav",
+      "masterSha256": "92146234e0b20e1810287111827cdaaa7da26c8e6ba2fae3905c50bc4fd9974e",
+      "opus": "masters/ability-sand/ability.sand.sustain.3.opus",
+      "opusSha256": "3dab4522202760ad19ab13b08853aef05af8b29fcab956269dcc5383d6486900",
+      "previewSha256": "0850e189f788f40646baa2d370d8d344ce723e0d7008deac800f62c5e48f467e",
+      "previewBytes": 768114,
+      "previewUrl": "/__cf-audio-review/ability.sand.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -31.8,
+      "opusDbTP": -31.8
+    },
+    {
+      "id": "ability.sand.release.1",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/1c230f2b1c7461d4-nri-SandhillCranesDENA.mp3",
+          "sha256": "1c230f2b1c7461d43b5d5eeef105305b0695d1f1c37f6c9afc69528feff89f03",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 6.3035
+        }
+      ],
+      "synthNote": 61,
+      "requirements": [
+        "ability.sand.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 55.3035,
+      "master": "masters/ability-sand/ability.sand.release.1.wav",
+      "masterSha256": "3b2dd7614f18be6b2b1690f12948cad25dc544a6217681f1f9f0db0195834389",
+      "opus": "masters/ability-sand/ability.sand.release.1.opus",
+      "opusSha256": "36cb46e5c46b8af801fa13d89ec01eea8ce664756b45c06277ce3f5f58496055",
+      "previewSha256": "4d0679c5899a4b4abdf1e0515402be1dac296b99a35df8fc663e547433bac391",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.5,
+      "opusDbTP": -18.6
+    },
+    {
+      "id": "ability.sand.release.2",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/23371e93ed2dc6c4-yell-YELLFLBCSACR20075171.mp3",
+          "sha256": "23371e93ed2dc6c43cfe8ada4125a2f15bcff19946e9efe969c8ca03caa60df8",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 24.011563
+        }
+      ],
+      "synthNote": 62,
+      "requirements": [
+        "ability.sand.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 60.3035,
+      "master": "masters/ability-sand/ability.sand.release.2.wav",
+      "masterSha256": "28c319ff1d03471b87eaee27bcf4095c73cb4195f91c153164a55c12f87a49b2",
+      "opus": "masters/ability-sand/ability.sand.release.2.opus",
+      "opusSha256": "f755a23a91277ddc0851e6375120e88b99a7248d39bbaa2b80e7db17ef4f5225",
+      "previewSha256": "d8d9f5a07ac3762d8390bd6d21c6baafe2ecbda4c785832a9a26d4a40ca5e2b0",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.5,
+      "opusDbTP": -20.6
+    },
+    {
+      "id": "ability.sand.release.3",
+      "group": "ability-sand",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/68e523c632291677-yell-020102BlackSandBasinBlackSandPoolImplodingBubblesBinaural0101.mp3",
+          "sha256": "68e523c632291677a19534689b004b9aebceb4ce4c739b000daf495107455bef",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 41.76475
+        }
+      ],
+      "synthNote": 63,
+      "requirements": [
+        "ability.sand.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 65.3035,
+      "master": "masters/ability-sand/ability.sand.release.3.wav",
+      "masterSha256": "f2ef92aa716799dbb1560fc6adbbbf1c97432141f575c520b3a701f826613e85",
+      "opus": "masters/ability-sand/ability.sand.release.3.opus",
+      "opusSha256": "d953ab35d90dffdf5b25cd1a9f6777c094283708eaaa4e8052d4c40eb330bb0f",
+      "previewSha256": "7b52634628949a2a41ec91c4c70d8a73de842da4409ddc06809213bb93a1aa9c",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.sand.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.4,
+      "opusDbTP": -34.3
+    }
+  ],
+  "listeningAccepted": false
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Water Beetle",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "75c1cf20f9949f9af3abbe8b1ecda9fbc9f9ba94608b8ef917b9c25fdeb44103",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "b0033c88df9b013dd720992ac8777bf951626f27",
+  "basePromptSha256": "e99614e543326913de050ee49b81816e611aa588d45084acfc79700ab0b45ddb",
+  "layoutCompilerSha256": "fb0c44f8c7e9c0bd08dcc81f97818b29f912db7278ffdf70b77666bddd488199",
+  "layoutClarification": "Species identity features FIRST: smooth oval domed wing cases; flattened hair-fringed hind legs used as oars; short clubbed antennae on a tucked head. One Earth Water Beetle. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: strict side profile, head RIGHT. All SIX thoracic legs visible in three near/far pairs, each pair offset so the shafts and tarsi are readable from their real attachments. Preserve the full natural abdomen at LEFT. Natural adult wing resting position overrides a generic folded-wing request: dragonfly wings held out flat, damselfly wings closed over back, mayfly wings upright. No invented vertebrate tail, extra legs or hidden-paint declaration.\n\n"
+}

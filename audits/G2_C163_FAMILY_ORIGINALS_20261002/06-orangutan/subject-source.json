@@ -1,0 +1,81 @@
+{
+  "name": "Orangutan",
+  "family": "primate",
+  "species": {
+    "name": "Orangutan",
+    "aspect": 1.1,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "shaggy long orange-red hair",
+      "enormous arm span with short bowed legs",
+      "wide cheek flanges on adult males"
+    ]
+  },
+  "genome": {
+    "seed": 465020877,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 12,
+    "body": 2,
+    "loco": 10,
+    "trait": 0,
+    "size": 2,
+    "diet": 3,
+    "head": 9,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 0,
+    "detail": 4,
+    "accent": 11,
+    "temper": 1,
+    "sense": 5,
+    "repro": 6,
+    "life": 2,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Orangutan"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Orangutan\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"465020877\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "index": 9,
+  "profile": {
+    "id": "primate",
+    "names": [
+      "Gorilla",
+      "Chimpanzee",
+      "Orangutan",
+      "Capuchin",
+      "Howler Monkey",
+      "Spider Monkey",
+      "Tamarin",
+      "Macaque",
+      "Langur",
+      "Baboon",
+      "Monkey",
+      "Lemur",
+      "Gibbon",
+      "Mandrill",
+      "Marmoset",
+      "Aye-Aye",
+      "Proboscis Monkey"
+    ],
+    "candidateTemplates": [
+      "primate"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "punch",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

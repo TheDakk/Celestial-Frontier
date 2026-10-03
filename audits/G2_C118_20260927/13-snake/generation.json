@@ -1,0 +1,13 @@
+{
+  "id": "13-snake",
+  "name": "Snake",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-65a1dcf1-ad24-44b8-962e-0e1d7ade11bb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1af237e7293e897fe4c75e4a112983f2501a5de25b4f24873f943e2c8ace0cab",
+  "bytes": 1029932,
+  "promptSha256": "cdf663776b814893ec69c9447fbc468cd43d61e97cd6446005a6f3a9666ba64f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

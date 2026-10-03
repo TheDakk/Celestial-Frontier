@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Vine Snake",
+  "family": "serpent",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "bbb58df4fdbfbe9864b7cfff65f2f571ad58630fbba8f0b972e16f270225b2cb",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs and zero wings; one head, one uninterrupted body and one natural terminal tail tip",
+  "profileId": "snake",
+  "authoringCreated": false,
+  "sourceHead": "e8e2a0671ceb2b41a68bcf7bd0e1b20257cbe288"
+}

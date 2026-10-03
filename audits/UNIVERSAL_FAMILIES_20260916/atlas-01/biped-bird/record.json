@@ -1,0 +1,147 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "synthetic:biped-bird",
+    "seed": 659713,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "family": "bird",
+  "geometry": {
+    "cutoutAssetHash": "0c12f02b39f0d855a4a9fa8d704c17cf20b0d26384d808777f69309bdb84b954",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.85,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.46,
+      0.48
+    ],
+    "pelvis": [
+      0.42,
+      0.5
+    ],
+    "spine": [
+      0.5,
+      0.47
+    ],
+    "chest": [
+      0.58,
+      0.45
+    ],
+    "neck0": [
+      0.64,
+      0.38
+    ],
+    "neck1": [
+      0.68,
+      0.3
+    ],
+    "head": [
+      0.72,
+      0.24
+    ],
+    "beak": [
+      0.8,
+      0.25
+    ],
+    "legFarKnee": [
+      0.42,
+      0.62
+    ],
+    "legFarAnkle": [
+      0.38,
+      0.74
+    ],
+    "legFarFoot": [
+      0.46,
+      0.85
+    ],
+    "wingFarRoot": [
+      0.52,
+      0.42
+    ],
+    "wingFarTip": [
+      0.32,
+      0.4
+    ],
+    "legNearKnee": [
+      0.44,
+      0.64
+    ],
+    "legNearAnkle": [
+      0.4,
+      0.76
+    ],
+    "legNearFoot": [
+      0.48,
+      0.87
+    ],
+    "wingNearRoot": [
+      0.54,
+      0.44
+    ],
+    "wingNearTip": [
+      0.34,
+      0.42
+    ],
+    "tailFan": [
+      0.3,
+      0.52
+    ]
+  },
+  "materials": {
+    "surface": "feathered",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "biped-bird-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.044721359549995836,
+      "spine": 0.08544003745317534,
+      "chest": 0.08246211251235315,
+      "neck0": 0.09219544457292891,
+      "neck1": 0.08944271909999163,
+      "head": 0.07211102550927974,
+      "beak": 0.08062257748298557,
+      "legFarKnee": 0.12,
+      "legFarAnkle": 0.12649110640673514,
+      "legFarFoot": 0.13601470508735444,
+      "legNearKnee": 0.14142135623730953,
+      "legNearAnkle": 0.12649110640673514,
+      "legNearFoot": 0.1360147050873544,
+      "wingFarRoot": 0.06708203932499365,
+      "wingFarTip": 0.2009975124224178,
+      "wingNearRoot": 0.04123105625617654,
+      "wingNearTip": 0.2009975124224178,
+      "tailFan": 0.1216552506059644
+    },
+    "measures": {
+      "body": 0.16763054614240208,
+      "bone-min": 0.04123105625617654,
+      "bone-max": 0.2009975124224178,
+      "leg/torso:legFar": 2.281838365957187,
+      "leg/torso:legNear": 2.40962746365011,
+      "wing/torso": 1.5992285291469372
+    }
+  },
+  "recipeHash": "2dae54193e5786fa965c0be39deb7a8dd719720fc25a0d8152de7ea58ac26a5b"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "10-lark",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches biped-bird better (0.0163 < 0.0248)",
+  "wrong-family: quadruped matches clearly better (0.0131 < 0.0248)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,13 @@
+{
+  "id": "10-oryx",
+  "name": "Oryx",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a9bd1b20-f385-411c-aaf5-459870780ed8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ddc7622531bda4aa07ffe53b54fb7c2820004e5a4a55a41ff55f7f2ad2623e17",
+  "bytes": 1196361,
+  "promptSha256": "e63237ca9d531b0d0e2752df8529c0e818985f36d707af42bb0f02f1477874ed",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

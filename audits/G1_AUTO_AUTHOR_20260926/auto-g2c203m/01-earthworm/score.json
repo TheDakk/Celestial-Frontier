@@ -1,0 +1,9 @@
+{
+ "id": "01-earthworm",
+ "family": "annelid",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family annelid"
+ ],
+ "semanticPresence": null
+}

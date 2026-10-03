@@ -1,0 +1,126 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "synthetic:insect",
+    "seed": 659715,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "family": "insect",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.8,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.55
+    ],
+    "thorax": [
+      0.56,
+      0.53
+    ],
+    "head": [
+      0.66,
+      0.5
+    ],
+    "mandible": [
+      0.72,
+      0.53
+    ],
+    "abdomen": [
+      0.36,
+      0.56
+    ],
+    "legFrontFarKnee": [
+      0.66,
+      0.62
+    ],
+    "legFrontFarFoot": [
+      0.7,
+      0.75
+    ],
+    "legMidFarKnee": [
+      0.56,
+      0.66
+    ],
+    "legMidFarFoot": [
+      0.58,
+      0.8
+    ],
+    "legHindFarKnee": [
+      0.46,
+      0.64
+    ],
+    "legHindFarFoot": [
+      0.4,
+      0.78
+    ],
+    "antennaFar": [
+      0.74,
+      0.4
+    ],
+    "wingFar": [
+      0.36,
+      0.44
+    ],
+    "legFrontNearKnee": [
+      0.68,
+      0.64
+    ],
+    "legFrontNearFoot": [
+      0.72,
+      0.77
+    ],
+    "legMidNearKnee": [
+      0.58,
+      0.68
+    ],
+    "legMidNearFoot": [
+      0.6,
+      0.82
+    ],
+    "legHindNearKnee": [
+      0.48,
+      0.66
+    ],
+    "legHindNearFoot": [
+      0.42,
+      0.8
+    ],
+    "antennaNear": [
+      0.76,
+      0.42
+    ],
+    "wingNear": [
+      0.38,
+      0.46
+    ]
+  },
+  "materials": {
+    "surface": "chitinous",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "insect-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "reason": "Original open-pose intake passed static but source topology inspection found jaw|neck-root as a non-nearest observation-only boundary. Correct jaw ownership before consuming native attempt.",
+  "previous": "audits/PYTHON_OPEN_POSE_20260923/fit-01",
+  "change": "Only jaw polygon left boundary 1120 -> 1148; no landmark, runtime or numerical-profile change",
+  "previousStatic": "audits/PYTHON_OPEN_POSE_20260923/static-01.json"
+}

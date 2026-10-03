@@ -1,0 +1,13 @@
+{
+  "id": "12-grebe",
+  "name": "Grebe",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-13873a12-55ef-49f8-b978-c014b93f5f15.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "797e24e24e593ee0c068b6d5263bcf1c1a9a1ef47b81bb7430ec6989cc304e24",
+  "bytes": 1208403,
+  "promptSha256": "618ca269c44e90fe9b54e1ea3ec32de203cd0c4d8e071ff6d11378e8f732ff89",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

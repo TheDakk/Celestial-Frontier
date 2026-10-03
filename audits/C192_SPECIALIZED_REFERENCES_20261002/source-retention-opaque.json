@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c192-source-retention/v1",
+  "writerSha256": "d3a9c2776a5d66bb18d9cb6e4a72a460527d3ed29382c8b0d4efcb60ffd2a643",
+  "rows": [
+    {
+      "id": "08-prawn-opaque",
+      "masterSha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "09-shrimp-opaque",
+      "masterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    }
+  ]
+}

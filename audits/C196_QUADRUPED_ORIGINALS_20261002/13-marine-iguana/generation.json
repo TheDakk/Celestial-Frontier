@@ -1,0 +1,14 @@
+{
+  "id": "13-marine-iguana",
+  "name": "Marine Iguana",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ff4b569e-964b-47c0-8baf-37fc9c6b221d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9200fbcb9b42baa95175a0d23e2358332aef0fe19a4e5d5ba7d5fbebcb36116f",
+  "bytes": 1223207,
+  "promptSha256": "71e787c1c2fc314ff60d7da5be135024e139493a858759fa631c9b535b3d7527",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

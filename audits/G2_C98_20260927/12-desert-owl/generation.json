@@ -1,0 +1,13 @@
+{
+  "id": "12-desert-owl",
+  "name": "Desert Owl",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2c397b3b-119c-4f28-8cfd-b90fc5e85a5b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d78a10a729388a63a73e621907c6ede3c3dcdef477f0c26dfe7cce0f85b2cc1c",
+  "bytes": 1238376,
+  "promptSha256": "c0cbdd60a380fa58f18a0b3c53a94cf421ad36431a1920bd13445d8a917692a8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

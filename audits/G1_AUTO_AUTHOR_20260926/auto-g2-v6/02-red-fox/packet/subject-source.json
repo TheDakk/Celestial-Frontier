@@ -1,0 +1,48 @@
+{
+  "name": "Red Fox",
+  "family": "quadruped",
+  "species": {
+    "name": "Red Fox",
+    "aspect": 2.3,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "enormous bushy white-tipped brush tail",
+      "black stockings on the legs",
+      "sharp pointed ears and narrow muzzle"
+    ]
+  },
+  "genome": {
+    "seed": 880284868,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 8,
+    "body": 11,
+    "loco": 0,
+    "trait": 16,
+    "size": 5,
+    "diet": 0,
+    "head": 1,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 0,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 3,
+    "detail": 7,
+    "accent": 1,
+    "temper": 3,
+    "sense": 2,
+    "repro": 7,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Red Fox"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Red Fox\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"880284868\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "index": 156
+}

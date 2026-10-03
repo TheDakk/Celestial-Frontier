@@ -1,0 +1,94 @@
+{
+  "schema": "cf.c132-arena-pack-cap-observation/v1",
+  "productHead": "06e0b0f6072c9859be4a8f0b9fddb0e3a1be8c93",
+  "currentWorkerSha256": "d7e968a21dd49035abd351bc6ce7bf3d4ef78d9dd572bae4836219a42789dbfe",
+  "batchSha256": "2dd1bc527c80a43da5666512ba52402d437c3b4dfff8c00d99ddb1ea0f8af2f2",
+  "currentShippedPackBytes": 68325367,
+  "pending20ArenaRuntimeBytes": 131844864,
+  "combinedLowerBoundBytes": 200170231,
+  "limitBytes": 134217728,
+  "overCapLowerBoundBytes": 65952503,
+  "rows": [
+    {
+      "id": "freshwater-lake-v2",
+      "runtimeBytes": 7048714
+    },
+    {
+      "id": "coral",
+      "runtimeBytes": 7179509
+    },
+    {
+      "id": "dunesea",
+      "runtimeBytes": 6148041
+    },
+    {
+      "id": "tundra",
+      "runtimeBytes": 6964889
+    },
+    {
+      "id": "jungle-v2",
+      "runtimeBytes": 7278167
+    },
+    {
+      "id": "savanna-v2",
+      "runtimeBytes": 6548740
+    },
+    {
+      "id": "marsh",
+      "runtimeBytes": 6822031
+    },
+    {
+      "id": "karst-cave",
+      "runtimeBytes": 6677737
+    },
+    {
+      "id": "archipelago-v2",
+      "runtimeBytes": 6503800
+    },
+    {
+      "id": "mangrove-v2",
+      "runtimeBytes": 7203714
+    },
+    {
+      "id": "volcisle",
+      "runtimeBytes": 6905221
+    },
+    {
+      "id": "packice-v2",
+      "runtimeBytes": 5887172
+    },
+    {
+      "id": "stormsea-v2",
+      "runtimeBytes": 6446338
+    },
+    {
+      "id": "canyon",
+      "runtimeBytes": 6579919
+    },
+    {
+      "id": "swamp-v2",
+      "runtimeBytes": 6988774
+    },
+    {
+      "id": "glacier",
+      "runtimeBytes": 6441548
+    },
+    {
+      "id": "opensea",
+      "runtimeBytes": 6236370
+    },
+    {
+      "id": "abyssal",
+      "runtimeBytes": 5582746
+    },
+    {
+      "id": "cryogeyser-v2",
+      "runtimeBytes": 6247989
+    },
+    {
+      "id": "blueice",
+      "runtimeBytes": 6153445
+    }
+  ],
+  "scope": "Read-only byte sum of the current built asset table plus 20 new unregistered triplets; excludes additional recipe and expanded-worker bytes, so the combined figure is a lower bound. No registration, budget or product change."
+}

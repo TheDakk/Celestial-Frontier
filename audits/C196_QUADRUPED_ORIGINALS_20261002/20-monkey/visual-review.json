@@ -1,0 +1,28 @@
+{
+  "name": "Monkey",
+  "masterSha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Brown capuchin-like monkey with pale face, dark crown, grasping hands/feet and a complete curling tail. Four endpoints visible but rightmost hand is lifted/curled, so four planted contacts are not established. Far ear hidden and upper chains partly occluded. Retain source as a first generic-monkey painting, not a fit.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 256,
+      "y0": 351,
+      "x1": 989,
+      "y1": 913
+    },
+    "margins": {
+      "left": 256,
+      "right": 264,
+      "top": 351,
+      "bottom": 340
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

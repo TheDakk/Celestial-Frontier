@@ -1,0 +1,231 @@
+{
+  "id": "c183-reference-sea-squirt",
+  "family": "sessile-filter",
+  "landmarksPx": {
+    "root": [
+      634,
+      1039
+    ],
+    "base": [
+      645,
+      971
+    ],
+    "body": [
+      630,
+      684
+    ],
+    "crown": [
+      670,
+      397
+    ],
+    "aperture": [
+      613,
+      220
+    ]
+  },
+  "groundLineY": 0.8716108452950558,
+  "materials": {
+    "surface": "translucent"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          631,
+          1035
+        ],
+        [
+          638,
+          1035
+        ],
+        [
+          638,
+          1043
+        ],
+        [
+          631,
+          1043
+        ]
+      ]
+    },
+    {
+      "id": "aperture",
+      "joint": "aperture",
+      "layer": "near",
+      "polygonPx": [
+        [
+          505,
+          151
+        ],
+        [
+          668,
+          149
+        ],
+        [
+          705,
+          199
+        ],
+        [
+          708,
+          262
+        ],
+        [
+          681,
+          294
+        ],
+        [
+          536,
+          295
+        ],
+        [
+          511,
+          244
+        ]
+      ]
+    },
+    {
+      "id": "crown",
+      "joint": "crown",
+      "layer": "near",
+      "polygonPx": [
+        [
+          474,
+          256
+        ],
+        [
+          722,
+          250
+        ],
+        [
+          733,
+          381
+        ],
+        [
+          761,
+          295
+        ],
+        [
+          862,
+          298
+        ],
+        [
+          899,
+          367
+        ],
+        [
+          890,
+          453
+        ],
+        [
+          851,
+          474
+        ],
+        [
+          818,
+          506
+        ],
+        [
+          750,
+          465
+        ],
+        [
+          665,
+          461
+        ],
+        [
+          543,
+          469
+        ],
+        [
+          461,
+          433
+        ]
+      ]
+    },
+    {
+      "id": "base",
+      "joint": "base",
+      "layer": "near",
+      "polygonPx": [
+        [
+          431,
+          904
+        ],
+        [
+          501,
+          919
+        ],
+        [
+          570,
+          924
+        ],
+        [
+          666,
+          929
+        ],
+        [
+          741,
+          916
+        ],
+        [
+          803,
+          886
+        ],
+        [
+          859,
+          917
+        ],
+        [
+          870,
+          1110
+        ],
+        [
+          409,
+          1110
+        ],
+        [
+          400,
+          983
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "body",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independent anchored Sea Squirt source; both siphons preserved under the existing coarse template",
+    "limitations": [
+      "Both real siphon openings are retained. The larger top opening is the aperture control; the smaller lateral opening remains attached to the coarse crown region. The current template cannot independently animate both siphons.",
+      "Basal anchoring tissue is not invented feet or locomotor limbs.",
+      "The unusually prominent internal basket lattice, highly glossy translucent surface and root-like basal tissue remain biological/style review holds.",
+      "Hidden channels or internal anatomy are not reconstructed. A different canonical subject from Sponge does not by itself establish reference admission."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  }
+}

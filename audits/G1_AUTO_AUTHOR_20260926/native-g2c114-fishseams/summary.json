@@ -1,0 +1,147 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/pilots/g2c114-eligible.json",
+  "author": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c114",
+  "rows": [
+    {
+      "id": "01-forest-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Forest Elephant"
+    },
+    {
+      "id": "02-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Elephant"
+    },
+    {
+      "id": "03-asian-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Asian Elephant"
+    },
+    {
+      "id": "04-african-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "African Elephant"
+    },
+    {
+      "id": "05-rhinoceros",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rhinoceros"
+    },
+    {
+      "id": "06-hippopotamus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hippopotamus"
+    },
+    {
+      "id": "07-polar-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Polar Bear"
+    },
+    {
+      "id": "08-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bear"
+    },
+    {
+      "id": "09-wild-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Pig"
+    },
+    {
+      "id": "10-rat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rat"
+    },
+    {
+      "id": "11-cow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cow"
+    },
+    {
+      "id": "12-bull",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bull"
+    },
+    {
+      "id": "13-horse",
+      "status": "SKIPPED_NONFISH",
+      "name": "Horse"
+    },
+    {
+      "id": "14-sun-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sun Bear"
+    },
+    {
+      "id": "15-grizzly-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Grizzly Bear"
+    },
+    {
+      "id": "16-gerenuk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gerenuk"
+    },
+    {
+      "id": "17-tahr",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tahr"
+    },
+    {
+      "id": "18-arctic-hare",
+      "status": "SKIPPED_NONFISH",
+      "name": "Arctic Hare"
+    },
+    {
+      "id": "19-blobfish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Blobfish",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/19-blobfish/fit",
+      "sourceMasterSha256": "234cefa2764b977c96e11f16dcf58101012ba991031f66cb600f8d7d7cf4f0cd",
+      "sourceStaticSha256": "732d6f4851a627a90912435c2f621df27dd0781c066c32eb37ec01c3b4e77f82",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/19-blobfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/19-blobfish/native"
+    },
+    {
+      "id": "20-tripod-fish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Tripod Fish",
+      "error": "ENOENT: no such file or directory, open '/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/20-tripod-fish/static.json'"
+    },
+    {
+      "id": "21-monkfish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Monkfish",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/21-monkfish/fit",
+      "sourceMasterSha256": "29301339103a396b6860d8fb681bf851934a9278b9653385b441cc1cfbb5ba15",
+      "sourceStaticSha256": "d962b28962d6e9d66192dabbd717db7da2fb17ac439498105964d1263472562f",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/21-monkfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/21-monkfish/native"
+    },
+    {
+      "id": "22-loon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Loon"
+    },
+    {
+      "id": "23-water-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Beetle"
+    },
+    {
+      "id": "24-diving-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Diving Beetle"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

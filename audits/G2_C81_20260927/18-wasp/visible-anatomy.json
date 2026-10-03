@@ -1,0 +1,120 @@
+{
+  "id": "18-wasp",
+  "name": "Wasp",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5d02375c2ff62ad538a6a5253d3b5b2bd626fd7e18001152058d325fa8bcf27d",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15097,
+    "coreRadius": 14,
+    "bodyBox": {
+      "x0": 102,
+      "y0": 146,
+      "x1": 182,
+      "y1": 219
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0923,
+        "pixels": 1393,
+        "box": {
+          "x0": 82,
+          "y0": 138,
+          "x1": 166,
+          "y1": 169
+        },
+        "attach": {
+          "x": 145.7,
+          "y": 150.7,
+          "relX": 0.55,
+          "relY": 0.06
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.06
+        },
+        "class": "front",
+        "length": 66.2
+      },
+      {
+        "k": 1,
+        "frac": 0.5939,
+        "pixels": 8966,
+        "box": {
+          "x0": 125,
+          "y0": 150,
+          "x1": 366,
+          "y1": 282
+        },
+        "attach": {
+          "x": 183,
+          "y": 171.9,
+          "relX": 1.01,
+          "relY": 0.36
+        },
+        "dir": {
+          "x": 0.91,
+          "y": 0.41
+        },
+        "class": "front",
+        "length": 213.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0304,
+        "pixels": 459,
+        "box": {
+          "x0": 72,
+          "y0": 192,
+          "x1": 119,
+          "y1": 229
+        },
+        "attach": {
+          "x": 104.6,
+          "y": 211.4,
+          "relX": 0.03,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.05
+        },
+        "class": "rear",
+        "length": 37.9
+      }
+    ],
+    "byClass": {
+      "front": 2,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 142,
+        "x1": 158,
+        "cx": 149.9
+      },
+      {
+        "x0": 258,
+        "x1": 271,
+        "cx": 264.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

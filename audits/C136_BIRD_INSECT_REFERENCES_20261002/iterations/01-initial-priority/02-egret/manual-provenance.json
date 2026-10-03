@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "fbcde72daf7c15afec6898e839b893bd6e757eeddb7edc938fa28ce5a756f0b1",
+  "authoringSha256": "1b86266d37fd863251e7fc53ee582916f42603955c7b870c6e70d39b76de562e",
+  "observationSource": "audits/C136_BIRD_INSECT_REFERENCES_20261002/manual-observations.mjs",
+  "observationSha256": "65ea4a827827add2b77a6acd84743354f4d20216d751c4768c15776905a86d98",
+  "sourcePacket": "audits/G2_C121_20260927/02-egret",
+  "origin": "Independent manual full-size observation; no coordinates read from another authoring, fit or reference.",
+  "limitations": [
+    "Far wing is exposed by a targeted pose edit; its partly occluded shoulder attachment and near/far depth are manual interpretations requiring independent intake and motion review.",
+    "The two hocks, lower legs and toe fans are visibly distinct; individual toe-tip heights differ, so common ground contact is not certified.",
+    "Long breeding-feather fringes, crown filaments and overlap between near wing and body remain island and skin-partition risks."
+  ],
+  "admission": "CANDIDATE_UNMEASURED: unchanged intake, static, native and reference-pool controls required."
+}

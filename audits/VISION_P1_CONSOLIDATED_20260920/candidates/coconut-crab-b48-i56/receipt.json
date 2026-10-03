@@ -1,0 +1,79 @@
+{
+  "boundaryStep": 48,
+  "interiorStep": 56,
+  "source": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04",
+  "partsUnchanged": true,
+  "atlasSha256": "0dd9a34e031346c04829ca9b897ec1264695506e98734cf415a7e952d26836b5",
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 57,
+        "distancePx": 15.297058540778355,
+        "supports": [
+          663
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 38,
+        "distancePx": 10.124228365658293,
+        "supports": [
+          1013
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 64,
+        "distancePx": 15.787653403846946,
+        "supports": [
+          780
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 59,
+        "distancePx": 13.509256086106225,
+        "supports": [
+          1153
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 90,
+        "distancePx": 11.045361017187261,
+        "supports": [
+          938
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 14,
+        "distancePx": 8.000000000000114,
+        "supports": [
+          1185
+        ]
+      }
+    ],
+    "sourceBindingHash": "d7dc8f1d53fc7279b84274f0f97a066ad814d702f06a2dcd95c02f7c22736a86",
+    "sourceVertices": 1294,
+    "vertices": 1613,
+    "sharedSupports": 280,
+    "pins": 816,
+    "independentSurfaceParts": 21,
+    "sourceJoins": 20,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 15,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

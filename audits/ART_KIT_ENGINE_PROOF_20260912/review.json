@@ -1,0 +1,128 @@
+{
+  "schema": "cf.kit-engine-review.v4",
+  "qualityAccepted": false,
+  "dimensions": {
+    "width": 1024,
+    "height": 576
+  },
+  "elapsedMs": 425706.84999999404,
+  "sessions": {
+    "text": 1,
+    "encode": 1,
+    "denoise": 1,
+    "decode": 1
+  },
+  "measurements": [
+    {
+      "name": "Civet",
+      "elapsedMs": 68264.32499998808,
+      "tokenCount": 1824,
+      "sequence": 1824
+    },
+    {
+      "name": "Persimmon",
+      "elapsedMs": 62968.48000001907,
+      "tokenCount": 1738,
+      "sequence": 1744
+    },
+    {
+      "name": "Platypus",
+      "elapsedMs": 62494.04500001669,
+      "tokenCount": 1812,
+      "sequence": 1824
+    },
+    {
+      "name": "Frog",
+      "elapsedMs": 61348.625,
+      "tokenCount": 1792,
+      "sequence": 1792
+    },
+    {
+      "name": "Devil's Club",
+      "elapsedMs": 59983.3900000155,
+      "tokenCount": 1737,
+      "sequence": 1744
+    },
+    {
+      "name": "Cranberry",
+      "elapsedMs": 60017.12000000477,
+      "tokenCount": 1730,
+      "sequence": 1744
+    },
+    {
+      "name": "finisher",
+      "elapsedMs": 47589.685000002384,
+      "tokenCount": 1860,
+      "sequence": 1872
+    }
+  ],
+  "boxes": [
+    {
+      "name": "Civet",
+      "x": 660.48,
+      "y": 333.6569491525423,
+      "width": 153.6,
+      "height": 109.86305084745763,
+      "preFinisherBounds": true,
+      "postFinisherIdentityAccepted": false
+    },
+    {
+      "name": "Persimmon",
+      "x": 25.60000000000001,
+      "y": 225.18568421052635,
+      "width": 215.04,
+      "height": 224.09431578947368,
+      "preFinisherBounds": true,
+      "postFinisherIdentityAccepted": false
+    },
+    {
+      "name": "Platypus",
+      "x": 337.91999999999996,
+      "y": 371.49470790378007,
+      "width": 204.8,
+      "height": 123.86529209621995,
+      "preFinisherBounds": true,
+      "postFinisherIdentityAccepted": false
+    },
+    {
+      "name": "Frog",
+      "x": 220.16,
+      "y": 445.68,
+      "width": 71.68,
+      "height": 55.440000000000005,
+      "preFinisherBounds": true,
+      "postFinisherIdentityAccepted": false
+    },
+    {
+      "name": "Devil's Club",
+      "x": 808.96,
+      "y": 337.3511111111111,
+      "width": 163.84,
+      "height": 169.5288888888889,
+      "preFinisherBounds": true,
+      "postFinisherIdentityAccepted": false
+    },
+    {
+      "name": "Cranberry",
+      "x": 291.84000000000003,
+      "y": 428.5976632302405,
+      "width": 112.64,
+      "height": 89.80233676975945,
+      "preFinisherBounds": true,
+      "postFinisherIdentityAccepted": false
+    }
+  ],
+  "note": "Boxes reflect placement before the finisher, not segmentation after it. All comparison pixels are native-size; originals are untouched.",
+  "artifacts": [
+    {
+      "name": "painting-boxes.png",
+      "bytes": 1398226,
+      "sha256": "541ee2e21dfb7a2ed549746078a7859ac8e38cee319da3491f12c84288606c5c"
+    },
+    {
+      "name": "painting-beside-living-worlds.png",
+      "bytes": 8595910,
+      "sha256": "9ee83af27ea2aa108e22b93937f32a11477cdc6812f8fd3d0959deb11d8cbb3e"
+    }
+  ]
+}

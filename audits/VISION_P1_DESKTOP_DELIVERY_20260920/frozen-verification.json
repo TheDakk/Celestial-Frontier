@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "filesChecked": 310,
+  "changedFiles": [],
+  "boundaryStep": 24,
+  "interiorStep": 56,
+  "IC3": "FROZEN until IC-4 passes the five accepted fits",
+  "captureCount": 4,
+  "unchangedNativeRetries": 0
+}

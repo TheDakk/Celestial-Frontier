@@ -1,0 +1,138 @@
+{
+  "id": "23-carrion-beetle",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "52ab03a1d448e18b7d45026f78ca59e2620ab5eab3655d64ade59a57ce5751df",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 9212,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 145,
+      "y0": 162,
+      "x1": 263,
+      "y1": 213
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1195,
+        "pixels": 1101,
+        "box": {
+          "x0": 264,
+          "y0": 164,
+          "x1": 321,
+          "y1": 218
+        },
+        "attach": {
+          "x": 264,
+          "y": 185,
+          "relX": 1.01,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.29
+        },
+        "class": "front",
+        "length": 65.9
+      },
+      {
+        "k": 1,
+        "frac": 0.1486,
+        "pixels": 1369,
+        "box": {
+          "x0": 107,
+          "y0": 185,
+          "x1": 191,
+          "y1": 264
+        },
+        "attach": {
+          "x": 157.4,
+          "y": 208,
+          "relX": 0.1,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": -0.71,
+          "y": 0.71
+        },
+        "class": "limb-down",
+        "length": 75.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0624,
+        "pixels": 575,
+        "box": {
+          "x0": 240,
+          "y0": 203,
+          "x1": 295,
+          "y1": 261
+        },
+        "attach": {
+          "x": 250,
+          "y": 203,
+          "relX": 0.89,
+          "relY": 0.8
+        },
+        "dir": {
+          "x": 0.45,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 73.4
+      },
+      {
+        "k": 3,
+        "frac": 0.087,
+        "pixels": 801,
+        "box": {
+          "x0": 166,
+          "y0": 213,
+          "x1": 244,
+          "y1": 268
+        },
+        "attach": {
+          "x": 211.6,
+          "y": 213.6,
+          "relX": 0.56,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.27,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 71
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 166,
+        "x1": 179,
+        "cx": 172.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

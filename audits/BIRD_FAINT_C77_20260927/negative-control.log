@@ -1,0 +1,93 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts (12 tests | 4 failed) 2367ms
+   × authors c59-08-vulture faint against painted supports without changing limbs or timing 22ms
+   × authors c56-15-dove faint against painted supports without changing limbs or timing 19ms
+   × authors 02-pigeon faint against painted supports without changing limbs or timing 20ms
+   × authors 04-hawk-v2 faint against painted supports without changing limbs or timing 19ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c59-08-vulture faint against painted supports without changing limbs or timing
+AssertionError: expected 68 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 68
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:33:74
+     31| it.each(['c59-08-vulture','c56-15-dove','02-pigeon','04-hawk-v2'])('au…
+     32|  const f=fixtures(name),before=buildTimeline(f.base,'faint',f.base.ide…
+     33|  expect(failures(f,before)).toBeGreaterThan(0);expect(failures(f,after…
+       |                                                                          ^
+     34|  expect(after.notes.some(n=>n.startsWith('grounded-bird:painted-faint-…
+     35|  expect(after.phases).toEqual(before.phases);expect(after.durationMs).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c56-15-dove faint against painted supports without changing limbs or timing
+AssertionError: expected 45 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 45
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:33:74
+     31| it.each(['c59-08-vulture','c56-15-dove','02-pigeon','04-hawk-v2'])('au…
+     32|  const f=fixtures(name),before=buildTimeline(f.base,'faint',f.base.ide…
+     33|  expect(failures(f,before)).toBeGreaterThan(0);expect(failures(f,after…
+       |                                                                          ^
+     34|  expect(after.notes.some(n=>n.startsWith('grounded-bird:painted-faint-…
+     35|  expect(after.phases).toEqual(before.phases);expect(after.durationMs).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors 02-pigeon faint against painted supports without changing limbs or timing
+AssertionError: expected 37 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 37
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:33:74
+     31| it.each(['c59-08-vulture','c56-15-dove','02-pigeon','04-hawk-v2'])('au…
+     32|  const f=fixtures(name),before=buildTimeline(f.base,'faint',f.base.ide…
+     33|  expect(failures(f,before)).toBeGreaterThan(0);expect(failures(f,after…
+       |                                                                          ^
+     34|  expect(after.notes.some(n=>n.startsWith('grounded-bird:painted-faint-…
+     35|  expect(after.phases).toEqual(before.phases);expect(after.durationMs).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors 04-hawk-v2 faint against painted supports without changing limbs or timing
+AssertionError: expected 58 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 58
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:33:74
+     31| it.each(['c59-08-vulture','c56-15-dove','02-pigeon','04-hawk-v2'])('au…
+     32|  const f=fixtures(name),before=buildTimeline(f.base,'faint',f.base.ide…
+     33|  expect(failures(f,before)).toBeGreaterThan(0);expect(failures(f,after…
+       |                                                                          ^
+     34|  expect(after.notes.some(n=>n.startsWith('grounded-bird:painted-faint-…
+     35|  expect(after.phases).toEqual(before.phases);expect(after.durationMs).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 8 passed (12)
+   Start at  04:23:02
+   Duration  2.68s (transform 151ms, setup 0ms, import 198ms, tests 2.37s, environment 0ms)
+

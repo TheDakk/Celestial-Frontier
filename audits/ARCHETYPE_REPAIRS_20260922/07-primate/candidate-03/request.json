@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "promptPath": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/prompt.txt",
+  "promptSha256": "2643647c4953576706e6c76550ddd3181610a99bfd68c6ecc3071a38bf2b00c9",
+  "referenceRole": "approved Discovery Atlas style only; fresh repaint, original pose deliberately not supplied",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "sourcePrompt": "audits/ARCHETYPE_SPRINT_20260922/07-primate/prompt.txt",
+  "sourcePromptSha256": "36a0fd3382091550c1c0983029c408ec9caddfe518d9e079712bd008c0acd7b0",
+  "change": "Replace two low-stance instructions, append explicit balanced hind-leg correction; retained kit, genome and contract inventory unchanged."
+}

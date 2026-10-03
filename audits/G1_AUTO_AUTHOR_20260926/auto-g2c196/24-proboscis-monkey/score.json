@@ -1,0 +1,10 @@
+{
+ "id": "24-proboscis-monkey",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0099 < 0.0162)",
+  "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+ ],
+ "semanticPresence": null
+}

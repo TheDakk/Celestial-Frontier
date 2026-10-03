@@ -1,0 +1,35 @@
+{
+  "creatureId": "c196-mussel-islands",
+  "parts": [
+    {
+      "name": "hinge.png",
+      "path": "parts/hinge.png",
+      "sha256": "c1db1e1a49111c4faa07c3c369207b9fd214a622acef03f4472f0c7b3be85a48"
+    },
+    {
+      "name": "foot.png",
+      "path": "parts/foot.png",
+      "sha256": "c20fdca9f828ffb5dad5cf8e080aa502de9c64f6490784e644792fc7ca5abd60"
+    },
+    {
+      "name": "siphon.png",
+      "path": "parts/siphon.png",
+      "sha256": "7f76bef0a66694ad6ac41af97af62b388f5ac7933cb85eb5b2089cc50db66716"
+    },
+    {
+      "name": "mantle.png",
+      "path": "parts/mantle.png",
+      "sha256": "29beeb8dedf4e5635841b869c7751af05b633af12e9c93842593648461778aee"
+    },
+    {
+      "name": "valvefar.png",
+      "path": "parts/valvefar.png",
+      "sha256": "afb19c1818f7eabef0312d50d24298ac5094f4ec09da868db00f4f20a69ffbdc"
+    },
+    {
+      "name": "valvenear.png",
+      "path": "parts/valvenear.png",
+      "sha256": "6f6cc0ec7563e5e84f4aa4b72cf90c18cffa538c3c165f25c7d6505e71fdd1ef"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.c163-native-run/v1",
+  "head": "25e40029b8bc31967711641d7484cd97f247cd89",
+  "endHead": "25e40029b8bc31967711641d7484cd97f247cd89",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C179 fixed rotations original C12 4x",
+    "--",
+    "node",
+    "audits/C132_EFFECTS_20261001/native-runner.mjs",
+    "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02",
+    "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11",
+    "audits/C163_C12_FIXED_ROTATIONS_20261002/native-4x-01",
+    "audits/C132_C12_20261001/battle-script.json"
+  ],
+  "env": {
+    "CF_CPU_THROTTLE": "4",
+    "CF_PROOF_SOURCE_OVERRIDES": "audits/C163_C12_FIXED_ROTATIONS_20261002/source-overrides.json"
+  },
+  "exitCode": 0,
+  "durationSeconds": 20.455
+}

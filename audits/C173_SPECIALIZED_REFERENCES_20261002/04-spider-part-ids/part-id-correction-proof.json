@@ -1,0 +1,88 @@
+{
+  "schema": "cf.c173-part-id-correction/v1",
+  "predecessor": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider",
+  "predecessorAuthoringSha256": "2c8dbbec427b2bfa545e609646dc91e298d6944615e30bc7041d04601a6b3bf1",
+  "authoringSha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3",
+  "sourceBytesUnchanged": true,
+  "landmarksUnchanged": true,
+  "polygonsJointsLayersPriorityUnchanged": true,
+  "presenceUnchanged": true,
+  "groundLineAndMaterialsUnchanged": true,
+  "changes": [
+    {
+      "from": "cheliceraFar",
+      "to": "chelicerafar"
+    },
+    {
+      "from": "cheliceraNear",
+      "to": "cheliceranear"
+    },
+    {
+      "from": "leg1FarFoot",
+      "to": "leg1farfoot"
+    },
+    {
+      "from": "leg1FarKnee",
+      "to": "leg1farknee"
+    },
+    {
+      "from": "leg1NearFoot",
+      "to": "leg1nearfoot"
+    },
+    {
+      "from": "leg1NearKnee",
+      "to": "leg1nearknee"
+    },
+    {
+      "from": "leg2FarFoot",
+      "to": "leg2farfoot"
+    },
+    {
+      "from": "leg2FarKnee",
+      "to": "leg2farknee"
+    },
+    {
+      "from": "leg2NearFoot",
+      "to": "leg2nearfoot"
+    },
+    {
+      "from": "leg2NearKnee",
+      "to": "leg2nearknee"
+    },
+    {
+      "from": "leg3FarFoot",
+      "to": "leg3farfoot"
+    },
+    {
+      "from": "leg3FarKnee",
+      "to": "leg3farknee"
+    },
+    {
+      "from": "leg3NearFoot",
+      "to": "leg3nearfoot"
+    },
+    {
+      "from": "leg3NearKnee",
+      "to": "leg3nearknee"
+    },
+    {
+      "from": "leg4FarFoot",
+      "to": "leg4farfoot"
+    },
+    {
+      "from": "leg4FarKnee",
+      "to": "leg4farknee"
+    },
+    {
+      "from": "leg4NearFoot",
+      "to": "leg4nearfoot"
+    },
+    {
+      "from": "leg4NearKnee",
+      "to": "leg4nearknee"
+    }
+  ],
+  "priorRefusalRetained": true,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

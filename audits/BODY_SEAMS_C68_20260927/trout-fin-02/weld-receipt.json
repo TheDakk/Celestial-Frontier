@@ -1,0 +1,82 @@
+{
+  "sourceFit": "audits/BODY_SEAMS_C68_20260927/trout-axial-01/fit",
+  "sourcePreSplitSha256": "2145c8b3dc8e5b334f76ec60239877ff14c4b87190dfdf307cc28d413627177c",
+  "sourceAtlasSha256": "ae6de14c1b1c65809fc0541c8c56f1fe19b1cc6e6482bb9a7fb5e8c61dd0700b",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "pectoralNear",
+      "pectoralFar",
+      "dorsal",
+      "jaw",
+      "head",
+      "caudal",
+      "spine5",
+      "spine4",
+      "spine3",
+      "spine2",
+      "spine1",
+      "spine0"
+    ],
+    "contactEndpoints": [],
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "spine0"
+      ],
+      [
+        "dorsal",
+        "spine2"
+      ],
+      [
+        "dorsal",
+        "spine3"
+      ],
+      [
+        "dorsal",
+        "spine4"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "2392d36311b8114fe9b961023fc015757602cc195c89da41b31dbc6e362b44e1",
+    "sourceVertices": 1504,
+    "vertices": 1681,
+    "sharedSupports": 513,
+    "pins": 458,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 10,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 4,
+    "independentExcludedBoundaries": 6,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "spine0"
+      ],
+      [
+        "dorsal",
+        "spine2"
+      ],
+      [
+        "dorsal",
+        "spine3"
+      ],
+      [
+        "dorsal",
+        "spine4"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "recordUnchanged": true,
+  "labelsUnchanged": true,
+  "atlasUnchanged": true,
+  "limitsUnchanged": true
+}

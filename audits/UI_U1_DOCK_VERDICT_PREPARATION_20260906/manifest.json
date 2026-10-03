@@ -1,0 +1,37 @@
+{
+  "schema": "cf-u1-dock-verdict-preparation/v1",
+  "sourceParent": "a52879197e5d061671e5835e41a7afe4ba39b5d2",
+  "results": {
+    "focusedTests": {
+      "passed": 6
+    },
+    "rootTypeScript": "pass",
+    "rootValidateFingerprint": "pass"
+  },
+  "carriers": [
+    {
+      "source": "/private/tmp/cf-u1-phone-dock-control-focused-20260906.log",
+      "file": "cf-u1-phone-dock-control-focused-20260906.log.gz",
+      "rawBytes": 239,
+      "rawSha256": "356ff1d416fb4470f41b8b7aaa8421af615d53b5c3c60394d4c92af15c7e80d2",
+      "gzipBytes": 194,
+      "gzipSha256": "dda65f289f85945d20d51f05621417b6f5a76bdf1376376c3af3525a3226bed0"
+    },
+    {
+      "source": "/private/tmp/cf-u1-phone-dock-control-types-20260906.log",
+      "file": "cf-u1-phone-dock-control-types-20260906.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipBytes": 20,
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "/private/tmp/cf-u1-phone-dock-control-root-validate-20260906.log",
+      "file": "cf-u1-phone-dock-control-root-validate-20260906.log.gz",
+      "rawBytes": 1093,
+      "rawSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927",
+      "gzipBytes": 709,
+      "gzipSha256": "2e3bf4fa737966203f1153ac2ff4cc91499d8fc34616bbe99a3434ed7291043e"
+    }
+  ]
+}

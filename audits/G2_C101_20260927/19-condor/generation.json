@@ -1,0 +1,13 @@
+{
+  "id": "19-condor",
+  "name": "Condor",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-622963fb-9424-49a7-a498-9e3af874453d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "190f92862d186b2794e42be43801d7b012ed197251f803af11d8564c5b558e20",
+  "bytes": 1226572,
+  "promptSha256": "162cef242ba8d7de74a792d9eb77178c60be97fdb2466cb4a6151dbc1022c771",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

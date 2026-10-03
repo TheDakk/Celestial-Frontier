@@ -1,0 +1,14 @@
+{
+  "id": "08-howler-monkey",
+  "name": "Howler Monkey",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-6c012297-b57b-48c9-9a36-d4b0794794fa.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4968de4ee55f14737fb831247c001764ab1246175aea9c877dfe2e87be48efc1",
+  "bytes": 1261055,
+  "promptSha256": "9b3b178686cc31c89573affc2ab0779cf7d5415c04e2e8e5500e978640773b68",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

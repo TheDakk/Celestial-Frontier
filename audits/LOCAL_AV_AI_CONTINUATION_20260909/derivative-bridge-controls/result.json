@@ -1,0 +1,186 @@
+{
+  "sourceSha256": {
+    "tools/local-image-generation/proof-server.mjs": "4afc08aba3915ee9ba00398e97244cf7999edf1428735e995b8bc29afd7223a8",
+    "tools/local-image-generation/fetch-model.mjs": "79ee68e8bcfc37d7dc406df008765e123ac030f7195232f19fac6488a64dac9c",
+    "tools/local-image-generation/probe-webgpu.mjs": "d6212b638a2d8ebcb39553ec1d83e48eeae10e1f2d293813b813e74964be5068",
+    "tools/local-image-generation/browser-lifecycle.test.mjs": "18419dd9220f6a77a17be6d776d8618d8fb515347a3d5de3d14ccb3efe0bca37",
+    "tools/local-image-generation/q8-block32.mjs": "ca9817919519c86b39e4323b13288df73405feb9c7c0d7dcf7bd7113afb53402",
+    "tools/local-image-generation/pipeline-math.test.mjs": "f4b610e76479a52d25a55e3ec620c0d1865a23bdfe9b0060a7aed22fe659f7b0",
+    "tools/local-image-generation/run-browser-proof.mjs": "43e0b41249f323ffaef5cc7e49c49346be0bf2f60e79618ad9d6b528d2639fc6",
+    "tools/local-image-generation/browser-proof.mjs": "2dc02483e2889bff331c8e4ce0abd8834f476fd63d8c9aff4b1a2b30f6865ccb",
+    "tools/local-image-generation/gpu-profile.mjs": "0c737f91c3031dbe9b12daf31914b12970c041acf61965063a603f2a5d0f49a3",
+    "tools/local-image-generation/half-storage.test.mjs": "6cb71881255185f68dbb2e0189d5a69481560c0a30b2494503db51db11b41fd2",
+    "tools/local-image-generation/gpu-profile.test.mjs": "b8a2f44f6623db223fda35a43d3a875df7c16ec2464322002ef652967353363b",
+    "tools/local-image-generation/download-controls.test.mjs": "82aca72a1f41972e017556329ef317bb94a2482de5881986c86a5ec1d1d3c989",
+    "tools/local-image-generation/stage-worker.mjs": "9398f955121c5af591aba146cb282096d133b1f561e49f17ef750b23668e1311",
+    "tools/local-image-generation/pipeline-math.mjs": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5",
+    "tools/local-image-generation/q8-block32.test.mjs": "1a267a1060c27f41dd651edeb4497a4fe3f90dec46774e7b80515a5861ec3062"
+  },
+  "steps": [
+    {
+      "name": "syntax-proof-server",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/proof-server.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-fetch-model",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/fetch-model.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-probe-webgpu",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/probe-webgpu.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-browser-lifecycle.test",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/browser-lifecycle.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-q8-block32",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/q8-block32.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-pipeline-math.test",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/pipeline-math.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-run-browser-proof",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/run-browser-proof.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-browser-proof",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/browser-proof.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gpu-profile",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/gpu-profile.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-half-storage.test",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/half-storage.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gpu-profile.test",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/gpu-profile.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-download-controls.test",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/download-controls.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-stage-worker",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/stage-worker.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-pipeline-math",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/pipeline-math.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-q8-block32.test",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/q8-block32.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/q8-block32.test.mjs",
+        "tools/local-image-generation/gpu-profile.test.mjs",
+        "tools/local-image-generation/browser-lifecycle.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "2953da69c556672bf2d7c94d361297e9b1cfc2f174b111f3507b1fe71dd7097a"
+    }
+  ],
+  "sourceUnchanged": true,
+  "status": "PASS",
+  "finishedAt": "2026-09-09T06:36:32.272686+00:00"
+}

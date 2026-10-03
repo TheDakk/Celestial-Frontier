@@ -1,0 +1,62 @@
+[
+  {
+    "id": "01-tiger",
+    "promptSha256": "76d008184596dbd15a6d47c022c76b83b63ce354133643a34ac497da1aa24563",
+    "status": "PASS",
+    "requirements": [
+      "vertical black stripes over orange",
+      "white cheek ruff and white eyebrow spots",
+      "long ringed tail"
+    ]
+  },
+  {
+    "id": "02-leopard",
+    "promptSha256": "282b767f37ba95c6e4d8233ccabe8a8e16883a165d7a717d60fc4e6a502f2089",
+    "status": "PASS",
+    "requirements": [
+      "long thick tail nearly as long as the body",
+      "hollow ring rosettes with empty centres",
+      "low-slung slender body"
+    ]
+  },
+  {
+    "id": "03-jaguar",
+    "promptSha256": "b32581f068052bc48064422467057b0dabcae2285bdeb1ff2bdca520a20564b7",
+    "status": "PASS",
+    "requirements": [
+      "stocky muscular build on short legs",
+      "rosettes with spots inside them",
+      "massive broad blocky jaw"
+    ]
+  },
+  {
+    "id": "04-ocelot",
+    "promptSha256": "241df3b6432fce6dcfb962eda2fd4fbbb430c97cb771bfd557b12620432262d8",
+    "status": "PASS",
+    "requirements": [
+      "chain-like rosettes running in streaks along the flank",
+      "two black stripes on each cheek",
+      "housecat-sized build with a shortish tail"
+    ]
+  },
+  {
+    "id": "05-snow-leopard",
+    "promptSha256": "977cbd6effeec7901a637ae2eb0c870a8d4dddb6fc5809cc65e45634c4d091b6",
+    "status": "PASS",
+    "requirements": [
+      "enormously long thick ropy tail",
+      "pale smoky coat with large open rosettes",
+      "short stout legs and big paws"
+    ]
+  },
+  {
+    "id": "06-clouded-leopard",
+    "promptSha256": "cc6bf5338227954e365f0cffe411825d5a1ac8f0d1a132f4e8012b05c9104adb",
+    "status": "PASS",
+    "requirements": [
+      "large cloud-shaped dark-edged blotches",
+      "tail as long as head and body combined",
+      "very short stout legs"
+    ]
+  }
+]

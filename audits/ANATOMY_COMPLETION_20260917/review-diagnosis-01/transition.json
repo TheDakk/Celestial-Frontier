@@ -1,0 +1,83 @@
+[
+  {
+    "subject": "crab",
+    "strideNormalized": 0.00466105410993862,
+    "approachDurationMs": 420,
+    "boundaryMs": 3666.6666666666665,
+    "rootDiscontinuityNormalized": 0.029593994348816634,
+    "rootDiscontinuitySourcePx": 26.04271502695864,
+    "rootDiscontinuityDisplayPx": 56.90885861624955,
+    "encodedTransitionFrames": [
+      {
+        "best_effort_timestamp_time": "3.750000",
+        "index": 224
+      },
+      {
+        "best_effort_timestamp_time": "3.767000",
+        "index": 225
+      },
+      {
+        "best_effort_timestamp_time": "3.783000",
+        "index": 226
+      },
+      {
+        "best_effort_timestamp_time": "3.800000",
+        "index": 227
+      }
+    ]
+  },
+  {
+    "subject": "coconut-crab",
+    "strideNormalized": 0.008621141515749758,
+    "approachDurationMs": 420,
+    "boundaryMs": 3666.6666666666665,
+    "rootDiscontinuityNormalized": 0.05473740644920481,
+    "rootDiscontinuitySourcePx": 48.16891767530023,
+    "rootDiscontinuityDisplayPx": 56.61021149489856,
+    "encodedTransitionFrames": [
+      {
+        "best_effort_timestamp_time": "3.736000",
+        "index": 224
+      },
+      {
+        "best_effort_timestamp_time": "3.752000",
+        "index": 225
+      },
+      {
+        "best_effort_timestamp_time": "3.769000",
+        "index": 226
+      },
+      {
+        "best_effort_timestamp_time": "3.785000",
+        "index": 227
+      }
+    ]
+  },
+  {
+    "subject": "freshwater-crab",
+    "strideNormalized": 0.0044954258348100596,
+    "approachDurationMs": 420,
+    "boundaryMs": 3666.6666666666665,
+    "rootDiscontinuityNormalized": 0.02854238625276228,
+    "rootDiscontinuitySourcePx": 25.117299902430805,
+    "rootDiscontinuityDisplayPx": 42.08719391783362,
+    "encodedTransitionFrames": [
+      {
+        "best_effort_timestamp_time": "3.749000",
+        "index": 224
+      },
+      {
+        "best_effort_timestamp_time": "3.766000",
+        "index": 225
+      },
+      {
+        "best_effort_timestamp_time": "3.783000",
+        "index": 226
+      },
+      {
+        "best_effort_timestamp_time": "3.800000",
+        "index": 227
+      }
+    ]
+  }
+]

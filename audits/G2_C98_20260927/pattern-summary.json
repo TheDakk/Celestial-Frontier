@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Cold-Water Fish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Blind Fish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Small Fish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sunfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tang",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Reef Fish",
+    "status": "PASS"
+  },
+  {
+    "name": "Remora",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Icefish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mudminnow",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Snailfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Osprey",
+    "status": "PASS"
+  },
+  {
+    "name": "Desert Owl",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Harpy Eagle",
+    "status": "PASS"
+  },
+  {
+    "name": "Screamer",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Secretary Bird",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tern",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Petrel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Skua",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Shrew",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gerbil",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pig",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Warthog",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Honeybee",
+    "status": "PASS"
+  },
+  {
+    "name": "Bumblebee",
+    "status": "PASS"
+  }
+]

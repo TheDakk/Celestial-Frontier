@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kudu",
+  "masterSha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867",
+  "required": [
+    "6-10 thin white vertical stripes on the flank"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "6-10 thin white vertical stripes on the flank",
+      "status": "PRESENT",
+      "observed": "Full-size original: two towering corkscrew horns, both large rounded ear blades, multiple thin white flank stripes, pale facial chevron, real throat fringe and full tufted tail are visible. Four separate hoof endpoints; far upper limbs remain partly occluded. Horn tips approach the top edge, so framing is held for the unchanged observer. Ear roots and horn bases overlap naturally rather than receiving invented gaps."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c132-i5-invocation/v1",
+  "productHead": "06e0b0f6072c9859be4a8f0b9fddb0e3a1be8c93",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C132 C162 fresh I5 changed-product 3+1 one attempt",
+    "--",
+    "node",
+    "port/v2/tools/compendiummem-v2.mjs",
+    "--source=~/.codex/worktrees/c132-i5/celestial-frontier-openai-mac",
+    "--head=06e0b0f6072c9859be4a8f0b9fddb0e3a1be8c93",
+    "--out=~/Projects/celestial-frontier-openai-mac/audits/C132_I5_EPOCH_20261002/epoch"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 268.64,
+  "automaticRetries": 0,
+  "source": "~/.codex/worktrees/c132-i5/celestial-frontier-openai-mac",
+  "output": "audits/C132_I5_EPOCH_20261002/epoch"
+}

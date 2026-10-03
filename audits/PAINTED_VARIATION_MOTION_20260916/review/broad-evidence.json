@@ -1,0 +1,60 @@
+{
+  "description": "Seed 10271 · a new painting of the same genome",
+  "native": "native-broad-03",
+  "rig": "rig-broad-02",
+  "rest": 0,
+  "finalRest": 0,
+  "presentation": {
+    "samples": 601,
+    "maxGapPx": 0.00012886171309644067,
+    "status": "PASS"
+  },
+  "framing": {
+    "samples": 602,
+    "fullMotionBox": {
+      "minX": -0.055980928242206573,
+      "minY": -0.023859592154622078,
+      "maxX": 1.2188674211502075,
+      "maxY": 0.9266083836555481
+    },
+    "view": {
+      "x": 745,
+      "y": 90,
+      "width": 610,
+      "height": 540
+    },
+    "fit": {
+      "scale": 478.4882847365514,
+      "x": 771.7862183325734,
+      "y": 101.4165353245788
+    },
+    "inside": true,
+    "oldRestOnlyInside": false
+  },
+  "capture": {
+    "rigUpdateP95Ms": 1.5999999940395355,
+    "frames": 602,
+    "fps": 60.002795471336434,
+    "wholeFrameCpuP95Ms": 1.699999988079071,
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1400,
+          "height": 800,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.098657"
+      }
+    },
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1400,
+      "height": 800
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ant\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3772671348\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+    "seed": 3772671348,
+    "ownerId": "authored:archetype-sprint/reference-ant",
+    "earthName": "Ant"
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "clipSetId": "insect-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "wings"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3772671348,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 10,
+    "body": 13,
+    "loco": 6,
+    "trait": 7,
+    "size": 1,
+    "diet": 0,
+    "head": 5,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 3,
+    "detail": 7,
+    "accent": 12,
+    "temper": 6,
+    "sense": 2,
+    "repro": 6,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Ant"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6650717703349283,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.47767145135566186,
+      0.45055821371610844
+    ],
+    "thorax": [
+      0.5342902711323764,
+      0.4130781499202552
+    ],
+    "head": [
+      0.6610845295055822,
+      0.430622009569378
+    ],
+    "mandible": [
+      0.7089314194577353,
+      0.48963317384370014
+    ],
+    "abdomen": [
+      0.2958532695374801,
+      0.4704944178628389
+    ],
+    "legFrontNearKnee": [
+      0.6164274322169059,
+      0.4880382775119617
+    ],
+    "legFrontNearFoot": [
+      0.7177033492822966,
+      0.6283891547049442
+    ],
+    "legFrontFarKnee": [
+      0.5956937799043063,
+      0.5127591706539075
+    ],
+    "legFrontFarFoot": [
+      0.6539074960127592,
+      0.5988835725677831
+    ],
+    "legMidNearKnee": [
+      0.5191387559808612,
+      0.5558213716108453
+    ],
+    "legMidNearFoot": [
+      0.5637958532695375,
+      0.6467304625199362
+    ],
+    "legMidFarKnee": [
+      0.43859649122807015,
+      0.5263157894736842
+    ],
+    "legMidFarFoot": [
+      0.38118022328548645,
+      0.5933014354066986
+    ],
+    "legHindNearKnee": [
+      0.3437001594896332,
+      0.45773524720893144
+    ],
+    "legHindNearFoot": [
+      0.2240829346092504,
+      0.6467304625199362
+    ],
+    "legHindFarKnee": [
+      0.40669856459330145,
+      0.39792663476874
+    ],
+    "legHindFarFoot": [
+      0.15151515151515152,
+      0.6228070175438597
+    ],
+    "antennaFar": [
+      0.8763955342902712,
+      0.38118022328548645
+    ],
+    "antennaNear": [
+      0.8700159489633174,
+      0.5007974481658692
+    ]
+  },
+  "materials": {
+    "surface": "segmented natural chitin with antennae and species-correct leg spines"
+  },
+  "source": "audits/G2_REFERENCES_C62_20260927/08-ant/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Manual pixel-space observations on this exact new original. Six tarsal endpoints and distinct knee/leg regions; two antennae; full abdomen. Ant is a wingless worker; Cricket wings are folded at rest. Partial inter-leg occlusions are represented only by visible paint, no fabricated hidden pixels.",
+    "sourceFacing": "right",
+    "visualAcceptance": "Dakk pending; reference admission requires independent review",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "0ef6659dc3425e1ae001566a0cdf15903f83327f7e8aee8a4df08f75017e9d34",
+    "subjectSourceSha256": "6e7df0cbdd46b7878d5fb573edb15b0d01cb3e6da68538fc655ce0e2eb22953c",
+    "presenceSha256": "9e3487e28d511038d664b9003edc77558834255bc89334c2b9f9a19265d8bff9",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.0679002646169314,
+      "head": 0.1280022303235353,
+      "mandible": 0.07597132608494131,
+      "abdomen": 0.24525258725244703,
+      "legFrontFarKnee": 0.11707560285562187,
+      "legFrontFarFoot": 0.1039531112962875,
+      "legFrontNearKnee": 0.11120042247937222,
+      "legFrontNearFoot": 0.17307564850745336,
+      "legMidFarKnee": 0.14825674529007477,
+      "legMidFarFoot": 0.08822530581141518,
+      "legMidNearKnee": 0.14354510005568127,
+      "legMidNearFoot": 0.10128533530658641,
+      "legHindFarKnee": 0.1284881784015168,
+      "legHindFarFoot": 0.34013197566135717,
+      "legHindNearKnee": 0.19575200380645813,
+      "legHindNearFoot": 0.22366821834703537,
+      "antennaFar": 0.2209147324474635,
+      "antennaNear": 0.2204017473134775
+    },
+    "measures": {
+      "body": 0.36740125503461174,
+      "bone-min": 0.0679002646169314,
+      "bone-max": 0.34013197566135717,
+      "leg/body:legFrontFar": 0.6016003242315733,
+      "leg/body:legFrontNear": 0.7737482305552952,
+      "leg/body:legMidFar": 0.6436615222754525,
+      "leg/body:legMidNear": 0.6663843196159005,
+      "leg/body:legHindFar": 1.2754996006171146,
+      "leg/body:legHindNear": 1.141586253193341
+    }
+  },
+  "recipeHash": "cfd9238d78a3aeb0876c66df3391e943c05ad6789dd9add010ac26b09fb27db5"
+}

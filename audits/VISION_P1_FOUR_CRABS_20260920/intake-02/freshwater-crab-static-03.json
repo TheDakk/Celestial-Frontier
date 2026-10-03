@@ -1,0 +1,106 @@
+{
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00005713787683254029,
+      "error": null
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "maxPaintDriftPx": 0.005785543955871853,
+      "maxGapPx": 0.00007258962081795384,
+      "error": null
+    },
+    {
+      "id": "melee:pinch",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00005713787683254029,
+      "error": null
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "maxPaintDriftPx": 0.004060833696898714,
+      "maxGapPx": 0.00007477058663806376,
+      "error": null
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00005713787683254029,
+      "error": null
+    },
+    {
+      "id": "approach:scuttle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.005785543955871853,
+      "maxGapPx": 0.00007258962081795384,
+      "error": null
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00005713787683254029,
+      "error": null
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "maxPaintDriftPx": 0.17079348447662193,
+      "maxGapPx": 0.00007889179731084419,
+      "error": null
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "maxPaintDriftPx": 0.003463697873803941,
+      "maxGapPx": 0.00006399002211389785,
+      "error": null
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00006123823965678854,
+      "error": null
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00005713787683254029,
+      "error": null
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00005713787683254029,
+      "error": null
+    },
+    {
+      "id": "presentation",
+      "samples": 601,
+      "maxPaintDriftPx": 0.005785543955871853,
+      "maxGapPx": 0.00007902875205814368,
+      "error": null
+    }
+  ],
+  "contacts": [
+    "leg0FarFoot",
+    "leg0NearFoot",
+    "leg1FarFoot",
+    "leg1NearFoot",
+    "leg2FarFoot",
+    "leg2NearFoot",
+    "leg3NearFoot"
+  ],
+  "status": "PASS",
+  "exactRest": true
+}

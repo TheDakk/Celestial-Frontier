@@ -1,0 +1,39 @@
+{
+ "id": "brown-bear",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1008.3,
+ "landmarkMedian": 0.1054,
+ "landmarkMax": 0.2923,
+ "worst": [
+  "tail2 0.292",
+  "hindFarAnkle 0.270",
+  "hindNearAnkle 0.267"
+ ],
+ "labelAgreement": 0.3173,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "melee:claw",
+  "melee:tail",
+  "cast",
+  "victory"
+ ],
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part tail2 (tail2) covers 6% paint (reference 69%)",
+    "missing-anatomy: part tail1 (tail1) covers 9% paint (reference 65%)"
+   ]
+  }
+ ]
+}

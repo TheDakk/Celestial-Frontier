@@ -1,0 +1,15 @@
+{
+  "id": "08-snow-leopard",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d374b43d-b4c5-4b45-9e39-dca787862675.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "60f19523e5145f56cdb656502694e17b3348aed0ccc3b8a5dd9f257337179d84",
+  "bytes": 1074270,
+  "promptSha256": "acb3f4b83105e8e2369b00f4570b6bc7e4e91a61086aca3358938938ad534d93",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

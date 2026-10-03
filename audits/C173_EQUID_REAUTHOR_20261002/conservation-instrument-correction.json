@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c173-conservation-instrument-correction/v1",
+  "original": "conservation.mjs",
+  "originalSha256": "2637f742e1b75e57ccfd91f6a0ad67f148bf88e08f78569844fe3812acead400",
+  "successor": "conservation-v2.mjs",
+  "successorSha256": "59f5270f24f1971b1f018d0a238be8703f03725dfbfe07e8f30b4eccbf466bb0",
+  "reason": "The first scope diagnostic used raw source pixel coordinates while actual original/candidate label replay uses normalized coordinates. Three Horse boundary pixels differ under floating-point point-in-polygon evaluation. The successor uses exactly the normalized polygon/point convention of replay; no epsilon, scope expansion, cap or candidate edits. Original refusal is retained.",
+  "changedPredicate": {
+    "before": "const inScope=i=>scope.some(p=>inside(i%w+.5,Math.floor(i/w)+.5,p));",
+    "after": "const normalizedScope=scope.map(p=>p.map(([x,y])=>[x/w,y/h]));\n    const inScope=i=>normalizedScope.some(p=>inside((i%w+.5)/w,(Math.floor(i/w)+.5)/h,p));"
+  },
+  "priorEvidenceRetained": true,
+  "candidateBytesChanged": false
+}

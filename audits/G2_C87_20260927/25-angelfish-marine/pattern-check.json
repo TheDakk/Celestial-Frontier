@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Angelfish",
+  "masterSha256": "4c14c5ac441636af8d8e671b62bfca36c567a0bd1627b19b3c06a1ab54106ef7",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

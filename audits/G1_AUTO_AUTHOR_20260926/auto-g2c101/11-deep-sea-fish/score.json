@@ -1,0 +1,9 @@
+{
+ "id": "11-deep-sea-fish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-pectoral (pectoralFar) covers 17% paint (reference 82%)"
+ ],
+ "semanticPresence": null
+}

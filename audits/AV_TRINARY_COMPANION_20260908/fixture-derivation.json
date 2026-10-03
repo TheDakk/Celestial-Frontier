@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "audits/AV_TRINARY_COMPANION_20260908/derive-fixtures.mjs"
+  ],
+  "startedAt": "2026-09-08T10:39:02.229263+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 0.079
+}

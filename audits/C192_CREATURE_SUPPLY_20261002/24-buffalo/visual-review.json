@@ -1,0 +1,28 @@
+{
+  "name": "Buffalo",
+  "masterSha256": "621ad155c78f33340abf4d87b550801f21a736e14bebc25a95f0d903196bfed8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separate cloven hoof endpoints, broad connected horn boss and two curled horns, dark hide and complete thin tail ending in a tuft separated from rear legs. Near ear is clear and far ear hidden by head/horn. Far upper limb roots remain partly occluded. Lower abdomen contains a small natural anatomy projection that must not be counted as an invented fifth limb or silently discarded; source-specific interpretation remains held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 162,
+      "y0": 356,
+      "x1": 1099,
+      "y1": 897
+    },
+    "margins": {
+      "left": 162,
+      "right": 154,
+      "top": 356,
+      "bottom": 356
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

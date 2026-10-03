@@ -1,0 +1,80 @@
+{
+  "name": "Peacock",
+  "family": "biped-bird",
+  "species": {
+    "name": "Peacock",
+    "aspect": 2.2,
+    "headFrac": 0.16,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "extremely long trailing train covered in eyespots",
+      "fan-shaped crest of wire-tipped feathers",
+      "iridescent blue neck and breast"
+    ],
+    "note": "the 'tail' is a train of upper tail coverts and only the male has it; unfanned it drags behind, making the bird very long"
+  },
+  "genome": {
+    "seed": 1818451895,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 17,
+    "body": 8,
+    "loco": 14,
+    "trait": 18,
+    "size": 4,
+    "diet": 4,
+    "head": 4,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 17,
+    "detail": 6,
+    "accent": 5,
+    "temper": 5,
+    "sense": 2,
+    "repro": 6,
+    "life": 2,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Peacock"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Peacock\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1818451895\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 56,
+  "profile": {
+    "id": "ground-foraging-bird",
+    "names": [
+      "Peacock",
+      "Guineafowl",
+      "Turkey",
+      "Grouse",
+      "Ptarmigan",
+      "Bustard",
+      "Sandgrouse",
+      "Quail",
+      "Partridge",
+      "Roadrunner",
+      "Chicken",
+      "Rooster",
+      "Secretary Bird",
+      "Seriema"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": "Flight-capable does not require every move to be airborne."
+  }
+}

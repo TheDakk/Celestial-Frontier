@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "count": 121,
+  "previousCount": 120,
+  "previousSha256": "cc01f53976ac67b44bd14b71e2ef1bb1e053bf752d8d6151f0c2a98ed8163b82",
+  "reviewedSha256": "336a504ecbc8ae68b6c4c55d8a89f9d7a3f1e2d4c347543915ae96a07e831ee3",
+  "oldRowsExact": true,
+  "addedRows": [
+    "✨ BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse. Fixed creatures cast from their stand."
+  ],
+  "reorderedRowsRejected": true,
+  "scope": "Rendered release-copy inventory only. No I5 certificate, measurement, allowance or producer authority re-bound."
+}

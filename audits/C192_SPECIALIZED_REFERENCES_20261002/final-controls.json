@@ -1,0 +1,431 @@
+{
+  "schema": "cf.c192-specialized-final-controls/v1",
+  "writer": {
+    "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/final-controls.mjs",
+    "sha256": "42081fe011b17345cd3dfaa2d620002ba4d8c824cc88fa21e01f0ac938579d67"
+  },
+  "scope": "Audit-only source, label and identity checks. No native, performance, gallery or visual acceptance.",
+  "D28": 0.5,
+  "placements": [
+    {
+      "id": "08-prawn-opaque",
+      "source": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/master.png",
+        "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35"
+      },
+      "record": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/record.json",
+        "sha256": "772f77ba24bb05d3353972ee0c7802df8225eb5d7a0b4d2650dfa4977bd5fa24"
+      },
+      "recipe": "97e0bba24df61a04af37c759e74b474a5125eeb26aa148f977f2121f49decf23",
+      "movedPixels": 78,
+      "remainderPixels": 12819,
+      "sourceRgbaChanges": 0,
+      "nonRemainderOwnerChanges": 0,
+      "replayMismatch": 0,
+      "mutantOwnerRejected": true,
+      "deletedPixelRejected": true
+    },
+    {
+      "id": "09-shrimp-opaque",
+      "source": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/master.png",
+        "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+      },
+      "record": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/record.json",
+        "sha256": "db3bccf13b0115e0afa4da8e59ee660405a6594e03501e0a48d6a51ea33b44c5"
+      },
+      "recipe": "922bfdd4a8c3af5ff90ed53aa3f25121967ce058afb205208b6151b0de10c32a",
+      "movedPixels": 206,
+      "remainderPixels": 11672,
+      "sourceRgbaChanges": 0,
+      "nonRemainderOwnerChanges": 0,
+      "replayMismatch": 0,
+      "mutantOwnerRejected": true,
+      "deletedPixelRejected": true
+    },
+    {
+      "id": "10-snail-contours",
+      "source": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/master.png",
+        "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3"
+      },
+      "record": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/record.json",
+        "sha256": "0fe9b3fa334a8be836cda3cdea5d74f2b0c52443562c8d2d026d14efaef732e8"
+      },
+      "recipe": "df7194ebb22419ed9b5bcc28481f69392f2d6ca94354b865985b1dbfd6f37ef3",
+      "movedPixels": 372,
+      "remainderPixels": 10530,
+      "sourceRgbaChanges": 0,
+      "nonRemainderOwnerChanges": 0,
+      "replayMismatch": 0,
+      "mutantOwnerRejected": true,
+      "deletedPixelRejected": true
+    }
+  ],
+  "snailObservedOwnerDelta": {
+    "sourceAndLandmarksUnchanged": true,
+    "jointPixelChanges": {
+      "foot3 -> eyeNear": 325,
+      "eyeFar -> foot3": 130,
+      "foot3 -> eyeFar": 184,
+      "head -> eyeNear": 614,
+      "head -> eyeFar": 212,
+      "root -> foot2": 64
+    }
+  },
+  "sources": [
+    {
+      "id": "01-mussel-source",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/master.png",
+        "sha256": "e04685371b825a0738cd4fe5a3c60f330dd7ee80fbec474aae87257c87333c30"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/prompt.txt",
+        "sha256": "544ee687e46e0210fd6d7b43775d692afbf43b57a88e094a5f3e525f3affdaf1"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "02-prawn-dorsal",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/master.png",
+        "sha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/prompt.txt",
+        "sha256": "2956d184e7a35634af8794a8db61427efe93a2d93e2396db45c0e106091ab15b"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "03-shrimp-dorsal",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/master.png",
+        "sha256": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/prompt.txt",
+        "sha256": "4ba5dd904e062b2862149af089e2d7a3534e7f63bb4c440d171aa33992b445e1"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "04-snail-mouth",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/master.png",
+        "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/prompt.txt",
+        "sha256": "0b7e2d20a7656c3b76fa1bb81a99b65a1e4b17405e0466117d4301744b1cf9a0"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "05-clam-hinge",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/master.png",
+        "sha256": "cfcd71fbf61e3a7bcf20e0f33a1919e8c1295cbd226b3728917b6f74ea7a0823"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/prompt.txt",
+        "sha256": "01d5585b6124687adf100920f9d5b0f2d1cd4baea870eb71a8fc605683dfb7f1"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "06-marmoset-source",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/master.png",
+        "sha256": "9d9841209d90ec22671805e2d471955e6d52e7afb0bf73b876b0ec5d8f69b40e"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/prompt.txt",
+        "sha256": "76a8f4ec4090b460948f6f2ed3b2d39ebe27d992db2d43f19c22dee7cdc9bb08"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "07-standing-bat-source",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/master.png",
+        "sha256": "8a640473b4b4090d813e2aa7efc3457bdcf50f3a216748f6d06fcc44aed8be70"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/prompt.txt",
+        "sha256": "c40f8371c8e8708bdc1cfa585fbf8facd4d5f2215700a8a907e32f3e6edbd93d"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "08-prawn-opaque",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/master.png",
+        "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/prompt.txt",
+        "sha256": "b128be638f1e33e4e33e85ebd46f328db3b4946418a7dc0e123dc0c28270442a"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "09-shrimp-opaque",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/master.png",
+        "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/prompt.txt",
+        "sha256": "95f1cffa23ff3cd20b94f55685a2392996e1da0c60428c69cf8d0bb9879066ef"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    },
+    {
+      "id": "11-mussel-dorsal",
+      "master": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/master.png",
+        "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9"
+      },
+      "exactSentPrompt": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/prompt.txt",
+        "sha256": "1a02c54eb24ed95ab7864da70900bbc7d309d34ab510aecd95c5e188b2ee8800"
+      },
+      "negativeSha256": "2c87557895737669b3fc2d43272888ac9eb27a6d89f18781b79026b83e4329d0",
+      "negativeUnchanged": true,
+      "negativeMutationRejected": true
+    }
+  ],
+  "earthworm": {
+    "files": [
+      {
+        "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/master.png",
+        "sha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121"
+      },
+      {
+        "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/authoring.json",
+        "sha256": "f9b3ae58f4b5d32dbd858cbc7a86c9ea35313b9481ea62d79b966fb86bdac7ad"
+      },
+      {
+        "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/record.json",
+        "sha256": "e8af60856942e208436ea7949a2f4865f50371ba794aa1ce4d940eb6c7140b4d"
+      },
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c203r/01-earthworm/score.json",
+        "sha256": "9459cd46d1f2d5fd6af719448e9e9dc92700c5d58b856468cac953a9b71630dc"
+      },
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c203r/01-earthworm/provenance.json",
+        "sha256": "32e6f596bede208272630ab35f74e1d4fa856d022002223d6a4d1bb5d07fb7fa"
+      },
+      {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs",
+        "sha256": "53caba3fd54c987371f3cec7322549f3192ec35457e61cfe69668bbfc7bc06bc"
+      },
+      {
+        "path": "port/v2/tools/anatomy-verify/auto-author.mjs",
+        "sha256": "2f21f305181ed862649494364e0b1087665924c704c442d096c8ed3aa8af48fd"
+      }
+    ],
+    "directRecipe": "f441d86b605246cdfcac3aa1715883ccfc6654dcb10d852472d8b696a52f426f",
+    "declaredFamily": "annelid",
+    "autoVerdict": "REFUSE",
+    "reasons": [
+      "wrong-family: serpent matches clearly better (0.0134 < 0.0415)",
+      "extra-anatomy (unassigned): a rear appendage of 28.6% paint that no reference appendage lands on",
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "unexplained-anatomy: 33.9% of the paint lies away from the body and in no part (reference 3.9%)"
+    ],
+    "reference": {
+      "subject": "codex-ref-01-leech",
+      "authoringSha256": "3de20615d0af6089119c6b4f730bad0d40ab08cdeb3e7623dc13386a252fe400",
+      "masterSha256": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1"
+    },
+    "mismatchedFamilyRejected": true,
+    "mismatchedMasterRejected": true,
+    "meaning": "The exact same annelid source was refused by contour transfer. A better serpent contour is not a taxonomy edit or permission to bypass G1."
+  },
+  "c233": [
+    {
+      "id": "21-seahorse",
+      "files": [
+        {
+          "path": "audits/C186_CREATURE_SUPPLY_20261002/21-seahorse/master.png",
+          "sha256": "a9b37a6c7274b40bc789b1a41a503a147648477c7bcf53e5d8677e43dd80ac86"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/21-seahorse/score.json",
+          "sha256": "36fb570f66d25348729e903561664ce1bb19143e9a12a76473992b6ca42e1c88"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/21-seahorse/provenance.json",
+          "sha256": "229120096711ae532df6b48d07118428ddcfff392ff7117c6d674aa761ce338e"
+        }
+      ],
+      "reference": {
+        "subject": "pike",
+        "authoringSha256": "4705494141027b8c796fb646efc6293f447974230da934522ae6894c404cd004",
+        "masterSha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468"
+      },
+      "reasons": [
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+        "unexplained-anatomy: 22.9% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "family": "fish",
+      "verdict": "REFUSE"
+    },
+    {
+      "id": "22-giant-squid",
+      "files": [
+        {
+          "path": "audits/C186_CREATURE_SUPPLY_20261002/22-giant-squid/master.png",
+          "sha256": "cb07009c82606a8d92a95f57b227a7bb6485ad13baaab75419701c2ad76046f8"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/22-giant-squid/score.json",
+          "sha256": "a2789bb96003a0ab2bda1243a508e9b22b94a58478c75673072f919f700a761a"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/22-giant-squid/provenance.json",
+          "sha256": "e89a8277321b93f99cd6fc182ab9b19e5de484f786268dedc01d16c55f5eb471"
+        }
+      ],
+      "reference": {
+        "subject": "octopus",
+        "authoringSha256": "55700ac6f3275d004601d51cec01681f021d90c7ade198c019c72c4fc06626e1",
+        "masterSha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
+      },
+      "reasons": [
+        "facing: the mirrored painting matches cephalopod better (0.0414 < 0.0575)",
+        "wrong-family: insect matches clearly better (0.0376 < 0.0575)",
+        "extra-anatomy (unassigned): a top appendage of 7.7% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a rear appendage of 11.1% paint that no reference appendage lands on",
+        "missing-anatomy: part arm4-tip (arm4Seg2) covers 18% paint (reference 72%)",
+        "missing-anatomy: part arm7-middle (arm7Seg1) covers 25% paint (reference 83%)",
+        "missing-anatomy: part arm3-tip (arm3Seg2) covers 9% paint (reference 63%)",
+        "unexplained-anatomy: 15.8% of the paint lies away from the body and in no part (reference 2.9%)"
+      ],
+      "family": "cephalopod",
+      "verdict": "REFUSE"
+    },
+    {
+      "id": "23-vampire-squid",
+      "files": [
+        {
+          "path": "audits/C186_CREATURE_SUPPLY_20261002/23-vampire-squid/master.png",
+          "sha256": "bcedf8e7b62bf35115e505e7240a964f541bf04e3d433787625b6b8820845530"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/23-vampire-squid/score.json",
+          "sha256": "6c596afb907155d1ee67ec0e3032c8e6d788b68d3997304cdf961e062694419e"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/23-vampire-squid/provenance.json",
+          "sha256": "9ef096af88e858ab8ac4de8d1b488e71f84e393cb728f14701af07586e51060e"
+        }
+      ],
+      "reference": {
+        "subject": "octopus",
+        "authoringSha256": "55700ac6f3275d004601d51cec01681f021d90c7ade198c019c72c4fc06626e1",
+        "masterSha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
+      },
+      "reasons": [
+        "missing-anatomy: part near-eye (eyeNear) covers 1% paint (reference 100%)",
+        "missing-anatomy: part arm4-tip (arm4Seg2) covers 12% paint (reference 72%)",
+        "missing-anatomy: part arm2-tip (arm2Seg2) covers 23% paint (reference 68%)",
+        "missing-anatomy: part arm6-tip (arm6Seg2) covers 19% paint (reference 72%)",
+        "missing-anatomy: part arm6-middle (arm6Seg1) covers 0% paint (reference 93%)",
+        "missing-anatomy: part arm1-tip (arm1Seg2) covers 19% paint (reference 69%)",
+        "missing-anatomy: part arm1-middle (arm1Seg1) covers 4% paint (reference 95%)",
+        "missing-anatomy: part arm1-base (arm1Seg0) covers 8% paint (reference 99%)",
+        "missing-anatomy: part arm5-tip (arm5Seg2) covers 21% paint (reference 77%)",
+        "missing-anatomy: part arm5-middle (arm5Seg1) covers 9% paint (reference 85%)",
+        "missing-anatomy: part arm5-base (arm5Seg0) covers 3% paint (reference 87%)",
+        "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.9%)"
+      ],
+      "family": "cephalopod",
+      "verdict": "REFUSE"
+    },
+    {
+      "id": "24-nautilus",
+      "files": [
+        {
+          "path": "audits/C186_CREATURE_SUPPLY_20261002/24-nautilus/master.png",
+          "sha256": "4a6de28b5aa5fd4c1e321e800c8bbcf723a3a218813ccc0e45887e236306f6c6"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/24-nautilus/score.json",
+          "sha256": "a042d0897acd722a9c060e71edefdd8243c97cf75d1af01e0555416368ba593e"
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/24-nautilus/provenance.json",
+          "sha256": "a11a1d526582dc90c54f329fe6c56ff13518b43f362b4b9758d1568b2693f937"
+        }
+      ],
+      "reference": {
+        "subject": "octopus",
+        "authoringSha256": "55700ac6f3275d004601d51cec01681f021d90c7ade198c019c72c4fc06626e1",
+        "masterSha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
+      },
+      "reasons": [
+        "missing-anatomy: part far-eye-rim (eyeFar) covers 8% paint (reference 86%)",
+        "missing-anatomy: part arm4-middle (arm4Seg1) covers 30% paint (reference 95%)",
+        "missing-anatomy: part arm6-tip (arm6Seg2) covers 24% paint (reference 72%)",
+        "missing-anatomy: part arm6-middle (arm6Seg1) covers 4% paint (reference 93%)",
+        "missing-anatomy: part arm0-tip (arm0Seg2) covers 17% paint (reference 57%)",
+        "missing-anatomy: part arm7-middle (arm7Seg1) covers 18% paint (reference 83%)",
+        "missing-anatomy: part arm5-tip (arm5Seg2) covers 14% paint (reference 77%)",
+        "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.9%)"
+      ],
+      "family": "cephalopod",
+      "verdict": "REFUSE"
+    }
+  ],
+  "currentHelpers": [
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/prepare-helpers.mjs",
+      "sha256": "ccde0439842361baf351898f07846fb006dbe313d1f349f4d33597c842b45ba1"
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/helper-derivation.json",
+      "sha256": "936bcceb85c7ce302ae4a7e098368db185e508d091f317f0ed3eb8944a46716a"
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/review-publication.mjs",
+      "sha256": "0e3675efe8ed7f1b4565b8f66a6a4ccc01b3b861574daf3da7f9801c179f5e71"
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/review-d28.mjs",
+      "sha256": "d3ac777513227e72fc307dc0a0d4201bb0027f981729f43117cc1a9d9b9d16ce"
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+      "sha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128"
+    }
+  ],
+  "helperNote": "Historical helper-derivation.json pins the initial copies. These current hashes additionally bind the later cast selector and derived D28 renderer, which select canonical cast or attack-prefixed actions.",
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

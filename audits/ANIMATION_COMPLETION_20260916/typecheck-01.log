@@ -1,0 +1,5 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/overlay.ts(150,9): error TS2741: Property 'limitsRad' is missing in type '{ kind: "motion-timeline"; actionId: string; family: string; loop: boolean; seed: number; recipeHash: string | null; massClass: MassClassName; bodyMs: number; durationMs: number; ... 8 more ...; notes: string[]; }' but required in type 'Omit<MotionTimeline, "hash">'.

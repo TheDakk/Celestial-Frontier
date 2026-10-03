@@ -1,0 +1,28 @@
+{
+  "name": "Wolverine",
+  "masterSha256": "128e59eff1ef8e0c064aacdf659412c939cdb7d2d327ecd4d2b3af4ce8ca5f73",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separate clawed paw endpoints, heavy shaggy body, short visibly continuous bushy tail and pale sweeping stripe along the visible flank. Far ear is still a small crown tip; fur covers proximal roots. Near/far forelegs are now distinguishable below the chest, but upper ownership remains unmeasured. Tail remains naturally short, not stretched to match a reference.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 205,
+      "y0": 400,
+      "x1": 1076,
+      "y1": 856
+    },
+    "margins": {
+      "left": 205,
+      "right": 177,
+      "top": 400,
+      "bottom": 397
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

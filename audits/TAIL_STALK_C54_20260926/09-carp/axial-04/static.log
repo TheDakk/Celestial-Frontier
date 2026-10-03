@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0,"gap":0.00006724544680488179,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"RED","samples":30,"drift":0,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":{"ms":75,"sampleNumber":31,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 8"}}
+{"id":"approach:swim","status":"RED","samples":51,"drift":0,"gap":0.00006446346663959964,"exactRest":true,"firstRefusal":{"ms":212.5,"sampleNumber":52,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"}}
+{"id":"melee:bite","status":"RED","samples":25,"drift":0,"gap":0.00006647174393638666,"exactRest":true,"firstRefusal":{"ms":122.22222222222221,"sampleNumber":26,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"}}
+{"id":"cast","status":"PASS","samples":121,"drift":0,"gap":0.00006259751333101658,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":45,"drift":0,"gap":0.00006759710118592101,"exactRest":true,"firstRefusal":{"ms":198.75,"sampleNumber":46,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"}}
+{"id":"dodge","status":"RED","samples":69,"drift":0,"gap":0.0000622868537902832,"exactRest":true,"firstRefusal":{"ms":207,"sampleNumber":70,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"}}
+{"id":"faint","status":"PASS","samples":121,"drift":0,"gap":0.00006695635589804289,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"RED","samples":16,"drift":0,"gap":0.00006643931078542664,"exactRest":true,"firstRefusal":{"ms":90.66666666666667,"sampleNumber":17,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"}}
+{"id":"tame","status":"PASS","samples":121,"drift":0,"gap":0.00006960786218907036,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0,"gap":0.00006901703193048981,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"PASS","samples":121,"drift":0,"gap":0.00006499623165954497,"exactRest":true,"firstRefusal":null}
+{"id":"melee:tail","status":"RED","samples":21,"drift":0,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":{"ms":102.66666666666667,"sampleNumber":22,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"}}
+{"status":"RED","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

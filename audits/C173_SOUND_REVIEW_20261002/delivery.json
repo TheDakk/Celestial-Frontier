@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c173-sound-review-delivery/v1",
+  "cues": 49,
+  "measuredPass": 32,
+  "measuredRefused": 17,
+  "listeningAccepted": false,
+  "runtimeAdmitted": false,
+  "files": [
+    {
+      "path": "audits/C173_SOUND_REVIEW_20261002/README.md",
+      "sha256": "a208271b9c8b9e4a8a183aceb96463612c2f0fa3b16f5bfe90bdb3b3fc6c654d",
+      "bytes": 1871
+    },
+    {
+      "path": "audits/C173_SOUND_REVIEW_20261002/admission-plan.json",
+      "sha256": "73d8560eee2bf1c0a66d3bd2f68a66fd146363cfefbe9fdf4e5b6ebf91e6f5ae",
+      "bytes": 16138
+    },
+    {
+      "path": "audits/C173_SOUND_REVIEW_20261002/audition.html",
+      "sha256": "a37a00d43af500423f7187035c9a1b25f7f228749d12c47b8f747ba3ee55bb2f",
+      "bytes": 19602
+    },
+    {
+      "path": "audits/C173_SOUND_REVIEW_20261002/measure.mjs",
+      "sha256": "cfe1e3f3120bd169b905dbcd5c07a79e6c7e1c8f1606bb983945ea611cbd76ca",
+      "bytes": 2217
+    },
+    {
+      "path": "audits/C173_SOUND_REVIEW_20261002/measurement.json",
+      "sha256": "c0e061e049bf2df051dce2e809fbdf482973bd4585c1b023f558e9dd3655aa4d",
+      "bytes": 98018
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "11-reindeer",
+  "name": "Reindeer",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-986c9344-d70f-4a53-abc9-89ae1ee03a59.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "640c13419702a65c12e5346f3f8cbbb6f564d323403c1e27573197db6aacb9a4",
+  "bytes": 1164816,
+  "promptSha256": "2d9e01a154595f7fec5e334b3c42211d1e1dce95cc9dac5a1b634c3fe278b54b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

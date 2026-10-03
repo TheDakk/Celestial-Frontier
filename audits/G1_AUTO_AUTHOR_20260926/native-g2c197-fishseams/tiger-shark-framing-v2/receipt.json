@@ -1,0 +1,216 @@
+{
+  "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/tiger-shark-framing-v2/fit",
+  "sourceRecordSha256": "45e42a6613d575b7bebc095ee72f4ad443b4637ab880dee447cb603e5874cc06",
+  "sourceLabelsSha256": "6def2f1b22c4f878ffd236781707230841eef545fb40644c117283197c82f005",
+  "newLabelsSha256": "f8f35c4c21333721e777e59aff36ae80684ac05bbe80feddaf47d8b488600bbb",
+  "newDecodedLabelsSha256": "3243fa588ef554bd268c49b0eb36a4786398d2c574c1efd3bfe31c00e4aea7d6",
+  "sourceMasterSha256": "16983f593fe1b3e24b939e988931e266234424f782c0227bce7be3cc6ee4b9a5",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "tail-peduncle",
+    "tailOwner": 6,
+    "stalkOwner": 8,
+    "sharedEdges": 65
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 4210,
+    "phases": [
+      {
+        "phase": "tail",
+        "schema": "cf.remainder-gap-labels/v1",
+        "tail": 6,
+        "stalk": 8,
+        "remainder": 13,
+        "maxDistance": 93,
+        "components": [
+          62,
+          3,
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "changedPixels": 574,
+        "requestedRetained": 574,
+        "otherOwnersChanged": 0,
+        "unowned": 0,
+        "sourceRgbaChanges": 0,
+        "contourProjection": false
+      },
+      {
+        "phase": "axial",
+        "moved": 3636,
+        "counts": {
+          "11": 1,
+          "12": 3635
+        },
+        "separateRootOwner": 7,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.6366028708133971,
+            0.5015948963317385
+          ],
+          [
+            0.5817384370015949,
+            0.5022328548644338
+          ],
+          [
+            0.5232854864433812,
+            0.5066188197767145
+          ],
+          [
+            0.47200956937799043,
+            0.5060606060606061
+          ],
+          [
+            0.4181020733652312,
+            0.5012759170653908
+          ],
+          [
+            0.35980861244019136,
+            0.49856459330143543
+          ],
+          [
+            0.31092503987240827,
+            0.49872408293460924
+          ]
+        ],
+        "scope": "First-spine placement diagnostic; original root and all foreign ownership protected"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "de6abfeb1625d03661fc2d1a6f842e0f002e3ff00430534aabe1ece719c41806",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "tiger-shark-framing-v2",
+    "parts": 13,
+    "atlasSize": {
+      "width": 888,
+      "height": 581
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "a9289e35d832a914f23ec73eccb0cfb20e2995a1a225dbeaaa87195ef4633841",
+    "sourceVertices": 589,
+    "vertices": 670,
+    "sharedSupports": 217,
+    "pins": 75,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 9,
+    "excludedOverlaps": 8,
+    "observedExcludedBoundaries": 8,
+    "weldedExcludedBoundaries": 4,
+    "independentExcludedBoundaries": 4,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "dorsal"
+      ],
+      [
+        "body",
+        "far-pectoral"
+      ],
+      [
+        "body",
+        "near-pectoral"
+      ],
+      [
+        "front-body",
+        "near-pectoral"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "27fc9159b1b1e0924ad96a71ece5ec848df6a7746d55c79df644ecc06a090cb9"
+  },
+  "joins": [
+    {
+      "name": "body--front-body",
+      "sourceEdges": 109
+    },
+    {
+      "name": "front-body--dorsal",
+      "sourceEdges": 121
+    },
+    {
+      "name": "front-body--mid-body",
+      "sourceEdges": 156
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 201
+    },
+    {
+      "name": "mid-body--pelvic-body",
+      "sourceEdges": 143
+    },
+    {
+      "name": "pelvic-body--rear-body",
+      "sourceEdges": 70
+    },
+    {
+      "name": "rear-body--tail-peduncle",
+      "sourceEdges": 33
+    },
+    {
+      "name": "root--body",
+      "sourceEdges": 44
+    },
+    {
+      "name": "tail-peduncle--caudal",
+      "sourceEdges": 175
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|caudal",
+      "sourceEdges": 11
+    },
+    {
+      "name": "body|dorsal",
+      "sourceEdges": 13
+    },
+    {
+      "name": "body|far-pectoral",
+      "sourceEdges": 113
+    },
+    {
+      "name": "body|head",
+      "sourceEdges": 141
+    },
+    {
+      "name": "body|near-pectoral",
+      "sourceEdges": 144
+    },
+    {
+      "name": "body|tail-peduncle",
+      "sourceEdges": 10
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 83
+    },
+    {
+      "name": "front-body|near-pectoral",
+      "sourceEdges": 172
+    }
+  ]
+}

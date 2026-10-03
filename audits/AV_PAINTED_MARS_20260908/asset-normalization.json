@@ -1,0 +1,25 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "painted-mars-asset-export",
+    "--",
+    "magick",
+    "audits/AV_PAINTED_MARS_20260908/mars-dunesea-source.png",
+    "-resize",
+    "960x430^",
+    "-gravity",
+    "center",
+    "-extent",
+    "960x430",
+    "-strip",
+    "-quality",
+    "90",
+    "port/v2/apps/game/src/assets/painted/mars-dunesea-v1.webp"
+  ],
+  "startedAt": "2026-09-08T14:19:47.028075+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 0.19
+}

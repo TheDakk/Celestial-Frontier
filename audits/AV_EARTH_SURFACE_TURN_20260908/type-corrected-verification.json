@@ -1,0 +1,62 @@
+{
+  "status": "FAIL",
+  "continuationOf": "continued-verification.json",
+  "steps": [
+    {
+      "name": "view-type-correction",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "apps/game/src/planet-surface-turn-view.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.583
+    },
+    {
+      "name": "typescript-corrected",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.524
+    },
+    {
+      "name": "art-unused",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.867
+    },
+    {
+      "name": "art-audit",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.634
+    },
+    {
+      "name": "override-check",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 2,
+      "error": null,
+      "seconds": 0.625
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.03976877639840771,"gap":0.00008399920035686804,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.037625843361219664,"gap":0.0000748661564794671,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.0027375235377842416,"gap":0.00008306710224501963,"exactRest":true,"firstRefusal":null}
+{"id":"approach:climb","status":"PASS","samples":121,"drift":0,"gap":0.00007820310298484051,"exactRest":true,"firstRefusal":null}
+{"id":"melee:punch","status":"PASS","samples":121,"drift":0.113497239700552,"gap":0.00009064068613755511,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.037625843361219664,"gap":0.00007513116882675504,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.06581408222910379,"gap":0.00006148750356120443,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.035850351045263025,"gap":0.00008608674317500545,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00008295712989709006,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"RED","samples":45,"drift":0.09452530343767601,"gap":0.00007865090224162476,"exactRest":true,"firstRefusal":{"ms":339,"sampleNumber":46,"error":"Error: Contact: faint@339 exceeds scale compression bound"}}
+{"id":"victory","status":"PASS","samples":121,"drift":0.037625843361219664,"gap":0.00008016136303657601,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.028830549653841273,"gap":0.00007157340118913026,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.0011369076129305905,"gap":0.00007289077350550227,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

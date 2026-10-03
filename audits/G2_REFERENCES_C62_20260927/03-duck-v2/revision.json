@@ -1,0 +1,6 @@
+{
+  "priorPacket": "audits/G2_REFERENCES_C62_20260927/03-duck",
+  "reason": "Use explicit feather material vocabulary; no geometry change.",
+  "sourceRgbaChanged": false,
+  "limitsChanged": false
+}

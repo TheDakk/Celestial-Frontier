@@ -1,0 +1,32 @@
+{
+  schema: 'cf.observed-surface-split/v1',
+  contactPins: [
+    {
+      joint: 'legFarAnkle',
+      part: 'far-shin',
+      vertex: 56,
+      distancePx: 15.079061265299627,
+      supports: [Array]
+    },
+    {
+      joint: 'legNearAnkle',
+      part: 'near-shin',
+      vertex: 44,
+      distancePx: 4.741307836451938,
+      supports: [Array]
+    }
+  ],
+  sourceBindingHash: 'f7fda089314c5f98fe454a6bd8d9cccd3f5fa01701c2e4eb2ef64ff6718c9e9c',
+  sourceVertices: 976,
+  vertices: 1280,
+  sharedSupports: 267,
+  pins: 690,
+  independentSurfaceParts: 17,
+  sourceJoins: 15,
+  excludedOverlaps: 18,
+  observedExcludedBoundaries: 18,
+  weldedExcludedBoundaries: 0,
+  independentExcludedBoundaries: 18,
+  preservePaintBoundaries: false,
+  sourceCoordinateChanges: 0
+}

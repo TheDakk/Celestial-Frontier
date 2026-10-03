@@ -1,0 +1,39 @@
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (4.143791ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (1.116541ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (1.31025ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.335458ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.285208ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.211416ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.295667ms)
+✔ actual fish cast uses the admitted active leaf with exact full solver and queue bytes (59.720125ms)
+✔ unavailable runtime preserves the actual active fish cast through the original JS path (28.0285ms)
+✔ post-private-active-work runtime trap preserves every live byte before fallback and disables the leaf (32.842ms)
+✔ integrated admitted forward kernel preserves targets, pins, all output bytes and diagnostics (4.854833ms)
+✔ unavailable Wasm retains the original JS path without changing admitted outcomes (0.856291ms)
+✔ a real leaf trap after private-memory work falls back from untouched input and disables the leaf (1.092875ms)
+✔ floor underflow retains original source admission and the JS solver (0.286ms)
+✔ floor overflow retains original source admission and identical refusal without publication (0.324291ms)
+✔ contradictory hard pins retain exact recoverable refusal and atomic output on admitted and fallback paths (0.422792ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (47.930209ms)
+✔ all pin masks/signs retain exact positions and the entire queue at multiple budgets (5.19325ms)
+✔ shared-vertex incident traversal preserves duplicates, heap order and repeated seeks (5.679167ms)
+✔ shared triangles respect every moved-corner mask without skipping a first incident update (1.998083ms)
+✔ equal priorities use triangle ID order and preserve stale unused heap entries (0.14325ms)
+✔ half-floor stopping retains nonempty queue; degenerate removal and full budget retain original counters (0.279375ms)
+✔ signed-zero-only progress, underflow and overflowing finite coordinates preserve Object.is semantics (0.211667ms)
+✔ shared-corner fixture exercises both unchanged and changed queued priorities and rejects overbroad skipping (4.423125ms)
+✔ equal-priority mutant is rejected by full queue parity even when coordinates do not change (0.636583ms)
+✔ mixed finite/overflowing shared triangles preserve the original unordered-priority behavior (3.89975ms)
+✔ private topology is snapshotted; runtime absence and denied memory give null without caller changes (0.275959ms)
+✔ valid arithmetic mutant and no-op export fail admission before touching caller state (0.367333ms)
+✔ post-admission trap, invalid result, invalid counters and invalid heap are transactional (0.427417ms)
+✔ malformed topology, reset state and call budgets fail closed (0.16675ms)
+✔ artifact admits exactly one thirteen-i32 memory-only leaf and rejects linker inputs (2.267625ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 220.911042

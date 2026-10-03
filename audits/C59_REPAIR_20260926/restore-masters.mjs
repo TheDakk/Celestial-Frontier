@@ -1,0 +1,4 @@
+import fs from'node:fs';import path from'node:path';import{createHash}from'node:crypto';
+const sha=b=>createHash('sha256').update(b).digest('hex'),root=path.resolve(import.meta.dirname,'../..'),rows=JSON.parse(fs.readFileSync(new URL('./source-master-index.json',import.meta.url)));
+for(const r of rows){const raw=fs.readFileSync(path.join(root,r.canonicalTrackedMaster));if(sha(raw)!==r.sha256)throw Error('Canonical source changed');const dest=path.resolve(root,r.requiredPath);if(!dest.startsWith(root+'/audits/'))throw Error('Repository audit source required');if(fs.existsSync(dest)){if(sha(fs.readFileSync(dest))!==r.sha256)throw Error('Existing source differs');}else{fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,raw,{flag:'wx'});}}
+console.log('Source masters restored byte-exact; no record change.');

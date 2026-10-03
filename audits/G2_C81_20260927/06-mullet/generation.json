@@ -1,0 +1,13 @@
+{
+  "id": "06-mullet",
+  "name": "Mullet",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-5cef4e57-4f86-4e55-abeb-d75acec881ad.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c92434e699b7d49b94ee1a1e8a281ca8cb3d5ffdee7147fb79d6d4fb74043aa0",
+  "bytes": 1224654,
+  "promptSha256": "380a1b79dc17816723586175c58e4bc45885c01f95786e1779b5b32b6d772e1a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

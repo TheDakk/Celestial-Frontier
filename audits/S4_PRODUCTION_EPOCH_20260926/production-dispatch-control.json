@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scope": "training fixtures only; no held-out evaluation",
+  "sourceHash": "fe5e0feb25892741971883cf6ed1da40e62346cd4c6f941db9b2350aa45ac10a",
+  "mutantHash": "bd2bfeaa5b423c75cb0f90fcb15e95a670c8d6b9bb130fe12af406ec16624189",
+  "mutation": "restore the pre-C32 solo-Auto phase bypass",
+  "positive": {
+    "cases": 256,
+    "mismatches": 0
+  },
+  "negative": {
+    "cases": 256,
+    "mismatches": 164
+  },
+  "restored": {
+    "cases": 256,
+    "mismatches": 0
+  }
+}

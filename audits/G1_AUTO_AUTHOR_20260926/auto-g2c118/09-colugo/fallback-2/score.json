@@ -1,0 +1,9 @@
+{
+ "id": "09-colugo",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 15% paint (reference 48%)"
+ ],
+ "semanticPresence": null
+}

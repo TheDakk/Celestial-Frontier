@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "09-shrimp-opaque",
+  "command": [
+    "node",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01",
+    "01"
+  ],
+  "helperSha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/conservation-01.log",
+  "logSha256": "4c9327fd88ff4068be1d1fa7be31201a0186966f2a926c4914a2d7b80072d0d9",
+  "nativeRuns": 0
+}

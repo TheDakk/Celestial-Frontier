@@ -1,0 +1,144 @@
+{
+  "id": "12-sandgrouse",
+  "name": "Sandgrouse",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8ef26e194950c91f692a1afab80239dc878a983fb95c9cd0f1896e5dbcb1ac99",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 11761,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 177,
+      "y0": 168,
+      "x1": 290,
+      "y1": 250
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.115,
+        "pixels": 1353,
+        "box": {
+          "x0": 251,
+          "y0": 134,
+          "x1": 317,
+          "y1": 210
+        },
+        "attach": {
+          "x": 281.2,
+          "y": 178.3,
+          "relX": 0.92,
+          "relY": 0.13
+        },
+        "dir": {
+          "x": 0.17,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 56.9
+      },
+      {
+        "k": 1,
+        "frac": 0.1362,
+        "pixels": 1602,
+        "box": {
+          "x0": 86,
+          "y0": 195,
+          "x1": 176,
+          "y1": 239
+        },
+        "attach": {
+          "x": 176,
+          "y": 216.5,
+          "relX": -0.01,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.15
+        },
+        "class": "rear",
+        "length": 92.8
+      },
+      {
+        "k": 2,
+        "frac": 0.0307,
+        "pixels": 361,
+        "box": {
+          "x0": 189,
+          "y0": 251,
+          "x1": 224,
+          "y1": 278
+        },
+        "attach": {
+          "x": 201,
+          "y": 251,
+          "relX": 0.21,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.12,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 35.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0353,
+        "pixels": 415,
+        "box": {
+          "x0": 232,
+          "y0": 251,
+          "x1": 276,
+          "y1": 277
+        },
+        "attach": {
+          "x": 240.5,
+          "y": 251,
+          "relX": 0.56,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.46,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 44
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 189,
+        "x1": 224,
+        "cx": 206.2
+      },
+      {
+        "x0": 237,
+        "x1": 276,
+        "cx": 255.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

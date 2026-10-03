@@ -1,0 +1,13 @@
+
+=== UI LAYOUT GATE ===
+  iphone-se   80 pass
+  iphone      80 pass
+  iphone-max  80 pass
+  android     80 pass
+  ipad-port   80 pass
+  ipad-mini   80 pass
+  ipad-land   82 pass
+  laptop      75 pass
+  desktop     75 pass
+  wide        75 pass
+GATE: PASS (787 checks, 10 viewports)

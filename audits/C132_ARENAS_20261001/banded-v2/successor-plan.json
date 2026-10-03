@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c132-arena-successor/v1",
+  "id": "banded-v2",
+  "sourceId": "banded",
+  "sourceOriginalsRetained": true,
+  "roles": [
+    {
+      "role": "far",
+      "reason": "Remove unbound giant planet and two moons from the FAR cloud-only medium.",
+      "mode": "targeted-edit"
+    },
+    {
+      "role": "near",
+      "reason": "Original NEAR is native 1983×793 instead of 1672×941.",
+      "mode": "fresh-generation-from-locked-style"
+    }
+  ],
+  "qualityAccepted": false
+}

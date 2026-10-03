@@ -1,0 +1,150 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "16-turkey",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "bf2af495c956cd5792a5ad1b795824df1f03ea46d2ef617d9fcda6bf65803f96",
+ "subjectSourceSha256": "6e2b53b6a0a2636c50fb9fdc43f1316fc1807bb8a981247f8b88e836276d396f",
+ "identity": {
+  "name": "Turkey",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Turkey\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"226656350\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 226656350,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "grouse",
+  "authoringSha256": "8345cf18f8a60d7b85fdc769eb771ae0e088c68b300fb01962311acb300929a1",
+  "masterSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0655,
+     "class": "top",
+     "attach": {
+      "x": 305,
+      "y": 167,
+      "relX": 0.97,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0101,
+     "class": "top",
+     "attach": {
+      "x": 229,
+      "y": 149,
+      "relX": 0.61,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0603,
+     "class": "rear",
+     "attach": {
+      "x": 113.4,
+      "y": 189.4,
+      "relX": 0.05,
+      "relY": 0.4
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0224,
+     "class": "limb-down",
+     "attach": {
+      "x": 310.8,
+      "y": 215.8,
+      "relX": 1,
+      "relY": 0.67
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0111,
+     "class": "limb-down",
+     "attach": {
+      "x": 120.1,
+      "y": 239.8,
+      "relX": 0.08,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0051,
+     "class": "limb-down",
+     "attach": {
+      "x": 160,
+      "y": 240,
+      "relX": 0.27,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.031,
+     "class": "limb-down",
+     "attach": {
+      "x": 202.4,
+      "y": 248.9,
+      "relX": 0.48,
+      "relY": 1
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0353,
+     "class": "limb-down",
+     "attach": {
+      "x": 249,
+      "y": 250,
+      "relX": 0.7,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 5
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "grouse",
+   "byClass": {
+    "top": 3,
+    "other": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

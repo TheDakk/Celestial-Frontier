@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-2e1fec45-96cb-4c81-8ccc-7282f2df13e0.png",
+  "masterSha256": "c3bcbf2ddc10e18e2f25b1f3b1042f865916e23d991969e4ecb0032bedcdb0c8",
+  "bytes": 1010890,
+  "promptSha256": "22f6be20b7148ae7057d5378d594b4e2d5a9b025fcf04069d5a8dc4142e7d8b6",
+  "outputModified": false,
+  "originalRetained": true
+}

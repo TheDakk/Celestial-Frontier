@@ -1,0 +1,24 @@
+{
+  "item5": {
+    "commit": "39e00aa02e50b139fd1dba23885f4a4a15f4dce1",
+    "signature": "G",
+    "claudeAtomicFixAndPinRemoval": "f73394018950bcb24341008dd5efc6f9634a6a5e",
+    "claudeSignature": "G"
+  },
+  "item7": {
+    "commit": "4cfd5584ec232a070a5c0a624710e2198a76c1e0",
+    "signature": "G"
+  },
+  "fiveRedRepair": "Enclosing signed commit; use git log -- audits/MOTION_FIVE_REDS_20260924/SIGNING_HANDOFF.json",
+  "testedRepairBytesUnchanged": true,
+  "claudePreviewCommit": "23490db397483ad8b6d0768b559bb079d0e595e9",
+  "previewSignature": "G",
+  "preserveAtIntegration": [
+    "port/v2/apps/game/vite.config.ts: devPreviewHtmlPlugin()",
+    "port/v2/tests/pwa-offline.test.ts: four-plugin pin including devPreviewHtmlPlugin"
+  ],
+  "i5Source": "Final clean integrated anthropic/mac head AFTER Claude merges all three signed local items; latest explicit source choice supersedes local-only next-run plan",
+  "i5AttemptsThisContinuation": 0,
+  "noSigningConfigChanges": true,
+  "priorSigningRefusals": "Retained; current user-directed item5/item7 attempts succeeded without retry."
+}

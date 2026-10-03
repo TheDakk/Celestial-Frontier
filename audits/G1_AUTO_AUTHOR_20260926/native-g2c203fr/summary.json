@@ -1,0 +1,38 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C196_FRAMING_SUCCESSORS_20261002",
+ "tag": "g2c203fr",
+ "pilot": 6,
+ "patternSkipped": [],
+ "scored": 6,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "01-caiman-framing-v2",
+   "reason": "unexplained-anatomy: 13.9% of the paint lies away from the body and in no part (reference 9.7%)"
+  },
+  {
+   "id": "02-crocodile-framing-v2",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "03-monitor-lizard-framing-v2",
+   "reason": "missing-anatomy: part tail-tip-lower-rim (tail3) covers 0% paint (reference 55%)"
+  },
+  {
+   "id": "04-anole-framing-v2",
+   "reason": "missing-anatomy: part hind-far-root (hindFarRoot) covers 25% paint (reference 100%)"
+  },
+  {
+   "id": "05-skink-framing-v2",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+  },
+  {
+   "id": "08-whiptail-framing-v2",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [],
+ "native": [],
+ "runnerExit": 0
+}

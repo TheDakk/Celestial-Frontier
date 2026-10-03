@@ -1,0 +1,13 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {registerHooks} from 'node:module';import {resolve} from '../../port/v2/tools/effects-proof/resolve-ts-hook.mjs';registerHooks({resolve});
+const {V2_DRAFT_RELEASE}=await import('../../port/v2/apps/game/src/release-content.ts');
+const rows=V2_DRAFT_RELEASE.sections.flatMap(s=>s.bullets),hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex');
+assert.equal(rows.length,121);assert.equal(rows[0],'✨ BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse. Fixed creatures cast from their stand.');
+const oldSha='cc01f53976ac67b44bd14b71e2ef1bb1e053bf752d8d6151f0c2a98ed8163b82';
+assert.equal(hash(rows.slice(1)),oldSha,'Every preceding approved release row remains byte-for-byte and in order');
+const currentSha=hash(rows);assert.notEqual(currentSha,oldSha);assert.notEqual(hash([...rows.slice(1),rows[0]]),currentSha);
+const target='port/v2/tools/slicesmoke.mjs',source=fs.readFileSync(target,'utf8');
+const old=`  const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({\n    count: 120,\n    sha256: '${oldSha}',\n  });`;
+assert.equal(source.split(old).length-1,1);const next=old.replace('count: 120','count: 121').replace(oldSha,currentSha);
+fs.writeFileSync(target+'.tmp',source.replace(old,next),{flag:'wx'});fs.renameSync(target+'.tmp',target);
+fs.writeFileSync('audits/C192_RELEASE_ORACLE_REPAIR_20261002/review-copy-pin.json',JSON.stringify({status:'PASS',count:rows.length,previousCount:120,previousSha256:oldSha,reviewedSha256:currentSha,oldRowsExact:true,addedRows:[rows[0]],reorderedRowsRejected:true,scope:'Rendered release-copy inventory only. No I5 certificate, measurement, allowance or producer authority re-bound.'},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({count:rows.length,sha256:currentSha,oldRowsExact:true}));

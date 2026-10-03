@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-reference-visual-review/v1",
+  "name": "Dog",
+  "masterSha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4",
+  "method": "Full original visual inspection of the exact candidate-02 painting",
+  "observation": "Medium tan/black/cream dog with black nose, two erect ears, complete high plumed tail, four separated lower limbs and four paws. Fur obscures proximal attachment boundaries. Tongue is pink and should stay attached to jaw ownership after conservative keying. Four paws and lower limb shafts, both erect ears and full raised plumed tail are separately readable. Long fur obscures exact proximal joint centres; manually placed roots are interpretations within the observed limb paint, not inferred hidden paint. The curled tail and long fringe need source-rest, skin and late-idle testing. Pink tongue remains jaw-owned and needs conservative key treatment.",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 278,
+      "y0": 357,
+      "x1": 979,
+      "y1": 880
+    },
+    "margins": {
+      "left": 278,
+      "right": 274,
+      "top": 357,
+      "bottom": 373
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "status": "CANDIDATE_UNMEASURED",
+  "scope": "Manual authoring reference only; no intake/static/native/default-pool/Dakk acceptance."
+}

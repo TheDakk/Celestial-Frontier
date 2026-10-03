@@ -1,0 +1,22 @@
+{
+  "schema": "cf.c192-material-handoff/v1",
+  "files": [
+    {
+      "path": "audits/C192_C233_AUTHORING_HANDOFF_20261002/README.md",
+      "bytes": 3329,
+      "sha256": "327ebb4e2674329a01bd8b730d47904c3dfab3c4b9d7c6a8bf858a6d7dc158ec"
+    },
+    {
+      "path": "audits/C192_C233_AUTHORING_HANDOFF_20261002/material-decisions.json",
+      "bytes": 5824,
+      "sha256": "13e1cddbacf0c0317df1bf7f480f729a51f5e8dbedc31d731a59b4db2e2f1f4f"
+    }
+  ],
+  "status": "FROZEN_AUTHORING_HANDOFF",
+  "sourceHashesVerified": true,
+  "independentReview": "audits/C192_C233_MATERIAL_REVIEW_20261002/delivery.json",
+  "independentReviewSha256": "87810df7f80eca3c5d7c17fbf57bcb0cc46c66b7d62838b254711db0a80a65e2",
+  "runtimeChanged": false,
+  "runnerChanged": false,
+  "fitAdmission": false
+}

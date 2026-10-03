@@ -1,0 +1,18 @@
+{
+  "recordRecipeHash": "2c00c523bede76b8641bbfdf0001538c6b73ed466a90598da5b2d10d2b1d5604",
+  "bindingHash": "bd44d8678d0032521d3cbc58f04c30e7d07fa4f425129d23a7558a09fb8bbf26",
+  "pairs": [
+    [
+      "body",
+      "torso"
+    ],
+    [
+      "torso",
+      "far-wing-shoulder"
+    ],
+    [
+      "torso",
+      "near-wing-shoulder"
+    ]
+  ]
+}

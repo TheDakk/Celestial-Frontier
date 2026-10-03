@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Eel",
+    "beforeSha256": "3e366a0aedb7bdc0bc90b072cbdf1934e2e82f821cdb11e352f48921c2be852d",
+    "afterSha256": "47aba20750aebb8f4576f5bc6b04b3374f71fd92cccb23dc21579b29887e7638",
+    "clarification": "ANATOMY/POSE CONTEXT: This is an AQUATIC FINNED FISH, not a land snake. Preserve the continuous dorsal/caudal/anal fin fringe, blunt jaws and actual pectorals; NO pelvic fins. Use only a low shallow horizontal curve for the long body. Do not replace fins with scales. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Electric Eel",
+    "beforeSha256": "eeeface08b111861f4555f2485403c29b2d3b8a4ec494626110a48eb93312674",
+    "afterSha256": "dd4947623f8b06569baf029168f35d9df76f0f1bead7fa42d9b29c1772e1c10b",
+    "clarification": "ANATOMY/POSE CONTEXT: This is an AQUATIC KNIFEFISH, not a land snake or a true eel. Preserve its ONE long underside anal ribbon, no dorsal or pelvic fins, blunt flat-topped head. Keep the entire fin and body visible in a low shallow horizontal curve. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Moray Eel",
+    "beforeSha256": "2c4b614db3f7ba29fd3e2014f46f7bb5c8621baf8ed75cbaf082f718592a7fd1",
+    "afterSha256": "8aac574f2fdc98d076b0746b522278fa3ae386a370cf5e669dd6b309c6d2f350",
+    "clarification": "ANATOMY/POSE CONTEXT: This is an AQUATIC MORAY, not a land snake. Keep one dorsal ridge, open toothy mouth, round gill pore, NO pectoral fins, NO gill covers. Gentle low horizontal curve with fins naturally attached, no coils. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Gulper Eel",
+    "beforeSha256": "ac91589fbd7f22ead157cac4a428d2af4d9756799e6ef4bf60a1d600bc0114b6",
+    "afterSha256": "8933b9c032aefc092ee6290e3f62feb1f2c97dbe617836f42d898e5c84ad6ce5",
+    "clarification": "ANATOMY/POSE CONTEXT: This is an AQUATIC GULPER, not a land snake. Preserve the enormous natural pouch mouth and pinhead eyes, complete whip-thin tail with tiny luminous tip. Scale the whole subject down to fit its full tail; no coils or invented limbs. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Oarfish",
+    "beforeSha256": "f31ebea5f7ede0f31aa59c677898497ee92cec1e5bd42a1ae44f4995f375aea2",
+    "afterSha256": "ac5f596af36030bb6a36ad8794d7fe06ba86938fdeb6916ddf051802ade3aa18",
+    "clarification": "ANATOMY/POSE CONTEXT: Canonical Oarfish has NO CAUDAL TAIL FIN: its long silver ribbon body tapers to its true end. Do not add the generic fan tail. Include crimson head crest and complete long pelvic streamers, scale the complete specimen down rather than crop or shorten it. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Gull",
+    "beforeSha256": "a3b1038a749466538e70b2bdfbe3b3ad07edffff811505f62c199e74a94c7442",
+    "afterSha256": "2d60714994611db53249a4b647e569e8427abfd68eee4cb1f098177efbc91746",
+    "clarification": "ANATOMY/POSE CONTEXT: Standing resting herring-gull-type bird. Its naturally long folded primaries extend BEYOND the short true tail as canonical anatomy states; do not shorten the wings to force the generic layout. Keep both feet separately visible. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Frigatebird",
+    "beforeSha256": "34232843fabda03877802f4928af8d0e956cd924f010a2bce1594cd66597b99c",
+    "afterSha256": "05b7da7a00b483f0d3b5b1a5ae73b8349ef1360b3b288422bdf8940900e96533",
+    "clarification": "ANATOMY/POSE CONTEXT: Standing resting adult male frigatebird with wings naturally folded, hooked bill, deeply forked complete tail and visible scarlet throat pouch. The canonical M-shaped wing description describes flight, not a request to spread wings in this reference pose. Do not invent long walking legs. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Tropicbird",
+    "beforeSha256": "1ddc7ff062030aa66f84571f2ae12e356b4f2d959209f473063ea36fba5fce11",
+    "afterSha256": "aad62f13a0fd0b74ebd93e35f92672eab7351434b2356a8858e4a0d8e8be94a9",
+    "clarification": "ANATOMY/POSE CONTEXT: Standing resting tropicbird with wings naturally folded, TWO complete long ribbon tail streamers, black eye stripe and stout red bill. Scale down the whole bird so the full natural streamers fit within clear empty margins. No invented long walking legs. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Giant Anteater",
+    "beforeSha256": "74cfe50c8768ee17757ebe8dcbc5575a9f853d5b191eeab06eaeb33d3f187e10",
+    "afterSha256": "b907ac0be0bbbeb0e5a13b1b2def0d2fc64496ce4353925e06f46f62635bea32",
+    "clarification": "ANATOMY/POSE CONTEXT: Preserve natural knuckle-walking forefeet with large claws curled inward, not four generic dog paws. Four separate limbs, both small natural ears, full huge bushy tail and complete long tubular snout. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Hamster",
+    "beforeSha256": "4a256ac8fc3ed83c367814a76118937285b2f58be513f7270009f9195fa8b1d5",
+    "afterSha256": "c6fec30e7ac66a63c22351829e7034b769aadbe622b9d02af45075e3b2d8ec7a",
+    "clarification": "ANATOMY/POSE CONTEXT: Canonical hamster has almost no visible tail. Keep only the actual tiny stub if naturally visible, never extend a long tail to satisfy the generic quadruped layout. Preserve cheek pouches and short legs. This prompt is not a measured absence declaration."
+  },
+  {
+    "name": "Guinea Pig",
+    "beforeSha256": "55258b94c13a28bb99b2961b4aa5a97df76f34508e578e564256f90ad1d82ed8",
+    "afterSha256": "6d0305cd325bc6f99b47aad08faea2e4ca44cf7b0bd56f3b0585d380fbaa894f",
+    "clarification": "ANATOMY/POSE CONTEXT: Canonical guinea pig is TAILLESS. Do not invent a tail. Preserve loaf-like body, very short legs, drooping petal ears; four feet may be separately visible without lengthening the natural limbs. This prompt is not a measured absence declaration."
+  }
+]

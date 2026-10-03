@@ -1,0 +1,9 @@
+{
+  "port/v2/tools/creature-animation/arap-skin.mjs": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-skin.mjs",
+  "port/v2/tools/creature-animation/wasm-arap-sweep.mjs": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-arap-sweep.mjs",
+  "port/v2/tools/creature-animation/arap-sweep-bytes.mjs": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-sweep-bytes.mjs",
+  "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/pose-refusal.mjs": "port/v2/tools/creature-animation/pose-refusal.mjs",
+  "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-orientation-forward.mjs": "port/v2/tools/creature-animation/wasm-orientation-forward.mjs",
+  "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-orientation-active.mjs": "port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+  "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/orientation-projector.mjs": "port/v2/tools/creature-animation/orientation-projector.mjs"
+}

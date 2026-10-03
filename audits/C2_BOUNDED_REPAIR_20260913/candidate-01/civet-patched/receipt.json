@@ -1,0 +1,223 @@
+{
+  "schema": "cf.joint-underlap/v1",
+  "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+  "turnaroundSha256": "5a7d18cbf0c0214ffd9b76f13597a9ce78997fec2c6cfbcb82f7177382abc924",
+  "declarationHash": "7f9f30aa0dc0c9ecc849dd9d41d65df44a7612c56859b99445a6352b037494a1",
+  "patches": [
+    {
+      "id": "patch-head",
+      "joint": "neck",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 947,
+        "y": 446,
+        "width": 112,
+        "height": 112
+      },
+      "sourceRectangle": {
+        "x": 542,
+        "y": 356,
+        "width": 158,
+        "height": 158
+      },
+      "coveredJoint": "head"
+    },
+    {
+      "id": "patch-jaw",
+      "joint": "head",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 1043,
+        "y": 378,
+        "width": 36,
+        "height": 36
+      },
+      "sourceRectangle": {
+        "x": 862,
+        "y": 400,
+        "width": 51,
+        "height": 51
+      },
+      "coveredJoint": "jaw"
+    },
+    {
+      "id": "patch-earfartip",
+      "joint": "earFarRoot",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 956,
+        "y": 278,
+        "width": 36,
+        "height": 36
+      },
+      "sourceRectangle": {
+        "x": 915,
+        "y": 338,
+        "width": 51,
+        "height": 51
+      },
+      "coveredJoint": "earFarTip"
+    },
+    {
+      "id": "patch-earneartip",
+      "joint": "earNearRoot",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 1118,
+        "y": 289,
+        "width": 36,
+        "height": 36
+      },
+      "sourceRectangle": {
+        "x": 915,
+        "y": 338,
+        "width": 51,
+        "height": 51
+      },
+      "coveredJoint": "earNearTip"
+    },
+    {
+      "id": "patch-hindnearankle",
+      "joint": "hindNearKnee",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 438,
+        "y": 812,
+        "width": 56,
+        "height": 56
+      },
+      "sourceRectangle": {
+        "x": 848,
+        "y": 386,
+        "width": 79,
+        "height": 79
+      },
+      "coveredJoint": "hindNearAnkle"
+    },
+    {
+      "id": "patch-hindfarankle",
+      "joint": "hindFarKnee",
+      "layer": "far",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 644,
+        "y": 806,
+        "width": 46,
+        "height": 46
+      },
+      "sourceRectangle": {
+        "x": 855,
+        "y": 393,
+        "width": 65,
+        "height": 65
+      },
+      "coveredJoint": "hindFarAnkle"
+    },
+    {
+      "id": "patch-forenearankle",
+      "joint": "foreNearKnee",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 902,
+        "y": 839,
+        "width": 50,
+        "height": 50
+      },
+      "sourceRectangle": {
+        "x": 852,
+        "y": 390,
+        "width": 71,
+        "height": 71
+      },
+      "coveredJoint": "foreNearAnkle"
+    },
+    {
+      "id": "patch-forefarankle",
+      "joint": "foreFarKnee",
+      "layer": "far",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 1112,
+        "y": 807,
+        "width": 46,
+        "height": 46
+      },
+      "sourceRectangle": {
+        "x": 855,
+        "y": 393,
+        "width": 65,
+        "height": 65
+      },
+      "coveredJoint": "foreFarAnkle"
+    },
+    {
+      "id": "patch-tail2",
+      "joint": "tail1",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 301,
+        "y": 715,
+        "width": 62,
+        "height": 62
+      },
+      "sourceRectangle": {
+        "x": 843,
+        "y": 382,
+        "width": 88,
+        "height": 88
+      },
+      "coveredJoint": "tail2"
+    },
+    {
+      "id": "patch-tail3",
+      "joint": "tail2",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 158,
+        "y": 822,
+        "width": 62,
+        "height": 62
+      },
+      "sourceRectangle": {
+        "x": 843,
+        "y": 382,
+        "width": 88,
+        "height": 88
+      },
+      "coveredJoint": "tail3"
+    },
+    {
+      "id": "patch-neck",
+      "joint": "chest",
+      "layer": "near",
+      "kind": "joint-patch",
+      "cutout": {
+        "x": 865,
+        "y": 539,
+        "width": 100,
+        "height": 100
+      },
+      "sourceRectangle": {
+        "x": 550,
+        "y": 364,
+        "width": 141,
+        "height": 141
+      },
+      "coveredJoint": "neck"
+    }
+  ],
+  "partCount": 33,
+  "patchRestPolicy": "patches draw first; every patch pixel under opaque base paint in its own depth layer",
+  "baseBindingHash": "121b1ac445190d2126a859ffa623e23238ab7bd628852d5aebe56b11d1f686d9",
+  "atlasSha256": "5482d8531e804aa2515811c1600191f85dd3ea731b278aa97e8f9559eda9160c",
+  "turnaroundUnchanged": true,
+  "nativeRestVerified": false
+}

@@ -1,0 +1,13 @@
+{
+  "id": "10-snowy-owl",
+  "name": "Snowy Owl",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-905cdcc0-4a38-416d-a110-d97f0c8c57a9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c406be06b90a517547653ae28bdec013b51aa5c4d0e2169cb4f6445236608b1a",
+  "bytes": 1256325,
+  "promptSha256": "190bd2bbdbe7bf4d495df62a7e21a374080137d94de41f50bcefe3216d16f25a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

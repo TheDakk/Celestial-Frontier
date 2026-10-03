@@ -1,0 +1,7 @@
+{
+  "status": "SESSION_UNAVAILABLE",
+  "modelAttempts": 0,
+  "error": "session not created",
+  "message": "Some devices were found, but could not be used",
+  "note": "Safari supplied no more specific reason in its message. Waiting for user reconnect/unlock confirmation; no phone model request or inference has occurred."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Gibbon",
+  "masterSha256": "9acfc1f229b16105161d00a71fd88d3e762ad7f799e3d33b701ea68acfbb94b7",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: tailless ape with arms much longer than legs, long hooked fingers, light face surround and two natural feet. Two arm chains and two leg chains are visible, but the far upper leg is partly overlapped by the near arm. Hands and feet lie at different image heights and one hand hangs above the implied support plane; no four-ground-contact or exact digit-count claim. Three-quarter view rather than strict side profile.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 251,
+      "y0": 189,
+      "x1": 1014,
+      "y1": 1065
+    },
+    "margins": {
+      "left": 251,
+      "right": 239,
+      "top": 189,
+      "bottom": 188
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "02-tasmanian-devil",
+  "name": "Tasmanian Devil",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-13199355-4f49-4c6e-b573-dc16406b79dd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "562041acaf1c4df471239b7921bbd007de68ef868ddbc09106bb236c9736f967",
+  "bytes": 1275787,
+  "promptSha256": "749d75823a8bd9085d5226a0d34267db9fcb83d7f3ac9d9695b829b5c798ae33",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

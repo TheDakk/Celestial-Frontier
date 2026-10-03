@@ -1,0 +1,9 @@
+{
+  "initialReceipt": "38614a",
+  "initialResult": "19/20; one oracle expression failure",
+  "observed": "42b9b4",
+  "maxY": 547.2,
+  "multiplicationExpected": 547.1999999999999,
+  "subtractionExpected": 547.2,
+  "correction": "Assert exact equality to viewport height minus its explicit reserve; no epsilon, threshold, production sizing or final containment change."
+}

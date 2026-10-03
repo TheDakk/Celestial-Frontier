@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cheetah",
+  "masterSha256": "e5757ca92d94b12ab1f51969264a2fd522bab82abac6ae73383149ec699cc7e8",
+  "required": [
+    "black tear stripes running from eye to mouth",
+    "solid round spots (not rosettes)"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black tear stripes running from eye to mouth",
+      "status": "PRESENT",
+      "observed": "Slender long-legged body, solid black spots, facial tear marks and long ringed tail visible. Four offset planted feet, two ear tips (far ear only a small tip above skull), tail clear of hindlegs. Some upper-limb roots remain hidden by torso despite distal separation. Good outer margin; no hidden-part declaration."
+    },
+    {
+      "requirement": "solid round spots (not rosettes)",
+      "status": "PRESENT",
+      "observed": "Slender long-legged body, solid black spots, facial tear marks and long ringed tail visible. Four offset planted feet, two ear tips (far ear only a small tip above skull), tail clear of hindlegs. Some upper-limb roots remain hidden by torso despite distal separation. Good outer margin; no hidden-part declaration."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Otter",
+  "masterSha256": "329c2167f0e1127a0ef13748a138de7ced41daac145ba2025be8f304d0e4618c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four distinct paw ends and lower limbs, continuous thick tapering tail, rounded whiskered muzzle and small near ear. A far ear tip is visible above the crown but is not a full distinct ear silhouette; its authorability remains held. Far upper limb roots remain under torso fur. Feet lie at unequal apparent heights. No hidden anatomy is inferred and no fit or motion improvement is claimed.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 148,
+      "y0": 374,
+      "x1": 1075,
+      "y1": 864
+    },
+    "margins": {
+      "left": 148,
+      "right": 178,
+      "top": 374,
+      "bottom": 389
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c163-reference-reindeer",
+    "name": "Reindeer",
+    "family": "quadruped",
+    "packet": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer",
+    "qualityAccepted": false
+  },
+  {
+    "id": "c163-reference-water-buffalo",
+    "name": "Water Buffalo",
+    "family": "quadruped",
+    "packet": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/water-buffalo",
+    "qualityAccepted": false
+  },
+  {
+    "id": "c163-reference-banteng",
+    "name": "Banteng",
+    "family": "quadruped",
+    "packet": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/banteng",
+    "qualityAccepted": false
+  }
+]

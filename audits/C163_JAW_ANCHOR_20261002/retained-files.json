@@ -1,0 +1,150 @@
+{
+  "schema": "cf.c163-jaw-retention/v1",
+  "files": [
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/battle-full.webm",
+      "bytes": 10467006,
+      "sha256": "b559e84ecc0c9205c92715d64d380e92e4331280947c0e22555842cd82139ad3"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/frame-samples.json",
+      "bytes": 157240,
+      "sha256": "edab800d9dc72bb4f6752e79ed9742bc06ee98aa00ca4f8c33242d36a00acd9a"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/report.json",
+      "bytes": 439252,
+      "sha256": "d8a5390cedf3b3e3b7fb1fd1f5fa1d218eca2400228ce9de9cf5f289613c6805"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn0-hit-approach-50.png",
+      "bytes": 1548578,
+      "sha256": "ee77b238a130df9f23ef6cf75f70ae4ad4a9427b968ad0749046b73fb164f00d"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn0-hit-impact.png",
+      "bytes": 982691,
+      "sha256": "11f0f530100f2f31a9d4d7aec38a82e3792dc50322bba96b51b29b0260a2969c"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn0-hit-launch-plus-40.png",
+      "bytes": 1547927,
+      "sha256": "2cd2bbea3ce41c6d89be7ee1af4c9f2780634e2ae8ffe6a94c17c8485c77ca7b"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn0-hit-launch.png",
+      "bytes": 1547125,
+      "sha256": "ceb29dc1a2c654c7ceb24cda30f95f64374ae19f1701ae9703e44d46b534e21c"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn0-hit-reaction-50.png",
+      "bytes": 1546794,
+      "sha256": "bcdbbedb5b064424cf55cad17a7d1081d87095949547a70ab3bd45e8a54522a3"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn0-hit-return-end.png",
+      "bytes": 1546491,
+      "sha256": "a4858b84f11dac699b183f19cba330dc80aa3001e0219bfb76fec93db39d969c"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn1-hit-approach-50.png",
+      "bytes": 1551461,
+      "sha256": "093ed9260c7683f842e1864349b8ffbd0580e12b2363c665df7b0c13b96900d8"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn1-hit-impact.png",
+      "bytes": 980790,
+      "sha256": "3ba7bb7597a25f340b9bca6a3b8ed28c607d2ff166ace9a505450cf281e7c677"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn1-hit-launch-plus-40.png",
+      "bytes": 1551412,
+      "sha256": "bc74c2b304a2b0582c73638bee054db1349afc8c7fb957151d49c62bdc8f56c6"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn1-hit-launch.png",
+      "bytes": 1548824,
+      "sha256": "b9e9ad32ea96613ea23fe4399382935f1721cf2cd33c509c5198a2d3469de899"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn1-hit-reaction-50.png",
+      "bytes": 1547461,
+      "sha256": "757d7bcc1e40c7d38616e397cd4b2b89233aad26499392b9c888ea2bfa80790e"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn1-hit-return-end.png",
+      "bytes": 1546518,
+      "sha256": "76793b48950e78e2601cdc76309260aa20fce6dee7a4355937b5f5438c383bf7"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn2-dodge-approach-50.png",
+      "bytes": 1547809,
+      "sha256": "9b99f71f651a65575d43e770aa520b6f0d0eb33d87bfd84ce41309097f7e25db"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn2-dodge-impact.png",
+      "bytes": 1551780,
+      "sha256": "c71a6d17879ae7f1c564ff526a03b6e1828b6d0776945102bd4a55948b270c9e"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn2-dodge-launch-plus-40.png",
+      "bytes": 1548453,
+      "sha256": "e3881abe80a6df9d294342cfa1e245041d441ddb6443106325060c30f53307ae"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn2-dodge-launch.png",
+      "bytes": 1546321,
+      "sha256": "26f527724c2628115f7b828af51b7e9c65efc70c0632b31443aa32751f2e815d"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn2-dodge-reaction-50.png",
+      "bytes": 1550701,
+      "sha256": "112d53ea4a4acc610acd31bf309dbccd993d56c3a7291e4f19b1922a4e29875b"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn2-dodge-return-end.png",
+      "bytes": 1546493,
+      "sha256": "7e834908beeb2ccf513422d6fe5142481e0e42516db8b856848fe797b7dc18f4"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-approach-50.png",
+      "bytes": 1548578,
+      "sha256": "ee77b238a130df9f23ef6cf75f70ae4ad4a9427b968ad0749046b73fb164f00d"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-idle-50.png",
+      "bytes": 1549009,
+      "sha256": "082939e859a767f3350ae0c6f92b83530378b36c7931d6c4485e2447e432dc50"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-idle-90.png",
+      "bytes": 1540254,
+      "sha256": "069dd6bd04a1aa7cfdcb0b375ea47dd4911c0f15facf23a77bf8d1a6bc97bb1d"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-impact.png",
+      "bytes": 1548123,
+      "sha256": "89868aa554ff719acea364db5381d55aab23548e8f3cd3f50ed3879259a5feb3"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-launch-plus-40.png",
+      "bytes": 1547927,
+      "sha256": "2cd2bbea3ce41c6d89be7ee1af4c9f2780634e2ae8ffe6a94c17c8485c77ca7b"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-launch.png",
+      "bytes": 1547125,
+      "sha256": "ceb29dc1a2c654c7ceb24cda30f95f64374ae19f1701ae9703e44d46b534e21c"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-reaction-50.png",
+      "bytes": 1540618,
+      "sha256": "26c136e875037a4b36818baf5aadcccdd60addfdc388b5d7be10bb712bcfd474"
+    },
+    {
+      "path": "audits/C163_JAW_ANCHOR_20261002/native-4x-01/turn3-hit-return-end.png",
+      "bytes": 1540041,
+      "sha256": "106638a2a31e517ba5403a7ac0a9ddf964ad982ad113f8b0889e46754bb1a8d6"
+    }
+  ]
+}

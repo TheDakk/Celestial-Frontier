@@ -1,0 +1,185 @@
+{
+  "id": "03-monitor-lizard",
+  "name": "Monitor Lizard",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "362bd96ae11513863de2744848c8f1de583a100579f30143798f2c4e242f0e61",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 10755,
+    "coreRadius": 12,
+    "bodyBox": {
+      "x0": 146,
+      "y0": 187,
+      "x1": 310,
+      "y1": 228
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1384,
+        "pixels": 1489,
+        "box": {
+          "x0": 292,
+          "y0": 165,
+          "x1": 392,
+          "y1": 211
+        },
+        "attach": {
+          "x": 306.7,
+          "y": 193.8,
+          "relX": 0.98,
+          "relY": 0.17
+        },
+        "dir": {
+          "x": 0.92,
+          "y": -0.39
+        },
+        "class": "front",
+        "length": 90.1
+      },
+      {
+        "k": 1,
+        "frac": 0.1665,
+        "pixels": 1791,
+        "box": {
+          "x0": 21,
+          "y0": 205,
+          "x1": 167,
+          "y1": 237
+        },
+        "attach": {
+          "x": 150.4,
+          "y": 222.6,
+          "relX": 0.03,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.03
+        },
+        "class": "rear",
+        "length": 130.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0393,
+        "pixels": 423,
+        "box": {
+          "x0": 296,
+          "y0": 217,
+          "x1": 339,
+          "y1": 249
+        },
+        "attach": {
+          "x": 303.9,
+          "y": 221.9,
+          "relX": 0.96,
+          "relY": 0.85
+        },
+        "dir": {
+          "x": 0.63,
+          "y": 0.78
+        },
+        "class": "limb-down",
+        "length": 44.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0526,
+        "pixels": 566,
+        "box": {
+          "x0": 209,
+          "y0": 225,
+          "x1": 243,
+          "y1": 258
+        },
+        "attach": {
+          "x": 222,
+          "y": 225,
+          "relX": 0.46,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": -0.03,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 39.1
+      },
+      {
+        "k": 4,
+        "frac": 0.029,
+        "pixels": 312,
+        "box": {
+          "x0": 170,
+          "y0": 229,
+          "x1": 199,
+          "y1": 248
+        },
+        "attach": {
+          "x": 182.5,
+          "y": 229,
+          "relX": 0.22,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.07,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 25.2
+      },
+      {
+        "k": 5,
+        "frac": 0.0335,
+        "pixels": 360,
+        "box": {
+          "x0": 263,
+          "y0": 229,
+          "x1": 289,
+          "y1": 254
+        },
+        "attach": {
+          "x": 270,
+          "y": 229,
+          "relX": 0.76,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.16,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 31.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 213,
+        "x1": 234,
+        "cx": 225.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,6 @@
+{
+  "promptTokens": 365,
+  "limit": 512,
+  "status": "PASS",
+  "priorCheck": "ENOENT from observer using tokenizer.json at cache root; corrected to actual worker tokenizer/tokenizer.json. No inference started."
+}

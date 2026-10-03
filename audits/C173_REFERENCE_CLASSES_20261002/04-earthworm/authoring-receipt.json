@@ -1,0 +1,30 @@
+{
+  "schema": "cf.c173-source-authoring/v1",
+  "writer": "audits/C173_REFERENCE_CLASSES_20261002/author-simple-first-two.mjs",
+  "writerSha256": "368087a02c79611bb1bd9c43ee41e03a7ad69c0a87b96fc46b224854a21c7220",
+  "retentionHelperSha256": "dde445e4aecc33840681f06f79a3c976594f88fee3fe0f92fedd27ef1e116e6d",
+  "source": "audits/C196_SIMPLE_ORIGINALS_20261002/01-earthworm",
+  "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+  "authoringSha256": "c4eb7edc199fec264aa6e7c0e25502a3a30a816f27750034ac0b72400da92ef1",
+  "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+  "subjectSourceSha256": "5f716b02343653a3a95d12543aa1b0c602cf25fc7b7cd2d9905ddbf71918d4a6",
+  "sourceEvidence": [
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/source-evidence/generation.json",
+      "sha256": "73f647b50398c54a6368e9abed2b9335cbfe1cb93ec8e534bd245c2cfe95829c"
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/source-evidence/request.json",
+      "sha256": "bdfa20ce4ec5c14352e5da152d1a6d45811d991c75c56b58567ab1b540d18086"
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/source-evidence/prompt.txt",
+      "sha256": "2439990c3aa05babbf7d93c4cd2a4a3704920727d0b76db09eb8e365dfa20a66"
+    }
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

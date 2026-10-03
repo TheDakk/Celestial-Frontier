@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c173-imagegen-edit-receipt/v1",
+  "tool": "image_gen.imagegen",
+  "original": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-21830ffd-6785-4d05-ad98-eccf38c67e47.png",
+  "masterSha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+  "bytes": 1392777,
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "promptSha256": "b337c5efc12ef826d87668de872019cdd6e1c85d44dc78f22004466f2adf1c6e",
+  "outputModified": false,
+  "originalHeldSourceModified": false,
+  "qualityAccepted": false
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "cf.regional-pin-diagnosis-execution/v1",
+  "regionInspection": {
+    "toolReceipt": "b3d056",
+    "exitCode": 0,
+    "inputs": 9,
+    "unchanged": true
+  },
+  "rootWeldTrace": {
+    "toolReceipt": "a2b86f",
+    "exitCode": 0,
+    "inputs": 7,
+    "unchanged": true
+  },
+  "realIntakeExecuted": false,
+  "sourceOrGateEdits": false,
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01/report.json",
+      "sha256": "d613e171fd43edd1a4027c6e961265d6aa809cc38d0f5787e74bfb6baf0349b6"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01/root-welds.json",
+      "sha256": "0e70e3535f01c3095ef5a82beaa1b3b21b7fec911e1d68f67d81bceb4d25dece"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01/findings.md",
+      "sha256": "80465d3530577a2d7e826eb0b35d0ba6a0ef72011957879262cd78f11ffdbbd2"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01.mjs",
+      "sha256": "726fa40d4c588788c22ea6be4f5cf7c0fb834bc8de9b6a8355594f565c4319a5"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01.log",
+      "sha256": "56cd26be268dbca24d9ab5d291c484bda9419105d1d033cda5a7caff5518dd78"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01/trace-root-welds.mjs",
+      "sha256": "bdd295b99b7e591ebcc2e12b21b5a20b08f87f29d0a8559484dcc879f9d2093a"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01/root-welds.log",
+      "sha256": "80ba7d7834f76348f917640c20b2e3d317096f399550b4a74c1e099abf8021f4"
+    }
+  ]
+}

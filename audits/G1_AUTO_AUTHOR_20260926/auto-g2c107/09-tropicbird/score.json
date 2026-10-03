@@ -1,0 +1,11 @@
+{
+ "id": "09-tropicbird",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-foot (legNearFoot) covers 16% paint (reference 48%)",
+  "missing-anatomy: part tail (tailFan) covers 19% paint (reference 61%)",
+  "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.2%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Deep-Sea Fish",
+  "masterSha256": "e87984c082a9066018f0fd7d1bee0a7180922f815806be3f46e907ebe7b9fc90",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,59 @@
+{
+  "files": [
+    {
+      "path": "ART_REVIEW.md",
+      "bytes": 6791,
+      "sha256": "a0cd0b38b8fa1898ab7fc1171e6a5764ce0426354a5315aea32364aaaaffcde0"
+    },
+    {
+      "path": "INTEGRATION_PLAN.md",
+      "bytes": 7554,
+      "sha256": "7e7e2323434bd940773789bb26e83dc87d3861abde414831ab464dfa0074dc7e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1514,
+      "sha256": "0caec8c478444a43900fdaea0e6577a7d3e6336478fe71dc2c3a3b627bbb71a0"
+    },
+    {
+      "path": "changed-paths.txt",
+      "bytes": 1583028,
+      "sha256": "b6fd94ae5b2ba37331fdba064124f57fbf452653a52c51963c1098d65c482810"
+    },
+    {
+      "path": "document-checks.json",
+      "bytes": 391,
+      "sha256": "8b589e95986f462a541462d6efd543f97e883682d4b709ce38a8d0f308045499"
+    },
+    {
+      "path": "documentation-update.json",
+      "bytes": 571,
+      "sha256": "80f98a30d1db90f2f5b609433721bd73a14a61f6ef41b463ec751b523a9e8837"
+    },
+    {
+      "path": "integration-snapshot.json",
+      "bytes": 1174,
+      "sha256": "698afd975eed615653dff1bdf9e0edd7c0c4b9beacef74ef73776623a4c42585"
+    },
+    {
+      "path": "python-film-at-1.23s.png",
+      "bytes": 1047401,
+      "sha256": "119c1bb94557d07244c3594d37e0f689cf16bdc687d53806879fc149177254c6"
+    },
+    {
+      "path": "python-film-at-5.30s.png",
+      "bytes": 987888,
+      "sha256": "7bb9ca1bf0bead5eb287a5897057f5079080d19b547ba6646b0e6362dfd5b759"
+    },
+    {
+      "path": "review-inputs.json",
+      "bytes": 4410,
+      "sha256": "663dfbf460a740d41d7bd67e0157b72019f21046090f83474a14dd5f9931bc60"
+    },
+    {
+      "path": "signing-refusal.json",
+      "bytes": 840,
+      "sha256": "60b8c35cea20ace3679655fbdb1e84cb3d9e1a28ef360b144fcd5de82f0657e7"
+    }
+  ]
+}

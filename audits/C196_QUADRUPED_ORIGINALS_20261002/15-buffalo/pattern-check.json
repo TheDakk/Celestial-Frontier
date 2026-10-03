@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Buffalo",
+  "masterSha256": "b2bfd6b1f3367812f21762ea7d06473d316c1e93469cf50f4065c98a7615e3de",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

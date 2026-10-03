@@ -1,0 +1,200 @@
+{
+  "id": "06-marsh-rodent",
+  "name": "Marsh Rodent",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "c1e0c233125e8040851842e6ef31578d49cdab7626c62db5f58c3257e06f51da",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 19671,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 152,
+      "y0": 145,
+      "x1": 316,
+      "y1": 231
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0086,
+        "pixels": 170,
+        "box": {
+          "x0": 195,
+          "y0": 138,
+          "x1": 241,
+          "y1": 144
+        },
+        "attach": {
+          "x": 218,
+          "y": 144,
+          "relX": 0.4,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.2,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 23.8
+      },
+      {
+        "k": 1,
+        "frac": 0.1297,
+        "pixels": 2552,
+        "box": {
+          "x0": 281,
+          "y0": 141,
+          "x1": 367,
+          "y1": 205
+        },
+        "attach": {
+          "x": 309.2,
+          "y": 169.8,
+          "relX": 0.96,
+          "relY": 0.29
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.1
+        },
+        "class": "front",
+        "length": 67.7
+      },
+      {
+        "k": 2,
+        "frac": 0.125,
+        "pixels": 2459,
+        "box": {
+          "x0": 45,
+          "y0": 175,
+          "x1": 177,
+          "y1": 263
+        },
+        "attach": {
+          "x": 155.7,
+          "y": 207.3,
+          "relX": 0.02,
+          "relY": 0.72
+        },
+        "dir": {
+          "x": -0.86,
+          "y": 0.51
+        },
+        "class": "limb-down",
+        "length": 123.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0461,
+        "pixels": 907,
+        "box": {
+          "x0": 183,
+          "y0": 227,
+          "x1": 231,
+          "y1": 268
+        },
+        "attach": {
+          "x": 200,
+          "y": 227,
+          "relX": 0.29,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": 0.13,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 51.4
+      },
+      {
+        "k": 4,
+        "frac": 0.0365,
+        "pixels": 718,
+        "box": {
+          "x0": 275,
+          "y0": 230,
+          "x1": 338,
+          "y1": 265
+        },
+        "attach": {
+          "x": 290.4,
+          "y": 231.9,
+          "relX": 0.84,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.7,
+          "y": 0.72
+        },
+        "class": "limb-down",
+        "length": 58
+      },
+      {
+        "k": 5,
+        "frac": 0.0215,
+        "pixels": 423,
+        "box": {
+          "x0": 252,
+          "y0": 232,
+          "x1": 277,
+          "y1": 262
+        },
+        "attach": {
+          "x": 262.5,
+          "y": 232,
+          "relX": 0.67,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.08,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 33.3
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 143,
+        "x1": 167,
+        "cx": 153
+      },
+      {
+        "x0": 198,
+        "x1": 231,
+        "cx": 214
+      },
+      {
+        "x0": 257,
+        "x1": 277,
+        "cx": 266.7
+      },
+      {
+        "x0": 310,
+        "x1": 338,
+        "cx": 323.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

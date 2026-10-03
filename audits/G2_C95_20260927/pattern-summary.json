@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Cardinalfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rabbitfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sea Bass",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bonefish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tigerfish",
+    "status": "PASS"
+  },
+  {
+    "name": "Coelacanth",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gannet",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Booby",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bustard",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Seriema",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Chicken",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rooster",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pronghorn",
+    "status": "PASS"
+  },
+  {
+    "name": "Springbok",
+    "status": "PASS"
+  },
+  {
+    "name": "Bongo",
+    "status": "PASS"
+  },
+  {
+    "name": "Duiker",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Nilgai",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Serow",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Butterfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mosquito",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Black Fly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Fly",
+    "status": "PASS"
+  },
+  {
+    "name": "Springtail",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Cold-Adapted Insect",
+    "status": "NOT_REQUIRED"
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "before": "Incorrectly compared desired elapsed directly with stage elapsed after addition/subtraction of native reactionStart; IEEE754 roundoff differs.",
+  "after": "Exact same stage clock arithmetic (reactionStart + desiredElapsed) - reactionStart, no tolerance.",
+  "scope": "Diagnostic instrument only; no runtime/gate/measurement limit change"
+}

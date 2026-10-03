@@ -1,0 +1,30 @@
+{
+  "status": "GENERATED_ORIGINALS_RETAINED",
+  "names": [
+    "Grayling",
+    "Minnow",
+    "Sculpin",
+    "Walleye",
+    "Whitefish",
+    "Pacu",
+    "Cichlid",
+    "Tetra",
+    "Finch",
+    "Lark",
+    "Chough",
+    "Egret",
+    "Ibis",
+    "Stork",
+    "Ptarmigan",
+    "Oystercatcher",
+    "Water Strider",
+    "Cockroach",
+    "Carrion Beetle",
+    "Stick Insect",
+    "King Snake",
+    "Grass Snake",
+    "Whip Snake",
+    "Vine Snake"
+  ],
+  "scope": "24 fresh exact originals; birds/fish/insects thin; reference-matched snake layouts"
+}

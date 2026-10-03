@@ -1,0 +1,38 @@
+{
+  "schema": "cf.c186-source-observed-correction/v1",
+  "id": "15-sheep-tail",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/15-sheep/master.png",
+  "sourceSha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/15-sheep/packet/authoring.json",
+  "priorAuthoringSha256": "7ce512d04275fee5c2414816da400adb158547d6b407ccac1ddebdd380e5e519",
+  "changedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "changedParts": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "addedParts": [],
+  "priorityChanged": {
+    "tailBeforeInheritedOwners": true,
+    "distalPawBeforeAnkle": false
+  },
+  "findings": [
+    "The woolly tail is the separate elongated lobe along x150–241/y447–683, bounded from the rump by a visible key gap below y570. Four short segments remain inside this real lobe.",
+    "Dense wool hides exact proximal skeletal pivots; unchanged body/limb landmarks retain that limitation."
+  ],
+  "originalPixelsChanged": 0,
+  "unchangedAnatomyPresence": true,
+  "unchangedAutomaticRegions": true,
+  "qualityAccepted": false,
+  "nativeRun": false,
+  "remainingHolds": [
+    "Static and conservation evidence pending; no quality admission.",
+    "Unedited automatic geometry remains subject to full-size review."
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "status": "PASS",
+  "head": "26a4bc5716afda8e2a196264b7093f679cea8407",
+  "modelCreates": 1,
+  "modelInferences": 5,
+  "phoneCreates": 0,
+  "phoneMissing": {
+    "status": "fallback",
+    "reason": "delivered original unavailable"
+  },
+  "qualityAccepted": false,
+  "rows": [
+    {
+      "id": "crab",
+      "status": "PASS",
+      "bytes": 34690,
+      "sha256": "cc870adc8ad629df189de879fb8eb497b28baa61c329947b63630c35925da926",
+      "details": {
+        "elapsedMs": 24002.87999999523,
+        "editablePixels": 5128,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        }
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      }
+    },
+    {
+      "id": "freshwater-crab",
+      "status": "PASS",
+      "bytes": 42794,
+      "sha256": "4f33f8595b67f42b37f1298d574c653d0f161f2d8e68041f13ec46141a7bdb25",
+      "details": {
+        "elapsedMs": 20626.31500005722,
+        "editablePixels": 11755,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        }
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      }
+    },
+    {
+      "id": "mud-crab",
+      "status": "PASS",
+      "bytes": 42238,
+      "sha256": "b1e80c121ea329ab9c4e9c54c34d9192c5e499d429a0f0283f047ba25684d003",
+      "details": {
+        "elapsedMs": 20068.74500000477,
+        "editablePixels": 11441,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        }
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      }
+    },
+    {
+      "id": "vent-crab",
+      "status": "PASS",
+      "bytes": 27242,
+      "sha256": "ee1b860e16f9105d0a4d8e81df8a0ce8925193d546451ce6adf1e651d2b1037e",
+      "details": {
+        "elapsedMs": 15190.875,
+        "editablePixels": 6162,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        }
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      }
+    },
+    {
+      "id": "coconut-crab",
+      "status": "PASS",
+      "bytes": 52677,
+      "sha256": "486119dae63b842b308eb51562cbcd0ef5837be10c59a056f182a1b84cfa6e86",
+      "details": {
+        "elapsedMs": 17849.31499993801,
+        "editablePixels": 11454,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        }
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      }
+    }
+  ],
+  "pngBytesTotal": 199641,
+  "output": "audits/G5_FINISHER_ENGINE_20260926/native-26a4bc57"
+}

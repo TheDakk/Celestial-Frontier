@@ -21,9 +21,9 @@ signed `cc15e1f…` then crossed the hard refusal, closing this develop calibrat
 - Build: `82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b`
 - Carrier: `ARC1C_SCENEMEM_PR35_FEED_SUMMARY_HEAP_PLATEAU_RED_20260830_8792E8A.json.gz`
 - Gzip: 49,864 bytes,
-  `ddffe7c9c6a3f70be691bbf2aace67dcaf589c9d51bed49815faaeca80e9b2ab`
+  `d2c32fe9a552d96233ae57e774e7f45a64699c2b8b2dd98436a171c42cf51210`
 - Raw: 788,479 bytes,
-  `26123f30de359a2a89802f8b52a085eca44383b9326135e4f426f0846b34ba13`
+  `c80107681b764a69508972a6fab104269d6dcd34316199e9f95dd0f13c0aeadd`
 
 Desktop aggregate warm range was 525,716 bytes against 524,288; maximum positive slope was
 168,448.8 bytes/cycle against 131,072. The final probe/scored embedder value fell

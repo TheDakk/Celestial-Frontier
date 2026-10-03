@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cave Cricket",
+  "masterSha256": "ea2369cf78cb188ab0b5db152d20a553cbe4d1c9cb07cf6d1d2daacb3912b636",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

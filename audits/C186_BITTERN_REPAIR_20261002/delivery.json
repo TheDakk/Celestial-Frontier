@@ -1,0 +1,604 @@
+{
+  "schema": "cf.c186-bittern-source-repair/v1",
+  "selectedFit": "audits/C186_BITTERN_REPAIR_20261002/fit02",
+  "status": "OFFLINE_PASS_VISUAL_HOLDS",
+  "nativeRuns": 0,
+  "productChanges": 0,
+  "staticActions": 14,
+  "retainedContextPublications": 1228,
+  "freshTurnPublications": 7684,
+  "loadedRigParityPublications": 7,
+  "qualityAccepted": false,
+  "files": [
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/README.md",
+      "sha256": "cfe72a6f90f86f3310f402f073ec1378b0a122b9cacfcfcdde81212b9fa970b6",
+      "bytes": 4406
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/approach-start.png",
+      "sha256": "dda6ffbe8beef8e27d0e695746f31e2ea00faa0cb45e26b2c26c083caa887a25",
+      "bytes": 387254
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/authoring-review.json",
+      "sha256": "300b6e3993952a75c9f4506846502fa32b8eec9d1fc5f237a9202fe864cecd60",
+      "bytes": 1086
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/candidate01-dense-replay.json",
+      "sha256": "e61c22d6f1e72d290faa701d00c3775b4be0a87db15535d937154cd7b1ec65d8",
+      "bytes": 100146
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/candidate01-dense.log",
+      "sha256": "e2d6445a1eccd664bc451e7337b721012bc87d4ffbf622d2aea97cec3398e09e",
+      "bytes": 129
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/candidate01-replay.json",
+      "sha256": "c1e99f6291827c584defaed959fddeb0ca4a3d8260a60180d594430e9fa1fa12",
+      "bytes": 427
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/candidate02-dense-replay.json",
+      "sha256": "73bb7fa6c265f46af3dd8cad82d369c8afead97917bdfa0a4b6c1d7816aa7757",
+      "bytes": 100146
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate01-dense.mjs",
+      "sha256": "df437f8bdfecefef2666491f923c6caf15e0affe745d420229ed198628919313",
+      "bytes": 1824
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate01.mjs",
+      "sha256": "c21ae9ff809d786b360f88fdeaf11f8da9122e79c62f3c35444ce0166e2f9983",
+      "bytes": 1743
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate02-dense.mjs",
+      "sha256": "0851a4985735659c93a90c4e824578e889629f26be876cb3ecf8452dabb64ecd",
+      "bytes": 1824
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/check-candidate02-dense.mjs.log",
+      "sha256": "e2d6445a1eccd664bc451e7337b721012bc87d4ffbf622d2aea97cec3398e09e",
+      "bytes": 129
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/compare-visual02.mjs",
+      "sha256": "d228ee48f0ea3bade092d966635018d52eadb47107ae384d2d8be1eacba4a5dc",
+      "bytes": 755
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/context.mjs",
+      "sha256": "66e273418e432d7795c4bbc26198af82a4a4402a95286a784dcbf912f505508a",
+      "bytes": 2584
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/diagnose.mjs",
+      "sha256": "c49ba591cf0af517583db3af5aecafcb6aa010a6de5e190d14648a59a29db58f",
+      "bytes": 1319
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/diagnosis.json",
+      "sha256": "9fa1f43970f9156c0e5afa37595d40051d9f3be1400d5590c1d257f5a20e4cad",
+      "bytes": 19285
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/diagnostic-publication.mjs",
+      "sha256": "1ad5fb6b7a0b6f907abef6715200912b339b3a20345d9e82492712a6f48c4a0e",
+      "bytes": 3516
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/binding.json",
+      "sha256": "80bc12a17a38ea9ab835088a17bd93fc8c7aa54fe337b02b733da630fecf4150",
+      "bytes": 1188345
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/declaration.json",
+      "sha256": "95fd6f8bda626155aca02e253c35e9ab01ff09e4d70ca29ec86f4fd5bf59d12e",
+      "bytes": 10640
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/intake-provenance.json",
+      "sha256": "2e750f956d35201bdcef5c2d3898a17e6533edc67c47d047fbe168dcd8ce4882",
+      "bytes": 3062
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/atlas/07-bittern.json",
+      "sha256": "7f32942010dbbab17d975ff3b6979eee57019d7308aa4faa6431fc9ee5650712",
+      "bytes": 7008
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/atlas/07-bittern.png",
+      "sha256": "4ea8502e2aa0bef94f2c889ad98cb1eefaafb9b96421b22dc2ab69e072860d90",
+      "bytes": 400952
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/atlas/receipt.json",
+      "sha256": "3d42920423a61e08b35fb4f25524d5aa8951bdbeee13b04bbaf2c69f4cad4f1e",
+      "bytes": 2915
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/binding.json",
+      "sha256": "4611b8e5284321370087f50fe0234e431b540f8746d2dba084647986b48ad4ed",
+      "bytes": 5821
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/keyed.png",
+      "sha256": "c362dca562341be8e6becba1797d33b513a7906792bee4814d8edf32e50cb2d7",
+      "bytes": 1458554
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/manifest.json",
+      "sha256": "5d505fc407c535ca75406b17e027f5ea29e1a9808fc596303356bbad5acf0b3b",
+      "bytes": 2836
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/ownership.png",
+      "sha256": "83ecdc4e7b18d38c353e5b06eca990aecac57bb13245ded853e89ac302f21814",
+      "bytes": 14470
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/beak.png",
+      "sha256": "a9f840b522abbc377f41c595375ffc25d9db4aebb1d26f67a15afa1d8e7ab695",
+      "bytes": 11203
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/body.png",
+      "sha256": "cb3fb3e2cef88652aa2319c2f4e028198e34ecca29fb0195b8acd23b988c8ae1",
+      "bytes": 115134
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/chest.png",
+      "sha256": "16ce38ee7d2f780d03f42befd635d4d27955dcb78c193382f8c319de68d7fc53",
+      "bytes": 43541
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/far-foot.png",
+      "sha256": "007a0266aa53dc48011869a3605879cbe6e94b4057c9fa4c6b4a4c4114b3a826",
+      "bytes": 8523
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/far-shin.png",
+      "sha256": "142b6e6e7d91efa7302962e618f697e21984cb9712819c6eb61960e40c86d546",
+      "bytes": 7522
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/far-thigh.png",
+      "sha256": "d9bfd9f4387316ee39ec85bb4b5dfdb760db4e2d3b9b99624b56c3ab8d3eb4f7",
+      "bytes": 5685
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/far-wing-flight.png",
+      "sha256": "4357168f85a15dbe41d5194b9dafb9fce563dbb54d7cfa74fd612a1f029595b1",
+      "bytes": 13940
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/far-wing-root.png",
+      "sha256": "d080cf1653c91035cbb7988bf6c79ab9ba031e766ed94234e3d1ac481eb8d1e2",
+      "bytes": 12037
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/head.png",
+      "sha256": "138643e0e4223a8b0f3706fdafccf49ba1947b7ca5cb64f642c42c61d697db70",
+      "bytes": 16538
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/near-foot.png",
+      "sha256": "c0bf04836552c1b00bcda6fa4fbefa55df75f8b910696e175924a5550d4d53f4",
+      "bytes": 8193
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/near-shin.png",
+      "sha256": "590102fba0f9071cba4dd171501bc7a4c2c88d156e9260f03c537214aa5043d3",
+      "bytes": 2973
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/near-thigh.png",
+      "sha256": "a7f1542f6b857524117ff85140e0179f28b494a922c93ea45dfb59aa026c8023",
+      "bytes": 8648
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/near-wing-flight.png",
+      "sha256": "ab118bea401e8dbd6c1d02e431e9530e0dd187ac90293a9ae3b1e5cd744513c1",
+      "bytes": 57978
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/near-wing-root.png",
+      "sha256": "aff15f745775be82230c6dc40498d89d85bfbf5a8fe5eeba06021c377de41698",
+      "bytes": 38046
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/neck-lower.png",
+      "sha256": "22c442efa9b033669502cf1b6e1f2acad316053de1ca59b629f6c7a5aa3bfc59",
+      "bytes": 35385
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/neck-upper.png",
+      "sha256": "25f9fbd13230fb650dfc2343caf88f1e8f6029f0f24601e1e561a6e42238cce4",
+      "bytes": 25838
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/parts/tail.png",
+      "sha256": "f8a11bd8008f13bf695bd6a4f0badcbfac491b5ceccadea09fb67a3f46a041f1",
+      "bytes": 35349
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/parts/receipt.json",
+      "sha256": "7f829961278b15b0f122c9bb67338fda9b809f763a836ff39f00bea7c75df961",
+      "bytes": 4660
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/pre-split-binding.json",
+      "sha256": "026f9feb5c00fe800e4fe862336eac688b5097b3b4d1f73a6c75d6f332e16453",
+      "bytes": 838171
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/receipt.json",
+      "sha256": "13140b0959d555a997b5318aee9e50cdbe2348f181a5f3826bfe933b50fcea33",
+      "bytes": 2434
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit01/record.json",
+      "sha256": "c9992a0e9b3f169ce4b7ec2cd361c071d5646a588cb72a9e87ee4bd8187d3052",
+      "bytes": 5694
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/binding.json",
+      "sha256": "2c1e6d92b21d28fa1a9d55d14e70389c401abc011ce960213d47318a4d43d79f",
+      "bytes": 1183660
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/declaration.json",
+      "sha256": "8d48c7e4d36b1d966c7fc6994ba28670ed62e8a85effb605190fcc883eea402b",
+      "bytes": 10641
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/intake-provenance.json",
+      "sha256": "40c50a6739973e4309229696fe5cd236b1116952360914bb53e0d765735031f9",
+      "bytes": 3062
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/atlas/07-bittern.json",
+      "sha256": "ef7e689d5f3862e3f93a1d040afa296e683123040bdcc5e4e7fcedb635c4cb3d",
+      "bytes": 7008
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/atlas/07-bittern.png",
+      "sha256": "d9d782af6cd0c0060b4a3e92e7af544930cf0956ec1cf8e0b85593eed20327b2",
+      "bytes": 400664
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/atlas/receipt.json",
+      "sha256": "ed0e5397fd652c082f54a47b0324beb993fb5948e7c54e05f21277f3046a725b",
+      "bytes": 2915
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/binding.json",
+      "sha256": "e052a733858bdc321e7b816ed80ecb7bf049163d14f362d55c51a5ba3d837850",
+      "bytes": 5821
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/keyed.png",
+      "sha256": "c362dca562341be8e6becba1797d33b513a7906792bee4814d8edf32e50cb2d7",
+      "bytes": 1458554
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/manifest.json",
+      "sha256": "5b159320b7b16da1d1d66b246900658f6362dc6885be213b2f38fed847e0bc32",
+      "bytes": 2836
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/ownership.png",
+      "sha256": "04323235440d3488bc8c917ed03d61df98f8dd4caaaecb3bb2bb0a3ab396dcd5",
+      "bytes": 14435
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/beak.png",
+      "sha256": "a9f840b522abbc377f41c595375ffc25d9db4aebb1d26f67a15afa1d8e7ab695",
+      "bytes": 11203
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/body.png",
+      "sha256": "08166ca873accd0b6c674a8c6dcbac20f0effb25d5942d13fab8cfb3d1625f8c",
+      "bytes": 114863
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/chest.png",
+      "sha256": "16ce38ee7d2f780d03f42befd635d4d27955dcb78c193382f8c319de68d7fc53",
+      "bytes": 43541
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/far-foot.png",
+      "sha256": "007a0266aa53dc48011869a3605879cbe6e94b4057c9fa4c6b4a4c4114b3a826",
+      "bytes": 8523
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/far-shin.png",
+      "sha256": "681bda94e631d70390db37ed7d9384c2b1cb95e1dd9550228aeb5cc29bd40310",
+      "bytes": 8778
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/far-thigh.png",
+      "sha256": "a20bef1db16b3290e7eed7f30ae6a024a000defbda795fea2b7b0562ab82f95e",
+      "bytes": 4582
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/far-wing-flight.png",
+      "sha256": "4357168f85a15dbe41d5194b9dafb9fce563dbb54d7cfa74fd612a1f029595b1",
+      "bytes": 13940
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/far-wing-root.png",
+      "sha256": "d080cf1653c91035cbb7988bf6c79ab9ba031e766ed94234e3d1ac481eb8d1e2",
+      "bytes": 12037
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/head.png",
+      "sha256": "138643e0e4223a8b0f3706fdafccf49ba1947b7ca5cb64f642c42c61d697db70",
+      "bytes": 16538
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/near-foot.png",
+      "sha256": "c0bf04836552c1b00bcda6fa4fbefa55df75f8b910696e175924a5550d4d53f4",
+      "bytes": 8193
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/near-shin.png",
+      "sha256": "590102fba0f9071cba4dd171501bc7a4c2c88d156e9260f03c537214aa5043d3",
+      "bytes": 2973
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/near-thigh.png",
+      "sha256": "a7f1542f6b857524117ff85140e0179f28b494a922c93ea45dfb59aa026c8023",
+      "bytes": 8648
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/near-wing-flight.png",
+      "sha256": "ab118bea401e8dbd6c1d02e431e9530e0dd187ac90293a9ae3b1e5cd744513c1",
+      "bytes": 57978
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/near-wing-root.png",
+      "sha256": "aff15f745775be82230c6dc40498d89d85bfbf5a8fe5eeba06021c377de41698",
+      "bytes": 38046
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/neck-lower.png",
+      "sha256": "22c442efa9b033669502cf1b6e1f2acad316053de1ca59b629f6c7a5aa3bfc59",
+      "bytes": 35385
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/neck-upper.png",
+      "sha256": "25f9fbd13230fb650dfc2343caf88f1e8f6029f0f24601e1e561a6e42238cce4",
+      "bytes": 25838
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/parts/tail.png",
+      "sha256": "f8a11bd8008f13bf695bd6a4f0badcbfac491b5ceccadea09fb67a3f46a041f1",
+      "bytes": 35349
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/parts/receipt.json",
+      "sha256": "2f10ce9e40577b1f386a2defe00b55e84dc1868f57e81d1656fc6ecc80e356ce",
+      "bytes": 4660
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/pre-split-binding.json",
+      "sha256": "b43cdffe5618e115c3f856a482ceb8b86f76cddaacd4a6421f6894072b2c2ed2",
+      "bytes": 831925
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/receipt.json",
+      "sha256": "d5018b8db3fb03ba17a7122d953e28dace560aa185035a36c320aa27d3079dd5",
+      "bytes": 2434
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fit02/record.json",
+      "sha256": "92701930d8656ea907b1fd71832649631f51e6f5ed26777dba68b5c4b8ba9a8a",
+      "bytes": 5908
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fresh-turns02.json",
+      "sha256": "c4f0c8b6d615c340c76ab8206dd817f6bb97a86cbede1a82671112b71ef61059",
+      "bytes": 3705
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fresh-turns02.log",
+      "sha256": "f4635f73dd5e96b537b86c46b5a20570bd8202ffba0abeef465670bc2e45164c",
+      "bytes": 202
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/fresh-turns02.mjs",
+      "sha256": "8e7c6572e639e087bd30be340ed756fa3bd340491f587694492ecf7d2bb1a272",
+      "bytes": 2691
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/independent-review.json",
+      "sha256": "f9719afbba838d06418d20cd1d03d5fb3673e2bb39c4880a4fc461a47a9c8221",
+      "bytes": 7890
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/intake01.log",
+      "sha256": "167e94c0744db5e3691b8e58c914a579811e105832e9c0c9d98aa9df3e9bdec8",
+      "bytes": 295
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/intake02.log",
+      "sha256": "6ffdb682220788da6eb0e7913d1a5d4198a10e824a4364c27f567e938fe44991",
+      "bytes": 295
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+      "bytes": 1239967
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/original-atlas.png",
+      "sha256": "ad158c55387c717a4f217f97cbfce574ba9a05554a36a26c47d9d42930b3680a",
+      "bytes": 402596
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/original-authoring.json",
+      "sha256": "5bbb29a6f0bbb5c400c32c2245522a45b2ce41c764c69504d408e1c4a1cbfae7",
+      "bytes": 8954
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/original-neighbour-1504.png",
+      "sha256": "1d89ded32a0a95e07069dd4431910345fa7104894c7c9e04070cc7f5ff726601",
+      "bytes": 384971
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet01/authoring.json",
+      "sha256": "bc7ec70a265f4ef3e7aa5efc85a38b248b0e80f1c0addbb2ce229b460267a998",
+      "bytes": 9064
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet01/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+      "bytes": 1239967
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet01/subject-source.json",
+      "sha256": "71a90368fdada83d7f6cf96e2f65152184abbbda9ea95b95110c675d3410f7a7",
+      "bytes": 2325
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet02/authoring.json",
+      "sha256": "e978e47aa00b807e30bd0c5c90b6b76f11aff204b4e8dc2ba62d9ad4c6454890",
+      "bytes": 9278
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet02/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+      "bytes": 1239967
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/packet02/subject-source.json",
+      "sha256": "71a90368fdada83d7f6cf96e2f65152184abbbda9ea95b95110c675d3410f7a7",
+      "bytes": 2325
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/probe-joins01.mjs",
+      "sha256": "d1a58b81e80f825c95b5373572131145f9794b5a1219bf772b257c737552f92d",
+      "bytes": 1153
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/recorded-failure-phase.png",
+      "sha256": "fdfcbc2ef76d5fc3be2c25f0c67972923fb5eccdeeef8b2a87ade4e1667c3a31",
+      "bytes": 386589
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/review02/approach-start.png",
+      "sha256": "ecb276a2085b8c0abb4501ba0f7a9ac59bf31fe72b3ff10f75850473e99a450d",
+      "bytes": 387237
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/review02/recorded-failure-phase.png",
+      "sha256": "521f49ced12ef45fb3ac03ad9fc4eee98a67c3a9b27a30ee44d9e2e970dd9e51",
+      "bytes": 388270
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/review02/runtime-review01.json",
+      "sha256": "52748c817ddbff1783b1e471a8cc3b99881a3e56f60ab0321917922be5a27b31",
+      "bytes": 1469
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/review02/walk-end.png",
+      "sha256": "e32ad9cb6d5a32eddcf15a8b81a6e279f6d97d2d9f3908011cb2ab1069a8d120",
+      "bytes": 388054
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/review02/walk-mid.png",
+      "sha256": "5d60fd2637c59f71bfc0e98c2b93876c980adfb7c8a653b717979f9211a87d08",
+      "bytes": 390213
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/runtime-review01.json",
+      "sha256": "8617e13c56c6fb0ffa730fe47e5669ec007aa84f03095854409de1f6f6a436f2",
+      "bytes": 1469
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/runtime-review01.mjs",
+      "sha256": "96b846b68dc8a168c632d56b3224b554a08ade0622fa9ed0b1d727aa35a7bb7e",
+      "bytes": 3644
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/runtime-review02.mjs",
+      "sha256": "ae951510ba8ead4361f23d35fc7f1fed2f860485ed0dde03b12abc6897d5904e",
+      "bytes": 3666
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/runtime-review02.mjs.log",
+      "sha256": "0e59bfc59a9aecf7e9d16a2c2440d20fc22669631a133f787d50c6e0ac930133",
+      "bytes": 62
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/source-controls.json",
+      "sha256": "b91b89253efb97295efd21c0d9bc5d61b142c34386a5f25df922642a9099f7a8",
+      "bytes": 737
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/source-controls.mjs",
+      "sha256": "f5512ca4fbc581ccffab1bc7a1818a9b3fd2642d438485643a6615fbc8d4d4ac",
+      "bytes": 2816
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/source-joins01.json",
+      "sha256": "c0a4276890740d63c8b67fff72e858f05d565a86afa844448fa540288b7e6c31",
+      "bytes": 2739595
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/static01.json",
+      "sha256": "175a967da601a27627ed08027469974fb651ec3451e09f47d367ad0d09a782a4",
+      "bytes": 8216
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/static01.json.sources.json",
+      "sha256": "31c34810faf1fab5918ad0f8ee7048734c284a6f510ab66ce640b3def7bc90dd",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/static01.log",
+      "sha256": "7e9b78e60e9d4c3bd684bd4d8301648110db4bf2112e832fd63111f712602519",
+      "bytes": 2201
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/static02.json",
+      "sha256": "36a590fb60e63c269735989c0cabcdd730f946e8be5d22b56a75376211db437a",
+      "bytes": 8215
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/static02.json.sources.json",
+      "sha256": "d310313fa286eb8f19dc05af66faf633e6d299ed34341a633c22848a3746b928",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/static02.log",
+      "sha256": "fc9d497832ef5f595425408f0068bfb360fbcd58378825f5748ba9cf28e17bd1",
+      "bytes": 2200
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/walk-end.png",
+      "sha256": "68f4e2b7b64ad2c6c28a44a5281fe7a2bcc954381cfc56c8170779ccba819bce",
+      "bytes": 388212
+    },
+    {
+      "path": "audits/C186_BITTERN_REPAIR_20261002/walk-mid.png",
+      "sha256": "f7f66f89fb28527effdba9d56eba1375fb9da1c8d98e29e99c45566a83d25363",
+      "bytes": 389951
+    }
+  ]
+}

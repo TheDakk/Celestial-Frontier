@@ -1,0 +1,10 @@
+{
+  "status": "REFUSED",
+  "toolChunk": "bf4d3d",
+  "exitCode": 128,
+  "client": "configured 1Password op-ssh-sign via interactive PTY",
+  "message": "1Password: agent returned an error; failed to write commit object",
+  "unsignedFallback": false,
+  "unchangedHead": "4207748479e1ddeccb2f2f9f24c45e219f73956f",
+  "scope": "Runtime key-use availability required; task authority is already granted. No next-item work started."
+}

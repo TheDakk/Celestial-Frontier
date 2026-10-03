@@ -1,0 +1,142 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "schema": "cf.g1-auto-author/v1",
+ "bestReference": "heron",
+ "costs": [
+  {
+   "ref": "heron",
+   "cost": 0.01935
+  },
+  {
+   "ref": "goose",
+   "cost": 0.01944
+  },
+  {
+   "ref": "sandpiper",
+   "cost": 0.0218
+  },
+  {
+   "ref": "grouse",
+   "cost": 0.02253
+  },
+  {
+   "ref": "eagle",
+   "cost": 0.03132
+  },
+  {
+   "ref": "gull",
+   "cost": 0.04299
+  }
+ ],
+ "mirrorBest": 0.02212,
+ "otherFamilyBest": {
+  "family": "flyer-membrane",
+  "cost": 0.01671
+ },
+ "coverage": [
+  {
+   "id": "near-foot",
+   "joint": "legNearFoot",
+   "paint": 0.18418514946962392,
+   "area": 16631.209999999985
+  },
+  {
+   "id": "far-foot",
+   "joint": "legFarFoot",
+   "paint": 0.30048780487804877,
+   "area": 16345.055000000011
+  },
+  {
+   "id": "near-shin",
+   "joint": "legNearAnkle",
+   "paint": 0.14038876889848811,
+   "area": 7451.805
+  },
+  {
+   "id": "far-shin",
+   "joint": "legFarAnkle",
+   "paint": 0.24875621890547264,
+   "area": 3216.6350000000048
+  },
+  {
+   "id": "near-thigh",
+   "joint": "legNearKnee",
+   "paint": 0.7731568998109641,
+   "area": 8413.900000000001
+  },
+  {
+   "id": "far-thigh",
+   "joint": "legFarKnee",
+   "paint": 0.633693972179289,
+   "area": 10416.695000000002
+  },
+  {
+   "id": "beak",
+   "joint": "beak",
+   "paint": 0.6645796064400715,
+   "area": 17881.054999999986
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.46613995485327314,
+   "area": 14214.255000000005
+  },
+  {
+   "id": "neck-upper",
+   "joint": "neck1",
+   "paint": 0.9247058823529412,
+   "area": 13726.000000000036
+  },
+  {
+   "id": "neck-lower",
+   "joint": "neck0",
+   "paint": 0.9690493736182756,
+   "area": 43418.77999999997
+  },
+  {
+   "id": "near-wing-shoulder",
+   "joint": "wingNearRoot",
+   "paint": 1,
+   "area": 18068.765
+  },
+  {
+   "id": "near-wing-flight",
+   "joint": "wingNearTip",
+   "paint": 0.8891284262396058,
+   "area": 155729.145
+  },
+  {
+   "id": "far-wing-shoulder",
+   "joint": "wingFarRoot",
+   "paint": 0.9957446808510638,
+   "area": 7540.264999999996
+  },
+  {
+   "id": "far-wing-flight",
+   "joint": "wingFarTip",
+   "paint": 0.8113091579594346,
+   "area": 26117.97
+  },
+  {
+   "id": "tail",
+   "joint": "tailFan",
+   "paint": 0.7683284457478006,
+   "area": 38219.869999999995
+  },
+  {
+   "id": "chest",
+   "joint": "chest",
+   "paint": 0.9849309334449561,
+   "area": 76397.83000000006
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.6500000000000057
+  }
+ ],
+ "unclaimedFrac": 0.0591
+}

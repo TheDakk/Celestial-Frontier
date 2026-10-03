@@ -1,0 +1,14 @@
+[
+  {
+    "name": "drop-semantic-guard",
+    "status": "FAILED_EXPECTED",
+    "exitCode": 1,
+    "reason": "Missing expected exception"
+  },
+  {
+    "name": "drop-pattern-binding",
+    "status": "FAILED_EXPECTED",
+    "exitCode": 1,
+    "reason": "Missing expected exception"
+  }
+]

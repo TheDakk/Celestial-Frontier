@@ -1,0 +1,67 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c192-snail-contours",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "fdf9ffcb1ca60d73fc3d1bc6b4bf453b4b13a92a6543332611269f3d3d98321a",
+    "pngSha256": "a6065a2f02208266f98143191168eb3caa78de362e2be7771fe81d92ef325159"
+  },
+  "parts": [
+    {
+      "name": "eyefar.png",
+      "sha256": "c4a27cb4f137aaa9925574d72162baba10c3f90cfcd8449654ed24d8a017bfa9"
+    },
+    {
+      "name": "eyenear.png",
+      "sha256": "8d50b88f2cf7c4ff20bf12b2f08400a34f4e0d794a68432ca43317f96a8368eb"
+    },
+    {
+      "name": "foot0.png",
+      "sha256": "7873eeca6d51bab0740709bed2870bd57b5978161ac24ad81ec7e8f7aa7b4045"
+    },
+    {
+      "name": "foot1.png",
+      "sha256": "4a84657070c463f92146a48f128816cff09a8f400a4710c4ad7efa643896982f"
+    },
+    {
+      "name": "foot2.png",
+      "sha256": "312509a57f4551482bc008e7e843a2b70a1d392bc82053b6b306fb533026e5b0"
+    },
+    {
+      "name": "foot3.png",
+      "sha256": "35d6277f6c94666d8440e5e1844518b3cc2e46e8591d62dfd4056bfd223413a5"
+    },
+    {
+      "name": "head.png",
+      "sha256": "281f1f7af2e6de28911a2068fc1c51932acf265208d71f963a069db0f9265e3c"
+    },
+    {
+      "name": "mouth.png",
+      "sha256": "e98ff1b86729b3e3a01a9918b71ca2e5dc7a270b95a1cca9562666744e0d0c9f"
+    },
+    {
+      "name": "shell.png",
+      "sha256": "626e64dfe847dbba18bba441af406e0c6b3dcb312069bf9c981ab42bf8ea709e"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

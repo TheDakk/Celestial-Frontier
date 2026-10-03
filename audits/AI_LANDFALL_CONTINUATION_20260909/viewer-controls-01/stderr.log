@@ -1,0 +1,25 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/landfall-viewer.test.ts > retained painting viewer owner; explicit DOM/decoder doubles, no native-layout claim > owns late/mutated background roots for the entire lifetime and restores exact prior attributes
+AssertionError: expected [ …(2) ] to deeply equal [ …(2) ]
+
+- Expected
++ Received
+
+  [
+    "<main id=\"game\"><button id=\"opener\">Inspect</button></main>",
+-   "<aside aria-hidden=\"false\" inert=\"\"></aside>",
++   "<aside inert=\"\" aria-hidden=\"false\"></aside>",
+  ]
+
+ ❯ tests/landfall-viewer.test.ts:67:47
+     65|     h.opener.focus(); expect(h.document.activeElement).toBe(h.button('…
+     66|     late.remove(); h.viewer.close(); await settle();
+     67|     expect([main.outerHTML, aside.outerHTML]).toEqual(prior); expect(l…
+       |                                               ^
+     68|     main.inert = false; await settle(); expect(main.hasAttribute('iner…
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

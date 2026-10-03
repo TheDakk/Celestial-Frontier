@@ -1,0 +1,28 @@
+{
+  "name": "Snapping Turtle",
+  "masterSha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: rough ridged shell, long saw-toothed tail, hooked open beak and three exposed clawed foot silhouettes. Far foreleg is hidden. Head/beak spikes are strongly stylized and unusually hooked, requiring identity/proportion review rather than a biological acceptance claim. Head is raised and mouth open, so this is not the requested quiet closed-mouth stance. Tail/beak margins look tight; observer pending. No invented hidden limb.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 93,
+      "y0": 370,
+      "x1": 1159,
+      "y1": 833
+    },
+    "margins": {
+      "left": 93,
+      "right": 94,
+      "top": 370,
+      "bottom": 420
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

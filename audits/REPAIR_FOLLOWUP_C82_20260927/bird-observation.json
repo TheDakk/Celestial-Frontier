@@ -1,0 +1,70 @@
+[
+  {
+    "name": "raven",
+    "sourceMasterSha256": "d27628f43b32ca2ba8374f9178feafa7af2fff367b3f8cf35fbed956b3fb59b7",
+    "counts": {
+      "wingFarRoot": 13318,
+      "wingFarTip": 23519,
+      "wingNearRoot": 35082,
+      "wingNearTip": 87065,
+      "tailFan": 33313
+    },
+    "landmarks": {
+      "wingNearRoot": [
+        0.6613237639553429,
+        0.40271132376395535
+      ],
+      "wingNearTip": [
+        0.08899521531100478,
+        0.6365231259968103
+      ],
+      "wingFarRoot": [
+        0.6527113237639554,
+        0.32727272727272727
+      ],
+      "wingFarTip": [
+        0.26275917065390747,
+        0.5083732057416268
+      ],
+      "tailFan": [
+        0.08724082934609251,
+        0.7179425837320573
+      ]
+    },
+    "scope": "Diagnostic mask overlay only; source painting, labels and landmarks unchanged"
+  },
+  {
+    "name": "vulture",
+    "sourceMasterSha256": "973ea9f3ea1254fd5f3107c34fb76cf738940fead74af9e9ff2c48d936267e30",
+    "counts": {
+      "wingFarRoot": 14452,
+      "wingFarTip": 9192,
+      "wingNearRoot": 29911,
+      "wingNearTip": 78510,
+      "tailFan": 53246
+    },
+    "landmarks": {
+      "wingNearRoot": [
+        0.6373205741626795,
+        0.32647527910685803
+      ],
+      "wingNearTip": [
+        0.3445773524720893,
+        0.6448165869218501
+      ],
+      "wingFarRoot": [
+        0.7083732057416268,
+        0.27416267942583733
+      ],
+      "wingFarTip": [
+        0.4869218500797448,
+        0.29322169059011166
+      ],
+      "tailFan": [
+        0.25925039872408295,
+        0.4803030303030303
+      ]
+    },
+    "scope": "Diagnostic mask overlay only; source painting, labels and landmarks unchanged"
+  }
+]

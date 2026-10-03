@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "freshwater-lake-v3",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-far.png",
+    "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-mid.png",
+    "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near.png",
+    "audits/C132_ARENAS_20261001/freshwater-lake-v3/arena-near-attempt-1.png"
+  ],
+  "findings": [
+    "The accepted FAR and MID are reused byte-for-byte. Their underwater medium, lake surface and side plants are unchanged.",
+    "The selected second NEAR uses the predecessor MID as its edit target. It removes the conspicuous green bottom wash and brings foreground stones closer to the MID cool gray/brown palette.",
+    "A horizontal texture/focus seam and larger rounded foreground stones remain near y=0.88. The generated lower strip is deeper than the requested bottom six percent.",
+    "The reused MID still has green/pink-looking remnants around thin side plants. This candidate improves the bottom wash; it does not repair every inherited plant edge.",
+    "All full-size plates and the composition were inspected. No accepted-original replacement, native film, underwater creature fit, phone qualification or new quality acceptance is claimed."
+  ]
+}

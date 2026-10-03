@@ -1,0 +1,10 @@
+{
+  "status": "ARCHIVED",
+  "sourceExists": false,
+  "appArtifact": "archived_worktree confirmed",
+  "freeBytesBefore": 124928000000,
+  "freeBytesAfter": 149913600000,
+  "observedIncreaseGiB": 23.27,
+  "freeGiB": 139.618,
+  "scope": "Volume observation across completed retirement with concurrent remote art receipts; not exact exclusive allocation"
+}

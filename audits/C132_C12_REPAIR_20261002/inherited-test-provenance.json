@@ -1,0 +1,38 @@
+[
+  {
+    "source": "port/v2/tools/creature-animation/arap-skin.test.mjs",
+    "sourceSha256": "d3ef24bd2b64f09602b467141e941ed4e224a94b06b4e4b61a24225749d95d75",
+    "copy": "candidate-arap-skin.test.mjs",
+    "copySha256": "fb52241a813c53b72999751398440a2ee5835c61ce7285c1a9037ffaab688fcd",
+    "changes": "Only relative imports/fixture URLs redirected to audit candidate or unchanged original resources; assertions unchanged."
+  },
+  {
+    "source": "port/v2/tools/creature-animation/orientation-projector.test.mjs",
+    "sourceSha256": "95ee7ad4201a66ed7bc273db2ae7345645fe79844e16a4b56aee4ea301e56ad0",
+    "copy": "candidate-orientation-projector.test.mjs",
+    "copySha256": "447925bc690582c1c07d630e2df1785557e3c788a940d5965f68cb7b13fc3258",
+    "changes": "Only relative imports/fixture URLs redirected to audit candidate or unchanged original resources; assertions unchanged."
+  },
+  {
+    "source": "port/v2/tools/creature-animation/wasm-orientation-active.test.mjs",
+    "sourceSha256": "798ff90c09b6c57a41235b54ed8bb6ac926df7e6a5a86cb7dbab4814c68f292b",
+    "copy": "candidate-wasm-orientation-active.test.mjs",
+    "copySha256": "eb8f7bcc1a1a79e29690840e26b02594fe89ae4d11aadd09dbbf5d0279591c0d",
+    "changes": "Only relative imports/fixture URLs redirected to audit candidate or unchanged original resources; assertions unchanged.",
+    "setupCorrection": "First run compared the original wasm binary with candidate byte array; corrected only the artifact URL to candidate binary. Assertions unchanged."
+  },
+  {
+    "source": "port/v2/tools/creature-animation/orientation-active-integration.test.mjs",
+    "sourceSha256": "1ac1360c5880e7b0e03ec65741f386c0ead270ddd1c8e22e008fba940468a0d2",
+    "copy": "candidate-orientation-active-integration.test.mjs",
+    "copySha256": "5bfd2d49188fd24ee855aed73e7eeaa2b6965cbc80d4fcff1010eb6e65ed2e1d",
+    "changes": "Only relative imports/fixture URLs redirected to audit candidate or unchanged original resources; assertions unchanged."
+  },
+  {
+    "source": "port/v2/tools/creature-animation/orientation-forward-integration.test.mjs",
+    "sourceSha256": "6e6daedb527cb711e36a32a81fe554386b96b953981c48b8394d9f8ad40f9c6d",
+    "copy": "candidate-orientation-forward-integration.test.mjs",
+    "copySha256": "67cc3cd9526e4cb79cbd2cc9b4c4330b34b24830aa3481963bb6bdc681caee41",
+    "changes": "Only relative imports/fixture URLs redirected to audit candidate or unchanged original resources; assertions unchanged."
+  }
+]

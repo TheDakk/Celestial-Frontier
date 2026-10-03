@@ -1,0 +1,2346 @@
+{
+  "rows": [
+    {
+      "ms": 302.1,
+      "error": "Error: ARAP skin: unresolved folded triangles: 1",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 28.120708837057826,
+        "rmsTargetErrorPx": 2.0719441675999235,
+        "maximumProjectionPx": 26.65149069866816,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.003265139969151676,
+        "orientationPasses": 65
+      },
+      "queue": {
+        "size": 27,
+        "visits": 4,
+        "stalled": false
+      },
+      "folds": [
+        {
+          "triangle": 849,
+          "ratio": -0.003265139969151676,
+          "vertices": [
+            {
+              "index": 444,
+              "pinned": true,
+              "position": [
+                973.3287098407745,
+                989.2137261629105
+              ],
+              "rest": [
+                969,
+                988.5
+              ],
+              "target": [
+                973.3287098407745,
+                989.2137261629105
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 446,
+              "pinned": true,
+              "position": [
+                992.6965827941895,
+                989.1827073097229
+              ],
+              "rest": [
+                979,
+                998
+              ],
+              "target": [
+                992.6965827941895,
+                989.1827073097229
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 443,
+              "pinned": true,
+              "position": [
+                972.6965979337692,
+                989.1827073097229
+              ],
+              "rest": [
+                959,
+                998
+              ],
+              "target": [
+                972.6965979337692,
+                989.1827073097229
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ms": 445.2,
+      "error": "Error: ARAP skin: unresolved folded triangles: 5",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 28.395732768923587,
+        "rmsTargetErrorPx": 2.5030747096408583,
+        "maximumProjectionPx": 23.59611535069936,
+        "flippedTriangles": 5,
+        "minimumAreaRatio": -0.1284262161842477,
+        "orientationPasses": 128
+      },
+      "queue": {
+        "size": 47,
+        "visits": 295168,
+        "stalled": false
+      },
+      "folds": [
+        {
+          "triangle": 780,
+          "ratio": -0.03690154021256461,
+          "vertices": [
+            {
+              "index": 441,
+              "pinned": false,
+              "position": [
+                973.4609686630921,
+                986.6531408285994
+              ],
+              "rest": [
+                949.5,
+                988.5
+              ],
+              "target": [
+                963.702550649643,
+                979.1873116493225
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.9730398055338717
+                ],
+                [
+                  "foreNearAnkle",
+                  0.026280043269181333
+                ],
+                [
+                  "spine",
+                  0.0002988811729175484
+                ],
+                [
+                  "foreNearKnee",
+                  0.0002925800115184347
+                ],
+                [
+                  "chest",
+                  0.00008868920890030983
+                ],
+                [
+                  "foreFarKnee",
+                  7.845811388464119e-10
+                ],
+                [
+                  "hindFarKnee",
+                  1.2677415132362198e-11
+                ],
+                [
+                  "neck",
+                  6.352149768305726e-12
+                ]
+              ]
+            },
+            {
+              "index": 430,
+              "pinned": true,
+              "position": [
+                954.1203410625458,
+                968.7931555509567
+              ],
+              "rest": [
+                940,
+                979
+              ],
+              "target": [
+                954.1203410625458,
+                968.7931555509567
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 781,
+          "ratio": -0.013765817488136548,
+          "vertices": [
+            {
+              "index": 441,
+              "pinned": false,
+              "position": [
+                973.4609686630921,
+                986.6531408285994
+              ],
+              "rest": [
+                949.5,
+                988.5
+              ],
+              "target": [
+                963.702550649643,
+                979.1873116493225
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.9730398055338717
+                ],
+                [
+                  "foreNearAnkle",
+                  0.026280043269181333
+                ],
+                [
+                  "spine",
+                  0.0002988811729175484
+                ],
+                [
+                  "foreNearKnee",
+                  0.0002925800115184347
+                ],
+                [
+                  "chest",
+                  0.00008868920890030983
+                ],
+                [
+                  "foreFarKnee",
+                  7.845811388464119e-10
+                ],
+                [
+                  "hindFarKnee",
+                  1.2677415132362198e-11
+                ],
+                [
+                  "neck",
+                  6.352149768305726e-12
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            },
+            {
+              "index": 443,
+              "pinned": true,
+              "position": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "rest": [
+                959,
+                998
+              ],
+              "target": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 782,
+          "ratio": -0.029484803511507725,
+          "vertices": [
+            {
+              "index": 444,
+              "pinned": true,
+              "position": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "rest": [
+                969,
+                988.5
+              ],
+              "target": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            },
+            {
+              "index": 445,
+              "pinned": true,
+              "position": [
+                965.9317971467972,
+                977.59159719944
+              ],
+              "rest": [
+                979,
+                979
+              ],
+              "target": [
+                965.9317971467972,
+                977.59159719944
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 849,
+          "ratio": -0.1284262161842477,
+          "vertices": [
+            {
+              "index": 444,
+              "pinned": true,
+              "position": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "rest": [
+                969,
+                988.5
+              ],
+              "target": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 446,
+              "pinned": true,
+              "position": [
+                993.1203825473785,
+                987.7931374311447
+              ],
+              "rest": [
+                979,
+                998
+              ],
+              "target": [
+                993.1203825473785,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 443,
+              "pinned": true,
+              "position": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "rest": [
+                959,
+                998
+              ],
+              "target": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 850,
+          "ratio": -0.0022889300185042934,
+          "vertices": [
+            {
+              "index": 444,
+              "pinned": true,
+              "position": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "rest": [
+                969,
+                988.5
+              ],
+              "target": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 443,
+              "pinned": true,
+              "position": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "rest": [
+                959,
+                998
+              ],
+              "target": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ms": 600,
+      "error": "Error: ARAP skin: unresolved folded triangles: 5",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 28.394897941277325,
+        "rmsTargetErrorPx": 2.4828412625006684,
+        "maximumProjectionPx": 23.59587745679721,
+        "flippedTriangles": 5,
+        "minimumAreaRatio": -0.1284262161842477,
+        "orientationPasses": 128
+      },
+      "queue": {
+        "size": 47,
+        "visits": 295168,
+        "stalled": false
+      },
+      "folds": [
+        {
+          "triangle": 780,
+          "ratio": -0.03690154021256461,
+          "vertices": [
+            {
+              "index": 441,
+              "pinned": false,
+              "position": [
+                973.4609686630921,
+                986.6531408285994
+              ],
+              "rest": [
+                949.5,
+                988.5
+              ],
+              "target": [
+                963.702550649643,
+                979.1873116493225
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.9730398055338717
+                ],
+                [
+                  "foreNearAnkle",
+                  0.026280043269181333
+                ],
+                [
+                  "spine",
+                  0.0002988811729175484
+                ],
+                [
+                  "foreNearKnee",
+                  0.0002925800115184347
+                ],
+                [
+                  "chest",
+                  0.00008868920890030983
+                ],
+                [
+                  "foreFarKnee",
+                  7.845811388464119e-10
+                ],
+                [
+                  "hindFarKnee",
+                  1.2677415132362198e-11
+                ],
+                [
+                  "neck",
+                  6.352149768305726e-12
+                ]
+              ]
+            },
+            {
+              "index": 430,
+              "pinned": true,
+              "position": [
+                954.1203410625458,
+                968.7931555509567
+              ],
+              "rest": [
+                940,
+                979
+              ],
+              "target": [
+                954.1203410625458,
+                968.7931555509567
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 781,
+          "ratio": -0.013765817488136548,
+          "vertices": [
+            {
+              "index": 441,
+              "pinned": false,
+              "position": [
+                973.4609686630921,
+                986.6531408285994
+              ],
+              "rest": [
+                949.5,
+                988.5
+              ],
+              "target": [
+                963.702550649643,
+                979.1873116493225
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.9730398055338717
+                ],
+                [
+                  "foreNearAnkle",
+                  0.026280043269181333
+                ],
+                [
+                  "spine",
+                  0.0002988811729175484
+                ],
+                [
+                  "foreNearKnee",
+                  0.0002925800115184347
+                ],
+                [
+                  "chest",
+                  0.00008868920890030983
+                ],
+                [
+                  "foreFarKnee",
+                  7.845811388464119e-10
+                ],
+                [
+                  "hindFarKnee",
+                  1.2677415132362198e-11
+                ],
+                [
+                  "neck",
+                  6.352149768305726e-12
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            },
+            {
+              "index": 443,
+              "pinned": true,
+              "position": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "rest": [
+                959,
+                998
+              ],
+              "target": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 782,
+          "ratio": -0.029484803511507725,
+          "vertices": [
+            {
+              "index": 444,
+              "pinned": true,
+              "position": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "rest": [
+                969,
+                988.5
+              ],
+              "target": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            },
+            {
+              "index": 445,
+              "pinned": true,
+              "position": [
+                965.9317971467972,
+                977.59159719944
+              ],
+              "rest": [
+                979,
+                979
+              ],
+              "target": [
+                965.9317971467972,
+                977.59159719944
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 849,
+          "ratio": -0.1284262161842477,
+          "vertices": [
+            {
+              "index": 444,
+              "pinned": true,
+              "position": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "rest": [
+                969,
+                988.5
+              ],
+              "target": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 446,
+              "pinned": true,
+              "position": [
+                993.1203825473785,
+                987.7931374311447
+              ],
+              "rest": [
+                979,
+                998
+              ],
+              "target": [
+                993.1203825473785,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 443,
+              "pinned": true,
+              "position": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "rest": [
+                959,
+                998
+              ],
+              "target": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 850,
+          "ratio": -0.0022889300185042934,
+          "vertices": [
+            {
+              "index": 444,
+              "pinned": true,
+              "position": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "rest": [
+                969,
+                988.5
+              ],
+              "target": [
+                973.6646851301193,
+                989.0131874084473
+              ],
+              "weights": [
+                [
+                  "foreNearAnkle",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 443,
+              "pinned": true,
+              "position": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "rest": [
+                959,
+                998
+              ],
+              "target": [
+                973.1203976869583,
+                987.7931374311447
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  1
+                ]
+              ]
+            },
+            {
+              "index": 442,
+              "pinned": false,
+              "position": [
+                971.6720179917739,
+                985.3455356584813
+              ],
+              "rest": [
+                959,
+                979
+              ],
+              "target": [
+                971.6110128164291,
+                972.1923733949661
+              ],
+              "weights": [
+                [
+                  "foreNearPaw",
+                  0.8954893946022622
+                ],
+                [
+                  "foreNearAnkle",
+                  0.10133145117568015
+                ],
+                [
+                  "foreNearKnee",
+                  0.0014125263585100661
+                ],
+                [
+                  "spine",
+                  0.0013582514933193346
+                ],
+                [
+                  "chest",
+                  0.0004083702969802552
+                ],
+                [
+                  "foreFarKnee",
+                  5.894336122585712e-9
+                ],
+                [
+                  "hindFarKnee",
+                  1.1935133766255337e-10
+                ],
+                [
+                  "neck",
+                  5.95604695310752e-11
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "kind": "joint",
+      "joint": "hindFarKnee",
+      "deg": 2.1498052439600386,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 62.90584679780467
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarAnkle",
+      "deg": -64.478699992114,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 62.90584679780467
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarPaw",
+      "deg": 55.64070110981235,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 62.90584679780467
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarKnee",
+      "deg": -76.72299838578826,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 170.5285543509027
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarAnkle",
+      "deg": 93.75608418818223,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 170.5285543509027
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarPaw",
+      "deg": -33.045995669151196,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 170.5285543509027
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearKnee",
+      "deg": 4.134315376673619,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 42.459061442698626
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearAnkle",
+      "deg": -40.609170959571244,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 42.459061442698626
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearPaw",
+      "deg": 29.786661944556002,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 42.459061442698626
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearKnee",
+      "deg": -3.2149856197349123,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 129.01805346017633
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearAnkle",
+      "deg": -87.18355092367752,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 129.01805346017633
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearPaw",
+      "deg": 74.38562667665519,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "spine": {
+        "rotation": 0.162747,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.116731,
+        "dx": -0.013376,
+        "dy": 0.180258
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 129.01805346017633
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarKnee",
+      "deg": -2.934925363713972,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarAnkle",
+      "deg": -76.76561726494194,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarPaw",
+      "deg": 69.70053834289912,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarKnee",
+      "deg": -86.53689176514563,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 189.34312836341144
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarAnkle",
+      "deg": 91.20422459246006,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 189.34312836341144
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarPaw",
+      "deg": -22.66731762336488,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 189.34312836341144
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearKnee",
+      "deg": 0.7108252149820136,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 45.857406882216985
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearAnkle",
+      "deg": -43.80633172441893,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 45.857406882216985
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearPaw",
+      "deg": 33.095502223680114,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 45.857406882216985
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearKnee",
+      "deg": -7.805854081801683,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearAnkle",
+      "deg": -90.7626456723172,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearPaw",
+      "deg": 80.56851495806845,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarKnee",
+      "deg": -2.934925363713972,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarAnkle",
+      "deg": -76.76561726494194,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "kind": "joint",
+      "joint": "hindFarPaw",
+      "deg": 69.70053834289912,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarKnee",
+      "deg": -86.53689176514563,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 189.34312836341144
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarAnkle",
+      "deg": 91.20422459246006,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 189.34312836341144
+    },
+    {
+      "kind": "joint",
+      "joint": "foreFarPaw",
+      "deg": -22.66731762336488,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 189.34312836341144
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearKnee",
+      "deg": 0.7108252149820136,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 45.857406882216985
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearAnkle",
+      "deg": -43.80633172441893,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 45.857406882216985
+    },
+    {
+      "kind": "joint",
+      "joint": "hindNearPaw",
+      "deg": 33.095502223680114,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 45.857406882216985
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearKnee",
+      "deg": -7.805854081801683,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearAnkle",
+      "deg": -90.7626456723172,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    },
+    {
+      "kind": "joint",
+      "joint": "foreNearPaw",
+      "deg": 80.56851495806845,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    }
+  ]
+}

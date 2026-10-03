@@ -1,0 +1,89 @@
+{
+  "schema": "cf.c163-jaw-visual-review/v1",
+  "nativeStatus": "DIAGNOSTIC_PASS",
+  "source": "851b3b177409e04eb395ad9189691f1ffa2f94c6",
+  "cpuThrottle": 4,
+  "frames": 897,
+  "cpuP95Ms": 5.299999997019768,
+  "cpuAbove1000Over60": 0,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "anchors": [
+    {
+      "turn": 0,
+      "contactJoint": "jaw",
+      "launch": "contact-joint",
+      "impact": "target-body",
+      "launchPointPx": {
+        "x": 441.1182215870788,
+        "y": 309.51204158875623
+      },
+      "observedJointAtLaunchPx": {
+        "x": 441.1182215870788,
+        "y": 309.51204158875623
+      },
+      "distancePx": 0.0
+    },
+    {
+      "turn": 1,
+      "contactJoint": "jaw",
+      "launch": "contact-joint",
+      "impact": "target-body",
+      "launchPointPx": {
+        "x": 529.6161120703327,
+        "y": 285.69118182835894
+      },
+      "observedJointAtLaunchPx": {
+        "x": 529.6161120703327,
+        "y": 286.3953713255443
+      },
+      "distancePx": 0.704189497185407
+    },
+    {
+      "turn": 2,
+      "contactJoint": "foreNearPaw",
+      "launch": "contact-joint",
+      "impact": "target-body",
+      "launchPointPx": {
+        "x": 449.508669796237,
+        "y": 441.9919211716895
+      },
+      "observedJointAtLaunchPx": {
+        "x": 449.50866979623703,
+        "y": 446.5046355100725
+      },
+      "distancePx": 4.512714338382956
+    },
+    {
+      "turn": 3,
+      "contactJoint": "jaw",
+      "launch": "contact-joint",
+      "impact": "target-body",
+      "launchPointPx": {
+        "x": 441.1182215870788,
+        "y": 309.51204158875623
+      },
+      "observedJointAtLaunchPx": {
+        "x": 441.1182215870788,
+        "y": 309.51204158875623
+      },
+      "distancePx": 0.0
+    }
+  ],
+  "fullSizeInspected": [
+    "turn0-hit-launch-plus-40.png",
+    "turn1-hit-launch-plus-40.png",
+    "turn2-dodge-launch.png"
+  ],
+  "observations": [
+    "Civet Storm visibly originates over the mouth/head instead of at the ground. Both Civet bite launch probes match the staged jaw exactly.",
+    "Wolf Storm visibly originates over the muzzle. The launch probe differs vertically from the measured staged jaw by0.704px; retain this observation without calling it exact.",
+    "Civet dodge-turn claw launch probe differs from the measured paw by4.513px; contact anchoring is selected but this discrepancy remains for the stage owner.",
+    "Stronger launch is plainly visible over the terrain but obscures much of the Civet face and Wolf muzzle at40ms. Footprint/visual acceptance remains held.",
+    "This film uses registered default supports, whereas prior C132 diagnostic forced observed supports. It is not a direct performance comparison."
+  ],
+  "qualityAccepted": false,
+  "scope": "One current-source jaw/contact integration film; no all-pair, physical-phone, sound or repaint acceptance."
+}

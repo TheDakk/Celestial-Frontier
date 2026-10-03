@@ -1,0 +1,204 @@
+[
+  {
+    "fit": "15-goose/fit-02",
+    "excluded": [
+      {
+        "a": "beak",
+        "b": "body",
+        "n": 4,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-foot",
+        "n": 144,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-shin",
+        "n": 24,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-wing-flight",
+        "n": 346,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-wing-shoulder",
+        "n": 44,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "head",
+        "n": 36,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-foot",
+        "n": 82,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-shin",
+        "n": 16,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-wing-flight",
+        "n": 917,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-wing-shoulder",
+        "n": 216,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "neck-lower",
+        "n": 49,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "neck-upper",
+        "n": 46,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "far-foot",
+        "b": "near-foot",
+        "n": 33,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "far-wing-shoulder",
+        "b": "near-wing-shoulder",
+        "n": 152,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "far-wing-shoulder",
+        "b": "neck-lower",
+        "n": 32,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "near-wing-flight",
+        "b": "tail",
+        "n": 67,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "near-wing-shoulder",
+        "b": "neck-lower",
+        "n": 40,
+        "reason": "independent sibling adjacency"
+      }
+    ]
+  },
+  {
+    "fit": "17-sparrow/fit-01",
+    "excluded": [
+      {
+        "a": "beak",
+        "b": "body",
+        "n": 221,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "beak",
+        "b": "neck-upper",
+        "n": 13,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-foot",
+        "n": 42,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-shin",
+        "n": 64,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-wing-flight",
+        "n": 309,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "far-wing-shoulder",
+        "n": 599,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "head",
+        "n": 153,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-foot",
+        "n": 75,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-shin",
+        "n": 30,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-wing-flight",
+        "n": 668,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "near-wing-shoulder",
+        "n": 490,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "neck-lower",
+        "n": 295,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "body",
+        "b": "neck-upper",
+        "n": 119,
+        "reason": "non-nearest ancestral silhouette adjacency"
+      },
+      {
+        "a": "far-wing-flight",
+        "b": "near-wing-flight",
+        "n": 234,
+        "reason": "independent sibling adjacency"
+      },
+      {
+        "a": "near-wing-flight",
+        "b": "tail",
+        "n": 25,
+        "reason": "independent sibling adjacency"
+      }
+    ]
+  }
+]

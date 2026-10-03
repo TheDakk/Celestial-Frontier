@@ -1,0 +1,211 @@
+{
+  "schema": "cf.c132-phone-visual-review/v1",
+  "method": "All15 original/reconstruction/finished PNGs viewed at original1254x1254 dimensions; no source pixel edits",
+  "nativeResult": {
+    "file": "native-mac-01/result.json",
+    "bytes": 61868,
+    "sha256": "0037ff5e9c805e21d2d2ac74ce2c36ef8d807f9ac30ca5a7bf84c11df7d44c8a"
+  },
+  "visualVerdict": "REJECTED",
+  "qualityAccepted": false,
+  "productAdmission": false,
+  "deviceQualified": false,
+  "rows": [
+    {
+      "id": "01-finch",
+      "visualVerdict": "REJECTED",
+      "reconstructionVerdict": "UNSUITABLE_AS_FINISHED_ORIGINAL",
+      "qualityAccepted": false,
+      "source": {
+        "file": "inputs/01-finch-master.png",
+        "bytes": 1282963,
+        "sha256": "12684c53b407ddd05ac21c3bb81ee35d528d0015f70adc23244d05bf091f7be5"
+      },
+      "reconstruction": {
+        "file": "native-mac-01/01-finch-reconstruction.png",
+        "bytes": 979285,
+        "sha256": "2c1afb2b42fa49f3644930b507d1c391846df5e943664729d7f309e39dd985ed"
+      },
+      "finished": {
+        "file": "native-mac-01/01-finch-finished.png",
+        "bytes": 1896523,
+        "sha256": "784bc8259a07f5ecc138a2887ec23f71c5b90afe0e5a7f49bec5696f47fdb26e"
+      },
+      "viewedCanvas": [
+        1254,
+        1254
+      ],
+      "findings": {
+        "reconstruction": "Feather and eye detail softened; green/purple artifacts at head, beak, tail and feet.",
+        "finished": "Eye, feathers and beak interior replaced by unrelated brown/teal scene-like patches; conspicuous protected-boundary mosaic."
+      },
+      "conservationStatus": "PASS",
+      "protectedChanges": 0,
+      "meanDeltaE76Range": [
+        8.128971237974838,
+        26.355134014313197
+      ],
+      "luminanceSsimRange": [
+        0.06731197644925427,
+        0.8087514784366545
+      ]
+    },
+    {
+      "id": "12-sandpiper",
+      "visualVerdict": "REJECTED",
+      "reconstructionVerdict": "UNSUITABLE_AS_FINISHED_ORIGINAL",
+      "qualityAccepted": false,
+      "source": {
+        "file": "inputs/12-sandpiper-master.png",
+        "bytes": 1149575,
+        "sha256": "f5bc7652f37005f7c511a3999dd6f11864ef5cc1f17eb5342f17b18f0aa4ecee"
+      },
+      "reconstruction": {
+        "file": "native-mac-01/12-sandpiper-reconstruction.png",
+        "bytes": 854185,
+        "sha256": "0636711bc7229d72e9295750687c016365e27fbc0642225df67ffe5202d83bc5"
+      },
+      "finished": {
+        "file": "native-mac-01/12-sandpiper-finished.png",
+        "bytes": 1826679,
+        "sha256": "03c9408ace4f37de5064a5cffb7b6be6ebf655d17796b62984e57ed6b1347f5a"
+      },
+      "viewedCanvas": [
+        1254,
+        1254
+      ],
+      "findings": {
+        "reconstruction": "Fine feather spots, eye ring and toes degrade; green/purple contour and leg coloration.",
+        "finished": "Eye and spotted/striped plumage lost; soft unrelated brown/teal patches contrast with retained narrow original strips."
+      },
+      "conservationStatus": "PASS",
+      "protectedChanges": 0,
+      "meanDeltaE76Range": [
+        0,
+        25.357893359655495
+      ],
+      "luminanceSsimRange": [
+        0.12288825155473966,
+        1
+      ]
+    },
+    {
+      "id": "18-wasp",
+      "visualVerdict": "REJECTED",
+      "reconstructionVerdict": "UNSUITABLE_AS_FINISHED_ORIGINAL",
+      "qualityAccepted": false,
+      "source": {
+        "file": "inputs/18-wasp-master.png",
+        "bytes": 1141845,
+        "sha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2"
+      },
+      "reconstruction": {
+        "file": "native-mac-01/18-wasp-reconstruction.png",
+        "bytes": 850395,
+        "sha256": "b40130df808065de09498887a2202a5888691b601ad5b26acd6ca9b39aed093d"
+      },
+      "finished": {
+        "file": "native-mac-01/18-wasp-finished.png",
+        "bytes": 1842573,
+        "sha256": "b5ea3fce5cc5236b86e773b72fe326c35026bd9d40d1b6a3a4d34bdadd90c25e"
+      },
+      "viewedCanvas": [
+        1254,
+        1254
+      ],
+      "findings": {
+        "reconstruction": "Wing veins, leg articulation and surface detail blur; green/orange color shifts replace black/yellow material.",
+        "finished": "Abdominal bands, thorax markings, wing membranes/veins and eye overwritten; thin preserved structures do not retain interior identity."
+      },
+      "conservationStatus": "PASS",
+      "protectedChanges": 0,
+      "meanDeltaE76Range": [
+        0,
+        40.453918869868126
+      ],
+      "luminanceSsimRange": [
+        -0.03066432126968402,
+        1
+      ]
+    },
+    {
+      "id": "06-ptarmigan",
+      "visualVerdict": "REJECTED",
+      "reconstructionVerdict": "UNSUITABLE_AS_FINISHED_ORIGINAL",
+      "qualityAccepted": false,
+      "source": {
+        "file": "inputs/06-ptarmigan-master.png",
+        "bytes": 1265623,
+        "sha256": "6720df96f5b78cc893a610dd22a538e2d7debd6c22801add40ba07c4b4dcaa69"
+      },
+      "reconstruction": {
+        "file": "native-mac-01/06-ptarmigan-reconstruction.png",
+        "bytes": 924787,
+        "sha256": "9f3837e44cd260cf17d368425b3328609f0a8bc90c79eea33d212912aca87163"
+      },
+      "finished": {
+        "file": "native-mac-01/06-ptarmigan-finished.png",
+        "bytes": 1893034,
+        "sha256": "0fe7e67694ddf6e21e6c0d51601ca6abde26535a307758de15f9329a4f35fe72"
+      },
+      "viewedCanvas": [
+        1254,
+        1254
+      ],
+      "findings": {
+        "reconstruction": "White silhouette persists but feather layering, toes and eye degrade; colored artifacts at head, tail and feet.",
+        "finished": "White plumage becomes brown/teal patches; white protected boundaries visibly outline replacement; head and feathered legs lose identity."
+      },
+      "conservationStatus": "PASS",
+      "protectedChanges": 0,
+      "meanDeltaE76Range": [
+        10.475710745263004,
+        50.77574214354737
+      ],
+      "luminanceSsimRange": [
+        -0.10962010679023333,
+        0.5791983684912999
+      ]
+    },
+    {
+      "id": "08-vulture",
+      "visualVerdict": "REJECTED",
+      "reconstructionVerdict": "UNSUITABLE_AS_FINISHED_ORIGINAL",
+      "qualityAccepted": false,
+      "source": {
+        "file": "inputs/08-vulture-master.png",
+        "bytes": 1259092,
+        "sha256": "fe23842892a09f05140db1c51461da63bb317775f57b05fbc5d66862d91f0b18"
+      },
+      "reconstruction": {
+        "file": "native-mac-01/08-vulture-reconstruction.png",
+        "bytes": 918545,
+        "sha256": "bda01c0696683170b6733c890e3aad827ff12f76b3bf8a51b4e03025653b1938"
+      },
+      "finished": {
+        "file": "native-mac-01/08-vulture-finished.png",
+        "bytes": 1872204,
+        "sha256": "86a661596e74f36bfc93e3c865f54f458eeae14c918c502379c7c7dc5c0da72d"
+      },
+      "viewedCanvas": [
+        1254,
+        1254
+      ],
+      "findings": {
+        "reconstruction": "Feather groups merge; eye/beak color shifts; green/purple body and leg edges.",
+        "finished": "Head/neck skin, eye and feathers replaced by scene-like patches; original feather edges and neck outline expose mask topology."
+      },
+      "conservationStatus": "PASS",
+      "protectedChanges": 0,
+      "meanDeltaE76Range": [
+        2.92738169429777,
+        28.80010189574953
+      ],
+      "luminanceSsimRange": [
+        -0.027452104330615096,
+        0.9585284940806019
+      ]
+    }
+  ],
+  "conservationInstrumentChanged": false
+}

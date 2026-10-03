@@ -1,0 +1,163 @@
+{
+  "id": "03-wrasse",
+  "name": "Wrasse",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "da948c355f98c7cfe840dc91bf8afc6ec01cb73a3599d1ca1d8289dabfc26c1d",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 29564,
+    "coreRadius": 30,
+    "bodyBox": {
+      "x0": 132,
+      "y0": 142,
+      "x1": 340,
+      "y1": 248
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0054,
+        "pixels": 161,
+        "box": {
+          "x0": 205,
+          "y0": 137,
+          "x1": 261,
+          "y1": 141
+        },
+        "attach": {
+          "x": 233,
+          "y": 141,
+          "relX": 0.49,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.73,
+          "y": -0.69
+        },
+        "class": "top",
+        "length": 28.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0138,
+        "pixels": 407,
+        "box": {
+          "x0": 109,
+          "y0": 157,
+          "x1": 131,
+          "y1": 181
+        },
+        "attach": {
+          "x": 131,
+          "y": 169,
+          "relX": 0,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.14
+        },
+        "class": "rear",
+        "length": 25.1
+      },
+      {
+        "k": 2,
+        "frac": 0.2186,
+        "pixels": 6462,
+        "box": {
+          "x0": 35,
+          "y0": 160,
+          "x1": 188,
+          "y1": 256
+        },
+        "attach": {
+          "x": 145.1,
+          "y": 226.9,
+          "relX": 0.06,
+          "relY": 0.8
+        },
+        "dir": {
+          "x": -0.95,
+          "y": -0.3
+        },
+        "class": "rear",
+        "length": 128.8
+      },
+      {
+        "k": 3,
+        "frac": 0.058,
+        "pixels": 1715,
+        "box": {
+          "x0": 341,
+          "y0": 176,
+          "x1": 384,
+          "y1": 235
+        },
+        "attach": {
+          "x": 341,
+          "y": 205.5,
+          "relX": 1,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.1
+        },
+        "class": "front",
+        "length": 52.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0376,
+        "pixels": 1113,
+        "box": {
+          "x0": 220,
+          "y0": 249,
+          "x1": 286,
+          "y1": 282
+        },
+        "attach": {
+          "x": 261.5,
+          "y": 249,
+          "relX": 0.62,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.8,
+          "y": 0.6
+        },
+        "class": "limb-down",
+        "length": 53
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 2,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 223,
+        "x1": 250,
+        "cx": 234.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

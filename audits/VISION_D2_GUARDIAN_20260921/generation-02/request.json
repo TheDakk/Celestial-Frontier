@@ -1,0 +1,56 @@
+{
+  "schema": "cf.painted-master-request/v1",
+  "species": "Brown Bear",
+  "generation": 2,
+  "sourceHead": "1268a2f09787eb08d8aa20e9d8aac8316be407e0",
+  "compiler": "../generation-01/compile-prompt.mjs",
+  "compilerSha256": "e3dec52ecc2fad6916f8fa4d33a9304887f655f6597e1b35eacf077bb0018029",
+  "template": {
+    "path": "audits/VISION_P1_QUADRUPED_20260921/generation-01/prompt.txt",
+    "sha256": "6ffc04f50874c9e7c3708257671debb5d3fceecd66d9eba4c605bd929f100f9d"
+  },
+  "catalogue": {
+    "path": "port/v2/reference/fauna.json",
+    "sha256": "2963f1fb1ddee01ef94fce4246401dcf39159af7444b3f364d0859bedfc657c0"
+  },
+  "kit": {
+    "path": "ART_KIT.md",
+    "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+  },
+  "sentPromptSha256": "08b8df9d43e6ec9463d5d61fa71d80be7a0e54a222c1007b2fd51a9fbc6438fd",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": null,
+  "seedReason": "No seed parameter exposed",
+  "references": [
+    {
+      "role": "Discovery Atlas style lock",
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    },
+    {
+      "role": "Side-on painter anatomy guide only",
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/VISION_D2_GUARDIAN_20260921/generation-01/anatomy-guide.png",
+      "source": "port/v2/apps/game/smoke/gp71-platinum-repair-current-2026-08-11-03ea297/portraits/earth-fauna/Brown_Bear.png",
+      "sha256": "5a3257c15dbad2c6bdbfb1fcc89d8f2e3fb5cb9d9e43d48b6d626159937f1ce3"
+    }
+  ],
+  "requestedSize": [
+    1536,
+    1536
+  ],
+  "format": "PNG",
+  "background": "#FF00FF (P1 technical block); delivered alpha also accepted by D2",
+  "generationCount": 1,
+  "guardianCpuGateMs": 5,
+  "guardianTier": "desktop-only",
+  "landmarkBoundPx": 60,
+  "handLandmarks": false,
+  "fitPerformed": false,
+  "rigPerformed": false,
+  "intakePerformed": false,
+  "retryAuthority": "Dakk authorized exactly one identical-prompt retry to address G1 1536-square size red",
+  "promptIdenticalTo": "../generation-01/prompt.txt",
+  "generationCountThisRun": 1,
+  "retainedPreviousMaster": "../generation-01/brown-bear-master.png"
+}

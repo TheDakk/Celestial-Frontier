@@ -1,0 +1,13 @@
+{
+  "name": "Clouded Leopard",
+  "masterSha256": "770f57e8c5ce6d76998ff5bc46e80b918ba2ad722b2e496575aa4d5d636d29d1",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated original; pattern only, not anatomy/G1/Dakk approval",
+  "features": [
+    {
+      "requirement": "large cloud-shaped dark-edged blotches",
+      "status": "PRESENT",
+      "observed": "Large cloud-shaped blotches with thick dark edges cover the sides."
+    }
+  ]
+}

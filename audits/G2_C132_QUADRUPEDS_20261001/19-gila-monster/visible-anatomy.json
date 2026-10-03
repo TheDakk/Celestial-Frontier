@@ -1,0 +1,190 @@
+{
+  "id": "19-gila-monster",
+  "name": "Gila Monster",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "48095a24652bf04d0bf062053003e07cea9eb410f73d7e100c3d9d80a5de1068",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 7435,
+    "coreRadius": 11,
+    "bodyBox": {
+      "x0": 166,
+      "y0": 188,
+      "x1": 307,
+      "y1": 228
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0383,
+        "pixels": 285,
+        "box": {
+          "x0": 308,
+          "y0": 194,
+          "x1": 324,
+          "y1": 215
+        },
+        "attach": {
+          "x": 308,
+          "y": 204.5,
+          "relX": 1.01,
+          "relY": 0.41
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.13
+        },
+        "class": "front",
+        "length": 19.1
+      },
+      {
+        "k": 1,
+        "frac": 0.2046,
+        "pixels": 1521,
+        "box": {
+          "x0": 95,
+          "y0": 202,
+          "x1": 166,
+          "y1": 235
+        },
+        "attach": {
+          "x": 165,
+          "y": 213.5,
+          "relX": -0.01,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": -0.98,
+          "y": 0.21
+        },
+        "class": "rear",
+        "length": 73.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0278,
+        "pixels": 207,
+        "box": {
+          "x0": 269,
+          "y0": 221,
+          "x1": 295,
+          "y1": 238
+        },
+        "attach": {
+          "x": 274,
+          "y": 221,
+          "relX": 0.77,
+          "relY": 0.82
+        },
+        "dir": {
+          "x": 0.56,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 27
+      },
+      {
+        "k": 3,
+        "frac": 0.0336,
+        "pixels": 250,
+        "box": {
+          "x0": 167,
+          "y0": 225,
+          "x1": 188,
+          "y1": 245
+        },
+        "attach": {
+          "x": 178.5,
+          "y": 228.5,
+          "relX": 0.09,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.28,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 20.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0371,
+        "pixels": 276,
+        "box": {
+          "x0": 250,
+          "y0": 225,
+          "x1": 275,
+          "y1": 246
+        },
+        "attach": {
+          "x": 255.5,
+          "y": 225,
+          "relX": 0.63,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": 0.33,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 28.7
+      },
+      {
+        "k": 5,
+        "frac": 0.0178,
+        "pixels": 132,
+        "box": {
+          "x0": 189,
+          "y0": 229,
+          "x1": 212,
+          "y1": 237
+        },
+        "attach": {
+          "x": 193.5,
+          "y": 229,
+          "relX": 0.2,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.77,
+          "y": 0.64
+        },
+        "class": "limb-down",
+        "length": 20.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 171,
+        "x1": 188,
+        "cx": 179.2
+      },
+      {
+        "x0": 255,
+        "x1": 273,
+        "cx": 264.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

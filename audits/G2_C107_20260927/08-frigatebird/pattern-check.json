@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Frigatebird",
+  "masterSha256": "a993465b8a535f2b12e7f9305e3f74f92cec84cc745b0169e9059d86dcdf7b8b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

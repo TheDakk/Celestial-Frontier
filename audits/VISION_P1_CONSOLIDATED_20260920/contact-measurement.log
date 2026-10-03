@@ -1,0 +1,1 @@
+{"maxima":{"Knee":{"subject":"painted-freshwater-crab","action":"faint","ms":260,"j":"leg3NearKnee","deg":-63.456792093604356,"limit":{"min":-30,"max":30},"exceeded":true},"Foot":{"subject":"painted-freshwater-crab","action":"faint","ms":260,"j":"leg3NearFoot","deg":93.94604092342806,"limit":{"min":-65,"max":65},"exceeded":true}},"failures":6}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Whiptail",
+  "masterSha256": "8bcbedfd2b38bb3e8654a71eb19065a710f8540fd154eaad0a164ad71314c089",
+  "required": [
+    "pale stripes running the length of the back"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale stripes running the length of the back",
+      "status": "PRESENT",
+      "observed": "Smaller centered whiptail retains longitudinal pale body stripes, dark/checkered flanks, full very long banded whip tail and four distal feet. Clear large margins. Far attachment occlusion and uneven contact levels remain; small toes are newly rendered and need independent anatomy review."
+    }
+  ]
+}

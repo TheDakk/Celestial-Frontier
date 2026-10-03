@@ -1,0 +1,794 @@
+[
+  {
+    "subject": "civet",
+    "report": "civet/report.json",
+    "film": "civet/family-full-rows.webm",
+    "rows": 20,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 1.600000023841858,
+    "filmRigP95Ms": 2.100000023841858,
+    "wholeFrameP95Ms": 2.200000047683716,
+    "fps": 60.00269756963558,
+    "refusals": {
+      "idle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:bite": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "hit": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "alert": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:walk": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:trot": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:gallop": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:hop": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:claw": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:gore": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:tail": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:headbutt": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "cast": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "dodge": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "faint": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "victory": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "tame": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "feed": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:kick": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [
+      "film rig-update p95 exceeds <2 ms",
+      "T1 full-row root step 0.028825622596303096 exceeds stride 0.008048730263854342"
+    ],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "coconut-crab",
+    "report": "coconut-crab/report.json",
+    "film": "coconut-crab/family-full-rows.webm",
+    "rows": 12,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 0.800000011920929,
+    "filmRigP95Ms": 2.099999964237213,
+    "wholeFrameP95Ms": 2.5,
+    "fps": 60.00268879973395,
+    "refusals": {
+      "idle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:pinch": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "hit": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "alert": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:scuttle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "cast": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "dodge": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "faint": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "victory": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "tame": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "feed": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [
+      "film rig-update p95 exceeds <2 ms"
+    ],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "crab",
+    "report": "crab/report.json",
+    "film": "crab/family-full-rows.webm",
+    "rows": 12,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 0.800000011920929,
+    "filmRigP95Ms": 1.5999999642372131,
+    "wholeFrameP95Ms": 1.899999976158142,
+    "fps": 60.00232173433555,
+    "refusals": {
+      "idle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:pinch": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "hit": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "alert": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:scuttle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "cast": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "dodge": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "faint": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "victory": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "tame": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "feed": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "cranberry",
+    "report": "cranberry/report.json",
+    "film": "cranberry/family-full-rows.webm",
+    "rows": 4,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 3.300000011920929,
+    "filmRigP95Ms": 2.699999988079071,
+    "wholeFrameP95Ms": 2.699999988079071,
+    "fps": 60.00219641983566,
+    "refusals": {
+      "sway": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "disturb": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "harvest": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "grow": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [
+      "film rig-update p95 exceeds <2 ms",
+      "{\"id\":\"disturb\",\"samples\":121,\"maxGapPx\":5.290547713891236e-05,\"status\":\"FAIL\",\"updateP95Ms\":3.300000011920929,\"updateMaxMs\":3.5,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+      "{\"id\":\"harvest\",\"samples\":121,\"maxGapPx\":5.645800814863738e-05,\"status\":\"FAIL\",\"updateP95Ms\":2,\"updateMaxMs\":2,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}"
+    ],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "devils-club",
+    "report": "devils-club/report.json",
+    "film": "devils-club/family-full-rows.webm",
+    "rows": 4,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 4.300000011920929,
+    "filmRigP95Ms": 3.399999976158142,
+    "wholeFrameP95Ms": 3.5,
+    "fps": 60.00159738029632,
+    "refusals": {
+      "sway": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "disturb": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "harvest": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "grow": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [
+      "film rig-update p95 exceeds <2 ms",
+      "{\"id\":\"sway\",\"samples\":121,\"maxGapPx\":6.685326685708087e-05,\"status\":\"FAIL\",\"updateP95Ms\":2.800000011920929,\"updateMaxMs\":5.699999988079071,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]}",
+      "{\"id\":\"disturb\",\"samples\":121,\"maxGapPx\":6.685326685708087e-05,\"status\":\"FAIL\",\"updateP95Ms\":4.300000011920929,\"updateMaxMs\":5.400000035762787,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+      "{\"id\":\"harvest\",\"samples\":121,\"maxGapPx\":6.685326685708087e-05,\"status\":\"FAIL\",\"updateP95Ms\":2.299999952316284,\"updateMaxMs\":2.5,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+      "{\"id\":\"grow\",\"samples\":121,\"maxGapPx\":6.685326685708087e-05,\"status\":\"FAIL\",\"updateP95Ms\":2.199999988079071,\"updateMaxMs\":2.399999976158142,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0]}"
+    ],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "freshwater-crab",
+    "report": "freshwater-crab/report.json",
+    "film": "freshwater-crab/family-full-rows.webm",
+    "rows": 12,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 0.7999999523162842,
+    "filmRigP95Ms": 1.5,
+    "wholeFrameP95Ms": 1.7000000476837158,
+    "fps": 60.00233018758009,
+    "refusals": {
+      "idle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:pinch": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "hit": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "alert": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:scuttle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "cast": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "dodge": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "faint": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "victory": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "tame": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "feed": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "mud-crab",
+    "report": "mud-crab/report.json",
+    "film": "mud-crab/family-full-rows.webm",
+    "rows": 12,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 0.7000000476837158,
+    "filmRigP95Ms": 1.7000000476837158,
+    "wholeFrameP95Ms": 2.199999988079071,
+    "fps": 60.00297887129148,
+    "refusals": {
+      "idle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:pinch": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "hit": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "alert": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:scuttle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "cast": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "dodge": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "faint": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "victory": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "tame": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "feed": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "persimmon",
+    "report": "persimmon/report.json",
+    "film": "persimmon/family-full-rows.webm",
+    "rows": 4,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 5.099999964237213,
+    "filmRigP95Ms": 3.5,
+    "wholeFrameP95Ms": 3.699999988079071,
+    "fps": 58.00603023102575,
+    "refusals": {
+      "sway": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "disturb": {
+        "refusedFrames": 1,
+        "saturated": false,
+        "firstRefusal": {
+          "actionId": "disturb",
+          "ms": 67.16666666666667,
+          "code": "ARAP_FOLD",
+          "reason": "ARAP skin: unresolved folded triangles: 84"
+        },
+        "lastRefusal": {
+          "actionId": "disturb",
+          "ms": 67.16666666666667,
+          "code": "ARAP_FOLD",
+          "reason": "ARAP skin: unresolved folded triangles: 84"
+        }
+      },
+      "harvest": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "grow": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 12,
+        "saturated": false,
+        "firstRefusal": {
+          "actionId": "presentation",
+          "ms": 4533.333333333333,
+          "code": "ARAP_FOLD",
+          "reason": "ARAP skin: unresolved folded triangles: 169"
+        },
+        "lastRefusal": {
+          "actionId": "presentation",
+          "ms": 4700,
+          "code": "ARAP_FOLD",
+          "reason": "ARAP skin: unresolved folded triangles: 167"
+        }
+      }
+    },
+    "leafReds": [
+      "film rig-update p95 exceeds <2 ms",
+      "{\"id\":\"sway\",\"samples\":121,\"maxGapPx\":5.9864930159180556e-05,\"status\":\"FAIL\",\"updateP95Ms\":2.400000035762787,\"updateMaxMs\":6.300000011920929,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]}",
+      "{\"id\":\"disturb\",\"samples\":13,\"maxGapPx\":5.469773184337406e-05,\"status\":\"FAIL\",\"failure\":{\"ms\":67.16666666666667,\"error\":\"RecoverablePoseError: ARAP skin: unresolved folded triangles: 84\"},\"updateP95Ms\":3.300000011920929,\"updateMaxMs\":3.300000011920929,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4]}",
+      "{\"id\":\"harvest\",\"samples\":121,\"maxGapPx\":5.856990343538905e-05,\"status\":\"FAIL\",\"updateP95Ms\":5.099999964237213,\"updateMaxMs\":5.699999988079071,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+      "{\"id\":\"grow\",\"samples\":121,\"maxGapPx\":6.035730363878516e-05,\"status\":\"FAIL\",\"updateP95Ms\":2.400000035762787,\"updateMaxMs\":2.5,\"performanceFailure\":\"Per-clip update must be below 2 ms\",\"readability\":{\"peakSwingFootLowerLeg\":0,\"peakCarapaceDy\":0,\"carapaceUnits\":\"normalized source height; root painted surface\",\"footUnits\":\"observed swing support displacement from rest / lower-leg length\"},\"normalPasses\":[0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+      "presentation {\"action\": \"disturb\", \"ms\": 4533.333333333333, \"error\": \"RecoverablePoseError: ARAP skin: unresolved folded triangles: 169\"}"
+    ],
+    "sharedPathRed": false
+  },
+  {
+    "subject": "vent-crab",
+    "report": "vent-crab/report.json",
+    "film": "vent-crab/family-full-rows.webm",
+    "rows": 12,
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "clipP95Ms": 0.6000000238418579,
+    "filmRigP95Ms": 1.5999999642372131,
+    "wholeFrameP95Ms": 1.899999976158142,
+    "fps": 60.00269675041575,
+    "refusals": {
+      "idle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "melee:pinch": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "hit": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "alert": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "approach:scuttle": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "cast": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "dodge": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "faint": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "victory": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "tame": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "feed": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      },
+      "presentation": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    "leafReds": [],
+    "sharedPathRed": false
+  }
+]

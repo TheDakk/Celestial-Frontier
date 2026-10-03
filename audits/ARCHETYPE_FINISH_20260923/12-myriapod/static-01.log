@@ -1,0 +1,13 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.050547516840569406,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.055528523412060604,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"approach:crawl","status":"PASS","samples":121,"drift":0.12897087033730545,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"melee:mandible","status":"PASS","samples":121,"drift":0.00003759101968472342,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"PASS","samples":121,"drift":0.00003759101968472342,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.050547516840569406,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":6,"drift":0.0006593312347299996,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":{"ms":22.5,"sampleNumber":7,"error":"Error: Contact: hit@22.5 leg3Far outside accommodatable reach"}}
+{"id":"dodge","status":"RED","samples":11,"drift":0.00127227933265247,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":{"ms":25.666666666666668,"sampleNumber":12,"error":"Error: Contact: dodge@25.666666666666668 leg3Far outside accommodatable reach"}}
+{"id":"faint","status":"PASS","samples":121,"drift":0.15786202780944777,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.050547516840569406,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"RED","samples":9,"drift":0.0009592968203189441,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":{"ms":48,"sampleNumber":10,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"}}
+{"id":"feed","status":"RED","samples":12,"drift":0.25360331204294534,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":{"ms":58,"sampleNumber":13,"error":"Error: Contact paint drift leg5FarFoot: 0.25360331204294534"}}
+{"status":"RED","rows":12,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

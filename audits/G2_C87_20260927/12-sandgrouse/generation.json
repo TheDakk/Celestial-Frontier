@@ -1,0 +1,13 @@
+{
+  "id": "12-sandgrouse",
+  "name": "Sandgrouse",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e0c1043c-aab1-47f3-8bb3-d1bd6fb423de.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8ef26e194950c91f692a1afab80239dc878a983fb95c9cd0f1896e5dbcb1ac99",
+  "bytes": 1145959,
+  "promptSha256": "7e99266ef2c5ce57a19de3f40295f894822a008c489baa8243f0f52e772508a8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

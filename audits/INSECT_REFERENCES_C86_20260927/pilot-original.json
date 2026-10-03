@@ -1,0 +1,23 @@
+[
+  {
+    "id": "01-bee",
+    "name": "Bee",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/01-bee",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/01-bee/master.png"
+  },
+  {
+    "id": "02-dragonfly",
+    "name": "Dragonfly",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/02-dragonfly",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/02-dragonfly/master.png"
+  },
+  {
+    "id": "03-giant-water-bug",
+    "name": "Giant Water Bug",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/03-giant-water-bug",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/03-giant-water-bug/master.png"
+  }
+]

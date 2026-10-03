@@ -1,0 +1,91 @@
+{
+  "schema": "cf-canid-review-document-check/v1",
+  "status": "PASS",
+  "certification": false,
+  "htmlSha256": "2b050482ad5745250648575817581d57a9e75282ff31aa2b6507e9be68c26456",
+  "errors": [],
+  "rows": [
+    {
+      "width": 1440,
+      "images": [
+        {
+          "width": 132,
+          "naturalWidth": 132,
+          "alt": "Current canonical Wolf"
+        },
+        {
+          "width": 132,
+          "naturalWidth": 132,
+          "alt": "V1 — initial surface Wolf"
+        },
+        {
+          "width": 132,
+          "naturalWidth": 132,
+          "alt": "V2 — smoother surface Wolf"
+        },
+        {
+          "width": 300,
+          "naturalWidth": 300,
+          "alt": "Current canonical Wolf"
+        },
+        {
+          "width": 300,
+          "naturalWidth": 300,
+          "alt": "V1 — initial surface Wolf"
+        },
+        {
+          "width": 300,
+          "naturalWidth": 300,
+          "alt": "V2 — smoother surface Wolf"
+        },
+        {
+          "width": 440,
+          "naturalWidth": 440,
+          "alt": "Current canonical Wolf"
+        },
+        {
+          "width": 440,
+          "naturalWidth": 440,
+          "alt": "V1 — initial surface Wolf"
+        },
+        {
+          "width": 440,
+          "naturalWidth": 440,
+          "alt": "V2 — smoother surface Wolf"
+        },
+        {
+          "width": 440,
+          "naturalWidth": 440,
+          "alt": "Wolf frame 1"
+        }
+      ],
+      "bodyOverflow": false
+    },
+    {
+      "width": 466,
+      "bodyOverflow": false,
+      "strips": [
+        {
+          "width": 342,
+          "scrollWidth": 564
+        },
+        {
+          "width": 342,
+          "scrollWidth": 938
+        },
+        {
+          "width": 342,
+          "scrollWidth": 1358
+        }
+      ]
+    }
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  }
+}

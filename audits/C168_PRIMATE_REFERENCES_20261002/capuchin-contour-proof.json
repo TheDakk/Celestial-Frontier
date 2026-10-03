@@ -1,0 +1,380 @@
+{
+  "schema": "cf.c168-exact-contour-proof/v1",
+  "source": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-repaint",
+  "candidate": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours",
+  "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "priorAuthoringSha256": "be3e5664ae3793c7aaeed6ba976c0421a7b502de443b24a32d78ca93bd46af43",
+  "authoringSha256": "19c091d58e706cec1314cc1dfc1074a26ce28a827005dfa332eb5827cb551d3d",
+  "sourceRgbaChanges": 0,
+  "landmarksChanged": false,
+  "groundRegistrationChanged": false,
+  "priorNonBodyOwnersChanged": 0,
+  "moved": [
+    {
+      "joint": "armFarHand",
+      "pixels": 834
+    },
+    {
+      "joint": "armFarElbow",
+      "pixels": 561
+    }
+  ],
+  "unchangedCap": 0.05,
+  "predecessorCap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 1430 px is 5.8% of the remainder (> 5%): structural, not a sliver",
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "remainderPixels": 23051,
+    "remainingIslands": [
+      {
+        "pixels": 2,
+        "to": 9,
+        "border": {
+          "9": 4
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 9,
+        "border": {
+          "9": 8
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 9,
+        "border": {
+          "9": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 10,
+        "border": {
+          "10": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 10,
+        "border": {
+          "10": 2
+        }
+      },
+      {
+        "pixels": 20,
+        "to": 10,
+        "border": {
+          "10": 18
+        }
+      },
+      {
+        "pixels": 40,
+        "to": 10,
+        "border": {
+          "10": 22
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 13,
+        "border": {
+          "13": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 13,
+        "border": {
+          "13": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 10,
+        "border": {
+          "10": 2
+        }
+      },
+      {
+        "pixels": 17,
+        "to": 10,
+        "border": {
+          "10": 12
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 10,
+        "border": {
+          "10": 10
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 10,
+        "border": {
+          "10": 2
+        }
+      },
+      {
+        "pixels": 17,
+        "to": 10,
+        "border": {
+          "10": 12
+        }
+      },
+      {
+        "pixels": 19,
+        "to": 10,
+        "border": {
+          "10": 18
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 10,
+        "border": {
+          "10": 4
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 10,
+        "border": {
+          "10": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 10,
+        "border": {
+          "10": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 14,
+        "border": {
+          "14": 1
+        }
+      },
+      {
+        "pixels": 220,
+        "to": 6,
+        "border": {
+          "6": 30,
+          "14": 28
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 7,
+        "border": {
+          "7": 8
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 7,
+        "border": {
+          "7": 2
+        }
+      },
+      {
+        "pixels": 9,
+        "to": 7,
+        "border": {
+          "7": 12
+        }
+      },
+      {
+        "pixels": 24,
+        "to": 7,
+        "border": {
+          "7": 21
+        }
+      },
+      {
+        "pixels": 589,
+        "to": 8,
+        "border": {
+          "4": 17,
+          "7": 28,
+          "8": 85
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 7,
+        "border": {
+          "7": 2
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 7,
+        "border": {
+          "7": 5
+        }
+      },
+      {
+        "pixels": 92,
+        "to": 5,
+        "border": {
+          "5": 38,
+          "15": 4
+        }
+      },
+      {
+        "pixels": 9,
+        "to": 8,
+        "border": {
+          "8": 9
+        }
+      },
+      {
+        "pixels": 5,
+        "to": 7,
+        "border": {
+          "7": 2
+        }
+      },
+      {
+        "pixels": 4,
+        "to": 4,
+        "border": {
+          "4": 3,
+          "8": 3
+        }
+      },
+      {
+        "pixels": 70,
+        "to": 4,
+        "border": {
+          "4": 30
+        }
+      },
+      {
+        "pixels": 6,
+        "to": 7,
+        "border": {
+          "7": 1
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 6,
+        "border": {
+          "6": 1
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 5,
+        "border": {
+          "5": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 4,
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 24,
+        "to": 4,
+        "border": {
+          "4": 15
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 1,
+        "border": {
+          "1": 1,
+          "5": 1
+        }
+      },
+      {
+        "pixels": 25,
+        "to": 2,
+        "border": {
+          "2": 22
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 1,
+        "border": {
+          "1": 1
+        }
+      },
+      {
+        "pixels": 9,
+        "to": 2,
+        "border": {
+          "2": 10
+        }
+      },
+      {
+        "pixels": 136,
+        "to": 4,
+        "border": {
+          "4": 42
+        }
+      },
+      {
+        "pixels": 71,
+        "to": 4,
+        "border": {
+          "4": 34
+        }
+      },
+      {
+        "pixels": 3,
+        "to": 3,
+        "border": {
+          "3": 4
+        }
+      },
+      {
+        "pixels": 1,
+        "to": 4,
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": 2,
+        "border": {
+          "2": 4
+        }
+      }
+    ],
+    "movedIfAutomaticallyApplied": 1469,
+    "applied": false
+  },
+  "staticStatus": "PASS_STATIC",
+  "actionRows": 13,
+  "presentation": "PASS",
+  "controls": [
+    "original ownership equals independent replay",
+    "successor ownership equals independent replay",
+    "deterministic repeated replay",
+    "exact keyed RGBA and independent atlas reconstruction",
+    "prior non-body ownership theft refused",
+    "paint deletion in labels refused",
+    "atlas paint deletion refused",
+    "atlas duplicate paint refused",
+    "atlas recoloring refused"
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

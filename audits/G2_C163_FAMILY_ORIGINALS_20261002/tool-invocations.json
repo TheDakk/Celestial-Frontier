@@ -1,0 +1,362 @@
+[
+  {
+    "id": "01-mara",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/01-mara/prompt.txt",
+    "promptSha256": "8eba4af06e145863fbe9ca457027f137a9ef87037567d884393eaea6acbd655a",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a8635cf8-4181-42b8-8027-4a81ee4b78a1.png",
+    "masterSha256": "74cb1fcf52069a8acdbf085e9a4b7500d0a44118ecee1db3b99fab791449f40d"
+  },
+  {
+    "id": "02-salamander",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/02-salamander/prompt.txt",
+    "promptSha256": "e0a4e919c8d3b66505b84976a02bb46affe2801229b7e7934844623ebfa703f0",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-cfffcc3e-b965-4581-b8e4-0b3b50811d8d.png",
+    "masterSha256": "02031f9202dd2f2164f169f6a42e9e45d1ebbec57cee586740b93f8660d603c8"
+  },
+  {
+    "id": "03-wall-lizard",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/03-wall-lizard/prompt.txt",
+    "promptSha256": "a32180f69f149acabba1b64f83d9752e09b2fc3e7d6a798a2e7429331654e7de",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2b35d70c-7e4b-446d-84b0-6e93401bcb8f.png",
+    "masterSha256": "1a42430fe33356cdf808f7748ba2730eb812f82139dac5563af25bb2bb7adfb4"
+  },
+  {
+    "id": "04-gorilla",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla/prompt.txt",
+    "promptSha256": "932a7a6101b130da931b2ac29ab015d6cae368a35641c3c8d48103067047c22a",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8fc7bbac-5c44-49cc-b9dc-22e97c8be956.png",
+    "masterSha256": "12b29f8cf0a57f346494c6f8cd0f5204dc5dd76cae519751d2839fd57e394230"
+  },
+  {
+    "id": "05-chimpanzee",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee/prompt.txt",
+    "promptSha256": "c32405721b0481971c14fed3e06603cf47e91daa2416e08272b9dccd5291bce5",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-dc711e09-2bde-4f35-8200-65065422a485.png",
+    "masterSha256": "5a237ca7019a0507d1f9f1dbee49ccdd7741cf2cdaca4e4a9b2e36ee1d32991c"
+  },
+  {
+    "id": "06-orangutan",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/06-orangutan/prompt.txt",
+    "promptSha256": "98d342386ae0bb8ec7ef8d3d9f81b864492859681e77725042821f7975a15cff",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3241cb63-b0e0-45fb-844e-f839ab64b3be.png",
+    "masterSha256": "e93e3cd5cda0420dd95d51d7c4dd8a05ec9671284cd6dfaf2a404426d451f5cd"
+  },
+  {
+    "id": "07-capuchin",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/07-capuchin/prompt.txt",
+    "promptSha256": "43ab60c469cd5dbf61a34ab63be73653d035535692803ef6c8c70875afcdec81",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-39c4a271-e89c-4a88-9a26-c044e0e9c851.png",
+    "masterSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60"
+  },
+  {
+    "id": "08-howler-monkey",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/08-howler-monkey/prompt.txt",
+    "promptSha256": "9b3b178686cc31c89573affc2ab0779cf7d5415c04e2e8e5500e978640773b68",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-6c012297-b57b-48c9-9a36-d4b0794794fa.png",
+    "masterSha256": "4968de4ee55f14737fb831247c001764ab1246175aea9c877dfe2e87be48efc1"
+  },
+  {
+    "id": "09-spider-monkey",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey/prompt.txt",
+    "promptSha256": "add26de71e57f1780c25c9912d4e935184b51d9087cab555c352b87519f0f64f",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e3becd62-e497-46e9-9210-0f285c186890.png",
+    "masterSha256": "7bb96d0314e2c6214f4a92f768ef4c2404d2b2320ed3e81cc2cbb23aa2e615b8"
+  },
+  {
+    "id": "10-macaque",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/10-macaque/prompt.txt",
+    "promptSha256": "5dc096b47516cf787903cb9dff4362f77fa441a4dc540d6cd063d41996d430f7",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-66a3c6fc-eb56-42c7-b9f5-5639616ed8ef.png",
+    "masterSha256": "56995df1a7e64468a934dcd3c118880bc46c8f3b6baaf8c18f4695310a898376"
+  },
+  {
+    "id": "11-baboon",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon/prompt.txt",
+    "promptSha256": "b868b34ddb9572e60c9bded9eb260b46a3ba774966b42bf52732d44c84efc63e",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-843b6e8f-6660-4512-becb-81c7df32aa30.png",
+    "masterSha256": "a621f543375ec39d1e0db545026406afcfbb2a8f1583004105a06bb08b6dc5e9"
+  },
+  {
+    "id": "12-lemur",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur/prompt.txt",
+    "promptSha256": "84d8ae384e3b72dac7703526876f22f2e82b73ccabe56f4fafd02820ef36756c",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-051d26c2-f9e0-48aa-a13f-682974bc1dbe.png",
+    "masterSha256": "78242efe8627c31a162c0f1333648411a290ac386e533bc1582b0f08ae402b22"
+  },
+  {
+    "id": "13-centipede",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede/prompt.txt",
+    "promptSha256": "7b3b1bedfd3617711aa76cc9d5ec13b8f306bece4b700cc16fb2092d3578f340",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8b9f3874-76de-43a5-94ff-0ca3a52c7785.png",
+    "masterSha256": "098a1cf56d03ef6b1b169d3a82cc03a29bc87013e03a7f57a3ff9e4788eaf664"
+  },
+  {
+    "id": "14-giant-centipede",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede/prompt.txt",
+    "promptSha256": "fe6dfeb43f0846d03b24e4c7cb31edb462b7435322c3ff6ac583d91ad4435aee",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-972c61b0-9b4c-4484-bcf5-06951e69ec7a.png",
+    "masterSha256": "546a1648d5968949326c2e4e7654ecd04b7e6d63f1877098ca0585f3f58d4a9d"
+  },
+  {
+    "id": "15-millipede",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede/prompt.txt",
+    "promptSha256": "1fd0f6412cec7de48cc98520315af3ed13536f14c5badda4136e80983c9df505",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ac364d47-d075-45cc-afaa-a4124bd3150e.png",
+    "masterSha256": "17b95ff46b994e99c8f89324ef805b0927d83a540ff4d41db152b69bb06f15b2"
+  },
+  {
+    "id": "16-octopus",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus/prompt.txt",
+    "promptSha256": "7e953e304e7cfd0874652bd3016d7455df93c9e828647f3fa15c6a6f0ee4a3e1",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ccdf28d2-4d94-45f9-98ce-304c7401c81b.png",
+    "masterSha256": "45f1f54d41aaed9aaf618817e9dff7880ecdff1fc60eac0203477e6c4915264e"
+  },
+  {
+    "id": "17-squid",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid/prompt.txt",
+    "promptSha256": "2cbb35c153dd37c5663eacb3fcfaeb4b12c795fa16754de5e87c0dbe301d5fca",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-5b4d7517-f410-4bf6-9109-37002f53da09.png",
+    "masterSha256": "2b3fc8cd8f5fc8ffadd635162f15101f444ac4a1d93927e6dbd8c9ba5e7f9ef0"
+  },
+  {
+    "id": "18-cuttlefish",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish/prompt.txt",
+    "promptSha256": "9e630a905ed7bfb51eb21af0d744aa75b4ec83ce7f0527a686cca63b0e11cf78",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-18006474-d073-4660-89da-6b8ae65c20a8.png",
+    "masterSha256": "32558a20501498deb6e00bdc0d71fe97def50b76177a55a1edb9b22ce6f018a6"
+  },
+  {
+    "id": "19-giant-octopus",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus/prompt.txt",
+    "promptSha256": "7a0abce068f7a3c33e0da1bc02a58b9713bd5192a5fb32cdd973c4a30d221762",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c2bae414-d4b1-4e4d-b954-91f48d98771f.png",
+    "masterSha256": "ed746451e5751a2189ccb630bb5d8d37fdc3ff6145d3df24b89d88ef36afccc2"
+  },
+  {
+    "id": "20-deep-sea-octopus",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/20-deep-sea-octopus/prompt.txt",
+    "promptSha256": "799ca9970e9c0aaea7094e9982b5912ba66560b74b7d7ab5ced14db672d511a2",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0378373b-906b-4f43-9da9-6a6ca0a492f6.png",
+    "masterSha256": "61564a71a8c916c94f35b7288236879a736494576379dc78872e250b26e1b783"
+  },
+  {
+    "id": "21-fruit-bat",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/21-fruit-bat/prompt.txt",
+    "promptSha256": "499794379acb97f64b90fc08c1d83e4f188ddd5ad4a8e03965e0644127e755ea",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f708cfd8-c810-4bf5-bc87-a5e7cefbc85f.png",
+    "masterSha256": "3b8118dbdacac31b663e30f4b7a50503b4fcd9ee2cdb7c43901c52d747bbbe83"
+  },
+  {
+    "id": "22-bat",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/22-bat/prompt.txt",
+    "promptSha256": "fa88277b850e61aac73d1134e382b82ad0060deccba600a4c9cf2981d1a7c947",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-9296316d-b5b7-49ac-a84b-5623889e1b43.png",
+    "masterSha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a"
+  },
+  {
+    "id": "23-insect-eating-bat",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/23-insect-eating-bat/prompt.txt",
+    "promptSha256": "3b1ce9d363e0dcfb83640cfdeca2344eaddd6727e2211bb97f90d530c376b42e",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-b2f2195b-11a7-407e-9c7a-5d53f627fc35.png",
+    "masterSha256": "0702ec0f8f93d155fe061bd97b4e82d6d629e72a8c045da19fda1c3eaacaf9b6"
+  },
+  {
+    "id": "24-vampire-bat",
+    "tool": "image_gen.imagegen",
+    "promptFile": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat/prompt.txt",
+    "promptSha256": "aebffe16f54e58b8fce00d8270b7833916549881f12624a9141ec50da11c5ad9",
+    "referencedImages": [
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "transparentBackground": false,
+    "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-05d74e1c-ee4e-435f-a790-7fa049e7cb60.png",
+    "masterSha256": "be754b4a8842ec0b42e04d73dc2db005f0ad9bdb048a3ee2479969097389229f"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Guineafowl",
+  "masterSha256": "53e50a6ed3a4b33871c44a6aa71fa51d3ee47961eecdd793abab5eb938641c9a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

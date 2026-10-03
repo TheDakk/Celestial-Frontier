@@ -1,0 +1,381 @@
+{
+  "scope": "Native actual storage + listener ownership, held objects expose callback lifetime without depending on GC",
+  "oldHead": "605a6e28ccd3c730ffd9631b36202285e914bc14",
+  "oldSha256": "6ec519518d26b536b244a986ad11f8ebecb79d49d133c8ebd18a3f32d47a91b7",
+  "newSha256": "e2e610843907ad2b35584c61c5cf71b092ee307dc7181d404e2be39d61c61a0d",
+  "callbackOwnerSha256": "6a9af7e908eebe3a9052a18b67f01214b202451244f78789c4e1dfde38e30b06",
+  "rows": [
+    {
+      "name": "old",
+      "outcomes": [
+        "real read",
+        "atomic compare commit",
+        "committed bytes",
+        "stale compare refused",
+        "stale write did not mutate",
+        "native abort rejected",
+        "abort left prior data",
+        "delete committed",
+        "clear committed",
+        "terminal callback ownership"
+      ],
+      "held": [
+        {
+          "kind": "IDBOpenDBRequest",
+          "state": "done",
+          "listeners": [
+            "onsuccess",
+            "onerror",
+            "onblocked",
+            "onupgradeneeded"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": [
+            "onerror",
+            "oncomplete",
+            "onabort"
+          ]
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": [
+            "onsuccess",
+            "onerror"
+          ]
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": [
+            "onsuccess",
+            "onerror"
+          ]
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": [
+            "onsuccess",
+            "onerror"
+          ]
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": [
+            "onsuccess",
+            "onerror"
+          ]
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": [
+            "onsuccess",
+            "onerror"
+          ]
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        }
+      ],
+      "listeners": 50,
+      "beforeGc": {
+        "documents": 2,
+        "nodes": 11,
+        "jsEventListeners": 52
+      },
+      "afterGc": {
+        "documents": 1,
+        "nodes": 7,
+        "jsEventListeners": 52
+      }
+    },
+    {
+      "name": "new",
+      "outcomes": [
+        "real read",
+        "atomic compare commit",
+        "committed bytes",
+        "stale compare refused",
+        "stale write did not mutate",
+        "native abort rejected",
+        "abort left prior data",
+        "delete committed",
+        "clear committed",
+        "terminal callback ownership"
+      ],
+      "held": [
+        {
+          "kind": "IDBOpenDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBTransaction",
+          "state": null,
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        },
+        {
+          "kind": "IDBRequest",
+          "state": "done",
+          "listeners": []
+        }
+      ],
+      "listeners": 0,
+      "beforeGc": {
+        "documents": 2,
+        "nodes": 11,
+        "jsEventListeners": 52
+      },
+      "afterGc": {
+        "documents": 1,
+        "nodes": 7,
+        "jsEventListeners": 2
+      }
+    }
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+  }
+}

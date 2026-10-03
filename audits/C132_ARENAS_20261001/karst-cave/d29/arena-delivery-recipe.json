@@ -1,0 +1,102 @@
+{
+  "schema": "cf.arena.authoring-proof/v1",
+  "battleContext": {
+    "schema": "cf.arena.proof-context/v1",
+    "encounterKind": "wild",
+    "worldKey": "template:karst-cave",
+    "combatants": [
+      "left-review-stand",
+      "right-review-stand"
+    ],
+    "round": 0,
+    "biomeFamily": "karst"
+  },
+  "seed": 3687414379,
+  "seedDerivation": "first4bytes big-endian SHA256 of sorted compact battleContext JSON; no clock",
+  "groundLineNormalized": 0.78,
+  "horizonBandNormalized": 0.66,
+  "standsNormalizedX": [
+    0.3333333333333333,
+    0.6666666666666666
+  ],
+  "systemCard": "SYSTEM CARD - reusable biome-family template karst-cave; canonical profile karst\n  Template scope: source-derived profile plus explicit authored stage interpretation; no live planet address or runtime world snapshot is claimed.\n  Star: not bound at template-authoring time; runtime system light remains source-owned.\n  Light: one soft diffuse near-neutral authoring light from upper left; preserve the same direction on all three plates; no visible star or extra light source.\n  Mineral palette: canonical signature #b8b0a0; named material flat worn limestone and fine cool-gray mineral grit.\n  Atmosphere: canonical weather mild; authored medium ground; distant limestone cavern walls, restrained stalactites high above the battle band, broad shadowed cave depth.\n  Flora pigment: source profile karst; permitted forms fern, moss, shrub; restrained natural pigment interpreted in the named materials.\n  Fauna adaptation: source families mammal, arachnid, insect; no fauna are painted into these arena layers.\n  One signature: sinkhole; signature stays behind the combatant stands, never breaks the continuous fighting path.\n  Authoring variant: Cave / Limestone Cave; source BIOME_ATLAS.md#cave-6.",
+  "systemCardSource": "audits/C132_ARENAS_20261001/karst-cave/arena-far.prompt.txt",
+  "systemCardSourceSha256": "8e145352977018cfad2b59fc6b5cb7a53879eb6782da8229ccc37b49f2f7f9ab",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "extractedMasks": false,
+  "qualityAccepted": false,
+  "scope": "source-derived reusable template authoring; no live world, game wiring, physical-medium admission or visual acceptance claimed",
+  "requestedCanvasSize": {
+    "width": 2560,
+    "height": 1440
+  },
+  "profileKey": "karst",
+  "habitatVariant": "Cave / Limestone Cave",
+  "medium": "ground",
+  "canonicalProfile": {
+    "sig": "#b8b0a0",
+    "fauna": [
+      "mammal",
+      "arachnid",
+      "insect"
+    ],
+    "flora": [
+      "fern",
+      "moss",
+      "shrub"
+    ],
+    "hazard": "sinkhole",
+    "weather": "mild"
+  },
+  "sourceInputs": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "a669109aded91bfbf2c385607c27719a9ef927e93bc7ac95f3cec4ef55b5dc60"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/MAILBOX/C132_ART_PROGRAM_20261001.md",
+      "sha256": "92d9ad1066656ababe245f9ef07b70857636763a3b6301d502a819a3b6ac6b15"
+    }
+  ],
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+  },
+  "plates": [
+    {
+      "image": "arena-far.png",
+      "sha256": "bf535a0cb58e4f7bf912735c5824cd36b890dee14dadbd0b000de3197e0b2ab7",
+      "kind": "scene",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-mid.png",
+      "sha256": "41157f64847f3a465b52a88a14a711288e0f9a471fa0225f908ff70f204877cc",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    },
+    {
+      "image": "arena-near.png",
+      "sha256": "e53201657f217d38825695281ddcf1e7bff6f7e5c6c5125b646bb9b700b85ff3",
+      "kind": "key-painted terrain",
+      "groundLineNormalized": 0.78
+    }
+  ],
+  "canvasSize": {
+    "width": 1672,
+    "height": 941
+  },
+  "layers": {
+    "far": "opaque scene",
+    "mid": "magenta-keyed terrain",
+    "near": "magenta-keyed terrain"
+  }
+}
