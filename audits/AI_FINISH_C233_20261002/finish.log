@@ -1,0 +1,12 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"15-jaguar","rows":[{"id":"15-jaguar","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"15-jaguar","rows":[{"id":"15-jaguar","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"15-jaguar","rows":[{"id":"15-jaguar","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"15-jaguar","rows":[{"id":"15-jaguar","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"17-otter","rows":[{"id":"15-jaguar","status":"PASS"},{"id":"17-otter","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"running","subject":"17-otter","rows":[{"id":"15-jaguar","status":"PASS"},{"id":"17-otter","status":"FAIL"}],"last":{"phase":"inference-start","stage":"text"}}
+{"status":"running","subject":"17-otter","rows":[{"id":"15-jaguar","status":"PASS"},{"id":"17-otter","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"17-otter","rows":[{"id":"15-jaguar","status":"PASS"},{"id":"17-otter","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"17-otter","rows":[{"id":"15-jaguar","status":"PASS"},{"id":"17-otter","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"17-otter","rows":[{"id":"15-jaguar","status":"PASS"},{"id":"17-otter","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-anthropic-mac/audits/AI_FINISH_C233_20261002/finish-01"}
