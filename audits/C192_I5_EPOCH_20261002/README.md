@@ -5,3 +5,5 @@ C235 reserves one fresh combined 3+1 epoch on signed product a0414aa6511d1ee9a9d
 Run unchanged limits with first-red stop and no re-binding. Only a fully verified four-step result may become the active selector. Then run one develop profile with the optional local-AI runtime renamed aside and restored in a finally block. Every command/result is retained with home paths written as ~/. C235 remains ACTIVE until its explicit TERMINAL mailbox row.
 
 All-pairs is HOLD under C186. The old prepared sweep is retained unchanged; its product source inventory predates D31 and must be refreshed before any future authorized execution. No sweep runs in this batch.
+
+Terminal epoch result: all three calibrations and certification passed with independent verification, zero retries, 273.79 seconds. The fresh selector replay returned ok=true for i5-v2-a0414aa6511d. Develop result is still pending; C235 is not yet released.
