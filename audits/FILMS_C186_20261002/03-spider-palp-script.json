@@ -1,0 +1,43 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "wild",
+  "B": "stone"
+ },
+ "rows": [
+  {
+   "side": "A",
+   "an": "Spider",
+   "dn": "Spider",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "side": "B",
+   "an": "Spider",
+   "dn": "Spider",
+   "dmg": 6,
+   "crit": false,
+   "hpA": 24,
+   "hpB": 21
+  },
+  {
+   "an": "Spider",
+   "dn": "Spider",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Spider",
+   "dn": "Spider",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 24,
+   "hpB": 0
+  }
+ ],
+ "supports": "observed"
+}

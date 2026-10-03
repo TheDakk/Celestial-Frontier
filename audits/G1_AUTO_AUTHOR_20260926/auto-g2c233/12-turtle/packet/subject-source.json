@@ -1,0 +1,69 @@
+{
+  "name": "Turtle",
+  "family": "quadruped",
+  "species": {
+    "name": "Turtle",
+    "aspect": 2,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "domed shell covering the whole trunk",
+      "head and neck poking out the front",
+      "stumpy scaly legs"
+    ],
+    "note": "Generic name interpreted as a representative freshwater pond turtle. Commonly drawn with the shell as a separate hat sitting on the back; the shell IS the body wall, legs and neck emerge from under its rim."
+  },
+  "genome": {
+    "seed": 139206265,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 16,
+    "body": 13,
+    "loco": 13,
+    "trait": 21,
+    "size": 4,
+    "diet": 0,
+    "head": 2,
+    "limbs": 1,
+    "skin": 1,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 10,
+    "habitat": 11,
+    "detail": 5,
+    "accent": 9,
+    "temper": 7,
+    "sense": 5,
+    "repro": 2,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Turtle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Turtle\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"139206265\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "index": 212,
+  "profile": {
+    "id": "freshwater-turtle",
+    "names": [
+      "Pond Turtle",
+      "Snapping Turtle",
+      "Softshell Turtle",
+      "Turtle"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

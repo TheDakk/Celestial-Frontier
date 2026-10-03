@@ -1,0 +1,34 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "03-snail",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+ "subjectSourceSha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26",
+ "identity": {
+  "name": "Snail",
+  "family": "gastropod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snail\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"450526374\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 450526374,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "land-gastropod",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "3b3f098a213f5e1739449b28361c7a0c03b55f7ab91b352a78e3ce7e1afa7bfc",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group land-gastropod (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

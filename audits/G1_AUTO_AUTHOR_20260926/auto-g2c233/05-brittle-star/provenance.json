@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "05-brittle-star",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+ "subjectSourceSha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d",
+ "identity": {
+  "name": "Brittle Star",
+  "family": "radial",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Brittle Star\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1016348045\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 1016348045,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "starfish",
+  "authoringSha256": "cbc685725e77a1fd76614308a7fdfcc03dd26e0a4a2bd02147fe16deb38c5619",
+  "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
+ },
+ "habitat": {
+  "profileId": "echinoderm",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "a5324249dd55469a76daa1840879a2ac60361cc28733c0e1650a5b8f6874d4f1",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "warty",
+  "source": "species group echinoderm (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1488,
+     "class": "top",
+     "attach": {
+      "x": 212,
+      "y": 185,
+      "relX": 0.48,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1538,
+     "class": "rear",
+     "attach": {
+      "x": 185,
+      "y": 210.5,
+      "relX": -0.02,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1376,
+     "class": "front",
+     "attach": {
+      "x": 241,
+      "y": 209.5,
+      "relX": 1.02,
+      "relY": 0.44
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1288,
+     "class": "limb-down",
+     "attach": {
+      "x": 236.2,
+      "y": 238.7,
+      "relX": 0.93,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1392,
+     "class": "limb-down",
+     "attach": {
+      "x": 190.2,
+      "y": 239.8,
+      "relX": 0.08,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "starfish",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

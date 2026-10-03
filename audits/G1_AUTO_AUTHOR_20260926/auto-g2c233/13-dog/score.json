@@ -1,0 +1,9 @@
+{
+ "id": "13-dog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 14.0% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

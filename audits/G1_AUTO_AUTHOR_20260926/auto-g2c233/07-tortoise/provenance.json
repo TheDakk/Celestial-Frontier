@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "07-tortoise",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+ "subjectSourceSha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+ "identity": {
+  "name": "Tortoise",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tortoise\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"474501407\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 474501407,
+  "checks": [
+   "materials-unknown: no species-group material for profile tortoise; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "tortoise",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "495c4014d915e4bba570d5d32d5b9dad6983907de7fcff3cc2274f589de0a6d6",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group tortoise (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0079,
+     "class": "top",
+     "attach": {
+      "x": 189,
+      "y": 115,
+      "relX": 0.5,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0793,
+     "class": "front",
+     "attach": {
+      "x": 292,
+      "y": 203,
+      "relX": 1,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0833,
+     "class": "limb-down",
+     "attach": {
+      "x": 93,
+      "y": 228,
+      "relX": 0.02,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1096,
+     "class": "limb-down",
+     "attach": {
+      "x": 278.4,
+      "y": 245.4,
+      "relX": 0.94,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0324,
+     "class": "limb-down",
+     "attach": {
+      "x": 152.6,
+      "y": 255.9,
+      "relX": 0.32,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 273,
+ "total": 289,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -617,6 +617,90 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/16-wild-sheep",
    "report": "DIAGNOSTIC_PASS",
    "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wolf",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/14-wolf",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: a fleck floats over the lowered head in the late idle; island repair refused at the cap (5.6% > 5%, D28)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Jaguar",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/15-jaguar",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Serval",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: ear spike and fleck over the lowered head in the late idle; island repair refused at the cap (6.2% > 5%, D28)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Otter",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/17-otter",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Zebra",
+   "nativeDir": "audits/FILMS_C186_20261002/01-zebra-fallback-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Kudu",
+   "nativeDir": "audits/FILMS_C186_20261002/02-kudu",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gazelle",
+   "nativeDir": "audits/FILMS_C186_20261002/05-gazelle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Oryx",
+   "nativeDir": "audits/FILMS_C186_20261002/07-oryx-tail-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gaur",
+   "nativeDir": "audits/FILMS_C186_20261002/08-gaur-observed-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit (a tiny attached bluish mark on the shoulder noted)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Deer",
+   "nativeDir": "audits/FILMS_C186_20261002/09-deer-observed-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Antelope",
+   "nativeDir": "audits/FILMS_C186_20261002/10-antelope-tail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sheep",
+   "nativeDir": "audits/FILMS_C186_20261002/15-sheep-observed-ears",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -1247,6 +1331,13 @@
    "nativeDir": "audits/SUCCESSORS_C221_20261002/weaverbird",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Bittern",
+   "nativeDir": "audits/FILMS_C186_20261002/bittern-fit02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit (C231 far-leg fold repair; the walk fold is gone)"
   },
   {
    "family": "Fish",
@@ -1912,6 +2003,27 @@
    "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: spike gone after C201, but a thin dark seam line shows at the neck of one capuchin in the late idle"
+  },
+  {
+   "family": "arachnid",
+   "name": "Spider",
+   "nativeDir": "audits/FILMS_C186_20261002/03-spider-palp",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "brachyuran",
+   "name": "Crab",
+   "nativeDir": "audits/FILMS_C186_20261002/06-crab-source-joins",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "radial",
+   "name": "Brittle Star",
+   "nativeDir": "audits/FILMS_C186_20261002/07-brittle-star-part-ids",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C186 selected fit"
   }
  ]
 }

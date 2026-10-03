@@ -1,30 +1,31 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 218,
- "pct": 34.5,
+ "covered": 232,
+ "pct": 36.8,
  "heldNotCounted": [
-  "Bittern",
   "Capuchin",
   "Chough",
   "Hawk",
   "Horse",
   "Rhea",
+  "Serval",
   "Snow Petrel",
   "Snowy Owl",
   "Tiger Shark",
   "Wild Ass",
   "Wild Pony",
-  "Zebra"
+  "Wolf"
  ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 67,
-   "pct": 32.7,
+   "covered": 77,
+   "pct": 37.6,
    "names": [
+    "Jaguar",
     "Leopard",
     "Tiger",
     "Clouded Leopard",
@@ -66,19 +67,28 @@
     "Gerbil",
     "Tree Shrew",
     "Wombat",
+    "Otter",
     "Sugar Glider",
     "Koala",
+    "Gaur",
     "Banteng",
+    "Deer",
+    "Antelope",
     "Reindeer",
     "Mountain Goat",
     "Giraffe",
+    "Kudu",
     "Wildebeest",
     "Eland",
+    "Gazelle",
     "Hartebeest",
+    "Oryx",
     "Saiga",
     "Cattle",
+    "Sheep",
     "Wild Sheep",
     "Bongo",
+    "Zebra",
     "Donkey",
     "Alligator",
     "Gharial",
@@ -183,8 +193,8 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 47,
-   "pct": 46.1,
+   "covered": 48,
+   "pct": 47.1,
    "names": [
     "Kestrel",
     "Desert Owl",
@@ -202,6 +212,7 @@
     "Curlew",
     "Sandpiper",
     "Rail",
+    "Bittern",
     "Oystercatcher",
     "Guineafowl",
     "Turkey",
@@ -301,9 +312,11 @@
   {
    "family": "radial",
    "species": 12,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 8.3,
+   "names": [
+    "Brittle Star"
+   ]
   },
   {
    "family": "gastropod",
@@ -322,9 +335,11 @@
   {
    "family": "arachnid",
    "species": 9,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 11.1,
+   "names": [
+    "Spider"
+   ]
   },
   {
    "family": "cephalopod",
@@ -343,9 +358,11 @@
   {
    "family": "brachyuran",
    "species": 6,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 16.7,
+   "names": [
+    "Crab"
+   ]
   },
   {
    "family": "flyer-membrane",

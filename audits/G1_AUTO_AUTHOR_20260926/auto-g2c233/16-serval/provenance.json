@@ -1,0 +1,130 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "16-serval",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+ "subjectSourceSha256": "95c18144eec22f1c7639223716c5fbcf62bf85abe116f37d4646e97fc689db78",
+ "identity": {
+  "name": "Serval",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Serval\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2340052459\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 2340052459,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wolf",
+  "authoringSha256": "15844566d12676ccb038c7488e18e28a3320144cd068dde1f213630534a74025",
+  "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1566,
+     "class": "top",
+     "attach": {
+      "x": 282.3,
+      "y": 164.7,
+      "relX": 0.96,
+      "relY": 0.13
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0234,
+     "class": "rear",
+     "attach": {
+      "x": 116,
+      "y": 191.5,
+      "relX": -0.01,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.077,
+     "class": "limb-down",
+     "attach": {
+      "x": 128.1,
+      "y": 236.4,
+      "relX": 0.06,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1319,
+     "class": "limb-down",
+     "attach": {
+      "x": 256.5,
+      "y": 232,
+      "relX": 0.81,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.068,
+     "class": "limb-down",
+     "attach": {
+      "x": 162.5,
+      "y": 238,
+      "relX": 0.26,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wolf",
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreFar+foreNear"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "21-seahorse",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "a9b37a6c7274b40bc789b1a41a503a147648477c7bcf53e5d8677e43dd80ac86",
+ "subjectSourceSha256": "9aa1760cbb6ec0ff11ba77257055279d7e460513d7f2f0d5298a78712eeb432e",
+ "identity": {
+  "name": "Seahorse",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Seahorse\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2715508947\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "seed": 2715508947,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "pike",
+  "authoringSha256": "4705494141027b8c796fb646efc6293f447974230da934522ae6894c404cd004",
+  "masterSha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468"
+ },
+ "habitat": {
+  "profileId": "tube-snouted-fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "15d57fd62e1fcf1ee5aac14e739a4a51f7f8a25ea7a3af5bb07d117375e81edb",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group tube-snouted-fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2462,
+     "class": "rear",
+     "attach": {
+      "x": 198.9,
+      "y": 126.6,
+      "relX": 0.41,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0084,
+     "class": "rear",
+     "attach": {
+      "x": 170,
+      "y": 151,
+      "relX": -0.01,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0853,
+     "class": "rear",
+     "attach": {
+      "x": 172,
+      "y": 212.5,
+      "relX": 0.02,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0087,
+     "class": "front",
+     "attach": {
+      "x": 240,
+      "y": 204.5,
+      "relX": 1.01,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.2327,
+     "class": "limb-down",
+     "attach": {
+      "x": 188.5,
+      "y": 250.5,
+      "relX": 0.26,
+      "relY": 0.99
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 3,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "pike",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -2266,5 +2266,133 @@
   "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
   "batch": "audits/C213_CREATURE_SUPPLY_20261002",
   "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wolf",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/14-wolf",
+  "note": "HELD: a fleck floats over the lowered head in the late idle; island repair refused at the cap (5.6% > 5%, D28)",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "quadruped",
+  "name": "Jaguar",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/15-jaguar",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "quadruped",
+  "name": "Serval",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
+  "note": "HELD: ear spike and fleck over the lowered head in the late idle; island repair refused at the cap (6.2% > 5%, D28)",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "quadruped",
+  "name": "Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/17-otter",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "arachnid",
+  "name": "Spider",
+  "nativeDir": "audits/FILMS_C186_20261002/03-spider-palp",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "brachyuran",
+  "name": "Crab",
+  "nativeDir": "audits/FILMS_C186_20261002/06-crab-source-joins",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "radial",
+  "name": "Brittle Star",
+  "nativeDir": "audits/FILMS_C186_20261002/07-brittle-star-part-ids",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Zebra",
+  "nativeDir": "audits/FILMS_C186_20261002/01-zebra-fallback-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Kudu",
+  "nativeDir": "audits/FILMS_C186_20261002/02-kudu",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gazelle",
+  "nativeDir": "audits/FILMS_C186_20261002/05-gazelle",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Oryx",
+  "nativeDir": "audits/FILMS_C186_20261002/07-oryx-tail-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gaur",
+  "nativeDir": "audits/FILMS_C186_20261002/08-gaur-observed-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit (a tiny attached bluish mark on the shoulder noted)",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Deer",
+  "nativeDir": "audits/FILMS_C186_20261002/09-deer-observed-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Antelope",
+  "nativeDir": "audits/FILMS_C186_20261002/10-antelope-tail",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sheep",
+  "nativeDir": "audits/FILMS_C186_20261002/15-sheep-observed-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Bittern",
+  "nativeDir": "audits/FILMS_C186_20261002/bittern-fit02",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit (C231 far-leg fold repair; the walk fold is gone)",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
  }
 ]
