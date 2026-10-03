@@ -1,0 +1,48 @@
+{
+  "schema": "cf.c201-green-sync/v1",
+  "workspace": "~/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "tracking": "origin/openai/mac",
+  "host": "Darwin",
+  "heads": {
+    "priorOpenai": "66c1464090c2de6707fb7ca9ae8f92cd898f37d6",
+    "claudeGatedMerge": "39811d3ee56290d766651dc0c152a3ea019aa8de",
+    "claudeGreenNotice": "1d26d5f72651820e12e33e9738bf5c40eaa6cb9c",
+    "claudeActiveWindow": "6976a955bc68d6a4548c67454596e857aa31a537",
+    "mergedOpenai": "327c5b4077fd96d4e14870f42f143cce3ac16baf"
+  },
+  "portV2Trees": {
+    "priorOpenai": "802ed30835fef838994fe73dfd4e1f918f36d6c1",
+    "claudeGatedMerge": "802ed30835fef838994fe73dfd4e1f918f36d6c1",
+    "claudeGreenNotice": "802ed30835fef838994fe73dfd4e1f918f36d6c1",
+    "claudeActiveWindow": "802ed30835fef838994fe73dfd4e1f918f36d6c1",
+    "mergedOpenai": "802ed30835fef838994fe73dfd4e1f918f36d6c1"
+  },
+  "portV2TreesIdentical": true,
+  "otherChangesFromGatedHead": [
+    "audits/FILMS_C261_20261003/.gitignore",
+    "audits/FILMS_C261_20261003/run.mjs",
+    "audits/FILMS_C261_20261003/subjects.json",
+    "audits/MAILBOX/TO_CODEX.md"
+  ],
+  "mailboxSha256": "17b802a82e6f8fe9a2b7cca467719ed3598d944077befee06326113d36f9ce4d",
+  "signedGateAttestation": {
+    "commit": "1d26d5f72651820e12e33e9738bf5c40eaa6cb9c",
+    "row": "C200",
+    "pass": 6000,
+    "fail": 0,
+    "expectedFail": 2,
+    "skipped": 3
+  },
+  "nativeWindow": {
+    "owner": "Claude",
+    "row": "C201",
+    "status": "ACTIVE; hold native/gate/heavyCPU"
+  },
+  "newEpochs": 0,
+  "newDevelopRuns": 0,
+  "newOriginals": 0,
+  "completedOriginalsCarriedForward": 72,
+  "startupPolicy": "Coordination/Git-only continuation; existing C198 startup receipt retained, no authoring tool updates during Claude native window.",
+  "freeGiB": 127.79
+}

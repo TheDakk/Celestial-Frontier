@@ -1,3 +1,24 @@
+## Superseded C198 pending replacement handoff — archived 2026-10-03
+
+## Current Codex sprint handoff — 2026-10-03, C198 terminal
+
+**Development ACTIVE; C251 reservation TERMINAL — RELEASED at C261.** All three parallel source queues and CPU jobs are terminal. Signed anthropic/mac C198 merged --no-ff at b3335e613; latest sibling mailbox remains C198 after final read. Preserve Claude’s handoff above. Coverage remains251/631; no new admissions claimed. Detailed current receipts: `audits/C198_PROGRAM_20261003` and TO_CLAUDE C252–C261.
+
+**I5 PASS; full develop remains RED pending one replacement authorization.** Product869ce0e44 includes real Prawn foreleg-tip strikes for five profiles, aggregate capture/rig failure reporting and release copy. ONE combined3+1 epoch and four verifiers PASS; selector5e485e206 replays PASS with all prior certificate files and limits unchanged. Develop on that selector stopped:5,999 PASS/one FAIL/two expected failures/three skipped. The new shrimp-prawn profile lacked its pending-coverage map entry. OptionalAI was renamed aside/restored, no automatic retry/native follow-on/sweep.
+
+**Correction ea8f87a99 is signed and ready.** One coverage-map entry and explicit five-name pending assertions preserve53 pending identities/58 including prior crabs.18 focused checks PASS. Single build-only comparison: all1,156 non-map output files byte-identical,509 worker assets/canonical identity, five producer inputs and nine certificate files unchanged. No new I5 or re-bind is needed. Dakk was asked for ONE replacement develop; unanswered remains pending. Required full battery is not green, so no normal push yet. Full source/hold deliveries are signed through e18a0bd76; later handoff commit changes records only.
+
+**Deliveries:**
+- C252/C255 Prawn physical observed foreleg-tip strike (not D31 cast),35 original focus tests plus18 correction checks;200 prior family timelines/11 non-melee Prawn timelines byte-identical. Source pink swimmeret fringe remains held. Current additive repair proof is `audits/C198_PRAWN_ATTACK_20261003/pending-map-correction`.
+- C254 Tortoise source packet: C250 actually retained7 rig refusals, five captured walk contexts reproduced. Final02-both-far-leg-fringes/fit01 clears all five through exactly433 prior-root pixels, source paint/landmarks/materials unchanged.19 static actions/2,299 samples +1,492 presentation and10 exact-context actual-rig rasters PASS. Two earlier refusals remain unlocated. Hanging shin strips/gaps stay HELD_VISUAL; no native grounding/admission claim.
+- C256–C258 supply A/B/C:72 distinct unchanged native1254-square originals, exactly24 each, one built-in generation per source on unchanged canonical pipeline.64 framing PASS/eight REFUSE; six required pattern PASS/66 not required;46 evidence controls PASS. All72 full-size inspected, source-specific roots/limbs/contacts/proportions held explicitly. No source count is an admission count.
+- C259 references: independently authored new Gorilla/Capuchin diagnostics retain real static/contact/fold reds; no pool admission. Squid/Cuttlefish arm roots and insect six-complete-chain visibility remain source-blocked. Partial Grasshopper/Dobsonfly inventories never equate visible feet to full chains.
+- C260 holds: Tiger Shark source joins close the reviewed pectoral opening with intact tail notch; prior-source Capuchin D28 removes the detached hindleg strip. Both exact selected fits in queue-status.final.json are held scoring candidates. Petrel join is VISUAL_REJECT (crushed head/eye despite green mechanics). Capybara true tail-absence correction still RED. Rhea/Prawn/Shrimp/C239/C248 exact holds remain; C190-accepted Hawk/Owl preserved.
+
+**Verification/operations:** parent rehashed1,630 manifest entries/289,304,505 bytes, independently checked72 original hashes and full-size review subsets. Root validate/golden50 PASS. All20 commits through e18a0bd76 have G signatures. Unchanged pre-push guard passes read-only local rehearsal;25 tracked symlinks have relative targets only. Isolated I5 checkout archived after jobs ended: observed24.90GiB recovery,128.94GiB free at final source check. Optional local-AI runtime restored. New records use Dakk/TheDakk and~/ paths.
+
+**Next:** Claude reads C252–C261 and scores only eligible exact sources after the released reservation, preserving every visual/static/anatomy hold. Codex runs ONE replacement develop only after Dakk authorizes, under a new posted reservation, optionalAI aside/finally restored and first-red stop. No new I5/rebind for this byte-identical correction. A green required battery permits the normal guarded own-lane push under standing authority. **All-pairs remains HOLD**, zero runs. No PR, label, hosted run, develop/main merge, release or deploy. Dakk need not relay files or open the other app.
+
 ## Superseded C198 measurement/source handoff — archived 2026-10-03
 
 ## Current Codex sprint handoff — 2026-10-03, C198 ACTIVE
