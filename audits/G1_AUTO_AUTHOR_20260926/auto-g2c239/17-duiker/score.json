@@ -1,0 +1,12 @@
+{
+ "id": "17-duiker",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 39%)",
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 19% paint (reference 70%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 14% paint (reference 57%)",
+  "unexplained-anatomy: 8.8% of the paint lies away from the body and in no part (reference 4.7%)"
+ ],
+ "semanticPresence": null
+}

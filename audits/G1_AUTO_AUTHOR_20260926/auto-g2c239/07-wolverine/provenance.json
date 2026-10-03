@@ -1,0 +1,104 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "07-wolverine",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "128e59eff1ef8e0c064aacdf659412c939cdb7d2d327ecd4d2b3af4ce8ca5f73",
+ "subjectSourceSha256": "cc1e8b34ce9e3b829cf761be49c2770443be87b7015e7a87d55d85864349a665",
+ "identity": {
+  "name": "Wolverine",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wolverine\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"4203184528\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "seed": 4203184528,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.008,
+     "class": "top",
+     "attach": {
+      "x": 190,
+      "y": 140,
+      "relX": 0.39,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0762,
+     "class": "front",
+     "attach": {
+      "x": 301.1,
+      "y": 160.9,
+      "relX": 0.95,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1941,
+     "class": "limb-down",
+     "attach": {
+      "x": 140.5,
+      "y": 220.6,
+      "relX": 0.14,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1109,
+     "class": "limb-down",
+     "attach": {
+      "x": 257.7,
+      "y": 236.7,
+      "relX": 0.73,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

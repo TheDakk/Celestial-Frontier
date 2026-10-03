@@ -1,0 +1,242 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches annelid better (0.0418 < 0.0502)",
+  "wrong-family: serpent matches clearly better (0.0116 < 0.0502)",
+  "extra-anatomy (unassigned): a front appendage of 20.5% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 7.9% paint that no reference appendage lands on",
+  "missing-anatomy (family floor): the largest rear appendage is 7.9% of the paint; every same-family reference shows at least 28.6%",
+  "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 5.9%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "segment0",
+   "vertices": 4
+  },
+  {
+   "id": "segment1",
+   "vertices": 4
+  },
+  {
+   "id": "segment2",
+   "vertices": 4
+  },
+  {
+   "id": "segment3",
+   "vertices": 4
+  },
+  {
+   "id": "segment4",
+   "vertices": 4
+  },
+  {
+   "id": "segment5",
+   "vertices": 4
+  },
+  {
+   "id": "segment7",
+   "vertices": 4
+  },
+  {
+   "id": "segment8",
+   "vertices": 4
+  },
+  {
+   "id": "segment9",
+   "vertices": 4
+  },
+  {
+   "id": "segment10",
+   "vertices": 4
+  },
+  {
+   "id": "segment11",
+   "vertices": 4
+  }
+ ],
+ "untangled": [
+  {
+   "id": "segment7",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 20.5% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 7.9% paint that no reference appendage lands on",
+   "missing-anatomy (family floor): the largest rear appendage is 7.9% of the paint; every same-family reference shows at least 28.6%"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "segment9",
+     "segment8",
+     "segment10"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.2864,
+    "target": 1,
+    "overlap": 0.007
+   },
+   {
+    "owners": [
+     "segment1",
+     "segment0"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0404,
+    "target": 0,
+    "overlap": 0.075
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2052,
+     "class": "front",
+     "attach": {
+      "x": 258.6,
+      "y": 208.6,
+      "relX": 0.96,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0789,
+     "class": "rear",
+     "attach": {
+      "x": 98.4,
+      "y": 237.6,
+      "relX": 0.04,
+      "relY": 0.92
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "codex-ref-04-earthworm-material",
+   "byClass": {
+    "rear": 1,
+    "front": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.1417,
+  "ref": 0.1958
+ },
+ "bestReference": "codex-ref-04-earthworm-material",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "codex-ref-04-earthworm-material",
+   "cost": 0.05022
+  }
+ ],
+ "mirrorBest": 0.04179,
+ "otherFamilyBest": {
+  "family": "serpent",
+  "cost": 0.01161
+ },
+ "coverage": [
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 1,
+   "area": 130.3199999999988
+  },
+  {
+   "id": "segment0",
+   "joint": "segment0",
+   "paint": 0.13283169533169534,
+   "area": 104019.30000000005
+  },
+  {
+   "id": "segment1",
+   "joint": "segment1",
+   "paint": 0.1663716814159292,
+   "area": 54172.80000000005
+  },
+  {
+   "id": "segment2",
+   "joint": "segment2",
+   "paint": 0.15289354608240058,
+   "area": 67590.59999999986
+  },
+  {
+   "id": "segment3",
+   "joint": "segment3",
+   "paint": 0.13090829884556743,
+   "area": 72920.1000000001
+  },
+  {
+   "id": "segment4",
+   "joint": "segment4",
+   "paint": 0.11681458383305349,
+   "area": 66650.09999999998
+  },
+  {
+   "id": "segment5",
+   "joint": "segment5",
+   "paint": 0.11550671550671551,
+   "area": 65458.79999999993
+  },
+  {
+   "id": "segment7",
+   "joint": "segment7",
+   "paint": 0.1374750499001996,
+   "area": 63948.09499999997
+  },
+  {
+   "id": "segment8",
+   "joint": "segment8",
+   "paint": 0.15736196319018406,
+   "area": 52103.69999999995
+  },
+  {
+   "id": "segment9",
+   "joint": "segment9",
+   "paint": 0.15738284703801944,
+   "area": 54235.5
+  },
+  {
+   "id": "segment10",
+   "joint": "segment10",
+   "paint": 0.15050377833753148,
+   "area": 50787
+  },
+  {
+   "id": "segment11",
+   "joint": "segment11",
+   "paint": 0.09165793020817732,
+   "area": 106715.39999999997
+  },
+  {
+   "id": "segment6",
+   "joint": "segment6",
+   "paint": 0.07658525700839791,
+   "area": 1572516
+  }
+ ],
+ "unclaimedFrac": 0.1138
+}

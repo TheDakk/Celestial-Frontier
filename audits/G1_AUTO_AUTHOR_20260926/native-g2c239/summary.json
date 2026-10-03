@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C192_CREATURE_SUPPLY_20261002",
+ "tag": "g2c239",
+ "pilot": 24,
+ "patternSkipped": [
+  {
+   "id": "12-spotted-hyena",
+   "pattern": "REFUSE"
+  }
+ ],
+ "scored": 23,
+ "admitPassStatic": [
+  "11-african-wild-dog"
+ ],
+ "refused": [
+  {
+   "id": "01-clam",
+   "reason": "no-reference: no other hand-authored subject of family bivalve"
+  },
+  {
+   "id": "02-prawn",
+   "reason": "no-reference: no other hand-authored subject of family crustacean-small"
+  },
+  {
+   "id": "03-shrimp",
+   "reason": "no-reference: no other hand-authored subject of family crustacean-small"
+  },
+  {
+   "id": "04-snail",
+   "reason": "no-reference: no other hand-authored subject of family gastropod"
+  },
+  {
+   "id": "05-impala",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 12% paint (reference 71%)"
+  },
+  {
+   "id": "06-dog",
+   "reason": "extra-anatomy (unassigned): a top appendage of 16.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "07-wolverine",
+   "reason": "unexplained-anatomy: 11.0% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "08-badger",
+   "reason": "unexplained-anatomy: 10.5% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "09-beaver",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "13-aardvark",
+   "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 31%)"
+  },
+  {
+   "id": "14-okapi",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  },
+  {
+   "id": "15-pronghorn",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+  },
+  {
+   "id": "16-springbok",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "17-duiker",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 39%)"
+  },
+  {
+   "id": "18-serow",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "19-bison",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 33%)"
+  },
+  {
+   "id": "20-warthog",
+   "reason": "missing-anatomy: part tail0 (tail0) covers 0% paint (reference 87%)"
+  },
+  {
+   "id": "21-caribou",
+   "reason": "missing-anatomy: part ear-far-root (earFarRoot) covers 13% paint (reference 68%)"
+  },
+  {
+   "id": "22-yak",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on"
+  },
+  {
+   "id": "23-bactrian-camel",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)"
+  },
+  {
+   "id": "24-buffalo",
+   "reason": "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 1.7%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "10-fishing-cat",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "11-african-wild-dog",
+   "name": "African Wild Dog",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

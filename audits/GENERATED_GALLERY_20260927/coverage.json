@@ -1,24 +1,21 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 240,
- "pct": 38,
+ "covered": 251,
+ "pct": 39.8,
  "heldNotCounted": [
   "Capuchin",
-  "Horse",
   "Rhea",
-  "Serval",
   "Snow Petrel",
-  "Tiger Shark",
-  "Wild Ass"
+  "Tiger Shark"
  ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 79,
-   "pct": 38.5,
+   "covered": 87,
+   "pct": 42.4,
    "names": [
     "Jaguar",
     "Leopard",
@@ -32,6 +29,7 @@
     "Lynx",
     "Caracal",
     "Cheetah",
+    "Serval",
     "Sand Cat",
     "Wildcat",
     "Jackal",
@@ -39,6 +37,7 @@
     "Coyote",
     "Fox",
     "Arctic Fox",
+    "African Wild Dog",
     "Maned Wolf",
     "Pampas Fox",
     "Fennec Fox",
@@ -63,7 +62,9 @@
     "Gerbil",
     "Tree Shrew",
     "Wombat",
+    "Quoll",
     "Otter",
+    "Giant Otter",
     "Sugar Glider",
     "Koala",
     "Gaur",
@@ -83,9 +84,13 @@
     "Cattle",
     "Sheep",
     "Wild Sheep",
+    "Musk Ox",
+    "Bull",
     "Bongo",
     "Zebra",
+    "Wild Ass",
     "Wild Pony",
+    "Horse",
     "Donkey",
     "Alligator",
     "Gharial",
@@ -321,19 +326,21 @@
   {
    "family": "gastropod",
    "species": 12,
-   "covered": 1,
-   "pct": 8.3,
+   "covered": 2,
+   "pct": 16.7,
    "names": [
-    "Banana Slug"
+    "Banana Slug",
+    "Snail"
    ]
   },
   {
    "family": "annelid",
    "species": 9,
-   "covered": 1,
-   "pct": 11.1,
+   "covered": 2,
+   "pct": 22.2,
    "names": [
-    "Earthworm"
+    "Earthworm",
+    "Leech"
    ]
   },
   {
@@ -355,9 +362,11 @@
   {
    "family": "bivalve",
    "species": 6,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 16.7,
+   "names": [
+    "Mussel"
+   ]
   },
   {
    "family": "brachyuran",

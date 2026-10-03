@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "04-marsh-rodent",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "edb15a41fa3984bdbf2cb015e69e995de942c90557eb157c8e003186b8150518",
+ "subjectSourceSha256": "1be6ab11e387c60e2ecfc04f461699c9e521c6cb0d134defa8c7963a36e16131",
+ "identity": {
+  "name": "Marsh Rodent",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marsh Rodent\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2150779537\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "seed": 2150779537,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "river-otter",
+  "authoringSha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7",
+  "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+ },
+ "habitat": {
+  "profileId": "aquatic-pawed-mammal",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "9b8e1bd74f93b745a58339250e98399de256e5ed0328aba786c97644ec2490d7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aquatic-pawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0093,
+     "class": "top",
+     "attach": {
+      "x": 217.5,
+      "y": 139,
+      "relX": 0.37,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1042,
+     "class": "front",
+     "attach": {
+      "x": 320.2,
+      "y": 167.3,
+      "relX": 0.94,
+      "relY": 0.27
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0804,
+     "class": "limb-down",
+     "attach": {
+      "x": 149,
+      "y": 198.5,
+      "relX": -0.01,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0386,
+     "class": "limb-down",
+     "attach": {
+      "x": 169,
+      "y": 240.5,
+      "relX": 0.1,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0245,
+     "class": "limb-down",
+     "attach": {
+      "x": 304.3,
+      "y": 241.8,
+      "relX": 0.85,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.028,
+     "class": "limb-down",
+     "attach": {
+      "x": 204,
+      "y": 241,
+      "relX": 0.3,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0313,
+     "class": "limb-down",
+     "attach": {
+      "x": 271.4,
+      "y": 242,
+      "relX": 0.67,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "river-otter",
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

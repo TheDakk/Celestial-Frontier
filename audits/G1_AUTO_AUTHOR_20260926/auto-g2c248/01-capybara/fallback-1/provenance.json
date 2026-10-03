@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "01-capybara",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "9f3c91c9f0b2024680455092d8a844c042cd667344ecda4cfd3a5146f88958aa",
+ "subjectSourceSha256": "c30263aebfda3d5d59daca6bacbeb5daea4ececfd0660215b4658203fd2c9c06",
+ "identity": {
+  "name": "Capybara",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Capybara\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1491646007\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 1491646007,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "aquatic-pawed-mammal",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "9b8e1bd74f93b745a58339250e98399de256e5ed0328aba786c97644ec2490d7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aquatic-pawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1288,
+     "class": "front",
+     "attach": {
+      "x": 294.7,
+      "y": 151.8,
+      "relX": 0.93,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0056,
+     "class": "top",
+     "attach": {
+      "x": 170.5,
+      "y": 140,
+      "relX": 0.37,
+      "relY": 0.02
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0148,
+     "class": "rear",
+     "attach": {
+      "x": 89.1,
+      "y": 208.6,
+      "relX": 0,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0481,
+     "class": "limb-down",
+     "attach": {
+      "x": 109.8,
+      "y": 250.6,
+      "relX": 0.09,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0441,
+     "class": "limb-down",
+     "attach": {
+      "x": 153,
+      "y": 252,
+      "relX": 0.29,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0823,
+     "class": "limb-down",
+     "attach": {
+      "x": 256.5,
+      "y": 254,
+      "relX": 0.76,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

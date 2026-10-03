@@ -1527,7 +1527,7 @@
   "family": "quadruped",
   "name": "Wild Ass",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
-  "note": "HELD: after the D28 island repair a loose hoof-like fragment still shows by the front foot in the late idle",
+  "note": "SUPERSEDED by the C250 film of Codex's corrected fit",
   "batch": "audits/G2_C107_20260927",
   "tag": "g2c107"
  },
@@ -1559,7 +1559,7 @@
   "family": "quadruped",
   "name": "Horse",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
-  "note": "HELD: D28 island repair placed, but the static gate is RED",
+  "note": "SUPERSEDED by the C250 film of Codex's corrected fit",
   "batch": "audits/G2_C114_20260927",
   "tag": "g2c114"
  },
@@ -2287,7 +2287,7 @@
   "family": "quadruped",
   "name": "Serval",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
-  "note": "HELD: D28 island repair placed, but the static gate is RED",
+  "note": "SUPERSEDED by the C250 film of Codex's corrected fit",
   "batch": "audits/C186_CREATURE_SUPPLY_20261002",
   "tag": "g2c233"
  },
@@ -2418,5 +2418,93 @@
   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)",
   "batch": "audits/C186_SPECIALIZED_REFERENCES_20261002",
   "tag": "d31cast"
+ },
+ {
+  "family": "quadruped",
+  "name": "African Wild Dog",
+  "nativeDir": "audits/ISLANDS_C239_20261003/11-african-wild-dog/native",
+  "note": "whole after the remainder-island repair (D28 cap)",
+  "batch": "audits/C192_CREATURE_SUPPLY_20261002",
+  "tag": "g2c239"
+ },
+ {
+  "family": "quadruped",
+  "name": "Giant Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/02-giant-otter",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Musk Ox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/07-musk-ox",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bull",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/09-bull",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Quoll",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/10-quoll",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Ass",
+  "nativeDir": "audits/FILMS_C250_20261003/wild-ass",
+  "note": "whole in reaction and late idle on Codex's selected fit (the loose hoof fragment is gone)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horse",
+  "nativeDir": "audits/FILMS_C250_20261003/horse",
+  "note": "whole in reaction and late idle on Codex's selected fit",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Serval",
+  "nativeDir": "audits/FILMS_C250_20261003/serval",
+  "note": "whole in reaction and late idle on Codex's selected fit",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "gastropod",
+  "name": "Snail",
+  "nativeDir": "audits/FILMS_C250_20261003/snail",
+  "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "annelid",
+  "name": "Leech",
+  "nativeDir": "audits/FILMS_C250_20261003/leech",
+  "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "bivalve",
+  "name": "Mussel",
+  "nativeDir": "audits/FILMS_C250_20261003/mussel",
+  "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
  }
 ]

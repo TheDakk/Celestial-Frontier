@@ -1,0 +1,77 @@
+{
+  "name": "Llama",
+  "family": "quadruped",
+  "species": {
+    "name": "Llama",
+    "aspect": 1.1,
+    "headFrac": 0.17,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "long banana-curved ears",
+      "long upright S-curved neck",
+      "flat back with no hump"
+    ],
+    "note": "A camelid with no hump - larger, longer-faced and less woolly than an alpaca."
+  },
+  "genome": {
+    "seed": 3761948641,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 13,
+    "body": 10,
+    "loco": 13,
+    "trait": 14,
+    "size": 2,
+    "diet": 2,
+    "head": 3,
+    "limbs": 2,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 1,
+    "behavior": 3,
+    "habitat": 5,
+    "detail": 1,
+    "accent": 11,
+    "temper": 5,
+    "sense": 9,
+    "repro": 1,
+    "life": 0,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Llama"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Llama\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3761948641\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 551,
+  "profile": {
+    "id": "hoofed-unhorned",
+    "names": [
+      "Zebra",
+      "Wild Horse",
+      "Wild Ass",
+      "Camel",
+      "Wild Pony",
+      "Dromedary Camel",
+      "Bactrian Camel",
+      "Horse",
+      "Donkey",
+      "Llama",
+      "Alpaca",
+      "Okapi"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": "No generic claw; horn use not inferred."
+  }
+}

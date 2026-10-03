@@ -1,0 +1,15 @@
+{
+ "id": "20-stick-insect",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 7% paint (reference 26%)",
+  "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 9% paint (reference 34%)",
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 7% paint (reference 36%)",
+  "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 20% paint (reference 58%)",
+  "missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 32%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 35%)",
+  "missing-anatomy: part mandible (mandible) covers 4% paint (reference 63%)"
+ ],
+ "semanticPresence": null
+}
