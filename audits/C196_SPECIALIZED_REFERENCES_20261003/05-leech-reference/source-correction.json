@@ -1,0 +1,65 @@
+{
+  "schema": "cf.c196-observed-leech/v1",
+  "source": "audits/C196_CREATURE_SUPPLY_20261003/24-leech",
+  "sourceMasterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+  "sourceSubjectSha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d",
+  "sourcePromptSha256": "a489bd1dd7d33ab8028368133533f99c72e91795dd888113d83460fad5c07097",
+  "sourceGenerationSha256": "a182f3d6ad3d6157794fb23167238eb66d487585106b899ba538d0361f2287e1",
+  "authoringSha256": "f38f240b5fb5e678037ff27a6643f1544bc2b84dc5c09d5c83c0c5f951c6c696",
+  "observedLandmarks": {
+    "root": [
+      621,
+      554
+    ],
+    "segment0": [
+      1036,
+      726
+    ],
+    "segment1": [
+      966,
+      689
+    ],
+    "segment2": [
+      891,
+      665
+    ],
+    "segment3": [
+      824,
+      636
+    ],
+    "segment4": [
+      750,
+      593
+    ],
+    "segment5": [
+      677,
+      556
+    ],
+    "segment6": [
+      602,
+      540
+    ],
+    "segment7": [
+      529,
+      552
+    ],
+    "segment8": [
+      455,
+      581
+    ],
+    "segment9": [
+      389,
+      622
+    ],
+    "segment10": [
+      326,
+      674
+    ],
+    "segment11": [
+      257,
+      725
+    ]
+  },
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

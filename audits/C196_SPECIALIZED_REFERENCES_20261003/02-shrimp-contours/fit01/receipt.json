@@ -1,0 +1,158 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "c196-shrimp-contours",
+    "parts": 31,
+    "atlasSize": {
+      "width": 1258,
+      "height": 486
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "ad361333eec200d53a41608a9be9b04c8e56500d9457fc4e71cc9bf5b081b5c3",
+    "recordRecipeHash": "4337e7ca8a30b1ba30b6c110a6f372e9c2eb321ca5400d922fa2505898d00899",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "ad361333eec200d53a41608a9be9b04c8e56500d9457fc4e71cc9bf5b081b5c3",
+      "atlasSha256": "63c6915443267bbc30ec23f488323201f371f8a010a664f5f5afdd5a2e7a0d94",
+      "parts": 31,
+      "comparedChannels": 1126492,
+      "changedChannels": 0
+    },
+    "vertices": 969,
+    "partVertices": 1849,
+    "parts": 31,
+    "leaves": 401,
+    "triangles": 1620,
+    "ownershipEdges": 1635,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-foot",
+        "vertex": 7,
+        "distancePx": 4.123105625617575,
+        "supports": [
+          0,
+          4,
+          1
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-foot",
+        "vertex": 30,
+        "distancePx": 5.385164807134399,
+        "supports": [
+          293,
+          292
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-foot",
+        "vertex": 6,
+        "distancePx": 5.099019513592725,
+        "supports": [
+          58,
+          55
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-foot",
+        "vertex": 35,
+        "distancePx": 2.282542442102662,
+        "supports": [
+          353,
+          355
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-foot",
+        "vertex": 0,
+        "distancePx": 5.385164807134501,
+        "supports": [
+          102
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-foot",
+        "vertex": 14,
+        "distancePx": 6.80073525436772,
+        "supports": [
+          390
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3far-foot",
+        "vertex": 5,
+        "distancePx": 3.423813663153953,
+        "supports": [
+          155,
+          158
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-foot",
+        "vertex": 38,
+        "distancePx": 6.372009102316086,
+        "supports": [
+          451,
+          454
+        ]
+      },
+      {
+        "joint": "leg4FarFoot",
+        "part": "leg4far-foot",
+        "vertex": 8,
+        "distancePx": 2.191016662789285,
+        "supports": [
+          219,
+          216
+        ]
+      },
+      {
+        "joint": "leg4NearFoot",
+        "part": "leg4near-foot",
+        "vertex": 35,
+        "distancePx": 3.162277660168359,
+        "supports": [
+          509,
+          510
+        ]
+      }
+    ],
+    "sourceBindingHash": "29e2ed86ff877019de5469c12c96eb71c07f1a152aac18670ef14079277af6f2",
+    "sourceVertices": 969,
+    "vertices": 1135,
+    "sharedSupports": 235,
+    "pins": 340,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 26,
+    "excludedOverlaps": 16,
+    "observedExcludedBoundaries": 16,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 16,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "4337e7ca8a30b1ba30b6c110a6f372e9c2eb321ca5400d922fa2505898d00899",
+  "bindingHash": "9ae9515e9ea2d312223af058ceff15a0103645d303d37357ff237d785c4992cf",
+  "masterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

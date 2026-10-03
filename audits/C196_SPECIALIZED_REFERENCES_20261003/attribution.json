@@ -1,0 +1,5609 @@
+{
+  "schema": "cf.c196-positive-alpha-fragment-attribution/v1",
+  "writer": {
+    "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/attribute.mjs",
+    "sha256": "51f2fde91ec714540273ce7a5ecbcd0daf7740175a7063fc497d538d13bfee1a"
+  },
+  "traceHelper": {
+    "path": "audits/C169_NAPE_RECUT_20261002/source-trace.mjs",
+    "sha256": "90accc25bbd9d021794fa434bb090ae3d1b488a54b04ea52bab7602da6d08077"
+  },
+  "rows": [
+    {
+      "id": "prawn",
+      "sourcePacket": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit",
+      "action": "cast",
+      "fraction": 0.5,
+      "coordinateSpace": "1254-square source-coordinate software raster, not native screen",
+      "inputs": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/record.json",
+          "sha256": "772f77ba24bb05d3353972ee0c7802df8225eb5d7a0b4d2650dfa4977bd5fa24"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/binding.json",
+          "sha256": "451aefcdf99ad2a55891bc95ce3d973dc56a9b1033fd6d91fbeda8ca288d6bcd"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/atlas/c192-independent-prawn.png",
+          "sha256": "eb2a0804e7e90ef730b045f29375964ef3275a77b2d0a66252ed971644fa7f3a"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/keyed.png",
+          "sha256": "02710f0bc26c8a9250bbd29b2b00e2379de382e278f834393d93cfb64eae2315"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-cast-50-left.png",
+          "sha256": "2253e5cf0440228c6e2a336a4716deec3a229a228601c3a6e9d1508dc83a4c77"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/master.png",
+          "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/authoring.json",
+          "sha256": "3081942c8732d6945face495986adc9fb188d704150a127b185ad697743f106e"
+        }
+      ],
+      "keyedComponents": 17,
+      "posedComponents": 27,
+      "fragments": [
+        {
+          "id": 1,
+          "pixels": 10,
+          "bounds": [
+            596,
+            426,
+            600,
+            429
+          ],
+          "centroid": [
+            598.4,
+            427.4
+          ],
+          "first": [
+            596,
+            426
+          ],
+          "closest": {
+            "part": "abdomen1",
+            "joint": "abdomen1",
+            "source": [
+              516,
+              456
+            ],
+            "publishedSourcePixels": [
+              596.934098879258,
+              426.2471039734067
+            ],
+            "distance": 0.5023925131207393
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 2,
+          "pixels": 1,
+          "bounds": [
+            605,
+            428,
+            605,
+            428
+          ],
+          "centroid": [
+            605,
+            428
+          ],
+          "first": [
+            605,
+            428
+          ],
+          "closest": {
+            "part": "abdomen2",
+            "joint": "abdomen2",
+            "source": [
+              514,
+              455
+            ],
+            "publishedSourcePixels": [
+              605.6997661042212,
+              428.23045628070827
+            ],
+            "distance": 0.33550009389767077
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 1,
+            "bounds": [
+              514,
+              455,
+              514,
+              455
+            ],
+            "centroid": [
+              514,
+              455
+            ],
+            "first": [
+              514,
+              455
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 3,
+          "pixels": 11,
+          "bounds": [
+            615,
+            481,
+            619,
+            484
+          ],
+          "centroid": [
+            617.2727272727273,
+            482.45454545454544
+          ],
+          "first": [
+            617,
+            481
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              583,
+              496
+            ],
+            "publishedSourcePixels": [
+              617.8820205628872,
+              481.3162027767726
+            ],
+            "distance": 0.42393528956049353
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 4,
+          "pixels": 3,
+          "bounds": [
+            422,
+            489,
+            423,
+            490
+          ],
+          "centroid": [
+            422.6666666666667,
+            489.3333333333333
+          ],
+          "first": [
+            422,
+            489
+          ],
+          "closest": {
+            "part": "abdomen4",
+            "joint": "abdomen4",
+            "source": [
+              397,
+              574
+            ],
+            "publishedSourcePixels": [
+              423.019153361373,
+              489.5670361637192
+            ],
+            "distance": 0.5234635229613295
+          },
+          "sourceComponent": {
+            "id": 2,
+            "pixels": 2,
+            "bounds": [
+              397,
+              574,
+              398,
+              575
+            ],
+            "centroid": [
+              397.5,
+              574.5
+            ],
+            "first": [
+              397,
+              574
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 5,
+          "pixels": 8,
+          "bounds": [
+            1082,
+            499,
+            1083,
+            506
+          ],
+          "centroid": [
+            1082.625,
+            502.5
+          ],
+          "first": [
+            1082,
+            499
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              1082,
+              499
+            ],
+            "publishedSourcePixels": [
+              1082.5000120997427,
+              499.5000006820474
+            ],
+            "distance": 0.00001211895049756568
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 6,
+          "pixels": 8,
+          "bounds": [
+            1091,
+            539,
+            1093,
+            545
+          ],
+          "centroid": [
+            1092.25,
+            541.75
+          ],
+          "first": [
+            1091,
+            539
+          ],
+          "closest": {
+            "part": "antenna-far",
+            "joint": "antennaFarTip",
+            "source": [
+              1078,
+              492
+            ],
+            "publishedSourcePixels": [
+              1091.797677898407,
+              539.1176093816757
+            ],
+            "distance": 0.48459747851436136
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 7,
+          "pixels": 1,
+          "bounds": [
+            439,
+            586,
+            439,
+            586
+          ],
+          "centroid": [
+            439,
+            586
+          ],
+          "first": [
+            439,
+            586
+          ],
+          "closest": {
+            "part": "abdomen3",
+            "joint": "abdomen3",
+            "source": [
+              433,
+              669
+            ],
+            "publishedSourcePixels": [
+              439.04112879931927,
+              586.8159128800035
+            ],
+            "distance": 0.5571029766266313
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 8,
+          "pixels": 1,
+          "bounds": [
+            912,
+            586,
+            912,
+            586
+          ],
+          "centroid": [
+            912,
+            586
+          ],
+          "first": [
+            912,
+            586
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              912,
+              586
+            ],
+            "publishedSourcePixels": [
+              912.4876099169254,
+              586.5793772578239
+            ],
+            "distance": 0.08033842927416857
+          },
+          "sourceComponent": {
+            "id": 3,
+            "pixels": 1,
+            "bounds": [
+              912,
+              586,
+              912,
+              586
+            ],
+            "centroid": [
+              912,
+              586
+            ],
+            "first": [
+              912,
+              586
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 9,
+          "pixels": 1,
+          "bounds": [
+            910,
+            587,
+            910,
+            587
+          ],
+          "centroid": [
+            910,
+            587
+          ],
+          "first": [
+            910,
+            587
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              910,
+              587
+            ],
+            "publishedSourcePixels": [
+              910.4840760290622,
+              587.6020576357841
+            ],
+            "distance": 0.10329246764541243
+          },
+          "sourceComponent": {
+            "id": 4,
+            "pixels": 1,
+            "bounds": [
+              910,
+              587,
+              910,
+              587
+            ],
+            "centroid": [
+              910,
+              587
+            ],
+            "first": [
+              910,
+              587
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 10,
+          "pixels": 2,
+          "bounds": [
+            907,
+            588,
+            908,
+            588
+          ],
+          "centroid": [
+            907.5,
+            588
+          ],
+          "first": [
+            907,
+            588
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              907,
+              588
+            ],
+            "publishedSourcePixels": [
+              907.4805466353893,
+              588.6247380137443
+            ],
+            "distance": 0.12624581366343368
+          },
+          "sourceComponent": {
+            "id": 5,
+            "pixels": 2,
+            "bounds": [
+              907,
+              588,
+              908,
+              588
+            ],
+            "centroid": [
+              907.5,
+              588
+            ],
+            "first": [
+              907,
+              588
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 11,
+          "pixels": 1,
+          "bounds": [
+            905,
+            589,
+            905,
+            589
+          ],
+          "centroid": [
+            905,
+            589
+          ],
+          "first": [
+            905,
+            589
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              905,
+              589
+            ],
+            "publishedSourcePixels": [
+              905.478784185648,
+              589.6360778242349
+            ],
+            "distance": 0.13772176671509506
+          },
+          "sourceComponent": {
+            "id": 6,
+            "pixels": 1,
+            "bounds": [
+              905,
+              589,
+              905,
+              589
+            ],
+            "centroid": [
+              905,
+              589
+            ],
+            "first": [
+              905,
+              589
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 12,
+          "pixels": 77,
+          "bounds": [
+            846,
+            590,
+            902,
+            602
+          ],
+          "centroid": [
+            874.2207792207793,
+            597.6493506493506
+          ],
+          "first": [
+            901,
+            590
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              901,
+              590
+            ],
+            "publishedSourcePixels": [
+              901.473480373621,
+              590.670102506876
+            ],
+            "distance": 0.17215735078345998
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 13,
+          "pixels": 4,
+          "bounds": [
+            466,
+            606,
+            468,
+            607
+          ],
+          "centroid": [
+            467.25,
+            606.5
+          ],
+          "first": [
+            466,
+            606
+          ],
+          "closest": {
+            "part": "abdomen3",
+            "joint": "abdomen3",
+            "source": [
+              471,
+              678
+            ],
+            "publishedSourcePixels": [
+              466.0914792478084,
+              606.5916855722667
+            ],
+            "distance": 0.41868299360379935
+          },
+          "sourceComponent": {
+            "id": 12,
+            "pixels": 6,
+            "bounds": [
+              471,
+              677,
+              474,
+              678
+            ],
+            "centroid": [
+              472.8333333333333,
+              677.6666666666666
+            ],
+            "first": [
+              473,
+              677
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 14,
+          "pixels": 5,
+          "bounds": [
+            447,
+            623,
+            449,
+            624
+          ],
+          "centroid": [
+            447.8,
+            623.6
+          ],
+          "first": [
+            447,
+            623
+          ],
+          "closest": {
+            "part": "abdomen3",
+            "joint": "abdomen3",
+            "source": [
+              459,
+              701
+            ],
+            "publishedSourcePixels": [
+              447.436609826982,
+              623.5076578594744
+            ],
+            "distance": 0.06385105204285395
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 15,
+          "pixels": 2,
+          "bounds": [
+            893,
+            667,
+            894,
+            667
+          ],
+          "centroid": [
+            893.5,
+            667
+          ],
+          "first": [
+            893,
+            667
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              893,
+              667
+            ],
+            "publishedSourcePixels": [
+              893.5000022381544,
+              667.4999771118164
+            ],
+            "distance": 0.00002299735383009403
+          },
+          "sourceComponent": {
+            "id": 7,
+            "pixels": 2,
+            "bounds": [
+              893,
+              667,
+              894,
+              667
+            ],
+            "centroid": [
+              893.5,
+              667
+            ],
+            "first": [
+              893,
+              667
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 16,
+          "pixels": 4,
+          "bounds": [
+            896,
+            668,
+            899,
+            669
+          ],
+          "centroid": [
+            897.5,
+            668.5
+          ],
+          "first": [
+            896,
+            668
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              896,
+              668
+            ],
+            "publishedSourcePixels": [
+              896.5000039011242,
+              668.4999840259553
+            ],
+            "distance": 0.00001644350550653874
+          },
+          "sourceComponent": {
+            "id": 8,
+            "pixels": 4,
+            "bounds": [
+              896,
+              668,
+              899,
+              669
+            ],
+            "centroid": [
+              897.5,
+              668.5
+            ],
+            "first": [
+              896,
+              668
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 17,
+          "pixels": 2,
+          "bounds": [
+            901,
+            670,
+            902,
+            670
+          ],
+          "centroid": [
+            901.5,
+            670
+          ],
+          "first": [
+            901,
+            670
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              901,
+              670
+            ],
+            "publishedSourcePixels": [
+              901.4999958872795,
+              670.4999857574701
+            ],
+            "distance": 0.000014824443604794886
+          },
+          "sourceComponent": {
+            "id": 9,
+            "pixels": 2,
+            "bounds": [
+              901,
+              670,
+              902,
+              670
+            ],
+            "centroid": [
+              901.5,
+              670
+            ],
+            "first": [
+              901,
+              670
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 18,
+          "pixels": 1,
+          "bounds": [
+            904,
+            671,
+            904,
+            671
+          ],
+          "centroid": [
+            904,
+            671
+          ],
+          "first": [
+            904,
+            671
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              904,
+              671
+            ],
+            "publishedSourcePixels": [
+              904.5000048279762,
+              671.4999999493361
+            ],
+            "distance": 0.00000482824204789148
+          },
+          "sourceComponent": {
+            "id": 10,
+            "pixels": 1,
+            "bounds": [
+              904,
+              671,
+              904,
+              671
+            ],
+            "centroid": [
+              904,
+              671
+            ],
+            "first": [
+              904,
+              671
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 19,
+          "pixels": 1,
+          "bounds": [
+            906,
+            672,
+            906,
+            672
+          ],
+          "centroid": [
+            906,
+            672
+          ],
+          "first": [
+            906,
+            672
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              906,
+              672
+            ],
+            "publishedSourcePixels": [
+              906.5000107884407,
+              672.5000104039907
+            ],
+            "distance": 0.000014987777530985706
+          },
+          "sourceComponent": {
+            "id": 11,
+            "pixels": 1,
+            "bounds": [
+              906,
+              672,
+              906,
+              672
+            ],
+            "centroid": [
+              906,
+              672
+            ],
+            "first": [
+              906,
+              672
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 20,
+          "pixels": 7,
+          "bounds": [
+            556,
+            736,
+            559,
+            738
+          ],
+          "centroid": [
+            557.2857142857143,
+            737.1428571428571
+          ],
+          "first": [
+            556,
+            736
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              585,
+              758
+            ],
+            "publishedSourcePixels": [
+              556.911904046816,
+              736.1311531789161
+            ],
+            "distance": 0.5529131226576911
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 21,
+          "pixels": 1,
+          "bounds": [
+            452,
+            740,
+            452,
+            740
+          ],
+          "centroid": [
+            452,
+            740
+          ],
+          "first": [
+            452,
+            740
+          ],
+          "closest": {
+            "part": "abdomen1",
+            "joint": "abdomen1",
+            "source": [
+              517,
+              802
+            ],
+            "publishedSourcePixels": [
+              452.21868602129126,
+              740.5311041290944
+            ],
+            "distance": 0.2830283050573928
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 22,
+          "pixels": 7,
+          "bounds": [
+            454,
+            740,
+            458,
+            741
+          ],
+          "centroid": [
+            456,
+            740.5714285714286
+          ],
+          "first": [
+            454,
+            740
+          ],
+          "closest": {
+            "part": "abdomen1",
+            "joint": "abdomen1",
+            "source": [
+              519,
+              801
+            ],
+            "publishedSourcePixels": [
+              454.45380236093814,
+              740.4657430282007
+            ],
+            "distance": 0.057513146077652406
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 77975,
+            "bounds": [
+              256,
+              414,
+              1083,
+              837
+            ],
+            "centroid": [
+              561.2213145238859,
+              626.9307855081757
+            ],
+            "first": [
+              608,
+              414
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 23,
+          "pixels": 3,
+          "bounds": [
+            1082,
+            745,
+            1082,
+            747
+          ],
+          "centroid": [
+            1082,
+            746
+          ],
+          "first": [
+            1082,
+            745
+          ],
+          "closest": {
+            "part": "head",
+            "joint": "head",
+            "source": [
+              1082,
+              745
+            ],
+            "publishedSourcePixels": [
+              1082.500012099743,
+              745.4999735355377
+            ],
+            "distance": 0.000029099339198231037
+          },
+          "sourceComponent": {
+            "id": 13,
+            "pixels": 3,
+            "bounds": [
+              1082,
+              745,
+              1082,
+              747
+            ],
+            "centroid": [
+              1082,
+              746
+            ],
+            "first": [
+              1082,
+              745
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 24,
+          "pixels": 1,
+          "bounds": [
+            1073,
+            773,
+            1073,
+            773
+          ],
+          "centroid": [
+            1073,
+            773
+          ],
+          "first": [
+            1073,
+            773
+          ],
+          "closest": {
+            "part": "antenna-near",
+            "joint": "antennaNearTip",
+            "source": [
+              1081,
+              749
+            ],
+            "publishedSourcePixels": [
+              1073.198570537567,
+              773.6935093939304
+            ],
+            "distance": 0.35819771964922764
+          },
+          "sourceComponent": {
+            "id": 14,
+            "pixels": 1,
+            "bounds": [
+              1081,
+              749,
+              1081,
+              749
+            ],
+            "centroid": [
+              1081,
+              749
+            ],
+            "first": [
+              1081,
+              749
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 25,
+          "pixels": 1,
+          "bounds": [
+            1072,
+            775,
+            1072,
+            775
+          ],
+          "centroid": [
+            1072,
+            775
+          ],
+          "first": [
+            1072,
+            775
+          ],
+          "closest": {
+            "part": "antenna-near",
+            "joint": "antennaNearTip",
+            "source": [
+              1080,
+              751
+            ],
+            "publishedSourcePixels": [
+              1072.0340224742888,
+              775.602407258749
+            ],
+            "distance": 0.4770977898842374
+          },
+          "sourceComponent": {
+            "id": 15,
+            "pixels": 1,
+            "bounds": [
+              1080,
+              751,
+              1080,
+              751
+            ],
+            "centroid": [
+              1080,
+              751
+            ],
+            "first": [
+              1080,
+              751
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 26,
+          "pixels": 1,
+          "bounds": [
+            1070,
+            777,
+            1070,
+            777
+          ],
+          "centroid": [
+            1070,
+            777
+          ],
+          "first": [
+            1070,
+            777
+          ],
+          "closest": {
+            "part": "antenna-near",
+            "joint": "antennaNearTip",
+            "source": [
+              1079,
+              753
+            ],
+            "publishedSourcePixels": [
+              1070.8694650679827,
+              777.5112957805395
+            ],
+            "distance": 0.3696377025107673
+          },
+          "sourceComponent": {
+            "id": 16,
+            "pixels": 1,
+            "bounds": [
+              1079,
+              753,
+              1079,
+              753
+            ],
+            "centroid": [
+              1079,
+              753
+            ],
+            "first": [
+              1079,
+              753
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        }
+      ],
+      "largePaintComponents": [
+        {
+          "id": 0,
+          "pixels": 77392,
+          "bounds": [
+            263,
+            414,
+            1091,
+            837
+          ],
+          "centroid": [
+            567.6994004548274,
+            597.5859649576183
+          ],
+          "first": [
+            608,
+            414
+          ]
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "shrimp",
+      "sourcePacket": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit",
+      "action": "approach:swim",
+      "fraction": 0.5,
+      "coordinateSpace": "1254-square source-coordinate software raster, not native screen",
+      "inputs": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/record.json",
+          "sha256": "db3bccf13b0115e0afa4da8e59ee660405a6594e03501e0a48d6a51ea33b44c5"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/binding.json",
+          "sha256": "221e8aaa31c2f6dee1f262b217bc9392626bf152832456ed16966f7660c1aa3c"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/atlas/c192-independent-shrimp.png",
+          "sha256": "6debce5eefce7f9878a7c3f7cca4e9f495da67ed2a21f6b3c9328edb4c93ac78"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/keyed.png",
+          "sha256": "0d3936bd92b426a5fe82555c90d13ecf5bc610f72fc534753ea2f10919dd4b0e"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-approach-swim-50-left.png",
+          "sha256": "0061d60d536888a3eda16603ba83e523933d3327bc8fab3d2581f92ae6d15624"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/master.png",
+          "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/authoring.json",
+          "sha256": "0d3fd10a4da2c26f3061e5b97a236ac7026f828f42c5d870ba5d9dab569b4fac"
+        }
+      ],
+      "keyedComponents": 8,
+      "posedComponents": 26,
+      "fragments": [
+        {
+          "id": 0,
+          "pixels": 10,
+          "bounds": [
+            479,
+            405,
+            485,
+            406
+          ],
+          "centroid": [
+            482.3,
+            405.5
+          ],
+          "first": [
+            479,
+            405
+          ],
+          "closest": {
+            "part": "abdomen4",
+            "joint": "abdomen4",
+            "source": [
+              427,
+              473
+            ],
+            "publishedSourcePixels": [
+              479.3704005271196,
+              405.71890010386704
+            ],
+            "distance": 0.25438804776143864
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 1,
+          "pixels": 6,
+          "bounds": [
+            598,
+            416,
+            602,
+            418
+          ],
+          "centroid": [
+            600.3333333333334,
+            416.8333333333333
+          ],
+          "first": [
+            598,
+            416
+          ],
+          "closest": {
+            "part": "abdomen2",
+            "joint": "abdomen2",
+            "source": [
+              510,
+              444
+            ],
+            "publishedSourcePixels": [
+              598.7911994882993,
+              416.6204410237925
+            ],
+            "distance": 0.31512407429132483
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 2,
+          "pixels": 2,
+          "bounds": [
+            631,
+            421,
+            632,
+            421
+          ],
+          "centroid": [
+            631.5,
+            421
+          ],
+          "first": [
+            631,
+            421
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              587,
+              432
+            ],
+            "publishedSourcePixels": [
+              631.6897840142249,
+              421.06352679034075
+            ],
+            "distance": 0.4759483530862958
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 2,
+            "bounds": [
+              587,
+              432,
+              588,
+              432
+            ],
+            "centroid": [
+              587.5,
+              432
+            ],
+            "first": [
+              587,
+              432
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 3,
+          "pixels": 2,
+          "bounds": [
+            634,
+            422,
+            635,
+            422
+          ],
+          "centroid": [
+            634.5,
+            422
+          ],
+          "first": [
+            634,
+            422
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              590,
+              433
+            ],
+            "publishedSourcePixels": [
+              634.4162948057055,
+              422.66542549431324
+            ],
+            "distance": 0.18539728617391324
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 4,
+          "pixels": 4,
+          "bounds": [
+            636,
+            424,
+            637,
+            425
+          ],
+          "centroid": [
+            636.5,
+            424.5
+          ],
+          "first": [
+            636,
+            424
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              592,
+              434
+            ],
+            "publishedSourcePixels": [
+              636.164669662714,
+              424.0593982748687
+            ],
+            "distance": 0.5536933404809865
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 5,
+          "pixels": 1,
+          "bounds": [
+            602,
+            434,
+            602,
+            434
+          ],
+          "centroid": [
+            602,
+            434
+          ],
+          "first": [
+            602,
+            434
+          ],
+          "closest": {
+            "part": "abdomen1",
+            "joint": "abdomen1",
+            "source": [
+              540,
+              455
+            ],
+            "publishedSourcePixels": [
+              602.5472774505615,
+              434.178328230977
+            ],
+            "distance": 0.3251274893299282
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 7,
+          "pixels": 12,
+          "bounds": [
+            614,
+            466,
+            618,
+            477
+          ],
+          "centroid": [
+            615.6666666666666,
+            471.5
+          ],
+          "first": [
+            614,
+            466
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              571,
+              480
+            ],
+            "publishedSourcePixels": [
+              614.8101435095072,
+              466.34464249312873
+            ],
+            "distance": 0.3468788714099953
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 8,
+          "pixels": 1,
+          "bounds": [
+            619,
+            480,
+            619,
+            480
+          ],
+          "centroid": [
+            619,
+            480
+          ],
+          "first": [
+            619,
+            480
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              583,
+              492
+            ],
+            "publishedSourcePixels": [
+              619.4048282504082,
+              480.2381847113371
+            ],
+            "distance": 0.27857657349102544
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 9,
+          "pixels": 14,
+          "bounds": [
+            620,
+            497,
+            625,
+            502
+          ],
+          "centroid": [
+            623.1428571428571,
+            499.57142857142856
+          ],
+          "first": [
+            625,
+            497
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              596,
+              508
+            ],
+            "publishedSourcePixels": [
+              625.5831783771515,
+              497.53178023695943
+            ],
+            "distance": 0.08904283175392047
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 10,
+          "pixels": 1,
+          "bounds": [
+            1056,
+            497,
+            1056,
+            497
+          ],
+          "centroid": [
+            1056,
+            497
+          ],
+          "first": [
+            1056,
+            497
+          ],
+          "closest": {
+            "part": "antenna-far",
+            "joint": "antennaFarTip",
+            "source": [
+              1041,
+              462
+            ],
+            "publishedSourcePixels": [
+              1056.7575829386712,
+              497.6949755311013
+            ],
+            "distance": 0.32305483748545333
+          },
+          "sourceComponent": {
+            "id": 2,
+            "pixels": 1,
+            "bounds": [
+              1041,
+              462,
+              1041,
+              462
+            ],
+            "centroid": [
+              1041,
+              462
+            ],
+            "first": [
+              1041,
+              462
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 11,
+          "pixels": 14,
+          "bounds": [
+            1043,
+            498,
+            1054,
+            501
+          ],
+          "centroid": [
+            1048.2857142857142,
+            499.57142857142856
+          ],
+          "first": [
+            1051,
+            498
+          ],
+          "closest": {
+            "part": "antenna-far",
+            "joint": "antennaFarTip",
+            "source": [
+              1036,
+              464
+            ],
+            "publishedSourcePixels": [
+              1051.5323955863714,
+              498.9979074038565
+            ],
+            "distance": 0.49896017559669414
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 12,
+          "pixels": 1,
+          "bounds": [
+            673,
+            562,
+            673,
+            562
+          ],
+          "centroid": [
+            673,
+            562
+          ],
+          "first": [
+            673,
+            562
+          ],
+          "closest": {
+            "part": "leg0far-upper",
+            "joint": "leg0FarKnee",
+            "source": [
+              672,
+              561
+            ],
+            "publishedSourcePixels": [
+              673.2245507240295,
+              562.02948564291
+            ],
+            "distance": 0.5452119439818451
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 15,
+          "pixels": 1,
+          "bounds": [
+            492,
+            701,
+            492,
+            701
+          ],
+          "centroid": [
+            492,
+            701
+          ],
+          "first": [
+            492,
+            701
+          ],
+          "closest": {
+            "part": "abdomen1",
+            "joint": "abdomen1",
+            "source": [
+              527,
+              747
+            ],
+            "publishedSourcePixels": [
+              492.7495095878839,
+              701.9063323140143
+            ],
+            "distance": 0.47682384992596866
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 16,
+          "pixels": 3,
+          "bounds": [
+            493,
+            703,
+            494,
+            704
+          ],
+          "centroid": [
+            493.3333333333333,
+            703.3333333333334
+          ],
+          "first": [
+            493,
+            703
+          ],
+          "closest": {
+            "part": "abdomen1",
+            "joint": "abdomen1",
+            "source": [
+              528,
+              748
+            ],
+            "publishedSourcePixels": [
+              493.31222755536436,
+              703.203773084283
+            ],
+            "distance": 0.35072621310601393
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 17,
+          "pixels": 6,
+          "bounds": [
+            403,
+            711,
+            408,
+            713
+          ],
+          "centroid": [
+            405.5,
+            712
+          ],
+          "first": [
+            403,
+            711
+          ],
+          "closest": {
+            "part": "abdomen4",
+            "joint": "abdomen4",
+            "source": [
+              426,
+              789
+            ],
+            "publishedSourcePixels": [
+              403.27986513767394,
+              711.2692405555397
+            ],
+            "distance": 0.31891892201459193
+          },
+          "sourceComponent": {
+            "id": 3,
+            "pixels": 2,
+            "bounds": [
+              426,
+              789,
+              427,
+              789
+            ],
+            "centroid": [
+              426.5,
+              789
+            ],
+            "first": [
+              426,
+              789
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 18,
+          "pixels": 10,
+          "bounds": [
+            569,
+            735,
+            573,
+            738
+          ],
+          "centroid": [
+            571.1,
+            736.6
+          ],
+          "first": [
+            573,
+            735
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              595,
+              752
+            ],
+            "publishedSourcePixels": [
+              572.9830389261246,
+              735.7340723454952
+            ],
+            "distance": 0.5674844621908803
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 19,
+          "pixels": 10,
+          "bounds": [
+            440,
+            757,
+            446,
+            760
+          ],
+          "centroid": [
+            443.7,
+            758.7
+          ],
+          "first": [
+            440,
+            757
+          ],
+          "closest": {
+            "part": "abdomen2",
+            "joint": "abdomen2",
+            "source": [
+              509,
+              820
+            ],
+            "publishedSourcePixels": [
+              440.38959776570925,
+              757.6276854390378
+            ],
+            "distance": 0.16879640007614397
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 20,
+          "pixels": 10,
+          "bounds": [
+            550,
+            808,
+            557,
+            811
+          ],
+          "centroid": [
+            553.9,
+            810
+          ],
+          "first": [
+            556,
+            808
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              594,
+              827
+            ],
+            "publishedSourcePixels": [
+              556.4114815592766,
+              808.8871972113848
+            ],
+            "distance": 0.39718659953761065
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 21,
+          "pixels": 1,
+          "bounds": [
+            548,
+            812,
+            548,
+            812
+          ],
+          "centroid": [
+            548,
+            812
+          ],
+          "first": [
+            548,
+            812
+          ],
+          "closest": {
+            "part": "abdomen0",
+            "joint": "abdomen0",
+            "source": [
+              587,
+              832
+            ],
+            "publishedSourcePixels": [
+              548.524889114499,
+              812.3225171864033
+            ],
+            "distance": 0.1792194664168953
+          },
+          "sourceComponent": {
+            "id": 4,
+            "pixels": 1,
+            "bounds": [
+              587,
+              832,
+              587,
+              832
+            ],
+            "centroid": [
+              587,
+              832
+            ],
+            "first": [
+              587,
+              832
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 22,
+          "pixels": 56,
+          "bounds": [
+            1014,
+            834,
+            1034,
+            862
+          ],
+          "centroid": [
+            1023.3214285714286,
+            845.1071428571429
+          ],
+          "first": [
+            1014,
+            834
+          ],
+          "closest": {
+            "part": "antenna-near",
+            "joint": "antennaNearTip",
+            "source": [
+              1025,
+              817
+            ],
+            "publishedSourcePixels": [
+              1014.9083648175002,
+              834.3664961814881
+            ],
+            "distance": 0.42963367387725054
+          },
+          "sourceComponent": {
+            "id": 1,
+            "pixels": 73685,
+            "bounds": [
+              253,
+              433,
+              1047,
+              844
+            ],
+            "centroid": [
+              545.9407613489856,
+              634.4578272375653
+            ],
+            "first": [
+              590,
+              433
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 23,
+          "pixels": 1,
+          "bounds": [
+            1035,
+            864,
+            1035,
+            864
+          ],
+          "centroid": [
+            1035,
+            864
+          ],
+          "first": [
+            1035,
+            864
+          ],
+          "closest": {
+            "part": "antenna-near",
+            "joint": "antennaNearTip",
+            "source": [
+              1048,
+              846
+            ],
+            "publishedSourcePixels": [
+              1035.7150296858379,
+              864.9783073834012
+            ],
+            "distance": 0.5244194111659554
+          },
+          "sourceComponent": {
+            "id": 5,
+            "pixels": 1,
+            "bounds": [
+              1048,
+              846,
+              1048,
+              846
+            ],
+            "centroid": [
+              1048,
+              846
+            ],
+            "first": [
+              1048,
+              846
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 24,
+          "pixels": 1,
+          "bounds": [
+            1036,
+            867,
+            1036,
+            867
+          ],
+          "centroid": [
+            1036,
+            867
+          ],
+          "first": [
+            1036,
+            867
+          ],
+          "closest": {
+            "part": "antenna-near",
+            "joint": "antennaNearTip",
+            "source": [
+              1049,
+              848
+            ],
+            "publishedSourcePixels": [
+              1036.5653883218765,
+              867.0464026629925
+            ],
+            "distance": 0.4582861298120903
+          },
+          "sourceComponent": {
+            "id": 6,
+            "pixels": 1,
+            "bounds": [
+              1049,
+              848,
+              1049,
+              848
+            ],
+            "centroid": [
+              1049,
+              848
+            ],
+            "first": [
+              1049,
+              848
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 25,
+          "pixels": 1,
+          "bounds": [
+            1037,
+            869,
+            1037,
+            869
+          ],
+          "centroid": [
+            1037,
+            869
+          ],
+          "first": [
+            1037,
+            869
+          ],
+          "closest": {
+            "part": "antenna-near",
+            "joint": "antennaNearTip",
+            "source": [
+              1050,
+              850
+            ],
+            "publishedSourcePixels": [
+              1037.4156973063946,
+              869.1144819259644
+            ],
+            "distance": 0.3946278367744508
+          },
+          "sourceComponent": {
+            "id": 7,
+            "pixels": 1,
+            "bounds": [
+              1050,
+              850,
+              1050,
+              850
+            ],
+            "centroid": [
+              1050,
+              850
+            ],
+            "first": [
+              1050,
+              850
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        }
+      ],
+      "largePaintComponents": [
+        {
+          "id": 6,
+          "pixels": 69544,
+          "bounds": [
+            261,
+            436,
+            1041,
+            832
+          ],
+          "centroid": [
+            551.040880593581,
+            601.7826555849534
+          ],
+          "first": [
+            598,
+            436
+          ]
+        },
+        {
+          "id": 13,
+          "pixels": 1358,
+          "bounds": [
+            438,
+            684,
+            562,
+            798
+          ],
+          "centroid": [
+            520.2761413843888,
+            743.3880706921944
+          ],
+          "first": [
+            555,
+            684
+          ]
+        },
+        {
+          "id": 14,
+          "pixels": 1318,
+          "bounds": [
+            507,
+            689,
+            595,
+            814
+          ],
+          "centroid": [
+            574.0789074355083,
+            749.7837632776934
+          ],
+          "first": [
+            585,
+            689
+          ]
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "id": "mussel",
+      "sourcePacket": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01",
+      "action": "cast",
+      "fraction": 0.5,
+      "coordinateSpace": "1254-square source-coordinate software raster, not native screen",
+      "inputs": [
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/record.json",
+          "sha256": "68e6564e1ac55326b6b1bcbf453f766ff6317ee85a9add880ea884be524ac383"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/binding.json",
+          "sha256": "b8a92feee25fded051fdedadbe3a4ddd1fd5c1b9a1b2eed67040496d44c89eb9"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/atlas/c192-mussel-external-junction.png",
+          "sha256": "849b41c254e6e25a846748b5348bf4322207ad95552c7c91e7e77b5658895d1c"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/keyed.png",
+          "sha256": "514e44a717053c256faf11ac69fd7e73ad049bfee9d4663ad1c97704fb3cc474"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-cast-50-left.png",
+          "sha256": "7d7cb8d2aae8d6e3e8c636061cfa1e328be0a7a89485da19c6342ab50fd276d9"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/master.png",
+          "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9"
+        },
+        {
+          "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/authoring.json",
+          "sha256": "c9e294ae8524f38526db35f392c9362a71661d2c0f5bdcb00b2de93435eddce1"
+        }
+      ],
+      "keyedComponents": 51,
+      "posedComponents": 60,
+      "fragments": [
+        {
+          "id": 1,
+          "pixels": 86,
+          "bounds": [
+            879,
+            790,
+            890,
+            803
+          ],
+          "centroid": [
+            885.6046511627907,
+            798.1976744186046
+          ],
+          "first": [
+            888,
+            790
+          ],
+          "closest": {
+            "part": "valvenear",
+            "joint": "valveNear",
+            "source": [
+              932,
+              736
+            ],
+            "publishedSourcePixels": [
+              888.5176590681076,
+              790.15536826849
+            ],
+            "distance": 0.3450838637926197
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 223060,
+            "bounds": [
+              310,
+              283,
+              966,
+              923
+            ],
+            "centroid": [
+              641.5085896171433,
+              580.8711557428495
+            ],
+            "first": [
+              340,
+              283
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 2,
+          "pixels": 19,
+          "bounds": [
+            640,
+            842,
+            644,
+            850
+          ],
+          "centroid": [
+            641.6315789473684,
+            846.2631578947369
+          ],
+          "first": [
+            644,
+            842
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              590,
+              841
+            ],
+            "publishedSourcePixels": [
+              644.1288685977458,
+              842.0805199027061
+            ],
+            "distance": 0.5600911263043103
+          },
+          "sourceComponent": {
+            "id": 3,
+            "pixels": 18,
+            "bounds": [
+              586,
+              841,
+              590,
+              849
+            ],
+            "centroid": [
+              587.4444444444445,
+              845.1666666666666
+            ],
+            "first": [
+              590,
+              841
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 3,
+          "pixels": 27,
+          "bounds": [
+            589,
+            850,
+            601,
+            862
+          ],
+          "centroid": [
+            595.2962962962963,
+            855.8518518518518
+          ],
+          "first": [
+            600,
+            850
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              546,
+              843
+            ],
+            "publishedSourcePixels": [
+              600.8324356555938,
+              850.168790513277
+            ],
+            "distance": 0.4692687814093218
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 223060,
+            "bounds": [
+              310,
+              283,
+              966,
+              923
+            ],
+            "centroid": [
+              641.5085896171433,
+              580.8711557428495
+            ],
+            "first": [
+              340,
+              283
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 4,
+          "pixels": 7,
+          "bounds": [
+            615,
+            856,
+            616,
+            861
+          ],
+          "centroid": [
+            615.7142857142857,
+            858.2857142857143
+          ],
+          "first": [
+            615,
+            856
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              560,
+              851
+            ],
+            "publishedSourcePixels": [
+              615.807381592691,
+              856.1480202555657
+            ],
+            "distance": 0.4673041664882187
+          },
+          "sourceComponent": {
+            "id": 4,
+            "pixels": 7,
+            "bounds": [
+              560,
+              851,
+              561,
+              856
+            ],
+            "centroid": [
+              560.1428571428571,
+              853.2857142857143
+            ],
+            "first": [
+              560,
+              851
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 5,
+          "pixels": 26,
+          "bounds": [
+            522,
+            862,
+            537,
+            874
+          ],
+          "centroid": [
+            529.8076923076923,
+            867.4230769230769
+          ],
+          "first": [
+            536,
+            862
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              481,
+              846
+            ],
+            "publishedSourcePixels": [
+              536.8781354159116,
+              862.1624008297921
+            ],
+            "distance": 0.5069118192464341
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 223060,
+            "bounds": [
+              310,
+              283,
+              966,
+              923
+            ],
+            "centroid": [
+              641.5085896171433,
+              580.8711557428495
+            ],
+            "first": [
+              340,
+              283
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 6,
+          "pixels": 2,
+          "bounds": [
+            643,
+            862,
+            643,
+            863
+          ],
+          "centroid": [
+            643,
+            862.5
+          ],
+          "first": [
+            643,
+            862
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              587,
+              861
+            ],
+            "publishedSourcePixels": [
+              643.9340761005878,
+              862.3033498495817
+            ],
+            "distance": 0.4765431174207727
+          },
+          "sourceComponent": {
+            "id": 9,
+            "pixels": 2,
+            "bounds": [
+              586,
+              861,
+              587,
+              862
+            ],
+            "centroid": [
+              586.5,
+              861.5
+            ],
+            "first": [
+              587,
+              861
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 7,
+          "pixels": 4,
+          "bounds": [
+            615,
+            864,
+            616,
+            866
+          ],
+          "centroid": [
+            615.25,
+            865
+          ],
+          "first": [
+            615,
+            864
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              559,
+              859
+            ],
+            "publishedSourcePixels": [
+              615.9275488168,
+              864.2093611121178
+            ],
+            "distance": 0.5169806126892095
+          },
+          "sourceComponent": {
+            "id": 7,
+            "pixels": 4,
+            "bounds": [
+              558,
+              859,
+              559,
+              861
+            ],
+            "centroid": [
+              558.5,
+              860
+            ],
+            "first": [
+              559,
+              859
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 8,
+          "pixels": 37,
+          "bounds": [
+            632,
+            864,
+            641,
+            883
+          ],
+          "centroid": [
+            635.918918918919,
+            872.5135135135135
+          ],
+          "first": [
+            641,
+            864
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              584,
+              863
+            ],
+            "publishedSourcePixels": [
+              641.2407476305963,
+              864.7004189640284
+            ],
+            "distance": 0.32768819353715833
+          },
+          "sourceComponent": {
+            "id": 11,
+            "pixels": 37,
+            "bounds": [
+              573,
+              863,
+              584,
+              880
+            ],
+            "centroid": [
+              578.1351351351351,
+              870.5945945945946
+            ],
+            "first": [
+              584,
+              863
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 9,
+          "pixels": 17,
+          "bounds": [
+            685,
+            873,
+            688,
+            885
+          ],
+          "centroid": [
+            686.2941176470588,
+            880
+          ],
+          "first": [
+            685,
+            873
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              627,
+              878
+            ],
+            "publishedSourcePixels": [
+              685.9066683501004,
+              873.5863039791584
+            ],
+            "distance": 0.41572529847479595
+          },
+          "sourceComponent": {
+            "id": 17,
+            "pixels": 17,
+            "bounds": [
+              626,
+              878,
+              628,
+              890
+            ],
+            "centroid": [
+              626.8235294117648,
+              885
+            ],
+            "first": [
+              627,
+              878
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 10,
+          "pixels": 1,
+          "bounds": [
+            520,
+            875,
+            520,
+            875
+          ],
+          "centroid": [
+            520,
+            875
+          ],
+          "first": [
+            520,
+            875
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              463,
+              857
+            ],
+            "publishedSourcePixels": [
+              520.5793076276778,
+              875.55453774333
+            ],
+            "distance": 0.0962500143138562
+          },
+          "sourceComponent": {
+            "id": 5,
+            "pixels": 1,
+            "bounds": [
+              463,
+              857,
+              463,
+              857
+            ],
+            "centroid": [
+              463,
+              857
+            ],
+            "first": [
+              463,
+              857
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 11,
+          "pixels": 1,
+          "bounds": [
+            518,
+            876,
+            518,
+            876
+          ],
+          "centroid": [
+            518,
+            876
+          ],
+          "first": [
+            518,
+            876
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              461,
+              858
+            ],
+            "publishedSourcePixels": [
+              518.7374810010195,
+              876.8224688708782
+            ],
+            "distance": 0.40047896140834266
+          },
+          "sourceComponent": {
+            "id": 6,
+            "pixels": 2,
+            "bounds": [
+              460,
+              858,
+              461,
+              859
+            ],
+            "centroid": [
+              460.5,
+              858.5
+            ],
+            "first": [
+              461,
+              858
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 12,
+          "pixels": 1,
+          "bounds": [
+            517,
+            878,
+            517,
+            878
+          ],
+          "centroid": [
+            517,
+            878
+          ],
+          "first": [
+            517,
+            878
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              460,
+              859
+            ],
+            "publishedSourcePixels": [
+              517.8859723716974,
+              877.9515924990177
+            ],
+            "distance": 0.6706157311362543
+          },
+          "sourceComponent": {
+            "id": 6,
+            "pixels": 2,
+            "bounds": [
+              460,
+              858,
+              461,
+              859
+            ],
+            "centroid": [
+              460.5,
+              858.5
+            ],
+            "first": [
+              461,
+              858
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 13,
+          "pixels": 1,
+          "bounds": [
+            515,
+            880,
+            515,
+            880
+          ],
+          "centroid": [
+            515,
+            880
+          ],
+          "first": [
+            515,
+            880
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              457,
+              861
+            ],
+            "publishedSourcePixels": [
+              515.1926373615861,
+              880.34865000844
+            ],
+            "distance": 0.3426056208499275
+          },
+          "sourceComponent": {
+            "id": 8,
+            "pixels": 1,
+            "bounds": [
+              457,
+              861,
+              457,
+              861
+            ],
+            "centroid": [
+              457,
+              861
+            ],
+            "first": [
+              457,
+              861
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 14,
+          "pixels": 3,
+          "bounds": [
+            511,
+            881,
+            513,
+            883
+          ],
+          "centroid": [
+            512,
+            882
+          ],
+          "first": [
+            513,
+            881
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              455,
+              862
+            ],
+            "publishedSourcePixels": [
+              513.350811226666,
+              881.6165866434575
+            ],
+            "distance": 0.1893402638679541
+          },
+          "sourceComponent": {
+            "id": 10,
+            "pixels": 3,
+            "bounds": [
+              453,
+              862,
+              455,
+              864
+            ],
+            "centroid": [
+              454,
+              863
+            ],
+            "first": [
+              455,
+              862
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 15,
+          "pixels": 2,
+          "bounds": [
+            594,
+            881,
+            595,
+            882
+          ],
+          "centroid": [
+            594.5,
+            881.5
+          ],
+          "first": [
+            595,
+            881
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              536,
+              873
+            ],
+            "publishedSourcePixels": [
+              595.0935440987349,
+              881.266471812129
+            ],
+            "distance": 0.468766268201456
+          },
+          "sourceComponent": {
+            "id": 14,
+            "pixels": 2,
+            "bounds": [
+              535,
+              873,
+              536,
+              874
+            ],
+            "centroid": [
+              535.5,
+              873.5
+            ],
+            "first": [
+              536,
+              873
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 16,
+          "pixels": 10,
+          "bounds": [
+            609,
+            882,
+            612,
+            886
+          ],
+          "centroid": [
+            610.1,
+            883.8
+          ],
+          "first": [
+            610,
+            882
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              551,
+              876
+            ],
+            "publishedSourcePixels": [
+              610.3647837638854,
+              882.155268073082
+            ],
+            "distance": 0.37030194699139957
+          },
+          "sourceComponent": {
+            "id": 16,
+            "pixels": 10,
+            "bounds": [
+              550,
+              876,
+              553,
+              880
+            ],
+            "centroid": [
+              551.1,
+              877.9
+            ],
+            "first": [
+              551,
+              876
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 17,
+          "pixels": 1,
+          "bounds": [
+            592,
+            884,
+            592,
+            884
+          ],
+          "centroid": [
+            592,
+            884
+          ],
+          "first": [
+            592,
+            884
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              533,
+              876
+            ],
+            "publishedSourcePixels": [
+              592.5390199810266,
+              884.653858628869
+            ],
+            "distance": 0.15872944464327798
+          },
+          "sourceComponent": {
+            "id": 15,
+            "pixels": 1,
+            "bounds": [
+              533,
+              876,
+              533,
+              876
+            ],
+            "centroid": [
+              533,
+              876
+            ],
+            "first": [
+              533,
+              876
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 18,
+          "pixels": 6,
+          "bounds": [
+            506,
+            885,
+            509,
+            888
+          ],
+          "centroid": [
+            507.5,
+            886.8333333333334
+          ],
+          "first": [
+            509,
+            885
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              451,
+              865
+            ],
+            "publishedSourcePixels": [
+              509.8059688165784,
+              885.142781549692
+            ],
+            "distance": 0.470342362496536
+          },
+          "sourceComponent": {
+            "id": 12,
+            "pixels": 6,
+            "bounds": [
+              447,
+              865,
+              451,
+              868
+            ],
+            "centroid": [
+              448.8333333333333,
+              866.8333333333334
+            ],
+            "first": [
+              451,
+              865
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 19,
+          "pixels": 2,
+          "bounds": [
+            590,
+            887,
+            590,
+            888
+          ],
+          "centroid": [
+            590,
+            887.5
+          ],
+          "first": [
+            590,
+            887
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              531,
+              879
+            ],
+            "publishedSourcePixels": [
+              590.9748157292605,
+              887.9024342089892
+            ],
+            "distance": 0.6224172790965747
+          },
+          "sourceComponent": {
+            "id": 18,
+            "pixels": 18,
+            "bounds": [
+              518,
+              879,
+              531,
+              893
+            ],
+            "centroid": [
+              524.9444444444445,
+              885.6666666666666
+            ],
+            "first": [
+              531,
+              879
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 20,
+          "pixels": 17,
+          "bounds": [
+            684,
+            887,
+            686,
+            902
+          ],
+          "centroid": [
+            684.9411764705883,
+            894.5294117647059
+          ],
+          "first": [
+            685,
+            887
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              625,
+              892
+            ],
+            "publishedSourcePixels": [
+              685.8693472802639,
+              887.7283986747265
+            ],
+            "distance": 0.43426186576207926
+          },
+          "sourceComponent": {
+            "id": 24,
+            "pixels": 18,
+            "bounds": [
+              622,
+              892,
+              625,
+              907
+            ],
+            "centroid": [
+              623.5555555555555,
+              899.7777777777778
+            ],
+            "first": [
+              625,
+              892
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 21,
+          "pixels": 24,
+          "bounds": [
+            624,
+            888,
+            631,
+            900
+          ],
+          "centroid": [
+            627.3333333333334,
+            893.625
+          ],
+          "first": [
+            629,
+            888
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              569,
+              885
+            ],
+            "publishedSourcePixels": [
+              629.4397972404956,
+              888.5695776522159
+            ],
+            "distance": 0.09200772760925402
+          },
+          "sourceComponent": {
+            "id": 21,
+            "pixels": 24,
+            "bounds": [
+              562,
+              885,
+              571,
+              896
+            ],
+            "centroid": [
+              566.7083333333334,
+              890.2916666666666
+            ],
+            "first": [
+              569,
+              885
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 22,
+          "pixels": 1,
+          "bounds": [
+            504,
+            889,
+            504,
+            889
+          ],
+          "centroid": [
+            504,
+            889
+          ],
+          "first": [
+            504,
+            889
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              445,
+              869
+            ],
+            "publishedSourcePixels": [
+              504.41930027157076,
+              889.9369130909442
+            ],
+            "distance": 0.44430338194414704
+          },
+          "sourceComponent": {
+            "id": 13,
+            "pixels": 6,
+            "bounds": [
+              440,
+              869,
+              445,
+              874
+            ],
+            "centroid": [
+              442.5,
+              871.5
+            ],
+            "first": [
+              445,
+              869
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 23,
+          "pixels": 11,
+          "bounds": [
+            584,
+            890,
+            589,
+            897
+          ],
+          "centroid": [
+            586.3636363636364,
+            893.3636363636364
+          ],
+          "first": [
+            589,
+            890
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              529,
+              881
+            ],
+            "publishedSourcePixels": [
+              589.2717987656592,
+              890.1606953322887
+            ],
+            "distance": 0.4089051979191801
+          },
+          "sourceComponent": {
+            "id": 18,
+            "pixels": 18,
+            "bounds": [
+              518,
+              879,
+              531,
+              893
+            ],
+            "centroid": [
+              524.9444444444445,
+              885.6666666666666
+            ],
+            "first": [
+              531,
+              879
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 24,
+          "pixels": 5,
+          "bounds": [
+            500,
+            891,
+            503,
+            895
+          ],
+          "centroid": [
+            501.4,
+            893
+          ],
+          "first": [
+            503,
+            891
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              444,
+              870
+            ],
+            "publishedSourcePixels": [
+              503.567792133987,
+              891.0660422265529
+            ],
+            "distance": 0.4392210406682244
+          },
+          "sourceComponent": {
+            "id": 13,
+            "pixels": 6,
+            "bounds": [
+              440,
+              869,
+              445,
+              874
+            ],
+            "centroid": [
+              442.5,
+              871.5
+            ],
+            "first": [
+              445,
+              869
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 26,
+          "pixels": 6,
+          "bounds": [
+            616,
+            894,
+            618,
+            898
+          ],
+          "centroid": [
+            616.6666666666666,
+            896
+          ],
+          "first": [
+            618,
+            894
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              557,
+              889
+            ],
+            "publishedSourcePixels": [
+              618.1112243503333,
+              894.1965714007616
+            ],
+            "distance": 0.49316875469717003
+          },
+          "sourceComponent": {
+            "id": 0,
+            "pixels": 223060,
+            "bounds": [
+              310,
+              283,
+              966,
+              923
+            ],
+            "centroid": [
+              641.5085896171433,
+              580.8711557428495
+            ],
+            "first": [
+              340,
+              283
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        },
+        {
+          "id": 27,
+          "pixels": 1,
+          "bounds": [
+            544,
+            897,
+            544,
+            897
+          ],
+          "centroid": [
+            544,
+            897
+          ],
+          "first": [
+            544,
+            897
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              484,
+              882
+            ],
+            "publishedSourcePixels": [
+              544.8462627008558,
+              897.3974693119527
+            ],
+            "distance": 0.3611238014800972
+          },
+          "sourceComponent": {
+            "id": 19,
+            "pixels": 1,
+            "bounds": [
+              484,
+              882,
+              484,
+              882
+            ],
+            "centroid": [
+              484,
+              882
+            ],
+            "first": [
+              484,
+              882
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 28,
+          "pixels": 8,
+          "bounds": [
+            538,
+            898,
+            542,
+            902
+          ],
+          "centroid": [
+            540.125,
+            900.625
+          ],
+          "first": [
+            542,
+            898
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              482,
+              883
+            ],
+            "publishedSourcePixels": [
+              543.0044364675879,
+              898.6654165685177
+            ],
+            "distance": 0.5308660763061659
+          },
+          "sourceComponent": {
+            "id": 20,
+            "pixels": 8,
+            "bounds": [
+              477,
+              883,
+              482,
+              886
+            ],
+            "centroid": [
+              479.25,
+              885
+            ],
+            "first": [
+              482,
+              883
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 29,
+          "pixels": 5,
+          "bounds": [
+            580,
+            899,
+            583,
+            903
+          ],
+          "centroid": [
+            581.2,
+            901
+          ],
+          "first": [
+            583,
+            899
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              522,
+              889
+            ],
+            "publishedSourcePixels": [
+              583.4500614970923,
+              899.0549145251512
+            ],
+            "distance": 0.44787825800554204
+          },
+          "sourceComponent": {
+            "id": 18,
+            "pixels": 18,
+            "bounds": [
+              518,
+              879,
+              531,
+              893
+            ],
+            "centroid": [
+              524.9444444444445,
+              885.6666666666666
+            ],
+            "first": [
+              531,
+              879
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 30,
+          "pixels": 33,
+          "bounds": [
+            611,
+            900,
+            617,
+            913
+          ],
+          "centroid": [
+            614.3030303030303,
+            906.2424242424242
+          ],
+          "first": [
+            615,
+            900
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              554,
+              895
+            ],
+            "publishedSourcePixels": [
+              615.9731224849821,
+              900.5549055218698
+            ],
+            "distance": 0.47629770325654835
+          },
+          "sourceComponent": {
+            "id": 26,
+            "pixels": 32,
+            "bounds": [
+              548,
+              895,
+              555,
+              907
+            ],
+            "centroid": [
+              552.0625,
+              900.96875
+            ],
+            "first": [
+              554,
+              895
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 31,
+          "pixels": 5,
+          "bounds": [
+            534,
+            903,
+            536,
+            906
+          ],
+          "centroid": [
+            534.8,
+            904.8
+          ],
+          "first": [
+            536,
+            903
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              475,
+              887
+            ],
+            "publishedSourcePixels": [
+              536.6274480074644,
+              903.598387375474
+            ],
+            "distance": 0.16100642924835387
+          },
+          "sourceComponent": {
+            "id": 22,
+            "pixels": 19,
+            "bounds": [
+              465,
+              887,
+              475,
+              894
+            ],
+            "centroid": [
+              469.4736842105263,
+              891.6315789473684
+            ],
+            "first": [
+              475,
+              887
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 32,
+          "pixels": 3,
+          "bounds": [
+            684,
+            905,
+            684,
+            907
+          ],
+          "centroid": [
+            684,
+            906
+          ],
+          "first": [
+            684,
+            905
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              621,
+              909
+            ],
+            "publishedSourcePixels": [
+              684.2678252041339,
+              905.1190813422202
+            ],
+            "distance": 0.44609882277387036
+          },
+          "sourceComponent": {
+            "id": 33,
+            "pixels": 3,
+            "bounds": [
+              621,
+              909,
+              621,
+              911
+            ],
+            "centroid": [
+              621,
+              910
+            ],
+            "first": [
+              621,
+              909
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 33,
+          "pixels": 14,
+          "bounds": [
+            527,
+            908,
+            533,
+            911
+          ],
+          "centroid": [
+            530.0714285714286,
+            909.6428571428571
+          ],
+          "first": [
+            531,
+            908
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              469,
+              891
+            ],
+            "publishedSourcePixels": [
+              531.2407640218735,
+              908.3925158679485
+            ],
+            "distance": 0.2806352276498337
+          },
+          "sourceComponent": {
+            "id": 22,
+            "pixels": 19,
+            "bounds": [
+              465,
+              887,
+              475,
+              894
+            ],
+            "centroid": [
+              469.4736842105263,
+              891.6315789473684
+            ],
+            "first": [
+              475,
+              887
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 34,
+          "pixels": 2,
+          "bounds": [
+            575,
+            909,
+            576,
+            910
+          ],
+          "centroid": [
+            575.5,
+            909.5
+          ],
+          "first": [
+            576,
+            909
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              514,
+              898
+            ],
+            "publishedSourcePixels": [
+              576.7767972573638,
+              909.0782564610242
+            ],
+            "distance": 0.5044644034537215
+          },
+          "sourceComponent": {
+            "id": 28,
+            "pixels": 2,
+            "bounds": [
+              513,
+              898,
+              514,
+              899
+            ],
+            "centroid": [
+              513.5,
+              898.5
+            ],
+            "first": [
+              514,
+              898
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 35,
+          "pixels": 14,
+          "bounds": [
+            682,
+            909,
+            684,
+            920
+          ],
+          "centroid": [
+            682.8571428571429,
+            914.5
+          ],
+          "first": [
+            683,
+            909
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              620,
+              913
+            ],
+            "publishedSourcePixels": [
+              683.8327502846718,
+              909.2191720426083
+            ],
+            "distance": 0.4354160006269046
+          },
+          "sourceComponent": {
+            "id": 36,
+            "pixels": 14,
+            "bounds": [
+              618,
+              913,
+              620,
+              924
+            ],
+            "centroid": [
+              618.7142857142857,
+              918.5
+            ],
+            "first": [
+              620,
+              913
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 36,
+          "pixels": 5,
+          "bounds": [
+            622,
+            910,
+            624,
+            914
+          ],
+          "centroid": [
+            623.2,
+            912
+          ],
+          "first": [
+            624,
+            910
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              561,
+              906
+            ],
+            "publishedSourcePixels": [
+              624.43226454556,
+              910.4767460793257
+            ],
+            "distance": 0.07161589638426981
+          },
+          "sourceComponent": {
+            "id": 31,
+            "pixels": 5,
+            "bounds": [
+              559,
+              906,
+              561,
+              910
+            ],
+            "centroid": [
+              560.2,
+              908
+            ],
+            "first": [
+              561,
+              906
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 37,
+          "pixels": 8,
+          "bounds": [
+            538,
+            912,
+            542,
+            918
+          ],
+          "centroid": [
+            540.375,
+            915.375
+          ],
+          "first": [
+            542,
+            912
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              480,
+              897
+            ],
+            "publishedSourcePixels": [
+              542.9671525731683,
+              912.8075146079062
+            ],
+            "distance": 0.5592823622227544
+          },
+          "sourceComponent": {
+            "id": 27,
+            "pixels": 8,
+            "bounds": [
+              475,
+              897,
+              480,
+              902
+            ],
+            "centroid": [
+              477.5,
+              899.75
+            ],
+            "first": [
+              480,
+              897
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 38,
+          "pixels": 4,
+          "bounds": [
+            571,
+            912,
+            574,
+            915
+          ],
+          "centroid": [
+            572.5,
+            913.5
+          ],
+          "first": [
+            574,
+            912
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              511,
+              901
+            ],
+            "publishedSourcePixels": [
+              574.2222663536667,
+              912.4656397372485
+            ],
+            "distance": 0.2798510424528778
+          },
+          "sourceComponent": {
+            "id": 29,
+            "pixels": 4,
+            "bounds": [
+              508,
+              901,
+              511,
+              904
+            ],
+            "centroid": [
+              509.5,
+              902.5
+            ],
+            "first": [
+              511,
+              901
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 39,
+          "pixels": 5,
+          "bounds": [
+            522,
+            913,
+            525,
+            916
+          ],
+          "centroid": [
+            523.8,
+            914.8
+          ],
+          "first": [
+            525,
+            913
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              463,
+              895
+            ],
+            "publishedSourcePixels": [
+              525.8540897727013,
+              913.1866552770138
+            ],
+            "distance": 0.47282605951340556
+          },
+          "sourceComponent": {
+            "id": 25,
+            "pixels": 5,
+            "bounds": [
+              459,
+              895,
+              463,
+              898
+            ],
+            "centroid": [
+              461,
+              896.8
+            ],
+            "first": [
+              463,
+              895
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 40,
+          "pixels": 28,
+          "bounds": [
+            604,
+            915,
+            611,
+            931
+          ],
+          "centroid": [
+            607.1785714285714,
+            922.3214285714286
+          ],
+          "first": [
+            610,
+            915
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              547,
+              909
+            ],
+            "publishedSourcePixels": [
+              610.9842336058616,
+              915.3910493195057
+            ],
+            "distance": 0.49633903314762884
+          },
+          "sourceComponent": {
+            "id": 32,
+            "pixels": 28,
+            "bounds": [
+              539,
+              909,
+              547,
+              924
+            ],
+            "centroid": [
+              542.5,
+              916.1428571428571
+            ],
+            "first": [
+              547,
+              909
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 41,
+          "pixels": 3,
+          "bounds": [
+            534,
+            922,
+            535,
+            924
+          ],
+          "centroid": [
+            534.6666666666666,
+            923
+          ],
+          "first": [
+            535,
+            922
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              471,
+              906
+            ],
+            "publishedSourcePixels": [
+              535.3035598620772,
+              922.9696845978498
+            ],
+            "distance": 0.50910936864727
+          },
+          "sourceComponent": {
+            "id": 30,
+            "pixels": 3,
+            "bounds": [
+              470,
+              906,
+              471,
+              907
+            ],
+            "centroid": [
+              470.6666666666667,
+              906.6666666666666
+            ],
+            "first": [
+              471,
+              906
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 42,
+          "pixels": 1,
+          "bounds": [
+            566,
+            922,
+            566,
+            922
+          ],
+          "centroid": [
+            566,
+            922
+          ],
+          "first": [
+            566,
+            922
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              502,
+              910
+            ],
+            "publishedSourcePixels": [
+              566.558691984415,
+              922.6278113007545
+            ],
+            "distance": 0.1406430859840752
+          },
+          "sourceComponent": {
+            "id": 35,
+            "pixels": 1,
+            "bounds": [
+              502,
+              910,
+              502,
+              910
+            ],
+            "centroid": [
+              502,
+              910
+            ],
+            "first": [
+              502,
+              910
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 43,
+          "pixels": 1,
+          "bounds": [
+            618,
+            922,
+            618,
+            922
+          ],
+          "centroid": [
+            618,
+            922
+          ],
+          "first": [
+            618,
+            922
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              553,
+              917
+            ],
+            "publishedSourcePixels": [
+              618.0366369411349,
+              922.480746924877
+            ],
+            "distance": 0.46376287607190436
+          },
+          "sourceComponent": {
+            "id": 38,
+            "pixels": 1,
+            "bounds": [
+              553,
+              917,
+              553,
+              917
+            ],
+            "centroid": [
+              553,
+              917
+            ],
+            "first": [
+              553,
+              917
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 44,
+          "pixels": 2,
+          "bounds": [
+            682,
+            924,
+            683,
+            925
+          ],
+          "centroid": [
+            682.5,
+            924.5
+          ],
+          "first": [
+            682,
+            924
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              617,
+              928
+            ],
+            "publishedSourcePixels": [
+              682.943959236145,
+              924.4904037415981
+            ],
+            "distance": 0.44406293645584144
+          },
+          "sourceComponent": {
+            "id": 41,
+            "pixels": 2,
+            "bounds": [
+              617,
+              928,
+              617,
+              929
+            ],
+            "centroid": [
+              617,
+              928.5
+            ],
+            "first": [
+              617,
+              928
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 45,
+          "pixels": 2,
+          "bounds": [
+            657,
+            925,
+            657,
+            926
+          ],
+          "centroid": [
+            657,
+            925.5
+          ],
+          "first": [
+            657,
+            925
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              592,
+              925
+            ],
+            "publishedSourcePixels": [
+              657.7695625126362,
+              924.9896503150464
+            ],
+            "distance": 0.5771661365247654
+          },
+          "sourceComponent": {
+            "id": 40,
+            "pixels": 2,
+            "bounds": [
+              592,
+              925,
+              592,
+              926
+            ],
+            "centroid": [
+              592,
+              925.5
+            ],
+            "first": [
+              592,
+              925
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 46,
+          "pixels": 1,
+          "bounds": [
+            532,
+            927,
+            532,
+            927
+          ],
+          "centroid": [
+            532,
+            927
+          ],
+          "first": [
+            532,
+            927
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              468,
+              910
+            ],
+            "publishedSourcePixels": [
+              532.88784083426,
+              927.3474045574665
+            ],
+            "distance": 0.41678037597939316
+          },
+          "sourceComponent": {
+            "id": 34,
+            "pixels": 1,
+            "bounds": [
+              468,
+              910,
+              468,
+              910
+            ],
+            "centroid": [
+              468,
+              910
+            ],
+            "first": [
+              468,
+              910
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 47,
+          "pixels": 9,
+          "bounds": [
+            681,
+            927,
+            683,
+            932
+          ],
+          "centroid": [
+            681.8888888888889,
+            930
+          ],
+          "first": [
+            682,
+            927
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              616,
+              931
+            ],
+            "publishedSourcePixels": [
+              682.3700730800629,
+              927.6001671016217
+            ],
+            "distance": 0.1640562488039771
+          },
+          "sourceComponent": {
+            "id": 46,
+            "pixels": 9,
+            "bounds": [
+              615,
+              931,
+              616,
+              936
+            ],
+            "centroid": [
+              615.6666666666666,
+              934
+            ],
+            "first": [
+              616,
+              931
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 48,
+          "pixels": 11,
+          "bounds": [
+            656,
+            930,
+            658,
+            937
+          ],
+          "centroid": [
+            657.0909090909091,
+            933.6363636363636
+          ],
+          "first": [
+            657,
+            930
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              591,
+              930
+            ],
+            "publishedSourcePixels": [
+              657.473283880949,
+              930.0800608813763
+            ],
+            "distance": 0.42078808724533456
+          },
+          "sourceComponent": {
+            "id": 44,
+            "pixels": 12,
+            "bounds": [
+              590,
+              930,
+              591,
+              937
+            ],
+            "centroid": [
+              590.5833333333334,
+              933.8333333333334
+            ],
+            "first": [
+              591,
+              930
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 49,
+          "pixels": 1,
+          "bounds": [
+            613,
+            931,
+            613,
+            931
+          ],
+          "centroid": [
+            613,
+            931
+          ],
+          "first": [
+            613,
+            931
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              547,
+              925
+            ],
+            "publishedSourcePixels": [
+              613.2052040487528,
+              931.2361671745776
+            ],
+            "distance": 0.39561649692866313
+          },
+          "sourceComponent": {
+            "id": 39,
+            "pixels": 1,
+            "bounds": [
+              547,
+              925,
+              547,
+              925
+            ],
+            "centroid": [
+              547,
+              925
+            ],
+            "first": [
+              547,
+              925
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 50,
+          "pixels": 1,
+          "bounds": [
+            528,
+            933,
+            528,
+            933
+          ],
+          "centroid": [
+            528,
+            933
+          ],
+          "first": [
+            528,
+            933
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              463,
+              915
+            ],
+            "publishedSourcePixels": [
+              528.6302976876498,
+              932.9930525958539
+            ],
+            "distance": 0.523424452979941
+          },
+          "sourceComponent": {
+            "id": 37,
+            "pixels": 1,
+            "bounds": [
+              463,
+              915,
+              463,
+              915
+            ],
+            "centroid": [
+              463,
+              915
+            ],
+            "first": [
+              463,
+              915
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 51,
+          "pixels": 1,
+          "bounds": [
+            604,
+            936,
+            604,
+            936
+          ],
+          "centroid": [
+            604,
+            936
+          ],
+          "first": [
+            604,
+            936
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              538,
+              929
+            ],
+            "publishedSourcePixels": [
+              604.8475795447827,
+              936.4467477679253
+            ],
+            "distance": 0.3516352373870634
+          },
+          "sourceComponent": {
+            "id": 42,
+            "pixels": 1,
+            "bounds": [
+              538,
+              929,
+              538,
+              929
+            ],
+            "centroid": [
+              538,
+              929
+            ],
+            "first": [
+              538,
+              929
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 52,
+          "pixels": 1,
+          "bounds": [
+            596,
+            938,
+            596,
+            938
+          ],
+          "centroid": [
+            596,
+            938
+          ],
+          "first": [
+            596,
+            938
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              529,
+              930
+            ],
+            "publishedSourcePixels": [
+              596.0735119879246,
+              938.6863351285458
+            ],
+            "distance": 0.46541680736113245
+          },
+          "sourceComponent": {
+            "id": 43,
+            "pixels": 1,
+            "bounds": [
+              529,
+              930,
+              529,
+              930
+            ],
+            "centroid": [
+              529,
+              930
+            ],
+            "first": [
+              529,
+              930
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 53,
+          "pixels": 2,
+          "bounds": [
+            603,
+            938,
+            604,
+            939
+          ],
+          "centroid": [
+            603.5,
+            938.5
+          ],
+          "first": [
+            604,
+            938
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              537,
+              931
+            ],
+            "publishedSourcePixels": [
+              604.1348802834749,
+              938.5661912620067
+            ],
+            "distance": 0.3710710047435737
+          },
+          "sourceComponent": {
+            "id": 45,
+            "pixels": 2,
+            "bounds": [
+              536,
+              931,
+              537,
+              932
+            ],
+            "centroid": [
+              536.5,
+              931.5
+            ],
+            "first": [
+              537,
+              931
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 54,
+          "pixels": 2,
+          "bounds": [
+            594,
+            940,
+            595,
+            941
+          ],
+          "centroid": [
+            594.5,
+            940.5
+          ],
+          "first": [
+            595,
+            940
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              528,
+              932
+            ],
+            "publishedSourcePixels": [
+              595.3608145952225,
+              940.805774885416
+            ],
+            "distance": 0.3359625834140601
+          },
+          "sourceComponent": {
+            "id": 47,
+            "pixels": 3,
+            "bounds": [
+              526,
+              932,
+              528,
+              934
+            ],
+            "centroid": [
+              527,
+              933
+            ],
+            "first": [
+              528,
+              932
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 55,
+          "pixels": 5,
+          "bounds": [
+            656,
+            940,
+            657,
+            944
+          ],
+          "centroid": [
+            656.8,
+            942
+          ],
+          "first": [
+            656,
+            940
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              589,
+              940
+            ],
+            "publishedSourcePixels": [
+              656.8807361572981,
+              940.260880932212
+            ],
+            "distance": 0.44959754231303534
+          },
+          "sourceComponent": {
+            "id": 50,
+            "pixels": 5,
+            "bounds": [
+              589,
+              940,
+              589,
+              944
+            ],
+            "centroid": [
+              589,
+              942
+            ],
+            "first": [
+              589,
+              940
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 56,
+          "pixels": 1,
+          "bounds": [
+            602,
+            942,
+            602,
+            942
+          ],
+          "centroid": [
+            602,
+            942
+          ],
+          "first": [
+            602,
+            942
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              535,
+              935
+            ],
+            "publishedSourcePixels": [
+              602.7094817608595,
+              942.8050707757474
+            ],
+            "distance": 0.37006862383602973
+          },
+          "sourceComponent": {
+            "id": 48,
+            "pixels": 1,
+            "bounds": [
+              535,
+              935,
+              535,
+              935
+            ],
+            "centroid": [
+              535,
+              935
+            ],
+            "first": [
+              535,
+              935
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 57,
+          "pixels": 1,
+          "bounds": [
+            593,
+            943,
+            593,
+            943
+          ],
+          "centroid": [
+            593,
+            943
+          ],
+          "first": [
+            593,
+            943
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              526,
+              934
+            ],
+            "publishedSourcePixels": [
+              593.6578005820512,
+              943.0640286326408
+            ],
+            "distance": 0.46365079192510456
+          },
+          "sourceComponent": {
+            "id": 47,
+            "pixels": 3,
+            "bounds": [
+              526,
+              932,
+              528,
+              934
+            ],
+            "centroid": [
+              527,
+              933
+            ],
+            "first": [
+              528,
+              932
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 58,
+          "pixels": 1,
+          "bounds": [
+            601,
+            944,
+            601,
+            944
+          ],
+          "centroid": [
+            601,
+            944
+          ],
+          "first": [
+            601,
+            944
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              534,
+              937
+            ],
+            "publishedSourcePixels": [
+              601.9967824995518,
+              944.9245105326177
+            ],
+            "distance": 0.6534539342327847
+          },
+          "sourceComponent": {
+            "id": 49,
+            "pixels": 1,
+            "bounds": [
+              534,
+              937,
+              534,
+              937
+            ],
+            "centroid": [
+              534,
+              937
+            ],
+            "first": [
+              534,
+              937
+            ]
+          },
+          "classification": "already disconnected in established keyed source"
+        },
+        {
+          "id": 59,
+          "pixels": 10,
+          "bounds": [
+            614,
+            967,
+            616,
+            974
+          ],
+          "centroid": [
+            614.9,
+            970.4
+          ],
+          "first": [
+            616,
+            967
+          ],
+          "closest": {
+            "part": "foot",
+            "joint": "foot",
+            "source": [
+              545,
+              961
+            ],
+            "publishedSourcePixels": [
+              616.2217520177364,
+              967.1652637124062
+            ],
+            "distance": 0.43528188782196325
+          },
+          "sourceComponent": {
+            "id": 23,
+            "pixels": 165,
+            "bounds": [
+              541,
+              890,
+              586,
+              969
+            ],
+            "centroid": [
+              565.7272727272727,
+              927.3090909090909
+            ],
+            "first": [
+              585,
+              890
+            ]
+          },
+          "classification": "continuous source paint separates during posed publication"
+        }
+      ],
+      "largePaintComponents": [
+        {
+          "id": 0,
+          "pixels": 217547,
+          "bounds": [
+            310,
+            282,
+            1002,
+            929
+          ],
+          "centroid": [
+            630.8899272341149,
+            577.3125025856482
+          ],
+          "first": [
+            341,
+            282
+          ]
+        },
+        {
+          "id": 25,
+          "pixels": 152,
+          "bounds": [
+            617,
+            891,
+            647,
+            965
+          ],
+          "centroid": [
+            632.7434210526316,
+            927.6052631578947
+          ],
+          "first": [
+            646,
+            891
+          ]
+        }
+      ],
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    }
+  ]
+}

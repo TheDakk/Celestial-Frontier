@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "01-prawn-contours",
+  "command": [
+    "node",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/verify-and-preview.mjs",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01",
+    "01"
+  ],
+  "helperSha256": "02622a8451a730e44945753340791e3b784af33f5558e3c942f25121730c361b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/conservation-01.log",
+  "logSha256": "cdc1ea3391554559b703f1ba701eab8d6f0c6d6f74ab94959cf113a6f0208f89",
+  "nativeRuns": 0
+}

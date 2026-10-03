@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-reference-conservation/v1",
+  "masterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+  "authoringSha256": "f1d227bd62828edb85536b8a88c94283516570ae6ac4cdd6267ad7fce2b1f088",
+  "recordRecipeHash": "4337e7ca8a30b1ba30b6c110a6f372e9c2eb321ca5400d922fa2505898d00899",
+  "keyedRgbaSha256": "ea4e6af94667152ad00b59927c5a0f00985b73e0314f867309b320cab486b306",
+  "ownershipSha256": "acbe01f890ec3ee8ff2ea552825ed0160e3127bb22d0347fd3b27f0e6934d305",
+  "sourcePixelChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "ownershipReplayMismatch": 0,
+  "controls": [
+    "independent ownership replay equals published raster",
+    "deterministic replay",
+    "unchanged established keyed RGBA",
+    "changed source channel rejected",
+    "paint deletion rejected",
+    "different anatomical owner rejected",
+    "D28 default 0.5 moves only the non-largest bordered component; original labels and largest component conserved; explicit stricter 0.05 caller still refuses"
+  ],
+  "islandCap": 0.5,
+  "islandOutcome": {
+    "status": "PASS",
+    "remainderPixels": 10439,
+    "movablePixels": 0,
+    "islands": []
+  },
+  "automaticIslandTransferApplied": false,
+  "qualityAccepted": false,
+  "nativeRun": false
+}

@@ -1,0 +1,1779 @@
+{
+  "schema": "cf.c196-specialized-delivery/v1",
+  "workspace": "~/Projects/celestial-frontier-openai-mac",
+  "state": "FROZEN_DIAGNOSTIC_DELIVERY_WITH_VISUAL_HOLDS",
+  "selected": [
+    {
+      "id": "01-prawn-contours",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01",
+      "status": "IMPROVED_DIAGNOSTIC_CANDIDATE",
+      "recipeHash": "d72e88d53aca2b1dcd02dc94a74fc0af2f5c45d611975f8ce3f51125b22edc07",
+      "bindingHash": "1e7428610a44b61cdcbdb5e1dcc9498239d4f6e7eb9debd041eff0b0866d7756",
+      "masterSha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35"
+    },
+    {
+      "id": "04-shrimp-distal-only",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01",
+      "status": "HELD_VISUAL",
+      "recipeHash": "671e4b3bc8d69048b8c957a76861ea2de305ed679d2000df8f1a7d4ad3dc7e93",
+      "bindingHash": "e93b96d87b2569d6217cd9f1265e0545e7ada0b87eac795a8b361d9dc80d386d",
+      "masterSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+    },
+    {
+      "id": "03-mussel-islands",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit",
+      "status": "HELD_VISUAL",
+      "recipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+      "bindingHash": "7fa4be5a6cb899d69c78c9e31ba889dcfee80efd3e4cb205b5aa9ca817a531dd",
+      "masterSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9"
+    },
+    {
+      "id": "05-leech-reference",
+      "fit": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01",
+      "status": "MANUAL_REFERENCE_CANDIDATE",
+      "recipeHash": "d93dca979532c2bfb8a0bc87a04a01abd24adf2ee3d4cf8885dd4ff4f1df1ec9",
+      "bindingHash": "618bb0e5325c6beda76d3a21dfbd6cf97701bc23f03ffe577ebf57e586650638",
+      "masterSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061"
+    }
+  ],
+  "selectedChecks": {
+    "actions": 43,
+    "samples": 5203,
+    "softwarePoses": 24,
+    "softwareImages": 48
+  },
+  "includingRejected": {
+    "actions": 54,
+    "samples": 6534,
+    "softwarePoses": 30,
+    "softwareImages": 60
+  },
+  "sourceGenerationByThisTask": 0,
+  "newSourceProvidedBySupply": 1,
+  "privacy": {
+    "checkedText": 141,
+    "expandedHomePaths": 0,
+    "emailRecords": 0,
+    "symlinks": 0
+  },
+  "diskFreeGiB": {
+    "start": 132,
+    "end": 132
+  },
+  "files": [
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/authoring.json",
+      "sha256": "919d29108de3a475975b4c16546e2c853b4e1936de882dacec9b83db86ebd313",
+      "bytes": 18496
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/conservation-01.json",
+      "sha256": "19fe3e0139c34729723c5ac213dcd9f34b52a4891e76ad89b64b2150488e2cf2",
+      "bytes": 1251
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/conservation-01.log",
+      "sha256": "cdc1ea3391554559b703f1ba701eab8d6f0c6d6f74ab94959cf113a6f0208f89",
+      "bytes": 128
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/conservation-execution-01.json",
+      "sha256": "1bd20b6770791e5e452d1adac061aa7fbab3155846ad45e93a770740f016cdaa",
+      "bytes": 700
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/binding.json",
+      "sha256": "4a6b196f5bdc6d3e764d26bff29ab0f11bd21ffd89f0ace278301dca0da66cd9",
+      "bytes": 1374570
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/declaration.json",
+      "sha256": "e46ddd3e1ab967db61a0b0ae56f5f1c6bd6d6b9df558a55f58ba3b7bdebb170d",
+      "bytes": 14837
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/intake-provenance.json",
+      "sha256": "a99610a282e0b4c9f344f583f5169f18c7aa62933c8020f9ec1ace86a57b8d02",
+      "bytes": 3657
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/atlas/c196-prawn-contours.json",
+      "sha256": "4cfb0223d9d0146df9a586832d8f013b181ce76396f19910a0b9b52ab4dcd2d0",
+      "bytes": 12630
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/atlas/c196-prawn-contours.png",
+      "sha256": "64923cb51be322fc0e8f3bf17e00ec975332a5f428e3e5951bc2d241be8712b7",
+      "bytes": 243292
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/atlas/receipt.json",
+      "sha256": "ebabc4e2a868e403e089c081030fcc91cc5691a1042eec728281ffd0b984612d",
+      "bytes": 4772
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/binding.json",
+      "sha256": "bec536d53d7296959f21fafde62dd1f5e90df654e4b93a8d6d2d22ec94bb4d50",
+      "bytes": 10379
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/keyed.png",
+      "sha256": "02710f0bc26c8a9250bbd29b2b00e2379de382e278f834393d93cfb64eae2315",
+      "bytes": 1361920
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/manifest.json",
+      "sha256": "e0c33702012a51eb2877404eab6628fd2d39205b879cc09ec2e1f09542fd1850",
+      "bytes": 5281
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/ownership.png",
+      "sha256": "8a81a39e65b309eeff59388262bc1d69c38af75e389563f2a04a75d5b02b56b3",
+      "bytes": 16328
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/abdomen0.png",
+      "sha256": "4790ee98c673049bfe4f1dacfe229e55eab9d8eacf74532b72dfe7ef2f40479f",
+      "bytes": 16353
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/abdomen1.png",
+      "sha256": "807336bc88631181dd15abfff90d31e70c3fb4a394889df4c1bc39a37621fd94",
+      "bytes": 18451
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/abdomen2.png",
+      "sha256": "780dfd41d8b1621f42bd4b558124bb8b10b4859309dd65fb15a7866b9f6c917b",
+      "bytes": 17748
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/abdomen3.png",
+      "sha256": "b7bd7812b2290a76799185fb64425271115b4f4443ae04b50ad69d4f4006364f",
+      "bytes": 13918
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/abdomen4.png",
+      "sha256": "92e48d4f3fc9e4cbca3edb358e087ff73fc9d758512a06eee81dc2620ed8e644",
+      "bytes": 11000
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/abdomen5.png",
+      "sha256": "9b29681f9e1db6eed12069b6afba8615c59bcd74d31867bd16d2758a2782dff8",
+      "bytes": 9532
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/antenna-far.png",
+      "sha256": "728812dbe6914fde53daf2c1ebfe9e0ec6eb0ada0034990d821c149f991a2c2c",
+      "bytes": 5446
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/antenna-near.png",
+      "sha256": "64ae099061c195fb152adebc4d16cdbd07b45af2359544d8c6c0e7b112f41a5d",
+      "bytes": 3051
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/head.png",
+      "sha256": "1931d45185877400cb2b0a74b60da9d58f0ac1a01c178693c1d442d82e8505b4",
+      "bytes": 31956
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg0far-foot.png",
+      "sha256": "7fde105f21fa0eace3adf176f6cc42663d89c89192ff0a67120460ff35c63af3",
+      "bytes": 2685
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg0far-upper.png",
+      "sha256": "e61f29fbf35ae4e7d37a0a3aa452c080017dc5152fc46b7a06c1fb8cfbcce3d7",
+      "bytes": 2360
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg0near-foot.png",
+      "sha256": "501bab618b45377f7522de5d7271cec9f841a0a7eb6c12cfbd18f0937dbc7135",
+      "bytes": 2255
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg0near-upper.png",
+      "sha256": "9f7d19713f0a9308ba2c55b8760963ace93a4ce2c575c63827bff88337436490",
+      "bytes": 1672
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg1far-foot.png",
+      "sha256": "f3adaa4d7e483aa0dfbb811c4d5805c302e6d8c85891024704a54127d735762e",
+      "bytes": 2639
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg1far-upper.png",
+      "sha256": "a2a07feaa6b9c1a6e5bef625869e1695705693572afe32f7b8910b885a4ca245",
+      "bytes": 3486
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg1near-foot.png",
+      "sha256": "292a63d0a98885b1ccb7749a625af39cbc8047b72a162a18ade27ad8f2fb6a2d",
+      "bytes": 2870
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg1near-upper.png",
+      "sha256": "5f325b8f6e3c4848659aeb55665e97f4f6c108220c2f5e1098b127d7122eb7a9",
+      "bytes": 2876
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg2far-foot.png",
+      "sha256": "a6694c9c81ccb19c49ece93fbeaf9cc136fa10d5c20f5f7f43ce2595c7c591d5",
+      "bytes": 2624
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg2far-upper.png",
+      "sha256": "927631c5ea9e936698d3efd50e0798c793c2cff8c74fb257c13089cd62102e6f",
+      "bytes": 3931
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg2near-foot.png",
+      "sha256": "624af51f6e04d86664204c0b4006c48c29e7625d70cc451f6711c493238c2aea",
+      "bytes": 2794
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg2near-upper.png",
+      "sha256": "e333c450ca716c7429c302bdd8747b01a4b988a852f853edd8abd54083ff58bd",
+      "bytes": 3466
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg3far-foot.png",
+      "sha256": "b6b757fe38680e6ab2cb56bac513c916e4d3c57911ba9c9398f0bd986732e0d9",
+      "bytes": 2468
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg3far-upper.png",
+      "sha256": "8fa06de8c542b6333534fcfd3cb7bbabd57c8abfe8313b66881a3b26a76fa3d4",
+      "bytes": 4206
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg3near-foot.png",
+      "sha256": "14eb22e4ef2e714e9ac9abfab25b9da36fc4cb8afb35464a332d0a10ad34f5df",
+      "bytes": 2723
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg3near-upper.png",
+      "sha256": "284d5f52195739dd2eabd7a1926aebfad4cec91517a9408011b85822abecbb5b",
+      "bytes": 3707
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg4far-foot.png",
+      "sha256": "9be8b55007d16b7dd89e5953ad70bd0d3980c87dab7761aafa4eba6376dd8ce2",
+      "bytes": 2365
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg4far-upper.png",
+      "sha256": "c8ae42f8002bf788e6d9a54468dde1d14627043ea8a8d6ec6530f2151ca60a78",
+      "bytes": 2958
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg4near-foot.png",
+      "sha256": "0529f5f8c6ec70afc5c27ce35b77d928180e5e372a643dcd1840a776bf63abb0",
+      "bytes": 2435
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/leg4near-upper.png",
+      "sha256": "db88f3f62fc2aa6c4e6a943416bcc14bcad376482c9786dbb529c77d0e0637f2",
+      "bytes": 2946
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/tailfan.png",
+      "sha256": "8ac9040362ac59754f31f5cb59c354c07c83eec56cc20d0855088834abfcafd4",
+      "bytes": 50080
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/parts/thorax.png",
+      "sha256": "8016b70c5ddc2bfe925f481b5287223e22a5f1b6cab6a169ca29275181a94246",
+      "bytes": 38159
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/parts/receipt.json",
+      "sha256": "fe08d1ac2cff2d8df5b28ecf6edc2843dc598cf8b07f7e3110a3b95aeb18251e",
+      "bytes": 8037
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/pre-split-binding.json",
+      "sha256": "6bbf7857dc8a84e29378deb1bd62035fe5e040b3cff1b7460262c93ae68bfdc0",
+      "bytes": 829806
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/receipt.json",
+      "sha256": "4fc0453803a91b87a283535c0c8f57cba373554917c09ff74303a0d8e7075c0c",
+      "bytes": 4022
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01/record.json",
+      "sha256": "f642aa2df7deed55b01d3effbda6446206e4cf87b19b5b364388d2d4f91a7c19",
+      "bytes": 10469
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/intake-01.log",
+      "sha256": "44cced898de268b62e68af711a5ea0b28c3993f384a1e71dcf5a40f4772a092a",
+      "bytes": 321
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/intake-execution-01.json",
+      "sha256": "ef1d60798dc04a477f34a9f950139da42a825c1b39a9d77998cb46259175d504",
+      "bytes": 675
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/joint-preview-01.png",
+      "sha256": "cc1eb90033ef8520e38711fc316f12d1a6770943f3b0513b84ced79463f93931",
+      "bytes": 305998
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/master.png",
+      "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+      "bytes": 1143772
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-approach-swim-50-left.png",
+      "sha256": "185fcd0e591b87a0bd121e8596f6913fa9a890e842a4dbd0ba71ede2505a0016",
+      "bytes": 236687
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-approach-swim-50-right.png",
+      "sha256": "ac4914e13479b1313b810d6f368ab51c616fc40b2d012d1cc0d40afb1b41cf2c",
+      "bytes": 236780
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-cast-50-left.png",
+      "sha256": "87c131c3de2976a70fffd5927e29e7071819bdd97002b357ba0876305f7d08bf",
+      "bytes": 237091
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-cast-50-right.png",
+      "sha256": "be36bc403090a5dae6dbd69f931c05556ebf2e7c68b77a3468c6b4c9829ce602",
+      "bytes": 237523
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-faint-100-left.png",
+      "sha256": "5ce0f91b2bb50ecc993382c84ca8488ba39444fba5ada6856217abaf3f897658",
+      "bytes": 234038
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-faint-100-right.png",
+      "sha256": "417ce12990288410f2406df8f7fcdca8196d359cd8baad3977d45868486c4539",
+      "bytes": 234142
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-faint-50-left.png",
+      "sha256": "439e3d2514ef8d0f10fc6eb607e68976379ebb86605c78a0c6ddaffe931f9f1e",
+      "bytes": 235290
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-faint-50-right.png",
+      "sha256": "f005ef5d8e6ad7aed90776da04a2059151cfde223692ac917b74613805db910f",
+      "bytes": 235305
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-hit-50-left.png",
+      "sha256": "1d59264944c7c1aeaeee272c6170b29fabb9f23d8a3cdda85f39b1a858f6e461",
+      "bytes": 236901
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-hit-50-right.png",
+      "sha256": "761aa7c6b57fd0ce2cf4cd15ac9289e29309b357c69b978b1141fa46a75ef92b",
+      "bytes": 236882
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-idle-50-left.png",
+      "sha256": "d94c6b7b1b64041d58bd2fa54b2c67f903f22a70dec4aa173460442a5ae0e5be",
+      "bytes": 234935
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-idle-50-right.png",
+      "sha256": "716d011ff412109db7a2c234f3b65b9204e17901045ba0619ab1cd078727f634",
+      "bytes": 235371
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/ownership-preview-01.png",
+      "sha256": "3d29c289022e8e9dfea3ecaedee62787866a3c3ce3d3dcae80b68f0139aaaba9",
+      "bytes": 267843
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/publication-review.json",
+      "sha256": "b37ce1d362c3d01d44aba5c0964430a6e2033c6339ecf0abf4ee0509af752217",
+      "bytes": 36120
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/source-correction.json",
+      "sha256": "2afc57dcb71ef6786e0871e40d8f231bdc224feccbdae68bdf9477b29e978c34",
+      "bytes": 1102
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/static-01.json",
+      "sha256": "aef21d5c933e2b7acf677b2af939be662e553ed9b58bd03d6f0e39ea2f00430a",
+      "bytes": 6856
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/static-01.json.sources.json",
+      "sha256": "95a8ca1ef7c7af0631f25406858be5a7eeefc4614d42b03fc5d326c3b3a8cbf3",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/static-01.log",
+      "sha256": "3660a69eb3d9d72d4121e891b1a12443224984c42535ed51719af450d039297f",
+      "bytes": 1582
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/static-execution-01.json",
+      "sha256": "33dd9b79fa7544938f07b2601c772919faf9ad0f77aa0aea1be7ef69bc834dfe",
+      "bytes": 682
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/subject-source.json",
+      "sha256": "adc6d9af35d82d61dbbfb6592f3a0b4ea8e1bccdb946f2e483be4c36ebc6ed72",
+      "bytes": 2392
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/authoring.json",
+      "sha256": "f1d227bd62828edb85536b8a88c94283516570ae6ac4cdd6267ad7fce2b1f088",
+      "bytes": 18488
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/conservation-01.json",
+      "sha256": "c27c6dade9fd85553dcb6ea70ca64b344e507d8144d48f332b8cc5f0e24a0dec",
+      "bytes": 1251
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/conservation-01.log",
+      "sha256": "89ea19b1a622e9a207733e70dfd20fa5906506f9e1777f191bf146ae5903efaa",
+      "bytes": 128
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/conservation-execution-01.json",
+      "sha256": "77e551271b4a3f86e252aa5387b80036ac85f06bcfa1c2e410136b8bf3de19f0",
+      "bytes": 704
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/binding.json",
+      "sha256": "7a29ba1da4503b5b7245e71d717196d27509458ba8c4d83cb12d4600fb6145a2",
+      "bytes": 1281997
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/declaration.json",
+      "sha256": "b0c08a559e69fcbccbd4d8da0221587cd956b1488f96c762ece2ddfd5253dc30",
+      "bytes": 14835
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/intake-provenance.json",
+      "sha256": "34df0e38b687d373f95487812ddae34e35a16aaea2489486398f2c8f03046852",
+      "bytes": 3665
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/atlas/c196-shrimp-contours.json",
+      "sha256": "d3a2aeed363283a721d388aa4447137202e3d63dd75f2c8da42f771eda8259e7",
+      "bytes": 12651
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/atlas/c196-shrimp-contours.png",
+      "sha256": "63c6915443267bbc30ec23f488323201f371f8a010a664f5f5afdd5a2e7a0d94",
+      "bytes": 236611
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/atlas/receipt.json",
+      "sha256": "8433037cd181265fc434ff63d4b3bd9430b0a9fdcabbdff2887b4fba73ec011c",
+      "bytes": 4773
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/binding.json",
+      "sha256": "ab8320d0794e75caaa93350bf768b13fb424a930dad49d791e29488d3b2eccab",
+      "bytes": 10395
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/keyed.png",
+      "sha256": "0d3936bd92b426a5fe82555c90d13ecf5bc610f72fc534753ea2f10919dd4b0e",
+      "bytes": 1359945
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/manifest.json",
+      "sha256": "0e8d4e54f9b09957417ae63435c7f3a5269b3d8edb760ba78b7f675291a711a7",
+      "bytes": 5282
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/ownership.png",
+      "sha256": "a7ea00fa50b1cc1447a85ddebb4532d1c9b66c2ba806aef11423d6021cbc1e8d",
+      "bytes": 16307
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/abdomen0.png",
+      "sha256": "41ef89e0ff9fe93e4f7fedd216f5dcb2ccc1db9f2f115866d2a5c7a3fdc68954",
+      "bytes": 13295
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/abdomen1.png",
+      "sha256": "d0bc08368e232e67967a5e5e0a2c85fba063d88c6dcb8d4cb18611ff6c2653eb",
+      "bytes": 12858
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/abdomen2.png",
+      "sha256": "05b9a360ad83371740e5556fb309fbfbececf6ff7415936e98271fa1c40cae58",
+      "bytes": 19003
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/abdomen3.png",
+      "sha256": "cf1b580f241738dfb485921bfaaf424b9715a25971bfbdc2fbd4b8f2d2bb2c99",
+      "bytes": 15231
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/abdomen4.png",
+      "sha256": "0abe45b3418f16e22e523322381d278bad34854453536c810b7f9e10edd41140",
+      "bytes": 10352
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/abdomen5.png",
+      "sha256": "86ff08888dbea4a1713a2e78ede03a767a47ed6a56f04cd80bb1a15df016cc7e",
+      "bytes": 8818
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/antenna-far.png",
+      "sha256": "3c17494f5b4ad852ebbf58d16a85c7931c9b2b6d7acf1b86b6d9f630a5c68cd2",
+      "bytes": 3999
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/antenna-near.png",
+      "sha256": "7f136a2367bbb892b8a9fc0ef5a4ec7ed5532bb26564bf3bb2130cf57d63f96b",
+      "bytes": 4845
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/head.png",
+      "sha256": "68e4d59859822728e205ccb1aafaf4224da13011146a0562f9ef70cae8538aad",
+      "bytes": 26025
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg0far-foot.png",
+      "sha256": "e9d4f36ffe6820f7a870bc9b524837f19cf19c4eed1d9dd8c8705d1f63dfb5a6",
+      "bytes": 1976
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg0far-upper.png",
+      "sha256": "0fd40542dbb8383345842a4cafb7d9a4255032cef50bfa0d4debab93bfd882c2",
+      "bytes": 5132
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg0near-foot.png",
+      "sha256": "8f1b3fcab0a849964cf5181520fd60f4c63212451b4d06df0ed9a1a3ce2da335",
+      "bytes": 2029
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg0near-upper.png",
+      "sha256": "897df570366cd112966b1007211c358e299d53a46b05e184f83a9c02872a168e",
+      "bytes": 4907
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg1far-foot.png",
+      "sha256": "694a614ada7e8c13e43c09b50c86726ba9625a626beb1437f4fb84c081f9024e",
+      "bytes": 2535
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg1far-upper.png",
+      "sha256": "6f48822c2425d9841ccdbe997824c8bb6f7c18576408aef9e7414fcbf7b8a0cf",
+      "bytes": 2196
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg1near-foot.png",
+      "sha256": "19ec89a1d90253e9b90cfbe4f2609cc9f4a571d7e1404000e30ea89c201f9550",
+      "bytes": 2211
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg1near-upper.png",
+      "sha256": "f6dbc1cc02030d8aea0b5c26889403feab22e2be1a453627f24310a661abfb45",
+      "bytes": 2343
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg2far-foot.png",
+      "sha256": "aa7159319388c7b45ef3744ab7c6eacf7f8ca327d5fc96108426e6370f455160",
+      "bytes": 3332
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg2far-upper.png",
+      "sha256": "34928799a255b171527e307112fc17136825cdb5b900306a15aa5d76b6e4ca1a",
+      "bytes": 2719
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg2near-foot.png",
+      "sha256": "ffe05a1bf58e258230059127a72bf2dd2cc266ce5371b50b48e4fae275cec547",
+      "bytes": 3377
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg2near-upper.png",
+      "sha256": "4858d054d1d11caec0c797e3f4905e615c39847eeff8982a84cb7f191e0b3e4f",
+      "bytes": 1841
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg3far-foot.png",
+      "sha256": "24dea9c3478f5b5052667b390013b5ccc315dd7aca3d2c5a93629671f0d8c05e",
+      "bytes": 3244
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg3far-upper.png",
+      "sha256": "bc8b113b6e9605f81562a52e8cb633158ce46e778558915831a7d2d9d49e7bb4",
+      "bytes": 3340
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg3near-foot.png",
+      "sha256": "882730d47e8341da7afbd6fe44e0ce289f80ca2d9947db41d1503cf1e3db4833",
+      "bytes": 3186
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg3near-upper.png",
+      "sha256": "7fb13b002387d91f6054baa8d2108de5cf7ccb1823e7ea6ad9a6b3c50a99a8ea",
+      "bytes": 2360
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg4far-foot.png",
+      "sha256": "7702c98e8939fb6fb65842ace5cf2514399e91c95b6f76cc8c823e452b296177",
+      "bytes": 3038
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg4far-upper.png",
+      "sha256": "492a76e437de59b8e3259b743a5187e3c24d53ee691ff2ba681de20e5e68e964",
+      "bytes": 3723
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg4near-foot.png",
+      "sha256": "49c37fb31a978a77f5e2e43d06cd33f070034c0980528e84f9ef47296f346d3e",
+      "bytes": 3043
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/leg4near-upper.png",
+      "sha256": "6103449344b88540892fb2bee46447796d03280c27de3de5fcdd73f0a598b8f0",
+      "bytes": 2765
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/tailfan.png",
+      "sha256": "0a81a329c3e45429007fdb353b2a3240c715406fc98cf6d2e5d9581ffea0d2e7",
+      "bytes": 49758
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/parts/thorax.png",
+      "sha256": "370aa07fc9ed8a0dc56bbb7cca160c0a5030d6607de62615162b8c3b0c4188df",
+      "bytes": 35418
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/parts/receipt.json",
+      "sha256": "5597901889cb28248323000fe5b4076bad6fac5ee030d51b5e56e5edcfe8156b",
+      "bytes": 8040
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/pre-split-binding.json",
+      "sha256": "6465f03a9a7759f917954e90134305a6d5d2c58604aaa692dbf921442b2d9131",
+      "bytes": 842464
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/receipt.json",
+      "sha256": "6d4647a37640ef0260c301803d7a545d0e82fef349769aaa0d82c6cc40761a1c",
+      "bytes": 4089
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01/record.json",
+      "sha256": "b8ecf26d08a2d224aef27ad910092b50645b44147118b462b1accfa5affc321b",
+      "bytes": 10476
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/intake-01.log",
+      "sha256": "4ccb4e3b506bada6038c96e960825d3c1a02678356687ec4658d552c5b113714",
+      "bytes": 322
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/intake-execution-01.json",
+      "sha256": "162a937f74e028595f33680f61f1e5fefc0364e84647b156a9ffb3a30079b961",
+      "bytes": 679
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/joint-preview-01.png",
+      "sha256": "61084ec83959df8746ebfeab5e979fe504215f066f9faecdde947b015f3c34aa",
+      "bytes": 289875
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/master.png",
+      "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+      "bytes": 1146184
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-approach-swim-50-left.png",
+      "sha256": "c34c0c831ef2cb5df51cfd8e5b033c2abb95bf783bd6a40ddc4d9d9ece707d56",
+      "bytes": 227234
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-approach-swim-50-right.png",
+      "sha256": "08822136efe0636d4aaf6e63ad8e6e9e3ba44f250da0a72c43d1d5c76b202c60",
+      "bytes": 227401
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-cast-50-left.png",
+      "sha256": "5d309d85bca880eaff7a5afa8bbcf44f65d87888e4996a52b9b0db0d76ad94f9",
+      "bytes": 226266
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-cast-50-right.png",
+      "sha256": "0ae6022311a5052cac800ad6e44ce169b2bc464510615ced0945706a97c5dd20",
+      "bytes": 226724
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-faint-100-left.png",
+      "sha256": "cdfc243ced71b24bf309c92d147f9be47e32699cf6bf118268a6ae83b85fdb44",
+      "bytes": 228637
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-faint-100-right.png",
+      "sha256": "5ed024d3c03748aafb53ff79cc1db50c422ded3532136b9f903d0d5d130522fb",
+      "bytes": 228354
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-faint-50-left.png",
+      "sha256": "1b66ec2820bc0babc17fb7ff17f607352b03cea17b7d16c942a96fddc59423cf",
+      "bytes": 229949
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-faint-50-right.png",
+      "sha256": "8c9db01a0ce7f2f92546df4e80cb4a9f6d286afac970378608a847448bcacd9b",
+      "bytes": 229593
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-hit-50-left.png",
+      "sha256": "b664911306225ee9aa9bc7fb6341b1e9350552d3589c71f3444272ec682d6d48",
+      "bytes": 230066
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-hit-50-right.png",
+      "sha256": "b3317e2eab6f5c467314b83a3ea88ffcc4f15666894594f91429113d5651218c",
+      "bytes": 230094
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-idle-50-left.png",
+      "sha256": "94b3d1e111875d04e8dac98c2a54bcd7eae3ed105e4a2317415b2115fe3a29fc",
+      "bytes": 229509
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-idle-50-right.png",
+      "sha256": "a0498211c3395541fb36b2170e97ac1ba19c4196d402421558a51cacab14f5ee",
+      "bytes": 229121
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/ownership-preview-01.png",
+      "sha256": "e1ddb0eb96c350f9c01b94e3b8674d35b470b39ded8a435656686522ab8e9142",
+      "bytes": 254555
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/publication-review.json",
+      "sha256": "1e39f7f298cbd5254b919529665c663e0b67139563290fc78a770d015e278dee",
+      "bytes": 36140
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/source-correction.json",
+      "sha256": "7b648ba5af8bd35e9271e57e5ec63fda49ed01d14fff30bfd10eef55a6cffd74",
+      "bytes": 1103
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/static-01.json",
+      "sha256": "104d374e3bcb688dee32ede74a6692f0161edaab39bf49cecdfa7da631259401",
+      "bytes": 6858
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/static-01.json.sources.json",
+      "sha256": "bd51a57e87cb81c582af06ff66ef834d4c449be1c1e413217bec559aa78fed72",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/static-01.log",
+      "sha256": "8802b0cd891e8e399f72cd2cc8954c6a2d459ce3f62b4e693e30668c6b3390e7",
+      "bytes": 1578
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/static-execution-01.json",
+      "sha256": "5f2f7be0c0d41729871aa6c8ca0d2fb9a5ec6a348621836b3b02380df2f712e5",
+      "bytes": 686
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/subject-source.json",
+      "sha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+      "bytes": 2382
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/authoring.json",
+      "sha256": "c9e294ae8524f38526db35f392c9362a71661d2c0f5bdcb00b2de93435eddce1",
+      "bytes": 5824
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/binding.json",
+      "sha256": "b1247aa12e24dba98f15bcb5904e937c1ecec77a578f98ee0bc553a853c9d394",
+      "bytes": 980195
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/declaration.json",
+      "sha256": "d71fcb814b9effb0b91d545f164a5792169d7023bfef6a717035e6d1aa336e93",
+      "bytes": 1025
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/labels.png",
+      "sha256": "e6e9415b92302280a951d095dba5edeade2ffcbd6438f99f7789d0335ffc1757",
+      "bytes": 41870
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/atlas/c196-mussel-islands.json",
+      "sha256": "1a4075dc0a245b8dae6483b386edb276a1883af0c38af3138c8fb0fb32914458",
+      "bytes": 2574
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/atlas/c196-mussel-islands.png",
+      "sha256": "6841699c7d9831505ef38826cbda09a2eb1920a60d7c1fa3f6e73fd99434da5f",
+      "bytes": 644467
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/atlas/receipt.json",
+      "sha256": "5f8b16a70cdd1b5b1148a4ffe3bb8bf0758a0f4dbef514d33b1b7fec73a6ebe9",
+      "bytes": 1512
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/binding.json",
+      "sha256": "96a6f8c61c7b694b4fb1334993a068b7e42ddc974923c797aa069e0e5ba552aa",
+      "bytes": 2268
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/keyed.png",
+      "sha256": "514e44a717053c256faf11ac69fd7e73ad049bfee9d4663ad1c97704fb3cc474",
+      "bytes": 1695040
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/manifest.json",
+      "sha256": "a5636bc2aa9dda6e9c3d3f6dfb494aab55e5ea904fb57ab94320d7c8839e1c17",
+      "bytes": 1011
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/ownership.png",
+      "sha256": "29f8f660d44d88a42cc7fa904cd5fd31a27799c917e4c1b27c3b6e1cf8be38ef",
+      "bytes": 17827
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/parts/foot.png",
+      "sha256": "c20fdca9f828ffb5dad5cf8e080aa502de9c64f6490784e644792fc7ca5abd60",
+      "bytes": 30003
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/parts/hinge.png",
+      "sha256": "c1db1e1a49111c4faa07c3c369207b9fd214a622acef03f4472f0c7b3be85a48",
+      "bytes": 13069
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/parts/mantle.png",
+      "sha256": "29beeb8dedf4e5635841b869c7751af05b633af12e9c93842593648461778aee",
+      "bytes": 91071
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/parts/siphon.png",
+      "sha256": "7f76bef0a66694ad6ac41af97af62b388f5ac7933cb85eb5b2089cc50db66716",
+      "bytes": 25774
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/parts/valvefar.png",
+      "sha256": "afb19c1818f7eabef0312d50d24298ac5094f4ec09da868db00f4f20a69ffbdc",
+      "bytes": 149405
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/parts/valvenear.png",
+      "sha256": "6f6cc0ec7563e5e84f4aa4b72cf90c18cffa538c3c165f25c7d6505e71fdd1ef",
+      "bytes": 400749
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/parts/receipt.json",
+      "sha256": "212e3dbade079d1c333525e77a71d5db459284ea893966a6c65cbe6bc8aa0930",
+      "bytes": 2237
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/pre-split-binding.json",
+      "sha256": "bd76b073495019a15c9d276b024f47c8d3be29d7eb50618ea6dcac574c21f296",
+      "bytes": 836806
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/fit/record.json",
+      "sha256": "68e6564e1ac55326b6b1bcbf453f766ff6317ee85a9add880ea884be524ac383",
+      "bytes": 5617
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/d28/receipt.json",
+      "sha256": "ce1e56562669c525000cf697153fe7407108dbf2acc500f1561848b61ddc6aa6",
+      "bytes": 2409
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/lineage.json",
+      "sha256": "5e55af54f59de1a3d846b6825a20bc1cbd5855f6eaef74f9be77a22ab08cf658",
+      "bytes": 361
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/master.png",
+      "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+      "bytes": 1408242
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-approach-settle-50-left.png",
+      "sha256": "51bb71694c9c531ebde3bd2f3a719e110907014fe729ddc620c645581bd0cf0b",
+      "bytes": 421539
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-approach-settle-50-right.png",
+      "sha256": "45d96ba6d6e62f499590c32cb5e2f61fdceefe881bba1d6193e3af3670d9e0bd",
+      "bytes": 418240
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-cast-50-left.png",
+      "sha256": "30a3c85c63038e0d82c64bb7d9e080a32f744babd70691acd7205c28f8e32c72",
+      "bytes": 599566
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-cast-50-right.png",
+      "sha256": "37f0df89f3185d18e893e46a343e32278e9a5d7f27ae36025b7f693f3b14d54a",
+      "bytes": 598476
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-faint-100-left.png",
+      "sha256": "db56504bcfe1a533160cef2db95a2d8f34db7d222a77cd9b0da8bc53fbf24820",
+      "bytes": 593062
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-faint-100-right.png",
+      "sha256": "b8aa67300a2ce5fd4fd5a21bb0636050bdb356cd5f63c96ce91613ee6d2bb69c",
+      "bytes": 602887
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-faint-50-left.png",
+      "sha256": "58a8ac5948d7432407f24be49fa7e34aab6a2135f78182c37d1119700be66a79",
+      "bytes": 497638
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-faint-50-right.png",
+      "sha256": "c769f042edaedd69ebb00dbbad19c3042a7b5550e393cbefc34cf6dd36e9032f",
+      "bytes": 500698
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-hit-50-left.png",
+      "sha256": "d324525e12926e8ff0b197d41882083bd36ed359ccdaedbc18771b8a50f860c3",
+      "bytes": 433631
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-hit-50-right.png",
+      "sha256": "49bd6099863b245fe5bb3237d6739dacb41a6f50dbd371ed1f84deedb2e4a086",
+      "bytes": 431016
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-idle-50-left.png",
+      "sha256": "59836255700e98f35962b1f39d08bbe53c049a07531967895261b438dcd90bc2",
+      "bytes": 535935
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-idle-50-right.png",
+      "sha256": "1bb40b207b69c5067c6ec5c595f9d5a864411ab0101403a5b0fe2c22e589dcf4",
+      "bytes": 540118
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/publication-d28.json",
+      "sha256": "b5b21a93026f36de5c1111b87fc4a94c5314176f21c77a3f68ed4ec1249c029a",
+      "bytes": 36174
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/static-d28.json",
+      "sha256": "8c29afab2996f26e74831093f36ac9cd02e546305776678949bc159fd9493193",
+      "bytes": 6660
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/static-d28.json.sources.json",
+      "sha256": "89feb2ffd570e1353f92d334f14db0569ff63454b04e671dea94d0a2bf459a7a",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/subject-source.json",
+      "sha256": "a4f6f6555c6908342188185fd7aa62f6d921af1bf6fd48d340e851881c4cae0e",
+      "bytes": 2190
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/authoring.json",
+      "sha256": "1efdfcd0d14fcf309113ed02d5bdeee393e91b43af5c10a4ef2348d3aa6f183a",
+      "bytes": 18458
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/conservation-01.json",
+      "sha256": "d60898cb6ca739b204c030b9222881b0a2693c3d58eb78ab6adbbdf52d2af73f",
+      "bytes": 1251
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/conservation-01.log",
+      "sha256": "2437c5590b8b045071b84036478f4089c7d1212d2313a96b61b6e7cd9b0c5464",
+      "bytes": 128
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/conservation-execution-01.json",
+      "sha256": "21bf8a64e79bc6677ae990c626167193675ca75bddcdde435431058ffd242a02",
+      "bytes": 716
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/binding.json",
+      "sha256": "6001eb0a1d38761ecabcb3c7bfd243a014dba611cac08d2be52578b3a1af03e9",
+      "bytes": 1265184
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/declaration.json",
+      "sha256": "a5b0f50ce25bc2172c5c695d2a7a3d53f45817e3999ed71df465140f399d96ea",
+      "bytes": 14821
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/intake-provenance.json",
+      "sha256": "b9ba01db8136dd4b6547bc7ebb3cf1011703e986759f2cc2124c293393502e5e",
+      "bytes": 3689
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/atlas/c196-shrimp-distal-only.json",
+      "sha256": "608ed5f9bea98aac57548a1e43e1a9dd5d41b35f37ee26cffbcc6ea3f03c7ba2",
+      "bytes": 12648
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/atlas/c196-shrimp-distal-only.png",
+      "sha256": "bb1066faf1430b9979359081f69ba686c8f85809151194b50d5a95b0c9d6ff5a",
+      "bytes": 233334
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/atlas/receipt.json",
+      "sha256": "98aaf36396f2b8b5a52af87cabc39e811860392b7a2efe440ecffb52caaeb65c",
+      "bytes": 4776
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/binding.json",
+      "sha256": "bf2d9be22095650ebc8e4a38c49af721b4dff375f14db1f098836f88ce188c5f",
+      "bytes": 10390
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/keyed.png",
+      "sha256": "0d3936bd92b426a5fe82555c90d13ecf5bc610f72fc534753ea2f10919dd4b0e",
+      "bytes": 1359945
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/manifest.json",
+      "sha256": "80562743c8e3964c15c3b077ddea5923671084e22a5439969c7fbf686a123064",
+      "bytes": 5285
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/ownership.png",
+      "sha256": "e9dcf827f76c795b9ae955e3d35befc4ca0eb082e08e68c786fb0de4e25c31e7",
+      "bytes": 16082
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/abdomen0.png",
+      "sha256": "dc5c83cf685ac0628af19cfac58fb56090485183a5d8989c174eec831cce7f3e",
+      "bytes": 16681
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/abdomen1.png",
+      "sha256": "2534dde0ba85b17286ff65050eb8ab7b40894fb1e4402e00dba9b1e39bf5bf92",
+      "bytes": 13946
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/abdomen2.png",
+      "sha256": "05b9a360ad83371740e5556fb309fbfbececf6ff7415936e98271fa1c40cae58",
+      "bytes": 19003
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/abdomen3.png",
+      "sha256": "cf1b580f241738dfb485921bfaaf424b9715a25971bfbdc2fbd4b8f2d2bb2c99",
+      "bytes": 15231
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/abdomen4.png",
+      "sha256": "0abe45b3418f16e22e523322381d278bad34854453536c810b7f9e10edd41140",
+      "bytes": 10352
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/abdomen5.png",
+      "sha256": "86ff08888dbea4a1713a2e78ede03a767a47ed6a56f04cd80bb1a15df016cc7e",
+      "bytes": 8818
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/antenna-far.png",
+      "sha256": "3c17494f5b4ad852ebbf58d16a85c7931c9b2b6d7acf1b86b6d9f630a5c68cd2",
+      "bytes": 3999
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/antenna-near.png",
+      "sha256": "7f136a2367bbb892b8a9fc0ef5a4ec7ed5532bb26564bf3bb2130cf57d63f96b",
+      "bytes": 4845
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/head.png",
+      "sha256": "68e4d59859822728e205ccb1aafaf4224da13011146a0562f9ef70cae8538aad",
+      "bytes": 26025
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg0far-foot.png",
+      "sha256": "e9d4f36ffe6820f7a870bc9b524837f19cf19c4eed1d9dd8c8705d1f63dfb5a6",
+      "bytes": 1976
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg0far-upper.png",
+      "sha256": "76305ccaf661719b75b1cd5f38f7ebeae0d370bd6238137bfb9fd10b880f7e52",
+      "bytes": 3254
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg0near-foot.png",
+      "sha256": "8f1b3fcab0a849964cf5181520fd60f4c63212451b4d06df0ed9a1a3ce2da335",
+      "bytes": 2029
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg0near-upper.png",
+      "sha256": "5bf673ed217e2afa248451ff4c6a7f229e42446c30e809fa124119fc988ff2bb",
+      "bytes": 3174
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg1far-foot.png",
+      "sha256": "694a614ada7e8c13e43c09b50c86726ba9625a626beb1437f4fb84c081f9024e",
+      "bytes": 2535
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg1far-upper.png",
+      "sha256": "14eccf5c6dd7f94af025c656da8fa4f021b41dd25c6738fe890b3cd103dd72b7",
+      "bytes": 1825
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg1near-foot.png",
+      "sha256": "19ec89a1d90253e9b90cfbe4f2609cc9f4a571d7e1404000e30ea89c201f9550",
+      "bytes": 2211
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg1near-upper.png",
+      "sha256": "66c5bea033a93ad95071246a510d7cde3d397ab6acfb3894a148c06d1a9599bb",
+      "bytes": 1742
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg2far-foot.png",
+      "sha256": "aa7159319388c7b45ef3744ab7c6eacf7f8ca327d5fc96108426e6370f455160",
+      "bytes": 3332
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg2far-upper.png",
+      "sha256": "dda203a81876d954fc5281e504dfcc03bbbc83cffbb2e434474cbd7f11c5f19f",
+      "bytes": 2142
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg2near-foot.png",
+      "sha256": "ffe05a1bf58e258230059127a72bf2dd2cc266ce5371b50b48e4fae275cec547",
+      "bytes": 3377
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg2near-upper.png",
+      "sha256": "b187112e9b716e457e95dc98776415f15116eee703129242ad85ec7cf5fcced5",
+      "bytes": 1707
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg3far-foot.png",
+      "sha256": "24dea9c3478f5b5052667b390013b5ccc315dd7aca3d2c5a93629671f0d8c05e",
+      "bytes": 3244
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg3far-upper.png",
+      "sha256": "95103e5280d9379ab110066c7e21670d03e937e243967373898bc4ab95e625c3",
+      "bytes": 2265
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg3near-foot.png",
+      "sha256": "882730d47e8341da7afbd6fe44e0ce289f80ca2d9947db41d1503cf1e3db4833",
+      "bytes": 3186
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg3near-upper.png",
+      "sha256": "c01fd99f3423524401ed02d1db09ade6730ebce8e95bf04dd1fb16a3f7408518",
+      "bytes": 1850
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg4far-foot.png",
+      "sha256": "7702c98e8939fb6fb65842ace5cf2514399e91c95b6f76cc8c823e452b296177",
+      "bytes": 3038
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg4far-upper.png",
+      "sha256": "b3e1679b68c1e8ce82be6a7d21d91a95b75bdfbf12330c9f1e0cd3686ad1d568",
+      "bytes": 2672
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg4near-foot.png",
+      "sha256": "49c37fb31a978a77f5e2e43d06cd33f070034c0980528e84f9ef47296f346d3e",
+      "bytes": 3043
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/leg4near-upper.png",
+      "sha256": "008e73b1ac282f166327032091dd2fce0961ca14aab80bdbc547e480ed251a71",
+      "bytes": 2031
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/tailfan.png",
+      "sha256": "0a81a329c3e45429007fdb353b2a3240c715406fc98cf6d2e5d9581ffea0d2e7",
+      "bytes": 49758
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/parts/thorax.png",
+      "sha256": "e0d94a5bd9a52ab40fa36ceb700667265367567fffb8ccfe5d74bcc71bd582d3",
+      "bytes": 38849
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/parts/receipt.json",
+      "sha256": "c155c6991a18043d5824fa57f9949ad9aaa09023aee01ae2133141d641dc0543",
+      "bytes": 8036
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/pre-split-binding.json",
+      "sha256": "c7e1464134e7f1214750959113df2cdf0a3466a9850f8eeac2df51de463640b7",
+      "bytes": 825973
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/receipt.json",
+      "sha256": "816c3004de8da457e8b43a4b5445b13e4ddcdfd62bcbff3a1c50411519d90cc9",
+      "bytes": 4090
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/fit01/record.json",
+      "sha256": "f7d76fce7d15511645e24c0ad842b9bc7da32c91746f3c1c7c7ff87b34cb0644",
+      "bytes": 10459
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/intake-01.log",
+      "sha256": "b4472ea7cc0cce9ba81e6d8fcb0d0cc86e659b988f9fdc6deb143f6a1db5b417",
+      "bytes": 325
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/intake-execution-01.json",
+      "sha256": "ee712e4c3d132c06a5aeaadea5dc257ccd707c8d5d0fb710489eafdff9fe566d",
+      "bytes": 691
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/joint-preview-01.png",
+      "sha256": "61084ec83959df8746ebfeab5e979fe504215f066f9faecdde947b015f3c34aa",
+      "bytes": 289875
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/master.png",
+      "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+      "bytes": 1146184
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-approach-swim-50-left.png",
+      "sha256": "6ea710831f66455828d9f5f3ac95b656adc3f2ba56a84133e9a67f82e7c02e58",
+      "bytes": 228377
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-approach-swim-50-right.png",
+      "sha256": "4bbef34428763eadf16b5a1c6187ce03420efc3e9ccfedeb7a2d38d8e8754bd8",
+      "bytes": 228601
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-cast-50-left.png",
+      "sha256": "c3df6ee27d3093370610dca67aed56325af90b83a17d8f336465a0428ef05a83",
+      "bytes": 227449
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-cast-50-right.png",
+      "sha256": "6b84a8052fd2cca37b5b399e4d776a510e8595b3398b914be1a1b62178c76f1e",
+      "bytes": 227802
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-faint-100-left.png",
+      "sha256": "cdfc243ced71b24bf309c92d147f9be47e32699cf6bf118268a6ae83b85fdb44",
+      "bytes": 228637
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-faint-100-right.png",
+      "sha256": "5ed024d3c03748aafb53ff79cc1db50c422ded3532136b9f903d0d5d130522fb",
+      "bytes": 228354
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-faint-50-left.png",
+      "sha256": "cd6e49dbfaf2dbaa82cb07d7707748f6d2b83fb90a0cc471599e1a203f6614ef",
+      "bytes": 229986
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-faint-50-right.png",
+      "sha256": "4c518798c88657a301505556972c81006018731ec898e0f888e7f0d4310b4c1f",
+      "bytes": 229560
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-hit-50-left.png",
+      "sha256": "fc579c5396ecae9271f949fb449002411f91b9b3bc776c1e37e734a8eddb802b",
+      "bytes": 230402
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-hit-50-right.png",
+      "sha256": "08499fcd9f8be21834ca4daf7c3fffcf92ee5c301a70c2b3812abc6c07e60c5b",
+      "bytes": 230176
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-idle-50-left.png",
+      "sha256": "f6252f433d1a3ad9d9d75f503191d2f8345cb088dc5caea7af30b720caf8f050",
+      "bytes": 229569
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-idle-50-right.png",
+      "sha256": "c67342a866c6840cce0b9a4e35cb3603df2fe1bcd3228a39c959ed5d664ba5ee",
+      "bytes": 229118
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/ownership-preview-01.png",
+      "sha256": "cf195351b4bfed1623f5c7bc458b924c82e7492ffd2d466ee7a1f3f06f8a3ae2",
+      "bytes": 254558
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/publication-review.json",
+      "sha256": "8e5cb0b909e4f069ac7c6d76c5388a601e7d756371bb15ee3977b667d26942a4",
+      "bytes": 36200
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/source-correction.json",
+      "sha256": "24fdcf15ed4e5a90514f53180fd9fde35e1596a8540e23ab1efabd52b4777175",
+      "bytes": 1020
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/static-01.json",
+      "sha256": "17cc1d05e31e8fb48e883197bad11e1968c631c0fd035bc1ad059e5893af4d47",
+      "bytes": 6878
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/static-01.json.sources.json",
+      "sha256": "cfbba7385cc5a52864688a75a87c921ecd80b52438ca05bb18dbbb80545300ce",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/static-01.log",
+      "sha256": "259e5ba929f888ff459d7e2a3e7b53398bf85353c13bc58e5f4afa9b803f50a6",
+      "bytes": 1580
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/static-execution-01.json",
+      "sha256": "aee114a370b52029dd9d644ff7f9b84283fe4ce14a1957b3cfd023cae19bf6a2",
+      "bytes": 698
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/subject-source.json",
+      "sha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+      "bytes": 2382
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/authoring.json",
+      "sha256": "f38f240b5fb5e678037ff27a6643f1544bc2b84dc5c09d5c83c0c5f951c6c696",
+      "bytes": 5979
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/conservation-01.json",
+      "sha256": "2bf8432d03221b93d4a2d73b068757c9729f72b4a4fa3d64dff4afb5b1f8e4cf",
+      "bytes": 1622
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/conservation-01.log",
+      "sha256": "4d84403d70c0e7595a296cf838ce04e7291ee2c990d6138488856ff87b72d5b9",
+      "bytes": 263
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/conservation-execution-01.json",
+      "sha256": "a4b78c970ff3a14b294b6e5a76a955e52fdcd5d66b5ef5b37070b224b57ecfae",
+      "bytes": 704
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/binding.json",
+      "sha256": "be159636558f730ec4450e59ef3a1e6d71ed184082d6ba4e75b6863b5819cd32",
+      "bytes": 1074346
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/declaration.json",
+      "sha256": "2987391df613c12f63c70c89c1e19c9bd5e93efc9ed2e0574f6df60e14a80b4f",
+      "bytes": 4364
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/intake-provenance.json",
+      "sha256": "56cc8ea7ec28f283714744b620108b19456801520525a8878b65c86c5114a7f7",
+      "bytes": 3093
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/atlas/c196-observed-leech.json",
+      "sha256": "284a92009c228919c818dad628ad30fbb35c8ee72c2fde82afe22a4c23e3c201",
+      "bytes": 4995
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/atlas/c196-observed-leech.png",
+      "sha256": "4d9705f8a9322d5d58540932a16f219031d74295961c0d60ed8030c5e334b146",
+      "bytes": 329166
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/atlas/receipt.json",
+      "sha256": "eab9691bac2f5daf9502e2f187f01a5e2ddcc66b3bd80cab16c5cebf5e393acf",
+      "bytes": 2280
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/binding.json",
+      "sha256": "ebe89a5b624bf38c1cc26b8cfb6cf73c22c43c9dc5c0e5318398a2597c23d39d",
+      "bytes": 4206
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/keyed.png",
+      "sha256": "7054a68060c5bdb3aa451b9f25ac7a68eb14d960c41ecf9bec53b1696a0f2036",
+      "bytes": 1325744
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/manifest.json",
+      "sha256": "551ffab4197e3941e7e7a6419a8100ea56b031ccfd70f82d6cc0f5bf0d1e3db4",
+      "bytes": 2007
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/ownership.png",
+      "sha256": "896810d6bd7389898017a442efe3487159697b9634a01b8935869a864d1e39e9",
+      "bytes": 12783
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment0.png",
+      "sha256": "119e862e7f7fe646ece619c7b020dc6678fc659dc0b847069f76665b83091739",
+      "bytes": 8659
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment1.png",
+      "sha256": "602fc285534c47a7762170598f62dfe81353031e6601d6782a0d25da339cc761",
+      "bytes": 15836
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment10.png",
+      "sha256": "b4ef1d6555730d6818ba1c8fb05d49b1ff5094795cce57ddda8800fabcf3ffb1",
+      "bytes": 36518
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment11.png",
+      "sha256": "247f7fcef559cc2ddc5a9734bc32121cb5f8a257bfa5e5324276f7eee70b8a37",
+      "bytes": 29394
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment2.png",
+      "sha256": "ee089a2eae2c930dfdcedb4d787d815a839f464a6a9898202d890c7af567ea9e",
+      "bytes": 22043
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment3.png",
+      "sha256": "b24e9194ddaacaa6d82afccbf06c74f65e05b11a3dab42b82d14cd1dfdd49231",
+      "bytes": 28799
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment4.png",
+      "sha256": "662455a1cb37cc4dfb268046c6262654cecbf595cab9a45fdb9dda52444d06f5",
+      "bytes": 34612
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment5.png",
+      "sha256": "49ec184ed1386658f8f2679c82c730dc8dd79848cd23ac4099c6a846c81578e1",
+      "bytes": 38017
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment6.png",
+      "sha256": "c6525297ef912ce967d26997923058ec9bd3f26faa816bcf498d5d0fe497a8d5",
+      "bytes": 41427
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment7.png",
+      "sha256": "41acb4775e289084b6b696f999eaff0def0905e88eaa781d5465ff60e1d1dacf",
+      "bytes": 42843
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment8.png",
+      "sha256": "f2f203221294b814eae1bd77127ddcf62e2f520578140106b0cf615ccc039b80",
+      "bytes": 42799
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/parts/segment9.png",
+      "sha256": "b290aa1a7be7b6468c5f70a3586afab4c11982bfbbcb731af26575a97108a05d",
+      "bytes": 40425
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/parts/receipt.json",
+      "sha256": "2adc82a1354e012942fc8e08845ece74cada30a02436f1d3ccc602dbc411bf3b",
+      "bytes": 3485
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/pre-split-binding.json",
+      "sha256": "840744062e3f26bd588dd58f95c9c62d7283956190166355251bb4856a68b501",
+      "bytes": 614068
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/receipt.json",
+      "sha256": "591e2f6d129226970ff044704289111b99e2fd7bbba3bcfff4b047767cbea035",
+      "bytes": 2047
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/fit01/record.json",
+      "sha256": "d36efdc2ab6d80249ef3b366f920cc11837af4c43d2f109f7facd9622dd43672",
+      "bytes": 5641
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/intake-01.log",
+      "sha256": "18adefea182869687c5b0e89fb8dd3eb5d7261221284851051c6d3496add4a2b",
+      "bytes": 322
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/intake-execution-01.json",
+      "sha256": "01d5132489b02c32b653d337eaf38f27e45c7440418c652e6fda750b20fefdc9",
+      "bytes": 667
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/joint-preview-01.png",
+      "sha256": "af95adfb0d816c931275c2aee4b93fa2cafaa497c4b8199d0a763bab615faafa",
+      "bytes": 387771
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/master.png",
+      "sha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+      "bytes": 1144949
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-approach-undulate-50-left.png",
+      "sha256": "30cf40f46f190f4d30b47cdac8fea3e42bb264c3df671473b8d2961313b49263",
+      "bytes": 325156
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-approach-undulate-50-right.png",
+      "sha256": "fab82d69db06d3b202b94b36d613f1a182db05982fe462572797d8bde7b292f7",
+      "bytes": 324960
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-cast-50-left.png",
+      "sha256": "759075e7defa15e689ccb08ae32516c23f80e9a024d8a880148c7206003c5417",
+      "bytes": 326933
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-cast-50-right.png",
+      "sha256": "8b9de0141b90ce71aedf4cb475fa7c837c958867677e6f4f29e7578bf3a68fcb",
+      "bytes": 324480
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-faint-100-left.png",
+      "sha256": "3dbfd41a0bd87bc9aec907b42182382e82ee223e90177a63ba9fa5b0f89b3988",
+      "bytes": 321450
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-faint-100-right.png",
+      "sha256": "c34934bb649695953c16f19dee13541c5a9fd393242c9de782348142062ac22b",
+      "bytes": 321622
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-faint-50-left.png",
+      "sha256": "15b30ca4434dd5fb6eafcd6bcbfdad813380fe2f851b7fd2bcfbb5a6799a2bae",
+      "bytes": 324230
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-faint-50-right.png",
+      "sha256": "d4bd3e43ab882da14152e8041b0aaba2335907383bd8dada91e422787d2695a9",
+      "bytes": 324205
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-hit-50-left.png",
+      "sha256": "19ba63f126e9d42878891d6e5816da64b63e061d85235da8e9016487ef32508c",
+      "bytes": 325118
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-hit-50-right.png",
+      "sha256": "708eefd282a50b782263c6dd2844d63f919578cf8da7439c612408db695a6970",
+      "bytes": 324865
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-idle-50-left.png",
+      "sha256": "0855f6fce14736efe698bb80f06b41294659d76c4c27ca7449cb7be35cb60a08",
+      "bytes": 323446
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-idle-50-right.png",
+      "sha256": "65fe43822c2073adb10f11e1c10a9961bf932503c232f8e774a78b50980bae29",
+      "bytes": 323495
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/ownership-preview-01.png",
+      "sha256": "e83a1d86874aa843017b9a0fc5aadcf788e4fa431ed3ffc3d5b9d108663cf7e2",
+      "bytes": 372289
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/publication-review.json",
+      "sha256": "81910fcc9219402d2e59ef86c3544e8334b1ddca868509f1dbf1d42c36122d5f",
+      "bytes": 36150
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/source-correction.json",
+      "sha256": "1f722765a5c272942451084bfea0cf554e350c572f30777e2edaecc2d6a54229",
+      "bytes": 1240
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/static-01.json",
+      "sha256": "5154c56747180ff270a10420616e5bf8e2d4924c17868a5bd2b947712e0c43e4",
+      "bytes": 6276
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/static-01.json.sources.json",
+      "sha256": "b880f5ae2ae7a5da059cc852309d176cc5055eec0332521f98e738ca4f4144e8",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/static-01.log",
+      "sha256": "f02c2c99d3aa62ce9d654ea8fa12c84e94199c5cb51c376f142a4b6e4a1c1e9c",
+      "bytes": 1454
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/static-execution-01.json",
+      "sha256": "987ba58140b7999c6f335a1b1f1f70e3d6bfc0916ea40e174eb27dbddea6e6e6",
+      "bytes": 686
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/subject-source.json",
+      "sha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d",
+      "bytes": 2187
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/README.md",
+      "sha256": "e2715ef21641529d0a80fb58cd95cb1cdcac4f2b885a3088727dd2e5a2c7f816",
+      "bytes": 8346
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/attribute.mjs",
+      "sha256": "51f2fde91ec714540273ce7a5ecbcd0daf7740175a7063fc497d538d13bfee1a",
+      "bytes": 5042
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/attribution.json",
+      "sha256": "afe1d4f6f5cb74f04966cda06302fc635810cb701d9a32a9b64ef0efb496f65b",
+      "bytes": 126307
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/author-contours.mjs",
+      "sha256": "a3c9e7f797a1fdb1448d218da303ad9170b7bba480953e3a42fc203ae7d4b023",
+      "bytes": 4578
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/author-leech.mjs",
+      "sha256": "9120c08f5c9d4c914412e1d31c28e59a0cb6a89a0cb725cd43c2de1c6d101331",
+      "bytes": 3516
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/authoring-successors.json",
+      "sha256": "2f29a92cb56c128d550da21ba12dc1c0142007afc0516da4790da843e463c347",
+      "bytes": 2866
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/controls.json",
+      "sha256": "53289519b648ea4a708dea79add3bde5c37f5ac4e6c9be978ba6ee21afdd37c0",
+      "bytes": 9411
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/controls.mjs",
+      "sha256": "2a86078ceeec090b194a1879aca9aafd389feedea67d44e336db593f658a77e4",
+      "bytes": 5624
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/earthworm-transfer-plan.json",
+      "sha256": "74723d8d11d3b61dd216d462aebf3eb2f4ce7be2e8523ad466e1b9955a8d3b8e",
+      "bytes": 14039
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/earthworm-transfer-result.json",
+      "sha256": "87038e660e3170e247dffbecf7608a929aefe7aab8d6f322f047265a7a4ae180",
+      "bytes": 11701
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/earthworm-transfer.mjs",
+      "sha256": "5949d333eeb76715b0cc4e37fd6c2dab59ef8be9d2029de5f449a9e741d5d4a1",
+      "bytes": 3688
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/freeze.mjs",
+      "sha256": "152c7f12c2f9cc832e7b67e6be87420d26c21b91cf99fadff7eed1ea53272355",
+      "bytes": 5525
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/helper-derivation.json",
+      "sha256": "a77775ec70710b26909334e6ece2bc6a8229c533ca8607813829a9b01cb2c564",
+      "bytes": 2384
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/intake-retained.mjs",
+      "sha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+      "bytes": 12528
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/mussel-boundaries.json",
+      "sha256": "eff1db930e5cf2afcea5d5165495bbe0f14ca67fc7303b04d86fa7517380c99a",
+      "bytes": 14734
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/mussel-boundaries.mjs",
+      "sha256": "3bb673bfa02fa949b57a9bd1b6a3a49f95eed83aa98573db3c87db8f1ed77e3f",
+      "bytes": 3777
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/prepare.mjs",
+      "sha256": "507d811ac0d647d5d83682be42b191384d9a75a58e2eb51cafbc5b6f456c6122",
+      "bytes": 1002
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/prior-packet-recheck.json",
+      "sha256": "75e9422cb4cbcb8c7e2bbb8ab4b38561f00263327023064308f1180b019a1f51",
+      "bytes": 329
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/review-d28.mjs",
+      "sha256": "16e64796919193bd98236a8d8de2b8ceb7576f95bea918406885ef0c8f6865f6",
+      "bytes": 5737
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/review-publication.mjs",
+      "sha256": "b9775038e41bfe52aa7a497efbb467a4517a26f6955a8508045224a546e73701",
+      "bytes": 5741
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/run-stage.mjs",
+      "sha256": "9ad6684e7e468433c0d79a3119e39d3c51987e55c05f3981d4f612ebda525f15",
+      "bytes": 1663
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/shrimp-distal-only.mjs",
+      "sha256": "c41f0f57f8614ab4fd4e7923529fa3125d796f596b558f664b5c7705f185a28a",
+      "bytes": 2194
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/verify-and-preview.mjs",
+      "sha256": "02622a8451a730e44945753340791e3b784af33f5558e3c942f25121730c361b",
+      "bytes": 5745
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/visual-review.json",
+      "sha256": "5f8570a15a5ea4bc138601f30592e70ac2ea970bfa98502672e4dc15910a709c",
+      "bytes": 8653
+    }
+  ],
+  "fileCount": 341,
+  "totalBytes": 48453002,
+  "inventoryExcludes": [
+    "delivery.json"
+  ],
+  "productChanges": 0,
+  "poolChanges": 0,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}
