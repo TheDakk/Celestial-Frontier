@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Turtle",
+  "masterSha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

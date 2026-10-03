@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tortoise",
+  "masterSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Impala",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Banana Slug",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Prawn",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Crab",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Brittle Star",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Sloth",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Tortoise",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Box Turtle",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Pond Turtle",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Snapping Turtle",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Softshell Turtle",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Turtle",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Dog",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Wolf",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Jaguar",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Serval",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Otter",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Wolverine",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Badger",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Beaver",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Seahorse",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Giant Squid",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Vampire Squid",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Nautilus",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  }
+]

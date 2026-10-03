@@ -1,0 +1,12 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import os from 'node:os';import {createHash} from 'node:crypto';
+const base='audits/C186_SPECIALIZED_REFERENCES_20261002',read=p=>fs.readFileSync(p),json=p=>JSON.parse(read(p)),sha=b=>createHash('sha256').update(b).digest('hex'),write=(p,v)=>fs.writeFileSync(p,JSON.stringify(v,null,2)+'\n',{flag:'wx'});
+for(const [id,source,auto,reason]of [
+ ['01-earthworm-direct','audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material','audits/G1_AUTO_AUTHOR_20260926/auto-g2c203r/01-earthworm','The exact complete source already has independent manual annelid geometry. Deliver that actual source fit directly; the failed shape classifier is not changed or given a special-case pass.'],
+ ['02-sponge-direct','audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material','audits/G1_AUTO_AUTHOR_20260926/auto-g2c203r/02-sponge','The visible basal tissue is one anchored support region, not two invented feet. Deliver the source-observed anchored manual fit directly; do not relax generic contact-count admission or relocate painted anatomy.']]){
+ const out=base+'/'+id;assert(!fs.existsSync(out));fs.mkdirSync(out);const inputs=[];
+ function copy(src,dst){const bytes=read(src);if(/\.(json|mjs|md|txt|log)$/.test(src))assert(!bytes.includes(Buffer.from(os.homedir())));fs.writeFileSync(dst,bytes,{flag:'wx'});inputs.push({source:src,snapshot:dst,sha256:sha(bytes),bytes:bytes.length});}
+ function tree(src,dst){fs.mkdirSync(dst);for(const e of fs.readdirSync(src,{withFileTypes:true})){if(e.isDirectory())tree(src+'/'+e.name,dst+'/'+e.name);else copy(src+'/'+e.name,dst+'/'+e.name);}}
+ for(const f of ['master.png','authoring.json','subject-source.json','presence.json'])copy(source+'/'+f,out+'/'+f);tree(source+'/fit01',out+'/fit01');copy(auto+'/score.json',out+'/original-auto-refusal.json');
+ const record=json(out+'/fit01/record.json');assert.equal(record.geometry.cutoutAssetHash,sha(read(out+'/master.png')));assert.equal(record.provenance.authoringSha256,sha(read(out+'/authoring.json')));
+ write(out+'/direct-source-receipt.json',{schema:'cf.c186-direct-source-fit/v1',id,source,autoRefusal:auto+'/score.json',reason,retainedFitBytesUnchanged:true,retainedAuthoringBytesUnchanged:true,templateId:record.template.id,recordRecipeHash:record.recipeHash,inputs,newIndependentSubject:false,classificationChanged:false,contactCountThresholdChanged:false,qualityAccepted:false,nativeRuns:0});console.log(JSON.stringify({id,recordRecipeHash:record.recipeHash,fitBytesUnchanged:true}));
+}

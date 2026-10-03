@@ -1,0 +1,15 @@
+{
+  "scope": "Independent full-size software before/after comparison; no GPU/native admission",
+  "inputs": [
+    {
+      "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-source-joins/motion-approach-scuttle-50-right.png",
+      "sha256": "2840b07ca2684647fa6fc5d85affc231d82a2d041512db98cc426a1935fb7625"
+    },
+    {
+      "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-continuous-owners/motion-approach-scuttle-50-right.png",
+      "sha256": "f8e224e368313b24eaae911f07dc2d3ff5047f172917cdedda7111e72cf1c9a5"
+    }
+  ],
+  "finding": "New candidate visibly closes the large cheliped collar/palm wedges and reconnects previously fragmented claw tissue. A small left-image palm collar slit remains; edge fragments and leg overlaps still require native full-film review.",
+  "qualityAccepted": false
+}

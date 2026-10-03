@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Nautilus",
+  "masterSha256": "4a6de28b5aa5fd4c1e321e800c8bbcf723a3a218813ccc0e45887e236306f6c6",
+  "required": [
+    "coiled chambered shell striped with red-brown flames"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "coiled chambered shell striped with red-brown flames",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: cream and reddish striped coiled shell, spotted hood, one near eye and many slender suckerless-looking tentacles. Numerous tentacles overlap at their roots and tips; no exact total count or independently controlled chains are established. Far eye is hidden, not declared absent. The shell/hood and tentacle mass would need truthful coarse ownership beyond ordinary eight-arm assumptions; retained as a new source identity with a template/visibility hold."
+    }
+  ]
+}

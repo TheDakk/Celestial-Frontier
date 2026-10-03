@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/master.png",
+      "sha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/authoring.json",
+      "sha256": "f09b847f51dbefb551726a83b2a821ce841cc2e9f0c7ecfd0b1c40e4bf3dff39"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/subject-source.json",
+      "sha256": "33195eaa660d7b6e875f577e3711d731a994dcd65e085ca689bacdebc1e0ce18"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "effc369867c83b745d3eb13273998e5ea41d560ea31b7b30741387141fa33482",
+  "bindingHash": "1176c1890307e1bdb5187ec3afdaac7e02ea6185b59dddda6cfd02072f45a165",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "hindNearAnkle",
+    "hindNearPaw",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearAnkle",
+    "foreNearPaw",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarAnkle",
+    "hindFarPaw",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarAnkle",
+    "foreFarPaw",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "spine",
+    "pelvis"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/master.png",
+      "sha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/authoring.json",
+      "sha256": "f09b847f51dbefb551726a83b2a821ce841cc2e9f0c7ecfd0b1c40e4bf3dff39",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/subject-source.json",
+      "sha256": "33195eaa660d7b6e875f577e3711d731a994dcd65e085ca689bacdebc1e0ce18",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-tail-antler/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

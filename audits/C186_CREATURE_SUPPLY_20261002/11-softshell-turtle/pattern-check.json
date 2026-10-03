@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Softshell Turtle",
+  "masterSha256": "1c7f3e94470012bfbdcda71caf25274e4c1e6dd09bdbbfd0fdb1c01f95e44bc0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

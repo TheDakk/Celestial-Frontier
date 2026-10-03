@@ -1,0 +1,454 @@
+{
+  "schema": "cf.c186-petrel-authoring/v1",
+  "status": "HELD_VISUAL",
+  "nativeRuns": 0,
+  "productChanges": 0,
+  "candidateForRefilm": false,
+  "files": [
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/README.md",
+      "sha256": "a3359a1821748e783fb98ff95a28ffd70b6bfab7b613990ae30defff52aa6ae1",
+      "bytes": 1931
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/binding.json",
+      "sha256": "18c12fe25baf4feff7e26a95672636575601998a4416ef5cf89d69a7ff89b35e",
+      "bytes": 1107882
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/declaration.json",
+      "sha256": "04ca8c53646f279e22322f49e79836a3afe6d027c478ccd41453df19d38eec61",
+      "bytes": 10898
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/intake-provenance.json",
+      "sha256": "325b62cbc92f02ef372785d8aef7f3bc42b59e3f281c5c0c73fa99d0d52fba18",
+      "bytes": 3078
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/atlas/receipt.json",
+      "sha256": "69ba86f60b643d06c17e543a333809d89aad145f1a0d5f2470be1be1a5512814",
+      "bytes": 2916
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/atlas/snow-petrel.json",
+      "sha256": "7245465b3565d4920989ae92c5d20907143b55c868f8b3ccb417ad32201e620a",
+      "bytes": 6994
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/atlas/snow-petrel.png",
+      "sha256": "35d94bb0e7630a58af42680a10f55280409ec63224538d32cec7df7e3129eb5c",
+      "bytes": 275663
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/binding.json",
+      "sha256": "5a293cd07c4708c3c990a7177bf2ac37aeb5ce338879047005bcc32edd591e26",
+      "bytes": 5810
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/keyed.png",
+      "sha256": "50a85a9d45845a7920747b9c60639915bfe5ddfbfe2792e9aa05471c46121545",
+      "bytes": 1232128
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/manifest.json",
+      "sha256": "8f45c3fa30e1945cb17b549a6fba5aabf8b1a0f475cceb75d3ea50fbb5428c48",
+      "bytes": 2837
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/ownership.png",
+      "sha256": "3c9017d5737d994deb9ea9ce38fc65111a180a0ab7c1aacb34cc38be0a5a5b7b",
+      "bytes": 13473
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/beak.png",
+      "sha256": "dc97d5227bc885e9a244e58d122a1ac7c26913e03108a5d2b9cd55e182bb0135",
+      "bytes": 6911
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/body.png",
+      "sha256": "04deba395fbdec64d4432a6e700f364ca3bd125823437d085a55b331daad584d",
+      "bytes": 57459
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/chest.png",
+      "sha256": "e8b3cb70da660e892f4d9b57128474b8e5423175f0312a4c870feeacf0c382e0",
+      "bytes": 24646
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/far-foot.png",
+      "sha256": "35e452bd7c13972d20982026a0363a00c8763cca263726700e71485519e144bc",
+      "bytes": 6076
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/far-shin.png",
+      "sha256": "3df110c1c12eb76ff1249d2b9ce0fdc6f884a53b21d103fb25bd5cbecd0e789f",
+      "bytes": 1987
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/far-thigh.png",
+      "sha256": "11a553420ae720119d5405281f6694716b5d5b112df5cc2c9795b49c720bfc4c",
+      "bytes": 3107
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/far-wing-flight.png",
+      "sha256": "9b63cb87cf8fbc5eba91bf01eead6d18cfc7d1006c947c8c7263c7d022660ee0",
+      "bytes": 10334
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/far-wing-root.png",
+      "sha256": "3272b96a13881f339a590c496b090875dec558f353b02c2c2675773d0299bd5f",
+      "bytes": 6202
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/head.png",
+      "sha256": "986368f770a8355feb43015a48e6976436763f62942c86f544794c1e87b7fd14",
+      "bytes": 19614
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/near-foot.png",
+      "sha256": "bfc56bbc1ef8b2c5b15d8aec0ab6eff466469f955e2072da680a14930563194c",
+      "bytes": 7791
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/near-shin.png",
+      "sha256": "a99f1085d5644670ef7cbb7dea8d6afa9ffbe29b972f28cc5afd6cad9329c8d5",
+      "bytes": 1777
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/near-thigh.png",
+      "sha256": "b1de2cbfd79136c2c6a6998f056a5d8b462fb4bf1f8e1872a3339dfe4ad73ae4",
+      "bytes": 875
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/near-wing-flight.png",
+      "sha256": "a7aeb4673eb45352ed9403b335a63eea2046b3bcec46338777be537126275da1",
+      "bytes": 36866
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/near-wing-root.png",
+      "sha256": "7621627b2fb616b2f03968e4240cb8994d8038e5d43ff372069e89486dbffe60",
+      "bytes": 49939
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/neck-lower.png",
+      "sha256": "44b40bf09627d669ad59169e31ce7d293d6a0893884fa4fccb0ca48f847275db",
+      "bytes": 17963
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/neck-upper.png",
+      "sha256": "29bf34c170a379acaedc01b1e1f5ab4869d5a3be359dba276e4d6d8d2d4e0040",
+      "bytes": 18343
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/parts/tail.png",
+      "sha256": "a1c2a6ee9910e4e2f2289e38e96fc7557bfe3e7d0a29ee9e81474a9f3721d5f9",
+      "bytes": 25689
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/parts/receipt.json",
+      "sha256": "0503c32177653f930ff6d300de8913695c0c3056aca3dfb7e57cedc8efa96950",
+      "bytes": 4651
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/pre-split-binding.json",
+      "sha256": "fe2445804171d1aff17712b6818e91806b4df6beb3853c295a01ac73a2f9112e",
+      "bytes": 729075
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/receipt.json",
+      "sha256": "8f046b095a5b7a1792383aeb5f6bddf8440c4cdc4259bfdab17204fe9920c3d5",
+      "bytes": 2448
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01/record.json",
+      "sha256": "12eb257fed750907c78ab8ae51fa5c5c95f696fd0d55f61200e59a1315f2a36f",
+      "bytes": 6284
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01-held.png",
+      "sha256": "ec6f27fd606429904f9e8c49eb1ee8f1861c18327f240fe39d3093056fa3adcd",
+      "bytes": 264729
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01-reaction50.png",
+      "sha256": "61065361a1ae3a27f540a43139784b84af7a9e46bda9588fcb27f3744719fdac",
+      "bytes": 233531
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fit01-rest.png",
+      "sha256": "a25a8675884fff1100419b26d094f649aac680df8574d906901a51e08471f0bf",
+      "bytes": 264706
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fresh-turns01.json",
+      "sha256": "57a8f50de1b88407a0423f385383a4632fc4f73ad3e0e0348358a3b02f73f39a",
+      "bytes": 3705
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fresh-turns01.log",
+      "sha256": "f4635f73dd5e96b537b86c46b5a20570bd8202ffba0abeef465670bc2e45164c",
+      "bytes": 202
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/fresh-turns01.mjs",
+      "sha256": "fcfdcc9fec5924c6c09df117e2f85777aa812b3ec6ae8f42c5719ebfb11ea4fe",
+      "bytes": 2921
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/input-identity.json",
+      "sha256": "fe2dcebf18b2ed434321fc78297d73ba957bfb26433ebb0845ea77848d716cc9",
+      "bytes": 817
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/intake01.log",
+      "sha256": "969533b64bb3001f58e817af190e3c7ce3ff1ec549b9d5ad692dcc15cc8b1f85",
+      "bytes": 307
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/binding.json",
+      "sha256": "1880cdfdfb535e98af1737a7aeb1eef0b8a24dbe1e92ac1d11890bc04a5aad94",
+      "bytes": 1019166
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/declaration.json",
+      "sha256": "ced4af293f123a66ff14a14b2a60cee9edc734ae808fb1a969b12e21ee787c85",
+      "bytes": 10169
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/intake-provenance.json",
+      "sha256": "51495aa69d3db7d08011a258294205892f63dfb4a049b923df373022e41293ed",
+      "bytes": 3223
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/atlas/receipt.json",
+      "sha256": "753b12132e6d55fb8be8c072f97a73b58fcdf10d293126b17da9b5543f3519c0",
+      "bytes": 2916
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/atlas/snow-petrel.json",
+      "sha256": "e944725b05d276c1a1c252e8e453566784554d539bb6e3ac4fb82d848e58d91c",
+      "bytes": 6994
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/atlas/snow-petrel.png",
+      "sha256": "ab57f7345165d045c7da51209dee0f711c0198e9d0d7be1b1ba775405c964387",
+      "bytes": 277745
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/binding.json",
+      "sha256": "45bb3f7ae31dbc96981ef2bd6c158b262f5117c49af38e98df2e689037bc6c83",
+      "bytes": 5810
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/keyed.png",
+      "sha256": "50a85a9d45845a7920747b9c60639915bfe5ddfbfe2792e9aa05471c46121545",
+      "bytes": 1232128
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/manifest.json",
+      "sha256": "ec4ab9b172b94c7e6ead563bfb1515ca5c999434e0bb6296ed5c23a9b300fda0",
+      "bytes": 2837
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/ownership.png",
+      "sha256": "4ecee125b34a809196090a54931da45f0ca68c370b5497dca98a0188ebc728e3",
+      "bytes": 13715
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/beak.png",
+      "sha256": "dc97d5227bc885e9a244e58d122a1ac7c26913e03108a5d2b9cd55e182bb0135",
+      "bytes": 6911
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/body.png",
+      "sha256": "d8837efa1583fd365cf4a0bd4fa64a7e8baf86778673748f3bb6b69ab65bbdc8",
+      "bytes": 80543
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/chest.png",
+      "sha256": "7df8e6a126473779abd066cb4b741f1ad5f626fce5de77f5dcc740827bb4f7b4",
+      "bytes": 31382
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/far-foot.png",
+      "sha256": "35e452bd7c13972d20982026a0363a00c8763cca263726700e71485519e144bc",
+      "bytes": 6076
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/far-shin.png",
+      "sha256": "3df110c1c12eb76ff1249d2b9ce0fdc6f884a53b21d103fb25bd5cbecd0e789f",
+      "bytes": 1987
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/far-thigh.png",
+      "sha256": "11a553420ae720119d5405281f6694716b5d5b112df5cc2c9795b49c720bfc4c",
+      "bytes": 3107
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/far-wing-flight.png",
+      "sha256": "9b63cb87cf8fbc5eba91bf01eead6d18cfc7d1006c947c8c7263c7d022660ee0",
+      "bytes": 10334
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/far-wing-root.png",
+      "sha256": "3272b96a13881f339a590c496b090875dec558f353b02c2c2675773d0299bd5f",
+      "bytes": 6202
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/head.png",
+      "sha256": "986368f770a8355feb43015a48e6976436763f62942c86f544794c1e87b7fd14",
+      "bytes": 19614
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/near-foot.png",
+      "sha256": "bfc56bbc1ef8b2c5b15d8aec0ab6eff466469f955e2072da680a14930563194c",
+      "bytes": 7791
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/near-shin.png",
+      "sha256": "a99f1085d5644670ef7cbb7dea8d6afa9ffbe29b972f28cc5afd6cad9329c8d5",
+      "bytes": 1777
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/near-thigh.png",
+      "sha256": "b1de2cbfd79136c2c6a6998f056a5d8b462fb4bf1f8e1872a3339dfe4ad73ae4",
+      "bytes": 875
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/near-wing-flight.png",
+      "sha256": "7f7e32af322daa60d549c5121500eef5ca7d0e796d5d9b67348698835c615593",
+      "bytes": 38232
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/near-wing-root.png",
+      "sha256": "b89d494b699abf378fcf4e50ef8d8deeda653f9238c89849b937cfb0a5abdcb6",
+      "bytes": 20598
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/neck-lower.png",
+      "sha256": "44b40bf09627d669ad59169e31ce7d293d6a0893884fa4fccb0ca48f847275db",
+      "bytes": 17963
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/neck-upper.png",
+      "sha256": "29bf34c170a379acaedc01b1e1f5ab4869d5a3be359dba276e4d6d8d2d4e0040",
+      "bytes": 18343
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/parts/tail.png",
+      "sha256": "5c7689738d9c52ab87b26989ba0f80cdac6b0c55e1e3b00cf3cb1580232aa6a5",
+      "bytes": 26305
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/parts/receipt.json",
+      "sha256": "5692378df0d037b596a65c666242b2c7cfac9f994e460e935a2c59b5fc5ca48d",
+      "bytes": 4652
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/pre-split-binding.json",
+      "sha256": "dfd56672ff1e90f047c1985412e345e58fb21fe4ad753fe5c5c072d33426fbe2",
+      "bytes": 733996
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/receipt.json",
+      "sha256": "f5ffb940357122680c656e551dfbfec0142e2a3fa2d5a1c8864c4e14f58e7149",
+      "bytes": 2448
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/record.json",
+      "sha256": "96baf3eab34e6503ec155c00cb1d7b74c736d5e013172d3efd9bc9a96c553488",
+      "bytes": 5962
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit-held.png",
+      "sha256": "5f65a9fc219ff2752be7dff088d80cf970c055034aea5c50125cc8e0e6e75132",
+      "bytes": 266963
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit-reaction50.png",
+      "sha256": "ce75f5ca03d89107b248b1359dddd12cc538f51bb70f4f3d0b06c8a2dc8e0048",
+      "bytes": 236296
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit-rest.png",
+      "sha256": "a25a8675884fff1100419b26d094f649aac680df8574d906901a51e08471f0bf",
+      "bytes": 264706
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-native-report.json",
+      "sha256": "a30e3c0ca5cc94d866f5691cbf3206c4bfe00159db50b3d2ca935cabb4652d8a",
+      "bytes": 362545
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-packet/authoring.json",
+      "sha256": "8578d697ee878b5a4fbc0e9c6e39de4ded52a896752bebe4391bab17a4ca3c37",
+      "bytes": 8948
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-packet/master.png",
+      "sha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+      "bytes": 1081796
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-packet/subject-source.json",
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a",
+      "bytes": 2718
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/packet01/authoring.json",
+      "sha256": "88e7f8659d0632f24045c6433274640893176602c7a0e9c5e91426406957804a",
+      "bytes": 9756
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/packet01/master.png",
+      "sha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+      "bytes": 1081796
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/packet01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/packet01/subject-source.json",
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a",
+      "bytes": 2718
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/static01.json",
+      "sha256": "dfa42efb46dfb038cd89f8eb12fdd0bb946ab79411825c71a6f133c1cce9985f",
+      "bytes": 8195
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/static01.json.sources.json",
+      "sha256": "fc8a13a430411fc14aeb5a401f483aed03555dbdd19c1eb41c523c4ce66189c2",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/static01.log",
+      "sha256": "e6bd3f1e5f5a153c55771fbb8597d6e7af419d02a4c0c9e571273a4ed366b65a",
+      "bytes": 2178
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/visual-publications.json",
+      "sha256": "5145db66c70e21b33dfb991a3cc5e5c75f1e12936f7f0d314ecea35f9732c387",
+      "bytes": 806
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/visual-publications.log",
+      "sha256": "e92ec7afde414b979c9f3476d2929e110ea6ba7a705d00aeb5e23ef6cf327be0",
+      "bytes": 425
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/visual-publications.mjs",
+      "sha256": "1b11657e9eb86607429e49111d5faafd334c0a84e233dfbd8e9ccf4ce34f6f88",
+      "bytes": 2393
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pond Turtle",
+  "masterSha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

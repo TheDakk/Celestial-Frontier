@@ -1,0 +1,28 @@
+{
+  "name": "Brittle Star",
+  "masterSha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: five distinct tapering articulated arms with fine lateral spines and five visible attachments to a clearly bounded central disc. Arms do not cross. The animal reads as a shorter-arm representative; no disc-radius ratio or named taxonomic identification is asserted from visual review. Disc markings are strongly radial and stylized, requiring biological/material review. No head, eye, walking leg or dorsal mouth is invented. Generated proportions remain unchanged for independent author measurement.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 217,
+      "y0": 200,
+      "x1": 1036,
+      "y1": 985
+    },
+    "margins": {
+      "left": 217,
+      "right": 217,
+      "top": 200,
+      "bottom": 268
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

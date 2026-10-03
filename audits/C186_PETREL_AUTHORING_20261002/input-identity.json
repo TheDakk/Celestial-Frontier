@@ -1,0 +1,21 @@
+{
+  "scope": "Read-only sibling copies; only literal home paths normalized if present",
+  "inputs": [
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/record.json",
+      "sha256": "96baf3eab34e6503ec155c00cb1d7b74c736d5e013172d3efd9bc9a96c553488"
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-fit/binding.json",
+      "sha256": "1880cdfdfb535e98af1737a7aeb1eef0b8a24dbe1e92ac1d11890bc04a5aad94"
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-packet/master.png",
+      "sha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37"
+    },
+    {
+      "path": "audits/C186_PETREL_AUTHORING_20261002/original-native-report.json",
+      "sha256": "a30e3c0ca5cc94d866f5691cbf3206c4bfe00159db50b3d2ca935cabb4652d8a"
+    }
+  ]
+}

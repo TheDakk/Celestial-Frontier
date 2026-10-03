@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wolverine",
+  "masterSha256": "2831ca7871fa31d13657372664f461f28f769735e08dabbf226c7e64a1b906aa",
+  "required": [
+    "pale stripe sweeping along each flank to the tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale stripe sweeping along each flank to the tail",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: stocky long-furred animal, pale lateral stripe sweeping across flank and tail, dark face mask, rounded near ear and small far ear tip. Four paw endpoints can be seen, but the two front paws and proximal forelimbs overlap strongly, leaving no clear complete separation for the far foreleg. Dense fringe still obscures limb roots; tail reads large and shaggy. Source is retained with these ownership and proportion holds, not accepted."
+    }
+  ]
+}

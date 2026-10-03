@@ -1,0 +1,14 @@
+{
+  "id": "05-brittle-star",
+  "name": "Brittle Star",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2790f39c-83b4-4855-892b-491f02c08bbd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+  "bytes": 1199859,
+  "promptSha256": "d84aa1d027ac7dfacd5972f1623efc217838f2a964596679cfd4949b7552894a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

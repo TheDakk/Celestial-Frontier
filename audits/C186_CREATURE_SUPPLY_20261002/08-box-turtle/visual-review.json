@@ -1,0 +1,28 @@
+{
+  "name": "Box Turtle",
+  "masterSha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: high domed shell with orange/yellow markings, visible lower shell/plastron edge, beaked head, short tail and three clearly exposed leg/foot silhouettes. Far foreleg is concealed, so four complete chains are not present and must not be invented. Hinge function is not proven from the closed pose. Ear flaps are not visible; no anatomy absence declaration supplied.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 208,
+      "y0": 406,
+      "x1": 1055,
+      "y1": 862
+    },
+    "margins": {
+      "left": 208,
+      "right": 198,
+      "top": 406,
+      "bottom": 391
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

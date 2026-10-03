@@ -1,0 +1,28 @@
+{
+  "name": "Turtle",
+  "masterSha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: representative freshwater pond turtle, domed scute shell continuous with lower body, striped extended neck, short tapering tail, three exposed leg/foot silhouettes. Far foreleg is hidden. The generic turtle identity is not a new anatomical family; four-limb visibility cannot be claimed from this source. Exact shell/limb ownership remains an authoring limitation.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 161,
+      "y0": 412,
+      "x1": 1097,
+      "y1": 839
+    },
+    "margins": {
+      "left": 161,
+      "right": 156,
+      "top": 412,
+      "bottom": 414
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

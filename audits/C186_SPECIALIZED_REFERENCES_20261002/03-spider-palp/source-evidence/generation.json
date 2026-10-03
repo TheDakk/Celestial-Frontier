@@ -1,0 +1,22 @@
+{
+  "schema": "cf.c183-source-edit-result/v1",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-53561153-7e09-43f2-a6d8-bf8180b33cf0.png",
+  "masterSha256": "e14cd994b5b6b9cf9a72702b433343d009d0be8c1bfd291696e6917dac8a74ad",
+  "bytes": 1324493,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "promptSha256": "79271131e446e3448355cda2eb14c2e9684df51c319f18c9d109f667d97da300",
+  "actualImageInput": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/master.png",
+  "actualImageInputSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+  "styleInheritedFromOriginal": true,
+  "outputModified": false,
+  "originalSourceUnchanged": true,
+  "subjectSource": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/subject-source.json",
+  "subjectSourceSha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa",
+  "qualityAccepted": false,
+  "authoringAttempted": false,
+  "nativeRuns": 0
+}

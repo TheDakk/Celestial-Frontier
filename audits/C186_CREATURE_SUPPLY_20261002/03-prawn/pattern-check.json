@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Prawn",
+  "masterSha256": "43b9e3595cd5a1f29477f22561c5c02a81c64944f52a1ba9506ed1107fc2f214",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

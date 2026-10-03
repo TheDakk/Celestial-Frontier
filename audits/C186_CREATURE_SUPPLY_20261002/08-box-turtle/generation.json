@@ -1,0 +1,14 @@
+{
+  "id": "08-box-turtle",
+  "name": "Box Turtle",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-dfcbd0c8-1484-4967-bdf7-1842311be536.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3",
+  "bytes": 1323696,
+  "promptSha256": "07bdff13b6760818ec7a406e3eba07cdb376fb4b0f6e3a6e9fd3c8142b967c45",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

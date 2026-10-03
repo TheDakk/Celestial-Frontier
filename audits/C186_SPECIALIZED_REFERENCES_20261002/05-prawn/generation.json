@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c186-specialized-generated/v1",
+  "tool": "image_gen.imagegen",
+  "nativeOriginal": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-6d2d6880-f5a7-47b3-a1b9-1c06691bc4e8.png",
+  "sourceOriginalSha256": "5486ec1e8f3a017a3b17ea9abd0584acc949d224f88ea410a1bb199ec657904c",
+  "masterSha256": "5486ec1e8f3a017a3b17ea9abd0584acc949d224f88ea410a1bb199ec657904c",
+  "sourceByteIdentical": true,
+  "pixelsProcessed": false,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "sentPromptSha256": "3e971dc8c45e2997bfe1055ea53615a3af053de48245ab77d8a49d51d3c25808",
+  "promptFileSha256": "3e971dc8c45e2997bfe1055ea53615a3af053de48245ab77d8a49d51d3c25808",
+  "actualInput": {
+    "path": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn/master.png",
+    "sha256": "43b9e3595cd5a1f29477f22561c5c02a81c64944f52a1ba9506ed1107fc2f214",
+    "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/05-prawn/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

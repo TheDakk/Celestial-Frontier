@@ -1,0 +1,263 @@
+{
+  "schema": "cf.c186-source-conservation/v1",
+  "id": "10-antelope-tail",
+  "masterSha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913",
+  "authoringSha256": "de96248bd13c767de1eb3ad64ee1a553fc2672cf699804de1686313132a4900e",
+  "bindingSha256": "965a8cd289f7b660f6d9a9288824af7cf41b860d5d0d458a5a34678a04c81d9a",
+  "keyedRgbaSha256": "a94fa907c38e76077e296ec48a0264851fa0bfe4170968c2dbc112978c84096e",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "hindNearRoot -> tail0": 1240,
+    "tail0 -> spine": 179,
+    "tail0 -> tail1": 227,
+    "hindNearRoot -> tail1": 783,
+    "tail1 -> spine": 73,
+    "tail1 -> tail2": 610,
+    "tail2 -> tail3": 412
+  },
+  "originalCap": {
+    "status": "PASS",
+    "wouldMovePixels": 277,
+    "remainderPixels": 39413,
+    "islands": [
+      {
+        "pixels": 50,
+        "to": "earNearTip",
+        "border": {
+          "18": 22,
+          "19": 7
+        }
+      },
+      {
+        "pixels": 34,
+        "to": "neck",
+        "border": {
+          "19": 6,
+          "24": 16
+        }
+      },
+      {
+        "pixels": 189,
+        "to": "hindNearAnkle",
+        "border": {
+          "2": 42,
+          "3": 41
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindFarPaw",
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "hindFarPaw",
+        "border": {
+          "11": 4
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 529,
+    "remainderPixels": 39665,
+    "islands": [
+      {
+        "pixels": 50,
+        "to": "earNearTip",
+        "border": {
+          "22": 22,
+          "23": 7
+        }
+      },
+      {
+        "pixels": 34,
+        "to": "neck",
+        "border": {
+          "23": 6,
+          "28": 16
+        }
+      },
+      {
+        "pixels": 161,
+        "to": "tail1",
+        "border": {
+          "3": 22,
+          "4": 17,
+          "9": 12
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "tail1",
+        "border": {
+          "3": 3
+        }
+      },
+      {
+        "pixels": 89,
+        "to": "tail1",
+        "border": {
+          "2": 4,
+          "3": 44
+        }
+      },
+      {
+        "pixels": 189,
+        "to": "hindNearAnkle",
+        "border": {
+          "6": 42,
+          "7": 41
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindFarPaw",
+        "border": {
+          "15": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "hindFarPaw",
+        "border": {
+          "15": 4
+        }
+      }
+    ],
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 39136,
+      "minX": 487,
+      "minY": 472,
+      "maxX": 673,
+      "maxY": 723
+    },
+    {
+      "pixels": 189,
+      "minX": 244,
+      "minY": 881,
+      "maxX": 284,
+      "maxY": 887
+    },
+    {
+      "pixels": 50,
+      "minX": 882,
+      "minY": 283,
+      "maxX": 886,
+      "maxY": 306
+    },
+    {
+      "pixels": 34,
+      "minX": 886,
+      "minY": 348,
+      "maxX": 894,
+      "maxY": 358
+    },
+    {
+      "pixels": 3,
+      "minX": 515,
+      "minY": 1076,
+      "maxX": 516,
+      "maxY": 1078
+    },
+    {
+      "pixels": 1,
+      "minX": 514,
+      "minY": 1074,
+      "maxX": 514,
+      "maxY": 1074
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 39136,
+      "minX": 487,
+      "minY": 472,
+      "maxX": 673,
+      "maxY": 723
+    },
+    {
+      "pixels": 189,
+      "minX": 244,
+      "minY": 881,
+      "maxX": 284,
+      "maxY": 887
+    },
+    {
+      "pixels": 161,
+      "minX": 266,
+      "minY": 545,
+      "maxX": 280,
+      "maxY": 574
+    },
+    {
+      "pixels": 89,
+      "minX": 252,
+      "minY": 579,
+      "maxX": 264,
+      "maxY": 612
+    },
+    {
+      "pixels": 50,
+      "minX": 882,
+      "minY": 283,
+      "maxX": 886,
+      "maxY": 306
+    },
+    {
+      "pixels": 34,
+      "minX": 886,
+      "minY": 348,
+      "maxX": 894,
+      "maxY": 358
+    },
+    {
+      "pixels": 3,
+      "minX": 515,
+      "minY": 1076,
+      "maxX": 516,
+      "maxY": 1078
+    },
+    {
+      "pixels": 2,
+      "minX": 265,
+      "minY": 576,
+      "maxX": 265,
+      "maxY": 577
+    },
+    {
+      "pixels": 1,
+      "minX": 514,
+      "minY": 1074,
+      "maxX": 514,
+      "maxY": 1074
+    }
+  ],
+  "unchangedD28Cap": 0.05,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "structural-island control refused at unchanged 5%"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

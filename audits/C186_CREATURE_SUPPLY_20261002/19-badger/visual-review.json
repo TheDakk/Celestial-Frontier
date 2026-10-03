@@ -1,0 +1,28 @@
+{
+  "name": "Badger",
+  "masterSha256": "9b16cceae9d904915a83fb538f7b0990559e54d6666e441be7ca141f8af93b68",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separate clawed paw endpoints and lower limbs, broad low body with coarse grey-brown fur, distinctive black face stripes flanking a pale central blaze, short continuous tail. Near rounded ear is clear; far ear is a small crown tip. Far upper limb roots remain partly obscured by body and coat fringe. Contact heights differ. Painting retains ear-root, proximal ownership and proportion holds; no fit acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 173,
+      "y0": 407,
+      "x1": 1095,
+      "y1": 849
+    },
+    "margins": {
+      "left": 173,
+      "right": 158,
+      "top": 407,
+      "bottom": 404
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

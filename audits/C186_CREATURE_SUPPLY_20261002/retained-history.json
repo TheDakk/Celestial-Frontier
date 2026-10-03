@@ -1,0 +1,309 @@
+{
+  "scope": "Read-only predecessor bindings; all predecessor bytes retained, no silent replacement",
+  "preparationNote": "First supplemental binding attempt stopped on the older Badger pilot missing its master field, before writing output. Its existing packet/master.png was then read explicitly; original request and pilot remain unchanged. Not a generation, gate or native retry.",
+  "sources": [
+    {
+      "name": "Impala",
+      "correction": "Correct the previous source which visibly has a third foreleg/five legs: one natural Impala with exactly its four real legs, two forelegs and two hindlegs. Quiet natural stance, four distinct complete feet on a common baseline, connected individually to actual torso emergence. Keep the real tail, two visible ears, lyre-shaped ringed horns, black hind-hoof tufts and rump stripes; never reinterpret a fifth painted leg as fringe.",
+      "predecessors": [
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "03-impala",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/03-impala",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "f1d5c74e0ef6e7a6dd87402affc1a20913065e6e2a94938b864fac279a38d9ab",
+          "masterBytes": 1466341,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        },
+        {
+          "pilot": "audits/G2_C110_20260927/pilot.json",
+          "id": "04-impala",
+          "master": "audits/G2_C110_20260927/04-impala/master.png",
+          "packet": "audits/G2_C110_20260927/04-impala",
+          "resolvedMaster": "audits/G2_C110_20260927/04-impala/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "20e117e8ad04cea37d45fa2c7ca88aef8bd985b054a7c934e6358a37da4761bb",
+          "masterBytes": 1178768,
+          "pilotSha256": "e40347e6940c2a9907efbb788f99a755a8a22cf2b3e971a7dbaf58ebe2998f38"
+        }
+      ]
+    },
+    {
+      "name": "Banana Slug",
+      "correction": "Expose the actual small oral opening underneath the front head, separately from the two short sensory tentacles and two long ocular tentacles. No invented lips or large face. Preserve the complete genuine anatomy and leave generous empty margins around all stalks.",
+      "predecessors": [
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "22-banana-slug",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+          "masterBytes": 1183717,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        }
+      ]
+    },
+    {
+      "name": "Prawn",
+      "correction": "Correct the prior hidden walking-leg roots by choosing a shallow underside view: every actual thoracic root-to-tip path must be readable as far as biological visibility allows. Retain all ten real walking legs, swimmerets and antennules; do not delete or relocate real structures to fit a coarse template. Keep entire antennae inside generous margins.",
+      "predecessors": [
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "23-prawn",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/23-prawn/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b",
+          "masterBytes": 1342040,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        }
+      ]
+    },
+    {
+      "name": "Crab",
+      "correction": "Correct the prior obscured posterior walking chains: direct slightly elevated frontal view with eight complete actual leg silhouettes and true roots visible where they emerge from beneath the carapace, plus both genuine claws. Do not add hidden limbs, cut holes in shell or substitute eye stalks for legs.",
+      "predecessors": [
+        {
+          "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "24-crab",
+          "master": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/master.png",
+          "packet": "audits/C213_CREATURE_SUPPLY_20261002/24-crab",
+          "resolvedMaster": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "d11ee0494e3d445f8100a87394857a104f893f6a9d631303ceaa7ea1a72ea699",
+          "masterBytes": 1491188,
+          "pilotSha256": "f94afd57a4c9943f0e1ea19ac662ff7932695c022187b1e0c3242bd6296b8817"
+        }
+      ]
+    },
+    {
+      "name": "Brittle Star",
+      "correction": "Use the biologically short-armed Ophiacantha kokusai representative documented in biological-reference.json, with five complete arms and a clearly bounded real disc. This is a fresh painting with real natural proportions, never geometric stretching of the former source or adaptation of anatomy to a rig threshold.",
+      "predecessors": [
+        {
+          "pilot": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json",
+          "id": "02-brittle-star",
+          "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/master.png",
+          "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star",
+          "resolvedMaster": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+          "masterBytes": 1211388,
+          "pilotSha256": "536ffcb77bfcf41455cc0bd022dc3412f246f69c72083278ca7aeba6e650fd40"
+        }
+      ]
+    },
+    {
+      "name": "Dog",
+      "correction": "Previous source has long fur obscuring proximal limb attachments. Use a naturally short body coat with the canonical high plumed tail, both natural erect ears and black nose. Keep four real complete leg silhouettes visibly separate from shoulder/hip emergence through every paw in a quiet level stance. Preserve fur and real joints; no shaved anatomy or hidden-part invention.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+          "id": "06-dog",
+          "master": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+          "packet": "audits/G2_REFERENCES_C62_20260927/06-dog-margin",
+          "resolvedMaster": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "d7dd14c398a7e35a786fab91f7c593d8efdd7b0442f3198c26b4757f0addfa25",
+          "masterBytes": 778633,
+          "pilotSha256": "a9484b09817cfbb971e98b514350e4bb094e1c453fb53cbaf720b2845d675523"
+        },
+        {
+          "pilot": "audits/C132_REFERENCES_20261001/pilot.json",
+          "id": "03-dog",
+          "master": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+          "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02",
+          "resolvedMaster": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "ccfa0a5321f7ddcf068e3cf58a8d68ab50d22102f8d61f6afc033fa6ed06adf4",
+          "masterBytes": 1237655,
+          "pilotSha256": "869d3e84a5f0acfbf9d25eaeb78584a98ec7f0f597db2ca9080980a6d04b4b81"
+        }
+      ]
+    },
+    {
+      "name": "Wolf",
+      "correction": "The earlier upper limb roots overlap and its generated rig refuses gallop compression. Paint a natural neutral standing wolf with all four actual leg silhouettes independently readable through knee/hock and paw, broad blocky head, erect triangular ears, narrow deep chest and a low straight bushy tail. This source correction does not claim to repair the solver or existing static refusal.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C106_20260927/pilot.json",
+          "id": "21-wolf",
+          "master": "audits/G2_C106_20260927/21-wolf/master.png",
+          "packet": "audits/G2_C106_20260927/21-wolf",
+          "resolvedMaster": "audits/G2_C106_20260927/21-wolf/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "20fd90b4593b3a02d499483c177ebc029b7696ddd602fd5e2c32167a56adea50",
+          "masterBytes": 1198979,
+          "pilotSha256": "dc7fd712d8471bafa3569c848cb8fa7bda2fb05a18c5a7ba58471b0543acdd64"
+        }
+      ]
+    },
+    {
+      "name": "Jaguar",
+      "correction": "Preserve the stocky powerful real Jaguar and mandatory rosettes with dark central spots. Four short real legs must be independently traceable from visible torso emergence to full paws, with a quiet natural level stance; no long-legged leopard substitute and no extra fringe-shaped leg. Prior source authoring reported unassigned limb-down paint.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+          "id": "07-jaguar",
+          "master": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar/master.png",
+          "packet": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar",
+          "resolvedMaster": "audits/G2_THROUGHPUT_C54_20260926/07-jaguar/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "c601ea255ba061f840d0b7ca075ffb1c0703440d90290794c40dffbf99fd4a0e",
+          "masterBytes": 989222,
+          "pilotSha256": "cc38f029b5c4ed4cc1e3af1a68e9e26244a76d2a3ac62a8aaba883cd7e523684"
+        },
+        {
+          "pilot": "audits/G2_PATTERN_C57_20260926/pilot.json",
+          "id": "03-jaguar",
+          "master": "audits/G2_PATTERN_C57_20260926/03-jaguar/master.png",
+          "packet": "audits/G2_PATTERN_C57_20260926/03-jaguar",
+          "resolvedMaster": "audits/G2_PATTERN_C57_20260926/03-jaguar/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "0cce5787654722925ae8c27f348db306dffc5dd353a973fb0c87d742c6b9943f",
+          "masterBytes": 1214607,
+          "pilotSha256": "65f75fe468a1abdbf87c6dcec0dbb5b3029c99000f1b1367c4d42dd4d859a35d"
+        },
+        {
+          "pilot": "audits/G2_PATTERN_C57_20260926/pilot.json",
+          "id": "07-jaguar-pattern-first",
+          "master": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first/master.png",
+          "packet": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first",
+          "resolvedMaster": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "811681c61a34735bd49008b1e3bd64eceda4842808135814766695dbb40d7753",
+          "masterBytes": 1250333,
+          "pilotSha256": "65f75fe468a1abdbf87c6dcec0dbb5b3029c99000f1b1367c4d42dd4d859a35d"
+        }
+      ]
+    },
+    {
+      "name": "Serval",
+      "correction": "Preserve the exceptionally long real legs, enormous upright oval ears, short tail and spotted/barred coat. Show all four actual narrow leg shafts separately from their natural visible roots through the paws on one level, not merely separated toe tips. Keep genuine slender proportions; do not shorten legs to fit a generic cat. Prior authoring left two limb-down structures unassigned.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+          "id": "10-serval",
+          "master": "audits/G2_THROUGHPUT_C54_20260926/10-serval/master.png",
+          "packet": "audits/G2_THROUGHPUT_C54_20260926/10-serval",
+          "resolvedMaster": "audits/G2_THROUGHPUT_C54_20260926/10-serval/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "f5b2a598e72772ab696c94f5a41bb0b19d74f0e2ac1780649f24588cefc381ed",
+          "masterBytes": 1323393,
+          "pilotSha256": "cc38f029b5c4ed4cc1e3af1a68e9e26244a76d2a3ac62a8aaba883cd7e523684"
+        }
+      ]
+    },
+    {
+      "name": "Otter",
+      "correction": "A slight natural head turn reveals both tiny actual external ears from attached base to tip, without enlarging them into mammal reference ears. Preserve sleek streamlined tube body, broad whiskered muzzle, thick tapering muscular tail and four short actual legs with separate feet. Prior source lacks far-ear-tip coverage.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C107_20260927/pilot.json",
+          "id": "17-otter",
+          "master": "audits/G2_C107_20260927/17-otter/master.png",
+          "packet": "audits/G2_C107_20260927/17-otter",
+          "resolvedMaster": "audits/G2_C107_20260927/17-otter/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "27ca21d3c2dbb8d015312ea27d0cc63b8d0490297d4d7de72f5d3a41fdc966e6",
+          "masterBytes": 1186446,
+          "pilotSha256": "88e2bdeb6a1aa27f919ba79733ae63e4f68d93364fa03bc577bdaa321fa564ff"
+        }
+      ]
+    },
+    {
+      "name": "Wolverine",
+      "correction": "Separate the actual four thick short legs and huge clawed paws from the natural fur outline, preserving the heavy bear-like build, humped shoulders, real pale stripe along each flank and bushy tail. A slight natural stance separation reveals limb paths without clipping fur, inventing joints or adding legs. Prior authoring leaves limb-down/fringe paint unexplained.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "06-wolverine",
+          "master": "audits/G2_C59_20260926/06-wolverine/master.png",
+          "packet": "audits/G2_C59_20260926/06-wolverine",
+          "resolvedMaster": "audits/G2_C59_20260926/06-wolverine/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "0498e155c50e65b61174930019c0f8ec98b8ab5722b4267e875795dbe837510a",
+          "masterBytes": 1253920,
+          "pilotSha256": "953b4a06319c7d6b45ccc57537d7601ce9218c4ed6cd81e72c6db40f6fb3b5ba"
+        }
+      ]
+    },
+    {
+      "name": "Badger",
+      "correction": "Preserve the real broad low-slung body, white facial stripe and long digging foreclaws. Show four actual limb silhouettes from their visible low torso emergence through each foot, both small attached ears where naturally visible, and the real short tail separately from hind feet. Never lengthen the tail to mimic a reference. Prior source has unassigned limb paint and short-tail/ear coverage refusals.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+          "id": "09-badger",
+          "master": null,
+          "packet": "audits/G2_QUADRUPED_PILOT_20260926/09-badger",
+          "resolvedMaster": "audits/G2_QUADRUPED_PILOT_20260926/09-badger/master.png",
+          "resolution": "EXISTING_PACKET_MASTER_PILOT_OMITS_FIELD",
+          "masterSha256": "35c2bc9d8623bfc0335f60ce15cfeccf4d1f7acac275ded5875e6d6b31eb2210",
+          "masterBytes": 1140849,
+          "pilotSha256": "5f231ecd21e86260f3189869d466a5e42160f5ed434f40283e09d27fc227e768"
+        },
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "05-badger",
+          "master": "audits/G2_C59_20260926/05-badger/master.png",
+          "packet": "audits/G2_C59_20260926/05-badger",
+          "resolvedMaster": "audits/G2_C59_20260926/05-badger/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "8a20aa882cbc0362d3b6ca44ca22377be63d2c477b865dd1c1310d5fe81a2453",
+          "masterBytes": 1206616,
+          "pilotSha256": "953b4a06319c7d6b45ccc57537d7601ce9218c4ed6cd81e72c6db40f6fb3b5ba"
+        }
+      ]
+    },
+    {
+      "name": "Beaver",
+      "correction": "Slight natural head turn reveals both actual small rounded ears while preserving broad whiskered muzzle and orange incisors. Four actual short leg silhouettes and feet are distinct; the entire flat scaly paddle tail remains connected at its real base and separate from hind feet. No enlarged ears or furry rat tail. Prior authoring lacks far-ear-tip coverage.",
+      "predecessors": [
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "24-beaver",
+          "master": "audits/G2_C101_20260927/24-beaver/master.png",
+          "packet": "audits/G2_C101_20260927/24-beaver",
+          "resolvedMaster": "audits/G2_C101_20260927/24-beaver/master.png",
+          "resolution": "EXPLICIT_MASTER",
+          "masterSha256": "06fa7ee76984e64d4ee1bbb9c16572331844118baef553c9a548d378d551d14e",
+          "masterBytes": 1350961,
+          "pilotSha256": "f3ed5cba703c00f3e863ef2af2a7c124eb1cc3380d4771e002b74fdbfa104f86"
+        }
+      ]
+    }
+  ],
+  "unchangedHelpers": [
+    {
+      "path": "audits/C186_CREATURE_SUPPLY_20261002/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "identicalTo": "audits/C213_CREATURE_SUPPLY_20261002/retain.mjs"
+    },
+    {
+      "path": "audits/C186_CREATURE_SUPPLY_20261002/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "identicalTo": "audits/C213_CREATURE_SUPPLY_20261002/observe.mjs"
+    },
+    {
+      "path": "audits/C186_CREATURE_SUPPLY_20261002/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "identicalTo": "audits/C213_CREATURE_SUPPLY_20261002/framing.mjs"
+    },
+    {
+      "path": "audits/C186_CREATURE_SUPPLY_20261002/review.mjs",
+      "sha256": "8f84e1feae646897995d16e4c25427ef5287ba7231aa431344366a8ccc27f637",
+      "identicalTo": "audits/C213_CREATURE_SUPPLY_20261002/review.mjs"
+    },
+    {
+      "path": "audits/C186_CREATURE_SUPPLY_20261002/freeze.mjs",
+      "sha256": "fef11c6a3620cb4050a8f0a3a800cadd18b1bfbeec8989cdbca7c00a74ea1b76",
+      "identicalTo": "audits/C213_CREATURE_SUPPLY_20261002/freeze.mjs"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "cf.c186-parent-visual-review/v1",
+  "rows": [
+    {
+      "id": "01-zebra-fallback-ears",
+      "fullSizeParentInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/master.png",
+          "sha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/islands-01/fit/parts/ownership.png",
+          "sha256": "5791f911ab331b7b49110b5a0575fe8bf17867f813ac00b1b09454aaa582e5e6"
+        }
+      ],
+      "finding": "Both ear silhouettes now have their own base/tip owners; both retain actual source tissue. Broad inherited axial and upper-limb ownership is not independently admitted by this check.",
+      "qualityAdmission": false
+    },
+    {
+      "id": "08-gaur-observed-ears",
+      "fullSizeParentInspected": [
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/master.png",
+          "sha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6"
+        },
+        {
+          "path": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/islands-01/fit/parts/ownership.png",
+          "sha256": "f6d1df8e6cccf7632cb1133fe7d8f2ef83ef4f1e2a8adcd0471e114d8d6f27a8"
+        }
+      ],
+      "finding": "Both pinnae and horns are separated in ownership; the far foreleg begins where the visible leg emerges beneath torso fur. Coarse inherited upper-leg boundaries remain for native review.",
+      "qualityAdmission": false
+    }
+  ],
+  "scope": "Selected second-review examples only; delegated lane reviews the complete selected set"
+}

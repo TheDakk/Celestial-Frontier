@@ -1,0 +1,28 @@
+{
+  "name": "Beaver",
+  "masterSha256": "545ac4d2f6e645e0ce3667714cfef3fa3937b0cb3054911327cbe44ab46515d1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four separate paw endpoints, orange front incisors, broad flattened scale-textured paddle tail and small near rounded ear. A small far ear tip is visible but its base is covered by crown fur. Body is bulky and long-fringed; proximal leg roots remain under fur. Hind feet appear individually clawed with limited explicit web membrane, requiring anatomical review. Source is retained without declaring absent ears or motion acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 142,
+      "y0": 372,
+      "x1": 1041,
+      "y1": 870
+    },
+    "margins": {
+      "left": 142,
+      "right": 212,
+      "top": 372,
+      "bottom": 383
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

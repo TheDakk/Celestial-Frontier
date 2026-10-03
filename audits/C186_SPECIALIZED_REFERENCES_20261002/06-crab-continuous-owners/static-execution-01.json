@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "static",
+  "id": "06-crab-continuous-owners",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-continuous-owners/fit01",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-continuous-owners/static-01.json"
+  ],
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-continuous-owners/static-01.log",
+  "logSha256": "8ae9cd304d1f759322075894062e81fcadf50613c1aebf3610974bd3dc62a36d",
+  "nativeRuns": 0
+}

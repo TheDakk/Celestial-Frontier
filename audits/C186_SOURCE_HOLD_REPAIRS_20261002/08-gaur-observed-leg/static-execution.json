@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c186-bounded-execution/v1",
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-leg/fit01",
+    "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-leg/static-01.json"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedMs": 9626.198,
+  "error": null,
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "nodeVersion": "v26.10.0",
+  "native": false
+}

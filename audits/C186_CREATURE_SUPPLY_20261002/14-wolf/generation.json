@@ -1,0 +1,14 @@
+{
+  "id": "14-wolf",
+  "name": "Wolf",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ecf9c16a-0f3e-40f8-8738-98ff8926aa22.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "633d0a24f7b514dbd2413bf649513201cc81cd03892b2abb89b9150642d06e3a",
+  "bytes": 1382343,
+  "promptSha256": "6595d60cad9d5d138c5a054c10b4104c72ad508d2f9a5e2e529b8999d466e633",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

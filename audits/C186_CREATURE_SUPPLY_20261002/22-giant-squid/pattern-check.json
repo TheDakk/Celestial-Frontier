@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Giant Squid",
+  "masterSha256": "cb07009c82606a8d92a95f57b227a7bb6485ad13baaab75419701c2ad76046f8",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

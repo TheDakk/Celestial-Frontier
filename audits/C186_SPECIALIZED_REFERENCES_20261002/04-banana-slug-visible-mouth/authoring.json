@@ -1,0 +1,429 @@
+{
+  "id": "c186-independent-banana-slug",
+  "family": "gastropod",
+  "landmarksPx": {
+    "root": [
+      650,
+      800
+    ],
+    "foot0": [
+      146,
+      838
+    ],
+    "foot1": [
+      407,
+      832
+    ],
+    "foot2": [
+      681,
+      830
+    ],
+    "foot3": [
+      899,
+      718
+    ],
+    "head": [
+      984,
+      573
+    ],
+    "mouth": [
+      1010,
+      608
+    ],
+    "eyeFar": [
+      864,
+      347
+    ],
+    "eyeNear": [
+      1167,
+      373
+    ]
+  },
+  "groundLineY": 0.7129186602870813,
+  "materials": {
+    "surface": "slick"
+  },
+  "remainderPart": "foot3",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          646,
+          796
+        ],
+        [
+          654,
+          796
+        ],
+        [
+          654,
+          804
+        ],
+        [
+          646,
+          804
+        ]
+      ]
+    },
+    {
+      "id": "eyefar",
+      "joint": "eyeFar",
+      "layer": "near",
+      "polygonPx": [
+        [
+          848,
+          330
+        ],
+        [
+          879,
+          330
+        ],
+        [
+          895,
+          361
+        ],
+        [
+          912,
+          408
+        ],
+        [
+          939,
+          457
+        ],
+        [
+          958,
+          497
+        ],
+        [
+          973,
+          523
+        ],
+        [
+          967,
+          548
+        ],
+        [
+          941,
+          557
+        ],
+        [
+          918,
+          540
+        ],
+        [
+          908,
+          510
+        ],
+        [
+          897,
+          460
+        ],
+        [
+          879,
+          413
+        ],
+        [
+          856,
+          373
+        ]
+      ]
+    },
+    {
+      "id": "eyenear",
+      "joint": "eyeNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1149,
+          354
+        ],
+        [
+          1176,
+          355
+        ],
+        [
+          1184,
+          373
+        ],
+        [
+          1176,
+          391
+        ],
+        [
+          1149,
+          407
+        ],
+        [
+          1114,
+          440
+        ],
+        [
+          1084,
+          473
+        ],
+        [
+          1056,
+          508
+        ],
+        [
+          1035,
+          534
+        ],
+        [
+          1006,
+          535
+        ],
+        [
+          993,
+          516
+        ],
+        [
+          1010,
+          497
+        ],
+        [
+          1051,
+          475
+        ],
+        [
+          1091,
+          441
+        ],
+        [
+          1131,
+          398
+        ]
+      ]
+    },
+    {
+      "id": "mouth",
+      "joint": "mouth",
+      "layer": "near",
+      "polygonPx": [
+        [
+          981,
+          595
+        ],
+        [
+          1000,
+          589
+        ],
+        [
+          1023,
+          590
+        ],
+        [
+          1040,
+          600
+        ],
+        [
+          1038,
+          617
+        ],
+        [
+          1025,
+          630
+        ],
+        [
+          1004,
+          633
+        ],
+        [
+          983,
+          624
+        ],
+        [
+          976,
+          612
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          913,
+          524
+        ],
+        [
+          945,
+          511
+        ],
+        [
+          989,
+          514
+        ],
+        [
+          1025,
+          524
+        ],
+        [
+          1041,
+          558
+        ],
+        [
+          1057,
+          580
+        ],
+        [
+          1077,
+          598
+        ],
+        [
+          1103,
+          610
+        ],
+        [
+          1106,
+          628
+        ],
+        [
+          1090,
+          642
+        ],
+        [
+          1070,
+          633
+        ],
+        [
+          1035,
+          626
+        ],
+        [
+          1018,
+          649
+        ],
+        [
+          988,
+          662
+        ],
+        [
+          958,
+          654
+        ],
+        [
+          944,
+          627
+        ],
+        [
+          921,
+          608
+        ],
+        [
+          900,
+          581
+        ]
+      ]
+    },
+    {
+      "id": "foot0",
+      "joint": "foot0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          272,
+          0
+        ],
+        [
+          272,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "foot1",
+      "joint": "foot1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          272,
+          0
+        ],
+        [
+          524,
+          0
+        ],
+        [
+          524,
+          1254
+        ],
+        [
+          272,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "foot2",
+      "joint": "foot2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          524,
+          0
+        ],
+        [
+          785,
+          0
+        ],
+        [
+          785,
+          1254
+        ],
+        [
+          524,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "foot3",
+      "joint": "foot3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independent visible-mouth Banana Slug reference candidate",
+    "limitations": [
+      "Independent source-coordinate Banana Slug authoring, a different canonical subject from Snail. No Snail fit geometry or labels were reused.",
+      "The final targeted painting removes the earlier third lower projection. Two long ocular stalks and two short lower sensory tentacles are separately visible. The dark ventral oral slit at source[1010,608] is distinct from the lower tentacles.",
+      "The current gastropod template has two ocular controls but no independent lower-sensory-tentacle controls. Both visible short tentacles remain part of the contiguous head owner; no paint is deleted or new joint invented.",
+      "The naturally shellless subject declares only shell absent; it does not omit mouth, eyes or foot. Four foot controls sample the continuous soft body/foot; they are not legs.",
+      "The source remains glossy and its eye tips read overly round. The editing model also changed body framing/proportions, so exact paint conservation refers to this retained final master, not to its input predecessor.",
+      "Right ocular tip has less than requested framing margin. No style, framing, reference-pool or native quality acceptance is claimed."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  }
+}

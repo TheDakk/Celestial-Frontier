@@ -1,0 +1,65 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/master.png",
+      "sha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/authoring.json",
+      "sha256": "7b58fde651bb4e6d1d8b2ab402d10571acf4294e4960f4ededbbce77117f413a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/subject-source.json",
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/presence.json",
+      "sha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/master.png",
+      "sha256": "c245d4c0050bfb4c649ebfd33e583b88e0aea3b6a6f49c680fbef04aaba70722",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/authoring.json",
+      "sha256": "7b58fde651bb4e6d1d8b2ab402d10571acf4294e4960f4ededbbce77117f413a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/subject-source.json",
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star/presence.json",
+      "sha256": "95197a66cf8e054403cd25603e646734d2adfc43c607e03ab02d5c462789f394",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "authored-parts",
+    "error": "Error: Part masks: duplicate/invalid id\n    at requireValue (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:24:3)\n    at async buildAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:34:15)\n    at async file://~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs:112:16"
+  }
+}

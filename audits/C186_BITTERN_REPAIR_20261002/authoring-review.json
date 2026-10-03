@@ -1,0 +1,43 @@
+{
+  "masterSha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+  "review": "Full-size original: far exposed hock bend around637,738, tarsal toe junction708,836, distal forward toe support749,852. Original transferred hock673.2,791.2 and ankle737.2,847 sit beyond visible bend/junction. Original foot excludes rear toe and basal foot paint; old far-thigh contour misses much of visible vertical segment. New priority polygons follow these real painted surfaces; no new anatomy, pose or motion allowance.",
+  "changedLandmarks": {
+    "legFarKnee": {
+      "before": [
+        673.2,
+        791.2
+      ],
+      "after": [
+        637,
+        738
+      ]
+    },
+    "legFarAnkle": {
+      "before": [
+        737.2,
+        847
+      ],
+      "after": [
+        708,
+        836
+      ]
+    },
+    "legFarFoot": {
+      "before": [
+        783.6,
+        848.9
+      ],
+      "after": [
+        749,
+        852
+      ]
+    }
+  },
+  "changedPartIds": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+  ],
+  "limitsChanged": false,
+  "qualityAccepted": false
+}

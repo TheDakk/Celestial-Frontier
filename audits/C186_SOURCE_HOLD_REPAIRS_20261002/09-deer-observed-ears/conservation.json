@@ -1,0 +1,387 @@
+{
+  "schema": "cf.c186-source-conservation/v1",
+  "id": "09-deer-observed-ears",
+  "masterSha256": "ef0c3c113a35928ffe1c64e090fa556b67f34e413658f39aba0a41a33a964396",
+  "authoringSha256": "097929f58c055f27eae2c8dd9783dee1f8af5c2e36a1d61f9904f990d5b5f5bc",
+  "bindingSha256": "47754870cba70a35388d2c5d2d91994434685d3facc2d3481416ebd8eb4bd5e6",
+  "keyedRgbaSha256": "b37e7c125c11b9d9ec11c43835ee9536f584f89000bdd76125975a62d9ef0ee9",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "earNearTip -> head": 116,
+    "earFarTip -> head": 119,
+    "earNearRoot -> head": 579,
+    "earFarRoot -> head": 2071,
+    "earNearRoot -> earNearTip": 2516,
+    "head -> earFarTip": 1441,
+    "spine -> earNearTip": 674,
+    "earFarRoot -> earFarTip": 3,
+    "head -> earNearTip": 161,
+    "head -> earFarRoot": 484,
+    "neck -> earNearTip": 178,
+    "head -> earNearRoot": 226,
+    "neck -> earNearRoot": 8
+  },
+  "originalCap": {
+    "status": "PASS",
+    "wouldMovePixels": 2270,
+    "remainderPixels": 37789,
+    "islands": [
+      {
+        "pixels": 316,
+        "to": "head",
+        "border": {
+          "27": 22
+        }
+      },
+      {
+        "pixels": 674,
+        "to": "earNearRoot",
+        "border": {
+          "23": 87,
+          "28": 17
+        }
+      },
+      {
+        "pixels": 46,
+        "to": "tail0",
+        "border": {
+          "3": 6,
+          "4": 17
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "tail1",
+        "border": {
+          "3": 8
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 64,
+        "to": "tail1",
+        "border": {
+          "2": 8,
+          "3": 20
+        }
+      },
+      {
+        "pixels": 1045,
+        "to": "tail3",
+        "border": {
+          "1": 49,
+          "2": 35,
+          "3": 35,
+          "9": 10,
+          "31": 39
+        }
+      },
+      {
+        "pixels": 107,
+        "to": "hindNearPaw",
+        "border": {
+          "6": 44,
+          "7": 45
+        }
+      },
+      {
+        "pixels": 10,
+        "to": "hindFarPaw",
+        "border": {
+          "15": 9
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 1596,
+    "remainderPixels": 37115,
+    "islands": [
+      {
+        "pixels": 316,
+        "to": "head",
+        "border": {
+          "27": 22
+        }
+      },
+      {
+        "pixels": 46,
+        "to": "tail0",
+        "border": {
+          "3": 6,
+          "4": 17
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "tail1",
+        "border": {
+          "3": 8
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 64,
+        "to": "tail1",
+        "border": {
+          "2": 8,
+          "3": 20
+        }
+      },
+      {
+        "pixels": 1045,
+        "to": "tail3",
+        "border": {
+          "1": 49,
+          "2": 35,
+          "3": 35,
+          "9": 10,
+          "31": 39
+        }
+      },
+      {
+        "pixels": 107,
+        "to": "hindNearPaw",
+        "border": {
+          "6": 44,
+          "7": 45
+        }
+      },
+      {
+        "pixels": 10,
+        "to": "hindFarPaw",
+        "border": {
+          "15": 9
+        }
+      }
+    ],
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 35519,
+      "minX": 486,
+      "minY": 512,
+      "maxX": 674,
+      "maxY": 755
+    },
+    {
+      "pixels": 1045,
+      "minX": 273,
+      "minY": 629,
+      "maxX": 308,
+      "maxY": 712
+    },
+    {
+      "pixels": 674,
+      "minX": 807,
+      "minY": 316,
+      "maxX": 838,
+      "maxY": 382
+    },
+    {
+      "pixels": 316,
+      "minX": 1037,
+      "minY": 246,
+      "maxX": 1059,
+      "maxY": 283
+    },
+    {
+      "pixels": 107,
+      "minX": 261,
+      "minY": 873,
+      "maxX": 297,
+      "maxY": 883
+    },
+    {
+      "pixels": 64,
+      "minX": 261,
+      "minY": 609,
+      "maxX": 268,
+      "maxY": 626
+    },
+    {
+      "pixels": 46,
+      "minX": 286,
+      "minY": 573,
+      "maxX": 295,
+      "maxY": 584
+    },
+    {
+      "pixels": 10,
+      "minX": 518,
+      "minY": 1068,
+      "maxX": 522,
+      "maxY": 1073
+    },
+    {
+      "pixels": 5,
+      "minX": 271,
+      "minY": 599,
+      "maxX": 273,
+      "maxY": 603
+    },
+    {
+      "pixels": 1,
+      "minX": 274,
+      "minY": 597,
+      "maxX": 274,
+      "maxY": 597
+    },
+    {
+      "pixels": 1,
+      "minX": 270,
+      "minY": 605,
+      "maxX": 270,
+      "maxY": 605
+    },
+    {
+      "pixels": 1,
+      "minX": 269,
+      "minY": 607,
+      "maxX": 269,
+      "maxY": 607
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 35519,
+      "minX": 486,
+      "minY": 512,
+      "maxX": 674,
+      "maxY": 755
+    },
+    {
+      "pixels": 1045,
+      "minX": 273,
+      "minY": 629,
+      "maxX": 308,
+      "maxY": 712
+    },
+    {
+      "pixels": 316,
+      "minX": 1037,
+      "minY": 246,
+      "maxX": 1059,
+      "maxY": 283
+    },
+    {
+      "pixels": 107,
+      "minX": 261,
+      "minY": 873,
+      "maxX": 297,
+      "maxY": 883
+    },
+    {
+      "pixels": 64,
+      "minX": 261,
+      "minY": 609,
+      "maxX": 268,
+      "maxY": 626
+    },
+    {
+      "pixels": 46,
+      "minX": 286,
+      "minY": 573,
+      "maxX": 295,
+      "maxY": 584
+    },
+    {
+      "pixels": 10,
+      "minX": 518,
+      "minY": 1068,
+      "maxX": 522,
+      "maxY": 1073
+    },
+    {
+      "pixels": 5,
+      "minX": 271,
+      "minY": 599,
+      "maxX": 273,
+      "maxY": 603
+    },
+    {
+      "pixels": 1,
+      "minX": 274,
+      "minY": 597,
+      "maxX": 274,
+      "maxY": 597
+    },
+    {
+      "pixels": 1,
+      "minX": 270,
+      "minY": 605,
+      "maxX": 270,
+      "maxY": 605
+    },
+    {
+      "pixels": 1,
+      "minX": 269,
+      "minY": 607,
+      "maxX": 269,
+      "maxY": 607
+    }
+  ],
+  "unchangedD28Cap": 0.05,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "structural-island control refused at unchanged 5%"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

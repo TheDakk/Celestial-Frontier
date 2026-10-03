@@ -1,0 +1,14 @@
+{
+  "id": "17-otter",
+  "name": "Otter",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-11237478-e9cb-4b68-9f20-aa43549a132d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "329c2167f0e1127a0ef13748a138de7ced41daac145ba2025be8f304d0e4618c",
+  "bytes": 1331905,
+  "promptSha256": "6ea2abf32676584ec47c0cdb5ec5b690340fe891f62e100baddd20ad52b4ca96",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

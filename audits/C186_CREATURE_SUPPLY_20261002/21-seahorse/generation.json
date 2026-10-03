@@ -1,0 +1,14 @@
+{
+  "id": "21-seahorse",
+  "name": "Seahorse",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c182da2e-c1dd-4282-be8f-322dd3c58197.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a9b37a6c7274b40bc789b1a41a503a147648477c7bcf53e5d8677e43dd80ac86",
+  "bytes": 1282579,
+  "promptSha256": "a12cf0c00b0aaad44d904151cc4781ecfe85e7efd235a0de742cccb6fd4de85f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

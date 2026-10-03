@@ -1,0 +1,28 @@
+{
+  "name": "Pond Turtle",
+  "masterSha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: low streamlined scute shell, striped extended wrinkled neck, real tapering tail and webbed clawed feet. Three foot silhouettes are clearly exposed; far foreleg remains hidden behind neck/near foreleg. Thus four independent limb chains are not verified. No external mammal ears or invented shell detachments. Natural joints emerging under the rim stay occluded as painted.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 145,
+      "y0": 438,
+      "x1": 1101,
+      "y1": 828
+    },
+    "margins": {
+      "left": 145,
+      "right": 152,
+      "top": 438,
+      "bottom": 425
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

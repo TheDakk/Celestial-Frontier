@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "conservation",
+  "id": "02-sponge-direct",
+  "command": [
+    "node",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/02-sponge-direct",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/02-sponge-direct/fit01",
+    "01"
+  ],
+  "helperSha256": "5fb70eb9e7d911e33717b08123211f1a1e299526d61608e4a8df1b999eba5855",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C186_SPECIALIZED_REFERENCES_20261002/02-sponge-direct/conservation-01.log",
+  "logSha256": "43d9ecec87ac748209fca252ec37bfba2230f57099e42c932f43c2c8f103b991",
+  "nativeRuns": 0
+}

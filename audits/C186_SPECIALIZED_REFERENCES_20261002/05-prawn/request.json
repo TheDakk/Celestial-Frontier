@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c186-specialized-source-edit/v1",
+  "name": "Prawn",
+  "family": "crustacean-small",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn/master.png",
+    "sha256": "43b9e3595cd5a1f29477f22561c5c02a81c64944f52a1ba9506ed1107fc2f214",
+    "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/05-prawn/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/C186_CREATURE_SUPPLY_20261002/03-prawn/prompt.canonical.txt",
+    "sha256": "132f6c5eec15cbaf07f6da0c871ce257fc791935acc312abea673dc627543897"
+  },
+  "promptSha256": "3e971dc8c45e2997bfe1055ea53615a3af053de48245ab77d8a49d51d3c25808",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "adaptation": "Repaint the attached Prawn in a truthful dorsal-oblique three-quarter pose viewed from above, with the head facing right and its five real walking-leg pairs spread separately to the two sides of the thorax. The purpose is to expose the currently hidden FAR leg roots: every one of the ten genuine walking legs must have a visible uninterrupted thoracic attachment, bent joint and distal tip. Do not add legs. Retain the real swimmerets beneath the six-segment abdomen, tail fan, both eyestalks, antennae and antennules; none may be removed merely to simplify a rig. Natural anatomical proportions and recognisable prawn identity. Space appendages without crossings; far thoracic leg roots must not disappear behind the near leg roots. This is a pose/view correction, not an exploded diagram. One connected whole painted animal on native 1254 square flat pure magenta, at most 75 percent silhouette extent, generous empty margins around every antenna. No floor, shadow, props or text.",
+  "frozenSectionsPreserved": [
+    "reference block",
+    "style paragraph",
+    "technical output and negative block"
+  ],
+  "admission": "SOURCE_CANDIDATE_ONLY",
+  "nativeRuns": 0
+}

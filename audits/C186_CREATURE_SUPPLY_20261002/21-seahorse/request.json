@@ -1,0 +1,30 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Seahorse",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "a12cf0c00b0aaad44d904151cc4781ecfe85e7efd235a0de742cccb6fd4de85f",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "tube-snouted-fish",
+  "authoringCreated": false,
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "basePromptSha256": "c525ef8bedd8535637514910aaa6f551f19e10d8d1b0e4aaca37104dc3e0c690",
+  "batchCompilerSha256": "217d164bd9b882cfb517865862c3d29cd67457de72b6db41000d5890d140b586",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null,
+  "priorPilotPaths": [],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "BIOLOGICAL PRIORITY: real seahorse upright in its natural vertical swimming posture, head facing right, tubular snout, small genuine dorsal and pectoral fins and complete curled prehensile tail. This supersedes generic horizontal fish layout. No caudal fin, invented anal/pelvic fins, coral prop or gripping branch.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

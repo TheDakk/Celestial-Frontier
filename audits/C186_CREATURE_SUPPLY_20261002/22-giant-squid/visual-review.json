@@ -1,0 +1,28 @@
+{
+  "name": "Giant Squid",
+  "masterSha256": "cb07009c82606a8d92a95f57b227a7bb6485ad13baaab75419701c2ad76046f8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: elongated mottled red mantle with rear fins, one large near eye, two visibly long feeding tentacles ending in sucker-lined clubs, and a cluster of shorter sucker-lined arms. Several shorter arms and their proximal roots overlap at the head, so eight independently traceable complete arm chains are not proven. Far eye is hidden and not declared absent. No anatomy is inferred; counts, root ownership and species proportions remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 130,
+      "y0": 399,
+      "x1": 1122,
+      "y1": 850
+    },
+    "margins": {
+      "left": 130,
+      "right": 131,
+      "top": 399,
+      "bottom": 403
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

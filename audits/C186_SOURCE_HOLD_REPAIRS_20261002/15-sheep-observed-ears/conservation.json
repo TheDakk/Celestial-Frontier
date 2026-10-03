@@ -1,0 +1,892 @@
+{
+  "schema": "cf.c186-source-conservation/v1",
+  "id": "15-sheep-observed-ears",
+  "masterSha256": "6f217196ecbe7acae5545088e3634b41d165959925b1ff7e699920bba1e445ee",
+  "authoringSha256": "f24dd1e478ef7a8b21389a79234135caa9fe608f2161f993a9ff52cc02ef3c63",
+  "bindingSha256": "b80a62a3e1d32641b9304bd2fb3c733cc9887fe8277153df3fd324a7f32e0129",
+  "keyedRgbaSha256": "a9822d99e5ee7fb2fdcc38601efc1f26d29a4baf92fa65960adae894dbac7373",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "spine -> earNearTip": 494,
+    "spine -> earFarTip": 82,
+    "neck -> earNearTip": 2619,
+    "earNearTip -> earFarTip": 486,
+    "earNearTip -> spine": 741,
+    "earNearTip -> neck": 317,
+    "earNearTip -> earFarRoot": 391,
+    "earNearRoot -> neck": 1085,
+    "earFarTip -> spine": 36,
+    "earFarRoot -> spine": 229,
+    "earNearRoot -> head": 1228,
+    "earNearTip -> head": 42,
+    "earNearRoot -> spine": 28,
+    "neck -> earNearRoot": 936,
+    "earFarRoot -> head": 463
+  },
+  "originalCap": {
+    "status": "PASS",
+    "wouldMovePixels": 6953,
+    "remainderPixels": 79992,
+    "islands": [
+      {
+        "pixels": 1032,
+        "to": "neck",
+        "border": {
+          "28": 104
+        }
+      },
+      {
+        "pixels": 82,
+        "to": "earFarTip",
+        "border": {
+          "6": 13,
+          "8": 31
+        }
+      },
+      {
+        "pixels": 46,
+        "to": "neck",
+        "border": {
+          "28": 21
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "neck",
+        "border": {
+          "28": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "earNearTip",
+        "border": {
+          "6": 2,
+          "28": 2
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "neck",
+        "border": {
+          "28": 5
+        }
+      },
+      {
+        "pixels": 17,
+        "to": "neck",
+        "border": {
+          "28": 8
+        }
+      },
+      {
+        "pixels": 8,
+        "to": "neck",
+        "border": {
+          "28": 6
+        }
+      },
+      {
+        "pixels": 18,
+        "to": "neck",
+        "border": {
+          "28": 6
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "neck",
+        "border": {
+          "28": 8
+        }
+      },
+      {
+        "pixels": 3415,
+        "to": "neck",
+        "border": {
+          "26": 39,
+          "27": 55,
+          "28": 141,
+          "29": 24
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "tail0",
+        "border": {
+          "4": 4
+        }
+      },
+      {
+        "pixels": 52,
+        "to": "tail1",
+        "border": {
+          "3": 12,
+          "4": 11
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "tail1",
+        "border": {
+          "3": 5
+        }
+      },
+      {
+        "pixels": 16,
+        "to": "tail1",
+        "border": {
+          "3": 11
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "tail1",
+        "border": {
+          "2": 1,
+          "3": 3
+        }
+      },
+      {
+        "pixels": 38,
+        "to": "hindNearRoot",
+        "border": {
+          "2": 12,
+          "3": 14,
+          "13": 26,
+          "30": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail2",
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail2",
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "tail2",
+        "border": {
+          "2": 3
+        }
+      },
+      {
+        "pixels": 521,
+        "to": "tail3",
+        "border": {
+          "1": 75,
+          "2": 21,
+          "13": 37
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "chest",
+        "border": {
+          "29": 5
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 2,
+        "to": "foreFarRoot",
+        "border": {
+          "25": 2
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "foreFarRoot",
+        "border": {
+          "25": 4
+        }
+      },
+      {
+        "pixels": 1087,
+        "to": "hindNearRoot",
+        "border": {
+          "12": 50,
+          "13": 69,
+          "21": 22
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "hindFarRoot",
+        "border": {
+          "21": 13
+        }
+      },
+      {
+        "pixels": 23,
+        "to": "foreNearRoot",
+        "border": {
+          "17": 9
+        }
+      },
+      {
+        "pixels": 151,
+        "to": "hindFarRoot",
+        "border": {
+          "21": 56
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "foreNearKnee",
+        "border": {
+          "16": 3
+        }
+      },
+      {
+        "pixels": 44,
+        "to": "foreNearKnee",
+        "border": {
+          "15": 3,
+          "16": 31
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindFarAnkle",
+        "border": {
+          "19": 2
+        }
+      },
+      {
+        "pixels": 156,
+        "to": "hindNearAnkle",
+        "border": {
+          "11": 34
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindNearAnkle",
+        "border": {
+          "11": 3
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "foreNearAnkle",
+        "border": {
+          "15": 5
+        }
+      },
+      {
+        "pixels": 17,
+        "to": "hindFarAnkle",
+        "border": {
+          "18": 7,
+          "19": 12
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindNearAnkle",
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 78,
+        "to": "hindNearPaw",
+        "border": {
+          "10": 17,
+          "11": 13
+        }
+      },
+      {
+        "pixels": 13,
+        "to": "foreFarPaw",
+        "border": {
+          "22": 10,
+          "23": 3
+        }
+      },
+      {
+        "pixels": 56,
+        "to": "foreFarPaw",
+        "border": {
+          "22": 18
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "foreNearPaw",
+        "border": {
+          "14": 4
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "hindNearPaw",
+        "border": {
+          "10": 10
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "hindNearPaw",
+        "border": {
+          "10": 4
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 7411,
+    "remainderPixels": 80450,
+    "islands": [
+      {
+        "pixels": 380,
+        "to": "neck",
+        "border": {
+          "6": 27,
+          "28": 39
+        }
+      },
+      {
+        "pixels": 158,
+        "to": "neck",
+        "border": {
+          "6": 12,
+          "28": 16
+        }
+      },
+      {
+        "pixels": 46,
+        "to": "neck",
+        "border": {
+          "28": 21
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "neck",
+        "border": {
+          "28": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "earFarTip",
+        "border": {
+          "8": 2
+        }
+      },
+      {
+        "pixels": 1035,
+        "to": "earFarRoot",
+        "border": {
+          "8": 25,
+          "9": 72,
+          "27": 64,
+          "28": 40
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "neck",
+        "border": {
+          "28": 5
+        }
+      },
+      {
+        "pixels": 17,
+        "to": "neck",
+        "border": {
+          "28": 8
+        }
+      },
+      {
+        "pixels": 8,
+        "to": "neck",
+        "border": {
+          "28": 6
+        }
+      },
+      {
+        "pixels": 18,
+        "to": "neck",
+        "border": {
+          "28": 6
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "neck",
+        "border": {
+          "28": 8
+        }
+      },
+      {
+        "pixels": 3415,
+        "to": "neck",
+        "border": {
+          "26": 39,
+          "27": 55,
+          "28": 141,
+          "29": 24
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "tail0",
+        "border": {
+          "4": 4
+        }
+      },
+      {
+        "pixels": 52,
+        "to": "tail1",
+        "border": {
+          "3": 12,
+          "4": 11
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "tail1",
+        "border": {
+          "3": 5
+        }
+      },
+      {
+        "pixels": 16,
+        "to": "tail1",
+        "border": {
+          "3": 11
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "tail1",
+        "border": {
+          "2": 1,
+          "3": 3
+        }
+      },
+      {
+        "pixels": 38,
+        "to": "hindNearRoot",
+        "border": {
+          "2": 12,
+          "3": 14,
+          "13": 26,
+          "30": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail2",
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail2",
+        "border": {
+          "2": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "tail2",
+        "border": {
+          "2": 3
+        }
+      },
+      {
+        "pixels": 521,
+        "to": "tail3",
+        "border": {
+          "1": 75,
+          "2": 21,
+          "13": 37
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "chest",
+        "border": {
+          "29": 5
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 2,
+        "to": "foreFarRoot",
+        "border": {
+          "25": 2
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "foreFarRoot",
+        "border": {
+          "25": 4
+        }
+      },
+      {
+        "pixels": 1087,
+        "to": "hindNearRoot",
+        "border": {
+          "12": 50,
+          "13": 69,
+          "21": 22
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "hindFarRoot",
+        "border": {
+          "21": 13
+        }
+      },
+      {
+        "pixels": 23,
+        "to": "foreNearRoot",
+        "border": {
+          "17": 9
+        }
+      },
+      {
+        "pixels": 151,
+        "to": "hindFarRoot",
+        "border": {
+          "21": 56
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "foreNearKnee",
+        "border": {
+          "16": 3
+        }
+      },
+      {
+        "pixels": 44,
+        "to": "foreNearKnee",
+        "border": {
+          "15": 3,
+          "16": 31
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindFarAnkle",
+        "border": {
+          "19": 2
+        }
+      },
+      {
+        "pixels": 156,
+        "to": "hindNearAnkle",
+        "border": {
+          "11": 34
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindNearAnkle",
+        "border": {
+          "11": 3
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "foreNearAnkle",
+        "border": {
+          "15": 5
+        }
+      },
+      {
+        "pixels": 17,
+        "to": "hindFarAnkle",
+        "border": {
+          "18": 7,
+          "19": 12
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "hindNearAnkle",
+        "border": {
+          "11": 2
+        }
+      },
+      {
+        "pixels": 78,
+        "to": "hindNearPaw",
+        "border": {
+          "10": 17,
+          "11": 13
+        }
+      },
+      {
+        "pixels": 13,
+        "to": "foreFarPaw",
+        "border": {
+          "22": 10,
+          "23": 3
+        }
+      },
+      {
+        "pixels": 56,
+        "to": "foreFarPaw",
+        "border": {
+          "22": 18
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "foreNearPaw",
+        "border": {
+          "14": 4
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "hindNearPaw",
+        "border": {
+          "10": 10
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "hindNearPaw",
+        "border": {
+          "10": 4
+        }
+      }
+    ],
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 73038,
+      "minX": 454,
+      "minY": 344,
+      "maxX": 746,
+      "maxY": 745
+    },
+    {
+      "pixels": 3415,
+      "minX": 1015,
+      "minY": 383,
+      "maxX": 1089,
+      "maxY": 526
+    },
+    {
+      "pixels": 1087,
+      "minX": 302,
+      "minY": 716,
+      "maxX": 368,
+      "maxY": 772
+    },
+    {
+      "pixels": 1032,
+      "minX": 939,
+      "minY": 213,
+      "maxX": 1036,
+      "maxY": 233
+    },
+    {
+      "pixels": 521,
+      "minX": 201,
+      "minY": 591,
+      "maxX": 223,
+      "maxY": 665
+    },
+    {
+      "pixels": 156,
+      "minX": 193,
+      "minY": 923,
+      "maxX": 200,
+      "maxY": 957
+    },
+    {
+      "pixels": 151,
+      "minX": 448,
+      "minY": 738,
+      "maxX": 468,
+      "maxY": 772
+    },
+    {
+      "pixels": 82,
+      "minX": 1078,
+      "minY": 226,
+      "maxX": 1098,
+      "maxY": 241
+    },
+    {
+      "pixels": 78,
+      "minX": 253,
+      "minY": 954,
+      "maxX": 264,
+      "maxY": 971
+    },
+    {
+      "pixels": 56,
+      "minX": 921,
+      "minY": 983,
+      "maxX": 929,
+      "maxY": 997
+    },
+    {
+      "pixels": 52,
+      "minX": 185,
+      "minY": 477,
+      "maxX": 197,
+      "maxY": 490
+    },
+    {
+      "pixels": 46,
+      "minX": 914,
+      "minY": 232,
+      "maxX": 937,
+      "maxY": 235
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 73038,
+      "minX": 454,
+      "minY": 344,
+      "maxX": 746,
+      "maxY": 745
+    },
+    {
+      "pixels": 3415,
+      "minX": 1015,
+      "minY": 383,
+      "maxX": 1089,
+      "maxY": 526
+    },
+    {
+      "pixels": 1087,
+      "minX": 302,
+      "minY": 716,
+      "maxX": 368,
+      "maxY": 772
+    },
+    {
+      "pixels": 1035,
+      "minX": 1041,
+      "minY": 237,
+      "maxX": 1095,
+      "maxY": 288
+    },
+    {
+      "pixels": 521,
+      "minX": 201,
+      "minY": 591,
+      "maxX": 223,
+      "maxY": 665
+    },
+    {
+      "pixels": 380,
+      "minX": 987,
+      "minY": 213,
+      "maxX": 1036,
+      "maxY": 229
+    },
+    {
+      "pixels": 158,
+      "minX": 939,
+      "minY": 222,
+      "maxX": 957,
+      "maxY": 233
+    },
+    {
+      "pixels": 156,
+      "minX": 193,
+      "minY": 923,
+      "maxX": 200,
+      "maxY": 957
+    },
+    {
+      "pixels": 151,
+      "minX": 448,
+      "minY": 738,
+      "maxX": 468,
+      "maxY": 772
+    },
+    {
+      "pixels": 78,
+      "minX": 253,
+      "minY": 954,
+      "maxX": 264,
+      "maxY": 971
+    },
+    {
+      "pixels": 56,
+      "minX": 921,
+      "minY": 983,
+      "maxX": 929,
+      "maxY": 997
+    },
+    {
+      "pixels": 52,
+      "minX": 185,
+      "minY": 477,
+      "maxX": 197,
+      "maxY": 490
+    }
+  ],
+  "unchangedD28Cap": 0.05,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "structural-island control refused at unchanged 5%"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Wolverine",
+  "masterSha256": "2831ca7871fa31d13657372664f461f28f769735e08dabbf226c7e64a1b906aa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: stocky long-furred animal, pale lateral stripe sweeping across flank and tail, dark face mask, rounded near ear and small far ear tip. Four paw endpoints can be seen, but the two front paws and proximal forelimbs overlap strongly, leaving no clear complete separation for the far foreleg. Dense fringe still obscures limb roots; tail reads large and shaggy. Source is retained with these ownership and proportion holds, not accepted.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 112,
+      "y0": 358,
+      "x1": 1145,
+      "y1": 860
+    },
+    "margins": {
+      "left": 112,
+      "right": 108,
+      "top": 358,
+      "bottom": 393
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

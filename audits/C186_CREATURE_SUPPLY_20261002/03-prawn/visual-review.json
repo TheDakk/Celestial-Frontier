@@ -1,0 +1,28 @@
+{
+  "name": "Prawn",
+  "masterSha256": "43b9e3595cd5a1f29477f22561c5c02a81c64944f52a1ba9506ed1107fc2f214",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: rostrum, one clearly visible stalked eye, two long antennae, fine antennules, segmented abdomen, swimmerets and tail fan are retained. Several walking-leg shafts are separate, but far thoracic roots remain bunched/hidden; ten independent complete root-to-tip walking paths are not proven. No far eye or concealed appendage is inferred. Right antenna tips approach edge, observer pending.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 139,
+      "y0": 285,
+      "x1": 1163,
+      "y1": 887
+    },
+    "margins": {
+      "left": 139,
+      "right": 90,
+      "top": 285,
+      "bottom": 366
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

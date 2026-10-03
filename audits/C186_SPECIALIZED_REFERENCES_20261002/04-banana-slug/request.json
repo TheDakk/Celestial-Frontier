@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c186-specialized-source-edit/v1",
+  "name": "Banana Slug",
+  "family": "gastropod",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/C213_CREATURE_SUPPLY_20261002/22-banana-slug/master.png",
+    "sha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+    "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/C186_CREATURE_SUPPLY_20261002/02-banana-slug/prompt.canonical.txt",
+    "sha256": "2602068cbc78aa5019a860a84629818280968d28419f23727f1cd46ad786155e"
+  },
+  "promptSha256": "acd815227b16967e4f091fa9de588b7dc001272e6a4bb482a1bf87b3bec7c4a4",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "adaptation": "Precise-object-edit of the attached existing Banana Slug painting. Retain its natural shellless yellow body, same species, same painted texture, mantle and breathing pore, same two long ocular tentacles and exactly two short lower sensory tentacles. The ONLY anatomical change is to make the genuine small ventral oral opening visible as a short dark slit immediately beneath the head, between/below the two existing short lower tentacles. Make it a modest feeding slit, not a round open mouth, lips, face, tongue, or third short projection. Keep both existing short tentacles intact and separately traceable. Keep the whole animal and all tentacles centered on a native 1254 square pure magenta canvas with generous empty margins. No new anatomy, floor, shadow or text.",
+  "frozenSectionsPreserved": [
+    "reference block",
+    "style paragraph",
+    "technical output and negative block"
+  ],
+  "admission": "SOURCE_CANDIDATE_ONLY",
+  "nativeRuns": 0
+}

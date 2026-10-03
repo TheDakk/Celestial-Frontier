@@ -1,0 +1,7 @@
+{
+  "schema": "cf.c186-bittern-freeze-correction/v1",
+  "reason": "First inventory raced the independent reviewer adding the requested resolved README hash. Parent hash verification caught the review-only mismatch. Original delivery.json is preserved; delivery-v2.json is authoritative for final bytes. No fit, master, test result or runtime changed.",
+  "changedFile": "independent-review.json",
+  "finalReviewSha256": "563c241867c1e6010264872c22e0f52ad5c26e47ddba72ef784491a149ee43bb",
+  "oldDeliverySha256": "0ea5296a8a166a4b92455a18da83c5b95875a850eb52c8fd019b19984202a80d"
+}

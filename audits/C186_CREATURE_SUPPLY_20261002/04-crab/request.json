@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Crab",
+  "family": "brachyuran",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "25d9dae383c84f0bd05330f442f119a14c509c9bb77f74701578144b37b7db4c",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "94c722dd51a54756e5bf6c647d3d4339052b3dd3f967ea6a51bb5dcc830b3119",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 8,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "eight actual walking legs, two separate genuine claw arms, two eye stalks and broad carapace; no vertebrate tail",
+  "profileId": "observed-crab",
+  "authoringCreated": false,
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "basePromptSha256": "21d0349584b789c06b5eda9430e20e146368a56d43a729fbf44aed8a0f1fd377",
+  "batchCompilerSha256": "217d164bd9b882cfb517865862c3d29cd67457de72b6db41000d5890d140b586",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Correct the prior obscured posterior walking chains: direct slightly elevated frontal view with eight complete actual leg silhouettes and true roots visible where they emerge from beneath the carapace, plus both genuine claws. Do not add hidden limbs, cut holes in shell or substitute eye stalks for legs.",
+    "priorSources": [
+      {
+        "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+        "id": "24-crab",
+        "master": "audits/C213_CREATURE_SUPPLY_20261002/24-crab/master.png",
+        "packet": "audits/C213_CREATURE_SUPPLY_20261002/24-crab"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C213_CREATURE_SUPPLY_20261002/pilot.json"
+  ],
+  "auditCompilerExtension": true,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Correct the prior obscured posterior walking chains: direct slightly elevated frontal view with eight complete actual leg silhouettes and true roots visible where they emerge from beneath the carapace, plus both genuine claws. Do not add hidden limbs, cut holes in shell or substitute eye stalks for legs.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

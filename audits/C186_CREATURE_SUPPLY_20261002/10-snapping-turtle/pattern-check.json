@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snapping Turtle",
+  "masterSha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

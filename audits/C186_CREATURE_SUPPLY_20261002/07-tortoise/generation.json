@@ -1,0 +1,14 @@
+{
+  "id": "07-tortoise",
+  "name": "Tortoise",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a873995f-0d0d-4a24-9242-7ebd4fd6975a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+  "bytes": 1552562,
+  "promptSha256": "7f8d4a0403e76561522d89a7fd1e35340e414a7f3f3b0d5be040f446ef02ca4c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

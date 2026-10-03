@@ -1,0 +1,66 @@
+{
+  "name": "Seahorse",
+  "family": "fish",
+  "species": {
+    "name": "Seahorse",
+    "aspect": 0.35,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "upright",
+    "mustRead": [
+      "horse-like head held at right angles to the body",
+      "curled prehensile tail with no tail fin",
+      "ringed bony armour plating"
+    ],
+    "note": "much taller than wide - the only fin of note is the small fluttering dorsal on the back"
+  },
+  "genome": {
+    "seed": 2715508947,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 4,
+    "body": 11,
+    "loco": 14,
+    "trait": 20,
+    "size": 1,
+    "diet": 1,
+    "head": 6,
+    "limbs": 2,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 6,
+    "habitat": 6,
+    "detail": 0,
+    "accent": 4,
+    "temper": 0,
+    "sense": 2,
+    "repro": 7,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Seahorse"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Seahorse\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2715508947\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "index": 458,
+  "profile": {
+    "id": "tube-snouted-fish",
+    "names": [
+      "Seahorse",
+      "Pipefish"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "No conventional jaw bite; feeding/suction contact needs a specific observation."
+  }
+}

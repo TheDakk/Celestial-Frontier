@@ -1,0 +1,210 @@
+{
+  "schema": "cf.c186-direct-source-fit/v1",
+  "id": "01-earthworm-direct",
+  "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material",
+  "autoRefusal": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c203r/01-earthworm/score.json",
+  "reason": "The exact complete source already has independent manual annelid geometry. Deliver that actual source fit directly; the failed shape classifier is not changed or given a special-case pass.",
+  "retainedFitBytesUnchanged": true,
+  "retainedAuthoringBytesUnchanged": true,
+  "templateId": "annelid",
+  "recordRecipeHash": "f441d86b605246cdfcac3aa1715883ccfc6654dcb10d852472d8b696a52f426f",
+  "inputs": [
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/master.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/master.png",
+      "sha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+      "bytes": 1041462
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/authoring.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/authoring.json",
+      "sha256": "f9b3ae58f4b5d32dbd858cbc7a86c9ea35313b9481ea62d79b966fb86bdac7ad",
+      "bytes": 5861
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/subject-source.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/subject-source.json",
+      "sha256": "5f716b02343653a3a95d12543aa1b0c602cf25fc7b7cd2d9905ddbf71918d4a6",
+      "bytes": 2106
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/presence.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/binding.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/binding.json",
+      "sha256": "b295edc987cf48f6f9148d5a818719e4505e740f870537aa07d4131c6bdddb42",
+      "bytes": 802697
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/declaration.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/declaration.json",
+      "sha256": "e4c318433ff6300dd89976fa57d78820e86d6b7b10bd04a419651d317fd81f58",
+      "bytes": 5034
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/intake-provenance.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/intake-provenance.json",
+      "sha256": "4e3259e033c56fe5f04b348da320ded10750b07b512fd24bc13504bcfa5db2bd",
+      "bytes": 3077
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/atlas/c173-reference-earthworm-material.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/atlas/c173-reference-earthworm-material.json",
+      "sha256": "f5e97db797745dc5238b4a377b5760a83a551f93b5a4ec3a114ff3fda451653d",
+      "bytes": 5351
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/atlas/c173-reference-earthworm-material.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/atlas/c173-reference-earthworm-material.png",
+      "sha256": "eaeae59e01ce18b9247abf3140741b1b2419a9899cf82300228642a10e912f15",
+      "bytes": 193518
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/atlas/receipt.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/atlas/receipt.json",
+      "sha256": "79dc392d728cfbbd319a303450050d5d13236bcd6431a3bd24442583b3fbb75b",
+      "bytes": 2416
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/binding.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/binding.json",
+      "sha256": "589646362704ccbcabd843f1f22e961acaca364d872e436c5dc0e2fe727f14fe",
+      "bytes": 4480
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/keyed.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/keyed.png",
+      "sha256": "5143cc057c5e32eb93fd8273e377bea5adae2820037999295f874da875f3c65a",
+      "bytes": 1189311
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/manifest.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/manifest.json",
+      "sha256": "8a924818740320ec07402c9ec4374122a9f7feb4b98ddce265c66b0a3cce77d7",
+      "bytes": 2175
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/ownership.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/ownership.png",
+      "sha256": "d4e761fbf5f73f5d1480d2a4bd8a9bf3d7b4271097f91ab3861c13039b05f56a",
+      "bytes": 10924
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/root.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/root.png",
+      "sha256": "746033e35105a5a7ee9dd3eecd92774f26f0ef21dce1f28e1d1f4b59fd1939a5",
+      "bytes": 386
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment0.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment0.png",
+      "sha256": "183d2cf5ba592427ba0a5da547c72f08478f57db8d57deb94ccecb829447c6ef",
+      "bytes": 7525
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment1.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment1.png",
+      "sha256": "b70c7d9fa71c5493ab5666e692be9194af0b40c594706d65f0402775abe23c3c",
+      "bytes": 20048
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment10.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment10.png",
+      "sha256": "14ca325005db3b716f4e79db70d053615660ac1fcaf5d0e035381ed495dc60be",
+      "bytes": 13292
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment11.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment11.png",
+      "sha256": "4defa8bc5b23d9ee55e4c112be9cd3502245fa9a22a704df0ce94da5482f362d",
+      "bytes": 8461
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment2.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment2.png",
+      "sha256": "08653765759edd1a2c3660c57f3bb4274cbbfc28cd9f46544a8cacb6827988e4",
+      "bytes": 24723
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment3.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment3.png",
+      "sha256": "65a0d9df2676e170f65ac195cf17267bf9aa7fbb29abcd79d42aea5e94581c4b",
+      "bytes": 30503
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment4.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment4.png",
+      "sha256": "c25035b0e45f42a989d44bfa415c37c407d65166ae6a476aa70bbb9558a2817d",
+      "bytes": 28051
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment5.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment5.png",
+      "sha256": "65da1ac190e2b55ddafca5b8a13a1e4d76060ec336010d7d1a59e5cc1245f531",
+      "bytes": 23618
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment6.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment6.png",
+      "sha256": "b1fd3e8c5b4d12517c17fca611d2a288356010722724a600ea35ad774695f5a1",
+      "bytes": 24885
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment7.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment7.png",
+      "sha256": "cbee5dfba951a2862db1db77b1b4f5116284ff3ca85cb88a2a686d4541d49e09",
+      "bytes": 24983
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment8.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment8.png",
+      "sha256": "5eb7f14c678e10605237c88ecca224ba98badcf46caa6e3aebd1da17475430a3",
+      "bytes": 21227
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment9.png",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/parts/segment9.png",
+      "sha256": "39660d67b6b1207394123a4d0996ca08e23c8367c490e9d63d9409f68b37948a",
+      "bytes": 16887
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/receipt.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/parts/receipt.json",
+      "sha256": "95e5c18b46950a2d77e86ce5c145833176aee49536c95b50065517e3980ece5c",
+      "bytes": 3683
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/pre-split-binding.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/pre-split-binding.json",
+      "sha256": "2680a015f1c68e12ec7311a292a6343b0176f6dad9bce8618f0efe17f1f7e8c6",
+      "bytes": 463200
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/receipt.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/receipt.json",
+      "sha256": "63f4042eba41e1a592f703e5c21e75a80662641fd539fb3c0a3a102824ed45e3",
+      "bytes": 2057
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/record.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01/record.json",
+      "sha256": "e8af60856942e208436ea7949a2f4865f50371ba794aa1ce4d940eb6c7140b4d",
+      "bytes": 5437
+    },
+    {
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c203r/01-earthworm/score.json",
+      "snapshot": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/original-auto-refusal.json",
+      "sha256": "9459cd46d1f2d5fd6af719448e9e9dc92700c5d58b856468cac953a9b71630dc",
+      "bytes": 457
+    }
+  ],
+  "newIndependentSubject": false,
+  "classificationChanged": false,
+  "contactCountThresholdChanged": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}
