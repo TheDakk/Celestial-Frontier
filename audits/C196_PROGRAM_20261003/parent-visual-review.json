@@ -1,0 +1,138 @@
+{
+  "scope": "Independent parent source/pose review; not native admission",
+  "rows": [
+    {
+      "path": "audits/C196_CREATURE_SUPPLY_20261003/01-capybara/master.png",
+      "sha256": "9f3c91c9f0b2024680455092d8a844c042cd667344ecda4cfd3a5146f88958aa",
+      "review": "full-size source",
+      "finding": "Four distinct feet and no external tail; far ear is only a partial tip with its base occluded. Ear-root correction remains held.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "review": "full-size source",
+      "finding": "Four distinct feet, visible short tail, no external ears; scuted shell is distinct from scaled neck and legs. Material category alone does not establish shell rigidity.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-cast-50-left.png",
+      "sha256": "87c131c3de2976a70fffd5927e29e7071819bdd97002b357ba0876305f7d08bf",
+      "review": "full-size software raster",
+      "finding": "Full-size comparison with C192 cast50 baseline: visible distal limb and antenna-end free flecks removed; pink swimmeret fringe and fine endpoints remain quality considerations.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-cast-50-left.png",
+      "sha256": "2253e5cf0440228c6e2a336a4716deec3a229a228601c3a6e9d1508dc83a4c77",
+      "review": "full-size software raster",
+      "finding": "Comparison control retains free distal flecks visible above and below body.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-approach-swim-50-left.png",
+      "sha256": "6ea710831f66455828d9f5f3ac95b656adc3f2ba56a84133e9a67f82e7c02e58",
+      "review": "full-size software raster",
+      "finding": "Distal silhouette is cleaner; conspicuous rear underside body/leg-root separation remains. Held for continuous coverage.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/03-mussel-islands/motion-d28-cast-50-left.png",
+      "sha256": "30a3c85c63038e0d82c64bb7d9e080a32f744babd70691acd7205c28f8e32c72",
+      "review": "full-size software raster",
+      "finding": "Broad background gaps remain between valve and mantle/foot during cast; small-island repair does not establish continuous interior coverage.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/faint-0p9.png",
+      "sha256": "ee00b65d5e188dd5409fe09d7e0da399b07d7b560522bc3e9d1c295d679e536f",
+      "review": "full-size software raster",
+      "finding": "Coherent shell silhouette in this still, but thin bright seam at inner near foreleg around source x845\u2013860/y745\u2013800. Raw action only, no native grounding/rigidity qualification.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/idle-0.png",
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711",
+      "review": "full-size software raster",
+      "finding": "Source-like idle preserves four foot silhouettes and visible short tail; no external ears invented.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/approach-walk-0p9.png",
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711",
+      "review": "full-size software raster",
+      "finding": "Near-rest sampled image has no gross shell tear; does not establish whole-stage gait or every phase.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/review-01/melee-tail-0p9.png",
+      "sha256": "a3e576d881cc976f51cc1b8a024153c5e4a53f7937236d6bfec62d48f3ace711",
+      "review": "full-size software raster",
+      "finding": "Sampled tail pose retains coherent shell silhouette; does not qualify shell rigidity or other actions.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/review-01/faint-0p9.png",
+      "sha256": "4d2bcda8881efab28ba085499282db07fdd903b16fec6ae2918207ff93915e13",
+      "review": "full-size software raster",
+      "finding": "Near-ear detached wedge is reduced versus frozen C192 faint0.9, but pointed nape/ear notch remains. Angular limb bends and shoulder/leg separation still visible. Static success is not visual acceptance.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/axial-joins-02/review/faint-0p9.png",
+      "sha256": "fe5f71e68278394dd0b8ae3c23732b265d38156164914227c6b5e96b0e522b8a",
+      "review": "full-size software raster",
+      "finding": "Retained comparison control has a larger detached ear-base wedge above the nape.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-cast-50-left.png",
+      "sha256": "759075e7defa15e689ccb08ae32516c23f80e9a024d8a880148c7206003c5417",
+      "review": "full-size software raster",
+      "finding": "Continuous painted body and two terminal suckers in this source-coordinate cast. Glossy finish and lifted body remain style/native grounding qualifications.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/motion-faint-100-right.png",
+      "sha256": "c34934bb649695953c16f19dee13541c5a9fd393242c9de782348142062ac22b",
+      "review": "full-size software raster",
+      "finding": "Continuous mirrored faint body with visible terminal suckers; no stage/60fps claim.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_CREATURE_SUPPLY_20261003/05-elk/master.png",
+      "sha256": "53ab3e9c270b19ccbdfed06e6e85fe4b23830fe6927d78375079dc873366984a",
+      "review": "full-size source",
+      "finding": "Complete antlers, both distinct ear silhouettes/bases and four separate hooves visible. Source improvement candidate, pending unchanged authoring and full-size acceptance.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_CREATURE_SUPPLY_20261003/06-llama/master.png",
+      "sha256": "3081c0fb6da2026f8f9982975f059bea50282c08f389cc5986797dd644130992",
+      "review": "full-size source",
+      "finding": "Both long ears visible, four distinct feet and visible short tail. Coat still hides portions of proximal leg roots; not all anatomical transfer landmarks established.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/faint-0p9.png",
+      "sha256": "657e6913d7e039a0392721423743d362f79f36e48b111e2be3466213cbe1aeba",
+      "review": "full-size software raster",
+      "finding": "Compared with prior near-shin candidate, thin inner-leg seam is substantially reduced in faint0.9. Static mechanical improvement does not imply full-size admission.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/approach-walk-0p2.png",
+      "sha256": "4dd64b83ac45347501cba8b22b57d352e069a98fe8b79728f983d33ad9c1cef5",
+      "review": "full-size software raster",
+      "finding": "Walk0.2 exposes a bright vertical slit between near/far foreleg around x845\u2013865/y710\u2013795 and a narrow hanging strip near x874/y820. Keep visual hold; no native stage or rigidity qualification.",
+      "qualityAccepted": false
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/melee-claw-null.png",
+      "sha256": "b90cb3d6bcfd19617aa382b566f6c3f865b3968c1e51a6181a3a2fbf86ef3d31",
+      "review": "full-size actual former claw refusal time, software raster",
+      "finding": "Strong visual refusal: near foreleg scales stretch into long bands, gray interior wedge remains, a narrow strip hangs below leg, and a detached fleck sits beside the raised head. Neck texture also stretches. Exact-time fold check now passes but candidate is not visually accepted.",
+      "qualityAccepted": false
+    }
+  ]
+}

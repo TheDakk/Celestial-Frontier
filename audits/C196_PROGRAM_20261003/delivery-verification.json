@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "deliveries": [
+    {
+      "directory": "audits/C196_CREATURE_SUPPLY_20261003",
+      "manifestSha256": "86e474d87a3cc8380dc68659d6d8d69786e48b34eec39c2a1365fb8fc3cd8786",
+      "verifiedFiles": 273,
+      "verifiedBytes": 36040422,
+      "status": "PASS"
+    },
+    {
+      "directory": "audits/C196_SPECIALIZED_REFERENCES_20261003",
+      "manifestSha256": "5a9141e248b08260864eb54753c225672be755addee523beb9d85d678451174a",
+      "verifiedFiles": 341,
+      "verifiedBytes": 48453002,
+      "status": "PASS"
+    },
+    {
+      "directory": "audits/C196_TURTLES_HOLDS_20261003",
+      "manifestSha256": "d69f0eb0dfa74e3e8eae10f1cf1311ed7bd48dfdfd80e812f0c21d65cf0af477",
+      "verifiedFiles": 431,
+      "verifiedBytes": 106874609,
+      "status": "PASS"
+    }
+  ],
+  "verifiedFiles": 1045,
+  "verifiedBytes": 191368033,
+  "independentParentVisualHashesVerified": true
+}

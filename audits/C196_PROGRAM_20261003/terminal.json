@@ -1,0 +1,27 @@
+{
+  "reservation": "C246",
+  "status": "TERMINAL \u2014 RELEASED",
+  "noticeRow": "C250",
+  "sourceDeliveryHead": "4ffeeb4bcd9bf0e1bfa2b425b99594bdf5851dc8",
+  "sourceDeliveriesNormalPushConfirmed": true,
+  "agentsTerminal": [
+    "creature_supply",
+    "arena_contract",
+    "effects_perf_recon"
+  ],
+  "activeNativeOrAuthoringJobs": 0,
+  "nativeRuns": 0,
+  "newI5Epochs": 0,
+  "developRetries": 0,
+  "sweep": "HOLD C186; zero runs",
+  "verifiedFiles": 1045,
+  "verifiedBytes": 191368033,
+  "productTreeUnchanged": true,
+  "activeCertificateReplay": "PASS unchanged a0414aa65 source",
+  "claudeDevelop": "C195 GREEN 5995 pass, 2 expected failures, 3 skipped, 0 red",
+  "legacyValidate": "PASS, 50 deterministic probes match",
+  "prePushGuardUnchanged": true,
+  "freeGiB": 131.99,
+  "cleanupPerformed": false,
+  "next": "Claude rebuilds its unpushed suffix on rewritten openai/mac and scores eligible candidates, preserving visual holds; Codex keeps sweep on hold."
+}
