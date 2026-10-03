@@ -1,0 +1,12 @@
+{
+  "beforeFreeBytes": 112113676288,
+  "worktreeStatus": "",
+  "processesReferencingWorktree": [],
+  "epochTerminal": true,
+  "developTerminal": true,
+  "retainedEvidence": "audits/C198_I5_EPOCH_20261003/epoch",
+  "action": "archive managed c198-i5 worktree after isolated epoch completion",
+  "caveat": "Observed free-space change during archival; concurrent source generation may consume space.",
+  "archiveStatus": "QUEUED; final space measurement pending",
+  "interimFreeBytes": 111820800000
+}
