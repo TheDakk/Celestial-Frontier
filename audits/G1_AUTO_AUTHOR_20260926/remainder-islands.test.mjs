@@ -21,9 +21,10 @@ test('control: an island with no painted neighbour stays remainder; a diagonal t
   const d = grid(['....................', '....................', '....................', 'B...................', '.BBBBBBBBBBBBBBBBBBB', ...BODY.slice(1)]);
   assert.equal(placeRemainderIslands(d.labels, d.w, d.h, 1).islands.length, 0);
 });
-test('control: an island over 5% of the remainder refuses as structural (the Hummingbird crown case)', () => {
+test('control: an island over an explicit 5% cap refuses as structural; the D28 default (0.5) admits it', () => {
   const g = grid(['HHHHHHHH............', 'HBBBBBBH............', 'HHHHHHHH............', ...BODY]);
-  assert.throws(() => placeRemainderIslands(g.labels, g.w, g.h, 1), /structural, not a sliver/);
+  assert.throws(() => placeRemainderIslands(g.labels, g.w, g.h, 1, 0.05), /structural, not a sliver/);
+  assert.equal(placeRemainderIslands(g.labels, g.w, g.h, 1).moved, 6, 'D28 default admits it');
   assert.equal(placeRemainderIslands(g.labels, g.w, g.h, 1, 0.1).moved, 6, 'the same island passes a looser cap, so the refusal is the cap');
 });
 test('mutation: moving the MAIN component instead would change the body — the rule never does', () => {
