@@ -1,0 +1,4 @@
+port/v2/apps/game/src/missing-body-structures.ts:6:export const MISSING_BODY_TARGETS:Readonly<Record<string,SpecializedTemplateId>>=Object.freeze({
+port/v2/apps/game/src/missing-body-structures.ts:15: const target=MISSING_BODY_TARGETS[p.id];if(!target)throw Error('Unplanned body structure '+p.id);
+port/v2/apps/game/src/motion/specialized-anatomy.test.ts:12:import {missingBodyStructures} from '../missing-body-structures.js';
+port/v2/tools/creature-animation/coverage-ledger.mjs:6: const bundle=await rolldown({input:path.join(root,'port/v2/apps/game/src/missing-body-structures.ts'),platform:'node',plugins:[{name:'sources',transform(_,id){if(path.isAbsolute(id)&&fs.existsSync(id)&&fs.statSync(id).isFile())sources.set(path.relative(root,id),sha(fs.readFileSync(id)));}}]});try{await bundle.write({file:path.join(temp,'entry.mjs'),format:'es'});}finally{await bundle.close();}

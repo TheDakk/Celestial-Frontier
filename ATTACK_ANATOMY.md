@@ -62,6 +62,9 @@ foreleg-tip strike (`melee:claw`) for the explicit shrimp/prawn profile. Contact
 present; source geometry chooses the two forelegs' extension directions. No fixed/dactyl
 finger landmarks exist in this template, so this is not articulated pincer closure.
 Krill, copepods, water fleas and the other small-crustacean profile retain no physical move.
+The five `shrimp-prawn` identities still map to `crustacean-small` in the pending-structure
+ledger: all 53 pending identities remain pending (58 including the five previously admitted
+crabs). Physical move intent does not grant painted admission.
 No D31 cast fallback was added. The unchanged C196 Prawn passes static publication and
 software full-size review of the strike; native motion/visual qualification remains separate.
 Evidence: `audits/C198_PRAWN_ATTACK_20261003`.

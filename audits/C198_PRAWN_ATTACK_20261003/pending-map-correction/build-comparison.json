@@ -1,0 +1,14 @@
+{
+  "scope": "Single authorized build-only repair comparison, not a gate or native epoch",
+  "exitCode": 0,
+  "signal": null,
+  "optionalRuntimeMovedAside": true,
+  "status": "PASS",
+  "fileCountBefore": 1156,
+  "fileCountAfter": 1156,
+  "excluded": [
+    "*.map"
+  ],
+  "changes": [],
+  "optionalRuntimeRestored": true
+}
