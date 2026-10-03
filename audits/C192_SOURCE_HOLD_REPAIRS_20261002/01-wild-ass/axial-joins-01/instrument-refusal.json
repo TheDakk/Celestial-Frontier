@@ -1,0 +1,6 @@
+{
+  "status": "INSTRUMENT_REFUSED",
+  "reason": "Limit comparison incorrectly compared split solver against unsplit binding, whose solver is undefined. Candidate compilation completed but no static/publication executed.",
+  "correction": "Compare all inherited solver settings excluding source-derived pin indices against the prior split binding. Preserve this attempt; use new output directory.",
+  "native": false
+}

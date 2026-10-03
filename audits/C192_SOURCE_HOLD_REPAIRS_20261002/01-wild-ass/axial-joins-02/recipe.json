@@ -1,0 +1,92 @@
+{
+  "schema": "cf.c192-observed-axial-recipe/v1",
+  "sourceFit": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/islands-01/fit",
+  "sourceRecordSha256": "9221a9a40f60055536fd5805019c23ee2058b6035f30235cac70146e46a9aa42",
+  "sourceBindingSha256": "9d49366a46242c5f12de2a72cb8d5a3e6b37aca95183a39451f0c5f0c6bf4ab1",
+  "sourcePreSplitSha256": "95ab8dfb0992e0fe3be8a7e9043ea4b36d9f40e137a625b638154f6705923ca0",
+  "candidateBindingSha256": "d076d8da2e88c1253049718d4b40a5a14f4860521781acf06f5588cefb49340d",
+  "compiler": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+  "compilerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "paintBoundaryPairs": [
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "reason": "Both named cuts run through one visible continuous torso/neck surface. The tiny root polygon is a painted torso patch, not a separate organ. Independent overlapping legs, ears and jaw remain excluded.",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 16,
+        "distancePx": 6.2481997407253935,
+        "supports": [
+          223
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 38,
+        "distancePx": 3.6055512754640144,
+        "supports": [
+          456
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 26,
+        "distancePx": 8.030566605165568,
+        "supports": [
+          1
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 30,
+        "distancePx": 4.6818799642878695,
+        "supports": [
+          374
+        ]
+      }
+    ],
+    "sourceBindingHash": "5fd2f2c474198daf4e3f98d77ff362c3abf210a77aeb6fd5f13a367a87d15455",
+    "sourceVertices": 965,
+    "vertices": 1099,
+    "sharedSupports": 395,
+    "pins": 29,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 34,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 2,
+    "independentExcludedBoundaries": 8,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "neck",
+        "spine"
+      ],
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "sourcePixelsChanged": 0,
+  "ownershipChanged": false,
+  "recordChanged": false,
+  "motionChanged": false,
+  "solverLimitsChanged": false,
+  "qualityAccepted": false,
+  "native": false
+}

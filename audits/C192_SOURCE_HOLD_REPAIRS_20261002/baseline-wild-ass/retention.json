@@ -1,0 +1,258 @@
+{
+  "schema": "cf.c192-exact-original-retention/v1",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/ISLANDS_D28_20261002/g2c107-24-wild-ass",
+  "files": [
+    {
+      "path": "fit/binding.json",
+      "sha256": "a3cda6f1b7bc147c80fe66a8338501166c4223f613b10ed26fcff85dab6e144d",
+      "bytes": 1583891
+    },
+    {
+      "path": "fit/declaration.json",
+      "sha256": "af65cdc22f4fb5ec0b7504d412d5b33ea3205b07ea5b78573d44be3df28aea86",
+      "bytes": 3279
+    },
+    {
+      "path": "fit/labels.png",
+      "sha256": "5a825659edabe4c70c49306f4e5073b9ca0da3e54e06bdd7104d9813bb16ab6e",
+      "bytes": 43440
+    },
+    {
+      "path": "fit/parts/atlas/24-wild-ass.json",
+      "sha256": "2df83bcf57350abc0cfb6e9d63b63ebd9f1ef402f1cfb76a337c17da7c54f26c",
+      "bytes": 12601
+    },
+    {
+      "path": "fit/parts/atlas/24-wild-ass.png",
+      "sha256": "278e8d6f9fa1d91e91dac07263f9ce2cd9256df8a04ad584be4d4b43a37859aa",
+      "bytes": 354464
+    },
+    {
+      "path": "fit/parts/atlas/receipt.json",
+      "sha256": "7aaa925a1b230fdc7c6991c4c935921bcfab2beef543ee639e1e198c18a587a2",
+      "bytes": 4731
+    },
+    {
+      "path": "fit/parts/binding.json",
+      "sha256": "7937cc974dc6bc1b274ce2f6c7b6576a1ebf86e50f51c60a1b25df717a31df46",
+      "bytes": 10299
+    },
+    {
+      "path": "fit/parts/keyed.png",
+      "sha256": "72dc2c1d2eceaab5e136ad7071b3c0ab3feb4c6e51b37c7dbb3749d397ed7021",
+      "bytes": 1442770
+    },
+    {
+      "path": "fit/parts/manifest.json",
+      "sha256": "e1ffae68f83aab9f95fa803fb7090a7aa280a36af87574dbd96f424e6a067650",
+      "bytes": 5207
+    },
+    {
+      "path": "fit/parts/ownership.png",
+      "sha256": "4e49cbf21f734179b54ad7654749c0ef2a9a78cc2a91130594d5c61c11316cf2",
+      "bytes": 17013
+    },
+    {
+      "path": "fit/parts/parts/chest.png",
+      "sha256": "7cb18c2f56b10881be01cde7f4f55131eeca27380d0a404a44868e41ccf477e1",
+      "bytes": 23108
+    },
+    {
+      "path": "fit/parts/parts/ear-far-root.png",
+      "sha256": "7e93de13858740c70aa8f8c381badbc85c500ea3988f48587b73e5c6881d2e24",
+      "bytes": 2565
+    },
+    {
+      "path": "fit/parts/parts/ear-far-tip.png",
+      "sha256": "69dafcaec36e3ba2b6a66a69e92a8223b97dc97d6bde74c5540ae30755ff794b",
+      "bytes": 3112
+    },
+    {
+      "path": "fit/parts/parts/ear-near-root.png",
+      "sha256": "d44e51a962c6aa1121828344721056623e38013beb37c586170ee86e302b2f56",
+      "bytes": 4408
+    },
+    {
+      "path": "fit/parts/parts/ear-near-tip.png",
+      "sha256": "10c0f959671bdb8af2650e624caf517af109b720bafaa08ee199264c750c2f49",
+      "bytes": 5192
+    },
+    {
+      "path": "fit/parts/parts/fore-far-ankle.png",
+      "sha256": "954b2bdf8c4ca10e66164e8c4eaf2b70d3cc699cd8a6c6a0542447f438582de7",
+      "bytes": 3479
+    },
+    {
+      "path": "fit/parts/parts/fore-far-knee.png",
+      "sha256": "6faac67649e3fc44d18f1c6d409a06885f808c36b9332bc7cac19d4256afea3b",
+      "bytes": 15851
+    },
+    {
+      "path": "fit/parts/parts/fore-far-paw.png",
+      "sha256": "308e6df747cf829ae0efcf337029c37d27aefdb1af42d73cfdc615f80069369b",
+      "bytes": 4859
+    },
+    {
+      "path": "fit/parts/parts/fore-far-root.png",
+      "sha256": "74e0cf4cf2449cd7863f994eaf34841e6eac7ac0b451f6f93ec17d22bc5ee4de",
+      "bytes": 16024
+    },
+    {
+      "path": "fit/parts/parts/fore-near-ankle.png",
+      "sha256": "873bcdad00610f26949f6c35ba5f2f6bde58030e5742bd5b8a5fcef20c1e5bf1",
+      "bytes": 5513
+    },
+    {
+      "path": "fit/parts/parts/fore-near-knee.png",
+      "sha256": "4965a4890d8974261d3cd7c27e0d127e79c5a8d1977e462a00feafe1f536ac05",
+      "bytes": 9898
+    },
+    {
+      "path": "fit/parts/parts/fore-near-paw.png",
+      "sha256": "a6970291a0f3a15ed32ecc08d4fab9c139385731f6b20d06d2f34641e579d3f9",
+      "bytes": 5140
+    },
+    {
+      "path": "fit/parts/parts/fore-near-root.png",
+      "sha256": "2068314deb9a14d4abaeceec31671de351baedb2c6fee46a19eb489419fb4166",
+      "bytes": 17557
+    },
+    {
+      "path": "fit/parts/parts/head.png",
+      "sha256": "aa96fffae25167694562d3fd1cec5bad4bbe502f0f5765a5ef7f63e7126654be",
+      "bytes": 16898
+    },
+    {
+      "path": "fit/parts/parts/hind-far-ankle.png",
+      "sha256": "e272a3ff1324fe32a67d266ce64feabbb10710ef91854111263038aa16ff6d36",
+      "bytes": 4656
+    },
+    {
+      "path": "fit/parts/parts/hind-far-knee.png",
+      "sha256": "7f0e4f26c20bb6579bef3d73c7d0bec123b8daac6333d1c13d6a977beb3d670b",
+      "bytes": 7779
+    },
+    {
+      "path": "fit/parts/parts/hind-far-paw.png",
+      "sha256": "507735040bba1075f1decdfaf7d194525a2ba1fac8982e12e2717e8a95b82bca",
+      "bytes": 6023
+    },
+    {
+      "path": "fit/parts/parts/hind-far-root.png",
+      "sha256": "f14d82e612e575bbc9a89a66b018068e51f1d2febafe404ee8a6d2f3a4b60cf0",
+      "bytes": 29807
+    },
+    {
+      "path": "fit/parts/parts/hind-near-ankle.png",
+      "sha256": "66c8c23a49a087fcce6598d8aee6be521d73aeff32da655ebeea182bdf214dfa",
+      "bytes": 5961
+    },
+    {
+      "path": "fit/parts/parts/hind-near-knee.png",
+      "sha256": "c582c1b30b2a63e3e6322df196da60050d54a82df328eba560d3eaa6f03bae20",
+      "bytes": 9668
+    },
+    {
+      "path": "fit/parts/parts/hind-near-paw.png",
+      "sha256": "a4deb49779323dcbc91a70096075a28a6dbe5d23c193edcf9ad60588c76bf5d8",
+      "bytes": 5422
+    },
+    {
+      "path": "fit/parts/parts/hind-near-root.png",
+      "sha256": "34032874458e8178bfa0c67f6c2061a1943577916b561de43eac0d87c2b51197",
+      "bytes": 37373
+    },
+    {
+      "path": "fit/parts/parts/jaw.png",
+      "sha256": "dc99250ab23bad4b03ea646297c9ef79efdab3187b1f8b54d5cec85475fb388b",
+      "bytes": 17907
+    },
+    {
+      "path": "fit/parts/parts/neck.png",
+      "sha256": "a33bbf1938a6f92351864f23ff4d5527b5a53b6deb77e790ca0b6eb57d3996d1",
+      "bytes": 31523
+    },
+    {
+      "path": "fit/parts/parts/pelvis.png",
+      "sha256": "b99115d8c5a09ecb1b501bb038ba6a862176d65321616d2460686248bc786f50",
+      "bytes": 17044
+    },
+    {
+      "path": "fit/parts/parts/root.png",
+      "sha256": "d58c536d47413336aa56539df207e5c79af5017136bfd6aaf557f5ab426fedc2",
+      "bytes": 349
+    },
+    {
+      "path": "fit/parts/parts/spine.png",
+      "sha256": "03b417b73945bae91315faad5405d3a9de6df47712ce13f46db1ba60e3e54488",
+      "bytes": 80866
+    },
+    {
+      "path": "fit/parts/parts/tail0.png",
+      "sha256": "5cb954db2b7b0072da5e22b6a27df6e1be638e9f74829f3f2c109ad591ae7008",
+      "bytes": 7172
+    },
+    {
+      "path": "fit/parts/parts/tail1.png",
+      "sha256": "66440a72c18ad49cfd21670c255da547d0910f7eccaec88d669b2d42d5f0fd41",
+      "bytes": 8541
+    },
+    {
+      "path": "fit/parts/parts/tail2.png",
+      "sha256": "0328789e53a57e53e5a6622976bdd7243d283be2c0274b09440374afc6b404cc",
+      "bytes": 2277
+    },
+    {
+      "path": "fit/parts/parts/tail3.png",
+      "sha256": "daeef80a17ccdc9e2a262615eeba63541e7ec515651290b484a7f331251299f2",
+      "bytes": 6167
+    },
+    {
+      "path": "fit/parts/receipt.json",
+      "sha256": "442603922d934657754734004609df4f89394240d993bc1606ccdb7fe7212247",
+      "bytes": 8139
+    },
+    {
+      "path": "fit/pre-split-binding.json",
+      "sha256": "912c6bc0871f89666086dcea862f533a455d52d2719853a6bddb57723f3c16b1",
+      "bytes": 910033
+    },
+    {
+      "path": "fit/record.json",
+      "sha256": "0a07a5b1a0cb04caee22a28e53cc51f4c7276f58810ecf08efd22394d8e06c8a",
+      "bytes": 7543
+    },
+    {
+      "path": "native/report.json",
+      "sha256": "3bdc23295a83cbc441e623327568a62e9f9126695bb55c8e4e32245c755d9dd3",
+      "bytes": 392977
+    },
+    {
+      "path": "native/turn3-hit-idle-90.png",
+      "sha256": "e7aa5ff61622879a5428f1737d71b48141f7d13723b0d54d9e3a6b0038bd79ad",
+      "bytes": 1506723
+    },
+    {
+      "path": "receipt.json",
+      "sha256": "ac8b13f3d8e2ce30e0b66f5b523d0e75f12ec040721fad865bf8e1c4ffe17c71",
+      "bytes": 7385
+    },
+    {
+      "path": "script.json",
+      "sha256": "18560f7fefb3438e44eab1933d24c05b135dbe6237d29127efb8c3bceacf01ad",
+      "bytes": 567
+    },
+    {
+      "path": "static.json",
+      "sha256": "4b1c48693415605d50a0fbeb5b4e769e3c032daf11b6da01c585bf9d825f4bc4",
+      "bytes": 10352
+    },
+    {
+      "path": "static.json.sources.json",
+      "sha256": "c925eb4607a1d4749455ea91fcad1ae0377bca6d3a10afa95eec92c4a756c365",
+      "bytes": 15997
+    }
+  ],
+  "historicalLimitsPreserved": true,
+  "qualityAccepted": false
+}

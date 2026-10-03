@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c192-source-observed-correction/v1",
+  "id": "05b-snow-petrel-leg",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/snow-petrel/packet/master.png",
+  "sourceSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+  "priorAuthoring": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/authoring.json",
+  "priorAuthoringSha256": "85f553f30fc520dedc0b6d38b5d83737dc138145ad7339e9cac915d8be685b5d",
+  "changedJoints": [
+    "legNearKnee",
+    "legNearAnkle",
+    "legNearFoot"
+  ],
+  "changedParts": [
+    "near-foot",
+    "near-shin",
+    "near-thigh"
+  ],
+  "addedParts": [],
+  "priorityChanges": [],
+  "findings": [
+    "The first post-D28 candidate retains two faint folds at source x587–627/y802–822. Captured target replay finds fixed root-owned points inside the visible near leg, beside the near-shin/foot owners.",
+    "The actual near leg emerges around x620/y752 and slopes left toward its ankle x600/y835. Its inherited thin thigh mask omitted visible leg tissue. Three landmarks and the continuous visible leg/foot contours are corrected; no hidden upper knee is asserted.",
+    "The near-wing correction is inherited from05. Other inherited far-wing interpretation remains unresolved."
+  ],
+  "sourcePixelsChanged": 0,
+  "presenceChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

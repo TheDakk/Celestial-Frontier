@@ -1,0 +1,41 @@
+{
+  "schema": "cf.c192-source-observed-correction/v1",
+  "id": "02-serval-tail-neck",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/16-serval/packet/master.png",
+  "sourceSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/16-serval/packet/authoring.json",
+  "priorAuthoringSha256": "beb5ae6b2d5d8ab94cd87f323acd967954270c3774434ba5fc05b71f28cc0f97",
+  "changedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "changedParts": [
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "addedParts": [
+    "neck-observed-nape"
+  ],
+  "priorityChanges": [
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "findings": [
+    "The actual tail is a short left-pointing brush at x267–362/y529–591. Transferred tail1/2/3 points and masks ran down the hind leg to y823; they do not describe this source.",
+    "Four tail points and priority masks now follow the visible short brush only. Hind-leg paint formerly claimed by tail is released to unchanged limb owners or the declared body remainder; it is neither erased nor re-painted.",
+    "The source neck silhouette behind the ears is traced separately, so its contiguous nape cannot be assigned to the ear merely by the longest-border D28 rule. Existing ear/head priority remains.",
+    "Unchanged automatic limb masks may still need independently observed corrections; static and full-size posed review remain required."
+  ],
+  "sourcePixelsChanged": 0,
+  "presenceChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

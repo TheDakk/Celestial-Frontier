@@ -1,0 +1,256 @@
+{
+  "schema": "cf.c192-original-fold-localization/v1",
+  "scope": "Captured contact-resolved poses, unchanged leaf solve; no motion or native qualification",
+  "inputs": [
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/islands-01/fit/record.json",
+      "sha256": "f8c4eb1d292d80ac4a238604036291bccb61c5eb42b896423bb8dd8984bf6335"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/islands-01/fit/binding.json",
+      "sha256": "d0072d17cc3098693f9425350e262d21ef56f33c4741362be035fe5c2b67e133"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/islands-01/static.json",
+      "sha256": "d87eef5e514d8d51c50c9f070ec954ac4f4440e9dd1547623d058493d3195815"
+    }
+  ],
+  "rows": [
+    {
+      "action": "faint",
+      "ms": 367.8666666666667,
+      "error": "ARAP skin: unresolved folded triangles: 2",
+      "folds": [
+        {
+          "triangle": 106,
+          "ratio": -0.05793813460686531,
+          "vertices": [
+            {
+              "index": 83,
+              "x": 617,
+              "y": 812,
+              "source": {
+                "x": 617,
+                "y": 812,
+                "weights": [
+                  [
+                    "root",
+                    0.3162588045936521
+                  ],
+                  [
+                    "legNearFoot",
+                    0.2742015583625741
+                  ],
+                  [
+                    "legNearAnkle",
+                    0.2630623399982416
+                  ],
+                  [
+                    "legNearKnee",
+                    0.14640376309806627
+                  ],
+                  [
+                    "legFarKnee",
+                    0.00006411651438884832
+                  ],
+                  [
+                    "legFarAnkle",
+                    0.000005312307746479848
+                  ],
+                  [
+                    "chest",
+                    0.0000021562039947708026
+                  ],
+                  [
+                    "tailFan",
+                    0.00000194892133592057
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 77,
+              "x": 607,
+              "y": 802,
+              "source": {
+                "x": 607,
+                "y": 802,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 81,
+              "x": 627,
+              "y": 802,
+              "source": {
+                "x": 627,
+                "y": 802,
+                "weights": [
+                  [
+                    "root",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            }
+          ],
+          "parts": [
+            "near-shin",
+            "near-thigh",
+            "body"
+          ]
+        },
+        {
+          "triangle": 109,
+          "ratio": -0.02224137576055604,
+          "vertices": [
+            {
+              "index": 82,
+              "x": 597,
+              "y": 812,
+              "source": {
+                "x": 597,
+                "y": 812,
+                "weights": [
+                  [
+                    "legNearAnkle",
+                    0.37845504756930276
+                  ],
+                  [
+                    "legNearFoot",
+                    0.3106872168003954
+                  ],
+                  [
+                    "root",
+                    0.23702659134218937
+                  ],
+                  [
+                    "legNearKnee",
+                    0.0737968300613377
+                  ],
+                  [
+                    "legFarKnee",
+                    0.000030120928082842497
+                  ],
+                  [
+                    "legFarAnkle",
+                    0.0000020792181068317946
+                  ],
+                  [
+                    "tailFan",
+                    0.0000013733030726129272
+                  ],
+                  [
+                    "chest",
+                    7.407775125678702e-7
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 2,
+              "x": 587,
+              "y": 822,
+              "source": {
+                "x": 587,
+                "y": 822,
+                "weights": [
+                  [
+                    "legNearFoot",
+                    0.49725559968565713
+                  ],
+                  [
+                    "legNearAnkle",
+                    0.3245239166703002
+                  ],
+                  [
+                    "root",
+                    0.131514444219662
+                  ],
+                  [
+                    "legNearKnee",
+                    0.0466934617475335
+                  ],
+                  [
+                    "legFarKnee",
+                    0.000011263815145866222
+                  ],
+                  [
+                    "legFarAnkle",
+                    6.636738404635214e-7
+                  ],
+                  [
+                    "tailFan",
+                    4.4187548938100006e-7
+                  ],
+                  [
+                    "chest",
+                    2.0831237124529697e-7
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 78,
+              "x": 587,
+              "y": 802,
+              "source": {
+                "x": 587,
+                "y": 802,
+                "weights": [
+                  [
+                    "legNearAnkle",
+                    0.38972341474277705
+                  ],
+                  [
+                    "root",
+                    0.2765801281065118
+                  ],
+                  [
+                    "legNearFoot",
+                    0.2338098374564601
+                  ],
+                  [
+                    "legNearKnee",
+                    0.09984105079239847
+                  ],
+                  [
+                    "legFarKnee",
+                    0.00003955299068691362
+                  ],
+                  [
+                    "legFarAnkle",
+                    0.0000027416659979101227
+                  ],
+                  [
+                    "tailFan",
+                    0.0000022865785716437164
+                  ],
+                  [
+                    "chest",
+                    9.876665961719966e-7
+                  ]
+                ]
+              },
+              "pinned": false
+            }
+          ],
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ]
+        }
+      ]
+    }
+  ]
+}

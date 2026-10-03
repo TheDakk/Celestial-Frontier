@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c192-source-observed-correction/v1",
+  "id": "03-horse-front-chain",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/13-horse/fallback-1/packet/master.png",
+  "sourceSha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/13-horse/fallback-1/packet/authoring.json",
+  "priorAuthoringSha256": "1fde2d2dd677dedc77ca27b2630e56ee160ad29b6960c16737ef019aa5659119",
+  "changedJoints": [
+    "foreFarRoot",
+    "foreFarKnee",
+    "foreFarAnkle",
+    "foreFarPaw"
+  ],
+  "changedParts": [
+    "fore-far-paw",
+    "fore-far-ankle",
+    "fore-far-knee",
+    "fore-far-root"
+  ],
+  "addedParts": [],
+  "priorityChanges": [],
+  "findings": [
+    "All three exact captured faint folds are localized to fore-far-ankle/fore-far-knee triangles at source x861–900/y841–861. The inherited ankle point y848.7 lies on the lower cannon segment, above the visible fetlock near y886.",
+    "The visible forward-slanting front chain bends at the dark carpal joint near x850/y777 and the white fetlock near x884/y886. Root emergence and distal hoof are traced on the same source limb. Four landmarks and four masks change; no pose, solver or contact limit changes.",
+    "The source has four complete distal hooves. Other inherited anatomy, including ears and tail, has not become independently authored evidence."
+  ],
+  "sourcePixelsChanged": 0,
+  "presenceChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

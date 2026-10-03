@@ -1,0 +1,437 @@
+{
+  "schema": "cf.c192-source-conservation/v1",
+  "id": "05-snow-petrel-wing",
+  "masterSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+  "authoringSha256": "85f553f30fc520dedc0b6d38b5d83737dc138145ad7339e9cac915d8be685b5d",
+  "bindingSha256": "97982bd7971ff28799fe237212feae0d997ebbdf93b6de1aaa4cda76dc068bda",
+  "keyedRgbaSha256": "ebb28fcd7721174dd7187ad731b6cb2f209688a5e286b5541b9ca13225cad46e",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "wingNearRoot -> root": 2500,
+    "wingNearTip -> root": 22,
+    "wingNearRoot -> wingNearTip": 2311,
+    "root -> wingNearRoot": 9999,
+    "chest -> wingNearRoot": 2970,
+    "root -> wingNearTip": 2303,
+    "wingNearTip -> wingNearRoot": 114,
+    "tailFan -> wingNearTip": 367
+  },
+  "originalCap": {
+    "status": "PASS",
+    "wouldMovePixels": 1656,
+    "remainderPixels": 30357,
+    "islands": [
+      {
+        "pixels": 206,
+        "to": "wingFarRoot",
+        "border": {
+          "9": 11,
+          "10": 10,
+          "11": 31
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "neck1",
+        "border": {
+          "8": 5,
+          "9": 6
+        }
+      },
+      {
+        "pixels": 321,
+        "to": "wingNearRoot",
+        "border": {
+          "10": 42,
+          "11": 25,
+          "13": 47
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "wingNearTip",
+        "border": {
+          "14": 2
+        }
+      },
+      {
+        "pixels": 129,
+        "to": "wingNearTip",
+        "border": {
+          "14": 57
+        }
+      },
+      {
+        "pixels": 39,
+        "to": "tailFan",
+        "border": {
+          "15": 8
+        }
+      },
+      {
+        "pixels": 893,
+        "to": "tailFan",
+        "border": {
+          "15": 80
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 1,
+        "to": "legFarKnee",
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "legFarAnkle",
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 11,
+        "to": "legFarAnkle",
+        "border": {
+          "2": 5,
+          "4": 9
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "legNearFoot",
+        "border": {
+          "1": 4,
+          "3": 3
+        }
+      },
+      {
+        "pixels": 33,
+        "to": "legFarFoot",
+        "border": {
+          "2": 6
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "legNearFoot",
+        "border": {
+          "1": 1
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 4330,
+    "remainderPixels": 20577,
+    "islands": [
+      {
+        "pixels": 206,
+        "to": "wingFarRoot",
+        "border": {
+          "9": 11,
+          "10": 10,
+          "11": 31
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "neck1",
+        "border": {
+          "8": 5,
+          "9": 6
+        }
+      },
+      {
+        "pixels": 3023,
+        "to": "wingFarRoot",
+        "border": {
+          "10": 77,
+          "11": 152,
+          "12": 16,
+          "13": 115,
+          "14": 42
+        }
+      },
+      {
+        "pixels": 101,
+        "to": "tailFan",
+        "border": {
+          "14": 34,
+          "15": 41
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "wingNearTip",
+        "border": {
+          "14": 2,
+          "15": 2
+        }
+      },
+      {
+        "pixels": 39,
+        "to": "tailFan",
+        "border": {
+          "15": 8
+        }
+      },
+      {
+        "pixels": 893,
+        "to": "tailFan",
+        "border": {
+          "15": 80
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 1,
+        "to": "legFarKnee",
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "legFarAnkle",
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 11,
+        "to": "legFarAnkle",
+        "border": {
+          "2": 5,
+          "4": 9
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "legNearFoot",
+        "border": {
+          "1": 4,
+          "3": 3
+        }
+      },
+      {
+        "pixels": 33,
+        "to": "legFarFoot",
+        "border": {
+          "2": 6
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "legNearFoot",
+        "border": {
+          "1": 1
+        }
+      }
+    ],
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 28700,
+      "minX": 407,
+      "minY": 519,
+      "maxX": 798,
+      "maxY": 799
+    },
+    {
+      "pixels": 893,
+      "minX": 297,
+      "minY": 707,
+      "maxX": 383,
+      "maxY": 729
+    },
+    {
+      "pixels": 321,
+      "minX": 755,
+      "minY": 479,
+      "maxX": 774,
+      "maxY": 515
+    },
+    {
+      "pixels": 206,
+      "minX": 740,
+      "minY": 462,
+      "maxX": 769,
+      "maxY": 476
+    },
+    {
+      "pixels": 129,
+      "minX": 363,
+      "minY": 611,
+      "maxX": 400,
+      "maxY": 630
+    },
+    {
+      "pixels": 39,
+      "minX": 291,
+      "minY": 687,
+      "maxX": 300,
+      "maxY": 693
+    },
+    {
+      "pixels": 33,
+      "minX": 732,
+      "minY": 833,
+      "maxX": 739,
+      "maxY": 839
+    },
+    {
+      "pixels": 12,
+      "minX": 901,
+      "minY": 464,
+      "maxX": 905,
+      "maxY": 468
+    },
+    {
+      "pixels": 11,
+      "minX": 742,
+      "minY": 819,
+      "maxX": 745,
+      "maxY": 823
+    },
+    {
+      "pixels": 5,
+      "minX": 613,
+      "minY": 829,
+      "maxX": 614,
+      "maxY": 833
+    },
+    {
+      "pixels": 4,
+      "minX": 690,
+      "minY": 875,
+      "maxX": 691,
+      "maxY": 877
+    },
+    {
+      "pixels": 1,
+      "minX": 402,
+      "minY": 610,
+      "maxX": 402,
+      "maxY": 610
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 16246,
+      "minX": 407,
+      "minY": 659,
+      "maxX": 756,
+      "maxY": 799
+    },
+    {
+      "pixels": 3023,
+      "minX": 652,
+      "minY": 479,
+      "maxX": 784,
+      "maxY": 540
+    },
+    {
+      "pixels": 893,
+      "minX": 297,
+      "minY": 707,
+      "maxX": 383,
+      "maxY": 729
+    },
+    {
+      "pixels": 206,
+      "minX": 740,
+      "minY": 462,
+      "maxX": 769,
+      "maxY": 476
+    },
+    {
+      "pixels": 101,
+      "minX": 409,
+      "minY": 646,
+      "maxX": 447,
+      "maxY": 650
+    },
+    {
+      "pixels": 39,
+      "minX": 291,
+      "minY": 687,
+      "maxX": 300,
+      "maxY": 693
+    },
+    {
+      "pixels": 33,
+      "minX": 732,
+      "minY": 833,
+      "maxX": 739,
+      "maxY": 839
+    },
+    {
+      "pixels": 12,
+      "minX": 901,
+      "minY": 464,
+      "maxX": 905,
+      "maxY": 468
+    },
+    {
+      "pixels": 11,
+      "minX": 742,
+      "minY": 819,
+      "maxX": 745,
+      "maxY": 823
+    },
+    {
+      "pixels": 5,
+      "minX": 613,
+      "minY": 829,
+      "maxX": 614,
+      "maxY": 833
+    },
+    {
+      "pixels": 4,
+      "minX": 690,
+      "minY": 875,
+      "maxX": 691,
+      "maxY": 877
+    },
+    {
+      "pixels": 1,
+      "minX": 538,
+      "minY": 663,
+      "maxX": 538,
+      "maxY": 663
+    }
+  ],
+  "unchangedD28Cap": 0.5,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "legacy structural-island negative control refused with explicit 0.05; authorized default is 0.5"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

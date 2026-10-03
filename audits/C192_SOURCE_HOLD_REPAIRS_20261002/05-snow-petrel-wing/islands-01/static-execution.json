@@ -1,0 +1,11 @@
+{
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/islands-01/fit",
+    "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05-snow-petrel-wing/islands-01/static.json"
+  ],
+  "status": "REFUSED",
+  "exitCode": 1,
+  "nodeVersion": "v26.10.0",
+  "native": false
+}
