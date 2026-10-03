@@ -1,0 +1,50 @@
+[
+ {
+  "id": "03-spider-palp",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/03-spider-palp/fit01"
+ },
+ {
+  "id": "06-crab-source-joins",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-source-joins/fit01"
+ },
+ {
+  "id": "07-brittle-star-part-ids",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/fit01"
+ },
+ {
+  "id": "01-zebra-fallback-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/islands-01/fit"
+ },
+ {
+  "id": "02-kudu",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/02-kudu/islands-01/fit"
+ },
+ {
+  "id": "05-gazelle",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/05-gazelle/islands-01/fit"
+ },
+ {
+  "id": "07-oryx-tail-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/07-oryx-tail-ears/islands-01/fit"
+ },
+ {
+  "id": "08-gaur-observed-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/islands-01/fit"
+ },
+ {
+  "id": "09-deer-observed-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-observed-ears/islands-01/fit"
+ },
+ {
+  "id": "10-antelope-tail",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/10-antelope-tail/islands-01/fit"
+ },
+ {
+  "id": "15-sheep-observed-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/15-sheep-observed-ears/islands-01/fit"
+ },
+ {
+  "id": "bittern-fit02",
+  "fit": "audits/C186_BITTERN_REPAIR_20261002/fit02"
+ }
+]

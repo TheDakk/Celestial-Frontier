@@ -1,0 +1,16 @@
+{
+ "id": "05-brittle-star",
+ "family": "radial",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 14.9% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 15.4% paint that no reference appendage lands on",
+  "missing-anatomy: part arm0-base (arm0Seg0) covers 20% paint (reference 63%)",
+  "missing-anatomy: part arm0-middle (arm0Seg1) covers 10% paint (reference 29%)",
+  "missing-anatomy: part arm0-tip (arm0Seg2) covers 4% paint (reference 8%)",
+  "missing-anatomy: part arm4-tip (arm4Seg2) covers 6% paint (reference 17%)",
+  "missing-anatomy: part arm2-tip (arm2Seg2) covers 8% paint (reference 29%)",
+  "missing-anatomy: part arm3-tip (arm3Seg2) covers 7% paint (reference 22%)"
+ ],
+ "semanticPresence": null
+}

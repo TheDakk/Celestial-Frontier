@@ -1,0 +1,16 @@
+{
+ "id": "22-giant-squid",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches cephalopod better (0.0414 < 0.0575)",
+  "wrong-family: insect matches clearly better (0.0376 < 0.0575)",
+  "extra-anatomy (unassigned): a top appendage of 7.7% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 11.1% paint that no reference appendage lands on",
+  "missing-anatomy: part arm4-tip (arm4Seg2) covers 18% paint (reference 72%)",
+  "missing-anatomy: part arm7-middle (arm7Seg1) covers 25% paint (reference 83%)",
+  "missing-anatomy: part arm3-tip (arm3Seg2) covers 9% paint (reference 63%)",
+  "unexplained-anatomy: 15.8% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "semanticPresence": null
+}

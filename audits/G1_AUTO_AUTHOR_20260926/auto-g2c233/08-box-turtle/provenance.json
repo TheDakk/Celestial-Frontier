@@ -1,0 +1,106 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "08-box-turtle",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3",
+ "subjectSourceSha256": "10abc6bf68fe4e2e9a1f296f226a945b27d0e41472df30d96fb6e78efb8d5f6e",
+ "identity": {
+  "name": "Box Turtle",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Box Turtle\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2769615324\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 2769615324,
+  "checks": [
+   "materials-unknown: no species-group material for profile tortoise; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "marmot",
+  "authoringSha256": "b85329419d55c6af508fa17439346cc9e5b8c84bf478e175cb858b0280c5b0df",
+  "masterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+ },
+ "habitat": {
+  "profileId": "tortoise",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "495c4014d915e4bba570d5d32d5b9dad6983907de7fcff3cc2274f589de0a6d6",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group tortoise (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0107,
+     "class": "top",
+     "attach": {
+      "x": 193.5,
+      "y": 141,
+      "relX": 0.5,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1814,
+     "class": "front",
+     "attach": {
+      "x": 277.5,
+      "y": 228.5,
+      "relX": 0.99,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0827,
+     "class": "limb-down",
+     "attach": {
+      "x": 108.9,
+      "y": 228.1,
+      "relX": 0.01,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0263,
+     "class": "limb-down",
+     "attach": {
+      "x": 153.6,
+      "y": 256.9,
+      "relX": 0.27,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "marmot",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

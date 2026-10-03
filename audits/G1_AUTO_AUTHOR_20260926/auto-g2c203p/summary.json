@@ -1,0 +1,41 @@
+[
+ {
+  "id": "01-earthworm",
+  "family": "annelid",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: serpent matches clearly better (0.0134 < 0.0415)",
+   "extra-anatomy (unassigned): a rear appendage of 28.6% paint that no reference appendage lands on",
+   "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+   "unexplained-anatomy: 33.9% of the paint lies away from the body and in no part (reference 3.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-sponge",
+  "family": "sessile-filter",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-snail",
+  "family": "gastropod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family gastropod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-mussel",
+  "family": "bivalve",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family bivalve"
+  ],
+  "semanticPresence": null
+ }
+]

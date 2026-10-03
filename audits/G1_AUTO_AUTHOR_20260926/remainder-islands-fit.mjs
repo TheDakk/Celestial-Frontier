@@ -18,7 +18,10 @@ import { splitObservedSurfaces } from '../../port/v2/tools/creature-animation/sp
 import { createSourceJoinProbe } from '../../port/v2/tools/quadruped-proof/source-join-continuity.mjs';
 import { familyContactChains, familyContractForRecord } from '../../port/v2/tools/creature-animation/family-contracts.mjs';
 
-export const MAX_SHARE = 0.05;
+/* D28 decided by Dakk 2026-10-02: "rise to accommodate everything". An island is never the largest remainder component, so 0.5
+ * admits every case; every repaired creature still gets the full-size visual review (a moved body chunk is held there). The
+ * structural refusal stays available to callers that pass a stricter cap. */
+export const MAX_SHARE = 0.5;
 
 /** Pure: move every remainder island (8-connected components other than the largest) to the neighbour owner with the longest 4-border.
  * Returns the new labels and a per-island receipt. `remainder` is a 1-based label value. */

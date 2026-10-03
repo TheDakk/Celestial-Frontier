@@ -1,0 +1,5258 @@
+{
+  "status": "PASS",
+  "head": "13754c6453046fa1228131076ae9d7efd14a1c25",
+  "sources": [
+    {
+      "file": "audits/AI_FINISH_C121_20261001/finish-client.ts",
+      "sha256": "4f247b5cc59e7dbb46c14f1e8df8042bf309515d3a6118e75109ea91eaee8b38"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-originals.ts",
+      "sha256": "43745a6278b469acc0c3d1c6840ed9d41048edcc4ace588248051c10eeebbffb"
+    },
+    {
+      "file": "port/v2/apps/game/src/local-model-sha256.ts",
+      "sha256": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677"
+    },
+    {
+      "file": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "sha256": "dc2edd2ea38cb98a5747240a178751d7203252c993d411a4124fb4df89661bae"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-finish-engine.ts",
+      "sha256": "2627915924166585fafb02524124aea78e82442285ecbdc4bdb75a53cf6fd23f"
+    },
+    {
+      "file": "port/v2/apps/game/src/landfall-content-hash.ts",
+      "sha256": "29b9e762561d03953d1619e0287e31d211684594592720f1469202c18bb55fb7"
+    },
+    {
+      "file": "port/v2/apps/game/src/morph/png-encode.ts",
+      "sha256": "0eeca5053ce742e95232faa343791042c0a7a4981ecb384b5f143c0b10947765"
+    },
+    {
+      "file": "port/v2/tools/painted-creature/finish-conservation.mjs",
+      "sha256": "f028f152a15a432fe6bc6d00100e3eca4022ff9fc62641764f313fde6944caac"
+    },
+    {
+      "file": "port/v2/apps/game/src/morph/png-decode.ts",
+      "sha256": "fa7ab9b5d712a3bafd981ee85a6a8c92d80f3e365631b6bc0fbc6ef0cddb2348"
+    },
+    {
+      "file": "port/v2/apps/game/src/morph/png-stream.ts",
+      "sha256": "dade83dae5f210843ca1a96722274a6109109a3cdf747adef7302534195aba64"
+    },
+    {
+      "file": "port/v2/packages/art/src/earth-resident-plan.ts",
+      "sha256": "421a518c3ac67ad7b4359ce6eb743d7b4099376266a6bcf622fe42b509c305e0"
+    },
+    {
+      "file": "port/v2/apps/game/src/landfall-appearance-snapshot.ts",
+      "sha256": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69"
+    },
+    {
+      "file": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "file": "port/v2/packages/domain/starcatalog/src/index.ts",
+      "sha256": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13"
+    },
+    {
+      "file": "port/v2/apps/game/src/earth-layered-recipe.ts",
+      "sha256": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824"
+    },
+    {
+      "file": "port/v2/packages/art/src/speciesidentity.ts",
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    },
+    {
+      "file": "port/v2/packages/domain/worldgen/src/index.ts",
+      "sha256": "d81b384a57674c39146726f1b05acec3eddc86fe06da36d80b1bcd5f3c8d4673"
+    },
+    {
+      "file": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "file": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "file": "port/v2/apps/game/src/world-roster.ts",
+      "sha256": "0e071ec4c355cb354db6031eb94c98bfaa008c4f9ef2485670b41d376fa4830f"
+    },
+    {
+      "file": "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "sha256": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff"
+    },
+    {
+      "file": "port/v2/packages/domain/worldconfig/src/index.ts",
+      "sha256": "4ce4e39da1afe2f97baaa2105c2aa209e4d65d10443dfc81a960deeb8ccf0079"
+    },
+    {
+      "file": "port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "file": "port/v2/packages/domain/naming/src/index.ts",
+      "sha256": "f485458ba79dfa6bbe96838eb831506dc7d01bc80f27b2a2d8c8f4edc039c11e"
+    },
+    {
+      "file": "port/v2/packages/domain/planetgen/src/index.ts",
+      "sha256": "92c0b25b750c9457a7365e482d9423400a54150019997a5d1c96c1ea96e203e0"
+    },
+    {
+      "file": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
+    },
+    {
+      "file": "port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "sha256": "9d5f6685bdd96563bf48dc293b4f8b5fd9dacbd7ec2afd40b0a7174b2eada30a"
+    },
+    {
+      "file": "port/v2/packages/domain/ecology/src/index.ts",
+      "sha256": "9ae354c71f86794966f928a8e3c27c3d34a05b23093f3bfdf5c77909979acc3b"
+    },
+    {
+      "file": "port/v2/packages/domain/descriptors/src/index.ts",
+      "sha256": "70a8fc4bd7c188b3e26e699e2644f8a57587cb14b6a0bf2a927f48dd4d18b96a"
+    },
+    {
+      "file": "port/v2/packages/domain/genetics/src/index.ts",
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61"
+    },
+    {
+      "file": "port/v2/packages/domain/surveyphrases/src/index.ts",
+      "sha256": "8c8ec0c8f6b2d76b326daf994f2f4042f0c09e78f1772046f0df1ebc1168989c"
+    },
+    {
+      "file": "port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "file": "port/v2/packages/domain/strays/src/index.ts",
+      "sha256": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec"
+    },
+    {
+      "file": "port/v2/packages/scene/src/index.ts",
+      "sha256": "79449931ced5086f84ac97605fb231cb026eac245f02992787337414e68e63db"
+    },
+    {
+      "file": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "file": "port/v2/packages/domain/ecology/src/civilization.ts",
+      "sha256": "faed945d2a4ff864fded1d8b0d80fd4cc4f2bb4a5ec4f11a38b045d92593553d"
+    },
+    {
+      "file": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
+    },
+    {
+      "file": "port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
+    },
+    {
+      "file": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "file": "port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "sha256": "2e689f6c986c5a0c5d1ad877caf6e48c814fadd47550aa6555612282ed6895d1"
+    },
+    {
+      "file": "port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "sha256": "8915e785a7e5c67f7bcec720ada0f24466082e9ce0c6a9329d18affc251cfd58"
+    },
+    {
+      "file": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
+    },
+    {
+      "file": "port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "sha256": "d0c2daee6e4d9a668eb98b677bf668f77587d83574173bdf234e4dde531cec5f"
+    },
+    {
+      "file": "port/v2/packages/scene/src/zoommode.ts",
+      "sha256": "2d731962b1f07aab7dd5174ed69bcfdf7d88b82cd65dd4cc113ba3ccf45e96b3"
+    },
+    {
+      "file": "port/v2/packages/scene/src/universe.ts",
+      "sha256": "6357c94726ca86f87e4a4765e51d995d234856d2e12ec9e4289ac76f26122b2d"
+    },
+    {
+      "file": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
+    },
+    {
+      "file": "port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
+    },
+    {
+      "file": "port/v2/packages/scene/src/galaxy.ts",
+      "sha256": "c13ca0043be6b96446666292420e58d2e37de9a515ab73cc0889dfa80936aa07"
+    },
+    {
+      "file": "port/v2/packages/scene/src/system.ts",
+      "sha256": "f19495aed7d44f9fb364be0ca7bf7daf47d18461406a02510f1a04fcf2b772ca"
+    },
+    {
+      "file": "port/v2/packages/scene/src/ship-visual-state.ts",
+      "sha256": "9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762"
+    },
+    {
+      "file": "port/v2/packages/scene/src/cf1-code.ts",
+      "sha256": "10a5d815c790065c683c60eb2aa6c3ebcdd8d59588db93a5b481db9879431a7d"
+    },
+    {
+      "file": "port/v2/packages/scene/src/charter.ts",
+      "sha256": "09913352608be0ac1238b98ef895377552ca94b23bffe8fa2aebf306de034f09"
+    },
+    {
+      "file": "port/v2/packages/scene/src/address.ts",
+      "sha256": "c9069b15992c4be5057dd4068c1e7c7a9dcf86768015d64e934ef14b142bd559"
+    },
+    {
+      "file": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/index.ts",
+      "sha256": "0c3168602e01b2e331f7620c9ca84e191587176aa9f4adb1c135df0508fdbeb8"
+    },
+    {
+      "file": "port/v2/packages/domain/encutil/src/index.ts",
+      "sha256": "ef7ca91752c270c5452c6cc6595574f9bf6b754b950494b21302768e2d5de94e"
+    },
+    {
+      "file": "port/v2/packages/domain/worldidentity/src/mint-internal.ts",
+      "sha256": "7754080eb6029f798497782b927f6c640193bcd49bc520a5069712060098b37b"
+    },
+    {
+      "file": "port/v2/packages/domain/worldidentity/src/authority.ts",
+      "sha256": "8bfff96bbcb569c32e3d3b0a4a7f0c6c9eec0b06940d72e3041477a785d75875"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "sha256": "7c80826744c22230263e53facefb05d28c3968d3defabb070a6d9a6f19a9f8f4"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/friendly-duel.ts",
+      "sha256": "afc7e3a8e4877e1858fff8b5e1ac05dc500c061e1978b5d521854bc32cbcaf84"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/player-ability.ts",
+      "sha256": "057f6f7508f91cad9bd54bb2f922d06dfa7c7dce6649e9409b1af896cc270c25"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "sha256": "fcbb7ea8bea461e2fab76aedd66cb98d56794b11768acce343f9eee4723ccf70"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/encounter.ts",
+      "sha256": "9c20ca57d0d47d9946fe7b42b041d1d764a0452550ea75f00711a7f0f926afa7"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "sha256": "e41c72f116358fa46d04d79b399e179bab201094383a8ddd9ace87e2c79a2ed6"
+    },
+    {
+      "file": "port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "sha256": "26e2d6cefcb03bc1587f7d0d51ee5321a96969804c3a8fad28a3e78593274154"
+    },
+    {
+      "file": "port/v2/packages/domain/worldidentity/src/index.ts",
+      "sha256": "90d44680a1da815afcf04bfed995dd46cb8522b2ba19bd856040da42b6d71141"
+    },
+    {
+      "file": "tools/local-image-generation/kit-stage-worker.mjs",
+      "sha256": "e8edc93649380352027ff34fd4bb26a59deca2bec9d663ac3ad0ad9dd4ec73e6"
+    },
+    {
+      "file": "tools/local-image-generation/creature-finish-math.mjs",
+      "sha256": "c9ada08d9a5413e1f76dbfbdf10de4367d399ca66890f30401abb2ca2187ee87"
+    },
+    {
+      "file": "tools/local-image-generation/kit-worker-engine.mjs",
+      "sha256": "83a4bd5cb8ffbc710350e46965e7a62cd4d717a2d079096a11b93a1bc53d05fc"
+    },
+    {
+      "file": "tools/local-image-generation/kit-worker-expansion.mjs",
+      "sha256": "35adfcf3a4bbcd81229e0ec56a14f21e003b20ead43c18eb698da94987caef32"
+    },
+    {
+      "file": "tools/local-image-generation/kit-engine-math.mjs",
+      "sha256": "48ea6f787bb4eac6a6d018fd84eeba9e1595077b0c612a2c4fbe303f19f63d8f"
+    },
+    {
+      "file": "tools/local-image-generation/kit-contact-math.mjs",
+      "sha256": "d0b1f6806fcfaf40cb89ff19ea8cd044e70774d70cc066cba432c7a902df5db7"
+    },
+    {
+      "file": "tools/local-image-generation/kit-weather-math.mjs",
+      "sha256": "abd3202a2da4cf242f8f031b9a7dd1038e192aed0c28969b3c470780e11f8fbd"
+    },
+    {
+      "file": "tools/local-image-generation/pipeline-math.mjs",
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "file": "tools/local-image-generation/browser-variant-plan.json",
+      "sha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81"
+    }
+  ],
+  "qualityAccepted": false,
+  "model": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "8b79b92782d198497cd02149eda5df17f278a34d60795084755b8d66bd8dd74e",
+    "startedAt": "2026-10-03T01:11:37.591Z",
+    "finishedAt": "2026-10-03T01:11:40.610Z",
+    "status": "complete",
+    "fileCount": 21,
+    "totalBytes": 6691028208,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 7792,
+        "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00000.data",
+        "bytes": 1585446912,
+        "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00001.data",
+        "bytes": 1566572544,
+        "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00002.data",
+        "bytes": 981258240,
+        "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.manifest.json",
+        "bytes": 368,
+        "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.onnx",
+        "bytes": 4991601,
+        "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx",
+        "bytes": 760826,
+        "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx.data",
+        "bytes": 198508544,
+        "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx",
+        "bytes": 596081,
+        "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx.data",
+        "bytes": 137756672,
+        "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.53",
+    "revision": "@5af6e80f702cffe10645c6d6433668f011b739be",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.7",
+    "protocol_version": "1.3"
+  },
+  "rows": [
+    {
+      "id": "g2c107-23-wild-pony",
+      "status": "PASS",
+      "sha256": "471c00cce9e6d82c7d9196d9dbd94548beb558f5df5003eee58e6f9adbdd833b",
+      "receipt": {
+        "schema": "cf.creature-finish-engine/v1",
+        "key": "c75d897901ed34d22b12a0769f17df60d73deffe175eb4d975bd2af3b91e3548",
+        "identity": {
+          "recordRecipeHash": "75e6b5358e6a87de597856e5efa4f5714b5891fd2ac8ef30a6a2b42b9f5ce739",
+          "cutoutAssetHash": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+          "modelHash": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+          "settingsHash": "bd8905b800463bb93e765ce9d8b34b6abf020d9cb37bfbc8a735d88513a2f201"
+        },
+        "individualId": "g2c107-23-wild-pony",
+        "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wild Pony\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2427727360\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"20\"]]]]",
+        "seed": 3847396149,
+        "width": 1254,
+        "height": 1254,
+        "cutoutAssetHash": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+        "labelsHash": "783b1a078c7be7d3db6468bb72acbd8c2b7e54af6eff14873128b3dbe9adeb45",
+        "bindingHash": "9f977a6ed6888fe57476d8cdfab3ac18aea839d03487d5e202971b5d91b8682f",
+        "outputHash": "471c00cce9e6d82c7d9196d9dbd94548beb558f5df5003eee58e6f9adbdd833b",
+        "conservation": {
+          "status": "PASS",
+          "alphaChanged": 0,
+          "outsideChanged": 0,
+          "ratio": 0.95,
+          "parts": [
+            {
+              "label": 24,
+              "pixels": 38207,
+              "components": 10,
+              "boundarySamples": 653,
+              "beforeGradient": 18431.95620522449,
+              "afterGradient": 18431.95620522449,
+              "sumSquaredError": 31949096,
+              "meanDeltaE76": 7.9828772371362335,
+              "luminanceSsim": 0.9240265474618635,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 16.69541391456638,
+              "gradientRatio": 1,
+              "componentsAfter": 10
+            },
+            {
+              "label": 4,
+              "pixels": 213,
+              "components": 1,
+              "boundarySamples": 56,
+              "beforeGradient": 3018.372870869256,
+              "afterGradient": 3018.372870869256,
+              "sumSquaredError": 2394,
+              "meanDeltaE76": 0.25331524492539936,
+              "luminanceSsim": 0.9993937521292416,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 1.9355823085674855,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 2,
+              "pixels": 1074,
+              "components": 1,
+              "boundarySamples": 82,
+              "beforeGradient": 2072.456822153003,
+              "afterGradient": 2072.456822153003,
+              "sumSquaredError": 283070,
+              "meanDeltaE76": 3.4830964773091666,
+              "luminanceSsim": 0.9684473855364165,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.373119509310454,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 3,
+              "pixels": 1428,
+              "components": 3,
+              "boundarySamples": 116,
+              "beforeGradient": 2813.734876527372,
+              "afterGradient": 2813.734876527372,
+              "sumSquaredError": 412214,
+              "meanDeltaE76": 3.277460622536588,
+              "luminanceSsim": 0.9552206084638661,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.809268849859004,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 5,
+              "pixels": 366,
+              "components": 1,
+              "boundarySamples": 51,
+              "beforeGradient": 1453.3151936245035,
+              "afterGradient": 1453.3151936245035,
+              "sumSquaredError": 22302,
+              "meanDeltaE76": 1.2161941877815856,
+              "luminanceSsim": 0.9910569026758996,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 4.50682542482356,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 31,
+              "pixels": 27547,
+              "components": 8,
+              "boundarySamples": 577,
+              "beforeGradient": 17133.514220274017,
+              "afterGradient": 17133.514220274017,
+              "sumSquaredError": 14757333,
+              "meanDeltaE76": 6.347997181669725,
+              "luminanceSsim": 0.9366854103138404,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.363067334705052,
+              "gradientRatio": 1,
+              "componentsAfter": 8
+            },
+            {
+              "label": 23,
+              "pixels": 12504,
+              "components": 5,
+              "boundarySamples": 425,
+              "beforeGradient": 13830.204915261615,
+              "afterGradient": 13830.204915261615,
+              "sumSquaredError": 9470308,
+              "meanDeltaE76": 7.072278973077707,
+              "luminanceSsim": 0.9453008190229997,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.88901379015435,
+              "gradientRatio": 1,
+              "componentsAfter": 5
+            },
+            {
+              "label": 30,
+              "pixels": 8947,
+              "components": 1,
+              "boundarySamples": 374,
+              "beforeGradient": 6847.161580756727,
+              "afterGradient": 6847.161580756727,
+              "sumSquaredError": 4283032,
+              "meanDeltaE76": 5.644217476676034,
+              "luminanceSsim": 0.9214878883791519,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.632122062631574,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 9,
+              "pixels": 23298,
+              "components": 4,
+              "boundarySamples": 425,
+              "beforeGradient": 8778.104447742237,
+              "afterGradient": 8778.104447742237,
+              "sumSquaredError": 15001273,
+              "meanDeltaE76": 7.422503478046238,
+              "luminanceSsim": 0.935783031848819,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 14.650218752343452,
+              "gradientRatio": 1,
+              "componentsAfter": 4
+            },
+            {
+              "label": 28,
+              "pixels": 4284,
+              "components": 6,
+              "boundarySamples": 232,
+              "beforeGradient": 5137.8578363414035,
+              "afterGradient": 5137.8578363414035,
+              "sumSquaredError": 1669401,
+              "meanDeltaE76": 4.7482861172650646,
+              "luminanceSsim": 0.9661844999104875,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 11.397116201174805,
+              "gradientRatio": 1,
+              "componentsAfter": 6
+            },
+            {
+              "label": 22,
+              "pixels": 5137,
+              "components": 1,
+              "boundarySamples": 164,
+              "beforeGradient": 6377.074562996218,
+              "afterGradient": 6377.074562996218,
+              "sumSquaredError": 3927950,
+              "meanDeltaE76": 5.955452538197953,
+              "luminanceSsim": 0.9586257837643792,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.964950091750804,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 29,
+              "pixels": 7387,
+              "components": 2,
+              "boundarySamples": 352,
+              "beforeGradient": 8478.921832561553,
+              "afterGradient": 8478.921832561553,
+              "sumSquaredError": 4770340,
+              "meanDeltaE76": 5.9090177977444105,
+              "luminanceSsim": 0.9412433049583965,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 14.671684862947988,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 27,
+              "pixels": 6120,
+              "components": 9,
+              "boundarySamples": 276,
+              "beforeGradient": 7912.771908277748,
+              "afterGradient": 7912.771908277748,
+              "sumSquaredError": 2999380,
+              "meanDeltaE76": 5.576778148209589,
+              "luminanceSsim": 0.9530708678607329,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.781428861722647,
+              "gradientRatio": 1,
+              "componentsAfter": 9
+            },
+            {
+              "label": 13,
+              "pixels": 12855,
+              "components": 1,
+              "boundarySamples": 297,
+              "beforeGradient": 6334.1674728986445,
+              "afterGradient": 6334.1674728986445,
+              "sumSquaredError": 8891164,
+              "meanDeltaE76": 7.217503252417231,
+              "luminanceSsim": 0.9182062505630315,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.18387579879738,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 1,
+              "pixels": 103,
+              "components": 1,
+              "boundarySamples": 21,
+              "beforeGradient": 497.42936176513933,
+              "afterGradient": 497.42936176513933,
+              "sumSquaredError": 181.99999999999997,
+              "meanDeltaE76": 0.10530649933521274,
+              "luminanceSsim": 0.9996000860971337,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 0.767461245766876,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 21,
+              "pixels": 5497,
+              "components": 3,
+              "boundarySamples": 288,
+              "beforeGradient": 10981.18782885596,
+              "afterGradient": 10981.18782885596,
+              "sumSquaredError": 3637402,
+              "meanDeltaE76": 6.143708585254376,
+              "luminanceSsim": 0.9400146218774378,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 14.851562758801876,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 17,
+              "pixels": 3945,
+              "components": 2,
+              "boundarySamples": 182,
+              "beforeGradient": 4469.988053813144,
+              "afterGradient": 4469.988053813144,
+              "sumSquaredError": 964088,
+              "meanDeltaE76": 4.198399280875972,
+              "luminanceSsim": 0.9812599890694405,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.025561035567796,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 26,
+              "pixels": 3933,
+              "components": 6,
+              "boundarySamples": 240,
+              "beforeGradient": 7988.326125483775,
+              "afterGradient": 7988.326125483775,
+              "sumSquaredError": 2058746,
+              "meanDeltaE76": 5.355294063296982,
+              "luminanceSsim": 0.9499286441107475,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.209268974714039,
+              "gradientRatio": 1,
+              "componentsAfter": 6
+            },
+            {
+              "label": 8,
+              "pixels": 2957,
+              "components": 8,
+              "boundarySamples": 191,
+              "beforeGradient": 5921.939460742046,
+              "afterGradient": 5921.939460742046,
+              "sumSquaredError": 676186,
+              "meanDeltaE76": 4.416939726648456,
+              "luminanceSsim": 0.9550000455441819,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 8.730654411726231,
+              "gradientRatio": 1,
+              "componentsAfter": 8
+            },
+            {
+              "label": 20,
+              "pixels": 3058,
+              "components": 1,
+              "boundarySamples": 139,
+              "beforeGradient": 3934.4649264415275,
+              "afterGradient": 3934.4649264415275,
+              "sumSquaredError": 1356804,
+              "meanDeltaE76": 5.306608794291896,
+              "luminanceSsim": 0.9486985148760508,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.161277255559654,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 16,
+              "pixels": 2271,
+              "components": 1,
+              "boundarySamples": 138,
+              "beforeGradient": 3762.754224950855,
+              "afterGradient": 3762.754224950855,
+              "sumSquaredError": 377699,
+              "meanDeltaE76": 4.469770921822481,
+              "luminanceSsim": 0.9473188187239507,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 7.445668956033937,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 12,
+              "pixels": 2777,
+              "components": 1,
+              "boundarySamples": 163,
+              "beforeGradient": 4625.816490667919,
+              "afterGradient": 4625.816490667919,
+              "sumSquaredError": 775309,
+              "meanDeltaE76": 4.635165126476727,
+              "luminanceSsim": 0.9377864558499905,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.64692374171943,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 25,
+              "pixels": 899,
+              "components": 6,
+              "boundarySamples": 147,
+              "beforeGradient": 6580.013003668608,
+              "afterGradient": 6580.013003668608,
+              "sumSquaredError": 51339,
+              "meanDeltaE76": 1.8015299978970984,
+              "luminanceSsim": 0.9956472647049833,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 4.362980071656639,
+              "gradientRatio": 1,
+              "componentsAfter": 6
+            },
+            {
+              "label": 7,
+              "pixels": 5011,
+              "components": 2,
+              "boundarySamples": 227,
+              "beforeGradient": 8798.24527773369,
+              "afterGradient": 8798.24527773369,
+              "sumSquaredError": 1938813,
+              "meanDeltaE76": 5.239881437453554,
+              "luminanceSsim": 0.9085491928174616,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 11.35651641028403,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 15,
+              "pixels": 5032,
+              "components": 3,
+              "boundarySamples": 245,
+              "beforeGradient": 7422.274116623571,
+              "afterGradient": 7422.274116623571,
+              "sumSquaredError": 1332275,
+              "meanDeltaE76": 5.14117789846112,
+              "luminanceSsim": 0.9012597354613135,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.394333976594881,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 19,
+              "pixels": 4375,
+              "components": 1,
+              "boundarySamples": 225,
+              "beforeGradient": 7486.573629847388,
+              "afterGradient": 7486.573629847388,
+              "sumSquaredError": 1253360,
+              "meanDeltaE76": 5.041995282541727,
+              "luminanceSsim": 0.9261336857764045,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.772108024274763,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 11,
+              "pixels": 4824,
+              "components": 3,
+              "boundarySamples": 264,
+              "beforeGradient": 9906.702768069528,
+              "afterGradient": 9906.702768069528,
+              "sumSquaredError": 1089854,
+              "meanDeltaE76": 4.356198956838752,
+              "luminanceSsim": 0.9352873656961609,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 8.678004766185936,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 18,
+              "pixels": 2146,
+              "components": 1,
+              "boundarySamples": 125,
+              "beforeGradient": 7267.1056216895395,
+              "afterGradient": 7267.1056216895395,
+              "sumSquaredError": 731948,
+              "meanDeltaE76": 4.358506502988221,
+              "luminanceSsim": 0.9680996099437201,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.662637092239203,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 6,
+              "pixels": 1548,
+              "components": 1,
+              "boundarySamples": 104,
+              "beforeGradient": 5897.283352449696,
+              "afterGradient": 5897.283352449696,
+              "sumSquaredError": 460100,
+              "meanDeltaE76": 3.655701345011442,
+              "luminanceSsim": 0.9507973306913002,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.953596037316066,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 14,
+              "pixels": 1451,
+              "components": 1,
+              "boundarySamples": 103,
+              "beforeGradient": 5385.215226636431,
+              "afterGradient": 5385.215226636431,
+              "sumSquaredError": 277051,
+              "meanDeltaE76": 3.154821568688129,
+              "luminanceSsim": 0.9792559639772095,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 7.977843773250278,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 10,
+              "pixels": 1116,
+              "components": 1,
+              "boundarySamples": 86,
+              "beforeGradient": 5727.9859414781995,
+              "afterGradient": 5727.9859414781995,
+              "sumSquaredError": 284949,
+              "meanDeltaE76": 2.985323626789914,
+              "luminanceSsim": 0.9738182873069423,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.225519771468893,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            }
+          ],
+          "failures": [],
+          "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+        }
+      },
+      "details": {
+        "elapsedMs": 38461.45999999344,
+        "editablePixels": 153396,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "width": 1254,
+        "height": 1254,
+        "workCanvas": {
+          "width": 1264,
+          "height": 1264,
+          "paddingRight": 10,
+          "paddingBottom": 10
+        }
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "eligibility": {
+        "minimumAlpha": 250,
+        "protectedPixels": 0,
+        "protectedChanges": 0,
+        "alphaChanges": 0,
+        "changedRgbPixels": 153383
+      },
+      "conservation": {
+        "status": "PASS",
+        "alphaChanged": 0,
+        "outsideChanged": 0,
+        "ratio": 0.95,
+        "parts": [
+          {
+            "label": 24,
+            "pixels": 38207,
+            "components": 10,
+            "boundarySamples": 653,
+            "beforeGradient": 18431.95620522449,
+            "afterGradient": 18431.95620522449,
+            "sumSquaredError": 31949096,
+            "meanDeltaE76": 7.982877237136235,
+            "luminanceSsim": 0.9240265474618635,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 16.69541391456638,
+            "gradientRatio": 1,
+            "componentsAfter": 10
+          },
+          {
+            "label": 4,
+            "pixels": 213,
+            "components": 1,
+            "boundarySamples": 56,
+            "beforeGradient": 3018.372870869256,
+            "afterGradient": 3018.372870869256,
+            "sumSquaredError": 2394,
+            "meanDeltaE76": 0.25331524492539953,
+            "luminanceSsim": 0.9993937521292416,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 1.9355823085674855,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 2,
+            "pixels": 1074,
+            "components": 1,
+            "boundarySamples": 82,
+            "beforeGradient": 2072.456822153003,
+            "afterGradient": 2072.456822153003,
+            "sumSquaredError": 283070,
+            "meanDeltaE76": 3.483096477309166,
+            "luminanceSsim": 0.9684473855364165,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.373119509310454,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 3,
+            "pixels": 1428,
+            "components": 3,
+            "boundarySamples": 116,
+            "beforeGradient": 2813.734876527372,
+            "afterGradient": 2813.734876527372,
+            "sumSquaredError": 412214,
+            "meanDeltaE76": 3.277460622536587,
+            "luminanceSsim": 0.9552206084638661,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.809268849859004,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 5,
+            "pixels": 366,
+            "components": 1,
+            "boundarySamples": 51,
+            "beforeGradient": 1453.3151936245035,
+            "afterGradient": 1453.3151936245035,
+            "sumSquaredError": 22302,
+            "meanDeltaE76": 1.2161941877815856,
+            "luminanceSsim": 0.9910569026758996,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 4.50682542482356,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 31,
+            "pixels": 27547,
+            "components": 8,
+            "boundarySamples": 577,
+            "beforeGradient": 17133.514220274017,
+            "afterGradient": 17133.514220274017,
+            "sumSquaredError": 14757333,
+            "meanDeltaE76": 6.347997181669721,
+            "luminanceSsim": 0.9366854103138404,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.363067334705052,
+            "gradientRatio": 1,
+            "componentsAfter": 8
+          },
+          {
+            "label": 23,
+            "pixels": 12504,
+            "components": 5,
+            "boundarySamples": 425,
+            "beforeGradient": 13830.204915261615,
+            "afterGradient": 13830.204915261615,
+            "sumSquaredError": 9470308,
+            "meanDeltaE76": 7.07227897307771,
+            "luminanceSsim": 0.9453008190229997,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.88901379015435,
+            "gradientRatio": 1,
+            "componentsAfter": 5
+          },
+          {
+            "label": 30,
+            "pixels": 8947,
+            "components": 1,
+            "boundarySamples": 374,
+            "beforeGradient": 6847.161580756727,
+            "afterGradient": 6847.161580756727,
+            "sumSquaredError": 4283032,
+            "meanDeltaE76": 5.644217476676034,
+            "luminanceSsim": 0.9214878883791519,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.632122062631574,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 9,
+            "pixels": 23298,
+            "components": 4,
+            "boundarySamples": 425,
+            "beforeGradient": 8778.104447742237,
+            "afterGradient": 8778.104447742237,
+            "sumSquaredError": 15001273,
+            "meanDeltaE76": 7.4225034780462416,
+            "luminanceSsim": 0.935783031848819,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 14.650218752343452,
+            "gradientRatio": 1,
+            "componentsAfter": 4
+          },
+          {
+            "label": 28,
+            "pixels": 4284,
+            "components": 6,
+            "boundarySamples": 232,
+            "beforeGradient": 5137.8578363414035,
+            "afterGradient": 5137.8578363414035,
+            "sumSquaredError": 1669401,
+            "meanDeltaE76": 4.748286117265065,
+            "luminanceSsim": 0.9661844999104875,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 11.397116201174805,
+            "gradientRatio": 1,
+            "componentsAfter": 6
+          },
+          {
+            "label": 22,
+            "pixels": 5137,
+            "components": 1,
+            "boundarySamples": 164,
+            "beforeGradient": 6377.074562996218,
+            "afterGradient": 6377.074562996218,
+            "sumSquaredError": 3927950,
+            "meanDeltaE76": 5.955452538197953,
+            "luminanceSsim": 0.9586257837643792,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.964950091750804,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 29,
+            "pixels": 7387,
+            "components": 2,
+            "boundarySamples": 352,
+            "beforeGradient": 8478.921832561553,
+            "afterGradient": 8478.921832561553,
+            "sumSquaredError": 4770340,
+            "meanDeltaE76": 5.9090177977444105,
+            "luminanceSsim": 0.9412433049583965,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 14.671684862947988,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 27,
+            "pixels": 6120,
+            "components": 9,
+            "boundarySamples": 276,
+            "beforeGradient": 7912.771908277748,
+            "afterGradient": 7912.771908277748,
+            "sumSquaredError": 2999380,
+            "meanDeltaE76": 5.576778148209588,
+            "luminanceSsim": 0.9530708678607329,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.781428861722647,
+            "gradientRatio": 1,
+            "componentsAfter": 9
+          },
+          {
+            "label": 13,
+            "pixels": 12855,
+            "components": 1,
+            "boundarySamples": 297,
+            "beforeGradient": 6334.1674728986445,
+            "afterGradient": 6334.1674728986445,
+            "sumSquaredError": 8891164,
+            "meanDeltaE76": 7.217503252417231,
+            "luminanceSsim": 0.9182062505630315,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.18387579879738,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 1,
+            "pixels": 103,
+            "components": 1,
+            "boundarySamples": 21,
+            "beforeGradient": 497.42936176513933,
+            "afterGradient": 497.42936176513933,
+            "sumSquaredError": 181.99999999999997,
+            "meanDeltaE76": 0.1053064993352124,
+            "luminanceSsim": 0.9996000860971337,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 0.767461245766876,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 21,
+            "pixels": 5497,
+            "components": 3,
+            "boundarySamples": 288,
+            "beforeGradient": 10981.18782885596,
+            "afterGradient": 10981.18782885596,
+            "sumSquaredError": 3637402,
+            "meanDeltaE76": 6.143708585254377,
+            "luminanceSsim": 0.9400146218774378,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 14.851562758801876,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 17,
+            "pixels": 3945,
+            "components": 2,
+            "boundarySamples": 182,
+            "beforeGradient": 4469.988053813144,
+            "afterGradient": 4469.988053813144,
+            "sumSquaredError": 964088,
+            "meanDeltaE76": 4.19839928087597,
+            "luminanceSsim": 0.9812599890694405,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.025561035567796,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 26,
+            "pixels": 3933,
+            "components": 6,
+            "boundarySamples": 240,
+            "beforeGradient": 7988.326125483775,
+            "afterGradient": 7988.326125483775,
+            "sumSquaredError": 2058746,
+            "meanDeltaE76": 5.355294063296981,
+            "luminanceSsim": 0.9499286441107475,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.209268974714039,
+            "gradientRatio": 1,
+            "componentsAfter": 6
+          },
+          {
+            "label": 8,
+            "pixels": 2957,
+            "components": 8,
+            "boundarySamples": 191,
+            "beforeGradient": 5921.939460742046,
+            "afterGradient": 5921.939460742046,
+            "sumSquaredError": 676186,
+            "meanDeltaE76": 4.416939726648455,
+            "luminanceSsim": 0.9550000455441819,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 8.730654411726231,
+            "gradientRatio": 1,
+            "componentsAfter": 8
+          },
+          {
+            "label": 20,
+            "pixels": 3058,
+            "components": 1,
+            "boundarySamples": 139,
+            "beforeGradient": 3934.4649264415275,
+            "afterGradient": 3934.4649264415275,
+            "sumSquaredError": 1356804,
+            "meanDeltaE76": 5.306608794291897,
+            "luminanceSsim": 0.9486985148760508,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.161277255559654,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 16,
+            "pixels": 2271,
+            "components": 1,
+            "boundarySamples": 138,
+            "beforeGradient": 3762.754224950855,
+            "afterGradient": 3762.754224950855,
+            "sumSquaredError": 377699,
+            "meanDeltaE76": 4.469770921822481,
+            "luminanceSsim": 0.9473188187239507,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 7.445668956033937,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 12,
+            "pixels": 2777,
+            "components": 1,
+            "boundarySamples": 163,
+            "beforeGradient": 4625.816490667919,
+            "afterGradient": 4625.816490667919,
+            "sumSquaredError": 775309,
+            "meanDeltaE76": 4.635165126476725,
+            "luminanceSsim": 0.9377864558499905,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.64692374171943,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 25,
+            "pixels": 899,
+            "components": 6,
+            "boundarySamples": 147,
+            "beforeGradient": 6580.013003668608,
+            "afterGradient": 6580.013003668608,
+            "sumSquaredError": 51339,
+            "meanDeltaE76": 1.8015299978970991,
+            "luminanceSsim": 0.9956472647049833,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 4.362980071656639,
+            "gradientRatio": 1,
+            "componentsAfter": 6
+          },
+          {
+            "label": 7,
+            "pixels": 5011,
+            "components": 2,
+            "boundarySamples": 227,
+            "beforeGradient": 8798.24527773369,
+            "afterGradient": 8798.24527773369,
+            "sumSquaredError": 1938813,
+            "meanDeltaE76": 5.239881437453555,
+            "luminanceSsim": 0.9085491928174616,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 11.35651641028403,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 15,
+            "pixels": 5032,
+            "components": 3,
+            "boundarySamples": 245,
+            "beforeGradient": 7422.274116623571,
+            "afterGradient": 7422.274116623571,
+            "sumSquaredError": 1332275,
+            "meanDeltaE76": 5.141177898461121,
+            "luminanceSsim": 0.9012597354613135,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.394333976594881,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 19,
+            "pixels": 4375,
+            "components": 1,
+            "boundarySamples": 225,
+            "beforeGradient": 7486.573629847388,
+            "afterGradient": 7486.573629847388,
+            "sumSquaredError": 1253360,
+            "meanDeltaE76": 5.041995282541728,
+            "luminanceSsim": 0.9261336857764045,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.772108024274763,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 11,
+            "pixels": 4824,
+            "components": 3,
+            "boundarySamples": 264,
+            "beforeGradient": 9906.702768069528,
+            "afterGradient": 9906.702768069528,
+            "sumSquaredError": 1089854,
+            "meanDeltaE76": 4.35619895683875,
+            "luminanceSsim": 0.9352873656961609,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 8.678004766185936,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 18,
+            "pixels": 2146,
+            "components": 1,
+            "boundarySamples": 125,
+            "beforeGradient": 7267.1056216895395,
+            "afterGradient": 7267.1056216895395,
+            "sumSquaredError": 731948,
+            "meanDeltaE76": 4.35850650298822,
+            "luminanceSsim": 0.9680996099437201,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.662637092239203,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 6,
+            "pixels": 1548,
+            "components": 1,
+            "boundarySamples": 104,
+            "beforeGradient": 5897.283352449696,
+            "afterGradient": 5897.283352449696,
+            "sumSquaredError": 460100,
+            "meanDeltaE76": 3.655701345011441,
+            "luminanceSsim": 0.9507973306913002,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.953596037316066,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 14,
+            "pixels": 1451,
+            "components": 1,
+            "boundarySamples": 103,
+            "beforeGradient": 5385.215226636431,
+            "afterGradient": 5385.215226636431,
+            "sumSquaredError": 277051,
+            "meanDeltaE76": 3.1548215686881296,
+            "luminanceSsim": 0.9792559639772095,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 7.977843773250278,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 10,
+            "pixels": 1116,
+            "components": 1,
+            "boundarySamples": 86,
+            "beforeGradient": 5727.9859414781995,
+            "afterGradient": 5727.9859414781995,
+            "sumSquaredError": 284949,
+            "meanDeltaE76": 2.9853236267899126,
+            "luminanceSsim": 0.9738182873069423,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.225519771468893,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          }
+        ],
+        "failures": [],
+        "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+      }
+    },
+    {
+      "id": "g2c121-05-chough",
+      "status": "PASS",
+      "sha256": "a9b7205f20d0092e1957dd903cbe5c99a1e3a88a0ae848c95c7291c9f414a357",
+      "receipt": {
+        "schema": "cf.creature-finish-engine/v1",
+        "key": "ad4a9fc8e0071b6fc8a2afc10b93063d9b125d1f61d676cc9c8acffa00b22aa0",
+        "identity": {
+          "recordRecipeHash": "ba1769da62bd190ffe87db4f80f89522579c707cb5379900790faec8ccd70b1a",
+          "cutoutAssetHash": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+          "modelHash": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+          "settingsHash": "3ee3f8cf6a0412dab29c345bad340c039077b1d26b89d5dfe5bc6687f5243a29"
+        },
+        "individualId": "g2c121-05-chough",
+        "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chough\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2759847108\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"14\"]]]]",
+        "seed": 510166302,
+        "width": 1254,
+        "height": 1254,
+        "cutoutAssetHash": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+        "labelsHash": "6d569d5d313357f290b82c22008469a05f75f8000d5e9f99ee5ddff908cc5727",
+        "bindingHash": "c43687032e67da1fe6da59e697c5d32dd878951e12f0fdd6628cef28635c4fe0",
+        "outputHash": "a9b7205f20d0092e1957dd903cbe5c99a1e3a88a0ae848c95c7291c9f414a357",
+        "conservation": {
+          "status": "PASS",
+          "alphaChanged": 0,
+          "outsideChanged": 0,
+          "ratio": 0.95,
+          "parts": [
+            {
+              "label": 8,
+              "pixels": 10708,
+              "components": 1,
+              "boundarySamples": 307,
+              "beforeGradient": 7069.329038963566,
+              "afterGradient": 7069.329038963566,
+              "sumSquaredError": 5648982,
+              "meanDeltaE76": 5.574295149387023,
+              "luminanceSsim": 0.9057070620183277,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.260817153277394,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 7,
+              "pixels": 2944,
+              "components": 1,
+              "boundarySamples": 250,
+              "beforeGradient": 12142.553997177854,
+              "afterGradient": 12142.553997177854,
+              "sumSquaredError": 2014455,
+              "meanDeltaE76": 5.772967597404432,
+              "luminanceSsim": 0.9827567873914173,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.102514277430762,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 11,
+              "pixels": 4936,
+              "components": 1,
+              "boundarySamples": 217,
+              "beforeGradient": 4749.791489939212,
+              "afterGradient": 4749.791489939212,
+              "sumSquaredError": 2406325,
+              "meanDeltaE76": 4.959266783268978,
+              "luminanceSsim": 0.9362449567119666,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.747615003466619,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 9,
+              "pixels": 4581,
+              "components": 1,
+              "boundarySamples": 184,
+              "beforeGradient": 6340.581220105578,
+              "afterGradient": 6340.581220105578,
+              "sumSquaredError": 2297196,
+              "meanDeltaE76": 5.251550299512915,
+              "luminanceSsim": 0.8765390702520364,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.928801047627816,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 12,
+              "pixels": 4464,
+              "components": 1,
+              "boundarySamples": 194,
+              "beforeGradient": 2594.8276016251984,
+              "afterGradient": 2594.8276016251984,
+              "sumSquaredError": 2022512,
+              "meanDeltaE76": 5.254159876417026,
+              "luminanceSsim": 0.914416195544652,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.289177957154193,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 10,
+              "pixels": 4964,
+              "components": 1,
+              "boundarySamples": 182,
+              "beforeGradient": 5584.876847508733,
+              "afterGradient": 5584.876847508733,
+              "sumSquaredError": 1666515,
+              "meanDeltaE76": 4.918423631085705,
+              "luminanceSsim": 0.9159120043996858,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.578597659652369,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 13,
+              "pixels": 7660,
+              "components": 1,
+              "boundarySamples": 241,
+              "beforeGradient": 3715.8339926053914,
+              "afterGradient": 3715.8339926053914,
+              "sumSquaredError": 4131165,
+              "meanDeltaE76": 5.670346179419768,
+              "luminanceSsim": 0.9188207828156899,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.407915319373414,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 14,
+              "pixels": 19099,
+              "components": 1,
+              "boundarySamples": 425,
+              "beforeGradient": 13784.789357686372,
+              "afterGradient": 13784.789357686372,
+              "sumSquaredError": 9462874,
+              "meanDeltaE76": 5.677068591060596,
+              "luminanceSsim": 0.9192270709986431,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.851256357029799,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 16,
+              "pixels": 13936,
+              "components": 1,
+              "boundarySamples": 339,
+              "beforeGradient": 13156.038164423537,
+              "afterGradient": 13156.038164423537,
+              "sumSquaredError": 4554739,
+              "meanDeltaE76": 4.627443593949359,
+              "luminanceSsim": 0.9210004773757116,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.437633701314523,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 17,
+              "pixels": 20609,
+              "components": 5,
+              "boundarySamples": 650,
+              "beforeGradient": 21061.850072817182,
+              "afterGradient": 21061.850072817182,
+              "sumSquaredError": 6429587,
+              "meanDeltaE76": 4.402924470168274,
+              "luminanceSsim": 0.9264312695577952,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.19770516720366,
+              "gradientRatio": 1,
+              "componentsAfter": 5
+            },
+            {
+              "label": 15,
+              "pixels": 18375,
+              "components": 1,
+              "boundarySamples": 497,
+              "beforeGradient": 15531.114357094628,
+              "afterGradient": 15531.114357094628,
+              "sumSquaredError": 10130741,
+              "meanDeltaE76": 6.005834642565559,
+              "luminanceSsim": 0.9345833284991174,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.55646025009743,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 5,
+              "pixels": 2591,
+              "components": 3,
+              "boundarySamples": 176,
+              "beforeGradient": 4805.071661951769,
+              "afterGradient": 4805.071661951769,
+              "sumSquaredError": 500471,
+              "meanDeltaE76": 2.9849163489094797,
+              "luminanceSsim": 0.88510921847625,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 8.024077686542588,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 6,
+              "pixels": 1460,
+              "components": 1,
+              "boundarySamples": 108,
+              "beforeGradient": 1684.0434197301547,
+              "afterGradient": 1684.0434197301547,
+              "sumSquaredError": 127319,
+              "meanDeltaE76": 2.530981715826988,
+              "luminanceSsim": 0.9517480387213392,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 5.391499312824092,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 3,
+              "pixels": 1569,
+              "components": 2,
+              "boundarySamples": 155,
+              "beforeGradient": 6078.395701843968,
+              "afterGradient": 6078.395701843968,
+              "sumSquaredError": 348518,
+              "meanDeltaE76": 3.179945154697051,
+              "luminanceSsim": 0.9947407134231132,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 8.60479458840516,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 4,
+              "pixels": 1657,
+              "components": 1,
+              "boundarySamples": 186,
+              "beforeGradient": 6150.464109814526,
+              "afterGradient": 6150.464109814526,
+              "sumSquaredError": 417784,
+              "meanDeltaE76": 2.468256181691295,
+              "luminanceSsim": 0.9925740520236912,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.167565472293886,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 1,
+              "pixels": 2334,
+              "components": 3,
+              "boundarySamples": 255,
+              "beforeGradient": 12088.04120128824,
+              "afterGradient": 12088.04120128824,
+              "sumSquaredError": 1191139,
+              "meanDeltaE76": 4.899363709904571,
+              "luminanceSsim": 0.9752772103287876,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.042780004823094,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 2,
+              "pixels": 2260,
+              "components": 5,
+              "boundarySamples": 243,
+              "beforeGradient": 9659.121021668147,
+              "afterGradient": 9659.121021668147,
+              "sumSquaredError": 1143857,
+              "meanDeltaE76": 4.902260411196747,
+              "luminanceSsim": 0.9833376743286999,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.988859533323208,
+              "gradientRatio": 1,
+              "componentsAfter": 5
+            }
+          ],
+          "failures": [],
+          "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+        }
+      },
+      "details": {
+        "elapsedMs": 39323.789999991655,
+        "editablePixels": 91394,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "width": 1254,
+        "height": 1254,
+        "workCanvas": {
+          "width": 1264,
+          "height": 1264,
+          "paddingRight": 10,
+          "paddingBottom": 10
+        }
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "eligibility": {
+        "minimumAlpha": 250,
+        "protectedPixels": 0,
+        "protectedChanges": 0,
+        "alphaChanges": 0,
+        "changedRgbPixels": 91192
+      },
+      "conservation": {
+        "status": "PASS",
+        "alphaChanged": 0,
+        "outsideChanged": 0,
+        "ratio": 0.95,
+        "parts": [
+          {
+            "label": 8,
+            "pixels": 10708,
+            "components": 1,
+            "boundarySamples": 307,
+            "beforeGradient": 7069.329038963566,
+            "afterGradient": 7069.329038963566,
+            "sumSquaredError": 5648982,
+            "meanDeltaE76": 5.574295149387023,
+            "luminanceSsim": 0.9057070620183277,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.260817153277394,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 7,
+            "pixels": 2944,
+            "components": 1,
+            "boundarySamples": 250,
+            "beforeGradient": 12142.553997177854,
+            "afterGradient": 12142.553997177854,
+            "sumSquaredError": 2014455,
+            "meanDeltaE76": 5.772967597404428,
+            "luminanceSsim": 0.9827567873914173,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.102514277430762,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 11,
+            "pixels": 4936,
+            "components": 1,
+            "boundarySamples": 217,
+            "beforeGradient": 4749.791489939212,
+            "afterGradient": 4749.791489939212,
+            "sumSquaredError": 2406325,
+            "meanDeltaE76": 4.959266783268978,
+            "luminanceSsim": 0.9362449567119666,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.747615003466619,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 9,
+            "pixels": 4581,
+            "components": 1,
+            "boundarySamples": 184,
+            "beforeGradient": 6340.581220105578,
+            "afterGradient": 6340.581220105578,
+            "sumSquaredError": 2297196,
+            "meanDeltaE76": 5.251550299512915,
+            "luminanceSsim": 0.8765390702520364,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.928801047627816,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 12,
+            "pixels": 4464,
+            "components": 1,
+            "boundarySamples": 194,
+            "beforeGradient": 2594.8276016251984,
+            "afterGradient": 2594.8276016251984,
+            "sumSquaredError": 2022512,
+            "meanDeltaE76": 5.254159876417026,
+            "luminanceSsim": 0.914416195544652,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.289177957154193,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 10,
+            "pixels": 4964,
+            "components": 1,
+            "boundarySamples": 182,
+            "beforeGradient": 5584.876847508733,
+            "afterGradient": 5584.876847508733,
+            "sumSquaredError": 1666515,
+            "meanDeltaE76": 4.918423631085705,
+            "luminanceSsim": 0.9159120043996858,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.578597659652369,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 13,
+            "pixels": 7660,
+            "components": 1,
+            "boundarySamples": 241,
+            "beforeGradient": 3715.8339926053914,
+            "afterGradient": 3715.8339926053914,
+            "sumSquaredError": 4131165,
+            "meanDeltaE76": 5.670346179419769,
+            "luminanceSsim": 0.9188207828156899,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.407915319373414,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 14,
+            "pixels": 19099,
+            "components": 1,
+            "boundarySamples": 425,
+            "beforeGradient": 13784.789357686372,
+            "afterGradient": 13784.789357686372,
+            "sumSquaredError": 9462874,
+            "meanDeltaE76": 5.677068591060595,
+            "luminanceSsim": 0.9192270709986431,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.851256357029799,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 16,
+            "pixels": 13936,
+            "components": 1,
+            "boundarySamples": 339,
+            "beforeGradient": 13156.038164423537,
+            "afterGradient": 13156.038164423537,
+            "sumSquaredError": 4554739,
+            "meanDeltaE76": 4.627443593949358,
+            "luminanceSsim": 0.9210004773757116,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.437633701314523,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 17,
+            "pixels": 20609,
+            "components": 5,
+            "boundarySamples": 650,
+            "beforeGradient": 21061.850072817182,
+            "afterGradient": 21061.850072817182,
+            "sumSquaredError": 6429587,
+            "meanDeltaE76": 4.402924470168276,
+            "luminanceSsim": 0.9264312695577952,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.19770516720366,
+            "gradientRatio": 1,
+            "componentsAfter": 5
+          },
+          {
+            "label": 15,
+            "pixels": 18375,
+            "components": 1,
+            "boundarySamples": 497,
+            "beforeGradient": 15531.114357094628,
+            "afterGradient": 15531.114357094628,
+            "sumSquaredError": 10130741,
+            "meanDeltaE76": 6.005834642565561,
+            "luminanceSsim": 0.9345833284991174,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.55646025009743,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 5,
+            "pixels": 2591,
+            "components": 3,
+            "boundarySamples": 176,
+            "beforeGradient": 4805.071661951769,
+            "afterGradient": 4805.071661951769,
+            "sumSquaredError": 500471,
+            "meanDeltaE76": 2.984916348909479,
+            "luminanceSsim": 0.88510921847625,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 8.024077686542588,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 6,
+            "pixels": 1460,
+            "components": 1,
+            "boundarySamples": 108,
+            "beforeGradient": 1684.0434197301547,
+            "afterGradient": 1684.0434197301547,
+            "sumSquaredError": 127319,
+            "meanDeltaE76": 2.5309817158269885,
+            "luminanceSsim": 0.9517480387213392,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 5.391499312824092,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 3,
+            "pixels": 1569,
+            "components": 2,
+            "boundarySamples": 155,
+            "beforeGradient": 6078.395701843968,
+            "afterGradient": 6078.395701843968,
+            "sumSquaredError": 348518,
+            "meanDeltaE76": 3.1799451546970516,
+            "luminanceSsim": 0.9947407134231132,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 8.60479458840516,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 4,
+            "pixels": 1657,
+            "components": 1,
+            "boundarySamples": 186,
+            "beforeGradient": 6150.464109814526,
+            "afterGradient": 6150.464109814526,
+            "sumSquaredError": 417784,
+            "meanDeltaE76": 2.4682561816912956,
+            "luminanceSsim": 0.9925740520236912,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.167565472293886,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 1,
+            "pixels": 2334,
+            "components": 3,
+            "boundarySamples": 255,
+            "beforeGradient": 12088.04120128824,
+            "afterGradient": 12088.04120128824,
+            "sumSquaredError": 1191139,
+            "meanDeltaE76": 4.899363709904572,
+            "luminanceSsim": 0.9752772103287876,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.042780004823094,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 2,
+            "pixels": 2260,
+            "components": 5,
+            "boundarySamples": 243,
+            "beforeGradient": 9659.121021668147,
+            "afterGradient": 9659.121021668147,
+            "sumSquaredError": 1143857,
+            "meanDeltaE76": 4.902260411196747,
+            "luminanceSsim": 0.9833376743286999,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.988859533323208,
+            "gradientRatio": 1,
+            "componentsAfter": 5
+          }
+        ],
+        "failures": [],
+        "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+      }
+    },
+    {
+      "id": "g2c121-14-snowy-owl",
+      "status": "PASS",
+      "sha256": "514841d9c9f341e632baf266707b244fec8a83f7eb7c753b032561e6c5eb64b9",
+      "receipt": {
+        "schema": "cf.creature-finish-engine/v1",
+        "key": "bbc1c6c36a9db55a3f7444ea6349a07db624d725753c9186bdee9ad680ccaf5b",
+        "identity": {
+          "recordRecipeHash": "cb49b33df285d91249bb00264a87891c38f10627bdb9c65e86573731ea89be70",
+          "cutoutAssetHash": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+          "modelHash": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+          "settingsHash": "b84b54417afb9b7b6ccfbb98efd2beb373520b44b91ea1fff9f5e074191846b4"
+        },
+        "individualId": "g2c121-14-snowy-owl",
+        "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snowy Owl\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"639895957\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"1\"]]]]",
+        "seed": 3983391400,
+        "width": 1254,
+        "height": 1254,
+        "cutoutAssetHash": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+        "labelsHash": "f9027f44e772120e62ec93f1a18b4b224ba8df71335a640f640c35c0fbbbc6d3",
+        "bindingHash": "11f1e5267b47df39fde715d643217dba59d984911a28d74fe5119a1939ea5c51",
+        "outputHash": "514841d9c9f341e632baf266707b244fec8a83f7eb7c753b032561e6c5eb64b9",
+        "conservation": {
+          "status": "PASS",
+          "alphaChanged": 0,
+          "outsideChanged": 0,
+          "ratio": 0.95,
+          "parts": [
+            {
+              "label": 8,
+              "pixels": 15916,
+              "components": 1,
+              "boundarySamples": 365,
+              "beforeGradient": 6492.955687060333,
+              "afterGradient": 6492.955687060333,
+              "sumSquaredError": 12023109,
+              "meanDeltaE76": 6.533453092320047,
+              "luminanceSsim": 0.9530749793898657,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.868314509683621,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 7,
+              "pixels": 4561,
+              "components": 1,
+              "boundarySamples": 240,
+              "beforeGradient": 9614.640903794745,
+              "afterGradient": 9614.640903794745,
+              "sumSquaredError": 1635398,
+              "meanDeltaE76": 4.890513377926657,
+              "luminanceSsim": 0.9853871011870641,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.932539815019508,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 11,
+              "pixels": 10737,
+              "components": 1,
+              "boundarySamples": 314,
+              "beforeGradient": 10142.911126261626,
+              "afterGradient": 10142.911126261626,
+              "sumSquaredError": 13071236,
+              "meanDeltaE76": 7.464471120688195,
+              "luminanceSsim": 0.9519322984066467,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 20.144487552494354,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 9,
+              "pixels": 4759,
+              "components": 1,
+              "boundarySamples": 210,
+              "beforeGradient": 3639.2611710379497,
+              "afterGradient": 3639.2611710379497,
+              "sumSquaredError": 1447670,
+              "meanDeltaE76": 5.639810734681348,
+              "luminanceSsim": 0.9519752200306643,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.069694793759941,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 12,
+              "pixels": 6075,
+              "components": 1,
+              "boundarySamples": 202,
+              "beforeGradient": 4566.026156872377,
+              "afterGradient": 4566.026156872377,
+              "sumSquaredError": 6777601,
+              "meanDeltaE76": 7.219136690430348,
+              "luminanceSsim": 0.9660793835887115,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 19.284315609640803,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 10,
+              "pixels": 5544,
+              "components": 1,
+              "boundarySamples": 192,
+              "beforeGradient": 3955.2396631882084,
+              "afterGradient": 3955.2396631882084,
+              "sumSquaredError": 2357943,
+              "meanDeltaE76": 6.550573392583916,
+              "luminanceSsim": 0.9526449909752567,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 11.90678229608926,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 13,
+              "pixels": 14442,
+              "components": 1,
+              "boundarySamples": 317,
+              "beforeGradient": 7308.792598107882,
+              "afterGradient": 7308.792598107882,
+              "sumSquaredError": 19202893,
+              "meanDeltaE76": 7.833724505856536,
+              "luminanceSsim": 0.953196436946355,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 21.052759696899017,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 14,
+              "pixels": 31751,
+              "components": 1,
+              "boundarySamples": 476,
+              "beforeGradient": 14280.354168146197,
+              "afterGradient": 14280.354168146197,
+              "sumSquaredError": 38416529,
+              "meanDeltaE76": 8.696581361048743,
+              "luminanceSsim": 0.9573220026675008,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 20.082590381141095,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 16,
+              "pixels": 17249,
+              "components": 1,
+              "boundarySamples": 388,
+              "beforeGradient": 17174.312164251445,
+              "afterGradient": 17174.312164251445,
+              "sumSquaredError": 15845155,
+              "meanDeltaE76": 7.514964422841103,
+              "luminanceSsim": 0.9402274804238151,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 17.49869483771407,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 17,
+              "pixels": 30229,
+              "components": 5,
+              "boundarySamples": 799,
+              "beforeGradient": 19154.182755895177,
+              "afterGradient": 19154.182755895177,
+              "sumSquaredError": 24421884,
+              "meanDeltaE76": 6.914865814201303,
+              "luminanceSsim": 0.9619001831289931,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 16.410320549274918,
+              "gradientRatio": 1,
+              "componentsAfter": 5
+            },
+            {
+              "label": 15,
+              "pixels": 27639,
+              "components": 4,
+              "boundarySamples": 565,
+              "beforeGradient": 16811.682467302006,
+              "afterGradient": 16811.682467302006,
+              "sumSquaredError": 31819916,
+              "meanDeltaE76": 8.281559628725834,
+              "luminanceSsim": 0.9565655861422071,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 19.589697245385818,
+              "gradientRatio": 1,
+              "componentsAfter": 4
+            },
+            {
+              "label": 6,
+              "pixels": 1644,
+              "components": 1,
+              "boundarySamples": 125,
+              "beforeGradient": 1666.8274445443578,
+              "afterGradient": 1666.8274445443578,
+              "sumSquaredError": 230998,
+              "meanDeltaE76": 2.911910311761333,
+              "luminanceSsim": 0.9846312064335312,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 6.843725407507652,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 5,
+              "pixels": 2596,
+              "components": 2,
+              "boundarySamples": 172,
+              "beforeGradient": 3361.2145939559937,
+              "afterGradient": 3361.2145939559937,
+              "sumSquaredError": 692697,
+              "meanDeltaE76": 3.9310936520189137,
+              "luminanceSsim": 0.9603652653972792,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.431020349793156,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 3,
+              "pixels": 3119,
+              "components": 3,
+              "boundarySamples": 189,
+              "beforeGradient": 4481.708654720478,
+              "afterGradient": 4481.708654720478,
+              "sumSquaredError": 1121056,
+              "meanDeltaE76": 4.734192529487716,
+              "luminanceSsim": 0.9410736907317905,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.945745319557727,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 4,
+              "pixels": 2195,
+              "components": 2,
+              "boundarySamples": 154,
+              "beforeGradient": 2386.469382869778,
+              "afterGradient": 2386.469382869778,
+              "sumSquaredError": 1042365,
+              "meanDeltaE76": 4.590829801491811,
+              "luminanceSsim": 0.9357413736278862,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.581488372140807,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 2,
+              "pixels": 5428,
+              "components": 2,
+              "boundarySamples": 267,
+              "beforeGradient": 12242.771144153714,
+              "afterGradient": 12242.771144153714,
+              "sumSquaredError": 3726009,
+              "meanDeltaE76": 6.710442901754389,
+              "luminanceSsim": 0.9682933125943513,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.126602791499177,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 1,
+              "pixels": 6308,
+              "components": 2,
+              "boundarySamples": 309,
+              "beforeGradient": 13217.604561524704,
+              "afterGradient": 13217.604561524704,
+              "sumSquaredError": 4738740,
+              "meanDeltaE76": 6.890720220185639,
+              "luminanceSsim": 0.970853757018541,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.824316871157752,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            }
+          ],
+          "failures": [],
+          "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+        }
+      },
+      "details": {
+        "elapsedMs": 40545.95999999344,
+        "editablePixels": 151677,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "width": 1254,
+        "height": 1254,
+        "workCanvas": {
+          "width": 1264,
+          "height": 1264,
+          "paddingRight": 10,
+          "paddingBottom": 10
+        }
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "eligibility": {
+        "minimumAlpha": 250,
+        "protectedPixels": 0,
+        "protectedChanges": 0,
+        "alphaChanges": 0,
+        "changedRgbPixels": 151671
+      },
+      "conservation": {
+        "status": "PASS",
+        "alphaChanged": 0,
+        "outsideChanged": 0,
+        "ratio": 0.95,
+        "parts": [
+          {
+            "label": 8,
+            "pixels": 15916,
+            "components": 1,
+            "boundarySamples": 365,
+            "beforeGradient": 6492.955687060333,
+            "afterGradient": 6492.955687060333,
+            "sumSquaredError": 12023109,
+            "meanDeltaE76": 6.533453092320047,
+            "luminanceSsim": 0.9530749793898657,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.868314509683621,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 7,
+            "pixels": 4561,
+            "components": 1,
+            "boundarySamples": 240,
+            "beforeGradient": 9614.640903794745,
+            "afterGradient": 9614.640903794745,
+            "sumSquaredError": 1635398,
+            "meanDeltaE76": 4.890513377926658,
+            "luminanceSsim": 0.9853871011870641,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.932539815019508,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 11,
+            "pixels": 10737,
+            "components": 1,
+            "boundarySamples": 314,
+            "beforeGradient": 10142.911126261626,
+            "afterGradient": 10142.911126261626,
+            "sumSquaredError": 13071236,
+            "meanDeltaE76": 7.464471120688193,
+            "luminanceSsim": 0.9519322984066467,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 20.144487552494354,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 9,
+            "pixels": 4759,
+            "components": 1,
+            "boundarySamples": 210,
+            "beforeGradient": 3639.2611710379497,
+            "afterGradient": 3639.2611710379497,
+            "sumSquaredError": 1447670,
+            "meanDeltaE76": 5.639810734681351,
+            "luminanceSsim": 0.9519752200306643,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.069694793759941,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 12,
+            "pixels": 6075,
+            "components": 1,
+            "boundarySamples": 202,
+            "beforeGradient": 4566.026156872377,
+            "afterGradient": 4566.026156872377,
+            "sumSquaredError": 6777601,
+            "meanDeltaE76": 7.219136690430348,
+            "luminanceSsim": 0.9660793835887115,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 19.284315609640803,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 10,
+            "pixels": 5544,
+            "components": 1,
+            "boundarySamples": 192,
+            "beforeGradient": 3955.2396631882084,
+            "afterGradient": 3955.2396631882084,
+            "sumSquaredError": 2357943,
+            "meanDeltaE76": 6.550573392583914,
+            "luminanceSsim": 0.9526449909752567,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 11.90678229608926,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 13,
+            "pixels": 14442,
+            "components": 1,
+            "boundarySamples": 317,
+            "beforeGradient": 7308.792598107882,
+            "afterGradient": 7308.792598107882,
+            "sumSquaredError": 19202893,
+            "meanDeltaE76": 7.833724505856536,
+            "luminanceSsim": 0.953196436946355,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 21.052759696899017,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 14,
+            "pixels": 31751,
+            "components": 1,
+            "boundarySamples": 476,
+            "beforeGradient": 14280.354168146197,
+            "afterGradient": 14280.354168146197,
+            "sumSquaredError": 38416529,
+            "meanDeltaE76": 8.696581361048747,
+            "luminanceSsim": 0.9573220026675008,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 20.082590381141095,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 16,
+            "pixels": 17249,
+            "components": 1,
+            "boundarySamples": 388,
+            "beforeGradient": 17174.312164251445,
+            "afterGradient": 17174.312164251445,
+            "sumSquaredError": 15845155,
+            "meanDeltaE76": 7.514964422841102,
+            "luminanceSsim": 0.9402274804238151,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 17.49869483771407,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 17,
+            "pixels": 30229,
+            "components": 5,
+            "boundarySamples": 799,
+            "beforeGradient": 19154.182755895177,
+            "afterGradient": 19154.182755895177,
+            "sumSquaredError": 24421884,
+            "meanDeltaE76": 6.914865814201302,
+            "luminanceSsim": 0.9619001831289931,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 16.410320549274918,
+            "gradientRatio": 1,
+            "componentsAfter": 5
+          },
+          {
+            "label": 15,
+            "pixels": 27639,
+            "components": 4,
+            "boundarySamples": 565,
+            "beforeGradient": 16811.682467302006,
+            "afterGradient": 16811.682467302006,
+            "sumSquaredError": 31819916,
+            "meanDeltaE76": 8.281559628725836,
+            "luminanceSsim": 0.9565655861422071,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 19.589697245385818,
+            "gradientRatio": 1,
+            "componentsAfter": 4
+          },
+          {
+            "label": 6,
+            "pixels": 1644,
+            "components": 1,
+            "boundarySamples": 125,
+            "beforeGradient": 1666.8274445443578,
+            "afterGradient": 1666.8274445443578,
+            "sumSquaredError": 230998,
+            "meanDeltaE76": 2.911910311761334,
+            "luminanceSsim": 0.9846312064335312,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 6.843725407507652,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 5,
+            "pixels": 2596,
+            "components": 2,
+            "boundarySamples": 172,
+            "beforeGradient": 3361.2145939559937,
+            "afterGradient": 3361.2145939559937,
+            "sumSquaredError": 692697,
+            "meanDeltaE76": 3.9310936520189133,
+            "luminanceSsim": 0.9603652653972792,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.431020349793156,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 3,
+            "pixels": 3119,
+            "components": 3,
+            "boundarySamples": 189,
+            "beforeGradient": 4481.708654720478,
+            "afterGradient": 4481.708654720478,
+            "sumSquaredError": 1121056,
+            "meanDeltaE76": 4.734192529487716,
+            "luminanceSsim": 0.9410736907317905,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.945745319557727,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 4,
+            "pixels": 2195,
+            "components": 2,
+            "boundarySamples": 154,
+            "beforeGradient": 2386.469382869778,
+            "afterGradient": 2386.469382869778,
+            "sumSquaredError": 1042365,
+            "meanDeltaE76": 4.59082980149181,
+            "luminanceSsim": 0.9357413736278862,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.581488372140807,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 2,
+            "pixels": 5428,
+            "components": 2,
+            "boundarySamples": 267,
+            "beforeGradient": 12242.771144153714,
+            "afterGradient": 12242.771144153714,
+            "sumSquaredError": 3726009,
+            "meanDeltaE76": 6.710442901754389,
+            "luminanceSsim": 0.9682933125943513,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.126602791499177,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 1,
+            "pixels": 6308,
+            "components": 2,
+            "boundarySamples": 309,
+            "beforeGradient": 13217.604561524704,
+            "afterGradient": 13217.604561524704,
+            "sumSquaredError": 4738740,
+            "meanDeltaE76": 6.890720220185639,
+            "luminanceSsim": 0.970853757018541,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.824316871157752,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          }
+        ],
+        "failures": [],
+        "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+      }
+    },
+    {
+      "id": "g2c151-18-hawk",
+      "status": "PASS",
+      "sha256": "7084ead3f4e59cd7eea1df0c0f83c171ca9198bfd56be6bb13ed2d0724548ce7",
+      "receipt": {
+        "schema": "cf.creature-finish-engine/v1",
+        "key": "24e7451f057140d6988f68792b561dbee86a8670fc9396d84e2ff0c7950b9593",
+        "identity": {
+          "recordRecipeHash": "08515b14ce19a785793fcdc37175bd090b80ed33b70dbe00d7594ca9c2541dd0",
+          "cutoutAssetHash": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+          "modelHash": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+          "settingsHash": "38657c5a34570b0af49f1acc403dcb7efb4e0b9af6200ba08d2f48de08486457"
+        },
+        "individualId": "g2c151-18-hawk",
+        "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hawk\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1996548726\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"0\"]]]]",
+        "seed": 2136060258,
+        "width": 1254,
+        "height": 1254,
+        "cutoutAssetHash": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+        "labelsHash": "a5cf76639da6cf260ced688816275b706ae6006a425f858fd9a956f190c9d5b4",
+        "bindingHash": "633bdc00d1deef5eae6fef14e0d5ad67e3423e1ebbb28e79987a018550354052",
+        "outputHash": "7084ead3f4e59cd7eea1df0c0f83c171ca9198bfd56be6bb13ed2d0724548ce7",
+        "conservation": {
+          "status": "PASS",
+          "alphaChanged": 0,
+          "outsideChanged": 0,
+          "ratio": 0.95,
+          "parts": [
+            {
+              "label": 8,
+              "pixels": 7811,
+              "components": 1,
+              "boundarySamples": 229,
+              "beforeGradient": 8142.335515913855,
+              "afterGradient": 8142.335515913855,
+              "sumSquaredError": 10131274,
+              "meanDeltaE76": 8.91507319137123,
+              "luminanceSsim": 0.9263907918459107,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 20.79304455825195,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 7,
+              "pixels": 1672,
+              "components": 1,
+              "boundarySamples": 123,
+              "beforeGradient": 6230.197856862546,
+              "afterGradient": 6230.197856862546,
+              "sumSquaredError": 1273253,
+              "meanDeltaE76": 6.077766263934483,
+              "luminanceSsim": 0.9734490885785917,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.932304208254687,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 11,
+              "pixels": 5196,
+              "components": 1,
+              "boundarySamples": 206,
+              "beforeGradient": 5599.228825963564,
+              "afterGradient": 5599.228825963564,
+              "sumSquaredError": 3589805,
+              "meanDeltaE76": 6.896956647536457,
+              "luminanceSsim": 0.9351071404660313,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.175402909874704,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 9,
+              "pixels": 3009,
+              "components": 2,
+              "boundarySamples": 156,
+              "beforeGradient": 4623.634570329162,
+              "afterGradient": 4623.634570329162,
+              "sumSquaredError": 2773797,
+              "meanDeltaE76": 7.1940087341636945,
+              "luminanceSsim": 0.9572051276614565,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 17.529342063156996,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 12,
+              "pixels": 3796,
+              "components": 1,
+              "boundarySamples": 163,
+              "beforeGradient": 3153.871423748459,
+              "afterGradient": 3153.871423748459,
+              "sumSquaredError": 4423927,
+              "meanDeltaE76": 7.597036871577308,
+              "luminanceSsim": 0.958370132813017,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 19.709710564882926,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 10,
+              "pixels": 3176,
+              "components": 1,
+              "boundarySamples": 146,
+              "beforeGradient": 5519.383595971215,
+              "afterGradient": 5519.383595971215,
+              "sumSquaredError": 1986141,
+              "meanDeltaE76": 7.3259252901270004,
+              "luminanceSsim": 0.9794306399763815,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 14.437904475453402,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 13,
+              "pixels": 6999,
+              "components": 1,
+              "boundarySamples": 221,
+              "beforeGradient": 5632.825593177108,
+              "afterGradient": 5632.825593177108,
+              "sumSquaredError": 4736419,
+              "meanDeltaE76": 6.708556397791734,
+              "luminanceSsim": 0.9110385536225246,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.01918729644745,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 14,
+              "pixels": 19473,
+              "components": 1,
+              "boundarySamples": 400,
+              "beforeGradient": 11199.377749083253,
+              "afterGradient": 11199.377749083253,
+              "sumSquaredError": 20754256,
+              "meanDeltaE76": 9.005031157073466,
+              "luminanceSsim": 0.9239282712663712,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 18.848488346083258,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 16,
+              "pixels": 8002,
+              "components": 1,
+              "boundarySamples": 295,
+              "beforeGradient": 18248.15430789722,
+              "afterGradient": 18248.15430789722,
+              "sumSquaredError": 8798376,
+              "meanDeltaE76": 8.877946453220124,
+              "luminanceSsim": 0.967259118185382,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 19.144382287154393,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 17,
+              "pixels": 15149,
+              "components": 6,
+              "boundarySamples": 580,
+              "beforeGradient": 16167.875150404865,
+              "afterGradient": 16167.875150404865,
+              "sumSquaredError": 11368953,
+              "meanDeltaE76": 7.350051977310804,
+              "luminanceSsim": 0.9719536705884764,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.816399473638853,
+              "gradientRatio": 1,
+              "componentsAfter": 6
+            },
+            {
+              "label": 15,
+              "pixels": 15480,
+              "components": 3,
+              "boundarySamples": 502,
+              "beforeGradient": 16096.28233275476,
+              "afterGradient": 16096.28233275476,
+              "sumSquaredError": 13769611,
+              "meanDeltaE76": 8.643808969438865,
+              "luminanceSsim": 0.9680331947482554,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 17.219269772766825,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 5,
+              "pixels": 1462,
+              "components": 1,
+              "boundarySamples": 124,
+              "beforeGradient": 2402.9739613254606,
+              "afterGradient": 2402.9739613254606,
+              "sumSquaredError": 470065,
+              "meanDeltaE76": 3.754384006125011,
+              "luminanceSsim": 0.9552846075799267,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.352485817826516,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 6,
+              "pixels": 792,
+              "components": 1,
+              "boundarySamples": 71,
+              "beforeGradient": 986.9212250925399,
+              "afterGradient": 986.9212250925399,
+              "sumSquaredError": 34174,
+              "meanDeltaE76": 1.7377516515669469,
+              "luminanceSsim": 0.9911162018609025,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 3.792492140136434,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 3,
+              "pixels": 1194,
+              "components": 1,
+              "boundarySamples": 121,
+              "beforeGradient": 3841.3676463670386,
+              "afterGradient": 3841.3676463670386,
+              "sumSquaredError": 126190,
+              "meanDeltaE76": 2.286952558255848,
+              "luminanceSsim": 0.9926938833343376,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 5.9353957230943255,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 4,
+              "pixels": 516,
+              "components": 2,
+              "boundarySamples": 111,
+              "beforeGradient": 2846.6840118724513,
+              "afterGradient": 2846.6840118724513,
+              "sumSquaredError": 5354,
+              "meanDeltaE76": 0.39247506015289085,
+              "luminanceSsim": 0.999639979572719,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 1.8597463081693035,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 1,
+              "pixels": 1854,
+              "components": 2,
+              "boundarySamples": 215,
+              "beforeGradient": 9613.914760889322,
+              "afterGradient": 9613.914760889322,
+              "sumSquaredError": 459289,
+              "meanDeltaE76": 2.9570268980364602,
+              "luminanceSsim": 0.9882561017363866,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.087146503241664,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 2,
+              "pixels": 1596,
+              "components": 3,
+              "boundarySamples": 192,
+              "beforeGradient": 8434.11027697282,
+              "afterGradient": 8434.11027697282,
+              "sumSquaredError": 228941,
+              "meanDeltaE76": 2.4803924140689375,
+              "luminanceSsim": 0.9948550478316531,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 6.914881099354652,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            }
+          ],
+          "failures": [],
+          "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+        }
+      },
+      "details": {
+        "elapsedMs": 39627.01999999583,
+        "editablePixels": 70235,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "width": 1254,
+        "height": 1254,
+        "workCanvas": {
+          "width": 1264,
+          "height": 1264,
+          "paddingRight": 10,
+          "paddingBottom": 10
+        }
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "eligibility": {
+        "minimumAlpha": 250,
+        "protectedPixels": 0,
+        "protectedChanges": 0,
+        "alphaChanges": 0,
+        "changedRgbPixels": 70231
+      },
+      "conservation": {
+        "status": "PASS",
+        "alphaChanged": 0,
+        "outsideChanged": 0,
+        "ratio": 0.95,
+        "parts": [
+          {
+            "label": 8,
+            "pixels": 7811,
+            "components": 1,
+            "boundarySamples": 229,
+            "beforeGradient": 8142.335515913855,
+            "afterGradient": 8142.335515913855,
+            "sumSquaredError": 10131274,
+            "meanDeltaE76": 8.915073191371228,
+            "luminanceSsim": 0.9263907918459107,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 20.79304455825195,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 7,
+            "pixels": 1672,
+            "components": 1,
+            "boundarySamples": 123,
+            "beforeGradient": 6230.197856862546,
+            "afterGradient": 6230.197856862546,
+            "sumSquaredError": 1273253,
+            "meanDeltaE76": 6.077766263934483,
+            "luminanceSsim": 0.9734490885785917,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.932304208254687,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 11,
+            "pixels": 5196,
+            "components": 1,
+            "boundarySamples": 206,
+            "beforeGradient": 5599.228825963564,
+            "afterGradient": 5599.228825963564,
+            "sumSquaredError": 3589805,
+            "meanDeltaE76": 6.896956647536459,
+            "luminanceSsim": 0.9351071404660313,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.175402909874704,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 9,
+            "pixels": 3009,
+            "components": 2,
+            "boundarySamples": 156,
+            "beforeGradient": 4623.634570329162,
+            "afterGradient": 4623.634570329162,
+            "sumSquaredError": 2773797,
+            "meanDeltaE76": 7.194008734163693,
+            "luminanceSsim": 0.9572051276614565,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 17.529342063156996,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 12,
+            "pixels": 3796,
+            "components": 1,
+            "boundarySamples": 163,
+            "beforeGradient": 3153.871423748459,
+            "afterGradient": 3153.871423748459,
+            "sumSquaredError": 4423927,
+            "meanDeltaE76": 7.597036871577309,
+            "luminanceSsim": 0.958370132813017,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 19.709710564882926,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 10,
+            "pixels": 3176,
+            "components": 1,
+            "boundarySamples": 146,
+            "beforeGradient": 5519.383595971215,
+            "afterGradient": 5519.383595971215,
+            "sumSquaredError": 1986141,
+            "meanDeltaE76": 7.325925290127007,
+            "luminanceSsim": 0.9794306399763815,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 14.437904475453402,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 13,
+            "pixels": 6999,
+            "components": 1,
+            "boundarySamples": 221,
+            "beforeGradient": 5632.825593177108,
+            "afterGradient": 5632.825593177108,
+            "sumSquaredError": 4736419,
+            "meanDeltaE76": 6.708556397791736,
+            "luminanceSsim": 0.9110385536225246,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.01918729644745,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 14,
+            "pixels": 19473,
+            "components": 1,
+            "boundarySamples": 400,
+            "beforeGradient": 11199.377749083253,
+            "afterGradient": 11199.377749083253,
+            "sumSquaredError": 20754256,
+            "meanDeltaE76": 9.005031157073466,
+            "luminanceSsim": 0.9239282712663712,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 18.848488346083258,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 16,
+            "pixels": 8002,
+            "components": 1,
+            "boundarySamples": 295,
+            "beforeGradient": 18248.15430789722,
+            "afterGradient": 18248.15430789722,
+            "sumSquaredError": 8798376,
+            "meanDeltaE76": 8.87794645322012,
+            "luminanceSsim": 0.967259118185382,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 19.144382287154393,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 17,
+            "pixels": 15149,
+            "components": 6,
+            "boundarySamples": 580,
+            "beforeGradient": 16167.875150404865,
+            "afterGradient": 16167.875150404865,
+            "sumSquaredError": 11368953,
+            "meanDeltaE76": 7.350051977310806,
+            "luminanceSsim": 0.9719536705884764,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.816399473638853,
+            "gradientRatio": 1,
+            "componentsAfter": 6
+          },
+          {
+            "label": 15,
+            "pixels": 15480,
+            "components": 3,
+            "boundarySamples": 502,
+            "beforeGradient": 16096.28233275476,
+            "afterGradient": 16096.28233275476,
+            "sumSquaredError": 13769611,
+            "meanDeltaE76": 8.64380896943886,
+            "luminanceSsim": 0.9680331947482554,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 17.219269772766825,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 5,
+            "pixels": 1462,
+            "components": 1,
+            "boundarySamples": 124,
+            "beforeGradient": 2402.9739613254606,
+            "afterGradient": 2402.9739613254606,
+            "sumSquaredError": 470065,
+            "meanDeltaE76": 3.75438400612501,
+            "luminanceSsim": 0.9552846075799267,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.352485817826516,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 6,
+            "pixels": 792,
+            "components": 1,
+            "boundarySamples": 71,
+            "beforeGradient": 986.9212250925399,
+            "afterGradient": 986.9212250925399,
+            "sumSquaredError": 34174,
+            "meanDeltaE76": 1.7377516515669467,
+            "luminanceSsim": 0.9911162018609025,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 3.792492140136434,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 3,
+            "pixels": 1194,
+            "components": 1,
+            "boundarySamples": 121,
+            "beforeGradient": 3841.3676463670386,
+            "afterGradient": 3841.3676463670386,
+            "sumSquaredError": 126190,
+            "meanDeltaE76": 2.286952558255848,
+            "luminanceSsim": 0.9926938833343376,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 5.9353957230943255,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 4,
+            "pixels": 516,
+            "components": 2,
+            "boundarySamples": 111,
+            "beforeGradient": 2846.6840118724513,
+            "afterGradient": 2846.6840118724513,
+            "sumSquaredError": 5354,
+            "meanDeltaE76": 0.3924750601528912,
+            "luminanceSsim": 0.999639979572719,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 1.8597463081693035,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 1,
+            "pixels": 1854,
+            "components": 2,
+            "boundarySamples": 215,
+            "beforeGradient": 9613.914760889322,
+            "afterGradient": 9613.914760889322,
+            "sumSquaredError": 459289,
+            "meanDeltaE76": 2.9570268980364607,
+            "luminanceSsim": 0.9882561017363866,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.087146503241664,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 2,
+            "pixels": 1596,
+            "components": 3,
+            "boundarySamples": 192,
+            "beforeGradient": 8434.11027697282,
+            "afterGradient": 8434.11027697282,
+            "sumSquaredError": 228941,
+            "meanDeltaE76": 2.480392414068936,
+            "luminanceSsim": 0.9948550478316531,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 6.914881099354652,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          }
+        ],
+        "failures": [],
+        "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+      }
+    },
+    {
+      "id": "g2c233-14-wolf",
+      "status": "PASS",
+      "sha256": "0ecd358c497d1ba4675d0d7bcb467bba7d70260c566b9054fc47c80bf86d623d",
+      "receipt": {
+        "schema": "cf.creature-finish-engine/v1",
+        "key": "16640b0097108f3c0ec11aa98ae173e3a76e9c37eb94f761de19c2416089918a",
+        "identity": {
+          "recordRecipeHash": "0e59e02f9f7e64e467c64cc7d40d69c6549c759b7fc229d556c1dcec5ee61bb4",
+          "cutoutAssetHash": "633d0a24f7b514dbd2413bf649513201cc81cd03892b2abb89b9150642d06e3a",
+          "modelHash": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+          "settingsHash": "a180232362f7e421f10af6fbc8f8afb0bddd5f64016a552c153aefa3ac804287"
+        },
+        "individualId": "g2c233-14-wolf",
+        "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "seed": 555235721,
+        "width": 1254,
+        "height": 1254,
+        "cutoutAssetHash": "633d0a24f7b514dbd2413bf649513201cc81cd03892b2abb89b9150642d06e3a",
+        "labelsHash": "9e396de7fd5026004a857ebe6e80b06971c7944239d26709172429000148cf5f",
+        "bindingHash": "d59c7920d8acbc06b7b772e3fe0c62b83e5aeae3e79458b1daca1427a92eae62",
+        "outputHash": "0ecd358c497d1ba4675d0d7bcb467bba7d70260c566b9054fc47c80bf86d623d",
+        "conservation": {
+          "status": "PASS",
+          "alphaChanged": 0,
+          "outsideChanged": 0,
+          "ratio": 0.95,
+          "parts": [
+            {
+              "label": 24,
+              "pixels": 41105,
+              "components": 2,
+              "boundarySamples": 654,
+              "beforeGradient": 17240.19316868647,
+              "afterGradient": 17240.19316868647,
+              "sumSquaredError": 47678874,
+              "meanDeltaE76": 7.892230329174138,
+              "luminanceSsim": 0.9335576653956692,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 19.66323825861929,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 4,
+              "pixels": 716,
+              "components": 1,
+              "boundarySamples": 81,
+              "beforeGradient": 2931.030269715343,
+              "afterGradient": 2931.030269715343,
+              "sumSquaredError": 43809,
+              "meanDeltaE76": 1.5078093754963715,
+              "luminanceSsim": 0.9985781912111927,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 4.516110206432971,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 2,
+              "pixels": 1183,
+              "components": 1,
+              "boundarySamples": 88,
+              "beforeGradient": 2623.960804919622,
+              "afterGradient": 2623.960804919622,
+              "sumSquaredError": 217580,
+              "meanDeltaE76": 3.156827335551479,
+              "luminanceSsim": 0.9798940480999712,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 7.829904886917833,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 3,
+              "pixels": 1192,
+              "components": 3,
+              "boundarySamples": 102,
+              "beforeGradient": 3353.122767688567,
+              "afterGradient": 3353.122767688567,
+              "sumSquaredError": 620662,
+              "meanDeltaE76": 3.948983416613162,
+              "luminanceSsim": 0.941876529250026,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.174338659118543,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 5,
+              "pixels": 565,
+              "components": 1,
+              "boundarySamples": 60,
+              "beforeGradient": 1351.0841986994817,
+              "afterGradient": 1351.0841986994817,
+              "sumSquaredError": 52098,
+              "meanDeltaE76": 2.200887296987144,
+              "luminanceSsim": 0.993101509830159,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 5.544031311765899,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 23,
+              "pixels": 7354,
+              "components": 1,
+              "boundarySamples": 250,
+              "beforeGradient": 7224.129926901348,
+              "afterGradient": 7224.129926901348,
+              "sumSquaredError": 4940928,
+              "meanDeltaE76": 6.332831814545002,
+              "luminanceSsim": 0.9669703872451421,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 14.965175784666805,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 31,
+              "pixels": 33437,
+              "components": 3,
+              "boundarySamples": 595,
+              "beforeGradient": 16776.725570670795,
+              "afterGradient": 16776.725570670795,
+              "sumSquaredError": 30386857,
+              "meanDeltaE76": 7.1262535712600705,
+              "luminanceSsim": 0.9424689007969604,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 17.404782925460395,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 22,
+              "pixels": 2632,
+              "components": 1,
+              "boundarySamples": 129,
+              "beforeGradient": 6163.194572645676,
+              "afterGradient": 6163.194572645676,
+              "sumSquaredError": 1571429,
+              "meanDeltaE76": 5.2281519421507765,
+              "luminanceSsim": 0.9798500288257461,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 14.107297076350426,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 30,
+              "pixels": 10545,
+              "components": 2,
+              "boundarySamples": 379,
+              "beforeGradient": 10329.28763540722,
+              "afterGradient": 10329.28763540722,
+              "sumSquaredError": 9005327,
+              "meanDeltaE76": 6.480438180158636,
+              "luminanceSsim": 0.9352622772043786,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 16.871971158676164,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 28,
+              "pixels": 3995,
+              "components": 2,
+              "boundarySamples": 229,
+              "beforeGradient": 4749.89469599338,
+              "afterGradient": 4749.89469599338,
+              "sumSquaredError": 3617930,
+              "meanDeltaE76": 5.460904461906298,
+              "luminanceSsim": 0.9540652351362142,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 17.37444980565509,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 9,
+              "pixels": 30111,
+              "components": 3,
+              "boundarySamples": 542,
+              "beforeGradient": 11425.583067786025,
+              "afterGradient": 11425.583067786025,
+              "sumSquaredError": 29184180,
+              "meanDeltaE76": 7.3794404045396895,
+              "luminanceSsim": 0.9186476120607118,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 17.97423977456112,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 29,
+              "pixels": 11052,
+              "components": 1,
+              "boundarySamples": 413,
+              "beforeGradient": 9475.563965094776,
+              "afterGradient": 9475.563965094776,
+              "sumSquaredError": 7432066,
+              "meanDeltaE76": 5.6907975176125705,
+              "luminanceSsim": 0.9404008761088678,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 14.971789533766726,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 1,
+              "pixels": 112,
+              "components": 1,
+              "boundarySamples": 22,
+              "beforeGradient": 656.0285337952585,
+              "afterGradient": 656.0285337952585,
+              "sumSquaredError": 676,
+              "meanDeltaE76": 0.18300524349401454,
+              "luminanceSsim": 0.9986872025759298,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 1.4184162865339505,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 13,
+              "pixels": 12805,
+              "components": 1,
+              "boundarySamples": 283,
+              "beforeGradient": 7718.158191864992,
+              "afterGradient": 7718.158191864992,
+              "sumSquaredError": 9567649,
+              "meanDeltaE76": 6.566883622395475,
+              "luminanceSsim": 0.927960129719227,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 15.78164240143062,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 27,
+              "pixels": 9615,
+              "components": 1,
+              "boundarySamples": 290,
+              "beforeGradient": 6911.78121697371,
+              "afterGradient": 6911.78121697371,
+              "sumSquaredError": 9139387,
+              "meanDeltaE76": 6.823514540197154,
+              "luminanceSsim": 0.8948582177069339,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 17.800133607839154,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 21,
+              "pixels": 5218,
+              "components": 1,
+              "boundarySamples": 242,
+              "beforeGradient": 7703.992128292487,
+              "afterGradient": 7703.992128292487,
+              "sumSquaredError": 2437194,
+              "meanDeltaE76": 4.665534529133548,
+              "luminanceSsim": 0.9617111119377914,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.477638104379205,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 17,
+              "pixels": 4834,
+              "components": 2,
+              "boundarySamples": 236,
+              "beforeGradient": 4833.309411658341,
+              "afterGradient": 4833.309411658341,
+              "sumSquaredError": 933891,
+              "meanDeltaE76": 3.397566001375221,
+              "luminanceSsim": 0.9812602959954957,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 8.024798655603181,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 26,
+              "pixels": 6113,
+              "components": 1,
+              "boundarySamples": 243,
+              "beforeGradient": 6807.898392175811,
+              "afterGradient": 6807.898392175811,
+              "sumSquaredError": 3286704,
+              "meanDeltaE76": 5.553928878114545,
+              "luminanceSsim": 0.9644596467884161,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.387283837986297,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 12,
+              "pixels": 4426,
+              "components": 1,
+              "boundarySamples": 181,
+              "beforeGradient": 5951.187200452066,
+              "afterGradient": 5951.187200452066,
+              "sumSquaredError": 1652673,
+              "meanDeltaE76": 4.6674059590173504,
+              "luminanceSsim": 0.9274535911527806,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 11.15647852614718,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 16,
+              "pixels": 4618,
+              "components": 1,
+              "boundarySamples": 208,
+              "beforeGradient": 2754.18478223789,
+              "afterGradient": 2754.18478223789,
+              "sumSquaredError": 1240545,
+              "meanDeltaE76": 3.8738126731396325,
+              "luminanceSsim": 0.9515947179983774,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.462778395773539,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 20,
+              "pixels": 3647,
+              "components": 2,
+              "boundarySamples": 164,
+              "beforeGradient": 4026.596515874854,
+              "afterGradient": 4026.596515874854,
+              "sumSquaredError": 1110004,
+              "meanDeltaE76": 3.7259549081512926,
+              "luminanceSsim": 0.9569278699518436,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.072418520060122,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 25,
+              "pixels": 1954,
+              "components": 10,
+              "boundarySamples": 213,
+              "beforeGradient": 6974.294211174502,
+              "afterGradient": 6974.294211174502,
+              "sumSquaredError": 194059,
+              "meanDeltaE76": 2.8261857773028933,
+              "luminanceSsim": 0.9504190905745926,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 5.753657255910539,
+              "gradientRatio": 1,
+              "componentsAfter": 10
+            },
+            {
+              "label": 8,
+              "pixels": 2939,
+              "components": 1,
+              "boundarySamples": 159,
+              "beforeGradient": 3254.99345409414,
+              "afterGradient": 3254.99345409414,
+              "sumSquaredError": 828227,
+              "meanDeltaE76": 3.7541163389803,
+              "luminanceSsim": 0.949846835244084,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.692019332591983,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 11,
+              "pixels": 5743,
+              "components": 2,
+              "boundarySamples": 277,
+              "beforeGradient": 13291.90848705515,
+              "afterGradient": 13291.90848705515,
+              "sumSquaredError": 2545063,
+              "meanDeltaE76": 4.82583743393631,
+              "luminanceSsim": 0.9601132076695806,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.154000031126841,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 19,
+              "pixels": 4608,
+              "components": 2,
+              "boundarySamples": 226,
+              "beforeGradient": 6718.8908122473385,
+              "afterGradient": 6718.8908122473385,
+              "sumSquaredError": 1043736,
+              "meanDeltaE76": 4.135137863432793,
+              "luminanceSsim": 0.9827854203725552,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 8.689173499885424,
+              "gradientRatio": 1,
+              "componentsAfter": 2
+            },
+            {
+              "label": 15,
+              "pixels": 4464,
+              "components": 3,
+              "boundarySamples": 236,
+              "beforeGradient": 6671.776245700812,
+              "afterGradient": 6671.776245700812,
+              "sumSquaredError": 1121219,
+              "meanDeltaE76": 3.487288276539157,
+              "luminanceSsim": 0.9766959393058895,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 9.150029705313763,
+              "gradientRatio": 1,
+              "componentsAfter": 3
+            },
+            {
+              "label": 7,
+              "pixels": 4209,
+              "components": 1,
+              "boundarySamples": 182,
+              "beforeGradient": 5474.841688965504,
+              "afterGradient": 5474.841688965504,
+              "sumSquaredError": 1321444,
+              "meanDeltaE76": 4.043218167338944,
+              "luminanceSsim": 0.9368365890010828,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 10.229968382571789,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 14,
+              "pixels": 1393,
+              "components": 1,
+              "boundarySamples": 115,
+              "beforeGradient": 6409.672392663504,
+              "afterGradient": 6409.672392663504,
+              "sumSquaredError": 776141,
+              "meanDeltaE76": 3.8581693565797495,
+              "luminanceSsim": 0.9736897899741124,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.628062836435904,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 18,
+              "pixels": 1967,
+              "components": 1,
+              "boundarySamples": 117,
+              "beforeGradient": 4892.5797347818025,
+              "afterGradient": 4892.5797347818025,
+              "sumSquaredError": 992769,
+              "meanDeltaE76": 4.358114027845103,
+              "luminanceSsim": 0.977315039775983,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.970636737912429,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 6,
+              "pixels": 1946,
+              "components": 1,
+              "boundarySamples": 110,
+              "beforeGradient": 6097.949174985942,
+              "afterGradient": 6097.949174985942,
+              "sumSquaredError": 962699,
+              "meanDeltaE76": 4.4646382814174,
+              "luminanceSsim": 0.9801870932038997,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 12.841424863763715,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            },
+            {
+              "label": 10,
+              "pixels": 1638,
+              "components": 1,
+              "boundarySamples": 112,
+              "beforeGradient": 5798.872403687788,
+              "afterGradient": 5798.872403687788,
+              "sumSquaredError": 950513,
+              "meanDeltaE76": 4.444577561719001,
+              "luminanceSsim": 0.9773666857276122,
+              "ssimScope": "whole labeled part, population moments",
+              "rgbRms": 13.907896639304914,
+              "gradientRatio": 1,
+              "componentsAfter": 1
+            }
+          ],
+          "failures": [],
+          "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+        }
+      },
+      "details": {
+        "elapsedMs": 41037.02499999106,
+        "editablePixels": 175629,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "width": 1254,
+        "height": 1254,
+        "workCanvas": {
+          "width": 1264,
+          "height": 1264,
+          "paddingRight": 10,
+          "paddingBottom": 10
+        }
+      },
+      "retention": {
+        "firstOrigin": "inference",
+        "secondOrigin": "cache",
+        "inferences": 1,
+        "duplicatePromise": true
+      },
+      "phone": {
+        "status": "original",
+        "origin": "delivery",
+        "exactBytes": true
+      },
+      "eligibility": {
+        "minimumAlpha": 250,
+        "protectedPixels": 0,
+        "protectedChanges": 0,
+        "alphaChanges": 0,
+        "changedRgbPixels": 175618
+      },
+      "conservation": {
+        "status": "PASS",
+        "alphaChanged": 0,
+        "outsideChanged": 0,
+        "ratio": 0.95,
+        "parts": [
+          {
+            "label": 24,
+            "pixels": 41105,
+            "components": 2,
+            "boundarySamples": 654,
+            "beforeGradient": 17240.19316868647,
+            "afterGradient": 17240.19316868647,
+            "sumSquaredError": 47678874,
+            "meanDeltaE76": 7.892230329174141,
+            "luminanceSsim": 0.9335576653956692,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 19.66323825861929,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 4,
+            "pixels": 716,
+            "components": 1,
+            "boundarySamples": 81,
+            "beforeGradient": 2931.030269715343,
+            "afterGradient": 2931.030269715343,
+            "sumSquaredError": 43809,
+            "meanDeltaE76": 1.5078093754963708,
+            "luminanceSsim": 0.9985781912111927,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 4.516110206432971,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 2,
+            "pixels": 1183,
+            "components": 1,
+            "boundarySamples": 88,
+            "beforeGradient": 2623.960804919622,
+            "afterGradient": 2623.960804919622,
+            "sumSquaredError": 217580,
+            "meanDeltaE76": 3.1568273355514793,
+            "luminanceSsim": 0.9798940480999712,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 7.829904886917833,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 3,
+            "pixels": 1192,
+            "components": 3,
+            "boundarySamples": 102,
+            "beforeGradient": 3353.122767688567,
+            "afterGradient": 3353.122767688567,
+            "sumSquaredError": 620662,
+            "meanDeltaE76": 3.9489834166131605,
+            "luminanceSsim": 0.941876529250026,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.174338659118543,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 5,
+            "pixels": 565,
+            "components": 1,
+            "boundarySamples": 60,
+            "beforeGradient": 1351.0841986994817,
+            "afterGradient": 1351.0841986994817,
+            "sumSquaredError": 52098,
+            "meanDeltaE76": 2.200887296987143,
+            "luminanceSsim": 0.993101509830159,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 5.544031311765899,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 23,
+            "pixels": 7354,
+            "components": 1,
+            "boundarySamples": 250,
+            "beforeGradient": 7224.129926901348,
+            "afterGradient": 7224.129926901348,
+            "sumSquaredError": 4940928,
+            "meanDeltaE76": 6.332831814545001,
+            "luminanceSsim": 0.9669703872451421,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 14.965175784666805,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 31,
+            "pixels": 33437,
+            "components": 3,
+            "boundarySamples": 595,
+            "beforeGradient": 16776.725570670795,
+            "afterGradient": 16776.725570670795,
+            "sumSquaredError": 30386857,
+            "meanDeltaE76": 7.126253571260069,
+            "luminanceSsim": 0.9424689007969604,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 17.404782925460395,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 22,
+            "pixels": 2632,
+            "components": 1,
+            "boundarySamples": 129,
+            "beforeGradient": 6163.194572645676,
+            "afterGradient": 6163.194572645676,
+            "sumSquaredError": 1571429,
+            "meanDeltaE76": 5.228151942150778,
+            "luminanceSsim": 0.9798500288257461,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 14.107297076350426,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 30,
+            "pixels": 10545,
+            "components": 2,
+            "boundarySamples": 379,
+            "beforeGradient": 10329.28763540722,
+            "afterGradient": 10329.28763540722,
+            "sumSquaredError": 9005327,
+            "meanDeltaE76": 6.480438180158636,
+            "luminanceSsim": 0.9352622772043786,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 16.871971158676164,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 28,
+            "pixels": 3995,
+            "components": 2,
+            "boundarySamples": 229,
+            "beforeGradient": 4749.89469599338,
+            "afterGradient": 4749.89469599338,
+            "sumSquaredError": 3617930,
+            "meanDeltaE76": 5.460904461906298,
+            "luminanceSsim": 0.9540652351362142,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 17.37444980565509,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 9,
+            "pixels": 30111,
+            "components": 3,
+            "boundarySamples": 542,
+            "beforeGradient": 11425.583067786025,
+            "afterGradient": 11425.583067786025,
+            "sumSquaredError": 29184180,
+            "meanDeltaE76": 7.379440404539688,
+            "luminanceSsim": 0.9186476120607118,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 17.97423977456112,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 29,
+            "pixels": 11052,
+            "components": 1,
+            "boundarySamples": 413,
+            "beforeGradient": 9475.563965094776,
+            "afterGradient": 9475.563965094776,
+            "sumSquaredError": 7432066,
+            "meanDeltaE76": 5.69079751761257,
+            "luminanceSsim": 0.9404008761088678,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 14.971789533766726,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 1,
+            "pixels": 112,
+            "components": 1,
+            "boundarySamples": 22,
+            "beforeGradient": 656.0285337952585,
+            "afterGradient": 656.0285337952585,
+            "sumSquaredError": 676,
+            "meanDeltaE76": 0.18300524349401454,
+            "luminanceSsim": 0.9986872025759298,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 1.4184162865339505,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 13,
+            "pixels": 12805,
+            "components": 1,
+            "boundarySamples": 283,
+            "beforeGradient": 7718.158191864992,
+            "afterGradient": 7718.158191864992,
+            "sumSquaredError": 9567649,
+            "meanDeltaE76": 6.5668836223954745,
+            "luminanceSsim": 0.927960129719227,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 15.78164240143062,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 27,
+            "pixels": 9615,
+            "components": 1,
+            "boundarySamples": 290,
+            "beforeGradient": 6911.78121697371,
+            "afterGradient": 6911.78121697371,
+            "sumSquaredError": 9139387,
+            "meanDeltaE76": 6.823514540197154,
+            "luminanceSsim": 0.8948582177069339,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 17.800133607839154,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 21,
+            "pixels": 5218,
+            "components": 1,
+            "boundarySamples": 242,
+            "beforeGradient": 7703.992128292487,
+            "afterGradient": 7703.992128292487,
+            "sumSquaredError": 2437194,
+            "meanDeltaE76": 4.665534529133548,
+            "luminanceSsim": 0.9617111119377914,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.477638104379205,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 17,
+            "pixels": 4834,
+            "components": 2,
+            "boundarySamples": 236,
+            "beforeGradient": 4833.309411658341,
+            "afterGradient": 4833.309411658341,
+            "sumSquaredError": 933891,
+            "meanDeltaE76": 3.39756600137522,
+            "luminanceSsim": 0.9812602959954957,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 8.024798655603181,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 26,
+            "pixels": 6113,
+            "components": 1,
+            "boundarySamples": 243,
+            "beforeGradient": 6807.898392175811,
+            "afterGradient": 6807.898392175811,
+            "sumSquaredError": 3286704,
+            "meanDeltaE76": 5.553928878114545,
+            "luminanceSsim": 0.9644596467884161,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.387283837986297,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 12,
+            "pixels": 4426,
+            "components": 1,
+            "boundarySamples": 181,
+            "beforeGradient": 5951.187200452066,
+            "afterGradient": 5951.187200452066,
+            "sumSquaredError": 1652673,
+            "meanDeltaE76": 4.667405959017352,
+            "luminanceSsim": 0.9274535911527806,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 11.15647852614718,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 16,
+            "pixels": 4618,
+            "components": 1,
+            "boundarySamples": 208,
+            "beforeGradient": 2754.18478223789,
+            "afterGradient": 2754.18478223789,
+            "sumSquaredError": 1240545,
+            "meanDeltaE76": 3.8738126731396316,
+            "luminanceSsim": 0.9515947179983774,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.462778395773539,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 20,
+            "pixels": 3647,
+            "components": 2,
+            "boundarySamples": 164,
+            "beforeGradient": 4026.596515874854,
+            "afterGradient": 4026.596515874854,
+            "sumSquaredError": 1110004,
+            "meanDeltaE76": 3.725954908151292,
+            "luminanceSsim": 0.9569278699518436,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.072418520060122,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 25,
+            "pixels": 1954,
+            "components": 10,
+            "boundarySamples": 213,
+            "beforeGradient": 6974.294211174502,
+            "afterGradient": 6974.294211174502,
+            "sumSquaredError": 194059,
+            "meanDeltaE76": 2.8261857773028933,
+            "luminanceSsim": 0.9504190905745926,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 5.753657255910539,
+            "gradientRatio": 1,
+            "componentsAfter": 10
+          },
+          {
+            "label": 8,
+            "pixels": 2939,
+            "components": 1,
+            "boundarySamples": 159,
+            "beforeGradient": 3254.99345409414,
+            "afterGradient": 3254.99345409414,
+            "sumSquaredError": 828227,
+            "meanDeltaE76": 3.7541163389803023,
+            "luminanceSsim": 0.949846835244084,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.692019332591983,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 11,
+            "pixels": 5743,
+            "components": 2,
+            "boundarySamples": 277,
+            "beforeGradient": 13291.90848705515,
+            "afterGradient": 13291.90848705515,
+            "sumSquaredError": 2545063,
+            "meanDeltaE76": 4.825837433936308,
+            "luminanceSsim": 0.9601132076695806,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.154000031126841,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 19,
+            "pixels": 4608,
+            "components": 2,
+            "boundarySamples": 226,
+            "beforeGradient": 6718.8908122473385,
+            "afterGradient": 6718.8908122473385,
+            "sumSquaredError": 1043736,
+            "meanDeltaE76": 4.135137863432792,
+            "luminanceSsim": 0.9827854203725552,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 8.689173499885424,
+            "gradientRatio": 1,
+            "componentsAfter": 2
+          },
+          {
+            "label": 15,
+            "pixels": 4464,
+            "components": 3,
+            "boundarySamples": 236,
+            "beforeGradient": 6671.776245700812,
+            "afterGradient": 6671.776245700812,
+            "sumSquaredError": 1121219,
+            "meanDeltaE76": 3.4872882765391573,
+            "luminanceSsim": 0.9766959393058895,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 9.150029705313763,
+            "gradientRatio": 1,
+            "componentsAfter": 3
+          },
+          {
+            "label": 7,
+            "pixels": 4209,
+            "components": 1,
+            "boundarySamples": 182,
+            "beforeGradient": 5474.841688965504,
+            "afterGradient": 5474.841688965504,
+            "sumSquaredError": 1321444,
+            "meanDeltaE76": 4.043218167338942,
+            "luminanceSsim": 0.9368365890010828,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 10.229968382571789,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 14,
+            "pixels": 1393,
+            "components": 1,
+            "boundarySamples": 115,
+            "beforeGradient": 6409.672392663504,
+            "afterGradient": 6409.672392663504,
+            "sumSquaredError": 776141,
+            "meanDeltaE76": 3.8581693565797495,
+            "luminanceSsim": 0.9736897899741124,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.628062836435904,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 18,
+            "pixels": 1967,
+            "components": 1,
+            "boundarySamples": 117,
+            "beforeGradient": 4892.5797347818025,
+            "afterGradient": 4892.5797347818025,
+            "sumSquaredError": 992769,
+            "meanDeltaE76": 4.358114027845102,
+            "luminanceSsim": 0.977315039775983,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.970636737912429,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 6,
+            "pixels": 1946,
+            "components": 1,
+            "boundarySamples": 110,
+            "beforeGradient": 6097.949174985942,
+            "afterGradient": 6097.949174985942,
+            "sumSquaredError": 962699,
+            "meanDeltaE76": 4.464638281417399,
+            "luminanceSsim": 0.9801870932038997,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 12.841424863763715,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          },
+          {
+            "label": 10,
+            "pixels": 1638,
+            "components": 1,
+            "boundarySamples": 112,
+            "beforeGradient": 5798.872403687788,
+            "afterGradient": 5798.872403687788,
+            "sumSquaredError": 950513,
+            "meanDeltaE76": 4.444577561719,
+            "luminanceSsim": 0.9773666857276122,
+            "ssimScope": "whole labeled part, population moments",
+            "rgbRms": 13.907896639304914,
+            "gradientRatio": 1,
+            "componentsAfter": 1
+          }
+        ],
+        "failures": [],
+        "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+      }
+    }
+  ],
+  "events": [
+    {
+      "phase": "loading",
+      "stage": "encode"
+    },
+    {
+      "phase": "loaded",
+      "stage": "encode",
+      "elapsedMs": 382.51500000059605
+    },
+    {
+      "phase": "inference-start",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 4070.0349999964237
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "encode"
+    },
+    {
+      "phase": "loading",
+      "stage": "text"
+    },
+    {
+      "phase": "loaded",
+      "stage": "text",
+      "elapsedMs": 1227.3149999976158
+    },
+    {
+      "phase": "inference-start",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 1081.405000001192
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "text"
+    },
+    {
+      "phase": "loading",
+      "stage": "denoise"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "expansion"
+    },
+    {
+      "phase": "loaded",
+      "stage": "denoise",
+      "elapsedMs": 3119.9749999940395
+    },
+    {
+      "phase": "inference-start",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 18423.085000008345
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "denoise"
+    },
+    {
+      "phase": "step"
+    },
+    {
+      "phase": "loading",
+      "stage": "decode"
+    },
+    {
+      "phase": "loaded",
+      "stage": "decode",
+      "elapsedMs": 566.5099999904633
+    },
+    {
+      "phase": "inference-start",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 8944.704999998212
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "decode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 4051.0999999940395
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "encode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 5679.384999990463
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "text"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 20438.334999993443
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "denoise"
+    },
+    {
+      "phase": "step"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 8637.52500000596
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "decode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 4059.339999988675
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "encode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 6260.259999990463
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "text"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 20868.084999993443
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "denoise"
+    },
+    {
+      "phase": "step"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 8664.004999995232
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "decode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 4039.2599999904633
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "encode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 5252.45000000298
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "text"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 21248.189999997616
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "denoise"
+    },
+    {
+      "phase": "step"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 8463.665000006557
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "decode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "encode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 4072.9000000059605
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "encode"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "text"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 6941.894999995828
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "text"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "denoise"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 20808.739999994636
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "denoise"
+    },
+    {
+      "phase": "step"
+    },
+    {
+      "phase": "session-reused",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-start",
+      "stage": "decode"
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 8692.690000012517
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "decode"
+    }
+  ],
+  "modelCreates": 1,
+  "modelInferences": 5,
+  "phoneCreates": 0,
+  "phoneMissing": {
+    "status": "fallback",
+    "reason": "delivered original unavailable"
+  },
+  "corruptTransferRefused": true,
+  "corruptTransferModelEvents": 0,
+  "detachedTransfers": 12
+}
