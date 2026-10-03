@@ -25,6 +25,8 @@ export function specializedActions(id:string):Readonly<Record<string,MotionActio
  };
  const actions=[action('idle','idle',3,true),action('alert','alert',7),...spec.gaits.map(g=>action('approach:'+g,'approach',g==='anchored'?4:12,true)),action('cast','cast',14,false),action('hit','hit',10),action('dodge','dodge',8,false,spec.anchored?0:-.08),action('faint','faint',5),action('victory','victory',12),action('tame','tame',5),action('feed','feed',6)];
  // Physical contacts require source-observed parts/capabilities in the selector.
+ // Geometry-directed foreleg motion is authored by smallCrustaceanAttackAction.
+ if(id==='crustacean-small')actions.push({id:'melee:claw',family:'melee',loop:false,poses:[P(1,{})]});
  if(id==='crustacean-clawed')actions.push(action('melee:pinch','melee',25,false,.08));
  if(id==='brachyuran'){
   const pincerJoints=spec.roles.claws;if(!pincerJoints?.length)throw Error('Missing pincer contract');

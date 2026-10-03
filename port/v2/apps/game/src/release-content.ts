@@ -850,7 +850,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
     Object.freeze({
       category: 'New Features & Systems',
       bullets: Object.freeze([
-        "✨ BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse. Fixed creatures cast from their stand.",
+        "✨ BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse. Fixed creatures cast from their stand. Prawns and shrimp with observed foreleg chains deliver a physical leg-tip strike.",
         "🧭 COMPANION MISSIONS — send a companion to a world you've landed on: Prospect brings back that world's materials, Survey brings a little Stardust and a story. 10, 25 or 60 minutes of play; the risk is shown before it leaves, and you can recall it any time. Two at once.",
         "✨ SPECIMEN REVEALS — every new Compendium page is revealed with its painted portrait; several at once queue up, with Continue and Skip all.",
         "⇪ VISTA POSTCARDS — step into a landing vista with ⛶ Vista, then save or share it as a postcard with the world's name and share code.",

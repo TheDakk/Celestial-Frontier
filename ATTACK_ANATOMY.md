@@ -56,10 +56,21 @@ Sand Thorns does not turn a creature's physical strike into a thorn-shaped body 
 
 ## Anatomy table
 
-Matches code as of October 2, 2026: 33 melee rows across 13 animal families; the two plant families remain explicitly unsupported for melee.
+Matches code as of October 3, 2026 (C198): `crustacean-small` has an observed bilateral
+foreleg-tip strike (`melee:claw`) for the explicit shrimp/prawn profile. Contact is
+`leg0NearFoot` at the end of strike. Both root/knee/tip chains plus head/thorax must be
+present; source geometry chooses the two forelegs' extension directions. No fixed/dactyl
+finger landmarks exist in this template, so this is not articulated pincer closure.
+Krill, copepods, water fleas and the other small-crustacean profile retain no physical move.
+No D31 cast fallback was added. The unchanged C196 Prawn passes static publication and
+software full-size review of the strike; native motion/visual qualification remains separate.
+Evidence: `audits/C198_PRAWN_ATTACK_20261003`.
+
+Matches code as of October 3, 2026: 34 melee rows across 14 animal families; the two plant families remain explicitly unsupported for melee.
 
 | Family | Existing physical moves | Required observed parts |
 | --- | --- | --- |
+| Small crustacean (shrimp/prawn intent) | Foreleg tip strike | Observed bilateral front root/knee/foot chains and head/thorax axis; water only; contact at near front foot |
 | Brachyuran crab | Pincer pinch | Observed near palm, fixed tip, dactyl root and dactyl tip; ground or water, with contact at the dactyl tip |
 | Quadruped | Bite, foreclaw rake, horn thrust, headbutt, tail lash, hoof kick | Jaw, forepaw chain, head/neck, or complete tail chain as appropriate |
 | Hopper | Hind-leg kick, leaping bite | Hind-leg chain or jaw |
@@ -77,7 +88,7 @@ Matches code as of October 2, 2026: 33 melee rows across 13 animal families; the
 | Woody plant | No melee clip in current library | Explicit unsupported result |
 | Herbaceous plant | No melee clip in current library | Explicit unsupported result |
 
-All 33 physical melee rows have an explicit action, weapon capability, required joint set,
+All 34 physical melee rows have an explicit action, weapon capability, required joint set,
 contact joint and compatible physical medium. Required parts must exist in the admitted
 body card. Missing claws, wings, jaws or tails cannot silently fall back to a different move.
 Current family skeleton templates are not evidence that every Earth/procedural species has
@@ -100,7 +111,7 @@ an equivalent per-master observation. The three review declarations are retained
 only: visible horn-like paint has no authored horn contact landmark yet. No invented gore.
 
 `earth-fauna-profiles.ts` now covers all631 current `_EARTH_NAMES.fauna` identities exactly
-once through83 explicit profiles. Profiles describe gameplay intent, candidate templates,
+once through87 explicit profiles. Profiles describe gameplay intent, candidate templates,
 physical media and fitting constraints; they do not certify anatomy or complete animation.
 Unknown names, wrong templates and incompatible media refuse. Named genes cannot overwrite
 the table. Conditional gore/sting needs a matching record-bound weapon observation.
@@ -144,7 +155,7 @@ order gate rejects the reproduced old follow-through. This is not full collision
 
 ## Qualification and next work
 
-The 33 melee rows across 13 animal families are contract-tested; the two plant families retain explicit unsupported results. The actual bird card produces an airborne
+The 34 melee rows across 14 animal families are contract-tested; the two plant families retain explicit unsupported results. The actual bird card produces an airborne
 wing/foot strike, and the fish card admits swimming bite and refuses air. Those tests do not
 qualify new painted aerial contact visually. The live `/anatomy-battle/` proof measures only
 three existing painted quadrupeds, using foreclaw/bite/foreclaw. Effects remain the labelled

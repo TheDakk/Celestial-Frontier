@@ -324,6 +324,22 @@ openings, bird ground flecks and primate hand penetration; static publication do
 not establish native performance or full visual admission. Evidence:
 `audits/C172_SHARED_HEAD_SPIKE_20261002`.
 
+### Observed small-crustacean strike — matches code 2026-10-03
+
+`motion/small-crustacean-attack.ts` authors canonical `crustacean-small` `melee:claw`
+from the two observed front root/knee/tip chains and the painted head/thorax axis.
+The front legs gather, extend toward that axis on the existing melee strike beat,
+hold for the smear, then recover exactly. Upper/distal authored turns are bounded
+at 12/18 degrees inside the unchanged joint limits; no body translation, source
+stretch, new finger joint or contact allowance is introduced. The label is
+“Foreleg tip strike”: true pincer closure would require separately observed fingers.
+The existing anatomy selector admits the five shrimp/prawn identities only with all
+required parts, or a procedural card with a matching observed weapon declaration.
+Its contact is `leg0NearFoot` at strike. Other families, existing non-melee clips,
+D31 routing and explicit editor curves are unchanged. C198 retains the original
+weapons-empty refusal, mirrored source/unchanged-family controls and actual fit
+publication; software results do not qualify native performance or art.
+
 ### D31 limbless / sessile cast — matches code 2026-10-02
 
 Specialized families with no admitted melee (annelid, sessile-filter, gastropod, bivalve) use

@@ -8,6 +8,7 @@ import {groundedQuadrupedAction} from './grounded-quadruped.js';
 import {sprawlerAction} from './sprawler-profile.js';
 import {axialFaintAction} from './axial-faint.js';
 import {castAttackAction,CAST_ATTACK_NOTE} from './cast-attack.js';
+import {smallCrustaceanAttackAction} from './small-crustacean-attack.js';
 import {groundedInsectAction} from './grounded-insect.js';
 import {faintStanceEnvelope,applyStanceEnvelope,type StanceEnvelope} from './stance-envelope.js';
 import {stationaryContactEnvelope,type ContactStanceEnvelope} from './contact-envelope.js';
@@ -91,8 +92,8 @@ export function buildTimeline(card: BodyCard, actionId: string, seed: number): M
   const resolved = resolveActionId(card, actionId);
   const authored: MotionAction | undefined = actionsFor(card.template.id,card.anatomy)?.[resolved.id];
   if (!authored) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
-  const sprawler=sprawlerAction(card,authored),axial=axialFaintAction(card,sprawler),action=castAttackAction(card,axial);
-  const notes=[...card.notes,...resolved.note?[resolved.note]:[],...sprawler!==authored?['sprawler:low-trunk-v1']:[],...axial!==sprawler?['axial-faint:coherent-upper-body-v1']:[],...action!==axial?[CAST_ATTACK_NOTE]:[]];
+  const sprawler=sprawlerAction(card,authored),axial=axialFaintAction(card,sprawler),cast=castAttackAction(card,axial),action=smallCrustaceanAttackAction(card,cast);
+  const notes=[...card.notes,...resolved.note?[resolved.note]:[],...sprawler!==authored?['sprawler:low-trunk-v1']:[],...axial!==sprawler?['axial-faint:coherent-upper-body-v1']:[],...cast!==axial?[CAST_ATTACK_NOTE]:[],...action!==cast?['small-crustacean:observed-foreleg-strike-v1']:[]];
   const base=buildActionTimeline(card,action,seed,notes);
   const selected=card.template.id==='quadruped'
     ?groundedQuadrupedAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes))

@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A CAPTURE RED CAN MASK A SIMULTANEOUS RIG RED** (C198, 2026-10-03).
+> The C250 Tortoise film missed the live-frame floor and already contained seven
+> rig refusals. Keep both failures visible; report timeline, encoded-media and rig
+> assessments independently from the retained run, without retrying or weakening
+> the frame floor. Replay exact native action contexts, including duration and stage
+> displacement: sparse standalone action probes can miss the real stage poses.
+
+
 > **EXACT REST AND CONTINUOUS JOINS CAN MISS WRONG-LIMB PAINT** (painted variations, 2026-09-16).
 > A detached painted island assigned to another limb reconstructs perfectly at rest and can
 > evade source-join tests because it has no joined edge. Inspect authored limb components,

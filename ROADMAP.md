@@ -99,7 +99,11 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 - A green number is not visual acceptance. The static runner needs its fit and output under `audits/`.
 - Codex reservations: when Codex posts "native/performance reservation active", run no native, gate or heavy CPU until its terminal notice.
 
-## Current Codex sprint handoff — 2026-10-03, C196 completed deliveries
+## Current Codex sprint handoff — 2026-10-03, C198 ACTIVE
+
+**C198 in progress:** signed anthropic/mac merged at b3335e613. C251 native/performance reservation ACTIVE. Prawn foreleg-tip strike and capture diagnostics freeze together for ONE authorized combined I5 epoch/develop; three24-original supply batches and source/reference repairs remain active. All-pairs stays HOLD. Read the current TO_CLAUDE rows for deliveries; only an explicit C251 TERMINAL releases the reservation.
+
+**Prior C196 completed handoff (retained until this sprint closes):**
 
 **Development ACTIVE; C246 reservation TERMINAL — RELEASED at C250.** All three source agents and CPU jobs are terminal. Read sibling mailbox C193–C196 at startup and again after each delivery; C196 remains latest. Claude C195 confirms the authorized replacement develop gate GREEN:5,995 PASS, two expected failures, three skipped, zero red. D31 is accepted and coverage remains240/631; this source-only batch claims no new admission.
 

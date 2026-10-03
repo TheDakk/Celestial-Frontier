@@ -76,12 +76,12 @@ it('native painter-emitted weapon receipts are record-bound and preserve ordinar
  }
 });
 
-it('wires exactly the 53 previously empty identities without claiming fits or changing habitats/weapons',()=>{
+it('retains the 53 observed-fit requirements; only the five reviewed shrimp/prawn intents gain a foreleg strike',()=>{
  const before=JSON.parse(fs.readFileSync(new URL('../../../../../audits/MOTION_FOLLOWUP_20260924/item7-before.json',import.meta.url),'utf8')) as {name:string;media:string[];intendedMoves:string[]}[];
  expect(before).toHaveLength(53);expect(new Set(before.map(r=>r.name)).size).toBe(53);
  expect(EARTH_FAUNA_PROFILES.filter(p=>p.needsObservedFit).flatMap(p=>p.names).sort()).toEqual(before.map(r=>r.name).sort());
  expect(EARTH_FAUNA_PROFILES.filter(p=>!p.candidateTemplates.length)).toEqual([]);
- for(const row of before){const p=earthFaunaProfile(row.name)!;expect(p.needsObservedFit).toBe(true);expect(p.media).toEqual(row.media);expect(p.intendedMoves).toEqual(row.intendedMoves);expect(p.candidateTemplates).toHaveLength(1);expect(SPECIALIZED_TEMPLATES[p.candidateTemplates[0]! as keyof typeof SPECIALIZED_TEMPLATES]).toBeDefined();}
+ for(const row of before){const p=earthFaunaProfile(row.name)!;expect(p.needsObservedFit).toBe(true);expect(p.media).toEqual(row.media);expect(p.intendedMoves).toEqual(['Cave Shrimp','Freshwater Shrimp','Shrimp','Prawn','Vent Shrimp'].includes(row.name)?['claw']:row.intendedMoves);expect(p.candidateTemplates).toHaveLength(1);expect(SPECIALIZED_TEMPLATES[p.candidateTemplates[0]! as keyof typeof SPECIALIZED_TEMPLATES]).toBeDefined();}
  expect(earthFaunaProfile('Sea Squirt')!.candidateTemplates).toEqual(['sessile-filter']);
  expect(earthFaunaProfile('Salp')!.candidateTemplates).toEqual(['colonial-filter']);
  expect(earthFaunaProfile('Fiddler Crab')!.candidateTemplates).toEqual(['brachyuran']);

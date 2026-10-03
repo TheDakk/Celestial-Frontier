@@ -2657,7 +2657,7 @@ describe('legacy and v2 release channels', () => {
       'New Features & Systems', 'UI Enhancements', 'Gameplay', 'Bug Fixes', 'Under the Hood',
     ];
     const requiredCopy = [
-      /BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse\. Fixed creatures cast from their stand\./,
+      /BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse\. Fixed creatures cast from their stand\. Prawns and shrimp with observed foreleg chains deliver a physical leg-tip strike\./,
       /TypeScript and Pixi v2 development build/,
       /ONE POLISHED UNIVERSE:[^\n]*all 43 live biomes[^\n]*seed, silhouette, anatomy, proportion, placement, and gameplay boundary unchanged[^\n]*Sol is a calibration point, never a special-case filter/,
       /EVERY LANDED WORLD HAS A HORIZON:[^\n]*960×430 authored landing vista[^\n]*full canonical biosphere[^\n]*unsupported workers or failed art mounts leave the usable globe intact/,
