@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 289,
+ "total": 292,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -2024,6 +2024,27 @@
    "nativeDir": "audits/FILMS_C186_20261002/07-brittle-star-part-ids",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C186 selected fit"
+  },
+  {
+   "family": "annelid",
+   "name": "Earthworm",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/01-earthworm-direct",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "sessile-filter",
+   "name": "Sponge",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/02-sponge-direct-anchored",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
+  },
+  {
+   "family": "gastropod",
+   "name": "Banana Slug",
+   "nativeDir": "audits/CAST_ATTACK_D31_20261002/04-banana-slug-visible-mouth",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)"
   }
  ]
 }

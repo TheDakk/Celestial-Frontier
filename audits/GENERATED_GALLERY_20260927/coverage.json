@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 237,
- "pct": 37.6,
+ "covered": 240,
+ "pct": 38,
  "heldNotCounted": [
   "Capuchin",
   "Horse",
@@ -321,16 +321,20 @@
   {
    "family": "gastropod",
    "species": 12,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 8.3,
+   "names": [
+    "Banana Slug"
+   ]
   },
   {
    "family": "annelid",
    "species": 9,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 11.1,
+   "names": [
+    "Earthworm"
+   ]
   },
   {
    "family": "arachnid",
@@ -390,9 +394,11 @@
   {
    "family": "sessile-filter",
    "species": 2,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 50,
+   "names": [
+    "Sponge"
+   ]
   },
   {
    "family": "colonial-filter",

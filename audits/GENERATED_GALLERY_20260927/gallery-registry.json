@@ -2394,5 +2394,29 @@
   "note": "whole in reaction and late idle on Codex's C186 selected fit (C231 far-leg fold repair; the walk fold is gone)",
   "batch": "audits/FILMS_C186_20261002",
   "tag": "c186films"
+ },
+ {
+  "family": "annelid",
+  "name": "Earthworm",
+  "nativeDir": "audits/CAST_ATTACK_D31_20261002/01-earthworm-direct",
+  "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)",
+  "batch": "audits/C186_SPECIALIZED_REFERENCES_20261002",
+  "tag": "d31cast"
+ },
+ {
+  "family": "sessile-filter",
+  "name": "Sponge",
+  "nativeDir": "audits/CAST_ATTACK_D31_20261002/02-sponge-direct-anchored",
+  "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)",
+  "batch": "audits/C186_SPECIALIZED_REFERENCES_20261002",
+  "tag": "d31cast"
+ },
+ {
+  "family": "gastropod",
+  "name": "Banana Slug",
+  "nativeDir": "audits/CAST_ATTACK_D31_20261002/04-banana-slug-visible-mouth",
+  "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)",
+  "batch": "audits/C186_SPECIALIZED_REFERENCES_20261002",
+  "tag": "d31cast"
  }
 ]
