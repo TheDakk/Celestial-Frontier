@@ -1,0 +1,78 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "7eb42d989913f892eb6e972b76bad232d747bd55",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/master.png",
+      "sha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/authoring.json",
+      "sha256": "f38f240b5fb5e678037ff27a6643f1544bc2b84dc5c09d5c83c0c5f951c6c696"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/subject-source.json",
+      "sha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "d93dca979532c2bfb8a0bc87a04a01abd24adf2ee3d4cf8885dd4ff4f1df1ec9",
+  "bindingHash": "618bb0e5325c6beda76d3a21dfbd6cf97701bc23f03ffe577ebf57e586650638",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "segment0",
+    "segment1",
+    "segment2",
+    "segment3",
+    "segment4",
+    "segment5",
+    "segment6",
+    "segment7",
+    "segment8",
+    "segment9",
+    "segment10",
+    "segment11"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/master.png",
+      "sha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/authoring.json",
+      "sha256": "f38f240b5fb5e678037ff27a6643f1544bc2b84dc5c09d5c83c0c5f951c6c696",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/subject-source.json",
+      "sha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}
