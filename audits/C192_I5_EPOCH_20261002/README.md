@@ -7,3 +7,5 @@ Run unchanged limits with first-red stop and no re-binding. Only a fully verifie
 All-pairs is HOLD under C186. The old prepared sweep is retained unchanged; its product source inventory predates D31 and must be refreshed before any future authorized execution. No sweep runs in this batch.
 
 Terminal epoch result: all three calibrations and certification passed with independent verification, zero retries, 273.79 seconds. The fresh selector replay returned ok=true for i5-v2-a0414aa6511d. Develop result is still pending; C235 is not yet released.
+
+C235 TERMINAL at mailbox C236: develop RED, 5,991 PASS / four failures / two expected failures / three skipped. The added D31 release bullet is absent from exact bulletin/rendered-release inventory oracles. Optional runtime restored; no gate retry or sweep. I5 itself remains a valid passed epoch on a0414aa65; that does not make develop green. C237 is a new offline-authoring reservation, not continuation or retry of this measured chain.
