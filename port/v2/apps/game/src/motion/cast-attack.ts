@@ -30,7 +30,9 @@ export const CAST_ATTACK_FAMILIES: Readonly<Record<string, CastAttackFamilyV1>> 
 });
 export const CAST_ATTACK_NOTE = 'cast-attack:d31-body-pulse-v1';
 
-export interface CastAttackV1 { readonly family: string; readonly emitter: string | null; readonly reason: string; }
+export interface CastAttackV1 { readonly family: string; readonly emitter: string | null; readonly reason: string;
+  /** a fixed organism (the template is anchored): the stage gives it no run-up — it casts from its stand */
+  readonly anchored: boolean; }
 /** The D31 cast for this card, or null (every other family, a portrait, or a card that has an admitted melee verb). */
 export function castAttackOf(card: BodyCard | null | undefined): CastAttackV1 | null {
   if (!card) return null;
@@ -42,7 +44,8 @@ export function castAttackOf(card: BodyCard | null | undefined): CastAttackV1 | 
   const has = fam.emitter !== null && card.parts.some((p) => p.joint === fam.emitter);
   const emitter = has ? fam.emitter : null;
   const reason = `D31 cast: ${card.template.id} has no admitted melee; launch at ${has ? fam.emitterWhy : fam.emitter ? `the body centre (no ${fam.emitter} landmark on this record)` : fam.emitterWhy}`;
-  return Object.freeze({ family: card.template.id, emitter, reason });
+  const anchored = specializedTemplate(card.template.id)?.anchored === true;
+  return Object.freeze({ family: card.template.id, emitter, reason: anchored ? reason + '; anchored: casts from its stand, no run-up' : reason, anchored });
 }
 
 type J = Record<string, number>;

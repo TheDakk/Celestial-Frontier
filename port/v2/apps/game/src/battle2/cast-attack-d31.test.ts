@@ -102,6 +102,23 @@ describe('D31 — limbless / sessile families cast', () => {
     }, 180_000);
   }
 
+  it('an anchored caster (the sponge) casts from its stand: root and base never leave it through the whole turn; worm and slug still travel', async () => {
+    for (const s of SUBJECTS) {
+      const { rig, stage, nodes, input, setNow } = await d31Turn(s.id);
+      setNow(0); const plan = stage.play(input), anchored = s.family === 'sessile-filter';
+      expect(plan.castAttack!.anchored).toBe(anchored);
+      let maxDisp = 0, maxDrift = 0; const at0 = { root: { x: 0, y: 0 }, base: { x: 0, y: 0 } };
+      for (let i = 0; i <= 200; i++) {
+        const ms = (plan.beats.end * i) / 200; setNow(ms); stage.tick();
+        maxDisp = Math.max(maxDisp, Math.abs(holderOf(nodes, rig).x - layout.stands.left.x * FRAME.width));
+        if (anchored) for (const j of ['root', 'base'] as const) { const d = drawnJoint(nodes, rig, j); if (i === 0) at0[j] = d; else maxDrift = Math.max(maxDrift, dist(d, at0[j])); }
+      }
+      if (anchored) { expect(plan.runUp).toBe(0); expect(maxDisp).toBeLessThan(0.5); expect(maxDrift).toBeLessThan(0.5); expect(plan.castAttack!.reason).toMatch(/casts from its stand/); }
+      else { expect(Math.abs(plan.runUp)).toBeGreaterThan(0.02); expect(maxDisp).toBeGreaterThan(20); }
+      stage.dispose();
+    }
+  }, 240_000);
+
   it('a cast theme takes the same body launch; a forged stand launch is caught by the same check (not vacuous)', async () => {
     const { rig, stage, nodes, input, setNow } = await d31Turn('04-banana-slug-visible-mouth', 'fire');
     expect(input.delivery).toBe('cast');

@@ -159,17 +159,19 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   if (!['hit', 'dodge', 'miss'].includes(input.outcome)) throw new TypeError(`turn plan: unknown outcome ${String(input.outcome)}`);
   // A rigged combatant's mass is the card's (A1 timelines scale by it); `mass` is only read for portraits.
   const massA = A.card ? A.card.massClass.multiplier : A.mass, massT = T.card ? T.card.massClass.multiplier : T.mass;
-  const facing = facingOf(A.side), standA = input.arena.stands[A.side], standT = input.arena.stands[T.side];
-  const standDistance = Math.abs(standT.x - standA.x), hw = input.arena.halfWidths;
-  const cx = input.arena.centresX, boxDistance = cx ? Math.abs(cx[T.side] - cx[A.side]) : standDistance;
-  const runUpLength = hw && cx ? Math.max(RUN_UP_MIN_FRACTION * standDistance, boxDistance - hw[A.side] - hw[T.side] - CONTACT_GAP)
-    : hw ? Math.min(RUN_UP_FRACTION * standDistance, Math.max(RUN_UP_MIN_FRACTION * standDistance, standDistance - hw[A.side] - hw[T.side] - CONTACT_GAP)) : RUN_UP_FRACTION * standDistance;
-  const runUp = runUpLength * facing;
-  const hit = input.outcome === 'hit', targetFaints = hit && input.targetFaints === true;
-  const seedA = (input.seed ^ A.seed) >>> 0, seedT = (input.seed ^ T.seed ^ 0x9e3779b9) >>> 0;
   const attack = input.attack && A.card ? input.attack : null;
   // D31: a limbless/sessile attacker with no admitted melee casts — its theme effect leaves the body, no melee clip is looked up
   const castAttack = attack ? null : castAttackOf(A.card), delivery: EffectDelivery = castAttack ? 'cast' : input.delivery;
+  // D31 (main lane, 2026-10-02): a fixed organism never moves (CREATURE_ANIMATION.md) — an anchored caster casts from its stand
+  const fixedCaster = castAttack?.anchored === true;
+  const facing = facingOf(A.side), standA = input.arena.stands[A.side], standT = input.arena.stands[T.side];
+  const standDistance = Math.abs(standT.x - standA.x), hw = input.arena.halfWidths;
+  const cx = input.arena.centresX, boxDistance = cx ? Math.abs(cx[T.side] - cx[A.side]) : standDistance;
+  const runUpLength = fixedCaster ? 0 : hw && cx ? Math.max(RUN_UP_MIN_FRACTION * standDistance, boxDistance - hw[A.side] - hw[T.side] - CONTACT_GAP)
+    : hw ? Math.min(RUN_UP_FRACTION * standDistance, Math.max(RUN_UP_MIN_FRACTION * standDistance, standDistance - hw[A.side] - hw[T.side] - CONTACT_GAP)) : RUN_UP_FRACTION * standDistance;
+  const runUp = fixedCaster ? 0 : runUpLength * facing;
+  const hit = input.outcome === 'hit', targetFaints = hit && input.targetFaints === true;
+  const seedA = (input.seed ^ A.seed) >>> 0, seedT = (input.seed ^ T.seed ^ 0x9e3779b9) >>> 0;
   if (attack) {
     if (!(attack.contactMs > 0) || !Number.isFinite(attack.contactMs) || attack.contactMs > attack.timeline.durationMs) throw new TypeError('turn plan: attack contact must lie inside its timeline');
     if (attack.timeline.recipeHash !== A.card!.recipeHash) throw new TypeError('turn plan: attack timeline was built for another body');
