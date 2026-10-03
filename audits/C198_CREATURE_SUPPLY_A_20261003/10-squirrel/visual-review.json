@@ -1,0 +1,28 @@
+{
+  "name": "Squirrel",
+  "masterSha256": "b482f5cd3cbeb4dd5602049210113027ca21a3973cac6a1bf305328776c6fbd7",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: reddish-gray fur, pale underside, large continuous bushy tail, two ear outlines, two hind feet and two forehands holding a nut. The upright seated posture and carried nut contradict the requested neutral four-contact/no-prop source correction; far hand/root overlaps nut. This is an explicit composition/contact hold, not a four-support source.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 288,
+      "y0": 278,
+      "x1": 923,
+      "y1": 972
+    },
+    "margins": {
+      "left": 288,
+      "right": 330,
+      "top": 278,
+      "bottom": 281
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

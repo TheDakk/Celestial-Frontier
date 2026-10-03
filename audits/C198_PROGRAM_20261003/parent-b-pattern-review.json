@@ -1,0 +1,61 @@
+{
+  "scope": "Independent subset cross-check; every master fullsize review remains in supply delivery. Five insects have no pigment regex requirement in canonical mustRead, which does not waive anatomical review.",
+  "rows": [
+    {
+      "id": "13-lemur",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/13-lemur/master.png",
+      "sha256": "088b43fc6861019b83ebf84ae64d674f674c9769f29dcafd0f2e3fdd6c8d9824",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Black-white tail rings, dark facial mask and orange-gold eyes visible; matches required pigment observation. Root/support holds remain."
+    },
+    {
+      "id": "14-mandrill",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/14-mandrill/master.png",
+      "sha256": "be36b1f317c7c4eb0fd0480d1d5fea6b54d54548ba8a15e31a56bd0bc8f9616a",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Scarlet central nose stripe flanked by ridged blue cheeks visible, olive mane and tiny upright tail. Species pigment requirement present, no anatomy admission."
+    },
+    {
+      "id": "15-marmoset",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/15-marmoset/master.png",
+      "sha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Banded tail and white fan ear tufts visible; no claim that hidden ear rims or root chains are authorable."
+    },
+    {
+      "id": "05-diving-beetle",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/05-diving-beetle/master.png",
+      "sha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Pale yellow rim, silver air bubble and fringed oar hindlegs visible. Only five clear distal legs; sixth full chain not established."
+    },
+    {
+      "id": "21-leafcutter-ant",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/21-leafcutter-ant/master.png",
+      "sha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Spined thorax, narrow waist, oversized jaws and leaf present. Leaf follows explicit canonical mustRead but conflicts with isolated no-prop guidance, so retain source authoring hold rather than call it unprompted generation."
+    },
+    {
+      "id": "22-locust",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/22-locust/master.png",
+      "sha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Enlarged hindlegs, narrow folded wings, short antennae and tall head visible. Six distal tips visible but far roots overlap; no six-chain admission."
+    },
+    {
+      "id": "23-grasshopper",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/23-grasshopper/master.png",
+      "sha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Enlarged angled hindlegs, tapered abdomen, short-ish antennae and slanted head visible. Six tips including small far tips, but far roots overlap."
+    },
+    {
+      "id": "24-dobsonfly",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/24-dobsonfly/master.png",
+      "sha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+      "review": "Full native1254-square source displayed and inspected",
+      "finding": "Long smoky net-veined wings and large sickle mandibles visible. Crossed-jaw requirement and complete leg/root chains need review; no six-chain admission."
+    }
+  ]
+}

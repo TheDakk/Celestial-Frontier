@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Leafcutter Ant",
+  "masterSha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

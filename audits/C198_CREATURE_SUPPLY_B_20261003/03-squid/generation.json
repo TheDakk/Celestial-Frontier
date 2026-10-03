@@ -1,0 +1,14 @@
+{
+  "id": "03-squid",
+  "name": "Squid",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2df1112f-c7f1-4815-a60d-5974110b220b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+  "bytes": 1288142,
+  "promptSha256": "278a3f9e21ef2204fc83e89353829a1068aaf3e7d9bb63cf8588a659e6f1e4fd",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

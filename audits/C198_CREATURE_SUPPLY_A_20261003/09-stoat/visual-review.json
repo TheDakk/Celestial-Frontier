@@ -1,0 +1,28 @@
+{
+  "name": "Stoat",
+  "masterSha256": "42303e5699497bff2968067ba085099d92ca3fdb20d66a15e7cd446c331db880",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: brown upper coat, white underside and black tail tip, long body, small ears and four separated paws. Raised long neck/high forequarter stance is a proportion/morphology hold; far-ear base and far upper limb roots remain occluded. Distal feet visible without claiming complete root paths or grounded motion.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 180,
+      "y0": 349,
+      "x1": 1074,
+      "y1": 849
+    },
+    "margins": {
+      "left": 180,
+      "right": 179,
+      "top": 349,
+      "bottom": 404
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

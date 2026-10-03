@@ -1,0 +1,14 @@
+{
+  "id": "07-kinkajou",
+  "name": "Kinkajou",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-573aae5e-a540-4bd5-abc4-20e59f351789.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "952caeae2c72277e5d260d5f67343655de0427d85295bcd645be14006f58f73a",
+  "bytes": 1313511,
+  "promptSha256": "e4eba498b3db185cdb1bb65dcd1b02ea8f3c77d3d715b9f518749b50b717b8d4",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

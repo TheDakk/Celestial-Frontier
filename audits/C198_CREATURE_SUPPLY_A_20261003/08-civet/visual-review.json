@@ -1,0 +1,28 @@
+{
+  "name": "Civet",
+  "masterSha256": "43087c84eb1fcdb638849f14af23f9a582d7408e9ff199b38cb99b6bd204d373",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: brown-gold coat with dark spots/neck stripes, facial mask and ringed long tail, four separated feet and two ear outlines. Far upper leg and far-ear roots remain partly torso/head occluded. Foot heights differ slightly; fringe, claw counts and fitted ownership remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 123,
+      "y0": 374,
+      "x1": 1117,
+      "y1": 832
+    },
+    "margins": {
+      "left": 123,
+      "right": 136,
+      "top": 374,
+      "bottom": 421
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

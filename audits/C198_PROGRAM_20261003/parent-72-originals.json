@@ -1,0 +1,948 @@
+{
+  "count": 72,
+  "distinctOriginalHashes": 72,
+  "batches": {
+    "A": 24,
+    "B": 24,
+    "C": 24
+  },
+  "admissionCountClaimed": 0,
+  "rows": [
+    {
+      "batch": "A",
+      "id": "01-red-fox",
+      "name": "Red Fox",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/01-red-fox/master.png",
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+      "bytes": 1346170,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "02-hyena",
+      "name": "Hyena",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/02-hyena/master.png",
+      "sha256": "dd485b4e648a0dc0a7bb7d7314df4bedd7a22046041937223990f3ca8b699fae",
+      "bytes": 1371160,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "03-sloth-bear",
+      "name": "Sloth Bear",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/03-sloth-bear/master.png",
+      "sha256": "04c3982b75838e92dd708b9ca4a9a2b0aeb24bdc7a7d64c26fc2634a789799da",
+      "bytes": 1593658,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "04-brown-bear",
+      "name": "Brown Bear",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/04-brown-bear/master.png",
+      "sha256": "1567aaa877416d5903f849e80f2d8f7ef3a601d93b84a1a96d942cb4f642b8ef",
+      "bytes": 1372873,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "05-bear",
+      "name": "Bear",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/05-bear/master.png",
+      "sha256": "9f6c3c41dd8df4b7bd0ad636306b88126279aac851a42c61c302f909eb9d00d9",
+      "bytes": 1452744,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "06-grizzly-bear",
+      "name": "Grizzly Bear",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/06-grizzly-bear/master.png",
+      "sha256": "5c10271f242c78e3d55f06a392b061e1ccd3a51ea8e5844f15726d49be1fca17",
+      "bytes": 1522695,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "07-kinkajou",
+      "name": "Kinkajou",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/07-kinkajou/master.png",
+      "sha256": "952caeae2c72277e5d260d5f67343655de0427d85295bcd645be14006f58f73a",
+      "bytes": 1313511,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "08-civet",
+      "name": "Civet",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/08-civet/master.png",
+      "sha256": "43087c84eb1fcdb638849f14af23f9a582d7408e9ff199b38cb99b6bd204d373",
+      "bytes": 1307755,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "09-stoat",
+      "name": "Stoat",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/09-stoat/master.png",
+      "sha256": "42303e5699497bff2968067ba085099d92ca3fdb20d66a15e7cd446c331db880",
+      "bytes": 1231117,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "10-squirrel",
+      "name": "Squirrel",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/10-squirrel/master.png",
+      "sha256": "b482f5cd3cbeb4dd5602049210113027ca21a3973cac6a1bf305328776c6fbd7",
+      "bytes": 1511097,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "11-chipmunk",
+      "name": "Chipmunk",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/11-chipmunk/master.png",
+      "sha256": "38e11107b041cf1f84c727bceb73c4ae6045144d7deeca936e70bbcaa8b5778c",
+      "bytes": 1399352,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "12-vole",
+      "name": "Vole",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/12-vole/master.png",
+      "sha256": "98a988179ff3f017d9dff72ee6298e80b590a8b7e3d58afdeeb24b8546ab0e15",
+      "bytes": 1455520,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "13-mole",
+      "name": "Mole",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/13-mole/master.png",
+      "sha256": "f97383e74208d95804237bbad89dea10d45d1eb6087d77a2af9ef3f569219b14",
+      "bytes": 1356989,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "14-shrew",
+      "name": "Shrew",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/14-shrew/master.png",
+      "sha256": "988c8418d4a4cb8e47c6e8ef3dcfb6b142b5bc85bfb7fe92ad33ad7bcbc9a36d",
+      "bytes": 1268102,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "15-hedgehog",
+      "name": "Hedgehog",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/15-hedgehog/master.png",
+      "sha256": "60677ffdb14c8afac6e225b99d758c414825ce3262fbd9e89de0945c4c90711b",
+      "bytes": 1454352,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "16-lemming",
+      "name": "Lemming",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/16-lemming/master.png",
+      "sha256": "1a25a2e00ec1839f9c6be02d3c2bb418698838d24872b797b959c7a006110c07",
+      "bytes": 1369121,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "17-hamster",
+      "name": "Hamster",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/17-hamster/master.png",
+      "sha256": "5cbee5e34db4769ed29aac3a574e3b1f87c8e6986c1636445c97cf1f37616c37",
+      "bytes": 1347189,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "18-agouti",
+      "name": "Agouti",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/18-agouti/master.png",
+      "sha256": "3999f1e00d99a3a670a72e1fa57129049cb5d154e8d5c41809490ec15c7117ac",
+      "bytes": 1331965,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "19-guinea-pig",
+      "name": "Guinea Pig",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/19-guinea-pig/master.png",
+      "sha256": "04c68ba4d125d0de0b8279bcf5d0c34fed2a76597b67bce2b9b4d01c47a0b0fa",
+      "bytes": 1426537,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "20-rat",
+      "name": "Rat",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/20-rat/master.png",
+      "sha256": "cbf545ceb723dbcc6832844ede4c06ffcb5bda3b5fec4c08dc53ab5321f99724",
+      "bytes": 1226708,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "21-tasmanian-devil",
+      "name": "Tasmanian Devil",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/21-tasmanian-devil/master.png",
+      "sha256": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+      "bytes": 1370769,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "22-rabbit",
+      "name": "Rabbit",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/22-rabbit/master.png",
+      "sha256": "189e708c531b80c6768a64e09b185b3317293f271606f5a8b3df045ad9ba377f",
+      "bytes": 1370366,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "23-pika",
+      "name": "Pika",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/23-pika/master.png",
+      "sha256": "c15ffff156b3006716cf4af1d783c531e7da956bf0c30888aaa980988539e2ff",
+      "bytes": 1526604,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "A",
+      "id": "24-snowshoe-hare",
+      "name": "Snowshoe Hare",
+      "master": "audits/C198_CREATURE_SUPPLY_A_20261003/24-snowshoe-hare/master.png",
+      "sha256": "89f7b4946f99c6300bc7a1849a7485fae6500c7dafb04c9733d053b58c988d7f",
+      "bytes": 1301377,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "01-gorilla",
+      "name": "Gorilla",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/01-gorilla/master.png",
+      "sha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+      "bytes": 1526890,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "02-capuchin",
+      "name": "Capuchin",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/02-capuchin/master.png",
+      "sha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+      "bytes": 1324004,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "03-squid",
+      "name": "Squid",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/03-squid/master.png",
+      "sha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+      "bytes": 1288142,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "04-cuttlefish",
+      "name": "Cuttlefish",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish/master.png",
+      "sha256": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+      "bytes": 1415800,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "05-diving-beetle",
+      "name": "Diving Beetle",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/05-diving-beetle/master.png",
+      "sha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+      "bytes": 1361660,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "06-chimpanzee",
+      "name": "Chimpanzee",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/06-chimpanzee/master.png",
+      "sha256": "4dd09305212d67f308fbb4ef00446473364b715868d16be4318fbce93c39851e",
+      "bytes": 1459166,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "07-howler-monkey",
+      "name": "Howler Monkey",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/07-howler-monkey/master.png",
+      "sha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+      "bytes": 1399791,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "08-spider-monkey",
+      "name": "Spider Monkey",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/08-spider-monkey/master.png",
+      "sha256": "1caa0ccefe5a80ac85b149c9da56278c016abb97dd7d49d27ef2d1cff92b1484",
+      "bytes": 1359761,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "09-tamarin",
+      "name": "Tamarin",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/09-tamarin/master.png",
+      "sha256": "53ba5f05bc48a04a7e173c160cb9b6c2373b1262275ed765953a09f4e02204b7",
+      "bytes": 1454669,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "10-macaque",
+      "name": "Macaque",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/10-macaque/master.png",
+      "sha256": "7c881d97d530002b51d67de4f9028cacd7c7817452b7fa23989136d9f45f820b",
+      "bytes": 1311805,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "11-langur",
+      "name": "Langur",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/11-langur/master.png",
+      "sha256": "95fce120eb86226a5cea32ef435146e9c9d40d5fb883e3853d64736f1e2df7bd",
+      "bytes": 1254084,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "12-baboon",
+      "name": "Baboon",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/12-baboon/master.png",
+      "sha256": "51550b9472c88e69eb75f641b74302fbdb441d1ded007c97b6f12b75936f9aee",
+      "bytes": 1475177,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "13-lemur",
+      "name": "Lemur",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/13-lemur/master.png",
+      "sha256": "088b43fc6861019b83ebf84ae64d674f674c9769f29dcafd0f2e3fdd6c8d9824",
+      "bytes": 1406313,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "14-mandrill",
+      "name": "Mandrill",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/14-mandrill/master.png",
+      "sha256": "be36b1f317c7c4eb0fd0480d1d5fea6b54d54548ba8a15e31a56bd0bc8f9616a",
+      "bytes": 1563893,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "15-marmoset",
+      "name": "Marmoset",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/15-marmoset/master.png",
+      "sha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+      "bytes": 1406229,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "16-octopus",
+      "name": "Octopus",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/16-octopus/master.png",
+      "sha256": "23e3a0b205f734d69f0cb44cea7e2ad4eb24b2d9103f93d29f9ea3a56be1d5eb",
+      "bytes": 1509239,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "17-giant-octopus",
+      "name": "Giant Octopus",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/17-giant-octopus/master.png",
+      "sha256": "e8895811a54507616b12324b16636cb483a937d9e915d6086f7789d3d35c28fb",
+      "bytes": 1598478,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "18-centipede",
+      "name": "Centipede",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/18-centipede/master.png",
+      "sha256": "ade637f8363cd5ce51ecebab5e0e58adc2a37fad595d969c0a4f5e8f6a2e20df",
+      "bytes": 1134769,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "19-giant-centipede",
+      "name": "Giant Centipede",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/19-giant-centipede/master.png",
+      "sha256": "660c90f614be72b9d6814013724b1357bfdc498c0a8647b7c8d31c590140d55a",
+      "bytes": 1181377,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "20-millipede",
+      "name": "Millipede",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/20-millipede/master.png",
+      "sha256": "377d6c9aa73ba4f1fa3994c784edff8c22769af3818775dfeee860fa536157bb",
+      "bytes": 1160302,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "21-leafcutter-ant",
+      "name": "Leafcutter Ant",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/21-leafcutter-ant/master.png",
+      "sha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+      "bytes": 1360850,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "22-locust",
+      "name": "Locust",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/22-locust/master.png",
+      "sha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+      "bytes": 1315123,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "23-grasshopper",
+      "name": "Grasshopper",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/23-grasshopper/master.png",
+      "sha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+      "bytes": 1269247,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "B",
+      "id": "24-dobsonfly",
+      "name": "Dobsonfly",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/24-dobsonfly/master.png",
+      "sha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+      "bytes": 1214767,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "01-crane",
+      "name": "Crane",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/01-crane/master.png",
+      "sha256": "9a7c6e1486f5f51cd402079e44faad59405d06965cb3157fedee526445b9ba58",
+      "bytes": 1217241,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "02-flamingo",
+      "name": "Flamingo",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/02-flamingo/master.png",
+      "sha256": "1a8827a4e64120ad280b8ffb1123b68b858669fbe777db08318258d8f07692e4",
+      "bytes": 1182966,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "03-plover",
+      "name": "Plover",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/03-plover/master.png",
+      "sha256": "30d96db1a148f540afdb372717d4104c873b60a6636065e9357f0c8b18ee6143",
+      "bytes": 1246253,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "04-partridge",
+      "name": "Partridge",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/04-partridge/master.png",
+      "sha256": "a1dc9499ecf8ccb2af058d7c8a6ca01f433e1834e1d46b666a193b9f44834573",
+      "bytes": 1285794,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "05-rooster",
+      "name": "Rooster",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/05-rooster/master.png",
+      "sha256": "577f8cb725826e3af4458667b6f6cc7706379603d17f4605a252a9b76f295416",
+      "bytes": 1340505,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "06-secretary-bird",
+      "name": "Secretary Bird",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/06-secretary-bird/master.png",
+      "sha256": "6d31085268258a90672c5efd95196be1d05dc1137985730c203c117ce7914f02",
+      "bytes": 1283238,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "07-cardinal",
+      "name": "Cardinal",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/07-cardinal/master.png",
+      "sha256": "2267fc6ed83ba7cc369567664565b882ab67022a772b6c9bd2319b2df232fe8f",
+      "bytes": 1285100,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "08-swallow",
+      "name": "Swallow",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/08-swallow/master.png",
+      "sha256": "a33e03e1b84ddfce161e3666e99b5636ea4864a2843ad3c77453f1166500859f",
+      "bytes": 1126902,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "09-jay",
+      "name": "Jay",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/09-jay/master.png",
+      "sha256": "ee8809c04821ac104306b56dd641a712c6a13b345f3d7d52e8387e7763715f58",
+      "bytes": 1267474,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "10-rhea",
+      "name": "Rhea",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/10-rhea/master.png",
+      "sha256": "aa82e8b95912f35b1b4307a860aa903fd23355deddcbb7a6b007731ef7e4ae4a",
+      "bytes": 1324587,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "11-albatross",
+      "name": "Albatross",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/11-albatross/master.png",
+      "sha256": "96b1750faf0a6e1f8844ae75bdaa8f7b3cee3c1b0392643e84b1978c65d58657",
+      "bytes": 1250330,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "12-snow-petrel",
+      "name": "Snow Petrel",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/12-snow-petrel/master.png",
+      "sha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+      "bytes": 1210796,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "13-catfish",
+      "name": "Catfish",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/13-catfish/master.png",
+      "sha256": "2e3e86407a405bf6037628c6209746d3cd9ed532f7fd51b8aee283c6d269d9b8",
+      "bytes": 1256062,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "14-bowfin",
+      "name": "Bowfin",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin/master.png",
+      "sha256": "a67c727c1f09ef24ab3495aadf8ab77e7b683c69f16fd3ae625cfdcd4296059c",
+      "bytes": 1399990,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "15-arapaima",
+      "name": "Arapaima",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima/master.png",
+      "sha256": "fa0ca18dfc4b4e8d7fd9bdaa4461b04a98790775b0f98f18b2094e82f8b2e21e",
+      "bytes": 1374055,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "16-arowana",
+      "name": "Arowana",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana/master.png",
+      "sha256": "f59ce9cc07a6b2285e9b83663e8663d83682084f359481d7673e3d231f6f5583",
+      "bytes": 1367995,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "17-lungfish",
+      "name": "Lungfish",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/17-lungfish/master.png",
+      "sha256": "47b577b53ae7973fd5f423c27230b5c3145ccb0775f7db350d6f1e07373f0fee",
+      "bytes": 1166054,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "18-snapper",
+      "name": "Snapper",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/18-snapper/master.png",
+      "sha256": "4b60ed85878dbdd9e922fd8c4ce3e425a747422b00f3dd9172336cc50401066e",
+      "bytes": 1405608,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "19-triggerfish",
+      "name": "Triggerfish",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/19-triggerfish/master.png",
+      "sha256": "dca1dfb1e7d61703412b3f220cccc2a9d0ddd67dd2b6a51ac66f8133c2624b1d",
+      "bytes": 1511888,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "20-cardinalfish",
+      "name": "Cardinalfish",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/20-cardinalfish/master.png",
+      "sha256": "d38267469d39b9669fff0dbe743cba14bc430e404051d0f2ba713c2cfbccb350",
+      "bytes": 1398560,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "21-lionfish",
+      "name": "Lionfish",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/21-lionfish/master.png",
+      "sha256": "2defa8bbc7a26b30b0d6afec780d9412491c4d00995155a4cbb3a02bf11bc675",
+      "bytes": 1554848,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "22-pufferfish",
+      "name": "Pufferfish",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/22-pufferfish/master.png",
+      "sha256": "79fa0f7eb10037c977106d09b20a60b46e4000736080cb4a230e73305f16c670",
+      "bytes": 1402201,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "23-fangtooth",
+      "name": "Fangtooth",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth/master.png",
+      "sha256": "d4830af6282015d8a27c53f0c9aeaad637042cd769e01563b3c43a7183e13a57",
+      "bytes": 1422014,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    },
+    {
+      "batch": "C",
+      "id": "24-remora",
+      "name": "Remora",
+      "master": "audits/C198_CREATURE_SUPPLY_C_20261003/24-remora/master.png",
+      "sha256": "624270b22c441173879f495a194f87583af5679b4061e04e29f41ab44d7be96e",
+      "bytes": 1157625,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "unmodifiedGeneratedOriginal": true
+    }
+  ]
+}

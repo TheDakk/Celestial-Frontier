@@ -1,0 +1,14 @@
+{
+  "id": "08-civet",
+  "name": "Civet",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-7a0e872e-f3b5-4302-9582-4d54e27d0057.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "43087c84eb1fcdb638849f14af23f9a582d7408e9ff199b38cb99b6bd204d373",
+  "bytes": 1307755,
+  "promptSha256": "675218f9326d153139cf6269a7a16319dc77912a2e774166877de00b94cc8f32",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

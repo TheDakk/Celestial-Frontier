@@ -1,0 +1,14 @@
+{
+  "id": "20-millipede",
+  "name": "Millipede",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-4f58a2ef-8123-46a7-a3f8-8b5f6bafafab.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "377d6c9aa73ba4f1fa3994c784edff8c22769af3818775dfeee860fa536157bb",
+  "bytes": 1160302,
+  "promptSha256": "876ca967b0d4941f4b700c5e5d61a41cf19ff78911e6488be2f97a7eebc67ce8",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

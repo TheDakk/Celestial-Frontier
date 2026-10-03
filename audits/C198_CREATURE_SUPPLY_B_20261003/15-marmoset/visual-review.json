@@ -1,0 +1,28 @@
+{
+  "name": "Marmoset",
+  "masterSha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: mottled brown/gray small primate, broad white ear tufts, pale forehead mark and long banded furry tail. Four clawed distal limbs visible, but roots remain fur-covered and contacts are unequal. Ear tufts conceal actual ear rims; exact nail/claw anatomy and fringe ownership held. No inferred hidden anatomy.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 229,
+      "y0": 333,
+      "x1": 1025,
+      "y1": 924
+    },
+    "margins": {
+      "left": 229,
+      "right": 228,
+      "top": 333,
+      "bottom": 329
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

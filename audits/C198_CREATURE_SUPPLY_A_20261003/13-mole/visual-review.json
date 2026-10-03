@@ -1,0 +1,28 @@
+{
+  "name": "Mole",
+  "masterSha256": "f97383e74208d95804237bbad89dea10d45d1eb6087d77a2af9ef3f569219b14",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: dark velvety fur, long pink snout, short bare tail, two large splayed digging forepaws and two smaller hind feet. No external ear pinnae invented. Eyes are not independently visible and upper far roots are hidden; not suitable for declaring visible eye landmarks without an actual supported contract. Source claw counts and projected contact plane remain review holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 160,
+      "y0": 414,
+      "x1": 1104,
+      "y1": 840
+    },
+    "margins": {
+      "left": 160,
+      "right": 149,
+      "top": 414,
+      "bottom": 413
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Diving Beetle",
+  "masterSha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: dark oval closed elytra with yellow-tan border, two full segmented antennae, mouthpart tips and two fringed paddle-like hind legs. Five distal leg tips are clear; a sixth complete leg/root path is not independently resolved. Source remains side-oblique and fails the requested six-independent-chain visibility despite clearer antennae. Right antenna approaches the 8% edge; original framing must include its fine tip. No hidden root/leg or flight wing is invented.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 132,
+      "y0": 362,
+      "x1": 1158,
+      "y1": 895
+    },
+    "margins": {
+      "left": 132,
+      "right": 95,
+      "top": 362,
+      "bottom": 358
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

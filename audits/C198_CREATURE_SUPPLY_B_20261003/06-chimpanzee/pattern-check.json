@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Chimpanzee",
+  "masterSha256": "4dd09305212d67f308fbb4ef00446473364b715868d16be4318fbce93c39851e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

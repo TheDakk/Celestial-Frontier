@@ -1,0 +1,138 @@
+{
+  "id": "04-cuttlefish",
+  "name": "Cuttlefish",
+  "family": "cephalopod",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 26363,
+    "coreRadius": 30,
+    "bodyBox": {
+      "x0": 91,
+      "y0": 117,
+      "x1": 282,
+      "y1": 228
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0127,
+        "pixels": 334,
+        "box": {
+          "x0": 130,
+          "y0": 109,
+          "x1": 189,
+          "y1": 116
+        },
+        "attach": {
+          "x": 159.5,
+          "y": 116,
+          "relX": 0.36,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.34,
+          "y": -0.94
+        },
+        "class": "top",
+        "length": 30.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0384,
+        "pixels": 1012,
+        "box": {
+          "x0": 67,
+          "y0": 126,
+          "x1": 94,
+          "y1": 191
+        },
+        "attach": {
+          "x": 90.2,
+          "y": 159.2,
+          "relX": 0,
+          "relY": 0.38
+        },
+        "dir": {
+          "x": -0.77,
+          "y": -0.64
+        },
+        "class": "top",
+        "length": 40.4
+      },
+      {
+        "k": 2,
+        "frac": 0.2492,
+        "pixels": 6569,
+        "box": {
+          "x0": 182,
+          "y0": 177,
+          "x1": 352,
+          "y1": 320
+        },
+        "attach": {
+          "x": 256,
+          "y": 218.7,
+          "relX": 0.86,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": 0.39,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 139.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0068,
+        "pixels": 179,
+        "box": {
+          "x0": 97,
+          "y0": 203,
+          "x1": 128,
+          "y1": 211
+        },
+        "attach": {
+          "x": 112.5,
+          "y": 203,
+          "relX": 0.11,
+          "relY": 0.77
+        },
+        "dir": {
+          "x": -0.18,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 17.4
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 262,
+        "x1": 294,
+        "cx": 281.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

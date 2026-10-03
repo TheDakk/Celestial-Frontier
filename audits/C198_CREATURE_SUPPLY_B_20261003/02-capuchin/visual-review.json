@@ -1,0 +1,28 @@
+{
+  "name": "Capuchin",
+  "masterSha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: dark cap/back, cream face/chest, long continuous raised open-curved tail, both hands and both feet visible with separated distal fingers/toes. Far upper leg and shoulder roots remain behind body/near limbs, with unequal projected support heights; the nearest hand lies lower than the other contacts. Both eyes visible but only near ear complete. Useful four-endpoint source improvement; complete independent root chains and single-plane motion remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 228,
+      "y0": 297,
+      "x1": 998,
+      "y1": 951
+    },
+    "margins": {
+      "left": 228,
+      "right": 255,
+      "top": 297,
+      "bottom": 302
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

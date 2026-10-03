@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Grasshopper",
+  "masterSha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

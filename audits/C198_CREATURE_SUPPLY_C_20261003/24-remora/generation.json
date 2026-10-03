@@ -1,0 +1,14 @@
+{
+  "id": "24-remora",
+  "name": "Remora",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-d5318889-4839-489c-950d-00757f68ad5d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "624270b22c441173879f495a194f87583af5679b4061e04e29f41ab44d7be96e",
+  "bytes": 1157625,
+  "promptSha256": "d2d1eaf63726288dae19dff4233134239c1a4adb122dc9e54388d42056c0e269",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

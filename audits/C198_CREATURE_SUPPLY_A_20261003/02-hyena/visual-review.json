@@ -1,0 +1,28 @@
+{
+  "name": "Hyena",
+  "masterSha256": "dd485b4e648a0dc0a7bb7d7314df4bedd7a22046041937223990f3ca8b699fae",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: tan coat with dark spots, heavier forequarters, sloping back, dark muzzle and short tufted tail; four distinct paws and two ear outlines. Ears are notably elongated/pointed rather than rounded spotted-hyena ears, so exact canonical identity remains held. Far limb/ear bases partly hidden, contacts slightly unequal. Preserve the anatomy ambiguity rather than relabeling species.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 274,
+      "y0": 305,
+      "x1": 1034,
+      "y1": 940
+    },
+    "margins": {
+      "left": 274,
+      "right": 219,
+      "top": 305,
+      "bottom": 313
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

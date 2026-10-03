@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Lemur",
+  "masterSha256": "088b43fc6861019b83ebf84ae64d674f674c9769f29dcafd0f2e3fdd6c8d9824",
+  "required": [
+    "black-and-white ringed tail longer than the body"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black-and-white ringed tail longer than the body",
+      "status": "PRESENT",
+      "observed": "Full-size: gray/russet body, white/dark facial mask, yellow eyes and long black-white ringed tail in an open arc. Four separate hands/feet, with far roots behind torso and differing support heights. Ring pattern is clearly visible. Far ear base and distal digit counts require review; no complete anatomical or motion admission."
+    }
+  ]
+}

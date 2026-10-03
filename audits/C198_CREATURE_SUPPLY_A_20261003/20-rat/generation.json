@@ -1,0 +1,14 @@
+{
+  "id": "20-rat",
+  "name": "Rat",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3619fb18-de54-4fc0-aa1b-4015f1663e57.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cbf545ceb723dbcc6832844ede4c06ffcb5bda3b5fec4c08dc53ab5321f99724",
+  "bytes": 1226708,
+  "promptSha256": "a521b4eb3cd84c9e19e0440b9a1c8341a15156ae939ff6b5f6b69e1d84615cdb",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

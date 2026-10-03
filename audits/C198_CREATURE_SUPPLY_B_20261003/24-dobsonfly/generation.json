@@ -1,0 +1,14 @@
+{
+  "id": "24-dobsonfly",
+  "name": "Dobsonfly",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f7bdaf7a-16ba-453d-afee-b1153eb4c750.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+  "bytes": 1214767,
+  "promptSha256": "8d6250851c9337c49d7fab27c3c2056c4d69a557fd1d4875fc8042c34f2a7eb3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

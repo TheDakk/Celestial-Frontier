@@ -1,0 +1,28 @@
+{
+  "name": "Red Fox",
+  "masterSha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: russet coat, white throat/muzzle and broad white tail tip, black lower legs/ear tips. Four distinct paws/limbs and two ear outlines visible; far upper roots and ear base partly occluded. Continuous bushy tail separate from feet. Useful source contours, with fur-fringe and single-plane support review still required; no rig admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 164,
+      "y0": 287,
+      "x1": 1053,
+      "y1": 917
+    },
+    "margins": {
+      "left": 164,
+      "right": 200,
+      "top": 287,
+      "bottom": 336
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

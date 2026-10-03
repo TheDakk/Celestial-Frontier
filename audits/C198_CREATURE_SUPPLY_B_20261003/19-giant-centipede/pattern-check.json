@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Giant Centipede",
+  "masterSha256": "660c90f614be72b9d6814013724b1357bfdc498c0a8647b7c8d31c590140d55a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

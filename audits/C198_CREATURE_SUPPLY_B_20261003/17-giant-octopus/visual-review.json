@@ -1,0 +1,28 @@
+{
+  "name": "Giant Octopus",
+  "masterSha256": "e8895811a54507616b12324b16636cb483a937d9e915d6086f7789d3d35c28fb",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: mottled russet mantle, near eye and partial far eye, siphon, broad webbed arm roots and eight visible terminal tips including a small rear tip partly behind another arm. Several root-to-tip paths overlap; eighth rear-root path and full far eye are not independently exposed. Suckers and no fins preserved. Counted tips do not establish eight complete chains; reference anatomy hold remains.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 151,
+      "y0": 219,
+      "x1": 1135,
+      "y1": 1012
+    },
+    "margins": {
+      "left": 151,
+      "right": 118,
+      "top": 219,
+      "bottom": 241
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

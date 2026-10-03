@@ -1,0 +1,14 @@
+{
+  "id": "02-hyena",
+  "name": "Hyena",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-3450c72c-5ec9-49c1-bc60-589f7a789306.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "dd485b4e648a0dc0a7bb7d7314df4bedd7a22046041937223990f3ca8b699fae",
+  "bytes": 1371160,
+  "promptSha256": "6a9f79d4a188690a9cb8fb98290bdcafbc9491c2c6932448b679093a712939b2",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

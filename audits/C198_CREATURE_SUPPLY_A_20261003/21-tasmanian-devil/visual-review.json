@@ -1,0 +1,28 @@
+{
+  "name": "Tasmanian Devil",
+  "masterSha256": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: stocky black coat, white chest crescent, broad pale muzzle, two reddish ear outlines, thick furry tail and four separate clawed feet. Far upper roots partly obscured, far ear reads pointed and tail/ear proportions need species review. All contacts visible as tips without full-chain or motion claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 191,
+      "y0": 330,
+      "x1": 1057,
+      "y1": 905
+    },
+    "margins": {
+      "left": 191,
+      "right": 196,
+      "top": 330,
+      "bottom": 348
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

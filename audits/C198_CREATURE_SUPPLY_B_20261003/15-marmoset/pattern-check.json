@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Marmoset",
+  "masterSha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+  "required": [
+    "long banded tail that cannot grip"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "long banded tail that cannot grip",
+      "status": "PRESENT",
+      "observed": "Full-size: mottled brown/gray small primate, broad white ear tufts, pale forehead mark and long banded furry tail. Four clawed distal limbs visible, but roots remain fur-covered and contacts are unequal. Ear tufts conceal actual ear rims; exact nail/claw anatomy and fringe ownership held. No inferred hidden anatomy."
+    }
+  ]
+}

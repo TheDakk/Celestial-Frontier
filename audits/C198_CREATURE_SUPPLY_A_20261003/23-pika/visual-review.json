@@ -1,0 +1,28 @@
+{
+  "name": "Pika",
+  "masterSha256": "c15ffff156b3006716cf4af1d783c531e7da956bf0c30888aaa980988539e2ff",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: rounded brown-gray body, two round ear outlines, pale underside, no external tail and four separate furry feet. Far-ear root and far upper limbs remain covered. Leg length/posture, source digits and motion require review; no inferred tail or hidden landmarks.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 255,
+      "y0": 309,
+      "x1": 1019,
+      "y1": 919
+    },
+    "margins": {
+      "left": 255,
+      "right": 234,
+      "top": 309,
+      "bottom": 334
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

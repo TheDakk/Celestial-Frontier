@@ -1,0 +1,14 @@
+{
+  "id": "09-jay",
+  "name": "Jay",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-8009946e-7c8d-4ee3-a2f6-28cbf4818445.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ee8809c04821ac104306b56dd641a712c6a13b345f3d7d52e8387e7763715f58",
+  "bytes": 1267474,
+  "promptSha256": "9897f7746e26967295b29c1d5716578a74457b864976496d64e53158cfbc1394",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

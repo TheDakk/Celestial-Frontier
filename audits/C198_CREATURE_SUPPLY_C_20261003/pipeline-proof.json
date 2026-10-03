@@ -1,0 +1,469 @@
+{
+  "schema": "cf.g2-source-pipeline-proof/v1",
+  "scope": "24 unchanged canonical compiler routes with disclosed source-visibility/composition additions. Native generator bytes retained. No authoring, native, reference-pool, runtime or gallery admission.",
+  "sourceCompiler": {
+    "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+    "sha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+  },
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "batchCompilerSha256": "263d500eaf1948488008b8355e7a604f411f34bf1f78a136b18b5c3facc27610",
+  "coveredAtSelection": 251,
+  "entries": [
+    {
+      "name": "Crane",
+      "id": "01-crane",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "6de7b39ca2b458ba2fd1c93426eea11b6126f54c0bbff7adf30370fbd1a75d02",
+      "finalPromptSha256": "70a7fba16023ccafe8f85bbca04af70a960320b0112b3f3ca4b720b608953712",
+      "masterSha256": "9a7c6e1486f5f51cd402079e44faad59405d06965cb3157fedee526445b9ba58",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two separate leg shafts and complete feet, red crown and drooping bustle visible; far wing root hidden by body/near wing. Neck continuous. Whole original has generous margins; hand and source shape candidate only."
+    },
+    {
+      "name": "Flamingo",
+      "id": "02-flamingo",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "490d033e3edcb83f1beb3e6ed5004618583b6c331b5af3f0fc377b3533393ea5",
+      "finalPromptSha256": "246e3df782df3c6b2a7f19c0fba59e68039e4b6dae24254ff232e2b67b2ef301",
+      "masterSha256": "1a8827a4e64120ad280b8ffb1123b68b858669fbe777db08318258d8f07692e4",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two complete leg shafts and webbed feet, downward hooked bill and continuous neck visible. Far wing hidden; shoulder and leg roots feather-covered, not invented. Fine tail tips complete with generous margins. Pink natural plumage must be preserved through keying."
+    },
+    {
+      "name": "Plover",
+      "id": "03-plover",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "2e5cdb133488d59ef46c6096281ea7060b5e7c349779133302b7eedc34d1f12e",
+      "finalPromptSha256": "042e0ec70802d36c38e7be822f7d6e863f737e037f4c06c378622a1b7bc57fe8",
+      "masterSha256": "30d96db1a148f540afdb372717d4104c873b60a6636065e9357f0c8b18ee6143",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two visible legs and complete toes, continuous short tail and brown/white banding. Far wing hidden; enlarged eye/head stylization remains full-size review hold. Generous all-side original margins."
+    },
+    {
+      "name": "Partridge",
+      "id": "04-partridge",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d454f9631a36e570b6306a484319a786935a18bcfa8ed23a7cae2738412310ba",
+      "finalPromptSha256": "6b5e9e822f95c24789ca22d13380603ddd93cc2e7d50ac180c94923422eb3a16",
+      "masterSha256": "a1dc9499ecf8ccb2af058d7c8a6ca01f433e1834e1d46b666a193b9f44834573",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two complete legs/feet and natural short tail continuous. Flank bars and face contrast retained. Far wing root hidden; upper leg emergence is feathered, exact owner needs review. Generous margins."
+    },
+    {
+      "name": "Rooster",
+      "id": "05-rooster",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "985c805fbd1e76fae49374cdcffbcf078481f00c92100324dcf64f948e62ad5c",
+      "finalPromptSha256": "6754b0c1c4481ac647be14f5454e700b5bef1da6660dc0a97ec16a9e7609a26d",
+      "masterSha256": "577f8cb725826e3af4458667b6f6cc7706379603d17f4605a252a9b76f295416",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two complete legs/feet/spurs, comb/wattles and long sickle tail complete with generous margins. Far wing concealed and near wing merges into saddle feather edge; face shows a questionable small pale cheek feature, requires full-size identity review."
+    },
+    {
+      "name": "Secretary Bird",
+      "id": "06-secretary-bird",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "9cb4fa8c1c8eb9dfe91a46a77c5868abf83c5cc0ff1a188a64af3943200aa80d",
+      "finalPromptSha256": "fd2783a9af2e7ec309425cbbd1949dc2cdb4da58cfb0b0f3af8013368c76fd08",
+      "masterSha256": "6d31085268258a90672c5efd95196be1d05dc1137985730c203c117ce7914f02",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two long independently visible legs and complete toes; head plumes and long tail intact. Far wing/root hidden; near shoulder ownership needs author review. Full-size feather textures crisp, every tip with generous margins."
+    },
+    {
+      "name": "Cardinal",
+      "id": "07-cardinal",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5488b647c7fc67c91ffc2ca3c8073e23962482cb59cd0b6e99e3bd11f55825e9",
+      "finalPromptSha256": "e072be585bc0d306137dc4444ae4e115f318e8da8b79d68a20236799b39f39c5",
+      "masterSha256": "2267fc6ed83ba7cc369567664565b882ab67022a772b6c9bd2319b2df232fe8f",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two complete feet, red body, black face mask, crest and long attached feather tail. Near wing clear; far wing concealed. Large eye and crest exaggeration remain style/anatomy review holds. Original margins visually >8%."
+    },
+    {
+      "name": "Swallow",
+      "id": "08-swallow",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d6299730b521e22213fe335838669f8b6e650b83edb0fe32de22b28da6580acb",
+      "finalPromptSha256": "825e6dba7deb627f90de53e5233df59a1c6903d022f3594b67c775a2d456f1a5",
+      "masterSha256": "a33e03e1b84ddfce161e3666e99b5636ea4864a2843ad3c77453f1166500859f",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two tiny complete planted feet and both long tail streamers inside generous margins. Near wing and tail overlap, far wing hidden; blue back/orange throat/cream belly retained. Short leg roots partly feather-hidden."
+    },
+    {
+      "name": "Jay",
+      "id": "09-jay",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5b28ed9d030f925701e7cf29ac2c474b2b3db9bfdb89ad2674e3a5de6501b63f",
+      "finalPromptSha256": "9897f7746e26967295b29c1d5716578a74457b864976496d64e53158cfbc1394",
+      "masterSha256": "ee8809c04821ac104306b56dd641a712c6a13b345f3d7d52e8387e7763715f58",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two feet, barred blue-white wing/tail, crest and black facial collar clearly painted. Complete tail tip with generous margins. Far wing hidden; near wing root feathered, not directly separable from body without careful source tracing."
+    },
+    {
+      "name": "Rhea",
+      "id": "10-rhea",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "681586356a82a326cf6fa9a3ac9878cb52a0b0d98a28ec228b5c25dc60665cc1",
+      "finalPromptSha256": "165e67cf1bcf7001be285ae9006481bffcbc00d5f9fbddbf0e6a644c14a6217a",
+      "masterSha256": "aa82e8b95912f35b1b4307a860aa903fd23355deddcbb7a6b007731ef7e4ae4a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two complete three-toed feet, legs and two partly raised wing contours visible. Far wing attachment remains partly body-occluded; flightless wing anatomy and broad near-wing coverage require author review. Complete silhouette has generous margins."
+    },
+    {
+      "name": "Albatross",
+      "id": "11-albatross",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "ec2047f4525a65e7ebbe780fea02ca1994aa72f7fa6d9894c8e76561e6d50d8e",
+      "finalPromptSha256": "f43146852c4c22b41e2095935cbffbf3850e653496858946d915b960a25a54ea",
+      "masterSha256": "96b1750faf0a6e1f8844ae75bdaa8f7b3cee3c1b0392643e84b1978c65d58657",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two complete webbed feet and bill, attached short tail visible. Far wing hidden and near folded wing overlaps tail base; leg roots feather-covered. Generous original margins, no source admission."
+    },
+    {
+      "name": "Snow Petrel",
+      "id": "12-snow-petrel",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "ce19423ed2289d9ab10f171183d9db69c9ba78fd99cbf6864eb3e54124a649a7",
+      "finalPromptSha256": "c9e62ff1c68bfd400bdf7c3602437383fd80df25253d747bcbc084aebd5e4793",
+      "masterSha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Two webbed feet and two partly lifted wings visible. Near shoulder continuous; far wing presents an edge-on distal fan and partially obscured root. White feather body/tail and dark bill retained, generous margins; authoring review required."
+    },
+    {
+      "name": "Catfish",
+      "id": "13-catfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "8731ad31286958e2bdd316a821b87ad7b589beb683d78b11f5f69bd83482ad85",
+      "finalPromptSha256": "24795e256c7360fc40deedd63e5a6e300c2fb9b15d4c29a6fb871111da3b1529",
+      "masterSha256": "2e3e86407a405bf6037628c6209746d3cd9ed532f7fd51b8aee283c6d269d9b8",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Whole tail, dorsal/adipose/anal fins and near paired-fin attachment visible, far fin roots obscured. Long mouth barbels reach roughly x1160 on1254 canvas: right margin about94px is below101px floor, original framing REFUSED even if a keyed mask loses those tips. Barbel count/root anatomy remains review hold."
+    },
+    {
+      "name": "Bowfin",
+      "id": "14-bowfin",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "7f1e8e37f034589e83089323416abe8cda679241dfd69a5eaefb647686125220",
+      "finalPromptSha256": "10cdb6bb2639350704ffdcbab644a0316c5e10f0b0c1e66639cb8867ed1159c5",
+      "masterSha256": "a67c727c1f09ef24ab3495aadf8ab77e7b683c69f16fd3ae625cfdcd4296059c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Full long dorsal and rounded tail with eye spot visible; near paired fins clear, far paired-fin attachment hidden. Silhouette reaches roughly x92 and1173, below101px margins on both sides: original framing REFUSED. Ventral fin count/shape requires author review."
+    },
+    {
+      "name": "Arapaima",
+      "id": "15-arapaima",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "1cc7d9a880fc819b889b8e620b58b45dff0a570cc17002cfe57da5bdb01ab1c5",
+      "finalPromptSha256": "cd366b32870276bf7c03b98bf795c2d7b8df3f3c75a112853abb395e5e9f5faa",
+      "masterSha256": "fa0ca18dfc4b4e8d7fd9bdaa4461b04a98790775b0f98f18b2094e82f8b2e21e",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Large scales and red rear pigmentation, posterior dorsal/anal and full rounded tail visible. Paired fin roots partly hidden. Silhouette reaches about70px on both horizontal edges: framing REFUSED. No anatomy admission."
+    },
+    {
+      "name": "Arowana",
+      "id": "16-arowana",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "adeaf3d348d2799ed7bdc549b85744bc5d90e70b35ccc462dc3d0ba9a2c720f5",
+      "finalPromptSha256": "31df825455226cfbce5bc66e643f4b4f3860387997e8d49febe30d35a327eb1e",
+      "masterSha256": "f59ce9cc07a6b2285e9b83663e8663d83682084f359481d7673e3d231f6f5583",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Complete red caudal/dorsal/anal fins and mouth barbels; far paired roots partly occluded. Rightmost barbel reaches about1157, leaving<101px: framing REFUSED. Large scales and paired barbels retained; near rays overlap other fins."
+    },
+    {
+      "name": "Lungfish",
+      "id": "17-lungfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "244792e398782a661f67c2ad6d65735cb3d7140caa757bbc3bc4acfb833c1239",
+      "finalPromptSha256": "027d1e72a644ead80995e427d420c61b1ceff69dfbf16be430990ec24fc7d1aa",
+      "masterSha256": "47b577b53ae7973fd5f423c27230b5c3145ccb0775f7db350d6f1e07373f0fee",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Continuous tapering median fin/tail and three visible filamentous paired appendages. Fourth paired-fin root/tip not visible, not invented. Whole original margins exceed101px; bilateral appendage completeness remains HOLD."
+    },
+    {
+      "name": "Snapper",
+      "id": "18-snapper",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "c9575b8d17ba5510ebdf829ce868721bc6f708bafbeca41047a6a0ade02f2557",
+      "finalPromptSha256": "5e6f577dad7bf3765bbda6ec3068f583177a2fca31796699bab5baf8513a3db3",
+      "masterSha256": "4b60ed85878dbdd9e922fd8c4ce3e425a747422b00f3dd9172336cc50401066e",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Full forked tail, dorsal spines, near pectoral and paired-looking ventral tips visible; far roots hidden. Red/silver scales and mouth teeth retained. Original margins generous; fin root separation and teeth count not admitted."
+    },
+    {
+      "name": "Triggerfish",
+      "id": "19-triggerfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "99f29ec29e6ea6f2929973e62208e265b155dc815af40cf7e16162bb35f07830",
+      "finalPromptSha256": "fbb4ee7e3a32822d5dec9aab9666c0526290c70938d8e5254d6c09d3fdb22bfb",
+      "masterSha256": "dca1dfb1e7d61703412b3f220cccc2a9d0ddd67dd2b6a51ac66f8133c2624b1d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Full tail, erected dorsal trigger and rear dorsal/anal fins visible. Near pectoral clear, far pectoral/root hidden. Ventral small pointed extension requires class-specific material/anatomy review, not generic pelvic fins. Generous margins."
+    },
+    {
+      "name": "Cardinalfish",
+      "id": "20-cardinalfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "269fdee3b521a707191d3ae6cfbbaf11163466f8b7cd7d5eac132a621f04309b",
+      "finalPromptSha256": "4e4364d3831cb605d6e3454dc2ec0d5a7cbc0ab95daec253ea0cf79ded16f8d1",
+      "masterSha256": "d38267469d39b9669fff0dbe743cba14bc430e404051d0f2ba713c2cfbccb350",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Complete forked tail, two dorsal fins and dark body bars visible, one pectoral with hidden far root. Oversized eye stylization and fin count/attachment require review. All fine tips inside generous margins."
+    },
+    {
+      "name": "Lionfish",
+      "id": "21-lionfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "864c24efb7842f1f0a6234d348f49c6634138aee07e74e76e34566ca9a192081",
+      "finalPromptSha256": "4a0dddc90eda35af808c3a7e946e5b82001f9474eab2116e6a651ce17684b0d4",
+      "masterSha256": "2defa8bbc7a26b30b0d6afec780d9412491c4d00995155a4cbb3a02bf11bc675",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Striped body, dorsal spines, tail and broad near pectoral fan complete, margins generous. Far pectoral and pelvic bases concealed by fan; branching facial appendages and possible eye-like cheek spot need anatomy review. Translucent-looking pink ray membranes require key conservation review; not an admitted fin count."
+    },
+    {
+      "name": "Pufferfish",
+      "id": "22-pufferfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "f665b2f759e85cb1ed6207f097ea333b10e27d454a051b562303f1251ee245a7",
+      "finalPromptSha256": "6514fdfb4c61b71f2b1c5f1548ad47eff5a207833eeb94107a28e4ccf20e676c",
+      "masterSha256": "79fa0f7eb10037c977106d09b20a60b46e4000736080cb4a230e73305f16c670",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Complete inflated round body, tail, near pectoral, dorsal and small anal fin visible with generous margins; far paired fin hidden. Spiny puffer versus porcupine-fish identity and oversized eye require species review. No invented pelvic fins or admitted fin count."
+    },
+    {
+      "name": "Fangtooth",
+      "id": "23-fangtooth",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5b726aa92d6ca171041d5361b67d829091f2c693d8006053ea29ca2e663e8b4f",
+      "finalPromptSha256": "ffd95b9ca25b7182d343542a669cf5f37a79b23c0b453d677876ecf065d667b7",
+      "masterSha256": "d4830af6282015d8a27c53f0c9aeaad637042cd769e01563b3c43a7183e13a57",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Complete forked tail and dorsal/anal/near paired fins, generous margins. Far roots hidden. Exaggerated fang/head silhouette requires species-specific anatomy review; no accepted fin count."
+    },
+    {
+      "name": "Remora",
+      "id": "24-remora",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5d376b1e9c3c93716ccd379e1b5a6feaf3c2f501a5ad20564bdb049a6204353d",
+      "finalPromptSha256": "d2d1eaf63726288dae19dff4233134239c1a4adb122dc9e54388d42056c0e269",
+      "masterSha256": "624270b22c441173879f495a194f87583af5679b4061e04e29f41ab44d7be96e",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full original visual inspection by parent Codex: Complete tail, near pectoral and dorsal/anal silhouettes; generous but narrower lateral margins. Raised oval head disc appears cap-like, and rear small fin silhouettes need anatomy review against the species. Hidden far paired roots remain unassigned; source candidate only."
+    }
+  ]
+}

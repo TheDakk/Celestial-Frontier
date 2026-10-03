@@ -1,0 +1,28 @@
+{
+  "name": "Crane",
+  "masterSha256": "9a7c6e1486f5f51cd402079e44faad59405d06965cb3157fedee526445b9ba58",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two separate leg shafts and complete feet, red crown and drooping bustle visible; far wing root hidden by body/near wing. Neck continuous. Whole original has generous margins; hand and source shape candidate only.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 303,
+      "y0": 206,
+      "x1": 990,
+      "y1": 1035
+    },
+    "margins": {
+      "left": 303,
+      "right": 263,
+      "top": 206,
+      "bottom": 218
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Snapper",
+  "masterSha256": "4b60ed85878dbdd9e922fd8c4ce3e425a747422b00f3dd9172336cc50401066e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Full forked tail, dorsal spines, near pectoral and paired-looking ventral tips visible; far roots hidden. Red/silver scales and mouth teeth retained. Original margins generous; fin root separation and teeth count not admitted.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 170,
+      "y0": 358,
+      "x1": 1083,
+      "y1": 854
+    },
+    "margins": {
+      "left": 170,
+      "right": 170,
+      "top": 358,
+      "bottom": 399
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

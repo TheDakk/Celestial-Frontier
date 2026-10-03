@@ -1,0 +1,14 @@
+{
+  "id": "18-snapper",
+  "name": "Snapper",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-ae27dd1f-f1d4-4eb6-87d2-f9951a7a5df3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4b60ed85878dbdd9e922fd8c4ce3e425a747422b00f3dd9172336cc50401066e",
+  "bytes": 1405608,
+  "promptSha256": "5e6f577dad7bf3765bbda6ec3068f583177a2fca31796699bab5baf8513a3db3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

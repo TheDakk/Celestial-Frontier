@@ -1,0 +1,14 @@
+{
+  "id": "21-leafcutter-ant",
+  "name": "Leafcutter Ant",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-93a540e7-7d88-4adc-9502-b16be8ab3083.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+  "bytes": 1360850,
+  "promptSha256": "ce82e0f5b4ad950a2c8e7dd8b9b6cf708bc696c9b386b4ab7a6e103f9d298dd3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

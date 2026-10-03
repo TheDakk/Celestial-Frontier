@@ -1,0 +1,28 @@
+{
+  "name": "Grasshopper",
+  "masterSha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: green/tan segmented abdomen, folded patterned wings, two large jumping hind femora, paired antennae and six visible distal foot tips. Near/far proximal chains crowd and overlap under wing/body; both hind-knee-to-foot paths need source-specific tracing. Six tips alone is not complete-chain proof. No anatomy/native admission; species material and support-plane holds remain.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 209,
+      "y0": 356,
+      "x1": 1080,
+      "y1": 910
+    },
+    "margins": {
+      "left": 209,
+      "right": 173,
+      "top": 356,
+      "bottom": 343
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

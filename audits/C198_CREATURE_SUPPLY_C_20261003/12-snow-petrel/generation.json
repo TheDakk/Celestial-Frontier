@@ -1,0 +1,14 @@
+{
+  "id": "12-snow-petrel",
+  "name": "Snow Petrel",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-29975737-b992-42dc-88dd-03656f50f492.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+  "bytes": 1210796,
+  "promptSha256": "c9e62ff1c68bfd400bdf7c3602437383fd80df25253d747bcbc084aebd5e4793",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

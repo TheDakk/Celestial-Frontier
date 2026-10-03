@@ -1,0 +1,14 @@
+{
+  "id": "16-octopus",
+  "name": "Octopus",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-38a5e9af-d335-4836-9169-ff5a2eaf63d2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "23e3a0b205f734d69f0cb44cea7e2ad4eb24b2d9103f93d29f9ea3a56be1d5eb",
+  "bytes": 1509239,
+  "promptSha256": "041f681f56fc9f34eff5419de79a83d22abcbccf32ea94ce47c86064eb612671",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

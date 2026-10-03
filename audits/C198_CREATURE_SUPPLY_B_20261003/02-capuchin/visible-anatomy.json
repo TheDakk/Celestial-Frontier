@@ -1,0 +1,177 @@
+{
+  "id": "02-capuchin",
+  "name": "Capuchin",
+  "family": "primate",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 26428,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 172,
+      "y0": 141,
+      "x1": 305,
+      "y1": 225
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.3128,
+        "pixels": 8267,
+        "box": {
+          "x0": 76,
+          "y0": 99,
+          "x1": 193,
+          "y1": 303
+        },
+        "attach": {
+          "x": 174.5,
+          "y": 193.5,
+          "relX": 0.02,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": -1,
+          "y": 0
+        },
+        "class": "rear",
+        "length": 147.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0577,
+        "pixels": 1526,
+        "box": {
+          "x0": 257,
+          "y0": 118,
+          "x1": 320,
+          "y1": 182
+        },
+        "attach": {
+          "x": 292.7,
+          "y": 149.8,
+          "relX": 0.91,
+          "relY": 0.1
+        },
+        "dir": {
+          "x": 0.44,
+          "y": -0.9
+        },
+        "class": "top",
+        "length": 48.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0048,
+        "pixels": 128,
+        "box": {
+          "x0": 207,
+          "y0": 137,
+          "x1": 249,
+          "y1": 140
+        },
+        "attach": {
+          "x": 228,
+          "y": 140,
+          "relX": 0.42,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.11,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 21.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0931,
+        "pixels": 2461,
+        "box": {
+          "x0": 271,
+          "y0": 212,
+          "x1": 334,
+          "y1": 306
+        },
+        "attach": {
+          "x": 287.5,
+          "y": 212,
+          "relX": 0.87,
+          "relY": 0.85
+        },
+        "dir": {
+          "x": 0.16,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 104.9
+      },
+      {
+        "k": 4,
+        "frac": 0.1499,
+        "pixels": 3962,
+        "box": {
+          "x0": 196,
+          "y0": 226,
+          "x1": 273,
+          "y1": 318
+        },
+        "attach": {
+          "x": 228,
+          "y": 226,
+          "relX": 0.42,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.09,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 102.4
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "top": 2,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 242,
+        "x1": 269,
+        "cx": 255.4
+      },
+      {
+        "x0": 269,
+        "x1": 273,
+        "cx": 271
+      },
+      {
+        "x0": 306,
+        "x1": 309,
+        "cx": 307.5
+      },
+      {
+        "x0": 322,
+        "x1": 333,
+        "cx": 327.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

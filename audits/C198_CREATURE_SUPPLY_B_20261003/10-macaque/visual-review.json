@@ -1,0 +1,28 @@
+{
+  "name": "Macaque",
+  "masterSha256": "7c881d97d530002b51d67de4f9028cacd7c7817452b7fa23989136d9f45f820b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: tan-brown monkey with pink bare face, pale cheek fur, near ear and continuous medium-length lowered tail. Four separate hands/feet; proximal far roots obscured and support heights unequal. Fingers and the far hand curl need individual review. No inferred hidden ear or complete-contact admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 275,
+      "y0": 327,
+      "x1": 979,
+      "y1": 926
+    },
+    "margins": {
+      "left": 275,
+      "right": 274,
+      "top": 327,
+      "bottom": 327
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

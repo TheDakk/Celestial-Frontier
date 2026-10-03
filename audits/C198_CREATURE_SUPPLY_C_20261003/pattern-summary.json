@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Crane",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Flamingo",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Plover",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Partridge",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Rooster",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Secretary Bird",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Cardinal",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Swallow",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Jay",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Rhea",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Albatross",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Snow Petrel",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Catfish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Bowfin",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Arapaima",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Arowana",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Lungfish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Snapper",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Triggerfish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Cardinalfish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Lionfish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Pufferfish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Fangtooth",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Remora",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  }
+]

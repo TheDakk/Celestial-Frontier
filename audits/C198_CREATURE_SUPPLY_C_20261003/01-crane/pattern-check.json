@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Crane",
+  "masterSha256": "9a7c6e1486f5f51cd402079e44faad59405d06965cb3157fedee526445b9ba58",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

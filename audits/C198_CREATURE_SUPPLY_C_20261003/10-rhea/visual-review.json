@@ -1,0 +1,28 @@
+{
+  "name": "Rhea",
+  "masterSha256": "aa82e8b95912f35b1b4307a860aa903fd23355deddcbb7a6b007731ef7e4ae4a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two complete three-toed feet, legs and two partly raised wing contours visible. Far wing attachment remains partly body-occluded; flightless wing anatomy and broad near-wing coverage require author review. Complete silhouette has generous margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 320,
+      "y0": 210,
+      "x1": 938,
+      "y1": 1051
+    },
+    "margins": {
+      "left": 320,
+      "right": 315,
+      "top": 210,
+      "bottom": 202
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

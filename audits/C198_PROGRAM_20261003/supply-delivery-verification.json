@@ -1,0 +1,23 @@
+[
+  {
+    "manifest": "audits/C198_CREATURE_SUPPLY_A_20261003/delivery.json",
+    "sha256": "35f5f51bc4b994ba41add4a84f101bacfe35828fe3eb7c2cc93f74da3b79ab38",
+    "verifiedFiles": 260,
+    "bytes": 37253352,
+    "mismatches": []
+  },
+  {
+    "manifest": "audits/C198_CREATURE_SUPPLY_B_20261003/delivery.json",
+    "sha256": "ffa83bd45d68b3b946471b1f8305d9dda07a7d0dea44564d7cfc4473dc81b46b",
+    "verifiedFiles": 261,
+    "bytes": 36823838,
+    "mismatches": []
+  },
+  {
+    "manifest": "audits/C198_CREATURE_SUPPLY_C_20261003/delivery.json",
+    "sha256": "23e8c3573430910c91aa37da9e758c980b184a28b5e56fbce6d198d404a25ecd",
+    "verifiedFiles": 261,
+    "bytes": 35393903,
+    "mismatches": []
+  }
+]

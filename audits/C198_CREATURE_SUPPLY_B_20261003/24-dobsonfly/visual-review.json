@@ -1,0 +1,28 @@
+{
+  "name": "Dobsonfly",
+  "masterSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: long patterned translucent folded wings, segmented abdomen, two long antennae and long curved male mandibles. Six clear distal feet plus an additional tiny downward projection below central thorax require anatomical discrimination; far roots crowd and overlap. Folded wing ownership and extra-looking tip remain held. No invented chain or seventh-leg removal.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 149,
+      "y0": 399,
+      "x1": 1138,
+      "y1": 857
+    },
+    "margins": {
+      "left": 149,
+      "right": 115,
+      "top": 399,
+      "bottom": 396
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

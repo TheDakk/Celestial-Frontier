@@ -1,0 +1,28 @@
+{
+  "name": "Swallow",
+  "masterSha256": "a33e03e1b84ddfce161e3666e99b5636ea4864a2843ad3c77453f1166500859f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two tiny complete planted feet and both long tail streamers inside generous margins. Near wing and tail overlap, far wing hidden; blue back/orange throat/cream belly retained. Short leg roots partly feather-hidden.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 210,
+      "y0": 363,
+      "x1": 996,
+      "y1": 832
+    },
+    "margins": {
+      "left": 210,
+      "right": 257,
+      "top": 363,
+      "bottom": 421
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Spider Monkey",
+  "masterSha256": "1caa0ccefe5a80ac85b149c9da56278c016abb97dd7d49d27ef2d1cff92b1484",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: long black/brown limbs and continuous high open-curved tail; four distinct hands/feet with elongated curved digits. Distal limbs hang at different heights, so requested grounded four-contact stance is not achieved. Far roots and ear remain partly hidden; thumb/digit anatomy needs species review. No invented contacts or motion admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 265,
+      "y0": 191,
+      "x1": 977,
+      "y1": 1049
+    },
+    "margins": {
+      "left": 265,
+      "right": 276,
+      "top": 191,
+      "bottom": 204
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

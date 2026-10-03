@@ -1,0 +1,14 @@
+{
+  "id": "03-sloth-bear",
+  "name": "Sloth Bear",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-35d7197c-e3ea-413a-8e7f-fafe0964a51a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "04c3982b75838e92dd708b9ca4a9a2b0aeb24bdc7a7d64c26fc2634a789799da",
+  "bytes": 1593658,
+  "promptSha256": "044d30f418223594ea846057b55d9f13a63007f822f1f0495fee054182eaf4c6",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

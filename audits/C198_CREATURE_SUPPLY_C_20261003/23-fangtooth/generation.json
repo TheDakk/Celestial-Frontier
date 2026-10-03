@@ -1,0 +1,14 @@
+{
+  "id": "23-fangtooth",
+  "name": "Fangtooth",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-d17ffd3f-392a-437a-8f91-87b294e191bb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d4830af6282015d8a27c53f0c9aeaad637042cd769e01563b3c43a7183e13a57",
+  "bytes": 1422014,
+  "promptSha256": "ffd95b9ca25b7182d343542a669cf5f37a79b23c0b453d677876ecf065d667b7",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,865 @@
+[
+  {
+    "id": "01-gorilla",
+    "name": "Gorilla",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 252,
+        "y0": 226,
+        "x1": 999,
+        "y1": 999
+      },
+      "margins": {
+        "left": 252,
+        "right": 254,
+        "top": 226,
+        "bottom": 254
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "02-capuchin",
+    "name": "Capuchin",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 228,
+        "y0": 297,
+        "x1": 998,
+        "y1": 951
+      },
+      "margins": {
+        "left": 228,
+        "right": 255,
+        "top": 297,
+        "bottom": 302
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "top": 2,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-squid",
+    "name": "Squid",
+    "family": "cephalopod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 156,
+        "y0": 296,
+        "x1": 1106,
+        "y1": 977
+      },
+      "margins": {
+        "left": 156,
+        "right": 147,
+        "top": 296,
+        "bottom": 276
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "other": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "04-cuttlefish",
+    "name": "Cuttlefish",
+    "family": "cephalopod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 201,
+        "y0": 325,
+        "x1": 1052,
+        "y1": 956
+      },
+      "margins": {
+        "left": 201,
+        "right": 201,
+        "top": 325,
+        "bottom": 297
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "limb-down": 2
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "05-diving-beetle",
+    "name": "Diving Beetle",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 132,
+        "y0": 362,
+        "x1": 1158,
+        "y1": 895
+      },
+      "margins": {
+        "left": 132,
+        "right": 95,
+        "top": 362,
+        "bottom": 358
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "limb-down": 4,
+      "front": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "06-chimpanzee",
+    "name": "Chimpanzee",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "4dd09305212d67f308fbb4ef00446473364b715868d16be4318fbce93c39851e",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 255,
+        "y0": 258,
+        "x1": 994,
+        "y1": 980
+      },
+      "margins": {
+        "left": 255,
+        "right": 259,
+        "top": 258,
+        "bottom": 273
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 4,
+      "rear": 1
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "07-howler-monkey",
+    "name": "Howler Monkey",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 182,
+        "y0": 314,
+        "x1": 1055,
+        "y1": 933
+      },
+      "margins": {
+        "left": 182,
+        "right": 198,
+        "top": 314,
+        "bottom": 320
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "08-spider-monkey",
+    "name": "Spider Monkey",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "1caa0ccefe5a80ac85b149c9da56278c016abb97dd7d49d27ef2d1cff92b1484",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 265,
+        "y0": 191,
+        "x1": 977,
+        "y1": 1049
+      },
+      "margins": {
+        "left": 265,
+        "right": 276,
+        "top": 191,
+        "bottom": 204
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "09-tamarin",
+    "name": "Tamarin",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "53ba5f05bc48a04a7e173c160cb9b6c2373b1262275ed765953a09f4e02204b7",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 191,
+        "y0": 295,
+        "x1": 1047,
+        "y1": 965
+      },
+      "margins": {
+        "left": 191,
+        "right": 206,
+        "top": 295,
+        "bottom": 288
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "other": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "10-macaque",
+    "name": "Macaque",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "7c881d97d530002b51d67de4f9028cacd7c7817452b7fa23989136d9f45f820b",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 275,
+        "y0": 327,
+        "x1": 979,
+        "y1": 926
+      },
+      "margins": {
+        "left": 275,
+        "right": 274,
+        "top": 327,
+        "bottom": 327
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "11-langur",
+    "name": "Langur",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "95fce120eb86226a5cea32ef435146e9c9d40d5fb883e3853d64736f1e2df7bd",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 245,
+        "y0": 251,
+        "x1": 971,
+        "y1": 954
+      },
+      "margins": {
+        "left": 245,
+        "right": 282,
+        "top": 251,
+        "bottom": 299
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "limb-down": 3
+    },
+    "groundContacts": 5,
+    "detached": []
+  },
+  {
+    "id": "12-baboon",
+    "name": "Baboon",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "51550b9472c88e69eb75f641b74302fbdb441d1ded007c97b6f12b75936f9aee",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 243,
+        "y0": 293,
+        "x1": 1016,
+        "y1": 946
+      },
+      "margins": {
+        "left": 243,
+        "right": 237,
+        "top": 293,
+        "bottom": 307
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "other": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 5,
+    "detached": []
+  },
+  {
+    "id": "13-lemur",
+    "name": "Lemur",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "088b43fc6861019b83ebf84ae64d674f674c9769f29dcafd0f2e3fdd6c8d9824",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 259,
+        "y0": 186,
+        "x1": 983,
+        "y1": 1015
+      },
+      "margins": {
+        "left": 259,
+        "right": 270,
+        "top": 186,
+        "bottom": 238
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "limb-down": 3
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "14-mandrill",
+    "name": "Mandrill",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "be36b1f317c7c4eb0fd0480d1d5fea6b54d54548ba8a15e31a56bd0bc8f9616a",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 249,
+        "y0": 209,
+        "x1": 1005,
+        "y1": 1010
+      },
+      "margins": {
+        "left": 249,
+        "right": 248,
+        "top": 209,
+        "bottom": 243
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "limb-down": 5,
+      "rear": 1
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "15-marmoset",
+    "name": "Marmoset",
+    "family": "primate",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 229,
+        "y0": 333,
+        "x1": 1025,
+        "y1": 924
+      },
+      "margins": {
+        "left": 229,
+        "right": 228,
+        "top": 333,
+        "bottom": 329
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 2,
+      "limb-down": 5
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "16-octopus",
+    "name": "Octopus",
+    "family": "cephalopod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "23e3a0b205f734d69f0cb44cea7e2ad4eb24b2d9103f93d29f9ea3a56be1d5eb",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 192,
+        "y0": 251,
+        "x1": 1076,
+        "y1": 970
+      },
+      "margins": {
+        "left": 192,
+        "right": 177,
+        "top": 251,
+        "bottom": 283
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 3,
+      "front": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "17-giant-octopus",
+    "name": "Giant Octopus",
+    "family": "cephalopod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e8895811a54507616b12324b16636cb483a937d9e915d6086f7789d3d35c28fb",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 151,
+        "y0": 219,
+        "x1": 1135,
+        "y1": 1012
+      },
+      "margins": {
+        "left": 151,
+        "right": 118,
+        "top": 219,
+        "bottom": 241
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "18-centipede",
+    "name": "Centipede",
+    "family": "myriapod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ade637f8363cd5ce51ecebab5e0e58adc2a37fad595d969c0a4f5e8f6a2e20df",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 95,
+        "y0": 473,
+        "x1": 1165,
+        "y1": 767
+      },
+      "margins": {
+        "left": 95,
+        "right": 88,
+        "top": 473,
+        "bottom": 486
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "rear": 2,
+      "limb-down": 17
+    },
+    "groundContacts": 0,
+    "detached": []
+  },
+  {
+    "id": "19-giant-centipede",
+    "name": "Giant Centipede",
+    "family": "myriapod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "660c90f614be72b9d6814013724b1357bfdc498c0a8647b7c8d31c590140d55a",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 82,
+        "y0": 434,
+        "x1": 1212,
+        "y1": 806
+      },
+      "margins": {
+        "left": 82,
+        "right": 41,
+        "top": 434,
+        "bottom": 447
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "rear": 3,
+      "other": 1,
+      "limb-down": 11
+    },
+    "groundContacts": 0,
+    "detached": []
+  },
+  {
+    "id": "20-millipede",
+    "name": "Millipede",
+    "family": "myriapod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "377d6c9aa73ba4f1fa3994c784edff8c22769af3818775dfeee860fa536157bb",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 134,
+        "y0": 523,
+        "x1": 1163,
+        "y1": 725
+      },
+      "margins": {
+        "left": 134,
+        "right": 90,
+        "top": 523,
+        "bottom": 528
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "limb-down": 5,
+      "rear": 1
+    },
+    "groundContacts": 0,
+    "detached": []
+  },
+  {
+    "id": "21-leafcutter-ant",
+    "name": "Leafcutter Ant",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 199,
+        "y0": 227,
+        "x1": 1124,
+        "y1": 960
+      },
+      "margins": {
+        "left": 199,
+        "right": 129,
+        "top": 227,
+        "bottom": 293
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 3,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "22-locust",
+    "name": "Locust",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 167,
+        "y0": 374,
+        "x1": 1085,
+        "y1": 877
+      },
+      "margins": {
+        "left": 167,
+        "right": 168,
+        "top": 374,
+        "bottom": 376
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 2,
+      "limb-down": 5
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "23-grasshopper",
+    "name": "Grasshopper",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 209,
+        "y0": 356,
+        "x1": 1080,
+        "y1": 910
+      },
+      "margins": {
+        "left": 209,
+        "right": 173,
+        "top": 356,
+        "bottom": 343
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "rear": 2,
+      "limb-down": 7
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "24-dobsonfly",
+    "name": "Dobsonfly",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 149,
+        "y0": 399,
+        "x1": 1138,
+        "y1": 857
+      },
+      "margins": {
+        "left": 149,
+        "right": 115,
+        "top": 399,
+        "bottom": 396
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  }
+]

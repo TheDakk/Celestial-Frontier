@@ -1,0 +1,14 @@
+{
+  "id": "15-hedgehog",
+  "name": "Hedgehog",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c6394736-c771-46a8-a162-d89f7db4e9b1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "60677ffdb14c8afac6e225b99d758c414825ce3262fbd9e89de0945c4c90711b",
+  "bytes": 1454352,
+  "promptSha256": "b72fffc879144d2dbb20552156dea9b72218db6fd02ca3d0142d493b4b1b11e2",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

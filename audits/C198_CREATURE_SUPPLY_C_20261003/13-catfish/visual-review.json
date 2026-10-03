@@ -1,0 +1,28 @@
+{
+  "name": "Catfish",
+  "masterSha256": "2e3e86407a405bf6037628c6209746d3cd9ed532f7fd51b8aee283c6d269d9b8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Whole tail, dorsal/adipose/anal fins and near paired-fin attachment visible, far fin roots obscured. Long mouth barbels reach roughly x1160 on1254 canvas: right margin about94px is below101px floor, original framing REFUSED even if a keyed mask loses those tips. Barbel count/root anatomy remains review hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 127,
+      "y0": 412,
+      "x1": 1149,
+      "y1": 818
+    },
+    "margins": {
+      "left": 127,
+      "right": 104,
+      "top": 412,
+      "bottom": 435
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

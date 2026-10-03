@@ -1,0 +1,14 @@
+{
+  "id": "08-spider-monkey",
+  "name": "Spider Monkey",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a67716df-4986-4d11-843f-82d09cbe73a4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1caa0ccefe5a80ac85b149c9da56278c016abb97dd7d49d27ef2d1cff92b1484",
+  "bytes": 1359761,
+  "promptSha256": "f1542392ec2be52467949ca755841d7966d78f272008f078f98065a86bad130e",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
