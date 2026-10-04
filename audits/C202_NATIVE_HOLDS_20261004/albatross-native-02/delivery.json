@@ -1,0 +1,110 @@
+{
+  "schema": "cf.c202-native-delivery/v1",
+  "files": [
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn2-dodge-reaction-50.png",
+      "sha256": "27043d181c7345fbcd459c5ffb02211889318d76c119dbe4a3eee1094c676fea",
+      "bytes": 1540388
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/report.json",
+      "sha256": "d9a77234b3b9d0c91e9b1bb11868fedc39b71169a47d7ea43ef3fb5bf50a169d",
+      "bytes": 364579
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn0-hit-return-end.png",
+      "sha256": "eaa8b79da68bc8e203d9ae3c48a06de0db98ce962a3860d1d947c17965331736",
+      "bytes": 1507656
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn3-hit-approach-50.png",
+      "sha256": "23583b0022cf12ebc5724f0fb25a2db53230e9228cc7624314e2b235cb4234b0",
+      "bytes": 1516473
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn0-hit-approach-50.png",
+      "sha256": "23583b0022cf12ebc5724f0fb25a2db53230e9228cc7624314e2b235cb4234b0",
+      "bytes": 1516473
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn1-hit-approach-50.png",
+      "sha256": "4c1154418809b6c757a9d48edf2c6ca3ed4860d4815a47b299da97c0dd62bd76",
+      "bytes": 1517803
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/battle-full.webm",
+      "sha256": "ad86a7f24dafd92fb71f023b926ac26199205630b9c34dd042dc69ed8d9dfdd8",
+      "bytes": 8766324
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn3-hit-return-end.png",
+      "sha256": "cb615efc48ac2a3c319801c78fb2742182a8d98b77d766ccf6927193b291aa1d",
+      "bytes": 1514516
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn1-hit-reaction-50.png",
+      "sha256": "5bafaecd1df02016841bc25bc73515e4e6f07613d34c266c6e8915000ff51b22",
+      "bytes": 1518334
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn0-hit-reaction-50.png",
+      "sha256": "5f22ea8ace87b2e80a11237919dd5b94fbf4360d5aa836bd2410483b166c537e",
+      "bytes": 1526072
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn2-dodge-return-end.png",
+      "sha256": "eaa8b79da68bc8e203d9ae3c48a06de0db98ce962a3860d1d947c17965331736",
+      "bytes": 1507656
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn3-hit-reaction-50.png",
+      "sha256": "877a904859bf4ce21e34d5690ed0748ba38042948a8c52b4a81cfb1e97c29611",
+      "bytes": 1516140
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn1-hit-impact.png",
+      "sha256": "000e3c5701c93c6e4ed28e299256a3c35c92de4b1d98d8b4fcc98564cd7a7204",
+      "bytes": 1519136
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/native.log",
+      "sha256": "abc12d208d7ef7e09bf810c62293e7ad02b2acf74f0d6967041a9cb7d7658476",
+      "bytes": 208
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn0-hit-impact.png",
+      "sha256": "7ed0597e94f46dee8581ed79c8aab2923022d948385bd3d34f8c7cf3b632f43a",
+      "bytes": 975458
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn1-hit-return-end.png",
+      "sha256": "b4a68d37ebbd4261bdadc6581ebb44735c841f71787036e8990c020a8da33a0c",
+      "bytes": 1510632
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn2-dodge-impact.png",
+      "sha256": "5021aa2211e03c4389b4efe29958d1e024387923a56ec03f29924f549815508a",
+      "bytes": 1534080
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn2-dodge-approach-50.png",
+      "sha256": "23583b0022cf12ebc5724f0fb25a2db53230e9228cc7624314e2b235cb4234b0",
+      "bytes": 1516473
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn3-hit-impact.png",
+      "sha256": "d6b337a6c01a339ec6887680e11fd3dc0670cb1d89d5a2e4b1c986630deb4f44",
+      "bytes": 1517922
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn3-hit-idle-90.png",
+      "sha256": "95c2a894d6fde990aa0f8f568b03dab91d15097835254146634aa2827c73fd64",
+      "bytes": 1517780
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-native-02/turn3-hit-idle-50.png",
+      "sha256": "d1a18b2b9f6c78f37c85218000d5c5ad5e872785edddb4abdafbea2882439b93",
+      "bytes": 1518362
+    }
+  ]
+}
