@@ -52,7 +52,7 @@ the archive verbatim and refresh this handoff in place.
   `native-g2c54/crops.mjs` shows only the ground band — review aerial fighters on full frames. Dakk's queue: three arena repaints
   (marsh-r3, dunesea-r2, freshwater-lake-v3 — registration is a product change for the next I5 batch), guardian choreography
   default, D28, preview redeploy, PR #44.
-- **STATE 2026-10-04 (read this first in a new session):** coverage **270/631 (42.8 %)**, only Snow Petrel held
+- **STATE 2026-10-04 (read this first in a new session):** coverage **273/631 (43.3 %)** after session 8 (see the SESSION 8 line below; 14 held, incl. Snow Petrel)
   (`audits/GENERATED_GALLERY_20260927/coverage.json`). Both lanes pushed and develop-green (6,005); I5 re-certified on Codex's
   456ac7c52. Decisions D28 (island cap 0.5), D29 (arena 1672x941), D30 (WebP arenas, all 45 accepted), D31 (cast attack for
   limbless/sessile — merged) are in `audits/MAILBOX/DECISIONS.md`. **Pending:** Dakk authorized ONE combined I5 3+1 + ONE develop
@@ -65,14 +65,17 @@ the archive verbatim and refresh this handoff in place.
   `pkill` by name; scrub `/Users/<name>` to `~` and check `mode 120000` symlinks before every commit; review fliers on FULL
   frames (the crop sheet shows only the ground band); after a TaskStop of a native run remove this worktree's stale workspace lock;
   zsh does not word-split `$x` (use explicit args). The all-pairs sweep stays on HOLD until Dakk says otherwise.
-- **SESSION 8 (2026-10-04, in progress):** static scoring done, Node only (`adc3e4cd7`): **g2c274 7/23** (Wild Pig, Cow, Hyrax, Cardinal,
-  Sparrow, Pigeon, Cardinalfish; Bowfin held at framing REFUSE), **g2c275 10/24** (Capybara, Grizzly, Toucan, Falcon, Duck, Stork,
-  Arapaima-f02, Angelfish, Tuna, Swordfish-f02), **g2c257ceph 0/4** (Octopus is leave-one-species-out of its own reference; Giant Octopus
-  extra rear appendage 13.2 %, Cuttlefish arm2 19 %, Squid wrong-family). Static RED, which are motion limits and not mine to touch: Black Bear and Okapi
-  (gallop scale compression), Kookaburra (folded triangles), Wahoo intake (caudal/body bound). Systemic: 7 short-tailed ungulates/bears
-  refuse on `tail3` against long-tailed refs, so a short-tail reference is needed. **Next:** after Codex's C204 TERMINAL row, re-run the same three
-  `score-batch.mjs … --pilot=<file> --extra-refs=…c223-octopus.json --fish-seams` commands WITHOUT `--no-native` (intake/static are
-  cached), then review, island repair, finish, gate and push. Pilots: `pilots/c274-scoring.json`, Codex's `C203_CREATURE_SUPPLY_B_20261004/pilot-selected.json`.
+- **SESSION 8 (2026-10-04, done):** coverage **273/631 (43.3 %)**. Codex's C204 I5 3+1 + develop GREEN on f8ff0413e (selection
+  179b34902) and its C285 short-tail Reindeer reference are merged. Static 17/47 (`adc3e4cd7`), native 16/17 (Falcon FAIL, folded
+  triangles), full-size review `audits/REVIEW_C274_C275_20261004/review.json`: **ACCEPT Cardinalfish, Grizzly Bear, Capybara** (island
+  repair `audits/ISLANDS_C274_20261004`), AI finish + finished-rig native PASS (`audits/AI_FINISH_C274_20261004`). HOLD-minor Hyrax and
+  Sparrow (hairline see-through seams). RED/HOLD for 11 others, in three systemic classes for Codex: (1) held faint folds deep-bodied
+  ungulates (Wild Pig, Cow); (2) bird victory neck ribbon (Cardinal, Pigeon, Toucan, Duck); (3) `fish-seams` refused for every fish
+  by the sealed `FISH_PIPELINE_C88/fish-split.mjs` source-owner hash (Arapaima, Angelfish, Tuna, Swordfish wait on it). Cephalopods 0/4
+  (Octopus leave-one-species-out is correct). Short-tail re-score 0/7: short tails paint no `tail3`, which needs an absent-segment
+  allowance in the author policy (Codex). **Trap learned:** the `~` scrub breaks later readers of `static.json`; scrub only at the
+  final commit (memory `scrub-after-pipeline`). **Next:** Codex answers the three classes and the absent-segment policy; then
+  re-film/re-score the held ones. Bowfin stays framing-REFUSE.
 - **Open for Dakk:** D28 (island cap; 6 more birds now wait on it); finisher scope (every accepted G2 original vs procedural creatures);
   dev-preview redeploy; PR #44 hosted attempt.
 
