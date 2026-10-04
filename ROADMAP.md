@@ -52,7 +52,7 @@ the archive verbatim and refresh this handoff in place.
   `native-g2c54/crops.mjs` shows only the ground band — review aerial fighters on full frames. Dakk's queue: three arena repaints
   (marsh-r3, dunesea-r2, freshwater-lake-v3 — registration is a product change for the next I5 batch), guardian choreography
   default, D28, preview redeploy, PR #44.
-- **STATE 2026-10-04 (read this first in a new session):** coverage **273/631 (43.3 %)** after session 8 (see the SESSION 8 line below; 14 held, incl. Snow Petrel)
+- **STATE 2026-10-04 (read this first in a new session):** coverage **283/631 (44.8 %)** after session 8b (see the SESSION 8b/8 lines below)
   (`audits/GENERATED_GALLERY_20260927/coverage.json`). Both lanes pushed and develop-green (6,005); I5 re-certified on Codex's
   456ac7c52. Decisions D28 (island cap 0.5), D29 (arena 1672x941), D30 (WebP arenas, all 45 accepted), D31 (cast attack for
   limbless/sessile — merged) are in `audits/MAILBOX/DECISIONS.md`. **Pending:** Dakk authorized ONE combined I5 3+1 + ONE develop
@@ -65,6 +65,13 @@ the archive verbatim and refresh this handoff in place.
   `pkill` by name; scrub `/Users/<name>` to `~` and check `mode 120000` symlinks before every commit; review fliers on FULL
   frames (the crop sheet shows only the ground band); after a TaskStop of a native run remove this worktree's stale workspace lock;
   zsh does not word-split `$x` (use explicit args). The all-pairs sweep stays on HOLD until Dakk says otherwise.
+- **SESSION 8b (2026-10-04, Dakk "do more"):** coverage **283/631 (44.8 %)**. Hyrax + Tuna accepted from Codex's C287 successors;
+  **sweep 1** (`audits/SWEEP1_20261004`) re-scored EVERY delivered original of an uncovered species in one run (505 packets, 250
+  species, 19-entry pool): 480 scored → 43 static → 41 native → 8 accepted (Cat, Bear, Fishing Cat, Albatross, Elk, Caribou, Lemming,
+  Prairie Dog), all AI-finished (`audits/AI_FINISH_SWEEP1_20261004`). New tools: `review-sheets.mjs` (frames + 2x zoom per film; batch
+  now emits them under `native-<tag>/review/`), resumable native loop and `--pilot=` in `score-batch.mjs`. Yield blockers ranked for
+  Codex in mailbox C210. **To re-run after any Codex fix:** rebuild the pilot (uncovered species only) and run `score-batch.mjs
+  audits/SWEEP1_20261004 sweep<N> --fish-seams --extra-refs=<pool> --pilot=<pilot>`; commit only accepted subjects' stills.
 - **SESSION 8 (2026-10-04, done):** coverage **273/631 (43.3 %)**. Codex's C204 I5 3+1 + develop GREEN on f8ff0413e (selection
   179b34902) and its C285 short-tail Reindeer reference are merged. Static 17/47 (`adc3e4cd7`), native 16/17 (Falcon FAIL, folded
   triangles), full-size review `audits/REVIEW_C274_C275_20261004/review.json`: **ACCEPT Cardinalfish, Grizzly Bear, Capybara** (island
