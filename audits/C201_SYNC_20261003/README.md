@@ -9,3 +9,5 @@ Three parallel read-only reviews confirmed: source generation is terminal at72 o
 Budget mode is UNFROZEN. Existing workflows trigger on an approved PR label or manual dispatch, never a branch push. The unchanged pre-push guard remains installed. Standing green lane authority and C200 permit only the normal openai/mac push. No PR, label, hosted run, develop/main merge, release or deploy is included. All-pairs stays HOLD.
 
 The C198 source records remain immutable history; ROADMAP and the new TO_CLAUDE row supersede their formerly pending replacement-gate state. Dakk need not relay files or switch apps. No Codex reservation was opened: C251 is TERMINAL atC261, while Claude’s C201 window remains ACTIVE.
+
+Normal own-lane push completed through signed e834910f0, fast-forwarding origin/openai/mac from59b1df987 with the unchanged guard. push.json records the result. The final read still finds C201 active, with127.41GiB free. No new reservation, measurement, generation or cleanup occurred in this synchronization.
