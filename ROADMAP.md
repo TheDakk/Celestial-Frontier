@@ -99,7 +99,11 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 - A green number is not visual acceptance. The static runner needs its fit and output under `audits/`.
 - Codex reservations: when Codex posts "native/performance reservation active", run no native, gate or heavy CPU until its terminal notice.
 
-## Current Codex sprint handoff — 2026-10-04, C202 terminal with holds
+## Current Codex sprint handoff — 2026-10-04, C203 authorized measurement
+
+**C272 native/performance reservation ACTIVE.** Dakk/C203 authorize ONE combined I5(3+1) then ONE develop on exact456ac7c52. No product edits until this chain is terminal; first red stops/no retry/no re-bind. Source agents stay quiet. Evidence: `audits/C203_I5_EPOCH_20261004`. The earlier pending-authorization text below is superseded by this explicit authorization.
+
+### C202 completed source handoff
 
 **C266 delivery:** Tortoise observed ankle/paw boundary corrected; exact retained4-fold context now passes and native841frames has zero refusals. Selected fit: `audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/fit02`; Claude finish/admission remains.
 
