@@ -1,0 +1,11 @@
+{
+ "id": "10-macaque",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on",
+  "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+  "missing-anatomy: part far-leg-upper (legFarKnee) covers 25% paint (reference 77%)"
+ ],
+ "semanticPresence": null
+}

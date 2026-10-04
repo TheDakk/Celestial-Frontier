@@ -1,0 +1,11 @@
+{
+ "id": "10-squirrel",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: biped-bird matches clearly better (0.0201 < 0.0325)",
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 5% paint (reference 43%)",
+  "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 31%)"
+ ],
+ "semanticPresence": null
+}

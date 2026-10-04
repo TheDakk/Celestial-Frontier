@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "09-stoat",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "42303e5699497bff2968067ba085099d92ca3fdb20d66a15e7cd446c331db880",
+ "subjectSourceSha256": "9562e789c6806b9239e7c0ece6d5220224cf9ff0f545a68f14a0a7581bf4e9f9",
+ "identity": {
+  "name": "Stoat",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Stoat\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1168182501\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 1168182501,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "07-weasel",
+  "authoringSha256": "7d2448a7a59064154d2b480d9e8606d3080499295d0b1214f0f39c83bb326385",
+  "masterSha256": "43006af17548682e07146521da9d676d75643dcb0012334230f0549f2ab5560b"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1744,
+     "class": "top",
+     "attach": {
+      "x": 301,
+      "y": 182.5,
+      "relX": 0.95,
+      "relY": 0.1
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1156,
+     "class": "limb-down",
+     "attach": {
+      "x": 139,
+      "y": 211.5,
+      "relX": -0.01,
+      "relY": 0.51
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0389,
+     "class": "limb-down",
+     "attach": {
+      "x": 147.8,
+      "y": 245.2,
+      "relX": 0.05,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0359,
+     "class": "limb-down",
+     "attach": {
+      "x": 293,
+      "y": 243.5,
+      "relX": 0.9,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0405,
+     "class": "limb-down",
+     "attach": {
+      "x": 265.5,
+      "y": 244,
+      "relX": 0.74,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0291,
+     "class": "limb-down",
+     "attach": {
+      "x": 180,
+      "y": 248,
+      "relX": 0.24,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "07-weasel",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

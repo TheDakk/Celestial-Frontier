@@ -1,0 +1,9 @@
+{
+ "id": "06-chimpanzee",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family primate"
+ ],
+ "semanticPresence": null
+}

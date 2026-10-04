@@ -1,0 +1,67 @@
+{
+  "name": "Hyena",
+  "family": "quadruped",
+  "species": {
+    "name": "Hyena",
+    "aspect": 1.7,
+    "headFrac": 0.26,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "back sloping steeply down from high shoulders to low hindquarters",
+      "large rounded ears",
+      "thick neck with massive bone-crushing jaws"
+    ],
+    "note": "generic representative: a spotted hyena. The forelegs are genuinely longer than the hind legs - the slope is skeletal, not a crouch"
+  },
+  "genome": {
+    "seed": 1428647718,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 16,
+    "body": 7,
+    "loco": 5,
+    "trait": 18,
+    "size": 0,
+    "diet": 4,
+    "head": 7,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 1,
+    "behavior": 1,
+    "habitat": 16,
+    "detail": 8,
+    "accent": 7,
+    "temper": 5,
+    "sense": 8,
+    "repro": 7,
+    "life": 2,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Hyena"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hyena\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1428647718\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 71,
+  "profile": {
+    "id": "hyena",
+    "names": [
+      "Hyena",
+      "Spotted Hyena",
+      "Striped Hyena"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

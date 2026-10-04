@@ -1,0 +1,124 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "20-millipede",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "377d6c9aa73ba4f1fa3994c784edff8c22769af3818775dfeee860fa536157bb",
+ "subjectSourceSha256": "399073354b50d9a0fe591d43710ee7d4323d450150d12e9cff570da75fbde0de",
+ "identity": {
+  "name": "Millipede",
+  "family": "myriapod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Millipede\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3117077383\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 3117077383,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "centipede",
+  "authoringSha256": "f9340f385333ab4a6f8ca53b277a7fdf3470b53f3a9b37457c1c1d6f42720d93",
+  "masterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+ },
+ "habitat": {
+  "profileId": "millipede",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "a1bcbf476b1b2e4b92834a37eb9fcaef69218d259d885a91ae4a4abd4b8e444f",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group millipede (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0882,
+     "class": "limb-down",
+     "attach": {
+      "x": 315.5,
+      "y": 218,
+      "relX": 0.88,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0085,
+     "class": "rear",
+     "attach": {
+      "x": 52,
+      "y": 210.5,
+      "relX": 0,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.052,
+     "class": "limb-down",
+     "attach": {
+      "x": 148.9,
+      "y": 224.5,
+      "relX": 0.32,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0088,
+     "class": "limb-down",
+     "attach": {
+      "x": 70.3,
+      "y": 225,
+      "relX": 0.06,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0184,
+     "class": "limb-down",
+     "attach": {
+      "x": 237.1,
+      "y": 226.8,
+      "relX": 0.62,
+      "relY": 1.02
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0185,
+     "class": "limb-down",
+     "attach": {
+      "x": 209.3,
+      "y": 227,
+      "relX": 0.53,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "limb-down": 5,
+    "rear": 1
+   },
+   "ground": 0
+  },
+  "reference": {
+   "subject": "centipede",
+   "byClass": {
+    "top": 16,
+    "limb-down": 16
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

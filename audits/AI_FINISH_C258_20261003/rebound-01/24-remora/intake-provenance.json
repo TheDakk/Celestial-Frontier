@@ -1,0 +1,78 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "6976a955bc68d6a4548c67454596e857aa31a537",
+  "helperSha256": "3c5e92d42a8d2ea3bb59476c76c5f58cff32c8167343d74289fe71603930140b",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/master.png",
+      "sha256": "624270b22c441173879f495a194f87583af5679b4061e04e29f41ab44d7be96e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/authoring.json",
+      "sha256": "41ed726241ea887464a7474041e9e9fce64e908ad8704a919984828d6cf2fb67"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/subject-source.json",
+      "sha256": "1b583f406e15d03e1987f8f1803b363af962ea2a3207672b320966d7e454c5d7"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "f5e631ef6fbb45cf77ef030cb98058993b3a87687d240c73a54080fb113805be",
+  "bindingHash": "320d4c68a58ffcd3d9e2b1b92f62b3ccfecefc513cd542bf9f53145551ee6802",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "pectoralNear",
+    "pectoralFar",
+    "dorsal",
+    "jaw",
+    "head",
+    "caudal",
+    "spine5",
+    "spine4",
+    "spine3",
+    "spine2",
+    "spine1",
+    "spine0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/master.png",
+      "sha256": "624270b22c441173879f495a194f87583af5679b4061e04e29f41ab44d7be96e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/authoring.json",
+      "sha256": "41ed726241ea887464a7474041e9e9fce64e908ad8704a919984828d6cf2fb67",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/subject-source.json",
+      "sha256": "1b583f406e15d03e1987f8f1803b363af962ea2a3207672b320966d7e454c5d7",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

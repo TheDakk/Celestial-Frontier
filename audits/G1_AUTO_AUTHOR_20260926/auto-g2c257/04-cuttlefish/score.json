@@ -1,0 +1,9 @@
+{
+ "id": "04-cuttlefish",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 19% paint (reference 92%)"
+ ],
+ "semanticPresence": null
+}

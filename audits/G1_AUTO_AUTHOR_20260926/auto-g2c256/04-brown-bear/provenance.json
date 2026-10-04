@@ -1,0 +1,114 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "04-brown-bear",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1567aaa877416d5903f849e80f2d8f7ef3a601d93b84a1a96d942cb4f642b8ef",
+ "subjectSourceSha256": "19801f49ece13ad5a2447a0cf391e9af1cc802bba1659e11b3fdf7009df2e5fd",
+ "identity": {
+  "name": "Brown Bear",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Brown Bear\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2139010517\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 2139010517,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "marmot",
+  "authoringSha256": "b85329419d55c6af508fa17439346cc9e5b8c84bf478e175cb858b0280c5b0df",
+  "masterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+ },
+ "habitat": {
+  "profileId": "bear",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "dc168bf7eefdb33399c3400982f888a515b8d65c58ffb8fc163223f39c6570ea",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group bear (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0183,
+     "class": "top",
+     "attach": {
+      "x": 241.5,
+      "y": 133,
+      "relX": 0.64,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0292,
+     "class": "limb-down",
+     "attach": {
+      "x": 319.5,
+      "y": 168.5,
+      "relX": 1,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1518,
+     "class": "limb-down",
+     "attach": {
+      "x": 118.9,
+      "y": 218.1,
+      "relX": 0.06,
+      "relY": 0.86
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0723,
+     "class": "limb-down",
+     "attach": {
+      "x": 260.9,
+      "y": 232.9,
+      "relX": 0.73,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0698,
+     "class": "limb-down",
+     "attach": {
+      "x": 215,
+      "y": 233,
+      "relX": 0.51,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "marmot",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

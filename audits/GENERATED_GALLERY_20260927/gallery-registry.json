@@ -1399,7 +1399,7 @@
   "family": "fish",
   "name": "Tiger Shark",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/03-tiger-shark/native",
-  "note": "HELD: framing REFUSE by Codex (64/63 vs 101); motion itself whole on the seams fit",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
   "batch": "audits/G2_C106_20260927",
   "tag": "g2c106"
  },
@@ -1463,7 +1463,7 @@
   "family": "biped-bird",
   "name": "Rhea",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/13-rhea",
-  "note": "HELD: background-coloured patch on the wing in late idle",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
   "batch": "audits/G2_C106_20260927",
   "tag": "g2c106"
  },
@@ -1943,7 +1943,7 @@
   "family": "primate",
   "name": "Capuchin",
   "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
-  "note": "HELD: reaction whole and excellent; in the head-down late idle the shoulder/back fur pulls into a pointed spike (nape-spike class)",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
   "batch": "audits/C168_PRIMATE_REFERENCES_20261002",
   "tag": "c192capuchin"
  },
@@ -2015,7 +2015,7 @@
   "family": "fish",
   "name": "Tiger Shark",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/tiger-shark-framing-v2",
-  "note": "HELD: native whole, but Codex keeps an explicit anatomy review hold on its tail proportions",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
   "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
   "tag": "g2c197"
  },
@@ -2055,7 +2055,7 @@
   "family": "primate",
   "name": "Capuchin",
   "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
-  "note": "HELD: spike gone after C201, but a thin dark seam line shows at the neck of one capuchin in the late idle",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
   "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
   "tag": "c201refilm"
  },
@@ -2506,5 +2506,157 @@
   "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)",
   "batch": "audits/FILMS_C250_20261003",
   "tag": "c250films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Civet",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/08-civet",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Stoat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/09-stoat",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Chipmunk",
+  "nativeDir": "audits/ISLANDS_C256_20261003/11-chipmunk/native",
+  "note": "whole after the remainder-island repair",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hamster",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/17-hamster",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tasmanian Devil",
+  "nativeDir": "audits/ISLANDS_C256_20261003/21-tasmanian-devil/native",
+  "note": "whole after the remainder-island repair",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Pika",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/23-pika",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Plover",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/03-plover",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Partridge",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/04-partridge",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rooster",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/05-rooster",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Swallow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/08-swallow",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Jay",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/09-jay",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rhea",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/10-rhea",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Snapper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/18-snapper",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Triggerfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/19-triggerfish",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Pufferfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/22-pufferfish",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Remora",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/24-remora",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "crustacean-small",
+  "name": "Prawn",
+  "nativeDir": "audits/FILMS_C261_20261003/prawn",
+  "note": "whole in reaction and late idle on Codex's C252/C260 selected fit (foreleg-tip strike)",
+  "batch": "audits/FILMS_C261_20261003",
+  "tag": "c261films"
+ },
+ {
+  "family": "primate",
+  "name": "Capuchin",
+  "nativeDir": "audits/FILMS_C261_20261003/capuchin",
+  "note": "whole in reaction and late idle on Codex's C252/C260 selected fit",
+  "batch": "audits/FILMS_C261_20261003",
+  "tag": "c261films"
+ },
+ {
+  "family": "fish",
+  "name": "Tiger Shark",
+  "nativeDir": "audits/FILMS_C261_20261003/tiger-shark",
+  "note": "whole in reaction and late idle on Codex's C252/C260 selected fit",
+  "batch": "audits/FILMS_C261_20261003",
+  "tag": "c261films"
  }
 ]

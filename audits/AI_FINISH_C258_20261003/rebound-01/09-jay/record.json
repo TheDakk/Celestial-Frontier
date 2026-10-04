@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Jay\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"168788371\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"7\"]]]]",
+    "seed": 168788371,
+    "ownerId": "authored:archetype-sprint/09-jay",
+    "earthName": "Jay"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 168788371,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 9,
+    "body": 0,
+    "loco": 0,
+    "trait": 7,
+    "size": 1,
+    "diet": 4,
+    "head": 9,
+    "limbs": 3,
+    "skin": 3,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 3,
+    "detail": 5,
+    "accent": 4,
+    "temper": 3,
+    "sense": 2,
+    "repro": 0,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Jay"
+  },
+  "geometry": {
+    "cutoutAssetHash": "ee8809c04821ac104306b56dd641a712c6a13b345f3d7d52e8387e7763715f58",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7380076467090368,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5635566188197767,
+      0.5281499202551834
+    ],
+    "pelvis": [
+      0.5481658692185007,
+      0.5739234449760766
+    ],
+    "spine": [
+      0.6094098883572568,
+      0.5097288676236045
+    ],
+    "chest": [
+      0.6899521531100479,
+      0.44066985645933016
+    ],
+    "neck0": [
+      0.711244019138756,
+      0.3956140350877193
+    ],
+    "neck1": [
+      0.7216108452950558,
+      0.3550239234449761
+    ],
+    "head": [
+      0.7090111642743222,
+      0.2976076555023923
+    ],
+    "beak": [
+      0.7854066985645933,
+      0.3417862838915471
+    ],
+    "legNearKnee": [
+      0.5119617224880383,
+      0.6079744816586922
+    ],
+    "legNearAnkle": [
+      0.5097288676236045,
+      0.693939393939394
+    ],
+    "legNearFoot": [
+      0.5262360446570973,
+      0.7117224880382775
+    ],
+    "legFarKnee": [
+      0.5869218500797448,
+      0.6211323763955343
+    ],
+    "legFarAnkle": [
+      0.6293460925039873,
+      0.6907496012759171
+    ],
+    "legFarFoot": [
+      0.6468899521531101,
+      0.7007177033492823
+    ],
+    "wingNearRoot": [
+      0.6200159489633174,
+      0.4307017543859649
+    ],
+    "wingNearTip": [
+      0.36866028708133974,
+      0.5215311004784688
+    ],
+    "wingFarRoot": [
+      0.6035087719298246,
+      0.3939393939393939
+    ],
+    "wingFarTip": [
+      0.4861244019138756,
+      0.4298245614035088
+    ],
+    "tailFan": [
+      0.2875598086124402,
+      0.5750398724082935
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/09-jay/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "d2dae81e27090bed5dabe3666fbbf8f8d8c1917f67d973254f5f012920d6c3fa",
+    "subjectSourceSha256": "a5af5f6a860398cbfa4016b4f1f89df62b728f123fb98bbb7d53752c2af08e30",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.048291725364325105,
+      "spine": 0.08872301641474355,
+      "chest": 0.10609525641844714,
+      "neck0": 0.04983342852398338,
+      "neck1": 0.0418930572735543,
+      "head": 0.058782478565290244,
+      "beak": 0.08824980943799836,
+      "legFarKnee": 0.061079532236946434,
+      "legFarAnkle": 0.08152529880544251,
+      "legFarFoot": 0.020177960014162596,
+      "legNearKnee": 0.049701240825976226,
+      "legNearAnkle": 0.08599390550657868,
+      "legNearFoot": 0.024263662735556225,
+      "wingFarRoot": 0.09826593650495859,
+      "wingFarTip": 0.12274703893768181,
+      "wingNearRoot": 0.0706430159987397,
+      "wingNearTip": 0.26726323890823245,
+      "tailFan": 0.2606084519635177
+    },
+    "measures": {
+      "body": 0.19457612688190906,
+      "bone-min": 0.020177960014162596,
+      "bone-max": 0.26726323890823245,
+      "leg/torso:legFar": 0.8366020727473245,
+      "leg/torso:legNear": 0.8220885657015485,
+      "wing/torso": 1.1358689217653932
+    }
+  },
+  "recipeHash": "9ed33ea9e6553ea76d6aa29bc8738e70c69571bfa55899f7b2f3511eeac7e139"
+}

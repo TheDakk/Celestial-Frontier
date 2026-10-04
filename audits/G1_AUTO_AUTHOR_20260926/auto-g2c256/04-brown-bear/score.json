@@ -1,0 +1,9 @@
+{
+ "id": "04-brown-bear",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 24%)"
+ ],
+ "semanticPresence": null
+}
