@@ -1,0 +1,62 @@
+{
+  "schema": "cf.c203-product-candidate/v1",
+  "scope": [
+    "Fixed quarter-torso trot for existing low-slack painted grounded quadrupeds",
+    "Observed-socket insect toward-socket swing and exactly two hit/tame source steps",
+    "Release/reference updates with exact ordered copy pin"
+  ],
+  "status": "LOCAL_FOCUSED_GREEN_NOT_I5_CERTIFIED",
+  "tests": {
+    "motion": 147,
+    "insect": 49,
+    "typecheckProjects": 3,
+    "rootValidate": "PASS,50 exact fingerprint probes"
+  },
+  "rejectedPrototype": "audits/C203_NATIVE_HOLDS_20261004/rejected-lattice.json",
+  "files": [
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "sha256": "8c284232e7fd7f85e9dd0a1f8f4314ba3d1db076c3db412981b06479ded55726"
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "7089994bb016e5defd2dee53355b7f34a613f8cc68082180b84c3e1ad8c6c170"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "sha256": "e70ecc4fcbf6a357fa58e3979ce41380af080a67c672a0f286b255d6843107ce"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact-insect-sockets.test.ts",
+      "sha256": "d5c84a7f0adc58026878ad22de99718dfe1c1d5b4f010385133c8e3bfb338015"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "39e326eda6dd32c74921a332ce3fc933b2a5ab84ab02be091134a70f65b24484"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "sha256": "5cc344a18ae85e9dad07da3004c590a01c9d6f4449b4841f281edf3ddabd5362"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "5e428ff1d59840f2ffc89638ee1a62b5a7c87088ec00518c08bd6f523b026435"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "9c4db416b78b2130b4d3fadfcf5273bc846dfe86480ab8aecfcafd6e59e7a889"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "sha256": "0e06982bcb6a0acd312516099a78e13a426e2783db46c6ce3d1d5f1a59a94c53"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/painted-quadruped-layered-trot.test.ts",
+      "sha256": "31e15cd6e1b3f29f7f423dc00f66b61a6a5403c330fedbf40ff9f332926dbba7"
+    }
+  ],
+  "freeGiB": 122.45,
+  "previousAuthorization": "C203 consumed successfully; new combined I5/develop needs Dakk authorization",
+  "allPairs": "HOLD",
+  "limitsChanged": false
+}

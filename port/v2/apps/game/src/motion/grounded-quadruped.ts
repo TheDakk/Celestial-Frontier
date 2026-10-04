@@ -1,7 +1,7 @@
 /** Canonical short-legged excursions. A constant torso gain changes the authored
  * curve only after the original contact probe refuses. Runtime paint/contact
  * guards and the reviewed editor constructor remain unchanged. */
-import type {BodyCard} from './body-card.js';
+import {LEG_SLACK_MIN_BL,type BodyCard} from './body-card.js';
 import type {MotionAction} from './actions.js';
 import type {MotionTimeline,MotionPose} from './timeline.js';
 import type {CreatureRigRecordV1,CreaturePoseV1} from '../creature-rig-types.js';
@@ -10,6 +10,14 @@ const TORSO=new Set(['root','pelvis','spine','chest']);
 const cache=new WeakMap<BodyCard,Map<string,{key:string;action:MotionAction;note:string|null}>>();
 export function groundedQuadrupedAction(card:BodyCard,action:MotionAction,base:MotionTimeline,sample:(tl:MotionTimeline,ms:number)=>MotionPose,compile:(a:MotionAction)=>MotionTimeline):{action:MotionAction;note:string|null} {
  const unchanged={action,note:null};
+ // Near-collinear observed legs cannot absorb the usual trunk bounce on top
+ // of full idle. Use a fixed anatomy profile, not a per-turn contact search.
+ // Placement still measures/admit-refuses the exact source with every guard.
+ if(card.template.id==='quadruped'&&action.id==='approach:trot'&&card.paintedContactSupports&&['land','amphibious'].includes(card.realm)&&['foreNear','foreFar','hindNear','hindFar'].some(leg=>Number.isFinite(card.bounds.legSlack[leg])&&card.bounds.legSlack[leg]!<LEG_SLACK_MIN_BL)){
+  const gain=.25;
+  return {action:Object.freeze({...action,poses:Object.freeze(action.poses.map(p=>Object.freeze({...p,joints:Object.freeze(Object.fromEntries(Object.entries(p.joints).map(([j,v])=>[j,v*(TORSO.has(j)?gain:1)]))),root:Object.freeze({dx:p.root.dx*gain,dy:p.root.dy*gain})})))}),note:'grounded-quadruped:low-slack-trot-gain='+gain};
+ }
+
  if(card.template.id!=='quadruped'||!['approach:gallop','cast'].includes(action.id)||!['land','amphibious'].includes(card.realm)||!card.contactGeometry||!card.recipeHash)return unchanged;
  const key=JSON.stringify({card,action,timeline:{...base,seed:0,hash:''}}),entries=cache.get(card)??new Map(),prior=entries.get(action.id);
  if(prior?.key===key)return prior;

@@ -46,5 +46,8 @@ export function resolveFixedAttachments(definition,record,alpha){
  if(alpha!==undefined){const{width,height}=record.geometry;need(Number.isSafeInteger(width)&&width>0&&Number.isSafeInteger(height)&&height>0&&Number.isSafeInteger(width*height)&&alpha instanceof Uint8Array&&alpha.length===width*height,'source alpha dimensions');
   for(const key of keys){const p=points[key],x=Math.min(width-1,Math.floor(p[0]*width)),y=Math.min(height-1,Math.floor(p[1]*height));need(alpha[y*width+x]>0,'socket outside painted alpha: '+key);}
  }
- return Object.freeze({...definition,fixedPivots:points});
+ // Dorsal observed sockets place feet on either side of the torso. Retract
+ // each swing toward its own socket; the two existing translated reactions
+ // use two complete steps, including tame's blended return to rest.
+ return Object.freeze({...definition,fixedPivots:points,...definition.anatomyModel===INSECT_MODEL?{contactStance:{...definition.contactStance,swingLift:'toward-socket',travelSubsteps:{hit:2,tame:2}}}:{}});
 }

@@ -7353,3 +7353,13 @@ PNG codec lifetime (2026-09-27): morph/png-encode.ts and png-decode.ts share com
 Card scratch lifetime (2026-09-27): morph/morph-card.ts registers privately allocated intermediates with RasterScratch and releases them in finally after synchronous composition/rendering, retaining public outputs and all caller inputs. ArrayBuffer.transfer(0) releases backing stores where supported; older engines use unchanged GC.120pre-change raster hashes and two ownership mutants guard bytes/ownership;native evidence in I5_CARD_SCRATCH_20260927 reproduces and removes a three-padded-raster post-GC excess. No I5 activation implied.
 
 **C198 battle capture diagnostics (matches code 2026-10-03):** Ordinary battle proof reports live-timeline, encoded-media and rig-refusal failures together from one retained capture. The unchanged 57 fps floor and complete-script endpoints still gate capture; a missing-frame message cannot hide an existing rig fold refusal. Guardian admission checks retain their prior contract.
+
+### Painted trot with additive idle — matches code 2026-10-04
+
+Painted, grounded quadrupeds with an observed leg below the existing3% rest-slack diagnostic use a fixed0.25 torso/root excursion profile for trot. This authors a quieter trunk while retaining full idle, limb, head and tail tracks, easing, phase times and runtime limits. Unpainted cards, non-trot actions and legs at/above3% retain their prior curves. The real placement/publication owners still admit or refuse each source; the profile is not automatic acceptance. Both retained Red Fox placements now admit positive cadence. An earlier runtime lattice-search prototype was rejected for4.7-second setup cost; the fixed profile takes0.2–1.3ms in the retained unthrottled Node diagnostic. Evidence: `audits/C203_NATIVE_HOLDS_20261004/{rejected-lattice.json,fast-profile-timing.json}`.
+
+### Observed insect reaction cadence — matches code 2026-10-04
+
+The explicit six-socket insect model retracts swinging feet toward their observed socket and takes two complete source steps for its existing hit and tame translations, including the tame return blend. Body travel, phase times, total distance, amplitudes and numerical guards stay unchanged. This is a fixed anatomy-model convention, not a reach-dependent step count. Legacy undeclared insects, other families and existing compact myriapods keep their previous behavior. The retained Beetle passes13 static actions plus full presentation; native and full-size qualification remain separate. Evidence and negative controls: `audits/C203_ARTHROPOD_REFERENCES_20261004`.
+
+Full-size review still holds the new primate/arthropod references and Snow Petrel. Static success is not admission.
