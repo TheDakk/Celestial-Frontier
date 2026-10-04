@@ -1,0 +1,177 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "22-locust",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+ "subjectSourceSha256": "f13ba4d8c81ccec9d8c07d140062aaecd5d6ca452b24d7fbc23dd386c1d8681b",
+ "identity": {
+  "name": "Locust",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Locust\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"979585948\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 979585948,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "beetle",
+  "authoringSha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef",
+  "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0882,
+     "class": "top",
+     "attach": {
+      "x": 165.4,
+      "y": 170.9,
+      "relX": 0.35,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1069,
+     "class": "front",
+     "attach": {
+      "x": 300.1,
+      "y": 176.6,
+      "relX": 0.98,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0399,
+     "class": "rear",
+     "attach": {
+      "x": 90,
+      "y": 194.5,
+      "relX": 0,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0054,
+     "class": "rear",
+     "attach": {
+      "x": 90,
+      "y": 218.5,
+      "relX": 0,
+      "relY": 0.78
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0285,
+     "class": "limb-down",
+     "attach": {
+      "x": 292,
+      "y": 213,
+      "relX": 0.94,
+      "relY": 0.71
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0268,
+     "class": "limb-down",
+     "attach": {
+      "x": 250,
+      "y": 232,
+      "relX": 0.75,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.02,
+     "class": "limb-down",
+     "attach": {
+      "x": 208,
+      "y": 234,
+      "relX": 0.55,
+      "relY": 1
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0232,
+     "class": "limb-down",
+     "attach": {
+      "x": 125,
+      "y": 235,
+      "relX": 0.16,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 8,
+     "frac": 0.0092,
+     "class": "limb-down",
+     "attach": {
+      "x": 184,
+      "y": 235,
+      "relX": 0.44,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 2,
+    "limb-down": 5
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "beetle",
+   "byClass": {
+    "top": 1,
+    "rear": 3,
+    "limb-down": 6
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 2,
+    "limb-down": 5
+   },
+   "groundContacts": 1,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "legHindNear+legHindFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

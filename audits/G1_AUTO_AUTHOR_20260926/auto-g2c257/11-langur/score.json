@@ -1,0 +1,9 @@
+{
+ "id": "11-langur",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 14.5% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,157 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+ "tag": "g2c258",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "03-plover",
+  "04-partridge",
+  "05-rooster",
+  "08-swallow",
+  "09-jay",
+  "10-rhea",
+  "11-albatross",
+  "18-snapper",
+  "19-triggerfish",
+  "22-pufferfish",
+  "24-remora"
+ ],
+ "refused": [
+  {
+   "id": "01-crane",
+   "reason": "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "06-secretary-bird",
+   "reason": "unexplained-anatomy: 9.9% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "12-snow-petrel",
+   "reason": "missing-anatomy: part far-foot (legFarFoot) covers 15% paint (reference 53%)"
+  },
+  {
+   "id": "13-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 10% paint (reference 86%)"
+  },
+  {
+   "id": "14-bowfin",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "15-arapaima",
+   "reason": "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "16-arowana",
+   "reason": "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "17-lungfish",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "20-cardinalfish",
+   "reason": "extra-anatomy (unassigned): a top appendage of 6.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "21-lionfish",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "23-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "02-flamingo",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "07-cardinal",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "03-plover",
+   "name": "Plover",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-partridge",
+   "name": "Partridge",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-rooster",
+   "name": "Rooster",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-swallow",
+   "name": "Swallow",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-jay",
+   "name": "Jay",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-rhea",
+   "name": "Rhea",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-albatross",
+   "name": "Albatross",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "18-snapper",
+   "name": "Snapper",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "19-triggerfish",
+   "name": "Triggerfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-pufferfish",
+   "name": "Pufferfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "24-remora",
+   "name": "Remora",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

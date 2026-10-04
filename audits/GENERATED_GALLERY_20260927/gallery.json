@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 303,
+ "total": 322,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -759,6 +759,48 @@
    "note": "whole in reaction and late idle on Codex's selected fit"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Civet",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/08-civet",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Stoat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/09-stoat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Chipmunk",
+   "nativeDir": "audits/ISLANDS_C256_20261003/11-chipmunk/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hamster",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/17-hamster",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Tasmanian Devil",
+   "nativeDir": "audits/ISLANDS_C256_20261003/21-tasmanian-devil/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Pika",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/23-pika",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -1134,7 +1176,7 @@
    "name": "Rhea",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/13-rhea",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: background-coloured patch on the wing in late idle"
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
   },
   {
    "family": "Birds",
@@ -1394,6 +1436,48 @@
    "nativeDir": "audits/FILMS_C186_20261002/bittern-fit02",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C186 selected fit (C231 far-leg fold repair; the walk fold is gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Plover",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/03-plover",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Partridge",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/04-partridge",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Rooster",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/05-rooster",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Swallow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/08-swallow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Jay",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/09-jay",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Rhea",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/10-rhea",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
   },
   {
    "family": "Fish",
@@ -1855,7 +1939,7 @@
    "name": "Tiger Shark",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/03-tiger-shark/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: framing REFUSE by Codex (64/63 vs 101); motion itself whole on the seams fit"
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
   },
   {
    "family": "Fish",
@@ -1981,7 +2065,7 @@
    "name": "Tiger Shark",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/tiger-shark-framing-v2",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: native whole, but Codex keeps an explicit anatomy review hold on its tail proportions"
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
   },
   {
    "family": "Fish",
@@ -1996,6 +2080,41 @@
    "nativeDir": "audits/SUCCESSORS_C221_20261002/flounder",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C222 source-bound join correction (body cracks closed)"
+  },
+  {
+   "family": "Fish",
+   "name": "Snapper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/18-snapper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Triggerfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/19-triggerfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Pufferfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/22-pufferfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Remora",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/24-remora",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Tiger Shark",
+   "nativeDir": "audits/FILMS_C261_20261003/tiger-shark",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C252/C260 selected fit"
   },
   {
    "family": "Insects",
@@ -2051,14 +2170,21 @@
    "name": "Capuchin",
    "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: reaction whole and excellent; in the head-down late idle the shoulder/back fur pulls into a pointed spike (nape-spike class)"
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
   },
   {
    "family": "primate",
    "name": "Capuchin",
    "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: spike gone after C201, but a thin dark seam line shows at the neck of one capuchin in the late idle"
+   "note": "SUPERSEDED by the 2026-10-03 acceptance"
+  },
+  {
+   "family": "primate",
+   "name": "Capuchin",
+   "nativeDir": "audits/FILMS_C261_20261003/capuchin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C252/C260 selected fit"
   },
   {
    "family": "arachnid",
@@ -2122,6 +2248,13 @@
    "nativeDir": "audits/FILMS_C250_20261003/mussel",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)"
+  },
+  {
+   "family": "crustacean-small",
+   "name": "Prawn",
+   "nativeDir": "audits/FILMS_C261_20261003/prawn",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C252/C260 selected fit (foreleg-tip strike)"
   }
  ]
 }

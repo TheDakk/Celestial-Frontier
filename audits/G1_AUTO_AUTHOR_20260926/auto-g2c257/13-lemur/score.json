@@ -1,0 +1,10 @@
+{
+ "id": "13-lemur",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 25.9% paint that no reference appendage lands on",
+  "unexplained-anatomy: 22.0% of the paint lies away from the body and in no part (reference 9.6%)"
+ ],
+ "semanticPresence": null
+}

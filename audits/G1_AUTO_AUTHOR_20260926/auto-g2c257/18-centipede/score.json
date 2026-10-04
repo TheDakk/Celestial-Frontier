@@ -1,0 +1,9 @@
+{
+ "id": "18-centipede",
+ "family": "myriapod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family myriapod"
+ ],
+ "semanticPresence": null
+}

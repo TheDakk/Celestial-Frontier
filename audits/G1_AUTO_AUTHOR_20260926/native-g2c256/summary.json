@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+ "tag": "g2c256",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-red-fox",
+  "08-civet",
+  "09-stoat",
+  "11-chipmunk",
+  "17-hamster",
+  "21-tasmanian-devil",
+  "23-pika"
+ ],
+ "refused": [
+  {
+   "id": "02-hyena",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "03-sloth-bear",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+  },
+  {
+   "id": "04-brown-bear",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 24%)"
+  },
+  {
+   "id": "10-squirrel",
+   "reason": "wrong-family: biped-bird matches clearly better (0.0201 < 0.0325)"
+  },
+  {
+   "id": "12-vole",
+   "reason": "missing-anatomy: part fore-near-paw (foreNearPaw) covers 12% paint (reference 48%)"
+  },
+  {
+   "id": "13-mole",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)"
+  },
+  {
+   "id": "14-shrew",
+   "reason": "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 20% paint (reference 66%)"
+  },
+  {
+   "id": "15-hedgehog",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)"
+  },
+  {
+   "id": "16-lemming",
+   "reason": "missing-anatomy: part tail2 (tail2) covers 21% paint (reference 63%)"
+  },
+  {
+   "id": "18-agouti",
+   "reason": "missing-anatomy: part fore-far-paw (foreFarPaw) covers 12% paint (reference 57%)"
+  },
+  {
+   "id": "19-guinea-pig",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 30% paint (reference 88%)"
+  },
+  {
+   "id": "20-rat",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 39%)"
+  },
+  {
+   "id": "24-snowshoe-hare",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 45%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "05-bear",
+   "static": "RED"
+  },
+  {
+   "id": "06-grizzly-bear",
+   "static": "RED"
+  },
+  {
+   "id": "07-kinkajou",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "22-rabbit",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-red-fox",
+   "name": "Red Fox",
+   "family": "quadruped",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "08-civet",
+   "name": "Civet",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-stoat",
+   "name": "Stoat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-chipmunk",
+   "name": "Chipmunk",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "17-hamster",
+   "name": "Hamster",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-tasmanian-devil",
+   "name": "Tasmanian Devil",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "23-pika",
+   "name": "Pika",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

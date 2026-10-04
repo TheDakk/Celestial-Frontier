@@ -1,21 +1,18 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 251,
- "pct": 39.8,
+ "covered": 270,
+ "pct": 42.8,
  "heldNotCounted": [
-  "Capuchin",
-  "Rhea",
-  "Snow Petrel",
-  "Tiger Shark"
+  "Snow Petrel"
  ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 87,
-   "pct": 42.4,
+   "covered": 92,
+   "pct": 44.9,
    "names": [
     "Jaguar",
     "Leopard",
@@ -46,22 +43,27 @@
     "Panda",
     "Polar Bear",
     "Sun Bear",
+    "Civet",
     "Mongoose",
     "Meerkat",
     "Red Panda",
     "Raccoon",
     "Weasel",
+    "Stoat",
     "Mink",
     "Marten",
     "Fisher",
     "Possum",
+    "Chipmunk",
     "Mouse",
     "Marmot",
     "Ground Squirrel",
     "Gopher",
+    "Hamster",
     "Gerbil",
     "Tree Shrew",
     "Wombat",
+    "Tasmanian Devil",
     "Quoll",
     "Otter",
     "Giant Otter",
@@ -109,8 +111,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 78,
-   "pct": 59.1,
+   "covered": 83,
+   "pct": 62.9,
    "names": [
     "Salmon",
     "Trout",
@@ -143,6 +145,7 @@
     "Goldfish",
     "Mullet",
     "Tarpon",
+    "Snapper",
     "Cave Fish",
     "Goby",
     "Flounder",
@@ -158,8 +161,10 @@
     "Butterflyfish",
     "Surgeonfish",
     "Tang",
+    "Triggerfish",
     "Parrotfish",
     "Wrasse",
+    "Pufferfish",
     "Boxfish",
     "Rabbitfish",
     "Sea Bass",
@@ -177,6 +182,7 @@
     "Monkfish",
     "Coelacanth",
     "Ocean Sunfish",
+    "Remora",
     "Archerfish",
     "Icefish",
     "Mudminnow",
@@ -187,6 +193,7 @@
     "Reef Shark",
     "Hammerhead Shark",
     "Great White Shark",
+    "Tiger Shark",
     "Mako Shark",
     "Whale Shark",
     "Basking Shark"
@@ -195,14 +202,15 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 51,
-   "pct": 50,
+   "covered": 57,
+   "pct": 55.9,
    "names": [
     "Hawk",
     "Snowy Owl",
     "Kestrel",
     "Desert Owl",
     "Harpy Eagle",
+    "Rhea",
     "Goose",
     "Swan",
     "Eider Duck",
@@ -214,6 +222,7 @@
     "Ibis",
     "Spoonbill",
     "Curlew",
+    "Plover",
     "Sandpiper",
     "Rail",
     "Bittern",
@@ -225,8 +234,10 @@
     "Bustard",
     "Sandgrouse",
     "Quail",
+    "Partridge",
     "Roadrunner",
     "Chicken",
+    "Rooster",
     "Seriema",
     "Parrot",
     "Hornbill",
@@ -240,7 +251,9 @@
     "Chough",
     "Lark",
     "Finch",
+    "Swallow",
     "Magpie",
+    "Jay",
     "Dove",
     "Skua",
     "Condor",
@@ -292,9 +305,10 @@
   {
    "family": "hopper",
    "species": 18,
-   "covered": 3,
-   "pct": 16.7,
+   "covered": 4,
+   "pct": 22.2,
    "names": [
+    "Pika",
     "Hare",
     "Arctic Hare",
     "Mara"
@@ -303,16 +317,20 @@
   {
    "family": "primate",
    "species": 17,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 5.9,
+   "names": [
+    "Capuchin"
+   ]
   },
   {
    "family": "crustacean-small",
    "species": 14,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 7.1,
+   "names": [
+    "Prawn"
+   ]
   },
   {
    "family": "radial",

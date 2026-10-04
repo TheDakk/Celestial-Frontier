@@ -1,0 +1,73 @@
+{
+  "name": "Rabbit",
+  "family": "quadruped",
+  "species": {
+    "name": "Rabbit",
+    "aspect": 1.7,
+    "headFrac": 0.3,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "long upright ears",
+      "short round powder-puff tail",
+      "heavy crouched hind legs"
+    ]
+  },
+  "genome": {
+    "seed": 1493679316,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 10,
+    "body": 7,
+    "loco": 0,
+    "trait": 18,
+    "size": 0,
+    "diet": 3,
+    "head": 1,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 14,
+    "detail": 5,
+    "accent": 12,
+    "temper": 0,
+    "sense": 9,
+    "repro": 6,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Rabbit"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rabbit\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1493679316\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 119,
+  "profile": {
+    "id": "rabbit-hopper",
+    "names": [
+      "Pika",
+      "Rabbit",
+      "Hare",
+      "Snowshoe Hare",
+      "Jackrabbit",
+      "Jerboa",
+      "Arctic Hare",
+      "Mara"
+    ],
+    "candidateTemplates": [
+      "hopper",
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

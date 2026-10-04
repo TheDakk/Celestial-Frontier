@@ -1,0 +1,136 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "03-sloth-bear",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "04c3982b75838e92dd708b9ca4a9a2b0aeb24bdc7a7d64c26fc2634a789799da",
+ "subjectSourceSha256": "50edf44f9f5b65844e572d1fb96b59c28a9f85472e484d4f7885250e1f90cf21",
+ "identity": {
+  "name": "Sloth Bear",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sloth Bear\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2147936159\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 2147936159,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "bear",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "dc168bf7eefdb33399c3400982f888a515b8d65c58ffb8fc163223f39c6570ea",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group bear (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.01,
+     "class": "top",
+     "attach": {
+      "x": 248,
+      "y": 121,
+      "relX": 0.63,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0042,
+     "class": "top",
+     "attach": {
+      "x": 335.9,
+      "y": 132.6,
+      "relX": 0.98,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0213,
+     "class": "limb-down",
+     "attach": {
+      "x": 342,
+      "y": 171.5,
+      "relX": 1,
+      "relY": 0.38
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0762,
+     "class": "limb-down",
+     "attach": {
+      "x": 96.2,
+      "y": 231.8,
+      "relX": 0.02,
+      "relY": 0.85
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0637,
+     "class": "limb-down",
+     "attach": {
+      "x": 275.9,
+      "y": 246.9,
+      "relX": 0.74,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0714,
+     "class": "limb-down",
+     "attach": {
+      "x": 218,
+      "y": 247,
+      "relX": 0.51,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0495,
+     "class": "limb-down",
+     "attach": {
+      "x": 153,
+      "y": 252,
+      "relX": 0.25,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "id": "07-kinkajou",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part jaw (jaw) covers 18% paint (reference 77%)"
+ ],
+ "semanticPresence": null
+}

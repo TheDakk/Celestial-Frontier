@@ -1,0 +1,9 @@
+{
+ "id": "09-tamarin",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no reference of rank 1 (1 same-family)"
+ ],
+ "semanticPresence": null
+}
