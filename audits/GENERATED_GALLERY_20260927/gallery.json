@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 322,
+ "total": 338,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -801,6 +801,41 @@
    "note": "whole in reaction and late idle"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Wild Pig",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/07-wild-pig",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): held faint (turn3 idle-50/90): head folds ~90deg down, snout driven below the ground plane, near foreleg folds back under the chest"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Cow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/10-cow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): held faint: two sharp triangular spikes tear up from the withers, see-through hole on the flank, ear tip detached at the neck"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hyrax",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/16-hyrax",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD-minor): whole in reaction/faint/late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Capybara",
+   "nativeDir": "audits/ISLANDS_C274_20261004/02-capybara/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Grizzly Bear",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/08-grizzly-bear",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction, faint and late idle"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -1480,6 +1515,48 @@
    "note": "whole in reaction and late idle"
   },
   {
+   "family": "Birds",
+   "name": "Cardinal",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/17-cardinal",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): turn3 victory: attacker body stretches into a twisted ribbon, head lost, wing pulled to a long spike"
+  },
+  {
+   "family": "Birds",
+   "name": "Sparrow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/18-sparrow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD-minor): after island repair (audits/ISLANDS_C274_20261004, 2,445 px shard -> far-wing-root) the floating shard is gone and native PASS"
+  },
+  {
+   "family": "Birds",
+   "name": "Pigeon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/19-pigeon",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): turn3 victory: neck stretches into a thin S ribbon carrying the head to the raised wing"
+  },
+  {
+   "family": "Birds",
+   "name": "Toucan",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/11-toucan",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): victory neck stretches into a yellow ribbon"
+  },
+  {
+   "family": "Birds",
+   "name": "Duck",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/14-duck",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): victory neck ribbon"
+  },
+  {
+   "family": "Birds",
+   "name": "Stork",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/16-stork",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): crown/eye piece separates from the face with a gap"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -2115,6 +2192,41 @@
    "nativeDir": "audits/FILMS_C261_20261003/tiger-shark",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C252/C260 selected fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Cardinalfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/23-cardinalfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction, faint and late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Arapaima",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/17-arapaima-framing02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD): victory: pectoral strand tears off below the gill"
+  },
+  {
+   "family": "Fish",
+   "name": "Angelfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/20-angelfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD): defender dorsal filament floats detached above the fin"
+  },
+  {
+   "family": "Fish",
+   "name": "Tuna",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/21-tuna",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (HOLD): pale rectangular holes on the defender flank"
+  },
+  {
+   "family": "Fish",
+   "name": "Swordfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/23-swordfish-framing02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD (RED): victory: bill detaches and floats free of the head, pectoral chunk floats loose"
   },
   {
    "family": "Insects",

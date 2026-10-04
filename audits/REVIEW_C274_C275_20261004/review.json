@@ -1,0 +1,87 @@
+{
+ "schema": "cf.claude-fullsize-review/v1",
+ "date": "2026-10-04",
+ "method": "full 1024x576 frames turn1-hit-reaction-50, turn3-hit-idle-50, turn3-hit-idle-90 stacked, plus 3x zooms; calibrated against accepted Civet (g2c256), Plover (g2c258) and Codex's reviewed Red Fox held-faint (C280)",
+ "g2c274": {
+  "07-wild-pig": {
+   "verdict": "RED",
+   "note": "held faint (turn3 idle-50/90): head folds ~90deg down, snout driven below the ground plane, near foreleg folds back under the chest; Fox held-faint is a shallow crouch by comparison"
+  },
+  "10-cow": {
+   "verdict": "RED",
+   "note": "held faint: two sharp triangular spikes tear up from the withers, see-through hole on the flank, ear tip detached at the neck; same deep-bodied-ungulate faint class as Wild Pig"
+  },
+  "16-hyrax": {
+   "verdict": "HOLD-minor",
+   "note": "whole in reaction/faint/late idle; thin see-through seam down chest/neck and small chin flap in the turn3 strike frame; source-joins candidate"
+  },
+  "17-cardinal": {
+   "verdict": "RED",
+   "note": "turn3 victory: attacker body stretches into a twisted ribbon, head lost, wing pulled to a long spike; defender crest splits into a floating second piece"
+  },
+  "18-sparrow": {
+   "verdict": "HOLD-minor",
+   "note": "after island repair (audits/ISLANDS_C274_20261004, 2,445 px shard -> far-wing-root) the floating shard is gone and native PASS; a thin see-through seam remains at the nape/wing join in late idle (same class as Hyrax); source-joins candidate"
+  },
+  "19-pigeon": {
+   "verdict": "RED",
+   "note": "turn3 victory: neck stretches into a thin S ribbon carrying the head to the raised wing; late idle and defender otherwise whole"
+  },
+  "23-cardinalfish": {
+   "verdict": "ACCEPT",
+   "note": "whole in reaction, faint tilt and late idle; fins attached; Codex style hold (glassy highlights, large eye) carried to AI finish"
+  }
+ },
+ "g2c275": {
+  "02-capybara": {
+   "verdict": "ACCEPT",
+   "note": "original film: ear stayed with the neck (rear and faint). After island repair (5,742 px placed, D28 cap 0.5) ears ride the head, faint head coherent, native PASS; accepted on the repaired fit"
+  },
+  "08-grizzly-bear": {
+   "verdict": "ACCEPT",
+   "note": "whole in reaction, rear victory and head-down faint; ear behind the upturned skull is anatomical; thin streaks are leaf hit FX"
+  },
+  "11-toucan": {
+   "verdict": "RED",
+   "note": "victory neck stretches into a yellow ribbon; bill tears in a zig-zag split near the base in late idle (both birds); loose black piece above the defender head"
+  },
+  "13-falcon": {
+   "verdict": "NATIVE-FAIL",
+   "note": "rig refusals in play left 4 / right 1: ARAP skin unresolved folded triangles 2 during approach:walk (Codex motion class, like Tortoise)"
+  },
+  "14-duck": {
+   "verdict": "RED",
+   "note": "victory neck ribbon; drake curl feather lifts off as a loose black antenna above the back"
+  },
+  "16-stork": {
+   "verdict": "RED",
+   "note": "crown/eye piece separates from the face with a gap; white sliver floats by the neck; thin red strand hangs knee-to-ground like a third leg"
+  },
+  "17-arapaima-framing02": {
+   "verdict": "HOLD",
+   "note": "victory: pectoral strand tears off below the gill; thin seam across the defender back; fish-seams repair refused by its sealed source-owner guard"
+  },
+  "20-angelfish": {
+   "verdict": "HOLD",
+   "note": "defender dorsal filament floats detached above the fin; fish-seams refused (sealed guard)"
+  },
+  "21-tuna": {
+   "verdict": "HOLD",
+   "note": "pale rectangular holes on the defender flank; stray fragment under the attacker; fish-seams refused (sealed guard)"
+  },
+  "23-swordfish-framing02": {
+   "verdict": "RED",
+   "note": "victory: bill detaches and floats free of the head, pectoral chunk floats loose; late idle whole"
+  }
+ },
+ "systemic": [
+  "held faint on deep-bodied ungulates (Wild Pig, Cow) folds the head ~90deg into the ground and spikes the withers; Fox/Grizzly/Capybara faints are fine",
+  "grounded-bird victory stretches the neck into a ribbon for Cardinal, Pigeon, Toucan, Duck (Plover/Sparrow/Stork-class short tucks are fine)",
+  "fish-seams-batch refuses every fish: audits/FISH_PIPELINE_C88_20260927/fish-split.mjs sealed sourceOwnerSha256 no longer matches (\"Source split owner changed; fresh review required\") - Codex sealed gate, not re-bound by Claude"
+ ],
+ "accepted": [
+  "Cardinalfish",
+  "Grizzly Bear",
+  "Capybara"
+ ]
+}

@@ -1,18 +1,31 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 270,
- "pct": 42.8,
+ "covered": 273,
+ "pct": 43.3,
  "heldNotCounted": [
-  "Snow Petrel"
+  "Angelfish",
+  "Arapaima",
+  "Cardinal",
+  "Cow",
+  "Duck",
+  "Hyrax",
+  "Pigeon",
+  "Snow Petrel",
+  "Sparrow",
+  "Stork",
+  "Swordfish",
+  "Toucan",
+  "Tuna",
+  "Wild Pig"
  ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 92,
-   "pct": 44.9,
+   "covered": 94,
+   "pct": 45.9,
    "names": [
     "Jaguar",
     "Leopard",
@@ -43,6 +56,7 @@
     "Panda",
     "Polar Bear",
     "Sun Bear",
+    "Grizzly Bear",
     "Civet",
     "Mongoose",
     "Meerkat",
@@ -67,6 +81,7 @@
     "Quoll",
     "Otter",
     "Giant Otter",
+    "Capybara",
     "Sugar Glider",
     "Koala",
     "Gaur",
@@ -111,8 +126,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 83,
-   "pct": 62.9,
+   "covered": 84,
+   "pct": 63.6,
    "names": [
     "Salmon",
     "Trout",
@@ -164,6 +179,7 @@
     "Triggerfish",
     "Parrotfish",
     "Wrasse",
+    "Cardinalfish",
     "Pufferfish",
     "Boxfish",
     "Rabbitfish",

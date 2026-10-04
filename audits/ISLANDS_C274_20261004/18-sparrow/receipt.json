@@ -1,0 +1,149 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/18-sparrow/fit",
+  "sourceMasterSha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599",
+  "keyedRgbaSha256": "f332372bf08c664bfd465e79216a5e112bd130ccf5a90d6d401bb8968f1a510b",
+  "remainder": "body",
+  "remainderPixels": 27011,
+  "movedPixels": 2600,
+  "islands": [
+    {
+      "pixels": 17,
+      "to": "head",
+      "border": {
+        "beak": 7,
+        "head": 8
+      }
+    },
+    {
+      "pixels": 2445,
+      "to": "far-wing-root",
+      "border": {
+        "head": 92,
+        "neck-upper": 25,
+        "far-wing-root": 126
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-wing-root",
+      "border": {
+        "far-wing-root": 3
+      }
+    },
+    {
+      "pixels": 27,
+      "to": "near-shin",
+      "border": {
+        "near-foot": 4,
+        "near-shin": 14
+      }
+    },
+    {
+      "pixels": 26,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 5
+      }
+    },
+    {
+      "pixels": 68,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 25
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 1
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "18-sparrow",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1228,
+      "height": 459
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 36,
+        "distancePx": 7.938391584056903,
+        "supports": [
+          57,
+          59
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 20,
+        "distancePx": 3.0805843601498117,
+        "supports": [
+          11,
+          14
+        ]
+      }
+    ],
+    "sourceBindingHash": "d13e1a70a721d4ec4bd42888a99e1ceb84e07397deb17f68c3fe2e103a083089",
+    "sourceVertices": 883,
+    "vertices": 1073,
+    "sharedSupports": 245,
+    "pins": 496,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

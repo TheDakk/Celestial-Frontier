@@ -77,6 +77,77 @@
    "static": "RED"
   }
  ],
- "native": [],
+ "native": [
+  {
+   "id": "02-capybara",
+   "name": "Capybara",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-grizzly-bear",
+   "name": "Grizzly Bear",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-toucan",
+   "name": "Toucan",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-falcon",
+   "name": "Falcon",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "14-duck",
+   "name": "Duck",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-stork",
+   "name": "Stork",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "17-arapaima-framing02",
+   "name": "Arapaima",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "20-angelfish",
+   "name": "Angelfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-tuna",
+   "name": "Tuna",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "23-swordfish-framing02",
+   "name": "Swordfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
  "runnerExit": 0
 }

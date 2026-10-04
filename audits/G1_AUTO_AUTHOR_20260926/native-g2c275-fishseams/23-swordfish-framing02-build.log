@@ -1,0 +1,11 @@
+file://~/Projects/celestial-frontier-anthropic-mac/audits/FISH_PIPELINE_C88_20260927/fish-split.mjs:15
+if(sourceOwnerSha256!=='5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95')throw Error('Source split owner changed; fresh review required');
+                                                                                                ^
+
+Error: Source split owner changed; fresh review required
+    at file://~/Projects/celestial-frontier-anthropic-mac/audits/FISH_PIPELINE_C88_20260927/fish-split.mjs:15:97
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)
+
+Node.js v26.10.0
